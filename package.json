@@ -23,6 +23,8 @@
     "test-build": "jest --selectProjects=build",
     "test-integration": "jest --selectProjects=integration",
     "test-unit": "jest --selectProjects=unit",
+    "jest": "jest",
+    "jest-ci": "jest --reporters=github-actions --reporters=summary",
     "compile": "tsc",
     "lint": "eslint --cache --ext .ts,.tsx --ignore-path .gitignore .",
     "typecheck": "tsc --noEmit"
