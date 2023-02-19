@@ -1,1 +1,0 @@
-{"version":3,"file":"validate_image.js","sourceRoot":"","sources":["../../../src/validate/validate_image.ts"],"names":[],"mappings":"AAAA,OAAO,kBAAkB,MAAM,uBAAuB,CAAC;AACvD,OAAO,cAAc,MAAM,mBAAmB,CAAC;AAE/C,MAAM,CAAC,OAAO,UAAU,aAAa,CAAC,OAAY;IAC9C,IAAI,cAAc,CAAC,OAAO,CAAC,CAAC,MAAM,KAAK,CAAC,EAAE;QACtC,OAAO,EAAE,CAAC;KACb;IAED,OAAO,kBAAkB,CAAC,OAAO,CAAC,CAAC;AACvC,CAAC"}
