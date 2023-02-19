@@ -109,7 +109,7 @@
       "ignorePrivate": true
     }
   },
-  "ignorePatterns": ["build/*.js", "*.json", "**/tsc/*"],
+  "ignorePatterns": ["build/*.js", "*.json", "**/tsc/*", "**/dist/*"],
   "overrides": [
     {
       "files": ["test/**", "src/style-spec/**"],
