@@ -192,6 +192,8 @@ class ParsingContext {
     /**
      * Returns null if `t` is a subtype of `expected`; otherwise returns an
      * error message and also pushes it to `this.errors`.
+     * @param expected
+     * @param t
      */
     checkSubtype(expected: Type, t: Type): string {
         const error = checkSubtype(expected, t);

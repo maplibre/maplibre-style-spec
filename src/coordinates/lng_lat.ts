@@ -14,7 +14,6 @@ export function wrap(n: number, min: number, max: number): number {
     return (w === min) ? max : w;
 }
 
-
 /*
 * Approximate radius of the earth in meters.
 * Uses the WGS-84 approximation. The radius at the equator is ~6378137 and at the poles is ~6356752. https://en.wikipedia.org/wiki/World_Geodetic_System#WGS84

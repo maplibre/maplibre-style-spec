@@ -12,7 +12,7 @@ const outputPath = './dist';
 if (!fs.existsSync(outputPath)) {
     fs.mkdirSync(outputPath);
 }
-let outputFile = `${outputPath}/index.d.ts`;
+const outputFile = `${outputPath}/index.d.ts`;
 childProcess.execSync(`dts-bundle-generator -o ${outputFile} ./src/style-spec.ts`);
 
 console.log('Finished bundling types');

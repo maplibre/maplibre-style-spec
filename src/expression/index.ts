@@ -30,7 +30,6 @@ import type {PropertyValueSpecification} from '../types.g';
 import type {FormattedSection} from './types/formatted';
 import type Point from '@mapbox/point-geometry';
 
-
 export type Feature = {
     readonly type: 1 | 2 | 3 | 'Unknown' | 'Point' | 'MultiPoint' | 'LineString' | 'MultiLineString' | 'Polygon' | 'MultiPolygon';
     readonly id?: any;
@@ -438,7 +437,7 @@ function findZoomCurve(expression: Expression): Step | Interpolate | ExpressionP
 
 import {ColorType, StringType, NumberType, BooleanType, ValueType, FormattedType, PaddingType, ResolvedImageType, array} from './types';
 import Padding from '../util/padding';
-import { ICanonicalTileID } from '../tiles_and_coordinates';
+import {ICanonicalTileID} from '../tiles_and_coordinates';
 
 function getExpectedType(spec: StylePropertySpecification): Type {
     const types = {

@@ -23,7 +23,9 @@
     "test-build": "jest --selectProjects=build",
     "test-integration": "jest --selectProjects=integration",
     "test-unit": "jest --selectProjects=unit",
-    "compile": "tsc"
+    "compile": "tsc",
+    "lint": "eslint --cache --ext .ts,.tsx --ignore-path .gitignore .",
+    "typecheck": "tsc --noEmit"
   },
   "repository": {
     "type": "git",
@@ -54,9 +56,12 @@
     "@rollup/plugin-strip": "^3.0.2",
     "@rollup/plugin-terser": "^0.4.0",
     "@rollup/plugin-typescript": "^11.0.0",
+    "@types/eslint": "^8.21.0",
     "@types/geojson": "^7946.0.10",
     "@types/jest": "^29.2.5",
     "@types/node": "^18.14.0",
+    "@typescript-eslint/eslint-plugin": "^5.51.0",
+    "@typescript-eslint/parser": "^5.51.0",
     "dts-bundle-generator": "^7.2.0",
     "eslint": "^8.34.0",
     "eslint-config-mourner": "^3.0.0",

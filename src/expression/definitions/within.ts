@@ -4,8 +4,7 @@ import {BooleanType} from '../types';
 import type {Expression} from '../expression';
 import type ParsingContext from '../parsing_context';
 import type EvaluationContext from '../evaluation_context';
-import { ICanonicalTileID } from '../../tiles_and_coordinates';
-
+import {ICanonicalTileID} from '../../tiles_and_coordinates';
 
 type GeoJSONPolygons = GeoJSON.Polygon | GeoJSON.MultiPolygon;
 
