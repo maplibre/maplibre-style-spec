@@ -6,15 +6,15 @@ import typescript from '@rollup/plugin-typescript';
 import json from '@rollup/plugin-json';
 
 const config: RollupOptions[] = [{
-    input: 'src/style-spec/style-spec.ts',
+    input: 'src/style-spec.ts',
     output: [{
-        file: 'dist/style-spec/index.mjs',
+        file: 'dist/index.mjs',
         format: 'es',
         sourcemap: true
     },
     {
         name: 'maplibreGlStyleSpecification',
-        file: 'dist/style-spec/index.cjs',
+        file: 'dist/index.cjs',
         format: 'umd',
         sourcemap: true
     }],
@@ -26,7 +26,7 @@ const config: RollupOptions[] = [{
             // Some users reference modules within style-spec package directly, instead of the bundle
             // This means that files within the style-spec package should NOT import files from the parent maplibre-gl-js tree.
             // This check will cause the build to fail on CI allowing these issues to be caught.
-            jail: 'src/style-spec/',
+            jail: 'src/',
         }),
         // https://github.com/zaach/jison/issues/351
         replace({

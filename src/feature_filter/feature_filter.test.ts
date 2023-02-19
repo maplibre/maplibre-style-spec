@@ -2,9 +2,9 @@ import {default as createFilter, isExpressionFilter} from '.';
 
 import convertFilter from './convert';
 import Point from '@mapbox/point-geometry';
-import MercatorCoordinate from '../../geo/mercator_coordinate';
+import MercatorCoordinate from '../coordinates/mercator_coordinate';
 import EXTENT from '../extent';
-import {CanonicalTileID} from '../../source/tile_id';
+import {ICanonicalTileID} from '../tiles_and_coordinates';
 import {ExpressionFilterSpecification, ExpressionInputType, ExpressionSpecification, FilterSpecification} from '../types.g';
 import {Feature} from '../expression';
 
@@ -162,7 +162,7 @@ describe('filter', () => {
         };
         const withinFilter =  createFilter(['within', {'type': 'Polygon', 'coordinates': [[[0, 0], [5, 0], [5, 5], [0, 5], [0, 0]]]}]);
         expect(withinFilter.needGeometry).toBe(true);
-        const canonical = {z: 3, x: 3, y: 3} as CanonicalTileID;
+        const canonical = {z: 3, x: 3, y: 3} as ICanonicalTileID;
         expect(
             withinFilter.filter({zoom: 3}, {type: 1, geometry: [[getPointFromLngLat(2, 2, canonical)]]} as Feature, canonical)
         ).toBe(true);

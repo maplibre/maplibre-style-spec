@@ -1,7 +1,8 @@
 import {Color} from './values';
 import type {FormattedSection} from './types/formatted';
 import type {GlobalProperties, Feature, FeatureState} from './index';
-import type {CanonicalTileID} from '../../source/tile_id';
+import { ICanonicalTileID } from '../tiles_and_coordinates';
+
 
 const geometryTypes = ['Unknown', 'Point', 'LineString', 'Polygon'];
 
@@ -11,7 +12,7 @@ class EvaluationContext {
     featureState: FeatureState;
     formattedSection: FormattedSection;
     availableImages: Array<string>;
-    canonical: CanonicalTileID;
+    canonical: ICanonicalTileID;
 
     _parseColorCache: {[_: string]: Color};
 

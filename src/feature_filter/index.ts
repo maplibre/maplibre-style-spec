@@ -1,13 +1,13 @@
 import {createExpression} from '../expression';
 import type {GlobalProperties, Feature} from '../expression';
-import type {CanonicalTileID} from '../../source/tile_id';
+import { ICanonicalTileID } from '../tiles_and_coordinates';
 import {StylePropertySpecification} from '../style-spec';
 import {ExpressionFilterSpecification} from '../types.g';
 
 type FilterExpression = (
     globalProperties: GlobalProperties,
     feature: Feature,
-    canonical?: CanonicalTileID
+    canonical?: ICanonicalTileID
 ) => boolean;
 
 export type FeatureFilter = {
@@ -94,7 +94,7 @@ function createFilter(filter: any): FeatureFilter {
         throw new Error(compiled.value.map(err => `${err.key}: ${err.message}`).join(', '));
     } else {
         const needGeometry = geometryNeeded(filter);
-        return {filter: (globalProperties: GlobalProperties, feature: Feature, canonical?: CanonicalTileID) => compiled.value.evaluate(globalProperties, feature, {}, canonical),
+        return {filter: (globalProperties: GlobalProperties, feature: Feature, canonical?: ICanonicalTileID) => compiled.value.evaluate(globalProperties, feature, {}, canonical),
             needGeometry};
     }
 }

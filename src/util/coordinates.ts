@@ -1,11 +1,11 @@
-export interface ICanonicalTileID {
+export interface IICanonicalTileID {
   z: number;
   x: number;
   y: number;
   key: string;
-  equals(id: ICanonicalTileID): {};
+  equals(id: IICanonicalTileID): {};
   url(urls: Array<string>, pixelRatio: number, scheme: string | null): {};
-  isChildOf(parent: ICanonicalTileID): {};
+  isChildOf(parent: IICanonicalTileID): {};
   getTilePoint(coord: IMercatorCoordinate): {};
   toString(): {};
 }

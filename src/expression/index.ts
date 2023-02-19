@@ -29,7 +29,7 @@ import type {InterpolationType} from './definitions/interpolate';
 import type {PropertyValueSpecification} from '../types.g';
 import type {FormattedSection} from './types/formatted';
 import type Point from '@mapbox/point-geometry';
-import type {CanonicalTileID} from '../../source/tile_id';
+
 
 export type Feature = {
     readonly type: 1 | 2 | 3 | 'Unknown' | 'Point' | 'MultiPoint' | 'LineString' | 'MultiLineString' | 'Polygon' | 'MultiPolygon';
@@ -75,7 +75,7 @@ export class StyleExpression {
         globals: GlobalProperties,
         feature?: Feature,
         featureState?: FeatureState,
-        canonical?: CanonicalTileID,
+        canonical?: ICanonicalTileID,
         availableImages?: Array<string>,
         formattedSection?: FormattedSection
     ): any {
@@ -93,7 +93,7 @@ export class StyleExpression {
         globals: GlobalProperties,
         feature?: Feature,
         featureState?: FeatureState,
-        canonical?: CanonicalTileID,
+        canonical?: ICanonicalTileID,
         availableImages?: Array<string>,
         formattedSection?: FormattedSection
     ): any {
@@ -169,7 +169,7 @@ export class ZoomConstantExpression<Kind extends EvaluationKind> {
         globals: GlobalProperties,
         feature?: Feature,
         featureState?: FeatureState,
-        canonical?: CanonicalTileID,
+        canonical?: ICanonicalTileID,
         availableImages?: Array<string>,
         formattedSection?: FormattedSection
     ): any {
@@ -180,7 +180,7 @@ export class ZoomConstantExpression<Kind extends EvaluationKind> {
         globals: GlobalProperties,
         feature?: Feature,
         featureState?: FeatureState,
-        canonical?: CanonicalTileID,
+        canonical?: ICanonicalTileID,
         availableImages?: Array<string>,
         formattedSection?: FormattedSection
     ): any {
@@ -208,7 +208,7 @@ export class ZoomDependentExpression<Kind extends EvaluationKind> {
         globals: GlobalProperties,
         feature?: Feature,
         featureState?: FeatureState,
-        canonical?: CanonicalTileID,
+        canonical?: ICanonicalTileID,
         availableImages?: Array<string>,
         formattedSection?: FormattedSection
     ): any {
@@ -219,7 +219,7 @@ export class ZoomDependentExpression<Kind extends EvaluationKind> {
         globals: GlobalProperties,
         feature?: Feature,
         featureState?: FeatureState,
-        canonical?: CanonicalTileID,
+        canonical?: ICanonicalTileID,
         availableImages?: Array<string>,
         formattedSection?: FormattedSection
     ): any {
@@ -241,7 +241,7 @@ export type ConstantExpression = {
         globals: GlobalProperties,
         feature?: Feature,
         featureState?: FeatureState,
-        canonical?: CanonicalTileID,
+        canonical?: ICanonicalTileID,
         availableImages?: Array<string>
     ) => any;
 };
@@ -253,7 +253,7 @@ export type SourceExpression = {
         globals: GlobalProperties,
         feature?: Feature,
         featureState?: FeatureState,
-        canonical?: CanonicalTileID,
+        canonical?: ICanonicalTileID,
         availableImages?: Array<string>,
         formattedSection?: FormattedSection
     ) => any;
@@ -265,7 +265,7 @@ export type CameraExpression = {
         globals: GlobalProperties,
         feature?: Feature,
         featureState?: FeatureState,
-        canonical?: CanonicalTileID,
+        canonical?: ICanonicalTileID,
         availableImages?: Array<string>
     ) => any;
     readonly interpolationFactor: (input: number, lower: number, upper: number) => number;
@@ -280,7 +280,7 @@ export type CompositeExpression = {
         globals: GlobalProperties,
         feature?: Feature,
         featureState?: FeatureState,
-        canonical?: CanonicalTileID,
+        canonical?: ICanonicalTileID,
         availableImages?: Array<string>,
         formattedSection?: FormattedSection
     ) => any;
@@ -438,6 +438,7 @@ function findZoomCurve(expression: Expression): Step | Interpolate | ExpressionP
 
 import {ColorType, StringType, NumberType, BooleanType, ValueType, FormattedType, PaddingType, ResolvedImageType, array} from './types';
 import Padding from '../util/padding';
+import { ICanonicalTileID } from '../tiles_and_coordinates';
 
 function getExpectedType(spec: StylePropertySpecification): Type {
     const types = {

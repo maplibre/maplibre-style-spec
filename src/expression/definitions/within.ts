@@ -4,7 +4,8 @@ import {BooleanType} from '../types';
 import type {Expression} from '../expression';
 import type ParsingContext from '../parsing_context';
 import type EvaluationContext from '../evaluation_context';
-import type {CanonicalTileID} from '../../../source/tile_id';
+import { ICanonicalTileID } from '../../tiles_and_coordinates';
+
 
 type GeoJSONPolygons = GeoJSON.Polygon | GeoJSON.MultiPolygon;
 
@@ -36,7 +37,7 @@ function boxWithinBox(bbox1: BBox, bbox2: BBox) {
     return true;
 }
 
-function getTileCoordinates(p, canonical: CanonicalTileID): [number, number] {
+function getTileCoordinates(p, canonical: ICanonicalTileID): [number, number] {
     const x = mercatorXfromLng(p[0]);
     const y = mercatorYfromLat(p[1]);
     const tilesAtZoom = Math.pow(2, canonical.z);
