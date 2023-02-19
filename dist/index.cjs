@@ -6503,6 +6503,7 @@
       }
       /**
        * Parses valid CSS color strings and returns a `Color` instance.
+       * @param input
        * @returns A `Color` instance, or `undefined` if the input is not a valid color string.
        */
       static parse(input) {
@@ -6620,6 +6621,7 @@
       }
       /**
        * Numeric padding values
+       * @param input
        * @returns A `Padding` instance, or `undefined` if the input is not a valid padding value.
        */
       static parse(input) {
@@ -7203,6 +7205,8 @@
       /**
        * Returns null if `t` is a subtype of `expected`; otherwise returns an
        * error message and also pushes it to `this.errors`.
+       * @param expected
+       * @param t
        */
       checkSubtype(expected, t) {
           const error = checkSubtype(expected, t);
@@ -10659,6 +10663,7 @@
    * Migrate the given style object in place to use expressions. Specifically,
    * this will convert (a) "stop" functions, and (b) legacy filters to their
    * expression equivalents.
+   * @param style
    */
   function expressions(style) {
       const converted = [];

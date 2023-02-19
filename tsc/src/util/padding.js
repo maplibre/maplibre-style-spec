@@ -9,6 +9,7 @@ class Padding {
     }
     /**
      * Numeric padding values
+     * @param input
      * @returns A `Padding` instance, or `undefined` if the input is not a valid padding value.
      */
     static parse(input) {

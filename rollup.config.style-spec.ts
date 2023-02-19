@@ -6,7 +6,7 @@ import typescript from '@rollup/plugin-typescript';
 import json from '@rollup/plugin-json';
 
 const config: RollupOptions[] = [{
-    input: 'src/style-spec.ts',
+    input: './src/style-spec.ts',
     output: [{
         file: 'dist/index.mjs',
         format: 'es',
@@ -37,7 +37,11 @@ const config: RollupOptions[] = [{
                 '_token_stack:': ''
             }
         }),
-        typescript(),
+        typescript({
+            compilerOptions: {
+                declaration: false,
+            }
+        }),
         commonjs()
     ]
 }];

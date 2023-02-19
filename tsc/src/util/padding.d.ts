@@ -9,6 +9,7 @@ declare class Padding {
     constructor(values: [number, number, number, number]);
     /**
      * Numeric padding values
+     * @param input
      * @returns A `Padding` instance, or `undefined` if the input is not a valid padding value.
      */
     static parse(input?: number | number[] | Padding | null): Padding | void;

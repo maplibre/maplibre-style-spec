@@ -21,6 +21,7 @@ declare class Color {
     static red: Color;
     /**
      * Parses valid CSS color strings and returns a `Color` instance.
+     * @param input
      * @returns A `Color` instance, or `undefined` if the input is not a valid color string.
      */
     static parse(input?: string | Color | null): Color | void;

@@ -17,28 +17,13 @@
     "sourceMap": true,
     "strict": false,
     "target": "ES2019",
-    "lib": [
-      "ESNext",
-      "DOM",
-      "DOM.Iterable"
-    ],
-    "types": [
-      "node",
-      "jest",
-      "geojson"
-    ],
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "types": ["node", "jest", "geojson"]
   },
   "ts-node": {
     "experimentalSpecifierResolution": "node",
     "esm": true
   },
-  "include": [
-    "rollup.config.*",
-    "src/**/*",
-    "build/**/*"
-, "bin"  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-  ]
+  "include": ["rollup.config.*", "src/**/*", "build/**/*"],
+  "exclude": ["node_modules", "dist"]
 }
