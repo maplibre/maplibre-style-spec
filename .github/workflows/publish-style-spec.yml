@@ -31,6 +31,6 @@ jobs:
       - name: Check version and publish
         run: |
           node -e "if(require('./package').version.includes('dev')) { process.exit(1) }"
-          npm publish --access=public
+          npm publish --access=public --tag next
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_ORG_TOKEN }}
