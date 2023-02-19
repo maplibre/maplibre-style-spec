@@ -48,6 +48,8 @@ jobs:
         with:
           node-version: lts/*
       - run: npm ci
+      - run: npm run generate-style-spec
+      - run: npm run generate-typings
       - run: npm run build-style-spec
       - run: npm run jest-ci -- --selectProjects build
         if: success() || failure()
