@@ -5,6 +5,7 @@
     "checkJs": true,
     "isolatedModules": true,
     "noEmit": false,
+    "declaration": true,
     "esModuleInterop": true,
     "importHelpers": false,
     "jsx": "react",
