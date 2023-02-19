@@ -4,10 +4,11 @@
     "allowSyntheticDefaultImports": true,
     "checkJs": true,
     "isolatedModules": true,
-    "noEmit": true,
+    "noEmit": false,
     "esModuleInterop": true,
     "importHelpers": false,
     "jsx": "react",
+    "outDir": "tsc",
     "module": "ESNext",
     "moduleResolution": "Node",
     "resolveJsonModule": true,
@@ -34,7 +35,7 @@
     "rollup.config.*",
     "src/**/*",
     "build/**/*"
-  ],
+, "bin"  ],
   "exclude": [
     "node_modules",
     "dist",

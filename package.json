@@ -22,7 +22,8 @@
     "generate-typings": "ts-node build/generate-typings.ts",
     "test-build": "jest --selectProjects=build",
     "test-integration": "jest --selectProjects=integration",
-    "test-unit": "jest --selectProjects=unit"
+    "test-unit": "jest --selectProjects=unit",
+    "compile": "tsc"
   },
   "repository": {
     "type": "git",

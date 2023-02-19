@@ -1,0 +1,1 @@
+{"version":3,"file":"validate_layout_property.js","sourceRoot":"","sources":["../../../src/validate/validate_layout_property.ts"],"names":[],"mappings":"AACA,OAAO,gBAAgB,MAAM,qBAAqB,CAAC;AAEnD,MAAM,CAAC,OAAO,UAAU,sBAAsB,CAAC,OAAO;IAClD,OAAO,gBAAgB,CAAC,OAAO,EAAE,QAAQ,CAAC,CAAC;AAC/C,CAAC"}
