@@ -69,7 +69,7 @@ import latest from './reference/latest';
 import format from './format';
 import migrate from './migrate';
 import derefLayers from './deref';
-import diff, {operations as diffOperations} from './diff';
+import diff, {operations} from './diff';
 import ValidationError from './error/validation_error';
 import ParsingError from './error/parsing_error';
 import {FeatureState, StyleExpression, isExpression, createExpression, createPropertyExpression, normalizePropertyExpression, ZoomConstantExpression, ZoomDependentExpression, StylePropertyFunction, Feature, GlobalProperties, SourceExpression, CompositeExpression, StylePropertyExpression} from './expression';
@@ -85,7 +85,7 @@ import {eachSource, eachLayer, eachProperty} from './visit';
 import ResolvedImage from './expression/types/resolved_image';
 import validate from './validate_style';
 import {supportsPropertyExpression} from './util/properties';
-import {number} from './util/interpolate';
+import {range} from './util/interpolate';
 import {IMercatorCoordinate, ICanonicalTileID, ILngLat, ILngLatLike} from './tiles_and_coordinates';
 import EvaluationContext from './expression/evaluation_context';
 import {FormattedType, NullType, Type, toString} from './expression/types';
@@ -106,14 +106,14 @@ import CompoundExpression from './expression/compound_expression';
 
 const expression = {
     StyleExpression,
-    isExpression,
-    isExpressionFilter,
-    createExpression,
-    createPropertyExpression,
-    normalizePropertyExpression,
+    StylePropertyFunction,
     ZoomConstantExpression,
     ZoomDependentExpression,
-    StylePropertyFunction
+    createExpression,
+    createPropertyExpression,
+    isExpression,
+    isExpressionFilter,
+    normalizePropertyExpression,
 };
 
 const styleFunction = {
@@ -122,39 +122,20 @@ const styleFunction = {
     isFunction
 };
 
-const visit = {eachSource, eachLayer, eachProperty};
+const visit = {eachLayer, eachProperty, eachSource};
 
 export {
-    v8,
-    number,
-    interpolate,
     Interpolate,
     InterpolationType,
-    latest,
-    format,
-    emptyStyle,
-    migrate,
-    expressions,
-    derefLayers,
-    diff,
-    diffOperations,
-    supportsPropertyExpression,
     ValidationError,
-    createExpression,
     ParsingError,
-    expression,
-    featureFilter,
     FeatureState,
-    convertFilter,
     Color,
     Step,
     CompoundExpression,
     Padding,
     Formatted,
     ResolvedImage,
-    styleFunction as function,
-    validate,
-    visit,
     Feature,
     EvaluationContext,
     GlobalProperties,
@@ -166,23 +147,44 @@ export {
     ILngLat,
     ILngLatLike,
     StyleExpression,
-    groupByLayout,
     ZoomConstantExpression,
-    NullType,
-    validateStyleMin,
-    Type,
-    normalizePropertyExpression,
-    StylePropertyExpression,
-    isExpression,
-    ZoomDependentExpression,
-    FormattedType,
-    convertFunction,
-    isFunction, createFunction,
-    typeOf,
-    FormatExpression,
     Literal,
-    createPropertyExpression,
+    Type,
     StylePropertyFunction,
-    toString
+    StylePropertyExpression,
+    ZoomDependentExpression,
+    FormatExpression,
 
+    latest,
+    interpolate,
+
+    validate,
+    range,
+    validateStyleMin,
+    groupByLayout,
+    emptyStyle,
+    format,
+    migrate,
+    derefLayers,
+    normalizePropertyExpression,
+    isExpression,
+    diff,
+    supportsPropertyExpression,
+    convertFunction,
+    createExpression,
+    isFunction, createFunction,
+    createPropertyExpression,
+    convertFilter,
+    featureFilter,
+    typeOf,
+    toString,
+
+    v8,
+    NullType,
+    styleFunction as function,
+    visit,
+    operations,
+    expressions,
+    expression,
+    FormattedType,
 };
