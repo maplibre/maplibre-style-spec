@@ -3,7 +3,7 @@
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "checkJs": true,
-    "isolatedModules": true,
+    "isolatedModules": false,
     "noEmit": false,
     "declaration": true,
     "esModuleInterop": true,

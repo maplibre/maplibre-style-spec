@@ -4,7 +4,7 @@ const sharedConfig = {
     transform: {
         // use typescript to convert from esm to cjs
         '[.](m|c)?(ts|js)(x)?$': ['ts-jest', {
-            'isolatedModules': true,
+            'isolatedModules': false,
         }],
     },
     // any tests that operate on dist files shouldn't compile them again.
