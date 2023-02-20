@@ -89,7 +89,7 @@ import {IMercatorCoordinate, ICanonicalTileID, ILngLat, ILngLatLike} from './til
 import EvaluationContext from './expression/evaluation_context';
 import {FormattedType, NullType, Type, toString} from './expression/types';
 
-import interpolates, {number, color, array, padding, interpolateFactory} from './util/interpolate';
+import interpolates, {interpolateFactory} from './util/interpolate';
 import expressions from './expression/definitions';
 import Interpolate from './expression/definitions/interpolate';
 import type {InterpolationType} from './expression/definitions/interpolate';
