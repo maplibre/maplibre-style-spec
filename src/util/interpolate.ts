@@ -1,6 +1,15 @@
 import Color from './color';
 import Padding from './padding';
 
+export const interpolateFactory = (interpolationType: 'number'|'color'|'array'|'padding') => {
+    switch (interpolationType) {
+        case 'number': return number;
+        case 'color': return color;
+        case 'array': return array;
+        case 'padding': return padding;
+    }
+};
+
 export function number(a: number, b: number, t: number) {
     return (a * (1 - t)) + (b * t);
 }
@@ -30,3 +39,12 @@ export function padding(from: Padding, to: Padding, t: number): Padding {
         number(fromVal[3], toVal[3], t)
     ]);
 }
+
+const interpolates = {
+    number,
+    color,
+    array,
+    padding
+};
+
+export default interpolates;
