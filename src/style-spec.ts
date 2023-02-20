@@ -85,12 +85,11 @@ import {eachSource, eachLayer, eachProperty} from './visit';
 import ResolvedImage from './expression/types/resolved_image';
 import validate from './validate_style';
 import {supportsPropertyExpression} from './util/properties';
-import {range} from './util/interpolate';
 import {IMercatorCoordinate, ICanonicalTileID, ILngLat, ILngLatLike} from './tiles_and_coordinates';
 import EvaluationContext from './expression/evaluation_context';
 import {FormattedType, NullType, Type, toString} from './expression/types';
 
-import * as interpolate from './util/interpolate';
+import {range, color, array, padding} from './util/interpolate';
 import expressions from './expression/definitions';
 import Interpolate from './expression/definitions/interpolate';
 import type {InterpolationType} from './expression/definitions/interpolate';
@@ -103,6 +102,15 @@ import {typeOf} from './expression/values';
 import FormatExpression from './expression/definitions/format';
 import Literal from './expression/definitions/literal';
 import CompoundExpression from './expression/compound_expression';
+
+const interpolateFactory = (interpolationType: 'range'|'color'|'array'|'padding') => {
+    switch (interpolationType) {
+        case 'range': return range;
+        case 'color': return color;
+        case 'array': return array;
+        case 'padding': return padding;
+    }
+};
 
 const expression = {
     StyleExpression,
@@ -156,8 +164,8 @@ export {
     FormatExpression,
 
     latest,
-    interpolate,
 
+    interpolateFactory,
     validate,
     range,
     validateStyleMin,
