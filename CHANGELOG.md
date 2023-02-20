@@ -1,3 +1,6 @@
+## 18.0.0
+* maplibre-gl-style-spec now has it's own repository. The major bump is mainly a precautionary measure, in case the restructuring causes friction.
+
 ## 17.1.0
 * Add support for multiple sprites in one style (#1805)
 
