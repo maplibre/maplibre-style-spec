@@ -22,15 +22,29 @@ jobs:
       - name: Install NPM packages
         run: npm ci
       
+      - name: Prepare release
+        id: prepare_release
+        run: |
+          echo "version_tag=v${{ steps.package-version.outputs.current-version }}" >> $GITHUB_OUTPUT
+          RELEASE_TYPE=$(node -e "console.log(require('semver').prerelease('${{ steps.package-version.outputs.current-version }}') ? 'prerelease' : 'regular')")
+          echo "release_type=$RELEASE_TYPE" >> $GITHUB_OUTPUT
+
       - name: Build style spec
         run: |
           npm run build-style-spec
           npm run generate-typings
           npm run compile
-      
-      - name: Check version and publish
+
+      - name: Publish NPM package (regular)
+        if: ${{ steps.prepare_release.outputs.release_type == 'regular' }}
         run: |
-          node -e "if(require('./package').version.includes('dev')) { process.exit(1) }"
+          npm publish --access=public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_ORG_TOKEN }}
+
+      - name: Publish NPM package (pre-release)
+        if: ${{ steps.prepare_release.outputs.release_type == 'prerelease' }}
+        run: |
           npm publish --access=public --tag next
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_ORG_TOKEN }}
