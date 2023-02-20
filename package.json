@@ -1,7 +1,7 @@
 {
   "name": "@maplibre/maplibre-gl-style-spec",
   "description": "a specification for maplibre gl styles",
-  "version": "17.1.1-pre.1",
+  "version": "17.1.1-pre.2",
   "author": "MapLibre",
   "keywords": [
     "mapbox",
@@ -34,9 +34,9 @@
     "url": "git@github.com:maplibre/maplibre-gl-style-spec.git"
   },
   "bin": {
-    "gl-style-migrate": "tsc/src/bin/gl-style-migrate.js",
-    "gl-style-validate": "tsc/src/bin/gl-style-validate.js",
-    "gl-style-format": "tsc/src/bin/gl-style-format.js"
+    "gl-style-migrate": "bin/gl-style-migrate.js",
+    "gl-style-validate": "bin/gl-style-validate.js",
+    "gl-style-format": "bin/gl-style-format.js"
   },
   "dependencies": {
     "@mapbox/jsonlint-lines-primitives": "~2.0.2",
