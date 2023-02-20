@@ -49,6 +49,27 @@ jobs:
           npm run generate-typings
           npm run compile
 
+      - name: Build Release Notes
+        id: release_notes
+        if: ${{ steps.prepare_release.outputs.release_type == 'regular' }}
+        run: |
+          RELEASE_NOTES_PATH="${PWD}/release_notes.txt"
+          ./build/release-notes.js > ${RELEASE_NOTES_PATH}
+          echo "release_notes=${RELEASE_NOTES_PATH}" >> $GITHUB_OUTPUT
+
+      - name: Create GitHub Release (regular)
+        id: create_regular_release
+        if: ${{ steps.prepare_release.outputs.release_type == 'regular' }}
+        uses: ncipollo/release-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag: ${{ steps.prepare_release.outputs.version_tag }}
+          name: ${{steps.prepare_release.outputs.version_tag }}
+          body: ${{ steps.release_notes.outputs.release_notes }}
+          draft: false
+          prerelease: false
+
       - name: Publish NPM package (regular)
         if: ${{ steps.prepare_release.outputs.release_type == 'regular' }}
         run: |
