@@ -41,18 +41,6 @@ const config: RollupOptions[] = [{
                 '_token_stack:': ''
             }
         }),
-        strip({
-            sourceMap: true,
-            functions: ['PerformanceUtils.*', 'Debug.*']
-        }),
-        terser({
-            compress: {
-                // eslint-disable-next-line camelcase
-                pure_getters: true,
-                passes: 3
-            },
-            sourceMap: true
-        }),
         typescript({
             compilerOptions: {
                 declaration: false,
