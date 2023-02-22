@@ -4,6 +4,7 @@ import {RollupOptions} from 'rollup';
 import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 import json from '@rollup/plugin-json';
+import minifyStyleSpec from './build/rollup_plugin_minify_style_spec';
 
 const config: RollupOptions[] = [{
     input: './src/style-spec.ts',
@@ -19,6 +20,7 @@ const config: RollupOptions[] = [{
         sourcemap: true
     }],
     plugins: [
+        minifyStyleSpec(),
         json(),
         resolve({
             browser: true,
