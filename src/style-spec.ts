@@ -87,7 +87,7 @@ import validate from './validate_style';
 import {supportsPropertyExpression} from './util/properties';
 import {IMercatorCoordinate, ICanonicalTileID, ILngLat, ILngLatLike} from './tiles_and_coordinates';
 import EvaluationContext from './expression/evaluation_context';
-import {FormattedType, NullType, Type, toString} from './expression/types';
+import {FormattedType, NullType, Type, toString, ColorType} from './expression/types';
 
 import interpolates, {interpolateFactory} from './util/interpolate';
 import expressions from './expression/definitions';
@@ -157,7 +157,6 @@ export {
     latest,
 
     interpolateFactory,
-    interpolates,
     validate,
     validateStyleMin,
     groupByLayout,
@@ -178,6 +177,8 @@ export {
     typeOf,
     toString,
 
+    ColorType,
+    interpolates,
     v8,
     NullType,
     styleFunction as function,
