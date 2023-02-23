@@ -5,7 +5,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 import json from '@rollup/plugin-json';
 import minifyStyleSpec from './build/rollup_plugin_minify_style_spec';
-import executable from 'rollup-plugin-executable';
+import shebang from 'rollup-plugin-preserve-shebang';
 
 const rollupPlugins = [
     minifyStyleSpec(),
@@ -63,7 +63,7 @@ const config: RollupOptions[] = [{
         format: 'umd',
         sourcemap: true
     }],
-    plugins: [...rollupPlugins, executable()]
+    plugins: [...rollupPlugins, shebang()]
 },
 {
     input: './bin/gl-style-migrate.ts',
@@ -78,7 +78,7 @@ const config: RollupOptions[] = [{
         format: 'umd',
         sourcemap: true
     }],
-    plugins: [...rollupPlugins, executable()]
+    plugins: [...rollupPlugins, shebang()]
 },
 {
     input: './bin/gl-style-validate.ts',
@@ -93,6 +93,6 @@ const config: RollupOptions[] = [{
         format: 'umd',
         sourcemap: true
     }],
-    plugins: [...rollupPlugins, executable()]
+    plugins: [...rollupPlugins, shebang()]
 }];
 export default config;
