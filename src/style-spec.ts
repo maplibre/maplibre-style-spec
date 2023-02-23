@@ -66,7 +66,6 @@ export type StylePropertySpecification = {
 import v8Spec from './reference/v8.json' assert {type: 'json'};
 const v8 = v8Spec as any;
 import latest from './reference/latest';
-import format from './format';
 import derefLayers from './deref';
 import diff, {operations} from './diff';
 import ValidationError from './error/validation_error';
@@ -82,7 +81,6 @@ import {createFunction, isFunction} from './function';
 import convertFunction from './function/convert';
 import {eachSource, eachLayer, eachProperty} from './visit';
 import ResolvedImage from './expression/types/resolved_image';
-import validate from './validate_style';
 import {supportsPropertyExpression} from './util/properties';
 import {IMercatorCoordinate, ICanonicalTileID, ILngLat, ILngLatLike} from './tiles_and_coordinates';
 import EvaluationContext from './expression/evaluation_context';
@@ -156,11 +154,9 @@ export {
     latest,
 
     interpolateFactory,
-    validate,
     validateStyleMin,
     groupByLayout,
     emptyStyle,
-    format,
     derefLayers,
     normalizePropertyExpression,
     isExpression,
