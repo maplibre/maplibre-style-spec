@@ -5,8 +5,6 @@ import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 import json from '@rollup/plugin-json';
 import minifyStyleSpec from './build/rollup_plugin_minify_style_spec';
-import terser from '@rollup/plugin-terser';
-import strip from '@rollup/plugin-strip';
 
 const config: RollupOptions[] = [{
     input: './src/style-spec.ts',

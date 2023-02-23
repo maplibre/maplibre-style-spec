@@ -1,5 +1,4 @@
 
-import URL from 'url';
 import {eachSource, eachLayer, eachProperty} from '../visit';
 import type {LayerSpecification, StyleSpecification} from '../types.g';
 
@@ -110,7 +109,7 @@ export default function migrateV8(style: StyleSpecification) {
     });
 
     function migrateFontstackURL(input) {
-        const inputParsed = URL.parse(input);
+        const inputParsed = new URL(input);
         const inputPathnameParts = inputParsed.pathname.split('/');
 
         if (inputParsed.protocol !== 'mapbox:') {
