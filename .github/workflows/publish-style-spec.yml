@@ -45,12 +45,10 @@ jobs:
 
       - name: Build style spec
         run: |
-          npm run build-style-spec
+          npm run generate-style-spec
           npm run generate-typings
+          npm run build
           npm run compile
-          npm run build-gl-style-format
-          npm run build-gl-style-migrate
-          npm run build-gl-style-validate
 
       - name: Build Release Notes
         id: release_notes
