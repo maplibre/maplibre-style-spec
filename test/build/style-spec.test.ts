@@ -15,6 +15,6 @@ describe('@maplibre/maplibre-gl-style-spec npm package', () => {
 
     test('exports components directly, not behind `default` - https://github.com/mapbox/mapbox-gl-js/issues/6601', async  () => {
 
-        expect(await import('../../dist/index.cjs')).toHaveProperty('validate');
+        expect(await import('../../dist/index.cjs')).toHaveProperty('validateStyleMin');
     });
 });
