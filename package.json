@@ -1,7 +1,7 @@
 {
   "name": "@maplibre/maplibre-gl-style-spec",
   "description": "a specification for maplibre gl styles",
-  "version": "18.0.1-pre.12",
+  "version": "18.0.1-pre.13",
   "author": "MapLibre",
   "keywords": [
     "mapbox",
@@ -18,6 +18,10 @@
   "type": "module",
   "scripts": {
     "build-style-spec": "rollup --configPlugin @rollup/plugin-typescript -c rollup.config.style-spec.ts",
+    "build-gl-style-format": "rollup --configPlugin @rollup/plugin-typescript -c rollup.config.gl-style-format.ts",
+    "build-gl-style-migrate": "rollup --configPlugin @rollup/plugin-typescript -c rollup.config.gl-style-migrate.ts",
+    "build-gl-style-validate": "rollup --configPlugin @rollup/plugin-typescript -c rollup.config.gl-style-validate.ts",
+    "build": "npm run build-style-spec && npm run build-gl-style-format && npm run build-gl-style-migrate && npm run build-gl-style-validate",
     "generate-style-spec": "ts-node build/generate-style-spec.ts",
     "generate-typings": "ts-node build/generate-typings.ts",
     "test-build": "jest --selectProjects=build",
@@ -34,9 +38,9 @@
     "url": "git@github.com:maplibre/maplibre-gl-style-spec.git"
   },
   "bin": {
-    "gl-style-migrate": "bin/gl-style-migrate.js",
-    "gl-style-validate": "bin/gl-style-validate.js",
-    "gl-style-format": "bin/gl-style-format.js"
+    "gl-style-migrate": "dist/gl-style-migrate.js",
+    "gl-style-validate": "dist/gl-style-validate.js",
+    "gl-style-format": "dist/gl-style-format.js"
   },
   "dependencies": {
     "@mapbox/jsonlint-lines-primitives": "~2.0.2",
