@@ -2,7 +2,8 @@
 
 import fs from 'fs';
 import minimist from 'minimist';
-import {format, migrate} from '@maplibre/maplibre-gl-style-spec';
+import format from '@maplibre/maplibre-gl-style-spec/tsc/src/format';
+import migrate from '@maplibre/maplibre-gl-style-spec/tsc/src/migrate';
 const argv = minimist(process.argv.slice(2));
 
 if (argv.help || argv.h || (!argv._.length && process.stdin.isTTY)) {
