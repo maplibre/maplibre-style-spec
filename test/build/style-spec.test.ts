@@ -8,6 +8,18 @@ describe('@maplibre/maplibre-gl-style-spec npm package', () => {
     test('files build', async () => {
         expect(await readdir('dist')).toMatchInlineSnapshot(`
 [
+  "gl-style-format.cjs",
+  "gl-style-format.cjs.map",
+  "gl-style-format.mjs",
+  "gl-style-format.mjs.map",
+  "gl-style-migrate.cjs",
+  "gl-style-migrate.cjs.map",
+  "gl-style-migrate.mjs",
+  "gl-style-migrate.mjs.map",
+  "gl-style-validate.cjs",
+  "gl-style-validate.cjs.map",
+  "gl-style-validate.mjs",
+  "gl-style-validate.mjs.map",
   "index.cjs",
   "index.cjs.map",
   "index.d.ts",
