@@ -67,7 +67,6 @@ import v8Spec from './reference/v8.json' assert {type: 'json'};
 const v8 = v8Spec as any;
 import latest from './reference/latest';
 import format from './format';
-import migrate from './migrate';
 import derefLayers from './deref';
 import diff, {operations} from './diff';
 import ValidationError from './error/validation_error';
@@ -162,7 +161,6 @@ export {
     groupByLayout,
     emptyStyle,
     format,
-    migrate,
     derefLayers,
     normalizePropertyExpression,
     isExpression,
