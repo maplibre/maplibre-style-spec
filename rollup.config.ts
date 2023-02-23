@@ -33,7 +33,7 @@ const rollupPlugins = [
         }
     }),
     commonjs()
-]
+];
 
 const config: RollupOptions[] = [{
     input: './src/style-spec.ts',

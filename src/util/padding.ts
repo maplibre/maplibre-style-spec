@@ -13,7 +13,7 @@ class Padding {
 
     /**
      * Numeric padding values
-     * @param input
+     * @param input A padding value
      * @returns A `Padding` instance, or `undefined` if the input is not a valid padding value.
      */
     static parse(input?: number | number[] | Padding | null): Padding | void {
