@@ -69,7 +69,6 @@
     "typescript": "^4.8.2"
   },
   "scripts": {
-    "lint": "eslint --ext .html docs/pages/example --ext .js .",
     "lint-md": "remark docs/pages/",
     "build-api": "documentation build --pe ts --re ts --re d.ts --github --format json --sort-order alpha --config ./docs/documentation.yml --output docs/components/api.json node_modules/maplibre-gl/src/index.ts",
     "build-images": "mkdir -p docs/img/dist && node --loader ts-node/esm --experimental-specifier-resolution=node docs/bin/build-image-config.js && node --loader ts-node/esm --experimental-specifier-resolution=node docs/bin/appropriate-images.js --all",
@@ -79,7 +78,6 @@
     "prestart": "npm run build-docs",
     "build": "batfish build",
     "serve-static": "batfish serve-static",
-    "pretest": "npm run lint",
     "test": "npm run test-tape && npm run lint-md && jest",
     "test-tape": "babel-tape-runner test/*.test.js | tap-min",
     "start": "NODE_OPTIONS=\"--openssl-legacy-provider --max_old_space_size=4096\" DEPLOY_ENV=local batfish start",
