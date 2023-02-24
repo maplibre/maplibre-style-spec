@@ -22,7 +22,6 @@ jobs:
       run: |
         npm run generate-style-spec
         npm run generate-typings
-        npm run build
         npm run compile
 
     - name: Build docs

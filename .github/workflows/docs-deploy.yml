@@ -16,12 +16,11 @@ jobs:
 
     - name: Install NPM packages
       run: npm ci
-      
+
     - name: Build style spec
       run: |
         npm run generate-style-spec
         npm run generate-typings
-        npm run build
         npm run compile
 
     - name: Build docs
