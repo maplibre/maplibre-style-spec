@@ -1,7 +1,6 @@
 const webpack = require('webpack');
 const mapboxAssembly = require('@mapbox/mbx-assembly');
 const path = require('path');
-const { buildApiSearch } = require('./docs/util/build-api-search');
 const {
     buildNavigation,
     buildFilters
@@ -75,7 +74,6 @@ module.exports = () => {
             ]
         },
         dataSelectors: {
-            apiSearch: () => buildApiSearch(),
             navigation: (data) =>
                 buildNavigation({ siteBasePath, data, addPages }),
             filters: (data) => buildFilters(data)

@@ -3,25 +3,7 @@
 import { formatters, toHtml, formatType } from '../formatters';
 
 describe('formatters', () => {
-    it('autolink', () => {
-        expect(formatters.autolink('Map#addLayer')).toEqual(
-            '<a href="/maplibre-gl-js-docs/api/map/#map#addlayer">Map#addLayer</a>'
-        );
-        expect(formatters.autolink('Map.event:webglcontextlost')).toEqual(
-            '<a href="/maplibre-gl-js-docs/api/map/#map.event:webglcontextlost">Map.event:webglcontextlost</a>'
-        );
-        expect(formatters.autolink('Map')).toEqual(
-            '<a href="/maplibre-gl-js-docs/api/map/#map">Map</a>'
-        );
-
-        expect(formatters.autolink('GeolocateControl.event:error')).toEqual(
-            '<a href="/maplibre-gl-js-docs/api/markers/#geolocatecontrol.event:error">GeolocateControl.event:error</a>'
-        );
-        expect(formatters.autolink('Popup.event:close')).toEqual(
-            '<a href="/maplibre-gl-js-docs/api/markers/#popup.event:close">Popup.event:close</a>'
-        );
-    });
-
+   
     it('parameters', () => {
         expect(
             formatters.parameters(

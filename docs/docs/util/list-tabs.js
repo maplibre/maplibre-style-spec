@@ -1,13 +1,4 @@
 const tabOrder = {
-    api: {
-        title: 'API Reference'
-    },
-    examples: {
-        title: 'Examples'
-    },
-    plugins: {
-        title: 'Plugins'
-    },
     'style-spec': {
         title: 'Style Specification'
     }

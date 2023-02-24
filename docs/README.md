@@ -46,7 +46,6 @@ code for the example, and a `.js` file containing example boilerplate and front 
 
 * `title`: A short title for the example in **sentence case** as a **verb phrase**.
 * `description`: A one sentence description of the example in plain text. This description will appear alongside a thumbnail and title on the examples page.
-* `topics`: An array of topics for the example, see `docs/data/topics.json` for a list of topics.
 * `thumbnail`: The filename of the example's thumbnail image (without the file extension).
 * `contentType: example`: Set the contentType to equal example.
 
