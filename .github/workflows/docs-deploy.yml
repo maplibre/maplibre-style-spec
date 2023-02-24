@@ -13,11 +13,22 @@ jobs:
     - uses: actions/setup-node@v3
       with:
         node-version: 18
-    - run: cd ./docs
-    - run: npm ci
-    - run: npm run build
-    - run: npm run test
-    - run: cp _config.yml _site
+
+    - name: Build style spec
+      run: |
+        npm run generate-style-spec
+        npm run generate-typings
+        npm run build
+        npm run compile
+
+    - name: Build docs
+      run: |
+        cd ./docs
+        npm ci
+        npm run build
+        npm run test
+        cp _config.yml _site
+                
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@v4
       with:
