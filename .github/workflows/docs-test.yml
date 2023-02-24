@@ -12,8 +12,8 @@ jobs:
     - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
       with:
-        node-version: 16.16
+        node-version: 18
+    - run: cd ./docs
     - run: npm ci
-    - run: git submodule update --init
     - run: npm run build
     - run: npm run test
