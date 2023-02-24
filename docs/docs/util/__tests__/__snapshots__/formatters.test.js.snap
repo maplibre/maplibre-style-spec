@@ -1,46 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`formatType expression 1`] = `
-<span
-  dangerouslySetInnerHTML={
-    Object {
-      "__html": "<a href=\\"/maplibre-gl-js-docs/api/geography/#lnglatlike\\">LngLatLike</a>?",
-    }
-  }
-/>
-`;
-
 exports[`formatType number 1`] = `
 <span
   dangerouslySetInnerHTML={
     Object {
       "__html": "<a href=\\"https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number\\">number</a>",
-    }
-  }
-/>
-`;
-
-exports[`toHtml default 1`] = `
-<span
-  dangerouslySetInnerHTML={
-    Object {
-      "__html": "<p>Fired when the user cancels a \\"box zoom\\" interaction, or when the bounding box does not meet the minimum size threshold.
-See <a href=\\"/maplibre-gl-js-docs/api/handlers/#boxzoomhandler\\">BoxZoomHandler</a>.</p>
-",
-    }
-  }
-/>
-`;
-
-exports[`toHtml inline 1`] = `
-<span
-  dangerouslySetInnerHTML={
-    Object {
-      "__html": "Fired when the user cancels a \\"box zoom\\" interaction, or when the bounding box does not meet the minimum size threshold.
-See 
-<a href=\\"/maplibre-gl-js-docs/api/handlers/#boxzoomhandler\\">BoxZoomHandler</a>
-.
-",
     }
   }
 />

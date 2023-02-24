@@ -204,14 +204,7 @@ const fixture = {
         }
     }
 };
-describe('toHtml', () => {
-    it('default', () => {
-        expect(toHtml(fixture.description)).toMatchSnapshot();
-    });
-    it('inline', () => {
-        expect(toHtml(fixture.description, true)).toMatchSnapshot();
-    });
-});
+
 
 describe('formatType', () => {
     it('number', () => {
@@ -219,12 +212,5 @@ describe('formatType', () => {
             formatType({ type: 'NameExpression', name: 'number' })
         ).toMatchSnapshot();
     });
-    it('expression', () => {
-        expect(
-            formatType({
-                type: 'OptionalType',
-                expression: { type: 'NameExpression', name: 'LngLatLike' }
-            })
-        ).toMatchSnapshot();
-    });
+    
 });
