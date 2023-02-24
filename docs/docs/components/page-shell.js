@@ -22,8 +22,7 @@ import AppropriateImage from './appropriate-image';
 import Browser from '@mapbox/dr-ui/browser';
 import redirectApiRef from '../util/api-ref-redirect';
 import classnames from 'classnames';
-import { version } from '../../node_modules/maplibre-gl/package.json';
-import { version as styleSpecVersion } from '../../node_modules/maplibre-gl/src/style-spec/package.json';
+import { version as styleSpecVersion } from '../../../package.json';
 
 import slug from 'slugg';
 
@@ -62,12 +61,11 @@ class PageShell extends React.Component {
     render() {
         const { location, children, frontMatter } = this.props;
         const meta = buildMeta(frontMatter, location.pathname, navigation);
-        const isStyleSpec = location.pathname.indexOf('/style-spec/') > -1;
 
         return (
             <ReactPageShell
                 site={constants.SITE}
-                subsite={isStyleSpec ? 'Style Specification' : undefined}
+                subsite={'Style Specification'}
                 {...this.props}
                 meta={meta}
                 darkHeaderText={true}
@@ -84,9 +82,7 @@ class PageShell extends React.Component {
                         ...(frontMatter.overviewHeader && {
                             overviewHeader: {
                                 ...frontMatter.overviewHeader,
-                                version: isStyleSpec
-                                    ? styleSpecVersion
-                                    : version,
+                                version: styleSpecVersion,
                                 ...(frontMatter.overviewHeader.image && {
                                     image: (
                                         <div className="overview-header-browser mb6">
@@ -117,7 +113,7 @@ class PageShell extends React.Component {
                 >
                     <div
                         className={classnames('', {
-                            'style-spec-page': isStyleSpec
+                            'style-spec-page': true
                         })}
                     >
                         {children}
