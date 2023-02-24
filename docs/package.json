@@ -76,7 +76,7 @@
     "build-docs": "run-s build-api build-images remove-assert",
     "prebuild": "npm run build-docs",
     "prestart": "npm run build-docs",
-    "build": "batfish build",
+    "build": "NODE_OPTIONS=\"--openssl-legacy-provider --max_old_space_size=4096\" batfish build",
     "serve-static": "batfish serve-static",
     "test": "npm run test-tape && npm run lint-md && jest",
     "test-tape": "babel-tape-runner test/*.test.js | tap-min",
