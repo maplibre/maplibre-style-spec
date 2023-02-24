@@ -1,0 +1,8 @@
+{
+  "presets": ["@babel/preset-env", "@babel/preset-react", "@babel/preset-flow"],
+  "plugins": [
+    "@babel/plugin-syntax-import-assertions",
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-proposal-export-default-from"
+  ]
+}

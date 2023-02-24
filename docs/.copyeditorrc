@@ -1,0 +1,4 @@
+{
+  "allow": ["fast", "magnitude"],
+  "dictionary": "local.dic"
+}

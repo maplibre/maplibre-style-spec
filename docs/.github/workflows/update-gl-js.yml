@@ -1,0 +1,42 @@
+name: update-gl-js
+
+on:
+  workflow_dispatch:
+  repository_dispatch:
+    types: [release-maplibre-gl-js]
+
+jobs:
+  update-gl-js:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16.16
+
+    - name: Prepare
+      id: prepare
+      run: |
+        echo "::set-output name=version_tag::$(npm show maplibre-gl version)"
+
+    - name: Update submodule, test, build, commit, push
+      run: |
+        git config --global user.email "mail@example.com"
+        git config --global user.name "GitHub Action"
+        git checkout -b v${{ steps.prepare.outputs.version_tag }}
+        npm ci
+        git submodule update --init
+        cd maplibre-gl-js
+        git checkout main
+        git pull
+        cd ..
+        npm run build
+        npm run test
+        git add -u
+        git commit -m "Update MapLibre GL JS to v${{ steps.prepare.outputs.version_tag }}"
+        git push --set-upstream origin v${{ steps.prepare.outputs.version_tag }}
+
+    - name: Create pull request
+      run: gh pr create --base main --fill
+      env:
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}

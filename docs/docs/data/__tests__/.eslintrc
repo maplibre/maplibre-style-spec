@@ -1,0 +1,5 @@
+{
+  "rules": {
+    "es/no-async-functions": "off"
+  }
+}

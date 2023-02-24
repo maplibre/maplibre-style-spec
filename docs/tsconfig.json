@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "checkJs": false,
+    "esModuleInterop": true,
+    "importHelpers": false,
+    "isolatedModules": true,
+    "jsx": "react",
+    "module": "esnext",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "skipLibCheck": false,
+    "sourceMap": true,
+    "strict": false,
+    "target": "ES2019",
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "types": ["node", "jest", "geojson", "offscreencanvas"]
+  }
+}

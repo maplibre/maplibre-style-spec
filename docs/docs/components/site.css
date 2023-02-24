@@ -1,0 +1,56 @@
+.fixed-table {
+    table-layout: fixed;
+}
+
+.prose pre {
+    margin-bottom: 18px !important;
+}
+
+/* api section styles */
+
+.api-section table code,
+.api-section table .txt-code {
+    word-wrap: break-word;
+}
+
+/* style-spec styles */
+
+var {
+    color: #d23c75;
+    font-style: italic;
+}
+
+/* bring style spec properties slightly closer together by clearing the previous item's mb12 */
+.style-spec-item-dl + .style-spec-property,
+.style-spec-item-doc + .style-spec-property {
+    margin-top: -12px;
+}
+
+/* compact table option */
+.table--compact td,
+.table--compact th {
+    padding: 6px !important;
+}
+
+/* add background on item-member tables to differentiate style */
+.item-member table {
+    background: #fbfcfe !important;
+}
+
+/* remove bottom margin from example code block */
+.api-example pre {
+    margin-bottom: 0 !important;
+}
+
+/* remove underline from github/example links */
+.plugins-page .link {
+    text-decoration: none !important;
+}
+
+/* override styles in the Browser in OverviewHeader */
+.overview-header-browser .block-mm.none {
+    display: none !important;
+}
+.overview-header-browser .h30-mm.h18 {
+    height: 18px !important;
+}

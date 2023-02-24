@@ -1,0 +1,14 @@
+/docs/components/api.json
+/docs/pages/dist/
+/docs/img/dist/
+node_modules
+*.sublime-*
+.DS_Store
+.eslintcache
+_batfish_site
+_batfish_tmp
+_site
+yarn-error.log
+yarn-debug.log
+npm-debug.log
+yarn.lock

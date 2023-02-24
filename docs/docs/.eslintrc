@@ -1,0 +1,4 @@
+{
+  "extends": "../conf/eslint-config-browser.json",
+  "parser": "@babel/eslint-parser"
+}

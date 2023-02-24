@@ -1,0 +1,8 @@
+{
+  "extends": "../../conf/eslint-config-browser.json",
+  "rules": {
+    "es/no-async-functions": "off",
+    "import/no-extraneous-dependencies":"off"
+  },
+  "parser": "@babel/eslint-parser"
+}

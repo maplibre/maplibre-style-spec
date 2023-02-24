@@ -1,0 +1,213 @@
+{
+  "User Interface Plugins": {
+    "mapbox-gl-accessibility": {
+      "website": "https://github.com/mapbox/mapbox-gl-accessibility/",
+      "description": "Integrates with ARIA-compatible screen readers for users with visual impairments."
+    },
+    "mapbox-gl-boundaries": {
+      "website": "https://github.com/mapbox/mapbox-gl-boundaries",
+      "description": "Enables users to show/hide disputed borders."
+    },
+    "maplibre-gl-compare": {
+      "website": "https://github.com/maplibre/maplibre-gl-compare",
+      "description": "Enables users to compare two maps by swiping left and right."
+    },
+    "mapbox-gl-controls": {
+      "website": "https://github.com/bravecow/mapbox-gl-controls",
+      "description": "Adds controls for a ruler, style inspector, localization, and style switcher."
+    },
+    "mapbox-gl-directions": {
+      "website": "https://github.com/mapbox/mapbox-gl-directions",
+      "description": "Adds a control to allow users to plot driving, walking, and cycling directions on the map."
+    },
+    "mapbox-gl-draw": {
+      "website": "https://github.com/mapbox/mapbox-gl-draw",
+      "description": "Adds support for drawing and editing features on maps.",
+      "example": "mapbox-gl-draw"
+    },
+    "mapbox-gl-elevation": {
+      "website": "https://github.com/watergis/mapbox-gl-elevation",
+      "description": "Adds a control to retrieve altitude from terrain RGB tilesets."
+    },
+    "maplibre-gl-export": {
+      "website": "https://github.com/watergis/maplibre-gl-export",
+      "description": "Adds a control that exports the map as a PDF or images such as PNG, JPEG and SVG."
+    },
+    "mapbox-gl-geocoder": {
+      "website": "https://github.com/mapbox/mapbox-gl-geocoder",
+      "description": "Adds a geocoder control."
+    },
+    "mapbox-gl-infobox": {
+      "website": "https://github.com/el/infobox-control",
+      "description": "Adds a control to display an infobox or a gradient."
+    },
+    "mapbox-gl-legend": {
+      "website": "https://github.com/watergis/mapbox-gl-legend",
+      "description": "Adds a control that shows a legend generated from the map style."
+    },
+    "maplibre-gl-opacity": {
+      "website": "https://github.com/dayjournal/maplibre-gl-opacity",
+      "description": "Make multiple tile layers transparent."
+    },
+    "mapbox-gl-style-switcher": {
+      "website": "https://github.com/el/style-switcher",
+      "description": "Adds a control to switch between styles."
+    },
+    "mapboxgl-minimap": {
+      "website": "https://github.com/aesqe/mapboxgl-minimap",
+      "description": "Adds a control to show a miniature overview of the current map."
+    },
+    "maplibre-gl-temporal-control": {
+      "website": "https://github.com/Kanahiro/maplibre-gl-temporal-control",
+      "description": "Temporal Controller plugin for MapLibre GL JS. [demo](https://kanahiro.github.io/maplibre-gl-temporal-control/raster.html)."
+    },
+    "mapbox-gl-valhalla": {
+      "website": "https://github.com/watergis/mapbox-gl-valhalla",
+      "description": "Adds a control to provide isochrone features from valhalla server."
+    },
+    "mapbox.photon": {
+      "website": "https://github.com/watergis/mapbox.photon",
+      "description": "Adds a control to provide a geocoding feature from Photon API."
+    },
+    "maplibre-gl-basemaps": {
+      "website": "https://github.com/ka7eh/maplibre-gl-basemaps",
+      "description": "A plugin for switching between raster basemaps."
+    },
+    "maplibre-gl-measures": {
+      "website": "https://github.com/jdsantos/maplibre-gl-measures",
+      "description": "A plugin for taking measures on the map."
+    }    
+  },
+  "Map Rendering Plugins": {
+    "mapbox-gl-language": {
+      "website": "https://github.com/mapbox/mapbox-gl-language/",
+      "description": "Automatically localizes the map into the user’s language."
+    },
+    "mapbox-gl-rtl-text": {
+      "website": "https://github.com/mapbox/mapbox-gl-rtl-text",
+      "description": "Adds right-to-left text support.",
+      "example": "mapbox-gl-rtl-text"
+    },
+    "mapbox-gl-traffic": {
+      "website": "https://github.com/mapbox/mapbox-gl-traffic",
+      "description": "Hide and show traffic layers on your map with an optional toggle button."
+    },
+    "deck.gl": {
+      "website": "https://github.com/visgl/deck.gl",
+      "description": "Adds advanced WebGL visualization layers."
+    },
+    "L7": {
+      "website": "https://github.com/antvis/L7",
+      "description": "Adds large-scale WebGL-powered geospatial data visualization framework."
+    },
+    "flowmap.blue": {
+      "website": "https://github.com/ilyabo/flowmap.blue",
+      "description": "Render a geographic flow map visualization from a spreadsheet published on Google Sheets."
+    }
+  },
+  "Layer Types": {
+    "mapbox-gl-arcgis-featureserver": {
+      "website": "https://github.com/rowanwins/mapbox-gl-arcgis-featureserver",
+      "description": "A library for retrieving features from an ArcGIS FeatureServer or MapServer. This library makes tiled requests rather than simply requesting every feature."
+    },
+    "mapbox-gl-esri-sources": {
+      "website": "https://github.com/frontiersi/mapbox-gl-esri-sources",
+      "description": "A library for making it easier to use Esri services in MapLibre GL JS. Supports Esri Map Services (dynamic & tiled), Esri Vector Tile Services & Esri Vector Basemap Styles."
+    },
+    "pmtiles": {
+      "website": "https://github.com/protomaps/PMTiles",
+      "description": "A library for retrieving tiles from single-file, cloud-storage-optimized PMTiles archives, which don't require running a server or API."
+    }
+  },
+  "Framework Integrations": {
+    "echartslayer": {
+      "website": "https://github.com/lzxue/echartLayer",
+      "description": "Provides an [echarts](https://echarts.apache.org/en/index.html) integration."
+    },
+    "wtMapbox": {
+      "website": "https://github.com/yvanvds/wtMapbox",
+      "description": "Provides a [Webtoolkit](https://www.webtoolkit.eu/wt) integration."
+    },
+    "react-mapbox-gl": {
+      "website": "https://github.com/alex3165/react-mapbox-gl",
+      "description": "Provides a [React](https://facebook.github.io/react/) integration."
+    },
+    "angular-mapboxgl-directive": {
+      "website": "https://github.com/Naimikan/angular-mapboxgl-directive",
+      "description": "Provides an [AngularJS](https://angularjs.org/) directive."
+    },
+    "ngx-mapbox-gl": {
+      "website": "https://github.com/Wykks/ngx-mapbox-gl",
+      "description": "Provides an [Angular](https://angular.io/) integration."
+    },
+    "elm-mapbox": {
+      "website": "https://package.elm-lang.org/packages/gampleman/elm-mapbox/latest/",
+      "description": "Provides an [Elm](https://elm-lang.org) integration."
+    },
+    "ember-mapbox-gl": {
+      "website": "https://github.com/kturney/ember-mapbox-gl",
+      "description": "Provides an [Ember](http://emberjs.com) integration."
+    }
+  },
+  "Utility Libraries": {
+    "turf": {
+      "website": "http://turfjs.org/",
+      "description": "Provides advanced geospatial analysis tools."
+    },
+    "mapbox-gl-layer-groups": {
+      "website": "https://github.com/mapbox/mapbox-gl-layer-groups",
+      "description": "Manages layer groups."
+    },
+    "expression-jamsession": {
+      "website": "https://github.com/mapbox/expression-jamsession/",
+      "description": "Converts [Mapbox Studio formulas](https://www.mapbox.com/help/studio-manual-styles/#use-a-formula) into [expressions](/maplibre-gl-style-spec/style-spec/#expressions)."
+    },
+    "simplespec-to-gl-style": {
+      "website": "https://github.com/mapbox/simplespec-to-gl-style",
+      "description": "Converts GeoJSON styles with [\"simplestyle-spec\"](https://github.com/mapbox/simplestyle-spec/) to a MapLibre GL Style."
+    },
+    "mapbox-gl-supported": {
+      "website": "https://github.com/mapbox/mapbox-gl-supported",
+      "description": "Determines if the current browser supports MapLibre GL JS.",
+      "example": "check-for-support"
+    },
+    "mapbox-gl-sync-move": {
+      "website": "https://github.com/mapbox/mapbox-gl-sync-move",
+      "description": "Syncs movement between two maps."
+    },
+    "mapbox-choropleth": {
+      "website": "https://github.com/stevage/mapbox-choropleth",
+      "description": "Create a choropleth layer from a CSV source and a geometry source."
+    },
+    "mapbox-gl-utils": {
+      "website": "https://github.com/stevage/map-gl-utils",
+      "description": "Manage layers, sources, and properties with syntactic sugar and convenience functions."
+    },
+    "maplibregl-mapbox-request-transformer": {
+      "website": "https://github.com/rowanwins/maplibregl-mapbox-request-transformer",
+      "description": "This library provides a request transforming function enabling the consumption of MapboxGL Styles in MapLibreGL."
+    }
+  },
+  "Development Tools": {
+    "font-maker": {
+      "website": "https://github.com/maplibre/font-maker",
+      "description": "A web app to convert fonts into fontstacks for use in MapLibre GL."
+    },
+    "mapbox-gl-js-mock": {
+      "website": "https://github.com/mapbox/mapbox-gl-js-mock",
+      "description": "A [mock](https://en.wikipedia.org/wiki/Mock_object) of Mapbox GL JS."
+    },
+    "maplibre-gl-inspect": {
+      "website": "https://github.com/acalcutt/maplibre-gl-inspect",
+      "description": "Adds an inspect control to view vector source features and properties."
+    },
+    "mapbox-gl-fps": {
+      "website": "https://github.com/MazeMap/mapbox-gl-fps",
+      "description": "A frames-per-seconds GUI control and measurer with statistic report output."
+    },
+    "mapbox-gl-framerate": {
+      "website": "https://github.com/mapbox/mapbox-gl-framerate",
+      "description": "A frame rate control to evaluate map rendering performance."
+    }
+  }
+}
