@@ -1,4 +1,4 @@
-name: build-test-deploy
+name: Docs - Test and Deploy
 
 on:
   push:
@@ -14,6 +14,9 @@ jobs:
       with:
         node-version: 18
 
+    - name: Install NPM packages
+      run: npm ci
+      
     - name: Build style spec
       run: |
         npm run generate-style-spec
@@ -28,7 +31,7 @@ jobs:
         npm run build
         npm run test
         cp _config.yml _site
-                
+
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@v4
       with:

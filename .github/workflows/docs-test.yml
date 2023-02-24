@@ -1,4 +1,4 @@
-name: build-test
+name: Docs - Test
 
 on:
   pull_request:
@@ -14,6 +14,10 @@ jobs:
       with:
         node-version: 18
     
+    - name: Install NPM packages
+      run: npm ci
+
+
     - name: Build style spec
       run: |
         npm run generate-style-spec
