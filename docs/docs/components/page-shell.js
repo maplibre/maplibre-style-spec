@@ -12,18 +12,13 @@ import { withLocation } from '@mapbox/batfish/modules/with-location';
 // dataSelectors
 import navigation from '@mapbox/batfish/data/navigation';
 import filters from '@mapbox/batfish/data/filters';
-import apiNavigation from '@mapbox/batfish/data/api-navigation';
 
 import { styleSpecNavigation } from '../data/style-spec-navigation';
-import plugins from '../data/plugins.json';
 
 import AppropriateImage from './appropriate-image';
 import Browser from '@mapbox/dr-ui/browser';
-import redirectApiRef from '../util/api-ref-redirect';
 import classnames from 'classnames';
 import { version as styleSpecVersion } from '../../../package.json';
-
-import slug from 'slugg';
 
 const redirectStyleSpec = require('../util/style-spec-redirect');
 
