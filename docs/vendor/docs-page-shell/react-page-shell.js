@@ -248,7 +248,7 @@ var navigationMenuData = {
 	nav: nav
 };
 
-var ORIGIN_DOCS_PRODUCTION = 'https://maplibre.org/maplibre-gl-js-docs';
+var ORIGIN_DOCS_PRODUCTION = 'https://maplibre.org/maplibre-gl-style-spec';
 var DEFAULT_SOCIAL_IMAGE_URL = 'https://static-assets.mapbox.com/branding/social/social-1200x630.v1.png';
 var DEFAULT_SOCIAL_IMAGE_THUMBNAIL_URL = 'https://static-assets.mapbox.com/branding/social/social-120x120.v1.png';
 

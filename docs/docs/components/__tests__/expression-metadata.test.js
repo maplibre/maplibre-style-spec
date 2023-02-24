@@ -1,5 +1,5 @@
 import { types } from '../expression-metadata';
-import ref from '../../../maplibre-gl-js/rollup/build/tsc/src/style-spec/reference/latest';
+import ref from '../../../../tsc/src/reference/latest';
 
 // help us catch that every type in expression-metadata.js exists in the style-spec
 // otherwise the site will not build

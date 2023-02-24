@@ -12,7 +12,7 @@ prependJs:
     - "import Items from '../../components/style-spec/items';"
     - "import { layerTypes } from '../../data/types';"
     - "import combineItems from '../../util/combine-items';"
-    - "import ref from '../../../maplibre-gl-js/rollup/build/tsc/src/style-spec/reference/latest';"
+    - "import ref from '../../../../tsc/src/reference/latest';"
     - "import AppropriateImage from '../../components/appropriate-image';"
     - "import Caption from '../../components/caption';"
 ---
@@ -33,7 +33,7 @@ Except for layers of the <var>background</var> type, each layer needs to refer t
 START GENERATED CONTENT:
 Content in this section is generated directly using the MapLibre Style
 Specification. To update any content displayed in this section, make edits to:
-https://github.com/maplibre/maplibre-gl-js/blob/main/src/style-spec/reference/v8.json.
+https://github.com/maplibre/maplibre-gl-style-spec/blob/main/src/reference/v8.json.
 -->
 {{ <Items entry={ref.layer} />}}
 <!-- END GENERATED CONTENT -->
@@ -53,7 +53,7 @@ _Paint properties_ are applied later in the rendering process. Paint properties 
 START GENERATED CONTENT:
 Content in this section is generated directly using the MapLibre Style
 Specification. To update any content displayed in this section, make edits to:
-https://github.com/maplibre/maplibre-gl-js/blob/main/src/style-spec/reference/v8.json.
+https://github.com/maplibre/maplibre-gl-style-spec/blob/main/src/reference/v8.json.
 -->
 
 ## background

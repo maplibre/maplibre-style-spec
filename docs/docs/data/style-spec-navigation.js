@@ -1,6 +1,6 @@
 import entries from 'object.entries';
 import slug from 'slugg';
-import ref from '../../maplibre-gl-js/rollup/build/tsc/src/style-spec/reference/latest';
+import ref from '../../../tsc/src/reference/latest';
 import { layerTypes, groupedExpressions } from './types';
 
 /*

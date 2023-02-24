@@ -12,7 +12,7 @@ prependJs:
     - "import Items from '../../components/style-spec/items';"
     - "import { sourceTypes } from '../../data/types';"
     - "import SDKSupportTable from '../../components/sdk_support_table';"
-    - "import ref from '../../../maplibre-gl-js/rollup/build/tsc/src/style-spec/reference/latest';"
+    - "import ref from '../../../../tsc/src/reference/latest';"
 ---
 
 <!--copyeditor disable basic-->
@@ -79,7 +79,7 @@ A vector tile source. Tiles must be in [Mapbox Vector Tile format](https://docs.
 START GENERATED CONTENT:
 Content in this section is generated directly using the MapLibre Style
 Specification. To update any content displayed in this section, make edits to:
-https://github.com/maplibre/maplibre-gl-js/blob/main/src/style-spec/reference/v8.json.
+https://github.com/maplibre/maplibre-gl-style-spec/blob/main/src/reference/v8.json.
 -->
 {{<Items headingLevel='3' entry={ref.source_vector} section="vector" />}}
 <!-- END GENERATED CONTENT -->
@@ -118,7 +118,7 @@ A raster tile source.
 START GENERATED CONTENT:
 Content in this section is generated directly using the MapLibre Style
 Specification. To update any content displayed in this section, make edits to:
-https://github.com/maplibre/maplibre-gl-js/blob/main/src/style-spec/reference/v8.json.
+https://github.com/maplibre/maplibre-gl-style-spec/blob/main/src/reference/v8.json.
 -->
 {{<Items headingLevel='3' entry={ref.source_raster} section="raster" />}}
 <!-- END GENERATED CONTENT -->
@@ -155,7 +155,7 @@ A raster DEM source. Only supports [Mapbox Terrain RGB](https://blog.mapbox.com/
 START GENERATED CONTENT:
 Content in this section is generated directly using the MapLibre Style
 Specification. To update any content displayed in this section, make edits to:
-https://github.com/maplibre/maplibre-gl-js/blob/main/src/style-spec/reference/v8.json.
+https://github.com/maplibre/maplibre-gl-style-spec/blob/main/src/reference/v8.json.
 -->
 {{<Items headingLevel='3' entry={ref.source_raster_dem} section="raster-dem" />}}
 <!-- END GENERATED CONTENT -->
@@ -205,7 +205,7 @@ This example of a GeoJSON source refers to an external GeoJSON document via its 
 START GENERATED CONTENT:
 Content in this section is generated directly using the MapLibre Style
 Specification. To update any content displayed in this section, make edits to:
-https://github.com/maplibre/maplibre-gl-js/blob/main/src/style-spec/reference/v8.json.
+https://github.com/maplibre/maplibre-gl-style-spec/blob/main/src/reference/v8.json.
 -->
 {{<Items headingLevel='3' entry={ref.source_geojson} section="geojson" />}}
 <!-- END GENERATED CONTENT -->
@@ -257,7 +257,7 @@ The `"coordinates"` array contains `[longitude, latitude]` pairs for the image c
 START GENERATED CONTENT:
 Content in this section is generated directly using the MapLibre Style
 Specification. To update any content displayed in this section, make edits to:
-https://github.com/maplibre/maplibre-gl-js/blob/main/src/style-spec/reference/v8.json.
+https://github.com/maplibre/maplibre-gl-style-spec/blob/main/src/reference/v8.json.
 -->
 {{<Items headingLevel='3' entry={ref.source_image} section="image" />}}
 <!-- END GENERATED CONTENT -->
@@ -303,7 +303,7 @@ The `"coordinates"` array contains `[longitude, latitude]` pairs for the video c
 START GENERATED CONTENT:
 Content in this section is generated directly using the MapLibre Style
 Specification. To update any content displayed in this section, make edits to:
-https://github.com/maplibre/maplibre-gl-js/blob/main/src/style-spec/reference/v8.json.
+https://github.com/maplibre/maplibre-gl-style-spec/blob/main/src/reference/v8.json.
 -->
 {{<Items headingLevel='3' entry={ref.source_video} section="video" />}}
 <!-- END GENERATED CONTENT -->

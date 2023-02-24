@@ -1,4 +1,4 @@
-import ref from '../../maplibre-gl-js/rollup/build/tsc/src/style-spec/reference/latest';
+import ref from '../../../tsc/src/reference/latest';
 
 // helper function to:
 // combine properties, prepare them, and sort them for the <Items /> component

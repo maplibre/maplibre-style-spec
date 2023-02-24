@@ -1,6 +1,6 @@
 ## Filter
 
-Filter expressions are used to target specific data in a layer. This library implements the semantics specified by the [MapLibre GL JS spec](https://maplibre.org/maplibre-gl-js-docs/style-spec/).
+Filter expressions are used to target specific data in a layer. This library implements the semantics specified by the [MapLibre GL Style Specification](https://maplibre.org/maplibre-gl-style-spec).
 
 ### API
 

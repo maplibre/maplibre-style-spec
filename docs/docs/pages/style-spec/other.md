@@ -10,7 +10,7 @@ products:
 - MapLibre Style Specification
 prependJs:
     - "import SDKSupportTable from '../../components/sdk_support_table';"
-    - "import ref from '../../../maplibre-gl-js/rollup/build/tsc/src/style-spec/reference/latest';"
+    - "import ref from '../../../../tsc/src/reference/latest';"
     - "import Icon from '@mapbox/mr-ui/icon';"
     - "import Property from '../../components/style-spec/property.js';"
     - "import Subtitle from '../../components/style-spec/subtitle.js';"
