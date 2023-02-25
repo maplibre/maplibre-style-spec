@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 30 30" style="enable-background:new 0 0 30 30;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill-rule:evenodd;clip-rule:evenodd;fill:#285EAA;}
+	.st1{fill-rule:evenodd;clip-rule:evenodd;fill:#95BEFA;}
+	.st2{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
+</style>
+<circle class="st0" cx="15" cy="15" r="14.3"/>
+<g>
+	<path class="st1" d="M8.6,10.5c0-3.3,2.9-6,6.4-6s6.4,2.7,6.4,6c0,4.9-5.2,9.1-6,9.7c-0.1,0-0.1,0.1-0.1,0.1
+		c-0.1,0.1-0.2,0.1-0.2,0.1s-0.2,0-0.2-0.1c0,0,0,0-0.1-0.1C13.8,19.6,8.6,15.5,8.6,10.5z M15,14c1.7,0,3.1-1.4,3.1-3.2
+		c0-1.8-1.4-3.2-3.1-3.2c-1.7,0-3.1,1.4-3.1,3.2C11.9,12.6,13.3,14,15,14z"/>
+	<path class="st2" d="M11.4,21.3c-0.5,0-0.8,0.4-0.8,0.8v2.4c0,0.5,0.4,0.8,0.8,0.8h7.2c0.5,0,0.8-0.4,0.8-0.8v-2.4
+		c0-0.5-0.4-0.8-0.8-0.8H11.4z M17.6,22.8h-5.3v1.1h5.3V22.8z"/>
+</g>
+</svg>
