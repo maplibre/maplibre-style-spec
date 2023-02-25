@@ -134,33 +134,33 @@ function PageHelmet() {
   }), React.createElement("link", {
     rel: "apple-touch-icon",
     sizes: "180x180",
-    href: "/maplibre-gl-js-docs/assets/favicon/apple-touch-icon.png?v=rMBbQAR5BL"
+    href: "/maplibre-gl-style-spec/assets/favicon/apple-touch-icon.png?v=rMBbQAR5BL"
   }), React.createElement("link", {
     rel: "icon",
     type: "image/png",
     sizes: "32x32",
-    href: "/maplibre-gl-js-docs/assets/favicon/favicon-32x32.png?v=rMBbQAR5BL"
+    href: "/maplibre-gl-style-spec/assets/favicon/favicon-32x32.png?v=rMBbQAR5BL"
   }), React.createElement("link", {
     rel: "icon",
     type: "image/png",
     sizes: "16x16",
-    href: "/maplibre-gl-js-docs/assets/favicon/favicon-16x16.png?v=rMBbQAR5BL"
+    href: "/maplibre-gl-style-spec/assets/favicon/favicon-16x16.png?v=rMBbQAR5BL"
   }), React.createElement("link", {
     rel: "manifest",
-    href: "/maplibre-gl-js-docs/assets/favicon/site.webmanifest?v=rMBbQAR5BL"
+    href: "/maplibre-gl-style-spec/assets/favicon/site.webmanifest?v=rMBbQAR5BL"
   }), React.createElement("link", {
     rel: "mask-icon",
-    href: "/maplibre-gl-js-docs/assets/favicon/safari-pinned-tab.svg?v=rMBbQAR5BL",
+    href: "/maplibre-gl-style-spec/assets/favicon/safari-pinned-tab.svg?v=rMBbQAR5BL",
     color: "#4264fb"
   }), React.createElement("link", {
     rel: "shortcut icon",
-    href: "/maplibre-gl-js-docs/assets/favicon/favicon.ico?v=rMBbQAR5BL"
+    href: "/maplibre-gl-style-spec/assets/favicon/favicon.ico?v=rMBbQAR5BL"
   }), React.createElement("meta", {
     name: "msapplication-TileColor",
     content: "#ffffff"
   }), React.createElement("meta", {
     name: "msapplication-config",
-    content: "/maplibre-gl-js-docs/assets/favicon/browserconfig.xml?v=rMBbQAR5BL"
+    content: "/maplibre-gl-style-spec/assets/favicon/browserconfig.xml?v=rMBbQAR5BL"
   }), React.createElement("meta", {
     name: "theme-color",
     content: "#ffffff"
