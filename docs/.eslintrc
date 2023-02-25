@@ -1,5 +1,0 @@
-{
-  "root": true,
-  "extends": "./conf/eslint-config-base.json",
-  "parser": "@babel/eslint-parser"
-}

@@ -12,7 +12,6 @@
   },
   "plugins": [
     "@typescript-eslint",
-    "import",
     "jsdoc",
     "jest"
   ],
@@ -101,7 +100,7 @@
     "jest/no-alias-methods": "warn",
     "jest/no-interpolation-in-snapshots": "warn",
     "jest/no-large-snapshots": ["warn", { "maxSize": 50, "inlineMaxSize": 20 }],
-    "jest/no-deprecated-functions": "warn"
+    "jest/no-deprecated-functions": "warn",
   },
   "reportUnusedDisableDirectives": true,
   "settings": {

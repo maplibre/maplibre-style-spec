@@ -12,7 +12,7 @@ const imageConfig = fs.readdirSync(imagePath).reduce((obj, image) => {
     if (ext === '.png') {
         const key = image.replace(ext, '');
         // set sizes for all images
-        const sizes = [{ width: 800 }, { width: 500 }];
+        const sizes = [{width: 800}, {width: 500}];
 
         obj[key] = {
             basename: image,
