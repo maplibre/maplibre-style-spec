@@ -21,6 +21,7 @@ jobs:
         with:
           node-version: lts/*
       - run: npm ci
+      - run: npm run generate-style-spec
       - run: npm run lint
         if: success() || failure()
       - run: npm run typecheck
@@ -37,7 +38,7 @@ jobs:
       - run: npm run jest-ci -- --selectProjects unit --testPathIgnorePatterns "/src/(gl|render|ui)/" 
       - run: npm run jest-ci -- --selectProjects integration --testPathIgnorePatterns "/test/integration/(query|browser|build)/"
   packaging-tests:
-    name: Packaging andd Build tests
+    name: Packaging and Build tests
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
