@@ -3,3 +3,4 @@ node_modules
 tsc
 dist
 .DS_Store
+*/**/*.g.ts
