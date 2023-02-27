@@ -21,7 +21,7 @@ jobs:
         with:
           node-version: lts/*
       - run: npm ci
-      - run: npm run generate-style-spec
+      - run: npm run prepare
       - run: npm run lint
         if: success() || failure()
       - run: npm run typecheck
