@@ -22,11 +22,7 @@
         "styleeditor:slimmode": true,
         "styleeditor:comment": "Style generated 1677776383",
         "styleeditor:version": "3.14.159265",
-        "example:sdk-support": {
-          "js": "0.3.14",
-          "android": "0.2.78",
-          "ios": "1.0.0"
-        }
+        "example:object": { "String": "one", "Number": 2, "Boolean": false }
       }
     },
     "center": {
