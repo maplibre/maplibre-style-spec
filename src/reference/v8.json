@@ -17,7 +17,13 @@
     },
     "metadata": {
       "type": "*",
-      "doc": "Arbitrary properties useful to track with the stylesheet, but do not influence rendering. Properties should be prefixed to avoid collisions, like 'maplibre:'."
+      "doc": "Arbitrary properties useful to track with the stylesheet, but do not influence rendering. Properties should be prefixed to avoid collisions, like 'maplibre:'.",
+      "example": {
+        "styleeditor:slimmode": true,
+        "styleeditor:comment": "Style generated 1677776383",
+        "styleeditor:version": "3.14.159265",
+        "example:object": { "String": "one", "Number": 2, "Boolean": false }
+      }
     },
     "center": {
       "type": "array",
@@ -619,7 +625,10 @@
     },
     "metadata": {
       "type": "*",
-      "doc": "Arbitrary properties useful to track with the layer, but do not influence rendering. Properties should be prefixed to avoid collisions, like 'maplibre:'."
+      "doc": "Arbitrary properties useful to track with the layer, but do not influence rendering. Properties should be prefixed to avoid collisions, like 'maplibre:'.",
+      "example": {
+        "source:comment": "Hydrology FCCODE 460 - Narrow wash"
+      }      
     },
     "source": {
       "type": "string",
