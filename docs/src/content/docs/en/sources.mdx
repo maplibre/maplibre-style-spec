@@ -7,25 +7,27 @@ order: 4
 hideFeedback: true
 products:
 - MapLibre Style Specification
-prependJs:
-    - "import Items from '../../components/style-spec/items';"
-    - "import { sourceTypes } from '../../data/types';"
-    - "import SDKSupportTable from '../../components/sdk_support_table';"
-    - "import ref from '@maplibre/maplibre-gl-style-spec/tsc/src/reference/latest';"
+ 
 ---
+import Items from '../../../components/style-spec/specs/items.jsx'
+import { sourceTypes } from '../../../components/data/types.jsx'
+import ref from '../../../reference/latest.ts'
+import SDKSupportTable from '../../../components/style-spec/sdk_support_table.jsx'
 
-<!--copyeditor disable basic-->
-<!--copyeditor disable js-->
-<!--copyeditor disable ios-->
-<!--copyeditor disable macos-->
-Sources state which data the map should display. Specify the type of source with the `"type"` property, which must be one of {{sourceTypes.map((t, i) => {
+
+{/* copyeditor disable basic */}
+{/* copyeditor disable js */}
+{/* copyeditor disable ios */}
+{/* copyeditor disable macos */}
+Sources state which data the map should display. Specify the type of source with the `"type"` property, which must be one of 
+{sourceTypes.map((t, i) => {
     return <var key={i}>{t}</var>;
 }).reduce((prev, curr) => {
     return [prev, ', ', curr]
-})}}. Adding a source isn't enough to make data appear on the map because sources don't contain styling details like color or width. Layers refer to a source and give it a visual representation. This makes it possible to style the same source in different ways, like differentiating between types of roads in a highways layer.
+})}
+Adding a source isn't enough to make data appear on the map because sources don't contain styling details like color or width. Layers refer to a source and give it a visual representation. This makes it possible to style the same source in different ways, like differentiating between types of roads in a highways layer.
 
 Tiled sources (vector and raster) must specify their details according to the [TileJSON specification](https://github.com/mapbox/tilejson-spec). There are several ways to do so:
-
 - By supplying TileJSON properties such as `"tiles"`, `"minzoom"`, and `"maxzoom"` directly in the source:
 
 ```json
@@ -74,17 +76,12 @@ A vector tile source. Tiles must be in [Mapbox Vector Tile format](https://docs.
 }
 ```
 
-<!--
-START GENERATED CONTENT:
-Content in this section is generated directly using the MapLibre Style
-Specification. To update any content displayed in this section, make edits to:
-https://github.com/maplibre/maplibre-gl-js/blob/main/src/style-spec/reference/v8.json.
--->
-{{<Items headingLevel='3' entry={ref.source_vector} section="vector" />}}
-<!-- END GENERATED CONTENT -->
+
+<Items headingLevel='3' entry={ref.source_vector} section="vector" />
+{/* END GENERATED CONTENT  */}
 
 
-{{
+
 <SDKSupportTable
     supportItems={{
         "basic functionality": {
@@ -92,10 +89,10 @@ https://github.com/maplibre/maplibre-gl-js/blob/main/src/style-spec/reference/v8
             android: '2.0.1',
             ios: '2.0.0',
             macos: '0.1.0'
-        }
-    }}
+        }}
+    }
 />
-}}
+
 
 
 
@@ -113,27 +110,26 @@ A raster tile source.
 }
 ```
 
-<!--
-START GENERATED CONTENT:
+
+{/* START GENERATED CONTENT:
 Content in this section is generated directly using the MapLibre Style
 Specification. To update any content displayed in this section, make edits to:
-https://github.com/maplibre/maplibre-gl-js/blob/main/src/style-spec/reference/v8.json.
--->
-{{<Items headingLevel='3' entry={ref.source_raster} section="raster" />}}
-<!-- END GENERATED CONTENT -->
+https://github.com/maplibre/maplibre-gl-js/blob/main/src/style-spec/reference/v8.json. */}
+<Items headingLevel='3' entry={ref.source_raster} section="raster" />
+{/* END GENERATED CONTENT */}
 
-{{
+
 <SDKSupportTable
-    supportItems={{
-        'basic functionality': {
-            js: '0.10.0',
-            android: '2.0.1',
-            ios: '2.0.0',
-            macos: '0.1.0'
-        }
-    }}
-/>
+supportItems={{
+'basic functionality': {
+    js: '0.10.0',
+    android: '2.0.1',
+    ios: '2.0.0',
+    macos: '0.1.0'
+}
 }}
+/>
+
 
 
 
@@ -151,16 +147,15 @@ A raster DEM source. Only supports [Mapbox Terrain RGB](https://blog.mapbox.com/
 }
 ```
 
-<!--
-START GENERATED CONTENT:
+
+{/* START GENERATED CONTENT:
 Content in this section is generated directly using the MapLibre Style
 Specification. To update any content displayed in this section, make edits to:
-https://github.com/maplibre/maplibre-gl-js/blob/main/src/style-spec/reference/v8.json.
--->
-{{<Items headingLevel='3' entry={ref.source_raster_dem} section="raster-dem" />}}
-<!-- END GENERATED CONTENT -->
+https://github.com/maplibre/maplibre-gl-js/blob/main/src/style-spec/reference/v8.json. */}
+<Items headingLevel='3' entry={ref.source_raster_dem} section="raster-dem" />
+{/* END GENERATED CONTENT */}
 
-{{
+
 <SDKSupportTable
     supportItems={{
         'basic functionality': {
@@ -168,9 +163,9 @@ https://github.com/maplibre/maplibre-gl-js/blob/main/src/style-spec/reference/v8
         }
     }}
 />
-}}
 
-<!-- copyeditor disable geojson -->
+
+{/* copyeditor disable geojson */}
 
 ## geojson
 
@@ -201,16 +196,15 @@ This example of a GeoJSON source refers to an external GeoJSON document via its 
     "data": "./lines.geojson"
 }
 ```
-<!--
-START GENERATED CONTENT:
+
+{/* START GENERATED CONTENT:
 Content in this section is generated directly using the MapLibre Style
 Specification. To update any content displayed in this section, make edits to:
-https://github.com/maplibre/maplibre-gl-js/blob/main/src/style-spec/reference/v8.json.
--->
-{{<Items headingLevel='3' entry={ref.source_geojson} section="geojson" />}}
-<!-- END GENERATED CONTENT -->
+https://github.com/maplibre/maplibre-gl-js/blob/main/src/style-spec/reference/v8.json. */}
+<Items headingLevel='3' entry={ref.source_geojson} section="geojson" />
+{/* END GENERATED CONTENT */}
 
-{{
+
 <SDKSupportTable
     supportItems={{
         'basic functionality': {
@@ -233,7 +227,7 @@ https://github.com/maplibre/maplibre-gl-js/blob/main/src/style-spec/reference/v8
         }
     }}
 />
-}}
+
 
 ## image
 
@@ -253,16 +247,15 @@ The `"coordinates"` array contains `[longitude, latitude]` pairs for the image c
     ]
 }
 ```
-<!--
-START GENERATED CONTENT:
+
+{/* START GENERATED CONTENT:
 Content in this section is generated directly using the MapLibre Style
 Specification. To update any content displayed in this section, make edits to:
-https://github.com/maplibre/maplibre-gl-js/blob/main/src/style-spec/reference/v8.json.
--->
-{{<Items headingLevel='3' entry={ref.source_image} section="image" />}}
-<!-- END GENERATED CONTENT -->
+https://github.com/maplibre/maplibre-gl-js/blob/main/src/style-spec/reference/v8.json. */}
+<Items headingLevel='3' entry={ref.source_image} section="image" />
+{/* END GENERATED CONTENT */}
 
-{{
+
 <SDKSupportTable
     supportItems={{
         'basic functionality': {
@@ -273,7 +266,7 @@ https://github.com/maplibre/maplibre-gl-js/blob/main/src/style-spec/reference/v8
         }
     }}
 />
-}}
+
 
 
 
@@ -299,16 +292,15 @@ The `"coordinates"` array contains `[longitude, latitude]` pairs for the video c
 }
 ```
 
-<!--
-START GENERATED CONTENT:
+
+{/* START GENERATED CONTENT:
 Content in this section is generated directly using the MapLibre Style
 Specification. To update any content displayed in this section, make edits to:
-https://github.com/maplibre/maplibre-gl-js/blob/main/src/style-spec/reference/v8.json.
--->
-{{<Items headingLevel='3' entry={ref.source_video} section="video" />}}
-<!-- END GENERATED CONTENT -->
+https://github.com/maplibre/maplibre-gl-js/blob/main/src/style-spec/reference/v8.json. */}
+<Items headingLevel='3' entry={ref.source_video} section="video" />
+{/* END GENERATED CONTENT */}
 
-{{
+
 <SDKSupportTable
     supportItems={{
         'basic functionality': {
@@ -316,4 +308,4 @@ https://github.com/maplibre/maplibre-gl-js/blob/main/src/style-spec/reference/v8
         }
     }}
 />
-}}
+
