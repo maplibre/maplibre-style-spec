@@ -1,4 +1,4 @@
-import { h } from 'preact'
+import {h} from 'preact';
 export function renderParams(params, maxLength) {
     const result = [''];
     for (const t of params) {
@@ -12,7 +12,7 @@ export function renderParams(params, maxLength) {
 
     // length of result = each (', ' + item)
     const length = result.reduce((l, s) => l + s.length + 2, 0);
-    return !maxLength || length <= maxLength
-        ? result.join(', ')
-        : `${result.join(',\n    ')}\n`;
+    return !maxLength || length <= maxLength ?
+        result.join(', ') :
+        `${result.join(',\n    ')}\n`;
 }

@@ -1,5 +1,5 @@
-import { expressions, expressionGroups } from '../style-spec/expressions.jsx';
-import { h } from 'preact'
+import {expressions, expressionGroups} from '../style-spec/expressions.jsx';
+import {h} from 'preact';
 const sourceTypes = [
     'vector',
     'raster',
@@ -40,4 +40,4 @@ const groupedExpressions = [
         .map((name) => expressions[name])
 }));
 
-export { sourceTypes, layerTypes, groupedExpressions };
+export {sourceTypes, layerTypes, groupedExpressions};

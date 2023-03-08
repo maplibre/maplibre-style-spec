@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 export default class Subtitle extends React.Component {
     render() {
@@ -8,7 +7,3 @@ export default class Subtitle extends React.Component {
         );
     }
 }
-
-Subtitle.propTypes = {
-    children: PropTypes.node
-};

@@ -1,14 +1,31 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import md from '../md';
-import ReactMarkdown from 'react-markdown'
+import ReactMarkdown from 'react-markdown';
 
-import { highlightJSON } from '../prism_highlight';
+import {highlightJSON} from '../prism_highlight';
 import entries from 'object.entries';
 import SDKSupportTable from '../sdk_support_table';
 // import Icon from '@mapbox/mr-ui/icon';
 import Property from './property.jsx';
 import Subtitle from './subtitle.jsx';
+
+interface Item {
+    id: string;
+    name: string;
+    kind: string;
+    required: boolean;
+    minimum: number;
+    maximum: number;
+    values?: string[] | object;
+    default?: string | boolean | number |  string[] | object ;
+    requires: string[];
+    function: object;
+    transition: boolean;
+    example?: string  | number |  string[] | object ;
+    'sdk-support': object;
+    expression: object;
+    headingLevel?: '2' | '3';
+  
+}
 
 export default class Item extends React.Component {
     type(spec = this.props, plural = false) {
@@ -67,9 +84,9 @@ export default class Item extends React.Component {
                                 {' '}
                                 of{' '}
                                 {this.type(
-                                    typeof spec.value === 'string'
-                                        ? { type: spec.value }
-                                        : spec.value,
+                                    typeof spec.value === 'string' ?
+                                        {type: spec.value} :
+                                        spec.value,
                                     true
                                 )}
                             </span>
@@ -215,18 +232,18 @@ export default class Item extends React.Component {
 
                     {this.props.values &&
                         !Array.isArray(this.props.values) && ( // skips $root.version
-                            <React.Fragment>
+                        <React.Fragment>
                                 One of{' '}
-                                {Object.keys(this.props.values)
-                                    .map((opt, i) => (
-                                        <code key={i}>
-                                            {JSON.stringify(opt)}
-                                        </code>
-                                    ))
-                                    .reduce((prev, curr) => [prev, ', ', curr])}
+                            {Object.keys(this.props.values)
+                                .map((opt, i) => (
+                                    <code key={i}>
+                                        {JSON.stringify(opt)}
+                                    </code>
+                                ))
+                                .reduce((prev, curr) => [prev, ', ', curr])}
                                 .{' '}
-                            </React.Fragment>
-                        )}
+                        </React.Fragment>
+                    )}
 
                     {this.props.units && (
                         <React.Fragment>
@@ -254,38 +271,38 @@ export default class Item extends React.Component {
                             this.props.expression.parameters.includes(
                                 'feature-state'
                             )) && (
-                            <React.Fragment>
+                        <React.Fragment>
                                 Supports{' '}
-                                {this.props.expression.parameters.includes(
-                                    'feature-state'
-                                ) && (
-                                    <em className="color-gray">
-                                        <a href="/maplibre-gl-style-spec/style-spec/expressions/#feature-state">
-                                            {/* <Icon
+                            {this.props.expression.parameters.includes(
+                                'feature-state'
+                            ) && (
+                                <em className="color-gray">
+                                    <a href="/maplibre-gl-style-spec/style-spec/expressions/#feature-state">
+                                        {/* <Icon
                                                 name="combine"
                                                 inline={true}
                                             /> */}
-                                            <code>feature-state</code>
-                                        </a>
-                                    </em>
-                                )}
-                                {this.props.expression.interpolated &&
+                                        <code>feature-state</code>
+                                    </a>
+                                </em>
+                            )}
+                            {this.props.expression.interpolated &&
                                     this.props.expression.parameters.includes(
                                         'feature-state'
                                     ) &&
                                     ' and '}
-                                {this.props.expression.interpolated && (
-                                    <a href="/maplibre-gl-style-spec/style-spec/expressions/#interpolate">
-                                        {/* <Icon
+                            {this.props.expression.interpolated && (
+                                <a href="/maplibre-gl-style-spec/style-spec/expressions/#interpolate">
+                                    {/* <Icon
                                             name="smooth-ramp"
                                             inline={true}
                                         /> */}
-                                        <code>interpolate</code>
-                                    </a>
-                                )}
+                                    <code>interpolate</code>
+                                </a>
+                            )}
                                 expressions.{' '}
-                            </React.Fragment>
-                        )}
+                        </React.Fragment>
+                    )}
 
                     {this.props.transition && (
                         <React.Fragment>
@@ -303,21 +320,21 @@ export default class Item extends React.Component {
 
                 {this.props.values &&
                     !Array.isArray(this.props.values) && ( // skips $root.version
-                        <div className="my12 style-spec-item-dl">
-                            <dl>
-                                {entries(this.props.values).map(
-                                    ([v, { doc }], i) => [
-                                        <dt key={`${i}-dt`}>
-                                            <code>{JSON.stringify(v)}</code>:
-                                        </dt>,
-                                        <dd key={`${i}-dd`} className="mb12">
-                                                <ReactMarkdown>{doc}</ReactMarkdown>
-                                        </dd>
-                                    ]
-                                )}
-                            </dl>
-                        </div>
-                    )}
+                    <div className="my12 style-spec-item-dl">
+                        <dl>
+                            {entries(this.props.values).map(
+                                ([v, {doc}], i) => [
+                                    <dt key={`${i}-dt`}>
+                                        <code>{JSON.stringify(v)}</code>:
+                                    </dt>,
+                                    <dd key={`${i}-dd`} className="mb12">
+                                        <ReactMarkdown>{doc}</ReactMarkdown>
+                                    </dd>
+                                ]
+                            )}
+                        </dl>
+                    </div>
+                )}
 
                 {this.props.example &&
                     highlightJSON(
@@ -338,33 +355,3 @@ export default class Item extends React.Component {
     }
 }
 
-Item.propTypes = {
-    id: PropTypes.string,
-    name: PropTypes.string,
-    kind: PropTypes.string,
-    required: PropTypes.bool,
-    minimum: PropTypes.number,
-    maximum: PropTypes.number,
-    values: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
-    default: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.bool,
-        PropTypes.number,
-        PropTypes.array,
-        PropTypes.object
-    ]),
-    requires: PropTypes.array,
-    function: PropTypes.object,
-    transition: PropTypes.bool,
-    doc: PropTypes.string,
-    example: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.array,
-        PropTypes.number,
-        PropTypes.object
-    ]),
-    'sdk-support': PropTypes.object,
-    units: PropTypes.string,
-    headingLevel: PropTypes.oneOf(['2', '3']),
-    expression: PropTypes.object
-};

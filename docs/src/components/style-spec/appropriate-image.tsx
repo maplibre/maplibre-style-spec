@@ -11,18 +11,16 @@
 
 // export default AppropriateImage;
 
-
 import React from 'react';
-import PropTypes from 'prop-types';
 
 export default class AppropriateImage extends React.Component {
     render() {
-        const { imageId } = this.props;
+        const {imageId} = this.props;
         const src = `/img/src/${imageId}.png`;
         return (
             <>
-            <img src={src} alt=""  />
-    
+                <img src={src} alt=""  />
+
             </>
         );
     }

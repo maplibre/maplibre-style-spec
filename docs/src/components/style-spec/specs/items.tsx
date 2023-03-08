@@ -1,8 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import entries from 'object.entries';
 import Item from './item.jsx';
 
+
+interface Items {
+    entry: object;
+    section: string;
+    kind: string;
+    headingLevel?: '2' | '3';
+}
 
 export default class Items extends React.Component {
     render() {
@@ -47,9 +53,3 @@ export default class Items extends React.Component {
     }
 }
 
-Items.propTypes = {
-    entry: PropTypes.object.isRequired,
-    section: PropTypes.string,
-    kind: PropTypes.string,
-    headingLevel: PropTypes.oneOf(['2', '3'])
-};
