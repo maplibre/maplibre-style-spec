@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import entries from 'object.entries';
 import md from './md.jsx';
-import ReactMarkdown from 'react-markdown'
+import ReactMarkdown from 'react-markdown';
 
 export default class SDKSupportTable extends React.Component {
     support(support, sdk) {
@@ -24,13 +24,13 @@ export default class SDKSupportTable extends React.Component {
                                 borderTopRightRadius: '4px'
                             }}
                         >
-                            <th style={{ borderTopLeftRadius: '4px' }}>
+                            <th style={{borderTopLeftRadius: '4px'}}>
                                 SDK Support
                             </th>
                             <td>MapLibre GL JS</td>
                             <td>Android SDK</td>
                             <td>iOS SDK</td>
-                            <td style={{ borderTopRightRadius: '4px' }}>
+                            <td style={{borderTopRightRadius: '4px'}}>
                                 macOS SDK
                             </td>
                         </tr>

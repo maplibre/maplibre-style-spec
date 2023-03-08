@@ -1,5 +1,5 @@
-import ref from '../../reference/latest'
-import { h } from 'preact'
+import ref from '../../reference/latest';
+import {h} from 'preact';
 // helper function to:
 // combine properties, prepare them, and sort them for the <Items /> component
 export default function combineItems(properties, section) {
@@ -12,7 +12,7 @@ export default function combineItems(properties, section) {
     });
     // combine items
     const unsorted = arr.reduce((obj, group) => {
-        Object.keys(group.ref).map((o) => {
+        Object.keys(group.ref).forEach((o) => {
             group.ref[o].kind = group.kind;
             group.ref[o].section = group.section;
             obj[o] = group.ref[o];

@@ -17,7 +17,7 @@ import {
     typeOf,
     toString as valueToString
 } from '../../expression/values';
-import { h } from 'preact'
+import {h} from 'preact';
 
 // registers compound expressions
 import expressionRegister from '../../expression/definitions/index';
@@ -57,7 +57,7 @@ function binarySearch(v, a, i, j) {
 }
 
 function varargs(type) {
-    return { type };
+    return {type};
 }
 
 CompoundExpression.register(expressionRegister, {
@@ -127,9 +127,9 @@ CompoundExpression.register(expressionRegister, {
         ValueType,
         [],
         (ctx) =>
-            ctx.globals.accumulated === undefined
-                ? null
-                : ctx.globals.accumulated
+            ctx.globals.accumulated === undefined ?
+                null :
+                ctx.globals.accumulated
     ],
     '+': [
         NumberType,
@@ -450,7 +450,7 @@ export const types = {
         },
         {
             type: 'string',
-            parameters: ['value', { repeat: ['fallback: value'] }]
+            parameters: ['value', {repeat: ['fallback: value']}]
         }
     ],
     number: [
@@ -460,7 +460,7 @@ export const types = {
         },
         {
             type: 'number',
-            parameters: ['value', { repeat: ['fallback: value'] }]
+            parameters: ['value', {repeat: ['fallback: value']}]
         }
     ],
     boolean: [
@@ -470,7 +470,7 @@ export const types = {
         },
         {
             type: 'boolean',
-            parameters: ['value', { repeat: ['fallback: value'] }]
+            parameters: ['value', {repeat: ['fallback: value']}]
         }
     ],
     array: [
@@ -479,11 +479,11 @@ export const types = {
             parameters: ['value']
         },
         {
-            type: `array<type>`,
+            type: 'array<type>',
             parameters: ['type: "string" | "number" | "boolean"', 'value']
         },
         {
-            type: `array<type, N>`,
+            type: 'array<type, N>',
             parameters: [
                 'type: "string" | "number" | "boolean"',
                 'N: number (literal)',
@@ -504,7 +504,7 @@ export const types = {
         },
         {
             type: 'object',
-            parameters: ['value', { repeat: ['fallback: value'] }]
+            parameters: ['value', {repeat: ['fallback: value']}]
         }
     ],
     'to-boolean': [
@@ -516,13 +516,13 @@ export const types = {
     'to-color': [
         {
             type: 'color',
-            parameters: ['value', { repeat: ['fallback: value'] }]
+            parameters: ['value', {repeat: ['fallback: value']}]
         }
     ],
     'to-number': [
         {
             type: 'number',
-            parameters: ['value', { repeat: ['fallback: value'] }]
+            parameters: ['value', {repeat: ['fallback: value']}]
         }
     ],
     'to-string': [
@@ -591,7 +591,7 @@ export const types = {
     coalesce: [
         {
             type: 'OutputType',
-            parameters: [{ repeat: ['OutputType'] }]
+            parameters: [{repeat: ['OutputType']}]
         }
     ],
     step: [
@@ -607,7 +607,7 @@ export const types = {
     ],
     interpolate: [
         {
-            type: `OutputType (number, array<number>, or Color)`,
+            type: 'OutputType (number, array<number>, or Color)',
             parameters: [
                 'interpolation: ["linear"] | ["exponential", base] | ["cubic-bezier", x1, y1, x2, y2]',
                 'input: number',
@@ -648,7 +648,7 @@ export const types = {
         {
             type: 'OutputType',
             parameters: [
-                { repeat: ['string (alphanumeric literal)', 'any'] },
+                {repeat: ['string (alphanumeric literal)', 'any']},
                 'OutputType'
             ]
         }
@@ -706,9 +706,9 @@ export const types = {
             type: 'formatted',
             parameters: [
                 // Use backticks to avoid breaking eslint for array<string>
-                `input_1: string | image, options_1: { "font-scale": number, "text-font": array<string>, "text-color": color }`,
+                'input_1: string | image, options_1: { "font-scale": number, "text-font": array<string>, "text-color": color }',
                 '...',
-                `input_n: string | image, options_n: { "font-scale": number, "text-font": array<string>, "text-color": color }`
+                'input_n: string | image, options_n: { "font-scale": number, "text-font": array<string>, "text-color": color }'
             ]
         }
     ],
@@ -750,6 +750,6 @@ function processParameters(params) {
     if (Array.isArray(params)) {
         return params.map(toString);
     } else {
-        return [{ repeat: [toString(params.type)] }];
+        return [{repeat: [toString(params.type)]}];
     }
 }

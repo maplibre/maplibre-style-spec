@@ -14,7 +14,6 @@ function RootPrism() {
     "layers": [...]
   }`;
 
-
     const highligted = highlightJSON(mdString);
 
     return (

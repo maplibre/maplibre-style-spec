@@ -8,7 +8,3 @@ export default class Subtitle extends React.Component {
         );
     }
 }
-
-Subtitle.propTypes = {
-    children: PropTypes.node
-};
