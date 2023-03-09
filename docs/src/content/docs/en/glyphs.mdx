@@ -11,17 +11,13 @@ prependJs:
     - "import ref from '@maplibre/maplibre-gl-style-spec/tsc/src/reference/latest';"
 ---
 
-<!--copyeditor disable basic-->
+import Glyphs1Prism from '../highligting/glyphs1.tsx'
+
+
 
 A style's `glyphs` property provides a URL template for loading signed-distance-field glyph sets in PBF format.
 
-```json
-"glyphs": {{JSON.stringify(
-    ref.$root.glyphs.example,
-    null,
-    2
-)}}
-```
+<Glyphs1Prism />
 
 This URL template should include two tokens:
 

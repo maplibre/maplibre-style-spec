@@ -6,7 +6,7 @@ function RootPrism() {
     const version = 10;
 
     const mdString = `{
-    "version": {version},
+    "version": ${version},
     "name": "Mapbox Streets",
     "sprite": "mapbox://sprites/mapbox/streets-v${version}",
     "glyphs": "mapbox://fonts/mapbox/{fontstack}/{range}.pbf",

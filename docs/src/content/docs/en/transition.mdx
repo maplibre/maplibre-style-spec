@@ -10,28 +10,19 @@ products:
 ---
 import Items from '../../../components/style-spec/specs/items.jsx'
 import ref from '../../../reference/latest.ts'
+import Transition1Prism from '../highligting/transition1.tsx'
+import Transition2Prism from '../highligting/transition2.tsx'
+
 
 A `transition` property controls timing for the interpolation between a transitionable style property's previous value and new value. A style's <a href="#root-transition" title="link to root-transition">root `transition`</a> property provides global transition defaults for that style.
 
-```json
-"transition": {JSON.stringify(
-    ref.$root.transition.example,
-    null,
-    2
-)}
-```
+<Transition1Prism />
 {/* Any transitionable layer property, marked by {{<Icon
         name="opacity"
         inline={true}
     />}}, may also have its own `*-transition` property that defines specific transition timing for that layer property, overriding the global `transition` values. */}
 
-```json
-"fill-opacity-transition": {{JSON.stringify(
-    ref.$root.transition.example,
-    null,
-    2
-)}}
-```
+<Transition2Prism />
 
 {/* START GENERATED CONTENT:
 Content in this section is generated directly using the MapLibre Style
