@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {groupedExpressions} from '../../data/types.jsx';
 import SDKSupportTable from '../sdk_support_table.jsx';
 import md from '../md.jsx';
@@ -8,6 +7,13 @@ import {renderSignature} from './render-signature';
 import Property from './property.jsx';
 import related from '../../data/expressions-related.json';
 import ReactMarkdown from 'react-markdown';
+
+
+interface ExpressionReference {
+    group: string;
+  
+}
+
 
 export default class ExpressionReference extends React.Component {
     render() {
@@ -68,6 +74,3 @@ export default class ExpressionReference extends React.Component {
     }
 }
 
-ExpressionReference.propTypes = {
-    group: PropTypes.string.isRequired
-};
