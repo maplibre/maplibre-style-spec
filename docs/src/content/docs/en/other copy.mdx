@@ -8,63 +8,61 @@ hideFeedback: true
 products:
 - MapLibre Style Specification
 prependJs:
-    - "import SDKSupportTable from '../../components/sdk_support_table';"
-    - "import ref from '@maplibre/maplibre-gl-style-spec/tsc/src/reference/latest';"
-    - "import Icon from '@mapbox/mr-ui/icon';"
-    - "import Property from '../../components/style-spec/property.js';"
-    - "import Subtitle from '../../components/style-spec/subtitle.js';"
-    - "import Note from '@mapbox/dr-ui/note';"
+
 ---
 
-<!--copyeditor disable basic-->
-<!--copyeditor disable js-->
-<!--copyeditor disable ios-->
-<!--copyeditor disable macos-->
-<!--copyeditor disable all-of-->
+import SDKSupportTable from '../../../components/style-spec/sdk_support_table.jsx'
+import ref from '../../../reference/latest.ts'
+import Property from '../../../components/style-spec/specs/property.jsx';
+import Subtitle from '../../../components/style-spec/specs/subtitle.jsx';
+import Caption from "../../../components/style-spec/caption.jsx";
+
+
+
 
 Some style properties are no longer the preferred method of accomplishing a particular styling goal. While they are still supported, they will eventually be removed from the MapLibre Style Specification and it is not recommended to use them in new styles. The following is provided as reference for users who need to continue maintaining legacy styles while transitioning to preferred style properties.
 
 
 ## Function
 
-{{<Note theme="warning">}}
+<Caption theme="warning">
 As of [v0.41.0](https://github.com/maplibre/maplibre-gl-js/blob/main/CHANGELOG.md#0410-october-11-2017), [property expressions](/maplibre-gl-js-docs/style-spec/expressions) is the preferred method for styling features based on zoom level or the feature's properties. Zoom and property functions are still supported, but will be phased out in a future release.
-{{</Note>}}
+</Caption>
 
 The value for any layout or paint property may be specified as a _function_. Functions allow you to make the appearance of a map feature change with the current zoom level and/or the feature's properties.
 
-{{<Property headingLevel='3' id="function-stops">stops</Property>}}
+<Property headingLevel='3' id="function-stops">stops</Property>
 
-{{<Subtitle>}}
+<Subtitle>
 Required (except for <var>identity</var> functions) [array](/maplibre-gl-js-docs/style-spec/types/#array).
-{{</Subtitle>}}
+</Subtitle>
 
 A set of one input value and one output value is a "stop." Stop output values must be literal values (i.e. not functions or expressions), and appropriate for the property. For example, stop output values for a `fill-color` function property must be [colors](/maplibre-gl-js-docs/style-spec/types/#color).
 
 
-{{<Property headingLevel='3' id="function-property">property</Property>}}
+<Property headingLevel='3' id="function-property">property</Property>
 
-{{<Subtitle>}}
+<Subtitle>
 Optional [string](/maplibre-gl-js-docs/style-spec/types/#string).
-{{</Subtitle>}}
+</Subtitle>
 
 If specified, the function will take the specified feature property as an input. See [Zoom Functions and Property Functions](/maplibre-gl-js-docs/style-spec/types/#function-zoom-property) for more information.
 
-{{<Property headingLevel='3' id="function-base">base</Property>}}
+<Property headingLevel='3' id="function-base">base</Property>
 
-{{<Subtitle>}}
-Optional [number](/maplibre-gl-js-docs/style-spec/types/#number). Default is {{ref.function.base.default}}.
-{{</Subtitle>}}
+<Subtitle>
+Optional [number](/maplibre-gl-js-docs/style-spec/types/#number). Default is ref.function.base.default.
+</Subtitle>
 
 The exponential base of the interpolation curve. It controls the rate at which the function output increases. Higher values make the output increase more towards the high end of the range. With values close to 1 the output increases linearly.
 
-{{<Property headingLevel='3' id="function-type">type</Property>}}
+<Property headingLevel='3' id="function-type">type</Property>
 
-{{<Subtitle>}}
+<Subtitle>
 Optional [string](/maplibre-gl-js-docs/style-spec/types/#string). One of `"identity"`, `"exponential"`, `"interval"`, or `"categorical"`.
-{{</Subtitle>}}
+</Subtitle>
 
-{{
+
 <dl className="mb6">
     <dt>
         <code>"identity"</code>
@@ -86,10 +84,10 @@ Optional [string](/maplibre-gl-js-docs/style-spec/types/#string). One of `"ident
         interpolation. Style properties that
         support interpolation are marked
         marked with{' '}
-        <Icon
+        {/* <Icon
             name="smooth-ramp"
             inline={true}
-        />
+        /> */}
         , the "exponential" symbol, and{' '}
         <var>exponential</var> is the
         default function type for these
@@ -105,10 +103,10 @@ Optional [string](/maplibre-gl-js-docs/style-spec/types/#string). One of `"ident
         value) must be numeric. Any style
         property may use interval functions.
         For properties marked with
-        <Icon
+        {/* <Icon
             name="step-ramp"
             inline={true}
-        />
+        /> */}
         , the "interval" symbol, this is the
         default function type.
     </dd>
@@ -121,9 +119,9 @@ Optional [string](/maplibre-gl-js-docs/style-spec/types/#string). One of `"ident
         function input.
     </dd>
 </dl>
-}}
 
-{{<Property headingLevel='3' id="function-default">default</Property>}}
+
+<Property headingLevel='3' id="function-default">default</Property>
 
 A value to serve as a fallback function result when a value isn't otherwise available. It is used in the following circumstances:
 
@@ -134,16 +132,15 @@ A value to serve as a fallback function result when a value isn't otherwise avai
 
 If no default is provided, the style property's default is used in these circumstances.
 
-{{<Property headingLevel='3' id="function-colorSpace">colorSpace</Property>}}
+<Property headingLevel='3' id="function-colorSpace">colorSpace</Property>
 
-{{<Subtitle>}}
+<Subtitle>
 Optional [string](/maplibre-gl-js-docs/style-spec/types/#string). One of `"rgb"`, `"lab"`, `"hcl"`.
-{{</Subtitle>}}
+</Subtitle>
 
-<!--copyeditor ignore easily-->
 The color space in which colors interpolated. Interpolating colors in perceptual color spaces like LAB and HCL tend to produce color ramps that look more consistent and produce colors that can be differentiated more easily than those interpolated in RGB space.
 
-{{
+
 <dl className="mb12">
     <dt><code>"rgb"</code></dt>
     <dd className="mb12">
@@ -163,13 +160,13 @@ The color space in which colors interpolated. Interpolating colors in perceptual
         Luminance channels individually.
     </dd>
 </dl>
-}}
 
 
-{{
+
+
 <div className='mb12'>
 <SDKSupportTable
-    supportItems={{
+    supportItems={
         'basic functionality': {
             js: '0.10.0',
             android: '2.0.1',
@@ -221,10 +218,10 @@ The color space in which colors interpolated. Interpolating colors in perceptual
         '`colorSpace`': {
             js: '0.26.0'
         }
-    }}
+    }
 />
 </div>
-}}
+
 
 **Zoom functions** allow the appearance of a map feature to change with map’s zoom level. Zoom functions can be used to create the illusion of depth and control data density. Each stop is an array with two elements: the first is a zoom level and the second is a function output value.
 
@@ -261,7 +258,7 @@ There is an important difference between the way that zoom functions render for 
 }
 ```
 
-{{<a id="types-function-zoom-property" className="anchor" />}}
+<a id="types-function-zoom-property" className="anchor" />
 
 **Zoom-and-property functions** allow the appearance of a map feature to change with both its properties _and_ zoom. Each stop is an array with two elements, the first is an object with a property input value and a zoom, and the second is a function output value. Note that support for property functions is not yet complete.
 
@@ -289,45 +286,45 @@ There is an important difference between the way that zoom functions render for 
 
 ## Other filter
 
-{{<Note theme="warning">}}
+<Caption theme="warning">
 In previous versions of the style specification, [filters](/maplibre-gl-js-docs/style-spec/layers/#filter) were defined using the deprecated syntax documented below. Though filters defined with this syntax will continue to work, we recommend using the more flexible [expression](/maplibre-gl-js-docs/style-spec/expressions/) syntax instead. Expression syntax and the deprecated syntax below cannot be mixed in a single filter definition.
-{{</Note>}}
+</Caption>
 
 ### Existential filters
 
-`["has", {{<var>key</var>}}]` <var>feature[key]</var> exists
+`["has", <var>key</var>]` <var>feature[key]</var> exists
 
-`["!has", {{<var>key</var>}}]` <var>feature[key]</var> does not exist
+`["!has", <var>key</var>]` <var>feature[key]</var> does not exist
 
 ### Comparison filters
 
-`["==", {{<var>key</var>}}, {{<var>value</var>}}]` equality: <var>feature[key]</var> = <var>value</var>
+`["==", <var>key</var>, <var>value</var>]` equality: <var>feature[key]</var> = <var>value</var>
 
-`["!=", {{<var>key</var>}}, {{<var>value</var>}}]` inequality: <var>feature[key]</var> ≠ <var>value</var>
+`["!=", <var>key</var>, <var>value</var>]` inequality: <var>feature[key]</var> ≠ <var>value</var>
 
-`["&gt;", {{<var>key</var>}}, {{<var>value</var>]}}` greater than: <var>feature[key]</var> > <var>value</var>
+`["&gt;", <var>key</var>, <var>value</var>]` greater than: <var>feature[key]</var> > <var>value</var>
 
-`["&gt;=", {{<var>key</var>}}, {{<var>value</var>]}}` greater than or equal: <var>feature[key]</var> ≥ <var>value</var>
+`["&gt;=", <var>key</var>, <var>value</var>]` greater than or equal: <var>feature[key]</var> ≥ <var>value</var>
 
-`["&lt;", {{<var>key</var>}}, {{<var>value</var>]}}` less than: <var>feature[key]</var> &lt; <var>value</var>
+`["&lt;", <var>key</var>, <var>value</var>]` less than: <var>feature[key]</var> &lt; <var>value</var>
 
-`["&lt;=", {{<var>key</var>}}, {{<var>value</var>]}}` less than or equal: <var>feature[key]</var> ≤ <var>value</var>
+`["&lt;=", <var>key</var>, <var>value</var>]` less than or equal: <var>feature[key]</var> ≤ <var>value</var>
 
 
 ### Set membership filters
 
-`["in", {{<var>key</var>}}, {{<var>v0</var>}}, ..., {{<var>vn</var>}}]` set inclusion: <var>feature[key]</var> ∈ \{<var>v0</var>, ..., <var>vn</var>\}
+`["in", <var>key</var>, <var>v0</var>, ..., <var>vn</var>]` set inclusion: <var>feature[key]</var> ∈ \{<var>v0</var>, ..., <var>vn</var>\}
 
-`["!in", {{<var>key</var>}}, {{<var>v0</var>}}, ..., {{<var>vn</var>}}]` set exclusion: <var>feature[key]</var> ∉ \{ <var>v0</var>, ..., <var>vn</var>\}
+`["!in", <var>key</var>, <var>v0</var>, ..., <var>vn</var>]` set exclusion: <var>feature[key]</var> ∉ \{ <var>v0</var>, ..., <var>vn</var>\}
 
 
 ### Combining filters
 
-`["all", {{<var>f0</var>}}, ..., {{<var>fn</var>}}]` logical `AND`: <var>f0</var> ∧ ... ∧ <var>fn</var>
+`["all", <var>f0</var>, ..., <var>fn</var>]` logical `AND`: <var>f0</var> ∧ ... ∧ <var>fn</var>
 
-`["any", {{<var>f0</var>}}, ..., {{<var>fn</var>}}]` logical `OR`: <var>f0</var> ∨ ... ∨ <var>fn</var>
+`["any", <var>f0</var>, ..., <var>fn</var>]` logical `OR`: <var>f0</var> ∨ ... ∨ <var>fn</var>
 
-`["none", {{<var>f0</var>}}, ..., {{<var>fn</var>}}]` logical `NOR`: ¬<var>f0</var> ∧ ... ∧ ¬<var>fn</var>
+`["none", <var>f0</var>, ..., <var>fn</var>]` logical `NOR`: ¬<var>f0</var> ∧ ... ∧ ¬<var>fn</var>
 
 A <var>key</var> must be a string that identifies a feature property, or one of the following special keys:
 
@@ -338,7 +335,6 @@ A <var>value</var> (and <var>v0</var>, ..., <var>vn</var> for set operators) mus
 
 Set membership filters are a compact and efficient way to test whether a field matches any of multiple values.
 
-<!--copyeditor ignore evaluate-->
 The comparison and set membership filters implement strictly-typed comparisons; for example, all of the following evaluate to false: `0 &lt; "1"`, `2 == "2"`, `"true" in [true, false]`.
 
 The `"all"`, `"any"`, and `"none"` filter operators are used to create compound filters. The values <var>f0</var>, ..., <var>fn</var> must be filter expressions themselves.
@@ -364,9 +360,9 @@ The combining filter "all" takes the three other filters that follow it and requ
 ]
 ```
 
-{{
+
 <SDKSupportTable
-    supportItems={{
+    supportItems={
         'basic functionality': {
             js: '0.10.0',
             android: '2.0.1',
@@ -378,7 +374,7 @@ The combining filter "all" takes the three other filters that follow it and requ
             android: '4.1.0',
             ios: '3.3.0',
             macos: '0.1.0'
-        }
-    }}
+        }}
+    
 />
-}}
+

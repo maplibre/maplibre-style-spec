@@ -15,9 +15,10 @@ type Props = CollectionEntry<'docs'>['data'] & {
 };
 
 const { headings, ...data } = Astro.props;
+
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const currentPage = Astro.url.pathname;
-const currentFile = `src/content/docs${currentPage.replace(/\/$/, '')}.md`;
+const currentFile = `src/content/docs${currentPage.replace(/\/$/, '')}.mdx`;
 const githubEditUrl = `${GITHUB_EDIT_URL}/${currentFile}`;
 ---
 
@@ -136,4 +137,5 @@ const githubEditUrl = `${GITHUB_EDIT_URL}/${currentFile}`;
 		</main>
 		<Footer path={currentFile} />
 	</body>
+	
 </html>
