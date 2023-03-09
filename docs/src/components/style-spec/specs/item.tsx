@@ -1,6 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import md from '../md';
 import ReactMarkdown from 'react-markdown';
 
 import {highlightJSON} from '../prism_highlight';
@@ -9,6 +7,25 @@ import SDKSupportTable from '../sdk_support_table';
 // import Icon from '@mapbox/mr-ui/icon';
 import Property from './property.jsx';
 import Subtitle from './subtitle.jsx';
+
+interface Item {
+    id: string;
+    name: string;
+    kind: string;
+    required: boolean;
+    minimum: number;
+    maximum: number;
+    values?: string[] | object;
+    default?: string | boolean | number |  string[] | object ;
+    requires: string[];
+    function: object;
+    transition: boolean;
+    example?: string  | number |  string[] | object ;
+    'sdk-support': object;
+    expression: object;
+    headingLevel?: '2' | '3';
+  
+}
 
 export default class Item extends React.Component {
     type(spec = this.props, plural = false) {
@@ -338,33 +355,3 @@ export default class Item extends React.Component {
     }
 }
 
-Item.propTypes = {
-    id: PropTypes.string,
-    name: PropTypes.string,
-    kind: PropTypes.string,
-    required: PropTypes.bool,
-    minimum: PropTypes.number,
-    maximum: PropTypes.number,
-    values: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
-    default: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.bool,
-        PropTypes.number,
-        PropTypes.array,
-        PropTypes.object
-    ]),
-    requires: PropTypes.array,
-    function: PropTypes.object,
-    transition: PropTypes.bool,
-    doc: PropTypes.string,
-    example: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.array,
-        PropTypes.number,
-        PropTypes.object
-    ]),
-    'sdk-support': PropTypes.object,
-    units: PropTypes.string,
-    headingLevel: PropTypes.oneOf(['2', '3']),
-    expression: PropTypes.object
-};

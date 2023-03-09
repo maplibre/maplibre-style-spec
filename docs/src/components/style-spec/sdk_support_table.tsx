@@ -1,9 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import entries from 'object.entries';
 import md from './md.jsx';
 import ReactMarkdown from 'react-markdown';
 
+interface SDKSupportTable {
+    supportItems: object;
+   
+}
 export default class SDKSupportTable extends React.Component {
     support(support, sdk) {
         if (!support) return 'Not yet supported';
@@ -54,6 +57,4 @@ export default class SDKSupportTable extends React.Component {
     }
 }
 
-SDKSupportTable.propTypes = {
-    supportItems: PropTypes.object
-};
+
