@@ -21,7 +21,7 @@ export const KNOWN_LANGUAGE_CODES = Object.values(KNOWN_LANGUAGES);
 
 export const GITHUB_EDIT_URL = `https://github.com/maplibre/maplibre-gl-style-spec/tree/main/docs`;
 
-export const COMMUNITY_INVITE_URL = `https://astro.build/chat`;
+export const COMMUNITY_INVITE_URL = `https://maplibre.org/about/`;
 
 // See "Algolia" section of the README for more information.
 export const ALGOLIA = {
