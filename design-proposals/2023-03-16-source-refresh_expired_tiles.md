@@ -1,4 +1,4 @@
-# Design Proposal Template
+# Design Proposal
 
 ## Motivation
 
