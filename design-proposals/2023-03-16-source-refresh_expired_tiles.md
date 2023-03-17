@@ -13,20 +13,20 @@ PLT: Page load time, showing a 2+% improvement for overall page load with high s
 
 ## Proposed Change
 
-#### Option 1
-Proposal is the have a property refreshExpiredTiles (default: true) which can be set for each tile source. This will allow SDK user more granular control over which tile source need to be refreshed. Tiles which does not require refresh can be downloaded using HTMLImageElement.
+* #### Option 1
+    Proposal is the have a property refreshExpiredTiles (default: true) which can be set for each tile source. This will allow SDK user more granular control over which tile source need to be refreshed. Tiles which does not require refresh can be downloaded using HTMLImageElement.
+    
+    This property can be made available for Raster, Raster_dem and Vector source Type. Support for Vector source type is just for consistency.
+    
+    If user has not provided refreshExpiredTiles override then code will continue to use fetch as done currently.
+    
+    * Alternative property name: 'refreshTiles'
 
-This property can be made available for Raster, Raster_dem and Vector source Type. Support for Vector source type is just for consistency.
-
-If user has not provided refreshExpiredTiles override then code will continue to use fetch as done currently.
-
-* Alternative property name: 'refreshTiles'
-
-#### Option 2
-Instead of having a boolean refreshExpiredTiles (Option 1) on tile sources, we can have a property like expiryDuration in seconds. With this all raster tiles can also be downloaded using HTMLImageElement (Both refreshable and non-refreshable raster tiles).
-* Issue with this approach is decoupling of cache data between tiles and style endpoints. This might not be desirable in some cases.
-
-If user has not provided expiryDuration override then code will continue to use fetch as done currently.
+* #### Option 2
+    Instead of having a boolean refreshExpiredTiles (Option 1) on tile sources, we can have a property like expiryDuration in seconds. With this all raster tiles can also be downloaded using HTMLImageElement (Both refreshable and non-refreshable raster tiles).
+    * Issue with this approach is decoupling of cache data between tiles and style endpoints. This might not be desirable in some cases.
+    
+    If user has not provided expiryDuration override then code will continue to use fetch as done currently.
 
 ## API Modifications
 * Design option 1 with refreshExpiredTiles
@@ -91,4 +91,8 @@ Both design options described above adds an optional propertie and thus are back
 
 ## Rejected Alternatives
 
-Have listed both options in consideration.
+Since the main motivation for this change is performance improvement by using HTMLImageElement instead of fetch API. We can make all requests for raster tiles using HTMLImageElement. But to get cache header, we can make **just one** request to this source using fetch to extract the cache header. This call will be to just get the cache header. 
+    ```fetch(url, {method: 'HEAD'})```
+    
+* Pro: Everyone gets the benefits without making any changes
+* Con: Will be a breaking change for cases where cache duration is not fixed for a tile source.
