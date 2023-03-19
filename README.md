@@ -1,4 +1,4 @@
-# MapLibre GL style specification & utilities
+# MapLibre GL style specification & utilities - Design proposals are required
 
 This directory contains code and reference files that define the MapLibre GL style specification and provides some utilities for working with MapLibre styles.
 
@@ -47,4 +47,3 @@ $ gl-style-validate style.json
 
 Will validate the given style JSON and print errors to stdout. Provide a
 `--json` flag to get JSON output.
-
