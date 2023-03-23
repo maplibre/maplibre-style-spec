@@ -1,6 +1,6 @@
 # MapLibre GL style specification & utilities
 
-This directory contains code and reference files that define the MapLibre GL style specification and provides some utilities for working with MapLibre styles.
+This repository contains code and reference files that define the MapLibre GL style specification and provides some utilities for working with MapLibre styles.
 
 The style specification is used in MapLibre GL JS and in MapLibre GL Native. Our long-term goal is to have feature parity between the web and the native libraries.
 
