@@ -10,7 +10,6 @@ If you want to contribute to the style specification, please open an issue with 
 
 We aim to avoid breaking changes in the MapLibre style specification, because it makes life easier for our users.
 
-If you want to extend the MVT specification or the TileJSON specification, feel free to open a discussion here in this repository. These two specifications have not been forked so far, but this repo here can serve as a platform for discussion about how to move forward regarding MVT and TileJSON in MapLibre.
 
 ## npm package
 
