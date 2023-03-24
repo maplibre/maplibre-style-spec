@@ -1,8 +1,19 @@
-# MapLibre GL style specification & utilities - Design proposals are required
+# MapLibre GL style specification & utilities
 
-This directory contains code and reference files that define the MapLibre GL style specification and provides some utilities for working with MapLibre styles.
+This repository contains code and reference files that define the MapLibre GL style specification and provides some utilities for working with MapLibre styles.
 
-## npm package
+The style specification is used in MapLibre GL JS and in MapLibre GL Native. Our long-term goal is to have feature parity between the web and the native libraries.
+
+## Contributing
+
+If you want to contribute to the style specification, please open an issue with a design proposal. Once your design proposal has been accepted, you can open a pull request and implement your changes.
+
+We aim to avoid breaking changes in the MapLibre style specification, because it makes life easier for our users.
+
+
+## NPM Package
+
+[![NPM Version](https://badge.fury.io/js/@maplibre%2Fmaplibre-gl-style-spec.svg)](https://npmjs.org/package/@maplibre/maplibre-gl-style-spec)
 
 The MapLibre GL style specification and utilities are published as a seperate npm
 package so that they can be installed without the bulk of GL JS.
