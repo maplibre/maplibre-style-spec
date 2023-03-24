@@ -11,7 +11,9 @@ If you want to contribute to the style specification, please open an issue with 
 We aim to avoid breaking changes in the MapLibre style specification, because it makes life easier for our users.
 
 
-## npm package
+## NPM Package
+
+[![NPM Version](https://badge.fury.io/js/@maplibre%2Fmaplibre-gl-style-spec.svg)](https://npmjs.org/package/@maplibre/maplibre-gl-style-spec)
 
 The MapLibre GL style specification and utilities are published as a seperate npm
 package so that they can be installed without the bulk of GL JS.
