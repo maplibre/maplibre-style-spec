@@ -9,15 +9,12 @@
 //     transformUrl: (url) => require(`img/s/${url}`).default // eslint-disable-line
 // });
 
-// export default AppropriateImage;
-
-function AppropriateImage ({imageId}:any) {
+export function AppropriateImage ({imageId}:any) {
 
     const src = `/img/src/${imageId}.png`;
     return (
         <>
             <img src={src} alt=""  />
-
         </>
     );
 

@@ -335,15 +335,15 @@ export default function Item (props:IItem) {
 
             {props.example &&
                     <SolidMd content={`
-                        \`\`\`json
-                        "${props.name}": ${JSON.stringify(
-                            props.example,
-                            null,
-                            2
-                        )}
-                        \`\`\`
-                        `} />
-                    }
+\`\`\`json
+"${props.name}": ${JSON.stringify(
+            props.example,
+            null,
+            2
+        )}
+\`\`\`
+`} />
+            }
 
             {props['sdk-support'] && (
                 <div class="mt12">

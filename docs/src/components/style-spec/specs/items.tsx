@@ -1,21 +1,20 @@
-import React from 'react';
 import entries from 'object.entries';
 import Item from './item.jsx';
 
-interface Items {
+interface IItems {
     entry: object;
-    section: string;
-    kind: string;
+    section?: string;
+    kind?: string;
     headingLevel?: '2' | '3';
 }
 
-export default function Items (props:Items) {
+export function Items (props:IItems) {
 
     return (
         <>
             {entries(props.entry)
                 .sort()
-                .map(([name, prop], i) => {
+                .map(([name, prop]:any, i:number) => {
                     const entry = props.entry[name];
                     const section = entry.section || props.section;
                     const kind = entry.kind || props.kind;
@@ -32,8 +31,7 @@ export default function Items (props:Items) {
                             'video'
                         ].indexOf(props.section) > -1 &&
                             (name === '*' || name === 'type')
-                    )
-                        return;
+                    ) return <>test</>;
 
                     return (
                         <Item
@@ -51,3 +49,4 @@ export default function Items (props:Items) {
 
 }
 
+export default Items;
