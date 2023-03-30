@@ -7,7 +7,9 @@ function Root() {
     return (
         <div>
             <SolidMd content={`
-            The value for any [layout property](/maplibre-gl-js-docs/style-spec/layers/#layout-property), [paint property](/maplibre-gl-js-docs/style-spec/layers/#paint-property), or [filter](/maplibre-gl-js-docs/style-spec/layers/#filter) may be specified as an _expression_. An expression defines a formula for computing the value of the property using the _operators_ described below. The set of expression operators provided by MapLibre GL includes:
+# Expressions
+
+The value for any [layout property](/maplibre-gl-js-docs/style-spec/layers/#layout-property), [paint property](/maplibre-gl-js-docs/style-spec/layers/#paint-property), or [filter](/maplibre-gl-js-docs/style-spec/layers/#filter) may be specified as an _expression_. An expression defines a formula for computing the value of the property using the _operators_ described below. The set of expression operators provided by MapLibre GL includes:
 
 - Mathematical operators for performing arithmetic and other operations on numeric values
 - Logical operators for manipulating boolean values and making conditional decisions

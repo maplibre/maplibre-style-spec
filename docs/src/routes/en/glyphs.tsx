@@ -3,7 +3,10 @@ import {SolidMd} from '~/utils/SolidMd';
 export const title = 'Glyphs';
 
 function glyphs() {
-    const md = `A style's \`glyphs\` property provides a URL template for loading signed-distance-field glyph sets in PBF format.
+    const md = `
+# Glyphs
+
+A style's \`glyphs\` property provides a URL template for loading signed-distance-field glyph sets in PBF format.
 
 \`\`\`json
 "glyphs": "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf"

@@ -4,6 +4,7 @@ export const title = 'Types'
 
 function types() {
   const md = `
+# Types
     
 MapLibre style contains values of various types, most commonly as values for the style properties of a layer.
 
