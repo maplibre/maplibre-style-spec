@@ -24,13 +24,7 @@ Root level properties of a MapLibre style specify the map's layers, tile sources
     return (
         <div>
             <SolidMd content={md} />
-
-            {/* START GENERATED CONTENT:
-Content in this section is generated directly using the MapLibre Style
-Specification. To update any content displayed in this section, make edits to:
-https://github.com/maplibre/maplibre-gl-js/blob/main/src/style-spec/reference/v8.json. */}
             <Items headingLevel='2' entry={ref.$root} />
-            {/* END GENERATED CONTENT */}
         </div>
     );
 }
