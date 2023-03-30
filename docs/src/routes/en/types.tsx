@@ -1,9 +1,9 @@
-import { SolidMd } from '~/utils/SolidMd'
+import {SolidMd} from '~/utils/SolidMd';
 // import CodeBlock from "~/utils/CodeBlock";
-export const title = 'Types'
+export const title = 'Types';
 
 function types() {
-  const md = `
+    const md = `
 # Types
     
 MapLibre style contains values of various types, most commonly as values for the style properties of a layer.
@@ -95,9 +95,9 @@ Arrays are comma-separated lists of one or more numbers in a specific order. For
     "circle-color": ["in", 1, ["literal", [1, 2, 3]]]
 }
 \`\`\`
-`
+`;
 
-  return <SolidMd content={md} />
+    return <SolidMd content={md} />;
 }
 
-export default types
+export default types;
