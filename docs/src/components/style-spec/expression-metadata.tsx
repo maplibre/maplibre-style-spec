@@ -17,7 +17,7 @@ import {
     typeOf,
     toString as valueToString
 } from '../../expression/values';
-import {h} from 'preact';
+
 
 // registers compound expressions
 import expressionRegister from '../../expression/definitions/index';

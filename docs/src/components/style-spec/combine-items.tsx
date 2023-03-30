@@ -1,5 +1,5 @@
 import ref from '../../reference/latest';
-import {h} from 'preact';
+
 // helper function to:
 // combine properties, prepare them, and sort them for the <Items /> component
 export default function combineItems(properties, section) {

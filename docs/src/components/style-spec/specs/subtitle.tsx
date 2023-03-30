@@ -1,9 +1,7 @@
-import React from 'react';
+export default function Subtitle (props) {
 
-export default class Subtitle extends React.Component {
-    render() {
-        return (
-            <div className="mb12 color-gray txt-em">{this.props.children}</div>
-        );
-    }
+    return (
+        <div class="mb12 color-gray txt-em">{props.children}</div>
+    );
+
 }

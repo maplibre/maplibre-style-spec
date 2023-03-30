@@ -1,6 +1,5 @@
 import ref from '../../reference/latest';
 import {types} from './expression-metadata.jsx';
-import {h} from 'preact';
 
 export const expressions = {};
 export const expressionGroups = {};

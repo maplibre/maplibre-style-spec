@@ -1,0 +1,58 @@
+// Sidebar.module.scss
+@import '/src/_variables.scss';
+
+.sidebar {
+  position: fixed;
+  // top: 0;
+  left: 0;
+  height: calc(100vh - $--header-height);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  width: 250px;
+  padding: 1rem;
+  // box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  flex: 0 0 auto;
+  max-width: 250px; // Adjust this value according to your preference
+
+  .navItems {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+
+    ul {
+      list-style-type: none; // Remove bullet points
+      padding: 0;
+      margin: 0;
+
+      li {
+
+        a {
+          text-decoration: none;
+          color: #333;
+          font-weight: 500;
+          font-size: 1rem; // Increase font size for better readability
+          line-height: 1.4; // Improve line spacing
+          padding: 6px 0px; // Add padding around the link
+          border-radius: 4px; // Add border radius to the link
+          display: block; // Make the link a block element
+
+          &:hover {
+            color: #007BFF;
+            // color: #007BFF;
+            //background-color: #f6f6ff;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+// nav {
+//   display: flex;
+//   flex-direction: column;
+//   // Add any other styles you need for the links container
+// }

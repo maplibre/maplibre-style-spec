@@ -1,8 +1,6 @@
-import React from 'react';
-
 interface IProps {
     id: string;
-    children: React.ReactNode;
+    children: any;
     headingLevel?: '2' | '3';
 }
 
@@ -10,9 +8,9 @@ export default function Property ({headingLevel = '2', id, children}:IProps) {
 
     const Heading = `h${headingLevel}`;
     return (
-        <Heading id={id} className="unprose txt-mono anchor txt-l mb3 mt24">
+        <Heading id={id} class="unprose txt-mono anchor txt-l mb3 mt24">
             <a
-                className="style-spec-property unprose cursor-pointer color-blue-on-hover block"
+                class="style-spec-property unprose cursor-pointer color-blue-on-hover block"
                 href={`#${id}`}
             >
                 {children}

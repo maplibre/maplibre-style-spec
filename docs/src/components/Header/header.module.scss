@@ -1,0 +1,36 @@
+@import '/src/_variables.scss';
+
+.header {
+    width: 100%;
+    background-color: $--background-color;
+    // padding: 1rem;
+    // box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    height: $--header-height;
+
+    .logoContainer {
+        display: flex;
+        align-items: center;
+        
+        margin-left: 1rem;
+
+        .logo {
+            display: block;
+            width: auto;
+            height: 30px;
+        }
+    }
+}
+.title {
+    cursor: pointer;
+
+    width: 100%;
+    background-color: $--background-color;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+  }
+  
