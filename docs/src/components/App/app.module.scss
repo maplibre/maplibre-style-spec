@@ -14,7 +14,6 @@
     overflow: scroll;
 }
 .mainContent {
-    flex: 1;
     //dynamically resize the width of the main content
     //based on the width of the screen
     width: 100%;
@@ -39,46 +38,5 @@
 @media (max-width: 1000px) {
     .tableOfContents {
         display: none;
-    }
-}
-
-@media (max-width: 800px) {
-    h1 {
-        word-wrap: break-word; // Allow text to wrap to the next line
-    }
-
-    h2 {
-        word-wrap: break-word; // Allow text to wrap to the next line
-    }
-
-    // Code blocks should be full width
-    .css-code {
-        width: 100%;
-    }
-
-    
-
-    .container {
-        flex-direction: column;
-    }
-
-    .sidebar {
-        position: relative;
-        height: auto;
-        width: 100%;
-        padding: 1rem; // Add some padding to separate the sidebar from the main content
-    }
-
-    .mainContent {
-        margin-left: 0px;
-        padding: 1rem; // Add padding to separate the main content from the Header
-    }
-
-    .tableOfContents {
-        display: none;
-    }
-
-    .outerContainer {
-        align-items: flex-start; // Align the sidebar and main content to the left
     }
 }
