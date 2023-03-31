@@ -15,7 +15,6 @@ export default function ExpressionReference (props: IExpressionReference) {
     const group = groupedExpressions.filter(
         (g) => g.name === props.group
     )[0];
-    debugger;
 
     const SubHeading = ({children}) => (
         <h3

@@ -76,8 +76,8 @@ export function TableOfContents(props: TableOfContentsProps) {
 
     // Render the table of contents with the headers and active link state
     return (
-        <aside class={`${props.class} ${style.tableOfContents}`}>
-            <h1 class={style.header}>On This Page</h1>
+        <div class={`${props.class} ${style.tableOfContents}`}>
+            <h3 class={style.header}>On This Page</h3>
             <nav>
                 <div class={style.navItems}>
                     <ul>
@@ -91,6 +91,6 @@ export function TableOfContents(props: TableOfContentsProps) {
                     </ul>
                 </div>
             </nav>
-        </aside>
+        </div>
     );
 }

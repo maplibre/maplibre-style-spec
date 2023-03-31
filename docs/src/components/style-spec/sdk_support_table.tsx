@@ -1,4 +1,5 @@
 //@ts-ignore
+import style from './sdk_support_table.module.scss';
 import entries from 'object.entries';
 import {SolidMd} from '~/utils/SolidMd.jsx';
 
@@ -11,11 +12,11 @@ const SDKSupportTable = (props: { supportItems?: Object }) => {
     }
 
     return (
-        <div class='scroll-auto'>
+        <div class={style.SDKSupportTable}>
             <table class='txt-s'>
                 <thead>
                     <tr
-                        class='bg-gray-faint'
+                        class={style.headerRow}
                         style={{
                             'border-top-left-radius': '4px',
                             'border-top-right-radius': '4px',

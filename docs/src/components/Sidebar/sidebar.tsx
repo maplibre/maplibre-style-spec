@@ -1,7 +1,8 @@
-import style from './sidebar.module.scss'
-import './sidebar.css'
-import { A} from 'solid-start'
-import { pages } from '~/pages';
+import style from './sidebar.module.scss';
+import './sidebar.css';
+import {A} from 'solid-start';
+import {pages} from '~/pages';
+import {Header} from '../Header/Header';
 
 interface SidebarProps {
     class?: string;
@@ -9,24 +10,25 @@ interface SidebarProps {
 
 export function Sidebar(props: SidebarProps) {
 
-    
     return (
-        <aside class={`${style.sidebar} ${props.class}`}>
-            <div class={style.navItems}>
-                <ul>
-                    {pages.map((page) => (
-                        <li>
-                            <A end={true} class="sidebar-link" href={page.path}>{page.title}</A>
-                        </li>
-                    ))}
-                </ul>
+        <>
+            <div class={`${style.sidebar} ${props.class}`}>
+                <Header />
+                <div class={style.navItems}>
+                    <ul>
+                        {pages.map((page) => (
+                            <li>
+                                <A end={true} class="sidebar-link" href={page.path}>{page.title}</A>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             </div>
-        </aside>
+        </>
     );
 }
 
 // export function Sidebar(props: SidebarProps) {
-
 
 //     return (
 //         <aside class={`${style.sidebar} ${props.class}`}>
