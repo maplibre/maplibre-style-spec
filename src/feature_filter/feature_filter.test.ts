@@ -1,3 +1,4 @@
+import {jest} from '@jest/globals';
 import {default as createFilter, isExpressionFilter} from '.';
 
 import convertFilter from './convert';

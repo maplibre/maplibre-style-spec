@@ -1,3 +1,4 @@
+import {jest} from '@jest/globals';
 import {createPropertyExpression, Feature, GlobalProperties, StylePropertyExpression} from '../expression';
 import definitions from './definitions';
 import v8 from '../reference/v8.json' assert {type: 'json'};

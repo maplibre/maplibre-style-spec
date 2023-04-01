@@ -1,9 +1,8 @@
 import UnitBezier from '@mapbox/unitbezier';
 
-import * as interpolate from '../../util/interpolate';
+import interpolate from '../../util/interpolate';
 import {toString, NumberType, ColorType} from '../types';
 import {findStopLessThanOrEqualTo} from '../stops';
-import {hcl, lab} from '../../util/color_spaces';
 
 import type {Stops} from '../stops';
 import type {Expression} from '../expression';
@@ -174,12 +173,13 @@ class Interpolate implements Expression {
         const outputLower = outputs[index].evaluate(ctx);
         const outputUpper = outputs[index + 1].evaluate(ctx);
 
-        if (this.operator === 'interpolate') {
-            return ((interpolate[this.type.kind.toLowerCase()] as any))(outputLower, outputUpper, t); // eslint-disable-line import/namespace
-        } else if (this.operator === 'interpolate-hcl') {
-            return hcl.reverse(hcl.interpolate(hcl.forward(outputLower), hcl.forward(outputUpper), t));
-        } else {
-            return lab.reverse(lab.interpolate(lab.forward(outputLower), lab.forward(outputUpper), t));
+        switch (this.operator) {
+            case 'interpolate':
+                return interpolate[this.type.kind.toLowerCase()](outputLower, outputUpper, t);
+            case 'interpolate-hcl':
+                return interpolate.color(outputLower, outputUpper, t, 'hcl');
+            case 'interpolate-lab':
+                return interpolate.color(outputLower, outputUpper, t, 'lab');
         }
     }
 

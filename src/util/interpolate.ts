@@ -1,6 +1,11 @@
-import Color from './color';
+import Color, {InterpolationColorSpace} from './color';
 import Padding from './padding';
 
+/**
+ * @param interpolationType Interpolation type
+ * @returns interpolation fn
+ * @deprecated use `interpolate[type]` instead
+ */
 export const interpolateFactory = (interpolationType: 'number'|'color'|'array'|'padding') => {
     switch (interpolationType) {
         case 'number': return number;
@@ -10,26 +15,21 @@ export const interpolateFactory = (interpolationType: 'number'|'color'|'array'|'
     }
 };
 
-export function number(a: number, b: number, t: number) {
+function number(a: number, b: number, t: number) {
     return (a * (1 - t)) + (b * t);
 }
 
-export function color(from: Color, to: Color, t: number) {
-    return new Color(
-        number(from.r, to.r, t),
-        number(from.g, to.g, t),
-        number(from.b, to.b, t),
-        number(from.a, to.a, t)
-    );
+function color(from: Color, to: Color, t: number, spaceKey: InterpolationColorSpace = 'rgb'): Color {
+    return from.getInterpolationFn(to, spaceKey)(t);
 }
 
-export function array(from: Array<number>, to: Array<number>, t: number): Array<number> {
+function array(from: Array<number>, to: Array<number>, t: number): Array<number> {
     return from.map((d, i) => {
         return number(d, to[i], t);
     });
 }
 
-export function padding(from: Padding, to: Padding, t: number): Padding {
+function padding(from: Padding, to: Padding, t: number): Padding {
     const fromVal = from.values;
     const toVal = to.values;
     return new Padding([
@@ -40,11 +40,11 @@ export function padding(from: Padding, to: Padding, t: number): Padding {
     ]);
 }
 
-const interpolates = {
+const interpolate = {
     number,
     color,
     array,
-    padding
-};
+    padding,
+} as const;
 
-export default interpolates;
+export default interpolate;

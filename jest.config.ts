@@ -1,14 +1,20 @@
 import type {Config} from 'jest';
 
 const sharedConfig = {
+    extensionsToTreatAsEsm: ['.ts'],
+    moduleNameMapper: {
+        '^(\\.{1,2}/.*)\\.js$': '$1',
+    },
     transform: {
         // use typescript to convert from esm to cjs
         '[.](m|c)?(ts|js)(x)?$': ['ts-jest', {
-            'isolatedModules': true,
+            isolatedModules: true,
+            useESM: true,
         }],
     },
     // any tests that operate on dist files shouldn't compile them again.
-    transformIgnorePatterns: ['<rootDir>/dist']
+    transformIgnorePatterns: ['<rootDir>/dist'],
+    setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
 } as Partial<Config>;
 
 const config: Config = {

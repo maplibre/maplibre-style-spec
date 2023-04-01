@@ -70,7 +70,8 @@ import derefLayers from './deref';
 import diff, {operations} from './diff';
 import ValidationError from './error/validation_error';
 import ParsingError from './error/parsing_error';
-import {FeatureState, StyleExpression, isExpression, createExpression, createPropertyExpression, normalizePropertyExpression, ZoomConstantExpression, ZoomDependentExpression, StylePropertyFunction, Feature, GlobalProperties, SourceExpression, CompositeExpression, StylePropertyExpression} from './expression';
+import type {CompositeExpression, Feature, FeatureState, GlobalProperties, SourceExpression, StylePropertyExpression} from './expression';
+import {createExpression, createPropertyExpression, isExpression, normalizePropertyExpression, StyleExpression, StylePropertyFunction, ZoomConstantExpression, ZoomDependentExpression} from './expression';
 import featureFilter, {isExpressionFilter} from './feature_filter';
 
 import convertFilter from './feature_filter/convert';
@@ -82,9 +83,10 @@ import convertFunction from './function/convert';
 import {eachSource, eachLayer, eachProperty} from './visit';
 import ResolvedImage from './expression/types/resolved_image';
 import {supportsPropertyExpression} from './util/properties';
-import {IMercatorCoordinate, ICanonicalTileID, ILngLat, ILngLatLike} from './tiles_and_coordinates';
+import type {ICanonicalTileID, ILngLat, ILngLatLike, IMercatorCoordinate} from './tiles_and_coordinates';
 import EvaluationContext from './expression/evaluation_context';
-import {FormattedType, NullType, Type, toString, ColorType} from './expression/types';
+import type {Type} from './expression/types';
+import {ColorType, FormattedType, NullType, toString} from './expression/types';
 
 import interpolates, {interpolateFactory} from './util/interpolate';
 import expressions from './expression/definitions';
