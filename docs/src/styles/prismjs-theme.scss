@@ -34,9 +34,28 @@ a {
 	
 }
 
+p a {
+	margin-right: 0;
+	text-decoration: none;
+	color:rgb(0, 132, 255);
+	font-style: italic;
+}
+
+
+.color-gray {
+	color: rgb(91, 120, 151);
+	font-style: italic;
+	font-size: 15px;
+	font-family: 'Open Sans',sans-serif;
+	a {
+		text-decoration: underline !important;
+		color: rgb(0, 132, 255) !important;
+	}
+}
+
 h3 a, h2 a {
 	font-weight: 300;
-	color: black;
+	color: rgb(31, 51, 73);
 
 	&:hover{
 		color: #1351ce

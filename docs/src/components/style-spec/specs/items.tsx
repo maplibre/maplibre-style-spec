@@ -31,7 +31,7 @@ export function Items (props:IItems) {
                             'video'
                         ].indexOf(props.section) > -1 &&
                             (name === '*' || name === 'type')
-                    ) return <>test</>;
+                    ) return <></>;
 
                     return (
                         <Item
