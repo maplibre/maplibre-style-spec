@@ -275,10 +275,7 @@ export default function Item (props:IItem) {
                         ) && (
                             <em class="color-gray">
                                 <a href="/maplibre-gl-style-spec/style-spec/expressions/#feature-state">
-                                    {/* <Icon
-                                                name="combine"
-                                                inline={true}
-                                            /> */}
+
                                     <code>feature-state</code>
                                 </a>
                             </em>
@@ -290,10 +287,7 @@ export default function Item (props:IItem) {
                                     ' and '}
                         {props.expression.interpolated && (
                             <a href="/maplibre-gl-style-spec/style-spec/expressions/#interpolate">
-                                {/* <Icon
-                                            name="smooth-ramp"
-                                            inline={true}
-                                        /> */}
+
                                 <code>interpolate</code>
                             </a>
                         )}
@@ -303,7 +297,6 @@ export default function Item (props:IItem) {
 
                 {props.transition && (
                     <>
-                        {/* <Icon name="opacity" inline={true} /> */}
                             Transitionable.{' '}
                     </>
                 )}

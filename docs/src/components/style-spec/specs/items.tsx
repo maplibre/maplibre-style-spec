@@ -35,7 +35,6 @@ export function Items (props:IItems) {
 
                     return (
                         <Item
-                            key={i}
                             id={`${section ? `${section}-` : ''}${name}`}
                             name={name}
                             {...prop}

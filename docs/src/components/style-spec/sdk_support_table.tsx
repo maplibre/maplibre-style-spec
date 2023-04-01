@@ -31,7 +31,7 @@ const SDKSupportTable = (props: { supportItems?: Object }) => {
                 </thead>
                 <tbody>
                     {entries(props.supportItems || props).map(([key, entry], i) => (
-                        <tr key={i}>
+                        <tr>
                             <td>
                                 <SolidMd content={key} />
                             </td>

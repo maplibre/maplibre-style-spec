@@ -7,23 +7,20 @@ function Transition() {
     const md = `# Transition
 A \`transition\` property controls timing for the interpolation between a transitionable style property's previous value and new value. A style's [root \`transition\`](/en/root/#transition) property provides global transition defaults for that style.
 \`\`\`json
-"transition": {JSON.stringify(
-    ref.$root.transition.example,
-    null,
-    2
-)}
+"transition": ${JSON.stringify(
+        ref.$root.transition.example,
+        null,
+        2
+    )}
 \`\`\`
-{/* Any transitionable layer property, marked by {{<Icon
-    name="opacity"
-    inline={true}
-    />}}, may also have its own \`*-transition\` property that defines specific transition timing for that layer property, overriding the global \`transition\` values. */}
+Any transitionable layer property, may also have its own \`*-transition\` property that defines specific transition timing for that layer property, overriding the global \`transition\` values.
 
 \`\`\`json
-"fill-opacity-transition": {{JSON.stringify(
-    ref.$root.transition.example,
-    null,
-    2
-)}}
+"fill-opacity-transition": ${JSON.stringify(
+        ref.$root.transition.example,
+        null,
+        2
+    )}
 \`\`\`
 
 `;

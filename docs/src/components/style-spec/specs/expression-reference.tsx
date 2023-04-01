@@ -32,7 +32,7 @@ export default function ExpressionReference (props: IExpressionReference) {
                 <SubHeading>Related</SubHeading>
                 <ul class="mb18">
                     {links.map((link) => (
-                        <li key={link.title}>
+                        <li>
                             <a href={link.href}>{link.title}</a>
                         </li>
                     ))}

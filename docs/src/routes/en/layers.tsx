@@ -5,6 +5,7 @@ import {Items} from '../../components/style-spec/specs/items';
 import {AppropriateImage} from '~/components/style-spec/appropriate-image';
 import Caption from '~/components/style-spec/caption';
 import combineItems from '~/components/style-spec/combine-items';
+import { layerTypes } from '~/components/data/types';
 function Layers() {
 
     return (
@@ -12,16 +13,16 @@ function Layers() {
 
             <SolidMd content={`# Layers
 
-A style's \`layers\` property lists all the layers available in that style. The type of layer is specified by the \`"type"\` property, and must be one of layerTypes.map((t, i) => <var key={i}>{t}</var>).reduce((prev, curr) => [prev, ', ', curr]).
+A style's \`layers\` property lists all the layers available in that style. The type of layer is specified by the \`"type"\` property, and must be one of ${layerTypes.map((t, i) => `\`${t}\``).join(', ')}.
 
 Except for layers of the \`background\` type, each layer needs to refer to a source. Layers take the data that they get from a source, optionally filter features, and then define how those features are styled.
 
 \`\`\`json
-"layers": JSON.stringify(
-    ref.$root.layers.example,
-    null,
-    2
-    )
+"layers": ${JSON.stringify(
+            ref.$root.layers.example,
+            null,
+            2
+        )}
 \`\`\`
 `}/>
 
