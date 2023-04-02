@@ -6,13 +6,16 @@
   align-items: center;
   position: sticky;
   top: 0;
+  overflow: hidden;
   z-index: 200;
   background-color: white;
   box-shadow: 0 1px 2px 0 #0000001a;
   height: 3.75rem;
-  padding: calc(1rem*0.5) 1rem;
+  box-sizing: border-box;
+  
 
   .logoContainer {
+    padding: calc(1rem*0.5) 1rem;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -28,12 +31,12 @@
 .title_container {
   height: 30px;
   margin-left: 10px;
-  
+  width: 250px;
 }
 
 .title {
   cursor: pointer;
-  width: 100%;
+  width: 250px;
   font-size: 1.6rem;
   font-weight: bold;
   color: #333;

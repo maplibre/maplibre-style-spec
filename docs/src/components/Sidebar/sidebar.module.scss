@@ -1,21 +1,49 @@
 // Sidebar.module.scss
 @import '/src/_variables.scss';
 
-.sidebar {
+.sidebar_outer_container {
+  clip-path: inset(0);
+  display: block;
+  will-change: width;
+
   // top: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  border: 1px solid rgb(236, 242, 247);
   background-color: white;
-  padding: 1rem;
-  // box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  flex: 0 0 auto;
-  max-width: 200px; // Adjust this value according to your preference
+  margin-top: calc(3.75rem *-1);
+
+  .sidebar_viewport {
+    position: sticky;
+    top: 0;
+    height: 100%;
+    max-height: 100vh;
+    box-sizing: border-box;
+    
+    
+  }
+  
+  .sidebar_inner_container{
+    display: flex;
+    width: 200px; // Adjust this value according to your preference
+    padding-top: 60px;
+    box-sizing: border-box;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  // flex-direction: column;
+  // align-items: center;
+
+  // 
+  // // box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  // flex: 0 0 auto;
+  
 
   .navItems {
-    flex-direction: column;
+    padding: 1rem;
+    flex-grow: 1;
     align-items: flex-start;
     width: 100%;
+    overflow: scroll;
 
     ul {
       list-style-type: none; // Remove bullet points
@@ -23,7 +51,6 @@
       margin: 0;
 
       li {
-
         a {
           text-decoration: none;
           color: #333;
@@ -35,7 +62,7 @@
           display: block; // Make the link a block element
 
           &:hover {
-            color: #007BFF;
+            color: #007bff;
             // color: #007BFF;
             //background-color: #f6f6ff;
           }
@@ -44,8 +71,6 @@
     }
   }
 }
-
-
 
 // nav {
 //   display: flex;

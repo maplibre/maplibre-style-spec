@@ -1,42 +1,13 @@
+.app_wrap {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  box-sizing: border-box;
+  word-wrap: break-word;
+}
 
 .container {
-    display: flex;
-    flex-wrap: nowrap;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-}
-
-.sidebar {
-    position: fixed;
-    position: sticky;
-    top: 0;
-    overflow: scroll;
-}
-.mainContent {
-    //dynamically resize the width of the main content
-    //based on the width of the screen
-    width: 100%;
-    max-width: 50rem;
-    margin: 0 auto;
-    padding: 0rem 2rem 1rem 2rem;
-    height: 100vh;
-    overflow: scroll;
-
-    h1:nth-child(1) {
-        margin-top: 20px;
-    }
-}
-
-.tableOfContents {
-    flex: 0 0 auto;
-    position: sticky;
-    top: 0;
-    overflow: scroll;
-}
-
-@media (max-width: 1000px) {
-    .tableOfContents {
-        display: none;
-    }
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
 }

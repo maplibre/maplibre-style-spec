@@ -1,4 +1,4 @@
-import style from './TableOfContents.module.scss';
+import style from './toc.module.scss';
 import {createEffect, createSignal, onCleanup} from 'solid-js';
 // import scrollto
 
@@ -70,27 +70,30 @@ export function TableOfContents(props: TableOfContentsProps) {
     const handleLinkClick = (event: Event, id: string) => {
         event.preventDefault();
         // navigate(`${location.pathname}#${id}`, { scroll: false, replace: true });
+
         const headerElement = document.getElementById(id);
         headerElement?.scrollIntoView({behavior: 'smooth'});
     };
 
     // Render the table of contents with the headers and active link state
     return (
-        <div class={`${props.class} ${style.tableOfContents}`}>
-            <h3 class={style.header}>On This Page</h3>
-            <nav>
-                <div class={style.navItems}>
-                    <ul>
-                        {headers().map(({id, title}) => (
-                            <li class={id === activeLink() ? style.active : ''}>
-                                <a href={'#'} onClick={(event) => handleLinkClick(event, id)}>
-                                    {title}
-                                </a>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            </nav>
+        <div class={`${props.class} ${style.tocColumn}`}>
+            <div class={`${props.class} ${style.tableOfContents}`}>
+                <h3 class={style.header}>On This Page</h3>
+                <nav>
+                    <div class={style.navItems}>
+                        <ul>
+                            {headers().map(({id, title}) => (
+                                <li class={id === activeLink() ? style.active : ''}>
+                                    <a href={'#'} onClick={(event) => handleLinkClick(event, id)}>
+                                        {title}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </nav>
+            </div>
         </div>
     );
 }

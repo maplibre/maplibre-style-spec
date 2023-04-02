@@ -1,15 +1,18 @@
 @import '/src/_variables.scss';
 
+div {
+  box-sizing: border-box;
+}
+
 body {
   font-family: 'Open sans', sans-serif;
   font-size: 15px;
   line-height: 24px !important;
   color: #1f3349;
   margin: 0px;
-  
-  overflow: scroll;
-  
 }
+
+
 
 p {
   margin: 0 !important;

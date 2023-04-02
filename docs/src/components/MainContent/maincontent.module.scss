@@ -1,7 +1,49 @@
 .mainContentContainer {
-    max-width: 50rem;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 1rem;
+  flex-grow: 1;
+  max-width: calc(100% - 200px);
+  width: 100%;
+  display: flex;
+  box-sizing: border-box;
 
+
+  .mainContent_paddingContainer {
+    position: relative;
+    padding: 1rem 1rem 2rem 1rem;
+    overflow: scroll;
+    box-sizing: border-box;
+
+    .row {
+      display: flex;
+      box-sizing: border-box;
+
+      .docItems {
+        flex: 1 0;
+        margin-left: 0;
+        padding: 0 1rem;
+        width: 100%;
+        max-width: 75% !important;
+        
+
+
+        h1:nth-child(1) {
+            margin-top: 20px;
+        }
+
+      }
+
+      .tableOfContents {
+        flex: 0 0 25%;
+        padding: 0 1rem;
+        position: sticky;
+        top: 0;
+        overflow: scroll;
+      }
+
+      @media (max-width: 1000px) {
+        .tableOfContents {
+          display: none;
+        }
+      }
+    }
+  }
 }

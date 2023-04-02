@@ -1,4 +1,5 @@
-import style from './maincontent.module.scss'
+import {TableOfContents} from '../TableOfContents/TableOfContents';
+import style from './maincontent.module.scss';
 
 interface MainContentProps {
     children?: any;
@@ -8,7 +9,12 @@ interface MainContentProps {
 export function MainContent(props: MainContentProps) {
     return (
         <main class={`${style.mainContentContainer} ${props.class}`}>
-            {props.children}
+            <div class={style.mainContent_paddingContainer}>
+                <div class={style.row}>
+                    <div class={style.docItems}>{props.children}</div>
+                    <TableOfContents class={`${style.tableOfContents}`} />
+                </div>
+            </div>
         </main>
-    )
+    );
 }
