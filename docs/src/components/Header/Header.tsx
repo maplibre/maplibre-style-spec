@@ -7,18 +7,20 @@ export function Header() {
     const navigate = useNavigate();
     return (
         <header class={style.header}>
-            <div class={style.logoContainer}>
-                <A href='/'>
-                    <img src={logo} alt='logo' class={style.logo} />
-                </A>
-                <span
-                    class={style.title}
-                    onclick={() => {
-                        navigate('/');
-                    }}
-                >
+            <div class={style.logoContainer} onclick={() => {
+                navigate('/');
+            }}>
+
+                <img src={logo} alt='logo' class={style.logo} />
+
+                <div class={style.title_container}>
+                    <span
+                        class={style.title}
+
+                    >
           Style Spec Docs
-                </span>
+                    </span>
+                </div>
             </div>
         </header>
     );

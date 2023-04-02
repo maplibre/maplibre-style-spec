@@ -4,12 +4,18 @@
   width: 100%;
   display: flex;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background-color: white;
+  box-shadow: 0 1px 2px 0 #0000001a;
+  height: 3.75rem;
+  padding: calc(1rem*0.5) 1rem;
 
   .logoContainer {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
-    margin-bottom: 2rem;
 
     .logo {
       display: block;
@@ -18,13 +24,17 @@
     }
   }
 }
+
+.title_container {
+  height: 30px;
+  margin-left: 10px;
+  
+}
+
 .title {
   cursor: pointer;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   font-weight: bold;
   color: #333;
-  margin: 10px 0 0 0;
 }

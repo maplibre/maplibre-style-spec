@@ -13,7 +13,7 @@ export function Sidebar(props: SidebarProps) {
     return (
         <>
             <div class={`${style.sidebar} ${props.class}`}>
-                <Header />
+                
                 <div class={style.navItems}>
                     <ul>
                         {pages.map((page) => (
