@@ -3,7 +3,7 @@ import SDKSupportTable from '../components/sdk-support-table/sdk-support-table';
 import {renderSignature} from '../components/style-spec/specs/render-signature';
 import Property from '../components/property.jsx';
 import related from './expressions-related.json';
-import {SolidMd} from '~/components/SolidMd.jsx';
+import {SolidMd} from '~/components/markdown.jsx';
 
 interface IExpressionReference {
     group: string;

@@ -1,4 +1,4 @@
-import {SolidMd} from '~/components/SolidMd';
+import {SolidMd} from '~/components/markdown';
 import Caption from '~/components/caption';
 import SDKSupportTable from '~/components/sdk-support-table/sdk-support-table';
 import Property from '~/components/property';

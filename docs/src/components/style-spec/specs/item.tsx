@@ -3,7 +3,7 @@ import SDKSupportTable from '../../sdk-support-table//sdk-support-table';
 // import Icon from '@mapbox/mr-ui/icon';
 import Property from '../../property.jsx';
 import Subtitle from './subtitle.jsx';
-import {SolidMd} from '~/components/SolidMd';
+import {SolidMd} from '~/components/markdown';
 
 interface IItem {
     id: string;

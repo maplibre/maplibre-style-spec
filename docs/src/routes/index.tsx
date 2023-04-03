@@ -1,4 +1,4 @@
-import {SolidMd} from '~/components/SolidMd';
+import {SolidMd} from '~/components/markdown';
 
 const md = `# Introduction
 
