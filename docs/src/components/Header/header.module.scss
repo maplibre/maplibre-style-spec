@@ -15,12 +15,14 @@
   
 
   .logoContainer {
+    
     padding: calc(1rem*0.5) 1rem;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
 
     .logo {
+      cursor: pointer;
       display: block;
       width: auto;
       height: 30px;
@@ -29,6 +31,7 @@
 }
 
 .title_container {
+  
   height: 30px;
   margin-left: 10px;
   width: 250px;
@@ -37,7 +40,7 @@
 .title {
   cursor: pointer;
   width: 250px;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   font-weight: bold;
   color: #333;
 }

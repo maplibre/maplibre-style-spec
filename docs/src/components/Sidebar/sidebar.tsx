@@ -18,7 +18,7 @@ export function Sidebar(props: SidebarProps) {
                             <ul>
                                 {pages.map((page) => (
                                     <li>
-                                        <A end={true} class="sidebar-link" href={page.path}>{page.title}</A>
+                                        <A end={true} class="sidebar-link" href={page.path.replace('/', '')}>{page.title}</A>
                                     </li>
                                 ))}
                             </ul>

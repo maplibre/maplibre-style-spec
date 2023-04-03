@@ -144,10 +144,9 @@ If an expression accepts an array argument and the user supplies an array litera
 }
 \`\`\`
 
-# Expression reference
+`} />
 
-
-
+            <SolidMd content={`
 ## Types
 
 The expressions in this section are for testing for and converting between different data types like strings, numbers, and boolean values.
@@ -190,13 +189,14 @@ The expressions in this section can be used to add conditional logic to your sty
 
             <ExpressionReference group='Math' />
 
-            <SolidMd content='## Zoom' />
+            <SolidMd content='## Zooming' />
 
             <ExpressionReference group='Zoom' />
 
             <SolidMd content='## Heatmap' />
 
             <ExpressionReference group='Heatmap' />
+
         </div>
     );
 }

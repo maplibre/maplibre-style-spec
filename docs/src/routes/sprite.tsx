@@ -1,6 +1,6 @@
 import {SolidMd} from '~/utils/SolidMd';
 export const title = 'Sprite';
-import ref from '../../reference/latest';
+import ref from '../reference/latest';
 
 function Sprite() {
 

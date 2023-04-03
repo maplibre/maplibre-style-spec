@@ -1,7 +1,7 @@
 import {SolidMd} from '~/utils/SolidMd';
 export const title = 'Root';
-import ref from '../../reference/latest';
-import {Items} from '../../components/style-spec/specs/items';
+import ref from '../reference/latest';
+import {Items} from '../components/style-spec/specs/items';
 function Root() {
 
     const md = `# Light

@@ -6,7 +6,7 @@ interface IProps {
     headingLevel?: '2' | '3';
 }
 
-export default function Property ({headingLevel = '2', id, children}:IProps) {
+export default function Property ({headingLevel = '3', id, children}:IProps) {
 
     const Heading = `h${headingLevel}`;
 

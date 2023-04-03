@@ -1,11 +1,11 @@
 import {SolidMd} from '~/utils/SolidMd';
 export const title = 'Layers';
-import ref from '../../reference/latest';
-import {Items} from '../../components/style-spec/specs/items';
+import ref from '../reference/latest';
+import {Items} from '../components/style-spec/specs/items';
 import {AppropriateImage} from '~/components/style-spec/appropriate-image';
 import Caption from '~/components/style-spec/caption';
 import combineItems from '~/components/style-spec/combine-items';
-import { layerTypes } from '~/components/data/types';
+import {layerTypes} from '~/components/data/types';
 function Layers() {
 
     return (

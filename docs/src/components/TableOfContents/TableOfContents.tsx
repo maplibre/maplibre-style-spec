@@ -1,5 +1,5 @@
 import style from './toc.module.scss';
-import {For, createEffect, createSignal, onCleanup} from 'solid-js';
+import {For, Show, createEffect, createSignal, onCleanup} from 'solid-js';
 // import scrollto
 
 import {useNavigate, useLocation} from 'solid-start';
@@ -11,24 +11,26 @@ interface TableOfContentsProps {
 export function TableOfContents(props: TableOfContentsProps) {
     // Create state for the active link and headers
     const [activeLink, setActiveLink] = createSignal('');
-    const [headers, setHeaders] = createSignal<{ id: string; title: string | null }[]>([]);
+    // const [headers, setHeaders] = createSignal<{ id: string; title: string | null }[]>([]);
+    const [domHeaders, setDomHeaders] = createSignal<HTMLElement[]>([]);
 
     // Define a selector for the headers to include in the table of contents
-    const headerSelector = 'h1, h2, h3';
+    const headerSelector = 'h2, h3';
 
     // Function to handle scroll event
     const handleScroll = () => {
         let closestHeader;
         let closestDistance = Infinity;
 
+        // setDomHeaders(headers().map(({id}) => document.getElementById(id)!));
+
         // Iterate through headers to find the closest one to the top of the viewport
-        headers().forEach(({id}) => {
-            const header = document.getElementById(id);
+        domHeaders().forEach((header) => {
             if (header) {
                 const distance = Math.abs(header.getBoundingClientRect().top);
                 if (distance < closestDistance) {
                     closestDistance = distance;
-                    closestHeader = id;
+                    closestHeader = header.id;
                 }
             }
         });
@@ -52,7 +54,7 @@ export function TableOfContents(props: TableOfContentsProps) {
                 }
                 return {id, title};
             });
-            setHeaders(pageHeaders);
+            setDomHeaders(pageHeaders.map(({id}) => document.getElementById(id)!));
 
             // Add the scroll event listener when the window object is available
             window.addEventListener('scroll', handleScroll);
@@ -67,36 +69,55 @@ export function TableOfContents(props: TableOfContentsProps) {
     });
 
     const navigate = useNavigate();
+
     const location: any = useLocation();
 
     const handleLinkClick = (event: Event, id: string) => {
         event.preventDefault();
         // navigate(`${location.pathname}#${id}`, { scroll: false, replace: true });
-
+        // console.log(location)
+        navigate(`${location.pathname}#${id}`);
         const headerElement = document.getElementById(id);
         headerElement?.scrollIntoView({behavior: 'smooth'});
     };
 
     // Render the table of contents with the headers and active link state
     return (
-        <div class={`${props.class} ${style.tocColumn}`}>
-            <div class={`${props.class} ${style.tableOfContents}`}>
-                <h3 class={style.header}>On This Page</h3>
-                <nav>
-                    <div class={style.navItems}>
-                        <ul>
-                            <For each={headers()}>{({id, title}) => (
-                                <li class={id === activeLink() ? style.active : ''}>
-                                    <a href={'#'} onClick={(event) => handleLinkClick(event, id)}>
-                                        {title}
-                                    </a>
-                                </li>
-                            )}</For>
-                        </ul>
-                    </div>
-                </nav>
+        <Show when={domHeaders().length > 0}>
+            <div class={`${props.class} ${style.tocColumn}`}>
+                <div class={`${props.class} ${style.tableOfContents}`}>
+                    <h3 style={{cursor: 'pointer'}}class={style.header} onClick={() => {
+                        // const contentWindow = document.getElementById('app_wrap')!;
+                        // console.log(contentWindow);
+                        // console.log(contentWindow.scrollTop);
+                        document.documentElement.scrollTop = 0;
+                        // contentWindow.scrollTop = 0;
+                    }}>On This Page</h3>
+                    <nav>
+                        <div class={style.navItems}>
+                            <ul>
+                                <For each={domHeaders()}>{(header) => (
+                                    <li class={header.id === activeLink() ? style.active : ''}>
+                                        
+
+                                        <a href={`#${header.id}`} classList={{
+                                            [style.anchor_H1]: header.tagName === 'H1',
+                                            [style.anchor_H2]: header.tagName === 'H2',
+                                            [style.anchor_H3]: header.tagName === 'H3'
+                                        }}>
+                                            {header.id.startsWith('paint-') ? <span class={style.paintIcon}><i class="fa-solid fa-palette"></i></span> : null}
+                                        {header.id.startsWith('layout-') ? <span class={style.layoutIcon}><i class="fa-solid fa-pen"></i></span> : null}
+                                            {/* onClick={(event) => handleLinkClick(event, header.id)}> */}
+                                            {header.innerText}
+                                        </a>
+                                    </li>
+                                )}</For>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
             </div>
-        </div>
+        </Show>
     );
 
 }

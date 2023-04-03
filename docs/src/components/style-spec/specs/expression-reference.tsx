@@ -17,12 +17,12 @@ export default function ExpressionReference (props: IExpressionReference) {
     )[0];
 
     const SubHeading = ({children}) => (
-        <h3
-            style={{'font-size': '15px', 'line-height': '24px'}}
+        <h4
+            style={{'font-size': '15px', 'font-weight': 900, 'line-height': '24px'}}
             class="txt-bold mb6 unprose pt0"
         >
             {children}
-        </h3>
+        </h4>
     );
 
     const Related = ({links}) => {

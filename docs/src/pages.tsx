@@ -1,13 +1,14 @@
-export const pages: {path: string, title: string}[] = [
-  { title: 'Introduction', path: '/en/' },
-  { title: 'Root', path: '/en/root' },
-  { title: 'Light', path: '/en/light' },
-  { title: 'Sources', path: '/en/sources' },
-  { title: 'Sprite', path: '/en/sprite' },
-  { title: 'Glyphs', path: '/en/glyphs' },
-  { title: 'Transition', path: '/en/transition' },
-  { title: 'Layers', path: '/en/layers' },
-  { title: 'Types', path: '/en/types' },
-  { title: 'Expressions', path: '/en/expressions' },
-  { title: 'Other', path: '/en/other' },
-]
+export const pages: {path: string; title: string}[] = [
+    {title: 'Introduction', path: '/'},
+    {title: 'Root', path: '/root'},
+    {title: 'Light', path: '/light'},
+    {title: 'Sources', path: '/sources'},
+    {title: 'Sprite', path: '/sprite'},
+    {title: 'Glyphs', path: '/glyphs'},
+    {title: 'Transition', path: '/transition'},
+    {title: 'Layers', path: '/layers'},
+    {title: 'Types', path: '/types'},
+    {title: 'Expressions', path: '/expressions'},
+    // {title: 'Expression ref', path: '/expression-reference'},
+    {title: 'Other', path: '/other'},
+];

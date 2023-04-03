@@ -7,7 +7,7 @@ import { TableOfContents } from '../TableOfContents/TableOfContents';
 export function App(props: { children?: any }) {
     return (
         <>
-            <div class={style.app_wrap}>
+            <div class={style.app_wrap} id="app_wrap">
 
                 <Header />
                 <div class={style.container}>

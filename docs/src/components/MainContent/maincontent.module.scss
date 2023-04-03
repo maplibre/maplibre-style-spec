@@ -1,19 +1,21 @@
 .mainContentContainer {
   flex-grow: 1;
-  max-width: calc(100% - 200px - 200px);
+  
   width: 100%;
   display: flex;
   box-sizing: border-box;
-  overflow: scroll;
+  overflow: hidden;
+  justify-content: center;
 
 
   
 
   .mainContent_paddingContainer {
+    max-width: 800px;
     
     position: relative;
     padding: 1rem 1rem 2rem 1rem;
-    overflow: scroll;
+    overflow: hidden;
     box-sizing: border-box;
     
     .row {
@@ -27,15 +29,11 @@
         padding: 0 1rem;
         width: 100%;    
         
+        
 
-        h1, h2, h3 {
-          padding-top: calc(3.75rem * 1  + 30px);
-          margin-top: calc(3.75rem * (-1) + 36px);
-        }
-
-        h1:nth-child(1) {
-            margin-top: 0px;
-            padding-top: 0px;
+        h2, h3 {
+          padding-top: calc(3.75rem * 1  + 20px);
+          margin-top: calc(3.75rem * (-1) + 26px);
         }
 
         
