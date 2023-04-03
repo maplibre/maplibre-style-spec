@@ -1,5 +1,12 @@
 @import '/src/_variables.scss';
 
+@media (min-width: 800px) {
+  .SideMenuButton {
+    display: none;
+  }
+}
+
+
 .header {
   width: 100%;
   display: flex;

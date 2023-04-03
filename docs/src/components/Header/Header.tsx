@@ -10,6 +10,8 @@ export function Header() {
     return (
         <header class={style.header}>
 
+            <button class={style.SideMenuButton}>Open menu</button>
+
             <div class={style.logoContainer} onclick={() => {
                 navigate('/');
             }}>

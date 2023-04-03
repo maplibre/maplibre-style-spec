@@ -1,4 +1,5 @@
 import {SmallTOC} from '../SmallTOC/SmallTOC';
+import { TableOfContents } from '../TableOfContents/TableOfContents';
 import {Accordion, AccordionHeader} from '../accordion/accordion';
 import style from './maincontent.module.scss';
 
@@ -15,7 +16,7 @@ export function MainContent(props: MainContentProps) {
 
                 <Accordion class={style.toc_accordion}>
                     <AccordionHeader>Table of contents</AccordionHeader>
-                    <SmallTOC />
+                    <TableOfContents mode='small' />
                 </Accordion>
 
                 <div class={style.row}>

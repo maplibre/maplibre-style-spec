@@ -6,6 +6,7 @@ import {useNavigate, useLocation} from 'solid-start';
 
 interface TableOfContentsProps {
     class?: string;
+    mode: 'large' | 'small';
 }
 
 export function TableOfContents(props: TableOfContentsProps) {
@@ -15,7 +16,7 @@ export function TableOfContents(props: TableOfContentsProps) {
     const [domHeaders, setDomHeaders] = createSignal<HTMLElement[]>([]);
 
     // Define a selector for the headers to include in the table of contents
-    const headerSelector = 'h2, h3';
+    const headerSelector = props.mode === 'large' ? 'h2, h3' : 'h2';
 
     // Function to handle scroll event
     const handleScroll = () => {
@@ -84,17 +85,18 @@ export function TableOfContents(props: TableOfContentsProps) {
     // Render the table of contents with the headers and active link state
     return (
         <Show when={domHeaders().length > 0}>
-            <aside class={`${props.class} ${style.toc_outer_container}`}>
+            <aside class={`${props.class} ${style.toc_outer_container} ${style[`${props.mode}TOC`]}`}>
                 <div class={`${props.class} ${style.toc_viewport}`}>
                     <nav>
                         <div class={style.navItems}>
-                            <h3 style={{cursor: 'pointer'}}class={style.header} onClick={() => {
+                            <Show when={props.mode === 'large'}><h3 style={{cursor: 'pointer'}}class={style.header} onClick={() => {
                                 // const contentWindow = document.getElementById('app_wrap')!;
                                 // console.log(contentWindow);
                                 // console.log(contentWindow.scrollTop);
                                 document.documentElement.scrollTop = 0;
                                 // contentWindow.scrollTop = 0;
                             }}>On This Page</h3>
+                            </Show>
                             <ul>
                                 <For each={domHeaders()}>{(header) => (
                                     <li class={header.id === activeLink() ? style.active : ''}>

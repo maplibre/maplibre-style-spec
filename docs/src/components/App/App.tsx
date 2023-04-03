@@ -15,7 +15,7 @@ export function App(props: { children?: any }) {
                     <MainContent>{props.children}</MainContent>
 
                     {/* <div class={style.onlyShowLg}> */}
-                    <TableOfContents  />
+                    <TableOfContents mode="large" />
                     {/* </div> */}
 
                 </div>
