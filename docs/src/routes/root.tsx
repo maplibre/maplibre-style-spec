@@ -1,6 +1,6 @@
 import {Markdown} from '~/components/markdown';
 import ref from '../reference/latest';
-import {Items} from '../components/style-spec/specs/items';
+import {Items} from '../components/items';
 function Root() {
 
     const md = `# Root

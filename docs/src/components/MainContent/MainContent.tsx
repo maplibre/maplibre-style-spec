@@ -1,5 +1,5 @@
 import {useLocation} from 'solid-start';
-import {TableOfContents} from '../TableOfContents/TableOfContents';
+import {TableOfContents} from '../toc/toc';
 import style from './maincontent.module.scss';
 import '../collapse/collapse.scss';
 import {Collapsible} from '@kobalte/core';

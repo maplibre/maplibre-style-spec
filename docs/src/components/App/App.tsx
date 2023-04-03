@@ -4,7 +4,7 @@ import style from './app.module.scss';
 import overlayStyle from './overlayStyle.module.scss';
 
 import {Header} from '../Header/Header';
-import {TableOfContents} from '../TableOfContents/TableOfContents';
+import {TableOfContents} from '../toc/toc';
 import {Show, createSignal} from 'solid-js';
 import {pages} from '~/pages';
 import {A, useNavigate} from 'solid-start';

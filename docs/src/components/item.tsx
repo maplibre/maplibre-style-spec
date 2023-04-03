@@ -1,8 +1,8 @@
 import entries from 'object.entries';
-import SDKSupportTable from '../../sdk-support-table//sdk-support-table';
+import SDKSupportTable from './sdk-support-table/sdk-support-table';
 // import Icon from '@mapbox/mr-ui/icon';
-import Property from '../../property.jsx';
-import Subtitle from './subtitle.jsx';
+import Property from './property.jsx';
+import Subtitle from './specs/subtitle.jsx';
 import {Markdown} from '~/components/markdown';
 
 interface IItem {

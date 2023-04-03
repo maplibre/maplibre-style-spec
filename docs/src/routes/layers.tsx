@@ -1,7 +1,7 @@
 import {Markdown} from '~/components/markdown';
 import ref from '../reference/latest';
-import {Items} from '../components/style-spec/specs/items';
-import {AppropriateImage} from '~/components/style-spec/appropriate-image';
+import {Items} from '../components/items';
+import {AppropriateImage} from '~/components/appropriate-image/appropriate-image';
 import Caption from '~/components/caption';
 import combineItems from '~/util/combine-items';
 
