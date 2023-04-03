@@ -1,5 +1,4 @@
 import {SolidMd} from '~/utils/SolidMd';
-export const title = 'Layers';
 import ref from '../reference/latest';
 import {Items} from '../components/style-spec/specs/items';
 import {AppropriateImage} from '~/components/style-spec/appropriate-image';
@@ -27,7 +26,6 @@ Except for layers of the \`background\` type, each layer needs to refer to a sou
 
 ## Layer properties
 `}/>
-
 
             <Items entry={ref.layer} />
 

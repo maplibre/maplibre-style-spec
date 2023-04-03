@@ -1,6 +1,4 @@
 import {SolidMd} from '~/utils/SolidMd';
-// import CodeBlock from "~/utils/CodeBlock";
-export const title = 'Types';
 
 function types() {
     const md = `

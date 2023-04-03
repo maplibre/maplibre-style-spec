@@ -1,8 +1,7 @@
 import {SolidMd} from '~/utils/SolidMd';
-export const title = 'Root';
 import ref from '../reference/latest';
 import {Items} from '../components/style-spec/specs/items';
-function Root() {
+function Light() {
 
     const md = `# Light
     
@@ -27,4 +26,4 @@ A style's \`light\` property provides a global light source for that style. Sinc
     );
 }
 
-export default Root;
+export default Light;

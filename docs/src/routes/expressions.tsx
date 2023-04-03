@@ -1,8 +1,7 @@
 import ExpressionReference from '~/components/style-spec/specs/expression-reference';
 import {SolidMd} from '~/utils/SolidMd';
-export const title = 'Root';
 
-function Root() {
+function Expressions() {
 
     return (
         <div>
@@ -201,4 +200,4 @@ The expressions in this section can be used to add conditional logic to your sty
     );
 }
 
-export default Root;
+export default Expressions;

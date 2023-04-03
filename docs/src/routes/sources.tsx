@@ -1,5 +1,4 @@
 import {SolidMd} from '~/utils/SolidMd';
-export const title = 'Sources';
 import ref from '../reference/latest';
 import {Items} from '../components/style-spec/specs/items';
 import {sourceTypes} from '../components/data/types';

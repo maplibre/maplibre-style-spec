@@ -1,10 +1,5 @@
 import {SolidMd} from '~/utils/SolidMd';
-export const title = 'Layers';
-import ref from '../reference/latest';
-import {Items} from '../components/style-spec/specs/items';
-import {AppropriateImage} from '~/components/style-spec/appropriate-image';
 import Caption from '~/components/style-spec/caption';
-import combineItems from '~/components/style-spec/combine-items';
 import SDKSupportTable from '~/components/style-spec/sdk_support_table';
 import Property from '~/components/style-spec/specs/property';
 import Subtitle from '~/components/style-spec/specs/subtitle';

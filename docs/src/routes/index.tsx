@@ -1,5 +1,4 @@
 import {SolidMd} from '~/utils/SolidMd';
-export const title = 'Introduction';
 
 const md = `# Introduction
 
