@@ -1,5 +1,4 @@
-import {SmallTOC} from '../SmallTOC/SmallTOC';
-import { TableOfContents } from '../TableOfContents/TableOfContents';
+import {TableOfContents} from '../TableOfContents/TableOfContents';
 import {Accordion, AccordionHeader} from '../accordion/accordion';
 import style from './maincontent.module.scss';
 

@@ -77,7 +77,8 @@ export function TableOfContents(props: TableOfContentsProps) {
         event.preventDefault();
         // navigate(`${location.pathname}#${id}`, { scroll: false, replace: true });
         // console.log(location)
-        navigate(`${location.pathname}#${id}`);
+
+        // navigate(`${location.pathname}#${id}`);
         const headerElement = document.getElementById(id);
         headerElement?.scrollIntoView({behavior: 'smooth'});
     };
@@ -101,14 +102,16 @@ export function TableOfContents(props: TableOfContentsProps) {
                                 <For each={domHeaders()}>{(header) => (
                                     <li class={header.id === activeLink() ? style.active : ''}>
 
+                                        {/* href={`#${header.id}`} */}
                                         <a href={`#${header.id}`} classList={{
                                             [style.anchor_H1]: header.tagName === 'H1',
                                             [style.anchor_H2]: header.tagName === 'H2',
                                             [style.anchor_H3]: header.tagName === 'H3'
-                                        }}>
+                                        }} >
+                                            {/* }} onClick={(event) => handleLinkClick(event, header.id)}> */}
                                             {header.id.startsWith('paint-') ? <span class={style.paintIcon}><i class="fa-solid fa-palette"></i></span> : null}
                                             {header.id.startsWith('layout-') ? <span class={style.layoutIcon}><i class="fa-solid fa-pen"></i></span> : null}
-                                            {/* onClick={(event) => handleLinkClick(event, header.id)}> */}
+
                                             {header.innerText}
                                         </a>
                                     </li>

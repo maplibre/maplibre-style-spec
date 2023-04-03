@@ -1,5 +1,6 @@
 import {A, useNavigate} from 'solid-start';
 import style from './header.module.scss';
+import {setShowNavOverlay, showNavOverlay} from '../App/App';
 
 // random image
 const logo = '/maplibre-logo-big.svg';
@@ -10,7 +11,7 @@ export function Header() {
     return (
         <header class={style.header}>
 
-            <button class={style.SideMenuButton}>Open menu</button>
+            <div class={style.SideMenuButton} onclick={() => { setShowNavOverlay(prev => !prev); }}><i class="fa-solid fa-bars"></i></div>
 
             <div class={style.logoContainer} onclick={() => {
                 navigate('/');

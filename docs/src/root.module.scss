@@ -2,6 +2,8 @@
 
 div {
   box-sizing: border-box;
+  scroll-behavior: smooth;
+  transition: 0.3s;
 }
 
 body {
@@ -10,6 +12,9 @@ body {
   line-height: 24px !important;
   color: #1f3349;
   margin: 0px;
+  transition: 0.3s;
+  scroll-behavior: smooth;
+
 }
 
 
