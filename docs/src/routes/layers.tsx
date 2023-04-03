@@ -4,8 +4,20 @@ import {Items} from '../components/style-spec/specs/items';
 import {AppropriateImage} from '~/components/style-spec/appropriate-image';
 import Caption from '~/components/style-spec/caption';
 import combineItems from '~/components/style-spec/combine-items';
-import {layerTypes} from '~/components/data/types';
+
 function Layers() {
+
+    const layerTypes = [
+        'background',
+        'fill',
+        'line',
+        'symbol',
+        'raster',
+        'circle',
+        'fill-extrusion',
+        'heatmap',
+        'hillshade'
+    ];
 
     return (
         <div>

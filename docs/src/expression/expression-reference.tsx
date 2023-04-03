@@ -1,8 +1,8 @@
-import {groupedExpressions} from '../../data/types';
-import SDKSupportTable from '../sdk_support_table';
-import {renderSignature} from './render-signature';
-import Property from './property.jsx';
-import related from '../../data/expressions-related.json';
+import {groupedExpressions} from './expression-types';
+import SDKSupportTable from '../components/style-spec/sdk_support_table';
+import {renderSignature} from '../components/style-spec/specs/render-signature';
+import Property from '../components/style-spec/specs/property.jsx';
+import related from './expressions-related.json';
 import {SolidMd} from '~/utils/SolidMd.jsx';
 
 interface IExpressionReference {

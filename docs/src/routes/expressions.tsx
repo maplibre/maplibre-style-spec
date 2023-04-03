@@ -1,4 +1,4 @@
-import ExpressionReference from '~/components/style-spec/specs/expression-reference';
+import ExpressionReference from '~/expression/expression-reference';
 import {SolidMd} from '~/utils/SolidMd';
 
 function Expressions() {

@@ -1,9 +1,17 @@
 import {SolidMd} from '~/utils/SolidMd';
 import ref from '../reference/latest';
 import {Items} from '../components/style-spec/specs/items';
-import {sourceTypes} from '../components/data/types';
 import SDKSupportTable from '../components/style-spec/sdk_support_table';
 function Sources() {
+
+    const sourceTypes = [
+        'vector',
+        'raster',
+        'raster-dem',
+        'geojson',
+        'image',
+        'video'
+    ];
 
     return (
         <div>

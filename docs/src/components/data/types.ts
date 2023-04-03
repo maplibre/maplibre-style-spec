@@ -1,5 +1,3 @@
-import {expressions, expressionGroups} from '../style-spec/expressions.jsx';
-
 const sourceTypes = [
     'vector',
     'raster',
@@ -21,23 +19,4 @@ const layerTypes = [
     'hillshade'
 ];
 
-const groupedExpressions = [
-    'Types',
-    'Feature data',
-    'Lookup',
-    'Decision',
-    'Ramps, scales, curves',
-    'Variable binding',
-    'String',
-    'Color',
-    'Math',
-    'Zoom',
-    'Heatmap'
-].map((group) => ({
-    name: group,
-    expressions: expressionGroups[group]
-        .sort((a, b) => a.localeCompare(b))
-        .map((name) => expressions[name])
-}));
-
-export {sourceTypes, layerTypes, groupedExpressions};
+export {sourceTypes, layerTypes};
