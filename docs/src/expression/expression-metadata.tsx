@@ -303,7 +303,6 @@ export const types = {
 };
 
 for (const name in CompoundExpression.definitions) {
-    console.log('name', name);
     if (/^filter-/.test(name)) {
         continue;
     }
