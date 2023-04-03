@@ -1,5 +1,5 @@
 import ExpressionReference from '~/expression/expression-reference';
-import {SolidMd} from '~/utils/SolidMd';
+import {SolidMd} from '~/components/SolidMd';
 
 function Expressions() {
 

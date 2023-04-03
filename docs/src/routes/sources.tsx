@@ -1,7 +1,7 @@
-import {SolidMd} from '~/utils/SolidMd';
+import {SolidMd} from '~/components/SolidMd';
 import ref from '../reference/latest';
 import {Items} from '../components/style-spec/specs/items';
-import SDKSupportTable from '../components/style-spec/sdk_support_table';
+import SDKSupportTable from '../components/sdk-support-table/sdk-support-table';
 function Sources() {
 
     const sourceTypes = [

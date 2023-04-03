@@ -1,9 +1,9 @@
 import entries from 'object.entries';
-import SDKSupportTable from '../sdk_support_table';
+import SDKSupportTable from '../../sdk-support-table//sdk-support-table';
 // import Icon from '@mapbox/mr-ui/icon';
-import Property from './property.jsx';
+import Property from '../../property.jsx';
 import Subtitle from './subtitle.jsx';
-import {SolidMd} from '~/utils/SolidMd';
+import {SolidMd} from '~/components/SolidMd';
 
 interface IItem {
     id: string;

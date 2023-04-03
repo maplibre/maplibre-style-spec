@@ -1,4 +1,4 @@
-import {SolidMd} from '~/utils/SolidMd';
+import {SolidMd} from '~/components/SolidMd';
 import ref from '../reference/latest';
 
 function Sprite() {

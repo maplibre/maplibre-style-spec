@@ -1,9 +1,9 @@
 import {groupedExpressions} from './expression-types';
-import SDKSupportTable from '../components/style-spec/sdk_support_table';
+import SDKSupportTable from '../components/sdk-support-table/sdk-support-table';
 import {renderSignature} from '../components/style-spec/specs/render-signature';
-import Property from '../components/style-spec/specs/property.jsx';
+import Property from '../components/property.jsx';
 import related from './expressions-related.json';
-import {SolidMd} from '~/utils/SolidMd.jsx';
+import {SolidMd} from '~/components/SolidMd.jsx';
 
 interface IExpressionReference {
     group: string;

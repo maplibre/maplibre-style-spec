@@ -1,7 +1,7 @@
-import {SolidMd} from '~/utils/SolidMd';
-import Caption from '~/components/style-spec/caption';
-import SDKSupportTable from '~/components/style-spec/sdk_support_table';
-import Property from '~/components/style-spec/specs/property';
+import {SolidMd} from '~/components/SolidMd';
+import Caption from '~/components/caption';
+import SDKSupportTable from '~/components/sdk-support-table/sdk-support-table';
+import Property from '~/components/property';
 import Subtitle from '~/components/style-spec/specs/subtitle';
 function Layers() {
 

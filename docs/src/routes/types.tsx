@@ -1,4 +1,4 @@
-import {SolidMd} from '~/utils/SolidMd';
+import {SolidMd} from '~/components/SolidMd';
 
 function types() {
     const md = `

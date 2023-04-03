@@ -1,7 +1,7 @@
 //@ts-ignore
-import style from './sdk_support_table.module.scss';
+import style from './sdk-support-table.module.scss';
 import entries from 'object.entries';
-import {SolidMd} from '~/utils/SolidMd.jsx';
+import {SolidMd} from '~/components/SolidMd.jsx';
 
 const SDKSupportTable = (props: { supportItems?: Object }) => {
     function support(support:any, sdk:any) {
