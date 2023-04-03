@@ -22,15 +22,3 @@ export default function Property ({headingLevel = '3', id, children}:IProps) {
     );
 
 }
-
-// Migrated from these PropTypes to TypeScript types:
-//
-// Property.defaultProps = {
-//     headingLevel: '2'
-// };
-
-// Property.propTypes = {
-//     id: PropTypes.string.isRequired,
-//     children: PropTypes.node.isRequired,
-//     headingLevel: PropTypes.oneOf(['2', '3'])
-// };

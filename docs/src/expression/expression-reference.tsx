@@ -1,7 +1,7 @@
 import {groupedExpressions} from './expression-types';
 import SDKSupportTable from '../components/sdk-support-table/sdk-support-table';
-import {renderSignature} from '../components/specs/render-signature';
-import Property from '../components/property.jsx';
+import {renderSignature} from './render-signature';
+import Property from '~/components/property.jsx';
 import related from './expressions-related.json';
 import {Markdown} from '~/components/markdown.jsx';
 
