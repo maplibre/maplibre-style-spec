@@ -69,16 +69,8 @@ export function TableOfContents(props: TableOfContentsProps) {
         });
     });
 
-    const navigate = useNavigate();
-
-    const location: any = useLocation();
-
     const handleLinkClick = (event: Event, id: string) => {
         event.preventDefault();
-        // navigate(`${location.pathname}#${id}`, { scroll: false, replace: true });
-        // console.log(location)
-
-        // navigate(`${location.pathname}#${id}`);
         const headerElement = document.getElementById(id);
         headerElement?.scrollIntoView({behavior: 'smooth'});
     };

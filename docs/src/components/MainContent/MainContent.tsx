@@ -1,7 +1,8 @@
 import {useLocation} from 'solid-start';
 import {TableOfContents} from '../TableOfContents/TableOfContents';
-import {Accordion, AccordionHeader} from '../accordion/accordion';
 import style from './maincontent.module.scss';
+import '../collapse/collapse.scss';
+import {Collapsible} from '@kobalte/core';
 
 interface MainContentProps {
     children?: any;
@@ -17,10 +18,10 @@ export function MainContent(props: MainContentProps) {
 
             <div class={style.mainContent_paddingContainer}>
 
-                <Accordion class={style.toc_accordion}>
-                    <AccordionHeader>Table of contents</AccordionHeader>
-                    <TableOfContents mode='small' />
-                </Accordion>
+                <Collapsible.Root class={'collapsible'}>
+                    <Collapsible.Trigger class={'collapsible__trigger'}>Table of contents<i class={`fa-solid fa-chevron-down ${'collapsible__trigger-icon'}`}></i></Collapsible.Trigger>
+                    <Collapsible.Content class={'collapsible__content'}><TableOfContents mode='small' /></Collapsible.Content>
+                </Collapsible.Root>
 
                 <div class={style.row}>
                     <div id="ContentWindow" class={style.docItems}>{props.children}</div>
