@@ -8,14 +8,14 @@ interface TableOfContentsProps {
     class?: string;
 }
 
-export function TableOfContents(props: TableOfContentsProps) {
+export function SmallTOC(props: TableOfContentsProps) {
     // Create state for the active link and headers
     const [activeLink, setActiveLink] = createSignal('');
     // const [headers, setHeaders] = createSignal<{ id: string; title: string | null }[]>([]);
     const [domHeaders, setDomHeaders] = createSignal<HTMLElement[]>([]);
 
     // Define a selector for the headers to include in the table of contents
-    const headerSelector = 'h2, h3';
+    const headerSelector = 'h2';
 
     // Function to handle scroll event
     const handleScroll = () => {
@@ -88,13 +88,6 @@ export function TableOfContents(props: TableOfContentsProps) {
                 <div class={`${props.class} ${style.toc_viewport}`}>
                     <nav>
                         <div class={style.navItems}>
-                            <h3 style={{cursor: 'pointer'}}class={style.header} onClick={() => {
-                                // const contentWindow = document.getElementById('app_wrap')!;
-                                // console.log(contentWindow);
-                                // console.log(contentWindow.scrollTop);
-                                document.documentElement.scrollTop = 0;
-                                // contentWindow.scrollTop = 0;
-                            }}>On This Page</h3>
                             <ul>
                                 <For each={domHeaders()}>{(header) => (
                                     <li class={header.id === activeLink() ? style.active : ''}>

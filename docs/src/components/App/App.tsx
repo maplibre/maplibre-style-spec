@@ -13,7 +13,10 @@ export function App(props: { children?: any }) {
                 <div class={style.container}>
                     <Sidebar />
                     <MainContent>{props.children}</MainContent>
+
+                    {/* <div class={style.onlyShowLg}> */}
                     <TableOfContents  />
+                    {/* </div> */}
 
                 </div>
             </div>

@@ -1,19 +1,5 @@
 @import '/src/_variables.scss';
 
-.toc_outer_container {
-  min-width: 250px;
-  clip-path: inset(0);
-  display: block;
-  will-change: width;
-  margin-top: -3.75rem;
-}
-
-@media (max-width: 1050px) {
-  .toc_outer_container {
-    display: none;
-  }
-}
-
 .toc_viewport {
   position: sticky;
   max-height: calc(100vh - 60px);
@@ -35,11 +21,9 @@
   }
 
   .navItems {
-    padding-top: 60px;
     display: flex;
     flex-direction: column;
     align-items: left;
-    // background-color: white;
 
     // padding: 1rem;
     flex: 0 0 auto;

@@ -1,6 +1,8 @@
 // Sidebar.module.scss
 @import '/src/_variables.scss';
 
+
+
 .sidebar_outer_container {
   clip-path: inset(0);
   display: block;
@@ -89,3 +91,9 @@
 //   flex-direction: column;
 //   // Add any other styles you need for the links container
 // }
+
+@media (max-width: 600px) {
+  .sidebar_outer_container {
+    display: none;
+  }
+}
