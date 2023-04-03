@@ -1,6 +1,6 @@
 import {Markdown} from '~/components/markdown/markdown';
 import ref from '../../../src/reference/latest';
-import {Items} from '../components/-items/items';
+import {Items} from '../components/items/items';
 function Transition() {
 
     const md = `# Transition
