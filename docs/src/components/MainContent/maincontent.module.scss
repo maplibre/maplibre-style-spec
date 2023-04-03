@@ -1,10 +1,10 @@
 .mainContentContainer {
   flex-grow: 1;
-  max-width: calc(100% - 200px);
+  max-width: calc(100% - 200px - 200px);
   width: 100%;
   display: flex;
   box-sizing: border-box;
-
+  overflow: scroll;
 
   .mainContent_paddingContainer {
     position: relative;
@@ -20,30 +20,15 @@
         flex: 1 0;
         margin-left: 0;
         padding: 0 1rem;
-        width: 100%;
-        max-width: 75% !important;
+        width: 100%;    
         
 
-
         h1:nth-child(1) {
-            margin-top: 20px;
+            margin-top: 0px;
         }
 
       }
 
-      .tableOfContents {
-        flex: 0 0 25%;
-        padding: 0 1rem;
-        position: sticky;
-        top: 0;
-        overflow: scroll;
-      }
-
-      @media (max-width: 1000px) {
-        .tableOfContents {
-          display: none;
-        }
-      }
     }
   }
 }

@@ -12,7 +12,6 @@ export function MainContent(props: MainContentProps) {
             <div class={style.mainContent_paddingContainer}>
                 <div class={style.row}>
                     <div class={style.docItems}>{props.children}</div>
-                    <TableOfContents class={`${style.tableOfContents}`} />
                 </div>
             </div>
         </main>

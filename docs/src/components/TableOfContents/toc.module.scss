@@ -6,7 +6,20 @@
   max-width: 25%;
   padding: 0 1rem;
   width: 100%;
+
+
+  
 }
+
+
+  
+
+@media (max-width: 1000px) {
+  .tocColumn {
+    display: none;
+  }
+}
+
 
 .tableOfContents {
   position: sticky;
@@ -14,6 +27,10 @@
   top: calc(60px + 1rem);
   overflow-y: auto;
   word-wrap: break-word;
+
+ 
+
+
 
   .navItems {
     display: flex;
