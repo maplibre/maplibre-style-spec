@@ -13,7 +13,7 @@ function Layers() {
     return (
         <div>
 
-            <SolidMd content={`# Other
+            <SolidMd content={`# Deprecations
 
 Some style properties are no longer the preferred method of accomplishing a particular styling goal. While they are still supported, they will eventually be removed from the MapLibre Style Specification and it is not recommended to use them in new styles. The following is provided as reference for users who need to continue maintaining legacy styles while transitioning to preferred style properties.
 

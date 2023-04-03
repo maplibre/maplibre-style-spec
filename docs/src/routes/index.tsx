@@ -3,8 +3,6 @@ export const title = 'Introduction';
 
 const md = `# Introduction
 
-[Changelog](https://github.com/maplibre/maplibre-gl-style-spec/blob/main/CHANGELOG.md)
-
 A MapLibre style is a document that defines the visual appearance of a map: what data to draw, the order to draw it in, and how to style the data when drawing it. A style document is a [JSON](http://www.json.org/) object with specific root level and nested properties. This specification defines and describes these properties.
 
 The intended audience of this specification includes:

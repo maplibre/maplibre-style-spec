@@ -21,6 +21,9 @@ export function Sidebar(props: SidebarProps) {
                                         <A end={true} class="sidebar-link" href={page.path.replace('/', '')}>{page.title}</A>
                                     </li>
                                 ))}
+                                <li>
+                                    <a target="_blank" href="https://github.com/maplibre/maplibre-gl-style-spec/blob/main/CHANGELOG.md">Changelog</a>
+                                </li>
                             </ul>
                         </div>
                     </div>

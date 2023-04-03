@@ -10,5 +10,5 @@ export const pages: {path: string; title: string}[] = [
     {title: 'Types', path: '/types'},
     {title: 'Expressions', path: '/expressions'},
     // {title: 'Expression ref', path: '/expression-reference'},
-    {title: 'Other', path: '/other'},
+    {title: 'Deprecations', path: '/deprecations'},
 ];
