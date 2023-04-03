@@ -16,8 +16,8 @@
 
 .toc_viewport {
   position: sticky;
-  max-height: calc(100vh - 60px);
-  top: calc(60px);
+  max-height: calc(100vh - $--header-height);
+  top: calc($--header-height);
   overflow-y: auto;
   word-wrap: break-word;
   padding-top: 1rem;
@@ -35,7 +35,7 @@
   }
 
   .navItems {
-    padding-top: 60px;
+    padding-top: $--header-height;
     display: flex;
     flex-direction: column;
     align-items: left;

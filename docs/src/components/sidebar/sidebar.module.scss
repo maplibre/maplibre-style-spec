@@ -1,5 +1,5 @@
 // Sidebar.module.scss
-@import '/src/_variables.scss';
+@import '../../_variables.scss';
 
 
 
@@ -24,7 +24,7 @@
   .sidebar_inner_container {
     display: flex;
     width: 200px; // Adjust this value according to your preference
-    padding-top: 60px;
+    padding-top: $--header-height;
     box-sizing: border-box;
     flex-direction: column;
     height: 100%;
