@@ -1,7 +1,7 @@
 import {Sidebar} from '../sidebar/sidebar';
 import {MainContent} from '../maincontent/maincontent';
 import style from './app.module.scss';
-import overlayStyle from './overlayStyle.module.scss';
+import overlayStyle from './overlay-style.module.scss';
 
 import {Header} from '../header/header';
 import {TableOfContents} from '../toc/toc';
