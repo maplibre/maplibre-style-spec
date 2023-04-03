@@ -1,5 +1,5 @@
 import {Markdown} from '~/components/markdown/markdown';
-import ref from '../reference/latest';
+import ref from '../../../src/reference/latest';
 import {Items} from '../components/Items/items';
 function Root() {
 
