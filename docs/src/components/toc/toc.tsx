@@ -2,8 +2,6 @@ import style from './toc.module.scss';
 import {For, Show, createEffect, createSignal, onCleanup} from 'solid-js';
 // import scrollto
 
-import {useNavigate, useLocation} from 'solid-start';
-
 interface TableOfContentsProps {
     class?: string;
     mode: 'large' | 'small';
@@ -68,12 +66,6 @@ export function TableOfContents(props: TableOfContentsProps) {
             }
         });
     });
-
-    const handleLinkClick = (event: Event, id: string) => {
-        event.preventDefault();
-        const headerElement = document.getElementById(id);
-        headerElement?.scrollIntoView({behavior: 'smooth'});
-    };
 
     // Render the table of contents with the headers and active link state
     return (

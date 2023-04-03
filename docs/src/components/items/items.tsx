@@ -14,7 +14,7 @@ export function Items (props:IItems) {
         <>
             {entries(props.entry)
                 .sort()
-                .map(([name, prop]:any, i:number) => {
+                .map(([name, prop]:any) => {
                     const entry = props.entry[name];
                     const section = entry.section || props.section;
                     const kind = entry.kind || props.kind;

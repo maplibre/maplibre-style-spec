@@ -24,7 +24,7 @@ function Layers() {
 
             <Markdown content={`# Layers
 
-A style's \`layers\` property lists all the layers available in that style. The type of layer is specified by the \`"type"\` property, and must be one of ${layerTypes.map((t, i) => `\`${t}\``).join(', ')}.
+A style's \`layers\` property lists all the layers available in that style. The type of layer is specified by the \`"type"\` property, and must be one of ${layerTypes.map((t) => `\`${t}\``).join(', ')}.
 
 Except for layers of the \`background\` type, each layer needs to refer to a source. Layers take the data that they get from a source, optionally filter features, and then define how those features are styled.
 

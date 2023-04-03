@@ -1,6 +1,6 @@
-import {A, useNavigate} from 'solid-start';
+import {useNavigate} from 'solid-start';
 import style from './header.module.scss';
-import {setShowNavOverlay, showNavOverlay} from '../app/app';
+import {setShowNavOverlay} from '../app/app';
 
 // random image
 const logo = '/maplibre-logo-big.svg';

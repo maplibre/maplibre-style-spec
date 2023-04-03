@@ -17,7 +17,7 @@ function Sources() {
         <div>
             <Markdown content={`# Sources
 Sources state which data the map should display. Specify the type of source with the \`"type"\` property, which must be one of 
-${sourceTypes.map((t, i) => {
+${sourceTypes.map((t) => {
             return `\`${t}\``;
         }).join(', ')}. Adding a source isn't enough to make data appear on the map because sources don't contain styling details like color or width. Layers refer to a source and give it a visual representation. This makes it possible to style the same source in different ways, like differentiating between types of roads in a highways layer.
 

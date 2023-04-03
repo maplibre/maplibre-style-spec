@@ -1,6 +1,5 @@
 import {expressions, expressionGroups} from './expressions';
 
-
 const groupedExpressions = [
     'Types',
     'Feature data',

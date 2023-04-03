@@ -7,7 +7,7 @@ import {Header} from '../header/header';
 import {TableOfContents} from '../toc/toc';
 import {Show, createSignal} from 'solid-js';
 import {pages} from '~/pages';
-import {A, useNavigate} from 'solid-start';
+import {A} from 'solid-start';
 
 export const [showNavOverlay, setShowNavOverlay] = createSignal(false);
 
@@ -21,7 +21,6 @@ export function closeNav() {
 
 export function App(props: { children?: any }) {
 
-    const navigate = useNavigate();
     return (
         <>
             <div class={style.app_wrap} id="app_wrap">
@@ -53,7 +52,6 @@ export function App(props: { children?: any }) {
 
                 </div>
             </div>
-
         </>
     );
 }

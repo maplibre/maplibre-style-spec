@@ -30,7 +30,7 @@ const SDKSupportTable = (props: { supportItems?: Object }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {entries(props.supportItems || props).map(([key, entry], i) => (
+                    {entries(props.supportItems || props).map(([key, entry]) => (
                         <tr>
                             <td>
                                 <Markdown content={key} />
