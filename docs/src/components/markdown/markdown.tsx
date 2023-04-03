@@ -8,7 +8,7 @@ import anchors from 'markdown-it-anchor';
 
 import prism from 'markdown-it-prism';
 // import 'prismjs/themes/prism.css';
-import '../styles/prismjs-theme.scss';
+import './prismjs-theme.scss';
 import 'prismjs/components/prism-typescript';
 import 'prismjs/components/prism-jsx';
 import 'prismjs/components/prism-json';

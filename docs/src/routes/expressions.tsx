@@ -1,5 +1,5 @@
 import ExpressionReference from '~/expression/expression-reference';
-import {Markdown} from '~/components/markdown';
+import {Markdown} from '~/components/markdown/markdown';
 
 function Expressions() {
 

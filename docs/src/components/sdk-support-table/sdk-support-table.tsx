@@ -1,7 +1,7 @@
 //@ts-ignore
 import style from './sdk-support-table.module.scss';
 import entries from 'object.entries';
-import {Markdown} from '~/components/markdown.jsx';
+import {Markdown} from '~/components/markdown/markdown.jsx';
 
 const SDKSupportTable = (props: { supportItems?: Object }) => {
     function support(support:any, sdk:any) {

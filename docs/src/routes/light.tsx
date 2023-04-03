@@ -1,4 +1,4 @@
-import {Markdown} from '~/components/markdown';
+import {Markdown} from '~/components/markdown/markdown';
 import ref from '../reference/latest';
 import {Items} from '../components/Items/items';
 function Light() {

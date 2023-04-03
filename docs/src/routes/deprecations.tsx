@@ -1,4 +1,4 @@
-import {Markdown} from '~/components/markdown';
+import {Markdown} from '~/components/markdown/markdown';
 import Caption from '~/components/caption';
 import SDKSupportTable from '~/components/sdk-support-table/sdk-support-table';
 import Property from '~/components/property';

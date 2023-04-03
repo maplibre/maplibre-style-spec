@@ -3,7 +3,7 @@ import SDKSupportTable from '../components/sdk-support-table/sdk-support-table';
 import {renderSignature} from './render-signature';
 import Property from '~/components/property.jsx';
 import related from './expressions-related.json';
-import {Markdown} from '~/components/markdown.jsx';
+import {Markdown} from '~/components/markdown/markdown.jsx';
 
 interface IExpressionReference {
     group: string;
