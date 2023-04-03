@@ -1,11 +1,8 @@
 @import '/src/_variables.scss';
 
 .tocColumn {
-  flex: 0 0 25%;
-  margin-left: 0;
-  max-width: 25%;
-  padding: 0 1rem;
-  width: 100%;
+  
+  width: 250px;
 
 
   
@@ -23,10 +20,12 @@
 
 .tableOfContents {
   position: sticky;
-  max-height: calc(100vh - 60px - 2rem);
-  top: calc(60px + 1rem);
+  max-height: calc(100vh - 60px);
+  top: calc(60px);
   overflow-y: auto;
   word-wrap: break-word;
+  padding-top: 1rem;
+  padding-bottom: 10rem;
 
  
 
@@ -37,15 +36,16 @@
     flex-direction: column;
     align-items: left;
     background-color: white;
-    width: 250px;
-    padding: 1rem;
+    
+    // padding: 1rem;
     flex: 0 0 auto;
-    max-width: 250px;
+
+    
     position: sticky;
     top: 0;
     flex-direction: column;
     align-items: flex-start;
-    width: 100%;
+    
 
     ul {
       list-style-type: none;

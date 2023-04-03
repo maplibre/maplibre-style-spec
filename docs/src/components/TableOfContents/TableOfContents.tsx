@@ -1,5 +1,5 @@
 import style from './toc.module.scss';
-import {createEffect, createSignal, onCleanup} from 'solid-js';
+import {For, createEffect, createSignal, onCleanup} from 'solid-js';
 // import scrollto
 
 import {useNavigate, useLocation} from 'solid-start';
@@ -14,7 +14,7 @@ export function TableOfContents(props: TableOfContentsProps) {
     const [headers, setHeaders] = createSignal<{ id: string; title: string | null }[]>([]);
 
     // Define a selector for the headers to include in the table of contents
-    const headerSelector = 'h2, h3';
+    const headerSelector = 'h1, h2, h3';
 
     // Function to handle scroll event
     const handleScroll = () => {
@@ -40,8 +40,10 @@ export function TableOfContents(props: TableOfContentsProps) {
     // Effect to set up the table of contents and scroll event listener
     createEffect(() => {
         if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+            const contentWindow = document.getElementById('ContentWindow')!;
             const pageHeaders = Array.from(
-                document.querySelectorAll(headerSelector)
+
+                contentWindow.querySelectorAll(headerSelector)
             ).map((header, index) => {
                 const title = header.textContent;
                 const id = header.id || (title ? `${title.replace(/\s+/g, '-').toLowerCase()}-${index}` : '');
@@ -83,17 +85,18 @@ export function TableOfContents(props: TableOfContentsProps) {
                 <nav>
                     <div class={style.navItems}>
                         <ul>
-                            {headers().map(({id, title}) => (
+                            <For each={headers()}>{({id, title}) => (
                                 <li class={id === activeLink() ? style.active : ''}>
                                     <a href={'#'} onClick={(event) => handleLinkClick(event, id)}>
                                         {title}
                                     </a>
                                 </li>
-                            ))}
+                            )}</For>
                         </ul>
                     </div>
                 </nav>
             </div>
         </div>
     );
+
 }

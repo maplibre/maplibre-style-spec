@@ -11,7 +11,7 @@ export function MainContent(props: MainContentProps) {
         <main class={`${style.mainContentContainer} ${props.class}`}>
             <div class={style.mainContent_paddingContainer}>
                 <div class={style.row}>
-                    <div class={style.docItems}>{props.children}</div>
+                    <div id="ContentWindow" class={style.docItems}>{props.children}</div>
                 </div>
             </div>
         </main>
