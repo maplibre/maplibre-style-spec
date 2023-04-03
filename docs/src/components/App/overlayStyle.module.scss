@@ -7,14 +7,12 @@
   top: 0;
   left: 0;
   background-color: white;
-}
 
-.overlay-content {
-  position: relative;
-  top: 25%;
-  width: 100%;
-  text-align: center;
-  margin-top: 30px;
+  ul {
+    list-style-type: none;
+    margin: 20px 0 0 20px;
+    padding: 0;
+  }
 }
 
 .overlay a {
@@ -23,6 +21,7 @@
   font-size: 16px;
   color: #818181;
   display: block;
+  width: 100%;
 }
 
 .overlay a:hover, .overlay a:focus {

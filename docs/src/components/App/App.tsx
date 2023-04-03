@@ -28,7 +28,7 @@ export function App(props: { children?: any }) {
                 <Show when={showNavOverlay()}>
                     <div id="myNav" class={overlayStyle.overlay}>
                         {/* <a class="closebtn" onClick={closeNav}>&times;</a> */}
-                        <div class="overlay-content">
+                        <div>
                             <Header />
                             <ul>
                                 {pages.map((page) => (
