@@ -1,9 +1,9 @@
-import {Sidebar} from '../Sidebar/sidebar';
-import {MainContent} from '../MainContent/MainContent';
+import {Sidebar} from '../-sidebar/sidebar';
+import {MainContent} from '../-maincontent/-maincontent';
 import style from './app.module.scss';
 import overlayStyle from './overlayStyle.module.scss';
 
-import {Header} from '../Header/Header';
+import {Header} from '../-header/-header';
 import {TableOfContents} from '../toc/toc';
 import {Show, createSignal} from 'solid-js';
 import {pages} from '~/pages';

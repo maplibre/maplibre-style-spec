@@ -15,9 +15,9 @@ import {
     Scripts,
     Title,
 } from 'solid-start';
-import {Sidebar} from './components/Sidebar/sidebar';
-import {Header} from './components/Header/Header';
-import {App} from './components/App/App';
+import {Sidebar} from './components/-sidebar/sidebar';
+import {Header} from './components/-header/-header';
+import {App} from './components/-app/-app';
 import './root.module.scss';
 
 export default function Root() {
