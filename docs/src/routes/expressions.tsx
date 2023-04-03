@@ -1,11 +1,11 @@
 import ExpressionReference from '~/expression/expression-reference';
-import {SolidMd} from '~/components/markdown';
+import {Markdown} from '~/components/markdown';
 
 function Expressions() {
 
     return (
         <div>
-            <SolidMd content={`
+            <Markdown content={`
 # Expressions
 
 The value for any [layout property](/maplibre-gl-js-docs/style-spec/layers/#layout-property), [paint property](/maplibre-gl-js-docs/style-spec/layers/#paint-property), or [filter](/maplibre-gl-js-docs/style-spec/layers/#filter) may be specified as an _expression_. An expression defines a formula for computing the value of the property using the _operators_ described below. The set of expression operators provided by MapLibre GL includes:
@@ -145,7 +145,7 @@ If an expression accepts an array argument and the user supplies an array litera
 
 `} />
 
-            <SolidMd content={`
+            <Markdown content={`
 ## Types
 
 The expressions in this section are for testing for and converting between different data types like strings, numbers, and boolean values.
@@ -155,12 +155,12 @@ Often, such tests and conversions are unnecessary, but they may be necessary in 
 `} />
 
             <ExpressionReference group='Types' />
-            <SolidMd content='## Feature data' />
+            <Markdown content='## Feature data' />
             <ExpressionReference group='Feature data' />
-            <SolidMd content='## Lookup' />
+            <Markdown content='## Lookup' />
 
             <ExpressionReference group='Lookup' />
-            <SolidMd content={`
+            <Markdown content={`
 ## Decision
 
 The expressions in this section can be used to add conditional logic to your styles. For example, the [\`'case'\`](#case)  expression provides "if/then/else" logic, and [\`'match'\`](#match) allows you to map specific values of an input expression to different output expressions.
@@ -168,31 +168,31 @@ The expressions in this section can be used to add conditional logic to your sty
 
             <ExpressionReference group='Decision' />
 
-            <SolidMd content='## Ramps, scales, curves' />
+            <Markdown content='## Ramps, scales, curves' />
 
             <ExpressionReference group='Ramps, scales, curves' />
 
-            <SolidMd content='## Variable binding' />
+            <Markdown content='## Variable binding' />
 
             <ExpressionReference group='Variable binding' />
 
-            <SolidMd content='## String' />
+            <Markdown content='## String' />
 
             <ExpressionReference group='String' />
 
-            <SolidMd content='## Color' />
+            <Markdown content='## Color' />
 
             <ExpressionReference group='Color' />
 
-            <SolidMd content='## Math' />
+            <Markdown content='## Math' />
 
             <ExpressionReference group='Math' />
 
-            <SolidMd content='## Zooming' />
+            <Markdown content='## Zooming' />
 
             <ExpressionReference group='Zoom' />
 
-            <SolidMd content='## Heatmap' />
+            <Markdown content='## Heatmap' />
 
             <ExpressionReference group='Heatmap' />
 

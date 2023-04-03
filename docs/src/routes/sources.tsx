@@ -1,4 +1,4 @@
-import {SolidMd} from '~/components/markdown';
+import {Markdown} from '~/components/markdown';
 import ref from '../reference/latest';
 import {Items} from '../components/style-spec/specs/items';
 import SDKSupportTable from '../components/sdk-support-table/sdk-support-table';
@@ -15,7 +15,7 @@ function Sources() {
 
     return (
         <div>
-            <SolidMd content={`# Sources
+            <Markdown content={`# Sources
 Sources state which data the map should display. Specify the type of source with the \`"type"\` property, which must be one of 
 ${sourceTypes.map((t, i) => {
             return `\`${t}\``;
@@ -84,7 +84,7 @@ A vector tile source. Tiles must be in [Mapbox Vector Tile format](https://docs.
                 }
             />
 
-            <SolidMd content={`
+            <Markdown content={`
 ## raster
 
 A raster tile source.
@@ -112,7 +112,7 @@ A raster tile source.
                 }}
             />
 
-            <SolidMd content={`
+            <Markdown content={`
 ## raster-dem
 
 A raster DEM source. Only supports [Mapbox Terrain RGB](https://blog.mapbox.com/global-elevation-data-6689f1d0ba65) and Mapzen Terrarium tiles.
@@ -138,7 +138,7 @@ A raster DEM source. Only supports [Mapbox Terrain RGB](https://blog.mapbox.com/
                 }}
             />
 
-            <SolidMd content={`
+            <Markdown content={`
 ## geojson
 
 A [GeoJSON](http://geojson.org/) source. Data must be provided via a \`"data"\` property, whose value can be a URL or inline GeoJSON.
@@ -195,7 +195,7 @@ This example of a GeoJSON source refers to an external GeoJSON document via its 
                 }}
             />
 
-            <SolidMd content={`
+            <Markdown content={`
 ## image
 
 An image source. The \`"url"\` value contains the image location.
@@ -227,7 +227,7 @@ The \`"coordinates"\` array contains \`[longitude, latitude]\` pairs for the ima
                     }
                 }}
             />
-            <SolidMd content={`
+            <Markdown content={`
 ## video
 
 A video source. The \`"urls"\` value is an array. For each URL in the array, a video element [source](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source) will be created. To support the video across browsers, supply URLs in multiple formats.

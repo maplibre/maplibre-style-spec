@@ -1,4 +1,4 @@
-import {SolidMd} from '~/components/markdown';
+import {Markdown} from '~/components/markdown';
 import ref from '../reference/latest';
 import {Items} from '../components/style-spec/specs/items';
 function Root() {
@@ -22,7 +22,7 @@ Root level properties of a MapLibre style specify the map's layers, tile sources
 
     return (
         <div>
-            <SolidMd content={md} />
+            <Markdown content={md} />
             <Items headingLevel='2' entry={ref.$root} />
         </div>
     );

@@ -1,4 +1,4 @@
-import {SolidMd} from '~/components/markdown';
+import {Markdown} from '~/components/markdown';
 
 function glyphs() {
     const md = `
@@ -16,7 +16,7 @@ This URL template should include two tokens:
 - \`{range}\` When requesting glyphs, this token is replaced with a range of 256 Unicode code points. For example, to load glyphs for the [Unicode Basic Latin and Basic Latin-1 Supplement blocks](https://en.wikipedia.org/wiki/Unicode_block), the range would be \`0-255\`. The actual ranges that are loaded are determined at runtime based on what text needs to be displayed.
 `;
 
-    return <SolidMd content={md} />;
+    return <Markdown content={md} />;
 }
 
 export default glyphs;

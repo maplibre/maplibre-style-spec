@@ -1,4 +1,4 @@
-import {SolidMd} from '~/components/markdown';
+import {Markdown} from '~/components/markdown';
 
 const md = `# Introduction
 
@@ -16,7 +16,7 @@ A MapLibre style consists of a set of [root properties](http://localhost:3001/ma
 `;
 
 function Introduction() {
-    return <SolidMd content={md} />;
+    return <Markdown content={md} />;
 }
 
 export default Introduction;

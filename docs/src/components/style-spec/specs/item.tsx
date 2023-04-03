@@ -3,7 +3,7 @@ import SDKSupportTable from '../../sdk-support-table//sdk-support-table';
 // import Icon from '@mapbox/mr-ui/icon';
 import Property from '../../property.jsx';
 import Subtitle from './subtitle.jsx';
-import {SolidMd} from '~/components/markdown';
+import {Markdown} from '~/components/markdown';
 
 interface IItem {
     id: string;
@@ -304,7 +304,7 @@ export default function Item (props:IItem) {
 
             {props.doc && (
                 <div class="mb12 style-spec-item-doc">
-                    <SolidMd content={props.doc} />
+                    <Markdown content={props.doc} />
                 </div>
             )}
 
@@ -318,7 +318,7 @@ export default function Item (props:IItem) {
                                     <code>{JSON.stringify(v)}</code>:
                                 </dt>,
                                 <dd key={`${i}-dd`} class="mb12">
-                                    <SolidMd content={doc} />
+                                    <Markdown content={doc} />
                                 </dd>
                             ]
                         )}
@@ -327,7 +327,7 @@ export default function Item (props:IItem) {
             )}
 
             {props.example &&
-                    <SolidMd content={`
+                    <Markdown content={`
 \`\`\`json
 "${props.name}": ${JSON.stringify(
             props.example,

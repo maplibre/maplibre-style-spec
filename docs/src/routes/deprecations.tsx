@@ -1,4 +1,4 @@
-import {SolidMd} from '~/components/markdown';
+import {Markdown} from '~/components/markdown';
 import Caption from '~/components/caption';
 import SDKSupportTable from '~/components/sdk-support-table/sdk-support-table';
 import Property from '~/components/property';
@@ -8,7 +8,7 @@ function Layers() {
     return (
         <div>
 
-            <SolidMd content={`# Deprecations
+            <Markdown content={`# Deprecations
 
 Some style properties are no longer the preferred method of accomplishing a particular styling goal. While they are still supported, they will eventually be removed from the MapLibre Style Specification and it is not recommended to use them in new styles. The following is provided as reference for users who need to continue maintaining legacy styles while transitioning to preferred style properties.
 
@@ -16,11 +16,11 @@ Some style properties are no longer the preferred method of accomplishing a part
 ## Function
 `}/>
             <Caption theme="warning">
-                <SolidMd content={`
+                <Markdown content={`
 As of [v0.41.0](https://github.com/maplibre/maplibre-gl-js/blob/main/CHANGELOG.md#0410-october-11-2017), [property expressions](/maplibre-gl-js-docs/style-spec/expressions) is the preferred method for styling features based on zoom level or the feature's properties. Zoom and property functions are still supported, but will be phased out in a future release.
 `}/>
             </Caption>
-            <SolidMd content={`
+            <Markdown content={`
 The value for any layout or paint property may be specified as a _function_. Functions allow you to make the appearance of a map feature change with the current zoom level and/or the feature's properties.
 `}/>
             <Property headingLevel='3' id="function-stops">stops</Property>
@@ -28,39 +28,39 @@ The value for any layout or paint property may be specified as a _function_. Fun
             <Subtitle>
 Required (except for `identity` functions) [array](/maplibre-gl-js-docs/style-spec/types/#array).
             </Subtitle>
-            <SolidMd content={`
+            <Markdown content={`
 A set of one input value and one output value is a "stop." Stop output values must be literal values (i.e. not functions or expressions), and appropriate for the property. For example, stop output values for a \`fill-color\` function property must be [colors](/maplibre-gl-js-docs/style-spec/types/#color).
 `}/>
 
             <Property headingLevel='3' id="function-property">property</Property>
 
             <Subtitle>
-                <SolidMd content={`
+                <Markdown content={`
 Optional [string](/maplibre-gl-js-docs/style-spec/types/#string).
 `}/>
             </Subtitle>
-            <SolidMd content={`
+            <Markdown content={`
 If specified, the function will take the specified feature property as an input. See [Zoom Functions and Property Functions](/maplibre-gl-js-docs/style-spec/types/#function-zoom-property) for more information.
 `} />
             <Property headingLevel='3' id="function-base">base</Property>
 
             <Subtitle>
-                <SolidMd content={`
+                <Markdown content={`
 Optional [number](/maplibre-gl-js-docs/style-spec/types/#number). Default is ref.function.base.default.
 `}/>
             </Subtitle>
-            <SolidMd content={`
+            <Markdown content={`
 The exponential base of the interpolation curve. It controls the rate at which the function output increases. Higher values make the output increase more towards the high end of the range. With values close to 1 the output increases linearly.
 `} />
             <Property headingLevel='3' id="function-type">type</Property>
 
             <Subtitle>
-                <SolidMd content={`
+                <Markdown content={`
 Optional [string](/maplibre-gl-js-docs/style-spec/types/#string). One of \`"identity"\`, \`"exponential"\`, \`"interval"\`, or \`"categorical"\`.
 `}/>
             </Subtitle>
 
-            <SolidMd content={`
+            <Markdown content={`
 
 \`identity\`
 : A function that returns its input as the output.
@@ -75,7 +75,7 @@ Optional [string](/maplibre-gl-js-docs/style-spec/types/#string). One of \`"iden
 : A function that returns the output value of the stop equal to the function input.
 `}/>
             <Property headingLevel='3' id="function-default">default</Property>
-            <SolidMd content={`
+            <Markdown content={`
 A value to serve as a fallback function result when a value isn't otherwise available. It is used in the following circumstances:
 
 - In categorical functions, when the feature value does not match any of the stop domain values.
@@ -88,11 +88,11 @@ If no default is provided, the style property's default is used in these circums
             <Property headingLevel='3' id="function-colorSpace">colorSpace</Property>
 
             <Subtitle>
-                <SolidMd content={`
+                <Markdown content={`
 Optional [string](/maplibre-gl-js-docs/style-spec/types/#string). One of \`"rgb"\`, \`"lab"\`, \`"hcl"\`.
 `}/>
             </Subtitle>
-            <SolidMd content={`
+            <Markdown content={`
 The color space in which colors interpolated. Interpolating colors in perceptual color spaces like LAB and HCL tend to produce color ramps that look more consistent and produce colors that can be differentiated more easily than those interpolated in RGB space.
 
 
@@ -164,7 +164,7 @@ The color space in which colors interpolated. Interpolating colors in perceptual
                 />
             </div>
 
-            <SolidMd content={`
+            <Markdown content={`
 **Zoom functions** allow the appearance of a map feature to change with map’s zoom level. Zoom functions can be used to create the illusion of depth and control data density. Each stop is an array with two elements: the first is a zoom level and the second is a function output value.
 
 \`\`\`json
@@ -201,7 +201,7 @@ There is an important difference between the way that zoom functions render for 
 \`\`\`
 `}/>
             <a id="types-function-zoom-property" class="anchor" />
-            <SolidMd content={`
+            <Markdown content={`
 **Zoom-and-property functions** allow the appearance of a map feature to change with both its properties _and_ zoom. Each stop is an array with two elements, the first is an object with a property input value and a zoom, and the second is a function output value. Note that support for property functions is not yet complete.
 
 \`\`\`json
@@ -229,11 +229,11 @@ There is an important difference between the way that zoom functions render for 
 ## Other filter
 `}/>
             <Caption theme="warning">
-                <SolidMd content={`
+                <Markdown content={`
 In previous versions of the style specification, [filters](/maplibre-gl-js-docs/style-spec/layers/#filter) were defined using the deprecated syntax documented below. Though filters defined with this syntax will continue to work, we recommend using the more flexible [expression](/maplibre-gl-js-docs/style-spec/expressions/) syntax instead. Expression syntax and the deprecated syntax below cannot be mixed in a single filter definition.
 `}/>
             </Caption>
-            <SolidMd content={`
+            <Markdown content={`
 ### Existential filters
 
 \`["has", \`key\`]\` \`feature[key]\` exists

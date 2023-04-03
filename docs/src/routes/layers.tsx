@@ -1,4 +1,4 @@
-import {SolidMd} from '~/components/markdown';
+import {Markdown} from '~/components/markdown';
 import ref from '../reference/latest';
 import {Items} from '../components/style-spec/specs/items';
 import {AppropriateImage} from '~/components/style-spec/appropriate-image';
@@ -22,7 +22,7 @@ function Layers() {
     return (
         <div>
 
-            <SolidMd content={`# Layers
+            <Markdown content={`# Layers
 
 A style's \`layers\` property lists all the layers available in that style. The type of layer is specified by the \`"type"\` property, and must be one of ${layerTypes.map((t, i) => `\`${t}\``).join(', ')}.
 
@@ -47,7 +47,7 @@ Except for layers of the \`background\` type, each layer needs to refer to a sou
             <a id="paint-property" class="anchor" />
 
             <hr class='my36' />
-            <SolidMd content={`
+            <Markdown content={`
 Layers have two sub-properties that determine how data from that layer is rendered: \`layout\` and \`paint\` properties.
 
 _Layout properties_ appear in the layer's \`"layout"\` object. They are applied early in the rendering process and define how data for that layer is passed to the GPU. Changes to a layout property require an asynchronous "layout" step.
@@ -64,13 +64,13 @@ The \`background\` style layer covers the entire map. Use a background style lay
             />
 
             <Caption>
-                <SolidMd content={`
+                <Markdown content={`
 The [Vintage map style](https://blog.mapbox.com/designing-the-vintage-style-in-mapbox-studio-9da4aa2a627f) uses a custom SVG [\`background-pattern\`](/maplibre-gl-js-docs/style-spec/layers/#paint-background-background-pattern) to achieve a textured vintage look.
 `} />
             </Caption>
 
             <Items headingLevel="3" entry={combineItems(['layout', 'paint'], 'background')} />
-            <SolidMd content={`
+            <Markdown content={`
 ## fill
 
 A \`fill\` style layer renders one or more filled (and optionally stroked) polygons on a map. You can use a fill layer to configure the visual appearance of polygon or multipolygon features.
@@ -81,13 +81,13 @@ A \`fill\` style layer renders one or more filled (and optionally stroked) polyg
             />
 
             <Caption>
-                <SolidMd content={`
+                <Markdown content={`
 This map of Washington, D.C. uses the [\`fill-opacity\`](/maplibre-gl-js-docs/style-spec/layers/#paint-fill-fill-opacity) paint property to render a semi-transparent polygon, showing how far a person can walk from the center of the city in ten minutes.
 `} />
             </Caption>
 
             <Items headingLevel="3" entry={combineItems(['layout', 'paint'], 'fill')} />
-            <SolidMd content={`
+            <Markdown content={`
 ## line
 
 A \`line\` style layer renders one or more stroked polylines on the map. You can use a line layer to configure the visual appearance of polyline or multipolyline features.
@@ -98,13 +98,13 @@ A \`line\` style layer renders one or more stroked polylines on the map. You can
             />
 
             <Caption>
-                <SolidMd content={`
+                <Markdown content={`
 This map of a [Strava](https://blog.mapbox.com/strava-launches-gorgeous-new-outdoor-maps-977c74cf37f9) user's hike through Grand Teton National Park uses the [\`line-color\`](/maplibre-gl-js-docs/style-spec/layers/#paint-line-line-color) and [\`line-width\`](/maplibre-gl-js-docs/style-spec/layers/#paint-line-line-width) paint properties to style the strong red line of the user's route.
 `} />
             </Caption>
 
             <Items headingLevel="3" entry={combineItems(['layout', 'paint'], 'line')} />
-            <SolidMd content={`
+            <Markdown content={`
 ## symbol
 
 A \`symbol\` style layer renders icon and text labels at points or along lines on a map. You can use a symbol layer to configure the visual appearance of labels for features in vector tiles.
@@ -115,13 +115,13 @@ A \`symbol\` style layer renders icon and text labels at points or along lines o
             />
 
             <Caption>
-                <SolidMd content={`
+                <Markdown content={`
 This map of Denver area businesses uses the [\`icon-image\`](/maplibre-gl-js-docs/style-spec/layers/#layout-symbol-icon-image) layout property to use a custom image as an icon in a symbol layer.
 `} />
             </Caption>
 
             <Items headingLevel="3" entry={combineItems(['layout', 'paint'], 'symbol')} />
-            <SolidMd content={`
+            <Markdown content={`
 ## raster
 
 A \`raster\` style layer renders raster tiles on a map. You can use a raster layer to configure the color parameters of raster tiles.
@@ -132,13 +132,13 @@ A \`raster\` style layer renders raster tiles on a map. You can use a raster lay
             />
 
             <Caption>
-                <SolidMd content={`
+                <Markdown content={`
 This [interactive SWIR imagery map by Maxar](https://blog.maxar.com/news-events/2020/maxar-and-mapbox-release-interactive-swir-imagery-map-of-california-wildfires?utm_source=mapbox&utm_medium=blog&utm_campaign=ca-wildfires-2020-map) uses the [\`visibility\`](/maplibre-gl-js-docs/style-spec/layers/#layout-raster-visibility) layout property to show or hide raster layers with shortwave infrared satellite imagery of California wildfires.
 `} />
             </Caption>
 
             <Items headingLevel="3" entry={combineItems(['layout', 'paint'], 'raster')} />
-            <SolidMd content={`
+            <Markdown content={`
 ## circle
 
 A \`circle\` style layer renders one or more filled circles on a map. You can use a circle layer to configure the visual appearance of point or point collection features in vector tiles. A circle layer renders circles whose radii are measured in screen units.
@@ -150,13 +150,13 @@ A \`circle\` style layer renders one or more filled circles on a map. You can us
             />
 
             <Caption>
-                <SolidMd content={`
+                <Markdown content={`
 This [cluster map](/maplibre-gl-js-docs/example/cluster/) uses a circle layer with a GeoJSON data source and sets the source's [\`cluster\`](/maplibre-gl-js-docs/style-spec/sources/#geojson-cluster) property to \`true\` to visualize points as clusters.
 `} />
             </Caption>
 
             <Items headingLevel="3" entry={combineItems(['layout', 'paint'], 'circle')} />
-            <SolidMd content={`
+            <Markdown content={`
 ## fill-extrusion
 
 A \`fill-extrusion\` style layer renders one or more filled (and optionally stroked) extruded (3D) polygons on a map. You can use a fill-extrusion layer to configure the extrusion and visual appearance of polygon or multipolygon features.
@@ -167,13 +167,13 @@ A \`fill-extrusion\` style layer renders one or more filled (and optionally stro
             />
 
             <Caption>
-                <SolidMd content={`
+                <Markdown content={`
 This map uses an external dataset to provide data-driven values for the [\`fill-extrusion-height\`](/maplibre-gl-js-docs/style-spec/layers/#paint-fill-extrusion-fill-extrusion-height) paint property of various [country polygons](https://blog.mapbox.com/high-resolution-administrative-country-polygons-in-studio-57cf4abb0768) in a fill-extrusion layer.
 `} />
             </Caption>
 
             <Items headingLevel="3" entry={combineItems(['layout', 'paint'], 'fill-extrusion')} />
-            <SolidMd content={`
+            <Markdown content={`
 ## heatmap
 
 A \`heatmap\` style layer renders a range of colors to represent the density of points in an area.
@@ -184,13 +184,13 @@ A \`heatmap\` style layer renders a range of colors to represent the density of 
             />
 
             <Caption>
-                <SolidMd content={`
+                <Markdown content={`
 [This visualization of earthquake data](/maplibre-gl-js-docs/example/heatmap-layer/) uses a heatmap layer with carefully defined [paint](/maplibre-gl-js-docs/style-spec/layers/#paint-property) properties to highlight areas where earthquake frequency is high and many points are clustered closely together.
 `} />
             </Caption>
 
             <Items headingLevel="3" entry={combineItems(['layout', 'paint'], 'heatmap')} />
-            <SolidMd content={`
+            <Markdown content={`
 ## hillshade
 
 A \`hillshade\` style layer renders digital elevation model (DEM) data on the client-side. The implementation only supports Mapbox Terrain RGB and Mapzen Terrarium tiles.
@@ -201,7 +201,7 @@ A \`hillshade\` style layer renders digital elevation model (DEM) data on the cl
             />
 
             <Caption>
-                <SolidMd content={`
+                <Markdown content={`
 This map of Mount Shasta uses a high value for the [\`hillshade-exaggeration\`](/maplibre-gl-js-docs/style-spec/layers/#paint-hillshade-hillshade-exaggeration) paint property to apply an intense shading effect.
 `} />
             </Caption>

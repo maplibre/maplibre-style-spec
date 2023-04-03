@@ -1,4 +1,4 @@
-import {SolidMd} from '~/components/markdown';
+import {Markdown} from '~/components/markdown';
 
 function types() {
     const md = `
@@ -95,7 +95,7 @@ Arrays are comma-separated lists of one or more numbers in a specific order. For
 \`\`\`
 `;
 
-    return <SolidMd content={md} />;
+    return <Markdown content={md} />;
 }
 
 export default types;

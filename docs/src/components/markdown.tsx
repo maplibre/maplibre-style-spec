@@ -21,7 +21,7 @@ const md = new MarkdownIt();
 
 md.use(prism, {highlightInlineCode: true, defaultLanguage: 'typescript'}).use(deflist).use(anchors);
 
-export function SolidMd ({content}:{content:string}) {
+export function Markdown ({content}:{content:string}) {
     return <div innerHTML={md.render(content)} />;
 }
 

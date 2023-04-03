@@ -3,7 +3,7 @@ import SDKSupportTable from '../components/sdk-support-table/sdk-support-table';
 import {renderSignature} from '../components/style-spec/specs/render-signature';
 import Property from '../components/property.jsx';
 import related from './expressions-related.json';
-import {SolidMd} from '~/components/markdown.jsx';
+import {Markdown} from '~/components/markdown.jsx';
 
 interface IExpressionReference {
     group: string;
@@ -50,13 +50,13 @@ export default function ExpressionReference (props: IExpressionReference) {
                 {name}
             </Property>
             {/* Description */}
-            {doc && <div class="mb12"><SolidMd content={doc} /></div>}
+            {doc && <div class="mb12"><Markdown content={doc} /></div>}
             {/* Syntax */}
             <SubHeading>Syntax</SubHeading>
             {type.map((overload, i) => (
 
                 <div>
-                    <SolidMd content={`
+                    <Markdown content={`
 \`\`\`javascript
 ${renderSignature(name, overload)}
 \`\`\`

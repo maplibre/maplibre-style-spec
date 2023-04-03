@@ -1,4 +1,4 @@
-import {SolidMd} from '~/components/markdown';
+import {Markdown} from '~/components/markdown';
 import ref from '../reference/latest';
 import {Items} from '../components/style-spec/specs/items';
 function Light() {
@@ -18,7 +18,7 @@ A style's \`light\` property provides a global light source for that style. Sinc
 
     return (
         <div>
-            <SolidMd content={md} />
+            <Markdown content={md} />
 
             <Items headingLevel='2' entry={ref.light} />
             {/* END GENERATED CONTENT */}

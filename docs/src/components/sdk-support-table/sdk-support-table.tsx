@@ -1,7 +1,7 @@
 //@ts-ignore
 import style from './sdk-support-table.module.scss';
 import entries from 'object.entries';
-import {SolidMd} from '~/components/markdown.jsx';
+import {Markdown} from '~/components/markdown.jsx';
 
 const SDKSupportTable = (props: { supportItems?: Object }) => {
     function support(support:any, sdk:any) {
@@ -33,7 +33,7 @@ const SDKSupportTable = (props: { supportItems?: Object }) => {
                     {entries(props.supportItems || props).map(([key, entry], i) => (
                         <tr>
                             <td>
-                                <SolidMd content={key} />
+                                <Markdown content={key} />
                             </td>
                             <td>{support(entry, 'js')}</td>
                             <td>{support(entry, 'android')}</td>

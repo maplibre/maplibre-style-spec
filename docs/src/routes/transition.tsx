@@ -1,4 +1,4 @@
-import {SolidMd} from '~/components/markdown';
+import {Markdown} from '~/components/markdown';
 import ref from '../reference/latest';
 import {Items} from '../components/style-spec/specs/items';
 function Transition() {
@@ -27,7 +27,7 @@ Any transitionable layer property, may also have its own \`*-transition\` proper
 
     return (
         <div>
-            <SolidMd content={md} />
+            <Markdown content={md} />
             <Items headingLevel='3' entry={ref.transition} />
 
         </div>

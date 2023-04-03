@@ -1,4 +1,4 @@
-import {SolidMd} from '~/components/markdown';
+import {Markdown} from '~/components/markdown';
 import ref from '../reference/latest';
 
 function Sprite() {
@@ -47,7 +47,7 @@ MapLibre SDKs will use the value of the \`sprite\` property in the style to gene
 
     return (
         <div>
-            <SolidMd content={md} />
+            <Markdown content={md} />
         </div>
     );
 }
