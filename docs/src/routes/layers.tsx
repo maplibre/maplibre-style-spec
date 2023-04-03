@@ -57,7 +57,7 @@ _Paint properties_ are applied later in the rendering process. Paint properties 
 ## background
 
 The \`background\` style layer covers the entire map. Use a background style layer to configure a color or pattern to show below all other map content. If the background layer is transparent or omitted from the style, any part of the map view that does not show another style layer is transparent.
-`} />;
+`} />
             <AppropriateImage
                 imageId="layer-background"
                 alt="Vintage map style with a brown halftone background pattern."

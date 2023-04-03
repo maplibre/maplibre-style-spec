@@ -1,3 +1,9 @@
+@media (min-width: 1050px) {
+  .collapsible {
+    display: none;
+  }
+}
+
 .collapsible__trigger {
   display: inline-flex;
   align-items: center;
