@@ -98,7 +98,6 @@ export function TableOfContents(props: TableOfContentsProps) {
                             <ul>
                                 <For each={domHeaders()}>{(header) => (
                                     <li class={header.id === activeLink() ? style.active : ''}>
-                                        
 
                                         <a href={`#${header.id}`} classList={{
                                             [style.anchor_H1]: header.tagName === 'H1',
@@ -106,7 +105,7 @@ export function TableOfContents(props: TableOfContentsProps) {
                                             [style.anchor_H3]: header.tagName === 'H3'
                                         }}>
                                             {header.id.startsWith('paint-') ? <span class={style.paintIcon}><i class="fa-solid fa-palette"></i></span> : null}
-                                        {header.id.startsWith('layout-') ? <span class={style.layoutIcon}><i class="fa-solid fa-pen"></i></span> : null}
+                                            {header.id.startsWith('layout-') ? <span class={style.layoutIcon}><i class="fa-solid fa-pen"></i></span> : null}
                                             {/* onClick={(event) => handleLinkClick(event, header.id)}> */}
                                             {header.innerText}
                                         </a>

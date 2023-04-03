@@ -19,12 +19,10 @@
   padding-top: 1rem;
   padding-bottom: 1rem;
 
-
-  .paintIcon, .layoutIcon {
-    
+  .paintIcon,
+  .layoutIcon {
     margin-right: 5px;
   }
-
 
   .navItems {
     display: flex;
@@ -58,11 +56,6 @@
           border-radius: 4px;
           display: block;
 
-          &:hover {
-            color: #007bff;
-            background-color: #f0f0f0;
-          }
-
           &.anchor_H1 {
             // font-weight: 900 !important;
             text-decoration: underline;
@@ -79,6 +72,11 @@
             // padding-top: 0;
             // padding-bottom: 0;
             margin-left: 0px !important;
+            color: rgb(65, 65, 65);
+          }
+          &:hover {
+            color: #007bff !important;
+            background-color: #f0f0f0;
           }
         }
       }
