@@ -41,9 +41,9 @@ export default function Root() {
                 <Link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
                 <Link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet" />
 
-                <Link href="/node_modules/@fortawesome/fontawesome-free/css/fontawesome.css" rel="stylesheet" />
-                <Link href="/node_modules/@fortawesome/fontawesome-free/css/brands.css" rel="stylesheet" />
-                <Link href="/node_modules/@fortawesome/fontawesome-free/css/solid.css" rel="stylesheet" />
+                <Link href="https://unpkg.com/@fortawesome/fontawesome-free@6.4.0/css/fontawesome.css" rel="stylesheet" />
+                <Link href="https://unpkg.com/@fortawesome/fontawesome-free@6.4.0/css/brands.css" rel="stylesheet" />
+                <Link href="https://unpkg.com/@fortawesome/fontawesome-free@6.4.0/css/solid.css" rel="stylesheet" />
 
             </Head>
             <Body>

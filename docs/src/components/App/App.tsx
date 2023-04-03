@@ -33,15 +33,9 @@ export function App(props: { children?: any }) {
                             <ul>
                                 {pages.map((page) => (
                                     <li>
-                                        <a href='#' class="sidebar-link" onClick={(e) => {
-
-                                            e.preventDefault();
-
-                                            closeNav();
-
-                                            navigate(page.path.replace('/', ''));
-
-                                        }}>{page.title}</a>
+                                        <A end={true} href={page.path.replace('/', '')} onClick={() => {
+                                            setShowNavOverlay(false);
+                                        }} class="sidebar-link" >{page.title}</A>
                                     </li>
                                 ))}
                             </ul>

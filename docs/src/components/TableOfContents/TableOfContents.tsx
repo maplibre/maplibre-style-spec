@@ -85,9 +85,9 @@ export function TableOfContents(props: TableOfContentsProps) {
 
     // Render the table of contents with the headers and active link state
     return (
-        <Show when={domHeaders().length > 0}>
-            <aside class={`${props.class} ${style.toc_outer_container} ${style[`${props.mode}TOC`]}`}>
-                <div class={`${props.class} ${style.toc_viewport}`}>
+        <aside class={`${props.class} ${style.toc_outer_container} ${style[`${props.mode}TOC`]}`}>
+            <div class={`${props.class} ${style.toc_viewport}`}>
+                <Show when={domHeaders().length > 0}>
                     <nav>
                         <div class={style.navItems}>
                             <Show when={props.mode === 'large'}><h3 style={{cursor: 'pointer'}}class={style.header} onClick={() => {
@@ -119,9 +119,9 @@ export function TableOfContents(props: TableOfContentsProps) {
                             </ul>
                         </div>
                     </nav>
-                </div>
-            </aside>
-        </Show>
+                </Show>
+            </div>
+        </aside>
     );
 
 }
