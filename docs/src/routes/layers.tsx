@@ -24,12 +24,10 @@ Except for layers of the \`background\` type, each layer needs to refer to a sou
             2
         )}
 \`\`\`
+
+## Layer properties
 `}/>
 
-            {/* START GENERATED CONTENT:
-Content in this section is generated directly using the MapLibre Style
-Specification. To update any content displayed in this section, make edits to:
-https://github.com/maplibre/maplibre-gl-js/blob/main/src/style-spec/reference/v8.json. */}
 
             <Items entry={ref.layer} />
 
@@ -45,11 +43,6 @@ Layers have two sub-properties that determine how data from that layer is render
 _Layout properties_ appear in the layer's \`"layout"\` object. They are applied early in the rendering process and define how data for that layer is passed to the GPU. Changes to a layout property require an asynchronous "layout" step.
 
 _Paint properties_ are applied later in the rendering process. Paint properties appear in the layer's \`"paint"\` object. Changes to a paint property are cheap and happen synchronously.
-
-            {/* START GENERATED CONTENT:
-Content in this section is generated directly using the MapLibre Style
-Specification. To update any content displayed in this section, make edits to:
-https://github.com/maplibre/maplibre-gl-js/blob/main/src/style-spec/reference/v8.json. */}
 
 ## background
 

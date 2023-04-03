@@ -23,12 +23,13 @@ Any transitionable layer property, may also have its own \`*-transition\` proper
     )}
 \`\`\`
 
+## Transition Options
 `;
 
     return (
         <div>
             <SolidMd content={md} />
-            <Items headingLevel='2' entry={ref.transition} />
+            <Items headingLevel='3' entry={ref.transition} />
 
         </div>
     );

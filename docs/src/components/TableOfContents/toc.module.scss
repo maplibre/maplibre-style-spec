@@ -76,13 +76,16 @@
           }
 
           &.anchor_H2 {
-            font-weight: 900 !important;
-            margin-top: 0px !important;
+            // font-weight: 900 !important;
+            font-size: 15px;
+            // margin-top: 10px !important;
           }
 
           &.anchor_H3 {
             // padding-top: 0;
             // padding-bottom: 0;
+            font-size: 13px;
+            // padding: 3px 12px;
             margin-left: 10px !important;
             color: rgb(65, 65, 65);
           }
