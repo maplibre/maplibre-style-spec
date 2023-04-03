@@ -33,7 +33,7 @@ export function App(props: { children?: any }) {
                             <ul>
                                 {pages.map((page) => (
                                     <li>
-                                        <A end={true} href='#' class="sidebar-link" onClick={(e) => {
+                                        <a href='#' class="sidebar-link" onClick={(e) => {
 
                                             e.preventDefault();
 
@@ -41,7 +41,7 @@ export function App(props: { children?: any }) {
 
                                             navigate(page.path.replace('/', ''));
 
-                                        }}>{page.title}</A>
+                                        }}>{page.title}</a>
                                     </li>
                                 ))}
                             </ul>
