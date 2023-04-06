@@ -1,7 +1,8 @@
 import style from './sidebar.module.scss';
 import './sidebar.css';
-import {A, useLocation} from 'solid-start';
+import {useLocation} from 'solid-start';
 import {pages} from '~/pages';
+import {For} from 'solid-js';
 
 interface SidebarProps {
     class?: string;
@@ -17,11 +18,12 @@ export function Sidebar(props: SidebarProps) {
                     <div class={style.sidebar_inner_container}>
                         <div class={style.navItems}>
                             <ul>
-                                {pages.map((page) => {
-                                    return <li>
+                                <For each={pages}>{(page) => (
+                                    <li>
                                         <a classList={{'sidebar-link': true, 'active': `${import.meta.env.BASE_URL}${page.path}` === location.pathname}} href={`${import.meta.env.BASE_URL}${page.path}`}>{page.title}</a>
-                                    </li>;
-                                })}
+                                    </li>
+                                )}
+                                </For>
                                 <li>
                                     <a  target="_blank" href="https://github.com/maplibre/maplibre-gl-style-spec/blob/main/CHANGELOG.md">Changelog</a>
                                 </li>

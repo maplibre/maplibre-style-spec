@@ -5,7 +5,7 @@ import overlayStyle from './overlay-style.module.scss';
 
 import {Header} from '../header/header';
 import {TableOfContents} from '../toc/toc';
-import {For, Show, createSignal} from 'solid-js';
+import {For, Show, createSignal, JSXElement} from 'solid-js';
 import {pages} from '~/pages';
 import {A} from 'solid-start';
 
@@ -19,22 +19,22 @@ export function closeNav() {
     setShowNavOverlay(false);
 }
 
-export function App(props: { children?: any }) {
+export function App(props: { children?: JSXElement }) {
 
     return (
         <>
             <div class={style.app_wrap} id="app_wrap">
                 <Show when={showNavOverlay()}>
-                    <div id="myNav" class={overlayStyle.overlay}>
-                        {/* <a class="closebtn" onClick={closeNav}>&times;</a> */}
+                    <div class={overlayStyle.overlay}>
                         <div>
                             <Header />
                             <ul>
+
                                 <For each={pages}>{(page) => (
                                     <li>
-                                        <A end={true} href={page.path.replace('/', '')} onClick={() => {
+                                        <a onClick={() => {
                                             setShowNavOverlay(false);
-                                        }} class="sidebar-link" >{page.title}</A>
+                                        }} classList={{'sidebar-link': true, 'active': `${import.meta.env.BASE_URL}${page.path}` === location.pathname}} href={`${import.meta.env.BASE_URL}${page.path}`}>{page.title}</a>
                                     </li>
                                 )}
                                 </For>

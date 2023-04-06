@@ -1,14 +1,12 @@
 import Item from './item.jsx';
 import {For} from 'solid-js';
 
-interface IItems {
+export function Items (props:{
     entry: object;
     section?: string;
     kind?: string;
     headingLevel?: '2' | '3';
-}
-
-export function Items (props:IItems) {
+}) {
 
     return (
         <For each={Object.entries(props.entry)

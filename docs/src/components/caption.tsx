@@ -1,4 +1,6 @@
-const Caption = (props:any) => {
+import {JSXElement} from 'solid-js';
+
+const Caption = (props:{children?: JSXElement}) => {
 
     return (
         <div

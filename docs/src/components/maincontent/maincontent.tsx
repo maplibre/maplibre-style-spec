@@ -3,13 +3,12 @@ import {TableOfContents} from '../toc/toc';
 import style from './maincontent.module.scss';
 import '../collapse/collapse.scss';
 import {Collapsible} from '@kobalte/core';
+import {JSXElement} from 'solid-js';
 
-interface MainContentProps {
-    children?: any;
+export function MainContent(props: {
+    children?: JSXElement;
     class?: string;
-}
-
-export function MainContent(props: MainContentProps) {
+}) {
 
     const location = useLocation();
     function getPage() {

@@ -1,11 +1,10 @@
 import SDKSupportTable from '../sdk-support-table/sdk-support-table';
-// import Icon from '@mapbox/mr-ui/icon';
 import Property from '../property.jsx';
 import Subtitle from '../subtitle.jsx';
 import {Markdown} from '~/components/markdown/markdown';
 import {Show} from 'solid-js';
 
-interface IItem {
+export default function Item (props:{
     id: string;
     name: string;
     kind: string;
@@ -21,10 +20,7 @@ interface IItem {
     'sdk-support': object;
     expression: object;
     headingLevel?: '2' | '3';
-
-}
-
-export default function Item (props:IItem) {
+}) {
 
     function type(spec = props, plural = false) {
         switch (spec.type) {
@@ -134,7 +130,7 @@ export default function Item (props:IItem) {
         }
     }
 
-    function requires(req, i) {
+    function requires(req) {
         if (typeof req === 'string') {
             return (
                 <span>
@@ -154,7 +150,7 @@ export default function Item (props:IItem) {
                     <span>
                         <em>Requires</em> <var>{name}</var> to be{' '}
                         {value
-                            .map((r, i) => (
+                            .map((r) => (
                                 <code>{JSON.stringify(r)}</code>
                             ))
                             .reduce((prev, curr) => [prev, ', or ', curr])}
@@ -208,7 +204,7 @@ export default function Item (props:IItem) {
 
                     <span>{'One of '}</span>
                     {Object.keys(props.values)
-                        .map((opt, i) => (
+                        .map((opt) => (
                             <code>
                                 {JSON.stringify(opt)}
                             </code>
