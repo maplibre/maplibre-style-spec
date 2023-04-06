@@ -2,10 +2,10 @@ import {default as createFilter, isExpressionFilter} from '.';
 
 import convertFilter from './convert';
 import Point from '@mapbox/point-geometry';
-import MercatorCoordinate from '../coordinates/mercator_coordinate';
+import MercatorCoordinate from '../geo/mercator_coordinate';
 import EXTENT from '../extent';
 import {ICanonicalTileID} from '../geo/tile_id';
-import {ExpressionFilterSpecification, ExpressionInputType, ExpressionSpecification, FilterSpecification} from '../types.g';
+import {ExpressionFilterSpecification, ExpressionInputType, ExpressionSpecification, FilterSpecification} from '../../dist/index.d';
 import {Feature} from '../expression';
 
 describe('filter', () => {
