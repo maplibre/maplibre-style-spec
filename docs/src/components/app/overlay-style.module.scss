@@ -1,4 +1,3 @@
-
 .overlay {
   height: 100vh;
   width: 100vw;
@@ -24,7 +23,8 @@
   width: 100%;
 }
 
-.overlay a:hover, .overlay a:focus {
+.overlay a:hover,
+.overlay a:focus {
   color: black;
 }
 
@@ -36,10 +36,12 @@
 }
 
 @media screen and (max-height: 450px) {
-  .overlay a {font-size: 20px}
+  .overlay a {
+    font-size: 20px;
+  }
   .overlay .closebtn {
-  font-size: 40px;
-  top: 15px;
-  right: 35px;
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
   }
 }

@@ -2,7 +2,6 @@
   .toc_accordion {
     display: none;
   }
-
 }
 
 .toc_accordion {
@@ -30,7 +29,7 @@
 
 .mainContentContainer {
   flex-grow: 1;
-  
+
   width: 100%;
   display: flex;
   box-sizing: border-box;
@@ -41,41 +40,32 @@
     color: black !important;
   }
 
-  
-
   .mainContent_paddingContainer {
     max-width: 800px;
-    
+
     position: relative;
     padding: 1rem 1rem 5rem 1rem;
     overflow-x: scroll;
     box-sizing: border-box;
-    
+
     .row {
       display: flex;
       box-sizing: border-box;
 
       .docItems {
-        
         flex: 1 0;
         margin-left: 0;
-        width: 100%;    
+        width: 100%;
 
-        
-
-        h2, h3 {
-          padding-top: calc(3.75rem * 1  + 20px);
+        h2,
+        h3 {
+          padding-top: calc(3.75rem * 1 + 20px);
           margin-top: calc(3.75rem * (-1) + 26px);
         }
-
-        
-
       }
-
     }
   }
 }
-
 
 .githubLink {
   text-align: center;

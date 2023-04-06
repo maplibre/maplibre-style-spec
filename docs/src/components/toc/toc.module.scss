@@ -28,10 +28,10 @@
   padding-bottom: 1rem;
 
   position: sticky;
-    top: 0;
-    height: 100%;
-    max-height: 100vh;
-    box-sizing: border-box;
+  top: 0;
+  height: 100%;
+  max-height: 100vh;
+  box-sizing: border-box;
 
   .paintIcon,
   .layoutIcon {
@@ -43,9 +43,6 @@
     display: flex;
     flex-direction: column;
     align-items: left;
-    // background-color: white;
-
-    // padding: 1rem;
     flex: 0 0 auto;
 
     position: sticky;
@@ -59,8 +56,6 @@
       margin: 0;
 
       li {
-        // margin-bottom: 1rem;
-
         a {
           text-decoration: none;
           color: #333;
@@ -72,7 +67,6 @@
           display: block;
 
           &.anchor_H1 {
-            // font-weight: 900 !important;
             text-decoration: underline;
             margin-top: 0px !important;
             font-size: 20px !important;
@@ -80,16 +74,11 @@
           }
 
           &.anchor_H2 {
-            // font-weight: 900 !important;
             font-size: 15px;
-            // margin-top: 10px !important;
           }
 
           &.anchor_H3 {
-            // padding-top: 0;
-            // padding-bottom: 0;
             font-size: 13px;
-            // padding: 3px 12px;
             margin-left: 10px !important;
             color: rgb(65, 65, 65);
           }
@@ -104,8 +93,6 @@
 }
 
 .header {
-  // width: 100%;
-  // background-color: $--background-color;
   display: flex;
   flex-direction: column;
   font-size: 1.2rem;

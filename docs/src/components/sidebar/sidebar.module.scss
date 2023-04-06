@@ -1,14 +1,9 @@
-// Sidebar.module.scss
 @import '../../_variables.scss';
-
-
 
 .sidebar_outer_container {
   clip-path: inset(0);
   display: block;
   will-change: width;
-
-  // top: 0;
   border: 1px solid rgb(236, 242, 247);
   background-color: white;
   margin-top: calc(3.75rem * -1);
@@ -23,19 +18,12 @@
 
   .sidebar_inner_container {
     display: flex;
-    width: 200px; // Adjust this value according to your preference
+    width: 200px;
     padding-top: $--header-height;
     box-sizing: border-box;
     flex-direction: column;
     height: 100%;
   }
-
-  // flex-direction: column;
-  // align-items: center;
-
-  //
-  // // box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  // flex: 0 0 auto;
 
   .navItems {
     padding: 1rem;
@@ -45,27 +33,11 @@
     overflow: scroll;
 
     ul {
-      list-style-type: none; // Remove bullet points
+      list-style-type: none;
       padding: 0;
       margin: 0;
 
       li {
-        // a {
-        //   text-decoration: none;
-        //   color: #333;
-        //   font-weight: 500;
-        //   font-size: 1rem; // Increase font size for better readability
-        //   line-height: 1.4; // Improve line spacing
-        //   padding: 6px 0px; // Add padding around the link
-        //   border-radius: 4px; // Add border radius to the link
-        //   display: block; // Make the link a block element
-
-        //   &:hover {
-        //     color: #007bff;
-        //     // color: #007BFF;
-        //     //background-color: #f6f6ff;
-        //   }
-
         a {
           text-decoration: none;
           color: #333;
@@ -85,12 +57,6 @@
     }
   }
 }
-
-// nav {
-//   display: flex;
-//   flex-direction: column;
-//   // Add any other styles you need for the links container
-// }
 
 @media (max-width: 800px) {
   .sidebar_outer_container {
