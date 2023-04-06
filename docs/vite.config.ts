@@ -5,7 +5,7 @@ import staticAdapter from 'solid-start-static';
 const config = defineConfig(({command, mode, ssrBuild}) => {
 
     return {
-        base: mode === 'production' ? '/' : '/',
+        base: '/maplibre-style/',
         plugins: [solid({ssr: true, solid: {hydratable: true}, adapter: staticAdapter()})],
     };
 });
