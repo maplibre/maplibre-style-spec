@@ -1,6 +1,5 @@
 //@ts-ignore
 import style from './sdk-support-table.module.scss';
-import entries from 'object.entries';
 import {Markdown} from '~/components/markdown/markdown.jsx';
 
 const SDKSupportTable = (props: { supportItems?: Object }) => {
@@ -30,7 +29,7 @@ const SDKSupportTable = (props: { supportItems?: Object }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {entries(props.supportItems || props).map(([key, entry]) => (
+                    {Object.entries(props.supportItems || props).map(([key, entry]) => (
                         <tr>
                             <td>
                                 <Markdown content={key} />
