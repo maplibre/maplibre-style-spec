@@ -18,7 +18,7 @@ export function TableOfContents(props: TableOfContentsProps) {
 
     // Function to handle scroll event
     const handleScroll = () => {
-        let closestHeader;
+        let closestHeader: string | undefined;
         let closestDistance = Infinity;
 
         // setDomHeaders(headers().map(({id}) => document.getElementById(id)!));
@@ -33,9 +33,23 @@ export function TableOfContents(props: TableOfContentsProps) {
                 }
             }
         });
-
         // Set the active link based on the closest header
         setActiveLink(closestHeader || '');
+        if (closestHeader) {
+
+            const headerElement = document.getElementById(`toc-link-${closestHeader}`);
+            console.log('closestHeader', closestHeader);
+            if (headerElement) {
+                const topPos = headerElement.offsetTop;
+
+                console.log('topPos', topPos);
+
+                if (tocRef()) {
+                    tocRef()!.scrollTop = topPos - 200;
+                }
+            }
+
+        }
     };
 
     // Effect to set up the table of contents and scroll event listener
@@ -55,22 +69,35 @@ export function TableOfContents(props: TableOfContentsProps) {
             });
             setDomHeaders(pageHeaders.map(({id}) => document.getElementById(id)!));
 
-            // Add the scroll event listener when the window object is available
-            window.addEventListener('scroll', handleScroll);
         }
 
-        // Clean up the event listener when the component is unmounted
-        onCleanup(() => {
-            if (typeof window !== 'undefined') {
-                window.removeEventListener('scroll', handleScroll);
-            }
-        });
     });
+    const [tocRef, setTOCRef] = createSignal<HTMLElement>();
+
+    createEffect(() => {
+        if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+        // Add the scroll event listener when the window object is available
+            window.addEventListener('scroll', handleScroll);
+        }
+    });
+
+    // Clean up the event listener when the component is unmounted
+    onCleanup(() => {
+        if (typeof window !== 'undefined') {
+            window.removeEventListener('scroll', handleScroll);
+        }
+    });
+
+    // const handleLinkClick = (event: Event, id: string) => {
+    //     event.preventDefault();
+    //     const headerElement = document.getElementById(id);
+    //     headerElement?.scrollIntoView({behavior: 'smooth'});
+    // };
 
     // Render the table of contents with the headers and active link state
     return (
         <aside class={`${props.class} ${style.toc_outer_container} ${style[`${props.mode}TOC`]}`}>
-            <div class={`${props.class} ${style.toc_viewport}`}>
+            <div class={`${props.class} ${style.toc_viewport}`} ref={setTOCRef}>
                 <Show when={domHeaders().length > 0}>
                     <nav>
                         <div class={style.navItems}>
@@ -84,13 +111,14 @@ export function TableOfContents(props: TableOfContentsProps) {
                             </Show>
                             <ul>
                                 <For each={domHeaders()}>{(header) => (
-                                    <li class={header.id === activeLink() ? style.active : ''}>
+                                    <li>
 
                                         {/* href={`#${header.id}`} */}
-                                        <a href={`#${header.id}`} classList={{
+                                        <a id={`toc-link-${header.id}`} href={`#${header.id}`} classList={{
                                             [style.anchor_H1]: header.tagName === 'H1',
                                             [style.anchor_H2]: header.tagName === 'H2',
-                                            [style.anchor_H3]: header.tagName === 'H3'
+                                            [style.anchor_H3]: header.tagName === 'H3',
+                                            [style.active]: header.id === activeLink()
                                         }} >
                                             {/* }} onClick={(event) => handleLinkClick(event, header.id)}> */}
                                             {header.id.startsWith('paint-') ? <span class={style.paintIcon}><i class="fa-solid fa-palette"></i></span> : null}
