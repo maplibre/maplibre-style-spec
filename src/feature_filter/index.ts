@@ -2,7 +2,7 @@ import {createExpression} from '../expression';
 import type {GlobalProperties, Feature} from '../expression';
 import {ICanonicalTileID} from '../geo/tile_id';
 import {StylePropertySpecification} from '../style-spec';
-import {ExpressionFilterSpecification} from '../types.g';
+import {ExpressionFilterSpecification} from '../../dist/index.d';
 
 type FilterExpression = (
     globalProperties: GlobalProperties,

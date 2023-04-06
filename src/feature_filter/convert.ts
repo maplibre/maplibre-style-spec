@@ -1,6 +1,6 @@
 import {isExpressionFilter} from './index';
 
-import type {ExpressionFilterSpecification, ExpressionInputType, ExpressionSpecification, FilterSpecification, LegacyFilterSpecification} from '../types.g';
+import type {ExpressionFilterSpecification, ExpressionInputType, ExpressionSpecification, FilterSpecification, LegacyFilterSpecification} from '../../dist/index.d';
 
 type ExpectedTypes = {[_: string]: ExpressionInputType};
 

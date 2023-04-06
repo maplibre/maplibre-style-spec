@@ -3,7 +3,7 @@ import {isExpression} from '../expression';
 import convertFunction, {convertTokenString} from '../function/convert';
 import convertFilter from '../feature_filter/convert';
 
-import type {FilterSpecification, LayerSpecification, StyleSpecification} from '../types.g';
+import type {FilterSpecification, LayerSpecification, StyleSpecification} from '../../dist/index.d';
 
 /**
  * Migrate the given style object in place to use expressions. Specifically,
