@@ -1,7 +1,7 @@
 import {Markdown} from '~/components/markdown/markdown';
-import ref from '../../../src/reference/latest';
-import {Items} from '../components/items/items';
-import SDKSupportTable from '../components/sdk-support-table/sdk-support-table';
+import ref from '../../../../src/reference/latest';
+import {Items} from '../../components/items/items';
+import SDKSupportTable from '../../components/sdk-support-table/sdk-support-table';
 function Sources() {
 
     const sourceTypes = [

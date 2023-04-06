@@ -1,4 +1,4 @@
-import { JSXElement } from 'solid-js';
+import {JSXElement} from 'solid-js';
 import {Dynamic} from 'solid-js/web';
 interface IProps {
 

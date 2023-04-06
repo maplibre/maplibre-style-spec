@@ -1,5 +1,5 @@
 import {Markdown} from '~/components/markdown/markdown';
-import ref from '../../../src/reference/latest';
+import ref from '../../../../src/reference/latest';
 
 function Sprite() {
 

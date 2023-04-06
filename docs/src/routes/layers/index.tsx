@@ -1,5 +1,5 @@
 import {Markdown} from '~/components/markdown/markdown';
-import ref from '../../../src/reference/latest';
+import ref from '../../../../src/reference/latest';
 import {Items} from '~/components/items/items';
 import {AppropriateImage} from '~/components/appropriate-image/appropriate-image';
 import Caption from '~/components/caption';
