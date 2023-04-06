@@ -65,6 +65,7 @@
           padding: 6px 12px;
           border-radius: 4px;
           display: block;
+          
 
           &.anchor_h1 {
             text-decoration: underline;
@@ -85,6 +86,12 @@
           &:hover {
             color: #007bff !important;
             background-color: #f0f0f0;
+          }
+
+          .toc-link-transition-options {
+            &:hover {
+              background: none !important;
+            }
           }
         }
       }

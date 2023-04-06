@@ -36,11 +36,20 @@
   border: 1px solid hsl(0, 0%, 86%);
   border-top: none;
   color: hsl(240 4% 16%);
-  // animation: slideUp 300ms ease-out;
+
+  .toc_viewport {
+    padding: 0 !important;
+  }
+
+  ul {
+    width: 100%;
+
+    a {
+      margin: 0px 5px;
+    }
+  }
 }
-.collapsible__content[data-expanded] {
-  // animation: slideDown 300ms ease-out;
-}
+
 .collapsible__content-text {
   padding: 16px;
 }
