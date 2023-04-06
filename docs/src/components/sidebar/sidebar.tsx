@@ -33,22 +33,3 @@ export function Sidebar(props: {
         </>
     );
 }
-
-// export function Sidebar(props: SidebarProps) {
-
-//     return (
-//         <aside class={`${style.sidebar} ${props.class}`}>
-//             <h1 class={style.header}>MapLibre Styles Docs</h1>
-//             <hr />
-//             <div class={style.nav_items}>
-//                 <ul>
-//                     {docs.map((doc) => (
-//                         <li>
-//                             <a href={doc.link}>{doc.title}</a>
-//                         </li>
-//                     ))}
-//                 </ul>
-//             </div>
-//         </aside>
-//     );
-// }
