@@ -24,7 +24,7 @@ export function Header() {
                         class={style.title}
 
                     >
-          Style Specification
+          Style Spec
                     </span>
                 </div>
             </div>
