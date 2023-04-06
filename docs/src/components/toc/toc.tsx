@@ -32,11 +32,9 @@ export function TableOfContents(props: {
         if (closestHeader) {
 
             const headerElement = document.getElementById(`toc-link-${closestHeader}`);
-            console.log('closestHeader', closestHeader);
+
             if (headerElement) {
                 const topPos = headerElement.offsetTop;
-
-                console.log('topPos', topPos);
 
                 if (tocRef()) {
                     tocRef()!.scrollTop = topPos - 200;
@@ -80,15 +78,14 @@ export function TableOfContents(props: {
 
     const handleLinkClick = (event: Event, id: string) => {
 
-        console.log(id);
         event.preventDefault();
         const headerElement = document.getElementById(id);
-        console.log(headerElement);
+
         if (headerElement) {
             const scrollTop = headerElement.offsetTop + 60;
-            console.log(scrollTop);
 
             // Different browsers...
+            // @ts-ignore
             window.scrollTop = scrollTop;
             window.document.body.scrollTop = scrollTop;
             window.document.documentElement.scrollTop = scrollTop;

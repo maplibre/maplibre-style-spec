@@ -14,7 +14,6 @@ export function MainContent(props: {
     function getPage() {
 
         let pageSection = (location.pathname.split(import.meta.env.BASE_URL))[1];
-        console.log('page', pageSection);
 
         if (typeof pageSection === 'string') {
             if (!pageSection.endsWith('/')) {
@@ -28,7 +27,6 @@ export function MainContent(props: {
             return pageSection;
 
         } else {
-            console.log('page is undefined', pageSection);
             return '';
         }
     }
