@@ -1,27 +1,29 @@
-import {parseCSSColor} from 'csscolorparser';
+import colorString from 'color-string';
+import {hcl, hsl, lab, HCLColor, LABColor, RGBColor} from './color_spaces';
 
 /**
- * An RGBA color value. Create instances from color strings using the static
- * method `Color.parse`. The constructor accepts RGB channel values in the range
- * `[0, 1]`, premultiplied by A.
- *
- * @param {number} r The red channel.
- * @param {number} g The green channel.
- * @param {number} b The blue channel.
- * @param {number} a The alpha channel.
+ * Color representation used by WebGL.
+ * Defined in sRGB color space and pre-blended with alpha.
  * @private
  */
 class Color {
-    r: number;
-    g: number;
-    b: number;
-    a: number;
 
-    constructor(r: number, g: number, b: number, a: number = 1) {
+    readonly r: number;
+    readonly g: number;
+    readonly b: number;
+    readonly a: number;
+
+    /**
+     * @param r Red component premultiplied by `alpha` 0..1
+     * @param g Green component premultiplied by `alpha` 0..1
+     * @param b Blue component premultiplied by `alpha` 0..1
+     * @param [alpha=1] Alpha component 0..1
+     */
+    constructor(r: number, g: number, b: number, alpha: number = 1) {
         this.r = r;
         this.g = g;
         this.b = b;
-        this.a = a;
+        this.a = alpha;
     }
 
     static black: Color;
@@ -30,59 +32,90 @@ class Color {
     static red: Color;
 
     /**
-     * Parses valid CSS color strings and returns a `Color` instance.
-     * @param input A valid CSS color string.
+     * Parses CSS color strings and converts colors to sRGB color space if needed.
+     * Officially supported color formats:
+     * - keyword, e.g. 'aquamarine' or 'steelblue'
+     * - hex (with 3, 4, 6 or 8 digits), e.g. '#f0f' or '#e9bebea9'
+     * - rgb and rgba, e.g. 'rgb(0,240,120)' or 'rgba(0%,94%,47%,0.1)' or 'rgb(0 240 120 / .3)'
+     * - hsl and hsla, e.g. 'hsl(0,0%,83%)' or 'hsla(0,0%,83%,.5)' or 'hsl(0 0% 83% / 20%)'
+     *
+     * @param input CSS color string to parse.
      * @returns A `Color` instance, or `undefined` if the input is not a valid color string.
      */
-    static parse(input?: string | Color | null): Color | void {
-        if (!input) {
-            return undefined;
+    static parse(input: String | string | undefined | null): Color | undefined {
+        if (Object.prototype.toString.call(input) !== '[object String]') {
+            return;
         }
 
-        if (input instanceof Color) {
-            return input;
+        const parsedColor = parseCssColor(input.toLowerCase());
+        if (parsedColor) {
+            const [r, g, b, alpha] = parsedColor;
+            const color = new Color(r * alpha, g * alpha, b * alpha, alpha);
+            if (!alpha) {
+                // alpha = 0 erases completely rgb channels. This behavior is not desirable
+                // if this particular color is later used in color interpolation.
+                // Because of that, a reference to original color is saved.
+                color.overwriteGetter('rgb', parsedColor);
+            }
+            return color;
         }
-
-        if (typeof input !== 'string') {
-            return undefined;
-        }
-
-        const rgba = parseCSSColor(input);
-        if (!rgba) {
-            return undefined;
-        }
-
-        return new Color(
-            rgba[0] / 255 * rgba[3],
-            rgba[1] / 255 * rgba[3],
-            rgba[2] / 255 * rgba[3],
-            rgba[3]
-        );
     }
 
     /**
-     * Returns an RGBA string representing the color value.
+     * Used in color interpolation.
      *
-     * @returns An RGBA string.
-     * @example
-     * var purple = new Color.parse('purple');
-     * purple.toString; // = "rgba(128,0,128,1)"
-     * var translucentGreen = new Color.parse('rgba(26, 207, 26, .73)');
-     * translucentGreen.toString(); // = "rgba(26,207,26,0.73)"
+     * @returns Gien color, with reversed alpha blending, in sRGB color space.
      */
-    toString(): string {
-        const [r, g, b, a] = this.toArray();
-        return `rgba(${Math.round(r)},${Math.round(g)},${Math.round(b)},${a})`;
+    get rgb(): RGBColor {
+        const {r, g, b, a} = this;
+        return this.overwriteGetter('rgb', [r / a, g / a, b / a, a]);
     }
 
-    toArray(): [number, number, number, number] {
-        const {r, g, b, a} = this;
-        return a === 0 ? [0, 0, 0, 0] : [
-            r * 255 / a,
-            g * 255 / a,
-            b * 255 / a,
-            a
-        ];
+    /**
+     * Used in color interpolation.
+     *
+     * @returns Gien color, with reversed alpha blending, in HCL color space.
+     */
+    get hcl(): HCLColor {
+        return this.overwriteGetter('hcl', hcl.fromRgb(this.rgb));
+    }
+
+    /**
+     * Used in color interpolation.
+     *
+     * @returns Gien color, with reversed alpha blending, in LAB color space.
+     */
+    get lab(): LABColor {
+        return this.overwriteGetter('lab', lab.fromRgb(this.rgb));
+    }
+
+    /**
+     * Lazy getter pattern. When getter is called for the first time lazy value
+     * is calculated and then overwrites getter function in given object instance.
+     *
+     * @param getterKey Getter key
+     * @param lazyValue Lazy value
+     * @private
+     */
+    private overwriteGetter<T>(getterKey: string, lazyValue: T): T {
+        Object.defineProperty(this, getterKey, {value: lazyValue});
+        return lazyValue;
+    }
+
+}
+
+function parseCssColor(colorToParse: string): RGBColor | undefined {
+    const parsingResult = colorString.get(colorToParse);
+    if (parsingResult) {
+        switch (parsingResult.model) {
+            case 'rgb': {
+                const [r, g, b, alpha] = parsingResult.value;
+                return [r / 255, g / 255, b / 255, alpha];
+            }
+            case 'hsl': {
+                return hsl.toRgb(parsingResult.value);
+            }
+        }
     }
 }
 

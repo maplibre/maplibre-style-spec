@@ -1,9 +1,7 @@
-
-import * as colorSpaces from '../util/color_spaces';
 import Color from '../util/color';
 import extend from '../util/extend';
 import getType from '../util/get_type';
-import * as interpolate from '../util/interpolate';
+import interpolate, {isSupportedInterpolationColorSpace} from '../util/interpolate';
 import Interpolate from '../expression/definitions/interpolate';
 import Formatted from '../expression/types/formatted';
 import ResolvedImage from '../expression/types/resolved_image';
@@ -44,8 +42,8 @@ export function createFunction(parameters, propertySpec) {
         }
     }
 
-    if (parameters.colorSpace && parameters.colorSpace !== 'rgb' && !colorSpaces[parameters.colorSpace]) { // eslint-disable-line import/namespace
-        throw new Error(`Unknown color space: ${parameters.colorSpace}`);
+    if (parameters.colorSpace && !isSupportedInterpolationColorSpace(parameters.colorSpace)) {
+        throw new Error(`Unknown color space: "${parameters.colorSpace}"`);
     }
 
     let innerFun;
@@ -176,12 +174,7 @@ function evaluateExponentialFunction(parameters, propertySpec, input) {
 
     const outputLower = parameters.stops[index][1];
     const outputUpper = parameters.stops[index + 1][1];
-    let interp = interpolate[propertySpec.type] || identityFunction; // eslint-disable-line import/namespace
-
-    if (parameters.colorSpace && parameters.colorSpace !== 'rgb') {
-        const colorspace = colorSpaces[parameters.colorSpace]; // eslint-disable-line import/namespace
-        interp = (a, b) => colorspace.reverse(colorspace.interpolate(colorspace.forward(a), colorspace.forward(b), t));
-    }
+    const i11nFn = interpolate[propertySpec.type] || identityFunction;
 
     if (typeof outputLower.evaluate === 'function') {
         return {
@@ -192,12 +185,12 @@ function evaluateExponentialFunction(parameters, propertySpec, input) {
                 if (evaluatedLower === undefined || evaluatedUpper === undefined) {
                     return undefined;
                 }
-                return interp(evaluatedLower, evaluatedUpper, t);
+                return i11nFn(evaluatedLower, evaluatedUpper, t, parameters.colorSpace);
             }
         };
     }
 
-    return interp(outputLower, outputUpper, t);
+    return i11nFn(outputLower, outputUpper, t, parameters.colorSpace);
 }
 
 function evaluateIdentityFunction(parameters, propertySpec, input) {

@@ -1,15 +1,17 @@
 import type {Config} from 'jest';
 
-const sharedConfig = {
+const sharedConfig: Partial<Config> = {
     transform: {
         // use typescript to convert from esm to cjs
         '[.](m|c)?(ts|js)(x)?$': ['ts-jest', {
-            'isolatedModules': true,
+            isolatedModules: true,
         }],
     },
     // any tests that operate on dist files shouldn't compile them again.
-    transformIgnorePatterns: ['<rootDir>/dist']
-} as Partial<Config>;
+    transformIgnorePatterns: ['<rootDir>/dist'],
+    // load custom jest matchers
+    setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
+};
 
 const config: Config = {
     projects: [
