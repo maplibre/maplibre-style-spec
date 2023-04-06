@@ -1,6 +1,6 @@
 import {createExpression} from '../expression';
 import type {GlobalProperties, Feature} from '../expression';
-import {ICanonicalTileID} from '../tiles_and_coordinates';
+import {ICanonicalTileID} from '../geo/tile_id';
 import {StylePropertySpecification} from '../style-spec';
 import {ExpressionFilterSpecification} from '../types.g';
 

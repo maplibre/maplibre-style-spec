@@ -24,6 +24,6 @@
     "experimentalSpecifierResolution": "node",
     "esm": true
   },
-  "include": ["rollup.config.*", "src/**/*", "build/**/*"],
+  "include": ["rollup.config.*", "src/**/*", "build/**/*"],//, "test/integration/util/json-diff.ts"],
   "exclude": ["node_modules", "dist"]
 }

@@ -119,7 +119,8 @@
         "jsdoc/require-param-description": "off",
         "jsdoc/require-param-name": "off",
         "jsdoc/require-returns": "off",
-        "jsdoc/require-returns-description": "off"
+        "jsdoc/require-returns-description": "off",
+        "no-restricted-properties": "off"
       }
     }
   ],

@@ -43,6 +43,7 @@
     "@mapbox/jsonlint-lines-primitives": "~2.0.2",
     "@mapbox/point-geometry": "^0.1.0",
     "@mapbox/unitbezier": "^0.0.1",
+    "@mapbox/whoots-js": "^3.1.0",
     "@types/mapbox__point-geometry": "^0.1.2",
     "csscolorparser": "~1.0.3",
     "json-stringify-pretty-compact": "^3.0.0",

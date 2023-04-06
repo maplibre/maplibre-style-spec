@@ -4,7 +4,7 @@ import convertFilter from './convert';
 import Point from '@mapbox/point-geometry';
 import MercatorCoordinate from '../coordinates/mercator_coordinate';
 import EXTENT from '../extent';
-import {ICanonicalTileID} from '../tiles_and_coordinates';
+import {ICanonicalTileID} from '../geo/tile_id';
 import {ExpressionFilterSpecification, ExpressionInputType, ExpressionSpecification, FilterSpecification} from '../types.g';
 import {Feature} from '../expression';
 

@@ -82,7 +82,7 @@ import convertFunction from './function/convert';
 import {eachSource, eachLayer, eachProperty} from './visit';
 import ResolvedImage from './expression/types/resolved_image';
 import {supportsPropertyExpression} from './util/properties';
-import {IMercatorCoordinate, ICanonicalTileID, ILngLat, ILngLatLike} from './tiles_and_coordinates';
+import {CanonicalTileID} from './geo/tile_id';
 import EvaluationContext from './expression/evaluation_context';
 import {FormattedType, NullType, Type, toString, ColorType} from './expression/types';
 
@@ -99,6 +99,8 @@ import {typeOf} from './expression/values';
 import FormatExpression from './expression/definitions/format';
 import Literal from './expression/definitions/literal';
 import CompoundExpression from './expression/compound_expression';
+import MercatorCoordinate from './geo/mercator_coordinate';
+import LngLat, {LngLatLike} from './geo/lng_lat';
 
 const expression = {
     StyleExpression,
@@ -138,10 +140,10 @@ export {
     SourceExpression,
     CompositeExpression,
     FormattedSection,
-    IMercatorCoordinate,
-    ICanonicalTileID,
-    ILngLat,
-    ILngLatLike,
+    MercatorCoordinate,
+    CanonicalTileID,
+    LngLat,
+    LngLatLike,
     StyleExpression,
     ZoomConstantExpression,
     Literal,
