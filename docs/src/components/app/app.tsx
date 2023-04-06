@@ -5,7 +5,7 @@ import overlayStyle from './overlay-style.module.scss';
 
 import {Header} from '../header/header';
 import {TableOfContents} from '../toc/toc';
-import {Show, createSignal} from 'solid-js';
+import {For, Show, createSignal} from 'solid-js';
 import {pages} from '~/pages';
 import {A} from 'solid-start';
 
@@ -30,13 +30,14 @@ export function App(props: { children?: any }) {
                         <div>
                             <Header />
                             <ul>
-                                {pages.map((page) => (
+                                <For each={pages}>{(page) => (
                                     <li>
                                         <A end={true} href={page.path.replace('/', '')} onClick={() => {
                                             setShowNavOverlay(false);
                                         }} class="sidebar-link" >{page.title}</A>
                                     </li>
-                                ))}
+                                )}
+                                </For>
                             </ul>
                         </div>
                     </div>
