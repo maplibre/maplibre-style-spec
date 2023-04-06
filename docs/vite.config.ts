@@ -3,7 +3,7 @@ import {defineConfig} from 'vite';
 import staticAdapter from 'solid-start-static';
 
 const config = defineConfig({
-    base: '/maplibre-gl-style-spec/',
+    base: '/maplibre-style/',
     plugins: [solid({ssr: true, solid: {hydratable: true}, adapter: staticAdapter()})],
 });
 
