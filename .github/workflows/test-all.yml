@@ -23,7 +23,7 @@ jobs:
       - run: npm ci
       - run: npm run lint
         if: success() || failure()
-      - run: npm run generate-typings
+      - run: npm run generate-style-spec
       - run: npm run typecheck
         if: success() || failure()
   unit-and-integration-tests:
