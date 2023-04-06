@@ -34,7 +34,7 @@
   width: 100%;
   display: flex;
   box-sizing: border-box;
-  overflow: hidden;
+  overflow-x: scroll;
   justify-content: center;
 
   .header-anchor {
@@ -48,7 +48,7 @@
     
     position: relative;
     padding: 1rem 1rem 5rem 1rem;
-    overflow: hidden;
+    overflow-x: scroll;
     box-sizing: border-box;
     
     .row {
@@ -60,6 +60,7 @@
         flex: 1 0;
         margin-left: 0;
         width: 100%;    
+
         
 
         h2, h3 {

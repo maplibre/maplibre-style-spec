@@ -14,7 +14,7 @@ export function MainContent(props: MainContentProps) {
     const location = useLocation();
 
     return (
-        <main class={`${style.mainContentContainer} ${props.class}`}>
+        <main class={`${style.mainContentContainer} ${props.class}`} >
 
             <div class={style.mainContent_paddingContainer}>
 

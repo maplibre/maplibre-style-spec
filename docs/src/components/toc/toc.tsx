@@ -88,16 +88,28 @@ export function TableOfContents(props: TableOfContentsProps) {
         }
     });
 
-    // const handleLinkClick = (event: Event, id: string) => {
-    //     event.preventDefault();
-    //     const headerElement = document.getElementById(id);
-    //     headerElement?.scrollIntoView({behavior: 'smooth'});
-    // };
+    const handleLinkClick = (event: Event, id: string) => {
+
+        console.log(id);
+        event.preventDefault();
+        const headerElement = document.getElementById(id);
+        console.log(headerElement);
+        if (headerElement) {
+            const scrollTop = headerElement.offsetTop + 60;
+            console.log(scrollTop);
+
+            // Different browsers...
+            window.scrollTop = scrollTop;
+            window.document.body.scrollTop = scrollTop;
+            window.document.documentElement.scrollTop = scrollTop;
+            history.pushState(null, '', `${location.pathname}#${id}`);
+        }
+    };
 
     // Render the table of contents with the headers and active link state
     return (
         <aside class={`${props.class} ${style.toc_outer_container} ${style[`${props.mode}TOC`]}`}>
-            <div class={`${props.class} ${style.toc_viewport}`} ref={setTOCRef}>
+            <div class={`${props.class} ${style.toc_viewport}`} style={{'scroll-behavior': 'smooth'}} ref={setTOCRef}>
                 <Show when={domHeaders().length > 0}>
                     <nav>
                         <div class={style.navItems}>
@@ -114,13 +126,13 @@ export function TableOfContents(props: TableOfContentsProps) {
                                     <li>
 
                                         {/* href={`#${header.id}`} */}
-                                        <a id={`toc-link-${header.id}`} href={`#${header.id}`} classList={{
+                                        <a id={`toc-link-${header.id}`} href={'#'} classList={{
                                             [style.anchor_H1]: header.tagName === 'H1',
                                             [style.anchor_H2]: header.tagName === 'H2',
                                             [style.anchor_H3]: header.tagName === 'H3',
                                             [style.active]: header.id === activeLink()
-                                        }} >
-                                            {/* }} onClick={(event) => handleLinkClick(event, header.id)}> */}
+                                        // }} >
+                                        }} onClick={(event) => handleLinkClick(event, header.id)}>
                                             {header.id.startsWith('paint-') ? <span class={style.paintIcon}><i class="fa-solid fa-palette"></i></span> : null}
                                             {header.id.startsWith('layout-') ? <span class={style.layoutIcon}><i class="fa-solid fa-pen"></i></span> : null}
 

@@ -26,7 +26,7 @@ export default function Root() {
     });
 
     return (
-        <Html lang="en">
+        <Html lang="en" >
             <Head>
                 <Title>MapLibre Styles Docs</Title>
                 <Meta charset="utf-8" />

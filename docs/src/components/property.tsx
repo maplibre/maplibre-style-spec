@@ -1,8 +1,9 @@
+import { JSXElement } from 'solid-js';
 import {Dynamic} from 'solid-js/web';
 interface IProps {
 
     id: string;
-    children: any;
+    children: JSXElement;
     headingLevel?: '2' | '3';
 }
 
