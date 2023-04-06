@@ -48,7 +48,6 @@ jobs:
           npm run generate-style-spec
           npm run generate-typings
           npm run build
-          npm run compile
 
       - name: Build Release Notes
         id: release_notes
