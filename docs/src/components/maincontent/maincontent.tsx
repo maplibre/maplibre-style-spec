@@ -12,6 +12,28 @@ interface MainContentProps {
 export function MainContent(props: MainContentProps) {
 
     const location = useLocation();
+    function getPage() {
+
+        let pageSection = (location.pathname.split(import.meta.env.BASE_URL))[1];
+        console.log('page', pageSection);
+
+        if (typeof pageSection === 'string') {
+            if (!pageSection.endsWith('/')) {
+                pageSection = `${pageSection}/`;
+            }
+
+            if (!pageSection.startsWith('/')) {
+                pageSection = `/${pageSection}`;
+            }
+
+            return pageSection;
+
+        } else {
+            console.log('page is undefined', pageSection);
+            return '';
+        }
+
+    }
 
     return (
         <main class={`${style.mainContentContainer} ${props.class}`} >
@@ -31,8 +53,8 @@ export function MainContent(props: MainContentProps) {
                     document.documentElement.scrollTop = 0;
                 }}><i class="fa-solid fa-arrow-up"></i></div>
 
-                <a class={style.githubLink} target="_blank"  href="https://github.com/maplibre/maplibre-gl-style-spec"><i class="fa-brands fa-github"></i> MapLibre Style repository</a>
-                <a class={style.githubLink} target="_blank" href={`https://github.com/maplibre/maplibre-gl-style-spec/blob/main/docs/src/routes${location.pathname === '/' ? '/index' : location.pathname}.tsx`}><i class="fa-brands fa-github"></i> Edit page layout</a>
+                <a class={style.githubLink} target="_blank"  href="https://github.com/maplibre/maplibre-style"><i class="fa-brands fa-github"></i> MapLibre Style repository</a>
+                <a class={style.githubLink} target="_blank" href={`https://github.com/maplibre/maplibre-style/blob/main/docs/src/routes${getPage()}index.tsx`}><i class="fa-brands fa-github"></i> Edit page</a>
             </div>
         </main>
     );
