@@ -1,5 +1,5 @@
 export const pages: {path: string; title: string}[] = [
-    {title: 'Introduction', path: '/'},
+    {title: 'Introduction', path: ''},
     {title: 'Root', path: 'root/'},
     {title: 'Light', path: 'light/'},
     {title: 'Sources', path: 'sources/'},
