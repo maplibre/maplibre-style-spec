@@ -4,11 +4,9 @@ import {useLocation} from 'solid-start';
 import {pages} from '~/pages';
 import {For} from 'solid-js';
 
-interface SidebarProps {
+export function Sidebar(props: {
     class?: string;
-}
-
-export function Sidebar(props: SidebarProps) {
+}) {
 
     const location = useLocation();
     return (

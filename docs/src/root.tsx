@@ -18,13 +18,6 @@ import './root.module.scss';
 
 export default function Root() {
 
-    onMount(() => {
-        const appRoot = document.getElementById('app');
-        if (appRoot) {
-            render(() => <App />, appRoot);
-        }
-    });
-
     return (
         <Html lang="en" >
             <Head>

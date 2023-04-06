@@ -1,4 +1,3 @@
-//@ts-ignore
 import style from './sdk-support-table.module.scss';
 import {Markdown} from '~/components/markdown/markdown.jsx';
 

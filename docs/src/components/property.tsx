@@ -1,13 +1,11 @@
 import {JSXElement} from 'solid-js';
 import {Dynamic} from 'solid-js/web';
-interface IProps {
 
+export default function Property ({headingLevel = '3', id, children}:{
     id: string;
-    children: JSXElement;
+    children?: JSXElement;
     headingLevel?: '2' | '3';
-}
-
-export default function Property ({headingLevel = '3', id, children}:IProps) {
+}) {
 
     const Heading = `h${headingLevel}`;
 

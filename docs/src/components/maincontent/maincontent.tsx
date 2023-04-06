@@ -31,7 +31,6 @@ export function MainContent(props: {
             console.log('page is undefined', pageSection);
             return '';
         }
-
     }
 
     return (
