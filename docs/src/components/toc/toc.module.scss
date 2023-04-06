@@ -1,0 +1,109 @@
+@import '/src/_variables.scss';
+
+.toc_outer_container {
+  min-width: 250px;
+  clip-path: inset(0);
+  display: block;
+  will-change: width;
+  margin-top: -3.75rem;
+}
+
+.active {
+  color: #007bff !important;
+}
+
+@media (max-width: 1050px) {
+  .largeTOC {
+    display: none;
+  }
+}
+
+.toc_viewport {
+  position: sticky;
+  max-height: calc(100vh - $--header-height);
+  top: calc($--header-height);
+  overflow-y: auto;
+  word-wrap: break-word;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+
+  position: sticky;
+  top: 0;
+  height: 100%;
+  max-height: 100vh;
+  box-sizing: border-box;
+
+  .paintIcon,
+  .layoutIcon {
+    margin-right: 5px;
+  }
+
+  .nav_items {
+    padding-top: $--header-height;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    flex: 0 0 auto;
+
+    position: sticky;
+    top: 0;
+    flex-direction: column;
+    align-items: flex-start;
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        a {
+          text-decoration: none;
+          color: #333;
+          font-weight: 500;
+          font-size: 0.9rem;
+          line-height: 1.4;
+          padding: 6px 12px;
+          border-radius: 4px;
+          display: block;
+          
+
+          &.anchor_h1 {
+            text-decoration: underline;
+            margin-top: 0px !important;
+            font-size: 20px !important;
+            display: none;
+          }
+
+          &.anchor_h2 {
+            font-size: 15px;
+          }
+
+          &.anchor_h3 {
+            font-size: 13px;
+            margin-left: 10px !important;
+            color: rgb(65, 65, 65);
+          }
+          &:hover {
+            color: #007bff !important;
+            background-color: #f0f0f0;
+          }
+
+          .toc-link-transition-options {
+            &:hover {
+              background: none !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.2rem;
+  padding: 6px 12px;
+  margin: 0;
+  margin-bottom: 1rem;
+}

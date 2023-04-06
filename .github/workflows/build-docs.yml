@@ -1,0 +1,29 @@
+name: Docs - Build and Deploy
+
+on:
+  pull_request:
+    branches:
+    - main
+
+jobs:
+  build-test-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 18
+
+    - name: Install NPM packages
+      run: npm ci
+
+    - name: Build style spec
+      run: |
+        npm run generate-style-spec
+        npm run generate-typings
+
+    - name: Build docs
+      run: |
+        cd ./docs
+        npm ci
+        npm run build
