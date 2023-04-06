@@ -4,7 +4,7 @@
 import MarkdownIt from 'markdown-it';
 //var hljs = require('highlight.js'); // https://highlightjs.org
 import deflist from 'markdown-it-deflist';
-import anchors from 'markdown-it-anchor';
+import anchor from 'markdown-it-anchor';
 
 import prism from 'markdown-it-prism';
 // import 'prismjs/themes/prism.css';
@@ -19,7 +19,9 @@ import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
 
 const md = new MarkdownIt();
 
-md.use(prism, {highlightInlineCode: true, defaultLanguage: 'typescript'}).use(deflist).use(anchors);
+md.use(prism, {highlightInlineCode: true, defaultLanguage: 'typescript'}).use(deflist).use(anchor, {
+    permalink: anchor.permalink.headerLink({safariReaderFix: true})
+});
 
 export function Markdown ({content}:{content:string}) {
     return <div innerHTML={md.render(content)} />;

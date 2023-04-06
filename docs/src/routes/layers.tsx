@@ -41,18 +41,18 @@ Except for layers of the \`background\` type, each layer needs to refer to a sou
 
             <Items entry={ref.layer} />
 
-            {/* END GENERATED CONTENT */}
-
-            <a id="layout-property" class="anchor" />
-            <a id="paint-property" class="anchor" />
-
             <hr class='my36' />
             <Markdown content={`
-Layers have two sub-properties that determine how data from that layer is rendered: \`layout\` and \`paint\` properties.
 
-_Layout properties_ appear in the layer's \`"layout"\` object. They are applied early in the rendering process and define how data for that layer is passed to the GPU. Changes to a layout property require an asynchronous "layout" step.
 
-_Paint properties_ are applied later in the rendering process. Paint properties appear in the layer's \`"paint"\` object. Changes to a paint property are cheap and happen synchronously.
+### Sub properties
+Layers have two sub-properties that determine how data from that layer is rendered: \`layout\` and \`paint\` properties, explained below.
+
+### layout property
+Layout properties appear in the layer's \`"layout"\` object. They are applied early in the rendering process and define how data for that layer is passed to the GPU. Changes to a layout property require an asynchronous "layout" step.
+
+### paint property
+Paint properties are applied later in the rendering process. Paint properties appear in the layer's \`"paint"\` object. Changes to a paint property are cheap and happen synchronously.
 
 ## background
 
@@ -207,8 +207,6 @@ This map of Mount Shasta uses a high value for the [\`hillshade-exaggeration\`](
             </Caption>
 
             <Items headingLevel="3" entry={combineItems(['layout', 'paint'], 'hillshade')} />
-
-            {/* END GENERATED CONTENT  */}
 
         </div>
     );

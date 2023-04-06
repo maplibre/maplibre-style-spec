@@ -37,6 +37,9 @@
   overflow: hidden;
   justify-content: center;
 
+  .header-anchor {
+    color: black !important;
+  }
 
   
 
@@ -56,9 +59,7 @@
         
         flex: 1 0;
         margin-left: 0;
-        padding: 0 1rem;
         width: 100%;    
-        
         
 
         h2, h3 {

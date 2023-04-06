@@ -21,7 +21,6 @@ A style's \`light\` property provides a global light source for that style. Sinc
             <Markdown content={md} />
 
             <Items headingLevel='2' entry={ref.light} />
-            {/* END GENERATED CONTENT */}
         </div>
     );
 }

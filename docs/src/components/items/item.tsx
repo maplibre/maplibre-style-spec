@@ -35,7 +35,7 @@ export default function Item (props:IItem) {
                 return (
                     <span>
                         {' '}
-                        <a href="/maplibre-gl-style-spec/style-spec/light/">
+                        <a href={`${import.meta.env.BASE_URL}light/`}>
                             light
                         </a>
                     </span>
@@ -44,7 +44,7 @@ export default function Item (props:IItem) {
                 return (
                     <span>
                         {' '}
-                        <a href="/maplibre-gl-style-spec/style-spec/transition/">
+                        <a href={`${import.meta.env.BASE_URL}transition/`}>
                             transition
                         </a>
                     </span>
@@ -54,7 +54,7 @@ export default function Item (props:IItem) {
                     <span>
                         {' '}
                         object with{' '}
-                        <a href="/maplibre-gl-style-spec/style-spec/sources/">
+                        <a href={`${import.meta.env.BASE_URL}sources/`}>
                             source
                         </a>{' '}
                         values
@@ -64,7 +64,7 @@ export default function Item (props:IItem) {
                 return (
                     <span>
                         {' '}
-                        <a href="/maplibre-gl-style-spec/style-spec/layers/">
+                        <a href={`${import.meta.env.BASE_URL}layers/`}>
                             layer
                             <Show when={plural}>s</Show>
                         </a>
@@ -74,7 +74,7 @@ export default function Item (props:IItem) {
                 return (
                     <span>
                         {' '}
-                        <a href="/maplibre-gl-style-spec/style-spec/types/#array">
+                        <a href={`${import.meta.env.BASE_URL}types/#array`}>
                             array
                         </a>
                         <Show when={spec.value}>
@@ -94,7 +94,7 @@ export default function Item (props:IItem) {
                 return (
                     <span>
                         {' '}
-                        <a href="/maplibre-gl-style-spec/style-spec/expressions/">
+                        <a href={`${import.meta.env.BASE_URL}expressions/`}>
                             expression
                             <Show when={plural}>s</Show>
                         </a>
@@ -104,7 +104,7 @@ export default function Item (props:IItem) {
                 return (
                     <span>
                         {' '}
-                        <a href="/maplibre-gl-style-spec/style-spec/layers/#layout-property">
+                        <a href={`${import.meta.env.BASE_URL}layers/#layout-property`}>
                             layout
                         </a>
                     </span>
@@ -113,7 +113,7 @@ export default function Item (props:IItem) {
                 return (
                     <span>
                         {' '}
-                        <a href="/maplibre-gl-style-spec/style-spec/layers/#paint-property">
+                        <a href={`${import.meta.env.BASE_URL}layers/#paint-property`}>
                             paint
                         </a>
                     </span>
@@ -123,7 +123,7 @@ export default function Item (props:IItem) {
                     <span>
                         {' '}
                         <a
-                            href={`/maplibre-gl-style-spec/style-spec/types/#${spec.type}`}
+                            href={`${import.meta.env.BASE_URL}types/#${spec.type}`}
                         >
                             <span>{spec.type}
                                 <Show when={plural}>s</Show>
@@ -182,12 +182,12 @@ export default function Item (props:IItem) {
             </Property>
             <Subtitle>
                 <Show when={props.kind === 'paint'}>
-                    <a href="/maplibre-gl-style-spec/style-spec/layers/#paint-property">
+                    <a href={`${import.meta.env.BASE_URL}layers/#paint-property`}>
                                 Paint
                     </a><span>{' property. '}</span>
                 </Show>
                 <Show when={props.kind === 'layout'}>
-                    <a href="/maplibre-gl-style-spec/style-spec/layers/#layout-property">
+                    <a href={`${import.meta.env.BASE_URL}layers/#layout-property`}>
                                 Layout
                     </a>{' property. '}
                 </Show>
@@ -245,7 +245,7 @@ export default function Item (props:IItem) {
                         'feature-state'
                     )}>
                         <em class="color-gray">
-                            <a href="/maplibre-gl-style-spec/style-spec/expressions/#feature-state">
+                            <a href={`${import.meta.env.BASE_URL}expressions/#feature-state`}>
 
                                 <code>feature-state</code>
                             </a>
@@ -258,7 +258,7 @@ export default function Item (props:IItem) {
                         <span>{' and '}</span>
                     </Show>
                     <Show when={props.expression.interpolated}>
-                        <a href="/maplibre-gl-style-spec/style-spec/expressions/#interpolate">
+                        <a href={`${import.meta.env.BASE_URL}expressions/#interpolate`}>
 
                             <code>interpolate</code>
                         </a>

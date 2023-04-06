@@ -1,5 +1,5 @@
 /**
- * atom-dark theme for `prism.js`, adjusted for maplibre-gl-style-spec
+ * atom-dark theme for `prism.js`, adjusted for maplibre style repo
  * Based on Atom's `atom-dark` theme: https://github.com/atom/atom-dark-syntax
  * @author Joe Gibson (@gibsjose)
  */
@@ -53,7 +53,7 @@ p a {
 	}
 }
 
-h3 a, h2 a {
+h3 a, h2 a, h1 a {
 	font-weight: 300;
 	color: rgb(31, 51, 73);
 
