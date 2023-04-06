@@ -2,7 +2,6 @@
 import {Suspense, onMount} from 'solid-js';
 import {render} from 'solid-js/web';
 import {
-    A,
     Body,
     ErrorBoundary,
     FileRoutes,

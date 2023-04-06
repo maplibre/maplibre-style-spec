@@ -53,7 +53,7 @@ export default function ExpressionReference (props: IExpressionReference) {
             {doc && <div class="mb12"><Markdown content={doc} /></div>}
             {/* Syntax */}
             <SubHeading>Syntax</SubHeading>
-            {type.map((overload, i) => (
+            {type.map((overload) => (
 
                 <div>
                     <Markdown content={`
