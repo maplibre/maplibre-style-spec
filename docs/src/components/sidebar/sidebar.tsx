@@ -14,7 +14,7 @@ export function Sidebar(props: {
             <aside class={`${style.sidebar_outer_container} ${props.class}`}>
                 <div class={`${style.sidebar_viewport}`}>
                     <div class={style.sidebar_inner_container}>
-                        <div class={style.navItems}>
+                        <div class={style.nav_items}>
                             <ul>
                                 <For each={pages}>{(page) => (
                                     <li>
@@ -40,7 +40,7 @@ export function Sidebar(props: {
 //         <aside class={`${style.sidebar} ${props.class}`}>
 //             <h1 class={style.header}>MapLibre Styles Docs</h1>
 //             <hr />
-//             <div class={style.navItems}>
+//             <div class={style.nav_items}>
 //                 <ul>
 //                     {docs.map((doc) => (
 //                         <li>

@@ -10,7 +10,7 @@ const SDKSupportTable = (props: { supportItems?: Object }) => {
     }
 
     return (
-        <div class={style.SDKSupportTable}>
+        <div class={style.sdk_support_table}>
             <table class='txt-s'>
                 <thead>
                     <tr

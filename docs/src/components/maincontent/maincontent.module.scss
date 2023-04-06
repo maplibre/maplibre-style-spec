@@ -10,7 +10,7 @@
   padding: 10px;
 }
 
-.scrollToTop {
+.scroll_to_top {
   width: 50px;
   height: 50px;
   position: fixed;
@@ -27,7 +27,7 @@
   font-size: 20px;
 }
 
-.mainContentContainer {
+.main_content_container {
   flex-grow: 1;
 
   width: 100%;
@@ -40,7 +40,7 @@
     color: black !important;
   }
 
-  .mainContent_paddingContainer {
+  .main_content_padding_container {
     max-width: 800px;
 
     position: relative;
@@ -52,7 +52,7 @@
       display: flex;
       box-sizing: border-box;
 
-      .docItems {
+      .doc_items {
         flex: 1 0;
         margin-left: 0;
         width: 100%;
@@ -67,7 +67,7 @@
   }
 }
 
-.githubLink {
+.github_link {
   text-align: center;
   width: 100%;
   display: block;

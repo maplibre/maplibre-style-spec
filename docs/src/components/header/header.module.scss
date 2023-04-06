@@ -1,12 +1,12 @@
 @import '/src/_variables.scss';
 
 @media (min-width: 800px) {
-  .SideMenuButton {
+  .side_menu_button {
     display: none;
   }
 }
 
-.SideMenuButton {
+.side_menu_button {
   margin-left: 20px;
   font-size: 20px;
   cursor: pointer;
@@ -25,7 +25,7 @@
   height: 3.75rem;
   box-sizing: border-box;
 
-  .logoContainer {
+  .logo_container {
     padding: calc(1rem * 0.5) 1rem;
     display: flex;
     flex-direction: row;

@@ -10,9 +10,9 @@ export function Header() {
     return (
         <header class={style.header}>
 
-            <div class={style.SideMenuButton} onclick={() => { setShowNavOverlay(prev => !prev); }}><i class="fa-solid fa-bars"></i></div>
+            <div class={style.side_menu_button} onclick={() => { setShowNavOverlay(prev => !prev); }}><i class="fa-solid fa-bars"></i></div>
 
-            <div class={style.logoContainer} onclick={() => {
+            <div class={style.logo_container} onclick={() => {
                 navigate('/');
             }}>
 

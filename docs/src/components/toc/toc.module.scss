@@ -38,7 +38,7 @@
     margin-right: 5px;
   }
 
-  .navItems {
+  .nav_items {
     padding-top: $--header-height;
     display: flex;
     flex-direction: column;
@@ -66,18 +66,18 @@
           border-radius: 4px;
           display: block;
 
-          &.anchor_H1 {
+          &.anchor_h1 {
             text-decoration: underline;
             margin-top: 0px !important;
             font-size: 20px !important;
             display: none;
           }
 
-          &.anchor_H2 {
+          &.anchor_h2 {
             font-size: 15px;
           }
 
-          &.anchor_H3 {
+          &.anchor_h3 {
             font-size: 13px;
             margin-left: 10px !important;
             color: rgb(65, 65, 65);

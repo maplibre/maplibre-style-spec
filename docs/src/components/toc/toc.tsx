@@ -101,7 +101,7 @@ export function TableOfContents(props: {
             <div class={`${props.class} ${style.toc_viewport}`} style={{'scroll-behavior': 'smooth'}} ref={setTOCRef}>
                 <Show when={domHeaders().length > 0}>
                     <nav>
-                        <div class={style.navItems}>
+                        <div class={style.nav_items}>
                             <Show when={props.mode === 'large'}><h3 style={{cursor: 'pointer'}}class={style.header} onClick={() => {
                                 document.documentElement.scrollTop = 0;
                             }}>On This Page</h3>
@@ -111,9 +111,9 @@ export function TableOfContents(props: {
                                     <li>
 
                                         <a id={`toc-link-${header.id}`} href={'#'} classList={{
-                                            [style.anchor_H1]: header.tagName === 'H1',
-                                            [style.anchor_H2]: header.tagName === 'H2',
-                                            [style.anchor_H3]: header.tagName === 'H3',
+                                            [style.anchor_h1]: header.tagName === 'H1',
+                                            [style.anchor_h2]: header.tagName === 'H2',
+                                            [style.anchor_h3]: header.tagName === 'H3',
                                             [style.active]: header.id === activeLink()
                                         }} onClick={(event) => handleLinkClick(event, header.id)}>
                                             {header.id.startsWith('paint-') ? <span class={style.paintIcon}><i class="fa-solid fa-palette"></i></span> : null}

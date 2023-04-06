@@ -34,9 +34,9 @@ export function MainContent(props: {
     }
 
     return (
-        <main class={`${style.mainContentContainer} ${props.class}`} >
+        <main class={`${style.main_content_container} ${props.class}`} >
 
-            <div class={style.mainContent_paddingContainer}>
+            <div class={style.main_content_padding_container}>
 
                 <Collapsible.Root class={'collapsible'}>
                     <Collapsible.Trigger class={'collapsible__trigger'}>Table of contents<i class={`fa-solid fa-chevron-down ${'collapsible__trigger-icon'}`}></i></Collapsible.Trigger>
@@ -44,15 +44,15 @@ export function MainContent(props: {
                 </Collapsible.Root>
 
                 <div class={style.row}>
-                    <div id="ContentWindow" class={style.docItems}>{props.children}</div>
+                    <div id="ContentWindow" class={style.doc_items}>{props.children}</div>
                 </div>
 
-                <div class={style.scrollToTop} onClick={() => {
+                <div class={style.scroll_to_top} onClick={() => {
                     document.documentElement.scrollTop = 0;
                 }}><i class="fa-solid fa-arrow-up"></i></div>
 
-                <a class={style.githubLink} target="_blank"  href={`https://github.com/maplibre${import.meta.env.BASE_URL}`}><i class="fa-brands fa-github"></i> MapLibre Style repository</a>
-                <a class={style.githubLink} target="_blank" href={`https://github.com/maplibre${import.meta.env.BASE_URL}blob/main/docs/src/routes${getPage()}index.tsx`}><i class="fa-brands fa-github"></i> Edit page</a>
+                <a class={style.github_link} target="_blank"  href={`https://github.com/maplibre${import.meta.env.BASE_URL}`}><i class="fa-brands fa-github"></i> MapLibre Style repository</a>
+                <a class={style.github_link} target="_blank" href={`https://github.com/maplibre${import.meta.env.BASE_URL}blob/main/docs/src/routes${getPage()}index.tsx`}><i class="fa-brands fa-github"></i> Edit page</a>
             </div>
         </main>
     );
