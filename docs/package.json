@@ -9,16 +9,16 @@
   "devDependencies": {
     "@types/node": "^18.15.11",
     "@types/prismjs": "^1.26.0",
-    "esbuild": "^0.17.14",
+    "esbuild": "^0.17.15",
     "postcss": "^8.4.21",
-    "solid-start-static": "^0.2.24",
-    "typescript": "^5.0.2",
+    "solid-start-static": "^0.2.26",
+    "typescript": "^5.0.3",
     "vite": "^4.2.1"
   },
   "dependencies": {
     "@kobalte/core": "^0.8.2",
     "@markdoc/markdoc": "^0.2.2",
-    "@solidjs/meta": "^0.28.2",
+    "@solidjs/meta": "^0.28.4",
     "@solidjs/router": "^0.8.2",
     "highlight.js": "^11.7.0",
     "markdown-it": "^13.0.1",
@@ -27,10 +27,9 @@
     "markdown-it-prism": "^2.3.0",
     "prismjs": "^1.29.0",
     "sass": "^1.60.0",
-    "solid-js": "^1.7.0",
+    "solid-js": "^1.7.2",
     "solid-markdown": "^1.2.1",
-    "solid-start": "^0.2.24",
-    "solid-start-node": "^0.2.24",
+    "solid-start": "^0.2.26",
     "solidjs-markdoc": "^0.0.2",
     "undici": "^5.21.0"
   },
