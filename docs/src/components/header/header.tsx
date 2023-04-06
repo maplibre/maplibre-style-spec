@@ -3,7 +3,7 @@ import style from './header.module.scss';
 import {setShowNavOverlay} from '../app/app';
 
 // random image
-const logo = '/maplibre-logo-big.svg';
+const logo = `${import.meta.env.BASE_URL}maplibre-logo-big.svg`;
 
 export function Header() {
     const navigate = useNavigate();
