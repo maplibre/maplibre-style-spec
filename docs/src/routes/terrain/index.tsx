@@ -5,13 +5,12 @@ function Root() {
 
     const md = `# Terrain
 
-Add 3D terrain to the map.
-`;
+Add 3D terrain to the map.`;
 
     return (
         <div>
             <Markdown content={md} />
-            <Items headingLevel='2' entry={ref.terrain} />
+            <Items headingLevel='3' entry={ref.terrain} />
         </div>
     );
 }
