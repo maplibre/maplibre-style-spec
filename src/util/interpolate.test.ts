@@ -90,11 +90,13 @@ describe('interpolate', () => {
             const color = Color.parse('royalblue');
             const targetColor = Color.parse('cyan');
 
-            const i11nFn = (t: number) => interpolate.color(color, targetColor, t, 'hcl');
-            const colorInBetween = i11nFn(0.5);
-            for (const key of ['r', 'g', 'b', 'a']) {
-                expect(colorInBetween[ key ]).toBeGreaterThanOrEqual(0);
-                expect(colorInBetween[ key ]).toBeLessThanOrEqual(1);
+            for (const space of ['rgb', 'hcl', 'lab'] as const) {
+                const i11nFn = (t: number) => interpolate.color(color, targetColor, t, space);
+                const colorInBetween = i11nFn(0.5);
+                for (const key of ['r', 'g', 'b', 'a'] as const) {
+                    expect(colorInBetween[ key ]).toBeGreaterThanOrEqual(0);
+                    expect(colorInBetween[ key ]).toBeLessThanOrEqual(1);
+                }
             }
         });
 
@@ -105,7 +107,12 @@ describe('interpolate', () => {
     });
 
     test('interpolate padding', () => {
-        expect(interpolate.padding(new Padding([0, 0, 0, 0]), new Padding([1, 2, 3, 4]), 0.5)).toEqual(new Padding([0.5, 1, 3 / 2, 2]));
+        const padding = new Padding([0, 0, 0, 0]);
+        const targetPadding = new Padding([1, 2, 6, 4]);
+
+        const i11nFn = (t: number) => interpolate.padding(padding, targetPadding, t);
+        expect(i11nFn(0.5)).toBeInstanceOf(Padding);
+        expect(i11nFn(0.5)).toEqual(new Padding([0.5, 1, 3, 2]));
     });
 
 });

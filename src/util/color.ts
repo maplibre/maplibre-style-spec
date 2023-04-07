@@ -19,7 +19,7 @@ class Color {
      * @param b Blue component premultiplied by `alpha` 0..1
      * @param [alpha=1] Alpha component 0..1
      */
-    constructor(r: number, g: number, b: number, alpha: number = 1) {
+    constructor(r: number, g: number, b: number, alpha = 1) {
         this.r = r;
         this.g = g;
         this.b = b;
@@ -106,15 +106,13 @@ class Color {
 
 function parseCssColor(colorToParse: string): RGBColor | undefined {
     const parsingResult = colorString.get(colorToParse);
-    if (parsingResult) {
-        switch (parsingResult.model) {
-            case 'rgb': {
-                const [r, g, b, alpha] = parsingResult.value;
-                return [r / 255, g / 255, b / 255, alpha];
-            }
-            case 'hsl': {
-                return hsl.toRgb(parsingResult.value);
-            }
+    switch (parsingResult?.model) {
+        case 'rgb': {
+            const [r, g, b, alpha] = parsingResult.value;
+            return [r / 255, g / 255, b / 255, alpha];
+        }
+        case 'hsl': {
+            return hsl.toRgb(parsingResult.value);
         }
     }
 }

@@ -34,16 +34,7 @@ function number(from: number, to: number, t: number): number {
 }
 
 const colorInterpolation = {
-    rgb: (from: Color, to: Color, t: number): RGBColor => {
-        const [rF, gF, bF, alphaF] = from.rgb;
-        const [rT, gT, bT, alphaT] = to.rgb;
-        return [
-            number(rF, rT, t),
-            number(gF, gT, t),
-            number(bF, bT, t),
-            number(alphaF, alphaT, t),
-        ];
-    },
+    rgb: (from: Color, to: Color, t: number): RGBColor => array(from.rgb, to.rgb, t),
     hcl: (from: Color, to: Color, t: number): RGBColor => {
         const [hue0, chroma0, light0, alphaF] = from.hcl;
         const [hue1, chroma1, light1, alphaT] = to.hcl;
@@ -76,16 +67,7 @@ const colorInterpolation = {
             number(alphaF, alphaT, t),
         ]);
     },
-    lab: (from: Color, to: Color, t: number): RGBColor => {
-        const [lF, aF, bF, alphaF] = from.lab;
-        const [lT, aT, bT, alphaT] = to.lab;
-        return lab.toRgb([
-            number(lF, lT, t),
-            number(aF, aT, t),
-            number(bF, bT, t),
-            number(alphaF, alphaT, t),
-        ]);
-    },
+    lab: (from: Color, to: Color, t: number): RGBColor => lab.toRgb(array(from.lab, to.lab, t)),
 };
 
 function color(from: Color, to: Color, t: number, spaceKey: InterpolationColorSpace = 'rgb'): Color {
@@ -93,21 +75,14 @@ function color(from: Color, to: Color, t: number, spaceKey: InterpolationColorSp
     return new Color(r * alpha, g * alpha, b * alpha, alpha);
 }
 
-function array(from: number[], to: number[], t: number): number[] {
+function array<T extends number[]>(from: T, to: T, t: number): T {
     return from.map((d, i) => {
         return number(d, to[i], t);
-    });
+    }) as T;
 }
 
 function padding(from: Padding, to: Padding, t: number): Padding {
-    const fromVal = from.values;
-    const toVal = to.values;
-    return new Padding([
-        number(fromVal[0], toVal[0], t),
-        number(fromVal[1], toVal[1], t),
-        number(fromVal[2], toVal[2], t),
-        number(fromVal[3], toVal[3], t),
-    ]);
+    return new Padding(array(from.values, to.values, t));
 }
 
 const interpolate = {

@@ -58,7 +58,7 @@ describe('Color class', () => {
             const color = Color.parse('rgba(0,0,128,0)');
             expect(color).toMatchObject({r: 0, g: 0, b: 0, a: 0});
             expect(Object.hasOwn(color, 'rgb')).toBe(true);
-            expect(color[ 'rgb' ]).closeToNumberArray([0, 0, 128 / 255, 0]);
+            expect(color.rgb).closeToNumberArray([0, 0, 128 / 255, 0]);
         });
 
         test('should not keep a reference to the original color when alpha!=0', () => {
