@@ -1,3 +1,4 @@
+import {expectToMatchColor} from '../../test/testUtils';
 import interpolate, {isSupportedInterpolationColorSpace} from './interpolate';
 import Color from './color';
 import Padding from './padding';
@@ -43,11 +44,11 @@ describe('interpolate', () => {
             const targetColor = Color.parse('rgba(0,255,0,.6)');
 
             const i11nFn = (t: number) => interpolate.color(color, targetColor, t, 'rgb');
-            expect(i11nFn(0.00)).toMatchColor('rgb(0% 0% 100% / 1)');
-            expect(i11nFn(0.25)).toMatchColor('rgb(0% 25% 75% / 0.9)');
-            expect(i11nFn(0.50)).toMatchColor('rgb(0% 50% 50% / 0.8)');
-            expect(i11nFn(0.75)).toMatchColor('rgb(0% 75% 25% / 0.7)');
-            expect(i11nFn(1.00)).toMatchColor('rgb(0% 100% 0% / 0.6)');
+            expectToMatchColor(i11nFn(0.00), 'rgb(0% 0% 100% / 1)');
+            expectToMatchColor(i11nFn(0.25), 'rgb(0% 25% 75% / 0.9)');
+            expectToMatchColor(i11nFn(0.50), 'rgb(0% 50% 50% / 0.8)');
+            expectToMatchColor(i11nFn(0.75), 'rgb(0% 75% 25% / 0.7)');
+            expectToMatchColor(i11nFn(1.00), 'rgb(0% 100% 0% / 0.6)');
         });
 
         test('should interpolate colors in "hcl" color space', () => {
@@ -55,11 +56,11 @@ describe('interpolate', () => {
             const targetColor = Color.parse('rgba(0,255,0,.6)');
 
             const i11nFn = (t: number) => interpolate.color(color, targetColor, t, 'hcl');
-            expect(i11nFn(0.00)).toMatchColor('rgb(0% 0% 100% / 1)');
-            expect(i11nFn(0.25)).toMatchColor('rgb(0% 53.05% 100% / 0.9)', 4);
-            expect(i11nFn(0.50)).toMatchColor('rgb(0% 72.97% 100% / 0.8)', 4);
-            expect(i11nFn(0.75)).toMatchColor('rgb(0% 88.42% 67.80% / 0.7)', 4);
-            expect(i11nFn(1.00)).toMatchColor('rgb(0% 100% 0% / 0.6)');
+            expectToMatchColor(i11nFn(0.00), 'rgb(0% 0% 100% / 1)');
+            expectToMatchColor(i11nFn(0.25), 'rgb(0% 53.05% 100% / 0.9)', 4);
+            expectToMatchColor(i11nFn(0.50), 'rgb(0% 72.97% 100% / 0.8)', 4);
+            expectToMatchColor(i11nFn(0.75), 'rgb(0% 88.42% 67.80% / 0.7)', 4);
+            expectToMatchColor(i11nFn(1.00), 'rgb(0% 100% 0% / 0.6)');
         });
 
         test('should interpolate colors in "lab" color space', () => {
@@ -67,11 +68,11 @@ describe('interpolate', () => {
             const targetColor = Color.parse('rgba(0,255,0,.6)');
 
             const i11nFn = (t: number) => interpolate.color(color, targetColor, t, 'lab');
-            expect(i11nFn(0.00)).toMatchColor('rgb(0% 0% 100% / 1)');
-            expect(i11nFn(0.25)).toMatchColor('rgb(42.40% 35.65% 82.90% / 0.9)', 4);
-            expect(i11nFn(0.50)).toMatchColor('rgb(49.19% 57.81% 65.10% / 0.8)', 4);
-            expect(i11nFn(0.75)).toMatchColor('rgb(43.61% 78.93% 44.66% / 0.7)', 4);
-            expect(i11nFn(1.00)).toMatchColor('rgb(0% 100% 0% / 0.6)');
+            expectToMatchColor(i11nFn(0.00), 'rgb(0% 0% 100% / 1)');
+            expectToMatchColor(i11nFn(0.25), 'rgb(42.40% 35.65% 82.90% / 0.9)', 4);
+            expectToMatchColor(i11nFn(0.50), 'rgb(49.19% 57.81% 65.10% / 0.8)', 4);
+            expectToMatchColor(i11nFn(0.75), 'rgb(43.61% 78.93% 44.66% / 0.7)', 4);
+            expectToMatchColor(i11nFn(1.00), 'rgb(0% 100% 0% / 0.6)');
         });
 
         test('should correctly interpolate colors with alpha=0', () => {
@@ -79,11 +80,11 @@ describe('interpolate', () => {
             const targetColor = Color.parse('rgba(0,255,0,1)');
 
             const i11nFn = (t: number) => interpolate.color(color, targetColor, t, 'rgb');
-            expect(i11nFn(0.00)).toMatchColor('rgb(0% 0% 0% / 0)');
-            expect(i11nFn(0.25)).toMatchColor('rgb(0% 25% 75% / 0.25)');
-            expect(i11nFn(0.50)).toMatchColor('rgb(0% 50% 50% / 0.5)');
-            expect(i11nFn(0.75)).toMatchColor('rgb(0% 75% 25% / 0.75)');
-            expect(i11nFn(1.00)).toMatchColor('rgb(0% 100% 0% / 1)');
+            expectToMatchColor(i11nFn(0.00), 'rgb(0% 0% 0% / 0)');
+            expectToMatchColor(i11nFn(0.25), 'rgb(0% 25% 75% / 0.25)');
+            expectToMatchColor(i11nFn(0.50), 'rgb(0% 50% 50% / 0.5)');
+            expectToMatchColor(i11nFn(0.75), 'rgb(0% 75% 25% / 0.75)');
+            expectToMatchColor(i11nFn(1.00), 'rgb(0% 100% 0% / 1)');
         });
 
         test('should limit interpolation results to sRGB gamut', () => {

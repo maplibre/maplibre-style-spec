@@ -1,5 +1,5 @@
 import colorString from 'color-string';
-import {hcl, hsl, lab, HCLColor, LABColor, RGBColor} from './color_spaces';
+import {HCLColor, hslToRgb, LABColor, RGBColor, rgbToHcl, rgbToLab} from './color_spaces';
 
 /**
  * Color representation used by WebGL.
@@ -86,7 +86,7 @@ class Color {
      * @returns Gien color, with reversed alpha blending, in HCL color space.
      */
     get hcl(): HCLColor {
-        return this.overwriteGetter('hcl', hcl.fromRgb(this.rgb));
+        return this.overwriteGetter('hcl', rgbToHcl(this.rgb));
     }
 
     /**
@@ -95,15 +95,26 @@ class Color {
      * @returns Gien color, with reversed alpha blending, in LAB color space.
      */
     get lab(): LABColor {
-        return this.overwriteGetter('lab', lab.fromRgb(this.rgb));
+        return this.overwriteGetter('lab', rgbToLab(this.rgb));
     }
 
     /**
      * Lazy getter pattern. When getter is called for the first time lazy value
      * is calculated and then overwrites getter function in given object instance.
      *
+     * @example:
+     * const redColor = Color.parse('red');
+     * let x = redColor.hcl; // this will invoke `get hcl()`, which will calculate
+     * // the value of red in HCL space and invoke this `overwriteGetter` function
+     * // which in turn will set a field with a key 'hcl' in the `redColor` object.
+     * // In other words it will override `get hcl()` from its `Color` prototype
+     * // with its own property: hcl = [calculated red value in hcl].
+     * let y = redColor.hcl; // next call will no longer invoke getter but simply
+     * // return the previously calculated value
+     * x === y; // true - `x` is exactly the same object as `y`
+     *
      * @param getterKey Getter key
-     * @param lazyValue Lazy value
+     * @param lazyValue Lazily calculated value to be memoized by current instance
      * @private
      */
     private overwriteGetter<T>(getterKey: string, lazyValue: T): T {
@@ -138,7 +149,7 @@ function parseCssColor(colorToParse: string): RGBColor | undefined {
             return [r / 255, g / 255, b / 255, alpha];
         }
         case 'hsl': {
-            return hsl.toRgb(parsingResult.value);
+            return hslToRgb(parsingResult.value);
         }
     }
 }

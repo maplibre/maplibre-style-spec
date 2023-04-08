@@ -49,8 +49,7 @@ function constrainAngle(angle: number): number {
     return angle;
 }
 
-// sRGB -> LAB
-function rgbToLab([r, g, b, alpha]: RGBColor): LABColor {
+export function rgbToLab([r, g, b, alpha]: RGBColor): LABColor {
     r = rgb2xyz(r);
     g = rgb2xyz(g);
     b = rgb2xyz(b);
@@ -70,8 +69,7 @@ function xyz2lab(t: number): number {
     return (t > t3) ? Math.pow(t, 1 / 3) : t / t2 + t0;
 }
 
-// LAB -> sRGB
-function labToRgb([l, a, b, alpha]: LABColor): RGBColor {
+export function labToRgb([l, a, b, alpha]: LABColor): RGBColor {
     let y = (l + 16) / 116,
         x = isNaN(a) ? y : y + a / 500,
         z = isNaN(b) ? y : y - b / 200;
@@ -97,22 +95,20 @@ function lab2xyz(t: number): number {
     return (t > t1) ? t * t * t : t2 * (t - t0);
 }
 
-// sRGB -> HCL
-function rgbToHcl(rgbColor: RGBColor): HCLColor {
+export function rgbToHcl(rgbColor: RGBColor): HCLColor {
     const [l, a, b, alpha] = rgbToLab(rgbColor);
     const c = Math.sqrt(a * a + b * b);
     const h = Math.round(c * 10000) ? constrainAngle(Math.atan2(b, a) * rad2deg) : NaN;
     return [h, c, l, alpha];
 }
 
-// HCL -> sRGB
-function hclToRgb([h, c, l, alpha]: HCLColor): RGBColor {
+export function hclToRgb([h, c, l, alpha]: HCLColor): RGBColor {
     h = isNaN(h) ? 0 : h * deg2rad;
     return labToRgb([l, Math.cos(h) * c, Math.sin(h) * c, alpha]);
 }
 
-// HSL -> sRGB https://drafts.csswg.org/css-color-4/#hsl-to-rgb
-function hslToRgb([h, s, l, alpha]: HSLColor): RGBColor {
+// https://drafts.csswg.org/css-color-4/#hsl-to-rgb
+export function hslToRgb([h, s, l, alpha]: HSLColor): RGBColor {
     h = constrainAngle(h);
     s /= 100;
     l /= 100;
@@ -125,17 +121,3 @@ function hslToRgb([h, s, l, alpha]: HSLColor): RGBColor {
 
     return [f(0), f(8), f(4), alpha];
 }
-
-export const lab = {
-    fromRgb: rgbToLab,
-    toRgb: labToRgb,
-};
-
-export const hcl = {
-    fromRgb: rgbToHcl,
-    toRgb: hclToRgb,
-};
-
-export const hsl = {
-    toRgb: hslToRgb,
-};

@@ -9,8 +9,6 @@ const sharedConfig: Partial<Config> = {
     },
     // any tests that operate on dist files shouldn't compile them again.
     transformIgnorePatterns: ['<rootDir>/dist'],
-    // load custom jest matchers
-    setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
 };
 
 const config: Config = {

@@ -24,6 +24,6 @@
     "experimentalSpecifierResolution": "node",
     "esm": true
   },
-  "include": ["rollup.config.*", "src/**/*", "build/**/*", "jest.*.ts"],
+  "include": ["rollup.config.*", "src/**/*", "build/**/*"],
   "exclude": ["node_modules", "dist"]
 }

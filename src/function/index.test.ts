@@ -1,3 +1,4 @@
+import {expectToMatchColor} from '../../test/testUtils';
 import {createFunction} from './index';
 import Color from '../util/color';
 import Formatted from '../expression/types/formatted';
@@ -175,9 +176,9 @@ describe('exponential function', () => {
             type: 'color'
         }).evaluate;
 
-        expect(f({zoom: 0}, undefined)).toMatchColor('rgb(100% 0% 0% / 1)');
-        expect(f({zoom: 5}, undefined)).toMatchColor('rgb(60% 0% 40% / 1)');
-        expect(f({zoom: 11}, undefined)).toMatchColor('rgb(0% 0% 100% / 1)');
+        expectToMatchColor(f({zoom: 0}, undefined), 'rgb(100% 0% 0% / 1)');
+        expectToMatchColor(f({zoom: 5}, undefined), 'rgb(60% 0% 40% / 1)');
+        expectToMatchColor(f({zoom: 11}, undefined), 'rgb(0% 0% 100% / 1)');
     });
 
     test('color hcl colorspace', () => {
@@ -189,9 +190,9 @@ describe('exponential function', () => {
             type: 'color'
         }).evaluate;
 
-        expect(f({zoom: 0}, undefined)).toMatchColor('rgb(14.12% 38.43% 14.12% / .6)', 4);
-        expect(f({zoom: 5}, undefined)).toMatchColor('rgb(0% 35.71% 46.73% / .8)', 4);
-        expect(f({zoom: 10}, undefined)).toMatchColor('rgb(8.64% 22.66% 55.36% / 1)', 4);
+        expectToMatchColor(f({zoom: 0}, undefined), 'rgb(14.12% 38.43% 14.12% / .6)', 4);
+        expectToMatchColor(f({zoom: 5}, undefined), 'rgb(0% 35.71% 46.73% / .8)', 4);
+        expectToMatchColor(f({zoom: 10}, undefined), 'rgb(8.64% 22.66% 55.36% / 1)', 4);
     });
 
     test('color lab colorspace', () => {
@@ -203,9 +204,9 @@ describe('exponential function', () => {
             type: 'color'
         }).evaluate;
 
-        expect(f({zoom: 0}, undefined)).toMatchColor('rgb(0% 0% 0% / .6)');
-        expect(f({zoom: 5}, undefined)).toMatchColor('rgb(14.29% 46.73% 46.63% / .8)', 4);
-        expect(f({zoom: 10}, undefined)).toMatchColor('rgb(0% 100% 100% / 1)');
+        expectToMatchColor(f({zoom: 0}, undefined), 'rgb(0% 0% 0% / .6)');
+        expectToMatchColor(f({zoom: 5}, undefined), 'rgb(14.29% 46.73% 46.63% / .8)', 4);
+        expectToMatchColor(f({zoom: 10}, undefined), 'rgb(0% 100% 100% / 1)');
     });
 
     test('color invalid colorspace', () => {
