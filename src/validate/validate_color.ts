@@ -11,7 +11,7 @@ export default function validateColor(options) {
         return [new ValidationError(key, value, `color expected, ${type} found`)];
     }
 
-    if (!Color.parse(value)) {
+    if (!Color.parse(String(value))) { // cast String object to string primitive
         return [new ValidationError(key, value, `color expected, "${value}" found`)];
     }
 

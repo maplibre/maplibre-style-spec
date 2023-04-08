@@ -40,7 +40,7 @@ describe('Color class', () => {
             expect(Color.parse('hsl(300,100%,25.1%,0.7)')).toMatchColor('rgb(50.2% 0% 50.2% / .7)');
             expect(Color.parse('hsl(300deg 100% 25.1% / 0.7)')).toMatchColor('rgb(50.2% 0% 50.2% / .7)');
             expect(Color.parse('hsla(300,100%,25.1%,0.9)')).toMatchColor('rgb(50.2% 0% 50.2% / .9)');
-            expect(Color.parse('hsla(300,100%,25.1%,.0)')).toMatchColor('rgb(50.2% 0% 50.2% / 0)');
+            expect(Color.parse('hsla(300,100%,25.1%,.0)')).toMatchColor('rgb(0% 0% 0% / 0)');
         });
 
         test('should return undefined when provided with invalid CSS color string', () => {
@@ -54,19 +54,28 @@ describe('Color class', () => {
             expect(Color.parse('rgb(0deg,0,0)')).toBeUndefined();
         });
 
-        test('should keep a reference to the original color when alpha=0', () => {
-            const color = Color.parse('rgba(0,0,128,0)');
-            expect(color).toMatchObject({r: 0, g: 0, b: 0, a: 0});
-            expect(Object.hasOwn(color, 'rgb')).toBe(true);
-            expect(color.rgb).closeToNumberArray([0, 0, 128 / 255, 0]);
-        });
+    });
 
-        test('should not keep a reference to the original color when alpha!=0', () => {
-            const color = Color.parse('rgba(0,0,128,0.001)');
-            expect(color).toMatchObject({r: 0, g: 0, b: expect.closeTo(128 / 255 * 0.001, 5), a: 0.001});
-            expect(Object.hasOwn(color, 'rgb')).toBe(false);
-        });
+    test('should keep a reference to the original color when alpha=0', () => {
+        const color = new Color(0, 0, 0.5, 0, false);
+        expect(color).toMatchObject({r: 0, g: 0, b: 0, a: 0});
+        expect(Object.hasOwn(color, 'rgb')).toBe(true);
+        expect(color.rgb).closeToNumberArray([0, 0, 0.5, 0]);
+    });
 
+    test('should not keep a reference to the original color when alpha!=0', () => {
+        const color = new Color(0, 0, 0.5, 0.001, false);
+        expect(color).toMatchObject({r: 0, g: 0, b: expect.closeTo(0.5 * 0.001, 5), a: 0.001});
+        expect(Object.hasOwn(color, 'rgb')).toBe(false);
+    });
+
+    test('should serialize to rgba format', () => {
+        expect(`${new Color(1, 1, 0, 1, false)}`).toBe('rgba(255,255,0,1)');
+        expect(`${new Color(0.2, 0, 1, 0.3, false)}`).toBe('rgba(51,0,255,0.3)');
+        expect(`${new Color(1, 1, 0, 0, false)}`).toBe('rgba(255,255,0,0)');
+        expect(`${Color.parse('purple')}`).toBe('rgba(128,0,128,1)');
+        expect(`${Color.parse('rgba(26,207,26,.73)')}`).toBe('rgba(26,207,26,0.73)');
+        expect(`${Color.parse('rgba(26,207,26,0)')}`).toBe('rgba(26,207,26,0)');
     });
 
 });

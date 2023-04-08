@@ -94,7 +94,7 @@ function rgba(ctx, [r, g, b, a]) {
     const alpha = a ? a.evaluate(ctx) : 1;
     const error = validateRGBA(r, g, b, alpha);
     if (error) throw new RuntimeError(error);
-    return new Color(r / 255 * alpha, g / 255 * alpha, b / 255 * alpha, alpha);
+    return new Color(r / 255, g / 255, b / 255, alpha, false);
 }
 
 function has(key, obj) {
@@ -138,8 +138,9 @@ CompoundExpression.register(expressions, {
         array(NumberType, 4),
         [ColorType],
         (ctx, [v]) => {
-            return v.evaluate(ctx).toArray();
-        }
+            const [r, g, b, a] = v.evaluate(ctx).rgb;
+            return [r * 255, g * 255, b * 255, a];
+        },
     ],
     'rgb': [
         ColorType,

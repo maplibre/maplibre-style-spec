@@ -174,7 +174,7 @@ function evaluateExponentialFunction(parameters, propertySpec, input) {
 
     const outputLower = parameters.stops[index][1];
     const outputUpper = parameters.stops[index + 1][1];
-    const i11nFn = interpolate[propertySpec.type] || identityFunction;
+    const interp = interpolate[propertySpec.type] || identityFunction;
 
     if (typeof outputLower.evaluate === 'function') {
         return {
@@ -185,12 +185,12 @@ function evaluateExponentialFunction(parameters, propertySpec, input) {
                 if (evaluatedLower === undefined || evaluatedUpper === undefined) {
                     return undefined;
                 }
-                return i11nFn(evaluatedLower, evaluatedUpper, t, parameters.colorSpace);
+                return interp(evaluatedLower, evaluatedUpper, t, parameters.colorSpace);
             }
         };
     }
 
-    return i11nFn(outputLower, outputUpper, t, parameters.colorSpace);
+    return interp(outputLower, outputUpper, t, parameters.colorSpace);
 }
 
 function evaluateIdentityFunction(parameters, propertySpec, input) {

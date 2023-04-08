@@ -72,7 +72,7 @@ const colorInterpolation = {
 
 function color(from: Color, to: Color, t: number, spaceKey: InterpolationColorSpace = 'rgb'): Color {
     const [r, g, b, alpha] = colorInterpolation[ spaceKey ](from, to, t);
-    return new Color(r * alpha, g * alpha, b * alpha, alpha);
+    return new Color(r, g, b, alpha, false);
 }
 
 function array<T extends number[]>(from: T, to: T, t: number): T {

@@ -79,7 +79,7 @@ describe('interpolate', () => {
             const targetColor = Color.parse('rgba(0,255,0,1)');
 
             const i11nFn = (t: number) => interpolate.color(color, targetColor, t, 'rgb');
-            expect(i11nFn(0.00)).toMatchColor('rgb(0% 0% 100% / 0)');
+            expect(i11nFn(0.00)).toMatchColor('rgb(0% 0% 0% / 0)');
             expect(i11nFn(0.25)).toMatchColor('rgb(0% 25% 75% / 0.25)');
             expect(i11nFn(0.50)).toMatchColor('rgb(0% 50% 50% / 0.5)');
             expect(i11nFn(0.75)).toMatchColor('rgb(0% 75% 25% / 0.75)');

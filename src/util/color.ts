@@ -18,12 +18,28 @@ class Color {
      * @param g Green component premultiplied by `alpha` 0..1
      * @param b Blue component premultiplied by `alpha` 0..1
      * @param [alpha=1] Alpha component 0..1
+     * @param [premultiplied=true] Whether the `r`, `g` and `b` values have already
+     * been multiplied by alpha. If `true` nothing happens if `false` then they will
+     * be multiplied automatically.
      */
-    constructor(r: number, g: number, b: number, alpha = 1) {
+    constructor(r: number, g: number, b: number, alpha = 1, premultiplied = true) {
         this.r = r;
         this.g = g;
         this.b = b;
         this.a = alpha;
+
+        if (!premultiplied) {
+            this.r *= alpha;
+            this.g *= alpha;
+            this.b *= alpha;
+
+            if (!alpha) {
+                // alpha = 0 erases completely rgb channels. This behavior is not desirable
+                // if this particular color is later used in color interpolation.
+                // Because of that, a reference to original color is saved.
+                this.overwriteGetter('rgb', [r, g, b, alpha]);
+            }
+        }
     }
 
     static black: Color;
@@ -42,33 +58,26 @@ class Color {
      * @param input CSS color string to parse.
      * @returns A `Color` instance, or `undefined` if the input is not a valid color string.
      */
-    static parse(input: String | string | undefined | null): Color | undefined {
-        if (Object.prototype.toString.call(input) !== '[object String]') {
+    static parse(input: string | undefined | null): Color | undefined {
+        if (typeof input !== 'string') {
             return;
         }
 
-        const parsedColor = parseCssColor(input.toLowerCase());
-        if (parsedColor) {
-            const [r, g, b, alpha] = parsedColor;
-            const color = new Color(r * alpha, g * alpha, b * alpha, alpha);
-            if (!alpha) {
-                // alpha = 0 erases completely rgb channels. This behavior is not desirable
-                // if this particular color is later used in color interpolation.
-                // Because of that, a reference to original color is saved.
-                color.overwriteGetter('rgb', parsedColor);
-            }
-            return color;
+        const rgba = parseCssColor(input.toLowerCase());
+        if (rgba) {
+            return new Color(...rgba, false);
         }
     }
 
     /**
-     * Used in color interpolation.
+     * Used in color interpolation and by 'to-rgba' expression.
      *
      * @returns Gien color, with reversed alpha blending, in sRGB color space.
      */
     get rgb(): RGBColor {
         const {r, g, b, a} = this;
-        return this.overwriteGetter('rgb', [r / a, g / a, b / a, a]);
+        const f = a || Infinity; // reverse alpha blending factor
+        return this.overwriteGetter('rgb', [r / f, g / f, b / f, a]);
     }
 
     /**
@@ -100,6 +109,23 @@ class Color {
     private overwriteGetter<T>(getterKey: string, lazyValue: T): T {
         Object.defineProperty(this, getterKey, {value: lazyValue});
         return lazyValue;
+    }
+
+    /**
+     * Used by 'to-string' expression.
+     *
+     * @returns Serialized color in format `rgba(r,g,b,a)`
+     * where r,g,b are numbers within 0..255 and alpha is number within 1..0
+     *
+     * @example
+     * var purple = new Color.parse('purple');
+     * purple.toString; // = "rgba(128,0,128,1)"
+     * var translucentGreen = new Color.parse('rgba(26, 207, 26, .73)');
+     * translucentGreen.toString(); // = "rgba(26,207,26,0.73)"
+     */
+    toString(): string {
+        const [r, g, b, a] = this.rgb;
+        return `rgba(${[r, g, b].map(n => Math.round(n * 255)).join(',')},${a})`;
     }
 
 }
