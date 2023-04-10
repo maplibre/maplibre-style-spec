@@ -64,7 +64,7 @@
     "@types/jest": "^29.5.0",
     "@types/node": "^18.15.3",
     "@typescript-eslint/eslint-plugin": "^5.54.1",
-    "@typescript-eslint/parser": "^5.55.0",
+    "@typescript-eslint/parser": "^5.57.1",
     "dts-bundle-generator": "^7.2.0",
     "eslint": "^8.36.0",
     "eslint-config-mourner": "^3.0.0",
