@@ -1,4 +1,4 @@
-import {expectToMatchColor} from '../../test/unit/testUtils';
+import {expectToMatchColor} from '../../test/unit/test_utils';
 import {createFunction} from './index';
 import Color from '../util/color';
 import Formatted from '../expression/types/formatted';
