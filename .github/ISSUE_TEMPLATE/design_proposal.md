@@ -1,8 +1,12 @@
 ---
 name: Design Proposal
 about: Make a design proposal
+title: ''
+labels: ''
+assignees: ''
 
 ---
+
 # Design Proposal: PUT TITLE HERE
 
 ## Motivation
