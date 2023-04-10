@@ -1,4 +1,4 @@
-import {expectCloseToArray, expectToMatchColor} from '../../test/testUtils';
+import {expectCloseToArray, expectToMatchColor} from '../../test/unit/testUtils';
 import Color from './color';
 
 describe('Color class', () => {

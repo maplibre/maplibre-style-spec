@@ -1,4 +1,4 @@
-import Color from '../src/util/color';
+import Color from '../../src/util/color';
 
 /**
  * @param toTest Color instance to test
