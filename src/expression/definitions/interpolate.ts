@@ -1,7 +1,7 @@
 import UnitBezier from '@mapbox/unitbezier';
 
 import interpolate from '../../util/interpolate';
-import {array, ArrayType, ColorType, ColorTypeT, NumberType, NumberTypeT, OffsetCollectionType, PaddingType, PaddingTypeT, toString, verifyType} from '../types';
+import {array, ArrayType, ColorType, ColorTypeT, NumberType, NumberTypeT, OffsetCollectionType, OffsetCollectionTypeT, PaddingType, PaddingTypeT, toString, verifyType} from '../types';
 import {findStopLessThanOrEqualTo} from '../stops';
 
 import type {Stops} from '../stops';
@@ -19,7 +19,7 @@ export type InterpolationType = {
     name: 'cubic-bezier';
     controlPoints: [number, number, number, number];
 };
-type InterpolatedValueType = NumberTypeT | ColorTypeT | PaddingTypeT | ArrayType<NumberTypeT>;
+type InterpolatedValueType = NumberTypeT | ColorTypeT | PaddingTypeT | OffsetCollectionTypeT | ArrayType<NumberTypeT>;
 
 class Interpolate implements Expression {
     type: InterpolatedValueType;
