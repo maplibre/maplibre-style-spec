@@ -1,7 +1,7 @@
 import UnitBezier from '@mapbox/unitbezier';
 
 import interpolate from '../../util/interpolate';
-import {toString, NumberType, ColorType} from '../types';
+import {array, ArrayType, ColorType, ColorTypeT, NumberType, NumberTypeT, PaddingType, PaddingTypeT, toString, verifyType} from '../types';
 import {findStopLessThanOrEqualTo} from '../stops';
 
 import type {Stops} from '../stops';
@@ -19,9 +19,10 @@ export type InterpolationType = {
     name: 'cubic-bezier';
     controlPoints: [number, number, number, number];
 };
+type InterpolatedValueType = NumberTypeT | ColorTypeT | PaddingTypeT | ArrayType<NumberTypeT>;
 
 class Interpolate implements Expression {
-    type: Type;
+    type: InterpolatedValueType;
 
     operator: 'interpolate' | 'interpolate-hcl' | 'interpolate-lab';
     interpolation: InterpolationType;
@@ -29,7 +30,7 @@ class Interpolate implements Expression {
     labels: Array<number>;
     outputs: Array<Expression>;
 
-    constructor(type: Type, operator: 'interpolate' | 'interpolate-hcl' | 'interpolate-lab', interpolation: InterpolationType, input: Expression, stops: Stops) {
+    constructor(type: InterpolatedValueType, operator: 'interpolate' | 'interpolate-hcl' | 'interpolate-lab', interpolation: InterpolationType, input: Expression, stops: Stops) {
         this.type = type;
         this.operator = operator;
         this.interpolation = interpolation;
@@ -132,14 +133,10 @@ class Interpolate implements Expression {
             stops.push([label, parsed]);
         }
 
-        if (outputType.kind !== 'number' &&
-            outputType.kind !== 'color' &&
-            outputType.kind !== 'padding' &&
-            !(
-                outputType.kind === 'array' &&
-                outputType.itemType.kind === 'number' &&
-                typeof outputType.N === 'number'
-            )
+        if (!verifyType(outputType, NumberType) &&
+            !verifyType(outputType, ColorType) &&
+            !verifyType(outputType, PaddingType) &&
+            !verifyType(outputType, array(NumberType))
         ) {
             return context.error(`Type ${toString(outputType)} is not interpolatable.`) as null;
         }
@@ -155,7 +152,7 @@ class Interpolate implements Expression {
             return outputs[0].evaluate(ctx);
         }
 
-        const value = (this.input.evaluate(ctx) as any as number);
+        const value: number = this.input.evaluate(ctx);
         if (value <= labels[0]) {
             return outputs[0].evaluate(ctx);
         }
@@ -175,7 +172,7 @@ class Interpolate implements Expression {
 
         switch (this.operator) {
             case 'interpolate':
-                return interpolate[this.type.kind.toLowerCase()](outputLower, outputUpper, t);
+                return interpolate[this.type.kind](outputLower, outputUpper, t);
             case 'interpolate-hcl':
                 return interpolate.color(outputLower, outputUpper, t, 'hcl');
             case 'interpolate-lab':
