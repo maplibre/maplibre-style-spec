@@ -19,7 +19,7 @@ class OffsetCollection {
         }
 
         if (input.length === 2 && typeof input[0] === 'number' && typeof input[1] === 'number') {
-            input = [input as [number, number]] ;
+            input = [input as [number, number]];
         }
 
         const inputCollection = input as Array<[number, number]>;

@@ -1,7 +1,6 @@
 import ValidationError from '../error/validation_error';
 import getType from '../util/get_type';
 import validateArray from './validate_array';
-import validateNumber from './validate_number';
 
 export default function validateOffsetCollection(options): ValidationError[] {
     const key = options.key;

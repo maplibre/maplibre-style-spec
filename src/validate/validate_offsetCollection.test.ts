@@ -1,4 +1,3 @@
-import {text} from 'stream/consumers';
 import validateSpec from './validate';
 import validateOffsetCollection from './validate_offsetCollection';
 
@@ -51,21 +50,21 @@ describe('Validate OffsetCollection', () => {
 
     test('Should return error if numeric array does not have exactly two elements', () => {
         let errors = validateOffsetCollection({validateSpec, styleSpec, key: 'offsetCollection', value: [1]});
-        expect(errors).toHaveLength(1)
+        expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('offsetCollection: array length 2 expected, length 1 found');
 
         errors = validateOffsetCollection({validateSpec, styleSpec, key: 'offsetCollection', value: [1, 2, 3]});
-        expect(errors).toHaveLength(1)
+        expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('offsetCollection: array length 2 expected, length 3 found');
 
         errors = validateOffsetCollection({validateSpec, styleSpec, key: 'offsetCollection', value: [1, 2, false]});
-        expect(errors).toHaveLength(1)
+        expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('offsetCollection: array length 2 expected, length 3 found');
     });
 
-    test(`Should return error if numeric array contains non-numeric elements`, () => {
+    test('Should return error if numeric array contains non-numeric elements', () => {
         let errors = validateOffsetCollection({validateSpec, styleSpec, key: 'offsetCollection', value: [1, '2']});
-        expect(errors).toHaveLength(1)
+        expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('offsetCollection[1]: number expected, string found');
 
         errors = validateOffsetCollection({validateSpec, styleSpec, key: 'offsetCollection', value: [NaN, 6]});
@@ -73,44 +72,44 @@ describe('Validate OffsetCollection', () => {
         expect(errors[0].message).toBe('offsetCollection[0]: number expected, NaN found');
 
         errors = validateOffsetCollection({validateSpec, styleSpec, key: 'offsetCollection', value: [1, true]});
-        expect(errors).toHaveLength(1)
+        expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('offsetCollection[1]: number expected, boolean found');
 
         errors = validateOffsetCollection({validateSpec, styleSpec, key: 'offsetCollection', value: [1, null]});
-        expect(errors).toHaveLength(1)
+        expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('offsetCollection[1]: number expected, null found');
 
         errors = validateOffsetCollection({validateSpec, styleSpec, key: 'offsetCollection', value: [1, [2]]});
-        expect(errors).toHaveLength(1)
+        expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('offsetCollection[1]: number expected, array found');
 
         errors = validateOffsetCollection({validateSpec, styleSpec, key: 'offsetCollection', value: [1, {x: 2}]});
-        expect(errors).toHaveLength(1)
+        expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('offsetCollection[1]: number expected, object found');
     });
 
     test('Should pass if type is 2-element numeric array', () => {
-        let errors = validateOffsetCollection({validateSpec, styleSpec, key: 'offsetCollection', value: [1, 2]});
+        const errors = validateOffsetCollection({validateSpec, styleSpec, key: 'offsetCollection', value: [1, 2]});
         expect(errors).toHaveLength(0);
     });
 
-    test(`Should return error if nested array does not have exactly two elements`, () => {
+    test('Should return error if nested array does not have exactly two elements', () => {
         let errors = validateOffsetCollection({validateSpec, styleSpec, key: 'offsetCollection', value: [[]]});
-        expect(errors).toHaveLength(1)
+        expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('offsetCollection[0]: array length 2 expected, length 0 found');
 
         errors = validateOffsetCollection({validateSpec, styleSpec, key: 'offsetCollection', value: [[1]]});
-        expect(errors).toHaveLength(1)
+        expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('offsetCollection[0]: array length 2 expected, length 1 found');
 
         errors = validateOffsetCollection({validateSpec, styleSpec, key: 'offsetCollection', value: [[1, 2, 3]]});
-        expect(errors).toHaveLength(1)
+        expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('offsetCollection[0]: array length 2 expected, length 3 found');
     });
 
-    test(`Should return error if nested array contains non-numeric elements`, () => {
+    test('Should return error if nested array contains non-numeric elements', () => {
         let errors = validateOffsetCollection({validateSpec, styleSpec, key: 'offsetCollection', value: [[1, '2']]});
-        expect(errors).toHaveLength(1)
+        expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('offsetCollection[0][1]: number expected, string found');
 
         errors = validateOffsetCollection({validateSpec, styleSpec, key: 'offsetCollection', value: [[NaN, 6]]});
@@ -118,23 +117,23 @@ describe('Validate OffsetCollection', () => {
         expect(errors[0].message).toBe('offsetCollection[0][0]: number expected, NaN found');
 
         errors = validateOffsetCollection({validateSpec, styleSpec, key: 'offsetCollection', value: [[1, true]]});
-        expect(errors).toHaveLength(1)
+        expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('offsetCollection[0][1]: number expected, boolean found');
 
         errors = validateOffsetCollection({validateSpec, styleSpec, key: 'offsetCollection', value: [[1, null]]});
-        expect(errors).toHaveLength(1)
+        expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('offsetCollection[0][1]: number expected, null found');
 
         errors = validateOffsetCollection({validateSpec, styleSpec, key: 'offsetCollection', value: [[1, [2]]]});
-        expect(errors).toHaveLength(1)
+        expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('offsetCollection[0][1]: number expected, array found');
 
         errors = validateOffsetCollection({validateSpec, styleSpec, key: 'offsetCollection', value: [[1, {x: 2}]]});
-        expect(errors).toHaveLength(1)
+        expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('offsetCollection[0][1]: number expected, object found');
 
         errors = validateOffsetCollection({validateSpec, styleSpec, key: 'offsetCollection', value: [[0, 0], [1, '2']]});
-        expect(errors).toHaveLength(1)
+        expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('offsetCollection[1][1]: number expected, string found');
 
         errors = validateOffsetCollection({validateSpec, styleSpec, key: 'offsetCollection', value: [[0, 0], [NaN, 6]]});
@@ -142,30 +141,30 @@ describe('Validate OffsetCollection', () => {
         expect(errors[0].message).toBe('offsetCollection[1][0]: number expected, NaN found');
 
         errors = validateOffsetCollection({validateSpec, styleSpec, key: 'offsetCollection', value: [[0, 0], [1, true]]});
-        expect(errors).toHaveLength(1)
+        expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('offsetCollection[1][1]: number expected, boolean found');
 
         errors = validateOffsetCollection({validateSpec, styleSpec, key: 'offsetCollection', value: [[0, 0], [1, null]]});
-        expect(errors).toHaveLength(1)
+        expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('offsetCollection[1][1]: number expected, null found');
 
         errors = validateOffsetCollection({validateSpec, styleSpec, key: 'offsetCollection', value: [[0, 0], [1, [2]]]});
-        expect(errors).toHaveLength(1)
+        expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('offsetCollection[1][1]: number expected, array found');
 
         errors = validateOffsetCollection({validateSpec, styleSpec, key: 'offsetCollection', value: [[0, 0], [1, {x: 2}]]});
-        expect(errors).toHaveLength(1)
+        expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('offsetCollection[1][1]: number expected, object found');
     });
 
     test('Should pass if all elements are 2-element numeric arrays', () => {
         let errors = validateOffsetCollection({validateSpec, styleSpec, key: 'offsetCollection', value: [[1, 2]]});
-        expect(errors).toHaveLength(0)
+        expect(errors).toHaveLength(0);
 
         errors = validateOffsetCollection({validateSpec, styleSpec, key: 'offsetCollection', value: [[1, 2], [3, 4]]});
-        expect(errors).toHaveLength(0)
+        expect(errors).toHaveLength(0);
 
         errors = validateOffsetCollection({validateSpec, styleSpec, key: 'offsetCollection', value: [[1, 2], [3, 4], [5, 6]]});
-        expect(errors).toHaveLength(0)
+        expect(errors).toHaveLength(0);
     });
 });
