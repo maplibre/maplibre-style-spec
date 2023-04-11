@@ -1,3 +1,8 @@
+## main
+
+### ✨ Features and improvements
+* Updated `text-offset` symbol layout property to support customizing the offset based on `text-variable-anchor` selection [#114](https://github.com/maplibre/maplibre-style/pull/114)
+
 ## 18.0.0
 * The maplibre style specification and utilities now has it's own repository. The major bump is mainly a precautionary measure, in case the restructuring causes friction.
 
