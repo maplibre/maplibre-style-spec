@@ -1,20 +1,34 @@
-import Color from './color';
+/**
+ * @param r Red component 0..1
+ * @param g Green component 0..1
+ * @param b Blue component 0..1
+ * @param alpha Alpha component 0..1
+ */
+export type RGBColor = [r: number, g: number, b: number, alpha: number];
 
-import {number as interpolateNumber} from './interpolate';
+/**
+ * @param h Hue as degrees 0..360
+ * @param s Saturation as percentage 0..100
+ * @param l Lightness as percentage 0..100
+ * @param alpha Alpha component 0..1
+ */
+export type HSLColor = [h: number, s: number, l: number, alpha: number];
 
-type LABColor = {
-    l: number;
-    a: number;
-    b: number;
-    alpha: number;
-};
+/**
+ * @param h Hue as degrees 0..360
+ * @param c Chroma 0..~230
+ * @param l Lightness as percentage 0..100
+ * @param alpha Alpha component 0..1
+ */
+export type HCLColor = [h: number, c: number, l: number, alpha: number];
 
-type HCLColor = {
-    h: number;
-    c: number;
-    l: number;
-    alpha: number;
-};
+/**
+ * @param l Lightness as percentage 0..100
+ * @param a A axis value -125..125
+ * @param b B axis value -125..125
+ * @param alpha Alpha component 0..1
+ */
+export type LABColor = [l: number, a: number, b: number, alpha: number];
 
 // Constants
 const Xn = 0.950470, // D65 standard referent
@@ -27,111 +41,83 @@ const Xn = 0.950470, // D65 standard referent
     deg2rad = Math.PI / 180,
     rad2deg = 180 / Math.PI;
 
-// Utilities
-function xyz2lab(t: number) {
-    return t > t3 ? Math.pow(t, 1 / 3) : t / t2 + t0;
+function constrainAngle(angle: number): number {
+    angle = angle % 360;
+    if (angle < 0) {
+        angle += 360;
+    }
+    return angle;
 }
 
-function lab2xyz(t: number) {
-    return t > t1 ? t * t * t : t2 * (t - t0);
+export function rgbToLab([r, g, b, alpha]: RGBColor): LABColor {
+    r = rgb2xyz(r);
+    g = rgb2xyz(g);
+    b = rgb2xyz(b);
+    const x = xyz2lab((0.4124564 * r + 0.3575761 * g + 0.1804375 * b) / Xn);
+    const y = xyz2lab((0.2126729 * r + 0.7151522 * g + 0.0721750 * b) / Yn);
+    const z = xyz2lab((0.0193339 * r + 0.1191920 * g + 0.9503041 * b) / Zn);
+
+    const l = 116 * y - 16;
+    return [(l < 0) ? 0 : l, 500 * (x - y), 200 * (y - z), alpha];
 }
 
-function xyz2rgb(x: number) {
-    return 255 * (x <= 0.0031308 ? 12.92 * x : 1.055 * Math.pow(x, 1 / 2.4) - 0.055);
+function rgb2xyz(x: number): number {
+    return (x <= 0.04045) ? x / 12.92 : Math.pow((x + 0.055) / 1.055, 2.4);
 }
 
-function rgb2xyz(x: number) {
-    x /= 255;
-    return x <= 0.04045 ? x / 12.92 : Math.pow((x + 0.055) / 1.055, 2.4);
+function xyz2lab(t: number): number {
+    return (t > t3) ? Math.pow(t, 1 / 3) : t / t2 + t0;
 }
 
-// LAB
-function rgbToLab(rgbColor: Color): LABColor {
-    const b = rgb2xyz(rgbColor.r),
-        a = rgb2xyz(rgbColor.g),
-        l = rgb2xyz(rgbColor.b),
-        x = xyz2lab((0.4124564 * b + 0.3575761 * a + 0.1804375 * l) / Xn),
-        y = xyz2lab((0.2126729 * b + 0.7151522 * a + 0.0721750 * l) / Yn),
-        z = xyz2lab((0.0193339 * b + 0.1191920 * a + 0.9503041 * l) / Zn);
+export function labToRgb([l, a, b, alpha]: LABColor): RGBColor {
+    let y = (l + 16) / 116,
+        x = isNaN(a) ? y : y + a / 500,
+        z = isNaN(b) ? y : y - b / 200;
 
-    return {
-        l: 116 * y - 16,
-        a: 500 * (x - y),
-        b: 200 * (y - z),
-        alpha: rgbColor.a
-    };
-}
-
-function labToRgb(labColor: LABColor): Color {
-    let y = (labColor.l + 16) / 116,
-        x = isNaN(labColor.a) ? y : y + labColor.a / 500,
-        z = isNaN(labColor.b) ? y : y - labColor.b / 200;
     y = Yn * lab2xyz(y);
     x = Xn * lab2xyz(x);
     z = Zn * lab2xyz(z);
-    return new Color(
+
+    return [
         xyz2rgb(3.2404542 * x - 1.5371385 * y - 0.4985314 * z), // D65 -> sRGB
         xyz2rgb(-0.9692660 * x + 1.8760108 * y + 0.0415560 * z),
         xyz2rgb(0.0556434 * x - 0.2040259 * y + 1.0572252 * z),
-        labColor.alpha
-    );
+        alpha,
+    ];
 }
 
-function interpolateLab(from: LABColor, to: LABColor, t: number) {
-    return {
-        l: interpolateNumber(from.l, to.l, t),
-        a: interpolateNumber(from.a, to.a, t),
-        b: interpolateNumber(from.b, to.b, t),
-        alpha: interpolateNumber(from.alpha, to.alpha, t)
-    };
+function xyz2rgb(x: number): number {
+    x = (x <= 0.00304) ? 12.92 * x : 1.055 * Math.pow(x, 1 / 2.4) - 0.055;
+    return (x < 0) ? 0 : (x > 1) ? 1 : x; // clip to 0..1 range
 }
 
-// HCL
-function rgbToHcl(rgbColor: Color): HCLColor {
-    const {l, a, b} = rgbToLab(rgbColor);
-    const h = Math.atan2(b, a) * rad2deg;
-    return {
-        h: h < 0 ? h + 360 : h,
-        c: Math.sqrt(a * a + b * b),
-        l,
-        alpha: rgbColor.a
-    };
+function lab2xyz(t: number): number {
+    return (t > t1) ? t * t * t : t2 * (t - t0);
 }
 
-function hclToRgb(hclColor: HCLColor): Color {
-    const h = hclColor.h * deg2rad,
-        c = hclColor.c,
-        l = hclColor.l;
-    return labToRgb({
-        l,
-        a: Math.cos(h) * c,
-        b: Math.sin(h) * c,
-        alpha: hclColor.alpha
-    });
+export function rgbToHcl(rgbColor: RGBColor): HCLColor {
+    const [l, a, b, alpha] = rgbToLab(rgbColor);
+    const c = Math.sqrt(a * a + b * b);
+    const h = Math.round(c * 10000) ? constrainAngle(Math.atan2(b, a) * rad2deg) : NaN;
+    return [h, c, l, alpha];
 }
 
-function interpolateHue(a: number, b: number, t: number) {
-    const d = b - a;
-    return a + t * (d > 180 || d < -180 ? d - 360 * Math.round(d / 360) : d);
+export function hclToRgb([h, c, l, alpha]: HCLColor): RGBColor {
+    h = isNaN(h) ? 0 : h * deg2rad;
+    return labToRgb([l, Math.cos(h) * c, Math.sin(h) * c, alpha]);
 }
 
-function interpolateHcl(from: HCLColor, to: HCLColor, t: number) {
-    return {
-        h: interpolateHue(from.h, to.h, t),
-        c: interpolateNumber(from.c, to.c, t),
-        l: interpolateNumber(from.l, to.l, t),
-        alpha: interpolateNumber(from.alpha, to.alpha, t)
-    };
+// https://drafts.csswg.org/css-color-4/#hsl-to-rgb
+export function hslToRgb([h, s, l, alpha]: HSLColor): RGBColor {
+    h = constrainAngle(h);
+    s /= 100;
+    l /= 100;
+
+    function f(n) {
+        const k = (n + h / 30) % 12;
+        const a = s * Math.min(l, 1 - l);
+        return l - a * Math.max(-1, Math.min(k - 3, 9 - k, 1));
+    }
+
+    return [f(0), f(8), f(4), alpha];
 }
-
-export const lab = {
-    forward: rgbToLab,
-    reverse: labToRgb,
-    interpolate: interpolateLab
-};
-
-export const hcl = {
-    forward: rgbToHcl,
-    reverse: hclToRgb,
-    interpolate: interpolateHcl
-};

@@ -43,11 +43,11 @@ export type EvaluationKind = 'constant' | 'source' | 'camera' | 'composite';
 export type Type = NullTypeT | NumberTypeT | StringTypeT | BooleanTypeT | ColorTypeT | ObjectTypeT | ValueTypeT |
 ArrayType | ErrorTypeT | CollatorTypeT | FormattedTypeT | PaddingTypeT | OffsetCollectionTypeT | ResolvedImageTypeT;
 
-export type ArrayType = {
+export interface ArrayType<T extends Type = Type> {
     kind: 'array';
-    itemType: Type;
+    itemType: T;
     N: number;
-};
+}
 
 export type NativeType = 'number' | 'string' | 'boolean' | 'null' | 'array' | 'object';
 
@@ -65,7 +65,7 @@ export const PaddingType = {kind: 'padding'} as PaddingTypeT;
 export const OffsetCollectionType = {kind: 'offsetCollection'} as OffsetCollectionTypeT;
 export const ResolvedImageType = {kind: 'resolvedImage'} as ResolvedImageTypeT;
 
-export function array(itemType: Type, N?: number | null): ArrayType {
+export function array<T extends Type>(itemType: T, N?: number | null): ArrayType<T> {
     return {
         kind: 'array',
         itemType,
@@ -142,4 +142,30 @@ export function isValidNativeType(provided: any, allowedTypes: Array<NativeType>
             return t === typeof provided;
         }
     });
+}
+
+/**
+ * Verify whether the specified type is of the same type as the specified sample.
+ *
+ * @param provided Type to verify
+ * @param sample Sample type to reference
+ * @returns `true` if both objects are of the same type, `false` otherwise
+ * @example basic types
+ * if (verifyType(outputType, ValueType)) {
+ *     // type narrowed to:
+ *     outputType.kind; // 'value'
+ * }
+ * @example array types
+ * if (verifyType(outputType, array(NumberType))) {
+ *     // type narrowed to:
+ *     outputType.kind; // 'array'
+ *     outputType.itemType; // NumberTypeT
+ *     outputType.itemType.kind; // 'number'
+ * }
+ */
+export function verifyType<T extends Type>(provided: Type, sample: T): provided is T {
+    if (provided.kind === 'array' && sample.kind === 'array') {
+        return provided.itemType.kind === sample.itemType.kind && typeof provided.N === 'number';
+    }
+    return provided.kind === sample.kind;
 }
