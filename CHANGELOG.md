@@ -1,3 +1,14 @@
+## main
+
+### ✨ Features and improvements
+
+* Add support for defining colors using CSS Color 4 syntax [#94](https://github.com/maplibre/maplibre-style/pull/94)
+* [Breaking] Interpretation of interpolation of colors with alpha channel equal to 0 has changed. When interpolating colors with alpha channel equal to 0, the values of the other color channels in the specified color space are included in the calculation. Previously they were ignored and only the alpha value of the other, not fully transparent, color was interpolated. [#94](https://github.com/maplibre/maplibre-style/pull/94)
+
+### 🐛 Bug fixes
+
+* Fix incorrect color interpolation in HCL and LAB color spaces when interpolation results are outside the sRGB gamut. [#94](https://github.com/maplibre/maplibre-style/pull/94)
+
 ## 18.0.0
 * The maplibre style specification and utilities now has it's own repository. The major bump is mainly a precautionary measure, in case the restructuring causes friction.
 

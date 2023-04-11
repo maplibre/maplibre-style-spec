@@ -1,7 +1,6 @@
-
 import ValidationError from '../error/validation_error';
 import getType from '../util/get_type';
-import {parseCSSColor} from 'csscolorparser';
+import Color from '../util/color';
 
 export default function validateColor(options) {
     const key = options.key;
@@ -12,7 +11,7 @@ export default function validateColor(options) {
         return [new ValidationError(key, value, `color expected, ${type} found`)];
     }
 
-    if (parseCSSColor(value) === null) {
+    if (!Color.parse(String(value))) { // cast String object to string primitive
         return [new ValidationError(key, value, `color expected, "${value}" found`)];
     }
 
