@@ -2,6 +2,7 @@ import {createFunction} from './index';
 import Color from '../util/color';
 import Formatted from '../expression/types/formatted';
 import Padding from '../util/padding';
+import OffsetCollection from '../util/offset_collection';
 
 describe('binary search', () => {
     test('will eventually terminate.', () => {
@@ -247,6 +248,19 @@ describe('exponential function', () => {
         expect(f({zoom: 0}, undefined)).toEqual(new Padding([2, 2, 2, 2]));
         expect(f({zoom: 5}, undefined)).toEqual(new Padding([2, 3.2, 2, 4]));
         expect(f({zoom: 11}, undefined)).toEqual(new Padding([2, 5, 2, 7]));
+    });
+
+    test('offsetCollection', () => {
+        const f = createFunction({
+            type: 'exponential',
+            stops: [[1, [2, 2]], [11, [2, 5]]]
+        }, {
+            type: 'offsetCollection'
+        }).evaluate;
+
+        expect(f({zoom: 0}, undefined)).toEqual(new OffsetCollection([[2, 2]]));
+        expect(f({zoom: 5}, undefined)).toEqual(new OffsetCollection([[2, 3.2]]));
+        expect(f({zoom: 11}, undefined)).toEqual(new OffsetCollection([[2, 5]]));
     });
 
     test('property present', () => {
@@ -564,6 +578,19 @@ describe('interval function', () => {
         expect(f({zoom: 11}, undefined)).toEqual(new Padding([4, 4, 4, 4]));
     });
 
+    test('offsetCollection', () => {
+        const f = createFunction({
+            type: 'interval',
+            stops: [[1, [2, 3]], [11, [4, 5]]]
+        }, {
+            type: 'offsetCollection'
+        }).evaluate;
+
+        expect(f({zoom: 0}, undefined)).toEqual(new OffsetCollection([[2, 3]]));
+        expect(f({zoom: 10}, undefined)).toEqual(new OffsetCollection([[2, 3]]));
+        expect(f({zoom: 11}, undefined)).toEqual(new OffsetCollection([[4, 5]]));
+    });
+
     test('property present', () => {
         const f = createFunction({
             property: 'foo',
@@ -783,7 +810,7 @@ describe('categorical function', () => {
         }).evaluate;
 
         expect(f({zoom: 0}, {properties: {foo: 0}})).toEqual(new Padding([2, 2, 2, 2]));
-        expect(f({zoom: 1}, {properties: {foo: 1}})).toEqual(new Padding([4, 4, 4, 4]));
+        expect(f({zoom: 0}, {properties: {foo: 1}})).toEqual(new Padding([4, 4, 4, 4]));
     });
 
     test('padding function default', () => {
@@ -812,6 +839,47 @@ describe('categorical function', () => {
 
         expect(f({zoom: 0}, {properties: {}})).toEqual(new Padding([6, 6, 6, 6]));
         expect(f({zoom: 0}, {properties: {foo: 3}})).toEqual(new Padding([6, 6, 6, 6]));
+    });
+
+    test('offsetCollection', () => {
+        const f = createFunction({
+            property: 'foo',
+            type: 'categorical',
+            stops: [[0, [2, 2]], [1, [4, 4]]]
+        }, {
+            type: 'offsetCollection'
+        }).evaluate;
+
+        expect(f({zoom: 0}, {properties: {foo: 0}})).toEqual(new OffsetCollection([[2, 2]]));
+        expect(f({zoom: 0}, {properties: {foo: 1}})).toEqual(new OffsetCollection([[4, 4]]));
+    });
+
+    test('offsetCollection function default', () => {
+        const f = createFunction({
+            property: 'foo',
+            type: 'categorical',
+            stops: [[0, 2], [1, 4]],
+            default: [6, 6]
+        }, {
+            type: 'offsetCollection'
+        }).evaluate;
+
+        expect(f({zoom: 0}, {properties: {}})).toEqual(new OffsetCollection([[6, 6]]));
+        expect(f({zoom: 0}, {properties: {foo: 3}})).toEqual(new OffsetCollection([[6, 6]]));
+    });
+
+    test('offsetCollection spec default', () => {
+        const f = createFunction({
+            property: 'foo',
+            type: 'categorical',
+            stops: [[0, 2], [1, 4]]
+        }, {
+            type: 'offsetCollection',
+            default: [6, 6]
+        }).evaluate;
+
+        expect(f({zoom: 0}, {properties: {}})).toEqual(new OffsetCollection([[6, 6]]));
+        expect(f({zoom: 0}, {properties: {foo: 3}})).toEqual(new OffsetCollection([[6, 6]]));
     });
 
     test('boolean', () => {
@@ -930,7 +998,7 @@ describe('identity function', () => {
         }).evaluate;
 
         expect(f({zoom: 0}, {properties: {foo: 3}})).toEqual(new Padding([3, 3, 3, 3]));
-        expect(f({zoom: 1}, {properties: {foo: [3, 4]}})).toEqual(new Padding([3, 4, 3, 4]));
+        expect(f({zoom: 0}, {properties: {foo: [3, 4]}})).toEqual(new Padding([3, 4, 3, 4]));
     });
 
     test('padding function default', () => {
@@ -967,6 +1035,54 @@ describe('identity function', () => {
         }).evaluate;
 
         expect(f({zoom: 0}, {properties: {foo: 'invalid'}})).toEqual(new Padding([1, 2, 3, 4]));
+    });
+
+    test('offsetCollection', () => {
+        const f = createFunction({
+            property: 'foo',
+            type: 'identity'
+        }, {
+            type: 'offsetCollection'
+        }).evaluate;
+
+        expect(f({zoom: 0}, {properties: {foo: [1, 2]}})).toEqual(new OffsetCollection([[1, 2]]));
+        expect(f({zoom: 0}, {properties: {foo: [[1, 2], [3, 4]]}})).toEqual(new OffsetCollection([[1, 2], [3, 4]]));
+    });
+
+    test('offsetCollection function default', () => {
+        const f = createFunction({
+            property: 'foo',
+            type: 'identity',
+            default: [1, 2]
+        }, {
+            type: 'offsetCollection'
+        }).evaluate;
+
+        expect(f({zoom: 0}, {properties: {}})).toEqual(new OffsetCollection([[1, 2]]));
+    });
+
+    test('offsetCollection spec default', () => {
+        const f = createFunction({
+            property: 'foo',
+            type: 'identity'
+        }, {
+            type: 'offsetCollection',
+            default: [1, 2]
+        }).evaluate;
+
+        expect(f({zoom: 0}, {properties: {}})).toEqual(new OffsetCollection([[1, 2]]));
+    });
+
+    test('offsetCollection invalid', () => {
+        const f = createFunction({
+            property: 'foo',
+            type: 'identity'
+        }, {
+            type: 'offsetCollection',
+            default: [1, 2]
+        }).evaluate;
+
+        expect(f({zoom: 0}, {properties: {foo: 'invalid'}})).toEqual(new OffsetCollection([[1, 2]]));
     });
 
     test('property type mismatch, function default', () => {

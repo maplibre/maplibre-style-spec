@@ -1,5 +1,6 @@
 import Color from './color';
 import Padding from './padding';
+import OffsetCollection from './offset_collection';
 
 export const interpolateFactory = (interpolationType: 'number'|'color'|'array'|'padding') => {
     switch (interpolationType) {
@@ -40,11 +41,24 @@ export function padding(from: Padding, to: Padding, t: number): Padding {
     ]);
 }
 
+export function offsetCollection(from: OffsetCollection, to: OffsetCollection, t: number): OffsetCollection {
+    const fromVal = from.values;
+    const toVal = to.values;
+    return new OffsetCollection(
+        fromVal.map((f, i) => {
+            const d = toVal[i] || [];
+
+            return [number(f[0], d[0], t), number(f[1], d[1], t)];
+        })
+    );
+}
+
 const interpolates = {
     number,
     color,
     array,
-    padding
+    padding,
+    offsetCollection
 };
 
 export default interpolates;

@@ -136,6 +136,7 @@ class Interpolate implements Expression {
         if (outputType.kind !== 'number' &&
             outputType.kind !== 'color' &&
             outputType.kind !== 'padding' &&
+            outputType.kind !== 'offsetCollection' &&
             !(
                 outputType.kind === 'array' &&
                 outputType.itemType.kind === 'number' &&

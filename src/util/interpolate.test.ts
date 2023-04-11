@@ -1,6 +1,7 @@
 import * as interpolate from './interpolate';
 import Color from './color';
 import Padding from './padding';
+import OffsetCollection from './offset_collection';
 
 describe('interpolate', () => {
     test('interpolate.number', () => {
@@ -17,5 +18,9 @@ describe('interpolate', () => {
 
     test('interpolate.padding', () => {
         expect(interpolate.padding(new Padding([0, 0, 0, 0]), new Padding([1, 2, 3, 4]), 0.5)).toEqual(new Padding([0.5, 1, 3 / 2, 2]));
+    });
+
+    test('interpolate.offsetCollection', () => {
+        expect(interpolate.offsetCollection(new OffsetCollection([[0, 0], [0, 0]]), new OffsetCollection([[1, 2], [3, 4]]), 0.5)).toEqual(new OffsetCollection([[0.5, 1], [3 / 2, 2]]));
     });
 });

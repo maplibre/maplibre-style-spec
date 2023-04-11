@@ -386,6 +386,8 @@ export function normalizePropertyExpression<T>(
             constant = Color.parse(value);
         } else if (specification.type === 'padding' && (typeof value === 'number' || Array.isArray(value))) {
             constant = Padding.parse(value as (number | number[]));
+        } else if (specification.type === 'offsetCollection' && Array.isArray(value)) {
+            constant = OffsetCollection.parse(value as ([number, number] | Array<[number, number]>));
         }
         return {
             kind: 'constant',
@@ -435,8 +437,9 @@ function findZoomCurve(expression: Expression): Step | Interpolate | ExpressionP
     return result;
 }
 
-import {ColorType, StringType, NumberType, BooleanType, ValueType, FormattedType, PaddingType, ResolvedImageType, array} from './types';
+import {ColorType, StringType, NumberType, BooleanType, ValueType, FormattedType, PaddingType, OffsetCollectionType, ResolvedImageType, array} from './types';
 import Padding from '../util/padding';
+import OffsetCollection from '../util/offset_collection';
 import {ICanonicalTileID} from '../tiles_and_coordinates';
 
 function getExpectedType(spec: StylePropertySpecification): Type {
@@ -448,6 +451,7 @@ function getExpectedType(spec: StylePropertySpecification): Type {
         boolean: BooleanType,
         formatted: FormattedType,
         padding: PaddingType,
+        offsetCollection: OffsetCollectionType,
         resolvedImage: ResolvedImageType
     };
 
@@ -468,6 +472,8 @@ function getDefaultValue(spec: StylePropertySpecification): Value {
         return Color.parse(spec.default) || null;
     } else if (spec.type === 'padding') {
         return Padding.parse(spec.default) || null;
+    } else if (spec.type === 'offsetCollection') {
+        return OffsetCollection.parse(spec.default) || null;
     } else if (spec.default === undefined) {
         return null;
     } else {

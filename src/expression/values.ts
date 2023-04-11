@@ -3,8 +3,9 @@ import Color from '../util/color';
 import Collator from './types/collator';
 import Formatted from './types/formatted';
 import Padding from '../util/padding';
+import OffsetCollection from '../util/offset_collection';
 import ResolvedImage from './types/resolved_image';
-import {NullType, NumberType, StringType, BooleanType, ColorType, ObjectType, ValueType, CollatorType, FormattedType, ResolvedImageType, array, PaddingType} from './types';
+import {NullType, NumberType, StringType, BooleanType, ColorType, ObjectType, ValueType, CollatorType, FormattedType, ResolvedImageType, array, PaddingType, OffsetCollectionType} from './types';
 
 import type {Type} from './types';
 
@@ -27,7 +28,7 @@ export function validateRGBA(r: unknown, g: unknown, b: unknown, a?: unknown): s
     return null;
 }
 
-export type Value = null | string | boolean | number | Color | Collator | Formatted | Padding | ResolvedImage | ReadonlyArray<Value> | {
+export type Value = null | string | boolean | number | Color | Collator | Formatted | Padding | OffsetCollection | ResolvedImage | ReadonlyArray<Value> | {
     readonly [x: string]: Value;
 };
 
@@ -47,6 +48,8 @@ export function isValue(mixed: unknown): boolean {
     } else if (mixed instanceof Formatted) {
         return true;
     } else if (mixed instanceof Padding) {
+        return true;
+    } else if (mixed instanceof OffsetCollection) {
         return true;
     } else if (mixed instanceof ResolvedImage) {
         return true;
@@ -86,6 +89,8 @@ export function typeOf(value: Value): Type {
         return FormattedType;
     } else if (value instanceof Padding) {
         return PaddingType;
+    } else if (value instanceof OffsetCollection) {
+        return OffsetCollectionType;
     } else if (value instanceof ResolvedImage) {
         return ResolvedImageType;
     } else if (Array.isArray(value)) {
@@ -116,11 +121,11 @@ export function toString(value: Value) {
         return '';
     } else if (type === 'string' || type === 'number' || type === 'boolean') {
         return String(value);
-    } else if (value instanceof Color || value instanceof Formatted || value instanceof Padding || value instanceof ResolvedImage) {
+    } else if (value instanceof Color || value instanceof Formatted || value instanceof Padding || value instanceof OffsetCollection || value instanceof ResolvedImage) {
         return value.toString();
     } else {
         return JSON.stringify(value);
     }
 }
 
-export {Color, Collator, Padding};
+export {Color, Collator, Padding, OffsetCollection};

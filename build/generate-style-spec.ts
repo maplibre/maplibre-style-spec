@@ -122,6 +122,8 @@ export type ColorSpecification = string;
 
 export type PaddingSpecification = number | number[];
 
+export type OffsetCollectionSpecification = [number, number] | Array<[number, number]>;
+
 export type SpriteSpecification = string | {id: string; url: string}[];
 
 export type FormattedSpecification = string;

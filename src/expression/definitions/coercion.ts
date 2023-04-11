@@ -1,5 +1,5 @@
 import {BooleanType, ColorType, NumberType, StringType, ValueType} from '../types';
-import {Color, Padding, toString as valueToString, validateRGBA} from '../values';
+import {Color, Padding, OffsetCollection, toString as valueToString, validateRGBA} from '../values';
 import RuntimeError from '../runtime_error';
 import Formatted from '../types/formatted';
 import ResolvedImage from '../types/resolved_image';
@@ -91,6 +91,17 @@ class Coercion implements Expression {
                 }
             }
             throw new RuntimeError(`Could not parse padding from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`);
+        } else if (this.type.kind === 'offsetCollection') {
+            let input;
+            for (const arg of this.args) {
+                input = arg.evaluate(ctx);
+
+                const oc = OffsetCollection.parse(input);
+                if (oc) {
+                    return oc;
+                }
+            }
+            throw new RuntimeError(`Could not parse offset from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`);
         } else if (this.type.kind === 'number') {
             let value = null;
             for (const arg of this.args) {

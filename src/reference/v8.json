@@ -628,7 +628,7 @@
       "doc": "Arbitrary properties useful to track with the layer, but do not influence rendering. Properties should be prefixed to avoid collisions, like 'maplibre:'.",
       "example": {
         "source:comment": "Hydrology FCCODE 460 - Narrow wash"
-      }      
+      }
     },
     "source": {
       "type": "string",
@@ -2326,11 +2326,10 @@
       "property-type": "data-driven"
     },
     "text-offset": {
-      "type": "array",
-      "doc": "Offset distance of text from its anchor. Positive values indicate right and down, while negative values indicate left and up. If used with text-variable-anchor, input values will be taken as absolute values. Offsets along the x- and y-axis will be applied automatically based on the anchor position.",
+      "type": "offsetCollection",
+      "doc": "Offset distance of text from its anchor. Positive values indicate right and down, while negative values indicate left and up. If used with text-variable-anchor, a single point used for text-offset will be taken as absolute values. Offsets along the x- and y-axis will be applied automatically based on the anchor position. If an array of points is supplied, the number of points should match the number of entries provided via text-variable-anchor. Each point in the array is used as the offset distance of text from its anchor when the corresponding anchor is used by the renderer. If more entries are provided for text-variable-anchor than text-offset, the last value in text-offset will be used.",
       "value": "number",
       "units": "ems",
-      "length": 2,
       "default": [
         0,
         0

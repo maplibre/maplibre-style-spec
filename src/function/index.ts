@@ -10,6 +10,7 @@ import ResolvedImage from '../expression/types/resolved_image';
 import {supportsInterpolation} from '../util/properties';
 import {findStopLessThanOrEqualTo} from '../expression/stops';
 import Padding from '../util/padding';
+import OffsetCollection from '../util/offset_collection';
 
 export function isFunction(value) {
     return typeof value === 'object' && value !== null && !Array.isArray(value);
@@ -26,9 +27,17 @@ export function createFunction(parameters, propertySpec) {
     const zoomDependent = zoomAndFeatureDependent || !featureDependent;
     const type = parameters.type || (supportsInterpolation(propertySpec) ? 'exponential' : 'interval');
 
-    if (isColor || propertySpec.type === 'padding') {
-        const parseFn = isColor ? Color.parse : Padding.parse;
+    let parseFn: (input: any) => any;
 
+    if (isColor) {
+        parseFn = Color.parse;
+    } else if (propertySpec.type === 'padding') {
+        parseFn = Padding.parse;
+    } else if (propertySpec.type === 'offsetCollection') {
+        parseFn = OffsetCollection.parse;
+    }
+
+    if (parseFn) {
         parameters = extend({}, parameters);
 
         if (parameters.stops) {
@@ -213,6 +222,9 @@ function evaluateIdentityFunction(parameters, propertySpec, input) {
             break;
         case 'padding':
             input = Padding.parse(input);
+            break;
+        case 'offsetCollection':
+            input = OffsetCollection.parse(input);
             break;
         default:
             if (getType(input) !== propertySpec.type && (propertySpec.type !== 'enum' || !propertySpec.values[input])) {
