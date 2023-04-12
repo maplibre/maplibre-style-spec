@@ -23,7 +23,7 @@ export function Header() {
                         class={style.title}
 
                     >
-          Style
+          Style Spec
                     </span>
                 </div>
             </div>
