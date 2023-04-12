@@ -1,4 +1,4 @@
-import{g as c,a as o,i as r,c as s,t as f}from"./entry-client-a5805616.js";import{M as d}from"./markdown-5e4e948c.js";import{s as g}from"./v8-c0965a88.js";import{I as u}from"./items-c42d14f5.js";import"./property-c4e7a0cb.js";import"./subtitle-d31e3b7d.js";const b=f("<div><!#><!/><!#><!/>");function M(){const i=`# Root
+import{g as c,a as o,i as r,c as s,t as f}from"./entry-client-acfb5863.js";import{M as d}from"./markdown-2381f7ea.js";import{s as g}from"./v8-c0965a88.js";import{I as u}from"./items-a8d49ac1.js";import"./property-23c18b5b.js";import"./subtitle-35eb6f1a.js";const b=f("<div><!#><!/><!#><!/>");function M(){const i=`# Root
 Root level properties of a MapLibre style specify the map's layers, tile sources and other resources, and default values for the initial camera position when not specified elsewhere.
 
 

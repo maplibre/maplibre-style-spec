@@ -1,4 +1,4 @@
-import{M as e}from"./markdown-5e4e948c.js";import{c as a}from"./entry-client-a5805616.js";function n(){return a(e,{content:`
+import{M as e}from"./markdown-2381f7ea.js";import{c as a}from"./entry-client-acfb5863.js";function n(){return a(e,{content:`
 # Types
     
 MapLibre style contains values of various types, most commonly as values for the style properties of a layer.
