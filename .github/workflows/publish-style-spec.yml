@@ -66,7 +66,7 @@ jobs:
         with:
           tag: ${{ steps.prepare_release.outputs.version_tag }}
           name: ${{steps.prepare_release.outputs.version_tag }}
-          body: ${{ steps.release_notes.outputs.release_notes }}
+          bodyFile: ${{ steps.release_notes.outputs.release_notes }}
           draft: false
           prerelease: false
 
