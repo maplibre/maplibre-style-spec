@@ -30,10 +30,10 @@ export type HCLColor = [h: number, c: number, l: number, alpha: number];
  */
 export type LABColor = [l: number, a: number, b: number, alpha: number];
 
-// Constants
-const Xn = 0.950470, // D65 standard referent
+// See https://observablehq.com/@mbostock/lab-and-rgb
+const Xn = 0.96422,
     Yn = 1,
-    Zn = 1.088830,
+    Zn = 0.82521,
     t0 = 4 / 29,
     t1 = 6 / 29,
     t2 = 3 * t1 * t1,
@@ -53,9 +53,14 @@ export function rgbToLab([r, g, b, alpha]: RGBColor): LABColor {
     r = rgb2xyz(r);
     g = rgb2xyz(g);
     b = rgb2xyz(b);
-    const x = xyz2lab((0.4124564 * r + 0.3575761 * g + 0.1804375 * b) / Xn);
-    const y = xyz2lab((0.2126729 * r + 0.7151522 * g + 0.0721750 * b) / Yn);
-    const z = xyz2lab((0.0193339 * r + 0.1191920 * g + 0.9503041 * b) / Zn);
+    let x, z;
+    const y = xyz2lab((0.2225045 * r + 0.7168786 * g + 0.0606169 * b) / Yn);
+    if (r === g && g === b) {
+        x = z = y;
+    } else {
+        x = xyz2lab((0.4360747 * r + 0.3850649 * g + 0.1430804 * b) / Xn);
+        z = xyz2lab((0.0139322 * r + 0.0971045 * g + 0.7141733 * b) / Zn);
+    }
 
     const l = 116 * y - 16;
     return [(l < 0) ? 0 : l, 500 * (x - y), 200 * (y - z), alpha];
@@ -79,9 +84,9 @@ export function labToRgb([l, a, b, alpha]: LABColor): RGBColor {
     z = Zn * lab2xyz(z);
 
     return [
-        xyz2rgb(3.2404542 * x - 1.5371385 * y - 0.4985314 * z), // D65 -> sRGB
-        xyz2rgb(-0.9692660 * x + 1.8760108 * y + 0.0415560 * z),
-        xyz2rgb(0.0556434 * x - 0.2040259 * y + 1.0572252 * z),
+        xyz2rgb(3.1338561 * x - 1.6168667 * y - 0.4906146 * z), // D50 -> sRGB
+        xyz2rgb(-0.9787684 * x + 1.9161415 * y + 0.0334540 * z),
+        xyz2rgb(0.0719453 * x - 0.2289914 * y + 1.4052427 * z),
         alpha,
     ];
 }

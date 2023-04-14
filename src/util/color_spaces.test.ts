@@ -8,21 +8,21 @@ describe('color spaces', () => {
         test('should convert colors from sRGB to LAB color space', () => {
             expectCloseToArray(rgbToLab([0, 0, 0, 1]), [0, 0, 0, 1]);
             expectCloseToArray(rgbToLab([1, 1, 1, 1]), [100, 0, 0, 1], 4);
-            expectCloseToArray(rgbToLab([0, 1, 0, 1]), [87.73, -86.18, 83.18, 1], 2);
-            expectCloseToArray(rgbToLab([0, 1, 1, 1]), [91.11, -48.09, -14.13, 1], 2);
-            expectCloseToArray(rgbToLab([0, 0, 1, 1]), [32.3, 79.19, -107.86, 1], 2);
-            expectCloseToArray(rgbToLab([1, 1, 0, 1]), [97.14, -21.55, 94.48, 1], 2);
-            expectCloseToArray(rgbToLab([1, 0, 0, 1]), [53.24, 80.09, 67.2, 1], 2);
+            expectCloseToArray(rgbToLab([0, 1, 0, 1]), [87.82, -79.29, 80.99, 1], 2);
+            expectCloseToArray(rgbToLab([0, 1, 1, 1]), [90.67, -50.67, -14.96, 1], 2);
+            expectCloseToArray(rgbToLab([0, 0, 1, 1]), [29.57, 68.3, -112.03, 1], 2);
+            expectCloseToArray(rgbToLab([1, 1, 0, 1]), [97.61, -15.75, 93.39, 1], 2);
+            expectCloseToArray(rgbToLab([1, 0, 0, 1]), [54.29, 80.81, 69.89, 1], 2);
         });
 
         test('should convert colors from LAB to sRGB color space', () => {
             expectCloseToArray(labToRgb([0, 0, 0, 1]), [0, 0, 0, 1]);
             expectCloseToArray(labToRgb([100, 0, 0, 1]), [1, 1, 1, 1]);
-            expectCloseToArray(labToRgb([50, 50, 0, 1]), [0.7605, 0.3096, 0.4734, 1], 4);
-            expectCloseToArray(labToRgb([70, -45, 0, 1]), [0.0469, 0.7537, 0.6656, 1], 4);
-            expectCloseToArray(labToRgb([70, 0, 70, 1]), [0.7955, 0.6590, 0.0818, 1], 4);
-            expectCloseToArray(labToRgb([55, 0, -60, 1]), [0, 0.5403, 0.9255, 1], 4);
-            expectCloseToArray(labToRgb([32.3, 79.19, -107.86, 1]), [0, 0, 1, 1], 3);
+            expectCloseToArray(labToRgb([50, 50, 0, 1]), [0.7562, 0.3045, 0.4756, 1], 4);
+            expectCloseToArray(labToRgb([70, -45, 0, 1]), [0.1079, 0.7556, 0.6640, 1], 4);
+            expectCloseToArray(labToRgb([70, 0, 70, 1]), [0.7663, 0.6636, 0.0558, 1], 4);
+            expectCloseToArray(labToRgb([55, 0, -60, 1]), [0.1281, 0.5310, 0.9276, 1], 4);
+            expectCloseToArray(labToRgb([29.57, 68.3, -112.03, 1]), [0, 0, 1, 1], 3);
         });
 
     });
@@ -32,21 +32,21 @@ describe('color spaces', () => {
         test('should convert colors from sRGB to HCL color space', () => {
             expectCloseToArray(rgbToHcl([0, 0, 0, 1]), [NaN, 0, 0, 1]);
             expectCloseToArray(rgbToHcl([1, 1, 1, 1]), [NaN, 0, 100, 1], 4);
-            expectCloseToArray(rgbToHcl([0, 1, 0, 1]), [136.02, 119.78, 87.73, 1], 2);
-            expectCloseToArray(rgbToHcl([0, 1, 1, 1]), [196.38, 50.12, 91.11, 1], 2);
-            expectCloseToArray(rgbToHcl([0, 0, 1, 1]), [306.28, 133.81, 32.30, 1], 2);
-            expectCloseToArray(rgbToHcl([1, 1, 0, 1]), [102.85, 96.91, 97.14, 1], 2);
-            expectCloseToArray(rgbToHcl([1, 0, 0, 1]), [40.00, 104.55, 53.24, 1], 2);
+            expectCloseToArray(rgbToHcl([0, 1, 0, 1]), [134.39, 113.34, 87.82, 1], 2);
+            expectCloseToArray(rgbToHcl([0, 1, 1, 1]), [196.45, 52.83, 90.67, 1], 2);
+            expectCloseToArray(rgbToHcl([0, 0, 1, 1]), [301.37, 131.21, 29.57, 1], 2);
+            expectCloseToArray(rgbToHcl([1, 1, 0, 1]), [99.57, 94.71, 97.61, 1], 2);
+            expectCloseToArray(rgbToHcl([1, 0, 0, 1]), [40.85, 106.84, 54.29, 1], 2);
         });
 
         test('should convert colors from HCL to sRGB color space', () => {
             expectCloseToArray(hclToRgb([0, 0, 0, 1]), [0, 0, 0, 1]);
             expectCloseToArray(hclToRgb([0, 0, 100, 1]), [1, 1, 1, 1]);
-            expectCloseToArray(hclToRgb([0, 50, 50, 1]), [0.7605, 0.3096, 0.4734, 1], 4);
-            expectCloseToArray(hclToRgb([180, 45, 70, 1]), [0.0469, 0.7537, 0.6656, 1], 4);
-            expectCloseToArray(hclToRgb([90, 70, 70, 1]), [0.7955, 0.6590, 0.0818, 1], 4);
-            expectCloseToArray(hclToRgb([270, 60, 55, 1]), [0, 0.5403, 0.9255, 1], 4);
-            expectCloseToArray(hclToRgb([306.28, 133.81, 32.30, 1]), [0, 0, 1, 1], 3);
+            expectCloseToArray(hclToRgb([0, 50, 50, 1]), [0.7562, 0.3045, 0.4756, 1], 4);
+            expectCloseToArray(hclToRgb([180, 45, 70, 1]), [0.1079, 0.7556, 0.6640, 1], 4);
+            expectCloseToArray(hclToRgb([90, 70, 70, 1]), [0.7663, 0.6636, 0.0558, 1], 4);
+            expectCloseToArray(hclToRgb([270, 60, 55, 1]), [0.1281, 0.5310, 0.9276, 1], 4);
+            expectCloseToArray(hclToRgb([301.37, 131.21, 29.57, 1]), [0, 0, 1, 1], 3);
         });
 
     });

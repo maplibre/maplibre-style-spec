@@ -191,7 +191,7 @@ describe('exponential function', () => {
         }).evaluate;
 
         expectToMatchColor(f({zoom: 0}, undefined), 'rgb(14.12% 38.43% 14.12% / .6)', 4);
-        expectToMatchColor(f({zoom: 5}, undefined), 'rgb(0% 35.71% 46.73% / .8)', 4);
+        expectToMatchColor(f({zoom: 5}, undefined), 'rgb(0.00% 35.13% 43.84% / 0.8)', 4);
         expectToMatchColor(f({zoom: 10}, undefined), 'rgb(8.64% 22.66% 55.36% / 1)', 4);
     });
 
@@ -205,7 +205,7 @@ describe('exponential function', () => {
         }).evaluate;
 
         expectToMatchColor(f({zoom: 0}, undefined), 'rgb(0% 0% 0% / .6)');
-        expectToMatchColor(f({zoom: 5}, undefined), 'rgb(14.29% 46.73% 46.63% / .8)', 4);
+        expectToMatchColor(f({zoom: 5}, undefined), 'rgb(14.15% 46.74% 46.63% / 0.8)', 4);
         expectToMatchColor(f({zoom: 10}, undefined), 'rgb(0% 100% 100% / 1)');
     });
 
