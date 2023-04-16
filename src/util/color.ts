@@ -58,7 +58,12 @@ class Color {
      * @param input CSS color string to parse.
      * @returns A `Color` instance, or `undefined` if the input is not a valid color string.
      */
-    static parse(input: string | undefined | null): Color | undefined {
+    static parse(input: Color | string | undefined | null): Color | undefined {
+        // in zoom-and-property function input could be an instance of Color class
+        if (input instanceof Color) {
+            return input;
+        }
+
         if (typeof input !== 'string') {
             return;
         }

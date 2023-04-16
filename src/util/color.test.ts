@@ -55,6 +55,11 @@ describe('Color class', () => {
             expect(Color.parse('rgb(0deg,0,0)')).toBeUndefined();
         });
 
+        test('should accept instances of Color class', () => {
+            const color = new Color(0, 0, 0, 0);
+            expect(Color.parse(color)).toBe(color);
+        });
+
     });
 
     test('should keep a reference to the original color when alpha=0', () => {
