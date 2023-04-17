@@ -1,5 +1,12 @@
 ## main
 
+## 19.0.1
+
+### 🐛 Bug fixes
+
+* Restore support for `Color` instances in `Color.parse` [#128](https://github.com/maplibre/maplibre-style-spec/pull/128)
+
+
 ## 19.0.0
 
 ### ✨ Features and improvements
@@ -19,11 +26,11 @@ Interpretation of interpolation of colors with alpha channel equal to 0 has chan
 * The maplibre style specification and utilities now has it's own repository. The major bump is mainly a precautionary measure, in case the restructuring causes friction.
 
 ## 17.1.0
-* Add support for multiple sprites in one style (#1805)
+* Add support for multiple sprites in one style [#1805](https://github.com/maplibre/maplibre-style-spec/pull/1805)
 
 ## 17.0.2
 
-* Fix errors when running style-spec bin scripts and added missing help. Removed unnecessary script 'gl-style-composite'. ([#1971](https://github.com/maplibre/maplibre-gl-js/pull/1971))
+* Fix errors when running style-spec bin scripts and added missing help. Removed unnecessary script 'gl-style-composite'. [#1971](https://github.com/maplibre/maplibre-gl-js/pull/1971)
 
 ## 17.0.1
 
