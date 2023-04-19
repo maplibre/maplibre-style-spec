@@ -2327,7 +2327,7 @@
     },
     "text-offset": {
       "type": "offsetCollection",
-      "doc": "Offset distance of text from its anchor. Positive values indicate right and down, while negative values indicate left and up. If used with text-variable-anchor, a single point used for text-offset will be taken as absolute values. Offsets along the x- and y-axis will be applied automatically based on the anchor position. If an array of points is supplied, the number of points should match the number of entries provided via text-variable-anchor. Each point in the array is used as the offset distance of text from its anchor when the corresponding anchor is used by the renderer. If more entries are provided for text-variable-anchor than text-offset, the last value in text-offset will be used.",
+      "doc": "Offset distance of text from its anchor. Positive values indicate right and down, while negative values indicate left and up. \n\n If used with `text-variable-anchor`, a single point or array containing a single point used for `text-offset` will be taken as absolute values. Offsets along the x- and y-axis will be applied automatically based on the anchor position. \n\n If an array of points is provided for `text-offset`, the number of points should match the number of entries provided via `text-variable-anchor`. Each point in the array is used as the offset distance of text from its anchor when the corresponding anchor is used by the renderer. If more entries are provided for `text-variable-anchor` than `text-offset`, the last value in `text-offset` will be used.",
       "value": "number",
       "units": "ems",
       "default": [

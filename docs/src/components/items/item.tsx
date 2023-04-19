@@ -114,6 +114,17 @@ export default function Item (props:{
                         </a>
                     </span>
                 );
+            case 'offsetCollection':
+                return (
+                    <span>
+                        {' '}
+                        <a href={`${import.meta.env.BASE_URL}types/#point`}>point</a>
+                        {' or '}
+                        <a href={`${import.meta.env.BASE_URL}types/#array`}>array</a>
+                        {' of '}
+                        <a href={`${import.meta.env.BASE_URL}types/#point`}>points</a>
+                    </span>
+                );
             default:
                 return (
                     <span>
@@ -215,7 +226,7 @@ export default function Item (props:{
                 </Show>
 
                 <Show when={props.units}>
-                    Units in <var>{props.units}</var>.{' '}
+                    <span>{'Units in '}</span><var>{props.units}</var><span>{'. '}</span>
                 </Show>
 
                 <Show when={props.default !== undefined}>

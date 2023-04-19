@@ -3,7 +3,7 @@ import {Markdown} from '~/components/markdown/markdown';
 function types() {
     const md = `
 # Types
-    
+
 MapLibre style contains values of various types, most commonly as values for the style properties of a layer.
 
 ## Color
@@ -91,6 +91,17 @@ Arrays are comma-separated lists of one or more numbers in a specific order. For
 
 {
     "circle-color": ["in", 1, ["literal", [1, 2, 3]]]
+}
+\`\`\`
+
+
+## Point
+
+Points are two-element numeric arrays representing [x, y] coordinate pairs. Units and other interpretations of the x/y values depend on where and how the point type is used.
+
+\`\`\`json
+{
+    "line-translate": [2, 4]
 }
 \`\`\`
 `;
