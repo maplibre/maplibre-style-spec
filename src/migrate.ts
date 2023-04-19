@@ -1,6 +1,8 @@
 
 import migrateToV8 from './migrate/v8';
 import migrateToExpressions from './migrate/expressions';
+import migrateColors from './migrate/migrate_colors';
+import {eachProperty} from './visit';
 import type {StyleSpecification} from './types.g';
 
 /**
@@ -28,6 +30,12 @@ export default function migrate(style: StyleSpecification): StyleSpecification {
         migrated = !!migrateToExpressions(style);
         migrated = true;
     }
+
+    eachProperty(style, {paint: true, layout: true}, ({value, reference, set}) => {
+        if (reference.type === 'color') {
+            set(migrateColors(value));
+        }
+    });
 
     if (!migrated) {
         throw new Error(`Cannot migrate from ${style.version}`);
