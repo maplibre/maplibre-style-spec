@@ -109,4 +109,34 @@ describe('migrate', () => {
         ]);
         expect(validate(migrated, v8)).toEqual([]);
     });
+
+    test('converts colors to supported format', () => {
+        const migrated = migrate({
+            version: 8,
+            sources: {},
+            layers: [{
+                id: '1',
+                type: 'fill',
+                source: 'vector',
+                paint: {
+                    'fill-color': 'hsl(100,0.3,.2)',
+                    'fill-outline-color': [
+                        'interpolate', ['linear'], ['zoom'],
+                        0, 'hsl(110, 0.7, 0.055)',
+                        10, 'hsla(330,0.85,50%)',
+                    ],
+                },
+            }],
+        });
+
+        expect(migrated.layers[0].paint).toEqual({
+            'fill-color': 'hsl(100,30%,20%)',
+            'fill-outline-color': [
+                'interpolate', ['linear'], ['zoom'],
+                0, 'hsl(110,70%,5.5%)',
+                10, 'hsl(330,85%,50%)',
+            ],
+        });
+    });
+
 });

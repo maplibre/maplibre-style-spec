@@ -21,7 +21,7 @@ jobs:
 
       - name: Get version
         id: package-version
-        uses: martinbeentjes/npm-get-version-action@v1.2.3
+        uses: martinbeentjes/npm-get-version-action@v1.3.1
 
       - name: Check tag does not exist yet
         run: if git rev-list v${{ steps.package-version.outputs.current-version }}; then echo "Tag already exists. Aborting the release process."; exit 1; fi
@@ -48,7 +48,6 @@ jobs:
           npm run generate-style-spec
           npm run generate-typings
           npm run build
-          npm run compile
 
       - name: Build Release Notes
         id: release_notes
@@ -67,7 +66,7 @@ jobs:
         with:
           tag: ${{ steps.prepare_release.outputs.version_tag }}
           name: ${{steps.prepare_release.outputs.version_tag }}
-          body: ${{ steps.release_notes.outputs.release_notes }}
+          bodyFile: ${{ steps.release_notes.outputs.release_notes }}
           draft: false
           prerelease: false
 

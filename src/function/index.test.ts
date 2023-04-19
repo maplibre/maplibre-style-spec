@@ -462,6 +462,40 @@ describe('exponential function', () => {
 
     });
 
+    test('zoom-and-property function, color', () => {
+        const f = createFunction({
+            type: 'exponential',
+            property: 'prop',
+            stops: [
+                [{zoom: 0, value: 0}, 'red'], [{zoom: 1, value: 0}, 'blue'],
+                [{zoom: 0, value: 1}, 'lime'], [{zoom: 1, value: 1}, 'magenta'],
+            ],
+        }, {
+            type: 'color',
+        }).evaluate;
+
+        expect(f({zoom: 0.0}, {properties: {prop: 0}})).toEqual(new Color(1, 0, 0, 1));
+        expect(f({zoom: 1.0}, {properties: {prop: 0}})).toEqual(new Color(0, 0, 1, 1));
+        expect(f({zoom: 0.5}, {properties: {prop: 1}})).toEqual(new Color(0.5, 0.5, 0.5, 1));
+    });
+
+    test('zoom-and-property function, padding', () => {
+        const f = createFunction({
+            type: 'exponential',
+            property: 'prop',
+            stops: [
+                [{zoom: 0, value: 0}, [2]], [{zoom: 1, value: 0}, [4]],
+                [{zoom: 0, value: 1}, [6]], [{zoom: 1, value: 1}, [8]],
+            ],
+        }, {
+            type: 'padding',
+        }).evaluate;
+
+        expect(f({zoom: 0.0}, {properties: {prop: 0}})).toEqual(new Padding([2, 2, 2, 2]));
+        expect(f({zoom: 1.0}, {properties: {prop: 0}})).toEqual(new Padding([4, 4, 4, 4]));
+        expect(f({zoom: 0.5}, {properties: {prop: 1}})).toEqual(new Padding([7, 7, 7, 7]));
+    });
+
 });
 
 describe('interval function', () => {
