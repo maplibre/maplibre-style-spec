@@ -1,5 +1,5 @@
 import validateSpec from './validate';
-import validateOffsetCollection from './validate_offsetCollection';
+import validateOffsetCollection from './validate_offset_collection';
 
 describe('Validate OffsetCollection', () => {
     const styleSpec = {
