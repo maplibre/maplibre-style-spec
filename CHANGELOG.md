@@ -15,6 +15,8 @@
 
 ### 🐛 Bug fixes
 
+* Fix color interpolation in HCL and LAB color spaces to use d50 white point instead of d65, in conformance with CSS spec [#146](https://github.com/maplibre/maplibre-style-spec/pull/146)
+
 * Fix incorrect color interpolation in HCL and LAB color spaces when interpolation results are outside the sRGB gamut. [#94](https://github.com/maplibre/maplibre-style-spec/pull/94)
 
 ### Breaking changes

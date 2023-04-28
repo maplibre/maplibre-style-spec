@@ -57,9 +57,9 @@ describe('interpolate', () => {
 
             const i11nFn = (t: number) => interpolate.color(color, targetColor, t, 'hcl');
             expectToMatchColor(i11nFn(0.00), 'rgb(0% 0% 100% / 1)');
-            expectToMatchColor(i11nFn(0.25), 'rgb(0% 53.05% 100% / 0.9)', 4);
-            expectToMatchColor(i11nFn(0.50), 'rgb(0% 72.97% 100% / 0.8)', 4);
-            expectToMatchColor(i11nFn(0.75), 'rgb(0% 88.42% 67.80% / 0.7)', 4);
+            expectToMatchColor(i11nFn(0.25), 'rgb(0% 49.37% 100% / 0.9)', 4);
+            expectToMatchColor(i11nFn(0.50), 'rgb(0% 70.44% 100% / 0.8)', 4);
+            expectToMatchColor(i11nFn(0.75), 'rgb(0% 87.54% 63.18% / 0.7)', 4);
             expectToMatchColor(i11nFn(1.00), 'rgb(0% 100% 0% / 0.6)');
         });
 
@@ -69,9 +69,9 @@ describe('interpolate', () => {
 
             const i11nFn = (t: number) => interpolate.color(color, targetColor, t, 'lab');
             expectToMatchColor(i11nFn(0.00), 'rgb(0% 0% 100% / 1)');
-            expectToMatchColor(i11nFn(0.25), 'rgb(42.40% 35.65% 82.90% / 0.9)', 4);
-            expectToMatchColor(i11nFn(0.50), 'rgb(49.19% 57.81% 65.10% / 0.8)', 4);
-            expectToMatchColor(i11nFn(0.75), 'rgb(43.61% 78.93% 44.66% / 0.7)', 4);
+            expectToMatchColor(i11nFn(0.25), 'rgb(39.64% 34.55% 83.36% / 0.9)', 4);
+            expectToMatchColor(i11nFn(0.50), 'rgb(46.42% 56.82% 65.91% / 0.8)', 4);
+            expectToMatchColor(i11nFn(0.75), 'rgb(41.45% 78.34% 45.62% / 0.7)', 4);
             expectToMatchColor(i11nFn(1.00), 'rgb(0% 100% 0% / 0.6)');
         });
 
