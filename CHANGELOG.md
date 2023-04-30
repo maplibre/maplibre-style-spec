@@ -1,5 +1,12 @@
 ## main
 
+## 19.1.0
+
+### ✨ Features and improvements
+
+* Use D50 white point instead of D65 in HCL/LAB color spaces [#146](https://github.com/maplibre/maplibre-style-spec/pull/146)
+* Automated migration of not-CSS-Color-specification-compliant hsl color values [#135](https://github.com/maplibre/maplibre-style-spec/pull/135)
+
 ## 19.0.1
 
 ### 🐛 Bug fixes
