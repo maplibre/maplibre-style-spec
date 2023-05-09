@@ -107,12 +107,12 @@
       "doc": "Layers will be drawn in the order of this array.",
       "example": [
         {
-          "id": "water",
-          "source": "mapbox-streets",
-          "source-layer": "water",
-          "type": "fill",
+          "id": "coastline",
+          "source": "maplibre",
+          "source-layer": "contries",
+          "type": "line",
           "paint": {
-            "fill-color": "#00ffff"
+            "line-color": "#198EC8"
           }
         }
       ]
@@ -417,7 +417,7 @@
     "cluster": {
       "type": "boolean",
       "default": false,
-      "doc": "If the data is a collection of point features, setting this to true clusters the points by radius into groups. Cluster groups become new `Point` features in the source with additional properties:\n * `cluster` Is `true` if the point is a cluster \n * `cluster_id` A unqiue id for the cluster to be used in conjunction with the [cluster inspection methods](https://www.mapbox.com/mapbox-gl-js/api/#geojsonsource#getclusterexpansionzoom)\n * `point_count` Number of original points grouped into this cluster\n * `point_count_abbreviated` An abbreviated point count"
+      "doc": "If the data is a collection of point features, setting this to true clusters the points by radius into groups. Cluster groups become new `Point` features in the source with additional properties:\n * `cluster` Is `true` if the point is a cluster \n * `cluster_id` A unqiue id for the cluster to be used in conjunction with the [cluster inspection methods](https://maplibre.org/maplibre-gl-js-docs/api/sources/#geojsonsource#getclusterexpansionzoom)\n * `point_count` Number of original points grouped into this cluster\n * `point_count_abbreviated` An abbreviated point count"
     },
     "clusterRadius": {
       "type": "number",
