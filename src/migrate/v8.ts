@@ -108,38 +108,6 @@ export default function migrateV8(style: StyleSpecification) {
         });
     });
 
-    function migrateFontstackURL(input) {
-        const inputParsed = new URL(input);
-        const inputPathnameParts = inputParsed.pathname.split('/');
-
-        if (inputParsed.protocol !== 'mapbox:') {
-            return input;
-
-        } else if (inputParsed.hostname === 'fontstack') {
-            assert(decodeURI(inputParsed.pathname) === '/{fontstack}/{range}.pbf');
-            return 'mapbox://fonts/mapbox/{fontstack}/{range}.pbf';
-
-        } else if (inputParsed.hostname === 'fonts') {
-            assert(inputPathnameParts[1] === 'v1');
-            assert(decodeURI(inputPathnameParts[3]) === '{fontstack}');
-            assert(decodeURI(inputPathnameParts[4]) === '{range}.pbf');
-            return `mapbox://fonts/${inputPathnameParts[2]}/{fontstack}/{range}.pbf`;
-
-        } else {
-            assert(false);
-        }
-
-        function assert(predicate) {
-            if (!predicate) {
-                throw new Error(`Invalid font url: "${input}"`);
-            }
-        }
-    }
-
-    if (style.glyphs) {
-        style.glyphs = migrateFontstackURL(style.glyphs);
-    }
-
     function migrateFontStack(font) {
         function splitAndTrim(string) {
             return string.split(',').map((s) => {

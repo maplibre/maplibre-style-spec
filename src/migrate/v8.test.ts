@@ -472,36 +472,4 @@ describe('migrate v8', () => {
         expect(migrate(input)).toEqual(output);
     });
 
-    test('migrate UNversioned fontstack urls', () => {
-        const input = {
-            'version': 7,
-            'glyphs': 'mapbox://fontstack/{fontstack}/{range}.pbf',
-            'layers': []
-        } as any;
-
-        const output = {
-            'version': 8,
-            'glyphs': 'mapbox://fonts/mapbox/{fontstack}/{range}.pbf',
-            'layers': []
-        };
-
-        expect(migrate(input)).toEqual(output);
-    });
-
-    test('migrate versioned fontstack urls', () => {
-        const input = {
-            'version': 7,
-            'glyphs': 'mapbox://fonts/v1/boxmap/{fontstack}/{range}.pbf',
-            'layers': []
-        } as any;
-
-        const output = {
-            'version': 8,
-            'glyphs': 'mapbox://fonts/boxmap/{fontstack}/{range}.pbf',
-            'layers': []
-        };
-
-        expect(migrate(input)).toEqual(output);
-    });
-
 });
