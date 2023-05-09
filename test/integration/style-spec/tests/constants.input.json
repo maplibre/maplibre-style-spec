@@ -3,7 +3,7 @@
   "sources": {
     "vector": {
       "type": "vector",
-      "url": "mapbox://mapbox.mapbox-streets-v5"
+      "url": "https://demotiles.maplibre.org/tiles/tiles.json"
     }
   },
   "constants": {

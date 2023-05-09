@@ -1,5 +1,7 @@
 ## main
 
+* Remove mapbox reference from docs and test cases [#111](https://github.com/maplibre/maplibre-style-spec/issues/111)
+
 ## 19.1.0
 
 ### ✨ Features and improvements
