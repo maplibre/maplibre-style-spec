@@ -80,14 +80,14 @@ describe('migrate', () => {
         const migrated = migrate({
             version: 8,
             sources: {
-                streets: {
-                    url: 'mapbox://mapbox.streets',
+                maplibre: {
+                    url: 'https://demotiles.maplibre.org/tiles/tiles.json',
                     type: 'vector'
                 }
             },
             layers: [{
                 id: '1',
-                source: 'streets',
+                source: 'maplibre',
                 'source-layer': 'labels',
                 type: 'symbol',
                 layout: {

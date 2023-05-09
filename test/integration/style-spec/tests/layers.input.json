@@ -3,11 +3,11 @@
   "sources": {
     "vector": {
       "type": "vector",
-      "url": "mapbox://mapbox.mapbox-streets-v5"
+      "url": "https://demotiles.maplibre.org/tiles/tiles.json"
     },
     "raster": {
       "type": "raster",
-      "url": "mapbox://mapbox.mapbox-satellite"
+      "url": "https://demotiles.maplibre.org/terrain-tiles/tiles.json"
     },
     "geojson": {
       "type": "geojson",
