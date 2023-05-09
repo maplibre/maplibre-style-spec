@@ -1,4 +1,4 @@
-import{g as i,i as o,c as s,t as n}from"./entry-client-96fb8d02.js";import{M as r}from"./markdown-550cd63e.js";import{s as a}from"./v8-c0965a88.js";const p=n("<div>");function m(){const t=`
+import{g as i,i as o,c as s,t as n}from"./entry-client-d6106b8a.js";import{M as r}from"./markdown-844e71a8.js";import{s as a}from"./v8-67d3f717.js";const p=n("<div>");function m(){const t=`
 # Sprite
 
 A style's \`sprite\` property supplies a URL template for loading small images to use in rendering \`background-pattern\`, \`fill-pattern\`, \`line-pattern\`,\`fill-extrusion-pattern\` and \`icon-image\` style properties.
