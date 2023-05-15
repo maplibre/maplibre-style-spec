@@ -79,7 +79,7 @@
     "rollup": "^3.21.0",
     "rollup-plugin-preserve-shebang": "^1.0.1",
     "rollup-plugin-sourcemaps": "^0.6.3",
-    "semver": "^7.5.0",
+    "semver": "^7.5.1",
     "ts-jest": "^29.1.0",
     "ts-node": "^10.9.1",
     "tslib": "^2.5.0",
