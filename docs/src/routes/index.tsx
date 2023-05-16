@@ -7,7 +7,7 @@ A MapLibre style is a document that defines the visual appearance of a map: what
 The intended audience of this specification includes:
 
 -   Advanced designers and cartographers who want to write styles by hand.
--   Developers using style-related features of [MapLibre GL JS](https://github.com/maplibre/maplibre-gl-js) or the [MapLibre Maps SDK for Android](https://github.com/maplibre/maplibre-gl-native).
+-   Developers using style-related features of [MapLibre GL JS](https://github.com/maplibre/maplibre-gl-js) or the [MapLibre Native for Android and iOS](https://github.com/maplibre/maplibre-native).
 -   Authors of software that generates or processes MapLibre styles.
 
 ## Style document structure
