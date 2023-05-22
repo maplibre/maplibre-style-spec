@@ -2,7 +2,7 @@
 ## 19.2.1
 ### ✨ Features and improvements
 
-* Skip running color match regex, if not required.
+* Skip running color match regex for hex color or rgb, if not required [#186](https://github.com/maplibre/maplibre-style-spec/pull/186)
 
 ## 19.2.0
 
