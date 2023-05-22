@@ -1,6 +1,12 @@
 ## main
 
+
+## 19.2.0
+
+### ✨ Features and improvements
+
 * Remove mapbox reference from docs and test cases [#111](https://github.com/maplibre/maplibre-style-spec/issues/111)
+* Custom CSS Color 4 compliant css color parser [#175](https://github.com/maplibre/maplibre-style-spec/issues/175)
 
 ## 19.1.0
 
