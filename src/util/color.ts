@@ -1,5 +1,5 @@
-import colorString from 'color-string';
-import {HCLColor, hslToRgb, LABColor, RGBColor, rgbToHcl, rgbToLab} from './color_spaces';
+import {HCLColor, LABColor, RGBColor, rgbToHcl, rgbToLab} from './color_spaces';
+import {parseCssColor} from './parse_css_color';
 
 /**
  * Color representation used by WebGL.
@@ -68,7 +68,7 @@ class Color {
             return;
         }
 
-        const rgba = parseCssColor(input.toLowerCase());
+        const rgba = parseCssColor(input);
         if (rgba) {
             return new Color(...rgba, false);
         }
@@ -144,19 +144,6 @@ class Color {
         return `rgba(${[r, g, b].map(n => Math.round(n * 255)).join(',')},${a})`;
     }
 
-}
-
-function parseCssColor(colorToParse: string): RGBColor | undefined {
-    const parsingResult = colorString.get(colorToParse);
-    switch (parsingResult?.model) {
-        case 'rgb': {
-            const [r, g, b, alpha] = parsingResult.value;
-            return [r / 255, g / 255, b / 255, alpha];
-        }
-        case 'hsl': {
-            return hslToRgb(parsingResult.value);
-        }
-    }
 }
 
 Color.black = new Color(0, 0, 0, 1);
