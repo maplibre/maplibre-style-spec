@@ -1,5 +1,8 @@
 ## main
+## 19.2.1
+### ✨ Features and improvements
 
+* Skip running color match regex, if not required.
 
 ## 19.2.0
 
