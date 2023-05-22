@@ -2,11 +2,11 @@
   "/*404": [
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/_...404_-2cadbcd6.js"
+      "href": "/maplibre-style-spec/assets/_...404_-e09fd1cf.js"
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/entry-client-faad3954.js"
+      "href": "/maplibre-style-spec/assets/entry-client-79c38134.js"
     },
     {
       "type": "style",
@@ -16,11 +16,11 @@
   "/deprecations/": [
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/index-8dabde32.js"
+      "href": "/maplibre-style-spec/assets/index-8adaa275.js"
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/entry-client-faad3954.js"
+      "href": "/maplibre-style-spec/assets/entry-client-79c38134.js"
     },
     {
       "type": "style",
@@ -28,7 +28,7 @@
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/markdown-afed1c42.js"
+      "href": "/maplibre-style-spec/assets/markdown-a24cf953.js"
     },
     {
       "type": "style",
@@ -36,11 +36,11 @@
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/caption-6ebc1de5.js"
+      "href": "/maplibre-style-spec/assets/caption-69aa9dd6.js"
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/property-50066147.js"
+      "href": "/maplibre-style-spec/assets/property-e0c9b232.js"
     },
     {
       "type": "style",
@@ -48,17 +48,17 @@
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/subtitle-b2b8e1b0.js"
+      "href": "/maplibre-style-spec/assets/subtitle-94bf617b.js"
     }
   ],
   "/expressions/": [
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/index-865c2c07.js"
+      "href": "/maplibre-style-spec/assets/index-9ac1497f.js"
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/entry-client-faad3954.js"
+      "href": "/maplibre-style-spec/assets/entry-client-79c38134.js"
     },
     {
       "type": "style",
@@ -70,11 +70,11 @@
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/property-50066147.js"
+      "href": "/maplibre-style-spec/assets/property-e0c9b232.js"
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/markdown-afed1c42.js"
+      "href": "/maplibre-style-spec/assets/markdown-a24cf953.js"
     },
     {
       "type": "style",
@@ -88,15 +88,15 @@
   "/glyphs/": [
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/index-3c4613b2.js"
+      "href": "/maplibre-style-spec/assets/index-93f1b680.js"
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/markdown-afed1c42.js"
+      "href": "/maplibre-style-spec/assets/markdown-a24cf953.js"
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/entry-client-faad3954.js"
+      "href": "/maplibre-style-spec/assets/entry-client-79c38134.js"
     },
     {
       "type": "style",
@@ -110,15 +110,15 @@
   "/": [
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/index-f6c9a37e.js"
+      "href": "/maplibre-style-spec/assets/index-52eee951.js"
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/markdown-afed1c42.js"
+      "href": "/maplibre-style-spec/assets/markdown-a24cf953.js"
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/entry-client-faad3954.js"
+      "href": "/maplibre-style-spec/assets/entry-client-79c38134.js"
     },
     {
       "type": "style",
@@ -132,11 +132,11 @@
   "/layers/": [
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/index-5e87d822.js"
+      "href": "/maplibre-style-spec/assets/index-ebe115bf.js"
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/entry-client-faad3954.js"
+      "href": "/maplibre-style-spec/assets/entry-client-79c38134.js"
     },
     {
       "type": "style",
@@ -144,7 +144,7 @@
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/markdown-afed1c42.js"
+      "href": "/maplibre-style-spec/assets/markdown-a24cf953.js"
     },
     {
       "type": "style",
@@ -156,11 +156,11 @@
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/items-5903b060.js"
+      "href": "/maplibre-style-spec/assets/items-51b64ddc.js"
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/property-50066147.js"
+      "href": "/maplibre-style-spec/assets/property-e0c9b232.js"
     },
     {
       "type": "style",
@@ -168,11 +168,11 @@
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/subtitle-b2b8e1b0.js"
+      "href": "/maplibre-style-spec/assets/subtitle-94bf617b.js"
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/caption-6ebc1de5.js"
+      "href": "/maplibre-style-spec/assets/caption-69aa9dd6.js"
     },
     {
       "type": "style",
@@ -182,11 +182,11 @@
   "/light/": [
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/index-204a4455.js"
+      "href": "/maplibre-style-spec/assets/index-6d2447c5.js"
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/entry-client-faad3954.js"
+      "href": "/maplibre-style-spec/assets/entry-client-79c38134.js"
     },
     {
       "type": "style",
@@ -194,7 +194,7 @@
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/markdown-afed1c42.js"
+      "href": "/maplibre-style-spec/assets/markdown-a24cf953.js"
     },
     {
       "type": "style",
@@ -206,11 +206,11 @@
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/items-5903b060.js"
+      "href": "/maplibre-style-spec/assets/items-51b64ddc.js"
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/property-50066147.js"
+      "href": "/maplibre-style-spec/assets/property-e0c9b232.js"
     },
     {
       "type": "style",
@@ -218,17 +218,17 @@
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/subtitle-b2b8e1b0.js"
+      "href": "/maplibre-style-spec/assets/subtitle-94bf617b.js"
     }
   ],
   "/root/": [
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/index-cbdf8d5a.js"
+      "href": "/maplibre-style-spec/assets/index-9b792afb.js"
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/entry-client-faad3954.js"
+      "href": "/maplibre-style-spec/assets/entry-client-79c38134.js"
     },
     {
       "type": "style",
@@ -236,7 +236,7 @@
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/markdown-afed1c42.js"
+      "href": "/maplibre-style-spec/assets/markdown-a24cf953.js"
     },
     {
       "type": "style",
@@ -248,11 +248,11 @@
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/items-5903b060.js"
+      "href": "/maplibre-style-spec/assets/items-51b64ddc.js"
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/property-50066147.js"
+      "href": "/maplibre-style-spec/assets/property-e0c9b232.js"
     },
     {
       "type": "style",
@@ -260,17 +260,17 @@
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/subtitle-b2b8e1b0.js"
+      "href": "/maplibre-style-spec/assets/subtitle-94bf617b.js"
     }
   ],
   "/sources/": [
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/index-91e6dee0.js"
+      "href": "/maplibre-style-spec/assets/index-21eaaad4.js"
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/entry-client-faad3954.js"
+      "href": "/maplibre-style-spec/assets/entry-client-79c38134.js"
     },
     {
       "type": "style",
@@ -278,7 +278,7 @@
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/markdown-afed1c42.js"
+      "href": "/maplibre-style-spec/assets/markdown-a24cf953.js"
     },
     {
       "type": "style",
@@ -290,11 +290,11 @@
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/items-5903b060.js"
+      "href": "/maplibre-style-spec/assets/items-51b64ddc.js"
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/property-50066147.js"
+      "href": "/maplibre-style-spec/assets/property-e0c9b232.js"
     },
     {
       "type": "style",
@@ -302,17 +302,17 @@
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/subtitle-b2b8e1b0.js"
+      "href": "/maplibre-style-spec/assets/subtitle-94bf617b.js"
     }
   ],
   "/sprite/": [
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/index-a3deb7c0.js"
+      "href": "/maplibre-style-spec/assets/index-619a6b1f.js"
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/entry-client-faad3954.js"
+      "href": "/maplibre-style-spec/assets/entry-client-79c38134.js"
     },
     {
       "type": "style",
@@ -320,7 +320,7 @@
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/markdown-afed1c42.js"
+      "href": "/maplibre-style-spec/assets/markdown-a24cf953.js"
     },
     {
       "type": "style",
@@ -334,11 +334,11 @@
   "/terrain/": [
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/index-75f16d15.js"
+      "href": "/maplibre-style-spec/assets/index-3ba757a7.js"
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/entry-client-faad3954.js"
+      "href": "/maplibre-style-spec/assets/entry-client-79c38134.js"
     },
     {
       "type": "style",
@@ -346,7 +346,7 @@
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/markdown-afed1c42.js"
+      "href": "/maplibre-style-spec/assets/markdown-a24cf953.js"
     },
     {
       "type": "style",
@@ -358,11 +358,11 @@
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/items-5903b060.js"
+      "href": "/maplibre-style-spec/assets/items-51b64ddc.js"
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/property-50066147.js"
+      "href": "/maplibre-style-spec/assets/property-e0c9b232.js"
     },
     {
       "type": "style",
@@ -370,17 +370,17 @@
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/subtitle-b2b8e1b0.js"
+      "href": "/maplibre-style-spec/assets/subtitle-94bf617b.js"
     }
   ],
   "/transition/": [
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/index-fae004f7.js"
+      "href": "/maplibre-style-spec/assets/index-ad44a4a4.js"
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/entry-client-faad3954.js"
+      "href": "/maplibre-style-spec/assets/entry-client-79c38134.js"
     },
     {
       "type": "style",
@@ -388,7 +388,7 @@
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/markdown-afed1c42.js"
+      "href": "/maplibre-style-spec/assets/markdown-a24cf953.js"
     },
     {
       "type": "style",
@@ -400,11 +400,11 @@
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/items-5903b060.js"
+      "href": "/maplibre-style-spec/assets/items-51b64ddc.js"
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/property-50066147.js"
+      "href": "/maplibre-style-spec/assets/property-e0c9b232.js"
     },
     {
       "type": "style",
@@ -412,21 +412,21 @@
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/subtitle-b2b8e1b0.js"
+      "href": "/maplibre-style-spec/assets/subtitle-94bf617b.js"
     }
   ],
   "/types/": [
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/index-2d135deb.js"
+      "href": "/maplibre-style-spec/assets/index-e20c10c2.js"
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/markdown-afed1c42.js"
+      "href": "/maplibre-style-spec/assets/markdown-a24cf953.js"
     },
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/entry-client-faad3954.js"
+      "href": "/maplibre-style-spec/assets/entry-client-79c38134.js"
     },
     {
       "type": "style",
@@ -440,7 +440,7 @@
   "entry-client": [
     {
       "type": "script",
-      "href": "/maplibre-style-spec/assets/entry-client-faad3954.js"
+      "href": "/maplibre-style-spec/assets/entry-client-79c38134.js"
     },
     {
       "type": "style",
