@@ -44,63 +44,67 @@ export function parseCssColor(input: string): RGBColor | undefined {
     }
 
     // #f0c, #f0cf, #ff00cc, #ff00ccff
-    const hexRegexp = /^#(?:[0-9a-f]{3,4}|[0-9a-f]{6}|[0-9a-f]{8})$/;
-    if (hexRegexp.test(input)) {
-        const step = input.length < 6 ? 1 : 2;
-        let i = 1;
-        return [ // eslint-disable-line no-return-assign
-            parseHex(input.slice(i, i += step)),
-            parseHex(input.slice(i, i += step)),
-            parseHex(input.slice(i, i += step)),
-            parseHex(input.slice(i, i + step) || 'ff'),
-        ];
+    if (input.startsWith('#')) {
+        const hexRegexp = /^#(?:[0-9a-f]{3,4}|[0-9a-f]{6}|[0-9a-f]{8})$/;
+        if (hexRegexp.test(input)) {
+            const step = input.length < 6 ? 1 : 2;
+            let i = 1;
+            return [ // eslint-disable-line no-return-assign
+                parseHex(input.slice(i, i += step)),
+                parseHex(input.slice(i, i += step)),
+                parseHex(input.slice(i, i += step)),
+                parseHex(input.slice(i, i + step) || 'ff'),
+            ];
+        }
     }
 
     // rgb(128 0 0), rgb(50% 0% 0%), rgba(255,0,255,0.6), rgb(255 0 255 / 60%), rgb(100% 0% 100% /.6)
-    const rgbRegExp = /^rgba?\(\s*([\de.+-]+)(%)?(?:\s+|\s*(,)\s*)([\de.+-]+)(%)?(?:\s+|\s*(,)\s*)([\de.+-]+)(%)?(?:\s*([,\/])\s*([\de.+-]+)(%)?)?\s*\)$/;
-    const rgbMatch = input.match(rgbRegExp);
-    if (rgbMatch) {
-        const [
-            _,  // eslint-disable-line @typescript-eslint/no-unused-vars
-            r,  // <numeric>
-            rp, // %         (optional)
-            f1, // ,         (optional)
-            g,  // <numeric>
-            gp, // %         (optional)
-            f2, // ,         (optional)
-            b,  // <numeric>
-            bp, // %         (optional)
-            f3, // ,|/       (optional)
-            a,  // <numeric> (optional)
-            ap, // %         (optional)
-        ] = rgbMatch;
+    if (input.startsWith('rgb')) {
+        const rgbRegExp = /^rgba?\(\s*([\de.+-]+)(%)?(?:\s+|\s*(,)\s*)([\de.+-]+)(%)?(?:\s+|\s*(,)\s*)([\de.+-]+)(%)?(?:\s*([,\/])\s*([\de.+-]+)(%)?)?\s*\)$/;
+        const rgbMatch = input.match(rgbRegExp);
+        if (rgbMatch) {
+            const [
+                _,  // eslint-disable-line @typescript-eslint/no-unused-vars
+                r,  // <numeric>
+                rp, // %         (optional)
+                f1, // ,         (optional)
+                g,  // <numeric>
+                gp, // %         (optional)
+                f2, // ,         (optional)
+                b,  // <numeric>
+                bp, // %         (optional)
+                f3, // ,|/       (optional)
+                a,  // <numeric> (optional)
+                ap, // %         (optional)
+            ] = rgbMatch;
 
-        const argFormat = [f1 || ' ', f2 || ' ', f3].join('');
-        if (
-            argFormat === '  ' ||
-            argFormat === '  /' ||
-            argFormat === ',,' ||
-            argFormat === ',,,'
-        ) {
-            const valFormat = [rp, gp, bp].join('');
-            const maxValue =
-                (valFormat === '%%%') ? 100 :
-                    (valFormat === '') ? 255 : 0;
-            if (maxValue) {
-                const rgba: RGBColor = [
-                    clamp(+r / maxValue, 0, 1),
-                    clamp(+g / maxValue, 0, 1),
-                    clamp(+b / maxValue, 0, 1),
-                    a ? parseAlpha(+a, ap) : 1,
-                ];
-                if (validateNumbers(rgba)) {
-                    return rgba;
+            const argFormat = [f1 || ' ', f2 || ' ', f3].join('');
+            if (
+                argFormat === '  ' ||
+                argFormat === '  /' ||
+                argFormat === ',,' ||
+                argFormat === ',,,'
+            ) {
+                const valFormat = [rp, gp, bp].join('');
+                const maxValue =
+                    (valFormat === '%%%') ? 100 :
+                        (valFormat === '') ? 255 : 0;
+                if (maxValue) {
+                    const rgba: RGBColor = [
+                        clamp(+r / maxValue, 0, 1),
+                        clamp(+g / maxValue, 0, 1),
+                        clamp(+b / maxValue, 0, 1),
+                        a ? parseAlpha(+a, ap) : 1,
+                    ];
+                    if (validateNumbers(rgba)) {
+                        return rgba;
+                    }
+                    // invalid numbers
                 }
-                // invalid numbers
+                // values must be all numbers or all percentages
             }
-            // values must be all numbers or all percentages
+            return; // comma optional syntax requires no commas at all
         }
-        return; // comma optional syntax requires no commas at all
     }
 
     // hsl(120 50% 80%), hsla(120deg,50%,80%,.9), hsl(12e1 50% 80% / 90%)
