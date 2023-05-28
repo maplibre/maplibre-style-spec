@@ -37,7 +37,7 @@ describe('parseColor', () => {
 
     describe('Color Json array', () => {
 
-        test('should parse valid color Json array', () => {            
+        test('should parse valid color Json array', () => {
             expect(parse('[255, 255, 255]')).toEqual([1, 1, 1, 1]);
             expect(parse('[0, 0, 0]')).toEqual([0, 0, 0, 1]);
             expect(parse('[51, 102, 153]')).toEqual([0.2, 0.4, 0.6, 1]);

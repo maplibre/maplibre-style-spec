@@ -1,10 +1,10 @@
 import {HSLColor, hslToRgb, RGBColor} from './color_spaces';
 
 /**
- * Colors are JSON strings in a variety of permitted formats: 
- *      - RGB/RGBA json array, 
+ * Colors are JSON strings in a variety of permitted formats:
+ *      - RGB/RGBA json array,
  *      - CSS color 4 specification
- * 
+ *
  * CSS color parser compliant with CSS Color 4 Specification.
  * Supports: named colors, `transparent` keyword, all rgb hex notations,
  * rgb(), rgba(), hsl() and hsla() functions.
@@ -48,13 +48,13 @@ function parseJsonArrayColor(input: string): RGBColor | undefined {
                 clamp(+b / 255, 0, 1),
                 clamp(isNaN(a) ? 1 : +a, 0, 1)];
         }
-    } catch(ex) {
+    } catch (ex) {
         // Invalid JSON
     }
 }
 
 function parseCssColor(input: string): RGBColor | undefined {
-    
+
     if (input === 'transparent') {
         return [0, 0, 0, 0];
     }

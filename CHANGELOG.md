@@ -2,7 +2,7 @@
 
 ## 19.2.2
 ### ✨ Features and improvements
-* Add support for color string in JSON array format for faster color parsing.
+* Add support for color string in JSON array format for faster color parsing. [#189](https://github.com/maplibre/maplibre-style-spec/pull/189)
 
 ## 19.2.1
 ### ✨ Features and improvements
