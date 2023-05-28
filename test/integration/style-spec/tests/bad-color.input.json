@@ -23,6 +23,7 @@
       "source": "vector",
       "source-layer": "layer",
       "paint": {
+        "fill-color": "[a,2,3]",
         "fill-outline-color": ["darken", 10, "#FF0000"]
       }
     }

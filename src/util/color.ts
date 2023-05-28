@@ -1,5 +1,5 @@
 import {HCLColor, LABColor, RGBColor, rgbToHcl, rgbToLab} from './color_spaces';
-import {parseCssColor} from './parse_css_color';
+import {parseColor} from './parse_color';
 
 /**
  * Color representation used by WebGL.
@@ -48,12 +48,13 @@ class Color {
     static red: Color;
 
     /**
-     * Parses CSS color strings and converts colors to sRGB color space if needed.
+     * Parses color Json array/CSS color strings and converts colors to sRGB color space if needed.
      * Officially supported color formats:
      * - keyword, e.g. 'aquamarine' or 'steelblue'
      * - hex (with 3, 4, 6 or 8 digits), e.g. '#f0f' or '#e9bebea9'
      * - rgb and rgba, e.g. 'rgb(0,240,120)' or 'rgba(0%,94%,47%,0.1)' or 'rgb(0 240 120 / .3)'
      * - hsl and hsla, e.g. 'hsl(0,0%,83%)' or 'hsla(0,0%,83%,.5)' or 'hsl(0 0% 83% / 20%)'
+     * - Json Array, e.g. '[255, 255, 255]' or '[255, 255, 255, 0.5]'
      *
      * @param input CSS color string to parse.
      * @returns A `Color` instance, or `undefined` if the input is not a valid color string.
@@ -68,7 +69,7 @@ class Color {
             return;
         }
 
-        const rgba = parseCssColor(input);
+        const rgba = parseColor(input);
         if (rgba) {
             return new Color(...rgba, false);
         }

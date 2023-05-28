@@ -8,7 +8,7 @@ MapLibre style contains values of various types, most commonly as values for the
 
 ## Color
 
-The \`color\` type is a color in the [sRGB color space](https://en.wikipedia.org/wiki/SRGB). Colors are JSON strings in a variety of permitted formats: HTML-style hex values, RGB, RGBA, HSL, and HSLA. Predefined HTML colors names, like \`yellow\` and \`blue\`, are also permitted.
+The \`color\` type is a color in the [sRGB color space](https://en.wikipedia.org/wiki/SRGB). Colors are JSON strings in a variety of permitted formats: RGB/RGBA json array, HTML-style hex values, RGB, RGBA, HSL, and HSLA. Predefined HTML colors names, like \`yellow\` and \`blue\`, are also permitted.
 
 \`\`\`json
 {
@@ -18,7 +18,9 @@ The \`color\` type is a color in the [sRGB color space](https://en.wikipedia.org
     "line-color": "rgba(255, 255, 0, 1)",
     "line-color": "hsl(100, 50%, 50%)",
     "line-color": "hsla(100, 50%, 50%, 1)",
-    "line-color": "yellow"
+    "line-color": "yellow",
+    "line-color": "[255, 255, 0]",
+    "line-color": "[255, 255, 255, 0.5]"
 }
 \`\`\`
 

@@ -1,6 +1,10 @@
 import {HSLColor, hslToRgb, RGBColor} from './color_spaces';
 
 /**
+ * Colors are JSON strings in a variety of permitted formats: 
+ *      - RGB/RGBA json array, 
+ *      - CSS color 4 specification
+ * 
  * CSS color parser compliant with CSS Color 4 Specification.
  * Supports: named colors, `transparent` keyword, all rgb hex notations,
  * rgb(), rgba(), hsl() and hsla() functions.
@@ -24,14 +28,33 @@ import {HSLColor, hslToRgb, RGBColor} from './color_spaces';
  *   - legacy color syntax rgba() is supported with an identical grammar and behavior to rgb()
  *   - legacy color syntax hsla() is supported with an identical grammar and behavior to hsl()
  *
- * @param input CSS color string to parse.
+ * @param input Color string to parse.
  * @returns Color in sRGB color space, with `red`, `green`, `blue`
  * and `alpha` channels normalized to the range 0..1,
  * or `undefined` if the input is not a valid color string.
  */
-export function parseCssColor(input: string): RGBColor | undefined {
+export function parseColor(input: string): RGBColor | undefined {
     input = input.toLowerCase();
+    return input.startsWith('[') ? parseJsonArrayColor(input) : parseCssColor(input);
+}
 
+function parseJsonArrayColor(input: string): RGBColor | undefined {
+    try {
+        const [r, g, b, a] = JSON.parse(input);
+        if (!isNaN(r + g + b)) {
+            return [
+                clamp(+r / 255, 0, 1),
+                clamp(+g / 255, 0, 1),
+                clamp(+b / 255, 0, 1),
+                clamp(isNaN(a) ? 1 : +a, 0, 1)];
+        }
+    } catch(ex) {
+        // Invalid JSON
+    }
+}
+
+function parseCssColor(input: string): RGBColor | undefined {
+    
     if (input === 'transparent') {
         return [0, 0, 0, 0];
     }

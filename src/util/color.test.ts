@@ -5,14 +5,16 @@ describe('Color class', () => {
 
     describe('parsing', () => {
 
-        test('should parse valid css color strings', () => {
+        test('should parse valid color strings', () => {
             expectToMatchColor(Color.parse('RED'), 'rgb(100% 0% 0% / 1)');
             expectToMatchColor(Color.parse('#f00C'), 'rgb(100% 0% 0% / .8)');
             expectToMatchColor(Color.parse('rgb(0 0 127.5 / 20%)'), 'rgb(0% 0% 50% / .2)');
             expectToMatchColor(Color.parse('hsl(300deg 100% 25.1% / 0.7)'), 'rgb(50.2% 0% 50.2% / .7)');
+            expectToMatchColor(Color.parse('[255, 0, 0, 0.1]'), 'rgb(100% 0% 0% / .1)');
+            expectToMatchColor(Color.parse('[255, 0, 0]'), 'rgb(100% 0% 0% / 1)');
         });
 
-        test('should return undefined when provided with invalid CSS color string', () => {
+        test('should return undefined when provided with invalid color string', () => {
             expect(Color.parse(undefined)).toBeUndefined();
             expect(Color.parse(null)).toBeUndefined();
             expect(Color.parse('#invalid')).toBeUndefined();
@@ -21,6 +23,9 @@ describe('Color class', () => {
             expect(Color.parse('rgb(#123)')).toBeUndefined();
             expect(Color.parse('hsl(0,0,0)')).toBeUndefined();
             expect(Color.parse('rgb(0deg,0,0)')).toBeUndefined();
+            expect(Color.parse('[]')).toBeUndefined();
+            expect(Color.parse('[1, 2]')).toBeUndefined();
+            expect(Color.parse('[{}, 255, 255, 1]')).toBeUndefined();
         });
 
         test('should accept instances of Color class', () => {
