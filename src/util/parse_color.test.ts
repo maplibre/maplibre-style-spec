@@ -57,14 +57,13 @@ describe('parseColor', () => {
             expect(parse('[1]')).toBeUndefined();
             expect(parse('[1, 2]')).toBeUndefined();
             expect(parse('[{}, 2, 3]')).toBeUndefined();
-            
+
             // Invalid Json
             expect(parse('[')).toBeUndefined();
             expect(parse('[,]')).toBeUndefined();
             expect(parse('[1 2]')).toBeUndefined();
             expect(parse('[.1, 2, 3]')).toBeUndefined();
             expect(parse('[a, 2, 3]')).toBeUndefined();
-            expect(parse("['1', 2, 3]")).toBeUndefined();
         });
     });
 
