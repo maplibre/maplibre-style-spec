@@ -29,7 +29,7 @@
     "lint": "eslint --cache --ext .ts,.tsx --ignore-path .gitignore .",
     "typecheck": "tsc --noEmit",
     "copyspec": "copyfiles ../style-spec/specification.json ./src/style-spec",
-    "prepare": "npm run copyspec & &npm run generate-style-spec"
+    "prepare": "npm run copyspec && npm run generate-style-spec"
   },
   "repository": {
     "type": "git",
