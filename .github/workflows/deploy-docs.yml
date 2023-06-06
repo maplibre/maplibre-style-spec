@@ -21,12 +21,13 @@ jobs:
 
     - name: Build style spec
       run: |
+        cd ./utils  
         npm run generate-style-spec
         npm run generate-typings
 
     - name: Build docs
       run: |
-        cd ../docs
+        cd ./docs
         npm ci
         npm run build
 

@@ -20,9 +20,10 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: lts/*
-      - run: cd ./utils
-      - run: npm ci
-      - run: npm run lint
+      - run: |
+          cd ./utils    
+          npm ci
+          npm run lint
         if: success() || failure()
       - run: npm run typecheck
         if: success() || failure()
@@ -34,10 +35,11 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: lts/*
-      - run: cd ./utils
-      - run: npm ci
-      - run: npm run jest-ci -- --selectProjects unit --testPathIgnorePatterns "/src/(gl|render|ui)/" 
-      - run: npm run jest-ci -- --selectProjects integration --testPathIgnorePatterns "/test/integration/(query|browser|build)/"
+      - run: |
+          cd ./utils
+          npm ci
+          npm run jest-ci -- --selectProjects unit --testPathIgnorePatterns "/src/(gl|render|ui)/" 
+          npm run jest-ci -- --selectProjects integration --testPathIgnorePatterns "/test/integration/(query|browser|build)/"
   packaging-tests:
     name: Packaging and Build tests
     strategy:
@@ -49,10 +51,11 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: lts/*
-      - run: cd ./utils
-      - run: npm ci
-      - run: npm run generate-style-spec
-      - run: npm run generate-typings
-      - run: npm run build
-      - run: npm run jest-ci -- --selectProjects build
+      - run: 
+          cd ./utils
+          npm ci
+          npm run generate-style-spec
+          npm run generate-typings
+          npm run build
+          npm run jest-ci -- --selectProjects build
         if: success() || failure()
