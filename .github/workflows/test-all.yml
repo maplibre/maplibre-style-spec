@@ -27,8 +27,6 @@ jobs:
         if: success() || failure()
       - run: |
           cd ./utils    
-          npm run generate-typings
-          npm run build
           npm run typecheck
         if: success() || failure()
   unit-and-integration-tests:
