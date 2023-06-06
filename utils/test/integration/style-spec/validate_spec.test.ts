@@ -2,7 +2,7 @@ import glob from 'glob';
 import fs from 'fs';
 import path from 'path';
 import validate from '../../../src/validate_style';
-import reference from '../../../src/reference/latest';
+import specification from '../../../src/style-spec/specification.json' assert {type: 'json'};
 
 const UPDATE = !!process.env.UPDATE;
 
@@ -22,7 +22,7 @@ describe('validate_spec', () => {
         const fixtures = glob.sync('test/integration/style-spec/tests/*.input.json');
         const style = JSON.parse(fs.readFileSync(fixtures[0]).toString());
 
-        const result = validate(style, reference);
+        const result = validate(style, specification);
         expect(result[0].line).toBeUndefined();
     });
 

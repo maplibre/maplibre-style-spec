@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@kobalte/core": "^0.8.2",
+    "@mapbox/unitbezier": "^0.0.1",
     "@markdoc/markdoc": "^0.2.2",
     "@solidjs/meta": "^0.28.4",
     "@solidjs/router": "^0.8.2",

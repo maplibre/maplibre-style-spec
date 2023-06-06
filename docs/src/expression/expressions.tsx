@@ -1,4 +1,4 @@
-import ref from '../../../src/reference/latest';
+import ref from '../../../style-spec/specification.json';
 import {types} from './expression-metadata.jsx';
 
 export const expressions = {};

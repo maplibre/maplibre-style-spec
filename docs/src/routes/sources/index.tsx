@@ -1,5 +1,5 @@
 import {Markdown} from '~/components/markdown/markdown';
-import ref from '../../../../src/reference/latest';
+import ref from '../../../../style-spec/specification.json';
 import {Items} from '../../components/items/items';
 import SDKSupportTable from '../../components/sdk-support-table/sdk-support-table';
 function Sources() {

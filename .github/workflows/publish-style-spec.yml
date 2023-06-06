@@ -34,7 +34,9 @@ jobs:
 
 
       - name: Install NPM packages
-        run: npm ci
+        run: |
+          cd ./utils
+          npm ci
       
       - name: Prepare release
         id: prepare_release

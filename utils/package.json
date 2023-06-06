@@ -1,6 +1,6 @@
 {
   "name": "@maplibre/maplibre-gl-style-spec",
-  "description": "a specification for maplibre gl styles",
+  "description": "Utilities for MapLibre Style Spec",
   "version": "19.2.1",
   "author": "MapLibre",
   "keywords": [
@@ -17,7 +17,7 @@
   "types": "./dist/index.d.ts",
   "type": "module",
   "scripts": {
-    "build": "rollup --configPlugin @rollup/plugin-typescript -c rollup.config.ts",
+    "build": "rollup --configPlugin @rollup/plugin-typescript -c build/rollup.config.ts",
     "generate-style-spec": "ts-node build/generate-style-spec.ts",
     "generate-typings": "ts-node build/generate-typings.ts",
     "test-build": "jest --selectProjects=build",
@@ -28,7 +28,8 @@
     "compile": "tsc",
     "lint": "eslint --cache --ext .ts,.tsx --ignore-path .gitignore .",
     "typecheck": "tsc --noEmit",
-    "prepare": "npm run generate-style-spec"
+    "copyspec": "copyfiles ../style-spec/specification.json ./src/style-spec",
+    "prepare": "npm run copyspec & &npm run generate-style-spec"
   },
   "repository": {
     "type": "git",
@@ -44,6 +45,7 @@
     "@mapbox/point-geometry": "^0.1.0",
     "@mapbox/unitbezier": "^0.0.1",
     "@types/mapbox__point-geometry": "^0.1.2",
+    "copyfiles": "^2.4.1",
     "json-stringify-pretty-compact": "^3.0.0",
     "minimist": "^1.2.8",
     "rw": "^1.3.3",
@@ -61,7 +63,7 @@
     "@types/eslint": "^8.37.0",
     "@types/geojson": "^7946.0.10",
     "@types/jest": "^29.5.1",
-    "@types/node": "^18.16.3",
+    "@types/node": "^18.16.16",
     "@typescript-eslint/eslint-plugin": "^5.59.1",
     "@typescript-eslint/parser": "^5.59.1",
     "dts-bundle-generator": "^8.0.1",
@@ -82,6 +84,6 @@
     "ts-jest": "^29.1.0",
     "ts-node": "^10.9.1",
     "tslib": "^2.5.0",
-    "typescript": "^5.0.4"
+    "typescript": "^5.1.3"
   }
 }

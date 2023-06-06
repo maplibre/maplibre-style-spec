@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
+    "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "node",
     "jsxImportSource": "solid-js",
+    "resolveJsonModule": true,
     "jsx": "preserve",
     "strict": true,
     "types": ["solid-start/env"],

@@ -1,11 +1,34 @@
 import replace from '@rollup/plugin-replace';
 import commonjs from '@rollup/plugin-commonjs';
-import {RollupOptions} from 'rollup';
+import type {RollupOptions, Plugin} from 'rollup';
 import resolve from '@rollup/plugin-node-resolve';
-import typescript from '@rollup/plugin-typescript';
+import tsplugin from '@rollup/plugin-typescript';
 import json from '@rollup/plugin-json';
-import minifyStyleSpec from './build/rollup_plugin_minify_style_spec';
 import shebang from 'rollup-plugin-preserve-shebang';
+
+function replacer(key: string, value: any) {
+    return (key === 'doc' || key === 'example' || key === 'sdk-support') ? undefined : value;
+}
+
+function minifyStyleSpec(): Plugin {
+    return {
+        name: 'minify-style-spec',
+        transform: (source, id) => {
+            if (!/specification.json$/.test(id)) {
+                return;
+            }
+
+            const spec = JSON.parse(source);
+
+            delete spec['expression_name'];
+
+            return {
+                code: JSON.stringify(spec, replacer, 0),
+                map: {mappings: ''}
+            };
+        }
+    };
+}
 
 const rollupPlugins = [
     minifyStyleSpec(),
@@ -27,7 +50,7 @@ const rollupPlugins = [
             '_token_stack:': ''
         }
     }),
-    typescript({
+    tsplugin({
         compilerOptions: {
             declaration: false,
         }

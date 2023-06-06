@@ -63,9 +63,7 @@ export type StylePropertySpecification = {
     default?: number | Array<number>;
 };
 
-import v8Spec from './reference/v8.json' assert {type: 'json'};
-const v8 = v8Spec as any;
-import latest from './reference/latest';
+import latest from './style-spec/latest';
 import derefLayers from './deref';
 import diff, {operations} from './diff';
 import ValidationError from './error/validation_error';
@@ -173,7 +171,7 @@ export {
 
     ColorType,
     interpolates,
-    v8,
+    latest as v8,
     NullType,
     styleFunction as function,
     visit,

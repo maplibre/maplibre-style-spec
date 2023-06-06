@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as properties from '../src/util/properties';
 
-import spec from '../src/reference/v8.json' assert {type: 'json'};
+import spec from '../src/style-spec/specification.json' assert {type: 'json'};
 
 function unionType(values) {
     if (Array.isArray(values)) {

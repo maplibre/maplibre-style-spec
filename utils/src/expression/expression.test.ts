@@ -1,6 +1,6 @@
 import {createPropertyExpression, Feature, GlobalProperties, StylePropertyExpression} from '../expression';
 import definitions from './definitions';
-import v8 from '../reference/v8.json' assert {type: 'json'};
+import v8 from '../style-spec/specification.json' assert {type: 'json'};
 import {StylePropertySpecification} from '../style-spec';
 import ParsingError from './parsing_error';
 
@@ -10,7 +10,7 @@ const definitionList = Object.keys(definitions).filter((expression) => {
     return expression !== 'error' && !filterExpressionRegex.exec(expression);
 }).sort();
 
-describe('v8.json includes all definitions from style-spec', () => {
+describe('specification.json includes all definitions from style-spec', () => {
     const v8List = Object.keys(v8.expression_name.values);
     const v8SupportedList = v8List.filter((expression) => {
         //filter out expressions that are not supported in GL-JS

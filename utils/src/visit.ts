@@ -1,4 +1,4 @@
-import Reference from './reference/v8.json' assert {type: 'json'};
+import Reference from './style-spec/specification.json' assert {type: 'json'};
 import type {StylePropertySpecification} from './style-spec';
 import type {
     StyleSpecification,

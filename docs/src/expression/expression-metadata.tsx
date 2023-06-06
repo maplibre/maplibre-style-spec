@@ -1,8 +1,8 @@
-import {toString} from '../../../src/expression/types';
-import CompoundExpression from '../../../src/expression/compound_expression';
+import {toString} from '../../../utils/src/expression/types';
+import CompoundExpression from '../../../utils/src/expression/compound_expression';
 
 // registers compound expressions
-import '../../../src/expression/definitions/index';
+import '../../../utils/src/expression/definitions/index';
 
 const comparisonSignatures = [
     {

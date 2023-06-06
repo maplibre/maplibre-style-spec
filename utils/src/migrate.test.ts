@@ -1,6 +1,5 @@
 import migrate from './migrate';
-import * as spec from './style-spec';
-import v8 from './reference/v8.json' assert {type: 'json'};
+import specification from './style-spec/specification.json' assert {type: 'json'};
 import validate from './validate_style';
 
 describe('migrate', () => {
@@ -17,7 +16,7 @@ describe('migrate', () => {
     });
 
     test('migrates to latest version from version 7', () => {
-        expect(migrate({version: 7, layers: []} as any).version).toEqual(spec.latest.$version);
+        expect(migrate({version: 7, layers: []} as any).version).toEqual(specification.$version);
     });
 
     test('converts token strings to expressions', () => {
@@ -107,7 +106,7 @@ describe('migrate', () => {
             'some-icon',
             ''
         ]);
-        expect(validate(migrated, v8)).toEqual([]);
+        expect(validate(migrated, specification)).toEqual([]);
     });
 
     test('converts colors to supported format', () => {

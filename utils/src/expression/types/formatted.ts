@@ -1,5 +1,5 @@
 import type Color from '../../util/color';
-import type ResolvedImage from '../types/resolved_image';
+import type ResolvedImage from './resolved_image';
 
 export class FormattedSection {
     text: string;

@@ -1,7 +1,7 @@
 
 import validateConstants from './validate/validate_constants';
 import validate from './validate/validate';
-import latestStyleSpec from './reference/latest';
+import specification from './style-spec/specification.json' assert {type: 'json'};
 
 import validateSource from './validate/validate_source';
 import validateLight from './validate/validate_light';
@@ -29,7 +29,7 @@ import validateGlyphsUrl from './validate/validate_glyphs_url';
  *   var validate = require('maplibre-gl-style-spec/lib/validate_style.min');
  *   var errors = validate(style);
  */
-function validateStyleMin(style: StyleSpecification, styleSpec = latestStyleSpec) {
+function validateStyleMin(style: StyleSpecification, styleSpec = specification) {
 
     let errors = [];
 

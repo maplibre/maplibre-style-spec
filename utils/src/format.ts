@@ -1,10 +1,10 @@
 
-import reference from './reference/latest';
+import specification from './style-spec/specification.json' assert {type: 'json'};
 import stringifyPretty from 'json-stringify-pretty-compact';
 
-function sortKeysBy(obj, reference) {
+function sortKeysBy(obj, specification) {
     const result = {};
-    for (const key in reference) {
+    for (const key in specification) {
         if (obj[key] !== undefined) {
             result[key] = obj[key];
         }
@@ -39,10 +39,10 @@ function sortKeysBy(obj, reference) {
  * fs.writeFileSync('./dest.min.json', format(style, 0));
  */
 function format(style, space = 2) {
-    style = sortKeysBy(style, reference.$root);
+    style = sortKeysBy(style, specification.$root);
 
     if (style.layers) {
-        style.layers = style.layers.map((layer) => sortKeysBy(layer, reference.layer));
+        style.layers = style.layers.map((layer) => sortKeysBy(layer, specification.layer));
     }
 
     return stringifyPretty(style, {indent: space});

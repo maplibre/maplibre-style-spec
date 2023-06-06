@@ -15,7 +15,9 @@ jobs:
         node-version: 18
 
     - name: Install NPM packages
-      run: npm ci
+      run: |
+        cd ./utils  
+        npm ci
 
     - name: Build style spec
       run: |
@@ -24,7 +26,7 @@ jobs:
 
     - name: Build docs
       run: |
-        cd ./docs
+        cd ../docs
         npm ci
         npm run build
 

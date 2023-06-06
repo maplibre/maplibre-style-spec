@@ -11,8 +11,9 @@
     "jsx": "react",
     "outDir": "tsc",
     "module": "ESNext",
-    "moduleResolution": "Node",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
+    "rootDir": ".",
     "skipLibCheck": false,
     "sourceMap": true,
     "strict": false,
@@ -22,8 +23,8 @@
   },
   "ts-node": {
     "experimentalSpecifierResolution": "node",
-    "esm": true
+    "esm": true,
   },
-  "include": ["rollup.config.*", "src/**/*", "build/**/*"],
+  "include": ["src/**/*", "test/**/*", "bin/**/*", "build/**/*", "build/rollup.config.ts"],
   "exclude": ["node_modules", "dist"]
 }

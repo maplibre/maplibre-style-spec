@@ -1,12 +1,12 @@
-import latest from './reference/latest';
+import specification from './style-spec/specification.json' assert {type: 'json'};
 import {StyleSpecification} from './types.g';
 
 export default function emptyStyle(): StyleSpecification {
     const style = {};
 
-    const version = latest['$version'];
-    for (const styleKey in latest['$root']) {
-        const spec = latest['$root'][styleKey];
+    const version = specification['$version'];
+    for (const styleKey in specification['$root']) {
+        const spec = specification['$root'][styleKey];
 
         if (spec.required) {
             let value = null;

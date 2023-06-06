@@ -20,6 +20,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: lts/*
+      - run: cd ./utils
       - run: npm ci
       - run: npm run lint
         if: success() || failure()
@@ -33,6 +34,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: lts/*
+      - run: cd ./utils
       - run: npm ci
       - run: npm run jest-ci -- --selectProjects unit --testPathIgnorePatterns "/src/(gl|render|ui)/" 
       - run: npm run jest-ci -- --selectProjects integration --testPathIgnorePatterns "/test/integration/(query|browser|build)/"
@@ -47,6 +49,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: lts/*
+      - run: cd ./utils
       - run: npm ci
       - run: npm run generate-style-spec
       - run: npm run generate-typings

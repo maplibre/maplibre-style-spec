@@ -1,4 +1,4 @@
-import ref from '../../../src/reference/latest';
+import ref from '../../../style-spec/specification.json';
 
 // helper function to:
 // combine properties, prepare them, and sort them for the <Items /> component
