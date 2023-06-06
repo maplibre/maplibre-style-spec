@@ -51,7 +51,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: lts/*
-      - run: 
+      - run: |
           cd ./utils
           npm ci
           npm run generate-style-spec
