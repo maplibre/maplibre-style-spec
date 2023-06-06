@@ -25,7 +25,9 @@ jobs:
           npm ci
           npm run lint
         if: success() || failure()
-      - run: npm run typecheck
+      - run: |
+          cd ./utils    
+          npm run typecheck
         if: success() || failure()
   unit-and-integration-tests:
     name: Unit and Integration Tests
