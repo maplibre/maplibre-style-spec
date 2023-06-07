@@ -29,10 +29,10 @@ import type {InterpolationType} from './definitions/interpolate';
 import type {PropertyValueSpecification} from '../types.g';
 import type {FormattedSection} from './types/formatted';
 
-interface Point {
+export type Point = {
     x: number;
     y: number;
-}
+};
 
 export type Feature = {
     readonly type: 1 | 2 | 3 | 'Unknown' | 'Point' | 'MultiPoint' | 'LineString' | 'MultiLineString' | 'Polygon' | 'MultiPolygon';
