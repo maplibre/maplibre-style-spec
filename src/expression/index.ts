@@ -27,11 +27,11 @@ import type {StylePropertySpecification} from '../style-spec';
 import type {Result} from '../util/result';
 import type {InterpolationType} from './definitions/interpolate';
 import type {PropertyValueSpecification} from '../types.g';
-import type { FormattedSection } from "./types/formatted";
+import type {FormattedSection} from './types/formatted';
 
 interface Point {
-  x: number;
-  y: number;
+    x: number;
+    y: number;
 }
 
 export type Feature = {
