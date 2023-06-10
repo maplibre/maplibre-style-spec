@@ -10,7 +10,7 @@ import type {StyleSpecification} from './types.g';
  *
  * @private
  * @alias migrate
- * @param {StyleSpecification} style a MapLibre GL Style
+ * @param {StyleSpecification} style a MapLibre Style
  * @returns {StyleSpecification} a migrated style
  * @example
  * var fs = require('fs');

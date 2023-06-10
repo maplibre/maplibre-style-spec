@@ -8,7 +8,7 @@ function Expressions() {
             <Markdown content={`
 # Expressions
 
-The value for any [layout property](${import.meta.env.BASE_URL}layers/#layout-property), [paint property](${import.meta.env.BASE_URL}layers/#paint-property), or [filter](${import.meta.env.BASE_URL}layers/#filter) may be specified as an _expression_. An expression defines a formula for computing the value of the property using the _operators_ described below. The set of expression operators provided by MapLibre GL includes:
+The value for any [layout property](${import.meta.env.BASE_URL}layers/#layout-property), [paint property](${import.meta.env.BASE_URL}layers/#paint-property), or [filter](${import.meta.env.BASE_URL}layers/#filter) may be specified as an _expression_. An expression defines a formula for computing the value of the property using the _operators_ described below. The set of expression operators provided by MapLibre includes:
 
 - Mathematical operators for performing arithmetic and other operations on numeric values
 - Logical operators for manipulating boolean values and making conditional decisions

@@ -77,7 +77,7 @@ const filterSpec = {
  * passes its test.
  *
  * @private
- * @param {Array} filter maplibre gl filter
+ * @param {Array} filter MapLibre filter
  * @returns {Function} filter-evaluating function
  */
 function createFilter(filter: any): FeatureFilter {

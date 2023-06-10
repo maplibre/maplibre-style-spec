@@ -15,7 +15,7 @@ import validateSprite from './validate/validate_sprite';
 import validateGlyphsUrl from './validate/validate_glyphs_url';
 
 /**
- * Validate a MapLibre GL style against the style specification. This entrypoint,
+ * Validate a MapLibre style against the style specification. This entrypoint,
  * `maplibre-gl-style-spec/lib/validate_style.min`, is designed to produce as
  * small a browserify bundle as possible by omitting unnecessary functionality
  * and legacy style specifications.
