@@ -1,6 +1,6 @@
 {
   "name": "@maplibre/maplibre-gl-style-spec",
-  "description": "a specification for maplibre gl styles",
+  "description": "a specification for maplibre styles",
   "version": "19.2.1",
   "author": "MapLibre",
   "keywords": [

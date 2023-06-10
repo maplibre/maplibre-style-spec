@@ -14,7 +14,7 @@ passes its test.
 
 | parameter | type  | description      |
 | --------- | ----- | ---------------- |
-| `filter`  | Array | maplibre gl filter |
+| `filter`  | Array | MapLibre filter |
 
 **Returns** `Function`, filter-evaluating function
 

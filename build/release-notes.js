@@ -35,7 +35,7 @@ const previous = releaseNotes[1];
 //  Print the release notes template.
 
 const templatedReleaseNotes = `https://github.com/maplibre/maplibre-gl-style-spec
-[Changes](https://github.com/maplibre/maplibre-gl-style-spec/compare/v${previous.version}...v${latest.version}) since [MapLibre GL Style Spec v${previous.version}](https://github.com/maplibre/maplibre-gl-style-spec/releases/tag/v${previous.version}):
+[Changes](https://github.com/maplibre/maplibre-gl-style-spec/compare/v${previous.version}...v${latest.version}) since [MapLibre Style Spec v${previous.version}](https://github.com/maplibre/maplibre-gl-style-spec/releases/tag/v${previous.version}):
 
 ${latest.changelog}
 
