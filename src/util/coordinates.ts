@@ -1,3 +1,5 @@
+import {Point2D} from '../point2d';
+
 export interface IICanonicalTileID {
     z: number;
     x: number;
@@ -6,7 +8,7 @@ export interface IICanonicalTileID {
     equals(id: IICanonicalTileID): {};
     url(urls: Array<string>, pixelRatio: number, scheme: string | null): {};
     isChildOf(parent: IICanonicalTileID): {};
-    getTilePoint(coord: IMercatorCoordinate): {};
+    getTilePoint(coord: IMercatorCoordinate): Point2D;
     toString(): {};
 }
 
