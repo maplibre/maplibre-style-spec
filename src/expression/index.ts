@@ -28,8 +28,7 @@ import type {Result} from '../util/result';
 import type {InterpolationType} from './definitions/interpolate';
 import type {PropertyValueSpecification} from '../types.g';
 import type {FormattedSection} from './types/formatted';
-import type {Point2D} from "../point2d"
-
+import type {Point2D} from '../point2d';
 
 export type Feature = {
     readonly type: 1 | 2 | 3 | 'Unknown' | 'Point' | 'MultiPoint' | 'LineString' | 'MultiLineString' | 'Polygon' | 'MultiPolygon';
