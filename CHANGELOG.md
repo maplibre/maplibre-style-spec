@@ -1,4 +1,7 @@
 ## main
+
+* Deduplicate and refine types `ICoordinateInterface`, `ICanonicalTileID`, `IMercatorCoordinate`, `ILngLat`
+
 ## 19.2.1
 ### ✨ Features and improvements
 
