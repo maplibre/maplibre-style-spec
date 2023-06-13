@@ -1,3 +1,4 @@
+import {ILngLat} from '../tiles_and_coordinates';
 
 /**
  * constrain n to the given range, excluding the minimum, via modular arithmetic
@@ -41,7 +42,7 @@ export const earthRadius = 6371008.8;
  * @see [Display a popup](https://maplibre.org/maplibre-gl-js-docs/example/popup/)
  * @see [Create a timeline animation](https://maplibre.org/maplibre-gl-js-docs/example/timeline-animation/)
  */
-class LngLat {
+class LngLat implements ILngLat {
     lng: number;
     lat: number;
 
@@ -59,7 +60,7 @@ class LngLat {
     /**
      * Returns a new `LngLat` object whose longitude is wrapped to the range (-180, 180).
      *
-     * @returns {LngLat} The wrapped `LngLat` object.
+     * @returns The wrapped `LngLat` object.
      * @example
      * var ll = new maplibregl.LngLat(286.0251, 40.7736);
      * var wrapped = ll.wrap();
@@ -72,13 +73,13 @@ class LngLat {
     /**
      * Returns the coordinates represented as an array of two numbers.
      *
-     * @returns {Array<number>} The coordinates represeted as an array of longitude and latitude.
+     * @returns The coordinates represeted as an array of longitude and latitude.
      * @example
      * var ll = new maplibregl.LngLat(-73.9749, 40.7736);
      * ll.toArray(); // = [-73.9749, 40.7736]
      */
     toArray() {
-        return [this.lng, this.lat];
+        return [this.lng, this.lat] as [number, number];
     }
 
     /**
@@ -97,8 +98,8 @@ class LngLat {
      * Returns the approximate distance between a pair of coordinates in meters
      * Uses the Haversine Formula (from R.W. Sinnott, "Virtues of the Haversine", Sky and Telescope, vol. 68, no. 2, 1984, p. 159)
      *
-     * @param {LngLat} lngLat coordinates to compute the distance to
-     * @returns {number} Distance in meters between the two coordinates.
+     * @param lngLat coordinates to compute the distance to
+     * @returns Distance in meters between the two coordinates.
      * @example
      * var new_york = new maplibregl.LngLat(-74.0060, 40.7128);
      * var los_angeles = new maplibregl.LngLat(-118.2437, 34.0522);
@@ -120,8 +121,8 @@ class LngLat {
      *
      * If a `LngLat` object is passed in, the function returns it unchanged.
      *
-     * @param {LngLatLike} input An array of two numbers or object to convert, or a `LngLat` object to return.
-     * @returns {LngLat} A new `LngLat` object, if a conversion occurred, or the original `LngLat` object.
+     * @param input An array of two numbers or object to convert, or a `LngLat` object to return.
+     * @returns A new `LngLat` object, if a conversion occurred, or the original `LngLat` object.
      * @example
      * var arr = [-73.9749, 40.7736];
      * var ll = maplibregl.LngLat.convert(arr);
@@ -136,8 +137,7 @@ class LngLat {
         }
         if (!Array.isArray(input) && typeof input === 'object' && input !== null) {
             return new LngLat(
-                // flow can't refine this to have one of lng or lat, so we have to cast to any
-                Number('lng' in input ? (input as any).lng : (input as any).lon),
+                Number('lng' in input ? input.lng : input.lon),
                 Number(input.lat)
             );
         }
@@ -148,9 +148,7 @@ class LngLat {
 /**
  * A {@link LngLat} object, an array of two numbers representing longitude and latitude,
  * or an object with `lng` and `lat` or `lon` and `lat` properties.
- *
- * @typedef {LngLat | {lng: number, lat: number} | {lon: number, lat: number} | [number, number]} LngLatLike
- * @example
+ * * @example
  * var v1 = new maplibregl.LngLat(-122.420679, 37.772537);
  * var v2 = [-122.420679, 37.772537];
  * var v3 = {lon: -122.420679, lat: 37.772537};
