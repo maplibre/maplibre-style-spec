@@ -60,7 +60,7 @@ class LngLat implements ILngLat {
     /**
      * Returns a new `LngLat` object whose longitude is wrapped to the range (-180, 180).
      *
-     * @returns The wrapped `LngLat` object.
+     * @returns {LngLat} The wrapped `LngLat` object.
      * @example
      * var ll = new maplibregl.LngLat(286.0251, 40.7736);
      * var wrapped = ll.wrap();
@@ -73,7 +73,7 @@ class LngLat implements ILngLat {
     /**
      * Returns the coordinates represented as an array of two numbers.
      *
-     * @returns The coordinates represeted as an array of longitude and latitude.
+     * @returns {Array<number>} The coordinates represeted as an array of longitude and latitude.
      * @example
      * var ll = new maplibregl.LngLat(-73.9749, 40.7736);
      * ll.toArray(); // = [-73.9749, 40.7736]
@@ -98,8 +98,8 @@ class LngLat implements ILngLat {
      * Returns the approximate distance between a pair of coordinates in meters
      * Uses the Haversine Formula (from R.W. Sinnott, "Virtues of the Haversine", Sky and Telescope, vol. 68, no. 2, 1984, p. 159)
      *
-     * @param lngLat coordinates to compute the distance to
-     * @returns Distance in meters between the two coordinates.
+     * @param {LngLat} lngLat coordinates to compute the distance to
+     * @returns {number} Distance in meters between the two coordinates.
      * @example
      * var new_york = new maplibregl.LngLat(-74.0060, 40.7128);
      * var los_angeles = new maplibregl.LngLat(-118.2437, 34.0522);
@@ -121,8 +121,8 @@ class LngLat implements ILngLat {
      *
      * If a `LngLat` object is passed in, the function returns it unchanged.
      *
-     * @param input An array of two numbers or object to convert, or a `LngLat` object to return.
-     * @returns A new `LngLat` object, if a conversion occurred, or the original `LngLat` object.
+     * @param {LngLatLike} input An array of two numbers or object to convert, or a `LngLat` object to return.
+     * @returns {LngLat} A new `LngLat` object, if a conversion occurred, or the original `LngLat` object.
      * @example
      * var arr = [-73.9749, 40.7736];
      * var ll = maplibregl.LngLat.convert(arr);
