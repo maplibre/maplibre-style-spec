@@ -73,7 +73,7 @@ class LngLat implements ILngLat {
     /**
      * Returns the coordinates represented as an array of two numbers.
      *
-     * @returns {Array<number>} The coordinates represeted as an array of longitude and latitude.
+     * @returns {[number, number]} The coordinates represented as an array of longitude and latitude.
      * @example
      * var ll = new maplibregl.LngLat(-73.9749, 40.7736);
      * ll.toArray(); // = [-73.9749, 40.7736]
