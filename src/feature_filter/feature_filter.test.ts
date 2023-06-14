@@ -1,7 +1,6 @@
 import {default as createFilter, isExpressionFilter} from '.';
 
 import convertFilter from './convert';
-import Point from '@mapbox/point-geometry';
 import MercatorCoordinate from '../coordinates/mercator_coordinate';
 import EXTENT from '../extent';
 import {ICanonicalTileID} from '../tiles_and_coordinates';
@@ -155,12 +154,13 @@ describe('filter', () => {
     });
 
     test('expression, within', () => {
-        const  getPointFromLngLat = (lng, lat, canonical) => {
+        const getPointFromLngLat = (lng, lat, canonical) => {
             const p = MercatorCoordinate.fromLngLat({lng, lat}, 0);
             const tilesAtZoom = Math.pow(2, canonical.z);
-            return new Point(
-                (p.x * tilesAtZoom - canonical.x) * EXTENT,
-                (p.y * tilesAtZoom - canonical.y) * EXTENT);
+            return {
+                x: (p.x * tilesAtZoom - canonical.x) * EXTENT,
+                y: (p.y * tilesAtZoom - canonical.y) * EXTENT,
+            };
         };
         const withinFilter =  createFilter(['within', {'type': 'Polygon', 'coordinates': [[[0, 0], [5, 0], [5, 5], [0, 5], [0, 0]]]}]);
         expect(withinFilter.needGeometry).toBe(true);
