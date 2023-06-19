@@ -1,5 +1,9 @@
 ## main
 
+### ✨ Features and improvements
+
+* Add style property definition and validation for symbol layer `text-variable-anchor-offset` layout property. [#112](https://github.com/maplibre/maplibre-style-spec/issues/112)
+
 ## 19.2.2
 
 ### ✨ Features and improvements

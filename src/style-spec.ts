@@ -61,6 +61,12 @@ export type StylePropertySpecification = {
     expression?: ExpressionSpecificationDefinition;
     transition: boolean;
     default?: number | Array<number>;
+} | {
+    type: 'variableAnchorOffsetCollection';
+    'property-type': ExpressionType;
+    expression?: ExpressionSpecificationDefinition;
+    transition: boolean;
+    default?: Array<number | string>;
 };
 
 import v8Spec from './reference/v8.json' assert {type: 'json'};

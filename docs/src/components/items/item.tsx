@@ -114,6 +114,19 @@ export default function Item (props:{
                         </a>
                     </span>
                 );
+            case 'variableAnchorOffsetCollection':
+                return (
+                    <span>
+                        {' '}
+                        <a href={`${import.meta.env.BASE_URL}types/#array`}>
+                            array
+                        </a> containing alternating <a href={`${import.meta.env.BASE_URL}layers/#layout-symbol-text-anchor`}>
+                            text-anchor
+                        </a> and <a href={`${import.meta.env.BASE_URL}types/#point`}>
+                            point
+                        </a> values
+                    </span>
+                );
             default:
                 return (
                     <span>
@@ -215,7 +228,7 @@ export default function Item (props:{
                 </Show>
 
                 <Show when={props.units}>
-                    Units in <var>{props.units}</var>.{' '}
+                    <span>{'Units in '}</span><var>{props.units}</var><span>{'. '}</span>
                 </Show>
 
                 <Show when={props.default !== undefined}>
