@@ -16,7 +16,7 @@ class Padding {
      * @param input A padding value
      * @returns A `Padding` instance, or `undefined` if the input is not a valid padding value.
      */
-    static parse(input?: number | number[] | Padding | null): Padding | void {
+    static parse(input?: number | number[] | Padding | null): Padding | undefined {
         if (input instanceof Padding) {
             return input;
         }

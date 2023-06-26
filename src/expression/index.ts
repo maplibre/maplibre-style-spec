@@ -331,7 +331,7 @@ export function createPropertyExpression(expressionInput: unknown, propertySpec:
 }
 
 import {isFunction, createFunction} from '../function';
-import {Color} from './values';
+import {Color, VariableAnchorOffsetCollection} from './values';
 
 // serialization wrapper for old-style stop functions normalized to the
 // expression interface
@@ -435,7 +435,7 @@ function findZoomCurve(expression: Expression): Step | Interpolate | ExpressionP
     return result;
 }
 
-import {ColorType, StringType, NumberType, BooleanType, ValueType, FormattedType, PaddingType, ResolvedImageType, array} from './types';
+import {ColorType, StringType, NumberType, BooleanType, ValueType, FormattedType, PaddingType, ResolvedImageType, VariableAnchorOffsetCollectionType, array} from './types';
 import Padding from '../util/padding';
 import {ICanonicalTileID} from '../tiles_and_coordinates';
 
@@ -448,7 +448,8 @@ function getExpectedType(spec: StylePropertySpecification): Type {
         boolean: BooleanType,
         formatted: FormattedType,
         padding: PaddingType,
-        resolvedImage: ResolvedImageType
+        resolvedImage: ResolvedImageType,
+        variableAnchorOffsetCollection: VariableAnchorOffsetCollectionType
     };
 
     if (spec.type === 'array') {
@@ -468,6 +469,8 @@ function getDefaultValue(spec: StylePropertySpecification): Value {
         return Color.parse(spec.default) || null;
     } else if (spec.type === 'padding') {
         return Padding.parse(spec.default) || null;
+    } else if (spec.type === 'variableAnchorOffsetCollection') {
+        return VariableAnchorOffsetCollection.parse(spec.default) || null;
     } else if (spec.default === undefined) {
         return null;
     } else {

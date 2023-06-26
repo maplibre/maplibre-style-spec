@@ -66,7 +66,7 @@ export type StylePropertySpecification = {
     'property-type': ExpressionType;
     expression?: ExpressionSpecificationDefinition;
     transition: boolean;
-    default?: Array<number | string>;
+    default?: VariableAnchorOffsetCollectionSpecification;
 };
 
 import v8Spec from './reference/v8.json' assert {type: 'json'};
@@ -105,6 +105,7 @@ import {typeOf} from './expression/values';
 import FormatExpression from './expression/definitions/format';
 import Literal from './expression/definitions/literal';
 import CompoundExpression from './expression/compound_expression';
+import {VariableAnchorOffsetCollectionSpecification} from './types.g';
 
 const expression = {
     StyleExpression,

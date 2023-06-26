@@ -3,6 +3,7 @@ import definitions from './definitions';
 import v8 from '../reference/v8.json' assert {type: 'json'};
 import {StylePropertySpecification} from '../style-spec';
 import ParsingError from './parsing_error';
+import {VariableAnchorOffsetCollection} from './values';
 
 // filter out interal "error" and "filter-*" expressions from definition list
 const filterExpressionRegex = /filter-/;
@@ -58,7 +59,30 @@ describe('evaluate expression', () => {
         expect(value.evaluate({} as GlobalProperties, {properties: {x: 'b'}} as any as Feature)).toBe('b');
         expect(value.evaluate({} as GlobalProperties, {properties: {x: 'invalid'}} as any as Feature)).toBe('a');
         expect(console.warn).toHaveBeenCalledWith('Expected value to be one of "a", "b", "c", but found "invalid" instead.');
+    });
 
+    test('warns for invalid variableAnchorOffsetCollection values', () => {
+        const {value} = createPropertyExpression(['get', 'x'], {
+            type: 'variableAnchorOffsetCollection',
+            'property-type': 'data-driven',
+            transition: false,
+            expression: {
+                'interpolated': false,
+                'parameters': ['zoom', 'feature']
+            }
+        }) as {value: StylePropertyExpression};
+
+        const warnMock = jest.spyOn(console, 'warn').mockImplementation(() => {});
+
+        expect(value.kind).toBe('source');
+
+        expect(value.evaluate({} as GlobalProperties, {properties: {x: 'invalid'}} as any as Feature)).toBeNull();
+        expect(console.warn).toHaveBeenCalledTimes(1);
+        expect(console.warn).toHaveBeenCalledWith('Could not parse variableAnchorOffsetCollection from value \'invalid\'');
+
+        warnMock.mockClear();
+        expect(value.evaluate({} as GlobalProperties, {properties: {x: ['top', [2, 2]]}} as any as Feature)).toEqual(new VariableAnchorOffsetCollection(['top', [2, 2]]));
+        expect(console.warn).not.toHaveBeenCalled();
     });
 
 });

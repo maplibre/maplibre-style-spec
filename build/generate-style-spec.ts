@@ -122,7 +122,7 @@ export type ColorSpecification = string;
 
 export type PaddingSpecification = number | number[];
 
-export type VariableAnchorOffsetCollectionSpecification = Array<number | string>;
+export type VariableAnchorOffsetCollectionSpecification = Array<string | [number, number]>;
 
 export type SpriteSpecification = string | {id: string; url: string}[];
 

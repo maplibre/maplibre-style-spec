@@ -2,6 +2,7 @@ import {expectToMatchColor} from '../../test/unit/test_utils';
 import interpolate, {isSupportedInterpolationColorSpace} from './interpolate';
 import Color from './color';
 import Padding from './padding';
+import VariableAnchorOffsetCollection from './variable_anchor_offset_collection';
 
 describe('interpolate', () => {
 
@@ -114,6 +115,20 @@ describe('interpolate', () => {
         const i11nFn = (t: number) => interpolate.padding(padding, targetPadding, t);
         expect(i11nFn(0.5)).toBeInstanceOf(Padding);
         expect(i11nFn(0.5)).toEqual(new Padding([0.5, 1, 3, 2]));
+    });
+
+    describe('interpolate variableAnchorOffsetCollection', () => {
+        const i11nFn = interpolate.variableAnchorOffsetCollection;
+        const parseFn = VariableAnchorOffsetCollection.parse;
+
+        test('should throw with mismatched endpoints', () => {
+            expect(() => i11nFn(parseFn(['top', [0, 0]]), parseFn(['bottom', [1, 1]]), 0.5)).toThrow('Cannot interpolate values containing mismatched anchors. from[0]: top, to[0]: bottom');
+            expect(() => i11nFn(parseFn(['top', [0, 0]]), parseFn(['top', [1, 1], 'bottom', [2, 2]]), 0.5)).toThrow('Cannot interpolate values of different length. from: ["top",[0,0]], to: ["top",[1,1],"bottom",[2,2]]');
+        });
+
+        test('should interpolate offsets', () => {
+            expect(i11nFn(parseFn(['top', [0, 0], 'bottom', [2, 2]]), parseFn(['top', [1, 1], 'bottom', [4, 4]]), 0.5).values).toEqual(['top', [0.5, 0.5], 'bottom', [3, 3]]);
+        });
     });
 
 });
