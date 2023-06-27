@@ -82,6 +82,7 @@ import featureFilter, {isExpressionFilter} from './feature_filter';
 import convertFilter from './feature_filter/convert';
 import Color from './util/color';
 import Padding from './util/padding';
+import VariableAnchorOffsetCollection from './util/variable_anchor_offset_collection';
 import Formatted, {FormattedSection} from './expression/types/formatted';
 import {createFunction, isFunction} from './function';
 import convertFunction from './function/convert';
@@ -137,6 +138,7 @@ export {
     Step,
     CompoundExpression,
     Padding,
+    VariableAnchorOffsetCollection,
     Formatted,
     ResolvedImage,
     Feature,
