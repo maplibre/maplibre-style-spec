@@ -34,8 +34,8 @@ jobs:
         with:
           node-version: lts/*
       - run: npm ci
-      - run: npm run jest-ci -- --coverage --coverageDirectory=coverage-unit --coverageReporters json --selectProjects unit" 
-      - run: npm run jest-ci -- --coverage --coverageDirectory=coverage-integration --coverageReporters json --selectProjects integration"
+      - run: npm run jest-ci -- --coverage --coverageDirectory=coverage-unit --coverageReporters json --selectProjects unit
+      - run: npm run jest-ci -- --coverage --coverageDirectory=coverage-integration --coverageReporters json --selectProjects integration
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
         with:
