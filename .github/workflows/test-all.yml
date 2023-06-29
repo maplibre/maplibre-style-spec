@@ -34,8 +34,13 @@ jobs:
         with:
           node-version: lts/*
       - run: npm ci
-      - run: npm run jest-ci -- --selectProjects unit --testPathIgnorePatterns "/src/(gl|render|ui)/" 
-      - run: npm run jest-ci -- --selectProjects integration --testPathIgnorePatterns "/test/integration/(query|browser|build)/"
+      - run: npm run jest-ci -- --coverage --coverageDirectory=coverage-unit --coverageReporters json --selectProjects unit
+      - run: npm run jest-ci -- --coverage --coverageDirectory=coverage-integration --coverageReporters json --selectProjects integration
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          files: ${{ github.workspace }}/coverage-unit/coverage-final.json, ${{ github.workspace }}/coverage-integration/coverage-final.json
+          verbose: true
   packaging-tests:
     name: Packaging and Build tests
     strategy:
