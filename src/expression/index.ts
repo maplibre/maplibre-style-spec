@@ -26,7 +26,7 @@ import type {Expression} from './expression';
 import type {StylePropertySpecification} from '../style-spec';
 import type {Result} from '../util/result';
 import type {InterpolationType} from './definitions/interpolate';
-import type {PropertyValueSpecification} from '../types.g';
+import type {PropertyValueSpecification, VariableAnchorOffsetCollectionSpecification} from '../types.g';
 import type {FormattedSection} from './types/formatted';
 import type {Point2D} from '../point2d';
 
@@ -386,6 +386,8 @@ export function normalizePropertyExpression<T>(
             constant = Color.parse(value);
         } else if (specification.type === 'padding' && (typeof value === 'number' || Array.isArray(value))) {
             constant = Padding.parse(value as (number | number[]));
+        } else if (specification.type === 'variableAnchorOffsetCollection' && Array.isArray(value)) {
+            constant = VariableAnchorOffsetCollection.parse(value as VariableAnchorOffsetCollectionSpecification);
         }
         return {
             kind: 'constant',
