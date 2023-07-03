@@ -55,7 +55,7 @@
     "@rollup/plugin-replace": "^5.0.2",
     "@rollup/plugin-strip": "^3.0.2",
     "@rollup/plugin-terser": "^0.4.3",
-    "@rollup/plugin-typescript": "^11.1.1",
+    "@rollup/plugin-typescript": "^11.1.2",
     "@types/eslint": "^8.40.2",
     "@types/geojson": "^7946.0.10",
     "@types/jest": "^29.5.2",
