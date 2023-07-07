@@ -30,7 +30,7 @@ import {HSLColor, hslToRgb, RGBColor} from './color_spaces';
  * or `undefined` if the input is not a valid color string.
  */
 export function parseCssColor(input: string): RGBColor | undefined {
-    input = input.toLowerCase();
+    input = input.toLowerCase().trim();
 
     if (input === 'transparent') {
         return [0, 0, 0, 0];
