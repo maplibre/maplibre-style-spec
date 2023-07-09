@@ -93,8 +93,8 @@ describe('parseCssColor', () => {
             expect(parse('rgb(0 51 0)')).toEqual(parse('rgba(0, 51, 0, 100%)'));
             expect(parse('rgb(0 51 0)')).toEqual(parse('rgba( 0, 51, 0, 100% )'));
             expect(parse('rgb(0 51 0)')).toEqual(parse('rgba( 00 ,51 ,0 ,100% )'));
-            expect(parse('rgb(0 51 0)')).toEqual(parse('rgb(.0 51 0 / 1)'));
-            expect(parse('rgb(0 51 0)')).toEqual(parse('rgb(0.0 51.0 0.0 / 1.0)'));
+            expect(parse('rgb(0 51 0)')).toEqual(parse(' rgb(.0 51 0 / 1)'));
+            expect(parse('rgb(0 51 0)')).toEqual(parse('rgb(0.0 51.0 0.0 / 1.0) '));
             expect(parse('rgb(0 51 0)')).toEqual(parse('rgb(0 51 0 / 1.0)'));
             expect(parse('rgb(0 51 0)')).toEqual(parse('RGB(0 51 0 / 100%)'));
             expect(parse('rgb(0 51 0)')).toEqual(parse('rgb(  0  51  0/1  )'));
@@ -262,8 +262,8 @@ describe('parseCssColor', () => {
             expect(parse('hsl(0 0% 0% / 0)')).toEqual(parse('hsl(0,0%,0%,+0)'));
             expect(parse('hsl(0 0% 0% / 0)')).toEqual(parse('hsla(0deg,0%,0%,-0)'));
             expect(parse('hsl(0 0% 0% / 0)')).toEqual(parse('hsla(0,0%,0%,0%)'));
-            expect(parse('hsl(0 0% 0% / 0)')).toEqual(parse('hsla(.0,.0%,.0%,.0%)'));
-            expect(parse('hsl(0 0% 0% / 0)')).toEqual(parse('hsla(  0 ,0% ,0% ,.0 )'));
+            expect(parse('hsl(0 0% 0% / 0)')).toEqual(parse(' hsla(.0,.0%,.0%,.0%)'));
+            expect(parse('hsl(0 0% 0% / 0)')).toEqual(parse('hsla(  0 ,0% ,0% ,.0 ) '));
 
             expect(parse('hsl(120 100% 25%)')).toEqual([0, 0.5, 0, 1]);
             expect(parse('hsl(120 100% 25%)')).toEqual(parse('hsl(120.0 100.0% 25.0%)'));
