@@ -1,4 +1,11 @@
 ## main
+
+## 19.2.2
+
+### ✨ Features and improvements
+
+* Trim css color before parsing [#255](https://github.com/maplibre/maplibre-style-spec/pull/255)
+
 ## 19.2.1
 ### ✨ Features and improvements
 
