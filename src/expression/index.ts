@@ -26,7 +26,7 @@ import type {Expression} from './expression';
 import type {StylePropertySpecification} from '../style-spec';
 import type {Result} from '../util/result';
 import type {InterpolationType} from './definitions/interpolate';
-import type {PropertyValueSpecification} from '../types.g';
+import type {PropertyValueSpecification, VariableAnchorOffsetCollectionSpecification} from '../types.g';
 import type {FormattedSection} from './types/formatted';
 import type {Point2D} from '../point2d';
 
@@ -331,7 +331,7 @@ export function createPropertyExpression(expressionInput: unknown, propertySpec:
 }
 
 import {isFunction, createFunction} from '../function';
-import {Color} from './values';
+import {Color, VariableAnchorOffsetCollection} from './values';
 
 // serialization wrapper for old-style stop functions normalized to the
 // expression interface
@@ -386,6 +386,8 @@ export function normalizePropertyExpression<T>(
             constant = Color.parse(value);
         } else if (specification.type === 'padding' && (typeof value === 'number' || Array.isArray(value))) {
             constant = Padding.parse(value as (number | number[]));
+        } else if (specification.type === 'variableAnchorOffsetCollection' && Array.isArray(value)) {
+            constant = VariableAnchorOffsetCollection.parse(value as VariableAnchorOffsetCollectionSpecification);
         }
         return {
             kind: 'constant',
@@ -435,7 +437,7 @@ function findZoomCurve(expression: Expression): Step | Interpolate | ExpressionP
     return result;
 }
 
-import {ColorType, StringType, NumberType, BooleanType, ValueType, FormattedType, PaddingType, ResolvedImageType, array} from './types';
+import {ColorType, StringType, NumberType, BooleanType, ValueType, FormattedType, PaddingType, ResolvedImageType, VariableAnchorOffsetCollectionType, array} from './types';
 import Padding from '../util/padding';
 import {ICanonicalTileID} from '../tiles_and_coordinates';
 
@@ -448,7 +450,8 @@ function getExpectedType(spec: StylePropertySpecification): Type {
         boolean: BooleanType,
         formatted: FormattedType,
         padding: PaddingType,
-        resolvedImage: ResolvedImageType
+        resolvedImage: ResolvedImageType,
+        variableAnchorOffsetCollection: VariableAnchorOffsetCollectionType
     };
 
     if (spec.type === 'array') {
@@ -468,6 +471,8 @@ function getDefaultValue(spec: StylePropertySpecification): Value {
         return Color.parse(spec.default) || null;
     } else if (spec.type === 'padding') {
         return Padding.parse(spec.default) || null;
+    } else if (spec.type === 'variableAnchorOffsetCollection') {
+        return VariableAnchorOffsetCollection.parse(spec.default) || null;
     } else if (spec.default === undefined) {
         return null;
     } else {

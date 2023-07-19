@@ -69,6 +69,7 @@ function validSchema(k, v, obj, ref, version, kind) {
         'resolvedImage',
         'promoteId',
         'padding',
+        'variableAnchorOffsetCollection',
         'sprite'
     ]);
     const keys = [

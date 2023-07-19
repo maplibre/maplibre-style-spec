@@ -3,8 +3,9 @@ import Color from '../util/color';
 import Collator from './types/collator';
 import Formatted from './types/formatted';
 import Padding from '../util/padding';
+import VariableAnchorOffsetCollection from '../util/variable_anchor_offset_collection';
 import ResolvedImage from './types/resolved_image';
-import {NullType, NumberType, StringType, BooleanType, ColorType, ObjectType, ValueType, CollatorType, FormattedType, ResolvedImageType, array, PaddingType} from './types';
+import {NullType, NumberType, StringType, BooleanType, ColorType, ObjectType, ValueType, CollatorType, FormattedType, ResolvedImageType, array, PaddingType, VariableAnchorOffsetCollectionType} from './types';
 
 import type {Type} from './types';
 
@@ -27,28 +28,21 @@ export function validateRGBA(r: unknown, g: unknown, b: unknown, a?: unknown): s
     return null;
 }
 
-export type Value = null | string | boolean | number | Color | Collator | Formatted | Padding | ResolvedImage | ReadonlyArray<Value> | {
+export type Value = null | string | boolean | number | Color | Collator | Formatted | Padding | ResolvedImage | VariableAnchorOffsetCollection | ReadonlyArray<Value> | {
     readonly [x: string]: Value;
 };
 
 export function isValue(mixed: unknown): boolean {
-    if (mixed === null) {
-        return true;
-    } else if (typeof mixed === 'string') {
-        return true;
-    } else if (typeof mixed === 'boolean') {
-        return true;
-    } else if (typeof mixed === 'number') {
-        return true;
-    } else if (mixed instanceof Color) {
-        return true;
-    } else if (mixed instanceof Collator) {
-        return true;
-    } else if (mixed instanceof Formatted) {
-        return true;
-    } else if (mixed instanceof Padding) {
-        return true;
-    } else if (mixed instanceof ResolvedImage) {
+    if (mixed === null ||
+        typeof mixed === 'string' ||
+        typeof mixed === 'boolean' ||
+        typeof mixed === 'number' ||
+        mixed instanceof Color ||
+        mixed instanceof Collator ||
+        mixed instanceof Formatted ||
+        mixed instanceof Padding ||
+        mixed instanceof VariableAnchorOffsetCollection ||
+        mixed instanceof ResolvedImage) {
         return true;
     } else if (Array.isArray(mixed)) {
         for (const item of mixed) {
@@ -86,6 +80,8 @@ export function typeOf(value: Value): Type {
         return FormattedType;
     } else if (value instanceof Padding) {
         return PaddingType;
+    } else if (value instanceof VariableAnchorOffsetCollection) {
+        return VariableAnchorOffsetCollectionType;
     } else if (value instanceof ResolvedImage) {
         return ResolvedImageType;
     } else if (Array.isArray(value)) {
@@ -116,11 +112,11 @@ export function toString(value: Value) {
         return '';
     } else if (type === 'string' || type === 'number' || type === 'boolean') {
         return String(value);
-    } else if (value instanceof Color || value instanceof Formatted || value instanceof Padding || value instanceof ResolvedImage) {
+    } else if (value instanceof Color || value instanceof Formatted || value instanceof Padding || value instanceof VariableAnchorOffsetCollection || value instanceof ResolvedImage) {
         return value.toString();
     } else {
         return JSON.stringify(value);
     }
 }
 
-export {Color, Collator, Padding};
+export {Color, Collator, Padding, VariableAnchorOffsetCollection};

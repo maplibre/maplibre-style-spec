@@ -1,6 +1,9 @@
 import {hclToRgb, labToRgb} from './color_spaces';
 import Color from './color';
 import Padding from './padding';
+import VariableAnchorOffsetCollection from './variable_anchor_offset_collection';
+import RuntimeError from '../expression/runtime_error';
+import {VariableAnchorOffsetCollectionSpecification} from '../types.g';
 
 export type InterpolationColorSpace = 'rgb' | 'hcl' | 'lab';
 
@@ -20,12 +23,13 @@ export function isSupportedInterpolationColorSpace(colorSpace: string): colorSpa
  * @returns interpolation fn
  * @deprecated use `interpolate[type]` instead
  */
-export const interpolateFactory = (interpolationType: 'number'|'color'|'array'|'padding') => {
+export const interpolateFactory = (interpolationType: 'number'|'color'|'array'|'padding'|'variableAnchorOffsetCollection') => {
     switch (interpolationType) {
         case 'number': return number;
         case 'color': return color;
         case 'array': return array;
         case 'padding': return padding;
+        case 'variableAnchorOffsetCollection': return variableAnchorOffsetCollection;
     }
 };
 
@@ -89,11 +93,38 @@ function padding(from: Padding, to: Padding, t: number): Padding {
     return new Padding(array(from.values, to.values, t));
 }
 
+function variableAnchorOffsetCollection(from: VariableAnchorOffsetCollection, to: VariableAnchorOffsetCollection, t: number): VariableAnchorOffsetCollection {
+    const fromValues = from.values;
+    const toValues = to.values;
+
+    if (fromValues.length !== toValues.length) {
+        throw new RuntimeError(`Cannot interpolate values of different length. from: ${from.toString()}, to: ${to.toString()}`);
+    }
+
+    const output: VariableAnchorOffsetCollectionSpecification = [];
+
+    for (let i = 0; i < fromValues.length; i += 2) {
+        // Anchor entries must match
+        if (fromValues[i] !== toValues[i]) {
+            throw new RuntimeError(`Cannot interpolate values containing mismatched anchors. from[${i}]: ${fromValues[i]}, to[${i}]: ${toValues[i]}`);
+        }
+        output.push(fromValues[i]);
+
+        // Interpolate the offset values for each anchor
+        const [fx, fy] = fromValues[i + 1] as [number, number];
+        const [tx, ty] = toValues[i + 1] as [number, number];
+        output.push([number(fx, tx, t), number(fy, ty, t)]);
+    }
+
+    return new VariableAnchorOffsetCollection(output);
+}
+
 const interpolate = {
     number,
     color,
     array,
     padding,
+    variableAnchorOffsetCollection
 };
 
 export default interpolate;

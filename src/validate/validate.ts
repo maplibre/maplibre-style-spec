@@ -22,6 +22,7 @@ import validateString from './validate_string';
 import validateFormatted from './validate_formatted';
 import validateImage from './validate_image';
 import validatePadding from './validate_padding';
+import validateVariableAnchorOffsetCollection from './validate_variable_anchor_offset_collection';
 import validateSprite from './validate_sprite';
 
 const VALIDATORS = {
@@ -45,6 +46,7 @@ const VALIDATORS = {
     'formatted': validateFormatted,
     'resolvedImage': validateImage,
     'padding': validatePadding,
+    'variableAnchorOffsetCollection': validateVariableAnchorOffsetCollection,
     'sprite': validateSprite,
 };
 

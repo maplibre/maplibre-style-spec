@@ -34,11 +34,14 @@ export type PaddingTypeT = {
 export type ResolvedImageTypeT = {
     kind: 'resolvedImage';
 };
+export type VariableAnchorOffsetCollectionTypeT = {
+    kind: 'variableAnchorOffsetCollection';
+};
 
 export type EvaluationKind = 'constant' | 'source' | 'camera' | 'composite';
 
 export type Type = NullTypeT | NumberTypeT | StringTypeT | BooleanTypeT | ColorTypeT | ObjectTypeT | ValueTypeT |
-ArrayType | ErrorTypeT | CollatorTypeT | FormattedTypeT | PaddingTypeT | ResolvedImageTypeT;
+ArrayType | ErrorTypeT | CollatorTypeT | FormattedTypeT | PaddingTypeT | ResolvedImageTypeT | VariableAnchorOffsetCollectionTypeT;
 
 export interface ArrayType<T extends Type = Type> {
     kind: 'array';
@@ -60,6 +63,7 @@ export const CollatorType = {kind: 'collator'} as CollatorTypeT;
 export const FormattedType = {kind: 'formatted'} as FormattedTypeT;
 export const PaddingType = {kind: 'padding'} as PaddingTypeT;
 export const ResolvedImageType = {kind: 'resolvedImage'} as ResolvedImageTypeT;
+export const VariableAnchorOffsetCollectionType = {kind: 'variableAnchorOffsetCollection'} as VariableAnchorOffsetCollectionTypeT;
 
 export function array<T extends Type>(itemType: T, N?: number | null): ArrayType<T> {
     return {
@@ -90,7 +94,8 @@ const valueMemberTypes = [
     ObjectType,
     array(ValueType),
     PaddingType,
-    ResolvedImageType
+    ResolvedImageType,
+    VariableAnchorOffsetCollectionType
 ];
 
 /**

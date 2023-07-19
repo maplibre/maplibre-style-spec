@@ -1,6 +1,7 @@
 import type {Config} from 'jest';
 
 const sharedConfig: Partial<Config> = {
+    restoreMocks: true,
     transform: {
         // use typescript to convert from esm to cjs
         '[.](m|c)?(ts|js)(x)?$': ['ts-jest', {

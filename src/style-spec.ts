@@ -61,6 +61,12 @@ export type StylePropertySpecification = {
     expression?: ExpressionSpecificationDefinition;
     transition: boolean;
     default?: number | Array<number>;
+} | {
+    type: 'variableAnchorOffsetCollection';
+    'property-type': ExpressionType;
+    expression?: ExpressionSpecificationDefinition;
+    transition: boolean;
+    default?: VariableAnchorOffsetCollectionSpecification;
 };
 
 import v8Spec from './reference/v8.json' assert {type: 'json'};
@@ -76,6 +82,7 @@ import featureFilter, {isExpressionFilter} from './feature_filter';
 import convertFilter from './feature_filter/convert';
 import Color from './util/color';
 import Padding from './util/padding';
+import VariableAnchorOffsetCollection from './util/variable_anchor_offset_collection';
 import Formatted, {FormattedSection} from './expression/types/formatted';
 import {createFunction, isFunction} from './function';
 import convertFunction from './function/convert';
@@ -99,6 +106,7 @@ import {typeOf} from './expression/values';
 import FormatExpression from './expression/definitions/format';
 import Literal from './expression/definitions/literal';
 import CompoundExpression from './expression/compound_expression';
+import {VariableAnchorOffsetCollectionSpecification} from './types.g';
 
 const expression = {
     StyleExpression,
@@ -130,6 +138,7 @@ export {
     Step,
     CompoundExpression,
     Padding,
+    VariableAnchorOffsetCollection,
     Formatted,
     ResolvedImage,
     Feature,
