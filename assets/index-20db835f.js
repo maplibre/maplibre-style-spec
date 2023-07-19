@@ -1,6 +1,6 @@
-import{M as e}from"./markdown-ec4c906a.js";import{c as a}from"./entry-client-a3f1771d.js";function n(){return a(e,{content:`
+import{M as e}from"./markdown-2463dc52.js";import{c as a}from"./entry-client-0966a6c4.js";function i(){return a(e,{content:`
 # Types
-    
+
 MapLibre style contains values of various types, most commonly as values for the style properties of a layer.
 
 ## Color
@@ -79,7 +79,7 @@ A number value, often an integer or floating point (decimal number). Written wit
 
 ## Array
 
-Arrays are comma-separated lists of one or more numbers in a specific order. For example, they're used in line dash arrays, in which the numbers specify intervals of line, break, and line again. If an array is used as an argument in an expression, the array must be wrapped in a \`literal\` expression.
+Arrays are comma-separated lists of one or more values in a specific order. For example, they're used in line dash arrays, in which the numbers specify intervals of line, break, and line again. If an array is used as an argument in an expression, the array must be wrapped in a \`literal\` expression.
 
 \`\`\`json
 {
@@ -90,4 +90,14 @@ Arrays are comma-separated lists of one or more numbers in a specific order. For
     "circle-color": ["in", 1, ["literal", [1, 2, 3]]]
 }
 \`\`\`
-`})}export{n as default};
+
+## Point
+
+Points are two-element numeric arrays representing \`[x, y]\` coordinate pairs. Units and other interpretations of the x/y values depend on where and how the point type is used.
+
+\`\`\`json
+{
+    "line-translate": [2, 4]
+}
+\`\`\`
+`})}export{i as default};
