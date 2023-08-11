@@ -5778,7 +5778,7 @@
       "minimum": 0,
       "transition": false,
       "units": "milliseconds",
-      "doc": "Fade duration when a new tile is added.",
+      "doc": "Fade duration when a new tile is added, or when a video is started or its coordinates are updated.",
       "sdk-support": {
         "basic functionality": {
           "js": "0.10.0",

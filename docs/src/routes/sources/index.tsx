@@ -16,7 +16,7 @@ function Sources() {
     return (
         <div>
             <Markdown content={`# Sources
-Sources state which data the map should display. Specify the type of source with the \`"type"\` property, which must be one of 
+Sources state which data the map should display. Specify the type of source with the \`"type"\` property, which must be one of
 ${sourceTypes.map((t) => {
             return `\`${t}\``;
         }).join(', ')}. Adding a source isn't enough to make data appear on the map because sources don't contain styling details like color or width. Layers refer to a source and give it a visual representation. This makes it possible to style the same source in different ways, like differentiating between types of roads in a highways layer.
@@ -59,7 +59,7 @@ Tiled sources (vector and raster) must specify their details according to the [T
 ## vector
 
 
-A vector tile source. Tiles must be in [Mapbox Vector Tile format](https://docs.mapbox.com/vector-tiles/). All geometric coordinates in vector tiles must be between \`-1 * extent\` and \`(extent * 2) - 1\` inclusive. All layers that use a vector source must specify a [\`"source-layer"\`](${import.meta.env.BASE_URL}layers/#source-layer) value. 
+A vector tile source. Tiles must be in [Mapbox Vector Tile format](https://docs.mapbox.com/vector-tiles/). All geometric coordinates in vector tiles must be between \`-1 * extent\` and \`(extent * 2) - 1\` inclusive. All layers that use a vector source must specify a [\`"source-layer"\`](${import.meta.env.BASE_URL}layers/#source-layer) value.
 
 \`\`\`json
 "maplibre-streets": {
@@ -233,6 +233,8 @@ The \`"coordinates"\` array contains \`[longitude, latitude]\` pairs for the ima
 A video source. The \`"urls"\` value is an array. For each URL in the array, a video element [source](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source) will be created. To support the video across browsers, supply URLs in multiple formats.
 
 The \`"coordinates"\` array contains \`[longitude, latitude]\` pairs for the video corners listed in clockwise order: top left, top right, bottom right, bottom left.
+
+When rendered as a [raster layer](${import.meta.env.BASE_URL}layers/#raster), the layer's [\`raster-fade-duration\`](${import.meta.env.BASE_URL}layers/#paint-raster-raster-fade-duration) property will cause the video to fade in. This happens when playback is started, paused and resumed, or when the video's coordinates are updated. To avoid this behavior, set the layer's [\`raster-fade-duration\`](${import.meta.env.BASE_URL}layers/#paint-raster-raster-fade-duration) property to \`0\`.
 
 \`\`\`json
 "video": {
