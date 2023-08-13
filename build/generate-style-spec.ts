@@ -34,6 +34,8 @@ function propertyType(property) {
             }
             case 'light':
                 return 'LightSpecification';
+            case 'sky':
+                return 'SkySpecification';
             case 'sources':
                 return '{[_: string]: SourceSpecification}';
             case '*':

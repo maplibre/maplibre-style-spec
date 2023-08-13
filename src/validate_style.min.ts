@@ -5,6 +5,7 @@ import latestStyleSpec from './reference/latest';
 
 import validateSource from './validate/validate_source';
 import validateLight from './validate/validate_light';
+import validateSky from './validate/validate_sky';
 import validateTerrain from './validate/validate_terrain';
 import validateLayer from './validate/validate_layer';
 import validateFilter from './validate/validate_filter';
@@ -65,6 +66,7 @@ validateStyleMin.source = wrapCleanErrors(injectValidateSpec(validateSource));
 validateStyleMin.sprite = wrapCleanErrors(injectValidateSpec(validateSprite));
 validateStyleMin.glyphs = wrapCleanErrors(injectValidateSpec(validateGlyphsUrl));
 validateStyleMin.light = wrapCleanErrors(injectValidateSpec(validateLight));
+validateStyleMin.sky = wrapCleanErrors(injectValidateSpec(validateSky));
 validateStyleMin.terrain = wrapCleanErrors(injectValidateSpec(validateTerrain));
 validateStyleMin.layer = wrapCleanErrors(injectValidateSpec(validateLayer));
 validateStyleMin.filter = wrapCleanErrors(injectValidateSpec(validateFilter));

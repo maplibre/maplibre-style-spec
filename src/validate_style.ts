@@ -34,6 +34,7 @@ export default function validateStyle(style: StyleSpecification | string | Buffe
 
 export const source = validateStyleMin.source;
 export const light = validateStyleMin.light;
+export const sky = validateStyleMin.sky;
 export const terrain = validateStyleMin.terrain;
 export const layer = validateStyleMin.layer;
 export const filter = validateStyleMin.filter;
