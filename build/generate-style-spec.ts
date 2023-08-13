@@ -314,6 +314,8 @@ ${objectDeclaration('StyleSpecification', spec.$root)}
 
 ${objectDeclaration('LightSpecification', spec.light)}
 
+${objectDeclaration('SkySpecification', spec.sky)}
+
 ${objectDeclaration('TerrainSpecification', spec.terrain)}
 
 ${spec.source.map(key => objectDeclaration(sourceTypeName(key), spec[key])).join('\n\n')}
