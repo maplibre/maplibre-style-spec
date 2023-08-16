@@ -1,5 +1,7 @@
 ## main
 
+* Document `raster-fade-duration` property's effect on rendering a video. [#297](https://github.com/maplibre/maplibre-style-spec/pull/297)
+
 ## 19.3.0
 
 ### ✨ Features and improvements
