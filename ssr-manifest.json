@@ -1,199 +1,199 @@
 {
   "\u0000/home/runner/work/maplibre-style-spec/maplibre-style-spec/docs/node_modules/markdown-it-prism/build/index.js?commonjs-module": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "\u0000/home/runner/work/maplibre-style-spec/maplibre-style-spec/docs/node_modules/markdown-it/index.js?commonjs-module": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "\u0000/home/runner/work/maplibre-style-spec/maplibre-style-spec/docs/node_modules/markdown-it/lib/common/entities.js?commonjs-module": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "\u0000/home/runner/work/maplibre-style-spec/maplibre-style-spec/docs/node_modules/markdown-it/lib/common/html_re.js?commonjs-exports": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "\u0000/home/runner/work/maplibre-style-spec/maplibre-style-spec/docs/node_modules/markdown-it/lib/common/utils.js?commonjs-exports": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "\u0000/home/runner/work/maplibre-style-spec/maplibre-style-spec/docs/node_modules/markdown-it/lib/helpers/index.js?commonjs-exports": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "\u0000/home/runner/work/maplibre-style-spec/maplibre-style-spec/docs/node_modules/markdown-it/lib/rules_inline/emphasis.js?commonjs-exports": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "\u0000/home/runner/work/maplibre-style-spec/maplibre-style-spec/docs/node_modules/markdown-it/lib/rules_inline/strikethrough.js?commonjs-exports": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "\u0000/home/runner/work/maplibre-style-spec/maplibre-style-spec/docs/node_modules/mdurl/index.js?commonjs-exports": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "\u0000/home/runner/work/maplibre-style-spec/maplibre-style-spec/docs/node_modules/prismjs/components.js?commonjs-module": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "\u0000/home/runner/work/maplibre-style-spec/maplibre-style-spec/docs/node_modules/prismjs/dependencies.js?commonjs-module": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "\u0000/home/runner/work/maplibre-style-spec/maplibre-style-spec/docs/node_modules/prismjs/prism.js?commonjs-module": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "\u0000/home/runner/work/maplibre-style-spec/maplibre-style-spec/docs/node_modules/uc.micro/index.js?commonjs-exports": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "\u0000/home/runner/work/maplibre-style-spec/maplibre-style-spec/node_modules/punycode/punycode.es6.js?commonjs-proxy": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "\u0000commonjs-dynamic-modules": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "\u0000commonjsHelpers.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "\u0000vite/preload-helper": [
   ],
   "../node_modules/@mapbox/unitbezier/index.js": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "../node_modules/punycode/punycode.es6.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "../src/expression/compound_expression.ts": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "../src/expression/definitions/assertion.ts": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "../src/expression/definitions/at.ts": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "../src/expression/definitions/case.ts": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "../src/expression/definitions/coalesce.ts": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "../src/expression/definitions/coercion.ts": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "../src/expression/definitions/collator.ts": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "../src/expression/definitions/comparison.ts": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "../src/expression/definitions/format.ts": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "../src/expression/definitions/image.ts": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "../src/expression/definitions/in.ts": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "../src/expression/definitions/index.ts": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "../src/expression/definitions/index_of.ts": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "../src/expression/definitions/interpolate.ts": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "../src/expression/definitions/length.ts": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "../src/expression/definitions/let.ts": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "../src/expression/definitions/literal.ts": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "../src/expression/definitions/match.ts": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "../src/expression/definitions/number_format.ts": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "../src/expression/definitions/slice.ts": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "../src/expression/definitions/step.ts": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "../src/expression/definitions/var.ts": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "../src/expression/definitions/within.ts": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "../src/expression/evaluation_context.ts": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "../src/expression/parsing_context.ts": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "../src/expression/parsing_error.ts": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "../src/expression/runtime_error.ts": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "../src/expression/scope.ts": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "../src/expression/stops.ts": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "../src/expression/types.ts": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "../src/expression/types/collator.ts": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "../src/expression/types/formatted.ts": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "../src/expression/types/resolved_image.ts": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "../src/expression/values.ts": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "../src/reference/v8.json": [
     "/maplibre-style-spec/assets/v8-66035ba3.js"
   ],
   "../src/util/color.ts": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "../src/util/color_spaces.ts": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "../src/util/interpolate.ts": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "../src/util/padding.ts": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "../src/util/parse_css_color.ts": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "../src/util/variable_anchor_offset_collection.ts": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "node_modules/@kobalte/core/dist/source/button/button-root.jsx": [
   ],
@@ -244,295 +244,295 @@
   "node_modules/@solidjs/router/dist/utils.js": [
   ],
   "node_modules/entities/lib/maps/entities.json": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/linkify-it/index.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/linkify-it/lib/re.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it-anchor/dist/markdownItAnchor.mjs": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it-deflist/index.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it-prism/build/index.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/index.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/common/entities.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/common/html_blocks.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/common/html_re.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/common/utils.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/helpers/index.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/helpers/parse_link_destination.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/helpers/parse_link_label.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/helpers/parse_link_title.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/index.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/parser_block.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/parser_core.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/parser_inline.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/presets/commonmark.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/presets/default.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/presets/zero.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/renderer.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/ruler.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/rules_block/blockquote.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/rules_block/code.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/rules_block/fence.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/rules_block/heading.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/rules_block/hr.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/rules_block/html_block.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/rules_block/lheading.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/rules_block/list.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/rules_block/paragraph.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/rules_block/reference.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/rules_block/state_block.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/rules_block/table.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/rules_core/block.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/rules_core/inline.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/rules_core/linkify.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/rules_core/normalize.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/rules_core/replacements.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/rules_core/smartquotes.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/rules_core/state_core.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/rules_core/text_join.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/rules_inline/autolink.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/rules_inline/backticks.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/rules_inline/balance_pairs.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/rules_inline/emphasis.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/rules_inline/entity.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/rules_inline/escape.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/rules_inline/fragments_join.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/rules_inline/html_inline.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/rules_inline/image.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/rules_inline/link.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/rules_inline/linkify.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/rules_inline/newline.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/rules_inline/state_inline.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/rules_inline/strikethrough.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/rules_inline/text.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/markdown-it/lib/token.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/mdurl/decode.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/mdurl/encode.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/mdurl/format.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/mdurl/index.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/mdurl/parse.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/prismjs/components.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/prismjs/components/index.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/prismjs/components/prism-json.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/prismjs/components/prism-jsx.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/prismjs/components/prism-typescript.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/prismjs/dependencies.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/prismjs/prism.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/solid-js/dist/solid.js": [
@@ -556,32 +556,32 @@
   "node_modules/solid-start/server/ServerContext.tsx": [
   ],
   "node_modules/solid-start/server/components/HttpStatusCode.tsx": [
-    "/maplibre-style-spec/assets/_...404_-93407c05.js"
+    "/maplibre-style-spec/assets/_...404_-1cb14942.js"
   ],
   "node_modules/solid-start/server/types.tsx": [
   ],
   "node_modules/uc.micro/categories/Cc/regex.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/uc.micro/categories/Cf/regex.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/uc.micro/categories/P/regex.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/uc.micro/categories/Z/regex.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/uc.micro/index.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "node_modules/uc.micro/properties/Any/regex.js": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "src/components/app/app.module.scss?used": [
@@ -591,15 +591,15 @@
   "src/components/app/overlay-style.module.scss?used": [
   ],
   "src/components/appropriate-image/appropriate-image.module.scss?used": [
-    "/maplibre-style-spec/assets/index-a6f3363f.js",
+    "/maplibre-style-spec/assets/index-4011899c.js",
     "/maplibre-style-spec/assets/index-c0520030.css"
   ],
   "src/components/appropriate-image/appropriate-image.tsx": [
-    "/maplibre-style-spec/assets/index-a6f3363f.js",
+    "/maplibre-style-spec/assets/index-4011899c.js",
     "/maplibre-style-spec/assets/index-c0520030.css"
   ],
   "src/components/caption.tsx": [
-    "/maplibre-style-spec/assets/caption-3b2ac979.js"
+    "/maplibre-style-spec/assets/caption-7113fb62.js"
   ],
   "src/components/collapse/collapse.scss": [
   ],
@@ -608,33 +608,33 @@
   "src/components/header/header.tsx": [
   ],
   "src/components/items/item.tsx": [
-    "/maplibre-style-spec/assets/items-588f0cb5.js"
+    "/maplibre-style-spec/assets/items-47baa67d.js"
   ],
   "src/components/items/items.tsx": [
-    "/maplibre-style-spec/assets/items-588f0cb5.js"
+    "/maplibre-style-spec/assets/items-47baa67d.js"
   ],
   "src/components/maincontent/maincontent.module.scss?used": [
   ],
   "src/components/maincontent/maincontent.tsx": [
   ],
   "src/components/markdown/markdown.tsx": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "src/components/markdown/prismjs-theme.scss": [
-    "/maplibre-style-spec/assets/markdown-bba51f6e.js",
+    "/maplibre-style-spec/assets/markdown-1ca63c6c.js",
     "/maplibre-style-spec/assets/markdown-86554d27.css"
   ],
   "src/components/property.tsx": [
-    "/maplibre-style-spec/assets/property-20d927d5.js",
+    "/maplibre-style-spec/assets/property-783a2d80.js",
     "/maplibre-style-spec/assets/property-dc07285c.css"
   ],
   "src/components/sdk-support-table/sdk-support-table.module.scss?used": [
-    "/maplibre-style-spec/assets/property-20d927d5.js",
+    "/maplibre-style-spec/assets/property-783a2d80.js",
     "/maplibre-style-spec/assets/property-dc07285c.css"
   ],
   "src/components/sdk-support-table/sdk-support-table.tsx": [
-    "/maplibre-style-spec/assets/property-20d927d5.js",
+    "/maplibre-style-spec/assets/property-783a2d80.js",
     "/maplibre-style-spec/assets/property-dc07285c.css"
   ],
   "src/components/sidebar/sidebar.css": [
@@ -644,7 +644,7 @@
   "src/components/sidebar/sidebar.tsx": [
   ],
   "src/components/subtitle.tsx": [
-    "/maplibre-style-spec/assets/subtitle-9ed1de75.js"
+    "/maplibre-style-spec/assets/subtitle-cab57821.js"
   ],
   "src/components/toc/toc.module.scss?used": [
   ],
@@ -653,25 +653,25 @@
   "src/entry-client.tsx": [
   ],
   "src/expression/expression-metadata.tsx": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "src/expression/expression-reference.tsx": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "src/expression/expression-types.ts": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "src/expression/expressions-related.json": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "src/expression/expressions.tsx": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "src/expression/render-params.ts": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "src/expression/render-signature.ts": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "src/pages.tsx": [
   ],
@@ -680,47 +680,47 @@
   "src/root.tsx": [
   ],
   "src/routes/[...404].tsx": [
-    "/maplibre-style-spec/assets/_...404_-93407c05.js"
+    "/maplibre-style-spec/assets/_...404_-1cb14942.js"
   ],
   "src/routes/deprecations/index.tsx": [
-    "/maplibre-style-spec/assets/index-da1e101f.js"
+    "/maplibre-style-spec/assets/index-17269cea.js"
   ],
   "src/routes/expressions/index.tsx": [
-    "/maplibre-style-spec/assets/index-e4801eff.js"
+    "/maplibre-style-spec/assets/index-d2bf13c8.js"
   ],
   "src/routes/glyphs/index.tsx": [
-    "/maplibre-style-spec/assets/index-c9938dfe.js"
+    "/maplibre-style-spec/assets/index-4c6f8778.js"
   ],
   "src/routes/index.tsx": [
-    "/maplibre-style-spec/assets/index-875c19a8.js"
+    "/maplibre-style-spec/assets/index-9149810a.js"
   ],
   "src/routes/layers/index.tsx": [
-    "/maplibre-style-spec/assets/index-a6f3363f.js",
+    "/maplibre-style-spec/assets/index-4011899c.js",
     "/maplibre-style-spec/assets/index-c0520030.css"
   ],
   "src/routes/light/index.tsx": [
-    "/maplibre-style-spec/assets/index-df00b7a9.js"
+    "/maplibre-style-spec/assets/index-d528d505.js"
   ],
   "src/routes/root/index.tsx": [
-    "/maplibre-style-spec/assets/index-96971efd.js"
+    "/maplibre-style-spec/assets/index-99eb3daa.js"
   ],
   "src/routes/sources/index.tsx": [
-    "/maplibre-style-spec/assets/index-226d8362.js"
+    "/maplibre-style-spec/assets/index-a529853c.js"
   ],
   "src/routes/sprite/index.tsx": [
-    "/maplibre-style-spec/assets/index-5cbce566.js"
+    "/maplibre-style-spec/assets/index-6f934796.js"
   ],
   "src/routes/terrain/index.tsx": [
-    "/maplibre-style-spec/assets/index-8c0e7efe.js"
+    "/maplibre-style-spec/assets/index-a1d75307.js"
   ],
   "src/routes/transition/index.tsx": [
-    "/maplibre-style-spec/assets/index-b3908cec.js"
+    "/maplibre-style-spec/assets/index-9d8836a1.js"
   ],
   "src/routes/types/index.tsx": [
-    "/maplibre-style-spec/assets/index-49d573c0.js"
+    "/maplibre-style-spec/assets/index-be17dc14.js"
   ],
   "src/util/combine-items.tsx": [
-    "/maplibre-style-spec/assets/index-a6f3363f.js",
+    "/maplibre-style-spec/assets/index-4011899c.js",
     "/maplibre-style-spec/assets/index-c0520030.css"
   ]
 }
