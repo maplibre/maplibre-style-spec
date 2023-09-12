@@ -76,7 +76,7 @@ import derefLayers from './deref';
 import diff, {operations} from './diff';
 import ValidationError from './error/validation_error';
 import ParsingError from './error/parsing_error';
-import {FeatureState, StyleExpression, isExpression, createExpression, createPropertyExpression, normalizePropertyExpression, ZoomConstantExpression, ZoomDependentExpression, StylePropertyFunction, Feature, GlobalProperties, SourceExpression, CompositeExpression, StylePropertyExpression} from './expression';
+import {FeatureState, StyleExpression, isExpression, isZoomExpression, createExpression, createPropertyExpression, normalizePropertyExpression, ZoomConstantExpression, ZoomDependentExpression, StylePropertyFunction, Feature, GlobalProperties, SourceExpression, CompositeExpression, StylePropertyExpression} from './expression';
 import featureFilter, {isExpressionFilter} from './feature_filter';
 
 import convertFilter from './feature_filter/convert';
@@ -117,6 +117,7 @@ const expression = {
     createPropertyExpression,
     isExpression,
     isExpressionFilter,
+    isZoomExpression,
     normalizePropertyExpression,
 };
 
