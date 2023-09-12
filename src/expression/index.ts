@@ -234,6 +234,10 @@ export class ZoomDependentExpression<Kind extends EvaluationKind> {
     }
 }
 
+export function isZoomExpression(expression: any): expression is ZoomConstantExpression<'source'> | ZoomDependentExpression<'source'> {
+    return (expression as ZoomConstantExpression<'source'>)._styleExpression !== undefined;
+}
+
 export type ConstantExpression = {
     kind: 'constant';
     readonly evaluate: (
