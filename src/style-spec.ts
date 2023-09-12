@@ -170,6 +170,7 @@ export {
     derefLayers,
     normalizePropertyExpression,
     isExpression,
+    isZoomExpression,
     diff,
     supportsPropertyExpression,
     convertFunction,
