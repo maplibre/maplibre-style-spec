@@ -1,6 +1,9 @@
 ## main
 
+## 19.3.1
+
 * Document `raster-fade-duration` property's effect on rendering a video. [#297](https://github.com/maplibre/maplibre-style-spec/pull/297)
+* Add and expose `isZoomExpression`. [#267](https://github.com/maplibre/maplibre-style-spec/issues/267)
 
 ## 19.3.0
 
