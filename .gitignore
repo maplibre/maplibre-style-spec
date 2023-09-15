@@ -1,6 +1,5 @@
 node_modules
 .eslintcache
 tsc
-dist
 .DS_Store
 */**/*.g.ts
