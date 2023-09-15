@@ -1505,6 +1505,7 @@ export declare class ZoomDependentExpression<Kind extends EvaluationKind> {
 	evaluate(globals: GlobalProperties, feature?: Feature, featureState?: FeatureState, canonical?: ICanonicalTileID, availableImages?: Array<string>, formattedSection?: FormattedSection): any;
 	interpolationFactor(input: number, lower: number, upper: number): number;
 }
+export declare function isZoomExpression(expression: any): expression is ZoomConstantExpression<"source"> | ZoomDependentExpression<"source">;
 export type ConstantExpression = {
 	kind: "constant";
 	readonly evaluate: (globals: GlobalProperties, feature?: Feature, featureState?: FeatureState, canonical?: ICanonicalTileID, availableImages?: Array<string>) => any;
@@ -1820,6 +1821,7 @@ export declare const expression: {
 	createPropertyExpression: typeof createPropertyExpression;
 	isExpression: typeof isExpression;
 	isExpressionFilter: typeof isExpressionFilter;
+	isZoomExpression: typeof isZoomExpression;
 	normalizePropertyExpression: typeof normalizePropertyExpression;
 };
 declare const styleFunction: {
