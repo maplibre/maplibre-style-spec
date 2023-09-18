@@ -354,28 +354,28 @@
           "doc": "Mapbox Terrain RGB tiles. See https://www.mapbox.com/help/access-elevation-data/#mapbox-terrain-rgb for more info."
         },
         "custom": {
-          "doc": "Decodes tiles using the redMix, blueMix, greenMix, baseMix parameters."
+          "doc": "Decodes tiles using the redFactor, blueFactor, greenFactor, baseShift parameters."
         }
       },
       "default": "mapbox",
       "doc": "The encoding used by this source. Mapbox Terrain RGB is used by default."
     },
-    "redMix": {
+    "redFactor": {
       "type": "number",
       "default": 1.0,
       "doc": "Value that will be multiplied by the red channel value when decoding. Only used on custom encodings."
     },
-    "blueMix": {
+    "blueFactor": {
       "type": "number",
       "default": 1.0,
       "doc": "Value that will be multiplied by the blue channel value when decoding. Only used on custom encodings."
     },
-    "greenMix": {
+    "greenFactor": {
       "type": "number",
       "default": 1.0,
       "doc": "Value that will be multiplied by the green channel value when decoding. Only used on custom encodings."
     },   
-    "baseMix": {
+    "baseShift": {
       "type": "number",
       "default": 0.0,
       "doc": "Value that will be added to the encoding mix when decoding. Only used on custom encodings."
