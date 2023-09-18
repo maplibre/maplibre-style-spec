@@ -6,6 +6,7 @@ import validateEnum from './validate_enum';
 import validateExpression from './validate_expression';
 import validateString from './validate_string';
 import getType from '../util/get_type';
+import validateRasterDEMSource from './validate_raster_dem_source';
 
 const objectElementValidators = {
     promoteId: validatePromoteId
@@ -28,7 +29,6 @@ export default function validateSource(options) {
     switch (type) {
         case 'vector':
         case 'raster':
-        case 'raster-dem':
             errors = validateObject({
                 key,
                 value,
@@ -36,6 +36,15 @@ export default function validateSource(options) {
                 style: options.style,
                 styleSpec,
                 objectElementValidators,
+                validateSpec,
+            });
+            return errors;
+        case 'raster-dem':
+            errors = validateRasterDEMSource({
+                sourceName: key,
+                value,
+                style: options.style,
+                styleSpec,
                 validateSpec,
             });
             return errors;
