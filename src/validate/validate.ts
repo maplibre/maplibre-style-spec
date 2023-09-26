@@ -24,7 +24,6 @@ import validateImage from './validate_image';
 import validatePadding from './validate_padding';
 import validateVariableAnchorOffsetCollection from './validate_variable_anchor_offset_collection';
 import validateSprite from './validate_sprite';
-import validateRasterDEMSource from './validate_raster_dem_source';
 
 const VALIDATORS = {
     '*'() {
@@ -49,7 +48,6 @@ const VALIDATORS = {
     'padding': validatePadding,
     'variableAnchorOffsetCollection': validateVariableAnchorOffsetCollection,
     'sprite': validateSprite,
-    'source_raster_dem': validateRasterDEMSource
 };
 
 // Main recursive validation function. Tracks:
