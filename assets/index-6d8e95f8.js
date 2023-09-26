@@ -1,4 +1,4 @@
-import{g as f,a as o,i as r,c as e,t as g}from"./entry-client-9a1c3f2c.js";import{M as c}from"./markdown-1ca63c6c.js";import{s as n}from"./v8-66035ba3.js";import{I as u}from"./items-47baa67d.js";import"./property-783a2d80.js";import"./subtitle-cab57821.js";const $=g("<div><!#><!/><!#><!/>");function S(){const a=`# Transition
+import{g as f,a as o,i as r,c as e,t as g}from"./entry-client-3a6d25df.js";import{M as c}from"./markdown-918f9f38.js";import{s as n}from"./v8-12852d0f.js";import{I as u}from"./items-76b08782.js";import"./property-0bda5fb4.js";import"./subtitle-1239f67c.js";const $=g("<div><!#><!/><!#><!/>");function S(){const a=`# Transition
 A \`transition\` property controls timing for the interpolation between a transitionable style property's previous value and new value. A style's [root \`transition\`](/root/#transition) property provides global transition defaults for that style.
 \`\`\`json
 "transition": ${JSON.stringify(n.$root.transition.example,null,2)}
