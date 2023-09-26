@@ -1,6 +1,7 @@
 import validateSpec from './validate';
 import v8 from '../reference/v8.json' assert {type: 'json'};
 import validateRasterDEMSource from './validate_raster_dem_source';
+import {RasterDEMSourceSpecification} from '../types.g';
 
 function checkErrorMessage(message: string, key: string, expectedType: string, foundType: string) {
     expect(message).toContain(key);
@@ -9,6 +10,18 @@ function checkErrorMessage(message: string, key: string, expectedType: string, f
 }
 
 describe('Validate source_raster_dem', () => {
+    test('Should pass when value is undefined', () => {
+        const errors = validateRasterDEMSource({validateSpec, value: undefined, styleSpec: v8, style: {} as any});
+        expect(errors).toHaveLength(0);
+    });
+
+    test('Should return error when value is not an object', () => {
+        const errors = validateRasterDEMSource({validateSpec, value: '' as unknown as RasterDEMSourceSpecification, styleSpec: v8, style: {} as any});
+        expect(errors).toHaveLength(1);
+        expect(errors[0].message).toContain('object');
+        expect(errors[0].message).toContain('expected');
+    });
+
     test('Should return error in case of unknown property', () => {
         const errors = validateRasterDEMSource({validateSpec, value: {a: 1} as any, styleSpec: v8, style: {} as any});
         expect(errors).toHaveLength(1);
