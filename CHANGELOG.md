@@ -1,8 +1,9 @@
 ## main
-* Improve error messages around `hillshade` layers not using `raster-dem` sources [#353](https://github.com/maplibre/maplibre-style-spec/pull/353) 
 
 ## 19.3.2
 * Add raster dem source `redFactor`, `greenFactor`, `blueFactor`, `baseShift` properties [#326](https://github.com/maplibre/maplibre-style-spec/issues/326)
+* Improve error messages around `hillshade` layers not using `raster-dem` sources [#353](https://github.com/maplibre/maplibre-style-spec/pull/353)
+
 ## 19.3.1
 
 * Document `raster-fade-duration` property's effect on rendering a video. [#297](https://github.com/maplibre/maplibre-style-spec/pull/297)
