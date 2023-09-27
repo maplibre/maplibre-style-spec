@@ -1,4 +1,5 @@
 ## main
+* Improve error messages around `hillshade` layers not using `raster-dem` sources [#353](https://github.com/maplibre/maplibre-style-spec/pull/353) 
 
 ## 19.3.1
 
