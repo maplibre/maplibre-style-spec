@@ -36,7 +36,7 @@ A valid sprite source must supply two types of files:
 - _Image files_, which are PNG images containing the sprite data.
 
 Apart from the required \`width\`, \`height\`, \`x\`, and \`y\` properties, the following optional properties are supported:
-<!-- copyeditor ignore retext-passive -->
+
 - \`content\`: An array of four numbers, with the first two specifying the left, top corner, and the last two specifying the right, bottom corner. If present, and if the icon uses [\`icon-text-fit\`](${import.meta.env.BASE_URL}layers/#layout-symbol-icon-text-fit), the symbol's text will be fit inside the content box.
 - \`stretchX\`: An array of two-element arrays, consisting of two numbers that represent the _from_ position and the _to_ position of areas that can be stretched.
 - \`stretchY\`: Same as \`stretchX\`, but for the vertical dimension.
