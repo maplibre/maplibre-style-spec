@@ -5208,7 +5208,7 @@
       "type": "color",
       "default": "#000000",
       "transition": true,
-      "doc": "The color of the icon. This can only be used with sdf icons.",
+      "doc": "The color of the icon. This can only be used with SDF icons.",
       "requires": [
         "icon-image"
       ],
