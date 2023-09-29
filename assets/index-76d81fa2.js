@@ -1,4 +1,4 @@
-import{g as i,i as o,c as s,t as n}from"./entry-client-1c288a35.js";import{M as r}from"./markdown-1b49c5d4.js";import{s as a}from"./v8-12852d0f.js";const p=n("<div>");function m(){const t=`
+import{g as i,i as o,c as s,t as n}from"./entry-client-6b43bf70.js";import{M as r}from"./markdown-173a08d1.js";import{s as a}from"./v8-0d273547.js";const p=n("<div>");function m(){const t=`
 # Sprite
 
 A style's \`sprite\` property supplies a URL template for loading small images to use in rendering \`background-pattern\`, \`fill-pattern\`, \`line-pattern\`,\`fill-extrusion-pattern\` and \`icon-image\` style properties.
@@ -31,6 +31,7 @@ Apart from the required \`width\`, \`height\`, \`x\`, and \`y\` properties, the 
 - \`content\`: An array of four numbers, with the first two specifying the left, top corner, and the last two specifying the right, bottom corner. If present, and if the icon uses [\`icon-text-fit\`](/maplibre-style-spec/layers/#layout-symbol-icon-text-fit), the symbol's text will be fit inside the content box.
 - \`stretchX\`: An array of two-element arrays, consisting of two numbers that represent the _from_ position and the _to_ position of areas that can be stretched.
 - \`stretchY\`: Same as \`stretchX\`, but for the vertical dimension.
+- \`sdf\`: Boolean. If \`true\` then the image is handled as a signed-distance field (SDF) and its color can be set at runtime using the [\`icon-color\`](/maplibre-style-spec/layers/#paint-symbol-icon-color) and [\`icon-halo-color\`](/maplibre-style-spec/layers/#paint-symbol-icon-halo-color) properties. Defaults to \`false\`.
 
 MapLibre SDKs will use the value of the \`sprite\` property in the style to generate the URLs for loading both files. First, for both file types, it will append \`@2x\` to the URL on high-DPI devices. Second, it will append a file extension: \`.json\` for the index file, and \`.png\` for the image file. For example, if you specified \`"sprite": "https://example.com/sprite"\`, renderers would load \`https://example.com/sprite.json\` and \`https://example.com/sprite.png\`, or \`https://example.com/sprite@2x.json\` and \`https://example.com/sprite@2x.png\`.
 
