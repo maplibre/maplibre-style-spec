@@ -10,7 +10,7 @@
     "@types/node": "^18.15.11",
     "@types/prismjs": "^1.26.0",
     "esbuild": "^0.17.15",
-    "postcss": "^8.4.21",
+    "postcss": "^8.4.31",
     "solid-start-static": "^0.2.26",
     "typescript": "^5.0.3",
     "vite": "^4.2.3"
