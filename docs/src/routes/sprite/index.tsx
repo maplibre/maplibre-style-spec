@@ -16,7 +16,7 @@ A style's \`sprite\` property supplies a URL template for loading small images t
     )}
 \`\`\`
 
-It can also be an array of \`{id: 'my-sprite', url: 'https://example.com/sprite'}\` objects. To use the sprite images that are given this way you'll need to prefix the icon name with the icon's "namespace" like so: \`'icon-image': 'my-sprite:my-icon-name'\`
+It can also be (for js only at the moment) an array of \`{id: 'my-sprite', url: 'https://example.com/sprite'}\` objects. To use the sprite images that are given this way you'll need to prefix the icon name with the icon's "namespace" like so: \`'icon-image': 'my-sprite:my-icon-name'\`
 \`\`\`json
 "sprite": [{id: 'my-sprite', url: 'https://example.com/sprite'}, {id: 'my-sprite2', url: 'https://example2.com/sprite2'}]
 \`\`\`
