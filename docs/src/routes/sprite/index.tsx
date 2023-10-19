@@ -16,6 +16,12 @@ A style's \`sprite\` property supplies a URL template for loading small images t
     )}
 \`\`\`
 
+It can also be an array of \`{id: 'my-sprite', url: 'https://example.com/sprite'}\` objects. To use the sprite images that are given this way you'll need to prefix the icon name with the icon's "namespace" like so: \`'icon-image': 'my-sprite:my-icon-name'\`
+\`\`\`json
+"sprite": [{id: 'my-sprite', url: 'https://example.com/sprite'}, {id: 'my-sprite2', url: 'https://example2.com/sprite2'}]
+\`\`\`
+
+
 A valid sprite source must supply two types of files:
 
 - An _index file_, which is a JSON document containing a description of each image contained in the sprite. The content of this file must be a JSON object whose keys form identifiers to be used as the values of the above style properties, and whose values are objects describing the dimensions (\`width\` and \`height\` properties) and pixel ratio (\`pixelRatio\`) of the image and its location within the sprite (\`x\` and{' '} \`y\`). For example, a sprite containing a single image might have the following index file contents:
@@ -43,7 +49,27 @@ Apart from the required \`width\`, \`height\`, \`x\`, \`y\`, and \`pixelRatio\` 
 - \`stretchY\`: Same as \`stretchX\`, but for the vertical dimension.
 - \`sdf\`: Boolean. If \`true\` then the image is handled as a signed-distance field (SDF) and its color can be set at runtime using the [\`icon-color\`](${import.meta.env.BASE_URL}layers/#paint-symbol-icon-color) and [\`icon-halo-color\`](${import.meta.env.BASE_URL}layers/#paint-symbol-icon-halo-color) properties. Defaults to \`false\`.
 
+The following image gives a bit more infomation regarding the stretch properties:
+\`\`\`json
+{
+    "sheild": {
+        "width": 25,
+        "height": 30,
+        "x": 0,
+        "y": 0,
+        "stretchX": [[5, 10], [15, 20]]
+        "stretchY": [[5, 20]]
+        "pixelRatio": 1
+    }
+}
+\`\`\`
+The red highlighted part is where the stretch will occur over the Y axis and the blue highlight is for the X axis.
+![popup-stretch](https://maplibre.org/maplibre-gl-js/docs/assets/popup_debug.png)
+
+
 MapLibre SDKs will use the value of the \`sprite\` property in the style to generate the URLs for loading both files. First, for both file types, it will append \`@2x\` to the URL on high-DPI devices. Second, it will append a file extension: \`.json\` for the index file, and \`.png\` for the image file. For example, if you specified \`"sprite": "https://example.com/sprite"\`, renderers would load \`https://example.com/sprite.json\` and \`https://example.com/sprite.png\`, or \`https://example.com/sprite@2x.json\` and \`https://example.com/sprite@2x.png\`.
+
+A tool that can generate sprites from svg files can be found in here: [@elastic/spritezero](https://www.npmjs.com/package/@elastic/spritezero)
 
 `;
 
