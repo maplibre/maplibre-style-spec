@@ -1,5 +1,10 @@
 ## main
 
+## 19.3.3
+* Improve types for feature to include `unknown` [#365](https://github.com/maplibre/maplibre-style-spec/pull/365)
+* Improve sprite documentation and supported versions [#390](https://github.com/maplibre/maplibre-style-spec/pull/390)
+
+
 ## 19.3.2
 * Add raster dem source `redFactor`, `greenFactor`, `blueFactor`, `baseShift` properties [#326](https://github.com/maplibre/maplibre-style-spec/issues/326)
 * Improve error messages around `hillshade` layers not using `raster-dem` sources [#353](https://github.com/maplibre/maplibre-style-spec/pull/353)
