@@ -1,46 +1,46 @@
 {
-  "_caption-fecf8055.js": {
-    "file": "assets/caption-fecf8055.js",
+  "_caption-74f8c462.js": {
+    "file": "assets/caption-74f8c462.js",
     "imports": [
       "src/entry-client.tsx"
     ]
   },
-  "_items-13136237.js": {
-    "file": "assets/items-13136237.js",
+  "_items-f898103d.js": {
+    "file": "assets/items-f898103d.js",
     "imports": [
       "src/entry-client.tsx",
-      "_property-30881353.js",
-      "_subtitle-801bb580.js",
-      "_markdown-3061e333.js"
+      "_property-716c280c.js",
+      "_subtitle-b71f80a1.js",
+      "_markdown-8bb5f7fb.js"
     ]
   },
-  "_markdown-3061e333.js": {
+  "_markdown-8bb5f7fb.js": {
     "css": [
       "assets/markdown-86554d27.css"
     ],
-    "file": "assets/markdown-3061e333.js",
+    "file": "assets/markdown-8bb5f7fb.js",
     "imports": [
       "src/entry-client.tsx"
     ]
   },
-  "_property-30881353.js": {
+  "_property-716c280c.js": {
     "css": [
       "assets/property-dc07285c.css"
     ],
-    "file": "assets/property-30881353.js",
+    "file": "assets/property-716c280c.js",
     "imports": [
       "src/entry-client.tsx",
-      "_markdown-3061e333.js"
+      "_markdown-8bb5f7fb.js"
     ]
   },
-  "_subtitle-801bb580.js": {
-    "file": "assets/subtitle-801bb580.js",
+  "_subtitle-b71f80a1.js": {
+    "file": "assets/subtitle-b71f80a1.js",
     "imports": [
       "src/entry-client.tsx"
     ]
   },
-  "_v8-0d273547.js": {
-    "file": "assets/v8-0d273547.js"
+  "_v8-0f602cae.js": {
+    "file": "assets/v8-0f602cae.js"
   },
   "markdown.css": {
     "file": "assets/markdown-86554d27.css",
@@ -73,12 +73,12 @@
       "src/routes/transition/index.tsx",
       "src/routes/types/index.tsx"
     ],
-    "file": "assets/entry-client-7968611c.js",
+    "file": "assets/entry-client-210324d2.js",
     "isEntry": true,
     "src": "src/entry-client.tsx"
   },
   "src/routes/[...404].tsx": {
-    "file": "assets/_...404_-4e956292.js",
+    "file": "assets/_...404_-936dbdce.js",
     "imports": [
       "src/entry-client.tsx"
     ],
@@ -86,41 +86,41 @@
     "src": "src/routes/[...404].tsx"
   },
   "src/routes/deprecations/index.tsx": {
-    "file": "assets/index-0b70e771.js",
+    "file": "assets/index-5357145c.js",
     "imports": [
       "src/entry-client.tsx",
-      "_markdown-3061e333.js",
-      "_caption-fecf8055.js",
-      "_property-30881353.js",
-      "_subtitle-801bb580.js"
+      "_markdown-8bb5f7fb.js",
+      "_caption-74f8c462.js",
+      "_property-716c280c.js",
+      "_subtitle-b71f80a1.js"
     ],
     "isDynamicEntry": true,
     "src": "src/routes/deprecations/index.tsx"
   },
   "src/routes/expressions/index.tsx": {
-    "file": "assets/index-68b58e78.js",
+    "file": "assets/index-459927c5.js",
     "imports": [
       "src/entry-client.tsx",
-      "_v8-0d273547.js",
-      "_property-30881353.js",
-      "_markdown-3061e333.js"
+      "_v8-0f602cae.js",
+      "_property-716c280c.js",
+      "_markdown-8bb5f7fb.js"
     ],
     "isDynamicEntry": true,
     "src": "src/routes/expressions/index.tsx"
   },
   "src/routes/glyphs/index.tsx": {
-    "file": "assets/index-3e5c039d.js",
+    "file": "assets/index-612acca6.js",
     "imports": [
-      "_markdown-3061e333.js",
+      "_markdown-8bb5f7fb.js",
       "src/entry-client.tsx"
     ],
     "isDynamicEntry": true,
     "src": "src/routes/glyphs/index.tsx"
   },
   "src/routes/index.tsx": {
-    "file": "assets/index-82d8589b.js",
+    "file": "assets/index-c8cc2f70.js",
     "imports": [
-      "_markdown-3061e333.js",
+      "_markdown-8bb5f7fb.js",
       "src/entry-client.tsx"
     ],
     "isDynamicEntry": true,
@@ -134,98 +134,98 @@
     "css": [
       "assets/index-c0520030.css"
     ],
-    "file": "assets/index-3781794f.js",
+    "file": "assets/index-8054414e.js",
     "imports": [
       "src/entry-client.tsx",
-      "_markdown-3061e333.js",
-      "_v8-0d273547.js",
-      "_items-13136237.js",
-      "_caption-fecf8055.js",
-      "_property-30881353.js",
-      "_subtitle-801bb580.js"
+      "_markdown-8bb5f7fb.js",
+      "_v8-0f602cae.js",
+      "_items-f898103d.js",
+      "_caption-74f8c462.js",
+      "_property-716c280c.js",
+      "_subtitle-b71f80a1.js"
     ],
     "isDynamicEntry": true,
     "src": "src/routes/layers/index.tsx"
   },
   "src/routes/light/index.tsx": {
-    "file": "assets/index-9990da42.js",
+    "file": "assets/index-1eaf4e39.js",
     "imports": [
       "src/entry-client.tsx",
-      "_markdown-3061e333.js",
-      "_v8-0d273547.js",
-      "_items-13136237.js",
-      "_property-30881353.js",
-      "_subtitle-801bb580.js"
+      "_markdown-8bb5f7fb.js",
+      "_v8-0f602cae.js",
+      "_items-f898103d.js",
+      "_property-716c280c.js",
+      "_subtitle-b71f80a1.js"
     ],
     "isDynamicEntry": true,
     "src": "src/routes/light/index.tsx"
   },
   "src/routes/root/index.tsx": {
-    "file": "assets/index-73d96ef3.js",
+    "file": "assets/index-7bce5935.js",
     "imports": [
       "src/entry-client.tsx",
-      "_markdown-3061e333.js",
-      "_v8-0d273547.js",
-      "_items-13136237.js",
-      "_property-30881353.js",
-      "_subtitle-801bb580.js"
+      "_markdown-8bb5f7fb.js",
+      "_v8-0f602cae.js",
+      "_items-f898103d.js",
+      "_property-716c280c.js",
+      "_subtitle-b71f80a1.js"
     ],
     "isDynamicEntry": true,
     "src": "src/routes/root/index.tsx"
   },
   "src/routes/sources/index.tsx": {
-    "file": "assets/index-4d1142f0.js",
+    "file": "assets/index-faca8c18.js",
     "imports": [
       "src/entry-client.tsx",
-      "_markdown-3061e333.js",
-      "_v8-0d273547.js",
-      "_items-13136237.js",
-      "_property-30881353.js",
-      "_subtitle-801bb580.js"
+      "_markdown-8bb5f7fb.js",
+      "_v8-0f602cae.js",
+      "_items-f898103d.js",
+      "_property-716c280c.js",
+      "_subtitle-b71f80a1.js"
     ],
     "isDynamicEntry": true,
     "src": "src/routes/sources/index.tsx"
   },
   "src/routes/sprite/index.tsx": {
-    "file": "assets/index-63812c84.js",
+    "file": "assets/index-d4b2b990.js",
     "imports": [
       "src/entry-client.tsx",
-      "_markdown-3061e333.js",
-      "_v8-0d273547.js"
+      "_markdown-8bb5f7fb.js",
+      "_v8-0f602cae.js"
     ],
     "isDynamicEntry": true,
     "src": "src/routes/sprite/index.tsx"
   },
   "src/routes/terrain/index.tsx": {
-    "file": "assets/index-0d9f241d.js",
+    "file": "assets/index-028f905d.js",
     "imports": [
       "src/entry-client.tsx",
-      "_markdown-3061e333.js",
-      "_v8-0d273547.js",
-      "_items-13136237.js",
-      "_property-30881353.js",
-      "_subtitle-801bb580.js"
+      "_markdown-8bb5f7fb.js",
+      "_v8-0f602cae.js",
+      "_items-f898103d.js",
+      "_property-716c280c.js",
+      "_subtitle-b71f80a1.js"
     ],
     "isDynamicEntry": true,
     "src": "src/routes/terrain/index.tsx"
   },
   "src/routes/transition/index.tsx": {
-    "file": "assets/index-5a4a8531.js",
+    "file": "assets/index-4219340d.js",
     "imports": [
       "src/entry-client.tsx",
-      "_markdown-3061e333.js",
-      "_v8-0d273547.js",
-      "_items-13136237.js",
-      "_property-30881353.js",
-      "_subtitle-801bb580.js"
+      "_markdown-8bb5f7fb.js",
+      "_v8-0f602cae.js",
+      "_items-f898103d.js",
+      "_property-716c280c.js",
+      "_subtitle-b71f80a1.js"
     ],
     "isDynamicEntry": true,
     "src": "src/routes/transition/index.tsx"
   },
   "src/routes/types/index.tsx": {
-    "file": "assets/index-d9412f3f.js",
+    "file": "assets/index-0ae2c647.js",
     "imports": [
-      "_markdown-3061e333.js",
+      "_markdown-8bb5f7fb.js",
       "src/entry-client.tsx"
     ],
     "isDynamicEntry": true,
