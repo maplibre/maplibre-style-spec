@@ -62,7 +62,7 @@
     "@types/node": "^20.8.6",
     "@typescript-eslint/eslint-plugin": "^5.61.0",
     "@typescript-eslint/parser": "^5.62.0",
-    "dts-bundle-generator": "^8.0.1",
+    "dts-bundle-generator": "^8.1.1",
     "eslint": "^8.51.0",
     "eslint-config-mourner": "^3.0.0",
     "eslint-plugin-html": "^7.1.0",
