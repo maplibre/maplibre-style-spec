@@ -1823,8 +1823,7 @@
       "type": "array",
       "value": "string",
       "default": [
-        "Open Sans Regular",
-        "Arial Unicode MS Regular"
+        "Noto Sans Regular"
       ],
       "doc": "Font stack to use for displaying text.",
       "requires": [
