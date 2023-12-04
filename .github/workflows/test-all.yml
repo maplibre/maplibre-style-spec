@@ -32,7 +32,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
         with:
-          node-version: lts/*
+          node-version-file: '.nvmrc'
       - run: npm ci
       - run: npm run jest-ci -- --coverage --coverageDirectory=coverage-unit --coverageReporters json --selectProjects unit
       - run: npm run jest-ci -- --coverage --coverageDirectory=coverage-integration --coverageReporters json --selectProjects integration
