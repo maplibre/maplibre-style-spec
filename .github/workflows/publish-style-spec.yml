@@ -13,7 +13,7 @@ jobs:
           fetch-depth: 0
 
       - name: Use Node.js from nvmrc
-        uses: actions/setup-node@v3.6.0
+        uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
           registry-url: 'https://registry.npmjs.org'
