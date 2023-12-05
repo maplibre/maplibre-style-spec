@@ -18,8 +18,8 @@
   "type": "module",
   "scripts": {
     "build": "rollup --configPlugin @rollup/plugin-typescript -c rollup.config.ts",
-    "generate-style-spec": "ts-node build/generate-style-spec.ts",
-    "generate-typings": "ts-node build/generate-typings.ts",
+    "generate-style-spec": "node --no-warnings --loader ts-node/esm build/generate-style-spec.ts",
+    "generate-typings": "node --no-warnings --loader ts-node/esm build/generate-typings.ts",
     "test-build": "jest --selectProjects=build",
     "test-integration": "jest --selectProjects=integration",
     "test-unit": "jest --selectProjects=unit",
