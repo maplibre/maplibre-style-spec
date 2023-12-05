@@ -43,7 +43,7 @@ const config: RollupOptions[] = [{
         format: 'umd',
         sourcemap: true,
         globals: {
-            fs : 'fs'
+            fs: 'fs'
         }
     }],
     plugins: rollupPlugins
@@ -61,7 +61,7 @@ const config: RollupOptions[] = [{
         format: 'umd',
         sourcemap: true,
         globals: {
-            fs : 'fs'
+            fs: 'fs'
         }
     }],
     plugins: [...rollupPlugins, shebang()]
@@ -79,7 +79,7 @@ const config: RollupOptions[] = [{
         format: 'umd',
         sourcemap: true,
         globals: {
-            fs : 'fs'
+            fs: 'fs'
         }
     }],
     plugins: [...rollupPlugins, shebang()]
@@ -97,7 +97,7 @@ const config: RollupOptions[] = [{
         format: 'umd',
         sourcemap: true,
         globals: {
-            fs : 'fs'
+            fs: 'fs'
         }
     }],
     plugins: [...rollupPlugins, shebang()]
