@@ -14,7 +14,6 @@
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "skipLibCheck": false,
-    "sourceMap": true,
     "strict": false,
     "target": "ES2019",
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
