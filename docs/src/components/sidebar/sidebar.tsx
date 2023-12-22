@@ -1,8 +1,9 @@
 import style from './sidebar.module.scss';
 import './sidebar.css';
-import {useLocation} from 'solid-start';
+
 import {pages} from '~/pages';
 import {For} from 'solid-js';
+import {useLocation} from '@solidjs/router';
 
 export function Sidebar(props: {
     class?: string;

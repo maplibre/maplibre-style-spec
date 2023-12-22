@@ -1,10 +1,13 @@
-import solid from 'solid-start/vite';
-import {defineConfig} from 'vite';
-import staticAdapter from 'solid-start-static';
+import {defineConfig} from '@solidjs/start/config';
 
 const config = defineConfig({
-    base: '/maplibre-style-spec/',
-    plugins: [solid({ssr: true, solid: {hydratable: true}, adapter: staticAdapter()})],
+    start: {
+        server: {
+            prerender: {
+                crawlLinks: true
+            }
+        }
+    }
 });
 
 export default config;

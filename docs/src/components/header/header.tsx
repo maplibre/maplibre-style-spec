@@ -1,6 +1,7 @@
-import {useNavigate} from 'solid-start';
+
 import style from './header.module.scss';
 import {setShowNavOverlay} from '../app/app';
+import {useNavigate} from '@solidjs/router';
 
 const logo = `${import.meta.env.BASE_URL}maplibre-logo-dark.svg`;
 

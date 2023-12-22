@@ -1,9 +1,10 @@
-import {useLocation} from 'solid-start';
+
 import {TableOfContents} from '../toc/toc';
 import style from './maincontent.module.scss';
 import '../collapse/collapse.scss';
 import {Collapsible} from '@kobalte/core';
 import {JSXElement} from 'solid-js';
+import {useLocation} from '@solidjs/router';
 
 export function MainContent(props: {
     children?: JSXElement;
