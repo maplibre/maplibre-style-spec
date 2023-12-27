@@ -6,7 +6,7 @@ function Sprite() {
     const md = `
 # Sprite
 
-Loading a [sprite](https://en.wikipedia.org/wiki/Sprite_(computer_graphics)) can be done using the optional \`sprite\` propety at the root level of a MapLibre style sheet.
+Loading a [sprite](https://en.wikipedia.org/wiki/Sprite_(computer_graphics)) can be done using the optional \`sprite\` property at the root level of a MapLibre style sheet.
 
 The images contained in the sprite can be referenced in other style properties (\`background-pattern\`, \`fill-pattern\`, \`line-pattern\`,\`fill-extrusion-pattern\` and \`icon-image\`).
 
