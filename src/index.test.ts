@@ -1,6 +1,6 @@
 
 /* eslint-disable import/namespace */
-import * as spec from './style-spec';
+import * as spec from '.';
 
 describe('style-spec', () => {
     ['v8', 'latest'].forEach((version) => {

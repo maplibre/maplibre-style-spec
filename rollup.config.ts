@@ -31,7 +31,7 @@ const rollupPlugins = [
 ];
 
 const config: RollupOptions[] = [{
-    input: './src/style-spec.ts',
+    input: './src/index.ts',
     output: [{
         file: 'dist/index.mjs',
         format: 'es',

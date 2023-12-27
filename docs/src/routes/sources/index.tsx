@@ -71,8 +71,6 @@ A vector tile source. Tiles must be in [Mapbox Vector Tile format](https://docs.
 \`\`\`
 
 `} />
-
-            <Items headingLevel='3' entry={ref.source_vector} section="vector" />
             <SDKSupportTable
                 supportItems={{
                     'basic functionality': {
@@ -83,7 +81,7 @@ A vector tile source. Tiles must be in [Mapbox Vector Tile format](https://docs.
                     }}
                 }
             />
-
+            <Items headingLevel='3' entry={ref.source_vector} section="vector" />
             <Markdown content={`
 ## raster
 
@@ -99,8 +97,6 @@ A raster tile source.
 }
 \`\`\`
 `} />
-
-            <Items headingLevel='3' entry={ref.source_raster} section="raster" />
             <SDKSupportTable
                 supportItems={{
                     'basic functionality': {
@@ -111,7 +107,7 @@ A raster tile source.
                     }
                 }}
             />
-
+            <Items headingLevel='3' entry={ref.source_raster} section="raster" />
             <Markdown content={`
 ## raster-dem
 
@@ -127,9 +123,6 @@ A raster DEM source. Only supports [Mapbox Terrain RGB](https://blog.mapbox.com/
 }
 \`\`\`
 `} />
-
-            <Items headingLevel='3' entry={ref.source_raster_dem} section="raster-dem" />
-
             <SDKSupportTable
                 supportItems={{
                     'basic functionality': {
@@ -137,7 +130,7 @@ A raster DEM source. Only supports [Mapbox Terrain RGB](https://blog.mapbox.com/
                     }
                 }}
             />
-
+            <Items headingLevel='3' entry={ref.source_raster_dem} section="raster-dem" />
             <Markdown content={`
 ## geojson
 
@@ -169,9 +162,6 @@ This example of a GeoJSON source refers to an external GeoJSON document via its 
 }
 \`\`\`
 `} />
-
-            <Items headingLevel='3' entry={ref.source_geojson} section="geojson" />
-
             <SDKSupportTable
                 supportItems={{
                     'basic functionality': {
@@ -194,7 +184,7 @@ This example of a GeoJSON source refers to an external GeoJSON document via its 
                     }
                 }}
             />
-
+            <Items headingLevel='3' entry={ref.source_geojson} section="geojson" />
             <Markdown content={`
 ## image
 
@@ -215,8 +205,6 @@ The \`"coordinates"\` array contains \`[longitude, latitude]\` pairs for the ima
 }
 \`\`\`
 `} />
-            <Items headingLevel='3' entry={ref.source_image} section="image" />
-
             <SDKSupportTable
                 supportItems={{
                     'basic functionality': {
@@ -227,6 +215,7 @@ The \`"coordinates"\` array contains \`[longitude, latitude]\` pairs for the ima
                     }
                 }}
             />
+            <Items headingLevel='3' entry={ref.source_image} section="image" />
             <Markdown content={`
 ## video
 
@@ -252,9 +241,6 @@ When rendered as a [raster layer](${import.meta.env.BASE_URL}layers/#raster), th
 }
 \`\`\`
 `} />
-
-            <Items headingLevel='3' entry={ref.source_video} section="video" />
-
             <SDKSupportTable
                 supportItems={{
                     'basic functionality': {
@@ -262,6 +248,7 @@ When rendered as a [raster layer](${import.meta.env.BASE_URL}layers/#raster), th
                     }
                 }}
             />
+            <Items headingLevel='3' entry={ref.source_video} section="video" />
 
         </div>
     );
