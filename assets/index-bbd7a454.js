@@ -1,7 +1,7 @@
-import{g as i,i as s,c as o,t as r}from"./entry-client-210324d2.js";import{M as a}from"./markdown-8bb5f7fb.js";import{s as n}from"./v8-0f602cae.js";const p=r("<div>");function d(){const t=`
+import{g as i,i as s,c as o,t as r}from"./entry-client-a5dbbfe3.js";import{M as a}from"./markdown-845f67c6.js";import{s as n}from"./v8-0f602cae.js";const p=r("<div>");function d(){const t=`
 # Sprite
 
-Loading a [sprite](https://en.wikipedia.org/wiki/Sprite_(computer_graphics)) can be done using the optional \`sprite\` propety at the root level of a MapLibre style sheet.
+Loading a [sprite](https://en.wikipedia.org/wiki/Sprite_(computer_graphics)) can be done using the optional \`sprite\` property at the root level of a MapLibre style sheet.
 
 The images contained in the sprite can be referenced in other style properties (\`background-pattern\`, \`fill-pattern\`, \`line-pattern\`,\`fill-extrusion-pattern\` and \`icon-image\`).
 
