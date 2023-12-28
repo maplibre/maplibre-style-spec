@@ -1,4 +1,5 @@
 
+import {StyleSpecification} from './types.g';
 import isEqual from './util/deep_equal';
 
 const operations = {
@@ -96,7 +97,12 @@ const operations = {
     /*
      * { command: 'setLighting', args: [lightProperties] }
      */
-    setLight: 'setLight'
+    setLight: 'setLight',
+
+    /*
+     * { command: 'setTerrain', args: [TerrainSpecification] }
+     */
+    setTerrain: 'setTerrain'
 
 };
 
@@ -316,7 +322,7 @@ function diffLayers(before, after, commands) {
  * @param {*} after stylesheet to compare to
  * @returns Array list of changes
  */
-function diffStyles(before, after) {
+function diffStyles(before: StyleSpecification, after: StyleSpecification): Array<{command: string; args: Array<any>}> {
     if (!before) return [{command: operations.setStyle, args: [after]}];
 
     let commands = [];
@@ -350,6 +356,9 @@ function diffStyles(before, after) {
         if (!isEqual(before.light, after.light)) {
             commands.push({command: operations.setLight, args: [after.light]});
         }
+        if (!isEqual(before.terrain, after.terrain)) {
+            commands.push({command: operations.setTerrain, args: [after.terrain]});
+        }
 
         // Handle changes to `sources`
         // If a source is to be removed, we also--before the removeSource
@@ -368,7 +377,7 @@ function diffStyles(before, after) {
         const beforeLayers = [];
         if (before.layers) {
             before.layers.forEach((layer) => {
-                if (sourcesRemoved[layer.source]) {
+                if (sourcesRemoved[(layer as any).source]) {
                     commands.push({command: operations.removeLayer, args: [layer.id]});
                 } else {
                     beforeLayers.push(layer);
