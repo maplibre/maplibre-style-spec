@@ -73,7 +73,7 @@ import v8Spec from './reference/v8.json' assert {type: 'json'};
 const v8 = v8Spec as any;
 import latest from './reference/latest';
 import derefLayers from './deref';
-import diff, {operations} from './diff';
+import diff from './diff';
 import ValidationError from './error/validation_error';
 import ParsingError from './error/parsing_error';
 import {FeatureState, StyleExpression, isExpression, isZoomExpression, createExpression, createPropertyExpression, normalizePropertyExpression, ZoomConstantExpression, ZoomDependentExpression, StylePropertyFunction, Feature, GlobalProperties, SourceExpression, CompositeExpression, StylePropertyExpression} from './expression';
@@ -188,7 +188,6 @@ export {
     NullType,
     styleFunction as function,
     visit,
-    operations,
     expressions,
     expression,
     FormattedType,
