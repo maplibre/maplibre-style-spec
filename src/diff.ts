@@ -318,7 +318,7 @@ function diffStyles(before: StyleSpecification, after: StyleSpecification): Diff
         const beforeLayers = [];
         if (before.layers) {
             before.layers.forEach((layer) => {
-                if (sourcesRemoved[(layer as any).source]) {
+                if ('source' in layer && sourcesRemoved[layer.source]) {
                     commands.push({command: 'removeLayer', args: [layer.id]});
                 } else {
                     beforeLayers.push(layer);
