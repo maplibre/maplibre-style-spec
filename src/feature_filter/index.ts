@@ -1,7 +1,7 @@
 import {createExpression} from '../expression';
 import type {GlobalProperties, Feature} from '../expression';
 import {ICanonicalTileID} from '../tiles_and_coordinates';
-import {StylePropertySpecification} from '../style-spec';
+import {StylePropertySpecification} from '..';
 import {ExpressionFilterSpecification} from '../types.g';
 
 type FilterExpression = (
