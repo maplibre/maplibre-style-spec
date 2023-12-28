@@ -1,5 +1,5 @@
 
-import type {StylePropertySpecification} from '../style-spec';
+import type {StylePropertySpecification} from '..';
 
 export default convertFunction;
 
