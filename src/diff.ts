@@ -2,32 +2,31 @@
 import {GeoJSONSourceSpecification, LayerSpecification, LightSpecification, SourceSpecification, SpriteSpecification, StyleSpecification, TerrainSpecification, TransitionSpecification} from './types.g';
 import isEqual from './util/deep_equal';
 
-
 /**
  * Operations that can be performed by the diff.
  * Below are the operations and their arguments, the arguments should be aligned with the style methods in maplibre-gl-js.
  */
 export type DiffOperationsMap = {
-    'setStyle': [StyleSpecification] 
-    'addLayer': [LayerSpecification, string | null]
-    'removeLayer': [string]
-    'setPaintProperty': [string, string, unknown, string | null]
-    'setLayoutProperty': [string, string, unknown, string | null]
-    'setFilter': [string, unknown]
-    'addSource': [string, SourceSpecification]
-    'removeSource': [string]
-    'setGeoJSONSourceData': [string, unknown]
-    'setLayerZoomRange': [string, number, number]
-    'setLayerProperty': [string, string, unknown]
-    'setCenter': [number[]]
-    'setZoom': [number]
-    'setBearing': [number]
-    'setPitch': [number]
-    'setSprite': [SpriteSpecification]
-    'setGlyphs': [string]
-    'setTransition': [TransitionSpecification]
-    'setLight': [LightSpecification]
-    'setTerrain': [TerrainSpecification]
+    'setStyle': [StyleSpecification];
+    'addLayer': [LayerSpecification, string | null];
+    'removeLayer': [string];
+    'setPaintProperty': [string, string, unknown, string | null];
+    'setLayoutProperty': [string, string, unknown, string | null];
+    'setFilter': [string, unknown];
+    'addSource': [string, SourceSpecification];
+    'removeSource': [string];
+    'setGeoJSONSourceData': [string, unknown];
+    'setLayerZoomRange': [string, number, number];
+    'setLayerProperty': [string, string, unknown];
+    'setCenter': [number[]];
+    'setZoom': [number];
+    'setBearing': [number];
+    'setPitch': [number];
+    'setSprite': [SpriteSpecification];
+    'setGlyphs': [string];
+    'setTransition': [TransitionSpecification];
+    'setLight': [LightSpecification];
+    'setTerrain': [TerrainSpecification];
 }
 
 export type DiffOperations = keyof DiffOperationsMap;
@@ -39,13 +38,15 @@ export type DiffCommand<T extends DiffOperations> = {
 
 /**
  * The main reason for this method is to allow type check when adding a command to the array.
+ * @param commands - The commands array to add to
+ * @param command - The command to add
  */
 function addCommand<T extends DiffOperations>(commands: DiffCommand<DiffOperations>[], command: DiffCommand<T>) {
     commands.push(command);
 }
 
 function addSource(sourceId: string, after: {[key: string]: SourceSpecification}, commands: DiffCommand<DiffOperations>[]) {
-    addCommand(commands, {command: 'addSource', args: [sourceId, after[sourceId]]})
+    addCommand(commands, {command: 'addSource', args: [sourceId, after[sourceId]]});
 }
 
 function removeSource(sourceId: string, commands: DiffCommand<DiffOperations>[], sourcesRemoved: {[key: string]: boolean}) {
@@ -105,18 +106,17 @@ function diffSources(before: {[key: string]: SourceSpecification}, after: {[key:
     }
 }
 
-function diffLayerPropertyChanges(before: LayerSpecification["layout"] | LayerSpecification["paint"], after:LayerSpecification["layout"] | LayerSpecification["paint"], commands: DiffCommand<DiffOperations>[], layerId: string, klass: string | null, command: 'setPaintProperty' | 'setLayoutProperty') {
-    before = before || {} as LayerSpecification["layout"] | LayerSpecification["paint"];
-    after = after || {} as LayerSpecification["layout"] | LayerSpecification["paint"];
+function diffLayerPropertyChanges(before: LayerSpecification['layout'] | LayerSpecification['paint'], after:LayerSpecification['layout'] | LayerSpecification['paint'], commands: DiffCommand<DiffOperations>[], layerId: string, klass: string | null, command: 'setPaintProperty' | 'setLayoutProperty') {
+    before = before || {} as LayerSpecification['layout'] | LayerSpecification['paint'];
+    after = after || {} as LayerSpecification['layout'] | LayerSpecification['paint'];
 
-
-    for (let prop in before) {
+    for (const prop in before) {
         if (!Object.prototype.hasOwnProperty.call(before, prop)) continue;
         if (!isEqual(before[prop], after[prop])) {
             commands.push({command, args: [layerId, prop, after[prop], klass]});
         }
     }
-    for (let prop in after) {
+    for (const prop in after) {
         if (!Object.prototype.hasOwnProperty.call(after, prop) || Object.prototype.hasOwnProperty.call(before, prop)) continue;
         if (!isEqual(before[prop], after[prop])) {
             commands.push({command, args: [layerId, prop, after[prop], klass]});
@@ -151,8 +151,8 @@ function diffLayers(before: LayerSpecification[], after: LayerSpecification[], c
     const clean = Object.create(null);
 
     let layerId: string;
-    let beforeLayer: LayerSpecification & { source?: string, filter?: unknown};
-    let afterLayer: LayerSpecification & { source?: string, filter?: unknown};
+    let beforeLayer: LayerSpecification & { source?: string; filter?: unknown};
+    let afterLayer: LayerSpecification & { source?: string; filter?: unknown};
     let insertBeforeLayerId: string;
     let prop: string;
 

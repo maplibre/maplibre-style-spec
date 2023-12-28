@@ -1,5 +1,7 @@
 ## main
 
+* Add terrain to diff method and improve type. This also removes the `operations` from the API [#460](https://github.com/maplibre/maplibre-style-spec/pull/460)
+
 ## 19.3.3
 * Improve types for feature to include `unknown` [#365](https://github.com/maplibre/maplibre-style-spec/pull/365)
 * Improve sprite documentation and supported versions [#390](https://github.com/maplibre/maplibre-style-spec/pull/390)
