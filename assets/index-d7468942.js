@@ -1,4 +1,4 @@
-import{g as i,i as s,c as o,t as r}from"./entry-client-a5dbbfe3.js";import{M as a}from"./markdown-845f67c6.js";import{s as n}from"./v8-0f602cae.js";const p=r("<div>");function d(){const t=`
+import{g as i,i as s,c as o,t as r}from"./entry-client-75e337af.js";import{M as a}from"./markdown-cae447f5.js";import{s as n}from"./v8-0f602cae.js";const p=r("<div>");function d(){const t=`
 # Sprite
 
 Loading a [sprite](https://en.wikipedia.org/wiki/Sprite_(computer_graphics)) can be done using the optional \`sprite\` property at the root level of a MapLibre style sheet.

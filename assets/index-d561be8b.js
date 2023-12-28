@@ -1,4 +1,4 @@
-import{g as pe,a as t,i as o,c as i,t as me}from"./entry-client-a5dbbfe3.js";import{M as s}from"./markdown-845f67c6.js";import{s as r}from"./v8-0f602cae.js";import{I as a}from"./items-c0a2a376.js";import{S as n}from"./property-588dd109.js";import"./subtitle-921f9c53.js";const de=me("<div><!#><!/><!#><!/><!#><!/><!#><!/><!#><!/><!#><!/><!#><!/><!#><!/><!#><!/><!#><!/><!#><!/><!#><!/><!#><!/><!#><!/><!#><!/><!#><!/><!#><!/><!#><!/>");function _e(){const w=["vector","raster","raster-dem","geojson","image","video"];return(()=>{const e=pe(de),T=e.firstChild,[l,L]=t(T.nextSibling),k=l.nextSibling,[c,z]=t(k.nextSibling),M=c.nextSibling,[p,G]=t(M.nextSibling),N=p.nextSibling,[m,O]=t(N.nextSibling),A=m.nextSibling,[d,I]=t(A.nextSibling),J=d.nextSibling,[g,R]=t(J.nextSibling),U=g.nextSibling,[u,E]=t(U.nextSibling),B=u.nextSibling,[b,P]=t(B.nextSibling),W=b.nextSibling,[h,C]=t(W.nextSibling),D=h.nextSibling,[y,F]=t(D.nextSibling),q=y.nextSibling,[x,H]=t(q.nextSibling),K=x.nextSibling,[_,V]=t(K.nextSibling),Q=_.nextSibling,[$,X]=t(Q.nextSibling),Y=$.nextSibling,[S,Z]=t(Y.nextSibling),ee=S.nextSibling,[v,te]=t(ee.nextSibling),oe=v.nextSibling,[f,ie]=t(oe.nextSibling),se=f.nextSibling,[j,re]=t(se.nextSibling),ae=j.nextSibling,[ne,le]=t(ae.nextSibling);return o(e,i(s,{get content(){return`# Sources
+import{g as pe,a as t,i as o,c as i,t as me}from"./entry-client-75e337af.js";import{M as s}from"./markdown-cae447f5.js";import{s as r}from"./v8-0f602cae.js";import{I as a}from"./items-aacd8a7c.js";import{S as n}from"./property-67628b1b.js";import"./subtitle-e9b340a0.js";const de=me("<div><!#><!/><!#><!/><!#><!/><!#><!/><!#><!/><!#><!/><!#><!/><!#><!/><!#><!/><!#><!/><!#><!/><!#><!/><!#><!/><!#><!/><!#><!/><!#><!/><!#><!/><!#><!/>");function _e(){const w=["vector","raster","raster-dem","geojson","image","video"];return(()=>{const e=pe(de),T=e.firstChild,[l,L]=t(T.nextSibling),k=l.nextSibling,[c,z]=t(k.nextSibling),M=c.nextSibling,[p,G]=t(M.nextSibling),N=p.nextSibling,[m,O]=t(N.nextSibling),A=m.nextSibling,[d,I]=t(A.nextSibling),J=d.nextSibling,[g,R]=t(J.nextSibling),U=g.nextSibling,[u,E]=t(U.nextSibling),B=u.nextSibling,[b,P]=t(B.nextSibling),W=b.nextSibling,[h,C]=t(W.nextSibling),D=h.nextSibling,[y,F]=t(D.nextSibling),q=y.nextSibling,[x,H]=t(q.nextSibling),K=x.nextSibling,[_,V]=t(K.nextSibling),Q=_.nextSibling,[$,X]=t(Q.nextSibling),Y=$.nextSibling,[S,Z]=t(Y.nextSibling),ee=S.nextSibling,[v,te]=t(ee.nextSibling),oe=v.nextSibling,[f,ie]=t(oe.nextSibling),se=f.nextSibling,[j,re]=t(se.nextSibling),ae=j.nextSibling,[ne,le]=t(ae.nextSibling);return o(e,i(s,{get content(){return`# Sources
 Sources state which data the map should display. Specify the type of source with the \`"type"\` property, which must be one of
 ${w.map(ce=>`\`${ce}\``).join(", ")}. Adding a source isn't enough to make data appear on the map because sources don't contain styling details like color or width. Layers refer to a source and give it a visual representation. This makes it possible to style the same source in different ways, like differentiating between types of roads in a highways layer.
 
@@ -51,7 +51,7 @@ A vector tile source. Tiles must be in [Mapbox Vector Tile format](https://docs.
 }
 \`\`\`
 
-`}}),l,L),o(e,i(a,{headingLevel:"3",get entry(){return r.source_vector},section:"vector"}),c,z),o(e,i(n,{supportItems:{"basic functionality":{js:"0.10.0",android:"2.0.1",ios:"2.0.0",macos:"0.1.0"}}}),p,G),o(e,i(s,{content:`
+`}}),l,L),o(e,i(n,{supportItems:{"basic functionality":{js:"0.10.0",android:"2.0.1",ios:"2.0.0",macos:"0.1.0"}}}),c,z),o(e,i(a,{headingLevel:"3",get entry(){return r.source_vector},section:"vector"}),p,G),o(e,i(s,{content:`
 ## raster
 
 A raster tile source.
@@ -65,7 +65,7 @@ A raster tile source.
     "tileSize": 256
 }
 \`\`\`
-`}),m,O),o(e,i(a,{headingLevel:"3",get entry(){return r.source_raster},section:"raster"}),d,I),o(e,i(n,{supportItems:{"basic functionality":{js:"0.10.0",android:"2.0.1",ios:"2.0.0",macos:"0.1.0"}}}),g,R),o(e,i(s,{content:`
+`}),m,O),o(e,i(n,{supportItems:{"basic functionality":{js:"0.10.0",android:"2.0.1",ios:"2.0.0",macos:"0.1.0"}}}),d,I),o(e,i(a,{headingLevel:"3",get entry(){return r.source_raster},section:"raster"}),g,R),o(e,i(s,{content:`
 ## raster-dem
 
 A raster DEM source. Only supports [Mapbox Terrain RGB](https://blog.mapbox.com/global-elevation-data-6689f1d0ba65) and Mapzen Terrarium tiles.
@@ -79,7 +79,7 @@ A raster DEM source. Only supports [Mapbox Terrain RGB](https://blog.mapbox.com/
     ],
 }
 \`\`\`
-`}),u,E),o(e,i(a,{headingLevel:"3",get entry(){return r.source_raster_dem},section:"raster-dem"}),b,P),o(e,i(n,{supportItems:{"basic functionality":{js:"0.43.0"}}}),h,C),o(e,i(s,{content:`
+`}),u,E),o(e,i(n,{supportItems:{"basic functionality":{js:"0.43.0"}}}),b,P),o(e,i(a,{headingLevel:"3",get entry(){return r.source_raster_dem},section:"raster-dem"}),h,C),o(e,i(s,{content:`
 ## geojson
 
 A [GeoJSON](http://geojson.org/) source. Data must be provided via a \`"data"\` property, whose value can be a URL or inline GeoJSON.
@@ -109,7 +109,7 @@ This example of a GeoJSON source refers to an external GeoJSON document via its 
     "data": "./lines.geojson"
 }
 \`\`\`
-`}),y,F),o(e,i(a,{headingLevel:"3",get entry(){return r.source_geojson},section:"geojson"}),x,H),o(e,i(n,{supportItems:{"basic functionality":{js:"0.10.0",android:"2.0.1",ios:"2.0.0",macos:"0.1.0"},clustering:{js:"0.14.0",android:"4.2.0",ios:"3.4.0",macos:"0.3.0"},"line distance metrics":{js:"0.45.0",android:"6.5.0",ios:"4.4.0",macos:"0.11.0"}}}),_,V),o(e,i(s,{content:`
+`}),y,F),o(e,i(n,{supportItems:{"basic functionality":{js:"0.10.0",android:"2.0.1",ios:"2.0.0",macos:"0.1.0"},clustering:{js:"0.14.0",android:"4.2.0",ios:"3.4.0",macos:"0.3.0"},"line distance metrics":{js:"0.45.0",android:"6.5.0",ios:"4.4.0",macos:"0.11.0"}}}),x,H),o(e,i(a,{headingLevel:"3",get entry(){return r.source_geojson},section:"geojson"}),_,V),o(e,i(s,{content:`
 ## image
 
 An image source. The \`"url"\` value contains the image location.
@@ -128,7 +128,7 @@ The \`"coordinates"\` array contains \`[longitude, latitude]\` pairs for the ima
     ]
 }
 \`\`\`
-`}),$,X),o(e,i(a,{headingLevel:"3",get entry(){return r.source_image},section:"image"}),S,Z),o(e,i(n,{supportItems:{"basic functionality":{js:"0.10.0",android:"5.2.0",ios:"3.7.0",macos:"0.6.0"}}}),v,te),o(e,i(s,{get content(){return`
+`}),$,X),o(e,i(n,{supportItems:{"basic functionality":{js:"0.10.0",android:"5.2.0",ios:"3.7.0",macos:"0.6.0"}}}),S,Z),o(e,i(a,{headingLevel:"3",get entry(){return r.source_image},section:"image"}),v,te),o(e,i(s,{get content(){return`
 ## video
 
 A video source. The \`"urls"\` value is an array. For each URL in the array, a video element [source](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source) will be created. To support the video across browsers, supply URLs in multiple formats.
@@ -152,4 +152,4 @@ When rendered as a [raster layer](/maplibre-style-spec/layers/#raster), the laye
     ]
 }
 \`\`\`
-`}}),f,ie),o(e,i(a,{headingLevel:"3",get entry(){return r.source_video},section:"video"}),j,re),o(e,i(n,{supportItems:{"basic functionality":{js:"0.10.0"}}}),ne,le),e})()}export{_e as default};
+`}}),f,ie),o(e,i(n,{supportItems:{"basic functionality":{js:"0.10.0"}}}),j,re),o(e,i(a,{headingLevel:"3",get entry(){return r.source_video},section:"video"}),ne,le),e})()}export{_e as default};
