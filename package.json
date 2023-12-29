@@ -39,6 +39,11 @@
     "gl-style-validate": "dist/gl-style-validate.mjs",
     "gl-style-format": "dist/gl-style-format.mjs"
   },
+  "files": [
+    "dist",
+    "src",
+    "bin"
+  ],
   "dependencies": {
     "@mapbox/jsonlint-lines-primitives": "~2.0.2",
     "@mapbox/unitbezier": "^0.0.1",

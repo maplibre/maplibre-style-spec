@@ -1,4 +1,4 @@
-Hi, and thanks in advance for contributing to MapLibre GL JS. Here's how we work. Please follow these conventions when submitting an issue or pull request.
+Hi, and thanks in advance for contributing to the MapLibre Style Spec. Here's how we work. Please follow these conventions when submitting an issue or pull request.
 
 ## Do not violate Mapbox copyright!
 
@@ -17,7 +17,7 @@ MapLibre software relies heavily on automated testing, and the project includes 
 
 # Building the Docs site
 
-The MapLibre style spec documnetions site is based on [SOLIDSTART](https://start.solidjs.com/) in order to get Server Side Rendering for Search Engnie Optimization.
+The MapLibre style spec documnetions site is based on [SolidStart](https://start.solidjs.com/) in order to get Server Side Rendering for Search Engine Optimization.
 
 ```bash
 cd docs
@@ -37,7 +37,7 @@ npm run build
 
 # Running the tests
 
-Unit tests are using jest.
+Unit tests are using [Jest](https://jestjs.io/).
 There are a few layers of tests - integration, unit and build tests.
 
 ```bash
