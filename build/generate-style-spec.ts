@@ -320,7 +320,6 @@ ${spec.source.map(key => {
         // This is done in order to overcome the type system's inability to express this type:
         str = str.replace(/unknown/, 'GeoJSON.GeoJSON | string');
     }
-    console.log(str);
     return str;
 }).join('\n\n')}
 
