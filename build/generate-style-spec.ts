@@ -318,7 +318,7 @@ ${spec.source.map(key => {
     let str = objectDeclaration(sourceTypeName(key), spec[key])
     if (sourceTypeName(key) === 'GeoJSONSourceSpecification') {
         // This is done in order to overcome the type system's inability to express this type:
-        str = str.replace(/unknown/, 'GeoJSON.FeatureCollection | GeoJSON.Feature | string');
+        str = str.replace(/unknown/, 'GeoJSON.GeoJSON | string');
     }
     console.log(str);
     return str;
