@@ -107,6 +107,9 @@ import FormatExpression from './expression/definitions/format';
 import Literal from './expression/definitions/literal';
 import CompoundExpression from './expression/compound_expression';
 import {VariableAnchorOffsetCollectionSpecification} from './types.g';
+import format from './format';
+import validate from './validate/validate';
+import migrate from './migrate';
 
 const expression = {
     StyleExpression,
@@ -181,6 +184,9 @@ export {
     featureFilter,
     typeOf,
     toString,
+    format,
+    validate,
+    migrate,
 
     ColorType,
     interpolates,
