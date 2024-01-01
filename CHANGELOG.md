@@ -1,18 +1,29 @@
 ## main
 
+### ✨ Features and improvements
+
 * Add back `migrate`, `validate` and `format` to the exported methods of this package
 * Add terrain to diff method and improve type. This also removes the `operations` from the API [#460](https://github.com/maplibre/maplibre-style-spec/pull/460)
+* Improve the type of `data` in the `GeoJSONSourceSpecification` for TypeScript.
 
 ## 19.3.3
+
+### ✨ Features and improvements
+
 * Improve types for feature to include `unknown` [#365](https://github.com/maplibre/maplibre-style-spec/pull/365)
 * Improve sprite documentation and supported versions [#390](https://github.com/maplibre/maplibre-style-spec/pull/390)
 
 
 ## 19.3.2
+
+### ✨ Features and improvements
+
 * Add raster dem source `redFactor`, `greenFactor`, `blueFactor`, `baseShift` properties [#326](https://github.com/maplibre/maplibre-style-spec/issues/326)
 * Improve error messages around `hillshade` layers not using `raster-dem` sources [#353](https://github.com/maplibre/maplibre-style-spec/pull/353)
 
 ## 19.3.1
+
+### ✨ Features and improvements
 
 * Document `raster-fade-duration` property's effect on rendering a video. [#297](https://github.com/maplibre/maplibre-style-spec/pull/297)
 * Add and expose `isZoomExpression`. [#267](https://github.com/maplibre/maplibre-style-spec/issues/267)

@@ -314,7 +314,14 @@ ${objectDeclaration('LightSpecification', spec.light)}
 
 ${objectDeclaration('TerrainSpecification', spec.terrain)}
 
-${spec.source.map(key => objectDeclaration(sourceTypeName(key), spec[key])).join('\n\n')}
+${spec.source.map(key => {
+        let str = objectDeclaration(sourceTypeName(key), spec[key]);
+        if (sourceTypeName(key) === 'GeoJSONSourceSpecification') {
+        // This is done in order to overcome the type system's inability to express this type:
+            str = str.replace(/unknown/, 'GeoJSON.GeoJSON | string');
+        }
+        return str;
+    }).join('\n\n')}
 
 export type SourceSpecification =
 ${spec.source.map(key => `    | ${sourceTypeName(key)}`).join('\n')}
