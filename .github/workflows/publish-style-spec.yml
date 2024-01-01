@@ -1,11 +1,47 @@
 name: publish-style-spec
 
 on:
-  workflow_dispatch
+  push:
+    branches: [main]
+  workflow_dispatch:
 
 jobs:
-  build_publish:
+  release-check:
+    name: Check if version changed
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - name: Use Node.js from nvmrc
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Check if version changed
+        id: check
+        run: |
+          latestNpmPackageVersion=$( npm view maplibre-gl versions --json | jq '.[-1]' -r )
+          currentVersion=$( node -e "console.log(require('./package.json').version)" )
+          if [ "$latestNpmPackageVersion" == "$currentVersion" ]; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+          
+    outputs:
+      publish: ${{ steps.check.outputs.changed }}
+
+
+  publish:
     name: Build, publish
+    needs: release-check
+    if: ${{ needs.release-check.outputs.publish == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
