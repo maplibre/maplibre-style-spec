@@ -45,3 +45,10 @@ npm run test-build
 npm run test-integration
 npm run test-unit
 ```
+
+# Publish style-spec NPM package
+In order to publish the package to NPM:
+1. Go to "Action" in GitHub
+2. Run the create bump version PR action to create a PR with the version bump
+3. Approve and merge this PR after you have reviewed the Changelog file
+4. Squash and merge the PR, an automatic action will pick up the change and publish the package to npm
