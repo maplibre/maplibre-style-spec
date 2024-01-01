@@ -4,7 +4,7 @@
 
 * Add back `migrate`, `validate` and `format` to the exported methods of this package
 * Add terrain to diff method and improve type. This also removes the `operations` from the API [#460](https://github.com/maplibre/maplibre-style-spec/pull/460)
-* Improve the type of `data` in the `GeoJSONSourceSpecification` for typescript.
+* Improve the type of `data` in the `GeoJSONSourceSpecification` for TypeScript.
 
 ## 19.3.3
 
