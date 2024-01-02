@@ -1,4 +1,4 @@
-import { ILngLat } from "../tiles_and_coordinates";
+import {ILngLat} from '../tiles_and_coordinates';
 
 /**
  * constrain n to the given range, excluding the minimum, via modular arithmetic
