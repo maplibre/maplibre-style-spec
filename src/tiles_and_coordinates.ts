@@ -5,28 +5,31 @@ export interface ICanonicalTileID {
     x: number;
     y: number;
     key: string;
-    equals(id: ICanonicalTileID): {};
-    url(urls: Array<string>, pixelRatio: number, scheme: string | null): {};
-    isChildOf(parent: ICanonicalTileID): {};
+    equals(id: ICanonicalTileID): boolean;
+    url(urls: Array<string>, pixelRatio: number, scheme: string | null): string;
+    isChildOf(parent: ICanonicalTileID): boolean;
     getTilePoint(coord: IMercatorCoordinate): Point2D;
-    toString(): {};
+    toString(): string;
 }
 
 export interface IMercatorCoordinate {
     x: number;
     y: number;
+    z: number;
 
-    toLngLat(): {};
-    toAltitude(): {};
-    meterInMercatorCoordinateUnits(): {};
+    toLngLat(): ILngLat;
+    toAltitude(): number;
+    meterInMercatorCoordinateUnits(): number;
 }
 
 export interface ILngLat {
-    wrap(): {};
-    toArray(): {};
-    toString(): {};
-    distanceTo(lngLat: ILngLat): {};
-    convert(input: ILngLatLike): ILngLat;
+    lng: number;
+    lat: number;
+
+    wrap(): ILngLat;
+    toArray(): [number, number];
+    distanceTo(lngLat: ILngLat): number;
+    toString(): string;
 }
 
 export type ILngLatLike = ILngLat | {
