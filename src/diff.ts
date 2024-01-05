@@ -31,6 +31,29 @@ export type DiffOperationsMap = {
 
 export type DiffOperations = keyof DiffOperationsMap;
 
+const operations: Record<DiffOperations, string> = {
+    'setStyle': 'setStyle',
+    'addLayer': 'addLayer',
+    'removeLayer': 'removeLayer',
+    'setPaintProperty': 'setPaintProperty',
+    'setLayoutProperty': 'setLayoutProperty',
+    'setFilter': 'setFilter',
+    'addSource': 'addSource',
+    'removeSource': 'removeSource',
+    'setGeoJSONSourceData': 'setGeoJSONSourceData',
+    'setLayerZoomRange': 'setLayerZoomRange',
+    'setLayerProperty': 'setLayerProperty',
+    'setCenter': 'setCenter',
+    'setZoom': 'setZoom',
+    'setBearing': 'setBearing',
+    'setPitch': 'setPitch',
+    'setSprite': 'setSprite',
+    'setGlyphs': 'setGlyphs',
+    'setTransition': 'setTransition',
+    'setLight': 'setLight',
+    'setTerrain': 'setTerrain'
+};
+
 export type DiffCommand<T extends DiffOperations> = {
     command: T;
     args: DiffOperationsMap[T];
@@ -340,3 +363,5 @@ function diffStyles(before: StyleSpecification, after: StyleSpecification): Diff
 }
 
 export default diffStyles;
+
+export {operations};
