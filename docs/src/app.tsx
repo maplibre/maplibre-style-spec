@@ -3,6 +3,7 @@ import {FileRoutes} from '@solidjs/start';
 import {App} from './components/app/app';
 import './root.module.scss';
 import {Router} from '@solidjs/router';
+import { Suspense } from 'solid-js';
 
 export default function Root() {
     return (
@@ -34,7 +35,7 @@ export default function Root() {
                         href="https://unpkg.com/@fortawesome/fontawesome-free@6.4.0/css/solid.css"
                         rel="stylesheet"
                     />
-                    <App>{props.children}</App>
+                    <App><Suspense>{props.children}</Suspense></App>
                 </MetaProvider>
             )}
         >

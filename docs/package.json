@@ -27,6 +27,6 @@
     "vinxi": "^0.1.1"
   },
   "resolutions": {
-    "vite": "^5.0.0"
+    "vite": "5"
   }
 }
