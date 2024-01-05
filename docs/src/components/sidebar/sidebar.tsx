@@ -19,7 +19,7 @@ export function Sidebar(props: {
                             <ul>
                                 <For each={pages}>{(page) => (
                                     <li>
-                                        <a classList={{'sidebar-link': true, 'active': `${import.meta.env.BASE_URL}${page.path}` === location.pathname}} href={`${import.meta.env.BASE_URL}${page.path}`}>{page.title}</a>
+                                        <a classList={{'sidebar-link': true, 'active': `${import.meta.env.SERVER_BASE_URL}${page.path}` === location.pathname}} href={`/${import.meta.env.SERVER_BASE_URL}/${page.path}`}>{page.title}</a>
                                     </li>
                                 )}
                                 </For>
