@@ -1,3 +1,5 @@
+import {ICanonicalTileID, ILngLatLike} from '../../src';
+import {Point2D} from '../../src/point2d';
 import Color from '../../src/util/color';
 
 /**
@@ -25,4 +27,31 @@ export function expectToMatchColor(toTest: Color, expectedSerialized: string, nu
  */
 export function expectCloseToArray(toTest: number[], expected: number[], numDigits = 5) {
     expect(toTest).toEqual(expected.map(n => isNaN(n) ? n : expect.closeTo(n, numDigits)));
+}
+
+export function getPointFromLngLat(lng: number, lat: number, canonical: ICanonicalTileID) {
+    return getTilePoint(canonical, {x: mercatorXfromLng(lng), y: mercatorYfromLat(lat), z: 0});
+}
+
+function getTilePoint(canonical: ICanonicalTileID, coord: {x: number; y: number; z: number}): Point2D {
+    const tilesAtZoom = Math.pow(2, canonical.z);
+    return {
+        x: (coord.x * tilesAtZoom - canonical.x) * 8192,
+        y: (coord.y * tilesAtZoom - canonical.y) * 8192
+    };
+}
+
+function mercatorXfromLng(lng: number) {
+    return (180 + lng) / 360;
+}
+
+function mercatorYfromLat(lat: number) {
+    return (180 - (180 / Math.PI * Math.log(Math.tan(Math.PI / 4 + lat * Math.PI / 360)))) / 360;
+}
+
+export function getPoint(coord: ILngLatLike, canonical: ICanonicalTileID): Point2D {
+    const p: Point2D = getTilePoint(canonical, {x: mercatorXfromLng(coord[0]), y: mercatorYfromLat(coord[1]), z: 0});
+    p.x = Math.round(p.x);
+    p.y = Math.round(p.y);
+    return p;
 }
