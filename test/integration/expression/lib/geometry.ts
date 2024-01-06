@@ -10,12 +10,12 @@ export function mercatorYfromLat(lat: number) {
     return (180 - (180 / Math.PI * Math.log(Math.tan(Math.PI / 4 + lat * Math.PI / 360)))) / 360;
 }
 
-function getTilePoint(canonical: ICanonicalTileID, coord: {x: number, y: number, z: number}): Point2D {
+function getTilePoint(canonical: ICanonicalTileID, coord: {x: number; y: number; z: number}): Point2D {
     const tilesAtZoom = Math.pow(2, canonical.z);
     return {
         x: (coord.x * tilesAtZoom - canonical.x) * 8192,
         y: (coord.y * tilesAtZoom - canonical.y) * 8192
-    }
+    };
 }
 
 function getPoint(coord: ILngLatLike, canonical: ICanonicalTileID): Point2D {

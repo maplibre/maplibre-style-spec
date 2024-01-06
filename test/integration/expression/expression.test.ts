@@ -5,8 +5,8 @@ import {
     createPropertyExpression,
     isFunction,
     convertFunction,
-    toString, 
-    ICanonicalTileID, 
+    toString,
+    ICanonicalTileID,
     StylePropertyExpression
 } from '../../../src/index';
 import ExpressionParsingError from '../../../src/expression/parsing_error';
@@ -36,7 +36,7 @@ type ExpressionFixture = {
 const expressionTestFileNames = globSync('**/test.json', {cwd: __dirname});
 describe('expression', () => {
 
-    expressionTestFileNames.forEach((expressionTestFileName) => {
+    for (const expressionTestFileName of expressionTestFileNames) {
         test(expressionTestFileName, () => {
 
             const fixture = JSON.parse(fs.readFileSync(path.join(__dirname, expressionTestFileName), 'utf8'));
@@ -64,20 +64,19 @@ describe('expression', () => {
             } catch (e) {
                 throw new Error(`Compilation Falied:\nExpected ${JSON.stringify(expected.compiled)}\nResult   ${JSON.stringify(result.compiled)}`);
             }
-            
+
             try {
                 expect(evalOk).toBeTruthy();
             } catch (e) {
                 throw new Error(`Evaluation Falied:\nExpected ${JSON.stringify(expected.outputs)}\nResult   ${JSON.stringify(result.outputs)}`);
             }
-            
-        });
-    });
 
+        });
+    }
 });
 
 function evaluateFixture(fixture: ExpressionFixture) {
-    const spec = Object.assign({}, fixture.propertySpec);
+    const spec = fixture.propertySpec || {};
 
     if (!spec['property-type']) {
         spec['property-type'] = 'data-driven';
@@ -90,14 +89,14 @@ function evaluateFixture(fixture: ExpressionFixture) {
         };
     }
 
-    const expression = isFunction(fixture.expression) 
-        ? createPropertyExpression(convertFunction(fixture.expression, spec), spec)
-        : createPropertyExpression(fixture.expression, spec);
+    const expression = isFunction(fixture.expression) ?
+        createPropertyExpression(convertFunction(fixture.expression, spec), spec) :
+        createPropertyExpression(fixture.expression, spec);
 
-    const result: { compiled: any; outputs?: any; } = {
+    const result: { compiled: any; outputs?: any } = {
         compiled: getCompilationResult(expression)
     };
-    
+
     if (result.compiled.result !== 'error') {
         result.outputs = evaluateExpression(fixture, expression);
     }
