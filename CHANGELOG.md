@@ -6,6 +6,7 @@
 * Add terrain to diff method and improve type. This also removes the `operations` from the API [#460](https://github.com/maplibre/maplibre-style-spec/pull/460)
 * Improve the type of `data` in the `GeoJSONSourceSpecification` for TypeScript [#463](https://github.com/maplibre/maplibre-style-spec/pull/463).
 * Add expression tests to this repo [#476](https://github.com/maplibre/maplibre-style-spec/pull/476)
+* Add Sky spec, this is only the definition, no implementation at this point, only validation [#478](https://github.com/maplibre/maplibre-style-spec/pull/478)
 
 ## 19.3.3
 
