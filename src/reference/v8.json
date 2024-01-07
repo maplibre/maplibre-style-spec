@@ -65,9 +65,12 @@
     },
     "sky": {
       "type": "sky",
-      "doc": "The map sky.",
+      "doc": "The map's sky configuration.",
       "example": {
-          "sky-color": "#199EF3"
+          "sky-color": "#199EF3",
+          "fog-color": "#00ff00",
+          "horizon-blend": 0.5,
+          "fog-blend": 0.6
       }
     },
     "terrain": {
@@ -3921,12 +3924,7 @@
         ]
       },
       "transition": true,
-      "doc": "Base color for sky.",
-      "sdk-support": {
-        "basic functionality": {
-          "js": "3.0.0"
-        }
-      }
+      "doc": "The base color for the sky."
     },
     "fog-color": {
       "type": "color",
@@ -3939,12 +3937,7 @@
         ]
       },
       "transition": true,
-      "doc": "Base color for fog.",
-      "sdk-support": {
-        "basic functionality": {
-          "js": "3.0.0"
-        }
-      }
+      "doc": "The base color for the fog."
     },
     "fog-blend": {
       "type": "number",
@@ -3959,12 +3952,7 @@
         ]
       },
       "transition": true,
-      "doc": "Blend fog over terrain3d. A value between 0 and 1. 0 is map center and 1 is the horizon",
-      "sdk-support": {
-        "basic functionality": {
-          "js": "3.0.0"
-        }
-      }
+      "doc": "How to blend the fog over the 3D terrain. A value between 0 and 1. Where 0 is the map center and 1 is the horizon"
     },
     "horizon-blend": {
       "type": "number",
@@ -3979,12 +3967,7 @@
         ]
       },
       "transition": true,
-      "doc": "Blend fog and sky color at horizon. A value between 0 and 1. 0 is the horizon and 1 is map-height / 2",
-      "sdk-support": {
-        "basic functionality": {
-          "js": "3.0.0"
-        }
-      }
+      "doc": "How to blend the fog and sky color at the horizon. A value between 0 and 1. Where 0 is the horizon and 1 is map-height / 2"
     }
   },
   "terrain": {

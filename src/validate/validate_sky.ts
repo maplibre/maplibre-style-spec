@@ -1,8 +1,18 @@
 import ValidationError from '../error/validation_error';
 import getType from '../util/get_type';
 import validate from './validate';
+import v8 from '../reference/v8.json' assert {type: 'json'};
+import {SkySpecification, StyleSpecification} from '../types.g';
 
-export default function validateSky(options) {
+interface ValidateSkyOptions {
+    sourceName?: string;
+    value: SkySpecification;
+    styleSpec: typeof v8;
+    style: StyleSpecification;
+    validateSpec: Function;
+}
+
+export default function validateSky(options: ValidateSkyOptions) {
     const sky = options.value;
     const styleSpec = options.styleSpec;
     const skySpec = styleSpec.sky;

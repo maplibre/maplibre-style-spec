@@ -8,6 +8,7 @@ export const pages: {path: string; title: string}[] = [
     {title: 'Sources', path: 'sources/'},
     {title: 'Sprite', path: 'sprite/'},
     {title: 'Terrain', path: 'terrain/'},
+    {title: 'Sky', path: 'sky/'},
     {title: 'Transition', path: 'transition/'},
     {title: 'Types', path: 'types/'},
     {title: 'Deprecations', path: 'deprecations/'},
