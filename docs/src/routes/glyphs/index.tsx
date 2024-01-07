@@ -1,7 +1,6 @@
 import {Markdown} from '~/components/markdown/markdown';
 import ref from '../../../../src/reference/latest';
 
-
 function glyphs() {
     const md = `
 # Glyphs

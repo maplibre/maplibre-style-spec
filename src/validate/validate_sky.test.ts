@@ -1,7 +1,7 @@
-import validateSky from "./validate_sky";
+import validateSky from './validate_sky';
 import validateSpec from './validate';
 import v8 from '../reference/v8.json' assert {type: 'json'};
-import {SkySpecification} from "../types.g";
+import {SkySpecification} from '../types.g';
 
 describe('Validate sky', () => {
     it('Should pass when value is undefined', () => {
@@ -24,16 +24,16 @@ describe('Validate sky', () => {
     });
 
     test('Should return errors according to spec violations', () => {
-        const errors = validateSky({validateSpec, value: {"sky-color": 1 as any, "fog-color": 2 as any, "horizon-blend": {} as any, "fog-blend": 'foo' as any}, styleSpec: v8, style: {} as any});
+        const errors = validateSky({validateSpec, value: {'sky-color': 1 as any, 'fog-color': 2 as any, 'horizon-blend': {} as any, 'fog-blend': 'foo' as any}, styleSpec: v8, style: {} as any});
         expect(errors).toHaveLength(4);
-        expect(errors[0].message).toBe("sky-color: color expected, number found");
-        expect(errors[1].message).toBe("fog-color: color expected, number found");
-        expect(errors[2].message).toBe("horizon-blend: missing required property \"stops\"");
-        expect(errors[3].message).toBe("fog-blend: number expected, string found");
+        expect(errors[0].message).toBe('sky-color: color expected, number found');
+        expect(errors[1].message).toBe('fog-color: color expected, number found');
+        expect(errors[2].message).toBe('horizon-blend: missing required property "stops"');
+        expect(errors[3].message).toBe('fog-blend: number expected, string found');
     });
 
     test('Should pass if everything is according to spec', () => {
-        const errors = validateSky({validateSpec, value:{"sky-color": "red", "fog-color": "#123456", "horizon-blend": 1, "fog-blend": 0 }, styleSpec: v8, style: {} as any});
+        const errors = validateSky({validateSpec, value: {'sky-color': 'red', 'fog-color': '#123456', 'horizon-blend': 1, 'fog-blend': 0}, styleSpec: v8, style: {} as any});
         expect(errors).toHaveLength(0);
     });
 });
