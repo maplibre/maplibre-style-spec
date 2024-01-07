@@ -11,9 +11,9 @@ import {
 } from '../../../src/index';
 import ExpressionParsingError from '../../../src/expression/parsing_error';
 import {Result} from '../../../src/util/result';
-import {getGeometry} from './lib/geometry';
-import {stringify} from './lib/util';
-import {deepEqual, stripPrecision} from './lib/json-diff';
+import {getGeometry} from '../../lib/geometry';
+import {stringify} from '../../lib/util';
+import {deepEqual, stripPrecision} from '../../lib/json-diff';
 
 const DECIMAL_SIGNIFICANT_FIGURES =  6;
 

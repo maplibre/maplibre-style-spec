@@ -1,4 +1,4 @@
-import {expectToMatchColor} from '../../test/unit/test_utils';
+import {expectToMatchColor} from '../../test/lib/util';
 import interpolate, {isSupportedInterpolationColorSpace} from './interpolate';
 import Color from './color';
 import Padding from './padding';

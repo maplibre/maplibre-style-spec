@@ -1,7 +1,7 @@
 
-import {ICanonicalTileID, ILngLatLike} from '../../../../src';
-import {Point2D} from '../../../../src/point2d';
-import {getPoint} from '../../../unit/test_utils';
+import {ICanonicalTileID, ILngLatLike} from '../../src';
+import {Point2D} from '../../src/point2d';
+import {getPoint} from './util';
 
 function convertPoint(coord: ILngLatLike, canonical: ICanonicalTileID): Point2D[] {
     return [getPoint(coord, canonical)];

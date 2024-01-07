@@ -4,7 +4,7 @@ import convertFilter from './convert';
 import {ICanonicalTileID} from '../tiles_and_coordinates';
 import {ExpressionFilterSpecification, ExpressionInputType, ExpressionSpecification, FilterSpecification} from '../types.g';
 import {Feature} from '../expression';
-import {getPointFromLngLat} from '../../test/unit/test_utils';
+import {getPointFromLngLat} from '../../test/lib/util';
 
 describe('filter', () => {
     test('expressions transpilation test', () => {
