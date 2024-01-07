@@ -37,14 +37,17 @@ npm run build
 
 # Running the tests
 
-Unit tests are using [Jest](https://jestjs.io/).
+Tests are using [Jest](https://jestjs.io/).
 There are a few layers of tests - integration, unit and build tests.
 
 ```bash
-npm run test-build
-npm run test-integration
 npm run test-unit
+npm run test-integration
+npm run test-build
 ```
+
+In intergration tests, if there's a need to update the expected resutls you'll need to run the tests with the `UPDATE=1` environment flag. 
+For example `UPDATE=1 npm run test-integration`, or if you would like to update only a specific type of integration test use `UPDATE=1 npx jest ./test/integration/style-spec/validate_spec.test.ts`
 
 # Publish style-spec NPM package
 In order to publish the package to NPM:

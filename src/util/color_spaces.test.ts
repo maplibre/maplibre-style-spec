@@ -1,4 +1,4 @@
-import {expectCloseToArray} from '../../test/unit/test_utils';
+import {expectCloseToArray} from '../../test/lib/util';
 import {hclToRgb, hslToRgb, labToRgb, rgbToHcl, rgbToLab} from './color_spaces';
 
 describe('color spaces', () => {

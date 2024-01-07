@@ -1,11 +1,10 @@
 import {default as createFilter, isExpressionFilter} from '.';
 
 import convertFilter from './convert';
-import MercatorCoordinate from '../coordinates/mercator_coordinate';
-import EXTENT from '../extent';
 import {ICanonicalTileID} from '../tiles_and_coordinates';
 import {ExpressionFilterSpecification, ExpressionInputType, ExpressionSpecification, FilterSpecification} from '../types.g';
 import {Feature} from '../expression';
+import {getPointFromLngLat} from '../../test/lib/util';
 
 describe('filter', () => {
     test('expressions transpilation test', () => {
@@ -154,14 +153,7 @@ describe('filter', () => {
     });
 
     test('expression, within', () => {
-        const getPointFromLngLat = (lng, lat, canonical) => {
-            const p = MercatorCoordinate.fromLngLat({lng, lat}, 0);
-            const tilesAtZoom = Math.pow(2, canonical.z);
-            return {
-                x: (p.x * tilesAtZoom - canonical.x) * EXTENT,
-                y: (p.y * tilesAtZoom - canonical.y) * EXTENT,
-            };
-        };
+
         const withinFilter =  createFilter(['within', {'type': 'Polygon', 'coordinates': [[[0, 0], [5, 0], [5, 5], [0, 5], [0, 0]]]}]);
         expect(withinFilter.needGeometry).toBe(true);
         const canonical = {z: 3, x: 3, y: 3} as ICanonicalTileID;
