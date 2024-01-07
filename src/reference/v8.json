@@ -63,6 +63,13 @@
         "intensity": 0.4
       }
     },
+    "sky": {
+      "type": "sky",
+      "doc": "The map sky.",
+      "example": {
+          "sky-color": "#199EF3"
+      }
+    },
     "terrain": {
       "type": "terrain",
       "doc": "The terrain configuration.",
@@ -3898,6 +3905,84 @@
           "android": "5.1.0",
           "ios": "3.6.0",
           "macos": "0.5.0"
+        }
+      }
+    }
+  },
+  "sky": {
+    "sky-color": {
+      "type": "color",
+      "property-type": "data-constant",
+      "default": "#88C6FC",
+      "expression": {
+        "interpolated": true,
+        "parameters": [
+          "zoom"
+        ]
+      },
+      "transition": true,
+      "doc": "Base color for sky.",
+      "sdk-support": {
+        "basic functionality": {
+          "js": "3.0.0"
+        }
+      }
+    },
+    "fog-color": {
+      "type": "color",
+      "property-type": "data-constant",
+      "default": "#ffffff",
+      "expression": {
+        "interpolated": true,
+        "parameters": [
+          "zoom"
+        ]
+      },
+      "transition": true,
+      "doc": "Base color for fog.",
+      "sdk-support": {
+        "basic functionality": {
+          "js": "3.0.0"
+        }
+      }
+    },
+    "fog-blend": {
+      "type": "number",
+      "property-type": "data-constant",
+      "default": 0.5,
+      "minimum": 0,
+      "maximum": 1,
+      "expression": {
+        "interpolated": true,
+        "parameters": [
+          "zoom"
+        ]
+      },
+      "transition": true,
+      "doc": "Blend fog over terrain3d. A value between 0 and 1. 0 is map center and 1 is the horizon",
+      "sdk-support": {
+        "basic functionality": {
+          "js": "3.0.0"
+        }
+      }
+    },
+    "horizon-blend": {
+      "type": "number",
+      "property-type": "data-constant",
+      "default": 0.8,
+      "minimum": 0,
+      "maximum": 1,
+      "expression": {
+        "interpolated": true,
+        "parameters": [
+          "zoom"
+        ]
+      },
+      "transition": true,
+      "doc": "Blend fog and sky color at horizon. A value between 0 and 1. 0 is the horizon and 1 is map-height / 2",
+      "sdk-support": {
+        "basic functionality": {
+          "js": "3.0.0"
         }
       }
     }

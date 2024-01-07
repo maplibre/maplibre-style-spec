@@ -34,6 +34,8 @@ function propertyType(property) {
             }
             case 'light':
                 return 'LightSpecification';
+            case 'sky':
+                return 'SkySpecification';
             case 'sources':
                 return '{[_: string]: SourceSpecification}';
             case '*':
@@ -311,6 +313,8 @@ export type DataDrivenPropertyValueSpecification<T> =
 ${objectDeclaration('StyleSpecification', spec.$root)}
 
 ${objectDeclaration('LightSpecification', spec.light)}
+
+${objectDeclaration('SkySpecification', spec.sky)}
 
 ${objectDeclaration('TerrainSpecification', spec.terrain)}
 
