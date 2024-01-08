@@ -20,7 +20,7 @@ A style's \`light\` property provides a global light source for that style. Sinc
         <div>
             <Markdown content={md} />
 
-            <Items headingLevel='2' entry={ref.light} />
+            <Items headingLevel='3' entry={ref.light} />
         </div>
     );
 }

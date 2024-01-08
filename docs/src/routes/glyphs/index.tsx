@@ -1,4 +1,5 @@
 import {Markdown} from '~/components/markdown/markdown';
+import ref from '../../../../src/reference/latest';
 
 function glyphs() {
     const md = `
@@ -7,7 +8,7 @@ function glyphs() {
 A style's \`glyphs\` property provides a URL template for loading signed-distance-field glyph sets in PBF format.
 
 \`\`\`json
-"glyphs": "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf"
+"glyphs": ${JSON.stringify(ref.$root.glyphs.example, null, 2)}
 \`\`\`
     
 This URL template should include two tokens:
