@@ -7,6 +7,10 @@
 * Improve the type of `data` in the `GeoJSONSourceSpecification` for TypeScript [#463](https://github.com/maplibre/maplibre-style-spec/pull/463).
 * Add expression tests to this repo [#476](https://github.com/maplibre/maplibre-style-spec/pull/476)
 
+### 🐞 Bug fixes
+
+- Fix queryRenderedFeatures Within a FeatureCollection of polygons [#477](https://github.com/maplibre/maplibre-style-spec/pull/477)
+
 ## 19.3.3
 
 ### ✨ Features and improvements
