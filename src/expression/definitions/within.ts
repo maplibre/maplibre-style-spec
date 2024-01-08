@@ -5,6 +5,7 @@ import type {Expression} from '../expression';
 import type ParsingContext from '../parsing_context';
 import type EvaluationContext from '../evaluation_context';
 import {ICanonicalTileID} from '../../tiles_and_coordinates';
+import {Position} from 'geojson';
 
 type GeoJSONPolygons = GeoJSON.Polygon | GeoJSON.MultiPolygon;
 
@@ -295,9 +296,9 @@ class Within implements Expression {
         if (isValue(args[1])) {
             const geojson = (args[1] as any);
             if (geojson.type === 'FeatureCollection') {
-                const polygonsCoords = [];
-                for (let i = 0; i < geojson.features.length; ++i) {
-                    const {type, coordinates} = geojson.features[i].geometry;
+                const polygonsCoords: Position[][][] = [];
+                for (const polygon of geojson.features) {
+                    const {type, coordinates} = polygon.geometry;
                     if (type === 'Polygon') {
                         polygonsCoords.push(coordinates);
                     }
