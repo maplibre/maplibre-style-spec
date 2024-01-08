@@ -5,6 +5,7 @@ import type {Expression} from '../expression';
 import type ParsingContext from '../parsing_context';
 import type EvaluationContext from '../evaluation_context';
 import {ICanonicalTileID} from '../../tiles_and_coordinates';
+import {Position} from 'geojson';
 
 type GeoJSONPolygons = GeoJSON.Polygon | GeoJSON.MultiPolygon;
 
@@ -295,12 +296,24 @@ class Within implements Expression {
         if (isValue(args[1])) {
             const geojson = (args[1] as any);
             if (geojson.type === 'FeatureCollection') {
-                for (let i = 0; i < geojson.features.length; ++i) {
-                    const type = geojson.features[i].geometry.type;
-                    if (type === 'Polygon' || type === 'MultiPolygon') {
-                        return new Within(geojson, geojson.features[i].geometry);
+                const polygonsCoords: Position[][][] = [];
+                for (const polygon of geojson.features) {
+                    const {type, coordinates} = polygon.geometry;
+                    if (type === 'Polygon') {
+                        polygonsCoords.push(coordinates);
+                    }
+                    if (type === 'MultiPolygon') {
+                        polygonsCoords.push(...coordinates);
                     }
                 }
+                if (polygonsCoords.length) {
+                    const multipolygonWrapper: GeoJSON.MultiPolygon = {
+                        type: 'MultiPolygon',
+                        coordinates: polygonsCoords
+                    };
+                    return new Within(geojson, multipolygonWrapper);
+                }
+
             } else if (geojson.type === 'Feature') {
                 const type = geojson.geometry.type;
                 if (type === 'Polygon' || type === 'MultiPolygon') {

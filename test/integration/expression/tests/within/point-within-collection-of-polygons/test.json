@@ -1,0 +1,48 @@
+{
+    "expression": [
+      "within",
+      {
+        "type": "FeatureCollection",
+        "features": [
+            {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Polygon",
+                    "coordinates": [[[10, 0], [10, 5], [15, 5], [15, 0], [10, 0]]]
+                }
+            },
+            {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Polygon",
+                    "coordinates": [[[0, 0], [0, 5], [5, 5], [5, 0], [0, 0]]]
+                }
+            }
+        ]
+      }
+    ],
+    "inputs": [
+      [
+        {"zoom": 3, "canonicalID": {"z": 3, "x": 3, "y": 3}},
+        {"geometry": {"type": "Point", "coordinates": [6, 6]}}
+      ],
+      [
+        {"zoom": 3, "canonicalID": {"z": 3, "x": 3, "y": 3}},
+        {"geometry": {"type": "Point", "coordinates": [2, 2]}}
+      ],
+      [
+        {"zoom": 3, "canonicalID": {"z": 3, "x": 3, "y": 3}},
+        {"geometry": {"type": "Point", "coordinates": [12, 2]}}
+      ]
+    ],
+    "expected": {
+      "compiled": {
+        "result": "success",
+        "isFeatureConstant": false,
+        "isZoomConstant": true,
+        "type": "boolean"
+      },
+      "outputs": [false, true, true]
+    }
+  }
+  
