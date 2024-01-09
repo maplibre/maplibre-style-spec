@@ -1,6 +1,14 @@
 ## main
 
 ### ✨ Features and improvements
+- _...Add new stuff here..._
+
+### 🐞 Bug fixes
+- _...Add new stuff here..._
+
+## 20.0.0
+
+### ✨ Features and improvements
 
 * Add back `migrate`, `validate` and `format` to the exported methods of this package [#464](https://github.com/maplibre/maplibre-style-spec/pull/464)
 * Add terrain to diff method and improve type. This also removes the `operations` from the API [#460](https://github.com/maplibre/maplibre-style-spec/pull/460)
