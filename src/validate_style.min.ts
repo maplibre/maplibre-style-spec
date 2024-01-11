@@ -11,28 +11,26 @@ import validateLayer from './validate/validate_layer';
 import validateFilter from './validate/validate_filter';
 import validatePaintProperty from './validate/validate_paint_property';
 import validateLayoutProperty from './validate/validate_layout_property';
-import type {StyleSpecification} from './types.g';
 import validateSprite from './validate/validate_sprite';
 import validateGlyphsUrl from './validate/validate_glyphs_url';
+import ValidationError from './error/validation_error';
+import type {StyleSpecification} from './types.g';
 
 /**
- * Validate a MapLibre style against the style specification. This entrypoint,
- * `maplibre-gl-style-spec/lib/validate_style.min`, is designed to produce as
- * small a browserify bundle as possible by omitting unnecessary functionality
- * and legacy style specifications.
+ * Validate a MapLibre style against the style specification.
+ * Use this when running in the browser.
  *
- * @private
- * @param {Object} style The style to be validated.
- * @param {Object} [styleSpec] The style specification to validate against.
- *     If omitted, the latest style spec is used.
- * @returns {Array<ValidationError>}
+ * @param style - The style to be validated.
+ * @param styleSpec - The style specification to validate against.
+ * If omitted, the latest style spec is used.
+ * @returns an array of errors, or an empty array if no errors are found.
  * @example
- *   var validate = require('maplibre-gl-style-spec/lib/validate_style.min');
- *   var errors = validate(style);
+ *   const validate = require('@maplibre/maplibre-gl-style-spec/').validateStyleMin;
+ *   const errors = validate(style);
  */
-function validateStyleMin(style: StyleSpecification, styleSpec = latestStyleSpec) {
+function validateStyleMin(style: StyleSpecification, styleSpec = latestStyleSpec): Array<ValidationError> {
 
-    let errors = [];
+    let errors: ValidationError[] = [];
 
     errors = errors.concat(validate({
         key: '',

@@ -17,7 +17,7 @@
   "types": "./dist/index.d.ts",
   "type": "module",
   "scripts": {
-    "build": "rollup --configPlugin @rollup/plugin-typescript -c rollup.config.ts",
+    "build": "rollup --configPlugin @rollup/plugin-typescript -c rollup.config.ts && cp ./src/reference/v8.json ./dist/latest.json",
     "generate-style-spec": "node --no-warnings --loader ts-node/esm build/generate-style-spec.ts",
     "generate-typings": "node --no-warnings --loader ts-node/esm build/generate-typings.ts",
     "test-build": "jest --selectProjects=build",

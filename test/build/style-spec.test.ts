@@ -6,27 +6,26 @@ const minBundle = fs.readFileSync('dist/index.mjs', 'utf8');
 
 describe('@maplibre/maplibre-gl-style-spec npm package', () => {
     test('files build', async () => {
-        expect(await readdir('dist')).toMatchInlineSnapshot(`
-[
-  "gl-style-format.cjs",
-  "gl-style-format.cjs.map",
-  "gl-style-format.mjs",
-  "gl-style-format.mjs.map",
-  "gl-style-migrate.cjs",
-  "gl-style-migrate.cjs.map",
-  "gl-style-migrate.mjs",
-  "gl-style-migrate.mjs.map",
-  "gl-style-validate.cjs",
-  "gl-style-validate.cjs.map",
-  "gl-style-validate.mjs",
-  "gl-style-validate.mjs.map",
-  "index.cjs",
-  "index.cjs.map",
-  "index.d.ts",
-  "index.mjs",
-  "index.mjs.map",
-]
-`);
+        const dirContents = await readdir('dist');
+        expect(dirContents).toContain('gl-style-format.cjs');
+        expect(dirContents).toContain('gl-style-format.cjs.map');
+        expect(dirContents).toContain('gl-style-format.mjs');
+        expect(dirContents).toContain('gl-style-format.mjs.map');
+        expect(dirContents).toContain('gl-style-migrate.cjs');
+        expect(dirContents).toContain('gl-style-migrate.cjs.map');
+        expect(dirContents).toContain('gl-style-migrate.mjs');
+        expect(dirContents).toContain('gl-style-migrate.mjs.map');
+        expect(dirContents).toContain('gl-style-validate.cjs');
+        expect(dirContents).toContain('gl-style-validate.cjs.map');
+        expect(dirContents).toContain('gl-style-validate.mjs');
+        expect(dirContents).toContain('gl-style-validate.mjs.map');
+        expect(dirContents).toContain('index.cjs');
+        expect(dirContents).toContain('index.cjs.map');
+        expect(dirContents).toContain('index.d.ts');
+        expect(dirContents).toContain('index.mjs');
+        expect(dirContents).toContain('index.mjs.map');
+        expect(dirContents).toContain('latest.json');
+        expect(dirContents).toHaveLength(18);
     });
 
     test('exports components directly, not behind `default` - https://github.com/mapbox/mapbox-gl-js/issues/6601', async  () => {
