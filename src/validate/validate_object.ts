@@ -10,7 +10,7 @@ export default function validateObject(options): Array<ValidationError> {
     const style = options.style;
     const styleSpec = options.styleSpec;
     const validateSpec = options.validateSpec;
-    let errors = [] as Array<ValidationError>;
+    let errors: ValidationError[] = [];
 
     const type = getType(object);
     if (type !== 'object') {

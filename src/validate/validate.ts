@@ -52,17 +52,28 @@ const VALIDATORS = {
     'sprite': validateSprite,
 };
 
-// Main recursive validation function. Tracks:
-//
-// - key: string representing location of validation in style tree. Used only
-//   for more informative error reporting.
-// - value: current value from style being evaluated. May be anything from a
-//   high level object that needs to be descended into deeper or a simple
-//   scalar value.
-// - valueSpec: current spec being evaluated. Tracks value.
-// - styleSpec: current full spec being evaluated.
-
-export default function validate(options) {
+/**
+ * Main recursive validation function used internally.
+ * You should use `validateStyleMin` in the browser or `validateStyle` in node env.
+ * Tracks:
+ * - key: string representing location of validation in style tree. Used only
+ *   for more informative error reporting.
+ * - value: current value from style being evaluated. May be anything from a
+ *   high level object that needs to be descended into deeper or a simple
+ *   scalar value.
+ * - valueSpec: current spec being evaluated. Tracks value.
+ * - styleSpec: current full spec being evaluated.
+ * @param options 
+ * @returns 
+ */
+export default function validate(options: {
+        key: any, 
+        value: any; 
+        valueSpec: any; 
+        styleSpec: any, 
+        validateSpec?: any, 
+        style: any,
+        objectElementValidators?: any}) {
     const value = options.value;
     const valueSpec = options.valueSpec;
     const styleSpec = options.styleSpec;

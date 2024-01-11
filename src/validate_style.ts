@@ -5,19 +5,17 @@ import readStyle from './read_style';
 import type {StyleSpecification} from './types.g';
 
 /**
- * Validate a Mapbox GL style against the style specification.
+ * Validate a Maplibre GL style against the style specification.
  *
- * @private
- * @alias validate
- * @param {StyleSpecification|string|Buffer} style The style to be validated. If a `String`
- *     or `Buffer` is provided, the returned errors will contain line numbers.
- * @param {Object} [styleSpec] The style specification to validate against.
- *     If omitted, the spec version is inferred from the stylesheet.
- * @returns {Array<ValidationError|ParsingError>}
+ * @param style - The style to be validated. If a `String` or `Buffer` is provided, 
+ * the returned errors will contain line numbers.
+ * @param styleSpec - The style specification to validate against.
+ * If omitted, the spec version is inferred from the stylesheet.
+ * @returns an array of errors, or an empty array if no errors are found.
  * @example
- *   var validate = require('maplibre-gl-style-spec').validate;
- *   var style = fs.readFileSync('./style.json', 'utf8');
- *   var errors = validate(style);
+ *   const validate = require('maplibre-gl-style-spec').validate;
+ *   const style = fs.readFileSync('./style.json', 'utf8');
+ *   const errors = validate(style);
  */
 
 export default function validateStyle(style: StyleSpecification | string | Buffer, styleSpec = v8): Array<ValidationError> {
