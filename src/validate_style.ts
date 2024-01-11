@@ -5,7 +5,7 @@ import readStyle from './read_style';
 import type {StyleSpecification} from './types.g';
 
 /**
- * Validate a Maplibre GL style against the style specification.
+ * Validate a MapLibre GL style against the style specification.
  *
  * @param style - The style to be validated. If a `String` or `Buffer` is provided,
  * the returned errors will contain line numbers.
