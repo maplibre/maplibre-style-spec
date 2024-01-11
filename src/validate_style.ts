@@ -7,7 +7,7 @@ import type {StyleSpecification} from './types.g';
 /**
  * Validate a Maplibre GL style against the style specification.
  *
- * @param style - The style to be validated. If a `String` or `Buffer` is provided, 
+ * @param style - The style to be validated. If a `String` or `Buffer` is provided,
  * the returned errors will contain line numbers.
  * @param styleSpec - The style specification to validate against.
  * If omitted, the spec version is inferred from the stylesheet.

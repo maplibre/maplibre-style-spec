@@ -19,10 +19,10 @@ import type {StyleSpecification} from './types.g';
 /**
  * Validate a MapLibre style against the style specification.
  * Use this when running in the browser.
- * 
+ *
  * @param style - The style to be validated.
  * @param styleSpec - The style specification to validate against.
- *     If omitted, the latest style spec is used.
+ * If omitted, the latest style spec is used.
  * @returns an array of errors, or an empty array if no errors are found.
  * @example
  *   const validate = require('@maplibre/maplibre-gl-style-spec/').validateStyleMin;
