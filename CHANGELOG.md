@@ -12,7 +12,6 @@
 
 - Add `latest.json` to dist folder to allow using the full version of the spec [#490](https://github.com/maplibre/maplibre-style-spec/pull/490)
 
-### 🐞 Bug fixes
 
 
 ## 20.0.0
