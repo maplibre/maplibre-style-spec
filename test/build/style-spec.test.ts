@@ -25,6 +25,7 @@ describe('@maplibre/maplibre-gl-style-spec npm package', () => {
   "index.d.ts",
   "index.mjs",
   "index.mjs.map",
+  "latest.json",
 ]
 `);
     });
