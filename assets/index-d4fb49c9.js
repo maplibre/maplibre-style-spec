@@ -1,4 +1,4 @@
-import{g as c,a as n,i as o,c as r,t as f}from"./entry-client-3342931a.js";import{M as g}from"./markdown-58a8f836.js";import{s}from"./v8-3eae868e.js";import{I as $}from"./items-594533a9.js";import"./property-816f77eb.js";import"./subtitle-cfde4caa.js";const u=f("<div><!#><!/><!#><!/>");function b(){const i=`# Sky
+import{g as c,a as n,i as o,c as r,t as f}from"./entry-client-aaab3b88.js";import{M as g}from"./markdown-0c77b253.js";import{s}from"./v8-3eae868e.js";import{I as $}from"./items-63be901e.js";import"./property-720def50.js";import"./subtitle-5e9228fd.js";const u=f("<div><!#><!/><!#><!/>");function b(){const i=`# Sky
 
 Add sky and fog to the map.
 
