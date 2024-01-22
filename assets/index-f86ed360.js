@@ -1,4 +1,4 @@
-import{M as t}from"./markdown-0c77b253.js";import{s as o}from"./v8-3eae868e.js";import{c as s}from"./entry-client-aaab3b88.js";function r(){const e=`
+import{M as t}from"./markdown-22167de4.js";import{s as o}from"./v8-5042578d.js";import{c as s}from"./entry-client-abf0cb12.js";function r(){const e=`
 # Glyphs
 
 A style's \`glyphs\` property provides a URL template for loading signed-distance-field glyph sets in PBF format.

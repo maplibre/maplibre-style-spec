@@ -1,4 +1,4 @@
-import{g as $,a as r,i as n,c as o,t as g}from"./entry-client-aaab3b88.js";import{M as d}from"./markdown-0c77b253.js";import{s as i}from"./v8-3eae868e.js";import{I as f}from"./items-63be901e.js";import"./property-720def50.js";import"./subtitle-5e9228fd.js";const _=g("<div><!#><!/><!#><!/>");function N(){const a=`# Terrain
+import{g as $,a as r,i as n,c as o,t as g}from"./entry-client-abf0cb12.js";import{M as d}from"./markdown-22167de4.js";import{s as i}from"./v8-5042578d.js";import{I as f}from"./items-6eb280cc.js";import"./property-40a02e5b.js";import"./subtitle-a2e19d88.js";const _=g("<div><!#><!/><!#><!/>");function N(){const a=`# Terrain
 
 Add 3D terrain to the map.
 
