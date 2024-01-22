@@ -2817,7 +2817,8 @@
         "group": "Lookup",
         "sdk-support": {
           "basic functionality": {
-            "js": "1.10.0"
+            "js": "1.10.0",
+            "ios": "6.0.0"
           }
         }
       },
@@ -2826,7 +2827,8 @@
         "group": "Lookup",
         "sdk-support": {
           "basic functionality": {
-            "js": "1.10.0"
+            "js": "1.10.0",
+            "ios": "6.0.0"
           }
         }
       },
