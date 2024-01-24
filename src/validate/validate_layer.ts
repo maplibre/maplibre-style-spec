@@ -84,9 +84,6 @@ export default function validateLayer(options) {
         styleSpec: options.styleSpec,
         validateSpec: options.validateSpec,
         objectElementValidators: {
-            '*'() {
-                return [];
-            },
             // We don't want to enforce the spec's `"requires": true` for backward compatibility with refs;
             // the actual requirement is validated above. See https://github.com/mapbox/mapbox-gl-js/issues/5772.
             type() {

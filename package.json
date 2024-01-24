@@ -28,7 +28,7 @@
     "compile": "tsc",
     "lint": "eslint --cache --ext .ts,.tsx --ignore-path .gitignore .",
     "typecheck": "tsc --noEmit",
-    "prepare": "npm run generate-style-spec"
+    "prepare": "npm run build"
   },
   "repository": {
     "type": "git",
