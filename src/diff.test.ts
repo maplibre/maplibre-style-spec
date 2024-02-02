@@ -472,10 +472,10 @@ test('diff', () => {
     } as StyleSpecification,
     {
         sky: {
-            "fog-color": 'green',
-            "fog-blend": 0.2
+            'fog-color': 'green',
+            'fog-blend': 0.2
         }
     } as StyleSpecification)).toEqual([
-        {command: 'setSky', args: [{"fog-color": 'green', "fog-blend": 0.2}]},
+        {command: 'setSky', args: [{'fog-color': 'green', 'fog-blend': 0.2}]},
     ]);
 });
