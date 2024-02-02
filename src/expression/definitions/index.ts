@@ -379,7 +379,7 @@ CompoundExpression.register(expressions, {
     'filter-type-==': [
         BooleanType,
         [StringType],
-        (ctx, [v]) => ctx.geometryType() === (v as any).value
+        (ctx, [v]) => ctx.geometryDollarType() === (v as any).value
     ],
     'filter-<': [
         BooleanType,
@@ -466,7 +466,7 @@ CompoundExpression.register(expressions, {
     'filter-type-in': [
         BooleanType,
         [array(StringType)],
-        (ctx, [v]) => (v as any).value.indexOf(ctx.geometryType()) >= 0
+        (ctx, [v]) => (v as any).value.indexOf(ctx.geometryDollarType()) >= 0
     ],
     'filter-id-in': [
         BooleanType,

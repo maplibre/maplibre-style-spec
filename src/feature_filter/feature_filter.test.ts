@@ -255,7 +255,7 @@ describe('convert legacy filters to expressions', () => {
             [
                 'match',
                 ['geometry-type'],
-                ['LineString', 'Point', 'Polygon'],
+                ['LineString', 'MultiLineString', 'MultiPoint', 'MultiPolygon', 'Point', 'Polygon'],
                 true,
                 false
             ],
@@ -334,7 +334,15 @@ function legacyFilterTests(createFilterExpr) {
         expect(f({zoom: 0}, {properties: {}})).toBe(false);
     });
 
-    test('==, $type', () => {
+    test('==, $type, Point', () => {
+        const f = createFilterExpr(['==', '$type', 'Point']).filter;
+        expect(f({zoom: 0}, {type: 1, geometry: [[{x:0, y:0}]]})).toBe(true);	// Point geometry-type
+        expect(f({zoom: 0}, {type: 1, geometry: [[{x:0, y:0}], [{x:0, y:0}]]})).toBe(true);	// MultiPoint geometry-type
+        expect(f({zoom: 0}, {type: 2, geometry: [[{x:0, y:0}, {x:1, y:1}]]})).toBe(false);	// Linestring geometry-type
+        expect(f({zoom: 0}, {type: 2, geometry: [[{x:0, y:0}, {x:1, y:1}], [{x:2, y:0}, {x:1, y:0}]]})).toBe(false); // MultiLineString geometry-type
+    });
+
+    test('==, $type, LineString', () => {
         const f = createFilterExpr(['==', '$type', 'LineString']).filter;
         expect(f({zoom: 0}, {type: 1})).toBe(false);
         expect(f({zoom: 0}, {type: 2})).toBe(true);
