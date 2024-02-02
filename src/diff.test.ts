@@ -467,4 +467,15 @@ test('diff', () => {
     } as StyleSpecification)).toEqual([
         {command: 'setTerrain', args: [{source: 'maplibre-dem', exaggeration: 1.5}]},
     ]);
+
+    expect(diffStyles({
+    } as StyleSpecification,
+    {
+        sky: {
+            "fog-color": 'green',
+            "fog-blend": 0.2
+        }
+    } as StyleSpecification)).toEqual([
+        {command: 'setSky', args: [{"fog-color": 'green', "fog-blend": 0.2}]},
+    ]);
 });
