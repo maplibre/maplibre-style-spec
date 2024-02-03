@@ -1,6 +1,5 @@
 import diffStyles from './diff';
 import {StyleSpecification} from './types.g';
-import http from 'https';
 
 describe('diff', () => {
     test('layers id equal', () => {
@@ -10,7 +9,7 @@ describe('diff', () => {
             layers: [{id: 'a'}]
         } as StyleSpecification)).toEqual([]);
     });
-    
+
     test('version not equal', () => {
         expect(diffStyles({
             version: 7,
@@ -51,7 +50,7 @@ describe('diff', () => {
         } as StyleSpecification)).toEqual([
             {command: 'removeLayer', args: ['b']}
         ]);
-    }); 
+    });
 
     test('remove and add layer', () => {
         expect(diffStyles({
@@ -302,7 +301,6 @@ describe('diff', () => {
             {command: 'setPitch', args: [1]}
         ]);
     });
-
 
     test('no changes in light', () => {
         expect(diffStyles({
