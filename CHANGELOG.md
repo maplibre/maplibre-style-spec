@@ -4,6 +4,8 @@
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
+
+- Add missing sky in diff results [#518](https://github.com/maplibre/maplibre-style-spec/pull/518)
 - _...Add new stuff here..._
 
 ## 20.1.0
