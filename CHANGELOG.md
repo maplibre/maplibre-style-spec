@@ -9,7 +9,6 @@
 
 ## 20.1.1
 
-### ✨ Features and improvements
 
 ### 🐞 Bug fixes
 
