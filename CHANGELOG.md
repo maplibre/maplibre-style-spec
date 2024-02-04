@@ -9,7 +9,6 @@
 
 ## 20.1.1
 
-
 ### 🐞 Bug fixes
 
 - Add missing sky in diff results [#518](https://github.com/maplibre/maplibre-style-spec/pull/518)
