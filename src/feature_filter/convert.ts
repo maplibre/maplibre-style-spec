@@ -128,8 +128,8 @@ function runtimeTypeChecks(expectedTypes: ExpectedTypes): ExpressionFilterSpecif
 function convertComparisonOp(property: string, value: any, op: string, expectedTypes?: ExpectedTypes | null): ExpressionFilterSpecification {
     let get;
     if (property === '$type') {
-	// TODO: Assuming op is either '==' or '!='
-	return convertInOp('$type', [value], op === '!=');
+        // TODO: Assuming op is either '==' or '!='
+        return convertInOp('$type', [value], op === '!=');
     } else if (property === '$id') {
         get = ['id'];
     } else {
@@ -163,10 +163,10 @@ function convertInOp(property: string, values: Array<any>, negate = false): Expr
 
     let get: ExpressionSpecification;
     if (property === '$type') {
-	var len = values.length;
-	for (var i = 0; i < len; i++) {
-	    values.push('Multi' + values[i]);
-	}
+        var len = values.length;
+        for (var i = 0; i < len; i++) {
+            values.push('Multi${values[i]}');
+        }
         get = ['geometry-type'];
     } else if (property === '$id') {
         get = ['id'];

@@ -12,7 +12,7 @@ const simpleGeometryType = {
     'MultiLineString': 'LineString',
     'Polygon': 'Polygon',
     'MultiPolygon': 'Polygon'
-}
+};
 
 class EvaluationContext {
     globals: GlobalProperties;
@@ -52,9 +52,9 @@ class EvaluationContext {
     }
 
     geometryDollarType() {
-        return this.feature
-            ? typeof this.feature.type === 'number' ? geometryTypes[this.feature.type] : simpleGeometryType[this.feature.type]
-            : null;
+        return this.feature ?
+            typeof this.feature.type === 'number' ? geometryTypes[this.feature.type] : simpleGeometryType[this.feature.type] :
+            null;
     }
 
     geometryType() {
