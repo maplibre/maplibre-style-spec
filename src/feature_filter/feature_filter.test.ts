@@ -459,10 +459,10 @@ function legacyFilterTests(createFilterExpr) {
         expect(fPoint({zoom: 0}, {type: 2, geometry: [[{x: 0, y: 0}, {x: 1, y: 1}]]})).toBe(true);      // Linestring geometry-type
         expect(fPoint({zoom: 0}, {type: 2, geometry: [[{x: 0, y: 0}, {x: 1, y: 1}], [{x: 2, y: 0}, {x: 1, y: 0}]]})).toBe(true); // MultiLineString geometry-type
         expect(fPoint({zoom: 0}, {type: 3, geometry: [[{x: 0, y: 0}, {x: 3, y: 0}, {x: 3, y: 3}, {x: 0, y: 3}, {x: 0, y: 0}],
-                    [{x: 0, y: 0}, {x: 0, y: 2}, {x: 2, y: 2}, {x: 2, y: 0}, {x: 0, y: 0}]]})).toBe(true);      // Polygon geometry-type
+            [{x: 0, y: 0}, {x: 0, y: 2}, {x: 2, y: 2}, {x: 2, y: 0}, {x: 0, y: 0}]]})).toBe(true);      // Polygon geometry-type
         expect(fPoint({zoom: 0}, {type: 3, geometry: [[{x: 0, y: 0}, {x: 3, y: 0}, {x: 3, y: 3}, {x: 0, y: 3}, {x: 0, y: 0}],
-                [{x: 0, y: 0}, {x: 0, y: 2}, {x: 2, y: 2}, {x: 2, y: 0}, {x: 0, y: 0}],
-                [{x: 0, y: 0}, {x: 1, y: 0}, {x: 1, y: 1}, {x: 0, y: 1}, {x: 0, y: 0}]]})).toBe(true); // MultiPolygon geometry-type
+            [{x: 0, y: 0}, {x: 0, y: 2}, {x: 2, y: 2}, {x: 2, y: 0}, {x: 0, y: 0}],
+            [{x: 0, y: 0}, {x: 1, y: 0}, {x: 1, y: 1}, {x: 0, y: 1}, {x: 0, y: 0}]]})).toBe(true); // MultiPolygon geometry-type
         expect(fPoint({zoom: 0}, {type: 'Unknown'})).toBe(true);
         expect(fPoint({zoom: 0}, {type: 'Point'})).toBe(false);
         expect(fPoint({zoom: 0}, {type: 'MultiPoint'})).toBe(false);
@@ -478,10 +478,10 @@ function legacyFilterTests(createFilterExpr) {
         expect(fLineString({zoom: 0}, {type: 2, geometry: [[{x: 0, y: 0}, {x: 1, y: 1}]]})).toBe(false);        // Linestring geometry-type
         expect(fLineString({zoom: 0}, {type: 2, geometry: [[{x: 0, y: 0}, {x: 1, y: 1}], [{x: 2, y: 0}, {x: 1, y: 0}]]})).toBe(false); // MultiLineString geometry-type
         expect(fLineString({zoom: 0}, {type: 3, geometry: [[{x: 0, y: 0}, {x: 3, y: 0}, {x: 3, y: 3}, {x: 0, y: 3}, {x: 0, y: 0}],
-                    [{x: 0, y: 0}, {x: 0, y: 2}, {x: 2, y: 2}, {x: 2, y: 0}, {x: 0, y: 0}]]})).toBe(true);      // Polygon geometry-type
+            [{x: 0, y: 0}, {x: 0, y: 2}, {x: 2, y: 2}, {x: 2, y: 0}, {x: 0, y: 0}]]})).toBe(true);      // Polygon geometry-type
         expect(fLineString({zoom: 0}, {type: 3, geometry: [[{x: 0, y: 0}, {x: 3, y: 0}, {x: 3, y: 3}, {x: 0, y: 3}, {x: 0, y: 0}],
-                [{x: 0, y: 0}, {x: 0, y: 2}, {x: 2, y: 2}, {x: 2, y: 0}, {x: 0, y: 0}],
-                [{x: 0, y: 0}, {x: 1, y: 0}, {x: 1, y: 1}, {x: 0, y: 1}, {x: 0, y: 0}]]})).toBe(true); // MultiPolygon geometry-type
+            [{x: 0, y: 0}, {x: 0, y: 2}, {x: 2, y: 2}, {x: 2, y: 0}, {x: 0, y: 0}],
+            [{x: 0, y: 0}, {x: 1, y: 0}, {x: 1, y: 1}, {x: 0, y: 1}, {x: 0, y: 0}]]})).toBe(true); // MultiPolygon geometry-type
         expect(fLineString({zoom: 0}, {type: 'Unknown'})).toBe(true);
         expect(fLineString({zoom: 0}, {type: 'Point'})).toBe(true);
         expect(fLineString({zoom: 0}, {type: 'MultiPoint'})).toBe(true);
@@ -497,10 +497,10 @@ function legacyFilterTests(createFilterExpr) {
         expect(fPolygon({zoom: 0}, {type: 2, geometry: [[{x: 0, y: 0}, {x: 1, y: 1}]]})).toBe(true);    // Linestring geometry-type
         expect(fPolygon({zoom: 0}, {type: 2, geometry: [[{x: 0, y: 0}, {x: 1, y: 1}], [{x: 2, y: 0}, {x: 1, y: 0}]]})).toBe(true); // MultiLineString geometry-type
         expect(fPolygon({zoom: 0}, {type: 3, geometry: [[{x: 0, y: 0}, {x: 3, y: 0}, {x: 3, y: 3}, {x: 0, y: 3}, {x: 0, y: 0}],
-                    [{x: 0, y: 0}, {x: 0, y: 2}, {x: 2, y: 2}, {x: 2, y: 0}, {x: 0, y: 0}]]})).toBe(false);     // Polygon geometry-type
+            [{x: 0, y: 0}, {x: 0, y: 2}, {x: 2, y: 2}, {x: 2, y: 0}, {x: 0, y: 0}]]})).toBe(false);     // Polygon geometry-type
         expect(fPolygon({zoom: 0}, {type: 3, geometry: [[{x: 0, y: 0}, {x: 3, y: 0}, {x: 3, y: 3}, {x: 0, y: 3}, {x: 0, y: 0}],
-                [{x: 0, y: 0}, {x: 0, y: 2}, {x: 2, y: 2}, {x: 2, y: 0}, {x: 0, y: 0}],
-                [{x: 0, y: 0}, {x: 1, y: 0}, {x: 1, y: 1}, {x: 0, y: 1}, {x: 0, y: 0}]]})).toBe(false); // MultiPolygon geometry-type
+            [{x: 0, y: 0}, {x: 0, y: 2}, {x: 2, y: 2}, {x: 2, y: 0}, {x: 0, y: 0}],
+            [{x: 0, y: 0}, {x: 1, y: 0}, {x: 1, y: 1}, {x: 0, y: 1}, {x: 0, y: 0}]]})).toBe(false); // MultiPolygon geometry-type
         expect(fPolygon({zoom: 0}, {type: 'Unknown'})).toBe(true);
         expect(fPolygon({zoom: 0}, {type: 'Point'})).toBe(true);
         expect(fPolygon({zoom: 0}, {type: 'MultiPoint'})).toBe(true);
@@ -516,10 +516,10 @@ function legacyFilterTests(createFilterExpr) {
         expect(fUnknown({zoom: 0}, {type: 2, geometry: [[{x: 0, y: 0}, {x: 1, y: 1}]]})).toBe(true);    // Linestring geometry-type
         expect(fUnknown({zoom: 0}, {type: 2, geometry: [[{x: 0, y: 0}, {x: 1, y: 1}], [{x: 2, y: 0}, {x: 1, y: 0}]]})).toBe(true); // MultiLineString geometry-type
         expect(fUnknown({zoom: 0}, {type: 3, geometry: [[{x: 0, y: 0}, {x: 3, y: 0}, {x: 3, y: 3}, {x: 0, y: 3}, {x: 0, y: 0}],
-                    [{x: 0, y: 0}, {x: 0, y: 2}, {x: 2, y: 2}, {x: 2, y: 0}, {x: 0, y: 0}]]})).toBe(true);      // Polygon geometry-type
+            [{x: 0, y: 0}, {x: 0, y: 2}, {x: 2, y: 2}, {x: 2, y: 0}, {x: 0, y: 0}]]})).toBe(true);      // Polygon geometry-type
         expect(fUnknown({zoom: 0}, {type: 3, geometry: [[{x: 0, y: 0}, {x: 3, y: 0}, {x: 3, y: 3}, {x: 0, y: 3}, {x: 0, y: 0}],
-                [{x: 0, y: 0}, {x: 0, y: 2}, {x: 2, y: 2}, {x: 2, y: 0}, {x: 0, y: 0}],
-                [{x: 0, y: 0}, {x: 1, y: 0}, {x: 1, y: 1}, {x: 0, y: 1}, {x: 0, y: 0}]]})).toBe(true); // MultiPolygon geometry-type
+            [{x: 0, y: 0}, {x: 0, y: 2}, {x: 2, y: 2}, {x: 2, y: 0}, {x: 0, y: 0}],
+            [{x: 0, y: 0}, {x: 1, y: 0}, {x: 1, y: 1}, {x: 0, y: 1}, {x: 0, y: 0}]]})).toBe(true); // MultiPolygon geometry-type
         expect(fUnknown({zoom: 0}, {type: 'Unknown'})).toBe(false);
         expect(fUnknown({zoom: 0}, {type: 'Point'})).toBe(true);
         expect(fUnknown({zoom: 0}, {type: 'MultiPoint'})).toBe(true);

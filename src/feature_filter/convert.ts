@@ -165,7 +165,7 @@ function convertInOp(property: string, values: Array<any>, negate = false): Expr
     if (property === '$type') {
         var len = values.length;
         for (var i = 0; i < len; i++) {
-            values.push('Multi${values[i]}');
+            values.push('Multi' + values[i]);
         }
         get = ['geometry-type'];
     } else if (property === '$id') {
