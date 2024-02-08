@@ -4,6 +4,15 @@ import type {GlobalProperties, Feature, FeatureState} from './index';
 import {ICanonicalTileID} from '../tiles_and_coordinates';
 
 const geometryTypes = ['Unknown', 'Point', 'LineString', 'Polygon'];
+const simpleGeometryType = {
+    'Unknown': 'Unknown',
+    'Point': 'Point',
+    'MultiPoint': 'Point',
+    'LineString': 'LineString',
+    'MultiLineString': 'LineString',
+    'Polygon': 'Polygon',
+    'MultiPolygon': 'Polygon'
+}
 
 class EvaluationContext {
     globals: GlobalProperties;
@@ -24,7 +33,6 @@ class EvaluationContext {
         this._parseColorCache = {};
         this.availableImages = null;
         this.canonical = null;
-        this._geometryType = null;
     }
 
     id() {
@@ -44,54 +52,53 @@ class EvaluationContext {
     }
 
     geometryDollarType() {
-        return this.feature ? typeof this.feature.type === 'number' ? geometryTypes[this.feature.type] : this.feature.type : null;
+        return this.feature
+            ? typeof this.feature.type === 'number' ? geometryTypes[this.feature.type] : simpleGeometryType[this.feature.type]
+            : null;
     }
 
     geometryType() {
-        if (! this._geometryType) {
-            if (typeof this.feature.type === 'number') {
-                this._geometryType = geometryTypes[this.feature.type];
-                if (this._geometryType !== 'Unknown') {
-                    // TODO Can geom be a constant/readonly?
-                    var geom = this.geometry();
-                    if (! geom) {
-                        // TODO This is an ilegal feature
-                        this._geometryType = 'Unknown';
-                    } else {
-                        var len = geom.length;
-                        if (len > 1) {
-                            switch (this._geometryType) {
-                                case 'Point':
-                                    this._geometryType = 'MultiPoint';
-                                    break;
-                                case 'LineString':
-                                    this._geometryType = 'MultiLineString';
-                                    break;
-                                case 'Polygon' :
-                                    // Following https://github.com/mapbox/vector-tile-js/blob/77851380b63b07fd0af3d5a3f144cc86fb39fdd1/lib/vectortilefeature.js#L197
-                                    var ccw;
-                                    for (var i = 0; i < len; i++) {
-                                        var area = this._signedArea(geom[i]);
-                                        if (area === 0) continue;
-                                        if (ccw === undefined) {
-                                            ccw = area < 0;
-                                        } else if (ccw === area < 0) {
-                                            this._geometryType = 'MultiPolygon';
-                                            break;
-                                        }
+        var geometryType = this.feature.type;
+        if (typeof geometryType === 'number') {
+            geometryType = geometryTypes[this.feature.type];
+            if (geometryType !== 'Unknown') {
+                // TODO Can geom be a constant/readonly?
+                var geom = this.geometry();
+                if (!geom) {
+                    // TODO This is an ilegal feature
+                    geometryType = 'Unknown';
+                } else {
+                    var len = geom.length;
+                    if (len > 1) {
+                        switch (geometryType) {
+                            case 'Point':
+                                geometryType = 'MultiPoint';
+                                break;
+                            case 'LineString':
+                                geometryType = 'MultiLineString';
+                                break;
+                            case 'Polygon':
+                                // Following https://github.com/mapbox/vector-tile-js/blob/77851380b63b07fd0af3d5a3f144cc86fb39fdd1/lib/vectortilefeature.js#L197
+                                var ccw;
+                                for (var i = 0; i < len; i++) {
+                                    var area = this._signedArea(geom[i]);
+                                    if (area === 0) continue;
+                                    if (ccw === undefined) {
+                                        ccw = area < 0;
+                                    } else if (ccw === area < 0) {
+                                        geometryType = 'MultiPolygon';
+                                        break;
                                     }
-                                    break;
-                                default:
-                                    break;
-                            }
+                                }
+                                break;
+                            default:
+                                break;
                         }
                     }
                 }
-            } else {
-                this._geometryType = this.feature.type;
             }
-        };
-        return this._geometryType;
+        }
+        return geometryType;
     }
 
     geometry() {
