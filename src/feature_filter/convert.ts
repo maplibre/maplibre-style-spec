@@ -128,7 +128,6 @@ function runtimeTypeChecks(expectedTypes: ExpectedTypes): ExpressionFilterSpecif
 function convertComparisonOp(property: string, value: any, op: string, expectedTypes?: ExpectedTypes | null): ExpressionFilterSpecification {
     let get;
     if (property === '$type') {
-        // TODO: Assuming op is either '==' or '!='
         return convertInOp('$type', [value], op === '!=');
     } else if (property === '$id') {
         get = ['id'];
