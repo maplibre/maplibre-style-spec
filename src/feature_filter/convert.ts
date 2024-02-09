@@ -163,9 +163,9 @@ function convertInOp(property: string, values: Array<any>, negate = false): Expr
 
     let get: ExpressionSpecification;
     if (property === '$type') {
-        var len = values.length;
-        for (var i = 0; i < len; i++) {
-            values.push('Multi' + values[i]);
+        const len = values.length;
+        for (let i = 0; i < len; i++) {
+            values.push(`Multi${values[i]}`);
         }
         get = ['geometry-type'];
     } else if (property === '$id') {
