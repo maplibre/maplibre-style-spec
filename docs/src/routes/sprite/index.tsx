@@ -33,8 +33,6 @@ When a sprite is provided, you can refer to the images in the sprite in other pa
 
 ### Multiple Sprite Sources
 
-**Note:** This is exclusive to MapLibre GL JS at the moment. See [this issue](https://github.com/maplibre/maplibre-native/issues/641) for the current status of this feature in MapLibre Native.
-
 You can also supply an array of \`{ id: ..., url: ... }\` pairs to load multiple sprites:
 
 \`\`\`json
