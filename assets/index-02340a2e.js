@@ -1,4 +1,4 @@
-import{g as i,i as s,c as o,t as r}from"./entry-client-abf0cb12.js";import{M as a}from"./markdown-22167de4.js";import{s as n}from"./v8-5042578d.js";const p=r("<div>");function d(){const t=`
+import{g as i,i as o,c as s,t as r}from"./entry-client-1bbb0cdd.js";import{M as a}from"./markdown-339b8442.js";import{s as n}from"./v8-5042578d.js";const p=r("<div>");function c(){const t=`
 # Sprite
 
 Loading a [sprite](https://en.wikipedia.org/wiki/Sprite_(computer_graphics)) can be done using the optional \`sprite\` property at the root level of a MapLibre style sheet.
@@ -23,8 +23,6 @@ More details about the exact requirements on the format of these files is provid
 When a sprite is provided, you can refer to the images in the sprite in other parts of the style sheet. For example, when creating a symbol layer with the layout property \`"icon-image": "poi"\`. Or with the tokenized value  \`"icon-image": "{icon}"\` and vector tile features with an \`icon\` property with the value \`poi\`.
 
 ### Multiple Sprite Sources
-
-**Note:** This is exclusive to MapLibre GL JS at the moment. See [this issue](https://github.com/maplibre/maplibre-native/issues/641) for the current status of this feature in MapLibre Native.
 
 You can also supply an array of \`{ id: ..., url: ... }\` pairs to load multiple sprites:
 
@@ -106,4 +104,4 @@ On high-DPI devices, \`@2x\` is appended to  the URLs described above. For examp
 
 A tool that can generate sprites from svg files can be found in here: [@elastic/spritezero](https://www.npmjs.com/package/@elastic/spritezero)
 
-`;return(()=>{const e=i(p);return s(e,o(a,{content:t})),e})()}export{d as default};
+`;return(()=>{const e=i(p);return o(e,s(a,{content:t})),e})()}export{c as default};
