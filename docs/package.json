@@ -31,7 +31,7 @@
     "solid-markdown": "^1.2.1",
     "solid-start": "^0.2.26",
     "solidjs-markdoc": "^0.0.2",
-    "undici": "^5.26.2"
+    "undici": "^5.28.3"
   },
   "engines": {
     "node": ">=16.8"
