@@ -4,7 +4,7 @@ import style from './maincontent.module.scss';
 import '../collapse/collapse.scss';
 import {Collapsible} from '@kobalte/core';
 import {JSXElement} from 'solid-js';
-import {useLocation} from '@solidjs/router';
+import {A, useLocation} from '@solidjs/router';
 
 export function MainContent(props: {
     children?: JSXElement;
@@ -50,8 +50,8 @@ export function MainContent(props: {
                     document.documentElement.scrollTop = 0;
                 }}><i class="fa-solid fa-arrow-up"></i></div>
 
-                <a class={style.github_link} target="_blank"  href={`https://github.com/maplibre${import.meta.env.BASE_URL}`}><i class="fa-brands fa-github"></i> MapLibre Style repository</a>
-                <a class={style.github_link} target="_blank" href={`https://github.com/maplibre${import.meta.env.BASE_URL}blob/main/docs/src/routes${getPage()}index.tsx`}><i class="fa-brands fa-github"></i> Edit page</a>
+                <A class={style.github_link} target="_blank"  href={`https://github.com/maplibre/`}><i class="fa-brands fa-github"></i> MapLibre Style repository</A>
+                <A class={style.github_link} target="_blank" href={`https://github.com/maplibre/blob/main/docs/src/routes${getPage()}index.tsx`}><i class="fa-brands fa-github"></i> Edit page</A>
             </div>
         </main>
     );

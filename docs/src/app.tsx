@@ -8,7 +8,7 @@ import { Suspense } from 'solid-js';
 export default function Root() {
     return (
         <Router
-            base="/"
+            base='/maplibre-style-spec'
             root={(props) => (
                 <MetaProvider>
                     <Title>MapLibre Style Spec</Title>
@@ -21,7 +21,7 @@ export default function Root() {
                     <Link
                         rel="icon"
                         type="image/x-icon"
-                        href={`${import.meta.env.BASE_URL}favicon.ico`}
+                        href={`/favicon.ico`}
                     />
                     <Link
                         href="https://unpkg.com/@fortawesome/fontawesome-free@6.4.0/css/fontawesome.css"

@@ -65,7 +65,7 @@ The \`background\` style layer covers the entire map. Use a background style lay
 
             <Caption>
                 <Markdown content={`
-The [Vintage map style](https://blog.mapbox.com/designing-the-vintage-style-in-mapbox-studio-9da4aa2a627f) uses a custom SVG [\`background-pattern\`](${import.meta.env.BASE_URL}layers/#paint-background-background-pattern) to achieve a textured vintage look.
+The [Vintage map style](https://blog.mapbox.com/designing-the-vintage-style-in-mapbox-studio-9da4aa2a627f) uses a custom SVG [\`background-pattern\`](/layers/#paint-background-background-pattern) to achieve a textured vintage look.
 `} />
             </Caption>
 
@@ -82,7 +82,7 @@ A \`fill\` style layer renders one or more filled (and optionally stroked) polyg
 
             <Caption>
                 <Markdown content={`
-This map of Washington, D.C. uses the [\`fill-opacity\`](${import.meta.env.BASE_URL}layers/#paint-fill-fill-opacity) paint property to render a semi-transparent polygon, showing how far a person can walk from the center of the city in ten minutes.
+This map of Washington, D.C. uses the [\`fill-opacity\`](/layers/#paint-fill-fill-opacity) paint property to render a semi-transparent polygon, showing how far a person can walk from the center of the city in ten minutes.
 `} />
             </Caption>
 
@@ -99,7 +99,7 @@ A \`line\` style layer renders one or more stroked polylines on the map. You can
 
             <Caption>
                 <Markdown content={`
-This map of a [Strava](https://blog.mapbox.com/strava-launches-gorgeous-new-outdoor-maps-977c74cf37f9) user's hike through Grand Teton National Park uses the [\`line-color\`](${import.meta.env.BASE_URL}layers/#paint-line-line-color) and [\`line-width\`](${import.meta.env.BASE_URL}layers/#paint-line-line-width) paint properties to style the strong red line of the user's route.
+This map of a [Strava](https://blog.mapbox.com/strava-launches-gorgeous-new-outdoor-maps-977c74cf37f9) user's hike through Grand Teton National Park uses the [\`line-color\`](/layers/#paint-line-line-color) and [\`line-width\`](/layers/#paint-line-line-width) paint properties to style the strong red line of the user's route.
 `} />
             </Caption>
 
@@ -116,7 +116,7 @@ A \`symbol\` style layer renders icon and text labels at points or along lines o
 
             <Caption>
                 <Markdown content={`
-This map of Denver area businesses uses the [\`icon-image\`](${import.meta.env.BASE_URL}layers/#layout-symbol-icon-image) layout property to use a custom image as an icon in a symbol layer.
+This map of Denver area businesses uses the [\`icon-image\`](/layers/#layout-symbol-icon-image) layout property to use a custom image as an icon in a symbol layer.
 `} />
             </Caption>
 
@@ -133,7 +133,7 @@ A \`raster\` style layer renders raster tiles on a map. You can use a raster lay
 
             <Caption>
                 <Markdown content={`
-This [interactive SWIR imagery map by Maxar](https://blog.maxar.com/news-events/2020/maxar-and-mapbox-release-interactive-swir-imagery-map-of-california-wildfires?utm_source=mapbox&utm_medium=blog&utm_campaign=ca-wildfires-2020-map) uses the [\`visibility\`](${import.meta.env.BASE_URL}layers/#layout-raster-visibility) layout property to show or hide raster layers with shortwave infrared satellite imagery of California wildfires.
+This [interactive SWIR imagery map by Maxar](https://blog.maxar.com/news-events/2020/maxar-and-mapbox-release-interactive-swir-imagery-map-of-california-wildfires?utm_source=mapbox&utm_medium=blog&utm_campaign=ca-wildfires-2020-map) uses the [\`visibility\`](/layers/#layout-raster-visibility) layout property to show or hide raster layers with shortwave infrared satellite imagery of California wildfires.
 `} />
             </Caption>
 
@@ -151,7 +151,7 @@ A \`circle\` style layer renders one or more filled circles on a map. You can us
 
             <Caption>
                 <Markdown content={`
-This [cluster map](/maplibre-gl-js-docs/example/cluster/) uses a circle layer with a GeoJSON data source and sets the source's [\`cluster\`](${import.meta.env.BASE_URL}sources/#geojson-cluster) property to \`true\` to visualize points as clusters.
+This [cluster map](https://maplibre.org/maplibre-gl-js/docs/examples/cluster/) uses a circle layer with a GeoJSON data source and sets the source's [\`cluster\`](/sources/#geojson-cluster) property to \`true\` to visualize points as clusters.
 `} />
             </Caption>
 
@@ -168,7 +168,7 @@ A \`fill-extrusion\` style layer renders one or more filled (and optionally stro
 
             <Caption>
                 <Markdown content={`
-This map uses an external dataset to provide data-driven values for the [\`fill-extrusion-height\`](${import.meta.env.BASE_URL}layers/#paint-fill-extrusion-fill-extrusion-height) paint property of various [country polygons](https://blog.mapbox.com/high-resolution-administrative-country-polygons-in-studio-57cf4abb0768) in a fill-extrusion layer.
+This map uses an external dataset to provide data-driven values for the [\`fill-extrusion-height\`](/layers/#paint-fill-extrusion-fill-extrusion-height) paint property of various [country polygons](https://blog.mapbox.com/high-resolution-administrative-country-polygons-in-studio-57cf4abb0768) in a fill-extrusion layer.
 `} />
             </Caption>
 
@@ -185,7 +185,7 @@ A \`heatmap\` style layer renders a range of colors to represent the density of 
 
             <Caption>
                 <Markdown content={`
-[This visualization of earthquake data](/maplibre-gl-js-docs/example/heatmap-layer/) uses a heatmap layer with carefully defined [paint](${import.meta.env.BASE_URL}layers/#paint-property) properties to highlight areas where earthquake frequency is high and many points are clustered closely together.
+[This visualization of earthquake data](https://maplibre.org/maplibre-gl-js/docs/examples/heatmap-layer/) uses a heatmap layer with carefully defined [paint](/layers/#paint-property) properties to highlight areas where earthquake frequency is high and many points are clustered closely together.
 `} />
             </Caption>
 
@@ -202,7 +202,7 @@ A \`hillshade\` style layer renders digital elevation model (DEM) data on the cl
 
             <Caption>
                 <Markdown content={`
-This map of Mount Shasta uses a high value for the [\`hillshade-exaggeration\`](${import.meta.env.BASE_URL}layers/#paint-hillshade-hillshade-exaggeration) paint property to apply an intense shading effect.
+This map of Mount Shasta uses a high value for the [\`hillshade-exaggeration\`](/layers/#paint-hillshade-hillshade-exaggeration) paint property to apply an intense shading effect.
 `} />
             </Caption>
 

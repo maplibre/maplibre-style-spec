@@ -3,30 +3,27 @@
   "scripts": {
     "dev": "vinxi dev",
     "build": "vinxi build",
-    "start": "node ./.output/server/index.mjs"
+    "serve": "vinxi serve --dir ./.output/public/ --host http://localhost --port 3000 --base /maplibre-style-spec"
   },
   "type": "module",
   "devDependencies": {
-    "@types/node": "^18.15.11",
-    "@types/prismjs": "^1.26.0",
-    "sass": "^1.69.5",
-    "typescript": "^5.0.3"
+    "@types/node": "^20.11.22",
+    "@types/prismjs": "^1.26.3",
+    "sass": "^1.71.1",
+    "typescript": "^5.3.3"
   },
   "dependencies": {
     "@kobalte/core": "^0.8.2",
     "@markdoc/markdoc": "^0.2.2",
     "@solidjs/meta": "^0.29.3",
-    "@solidjs/router": "^0.10.5",
-    "@solidjs/start": "^0.4.3",
+    "@solidjs/router": "^0.12.4",
+    "@solidjs/start": "^0.6.0",
     "markdown-it": "^13.0.1",
     "markdown-it-anchor": "^8.6.7",
     "markdown-it-deflist": "^2.1.0",
     "markdown-it-prism": "^2.3.0",
     "prismjs": "^1.29.0",
-    "solid-js": "^1.8.8",
-    "vinxi": "^0.1.1"
-  },
-  "resolutions": {
-    "vite": "5"
+    "solid-js": "^1.8.15",
+    "vinxi": "^0.3.5"
   }
 }

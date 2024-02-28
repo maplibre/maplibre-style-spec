@@ -8,7 +8,7 @@ function Expressions() {
             <Markdown content={`
 # Expressions
 
-The value for any [layout property](${import.meta.env.BASE_URL}layers/#layout-property), [paint property](${import.meta.env.BASE_URL}layers/#paint-property), or [filter](${import.meta.env.BASE_URL}layers/#filter) may be specified as an _expression_. An expression defines a formula for computing the value of the property using the _operators_ described below. The set of expression operators provided by MapLibre includes:
+The value for any [layout property](/layers/#layout-property), [paint property](/layers/#paint-property), or [filter](/layers/#filter) may be specified as an _expression_. An expression defines a formula for computing the value of the property using the _operators_ described below. The set of expression operators provided by MapLibre includes:
 
 - Mathematical operators for performing arithmetic and other operations on numeric values
 - Logical operators for manipulating boolean values and making conditional decisions
@@ -42,7 +42,7 @@ A _data expression_ is any expression that access feature data -- that is, any e
 
 This example uses the [\`get\`](#get) operator to get the \`temperature\` value of each feature. That value is used to compute arguments to the [\`rgb\`](#rgb) operator, defining a color in terms of its red, green, and blue components.
 
-Data expressions are allowed as the value of the [\`filter\`](${import.meta.env.BASE_URL}layers/#filter) property, and as values for most paint and layout properties. However, some paint and layout properties do not yet support data expressions. The level of support is indicated by the "data-driven styling" row of the "SDK Support" table for each property. Data expressions with the [\`feature-state\`](#feature-state) operator are allowed only on paint properties.
+Data expressions are allowed as the value of the [\`filter\`](/layers/#filter) property, and as values for most paint and layout properties. However, some paint and layout properties do not yet support data expressions. The level of support is indicated by the "data-driven styling" row of the "SDK Support" table for each property. Data expressions with the [\`feature-state\`](#feature-state) operator are allowed only on paint properties.
 
 
 
@@ -120,7 +120,7 @@ An expression that uses both data and camera operators is considered both a data
 
 ## Type system
 
-The input arguments to expressions, and their result values, use the same set of [types](#types) as the rest of the style specification: boolean, string, number, color, and arrays of these types. Furthermore, expressions are _type safe_: each use of an expression has a known result type and required argument types, and the SDKs verify that the result type of an expression is appropriate for the context in which it is used. For example, the result type of an expression in the [\`filter\`](${import.meta.env.BASE_URL}layers/#filter) property must be [boolean](#types-boolean), and the arguments to the [\`+\`](#+) operator must be [numbers](#types-number).
+The input arguments to expressions, and their result values, use the same set of [types](#types) as the rest of the style specification: boolean, string, number, color, and arrays of these types. Furthermore, expressions are _type safe_: each use of an expression has a known result type and required argument types, and the SDKs verify that the result type of an expression is appropriate for the context in which it is used. For example, the result type of an expression in the [\`filter\`](/layers/#filter) property must be [boolean](#types-boolean), and the arguments to the [\`+\`](#+) operator must be [numbers](#types-number).
 
 When working with feature data, the type of a feature property value is typically not known ahead of time by the SDK. To preserve type safety, when evaluating a data expression, the SDK will check that the property value is appropriate for the context. For example, if you use the expression \`["get", "feature-color"]\` for the [\`circle-color\`](#paint-circle-circle-color) property, the SDK will verify that the \`feature-color\` value of each feature is a string identifying a valid [color](#types-color). If this check fails, an error will be indicated in an SDK-specific way (typically a log message), and the default value for the property will be used instead.
 

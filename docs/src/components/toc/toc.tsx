@@ -1,3 +1,4 @@
+import { A } from '@solidjs/router';
 import style from './toc.module.scss';
 import {For, Show, createEffect, createSignal, onCleanup} from 'solid-js';
 
@@ -107,7 +108,7 @@ export function TableOfContents(props: {
                                 <For each={domHeaders()}>{(header) => (
                                     <li>
 
-                                        <a id={`toc-link-${header.id}`} href={'#'} classList={{
+                                        <A id={`toc-link-${header.id}`} href={'#'} classList={{
                                             [style.anchor_h1]: header.tagName === 'H1',
                                             [style.anchor_h2]: header.tagName === 'H2',
                                             [style.anchor_h3]: header.tagName === 'H3',
@@ -117,7 +118,7 @@ export function TableOfContents(props: {
                                             {header.id.startsWith('layout-') ? <span class={style.layoutIcon}><i class="fa-solid fa-pen"></i></span> : null}
 
                                             {header.innerText}
-                                        </a>
+                                        </A>
                                     </li>
                                 )}</For>
                             </ul>

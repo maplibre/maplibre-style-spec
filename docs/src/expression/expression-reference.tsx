@@ -1,9 +1,10 @@
-import {groupedExpressions} from './expression-types';
+// import {groupedExpressions} from './expression-types';
 import SDKSupportTable from '../components/sdk-support-table/sdk-support-table';
 import {renderSignature} from './render-signature';
 import Property from '~/components/property.jsx';
 import related from './expressions-related.json';
 import {Markdown} from '~/components/markdown/markdown.jsx';
+import { A } from '@solidjs/router';
 
 interface IExpressionReference {
     group: string;
@@ -12,9 +13,9 @@ interface IExpressionReference {
 
 export default function ExpressionReference (props: IExpressionReference) {
 
-    const group = groupedExpressions.filter(
-        (g) => g.name === props.group
-    )[0];
+    // const group = groupedExpressions.filter(
+    //     (g) => g.name === props.group
+    // )[0];
 
     const SubHeading = ({children}) => (
         <h4
@@ -33,7 +34,7 @@ export default function ExpressionReference (props: IExpressionReference) {
                 <ul class="mb18">
                     {links.map((link) => (
                         <li>
-                            <a href={link.href}>{link.title}</a>
+                            <A href={link.href}>{link.title}</A>
                         </li>
                     ))}
                 </ul>

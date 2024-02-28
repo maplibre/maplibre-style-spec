@@ -223,7 +223,7 @@ A video source. The \`"urls"\` value is an array. For each URL in the array, a v
 
 The \`"coordinates"\` array contains \`[longitude, latitude]\` pairs for the video corners listed in clockwise order: top left, top right, bottom right, bottom left.
 
-When rendered as a [raster layer](${import.meta.env.BASE_URL}layers/#raster), the layer's [\`raster-fade-duration\`](${import.meta.env.BASE_URL}layers/#paint-raster-raster-fade-duration) property will cause the video to fade in. This happens when playback is started, paused and resumed, or when the video's coordinates are updated. To avoid this behavior, set the layer's [\`raster-fade-duration\`](${import.meta.env.BASE_URL}layers/#paint-raster-raster-fade-duration) property to \`0\`.
+When rendered as a [raster layer](/layers/#raster), the layer's [\`raster-fade-duration\`](/layers/#paint-raster-raster-fade-duration) property will cause the video to fade in. This happens when playback is started, paused and resumed, or when the video's coordinates are updated. To avoid this behavior, set the layer's [\`raster-fade-duration\`](/layers/#paint-raster-raster-fade-duration) property to \`0\`.
 
 \`\`\`json
 "video": {

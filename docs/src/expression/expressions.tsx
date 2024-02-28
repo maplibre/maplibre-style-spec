@@ -1,6 +1,8 @@
 import ref from '../../../src/reference/latest';
-import {types} from './expression-metadata.jsx';
 
+
+import {types} from './expression-metadata.jsx';
+console.log('types', types)
 export const expressions = {};
 export const expressionGroups = {};
 

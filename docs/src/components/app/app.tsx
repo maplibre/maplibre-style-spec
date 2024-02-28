@@ -6,6 +6,7 @@ import {Header} from '../header/header';
 import {TableOfContents} from '../toc/toc';
 import {For, Show, createSignal, JSXElement} from 'solid-js';
 import {pages} from '~/pages';
+import { A } from '@solidjs/router';
 
 export const [showNavOverlay, setShowNavOverlay] = createSignal(false);
 
@@ -28,9 +29,9 @@ export function App(props: { children?: JSXElement }) {
 
                             <For each={pages}>{(page) => (
                                 <li>
-                                    <a onClick={() => {
+                                    <A onClick={() => {
                                         setShowNavOverlay(false);
-                                    }} classList={{'sidebar-link': true, 'active': `${import.meta.env.BASE_URL}${page.path}` === location.pathname}} href={`${import.meta.env.BASE_URL}${page.path}`}>{page.title}</a>
+                                    }} classList={{'sidebar-link': true, 'active': `/${page.path}` === location.pathname}} href={`/${page.path}`}>{page.title}</A>
                                 </li>
                             )}
                             </For>
