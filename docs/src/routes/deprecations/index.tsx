@@ -304,24 +304,6 @@ The combining filter "all" takes the three other filters that follow it and requ
 ]
 \`\`\`
 `}/>
-
-            <SDKSupportTable
-                supportItems={{
-                    'basic functionality': {
-                        js: '0.10.0',
-                        android: '2.0.1',
-                        ios: '2.0.0',
-                        macos: '0.1.0'
-                    },
-                    '\`has\` / \`!has\`': {
-                        js: '0.19.0',
-                        android: '4.1.0',
-                        ios: '3.3.0',
-                        macos: '0.1.0'
-                    }}}
-
-            />
-
         </div>
     );
 }
