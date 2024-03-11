@@ -8,7 +8,7 @@ import { Suspense } from 'solid-js';
 export default function Root() {
     return (
         <Router
-            base='/maplibre-style-spec'
+            base={import.meta.env.SERVER_BASE_URL}
             root={(props) => (
                 <MetaProvider>
                     <Title>MapLibre Style Spec</Title>

@@ -3,7 +3,7 @@ import style from './header.module.scss';
 import {setShowNavOverlay} from '../app/app';
 import {useNavigate} from '@solidjs/router';
 
-const logo = '/maplibre-logo-dark.svg';
+const logo = `${import.meta.env.SERVER_BASE_URL}/maplibre-logo-dark.svg`;
 
 export function Header() {
     const navigate = useNavigate();

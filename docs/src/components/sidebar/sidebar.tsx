@@ -18,7 +18,7 @@ export function Sidebar(props: {
                             <ul>
                                 <For each={pages}>{(page) => (
                                     <li>
-                                        <A end={true} classList={{'sidebar-link': true}} href={`/${import.meta.env.SERVER_BASE_URL}${page.path}`}>{page.title}</A>
+                                        <A end={true} classList={{'sidebar-link': true}} href={`/${page.path}`}>{page.title}</A>
                                     </li>
                                 )}
                                 </For>
