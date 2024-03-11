@@ -165,6 +165,8 @@ The color space in which colors interpolated. Interpolating colors in perceptual
                 />
             </div>
 
+            <Property headingLevel='3' id="types-function-zoom-property">Zoom and Property functions</Property>
+
             <Markdown content={`
 **Zoom functions** allow the appearance of a map feature to change with map’s zoom level. Zoom functions can be used to create the illusion of depth and control data density. Each stop is an array with two elements: the first is a zoom level and the second is a function output value.
 
@@ -201,7 +203,8 @@ There is an important difference between the way that zoom functions render for 
 }
 \`\`\`
 `}/>
-            <A id="types-function-zoom-property" class="anchor" />
+            
+
             <Markdown content={`
 **Zoom-and-property functions** allow the appearance of a map feature to change with both its properties _and_ zoom. Each stop is an array with two elements, the first is an object with a property input value and a zoom, and the second is a function output value. Note that support for property functions is not yet complete.
 

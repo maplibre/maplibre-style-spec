@@ -14,7 +14,7 @@ export function MainContent(props: {
     const location = useLocation();
     function getPage() {
 
-        let pageSection = (location.pathname.split(import.meta.env.BASE_URL))[1];
+        let pageSection = (location.pathname.split(import.meta.env.SERVER_BASE_URL))[1];
 
         if (typeof pageSection === 'string') {
             if (!pageSection.endsWith('/')) {
