@@ -1,5 +1,5 @@
 import {Link, Meta, Title, MetaProvider} from '@solidjs/meta';
-import {FileRoutes} from '@solidjs/start';
+import {FileRoutes} from '@solidjs/start/router';
 import {App} from './components/app/app';
 import './root.module.scss';
 import {Router} from '@solidjs/router';
