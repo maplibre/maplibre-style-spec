@@ -13,14 +13,13 @@
     "typescript": "^5.4.2"
   },
   "dependencies": {
-    "@kobalte/core": "^0.8.2",
-    "@markdoc/markdoc": "^0.2.2",
+    "@kobalte/core": "^0.12.4",
     "@solidjs/meta": "^0.29.3",
     "@solidjs/router": "^0.13.0",
     "@solidjs/start": "^0.7.4",
-    "markdown-it": "^13.0.1",
+    "markdown-it": "^14.0.0",
     "markdown-it-anchor": "^8.6.7",
-    "markdown-it-deflist": "^2.1.0",
+    "markdown-it-deflist": "^3.0.0",
     "markdown-it-prism": "^2.3.0",
     "prismjs": "^1.29.0",
     "solid-js": "^1.8.15",
