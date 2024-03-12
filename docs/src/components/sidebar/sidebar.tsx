@@ -1,14 +1,14 @@
 import style from './sidebar.module.scss';
 import './sidebar.css';
-import {useLocation} from 'solid-start';
+
 import {pages} from '~/pages';
 import {For} from 'solid-js';
+import {A} from '@solidjs/router';
 
 export function Sidebar(props: {
     class?: string;
 }) {
 
-    const location = useLocation();
     return (
         <>
             <aside class={`${style.sidebar_outer_container} ${props.class}`}>
@@ -18,12 +18,12 @@ export function Sidebar(props: {
                             <ul>
                                 <For each={pages}>{(page) => (
                                     <li>
-                                        <a classList={{'sidebar-link': true, 'active': `${import.meta.env.BASE_URL}${page.path}` === location.pathname}} href={`${import.meta.env.BASE_URL}${page.path}`}>{page.title}</a>
+                                        <A end={true} classList={{'sidebar-link': true}} href={`/${page.path}`}>{page.title}</A>
                                     </li>
                                 )}
                                 </For>
                                 <li>
-                                    <a  target="_blank" href="https://github.com/maplibre/maplibre-gl-style-spec/blob/main/CHANGELOG.md">Changelog</a>
+                                    <A  target="_blank" href="https://github.com/maplibre/maplibre-gl-style-spec/blob/main/CHANGELOG.md">Changelog</A>
                                 </li>
                             </ul>
                         </div>

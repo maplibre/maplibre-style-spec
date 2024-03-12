@@ -15,7 +15,7 @@ const comparisonSignatures = [
     }
 ];
 
-export const types = {
+const types = {
     '==': comparisonSignatures,
     '!=': comparisonSignatures,
     '<': comparisonSignatures,
@@ -331,3 +331,5 @@ function processParameters(params) {
         return [{repeat: [toString(params.type)]}];
     }
 }
+
+export {types};

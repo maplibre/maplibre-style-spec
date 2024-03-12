@@ -59,7 +59,7 @@ Tiled sources (vector and raster) must specify their details according to the [T
 ## vector
 
 
-A vector tile source. Tiles must be in [Mapbox Vector Tile format](https://github.com/mapbox/vector-tile-spec). All geometric coordinates in vector tiles must be between \`-1 * extent\` and \`(extent * 2) - 1\` inclusive. All layers that use a vector source must specify a [\`"source-layer"\`](${import.meta.env.BASE_URL}layers/#source-layer) value.
+A vector tile source. Tiles must be in [Mapbox Vector Tile format](https://github.com/mapbox/vector-tile-spec). All geometric coordinates in vector tiles must be between \`-1 * extent\` and \`(extent * 2) - 1\` inclusive. All layers that use a vector source must specify a [\`"source-layer"\`](${import.meta.env.SERVER_BASE_URL}/layers/#source-layer) value.
 
 \`\`\`json
 "maplibre-streets": {
@@ -223,7 +223,7 @@ A video source. The \`"urls"\` value is an array. For each URL in the array, a v
 
 The \`"coordinates"\` array contains \`[longitude, latitude]\` pairs for the video corners listed in clockwise order: top left, top right, bottom right, bottom left.
 
-When rendered as a [raster layer](${import.meta.env.BASE_URL}layers/#raster), the layer's [\`raster-fade-duration\`](${import.meta.env.BASE_URL}layers/#paint-raster-raster-fade-duration) property will cause the video to fade in. This happens when playback is started, paused and resumed, or when the video's coordinates are updated. To avoid this behavior, set the layer's [\`raster-fade-duration\`](${import.meta.env.BASE_URL}layers/#paint-raster-raster-fade-duration) property to \`0\`.
+When rendered as a [raster layer](${import.meta.env.SERVER_BASE_URL}/layers/#raster), the layer's [\`raster-fade-duration\`](${import.meta.env.SERVER_BASE_URL}/layers/#paint-raster-raster-fade-duration) property will cause the video to fade in. This happens when playback is started, paused and resumed, or when the video's coordinates are updated. To avoid this behavior, set the layer's [\`raster-fade-duration\`](${import.meta.env.SERVER_BASE_URL}/layers/#paint-raster-raster-fade-duration) property to \`0\`.
 
 \`\`\`json
 "video": {

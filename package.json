@@ -81,7 +81,6 @@
     "jest-environment-jsdom": "^29.7.0",
     "rollup": "^4.12.1",
     "rollup-plugin-preserve-shebang": "^1.0.1",
-    "rollup-plugin-sourcemaps": "^0.6.3",
     "semver": "^7.5.4",
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",

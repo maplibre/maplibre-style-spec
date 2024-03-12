@@ -1,9 +1,10 @@
-import {useLocation} from 'solid-start';
+
 import {TableOfContents} from '../toc/toc';
 import style from './maincontent.module.scss';
 import '../collapse/collapse.scss';
 import {Collapsible} from '@kobalte/core';
 import {JSXElement} from 'solid-js';
+import {A, useLocation} from '@solidjs/router';
 
 export function MainContent(props: {
     children?: JSXElement;
@@ -13,7 +14,7 @@ export function MainContent(props: {
     const location = useLocation();
     function getPage() {
 
-        let pageSection = (location.pathname.split(import.meta.env.BASE_URL))[1];
+        let pageSection = (location.pathname.split(import.meta.env.SERVER_BASE_URL))[1];
 
         if (typeof pageSection === 'string') {
             if (!pageSection.endsWith('/')) {
@@ -49,8 +50,8 @@ export function MainContent(props: {
                     document.documentElement.scrollTop = 0;
                 }}><i class="fa-solid fa-arrow-up"></i></div>
 
-                <a class={style.github_link} target="_blank"  href={`https://github.com/maplibre${import.meta.env.BASE_URL}`}><i class="fa-brands fa-github"></i> MapLibre Style repository</a>
-                <a class={style.github_link} target="_blank" href={`https://github.com/maplibre${import.meta.env.BASE_URL}blob/main/docs/src/routes${getPage()}index.tsx`}><i class="fa-brands fa-github"></i> Edit page</a>
+                <A class={style.github_link} target="_blank"  href={'https://github.com/maplibre/maplibre-style-spec'}><i class="fa-brands fa-github"></i> MapLibre Style repository</A>
+                <A class={style.github_link} target="_blank" href={`https://github.com/maplibre/maplibre-style-spec/blob/main/docs/src/routes${getPage()}index.tsx`}><i class="fa-brands fa-github"></i> Edit page</A>
             </div>
         </main>
     );
