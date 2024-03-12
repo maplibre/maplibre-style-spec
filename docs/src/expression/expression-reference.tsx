@@ -1,4 +1,4 @@
-// import {groupedExpressions} from './expression-types';
+import {groupedExpressions} from './expression-types';
 import SDKSupportTable from '../components/sdk-support-table/sdk-support-table';
 import {renderSignature} from './render-signature';
 import Property from '~/components/property.jsx';
@@ -13,9 +13,9 @@ interface IExpressionReference {
 
 export default function ExpressionReference (props: IExpressionReference) {
 
-    // const group = groupedExpressions.filter(
-    //     (g) => g.name === props.group
-    // )[0];
+    const group = groupedExpressions.filter(
+        (g) => g.name === props.group
+    )[0];
 
     const SubHeading = ({children}) => (
         <h4
