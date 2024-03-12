@@ -15,7 +15,7 @@ const comparisonSignatures = [
     }
 ];
 
-export const types = {
+let types = {
     '==': comparisonSignatures,
     '!=': comparisonSignatures,
     '<': comparisonSignatures,
@@ -302,6 +302,8 @@ export const types = {
     ]
 };
 
+
+
 for (const name in CompoundExpression.definitions) {
     if (/^filter-/.test(name)) {
         continue;
@@ -331,3 +333,5 @@ function processParameters(params) {
         return [{repeat: [toString(params.type)]}];
     }
 }
+
+export {types}

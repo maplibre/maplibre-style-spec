@@ -1,10 +1,9 @@
 import ref from '../../../src/reference/latest';
 
 
-import {types} from './expression-metadata.jsx';
-console.log('types', types)
-export const expressions = {};
-export const expressionGroups = {};
+import {types} from './expression-metadata';
+let expressions = {};
+let expressionGroups = {};
 
 for (const name in types) {
     const spec = ref['expression_name'].values[name];
@@ -17,3 +16,6 @@ for (const name in types) {
         sdkSupport: spec['sdk-support']
     };
 }
+
+export {expressions, expressionGroups}
+
