@@ -4,7 +4,7 @@ import {Items} from '../../components/items/items';
 function Transition() {
 
     const md = `# Transition
-A \`transition\` property controls timing for the interpolation between a transitionable style property's previous value and new value. A style's [root \`transition\`](/root/#transition) property provides global transition defaults for that style.
+A \`transition\` property controls timing for the interpolation between a transitionable style property's previous value and new value. A style's [root \`transition\`](${import.meta.env.SERVER_BASE_URL}/root/#transition) property provides global transition defaults for that style.
 \`\`\`json
 "transition": ${JSON.stringify(
         ref.$root.transition.example,

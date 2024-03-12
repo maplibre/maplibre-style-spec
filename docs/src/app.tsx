@@ -21,7 +21,7 @@ export default function Root() {
                     <Link
                         rel="icon"
                         type="image/x-icon"
-                        href={`/favicon.ico`}
+                        href={`${import.meta.env.SERVER_BASE_URL}/favicon.ico`}
                     />
                     <Link
                         href="https://unpkg.com/@fortawesome/fontawesome-free@6.4.0/css/fontawesome.css"

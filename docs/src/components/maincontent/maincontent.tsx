@@ -50,8 +50,8 @@ export function MainContent(props: {
                     document.documentElement.scrollTop = 0;
                 }}><i class="fa-solid fa-arrow-up"></i></div>
 
-                <A class={style.github_link} target="_blank"  href={`https://github.com/maplibre/`}><i class="fa-brands fa-github"></i> MapLibre Style repository</A>
-                <A class={style.github_link} target="_blank" href={`https://github.com/maplibre/blob/main/docs/src/routes${getPage()}index.tsx`}><i class="fa-brands fa-github"></i> Edit page</A>
+                <A class={style.github_link} target="_blank"  href={`https://github.com/maplibre/maplibre-style-spec`}><i class="fa-brands fa-github"></i> MapLibre Style repository</A>
+                <A class={style.github_link} target="_blank" href={`https://github.com/maplibre/maplibre-style-spec/blob/main/docs/src/routes${getPage()}index.tsx`}><i class="fa-brands fa-github"></i> Edit page</A>
             </div>
         </main>
     );
