@@ -1,4 +1,4 @@
-name: Docs - Build and Deploy
+name: Docs - Build
 
 on:
   pull_request:

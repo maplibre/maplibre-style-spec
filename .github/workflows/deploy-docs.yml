@@ -28,6 +28,9 @@ jobs:
         npm ci
         npm run build
 
+    - name: create .nojekyll
+      run: touch .output/public/.nojekyll
+
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@v4
       with:
