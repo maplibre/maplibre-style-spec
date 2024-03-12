@@ -5,12 +5,12 @@ export default defineConfig({
     solid: {
         babel: {
             plugins: [
-              [
-                '@babel/plugin-syntax-import-attributes',
-                {
-                  deprecatedAssertSyntax: true,
-                },
-              ],
+                [
+                    '@babel/plugin-syntax-import-attributes',
+                    {
+                        deprecatedAssertSyntax: true,
+                    },
+                ],
             ],
         }
     },
