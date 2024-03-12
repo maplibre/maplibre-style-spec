@@ -13,6 +13,7 @@
     "typescript": "^5.4.2"
   },
   "dependencies": {
+    "@babel/plugin-syntax-import-attributes": "^7.23.3",
     "@kobalte/core": "^0.12.4",
     "@solidjs/meta": "^0.29.3",
     "@solidjs/router": "^0.13.0",
