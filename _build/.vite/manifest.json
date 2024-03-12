@@ -1,0 +1,287 @@
+{
+  "_HttpStatusCode-BpjDLC4e.js": {
+    "file": "assets/HttpStatusCode-BpjDLC4e.js",
+    "imports": [
+      "_web-Btggxc92.js"
+    ]
+  },
+  "_caption-DLiZPhA2.js": {
+    "file": "assets/caption-DLiZPhA2.js",
+    "imports": [
+      "_web-Btggxc92.js"
+    ]
+  },
+  "_components-BqRe3wZe.js": {
+    "file": "assets/components-BqRe3wZe.js",
+    "imports": [
+      "_web-Btggxc92.js"
+    ]
+  },
+  "_items-DvJ1tBUm.js": {
+    "file": "assets/items-DvJ1tBUm.js",
+    "imports": [
+      "_web-Btggxc92.js",
+      "_property-BqnCpERi.js",
+      "_subtitle-oIDeCC3O.js",
+      "_markdown-DfzxaKvK.js",
+      "_components-BqRe3wZe.js"
+    ]
+  },
+  "_markdown-!~{00j}~.js": {
+    "file": "assets/markdown-CP9dM-hu.css",
+    "src": "_markdown-!~{00j}~.js"
+  },
+  "_markdown-DfzxaKvK.js": {
+    "file": "assets/markdown-DfzxaKvK.js",
+    "imports": [
+      "_web-Btggxc92.js"
+    ],
+    "css": [
+      "assets/markdown-CP9dM-hu.css"
+    ]
+  },
+  "_property-!~{00l}~.js": {
+    "file": "assets/property-DcvAgm4Y.css",
+    "src": "_property-!~{00l}~.js"
+  },
+  "_property-BqnCpERi.js": {
+    "file": "assets/property-BqnCpERi.js",
+    "imports": [
+      "_web-Btggxc92.js",
+      "_markdown-DfzxaKvK.js",
+      "_components-BqRe3wZe.js"
+    ],
+    "css": [
+      "assets/property-DcvAgm4Y.css"
+    ]
+  },
+  "_subtitle-oIDeCC3O.js": {
+    "file": "assets/subtitle-oIDeCC3O.js",
+    "imports": [
+      "_web-Btggxc92.js"
+    ]
+  },
+  "_v8-D95HWaCp.js": {
+    "file": "assets/v8-D95HWaCp.js"
+  },
+  "_web-Btggxc92.js": {
+    "file": "assets/web-Btggxc92.js"
+  },
+  "src/routes/[...404].tsx?pick=default&pick=$css": {
+    "file": "assets/_...404_-BsPWdVBH.js",
+    "src": "src/routes/[...404].tsx?pick=default&pick=$css",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_web-Btggxc92.js",
+      "_HttpStatusCode-BpjDLC4e.js"
+    ]
+  },
+  "src/routes/deprecations/index.tsx?pick=default&pick=$css": {
+    "file": "assets/index-DpetTMwo.js",
+    "src": "src/routes/deprecations/index.tsx?pick=default&pick=$css",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_web-Btggxc92.js",
+      "_markdown-DfzxaKvK.js",
+      "_caption-DLiZPhA2.js",
+      "_property-BqnCpERi.js",
+      "_subtitle-oIDeCC3O.js",
+      "_components-BqRe3wZe.js"
+    ]
+  },
+  "src/routes/expressions/index.tsx?pick=default&pick=$css": {
+    "file": "assets/index-DP5COx5C.js",
+    "src": "src/routes/expressions/index.tsx?pick=default&pick=$css",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_web-Btggxc92.js",
+      "_v8-D95HWaCp.js",
+      "_markdown-DfzxaKvK.js",
+      "_property-BqnCpERi.js",
+      "_components-BqRe3wZe.js"
+    ]
+  },
+  "src/routes/glyphs/index.tsx?pick=default&pick=$css": {
+    "file": "assets/index-CcygQWDT.js",
+    "src": "src/routes/glyphs/index.tsx?pick=default&pick=$css",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_markdown-DfzxaKvK.js",
+      "_v8-D95HWaCp.js",
+      "_web-Btggxc92.js"
+    ]
+  },
+  "src/routes/index.tsx?pick=default&pick=$css": {
+    "file": "assets/index-Bh2VGkUW.js",
+    "src": "src/routes/index.tsx?pick=default&pick=$css",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_markdown-DfzxaKvK.js",
+      "_web-Btggxc92.js"
+    ]
+  },
+  "src/routes/layers/index.tsx?pick=default&pick=$css": {
+    "file": "assets/index-OK2Df1__.js",
+    "src": "src/routes/layers/index.tsx?pick=default&pick=$css",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_web-Btggxc92.js",
+      "_markdown-DfzxaKvK.js",
+      "_v8-D95HWaCp.js",
+      "_items-DvJ1tBUm.js",
+      "_caption-DLiZPhA2.js",
+      "_property-BqnCpERi.js",
+      "_components-BqRe3wZe.js",
+      "_subtitle-oIDeCC3O.js"
+    ],
+    "css": [
+      "assets/index-CH0eSBV9.css"
+    ]
+  },
+  "src/routes/light/index.tsx?pick=default&pick=$css": {
+    "file": "assets/index-BqBURxDb.js",
+    "src": "src/routes/light/index.tsx?pick=default&pick=$css",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_web-Btggxc92.js",
+      "_markdown-DfzxaKvK.js",
+      "_v8-D95HWaCp.js",
+      "_items-DvJ1tBUm.js",
+      "_property-BqnCpERi.js",
+      "_components-BqRe3wZe.js",
+      "_subtitle-oIDeCC3O.js"
+    ]
+  },
+  "src/routes/root/index.tsx?pick=default&pick=$css": {
+    "file": "assets/index-Bfiq_ZZt.js",
+    "src": "src/routes/root/index.tsx?pick=default&pick=$css",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_web-Btggxc92.js",
+      "_markdown-DfzxaKvK.js",
+      "_v8-D95HWaCp.js",
+      "_items-DvJ1tBUm.js",
+      "_property-BqnCpERi.js",
+      "_components-BqRe3wZe.js",
+      "_subtitle-oIDeCC3O.js"
+    ]
+  },
+  "src/routes/sky/index.tsx?pick=default&pick=$css": {
+    "file": "assets/index-C5E7gnch.js",
+    "src": "src/routes/sky/index.tsx?pick=default&pick=$css",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_web-Btggxc92.js",
+      "_markdown-DfzxaKvK.js",
+      "_v8-D95HWaCp.js",
+      "_items-DvJ1tBUm.js",
+      "_property-BqnCpERi.js",
+      "_components-BqRe3wZe.js",
+      "_subtitle-oIDeCC3O.js"
+    ]
+  },
+  "src/routes/sources/index.tsx?pick=default&pick=$css": {
+    "file": "assets/index-B6EPnIJ_.js",
+    "src": "src/routes/sources/index.tsx?pick=default&pick=$css",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_web-Btggxc92.js",
+      "_markdown-DfzxaKvK.js",
+      "_v8-D95HWaCp.js",
+      "_items-DvJ1tBUm.js",
+      "_property-BqnCpERi.js",
+      "_subtitle-oIDeCC3O.js",
+      "_components-BqRe3wZe.js"
+    ]
+  },
+  "src/routes/sprite/index.tsx?pick=default&pick=$css": {
+    "file": "assets/index-CRe4LOWC.js",
+    "src": "src/routes/sprite/index.tsx?pick=default&pick=$css",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_web-Btggxc92.js",
+      "_markdown-DfzxaKvK.js",
+      "_v8-D95HWaCp.js"
+    ]
+  },
+  "src/routes/terrain/index.tsx?pick=default&pick=$css": {
+    "file": "assets/index-BfrWL6YQ.js",
+    "src": "src/routes/terrain/index.tsx?pick=default&pick=$css",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_web-Btggxc92.js",
+      "_markdown-DfzxaKvK.js",
+      "_v8-D95HWaCp.js",
+      "_items-DvJ1tBUm.js",
+      "_property-BqnCpERi.js",
+      "_components-BqRe3wZe.js",
+      "_subtitle-oIDeCC3O.js"
+    ]
+  },
+  "src/routes/transition/index.tsx?pick=default&pick=$css": {
+    "file": "assets/index-DqqFJELZ.js",
+    "src": "src/routes/transition/index.tsx?pick=default&pick=$css",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_web-Btggxc92.js",
+      "_markdown-DfzxaKvK.js",
+      "_v8-D95HWaCp.js",
+      "_items-DvJ1tBUm.js",
+      "_property-BqnCpERi.js",
+      "_components-BqRe3wZe.js",
+      "_subtitle-oIDeCC3O.js"
+    ]
+  },
+  "src/routes/types/index.tsx?pick=default&pick=$css": {
+    "file": "assets/index-CFVNXHcA.js",
+    "src": "src/routes/types/index.tsx?pick=default&pick=$css",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_markdown-DfzxaKvK.js",
+      "_web-Btggxc92.js"
+    ]
+  },
+  "virtual:#vinxi/handler/client": {
+    "file": "assets/client-CrhIB_M2.js",
+    "src": "virtual:#vinxi/handler/client",
+    "isEntry": true,
+    "imports": [
+      "_HttpStatusCode-BpjDLC4e.js",
+      "_web-Btggxc92.js",
+      "_components-BqRe3wZe.js"
+    ],
+    "dynamicImports": [
+      "src/routes/[...404].tsx?pick=default&pick=$css",
+      "src/routes/index.tsx?pick=default&pick=$css",
+      "src/routes/deprecations/index.tsx?pick=default&pick=$css",
+      "src/routes/expressions/index.tsx?pick=default&pick=$css",
+      "src/routes/glyphs/index.tsx?pick=default&pick=$css",
+      "src/routes/layers/index.tsx?pick=default&pick=$css",
+      "src/routes/light/index.tsx?pick=default&pick=$css",
+      "src/routes/root/index.tsx?pick=default&pick=$css",
+      "src/routes/sky/index.tsx?pick=default&pick=$css",
+      "src/routes/sources/index.tsx?pick=default&pick=$css",
+      "src/routes/sprite/index.tsx?pick=default&pick=$css",
+      "src/routes/terrain/index.tsx?pick=default&pick=$css",
+      "src/routes/transition/index.tsx?pick=default&pick=$css",
+      "src/routes/types/index.tsx?pick=default&pick=$css"
+    ],
+    "css": [
+      "assets/client-0_tmConj.css"
+    ]
+  }
+}
