@@ -14,7 +14,7 @@ import {toString,
 import ParsingContext from './parsing_context';
 import EvaluationContext from './evaluation_context';
 
-import expressions from './definitions/index';
+import {expressions} from './definitions/index';
 import CollatorExpression from './definitions/collator';
 import Within from './definitions/within';
 import Literal from './definitions/literal';
