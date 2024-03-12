@@ -3,7 +3,7 @@ import {FileRoutes} from '@solidjs/start/router';
 import {App} from './components/app/app';
 import './root.module.scss';
 import {Router} from '@solidjs/router';
-import { Suspense } from 'solid-js';
+import {Suspense} from 'solid-js';
 
 export default function Root() {
     return (

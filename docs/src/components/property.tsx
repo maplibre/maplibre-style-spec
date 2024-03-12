@@ -1,4 +1,4 @@
-import { A } from '@solidjs/router';
+import {A} from '@solidjs/router';
 import {JSXElement} from 'solid-js';
 import {Dynamic} from 'solid-js/web';
 

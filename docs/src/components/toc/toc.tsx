@@ -1,4 +1,4 @@
-import { A } from '@solidjs/router';
+import {A} from '@solidjs/router';
 import style from './toc.module.scss';
 import {For, Show, createEffect, createSignal, onCleanup} from 'solid-js';
 

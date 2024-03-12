@@ -6,7 +6,7 @@ import {Header} from '../header/header';
 import {TableOfContents} from '../toc/toc';
 import {For, Show, createSignal, JSXElement} from 'solid-js';
 import {pages} from '~/pages';
-import { A } from '@solidjs/router';
+import {A} from '@solidjs/router';
 
 export const [showNavOverlay, setShowNavOverlay] = createSignal(false);
 

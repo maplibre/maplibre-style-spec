@@ -1,9 +1,8 @@
 import ref from '../../../src/reference/latest';
 
-
 import {types} from './expression-metadata';
-let expressions = {};
-let expressionGroups = {};
+const expressions = {};
+const expressionGroups = {};
 
 for (const name in types) {
     const spec = ref['expression_name'].values[name];
@@ -17,5 +16,5 @@ for (const name in types) {
     };
 }
 
-export {expressions, expressionGroups}
+export {expressions, expressionGroups};
 

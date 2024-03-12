@@ -4,7 +4,7 @@ import {renderSignature} from './render-signature';
 import Property from '~/components/property.jsx';
 import related from './expressions-related.json';
 import {Markdown} from '~/components/markdown/markdown.jsx';
-import { A } from '@solidjs/router';
+import {A} from '@solidjs/router';
 
 interface IExpressionReference {
     group: string;

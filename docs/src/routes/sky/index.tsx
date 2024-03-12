@@ -17,8 +17,8 @@ This feature is still under development and is not yet available in the latest r
 
     return (
         <div>
-             <Markdown content={md} />
-            <Items headingLevel='3' entry={ref.sky} /> 
+            <Markdown content={md} />
+            <Items headingLevel='3' entry={ref.sky} />
         </div>
     );
 }

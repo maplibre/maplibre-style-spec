@@ -1,19 +1,4 @@
-import {toString} from './types';
-
-import ParsingContext from './parsing_context';
-import EvaluationContext from './evaluation_context';
-
-import './definitions/index'
-import CollatorExpression from './definitions/collator';
-import Within from './definitions/within';
-import Literal from './definitions/literal';
-import Assertion from './definitions/assertion';
-import Coercion from './definitions/coercion';
-import Var from './definitions/var';
-
-import type {Expression, ExpressionRegistry} from './expression';
-import type {Value} from './values';
-import {
+import {toString,
     NumberType,
     StringType,
     BooleanType,
@@ -26,12 +11,24 @@ import {
     toString as typeToString,
 } from './types';
 
+import ParsingContext from './parsing_context';
+import EvaluationContext from './evaluation_context';
+
+import expressions from './definitions/index';
+import CollatorExpression from './definitions/collator';
+import Within from './definitions/within';
+import Literal from './definitions/literal';
+import Assertion from './definitions/assertion';
+import Coercion from './definitions/coercion';
+import Var from './definitions/var';
+
+import type {Expression, ExpressionRegistry} from './expression';
+import type {Value} from './values';
+
 import type {Type} from './types';
 
 import {typeOf, Color, validateRGBA, toString as valueToString} from './values';
 import RuntimeError from './runtime_error';
-import type {Varargs} from './compound_expression';
-import expressions from './definitions/index';
 
 export type Varargs = {
     type: Type;
@@ -172,7 +169,6 @@ class CompoundExpression implements Expression {
     }
 }
 
-
 function rgba(ctx, [r, g, b, a]) {
     r = r.evaluate(ctx);
     g = g.evaluate(ctx);
@@ -208,7 +204,6 @@ function binarySearch(v, a, i, j) {
 function varargs(type: Type): Varargs {
     return {type};
 }
-
 
 CompoundExpression.register(expressions, {
     'error': [

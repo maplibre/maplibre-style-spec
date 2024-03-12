@@ -28,7 +28,6 @@ import ImageExpression from './image';
 import Length from './length';
 import Within from './within';
 
-
 import type {ExpressionRegistry} from '../expression';
 
 export const expressions: ExpressionRegistry = {
@@ -69,6 +68,5 @@ export const expressions: ExpressionRegistry = {
     'var': Var,
     'within': Within
 };
-
 
 export default expressions;

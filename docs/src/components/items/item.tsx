@@ -3,7 +3,7 @@ import Property from '../property.jsx';
 import Subtitle from '../subtitle.jsx';
 import {Markdown} from '~/components/markdown/markdown';
 import {Show} from 'solid-js';
-import { A } from '@solidjs/router';
+import {A} from '@solidjs/router';
 
 export default function Item (props:{
     id: string;
@@ -32,7 +32,7 @@ export default function Item (props:{
                 return (
                     <span>
                         {' '}
-                        <A href={`/light/`}>
+                        <A href={'/light/'}>
                             light
                         </A>
                     </span>
@@ -41,7 +41,7 @@ export default function Item (props:{
                 return (
                     <span>
                         {' '}
-                        <A href={`/transition/`}>
+                        <A href={'/transition/'}>
                             transition
                         </A>
                     </span>
@@ -51,7 +51,7 @@ export default function Item (props:{
                     <span>
                         {' '}
                         object with{' '}
-                        <A href={`/sources/`}>
+                        <A href={'/sources/'}>
                             source
                         </A>{' '}
                         values
@@ -61,7 +61,7 @@ export default function Item (props:{
                 return (
                     <span>
                         {' '}
-                        <A href={`/layers/`}>
+                        <A href={'/layers/'}>
                             layer
                             <Show when={plural}>s</Show>
                         </A>
@@ -71,7 +71,7 @@ export default function Item (props:{
                 return (
                     <span>
                         {' '}
-                        <A href={`/types/#array`}>
+                        <A href={'/types/#array'}>
                             array
                         </A>
                         <Show when={spec.value}>
@@ -91,7 +91,7 @@ export default function Item (props:{
                 return (
                     <span>
                         {' '}
-                        <A href={`/expressions/`}>
+                        <A href={'/expressions/'}>
                             expression
                             <Show when={plural}>s</Show>
                         </A>
@@ -101,7 +101,7 @@ export default function Item (props:{
                 return (
                     <span>
                         {' '}
-                        <A href={`/layers/#layout-property`}>
+                        <A href={'/layers/#layout-property'}>
                             layout
                         </A>
                     </span>
@@ -110,7 +110,7 @@ export default function Item (props:{
                 return (
                     <span>
                         {' '}
-                        <A href={`/layers/#paint-property`}>
+                        <A href={'/layers/#paint-property'}>
                             paint
                         </A>
                     </span>
@@ -119,11 +119,11 @@ export default function Item (props:{
                 return (
                     <span>
                         {' '}
-                        <A href={`/types/#array`}>
+                        <A href={'/types/#array'}>
                             array
-                        </A> containing alternating <A href={`/layers/#layout-symbol-text-anchor`}>
+                        </A> containing alternating <A href={'/layers/#layout-symbol-text-anchor'}>
                             text-anchor
-                        </A> and <A href={`/types/#point`}>
+                        </A> and <A href={'/types/#point'}>
                             point
                         </A> values
                     </span>
@@ -192,12 +192,12 @@ export default function Item (props:{
             </Property>
             <Subtitle>
                 <Show when={props.kind === 'paint'}>
-                    <A href={`/layers/#paint-property`}>
+                    <A href={'/layers/#paint-property'}>
                                 Paint
                     </A><span>{' property. '}</span>
                 </Show>
                 <Show when={props.kind === 'layout'}>
-                    <A href={`/layers/#layout-property`}>
+                    <A href={'/layers/#layout-property'}>
                                 Layout
                     </A>{' property. '}
                 </Show>
@@ -255,7 +255,7 @@ export default function Item (props:{
                         'feature-state'
                     )}>
                         <em class="color-gray">
-                            <A href={`/expressions/#feature-state`}>
+                            <A href={'/expressions/#feature-state'}>
 
                                 <code>feature-state</code>
                             </A>
@@ -268,7 +268,7 @@ export default function Item (props:{
                         <span>{' and '}</span>
                     </Show>
                     <Show when={props.expression.interpolated}>
-                        <A href={`/expressions/#interpolate`}>
+                        <A href={'/expressions/#interpolate'}>
 
                             <code>interpolate</code>
                         </A>

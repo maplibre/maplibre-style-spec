@@ -3,7 +3,7 @@ import Caption from '~/components/caption';
 import SDKSupportTable from '~/components/sdk-support-table/sdk-support-table';
 import Property from '~/components/property';
 import Subtitle from '~/components/subtitle';
-import { A } from '@solidjs/router';
+
 function Layers() {
 
     return (
@@ -203,7 +203,6 @@ There is an important difference between the way that zoom functions render for 
 }
 \`\`\`
 `}/>
-            
 
             <Markdown content={`
 **Zoom-and-property functions** allow the appearance of a map feature to change with both its properties _and_ zoom. Each stop is an array with two elements, the first is an object with a property input value and a zoom, and the second is a function output value. Note that support for property functions is not yet complete.
