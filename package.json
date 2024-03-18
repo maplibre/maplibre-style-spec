@@ -64,7 +64,7 @@
     "@types/eslint": "^8.56.5",
     "@types/geojson": "^7946.0.14",
     "@types/jest": "^29.5.12",
-    "@types/node": "^20.11.25",
+    "@types/node": "^20.11.28",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^6.21.0",
     "dts-bundle-generator": "^9.3.1",
