@@ -7,23 +7,23 @@
   },
   "type": "module",
   "devDependencies": {
-    "@types/node": "^20.11.26",
+    "@types/node": "^20.11.30",
     "@types/prismjs": "^1.26.3",
-    "sass": "^1.71.1",
-    "typescript": "^5.4.2"
+    "sass": "^1.72.0",
+    "typescript": "^5.4.3"
   },
   "dependencies": {
-    "@babel/plugin-syntax-import-attributes": "^7.23.3",
-    "@kobalte/core": "^0.12.4",
+    "@babel/plugin-syntax-import-attributes": "^7.24.1",
+    "@kobalte/core": "^0.12.6",
     "@solidjs/meta": "^0.29.3",
-    "@solidjs/router": "^0.13.0",
-    "@solidjs/start": "^0.7.4",
-    "markdown-it": "^14.0.0",
+    "@solidjs/router": "^0.13.1",
+    "@solidjs/start": "^0.7.7",
+    "markdown-it": "^14.1.0",
     "markdown-it-anchor": "^8.6.7",
     "markdown-it-deflist": "^3.0.0",
     "markdown-it-prism": "^2.3.0",
     "prismjs": "^1.29.0",
-    "solid-js": "^1.8.15",
+    "solid-js": "^1.8.16",
     "vinxi": "^0.3.10"
   }
 }
