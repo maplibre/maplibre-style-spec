@@ -1,6 +1,6 @@
-import {A} from '@solidjs/router';
+import {A, useLocation} from '@solidjs/router';
 import style from './toc.module.scss';
-import {For, Show, createEffect, createSignal, onCleanup} from 'solid-js';
+import {For, Show, createEffect, createMemo, createSignal, onCleanup} from 'solid-js';
 
 export function TableOfContents(props: {
     class?: string;
@@ -46,8 +46,11 @@ export function TableOfContents(props: {
     };
 
     // Effect to set up the table of contents and scroll event listener
+
+    const currentPath = createMemo(() => useLocation().pathname);
     createEffect(() => {
-        if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+
+        if (currentPath() && typeof window !== 'undefined' && typeof document !== 'undefined') {
             const contentWindow = document.getElementById('ContentWindow')!;
             const pageHeaders = Array.from(
 
