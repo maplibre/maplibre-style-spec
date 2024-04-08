@@ -9,7 +9,7 @@
   "devDependencies": {
     "@types/node": "^20.12.2",
     "@types/prismjs": "^1.26.3",
-    "sass": "^1.72.0",
+    "sass": "^1.74.1",
     "typescript": "^5.4.3"
   },
   "dependencies": {
