@@ -10,7 +10,7 @@
     "@types/node": "^20.12.5",
     "@types/prismjs": "^1.26.3",
     "sass": "^1.74.1",
-    "typescript": "^5.4.3"
+    "typescript": "^5.4.4"
   },
   "dependencies": {
     "@babel/plugin-syntax-import-attributes": "^7.24.1",
