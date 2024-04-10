@@ -41,6 +41,7 @@ jobs:
         with:
           files: ${{ github.workspace }}/coverage-unit/coverage-final.json, ${{ github.workspace }}/coverage-integration/coverage-final.json
           verbose: true
+          token: ${{ secrets.CODECOV_TOKEN }}
   packaging-tests:
     name: Packaging and Build tests
     strategy:
