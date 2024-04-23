@@ -7,6 +7,7 @@ import validateExpression from './validate_expression';
 import validateString from './validate_string';
 import getType from '../util/get_type';
 import validateRasterDEMSource from './validate_raster_dem_source';
+import validateContourSource from './validate_contour_source';
 
 const objectElementValidators = {
     promoteId: validatePromoteId
@@ -41,6 +42,15 @@ export default function validateSource(options) {
             return errors;
         case 'raster-dem':
             errors = validateRasterDEMSource({
+                sourceName: key,
+                value,
+                style: options.style,
+                styleSpec,
+                validateSpec,
+            });
+            return errors;
+        case 'contour':
+            errors = validateContourSource({
                 sourceName: key,
                 value,
                 style: options.style,
@@ -107,7 +117,7 @@ export default function validateSource(options) {
             return validateEnum({
                 key: `${key}.type`,
                 value: value.type,
-                valueSpec: {values: ['vector', 'raster', 'raster-dem', 'geojson', 'video', 'image']},
+                valueSpec: {values: ['vector', 'raster', 'raster-dem', 'contour', 'geojson', 'video', 'image']},
                 style,
                 validateSpec,
                 styleSpec

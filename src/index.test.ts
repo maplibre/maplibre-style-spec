@@ -103,11 +103,11 @@ function validSchema(k, v, obj, ref, version, kind) {
     if (Array.isArray(obj.type) || typeof obj.type === 'string') {
         // schema must have only known keys
         for (const attr in obj) {
-            expect(keys.indexOf(attr) !== -1).toBeTruthy();
+            expect(keys).toContain(attr);
         }
 
         // schema type must be js native, 'color', or present in ref root object.
-        expect(types.indexOf(obj.type) !== -1).toBeTruthy();
+        expect(types).toContain(obj.type);
 
         // schema type is an enum, it must have 'values' and they must be
         // objects (>=v8) or scalars (<=v7). If objects, check that doc key

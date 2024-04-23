@@ -8,6 +8,7 @@ function Sources() {
         'vector',
         'raster',
         'raster-dem',
+        'contour',
         'geojson',
         'image',
         'video'
@@ -131,6 +132,25 @@ A raster DEM source. Only supports [Mapbox Terrain RGB](https://blog.mapbox.com/
                 }}
             />
             <Items headingLevel='3' entry={ref.source_raster_dem} section="raster-dem" />
+            <Markdown content={`
+## contour
+
+Contour lines generated from a [\`raster-dem\`](#raster-dem) source.
+
+\`\`\`json
+"contours": {
+    "type": "contour",
+    "source": "maplibre-terrain-rgb",
+}
+\`\`\`
+`} />
+            <SDKSupportTable
+                supportItems={{
+                    'basic functionality': {
+                    }
+                }}
+            />
+            <Items headingLevel='3' entry={ref.source_contour} section="contour" />
             <Markdown content={`
 ## geojson
 

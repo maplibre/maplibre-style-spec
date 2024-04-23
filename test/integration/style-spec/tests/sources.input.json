@@ -49,6 +49,18 @@
         "zoom": ["+", ["zoom"]],
         "state": ["+", ["feature-state", "foo"]]
       }
+    },
+    "raster-dem": {
+      "type": "raster-dem",
+      "url": "https://demotiles.maplibre.org/terrain-tiles/tiles.json"
+    },
+    "contour-bad-input": {
+      "type": "contour",
+      "source": "nonexistant"
+    },
+    "contour-bad-source-type": {
+      "type": "contour",
+      "source": "canvas"
     }
   },
   "layers": []

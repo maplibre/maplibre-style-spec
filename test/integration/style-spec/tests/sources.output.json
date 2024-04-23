@@ -4,7 +4,7 @@
     "line": 4
   },
   {
-    "message": "sources.invalid-type.type: expected one of [vector, raster, raster-dem, geojson, video, image], \"invalid\" found",
+    "message": "sources.invalid-type.type: expected one of [vector, raster, raster-dem, contour, geojson, video, image], \"invalid\" found",
     "line": 7
   },
   {
@@ -38,5 +38,13 @@
   {
     "message": "sources.cluster-properties.state.map: \"zoom\" and \"feature-state\" expressions are not supported with cluster properties.",
     "line": 50
+  },
+  {
+    "message": "source: sources.contour-bad-input requires a raster-dem source",
+    "line": 59
+  },
+  {
+    "message": "source: sources.contour-bad-source-type requires a raster-dem source",
+    "line": 63
   }
 ]
