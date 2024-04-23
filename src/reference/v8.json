@@ -5364,7 +5364,7 @@
       "minimum": 0,
       "transition": true,
       "units": "pixels",
-      "doc": "Distance of halo to the icon outline. \nThe unit is in pixels only for SDF sprites that were created with a blur radius of 8, multiplied by the display density. I.e., the radius needs to 16 for `@2x` sprites, etc.",
+      "doc": "Distance of halo to the icon outline. \nThe unit is in pixels only for SDF sprites that were created with a blur radius of 8, multiplied by the display density. I.e., the radius needs to be 16 for `@2x` sprites, etc.",
       "requires": [
         "icon-image"
       ],
