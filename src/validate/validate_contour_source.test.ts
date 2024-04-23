@@ -76,6 +76,34 @@ describe('Validate source_contour', () => {
         checkErrorMessage(errors[1].message, 'majorMultiplier', 'strictly', 'ascending');
     });
 
+    test('Should return errors if interval array is empty', () => {
+        const contour: ContourSourceSpecification = {
+            type: 'contour',
+            source: 'dem',
+            unit: 1.5,
+            intervals: [],
+        };
+        const style: StyleSpecification = {
+            sources: {
+                dem: {
+                    type: 'raster-dem',
+                    maxzoom: 11
+                },
+                contour
+            },
+            version: 8,
+            layers: []
+        };
+        const errors = validateContourSource({
+            validateSpec,
+            value: contour,
+            styleSpec: v8,
+            style
+        });
+        expect(errors).toHaveLength(1);
+        checkErrorMessage(errors[0].message, 'intervals', 'at least 1', '0');
+    });
+
     test('Should return errors when source is missing', () => {
         const contour: ContourSourceSpecification = {
             type: 'contour',
