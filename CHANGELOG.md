@@ -1,7 +1,8 @@
 ## main
 
 ### ✨ Features and improvements
-- _...Add new stuff here..._
+
+- Add new `contour` source type that renders contour lines from a `raster-dem` source [#623](https://github.com/maplibre/maplibre-style-spec/pull/623)
 
 ### 🐞 Bug fixes
 
