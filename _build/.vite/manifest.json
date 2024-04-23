@@ -13,22 +13,22 @@
       "_web-CPLIbZ3z.js"
     ]
   },
-  "_components-Da9DdH0G.js": {
-    "file": "assets/components-Da9DdH0G.js",
+  "_components-B_iav0dM.js": {
+    "file": "assets/components-B_iav0dM.js",
     "name": "components",
     "imports": [
       "_web-CPLIbZ3z.js"
     ]
   },
-  "_items-C4R05Hlt.js": {
-    "file": "assets/items-C4R05Hlt.js",
+  "_items-S3fZRJRj.js": {
+    "file": "assets/items-S3fZRJRj.js",
     "name": "items",
     "imports": [
       "_web-CPLIbZ3z.js",
-      "_property-D-DeExZs.js",
+      "_property-CGgLBG3n.js",
       "_subtitle-kxhuKEHP.js",
       "_markdown-CADDdR9C.js",
-      "_components-Da9DdH0G.js"
+      "_components-B_iav0dM.js"
     ]
   },
   "_markdown-!~{00j}~.js": {
@@ -49,13 +49,13 @@
     "file": "assets/property-DcvAgm4Y.css",
     "src": "_property-!~{00l}~.js"
   },
-  "_property-D-DeExZs.js": {
-    "file": "assets/property-D-DeExZs.js",
+  "_property-CGgLBG3n.js": {
+    "file": "assets/property-CGgLBG3n.js",
     "name": "property",
     "imports": [
       "_web-CPLIbZ3z.js",
       "_markdown-CADDdR9C.js",
-      "_components-Da9DdH0G.js"
+      "_components-B_iav0dM.js"
     ],
     "css": [
       "assets/property-DcvAgm4Y.css"
@@ -68,8 +68,8 @@
       "_web-CPLIbZ3z.js"
     ]
   },
-  "_v8-D95HWaCp.js": {
-    "file": "assets/v8-D95HWaCp.js",
+  "_v8-DAYV0zQS.js": {
+    "file": "assets/v8-DAYV0zQS.js",
     "name": "v8"
   },
   "_web-CPLIbZ3z.js": {
@@ -88,7 +88,7 @@
     ]
   },
   "src/routes/deprecations/index.tsx?pick=default&pick=$css": {
-    "file": "assets/index-DblDFLpd.js",
+    "file": "assets/index-DRP-T4AI.js",
     "name": "index",
     "src": "src/routes/deprecations/index.tsx?pick=default&pick=$css",
     "isEntry": true,
@@ -97,34 +97,34 @@
       "_web-CPLIbZ3z.js",
       "_markdown-CADDdR9C.js",
       "_caption-C1s6dYfG.js",
-      "_property-D-DeExZs.js",
+      "_property-CGgLBG3n.js",
       "_subtitle-kxhuKEHP.js",
-      "_components-Da9DdH0G.js"
+      "_components-B_iav0dM.js"
     ]
   },
   "src/routes/expressions/index.tsx?pick=default&pick=$css": {
-    "file": "assets/index-Nk10vOMn.js",
+    "file": "assets/index-BYuVLZfA.js",
     "name": "index",
     "src": "src/routes/expressions/index.tsx?pick=default&pick=$css",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_web-CPLIbZ3z.js",
-      "_v8-D95HWaCp.js",
+      "_v8-DAYV0zQS.js",
       "_markdown-CADDdR9C.js",
-      "_property-D-DeExZs.js",
-      "_components-Da9DdH0G.js"
+      "_property-CGgLBG3n.js",
+      "_components-B_iav0dM.js"
     ]
   },
   "src/routes/glyphs/index.tsx?pick=default&pick=$css": {
-    "file": "assets/index-C9HXopJi.js",
+    "file": "assets/index-C0oxL-Rs.js",
     "name": "index",
     "src": "src/routes/glyphs/index.tsx?pick=default&pick=$css",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_markdown-CADDdR9C.js",
-      "_v8-D95HWaCp.js",
+      "_v8-DAYV0zQS.js",
       "_web-CPLIbZ3z.js"
     ]
   },
@@ -140,7 +140,7 @@
     ]
   },
   "src/routes/layers/index.tsx?pick=default&pick=$css": {
-    "file": "assets/index-Cz4wByHE.js",
+    "file": "assets/index-BH9EC3l0.js",
     "name": "index",
     "src": "src/routes/layers/index.tsx?pick=default&pick=$css",
     "isEntry": true,
@@ -148,11 +148,11 @@
     "imports": [
       "_web-CPLIbZ3z.js",
       "_markdown-CADDdR9C.js",
-      "_v8-D95HWaCp.js",
-      "_items-C4R05Hlt.js",
+      "_v8-DAYV0zQS.js",
+      "_items-S3fZRJRj.js",
       "_caption-C1s6dYfG.js",
-      "_property-D-DeExZs.js",
-      "_components-Da9DdH0G.js",
+      "_property-CGgLBG3n.js",
+      "_components-B_iav0dM.js",
       "_subtitle-kxhuKEHP.js"
     ],
     "css": [
@@ -160,7 +160,7 @@
     ]
   },
   "src/routes/light/index.tsx?pick=default&pick=$css": {
-    "file": "assets/index-DtPXk035.js",
+    "file": "assets/index-BE4NzM4Y.js",
     "name": "index",
     "src": "src/routes/light/index.tsx?pick=default&pick=$css",
     "isEntry": true,
@@ -168,15 +168,15 @@
     "imports": [
       "_web-CPLIbZ3z.js",
       "_markdown-CADDdR9C.js",
-      "_v8-D95HWaCp.js",
-      "_items-C4R05Hlt.js",
-      "_property-D-DeExZs.js",
-      "_components-Da9DdH0G.js",
+      "_v8-DAYV0zQS.js",
+      "_items-S3fZRJRj.js",
+      "_property-CGgLBG3n.js",
+      "_components-B_iav0dM.js",
       "_subtitle-kxhuKEHP.js"
     ]
   },
   "src/routes/root/index.tsx?pick=default&pick=$css": {
-    "file": "assets/index-CmBoIIFx.js",
+    "file": "assets/index-DQ_0gN0v.js",
     "name": "index",
     "src": "src/routes/root/index.tsx?pick=default&pick=$css",
     "isEntry": true,
@@ -184,15 +184,15 @@
     "imports": [
       "_web-CPLIbZ3z.js",
       "_markdown-CADDdR9C.js",
-      "_v8-D95HWaCp.js",
-      "_items-C4R05Hlt.js",
-      "_property-D-DeExZs.js",
-      "_components-Da9DdH0G.js",
+      "_v8-DAYV0zQS.js",
+      "_items-S3fZRJRj.js",
+      "_property-CGgLBG3n.js",
+      "_components-B_iav0dM.js",
       "_subtitle-kxhuKEHP.js"
     ]
   },
   "src/routes/sky/index.tsx?pick=default&pick=$css": {
-    "file": "assets/index-BeXfTI22.js",
+    "file": "assets/index-Cghu6pBY.js",
     "name": "index",
     "src": "src/routes/sky/index.tsx?pick=default&pick=$css",
     "isEntry": true,
@@ -200,15 +200,15 @@
     "imports": [
       "_web-CPLIbZ3z.js",
       "_markdown-CADDdR9C.js",
-      "_v8-D95HWaCp.js",
-      "_items-C4R05Hlt.js",
-      "_property-D-DeExZs.js",
-      "_components-Da9DdH0G.js",
+      "_v8-DAYV0zQS.js",
+      "_items-S3fZRJRj.js",
+      "_property-CGgLBG3n.js",
+      "_components-B_iav0dM.js",
       "_subtitle-kxhuKEHP.js"
     ]
   },
   "src/routes/sources/index.tsx?pick=default&pick=$css": {
-    "file": "assets/index-DrlzSy5L.js",
+    "file": "assets/index-Aq30sIrD.js",
     "name": "index",
     "src": "src/routes/sources/index.tsx?pick=default&pick=$css",
     "isEntry": true,
@@ -216,15 +216,15 @@
     "imports": [
       "_web-CPLIbZ3z.js",
       "_markdown-CADDdR9C.js",
-      "_v8-D95HWaCp.js",
-      "_items-C4R05Hlt.js",
-      "_property-D-DeExZs.js",
+      "_v8-DAYV0zQS.js",
+      "_items-S3fZRJRj.js",
+      "_property-CGgLBG3n.js",
       "_subtitle-kxhuKEHP.js",
-      "_components-Da9DdH0G.js"
+      "_components-B_iav0dM.js"
     ]
   },
   "src/routes/sprite/index.tsx?pick=default&pick=$css": {
-    "file": "assets/index-D1uCjO-k.js",
+    "file": "assets/index-jqY7YmYe.js",
     "name": "index",
     "src": "src/routes/sprite/index.tsx?pick=default&pick=$css",
     "isEntry": true,
@@ -232,11 +232,11 @@
     "imports": [
       "_web-CPLIbZ3z.js",
       "_markdown-CADDdR9C.js",
-      "_v8-D95HWaCp.js"
+      "_v8-DAYV0zQS.js"
     ]
   },
   "src/routes/terrain/index.tsx?pick=default&pick=$css": {
-    "file": "assets/index-Cky5Ad89.js",
+    "file": "assets/index-BPDD-uSU.js",
     "name": "index",
     "src": "src/routes/terrain/index.tsx?pick=default&pick=$css",
     "isEntry": true,
@@ -244,15 +244,15 @@
     "imports": [
       "_web-CPLIbZ3z.js",
       "_markdown-CADDdR9C.js",
-      "_v8-D95HWaCp.js",
-      "_items-C4R05Hlt.js",
-      "_property-D-DeExZs.js",
-      "_components-Da9DdH0G.js",
+      "_v8-DAYV0zQS.js",
+      "_items-S3fZRJRj.js",
+      "_property-CGgLBG3n.js",
+      "_components-B_iav0dM.js",
       "_subtitle-kxhuKEHP.js"
     ]
   },
   "src/routes/transition/index.tsx?pick=default&pick=$css": {
-    "file": "assets/index-BsYpvVTX.js",
+    "file": "assets/index-CMVFuM4D.js",
     "name": "index",
     "src": "src/routes/transition/index.tsx?pick=default&pick=$css",
     "isEntry": true,
@@ -260,10 +260,10 @@
     "imports": [
       "_web-CPLIbZ3z.js",
       "_markdown-CADDdR9C.js",
-      "_v8-D95HWaCp.js",
-      "_items-C4R05Hlt.js",
-      "_property-D-DeExZs.js",
-      "_components-Da9DdH0G.js",
+      "_v8-DAYV0zQS.js",
+      "_items-S3fZRJRj.js",
+      "_property-CGgLBG3n.js",
+      "_components-B_iav0dM.js",
       "_subtitle-kxhuKEHP.js"
     ]
   },
@@ -279,14 +279,14 @@
     ]
   },
   "virtual:#vinxi/handler/client": {
-    "file": "assets/client-xRwf_uyF.js",
+    "file": "assets/client-DU-UfEKk.js",
     "name": "client",
     "src": "virtual:#vinxi/handler/client",
     "isEntry": true,
     "imports": [
       "_HttpStatusCode-BMbajVp0.js",
       "_web-CPLIbZ3z.js",
-      "_components-Da9DdH0G.js"
+      "_components-B_iav0dM.js"
     ],
     "dynamicImports": [
       "src/routes/[...404].tsx?pick=default&pick=$css",
