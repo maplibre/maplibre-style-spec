@@ -3,6 +3,12 @@ import fs from "fs";
 
 const BASE_PATH = "docs";
 
+type JsonSdkSupport = {
+    [info: string]: {
+        [platform: string]: [string]
+    }
+}
+
 type JsonObject = {
     required?: boolean;
     units?: string;
@@ -12,6 +18,7 @@ type JsonObject = {
     example: string | object | number;
     expression?: { interpolated?: boolean };
     transition?: boolean;
+    values?: {[key: string]: { doc: string; "sdk-support"?: JsonSdkSupport }} | number[];
 }
 
 function topicElement(key: string, value: JsonObject): boolean {
@@ -19,12 +26,33 @@ function topicElement(key: string, value: JsonObject): boolean {
 
 }
 
-function convertToMarkdown(key: string, value: JsonObject) {
-    let markdown = `## ${key}\n*`;
+function exampleToMarkdown(key: string, example: string | object | number): string {
+    return "```json\n" + key + ": " + JSON.stringify(example, null, 4) + "\n```\n";
+}
+
+function sdkSupportToMarkdown(support: JsonSdkSupport): string {
+    let markdown = "\n";
+    const rows = Object.keys(support);
+    markdown += `| |${Object.keys(support[rows[0]]).join(" | ")}|\n`;
+    markdown += `|${"-|-".repeat(Object.keys(support[rows[0]]).length)}|\n`;
+    for (let row of rows) {
+        markdown += `|${row}|${Object.values(support[row]).join(" | ")}|\n`;
+    }
+    return markdown;
+
+}
+
+function convertToMarkdown(key: string, value: JsonObject, keyPrefix = "##") {
+    let markdown = `${keyPrefix} ${key}\n*`;
+    const valueType = value.type === "*" ? "" : ` \`${value.type}\``;
     if (value.required) {
-        markdown += `Required ${value.type}. `;
+        markdown += `Required${valueType}. `;
     } else {
-        markdown += `Optional ${value.type}. `;
+        markdown += `Optional${valueType}. `;
+    }
+    const isEnum = value.type === "enum" && value.values && !Array.isArray(value.values);
+    if (isEnum) {
+        markdown += `Possible values: \`${Object.keys(value.values).join("`, `")}\`. `;
     }
     if (value.units) {  
         markdown += `Units in ${value.units}. `;
@@ -41,10 +69,19 @@ function convertToMarkdown(key: string, value: JsonObject) {
     // Remove extra space at the end
     markdown = markdown.substring(0, markdown.length -2) + `*\n\n${value.doc}\n\n`;
 
-    if (value.example !== undefined) {
-        markdown += "```json\n" + JSON.stringify(value.example, null, 4) + "\n```\n";
+    if (isEnum) {
+        for (const [enumKey, enumValue] of Object.entries(value.values)) {
+            markdown += `* \`${enumKey}\`: ${enumValue.doc}\n`;
+        }
     }
 
+    if (value.example !== undefined) {
+        markdown += exampleToMarkdown(key, value.example as string);
+    }
+
+    if (value["sdk-support"]) {
+        markdown += sdkSupportToMarkdown(value["sdk-support"]);
+    }
     markdown += "\n";
     return markdown;
 }
@@ -73,8 +110,30 @@ Root level properties of a MapLibre style specify the map's layers, tile sources
     fs.writeFileSync(`${BASE_PATH}/root.md`, rootContent);
 }
 
-function capitalize(word) {
+function capitalize(word: string) {
     return word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase();
+}
+
+function createLayerContent(): string {
+    let content = "## Layer Properties\n\n";
+
+    for (const [key, value] of Object.entries(v8.layer)) {
+        content += convertToMarkdown(key, value as JsonObject, "###");
+    }
+
+    for (let layoutKey of Object.keys(v8).filter(key => key.startsWith("layout_"))) {
+        const layerName = layoutKey.replace("layout_", "");
+        content += `## ${capitalize(layerName)}\n\n`;
+        for (const [key, value] of Object.entries(v8[layoutKey])) {
+            content += convertToMarkdown(key, value as JsonObject, "###");
+        }
+        for (const [key, value] of Object.entries(v8[`paint_${layerName}`])) {
+            content += convertToMarkdown(key, value as JsonObject, "###");
+        }
+    }
+
+
+    return content;
 }
 
 function createMainTopics() {
@@ -84,7 +143,13 @@ function createMainTopics() {
         }
         let content = `# ${capitalize(key)}\n\n`;
         content += value.doc + "\n\n";
-        content += "```json\n" + JSON.stringify(value.example, null, 4) + "\n```\n";
+        content += exampleToMarkdown(key, value.example);
+
+        if (key === "layers") {
+            content += createLayerContent();
+            fs.writeFileSync(`${BASE_PATH}/${key}.md`, content);
+            continue;
+        }
 
         if (value.type in v8) {
             for (const [subKey, subValue] of Object.entries(v8[value.type])) {

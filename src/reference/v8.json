@@ -114,7 +114,7 @@
       "required": true,
       "type": "array",
       "value": "layer",
-      "doc": "Layers will be drawn in the order of this array.",
+      "doc": "A style's `layers` property lists all the layers available in that style. The type of layer is specified by the `type` property, and must be one of `background`, `fill`, `line`, `symbol`, `raster`, `circle`, `fill-extrusion`, `heatmap`, `hillshade`.\n\nExcept for layers of the `background` type, each layer needs to refer to a source. Layers take the data that they get from a source, optionally filter features, and then define how those features are styled.",
       "example": [
         {
           "id": "coastline",
