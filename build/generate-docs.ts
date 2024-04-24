@@ -84,7 +84,7 @@ function createMainTopics() {
         }
         let content = `# ${capitalize(key)}\n\n`;
         content += value.doc + "\n\n";
-        content += "```json" + JSON.stringify(value.example, null, 4) + "\n```\n";
+        content += "```json\n" + JSON.stringify(value.example, null, 4) + "\n```\n";
 
         if (value.type in v8) {
             for (const [subKey, subValue] of Object.entries(v8[value.type])) {
