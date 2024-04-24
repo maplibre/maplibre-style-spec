@@ -1,12 +1,12 @@
-import v8 from "../src/reference/v8.json" assert { type: "json" };
-import fs from "fs";
+import v8 from '../src/reference/v8.json' assert { type: 'json' };
+import fs from 'fs';
 
-const BASE_PATH = "docs";
+const BASE_PATH = 'docs';
 
 type JsonSdkSupport = {
     [info: string]: {
-        [platform: string]: [string]
-    }
+        [platform: string]: [string];
+    };
 }
 
 type JsonObject = {
@@ -18,56 +18,56 @@ type JsonObject = {
     example: string | object | number;
     expression?: { interpolated?: boolean };
     transition?: boolean;
-    values?: {[key: string]: { doc: string; "sdk-support"?: JsonSdkSupport }} | number[];
+    values?: {[key: string]: { doc: string; 'sdk-support'?: JsonSdkSupport }} | number[];
 }
 
 function topicElement(key: string, value: JsonObject): boolean {
-    return value.type !== "number" && value.type !== "boolean" && key !== "center" && value.type !== "*" && value.type !== "enum" && key !== "name";
+    return value.type !== 'number' && value.type !== 'boolean' && key !== 'center' && value.type !== '*' && value.type !== 'enum' && key !== 'name';
 
 }
 
 function exampleToMarkdown(key: string, example: string | object | number): string {
-    return "```json\n" + key + ": " + JSON.stringify(example, null, 4) + "\n```\n";
+    return `\`\`\`json\n${key}: ${JSON.stringify(example, null, 4)}\n\`\`\`\n`;
 }
 
 function sdkSupportToMarkdown(support: JsonSdkSupport): string {
-    let markdown = "\n";
+    let markdown = '\n';
     const rows = Object.keys(support);
-    markdown += `| |${Object.keys(support[rows[0]]).join(" | ")}|\n`;
-    markdown += `|${"-|-".repeat(Object.keys(support[rows[0]]).length)}|\n`;
-    for (let row of rows) {
-        markdown += `|${row}|${Object.values(support[row]).join(" | ")}|\n`;
+    markdown += `| |${Object.keys(support[rows[0]]).join(' | ')}|\n`;
+    markdown += `|${'-|-'.repeat(Object.keys(support[rows[0]]).length)}|\n`;
+    for (const row of rows) {
+        markdown += `|${row}|${Object.values(support[row]).join(' | ')}|\n`;
     }
     return markdown;
 
 }
 
-function convertToMarkdown(key: string, value: JsonObject, keyPrefix = "##") {
+function convertToMarkdown(key: string, value: JsonObject, keyPrefix = '##') {
     let markdown = `${keyPrefix} ${key}\n*`;
-    const valueType = value.type === "*" ? "" : ` \`${value.type}\``;
+    const valueType = value.type === '*' ? '' : ` \`${value.type}\``;
     if (value.required) {
         markdown += `Required${valueType}. `;
     } else {
         markdown += `Optional${valueType}. `;
     }
-    const isEnum = value.type === "enum" && value.values && !Array.isArray(value.values);
+    const isEnum = value.type === 'enum' && value.values && !Array.isArray(value.values);
     if (isEnum) {
-        markdown += `Possible values: \`${Object.keys(value.values).join("`, `")}\`. `;
+        markdown += `Possible values: \`${Object.keys(value.values).join('`, `')}\`. `;
     }
-    if (value.units) {  
+    if (value.units) {
         markdown += `Units in ${value.units}. `;
     }
     if (value.default !== undefined) {
         markdown += `Defaults to ${value.default}. `;
     }
     if (value.expression?.interpolated) {
-        markdown += `Supports interpolate expressions. `
+        markdown += 'Supports interpolate expressions. ';
     }
     if (value.transition) {
-        markdown += `Supports transition. `
+        markdown += 'Supports transition. ';
     }
     // Remove extra space at the end
-    markdown = markdown.substring(0, markdown.length -2) + `*\n\n${value.doc}\n\n`;
+    markdown = `${markdown.substring(0, markdown.length - 2)}*\n\n${value.doc}\n\n`;
 
     if (isEnum) {
         for (const [enumKey, enumValue] of Object.entries(value.values)) {
@@ -79,10 +79,10 @@ function convertToMarkdown(key: string, value: JsonObject, keyPrefix = "##") {
         markdown += exampleToMarkdown(key, value.example as string);
     }
 
-    if (value["sdk-support"]) {
-        markdown += sdkSupportToMarkdown(value["sdk-support"]);
+    if (value['sdk-support']) {
+        markdown += sdkSupportToMarkdown(value['sdk-support']);
     }
-    markdown += "\n";
+    markdown += '\n';
     return markdown;
 }
 
@@ -103,7 +103,7 @@ Root level properties of a MapLibre style specify the map's layers, tile sources
 }
 \`\`\`
 
-`
+`;
     for (const [key, value] of Object.entries(v8.$root)) {
         rootContent += convertToMarkdown(key, value);
     }
@@ -115,23 +115,22 @@ function capitalize(word: string) {
 }
 
 function createLayerContent(): string {
-    let content = "## Layer Properties\n\n";
+    let content = '## Layer Properties\n\n';
 
     for (const [key, value] of Object.entries(v8.layer)) {
-        content += convertToMarkdown(key, value as JsonObject, "###");
+        content += convertToMarkdown(key, value as JsonObject, '###');
     }
 
-    for (let layoutKey of Object.keys(v8).filter(key => key.startsWith("layout_"))) {
-        const layerName = layoutKey.replace("layout_", "");
+    for (const layoutKey of Object.keys(v8).filter(key => key.startsWith('layout_'))) {
+        const layerName = layoutKey.replace('layout_', '');
         content += `## ${capitalize(layerName)}\n\n`;
         for (const [key, value] of Object.entries(v8[layoutKey])) {
-            content += convertToMarkdown(key, value as JsonObject, "###");
+            content += convertToMarkdown(key, value as JsonObject, '###');
         }
         for (const [key, value] of Object.entries(v8[`paint_${layerName}`])) {
-            content += convertToMarkdown(key, value as JsonObject, "###");
+            content += convertToMarkdown(key, value as JsonObject, '###');
         }
     }
-
 
     return content;
 }
@@ -142,10 +141,10 @@ function createMainTopics() {
             continue;
         }
         let content = `# ${capitalize(key)}\n\n`;
-        content += value.doc + "\n\n";
+        content += `${value.doc}\n\n`;
         content += exampleToMarkdown(key, value.example);
 
-        if (key === "layers") {
+        if (key === 'layers') {
             content += createLayerContent();
             fs.writeFileSync(`${BASE_PATH}/${key}.md`, content);
             continue;
@@ -161,28 +160,27 @@ function createMainTopics() {
 }
 
 function createExpressionsContent() {
-    let content = fs.readFileSync("build/expressions_patrial.md", "utf-8");
-    
+    let content = fs.readFileSync('build/expressions_patrial.md', 'utf-8');
+
     const groupsSet = new Set<string>();
-    for (let value of Object.values(v8.expression_name.values)) {
+    for (const value of Object.values(v8.expression_name.values)) {
         groupsSet.add(value.group);
     }
-    for (let group of groupsSet) {
+    for (const group of groupsSet) {
         content += `## ${group}\n\n`;
         for (const [key, value] of Object.entries(v8.expression_name.values)) {
             if (v8.expression_name.values[key].group !== group) {
                 continue;
             }
-            content += "\n### " + key + "\n";
-            content += value.doc + "\n";
-            content += sdkSupportToMarkdown(value["sdk-support"] as any);
-            content += "\n";
+            content += `\n### ${key}\n`;
+            content += `${value.doc}\n`;
+            content += sdkSupportToMarkdown(value['sdk-support'] as any);
+            content += '\n';
         }
     }
 
     fs.writeFileSync(`${BASE_PATH}/expressions.md`, content);
 }
-
 
 // Main Flow start here!
 createRootContent();
