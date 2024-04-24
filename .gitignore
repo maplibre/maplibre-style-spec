@@ -4,3 +4,6 @@ tsc
 dist
 .DS_Store
 */**/*.g.ts
+docs/*
+!docs/README.md
+!docs/types.md
