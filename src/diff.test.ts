@@ -407,7 +407,7 @@ describe('diff', () => {
             {command: 'addLayer', args: [{id: 'a', type: 'line'}, undefined]}
         ]);
     });
- 
+
     test('add and remove layer on source-layer change', () => {
         expect(diffStyles({
             layers: [{id: 'a', source: 'a', 'source-layer': 'layer-one'}]
