@@ -34,7 +34,7 @@ export default function Root() {
                         href="https://unpkg.com/@fortawesome/fontawesome-free@6.4.0/css/solid.css"
                         rel="stylesheet"
                     />
-                     <Link
+                    <Link
                         href="/maplibre-style-spec/root.module.css"
                         rel="stylesheet"
                     />
