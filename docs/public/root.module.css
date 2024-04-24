@@ -1,8 +1,3 @@
-@import '/src/_variables.scss';
-
-div {
-  box-sizing: border-box;
-}
 
 body {
   font-family: 'Open sans', sans-serif;
@@ -10,6 +5,10 @@ body {
   line-height: 24px !important;
   color: #1f3349;
   margin: 0px;
+}
+
+div {
+  box-sizing: border-box;
 }
 
 p {
