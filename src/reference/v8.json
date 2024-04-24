@@ -99,7 +99,7 @@
     },
     "glyphs": {
       "type": "string",
-      "doc": "A URL template for loading signed-distance-field glyph sets in PBF format. The URL must include `{fontstack}` and `{range}` tokens. This property is required if any layer uses the `text-field` layout property. The URL must be absolute, containing the [scheme, authority and path components](https://en.wikipedia.org/wiki/URL#Syntax).",
+      "doc": "A URL template for loading signed-distance-field glyph sets in PBF format. \nThe URL must include:\n\n - `{fontstack}` - When requesting glyphs, this token is replaced with a comma separated list of fonts from a font stack specified in the text-font property of a symbol layer. \n\n - `{range}` - When requesting glyphs, this token is replaced with a range of 256 Unicode code points. For example, to load glyphs for the Unicode Basic Latin and Basic Latin-1 Supplement blocks, the range would be 0-255. The actual ranges that are loaded are determined at runtime based on what text needs to be displayed.\n\nThis property is required if any layer uses the `text-field` layout property. The URL must be absolute, containing the [scheme, authority and path components](https://en.wikipedia.org/wiki/URL#Syntax).",
       "example": "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf"
     },
     "transition": {
