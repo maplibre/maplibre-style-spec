@@ -160,9 +160,32 @@ function createMainTopics() {
     }
 }
 
+function createExpressionsContent() {
+    let content = fs.readFileSync("build/expressions_patrial.md", "utf-8");
+    
+    const groupsSet = new Set<string>();
+    for (let value of Object.values(v8.expression_name.values)) {
+        groupsSet.add(value.group);
+    }
+    for (let group of groupsSet) {
+        content += `## ${group}\n\n`;
+        for (const [key, value] of Object.entries(v8.expression_name.values)) {
+            if (v8.expression_name.values[key].group !== group) {
+                continue;
+            }
+            content += "\n### " + key + "\n";
+            content += value.doc + "\n";
+            content += sdkSupportToMarkdown(value["sdk-support"] as any);
+            content += "\n";
+        }
+    }
+
+    fs.writeFileSync(`${BASE_PATH}/expressions.md`, content);
+}
 
 
 // Main Flow start here!
 createRootContent();
+createExpressionsContent();
 createMainTopics();
 
