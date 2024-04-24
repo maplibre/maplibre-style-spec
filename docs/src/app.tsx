@@ -1,7 +1,6 @@
 import {Link, Meta, Title, MetaProvider} from '@solidjs/meta';
 import {FileRoutes} from '@solidjs/start/router';
 import {App} from './components/app/app';
-import './root.module.scss';
 import {Router} from '@solidjs/router';
 import {Suspense} from 'solid-js';
 
@@ -33,6 +32,10 @@ export default function Root() {
                     />
                     <Link
                         href="https://unpkg.com/@fortawesome/fontawesome-free@6.4.0/css/solid.css"
+                        rel="stylesheet"
+                    />
+                     <Link
+                        href="/maplibre-style-spec/root.module.css"
                         rel="stylesheet"
                     />
                     <App><Suspense>{props.children}</Suspense></App>
