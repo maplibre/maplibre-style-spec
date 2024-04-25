@@ -1,1 +1,0 @@
-import{ssr as t,ssrHydrationKey as s,escape as a}from"solid-js/web";var e=["<div",' class="txt-em py12 px18 bg-gray-faint" style="','">',"</div>"];const i=r=>t(e,s(),"color:#546C8C",a(r.children));export{i as C};

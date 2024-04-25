@@ -1,82 +1,967 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.ico"><script>window._$HY||(e=>{let t=e=>e&&e.hasAttribute&&(e.hasAttribute("data-hk")?e:t(e.host&&e.host.nodeType?e.host:e.parentNode));["click", "input"].forEach((o=>document.addEventListener(o,(o=>{let a=o.composedPath&&o.composedPath()[0]||o.target,s=t(a);s&&!e.completed.has(s)&&e.events.push([s,o])}))))})(_$HY={events:[],completed:new WeakSet,r:{},fe(){}});</script><script>self.$R=self.$R||[];_$HY.r["0-0-0-0-0-0-0-1-0-0-0-0-0-9-4-2-0"]=$R[0]=($R[1]=(s,f,p)=>((p=new Promise((a,b)=>{s=a,f=b})).s=s,p.f=f,p))();($R[2]=(p,d)=>{p.s(d),p.status="success",p.value=d;delete p.s;delete p.f})($R[0],!0);</script><!--xs--><link href="/maplibre-style-spec/_build/assets/client-6hP-2Rzn.css" rel="stylesheet" precendence="high"/><link href="/maplibre-style-spec/_build/assets/web-DEAY107g.js" rel="modulepreload"/><link href="/maplibre-style-spec/_build/assets/HttpStatusCode-BqGeRz4q.js" rel="modulepreload"/><link href="/maplibre-style-spec/_build/assets/components-CS85MpCs.js" rel="modulepreload"/><link href="/maplibre-style-spec/_build/assets/client-qj6Eof39.js" rel="modulepreload"/><link href="/maplibre-style-spec/_build/assets/markdown-CO39_19j.js" rel="modulepreload"/><link href="/maplibre-style-spec/_build/assets/v8-DAYV0zQS.js" rel="modulepreload"/><link href="/maplibre-style-spec/_build/assets/index-BBfxHBbv.js" rel="modulepreload"/><title data-sm="0-0-0-0-0-0-0-1-0-0-0-0-0-0-0">MapLibre Style Spec</title><meta data-sm="0-0-0-0-0-0-0-1-0-0-0-0-0-1-0" charset="utf-8"/><meta data-sm="0-0-0-0-0-0-0-1-0-0-0-0-0-2-0" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/><link data-sm="0-0-0-0-0-0-0-1-0-0-0-0-0-3-0" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&amp;display=swap" rel="stylesheet"/><link data-sm="0-0-0-0-0-0-0-1-0-0-0-0-0-4-0" rel="icon" type="image/x-icon" href="/maplibre-style-spec/favicon.ico"/><link data-sm="0-0-0-0-0-0-0-1-0-0-0-0-0-5-0" href="https://unpkg.com/@fortawesome/fontawesome-free@6.4.0/css/fontawesome.css" rel="stylesheet"/><link data-sm="0-0-0-0-0-0-0-1-0-0-0-0-0-6-0" href="https://unpkg.com/@fortawesome/fontawesome-free@6.4.0/css/brands.css" rel="stylesheet"/><link data-sm="0-0-0-0-0-0-0-1-0-0-0-0-0-7-0" href="https://unpkg.com/@fortawesome/fontawesome-free@6.4.0/css/solid.css" rel="stylesheet"/><link data-sm="0-0-0-0-0-0-0-1-0-0-0-0-0-8-0" href="/maplibre-style-spec/root.module.css" rel="stylesheet"/></head><body><div id="app"><!--!$e0-0-0-0-0-0--><div data-hk="0-0-0-0-0-0-0-1-0-0-0-0-0-9-0" class="_app_wrap_16weg_1" id="app_wrap"><!--$--><!--/--><!--$--><header data-hk="0-0-0-0-0-0-0-1-0-0-0-0-0-9-2-0" class="_header_vtaa5_13"><div class="_side_menu_button_vtaa5_2"><i class="fa-solid fa-bars"></i></div><div class="_logo_container_vtaa5_26"><img src="/maplibre-style-spec/maplibre-logo-dark.svg" alt="logo" class="_logo_vtaa5_26"><div class="_title_container_vtaa5_39"><span class="_title_vtaa5_39">Style Spec</span></div></div></header><!--/--><div class="_container_16weg_9"><!--$--><aside data-hk="0-0-0-0-0-0-0-1-0-0-0-0-0-9-3-0" class="_sidebar_outer_container_1dyzj_1 undefined"><div class="_sidebar_viewport_1dyzj_9"><div class="_sidebar_inner_container_1dyzj_16"><div class="_nav_items_1dyzj_24"><ul><!--$--><li data-hk="0-0-0-0-0-0-0-1-0-0-0-0-0-9-3-1-0"><a data-hk="0-0-0-0-0-0-0-1-0-0-0-0-0-9-3-1-1-0" class="inactive sidebar-link" href="/maplibre-style-spec" link="true" >Introduction</a></li><li data-hk="0-0-0-0-0-0-0-1-0-0-0-0-0-9-3-1-2"><a data-hk="0-0-0-0-0-0-0-1-0-0-0-0-0-9-3-1-3-0" class="inactive sidebar-link" href="/maplibre-style-spec/root/" link="true" >Root</a></li><li data-hk="0-0-0-0-0-0-0-1-0-0-0-0-0-9-3-1-4"><a data-hk="0-0-0-0-0-0-0-1-0-0-0-0-0-9-3-1-5-0" class="inactive sidebar-link" href="/maplibre-style-spec/expressions/" link="true" >Expressions</a></li><li data-hk="0-0-0-0-0-0-0-1-0-0-0-0-0-9-3-1-6"><a data-hk="0-0-0-0-0-0-0-1-0-0-0-0-0-9-3-1-7-0" class="inactive sidebar-link" href="/maplibre-style-spec/light/" link="true" >Light</a></li><li data-hk="0-0-0-0-0-0-0-1-0-0-0-0-0-9-3-1-8"><a data-hk="0-0-0-0-0-0-0-1-0-0-0-0-0-9-3-1-9-0" class="inactive sidebar-link" href="/maplibre-style-spec/glyphs/" link="true" >Glyphs</a></li><li data-hk="0-0-0-0-0-0-0-1-0-0-0-0-0-9-3-1-10"><a data-hk="0-0-0-0-0-0-0-1-0-0-0-0-0-9-3-1-11-0" class="inactive sidebar-link" href="/maplibre-style-spec/layers/" link="true" >Layers</a></li><li data-hk="0-0-0-0-0-0-0-1-0-0-0-0-0-9-3-1-12"><a data-hk="0-0-0-0-0-0-0-1-0-0-0-0-0-9-3-1-13-0" class="inactive sidebar-link" href="/maplibre-style-spec/sources/" link="true" >Sources</a></li><li data-hk="0-0-0-0-0-0-0-1-0-0-0-0-0-9-3-1-14"><a data-hk="0-0-0-0-0-0-0-1-0-0-0-0-0-9-3-1-15-0" class=" active sidebar-link" href="/maplibre-style-spec/sprite/" link="true" aria-current="page">Sprite</a></li><li data-hk="0-0-0-0-0-0-0-1-0-0-0-0-0-9-3-1-16"><a data-hk="0-0-0-0-0-0-0-1-0-0-0-0-0-9-3-1-17-0" class="inactive sidebar-link" href="/maplibre-style-spec/terrain/" link="true" >Terrain</a></li><li data-hk="0-0-0-0-0-0-0-1-0-0-0-0-0-9-3-1-18"><a data-hk="0-0-0-0-0-0-0-1-0-0-0-0-0-9-3-1-19-0" class="inactive sidebar-link" href="/maplibre-style-spec/sky/" link="true" >Sky</a></li><li data-hk="0-0-0-0-0-0-0-1-0-0-0-0-0-9-3-1-20"><a data-hk="0-0-0-0-0-0-0-1-0-0-0-0-0-9-3-1-21-0" class="inactive sidebar-link" href="/maplibre-style-spec/transition/" link="true" >Transition</a></li><li data-hk="0-0-0-0-0-0-0-1-0-0-0-0-0-9-3-1-22"><a data-hk="0-0-0-0-0-0-0-1-0-0-0-0-0-9-3-1-23-0" class="inactive sidebar-link" href="/maplibre-style-spec/types/" link="true" >Types</a></li><li data-hk="0-0-0-0-0-0-0-1-0-0-0-0-0-9-3-1-24"><a data-hk="0-0-0-0-0-0-0-1-0-0-0-0-0-9-3-1-25-0" class="inactive sidebar-link" href="/maplibre-style-spec/deprecations/" link="true" >Deprecations</a></li><!--/--><li><a data-hk="0-0-0-0-0-0-0-1-0-0-0-0-0-9-3-2-0" target="_blank" href="https://github.com/maplibre/maplibre-gl-style-spec/blob/main/CHANGELOG.md" class="inactive" link="true" >Changelog</a></li></ul></div></div></div></aside><!--/--><!--$--><main data-hk="0-0-0-0-0-0-0-1-0-0-0-0-0-9-4-0" class="_main_content_container_jxdfs_29 undefined"><div class="_main_content_padding_container_jxdfs_40"><!--$--><div data-hk="0-0-0-0-0-0-0-1-0-0-0-0-0-9-4-1-1-0-0-0" data-closed="" id="collapsible-0-0-0-0-0-0-0-1-0-0-0-0-0-9-4-1-0" class="collapsible " ><button data-hk="0-0-0-0-0-0-0-1-0-0-0-0-0-9-4-1-1-0-0-1-0-0-0-0" type="button" aria-expanded="false" data-closed="" class="collapsible__trigger " >Table of contents<i data-hk="0-0-0-0-0-0-0-1-0-0-0-0-0-9-4-1-1-0-0-1-0-0-0-1" class="fa-solid fa-chevron-down collapsible__trigger-icon"></i></button></div><!--/--><div class="_row_jxdfs_47"><div id="ContentWindow" class="_doc_items_jxdfs_51"><link data-hk="0-0-0-0-0-0-0-1-0-0-0-0-0-9-4-2-0-0-0-0-0-0" href="/maplibre-style-spec/_build/assets/markdown-CP9dM-hu.css" rel="stylesheet" precendence="high"/><div data-hk="0-0-0-0-0-0-0-1-0-0-0-0-0-9-4-2-0-0-0-0-0-1-0"><div data-hk="0-0-0-0-0-0-0-1-0-0-0-0-0-9-4-2-0-0-0-0-0-1-1-0"><h1 id="sprite" tabindex="-1"><a class="header-anchor" href="#sprite"><span>Sprite</span></a></h1>
-<p>Loading a <a href="https://en.wikipedia.org/wiki/Sprite_(computer_graphics)">sprite</a> can be done using the optional <code class="language-typescript">sprite</code> property at the root level of a MapLibre style sheet.</p>
-<p>The images contained in the sprite can be referenced in other style properties (<code class="language-typescript">background<span class="token operator">-</span>pattern</code>, <code class="language-typescript">fill<span class="token operator">-</span>pattern</code>, <code class="language-typescript">line<span class="token operator">-</span>pattern</code>,<code class="language-typescript">fill<span class="token operator">-</span>extrusion<span class="token operator">-</span>pattern</code> and <code class="language-typescript">icon<span class="token operator">-</span>image</code>).</p>
-<h2 id="usage" tabindex="-1"><a class="header-anchor" href="#usage"><span>Usage</span></a></h2>
-<p>You need to pass an URL where the sprite can be loaded from.</p>
-<pre class="language-json"><code class="language-json"><span class="token property">"sprite"</span><span class="token operator">:</span> <span class="token string">"https://demotiles.maplibre.org/styles/osm-bright-gl-style/sprite"</span>
-</code></pre>
-<p>This will load both an image by appending <code class="language-typescript"><span class="token punctuation">.</span>png</code> and the metadata about the sprite needed for loading by appending <code class="language-typescript"><span class="token punctuation">.</span>json</code>. See for yourself:</p>
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://www.maplibre.org/maplibre-style-spec/sprite/">
+      
+      
+        <link rel="prev" href="../sources/">
+      
+      
+        <link rel="next" href="../terrain/">
+      
+      
+      <link rel="icon" href="https://maplibre.org/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.19">
+    
+    
+      
+        <title>Sprite - MapLibre Style Spec</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.66ac8b77.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Sprite - MapLibre Style Spec" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="https://www.maplibre.org/maplibre-style-spec/assets/images/social/sprite.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://www.maplibre.org/maplibre-style-spec/sprite/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Sprite - MapLibre Style Spec" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="https://www.maplibre.org/maplibre-style-spec/assets/images/social/sprite.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sprite" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="MapLibre Style Spec" class="md-header__button md-logo" aria-label="MapLibre Style Spec" data-md-component="logo">
+      
+  <img src="../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MapLibre Style Spec
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Sprite
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/maplibre/maplibre-style-spec" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="MapLibre Style Spec" class="md-nav__button md-logo" aria-label="MapLibre Style Spec" data-md-component="logo">
+      
+  <img src="../assets/logo.svg" alt="logo">
+
+    </a>
+    MapLibre Style Spec
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/maplibre/maplibre-style-spec" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deprecations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deprecations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../expressions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Expressions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glyphs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glyphs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../layers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Layers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../light/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Light
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../root/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Root
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sky/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sky
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Sprite
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Sprite
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multiple-sprite-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multiple Sprite Sources
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sprite-source-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sprite Source Format
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sprite Source Format">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#optional-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional Properties
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#high-dpi-devices" class="md-nav__link">
+    <span class="md-ellipsis">
+      High-DPI Devices
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-sprites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generating Sprites
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../terrain/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Terrain
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../transition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Transition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../types/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Types
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multiple-sprite-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multiple Sprite Sources
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sprite-source-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sprite Source Format
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sprite Source Format">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#optional-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional Properties
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#high-dpi-devices" class="md-nav__link">
+    <span class="md-ellipsis">
+      High-DPI Devices
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-sprites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generating Sprites
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="sprite">Sprite<a class="headerlink" href="#sprite" title="Permanent link">&para;</a></h1>
+<p>Loading a <a href="https://en.wikipedia.org/wiki/Sprite_(computer_graphics)">sprite</a> can be done using the optional <code>sprite</code> property at the root level of a MapLibre style sheet.</p>
+<p>The images contained in the sprite can be referenced in other style properties (<code>background-pattern</code>, <code>fill-pattern</code>, <code>line-pattern</code>,<code>fill-extrusion-pattern</code> and <code>icon-image</code>).</p>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<p>You need to pass an URL where the sprite can be loaded from. </p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">&quot;sprite&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demotiles.maplibre.org/styles/osm-bright-gl-style/sprite&quot;</span>
+</span></code></pre></div>
+<p>This will load both an image by appending <code>.png</code> and the metadata about the sprite needed for loading by appending <code>.json</code>. See for yourself:</p>
 <ul>
 <li><a href="https://demotiles.maplibre.org/styles/osm-bright-gl-style/sprite.png">https://demotiles.maplibre.org/styles/osm-bright-gl-style/sprite.png</a></li>
 <li><a href="https://demotiles.maplibre.org/styles/osm-bright-gl-style/sprite.json">https://demotiles.maplibre.org/styles/osm-bright-gl-style/sprite.json</a></li>
 </ul>
 <p>More details about the exact requirements on the format of these files is provided in the next section.</p>
-<p>When a sprite is provided, you can refer to the images in the sprite in other parts of the style sheet. For example, when creating a symbol layer with the layout property <code class="language-typescript"><span class="token string-property property">"icon-image"</span><span class="token operator">:</span> <span class="token string">"poi"</span></code>. Or with the tokenized value  <code class="language-typescript"><span class="token string-property property">"icon-image"</span><span class="token operator">:</span> <span class="token string">"{icon}"</span></code> and vector tile features with an <code class="language-typescript">icon</code> property with the value <code class="language-typescript">poi</code>.</p>
-<h3 id="multiple-sprite-sources" tabindex="-1"><a class="header-anchor" href="#multiple-sprite-sources"><span>Multiple Sprite Sources</span></a></h3>
-<p>You can also supply an array of <code class="language-typescript"><span class="token punctuation">{</span> id<span class="token operator">:</span> <span class="token operator">...</span><span class="token punctuation">,</span> url<span class="token operator">:</span> <span class="token operator">...</span> <span class="token punctuation">}</span></code> pairs to load multiple sprites:</p>
-<pre class="language-json"><code class="language-json"><span class="token property">"sprite"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-  <span class="token punctuation">{</span>
-    id<span class="token operator">:</span> 'roadsigns'<span class="token punctuation">,</span>
-    url<span class="token operator">:</span> 'https<span class="token operator">:</span><span class="token comment">//example.com/myroadsigns'</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token punctuation">{</span>
-    id<span class="token operator">:</span> 'shops'<span class="token punctuation">,</span>
-    url<span class="token operator">:</span> 'https<span class="token operator">:</span><span class="token comment">//example2.com/someurl'</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token punctuation">{</span>
-    id<span class="token operator">:</span> 'default'<span class="token punctuation">,</span>
-    url<span class="token operator">:</span> 'https<span class="token operator">:</span><span class="token comment">//example2.com/anotherurl'</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">]</span>
-</code></pre>
-<p>As you can see, each sprite has an id. All images contained within a sprite also have an id. When using multiple sprites, you need to prefix the id of the image with the id of the sprite it is contained within, followed by a colon. For example, to reference the <code class="language-typescript">stop_sign</code> image on the <code class="language-typescript">roadsigns</code> sprite, you would need to use <code class="language-typescript">roadsigns<span class="token operator">:</span>stop_sign</code>.</p>
-<p>The sprite with id <code class="language-typescript"><span class="token keyword">default</span></code> is special in that you do not need to prefix the images contained within it. For example, to reference the image with id <code class="language-typescript">airport</code> in the default sprite above, you can simply use <code class="language-typescript">airport</code>.</p>
-<h2 id="sprite-source-format" tabindex="-1"><a class="header-anchor" href="#sprite-source-format"><span>Sprite Source Format</span></a></h2>
+<p>When a sprite is provided, you can refer to the images in the sprite in other parts of the style sheet. For example, when creating a symbol layer with the layout property <code>"icon-image": "poi"</code>. Or with the tokenized value  <code>"icon-image": "{icon}"</code> and vector tile features with an <code>icon</code> property with the value <code>poi</code>.</p>
+<h3 id="multiple-sprite-sources">Multiple Sprite Sources<a class="headerlink" href="#multiple-sprite-sources" title="Permanent link">&para;</a></h3>
+<p>You can also supply an array of <code>{ id: ..., url: ... }</code> pairs to load multiple sprites:</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">&quot;sprite&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="err">id</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;roadsig</span><span class="kc">ns</span><span class="err">&#39;</span><span class="p">,</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="err">url</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;h</span><span class="kc">tt</span><span class="err">ps</span><span class="p">:</span><span class="c1">//example.com/myroadsigns&#39;</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="p">},</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="err">id</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;shops&#39;</span><span class="p">,</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="err">url</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;h</span><span class="kc">tt</span><span class="err">ps</span><span class="p">:</span><span class="c1">//example2.com/someurl&#39;</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span><span class="p">},</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span><span class="p">{</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="err">id</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;de</span><span class="kc">fault</span><span class="err">&#39;</span><span class="p">,</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="err">url</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;h</span><span class="kc">tt</span><span class="err">ps</span><span class="p">:</span><span class="c1">//example2.com/anotherurl&#39;</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="p">]</span>
+</span></code></pre></div>
+<p>As you can see, each sprite has an id. All images contained within a sprite also have an id. When using multiple sprites, you need to prefix the id of the image with the id of the sprite it is contained within, followed by a colon. For example, to reference the <code>stop_sign</code> image on the <code>roadsigns</code> sprite, you would need to use <code>roadsigns:stop_sign</code>.</p>
+<p>The sprite with id <code>default</code> is special in that you do not need to prefix the images contained within it. For example, to reference the image with id <code>airport</code> in the default sprite above, you can simply use <code>airport</code>.</p>
+<h2 id="sprite-source-format">Sprite Source Format<a class="headerlink" href="#sprite-source-format" title="Permanent link">&para;</a></h2>
 <p>A valid sprite source must supply two types of files:</p>
 <ul>
 <li>
 <p><em>An image file</em>, which is a PNG image containing the sprite data.</p>
 </li>
 <li>
-<p>An <em>index file</em>, which is a JSON document containing a description of each image contained in the sprite. The content of this file must be a JSON object whose keys form identifiers to be used as the values of the above style properties, and whose values are objects describing the dimensions (<code class="language-typescript">width</code> and <code class="language-typescript">height</code> properties) and pixel ratio (<code class="language-typescript">pixelRatio</code>) of the image and its location within the sprite (<code class="language-typescript">x</code> and <code class="language-typescript">y</code>). For example, a sprite containing a single image might have the following index file contents:</p>
-<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
-    <span class="token property">"poi"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-        <span class="token property">"width"</span><span class="token operator">:</span> <span class="token number">32</span><span class="token punctuation">,</span>
-        <span class="token property">"height"</span><span class="token operator">:</span> <span class="token number">32</span><span class="token punctuation">,</span>
-        <span class="token property">"x"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
-        <span class="token property">"y"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
-        <span class="token property">"pixelRatio"</span><span class="token operator">:</span> <span class="token number">1</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<p>An <em>index file</em>, which is a JSON document containing a description of each image contained in the sprite. The content of this file must be a JSON object whose keys form identifiers to be used as the values of the above style properties, and whose values are objects describing the dimensions (<code>width</code> and <code>height</code> properties) and pixel ratio (<code>pixelRatio</code>) of the image and its location within the sprite (<code>x</code> and <code>y</code>). For example, a sprite containing a single image might have the following index file contents:</p>
 </li>
 </ul>
-<h3 id="optional-properties" tabindex="-1"><a class="header-anchor" href="#optional-properties"><span>Optional Properties</span></a></h3>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="nt">&quot;poi&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">        </span><span class="nt">&quot;width&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">        </span><span class="nt">&quot;height&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">        </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">        </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">        </span><span class="nt">&quot;pixelRatio&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="optional-properties">Optional Properties<a class="headerlink" href="#optional-properties" title="Permanent link">&para;</a></h3>
 <p>Apart from these required properties, the following optional properties are supported:</p>
 <ul>
-<li><code class="language-typescript">content</code>: An array of four numbers, with the first two specifying the left, top corner, and the last two specifying the right, bottom corner. If present, and if the icon uses <a href="/maplibre-style-spec/layers/#layout-symbol-icon-text-fit"><code class="language-typescript">icon<span class="token operator">-</span>text<span class="token operator">-</span>fit</code></a>, the symbol's text will be fit inside the content box.</li>
-<li><code class="language-typescript">stretchX</code>: An array of two-element arrays, consisting of two numbers that represent the <em>from</em> position and the <em>to</em> position of areas that can be stretched.</li>
-<li><code class="language-typescript">stretchY</code>: Same as <code class="language-typescript">stretchX</code>, but for the vertical dimension.</li>
-<li><code class="language-typescript">sdf</code>: Boolean. If <code class="language-typescript"><span class="token boolean">true</span></code> then the image is handled as a signed-distance field (SDF) and its color can be set at runtime using the <a href="/maplibre-style-spec/layers/#paint-symbol-icon-color"><code class="language-typescript">icon<span class="token operator">-</span>color</code></a> and <a href="/maplibre-style-spec/layers/#paint-symbol-icon-halo-color"><code class="language-typescript">icon<span class="token operator">-</span>halo<span class="token operator">-</span>color</code></a> properties. Defaults to <code class="language-typescript"><span class="token boolean">false</span></code>.</li>
+<li><code>content</code>: An array of four numbers, with the first two specifying the left, top corner, and the last two specifying the right, bottom corner. If present, and if the icon uses <a href="../layers/#icon-text-fit"><code>icon-text-fit</code></a>, the symbol's text will be fit inside the content box.</li>
+<li><code>stretchX</code>: An array of two-element arrays, consisting of two numbers that represent the <em>from</em> position and the <em>to</em> position of areas that can be stretched.</li>
+<li><code>stretchY</code>: Same as <code>stretchX</code>, but for the vertical dimension.</li>
+<li><code>sdf</code>: Boolean. If <code>true</code> then the image is handled as a signed-distance field (SDF) and its color can be set at runtime using the <a href="../layers/#icon-color"><code>icon-color</code></a> and <a href="../layers/#icon-halo-color"><code>icon-halo-color</code></a> properties. Defaults to <code>false</code>.</li>
 </ul>
-<h4 id="stretch-properties" tabindex="-1"><a class="header-anchor" href="#stretch-properties"><span>Stretch Properties</span></a></h4>
+<h4 id="stretch-properties">Stretch Properties<a class="headerlink" href="#stretch-properties" title="Permanent link">&para;</a></h4>
 <p>The following image gives a bit more infomation regarding the stretch properties:</p>
-<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
-    <span class="token property">"sheild"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-        <span class="token property">"width"</span><span class="token operator">:</span> <span class="token number">25</span><span class="token punctuation">,</span>
-        <span class="token property">"height"</span><span class="token operator">:</span> <span class="token number">30</span><span class="token punctuation">,</span>
-        <span class="token property">"x"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
-        <span class="token property">"y"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
-        <span class="token property">"stretchX"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
-        <span class="token property">"stretchY"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
-        <span class="token property">"pixelRatio"</span><span class="token operator">:</span> <span class="token number">1</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<p>The red highlighted part is where the stretch will occur over the Y axis and the blue highlight is for the X axis.
-<img src="https://maplibre.org/maplibre-gl-js/docs/assets/popup_debug.png" alt="popup-stretch"></p>
-<h2 id="high-dpi-devices" tabindex="-1"><a class="header-anchor" href="#high-dpi-devices"><span>High-DPI Devices</span></a></h2>
-<p>On high-DPI devices, <code class="language-typescript"><span class="token decorator"><span class="token at operator">@</span><span class="token function">2x</span></span></code> is appended to  the URLs described above. For example, if you specified <code class="language-typescript"><span class="token string-property property">"sprite"</span><span class="token operator">:</span> <span class="token string">"https://example.com/sprite"</span></code>, renderers would load <code class="language-typescript">https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>example<span class="token punctuation">.</span>com<span class="token operator">/</span>sprite<span class="token punctuation">.</span>json</code> and <code class="language-typescript">https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>example<span class="token punctuation">.</span>com<span class="token operator">/</span>sprite<span class="token punctuation">.</span>png</code>, or <code class="language-typescript">https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>example<span class="token punctuation">.</span>com<span class="token operator">/</span>sprite<span class="token decorator"><span class="token at operator">@</span><span class="token function">2x</span></span><span class="token punctuation">.</span>json</code> and <code class="language-typescript">https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>example<span class="token punctuation">.</span>com<span class="token operator">/</span>sprite<span class="token decorator"><span class="token at operator">@</span><span class="token function">2x</span></span><span class="token punctuation">.</span>png</code>.</p>
-<h2 id="generating-sprites" tabindex="-1"><a class="header-anchor" href="#generating-sprites"><span>Generating Sprites</span></a></h2>
+<p><div class="language-json highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">{</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="nt">&quot;sheild&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">        </span><span class="nt">&quot;width&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">        </span><span class="nt">&quot;height&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">        </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">        </span><span class="nt">&quot;y&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">        </span><span class="nt">&quot;stretchX&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[[</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">]]</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">        </span><span class="nt">&quot;stretchY&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[[</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">]]</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">        </span><span class="nt">&quot;pixelRatio&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="p">}</span>
+</span></code></pre></div>
+The red highlighted part is where the stretch will occur over the Y axis and the blue highlight is for the X axis.
+<img alt="popup-stretch" src="https://maplibre.org/maplibre-gl-js/docs/assets/popup_debug.png" /></p>
+<h2 id="high-dpi-devices">High-DPI Devices<a class="headerlink" href="#high-dpi-devices" title="Permanent link">&para;</a></h2>
+<p>On high-DPI devices, <code>@2x</code> is appended to  the URLs described above. For example, if you specified <code>"sprite": "https://example.com/sprite"</code>, renderers would load <code>https://example.com/sprite.json</code> and <code>https://example.com/sprite.png</code>, or <code>https://example.com/sprite@2x.json</code> and <code>https://example.com/sprite@2x.png</code>.</p>
+<h2 id="generating-sprites">Generating Sprites<a class="headerlink" href="#generating-sprites" title="Permanent link">&para;</a></h2>
 <p>A tool that can generate sprites from svg files can be found in here: <a href="https://www.npmjs.com/package/@elastic/spritezero">@elastic/spritezero</a></p>
-</div></div></div></div><div class="_scroll_to_top_jxdfs_12"><i class="fa-solid fa-arrow-up"></i></div><!--$--><a data-hk="0-0-0-0-0-0-0-1-0-0-0-0-0-9-4-3-0" target="_blank" href="https://github.com/maplibre/maplibre-style-spec" class="_github_link_jxdfs_62 inactive" link="true" ><i data-hk="0-0-0-0-0-0-0-1-0-0-0-0-0-9-4-3-1" class="fa-brands fa-github"></i> MapLibre Style repository</a><!--/--><!--$--><a data-hk="0-0-0-0-0-0-0-1-0-0-0-0-0-9-4-4-0" target="_blank" href="https://github.com/maplibre/maplibre-style-spec/blob/main/docs/src/routes/sprite/index.tsx" class="_github_link_jxdfs_62 inactive" link="true" ><i data-hk="0-0-0-0-0-0-0-1-0-0-0-0-0-9-4-4-1" class="fa-brands fa-github"></i> Edit page</a><!--/--></div></main><!--/--><!--$--><aside data-hk="0-0-0-0-0-0-0-1-0-0-0-0-0-9-5-0" class="undefined _toc_outer_container_nu2fg_1 _largeTOC_nu2fg_14"><div class="undefined _toc_viewport_nu2fg_18" style="scroll-behavior:smooth"></div></aside><!--/--></div></div><!--!$/e0-0-0-0-0-0--></div><!--$--><script>window.manifest = {"src/routes/[...404].tsx?pick=default&pick=$css":{"output":"/maplibre-style-spec/_build/assets/_...404_-Dvsv8Zs0.js","assets":[{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/web-DEAY107g.js","key":"/maplibre-style-spec/_build/assets/web-DEAY107g.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/HttpStatusCode-BqGeRz4q.js","key":"/maplibre-style-spec/_build/assets/HttpStatusCode-BqGeRz4q.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/_...404_-Dvsv8Zs0.js","key":"/maplibre-style-spec/_build/assets/_...404_-Dvsv8Zs0.js","rel":"modulepreload"}}]},"src/routes/deprecations/index.tsx?pick=default&pick=$css":{"output":"/maplibre-style-spec/_build/assets/index-DR877KqP.js","assets":[{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/web-DEAY107g.js","key":"/maplibre-style-spec/_build/assets/web-DEAY107g.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/markdown-CP9dM-hu.css","key":"/maplibre-style-spec/_build/assets/markdown-CP9dM-hu.css","rel":"stylesheet","precendence":"high"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/markdown-CO39_19j.js","key":"/maplibre-style-spec/_build/assets/markdown-CO39_19j.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/caption-CCfYXQ9y.js","key":"/maplibre-style-spec/_build/assets/caption-CCfYXQ9y.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/property-DcvAgm4Y.css","key":"/maplibre-style-spec/_build/assets/property-DcvAgm4Y.css","rel":"stylesheet","precendence":"high"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/components-CS85MpCs.js","key":"/maplibre-style-spec/_build/assets/components-CS85MpCs.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/property-F8Zh0-De.js","key":"/maplibre-style-spec/_build/assets/property-F8Zh0-De.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/subtitle-B5vsGLij.js","key":"/maplibre-style-spec/_build/assets/subtitle-B5vsGLij.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/index-DR877KqP.js","key":"/maplibre-style-spec/_build/assets/index-DR877KqP.js","rel":"modulepreload"}}]},"src/routes/expressions/index.tsx?pick=default&pick=$css":{"output":"/maplibre-style-spec/_build/assets/index-DMoe6eu9.js","assets":[{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/web-DEAY107g.js","key":"/maplibre-style-spec/_build/assets/web-DEAY107g.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/v8-DAYV0zQS.js","key":"/maplibre-style-spec/_build/assets/v8-DAYV0zQS.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/markdown-CP9dM-hu.css","key":"/maplibre-style-spec/_build/assets/markdown-CP9dM-hu.css","rel":"stylesheet","precendence":"high"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/markdown-CO39_19j.js","key":"/maplibre-style-spec/_build/assets/markdown-CO39_19j.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/property-DcvAgm4Y.css","key":"/maplibre-style-spec/_build/assets/property-DcvAgm4Y.css","rel":"stylesheet","precendence":"high"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/components-CS85MpCs.js","key":"/maplibre-style-spec/_build/assets/components-CS85MpCs.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/property-F8Zh0-De.js","key":"/maplibre-style-spec/_build/assets/property-F8Zh0-De.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/index-DMoe6eu9.js","key":"/maplibre-style-spec/_build/assets/index-DMoe6eu9.js","rel":"modulepreload"}}]},"src/routes/glyphs/index.tsx?pick=default&pick=$css":{"output":"/maplibre-style-spec/_build/assets/index-CZ068j4t.js","assets":[{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/markdown-CP9dM-hu.css","key":"/maplibre-style-spec/_build/assets/markdown-CP9dM-hu.css","rel":"stylesheet","precendence":"high"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/web-DEAY107g.js","key":"/maplibre-style-spec/_build/assets/web-DEAY107g.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/markdown-CO39_19j.js","key":"/maplibre-style-spec/_build/assets/markdown-CO39_19j.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/v8-DAYV0zQS.js","key":"/maplibre-style-spec/_build/assets/v8-DAYV0zQS.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/index-CZ068j4t.js","key":"/maplibre-style-spec/_build/assets/index-CZ068j4t.js","rel":"modulepreload"}}]},"src/routes/index.tsx?pick=default&pick=$css":{"output":"/maplibre-style-spec/_build/assets/index-DC0l1oKA.js","assets":[{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/markdown-CP9dM-hu.css","key":"/maplibre-style-spec/_build/assets/markdown-CP9dM-hu.css","rel":"stylesheet","precendence":"high"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/web-DEAY107g.js","key":"/maplibre-style-spec/_build/assets/web-DEAY107g.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/markdown-CO39_19j.js","key":"/maplibre-style-spec/_build/assets/markdown-CO39_19j.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/index-DC0l1oKA.js","key":"/maplibre-style-spec/_build/assets/index-DC0l1oKA.js","rel":"modulepreload"}}]},"src/routes/layers/index.tsx?pick=default&pick=$css":{"output":"/maplibre-style-spec/_build/assets/index-CFOm1zNJ.js","assets":[{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/index-CH0eSBV9.css","key":"/maplibre-style-spec/_build/assets/index-CH0eSBV9.css","rel":"stylesheet","precendence":"high"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/web-DEAY107g.js","key":"/maplibre-style-spec/_build/assets/web-DEAY107g.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/markdown-CP9dM-hu.css","key":"/maplibre-style-spec/_build/assets/markdown-CP9dM-hu.css","rel":"stylesheet","precendence":"high"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/markdown-CO39_19j.js","key":"/maplibre-style-spec/_build/assets/markdown-CO39_19j.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/v8-DAYV0zQS.js","key":"/maplibre-style-spec/_build/assets/v8-DAYV0zQS.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/property-DcvAgm4Y.css","key":"/maplibre-style-spec/_build/assets/property-DcvAgm4Y.css","rel":"stylesheet","precendence":"high"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/components-CS85MpCs.js","key":"/maplibre-style-spec/_build/assets/components-CS85MpCs.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/property-F8Zh0-De.js","key":"/maplibre-style-spec/_build/assets/property-F8Zh0-De.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/subtitle-B5vsGLij.js","key":"/maplibre-style-spec/_build/assets/subtitle-B5vsGLij.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/items-DJu72sNC.js","key":"/maplibre-style-spec/_build/assets/items-DJu72sNC.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/caption-CCfYXQ9y.js","key":"/maplibre-style-spec/_build/assets/caption-CCfYXQ9y.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/index-CFOm1zNJ.js","key":"/maplibre-style-spec/_build/assets/index-CFOm1zNJ.js","rel":"modulepreload"}}]},"src/routes/light/index.tsx?pick=default&pick=$css":{"output":"/maplibre-style-spec/_build/assets/index-CfjDXrhZ.js","assets":[{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/web-DEAY107g.js","key":"/maplibre-style-spec/_build/assets/web-DEAY107g.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/markdown-CP9dM-hu.css","key":"/maplibre-style-spec/_build/assets/markdown-CP9dM-hu.css","rel":"stylesheet","precendence":"high"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/markdown-CO39_19j.js","key":"/maplibre-style-spec/_build/assets/markdown-CO39_19j.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/v8-DAYV0zQS.js","key":"/maplibre-style-spec/_build/assets/v8-DAYV0zQS.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/property-DcvAgm4Y.css","key":"/maplibre-style-spec/_build/assets/property-DcvAgm4Y.css","rel":"stylesheet","precendence":"high"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/components-CS85MpCs.js","key":"/maplibre-style-spec/_build/assets/components-CS85MpCs.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/property-F8Zh0-De.js","key":"/maplibre-style-spec/_build/assets/property-F8Zh0-De.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/subtitle-B5vsGLij.js","key":"/maplibre-style-spec/_build/assets/subtitle-B5vsGLij.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/items-DJu72sNC.js","key":"/maplibre-style-spec/_build/assets/items-DJu72sNC.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/index-CfjDXrhZ.js","key":"/maplibre-style-spec/_build/assets/index-CfjDXrhZ.js","rel":"modulepreload"}}]},"src/routes/root/index.tsx?pick=default&pick=$css":{"output":"/maplibre-style-spec/_build/assets/index-C69DS08Z.js","assets":[{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/web-DEAY107g.js","key":"/maplibre-style-spec/_build/assets/web-DEAY107g.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/markdown-CP9dM-hu.css","key":"/maplibre-style-spec/_build/assets/markdown-CP9dM-hu.css","rel":"stylesheet","precendence":"high"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/markdown-CO39_19j.js","key":"/maplibre-style-spec/_build/assets/markdown-CO39_19j.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/v8-DAYV0zQS.js","key":"/maplibre-style-spec/_build/assets/v8-DAYV0zQS.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/property-DcvAgm4Y.css","key":"/maplibre-style-spec/_build/assets/property-DcvAgm4Y.css","rel":"stylesheet","precendence":"high"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/components-CS85MpCs.js","key":"/maplibre-style-spec/_build/assets/components-CS85MpCs.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/property-F8Zh0-De.js","key":"/maplibre-style-spec/_build/assets/property-F8Zh0-De.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/subtitle-B5vsGLij.js","key":"/maplibre-style-spec/_build/assets/subtitle-B5vsGLij.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/items-DJu72sNC.js","key":"/maplibre-style-spec/_build/assets/items-DJu72sNC.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/index-C69DS08Z.js","key":"/maplibre-style-spec/_build/assets/index-C69DS08Z.js","rel":"modulepreload"}}]},"src/routes/sky/index.tsx?pick=default&pick=$css":{"output":"/maplibre-style-spec/_build/assets/index-nHSRQ3rL.js","assets":[{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/web-DEAY107g.js","key":"/maplibre-style-spec/_build/assets/web-DEAY107g.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/markdown-CP9dM-hu.css","key":"/maplibre-style-spec/_build/assets/markdown-CP9dM-hu.css","rel":"stylesheet","precendence":"high"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/markdown-CO39_19j.js","key":"/maplibre-style-spec/_build/assets/markdown-CO39_19j.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/v8-DAYV0zQS.js","key":"/maplibre-style-spec/_build/assets/v8-DAYV0zQS.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/property-DcvAgm4Y.css","key":"/maplibre-style-spec/_build/assets/property-DcvAgm4Y.css","rel":"stylesheet","precendence":"high"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/components-CS85MpCs.js","key":"/maplibre-style-spec/_build/assets/components-CS85MpCs.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/property-F8Zh0-De.js","key":"/maplibre-style-spec/_build/assets/property-F8Zh0-De.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/subtitle-B5vsGLij.js","key":"/maplibre-style-spec/_build/assets/subtitle-B5vsGLij.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/items-DJu72sNC.js","key":"/maplibre-style-spec/_build/assets/items-DJu72sNC.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/index-nHSRQ3rL.js","key":"/maplibre-style-spec/_build/assets/index-nHSRQ3rL.js","rel":"modulepreload"}}]},"src/routes/sources/index.tsx?pick=default&pick=$css":{"output":"/maplibre-style-spec/_build/assets/index--0d_4nIT.js","assets":[{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/web-DEAY107g.js","key":"/maplibre-style-spec/_build/assets/web-DEAY107g.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/markdown-CP9dM-hu.css","key":"/maplibre-style-spec/_build/assets/markdown-CP9dM-hu.css","rel":"stylesheet","precendence":"high"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/markdown-CO39_19j.js","key":"/maplibre-style-spec/_build/assets/markdown-CO39_19j.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/v8-DAYV0zQS.js","key":"/maplibre-style-spec/_build/assets/v8-DAYV0zQS.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/property-DcvAgm4Y.css","key":"/maplibre-style-spec/_build/assets/property-DcvAgm4Y.css","rel":"stylesheet","precendence":"high"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/components-CS85MpCs.js","key":"/maplibre-style-spec/_build/assets/components-CS85MpCs.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/property-F8Zh0-De.js","key":"/maplibre-style-spec/_build/assets/property-F8Zh0-De.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/subtitle-B5vsGLij.js","key":"/maplibre-style-spec/_build/assets/subtitle-B5vsGLij.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/items-DJu72sNC.js","key":"/maplibre-style-spec/_build/assets/items-DJu72sNC.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/index--0d_4nIT.js","key":"/maplibre-style-spec/_build/assets/index--0d_4nIT.js","rel":"modulepreload"}}]},"src/routes/sprite/index.tsx?pick=default&pick=$css":{"output":"/maplibre-style-spec/_build/assets/index-BBfxHBbv.js","assets":[{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/web-DEAY107g.js","key":"/maplibre-style-spec/_build/assets/web-DEAY107g.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/markdown-CP9dM-hu.css","key":"/maplibre-style-spec/_build/assets/markdown-CP9dM-hu.css","rel":"stylesheet","precendence":"high"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/markdown-CO39_19j.js","key":"/maplibre-style-spec/_build/assets/markdown-CO39_19j.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/v8-DAYV0zQS.js","key":"/maplibre-style-spec/_build/assets/v8-DAYV0zQS.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/index-BBfxHBbv.js","key":"/maplibre-style-spec/_build/assets/index-BBfxHBbv.js","rel":"modulepreload"}}]},"src/routes/terrain/index.tsx?pick=default&pick=$css":{"output":"/maplibre-style-spec/_build/assets/index-7QsP0qdN.js","assets":[{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/web-DEAY107g.js","key":"/maplibre-style-spec/_build/assets/web-DEAY107g.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/markdown-CP9dM-hu.css","key":"/maplibre-style-spec/_build/assets/markdown-CP9dM-hu.css","rel":"stylesheet","precendence":"high"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/markdown-CO39_19j.js","key":"/maplibre-style-spec/_build/assets/markdown-CO39_19j.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/v8-DAYV0zQS.js","key":"/maplibre-style-spec/_build/assets/v8-DAYV0zQS.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/property-DcvAgm4Y.css","key":"/maplibre-style-spec/_build/assets/property-DcvAgm4Y.css","rel":"stylesheet","precendence":"high"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/components-CS85MpCs.js","key":"/maplibre-style-spec/_build/assets/components-CS85MpCs.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/property-F8Zh0-De.js","key":"/maplibre-style-spec/_build/assets/property-F8Zh0-De.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/subtitle-B5vsGLij.js","key":"/maplibre-style-spec/_build/assets/subtitle-B5vsGLij.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/items-DJu72sNC.js","key":"/maplibre-style-spec/_build/assets/items-DJu72sNC.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/index-7QsP0qdN.js","key":"/maplibre-style-spec/_build/assets/index-7QsP0qdN.js","rel":"modulepreload"}}]},"src/routes/transition/index.tsx?pick=default&pick=$css":{"output":"/maplibre-style-spec/_build/assets/index-DCg-FX6V.js","assets":[{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/web-DEAY107g.js","key":"/maplibre-style-spec/_build/assets/web-DEAY107g.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/markdown-CP9dM-hu.css","key":"/maplibre-style-spec/_build/assets/markdown-CP9dM-hu.css","rel":"stylesheet","precendence":"high"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/markdown-CO39_19j.js","key":"/maplibre-style-spec/_build/assets/markdown-CO39_19j.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/v8-DAYV0zQS.js","key":"/maplibre-style-spec/_build/assets/v8-DAYV0zQS.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/property-DcvAgm4Y.css","key":"/maplibre-style-spec/_build/assets/property-DcvAgm4Y.css","rel":"stylesheet","precendence":"high"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/components-CS85MpCs.js","key":"/maplibre-style-spec/_build/assets/components-CS85MpCs.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/property-F8Zh0-De.js","key":"/maplibre-style-spec/_build/assets/property-F8Zh0-De.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/subtitle-B5vsGLij.js","key":"/maplibre-style-spec/_build/assets/subtitle-B5vsGLij.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/items-DJu72sNC.js","key":"/maplibre-style-spec/_build/assets/items-DJu72sNC.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/index-DCg-FX6V.js","key":"/maplibre-style-spec/_build/assets/index-DCg-FX6V.js","rel":"modulepreload"}}]},"src/routes/types/index.tsx?pick=default&pick=$css":{"output":"/maplibre-style-spec/_build/assets/index-CQxzSTbp.js","assets":[{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/markdown-CP9dM-hu.css","key":"/maplibre-style-spec/_build/assets/markdown-CP9dM-hu.css","rel":"stylesheet","precendence":"high"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/web-DEAY107g.js","key":"/maplibre-style-spec/_build/assets/web-DEAY107g.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/markdown-CO39_19j.js","key":"/maplibre-style-spec/_build/assets/markdown-CO39_19j.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/index-CQxzSTbp.js","key":"/maplibre-style-spec/_build/assets/index-CQxzSTbp.js","rel":"modulepreload"}}]},"virtual:#vinxi/handler/client":{"output":"/maplibre-style-spec/_build/assets/client-qj6Eof39.js","assets":[{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/client-6hP-2Rzn.css","key":"/maplibre-style-spec/_build/assets/client-6hP-2Rzn.css","rel":"stylesheet","precendence":"high"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/web-DEAY107g.js","key":"/maplibre-style-spec/_build/assets/web-DEAY107g.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/HttpStatusCode-BqGeRz4q.js","key":"/maplibre-style-spec/_build/assets/HttpStatusCode-BqGeRz4q.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/components-CS85MpCs.js","key":"/maplibre-style-spec/_build/assets/components-CS85MpCs.js","rel":"modulepreload"}},{"tag":"link","attrs":{"href":"/maplibre-style-spec/_build/assets/client-qj6Eof39.js","key":"/maplibre-style-spec/_build/assets/client-qj6Eof39.js","rel":"modulepreload"}}]}}</script><script type="module" async src="/maplibre-style-spec/_build/assets/client-qj6Eof39.js"></script><!--/--></body></html>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+    
+    
+    
+      
+      
+    
+    <a href="https://mastodon.social/@maplibre" target="_blank" rel="noopener me" title="mastodon.social" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M433 179.11c0-97.2-63.71-125.7-63.71-125.7-62.52-28.7-228.56-28.4-290.48 0 0 0-63.72 28.5-63.72 125.7 0 115.7-6.6 259.4 105.63 289.1 40.51 10.7 75.32 13 103.33 11.4 50.81-2.8 79.32-18.1 79.32-18.1l-1.7-36.9s-36.31 11.4-77.12 10.1c-40.41-1.4-83-4.4-89.63-54a102.54 102.54 0 0 1-.9-13.9c85.63 20.9 158.65 9.1 178.75 6.7 56.12-6.7 105-41.3 111.23-72.9 9.8-49.8 9-121.5 9-121.5zm-75.12 125.2h-46.63v-114.2c0-49.7-64-51.6-64 6.9v62.5h-46.33V197c0-58.5-64-56.6-64-6.9v114.2H90.19c0-122.1-5.2-147.9 18.41-175 25.9-28.9 79.82-30.8 103.83 6.1l11.6 19.5 11.6-19.5c24.11-37.1 78.12-34.8 103.83-6.1 23.71 27.3 18.4 53 18.4 175z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/maplibre" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8l164.9-188.5L26.8 48h145.6l100.5 132.9L389.2 48zm-24.8 373.8h39.1L151.1 88h-42l255.3 333.8z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/maplibre" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://osmus.slack.com/archives/C01G3D28DAB" target="_blank" rel="noopener" title="osmus.slack.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M94.12 315.1c0 25.9-21.16 47.06-47.06 47.06S0 341 0 315.1c0-25.9 21.16-47.06 47.06-47.06h47.06v47.06zm23.72 0c0-25.9 21.16-47.06 47.06-47.06s47.06 21.16 47.06 47.06v117.84c0 25.9-21.16 47.06-47.06 47.06s-47.06-21.16-47.06-47.06V315.1zm47.06-188.98c-25.9 0-47.06-21.16-47.06-47.06S139 32 164.9 32s47.06 21.16 47.06 47.06v47.06H164.9zm0 23.72c25.9 0 47.06 21.16 47.06 47.06s-21.16 47.06-47.06 47.06H47.06C21.16 243.96 0 222.8 0 196.9s21.16-47.06 47.06-47.06H164.9zm188.98 47.06c0-25.9 21.16-47.06 47.06-47.06 25.9 0 47.06 21.16 47.06 47.06s-21.16 47.06-47.06 47.06h-47.06V196.9zm-23.72 0c0 25.9-21.16 47.06-47.06 47.06-25.9 0-47.06-21.16-47.06-47.06V79.06c0-25.9 21.16-47.06 47.06-47.06 25.9 0 47.06 21.16 47.06 47.06V196.9zM283.1 385.88c25.9 0 47.06 21.16 47.06 47.06 0 25.9-21.16 47.06-47.06 47.06-25.9 0-47.06-21.16-47.06-47.06v-47.06h47.06zm0-23.72c-25.9 0-47.06-21.16-47.06-47.06 0-25.9 21.16-47.06 47.06-47.06h117.84c25.9 0 47.06 21.16 47.06 47.06 0 25.9-21.16 47.06-47.06 47.06H283.1z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/maplibre" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "toc.follow", "search.suggest", "search.highlight", "navigation.instant", "navigation.sections", "navigation.top"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dd8806f2.min.js"></script>
+      
+    
+  </body>
+</html>
