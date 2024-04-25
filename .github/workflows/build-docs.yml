@@ -1,6 +1,9 @@
-name: Docs - Build
+name: Docs - Build (& Deploy)
 
 on:
+  push:
+    branches:
+    - main
   pull_request:
     branches:
     - main
@@ -24,3 +27,11 @@ jobs:
 
     - name: Build docs
       run: npm run mkdocs-build
+      
+
+    - name: Deploy
+      if: github.ref == 'refs/heads/main'
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        branch: gh-pages
+        folder: site
