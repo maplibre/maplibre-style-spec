@@ -9,6 +9,7 @@ theme:
   logo: https://avatars.githubusercontent.com/u/75709127?s=48&v=4
   features:
     - content.code.copy
+    - toc.follow
   palette:
     - media: "(prefers-color-scheme)"
       toggle:
