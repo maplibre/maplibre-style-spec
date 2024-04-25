@@ -42,11 +42,15 @@ markdown_extensions:
 
 extra:
   social:
-    - icon: fontawesome/brands/twitter
+    - icon: fontawesome/brands/mastodon
+      link: https://mastodon.social/@maplibre
+    - icon: fontawesome/brands/x-twitter
       link: https://twitter.com/maplibre
-    - icon: fontawesome/brands/github
-      link: https://github.com/maplibre
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/company/maplibre
     - icon: fontawesome/brands/slack
       link: https://osmus.slack.com/archives/C01G3D28DAB
+    - icon: fontawesome/brands/github
+      link: https://github.com/maplibre
 
-copyright: Copyright &copy; 2024 Maplibre
+copyright: Copyright &copy; MapLibre Contributors
