@@ -212,7 +212,7 @@ function createMainTopics() {
 
 function createChangelog() {
     let content = fs.readFileSync('CHANGELOG.md', 'utf-8');
-    content = '# Changelog\n\n' + content.substring(content.match(/## [0-9]+\.[0-9]+\.[0-9]+/).index);
+    content = `# Changelog\n\n${content.substring(content.match(/## [0-9]+\.[0-9]+\.[0-9]+/).index)}`;
     fs.writeFileSync(`${BASE_PATH}/changelog.md`, content);
 }
 
@@ -223,5 +223,4 @@ createSourcesContent();
 createExpressionsContent();
 createMainTopics();
 createChangelog();
-
 
