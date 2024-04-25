@@ -22,7 +22,13 @@ type JsonObject = {
 }
 
 function topicElement(key: string, value: JsonObject): boolean {
-    return value.type !== 'number' && value.type !== 'boolean' && key !== 'center' && value.type !== '*' && value.type !== 'enum' && key !== 'name';
+    return value.type !== 'number' && 
+        value.type !== 'boolean' && 
+        key !== 'center' && 
+        value.type !== '*' && 
+        value.type !== 'enum' && 
+        key !== 'name' && 
+        key !== 'sprite'
 
 }
 
