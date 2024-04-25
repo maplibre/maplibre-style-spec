@@ -1,6 +1,11 @@
 import v8 from '../src/reference/v8.json' assert { type: 'json' };
 import fs from 'fs';
 
+/**
+ * This script generates markdown documentation from the JSON schema.
+ * It leverages exitsing md files in the docs folder and adds generated files from the v8.json file.
+ */
+
 const BASE_PATH = 'docs';
 
 type JsonSdkSupport = {
@@ -21,6 +26,20 @@ type JsonObject = {
     values?: {[key: string]: { doc: string; 'sdk-support'?: JsonSdkSupport }} | number[];
 }
 
+/**
+ * Capitalizes the first letter of the word.
+ */
+function capitalize(word: string) {
+    return word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase();
+}
+
+/**
+ * This is the main method which checks which files will need to be generated.
+ * It uses some basic heuristics based on the v8 content.
+ * @param key - the name of the json property
+ * @param value - the value of the json property
+ * @returns 
+ */
 function topicElement(key: string, value: JsonObject): boolean {
     return value.type !== 'number' &&
         value.type !== 'boolean' &&
@@ -34,10 +53,21 @@ function topicElement(key: string, value: JsonObject): boolean {
 
 }
 
+/**
+ * Converts the example value to markdown format.
+ * @param key - the name of the json property
+ * @param example - the example value of the json property
+ * @returns the markdown string
+ */
 function exampleToMarkdown(key: string, example: string | object | number): string {
     return `\`\`\`json\n${key}: ${JSON.stringify(example, null, 4)}\n\`\`\`\n`;
 }
 
+/**
+ * Converts the sdk support object to markdown table format.
+ * @param support - the sdk support object
+ * @returns the markdown table string
+ */
 function sdkSupportToMarkdown(support: JsonSdkSupport): string {
     let markdown = '\n';
     const rows = Object.keys(support);
@@ -50,7 +80,14 @@ function sdkSupportToMarkdown(support: JsonSdkSupport): string {
 
 }
 
-function convertToMarkdown(key: string, value: JsonObject, keyPrefix = '##') {
+/**
+ * Converts the property to markdown format - this is a property with example, sdk support, default and other details.
+ * @param key - the name of the json property
+ * @param value - the value of the json property
+ * @param keyPrefix - the prefix to be used for the markdown header
+ * @returns the markdown string
+ */
+function convertPropertyToMarkdown(key: string, value: JsonObject, keyPrefix = '##') {
     let markdown = `${keyPrefix} ${key}\n*`;
     const valueType = value.type === '*' ? '' : ` \`${value.type}\``;
     if (value.required) {
@@ -94,6 +131,9 @@ function convertToMarkdown(key: string, value: JsonObject, keyPrefix = '##') {
     return markdown;
 }
 
+/**
+ * Creates the root markdown file.
+ */
 function createRootContent() {
     let rootContent = `# Root
 
@@ -113,15 +153,14 @@ Root level properties of a MapLibre style specify the map's layers, tile sources
 
 `;
     for (const [key, value] of Object.entries(v8.$root)) {
-        rootContent += convertToMarkdown(key, value);
+        rootContent += convertPropertyToMarkdown(key, value);
     }
     fs.writeFileSync(`${BASE_PATH}/root.md`, rootContent);
 }
 
-function capitalize(word: string) {
-    return word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase();
-}
-
+/**
+ * Creates the layers markdown file.
+ */
 function createLayersContent() {
     let content = '# Layers\n\n';
 
@@ -131,25 +170,26 @@ function createLayersContent() {
     content += '## Layer Properties\n\n';
 
     for (const [key, value] of Object.entries(v8.layer)) {
-        content += convertToMarkdown(key, value as JsonObject, '###');
+        content += convertPropertyToMarkdown(key, value as JsonObject, '###');
     }
 
     for (const layoutKey of Object.keys(v8).filter(key => key.startsWith('layout_'))) {
         const layerName = layoutKey.replace('layout_', '');
         content += `## ${capitalize(layerName)}\n\n`;
         for (const [key, value] of Object.entries(v8[layoutKey])) {
-            content += convertToMarkdown(key, value as JsonObject, '###');
+            content += convertPropertyToMarkdown(key, value as JsonObject, '###');
         }
         for (const [key, value] of Object.entries(v8[`paint_${layerName}`])) {
-            content += convertToMarkdown(key, value as JsonObject, '###');
+            content += convertPropertyToMarkdown(key, value as JsonObject, '###');
         }
     }
 
     fs.writeFileSync(`${BASE_PATH}/layers.md`, content);
-
-    return content;
 }
 
+/**
+ * Creates the sources markdown file.
+ */
 function createSourcesContent() {
     let content = '# Sources\n\n';
 
@@ -160,15 +200,17 @@ function createSourcesContent() {
         content += `## ${sourceKey.replace('source_', '').replace('_', '-')}\n\n`;
         for (const [key, value] of Object.entries(v8[sourceKey])) {
             if (key === '*') continue;
-            content += convertToMarkdown(key, value as JsonObject, '###');
+            content += convertPropertyToMarkdown(key, value as JsonObject, '###');
         }
     }
 
     fs.writeFileSync(`${BASE_PATH}/sources.md`, content);
-
-    return content;
 }
 
+/**
+ * Creates the expressions markdown file.
+ * This uses the expressions_patrial.md file as a base and adds the expressions from the v8.json file.
+ */
 function createExpressionsContent() {
     let content = fs.readFileSync('build/expressions_patrial.md', 'utf-8');
 
@@ -192,6 +234,9 @@ function createExpressionsContent() {
     fs.writeFileSync(`${BASE_PATH}/expressions.md`, content);
 }
 
+/**
+ * Creates the main topics markdown files.
+ */
 function createMainTopics() {
     for (const [key, value] of Object.entries(v8.$root)) {
         if (!topicElement(key, value)) {
@@ -203,13 +248,16 @@ function createMainTopics() {
 
         if (value.type in v8) {
             for (const [subKey, subValue] of Object.entries(v8[value.type])) {
-                content += convertToMarkdown(subKey, subValue as JsonObject);
+                content += convertPropertyToMarkdown(subKey, subValue as JsonObject);
             }
         }
         fs.writeFileSync(`${BASE_PATH}/${key}.md`, content);
     }
 }
 
+/**
+ * Creates the changelog markdown file.
+ */
 function createChangelog() {
     let content = fs.readFileSync('CHANGELOG.md', 'utf-8');
     content = `# Changelog\n\n${content.substring(content.match(/## [0-9]+\.[0-9]+\.[0-9]+/).index)}`;

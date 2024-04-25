@@ -23,7 +23,4 @@ jobs:
         npm run generate-typings
 
     - name: Build docs
-      run: |
-        cd ./docs
-        npm ci
-        npm run build
+      run: npm run build-docs
