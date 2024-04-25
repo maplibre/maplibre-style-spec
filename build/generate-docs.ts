@@ -87,6 +87,11 @@ function sdkSupportToMarkdown(support: JsonSdkSupport): string {
 
 }
 
+/**
+ * The requires field has some syntax which can contain "!" and "source".
+ * @param requires - a list of requirements for the property
+ * @returns a text that a user can read
+ */
 function requiresToMarkdown(requires: any[]): string {
     let markdown = '';
     for (const require of requires) {
@@ -101,7 +106,12 @@ function requiresToMarkdown(requires: any[]): string {
     return markdown;
 }
 
-function typeToMakrdownLink(type: string) {
+/**
+ * Converts the type to markdown link format - the link should be to the relevant section in the right file.
+ * @param type - the type of the property
+ * @returns the markdown link string
+ */
+function typeToMakrdownLink(type: string): string {
     switch (type.toLocaleLowerCase()) {
         case '*':
             return '';
@@ -250,7 +260,6 @@ function createLayersContent() {
  * Creates the sources markdown file.
  */
 function createSourcesContent() {
-
     const sourcesExtraData = {
         vector: {
             doc: 'A vector tile source. Tiles must be in [Mapbox Vector Tile format](https://github.com/mapbox/vector-tile-spec). All geometric coordinates in vector tiles must be between \`-1 * extent\` and \`(extent * 2) - 1\` inclusive. All layers that use a vector source must specify a [`source-layer`](layers.md#source-layer) value.',
@@ -440,7 +449,7 @@ function createExpressionsContent() {
             content += `\n### ${key}\n`;
             content += `${value.doc}\n`;
             if ('example' in value) {
-                content += `\n\`"some-property": ${JSON.stringify(value.example)}\`\n`;
+                content += `\n\`\`\`json\n"some-property": ${JSON.stringify(value.example)}\n\`\`\`\n`;
             }
             content += sdkSupportToMarkdown(value['sdk-support'] as any);
             content += '\n';
