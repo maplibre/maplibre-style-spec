@@ -8,3 +8,4 @@ docs/*
 !docs/README.md
 !docs/types.md
 !docs/sprite.md
+!docs/deprecations.md
