@@ -6,10 +6,12 @@ extra_css:
 theme:
   name: 'material'
   favicon: https://maplibre.org/favicon.ico
-  logo: https://avatars.githubusercontent.com/u/75709127?s=48&v=4
+  logo: assets/logo.svg
   features:
     - content.code.copy
     - toc.follow
+    - search.suggest
+    - search.highlight
   palette:
     - media: "(prefers-color-scheme)"
       toggle:
@@ -39,7 +41,6 @@ markdown_extensions:
   - pymdownx.escapeall:
       hardbreak: True
       nbsp: True
-
 extra:
   social:
     - icon: fontawesome/brands/mastodon
@@ -52,3 +53,6 @@ extra:
       link: https://osmus.slack.com/archives/C01G3D28DAB
     - icon: fontawesome/brands/github
       link: https://github.com/maplibre
+plugins:
+  - search
+  - social
