@@ -476,7 +476,15 @@ function createMainTopics() {
  */
 function createChangelog() {
     let content = fs.readFileSync('CHANGELOG.md', 'utf-8');
-    content = `# Changelog\n\n${content.substring(content.match(/## [0-9]+\.[0-9]+\.[0-9]+/).index)}`;
+
+    // the TOC is too unwieldy to be useful for the changelog, so hide it
+    const frontFrontMatter = `
+---
+hide:
+    - toc
+---
+    `.trim();
+    content = `${frontFrontMatter}\n# Changelog\n\n${content.substring(content.match(/## [0-9]+\.[0-9]+\.[0-9]+/).index)}`;
     fs.writeFileSync(`${BASE_PATH}/changelog.md`, content);
 }
 
