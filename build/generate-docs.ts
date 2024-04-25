@@ -196,7 +196,7 @@ function createSourcesContent() {
 
     const sourcesExtraData = {
         vector: {
-            doc: 'A vector tile source. Tiles must be in [Mapbox Vector Tile format](https://github.com/mapbox/vector-tile-spec). All geometric coordinates in vector tiles must be between \`-1 * extent\` and \`(extent * 2) - 1\` inclusive. All layers that use a vector source must specify a [`source-layer`](./layers/#source-layer) value.',
+            doc: 'A vector tile source. Tiles must be in [Mapbox Vector Tile format](https://github.com/mapbox/vector-tile-spec). All geometric coordinates in vector tiles must be between \`-1 * extent\` and \`(extent * 2) - 1\` inclusive. All layers that use a vector source must specify a [`source-layer`](layers.md#source-layer) value.',
             example: {
                 'maplibre-streets': {
                     'type': 'vector',
@@ -318,7 +318,7 @@ function createSourcesContent() {
             }
         },
         video: {
-            doc: 'A video source. The `urls` value is an array. For each URL in the array, a video element [source](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source) will be created. To support the video across browsers, supply URLs in multiple formats.\n\nThe `coordinates` array contains `[longitude, latitude]` pairs for the video corners listed in clockwise order: top left, top right, bottom right, bottom left.\n\nWhen rendered as a [raster layer](./layers/#raster), the layer\'s [`raster-fade-duration`](./layers/#paint-raster-raster-fade-duration) property will cause the video to fade in. This happens when playback is started, paused and resumed, or when the video\'s coordinates are updated. To avoid this behavior, set the layer\'s [`raster-fade-duration`](./layers/#paint-raster-raster-fade-duration) property to `0`.',
+            doc: 'A video source. The `urls` value is an array. For each URL in the array, a video element [source](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source) will be created. To support the video across browsers, supply URLs in multiple formats.\n\nThe `coordinates` array contains `[longitude, latitude]` pairs for the video corners listed in clockwise order: top left, top right, bottom right, bottom left.\n\nWhen rendered as a [raster layer](layers.md#raster), the layer\'s [`raster-fade-duration`](layers.md#paint-raster-raster-fade-duration) property will cause the video to fade in. This happens when playback is started, paused and resumed, or when the video\'s coordinates are updated. To avoid this behavior, set the layer\'s [`raster-fade-duration`](layers.md#paint-raster-raster-fade-duration) property to `0`.',
             example: {
                 'video': {
                     'type': 'video',
