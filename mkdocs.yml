@@ -1,6 +1,7 @@
 site_name: MapLibre Style Spec
 site_url: https://www.maplibre.org/maplibre-style-spec/
 repo_url: https://github.com/maplibre/maplibre-style-spec
+site_description: Documentation for the MapLibre Style Specification
 extra_css:
   - assets/extra.css
 theme:
@@ -60,4 +61,4 @@ plugins:
   - search
   - social:
       cards_layout_options:
-        background_color: red
+        background_color: '#295DAA'
