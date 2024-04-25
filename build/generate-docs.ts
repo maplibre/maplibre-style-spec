@@ -193,13 +193,167 @@ function createLayersContent() {
  * Creates the sources markdown file.
  */
 function createSourcesContent() {
+
+    const sourcesExtraData = {
+        vector: {
+            doc: 'A vector tile source. Tiles must be in [Mapbox Vector Tile format](https://github.com/mapbox/vector-tile-spec). All geometric coordinates in vector tiles must be between \`-1 * extent\` and \`(extent * 2) - 1\` inclusive. All layers that use a vector source must specify a [\`"source-layer"\`](${import.meta.env.SERVER_BASE_URL}/layers/#source-layer) value.',
+            example: {
+                "maplibre-streets": {
+                    "type": "vector",
+                    "tiles": [
+                        "http://a.example.com/tiles/{z}/{x}/{y}.pbf"
+                    ],
+                }
+            },
+            "sdk-support": {
+                'basic functionality': {
+                    js: '0.10.0',
+                    android: '2.0.1',
+                    ios: '2.0.0',
+                    macos: '0.1.0'
+                }
+            }
+        },
+        raster: {
+            doc: 'A raster tile source.',
+            example: {
+                "maplibre-satellite": {
+                    "type": "raster",
+                    "tiles": [
+                        "http://a.example.com/tiles/{z}/{x}/{y}.png"
+                    ],
+                    "tileSize": 256
+                }
+            },
+            "sdk-support": {
+                'basic functionality': {
+                    js: '0.10.0',
+                    android: '2.0.1',
+                    ios: '2.0.0',
+                    macos: '0.1.0'
+                }
+            }
+        },
+        "raster-dem": {
+            doc: 'A raster DEM source. Only supports [Mapbox Terrain RGB](https://blog.mapbox.com/global-elevation-data-6689f1d0ba65) and Mapzen Terrarium tiles.',
+            example: {
+                "maplibre-terrain-rgb": {
+                    "type": "raster-dem",
+                    "encoding": "mapbox",
+                    "tiles": [
+                        "http://a.example.com/dem-tiles/{z}/{x}/{y}.png"
+                    ],
+                }
+            },
+            "sdk-support": {
+                'basic functionality': {
+                    js: '0.43.0'
+                }
+            }
+        },
+        geojson: {
+            doc: 'A [GeoJSON](http://geojson.org/) source. Data must be provided via a \`"data"\` property, whose value can be a URL or inline GeoJSON. When using in a browser, the GeoJSON data must be on the same domain as the map or served with [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) headers.',
+            example: {
+                "geojson-marker": {
+                    "type": "geojson",
+                    "data": {
+                        "type": "Feature",
+                        "geometry": {
+                            "type": "Point",
+                            "coordinates": [12.550343, 55.665957]
+                        },
+                        "properties": {
+                            "title": "Somewhere",
+                            "marker-symbol": "monument"
+                        }
+                    }
+                },
+                "geojson-lines": {
+                    "type": "geojson",
+                    "data": "./lines.geojson"
+                }
+            },
+            "sdk-support": {
+                'basic functionality': {
+                    js: '0.10.0',
+                    android: '2.0.1',
+                    ios: '2.0.0',
+                    macos: '0.1.0'
+                },
+                clustering: {
+                    js: '0.14.0',
+                    android: '4.2.0',
+                    ios: '3.4.0',
+                    macos: '0.3.0'
+                },
+                'line distance metrics': {
+                    js: '0.45.0',
+                    android: '6.5.0',
+                    ios: '4.4.0',
+                    macos: '0.11.0'
+                }
+            }
+        },
+        image: {
+            doc: 'An image source. The `url` value contains the image location. The `coordinates` array contains `[longitude, latitude]` pairs for the image corners listed in clockwise order: top left, top right, bottom right, bottom left.',
+            example: {
+                "image": {
+                    "type": "image",
+                    "url": "https://maplibre.org/maplibre-gl-js-docs/assets/radar.gif",
+                    "coordinates": [
+                        [-80.425, 46.437],
+                        [-71.516, 46.437],
+                        [-71.516, 37.936],
+                        [-80.425, 37.936]
+                    ]
+                }
+            },
+            "sdk-support": {
+                'basic functionality': {
+                    js: '0.10.0',
+                    android: '5.2.0',
+                    ios: '3.7.0',
+                    macos: '0.6.0'
+                }
+            }
+        },
+        video: {
+            doc: 'A video source. The `urls` value is an array. For each URL in the array, a video element [source](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source) will be created. To support the video across browsers, supply URLs in multiple formats.\n\nThe `coordinates` array contains `[longitude, latitude]` pairs for the video corners listed in clockwise order: top left, top right, bottom right, bottom left.\n\nWhen rendered as a [raster layer](./layers/#raster), the layer\'s [`raster-fade-duration`](./layers/#paint-raster-raster-fade-duration) property will cause the video to fade in. This happens when playback is started, paused and resumed, or when the video\'s coordinates are updated. To avoid this behavior, set the layer\'s [`raster-fade-duration`](./layers/#paint-raster-raster-fade-duration) property to `0`.',
+            example: {
+                "video": {
+                    "type": "video",
+                    "urls": [
+                        "https://static-assets.mapbox.com/mapbox-gl-js/drone.mp4",
+                        "https://static-assets.mapbox.com/mapbox-gl-js/drone.webm"
+                    ],
+                    "coordinates": [
+                        [-122.51596391201019, 37.56238816766053],
+                        [-122.51467645168304, 37.56410183312965],
+                        [-122.51309394836426, 37.563391708549425],
+                        [-122.51423120498657, 37.56161849366671]
+                    ]
+                }
+            },
+            "sdk-support": {
+                'basic functionality': {
+                    js: '0.10.0'
+                }
+            }
+        }
+    };
+
     let content = '# Sources\n\n';
 
     content += `${v8.$root.sources.doc}\n\n`;
     content += exampleToMarkdown('sources', v8.$root.sources.example);
 
     for (const sourceKey of v8.source) {
-        content += `## ${sourceKey.replace('source_', '').replace('_', '-')}\n\n`;
+        const srouceName = sourceKey.replace('source_', '').replace('_', '-');
+        content += `## ${srouceName}\n\n`;
+        content += sourcesExtraData[srouceName].doc + '\n\n';
+        content += exampleToMarkdown('sources', sourcesExtraData[srouceName].example);
+        content += sdkSupportToMarkdown(sourcesExtraData[srouceName]['sdk-support']);
+        content += '\n';
         for (const [key, value] of Object.entries(v8[sourceKey])) {
             if (key === '*') continue;
             content += convertPropertyToMarkdown(key, value as JsonObject, '###');
