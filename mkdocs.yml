@@ -60,4 +60,4 @@ plugins:
   - search
   - social:
       cards_layout_options:
-        background_color: red
+        background_color: '#295DAA'
