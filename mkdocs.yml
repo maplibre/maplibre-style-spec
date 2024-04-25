@@ -12,6 +12,7 @@ theme:
     - toc.follow
     - search.suggest
     - search.highlight
+    - navigation.instant
   palette:
     - media: "(prefers-color-scheme)"
       toggle:
@@ -55,4 +56,6 @@ extra:
       link: https://github.com/maplibre
 plugins:
   - search
-  - social
+  - social:
+      cards_layout_options:
+        background_color: red
