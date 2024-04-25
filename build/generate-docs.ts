@@ -10,7 +10,10 @@ const BASE_PATH = 'docs';
 
 type JsonSdkSupport = {
     [info: string]: {
-        [platform: string]: [string];
+        js?: string;
+        android?: string;
+        ios?: string;
+        macos?: string;
     };
 }
 
@@ -20,7 +23,7 @@ type JsonObject = {
     default?: string | number | boolean;
     type: string;
     doc: string;
-    requires?: string[];
+    requires?: any[];
     example: string | object | number;
     expression?: { interpolated?: boolean; parameters?: string[]};
     transition?: boolean;
@@ -74,13 +77,28 @@ function exampleToMarkdown(key: string, example: string | object | number): stri
 function sdkSupportToMarkdown(support: JsonSdkSupport): string {
     let markdown = '\n';
     const rows = Object.keys(support);
-    markdown += `| |${Object.keys(support[rows[0]]).join(' | ')}|\n`;
-    markdown += `|${'-|-'.repeat(Object.keys(support[rows[0]]).length)}|\n`;
+    markdown += `| **SDK Support** |MapLibre GL JS|Android SDK|iOS SDK|macOS SDK|\n`;
+    markdown += `|-----------------|--------------|-----------|-------|---------|\n`;
     for (const row of rows) {
-        markdown += `|${row}|${Object.values(support[row]).join(' | ')}|\n`;
+        const supportMatrix = support[row];
+        markdown += `|${row}|${supportMatrix.js || 'Not supported yet'}|${supportMatrix.android || 'Not supported yet'}|${supportMatrix.ios || 'Not supported yet'}|${supportMatrix.macos || 'Not supported yet'}|\n`;
     }
     return markdown;
 
+}
+
+function requiresToMarkdown(requires: any[]): string {
+    let markdown = '';
+    for (const require of requires) {
+        if (require['!']) {
+            markdown += `Disabled by \`${require['!']}\`. `;
+        } else if (require['source']){
+            markdown += `Requires source to be \`${require.source}\`. `;
+        } else if (typeof require === 'string') {
+            markdown += `Requires \`${require}\`. `;
+        }
+    }
+    return markdown;
 }
 
 /**
@@ -113,7 +131,7 @@ function convertPropertyToMarkdown(key: string, value: JsonObject, keyPrefix = '
         markdown += `Defaults to \`${value.default}\`. `;
     }
     if (value.requires) {
-        markdown += `Requires \`${value.requires.join('`, `')}\`. `;
+        markdown += requiresToMarkdown(value.requires);
     }
     if (value.expression?.interpolated) {
         if (value.expression.parameters.includes('feature-state')) {
