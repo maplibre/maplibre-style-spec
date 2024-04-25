@@ -27,6 +27,7 @@ theme:
 markdown_extensions:
   - toc:
       toc_depth: 3
+      permalink: true
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
