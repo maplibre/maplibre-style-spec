@@ -110,7 +110,7 @@ function typeToMakrdownLink(type: string) {
         case 'string':
         case 'boolean':
         case 'array':
-        //case 'enum':
+        case 'enum':
             return ` [${type}](types.md#${type.toLocaleLowerCase()})`;
         default:
             return ` [${type}](types.md)`;
@@ -127,10 +127,10 @@ function typeToMakrdownLink(type: string) {
  */
 function convertPropertyToMarkdown(key: string, value: JsonObject, keyPrefix = '##', paintLayoutText = '') {
     let markdown = `${keyPrefix} ${key}\n*`;
-    const valueType = typeToMakrdownLink(value.type);
     if (paintLayoutText) {
         markdown += `[${paintLayoutText}](#${paintLayoutText.toLowerCase()}) property. `;
     }
+    const valueType = typeToMakrdownLink(value.type);
     if (value.required) {
         markdown += `Required${valueType}. `;
     } else {
