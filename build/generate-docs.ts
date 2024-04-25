@@ -101,6 +101,22 @@ function requiresToMarkdown(requires: any[]): string {
     return markdown;
 }
 
+function typeToMakrdownLink(type: string) {
+    switch (type.toLocaleLowerCase()) {
+        case '*':
+            return '';
+        case 'color':
+        case 'number':
+        case 'string':
+        case 'boolean':
+        case 'array':
+        //case 'enum':
+            return ` [${type}](types.md#${type.toLocaleLowerCase()})`;
+        default:
+            return ` [${type}](types.md)`;
+    }
+}
+
 /**
  * Converts the property to markdown format - this is a property with example, sdk support, default and other details.
  * @param key - the name of the json property
@@ -111,7 +127,7 @@ function requiresToMarkdown(requires: any[]): string {
  */
 function convertPropertyToMarkdown(key: string, value: JsonObject, keyPrefix = '##', paintLayoutText = '') {
     let markdown = `${keyPrefix} ${key}\n*`;
-    const valueType = value.type === '*' ? '' : ` [${value.type}](types.md#${value.type})`;
+    const valueType = typeToMakrdownLink(value.type);
     if (paintLayoutText) {
         markdown += `[${paintLayoutText}](#${paintLayoutText.toLowerCase()}) property. `;
     }
@@ -141,7 +157,7 @@ function convertPropertyToMarkdown(key: string, value: JsonObject, keyPrefix = '
         }
     }
     if (value.transition) {
-        markdown += 'Supports transition. ';
+        markdown += 'Transitionable. ';
     }
     // Remove extra space at the end
     markdown = `${markdown.substring(0, markdown.length - 2)}*\n\n${value.doc}\n\n`;
