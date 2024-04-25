@@ -13,6 +13,9 @@ If you want to contribute to the style specification, please open an issue with 
 
 We aim to avoid breaking changes in the MapLibre style specification, because it makes life easier for our users.
 
+The style-spec docs are also hosted here and are generated using `npm run docs` and served locally using `npm run start-docs`.
+Some part of the docs are generated markdown files while other are static markdown files, all of them are served from the `docs` folder.
+Make sure to change the `.gitignore` for static markdown or the `generate-docs.ts` for the dynamic ones.
 
 ## NPM Package
 
