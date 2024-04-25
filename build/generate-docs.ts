@@ -77,8 +77,8 @@ function exampleToMarkdown(key: string, example: string | object | number): stri
 function sdkSupportToMarkdown(support: JsonSdkSupport): string {
     let markdown = '\n';
     const rows = Object.keys(support);
-    markdown += `| **SDK Support** |MapLibre GL JS|Android SDK|iOS SDK|macOS SDK|\n`;
-    markdown += `|-----------------|--------------|-----------|-------|---------|\n`;
+    markdown += '|SDK Support|MapLibre GL JS|Android SDK|iOS SDK|macOS SDK|\n';
+    markdown += '|-----------|--------------|-----------|-------|---------|\n';
     for (const row of rows) {
         const supportMatrix = support[row];
         markdown += `|${row}|${supportMatrix.js || 'Not supported yet'}|${supportMatrix.android || 'Not supported yet'}|${supportMatrix.ios || 'Not supported yet'}|${supportMatrix.macos || 'Not supported yet'}|\n`;
@@ -92,7 +92,7 @@ function requiresToMarkdown(requires: any[]): string {
     for (const require of requires) {
         if (require['!']) {
             markdown += `Disabled by \`${require['!']}\`. `;
-        } else if (require['source']){
+        } else if (require['source']) {
             markdown += `Requires source to be \`${require.source}\`. `;
         } else if (typeof require === 'string') {
             markdown += `Requires \`${require}\`. `;
@@ -135,9 +135,9 @@ function convertPropertyToMarkdown(key: string, value: JsonObject, keyPrefix = '
     }
     if (value.expression?.interpolated) {
         if (value.expression.parameters.includes('feature-state')) {
-            markdown += 'Supports feature-state and interpolate expressions. ';
+            markdown += 'Supports [feature-state](expressions.md#feature-state) and [interpolate](expressions.md#interpolate) expressions. ';
         }  else {
-            markdown += 'Supports interpolate expressions. ';
+            markdown += 'Supports [interpolate](expressions.md#interpolate) expressions. ';
         }
     }
     if (value.transition) {
