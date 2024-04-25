@@ -13,9 +13,25 @@ If you want to contribute to the style specification, please open an issue with 
 
 We aim to avoid breaking changes in the MapLibre style specification, because it makes life easier for our users.
 
-The style-spec docs are also hosted here and are generated using `npm run docs` and served locally using `npm run start-docs`.
-Some part of the docs are generated markdown files while other are static markdown files, all of them are served from the `docs` folder.
-Make sure to change the `.gitignore` for static markdown or the `generate-docs.ts` for the dynamic ones.
+## Documentation
+
+The [documentation](https://maplibre.org/maplibre-style-spec) of the style specification also lives in this repository. We use [MkDocs](https://www.mkdocs.org/) with the [Material for MkDocs](https://squidfunk.github.io/mkdocs-material) theme. 
+
+To work on the documentation locally, you need to have Docker installed and running. Start MkDocs with
+
+```
+npm run mkdocs
+```
+
+Most of the documentation is generated (from e.g. `v8.json`). In another terminal, run:
+
+```
+WATCH=1 npm run generate-docs
+```
+
+This will re-run the generation script when needed.
+
+Note that generated files should not be checked in and they are excluded in `.gitignore`. Make sure to keep this file up-to-date and ignore generated files while making sure static Markdown files are not ignored.
 
 ## NPM Package
 
