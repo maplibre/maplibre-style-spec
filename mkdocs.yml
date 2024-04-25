@@ -13,6 +13,8 @@ theme:
     - search.suggest
     - search.highlight
     - navigation.instant
+    - navigation.sections
+    - navigation.top  # back to top button
   palette:
     - media: "(prefers-color-scheme)"
       toggle:
