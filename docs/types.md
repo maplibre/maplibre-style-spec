@@ -99,3 +99,13 @@ Points are two-element numeric arrays representing `[x, y]` coordinate pairs. Un
     "line-translate": [2, 4]
 }
 ```
+
+## Enum
+
+Enums are a closed set of possible string values. Failing to provide a value within the closed set will result in an error.
+
+```json
+{
+    "circle-translate-anchor": "viewport"
+}
+```
