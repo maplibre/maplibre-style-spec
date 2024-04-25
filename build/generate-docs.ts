@@ -383,7 +383,7 @@ function createExpressionsContent() {
             content += `\n### ${key}\n`;
             content += `${value.doc}\n`;
             if ('example' in value) {
-                content += `\n\`"some-propetry": ${JSON.stringify(value.example)}\`\n`;
+                content += `\n\`"some-property": ${JSON.stringify(value.example)}\`\n`;
             }
             content += sdkSupportToMarkdown(value['sdk-support'] as any);
             content += '\n';
