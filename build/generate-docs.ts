@@ -22,13 +22,15 @@ type JsonObject = {
 }
 
 function topicElement(key: string, value: JsonObject): boolean {
-    return value.type !== 'number' && 
-        value.type !== 'boolean' && 
-        key !== 'center' && 
-        value.type !== '*' && 
-        value.type !== 'enum' && 
-        key !== 'name' && 
-        key !== 'sprite'
+    return value.type !== 'number' &&
+        value.type !== 'boolean' &&
+        key !== 'center' &&
+        value.type !== '*' &&
+        value.type !== 'enum' &&
+        key !== 'name' &&
+        key !== 'sprite' &&
+        key !== 'layers' &&
+        key !== 'sources';
 
 }
 
@@ -120,8 +122,13 @@ function capitalize(word: string) {
     return word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase();
 }
 
-function createLayerContent(): string {
-    let content = '## Layer Properties\n\n';
+function createLayersContent() {
+    let content = '# Layers\n\n';
+
+    content += `${v8.$root.layers.doc}\n\n`;
+    content += exampleToMarkdown('layers', v8.$root.layers.example);
+
+    content += '## Layer Properties\n\n';
 
     for (const [key, value] of Object.entries(v8.layer)) {
         content += convertToMarkdown(key, value as JsonObject, '###');
@@ -138,31 +145,28 @@ function createLayerContent(): string {
         }
     }
 
+    fs.writeFileSync(`${BASE_PATH}/layers.md`, content);
+
     return content;
 }
 
-function createMainTopics() {
-    for (const [key, value] of Object.entries(v8.$root)) {
-        if (!topicElement(key, value)) {
-            continue;
-        }
-        let content = `# ${capitalize(key)}\n\n`;
-        content += `${value.doc}\n\n`;
-        content += exampleToMarkdown(key, value.example);
+function createSourcesContent() {
+    let content = '# Sources\n\n';
 
-        if (key === 'layers') {
-            content += createLayerContent();
-            fs.writeFileSync(`${BASE_PATH}/${key}.md`, content);
-            continue;
-        }
+    content += `${v8.$root.sources.doc}\n\n`;
+    content += exampleToMarkdown('sources', v8.$root.sources.example);
 
-        if (value.type in v8) {
-            for (const [subKey, subValue] of Object.entries(v8[value.type])) {
-                content += convertToMarkdown(subKey, subValue as JsonObject);
-            }
+    for (const sourceKey of v8.source) {
+        content += `## ${sourceKey.replace('source_', '').replace('_', '-')}\n\n`;
+        for (const [key, value] of Object.entries(v8[sourceKey])) {
+            if (key === '*') continue;
+            content += convertToMarkdown(key, value as JsonObject, '###');
         }
-        fs.writeFileSync(`${BASE_PATH}/${key}.md`, content);
     }
+
+    fs.writeFileSync(`${BASE_PATH}/sources.md`, content);
+
+    return content;
 }
 
 function createExpressionsContent() {
@@ -188,8 +192,28 @@ function createExpressionsContent() {
     fs.writeFileSync(`${BASE_PATH}/expressions.md`, content);
 }
 
+function createMainTopics() {
+    for (const [key, value] of Object.entries(v8.$root)) {
+        if (!topicElement(key, value)) {
+            continue;
+        }
+        let content = `# ${capitalize(key)}\n\n`;
+        content += `${value.doc}\n\n`;
+        content += exampleToMarkdown(key, value.example);
+
+        if (value.type in v8) {
+            for (const [subKey, subValue] of Object.entries(v8[value.type])) {
+                content += convertToMarkdown(subKey, subValue as JsonObject);
+            }
+        }
+        fs.writeFileSync(`${BASE_PATH}/${key}.md`, content);
+    }
+}
+
 // Main Flow start here!
 createRootContent();
+createLayersContent();
+createSourcesContent();
 createExpressionsContent();
 createMainTopics();
 

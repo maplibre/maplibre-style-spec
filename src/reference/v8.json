@@ -84,11 +84,30 @@
     "sources": {
       "required": true,
       "type": "sources",
-      "doc": "Data source specifications.",
+      "doc": "Sources state which data the map should display. Specify the type of source with the `type` property. Adding a source isn't enough to make data appear on the map because sources don't contain styling details like color or width. Layers refer to a source and give it a visual representation. This makes it possible to style the same source in different ways, like differentiating between types of roads in a highways layer.\n\nTiled sources (vector and raster) must specify their details according to the [TileJSON specification](https://github.com/mapbox/tilejson-spec).",
       "example": {
         "maplibre-demotiles": {
           "type": "vector",
           "url": "https://demotiles.maplibre.org/tiles/tiles.json"
+        },
+        "maplibre-tilejson": {
+          "type": "vector",
+          "url": "http://api.example.com/tilejson.json"
+        },
+        "maplibre-streets": {
+          "type": "vector",
+          "tiles": [
+              "http://a.example.com/tiles/{z}/{x}/{y}.pbf",
+              "http://b.example.com/tiles/{z}/{x}/{y}.pbf"
+          ],
+          "maxzoom": 14
+        },
+        "wms-imagery": {
+          "type": "raster",
+          "tiles": [
+              "http://a.example.com/wms?bbox={bbox-epsg-3857}&format=image/png&service=WMS&version=1.1.1&request=GetMap&srs=EPSG:3857&width=256&height=256&layers=example"
+          ],
+          "tileSize": 256
         }
       }
     },
