@@ -28,6 +28,8 @@ type JsonObject = {
 
 /**
  * Capitalizes the first letter of the word.
+ * @param word - the word to capitalize
+ * @returns the capitalized word
  */
 function capitalize(word: string) {
     return word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase();
@@ -38,7 +40,7 @@ function capitalize(word: string) {
  * It uses some basic heuristics based on the v8 content.
  * @param key - the name of the json property
  * @param value - the value of the json property
- * @returns 
+ * @returns true if the element should be a topic, false otherwise
  */
 function topicElement(key: string, value: JsonObject): boolean {
     return value.type !== 'number' &&
