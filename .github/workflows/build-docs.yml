@@ -23,4 +23,4 @@ jobs:
         npm run generate-typings
 
     - name: Build docs
-      run: npm run build-docs
+      run: npm run build-mkdocs
