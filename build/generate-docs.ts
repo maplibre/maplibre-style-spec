@@ -480,28 +480,10 @@ function createMainTopics() {
     }
 }
 
-/**
- * Creates the changelog markdown file.
- */
-function createChangelog() {
-    let content = fs.readFileSync('CHANGELOG.md', 'utf-8');
-
-    // the TOC is too unwieldy to be useful for the changelog, so hide it
-    const frontFrontMatter = `
----
-hide:
-    - toc
----
-    `.trim();
-    content = `${frontFrontMatter}\n# Changelog\n\n${content.substring(content.match(/## [0-9]+\.[0-9]+\.[0-9]+/).index)}`;
-    fs.writeFileSync(`${BASE_PATH}/changelog.md`, content);
-}
-
 // Main Flow start here!
 createRootContent();
 createLayersContent();
 createSourcesContent();
 createExpressionsContent();
 createMainTopics();
-createChangelog();
 
