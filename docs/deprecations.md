@@ -19,7 +19,7 @@ A set of one input value and one output value is a "stop." Stop output values mu
 
 *Optional [string](types.md#string).*
 
-If specified, the function will take the specified feature property as an input. See [Zoom Functions and Property Functions](types.md#function-zoom-property) for more information.
+If specified, the function will take the specified feature property as an input. See [Zoom Functions and Property Functions](#zoom-and-property-functions) for more information.
 
 ### base
 

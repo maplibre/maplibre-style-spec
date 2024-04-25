@@ -8,7 +8,7 @@ The value for any `layout property`, `paint property`, or `filter may be specifi
 - Data operators, providing access to the properties of source features
 - Camera operators, providing access to the parameters defining the current map view
 
-Expressions are represented as JSON arrays. The first element of an expression array is a string naming the expression operator, e.g. [`"*"`](#*) or [`"case"`](#case). Elements that follow (if any) are the _arguments_ to the expression. Each argument is either a literal value (a string, number, boolean, or `null`), or another expression array.
+Expressions are represented as JSON arrays. The first element of an expression array is a string naming the expression operator, e.g. `"*"` or [`"case"`](#case). Elements that follow (if any) are the _arguments_ to the expression. Each argument is either a literal value (a string, number, boolean, or `null`), or another expression array.
 
 ```json
 [expression_name, argument_0, argument_1, ...]
@@ -112,7 +112,7 @@ An expression that uses both data and camera operators is considered both a data
 
 ## Type system
 
-The input arguments to expressions, and their result values, use the same set of [types](types.md) as the rest of the style specification: boolean, string, number, color, and arrays of these types. Furthermore, expressions are _type safe_: each use of an expression has a known result type and required argument types, and the SDKs verify that the result type of an expression is appropriate for the context in which it is used. For example, the result type of an expression in the `filter` property must be [boolean](types.md#boolean), and the arguments to the [`+`](#+) operator must be [numbers](types.md#number).
+The input arguments to expressions, and their result values, use the same set of [types](types.md) as the rest of the style specification: boolean, string, number, color, and arrays of these types. Furthermore, expressions are _type safe_: each use of an expression has a known result type and required argument types, and the SDKs verify that the result type of an expression is appropriate for the context in which it is used. For example, the result type of an expression in the `filter` property must be [boolean](types.md#boolean), and the arguments to the `"+"` operator must be [numbers](types.md#number).
 
 When working with feature data, the type of a feature property value is typically not known ahead of time by the SDK. To preserve type safety, when evaluating a data expression, the SDK will check that the property value is appropriate for the context. For example, if you use the expression `["get", "feature-color"]` for the [`circle-color`](#circle-color) property, the SDK will verify that the `feature-color` value of each feature is a string identifying a valid [color](types.md#color). If this check fails, an error will be indicated in an SDK-specific way (typically a log message), and the default value for the property will be used instead.
 

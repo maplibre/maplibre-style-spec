@@ -20,8 +20,9 @@ type JsonObject = {
     default?: string | number | boolean;
     type: string;
     doc: string;
+    requires?: string[];
     example: string | object | number;
-    expression?: { interpolated?: boolean };
+    expression?: { interpolated?: boolean; parameters?: string[]};
     transition?: boolean;
     values?: {[key: string]: { doc: string; 'sdk-support'?: JsonSdkSupport }} | number[];
 }
@@ -87,11 +88,15 @@ function sdkSupportToMarkdown(support: JsonSdkSupport): string {
  * @param key - the name of the json property
  * @param value - the value of the json property
  * @param keyPrefix - the prefix to be used for the markdown header
+ * @param paintLayoutText - the text to be used for the paint/layout property
  * @returns the markdown string
  */
-function convertPropertyToMarkdown(key: string, value: JsonObject, keyPrefix = '##') {
+function convertPropertyToMarkdown(key: string, value: JsonObject, keyPrefix = '##', paintLayoutText = '') {
     let markdown = `${keyPrefix} ${key}\n*`;
     const valueType = value.type === '*' ? '' : ` \`${value.type}\``;
+    if (paintLayoutText) {
+        markdown += `[${paintLayoutText}](#${paintLayoutText.toLowerCase()}) property. `;
+    }
     if (value.required) {
         markdown += `Required${valueType}. `;
     } else {
@@ -105,10 +110,17 @@ function convertPropertyToMarkdown(key: string, value: JsonObject, keyPrefix = '
         markdown += `Units in ${value.units}. `;
     }
     if (value.default !== undefined) {
-        markdown += `Defaults to ${value.default}. `;
+        markdown += `Defaults to \`${value.default}\`. `;
+    }
+    if (value.requires) {
+        markdown += `Requires \`${value.requires.join('`, `')}\`. `;
     }
     if (value.expression?.interpolated) {
-        markdown += 'Supports interpolate expressions. ';
+        if (value.expression.parameters.includes('feature-state')) {
+            markdown += 'Supports feature-state and interpolate expressions. ';
+        }  else {
+            markdown += 'Supports interpolate expressions. ';
+        }
     }
     if (value.transition) {
         markdown += 'Supports transition. ';
@@ -179,10 +191,10 @@ function createLayersContent() {
         const layerName = layoutKey.replace('layout_', '');
         content += `## ${capitalize(layerName)}\n\n`;
         for (const [key, value] of Object.entries(v8[layoutKey])) {
-            content += convertPropertyToMarkdown(key, value as JsonObject, '###');
+            content += convertPropertyToMarkdown(key, value as JsonObject, '###', 'Layout');
         }
         for (const [key, value] of Object.entries(v8[`paint_${layerName}`])) {
-            content += convertPropertyToMarkdown(key, value as JsonObject, '###');
+            content += convertPropertyToMarkdown(key, value as JsonObject, '###', 'Paint');
         }
     }
 
@@ -318,7 +330,7 @@ function createSourcesContent() {
             }
         },
         video: {
-            doc: 'A video source. The `urls` value is an array. For each URL in the array, a video element [source](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source) will be created. To support the video across browsers, supply URLs in multiple formats.\n\nThe `coordinates` array contains `[longitude, latitude]` pairs for the video corners listed in clockwise order: top left, top right, bottom right, bottom left.\n\nWhen rendered as a [raster layer](layers.md#raster), the layer\'s [`raster-fade-duration`](layers.md#paint-raster-raster-fade-duration) property will cause the video to fade in. This happens when playback is started, paused and resumed, or when the video\'s coordinates are updated. To avoid this behavior, set the layer\'s [`raster-fade-duration`](layers.md#paint-raster-raster-fade-duration) property to `0`.',
+            doc: 'A video source. The `urls` value is an array. For each URL in the array, a video element [source](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source) will be created. To support the video across browsers, supply URLs in multiple formats.\n\nThe `coordinates` array contains `[longitude, latitude]` pairs for the video corners listed in clockwise order: top left, top right, bottom right, bottom left.\n\nWhen rendered as a [raster layer](layers.md#raster), the layer\'s [`raster-fade-duration`](layers.md#raster-fade-duration) property will cause the video to fade in. This happens when playback is started, paused and resumed, or when the video\'s coordinates are updated. To avoid this behavior, set the layer\'s [`raster-fade-duration`](layers.md#raster-fade-duration) property to `0`.',
             example: {
                 'video': {
                     'type': 'video',
