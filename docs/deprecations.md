@@ -182,7 +182,7 @@ A `key` must be a string that identifies a feature property, or one of the follo
 - `$type`: the feature type. This key may be used with the `"=="`,`"!="`, `"in"`, and `"!in"` operators. Possible values are `"Point"`,  `"LineString"`, and `"Polygon"`.
 - `$id`: the feature identifier. This key may be used with the `"=="`,`"!="`, `"has"`, `"!has"`, `"in"`, and `"!in"` operators.
 
-A `value` (and `v0`, ..., `vn` for set operators) must be a [string](${import.meta.env.SERVER_BASE_URL}/types/#string), [number](${import.meta.env.SERVER_BASE_URL}/types/#number), or [boolean](${import.meta.env.SERVER_BASE_URL}/types/#boolean) to compare the property value against.
+A `value` (and `v0`, ..., `vn` for set operators) must be a [string](./types/#string), [number](./types/#number), or [boolean](./types/#boolean) to compare the property value against.
 
 Set membership filters are a compact and efficient way to test whether a field matches any of multiple values.
 

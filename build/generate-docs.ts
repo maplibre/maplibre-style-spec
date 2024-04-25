@@ -196,7 +196,7 @@ function createSourcesContent() {
 
     const sourcesExtraData = {
         vector: {
-            doc: 'A vector tile source. Tiles must be in [Mapbox Vector Tile format](https://github.com/mapbox/vector-tile-spec). All geometric coordinates in vector tiles must be between \`-1 * extent\` and \`(extent * 2) - 1\` inclusive. All layers that use a vector source must specify a [\`"source-layer"\`](${import.meta.env.SERVER_BASE_URL}/layers/#source-layer) value.',
+            doc: 'A vector tile source. Tiles must be in [Mapbox Vector Tile format](https://github.com/mapbox/vector-tile-spec). All geometric coordinates in vector tiles must be between \`-1 * extent\` and \`(extent * 2) - 1\` inclusive. All layers that use a vector source must specify a [`source-layer`](./layers/#source-layer) value.',
             example: {
                 'maplibre-streets': {
                     'type': 'vector',
