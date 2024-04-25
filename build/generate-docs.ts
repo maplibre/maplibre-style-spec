@@ -111,7 +111,7 @@ function requiresToMarkdown(requires: any[]): string {
  */
 function convertPropertyToMarkdown(key: string, value: JsonObject, keyPrefix = '##', paintLayoutText = '') {
     let markdown = `${keyPrefix} ${key}\n*`;
-    const valueType = value.type === '*' ? '' : ` \`${value.type}\``;
+    const valueType = value.type === '*' ? '' : ` [${value.type}](types.md#${value.type})`;
     if (paintLayoutText) {
         markdown += `[${paintLayoutText}](#${paintLayoutText.toLowerCase()}) property. `;
     }
