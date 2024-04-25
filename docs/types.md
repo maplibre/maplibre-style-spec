@@ -109,3 +109,13 @@ Enums are a closed set of possible string values. Failing to provide a value wit
     "circle-translate-anchor": "viewport"
 }
 ```
+
+## Padding
+
+Paddings are similar to [CCS' padding object](https://developer.mozilla.org/en-US/docs/Web/CSS/padding) where you can specify padding in all directions using a single number, top-bottom left-right using two numbers and top, right, bottom, left using four numbers.
+
+```json
+{
+    "icon-padding": [2]
+}
+```

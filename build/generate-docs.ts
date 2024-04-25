@@ -105,15 +105,26 @@ function typeToMakrdownLink(type: string) {
     switch (type.toLocaleLowerCase()) {
         case '*':
             return '';
+        case 'promoteid':
+            return ` [${type}](types.md)`;
         case 'color':
         case 'number':
         case 'string':
         case 'boolean':
         case 'array':
         case 'enum':
+        case 'formatted':
+        case 'resolvedimage':
+        case 'padding':
             return ` [${type}](types.md#${type.toLocaleLowerCase()})`;
+        case 'filter':
+            return ` [${type}](expressions.md)`;
+        case 'paint':
+        case 'layout':
+            return ` [${type}](layers.md#${type.toLocaleLowerCase()})`;
         default:
-            return ` [${type}](types.md)`;
+            // top level types have their own file
+            return ` [${type}](${type}.md)`;
     }
 }
 
