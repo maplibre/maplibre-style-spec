@@ -5,6 +5,7 @@ dist
 .DS_Store
 */**/*.g.ts
 docs/*
+!docs/assets
 !docs/README.md
 !docs/types.md
 !docs/sprite.md
