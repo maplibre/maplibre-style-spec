@@ -317,6 +317,26 @@ function createSourcesContent() {
                 }
             }
         },
+        'contour': {
+            doc: 'Contour lines generated from a [\`raster-dem\`](#raster-dem) source.',
+            example: {
+                'maplibre-terrain-rgb': {
+                    'type': 'raster-dem',
+                    'encoding': 'mapbox',
+                    'tiles': [
+                        'http://a.example.com/dem-tiles/{z}/{x}/{y}.png'
+                    ],
+                },
+                'contour': {
+                    'type': 'contour',
+                    'source': 'maplibre-terrain-rgb'
+                }
+            },
+            'sdk-support': {
+                'basic functionality': {
+                }
+            }
+        },
         geojson: {
             doc: 'A [GeoJSON](http://geojson.org/) source. Data must be provided via a \`"data"\` property, whose value can be a URL or inline GeoJSON. When using in a browser, the GeoJSON data must be on the same domain as the map or served with [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) headers.',
             example: {
