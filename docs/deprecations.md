@@ -23,7 +23,7 @@ If specified, the function will take the specified feature property as an input.
 
 ### base
 
-*Optional [number](types.md#number). Default is ref.function.base.default.*
+*Optional [number](types.md#number). Default is `1`.*
 
 The exponential base of the interpolation curve. It controls the rate at which the function output increases. Higher values make the output increase more towards the high end of the range. With values close to 1 the output increases linearly.
 
@@ -64,8 +64,8 @@ The color space in which colors interpolated. Interpolating colors in perceptual
 `hcl`: Use the HCL color space to interpolate color values, interpolating the Hue, Chroma, and Luminance channels individually.
             
 
-|    | js | android | ios | macos |
-|----|----|---------|-----|-------|
+|SDK Support|MapLibre GL JS|Android SDK|iOS SDK|macOS SDK|
+|-----------|--------------|-----------|-------|---------|
 |basic functionality|0.10.0|2.0.1|2.0.0|0.1.0|
 |`property`|0.18.0|0.18.0|0.18.0|0.4.0|
 |`code`|0.18.0|5.0.0|5.0.0|5.0.0|
@@ -212,7 +212,7 @@ The combining filter "all" takes the three other filters that follow it and requ
 ```
 
 
-|    | js | android | ios | macos |
-|----|----|---------|-----|-------|
+|SDK Support|MapLibre GL JS|Android SDK|iOS SDK|macOS SDK|
+|-----------|--------------|-----------|-------|---------|
 |basic functionality|0.10.0|2.0.1|2.0.0|0.1.0|
 |`has` / `!has`|0.19.0|4.1.0|3.3.0|0.1.0|
