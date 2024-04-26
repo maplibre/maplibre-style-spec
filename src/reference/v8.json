@@ -84,11 +84,30 @@
     "sources": {
       "required": true,
       "type": "sources",
-      "doc": "Data source specifications.",
+      "doc": "Sources state which data the map should display. Specify the type of source with the `type` property. Adding a source isn't enough to make data appear on the map because sources don't contain styling details like color or width. Layers refer to a source and give it a visual representation. This makes it possible to style the same source in different ways, like differentiating between types of roads in a highways layer.\n\nTiled sources (vector and raster) must specify their details according to the [TileJSON specification](https://github.com/mapbox/tilejson-spec).",
       "example": {
         "maplibre-demotiles": {
           "type": "vector",
           "url": "https://demotiles.maplibre.org/tiles/tiles.json"
+        },
+        "maplibre-tilejson": {
+          "type": "vector",
+          "url": "http://api.example.com/tilejson.json"
+        },
+        "maplibre-streets": {
+          "type": "vector",
+          "tiles": [
+              "http://a.example.com/tiles/{z}/{x}/{y}.pbf",
+              "http://b.example.com/tiles/{z}/{x}/{y}.pbf"
+          ],
+          "maxzoom": 14
+        },
+        "wms-imagery": {
+          "type": "raster",
+          "tiles": [
+              "http://a.example.com/wms?bbox={bbox-epsg-3857}&format=image/png&service=WMS&version=1.1.1&request=GetMap&srs=EPSG:3857&width=256&height=256&layers=example"
+          ],
+          "tileSize": 256
         }
       }
     },
@@ -99,7 +118,7 @@
     },
     "glyphs": {
       "type": "string",
-      "doc": "A URL template for loading signed-distance-field glyph sets in PBF format. The URL must include `{fontstack}` and `{range}` tokens. This property is required if any layer uses the `text-field` layout property. The URL must be absolute, containing the [scheme, authority and path components](https://en.wikipedia.org/wiki/URL#Syntax).",
+      "doc": "A URL template for loading signed-distance-field glyph sets in PBF format. \nThe URL must include:\n\n - `{fontstack}` - When requesting glyphs, this token is replaced with a comma separated list of fonts from a font stack specified in the text-font property of a symbol layer. \n\n - `{range}` - When requesting glyphs, this token is replaced with a range of 256 Unicode code points. For example, to load glyphs for the Unicode Basic Latin and Basic Latin-1 Supplement blocks, the range would be 0-255. The actual ranges that are loaded are determined at runtime based on what text needs to be displayed.\n\nThis property is required if any layer uses the `text-field` layout property. The URL must be absolute, containing the [scheme, authority and path components](https://en.wikipedia.org/wiki/URL#Syntax).",
       "example": "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf"
     },
     "transition": {
@@ -114,7 +133,7 @@
       "required": true,
       "type": "array",
       "value": "layer",
-      "doc": "Layers will be drawn in the order of this array.",
+      "doc": "A style's `layers` property lists all the layers available in that style. The type of layer is specified by the `type` property, and must be one of `background`, `fill`, `line`, `symbol`, `raster`, `circle`, `fill-extrusion`, `heatmap`, `hillshade`.\n\nExcept for layers of the `background` type, each layer needs to refer to a source. Layers take the data that they get from a source, optionally filter features, and then define how those features are styled.",
       "example": [
         {
           "id": "coastline",
@@ -2819,7 +2838,8 @@
     "type": "enum",
     "values": {
       "let": {
-        "doc": "Binds expressions to named variables, which can then be referenced in the result expression using [\"var\", \"variable_name\"].",
+        "doc": "Binds expressions to named variables, which can then be referenced in the result expression using `[\"var\", \"variable_name\"]`.\n\n - [Visualize population density](https://maplibre.org/maplibre-gl-js/docs/examples/visualize-population-density/)",
+        "example": ["let", "someNumber", 500, ["interpolate", ["linear"], ["var", "someNumber"], 274, "#edf8e9", 1551, "#006d2c"]],
         "group": "Variable binding",
         "sdk-support": {
           "basic functionality": {
@@ -2831,7 +2851,8 @@
         }
       },
       "var": {
-        "doc": "References variable bound using \"let\".",
+        "doc": "References variable bound using `let`.\n\n - [Visualize population density](https://maplibre.org/maplibre-gl-js/docs/examples/visualize-population-density/)",
+        "example": ["var", "density"],
         "group": "Variable binding",
         "sdk-support": {
           "basic functionality": {
@@ -2843,7 +2864,8 @@
         }
       },
       "literal": {
-        "doc": "Provides a literal array or object value.",
+        "doc": "Provides a literal array or object value.\n\n - [Display and style rich text labels](https://maplibre.org/maplibre-gl-js/docs/examples/display-and-style-rich-text-labels/)",
+        "example": ["literal",["DIN Offc Pro Italic", "Arial Unicode MS Regular"]],
         "group": "Types",
         "sdk-support": {
           "basic functionality": {
@@ -2879,7 +2901,8 @@
         }
       },
       "in": {
-        "doc": "Determines whether an item exists in an array or a substring exists in a string.",
+        "doc": "Determines whether an item exists in an array or a substring exists in a string.\n\n - [Measure distances](https://maplibre.org/maplibre-gl-js/docs/examples/measure/)",
+        "example": ["in", "$type", "Point"],
         "group": "Lookup",
         "sdk-support": {
           "basic functionality": {
@@ -2911,7 +2934,8 @@
         }
       },
       "case": {
-        "doc": "Selects the first output whose corresponding test condition evaluates to true, or the fallback value otherwise.",
+        "doc": "Selects the first output whose corresponding test condition evaluates to true, or the fallback value otherwise.\n\n - [Create a hover effect](https://maplibre.org/maplibre-gl-js/docs/examples/hover-styles/)\n - [Display HTML clusters with custom properties](https://maplibre.org/maplibre-gl-js/docs/examples/cluster-html/)",
+        "example": ["case", ["boolean", ["feature-state", "hover"], false], 1, 0.5 ],
         "group": "Decision",
         "sdk-support": {
           "basic functionality": {
@@ -2935,7 +2959,8 @@
         }
       },
       "coalesce": {
-        "doc": "Evaluates each expression in turn until the first non-null value is obtained, and returns that value.",
+        "doc": "Evaluates each expression in turn until the first non-null value is obtained, and returns that value.\n\n - [Use a fallback image](https://maplibre.org/maplibre-gl-js/docs/examples/fallback-image/)",
+        "example": ["coalesce", ["image", ["concat", ["get", "icon"], "_15"]], ["image", "marker_15"] ],
         "group": "Decision",
         "sdk-support": {
           "basic functionality": {
@@ -2947,7 +2972,8 @@
         }
       },
       "step": {
-        "doc": "Produces discrete, stepped results by evaluating a piecewise-constant function defined by pairs of input and output values (\"stops\"). The `input` may be any numeric expression (e.g., `[\"get\", \"population\"]`). Stop inputs must be numeric literals in strictly ascending order. Returns the output value of the stop just less than the input, or the first output if the input is less than the first stop.",
+        "doc": "Produces discrete, stepped results by evaluating a piecewise-constant function defined by pairs of input and output values (\"stops\"). The `input` may be any numeric expression (e.g., `[\"get\", \"population\"]`). Stop inputs must be numeric literals in strictly ascending order. Returns the output value of the stop just less than the input, or the first output if the input is less than the first stop.\n\n - [Create and style clusters](https://maplibre.org/maplibre-gl-js/docs/examples/cluster/)",
+        "example": [ "step", ["get", "point_count"], 20, 100, 30, 750, 40],
         "group": "Ramps, scales, curves",
         "sdk-support": {
           "basic functionality": {
@@ -2959,7 +2985,8 @@
         }
       },
       "interpolate": {
-        "doc": "Produces continuous, smooth results by interpolating between pairs of input and output values (\"stops\"). The `input` may be any numeric expression (e.g., `[\"get\", \"population\"]`). Stop inputs must be numeric literals in strictly ascending order. The output type must be `number`, `array<number>`, or `color`.\n\nInterpolation types:\n- `[\"linear\"]`, or an expression returning one of those types: Interpolates linearly between the pair of stops just less than and just greater than the input.\n- `[\"exponential\", base]`: Interpolates exponentially between the stops just less than and just greater than the input. `base` controls the rate at which the output increases: higher values make the output increase more towards the high end of the range. With values close to 1 the output increases linearly.\n- `[\"cubic-bezier\", x1, y1, x2, y2]`: Interpolates using the cubic bezier curve defined by the given control points.",
+        "doc": "Produces continuous, smooth results by interpolating between pairs of input and output values (\"stops\"). The `input` may be any numeric expression (e.g., `[\"get\", \"population\"]`). Stop inputs must be numeric literals in strictly ascending order. The output type must be `number`, `array<number>`, or `color`.\n\nInterpolation types:\n\n- `[\"linear\"]`, or an expression returning one of those types: Interpolates linearly between the pair of stops just less than and just greater than the input.\n- `[\"exponential\", base]`: Interpolates exponentially between the stops just less than and just greater than the input. `base` controls the rate at which the output increases: higher values make the output increase more towards the high end of the range. With values close to 1 the output increases linearly.\n- `[\"cubic-bezier\", x1, y1, x2, y2]`: Interpolates using the cubic bezier curve defined by the given control points.\n\n - [Animate map camera around a point](https://maplibre.org/maplibre-gl-js/docs/examples/animate-camera-around-point/)\n - [Change building color based on zoom level](https://maplibre.org/maplibre-gl-js/docs/examples/change-building-color-based-on-zoom-level/)\n - [Create a heatmap layer](https://maplibre.org/maplibre-gl-js/docs/examples/heatmap-layer/)\n - [Visualize population density](https://maplibre.org/maplibre-gl-js/docs/examples/visualize-population-density/)",
+        "example": ["interpolate", ["linear"], ["zoom"], 15, 0, 15.05, ["get", "height"]],
         "group": "Ramps, scales, curves",
         "sdk-support": {
           "basic functionality": {
@@ -3061,7 +3088,8 @@
         }
       },
       "boolean": {
-        "doc": "Asserts that the input value is a boolean. If multiple values are provided, each one is evaluated in order until a boolean is obtained. If none of the inputs are booleans, the expression is an error.",
+        "doc": "Asserts that the input value is a boolean. If multiple values are provided, each one is evaluated in order until a boolean is obtained. If none of the inputs are booleans, the expression is an error.\n\n - [Create a hover effect](https://maplibre.org/maplibre-gl-js/docs/examples/hover-styles/)",
+        "example": ["boolean", ["feature-state", "hover"], false],
         "group": "Types",
         "sdk-support": {
           "basic functionality": {
@@ -3097,7 +3125,8 @@
         }
       },
       "format": {
-        "doc": "Returns a `formatted` string for displaying mixed-format text in the `text-field` property. The input may contain a string literal or expression, including an [`'image'`](#types-image) expression. Strings may be followed by a style override object that supports the following properties:\n- `\"text-font\"`: Overrides the font stack specified by the root layout property.\n- `\"text-color\"`: Overrides the color specified by the root paint property.\n- `\"font-scale\"`: Applies a scaling factor on `text-size` as specified by the root layout property.",
+        "doc": "Returns a `formatted` string for displaying mixed-format text in the `text-field` property. The input may contain a string literal or expression, including an [`'image'`](#image) expression. Strings may be followed by a style override object that supports the following properties:\n- `\"text-font\"`: Overrides the font stack specified by the root layout property.\n- `\"text-color\"`: Overrides the color specified by the root paint property.\n- `\"font-scale\"`: Applies a scaling factor on `text-size` as specified by the root layout property.\n\n - [Change the case of labels](https://maplibre.org/maplibre-gl-js/docs/examples/change-case-of-labels/)\n - [Display and style rich text labels](https://maplibre.org/maplibre-gl-js/docs/examples/display-and-style-rich-text-labels/)",
+        "example": ["format", ["upcase", ["get", "FacilityName"]], {"font-scale": 0.8}, "\n", {}, ["downcase", ["get", "Comments"]], {"font-scale": 0.6}],
         "group": "Types",
         "sdk-support": {
           "basic functionality": {
@@ -3133,7 +3162,8 @@
         }
       },
       "image": {
-        "doc": "Returns an `image` type for use in `icon-image`, `*-pattern` entries and as a section in the `format` expression. If set, the `image` argument will check that the requested image exists in the style and will return either the resolved image name or `null`, depending on whether or not the image is currently in the style. This validation process is synchronous and requires the image to have been added to the style before requesting it in the `image` argument.",
+        "doc": "Returns an `image` type for use in `icon-image`, `*-pattern` entries and as a section in the `format` expression. If set, the `image` argument will check that the requested image exists in the style and will return either the resolved image name or `null`, depending on whether or not the image is currently in the style. This validation process is synchronous and requires the image to have been added to the style before requesting it in the `image` argument.\n\n - [Use a fallback image](https://maplibre.org/maplibre-gl-js/docs/examples/fallback-image/)",
+        "example": ["image", "marker_15"],
         "group": "Types",
         "sdk-support": {
           "basic functionality": {
@@ -3145,7 +3175,8 @@
         }
       },
       "number-format": {
-        "doc": "Converts the input number into a string representation using the providing formatting rules. If set, the `locale` argument specifies the locale to use, as a BCP 47 language tag. If set, the `currency` argument specifies an ISO 4217 code to use for currency-style formatting. If set, the `min-fraction-digits` and `max-fraction-digits` arguments specify the minimum and maximum number of fractional digits to include.",
+        "doc": "Converts the input number into a string representation using the providing formatting rules. If set, the `locale` argument specifies the locale to use, as a BCP 47 language tag. If set, the `currency` argument specifies an ISO 4217 code to use for currency-style formatting. If set, the `min-fraction-digits` and `max-fraction-digits` arguments specify the minimum and maximum number of fractional digits to include.\n\n - [Display HTML clusters with custom properties](https://maplibre.org/maplibre-gl-js/docs/examples/cluster-html/)",
+        "example": ["number-format", ["get", "mag"], {"min-fraction-digits": 1, "max-fraction-digits": 1}],
         "group": "Types",
         "sdk-support": {
           "basic functionality": {
@@ -3154,7 +3185,8 @@
         }
       },
       "to-string": {
-        "doc": "Converts the input value to a string. If the input is `null`, the result is `\"\"`. If the input is a boolean, the result is `\"true\"` or `\"false\"`. If the input is a number, it is converted to a string as specified by the [\"NumberToString\" algorithm](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) of the ECMAScript Language Specification. If the input is a color, it is converted to a string of the form `\"rgba(r,g,b,a)\"`, where `r`, `g`, and `b` are numerals ranging from 0 to 255, and `a` ranges from 0 to 1. Otherwise, the input is converted to a string in the format specified by the [`JSON.stringify`](https://tc39.github.io/ecma262/#sec-json.stringify) function of the ECMAScript Language Specification.",
+        "doc": "Converts the input value to a string. If the input is `null`, the result is `\"\"`. If the input is a boolean, the result is `\"true\"` or `\"false\"`. If the input is a number, it is converted to a string as specified by the [\"NumberToString\" algorithm](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) of the ECMAScript Language Specification. If the input is a color, it is converted to a string of the form `\"rgba(r,g,b,a)\"`, where `r`, `g`, and `b` are numerals ranging from 0 to 255, and `a` ranges from 0 to 1. Otherwise, the input is converted to a string in the format specified by the [`JSON.stringify`](https://tc39.github.io/ecma262/#sec-json.stringify) function of the ECMAScript Language Specification.\n\n - [Create a time slider](https://maplibre.org/maplibre-gl-js/docs/examples/timeline-animation/)",
+        "example": ["to-string", ["get", "mag"]],
         "group": "Types",
         "sdk-support": {
           "basic functionality": {
@@ -3202,7 +3234,8 @@
         }
       },
       "to-color": {
-        "doc": "Converts the input value to a color. If multiple values are provided, each one is evaluated in order until the first successful conversion is obtained. If none of the inputs can be converted, the expression is an error.",
+        "doc": "Converts the input value to a color. If multiple values are provided, each one is evaluated in order until the first successful conversion is obtained. If none of the inputs can be converted, the expression is an error.\n\n - [Visualize population density](https://maplibre.org/maplibre-gl-js/docs/examples/visualize-population-density/)",
+        "example": ["to-color", "#edf8e9"],
         "group": "Types",
         "sdk-support": {
           "basic functionality": {
@@ -3238,7 +3271,8 @@
         }
       },
       "get": {
-        "doc": "Retrieves a property value from the current feature's properties, or from another object if a second argument is provided. Returns null if the requested property is missing.",
+        "doc": "Retrieves a property value from the current feature's properties, or from another object if a second argument is provided. Returns null if the requested property is missing.\n\n - [Change the case of labels](https://maplibre.org/maplibre-gl-js/docs/examples/change-case-of-labels/)\n - [Display HTML clusters with custom properties](https://maplibre.org/maplibre-gl-js/docs/examples/cluster-html/)\n - [Extrude polygons for 3D indoor mapping](https://maplibre.org/maplibre-gl-js/docs/examples/3d-extrusion-floorplan/)",
+        "example": ["get", "someProperty"],
         "group": "Lookup",
         "sdk-support": {
           "basic functionality": {
@@ -3250,7 +3284,8 @@
         }
       },
       "has": {
-        "doc": "Tests for the presence of an property value in the current feature's properties, or from another object if a second argument is provided.",
+        "doc": "Tests for the presence of an property value in the current feature's properties, or from another object if a second argument is provided.\n\n - [Create and style clusters](https://maplibre.org/maplibre-gl-js/docs/examples/cluster/)",
+        "example": ["has", "someProperty"],
         "group": "Lookup",
         "sdk-support": {
           "basic functionality": {
@@ -3286,7 +3321,8 @@
         }
       },
       "feature-state": {
-        "doc": "Retrieves a property value from the current feature's state. Returns null if the requested property is not present on the feature's state. A feature's state is not part of the GeoJSON or vector tile data, and must be set programmatically on each feature. When `source.promoteId` is not provided, features are identified by their `id` attribute, which must be an integer or a string that can be cast to an integer. When `source.promoteId` is provided, features are identified by their `promoteId` property, which may be a number, string, or any primitive data type. Note that [\"feature-state\"] can only be used with paint properties that support data-driven styling.",
+        "doc": "Retrieves a property value from the current feature's state. Returns null if the requested property is not present on the feature's state. A feature's state is not part of the GeoJSON or vector tile data, and must be set programmatically on each feature. When `source.promoteId` is not provided, features are identified by their `id` attribute, which must be an integer or a string that can be cast to an integer. When `source.promoteId` is provided, features are identified by their `promoteId` property, which may be a number, string, or any primitive data type. Note that [\"feature-state\"] can only be used with paint properties that support data-driven styling.\n\n - [Create a hover effect](https://maplibre.org/maplibre-gl-js/docs/examples/hover-styles/)",
+        "example": ["feature-state", "hover"],
         "group": "Feature data",
         "sdk-support": {
           "basic functionality": {
@@ -3400,7 +3436,8 @@
         }
       },
       "/": {
-        "doc": "Returns the result of floating point division of the first input by the second.",
+        "doc": "Returns the result of floating point division of the first input by the second.\n\n - [Visualize population density](https://maplibre.org/maplibre-gl-js/docs/examples/visualize-population-density/)",
+        "example": ["/", ["get", "population"], ["get", "sq-km"]],
         "group": "Math",
         "sdk-support": {
           "basic functionality": {
@@ -3639,7 +3676,8 @@
         }
       },
       "==": {
-        "doc": "Returns `true` if the input values are equal, `false` otherwise. The comparison is strictly typed: values of different runtime types are always considered unequal. Cases where the types are known to be different at parse time are considered invalid and will produce a parse error. Accepts an optional `collator` argument to control locale-dependent string comparisons.",
+        "doc": "Returns `true` if the input values are equal, `false` otherwise. The comparison is strictly typed: values of different runtime types are always considered unequal. Cases where the types are known to be different at parse time are considered invalid and will produce a parse error. Accepts an optional `collator` argument to control locale-dependent string comparisons.\n\n - [Add multiple geometries from one GeoJSON source](https://maplibre.org/maplibre-gl-js/docs/examples/multiple-geometries/)\n - [Create a time slider](https://maplibre.org/maplibre-gl-js/docs/examples/timeline-animation/)\n - [Display buildings in 3D](https://maplibre.org/maplibre-gl-js/docs/examples/3d-buildings/)\n - [Filter symbols by toggling a list](https://maplibre.org/maplibre-gl-js/docs/examples/filter-markers/)",
+        "example": ["==", "$type", "Polygon"],
         "group": "Decision",
         "sdk-support": {
           "basic functionality": {
@@ -3657,7 +3695,8 @@
         }
       },
       "!=": {
-        "doc": "Returns `true` if the input values are not equal, `false` otherwise. The comparison is strictly typed: values of different runtime types are always considered unequal. Cases where the types are known to be different at parse time are considered invalid and will produce a parse error. Accepts an optional `collator` argument to control locale-dependent string comparisons.",
+        "doc": "Returns `true` if the input values are not equal, `false` otherwise. The comparison is strictly typed: values of different runtime types are always considered unequal. Cases where the types are known to be different at parse time are considered invalid and will produce a parse error. Accepts an optional `collator` argument to control locale-dependent string comparisons.\n\n - [Display HTML clusters with custom properties](https://maplibre.org/maplibre-gl-js/docs/examples/cluster-html/)",
+        "example": ["!=", "cluster", true],
         "group": "Decision",
         "sdk-support": {
           "basic functionality": {
@@ -3693,7 +3732,8 @@
         }
       },
       "<": {
-        "doc": "Returns `true` if the first input is strictly less than the second, `false` otherwise. The arguments are required to be either both strings or both numbers; if during evaluation they are not, expression evaluation produces an error. Cases where this constraint is known not to hold at parse time are considered in valid and will produce a parse error. Accepts an optional `collator` argument to control locale-dependent string comparisons.",
+        "doc": "Returns `true` if the first input is strictly less than the second, `false` otherwise. The arguments are required to be either both strings or both numbers; if during evaluation they are not, expression evaluation produces an error. Cases where this constraint is known not to hold at parse time are considered in valid and will produce a parse error. Accepts an optional `collator` argument to control locale-dependent string comparisons.\n\n - [Display HTML clusters with custom properties](https://maplibre.org/maplibre-gl-js/docs/examples/cluster-html/)",
+        "example": ["<", ["get", "mag"], 2],
         "group": "Decision",
         "sdk-support": {
           "basic functionality": {
@@ -3711,7 +3751,8 @@
         }
       },
       ">=": {
-        "doc": "Returns `true` if the first input is greater than or equal to the second, `false` otherwise. The arguments are required to be either both strings or both numbers; if during evaluation they are not, expression evaluation produces an error. Cases where this constraint is known not to hold at parse time are considered in valid and will produce a parse error. Accepts an optional `collator` argument to control locale-dependent string comparisons.",
+        "doc": "Returns `true` if the first input is greater than or equal to the second, `false` otherwise. The arguments are required to be either both strings or both numbers; if during evaluation they are not, expression evaluation produces an error. Cases where this constraint is known not to hold at parse time are considered in valid and will produce a parse error. Accepts an optional `collator` argument to control locale-dependent string comparisons.\n\n - [Display HTML clusters with custom properties](https://maplibre.org/maplibre-gl-js/docs/examples/cluster-html/)",
+        "example": [">=", ["get", "mag"], 6],
         "group": "Decision",
         "sdk-support": {
           "basic functionality": {
@@ -3747,7 +3788,8 @@
         }
       },
       "all": {
-        "doc": "Returns `true` if all the inputs are `true`, `false` otherwise. The inputs are evaluated in order, and evaluation is short-circuiting: once an input expression evaluates to `false`, the result is `false` and no further input expressions are evaluated.",
+        "doc": "Returns `true` if all the inputs are `true`, `false` otherwise. The inputs are evaluated in order, and evaluation is short-circuiting: once an input expression evaluates to `false`, the result is `false` and no further input expressions are evaluated.\n\n - [Display HTML clusters with custom properties](https://maplibre.org/maplibre-gl-js/docs/examples/cluster-html/)",
+        "example": ["all", [">=", ["get", "mag"], 4], ["<", ["get", "mag"], 5]],
         "group": "Decision",
         "sdk-support": {
           "basic functionality": {
@@ -3771,7 +3813,8 @@
         }
       },
       "!": {
-        "doc": "Logical negation. Returns `true` if the input is `false`, and `false` if the input is `true`.",
+        "doc": "Logical negation. Returns `true` if the input is `false`, and `false` if the input is `true`.\n\n - [Create and style clusters](https://maplibre.org/maplibre-gl-js/docs/examples/cluster/)",
+        "example": ["!", ["has", "point_count"]],
         "group": "Decision",
         "sdk-support": {
           "basic functionality": {
@@ -3805,7 +3848,8 @@
         }
       },
       "upcase": {
-        "doc": "Returns the input string converted to uppercase. Follows the Unicode Default Case Conversion algorithm and the locale-insensitive case mappings in the Unicode Character Database.",
+        "doc": "Returns the input string converted to uppercase. Follows the Unicode Default Case Conversion algorithm and the locale-insensitive case mappings in the Unicode Character Database.\n\n - [Change the case of labels](https://maplibre.org/maplibre-gl-js/docs/examples/change-case-of-labels/)",
+        "example": ["upcase", ["get", "name"]],
         "group": "String",
         "sdk-support": {
           "basic functionality": {
@@ -3817,7 +3861,8 @@
         }
       },
       "downcase": {
-        "doc": "Returns the input string converted to lowercase. Follows the Unicode Default Case Conversion algorithm and the locale-insensitive case mappings in the Unicode Character Database.",
+        "doc": "Returns the input string converted to lowercase. Follows the Unicode Default Case Conversion algorithm and the locale-insensitive case mappings in the Unicode Character Database.\n\n - [Change the case of labels](https://maplibre.org/maplibre-gl-js/docs/examples/change-case-of-labels/)",
+        "example": ["downcase", ["get", "name"]],
         "group": "String",
         "sdk-support": {
           "basic functionality": {
@@ -3829,7 +3874,8 @@
         }
       },
       "concat": {
-        "doc": "Returns a `string` consisting of the concatenation of the inputs. Each input is converted to a string as if by `to-string`.",
+        "doc": "Returns a `string` consisting of the concatenation of the inputs. Each input is converted to a string as if by `to-string`.\n\n - [Add a generated icon to the map](https://maplibre.org/maplibre-gl-js/docs/examples/add-image-missing-generated/)\n - [Create a time slider](https://maplibre.org/maplibre-gl-js/docs/examples/timeline-animation/)\n - [Use a fallback image](https://maplibre.org/maplibre-gl-js/docs/examples/fallback-image/)\n - [Variable label placement](https://maplibre.org/maplibre-gl-js/docs/examples/variable-label-placement/)",
+        "example": ["concat", "square-rgb-", ["get", "color"]],
         "group": "String",
         "sdk-support": {
           "basic functionality": {
@@ -5412,7 +5458,7 @@
       "minimum": 0,
       "transition": true,
       "units": "pixels",
-      "doc": "Distance of halo to the icon outline.",
+      "doc": "Distance of halo to the icon outline. \nThe unit is in pixels only for SDF sprites that were created with a blur radius of 8, multiplied by the display density. I.e., the radius needs to be 16 for `@2x` sprites, etc.",
       "requires": [
         "icon-image"
       ],
