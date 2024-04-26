@@ -3,6 +3,7 @@ import getType from '../util/get_type';
 import type {ContourSourceSpecification, StyleSpecification} from '../types.g';
 import v8 from '../reference/v8.json' assert {type: 'json'};
 import {deepUnbundle, unbundle} from '../util/unbundle_jsonlint';
+import validateExpression from './validate_expression';
 
 interface ValidateContourSourceOptions {
     sourceName?: string;
@@ -45,32 +46,22 @@ export default function validateContourSource(
             if (typeof value !== 'number' && value !== 'meters' && value !== 'feet') {
                 errors.push(new ValidationError(key, value, `[meters, feet] or number expected, ${JSON.stringify(value)} found`));
             }
+        } else if (key === 'intervals' || key === 'majorMultiplier') {
+            errors.push(...validateExpression({
+                key,
+                value,
+                validateSpec: options.validateSpec,
+                expressionContext: `contour-${key}`
+            }));
         } else if (contourSpec[key]) {
-            const newErrors = options.validateSpec({
+            errors.push(...options.validateSpec({
                 key,
                 value,
                 valueSpec: contourSpec[key],
                 validateSpec: options.validateSpec,
                 style,
                 styleSpec
-            });
-            errors.push(...newErrors);
-            if ((key === 'intervals' || key === 'majorMultiplier') && newErrors.length === 0 && Array.isArray(value)) {
-                if (value.length < 1) {
-                    errors.push(new ValidationError(key, value, `expected at least 1 argument but found ${value.length}`));
-                } else if (value.length % 2 !== 1) {
-                    errors.push(new ValidationError(key, value, `expected an odd number of arguments but found ${value.length}`));
-                } else {
-                    let last = 0;
-                    for (let i = 1; i < value.length; i += 2) {
-                        const curr = value[i];
-                        if (curr <= last) {
-                            errors.push(new ValidationError(key, value, 'zoom stops must be arranged in strictly ascending order'));
-                        }
-                        last = curr;
-                    }
-                }
-            }
+            }));
         } else {
             errors.push(new ValidationError(key, value, `unknown property "${key}"`));
         }

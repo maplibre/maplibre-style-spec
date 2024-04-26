@@ -449,16 +449,14 @@
       "doc": "Elevation unit of the generated contour lines: `\"feet\"`, `\"meters\"`, or a number to multiply by the raw elevation in meters for a custom unit."
     },
     "intervals": {
-      "type": "array",
-      "value": "number",
-      "default": [100],
-      "doc": "Vertical spacing between contour lines by zoom, in the unit specified: `[default_value, zoom_stop_1, value_at_or_above_zoom_stop_1, zoom_stop_2, value_at_or_above_zoom_stop_2, ...]`"
+      "type": "*",
+      "default": 100,
+      "doc": "Vertical spacing between contour lines in the unit specified. This can be a constant value like `100` or an expression that changes by zoom level like `[\"step\", [\"zoom\"], 100, 12, 50]` to use 100 at z11 and below or 50 at z12 and higher."
     },
     "majorMultiplier": {
-      "type": "array",
-      "value": "number",
-      "default": [5],
-      "doc": "Set `major=true` tag on every Nth contour line, which can vary by zoom: `[default_value, zoom_stop_1, value_at_or_above_zoom_stop_1, zoom_stop_2, value_at_or_above_zoom_stop_2, ...]`"
+      "type": "*",
+      "default": 5,
+      "doc": "Set `major=true` tag on every Nth contour line to help create \"index\" contours. This can be a constant like `5` or an expression that changes by zoom level like `[\"step\", [\"zoom\"], 5, 12, 10]` to use 5 at z11 and below or 10 at z12 and higher."
     },
     "minzoom": {
       "type": "number",

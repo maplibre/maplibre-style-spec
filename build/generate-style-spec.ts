@@ -325,7 +325,8 @@ ${spec.source.map(key => {
             str = str.replace(/unknown/, 'GeoJSON.GeoJSON | string');
         }
         if (sourceTypeName(key) === 'ContourSourceSpecification') {
-            str = str.replace(/unknown/, '"meters" | "feet" | number');
+            str = str.replace(/("unit"\?: )unknown/, '$1"meters" | "feet" | number');
+            str = str.replaceAll(/unknown/g, 'PropertyValueSpecification<number>');
         }
         return str;
     }).join('\n\n')}

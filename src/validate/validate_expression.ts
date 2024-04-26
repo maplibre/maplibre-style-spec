@@ -33,12 +33,18 @@ export default function validateExpression(options: any): Array<ValidationError>
         return [new ValidationError(options.key, options.value, '"feature-state" data expressions are not supported with filters.')];
     }
 
-    if (options.expressionContext && options.expressionContext.indexOf('cluster') === 0) {
+    if (options.expressionContext?.indexOf('cluster') === 0) {
         if (!isGlobalPropertyConstant(expressionObj, ['zoom', 'feature-state'])) {
             return [new ValidationError(options.key, options.value, '"zoom" and "feature-state" expressions are not supported with cluster properties.')];
         }
         if (options.expressionContext === 'cluster-initial' && !isFeatureConstant(expressionObj)) {
             return [new ValidationError(options.key, options.value, 'Feature data expressions are not supported with initial expression part of cluster properties.')];
+        }
+    }
+
+    if (options.expressionContext?.indexOf('contour') === 0) {
+        if (!isGlobalPropertyConstant(expressionObj, ['feature-state']) || !isFeatureConstant(expressionObj)) {
+            return [new ValidationError(options.key, options.value, 'Only constant or "zoom"-based expressions are supported with contour source expressions.')];
         }
     }
 
