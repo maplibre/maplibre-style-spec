@@ -115,7 +115,9 @@ The primary use cases of interest are:
    
 3. textFitWidth = proportional and textFitHeight = stretchOnly
 
-   The content rectangle scales to precisely contain the width of its contents but the height will not shrink smaller than the aspect ratio of the original content rectangle. This may be useful scenarios like no. 2 except with vertically written scripts (using `"text-writing-mode": ["vertical"]`).  
+   The content rectangle scales to precisely contain the width of its contents but the height will not shrink smaller than the aspect ratio of the original content rectangle. This may be useful scenarios like no. 2 except with vertically written scripts (using `"text-writing-mode": ["vertical"]`).
+
+![image](https://github.com/DavidBuerer/maplibre-style-spec/assets/29717748/5fc7134e-28dc-4c3c-b89e-d89b50b8dbfa)
 
 ## High-DPI Devices
 
