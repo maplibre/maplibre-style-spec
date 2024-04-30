@@ -106,10 +106,15 @@ The properties `textFitWidth` and `textFitHeight` alter how a sprite's content r
 
 The primary use cases of interest are:
 1. Both properties are undefined or stretchOrShrink
+   
    The content rectangle scales precisely to contain its contents.
+   
 2. textFitWidth = stretchOnly and textFitHeight = proportional
+
    The content rectangle scales to precisely contain the height of its contents but the width will not shrink smaller than the aspect ratio of the original content rectangle. This is primarily useful for shields that shouldn't become too narrow if their contents are narrow (like the number "1").
+   
 3. textFitWidth = proportional and textFitHeight = stretchOnly
+
    The content rectangle scales to precisely contain the width of its contents but the height will not shrink smaller than the aspect ratio of the original content rectangle. This may be useful scenarios like no. 2 except with vertically written scripts (using `"text-writing-mode": ["vertical"]`).  
 
 ## High-DPI Devices
