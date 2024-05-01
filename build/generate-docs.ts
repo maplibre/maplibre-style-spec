@@ -66,7 +66,12 @@ function topicElement(key: string, value: JsonObject): boolean {
  * @returns the markdown string
  */
 function exampleToMarkdown(key: string, example: string | object | number): string {
-    return `\`\`\`json\n${key}: ${JSON.stringify(example, null, 4)}\n\`\`\`\n`;
+    return codeBlockMarkdown(`${key}: ${JSON.stringify(example, null, 4)}`);
+}
+
+function codeBlockMarkdown(code: string, language = 'json'): string {
+    return `\`\`\`${language}\n${code}\n\`\`\`\n`;
+
 }
 
 /**
@@ -209,7 +214,7 @@ function createRootContent() {
 Root level properties of a MapLibre style specify the map's layers, tile sources and other resources, and default values for the initial camera position when not specified elsewhere.
 
 
-\`\`\`json
+${codeBlockMarkdown(`
 {
     "version": 8,
     "name": "MapLibre Demo Tiles",
@@ -218,7 +223,7 @@ Root level properties of a MapLibre style specify the map's layers, tile sources
     "sources": {... },
     "layers": [...]
 }
-\`\`\`
+`)}
 
 `;
     for (const [key, value] of Object.entries(v8.$root)) {
@@ -449,8 +454,8 @@ function createExpressionsContent() {
             content += `\n### ${key}\n`;
             content += `${value.doc}\n`;
             value.example.syntax.method.unshift(`"${key}"`);
-            content += `\nSyntax:\n\`\`\`js\n[${value.example.syntax.method.join(', ')}]: ${value.example.syntax.result}\n\`\`\`\n`;
-            content += `\nExample:\n\`\`\`json\n"some-property": ${JSON.stringify(value.example.value)}\n\`\`\`\n`;
+            content += `\nSyntax:\n${codeBlockMarkdown(`[${value.example.syntax.method.join(', ')}]: ${value.example.syntax.result}`, 'js')}\n`;
+            content += `\nExample:\n${codeBlockMarkdown(`"some-property": ${JSON.stringify(value.example.value)}`)}\n`;
             content += sdkSupportToMarkdown(value['sdk-support'] as any);
             content += '\n';
         }
