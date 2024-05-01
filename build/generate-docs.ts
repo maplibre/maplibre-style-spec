@@ -83,7 +83,6 @@ function exampleToMarkdown(key: string, example: string | object | number): stri
 
 function codeBlockMarkdown(code: string, language = 'json'): string {
     return `\`\`\`${language}\n${code}\n\`\`\`\n`;
-
 }
 
 /**
