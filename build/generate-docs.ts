@@ -1,5 +1,6 @@
 import v8 from '../src/reference/v8.json' assert { type: 'json' };
 import fs from 'fs';
+import jsonStringify from 'json-stringify-pretty-compact';
 
 /**
  * This script generates markdown documentation from the JSON schema.
@@ -60,13 +61,25 @@ function topicElement(key: string, value: JsonObject): boolean {
 }
 
 /**
+ * @param obj
+ * @returns formatted JSON
+ */
+function formatJSON(obj: any): string {
+    console.log(Object.keys(obj))
+    return jsonStringify(obj, {
+        indent: 4,
+        maxLength: 60
+    });
+}
+
+/**
  * Converts the example value to markdown format.
  * @param key - the name of the json property
  * @param example - the example value of the json property
  * @returns the markdown string
  */
 function exampleToMarkdown(key: string, example: string | object | number): string {
-    return codeBlockMarkdown(`${key}: ${JSON.stringify(example, null, 4)}`);
+    return codeBlockMarkdown(`${key}: ${formatJSON(example)}`);
 }
 
 function codeBlockMarkdown(code: string, language = 'json'): string {
@@ -455,7 +468,7 @@ function createExpressionsContent() {
             content += `${value.doc}\n`;
             value.example.syntax.method.unshift(`"${key}"`);
             content += `\nSyntax:\n${codeBlockMarkdown(`[${value.example.syntax.method.join(', ')}]: ${value.example.syntax.result}`, 'js')}\n`;
-            content += `\nExample:\n${codeBlockMarkdown(`"some-property": ${JSON.stringify(value.example.value)}`)}\n`;
+            content += `\nExample:\n${codeBlockMarkdown(`"some-property": ${formatJSON(value.example.value)}`)}\n`;
             content += sdkSupportToMarkdown(value['sdk-support'] as any);
             content += '\n';
         }
