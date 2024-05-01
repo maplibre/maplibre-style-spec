@@ -1,5 +1,6 @@
 import v8 from '../src/reference/v8.json' assert { type: 'json' };
 import fs from 'fs';
+import jsonStringify from 'json-stringify-pretty-compact';
 
 /**
  * This script generates markdown documentation from the JSON schema.
@@ -60,13 +61,28 @@ function topicElement(key: string, value: JsonObject): boolean {
 }
 
 /**
+ * @param obj - object to be formatted
+ * @returns formatted JSON
+ */
+function formatJSON(obj: any): string {
+    return jsonStringify(obj, {
+        indent: 4,
+        maxLength: 60
+    });
+}
+
+/**
  * Converts the example value to markdown format.
  * @param key - the name of the json property
  * @param example - the example value of the json property
  * @returns the markdown string
  */
 function exampleToMarkdown(key: string, example: string | object | number): string {
-    return `\`\`\`json\n${key}: ${JSON.stringify(example, null, 4)}\n\`\`\`\n`;
+    return codeBlockMarkdown(`${key}: ${formatJSON(example)}`);
+}
+
+function codeBlockMarkdown(code: string, language = 'json'): string {
+    return `\`\`\`${language}\n${code}\n\`\`\`\n`;
 }
 
 /**
@@ -209,7 +225,7 @@ function createRootContent() {
 Root level properties of a MapLibre style specify the map's layers, tile sources and other resources, and default values for the initial camera position when not specified elsewhere.
 
 
-\`\`\`json
+${codeBlockMarkdown(`
 {
     "version": 8,
     "name": "MapLibre Demo Tiles",
@@ -218,7 +234,7 @@ Root level properties of a MapLibre style specify the map's layers, tile sources
     "sources": {... },
     "layers": [...]
 }
-\`\`\`
+`)}
 
 `;
     for (const [key, value] of Object.entries(v8.$root)) {
@@ -448,9 +464,9 @@ function createExpressionsContent() {
             }
             content += `\n### ${key}\n`;
             content += `${value.doc}\n`;
-            if ('example' in value) {
-                content += `\n\`\`\`json\n"some-property": ${JSON.stringify(value.example)}\n\`\`\`\n`;
-            }
+            value.example.syntax.method.unshift(`"${key}"`);
+            content += `\nSyntax:\n${codeBlockMarkdown(`[${value.example.syntax.method.join(', ')}]: ${value.example.syntax.result}`, 'js')}\n`;
+            content += `\nExample:\n${codeBlockMarkdown(`"some-property": ${formatJSON(value.example.value)}`)}\n`;
             content += sdkSupportToMarkdown(value['sdk-support'] as any);
             content += '\n';
         }
