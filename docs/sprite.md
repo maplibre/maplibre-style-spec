@@ -69,7 +69,7 @@ A valid sprite source must supply two types of files:
 |SDK Support|MapLibre GL JS|Android SDK|iOS SDK|
 |-----------|--------------|-----------|-------|
 |basic functionality| ✅ | ✅ | ✅ |
-|`textFitWidth`, `textFitHeight`| ✅ | | |
+|`textFitWidth`, `textFitHeight`| 4.2.0 | Not supported yet | Not supported yet |
 
 ### Optional Properties
 
