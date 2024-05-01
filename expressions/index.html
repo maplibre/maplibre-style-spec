@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="https://maplibre.org/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.19">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.20">
     
     
       
@@ -2624,8 +2624,25 @@
 <ul>
 <li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/visualize-population-density/">Visualize population density</a></li>
 </ul>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;let&quot;</span><span class="p">,</span><span class="s2">&quot;someNumber&quot;</span><span class="p">,</span><span class="mi">500</span><span class="p">,[</span><span class="s2">&quot;interpolate&quot;</span><span class="p">,[</span><span class="s2">&quot;linear&quot;</span><span class="p">],[</span><span class="s2">&quot;var&quot;</span><span class="p">,</span><span class="s2">&quot;someNumber&quot;</span><span class="p">],</span><span class="mi">274</span><span class="p">,</span><span class="s2">&quot;#edf8e9&quot;</span><span class="p">,</span><span class="mi">1551</span><span class="p">,</span><span class="s2">&quot;#006d2c&quot;</span><span class="p">]]</span>
-</span></code></pre></div>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="p">[</span><span class="s2">&quot;let&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">expression</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">value</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="s2">&quot;let&quot;</span><span class="p">,</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="s2">&quot;someNumber&quot;</span><span class="p">,</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="mi">500</span><span class="p">,</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">    </span><span class="p">[</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">        </span><span class="s2">&quot;interpolate&quot;</span><span class="p">,</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">        </span><span class="p">[</span><span class="s2">&quot;linear&quot;</span><span class="p">],</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">        </span><span class="p">[</span><span class="s2">&quot;var&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;someNumber&quot;</span><span class="p">],</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">        </span><span class="mi">274</span><span class="p">,</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="w">        </span><span class="s2">&quot;#edf8e9&quot;</span><span class="p">,</span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w">        </span><span class="mi">1551</span><span class="p">,</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="w">        </span><span class="s2">&quot;#006d2c&quot;</span>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="w">    </span><span class="p">]</span>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -2651,8 +2668,12 @@
 <ul>
 <li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/visualize-population-density/">Visualize population density</a></li>
 </ul>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;var&quot;</span><span class="p">,</span><span class="s2">&quot;density&quot;</span><span class="p">]</span>
-</span></code></pre></div>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="p">[</span><span class="s2">&quot;var&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">string</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">value</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;var&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;density&quot;</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -2679,8 +2700,15 @@
 <ul>
 <li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/display-and-style-rich-text-labels/">Display and style rich text labels</a></li>
 </ul>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;literal&quot;</span><span class="p">,[</span><span class="s2">&quot;DIN Offc Pro Italic&quot;</span><span class="p">,</span><span class="s2">&quot;Arial Unicode MS Regular&quot;</span><span class="p">]]</span>
-</span></code></pre></div>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="p">[</span><span class="s2">&quot;literal&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">JSON</span><span class="w"> </span><span class="nx">object</span><span class="w"> </span><span class="nx">or</span><span class="w"> </span><span class="nx">array</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">array</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">object</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">    </span><span class="s2">&quot;literal&quot;</span><span class="p">,</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">    </span><span class="p">[</span><span class="s2">&quot;DIN Offc Pro Italic&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Arial Unicode MS Regular&quot;</span><span class="p">]</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -2702,7 +2730,13 @@
 </tbody>
 </table>
 <h3 id="array">array<a class="headerlink" href="#array" title="Permanent link">&para;</a></h3>
-<p>Asserts that the input is an array (optionally with a specific item type and length).  If, when the input expression is evaluated, it is not of the asserted type, then this assertion will cause the whole expression to be aborted.</p>
+<p>Asserts that the input is an array (optionally with a specific item type and length). If, when the input expression is evaluated, it is not of the asserted type, then this assertion will cause the whole expression to be aborted.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="p">[</span><span class="s2">&quot;array&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">string</span><span class="o">?</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="o">?</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">array</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;array&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;literal&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;c&quot;</span><span class="p">]],</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -2725,6 +2759,12 @@
 </table>
 <h3 id="typeof">typeof<a class="headerlink" href="#typeof" title="Permanent link">&para;</a></h3>
 <p>Returns a string describing the type of the given value.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="p">[</span><span class="s2">&quot;typeof&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;typeof&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;name&quot;</span><span class="p">]]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -2747,6 +2787,12 @@
 </table>
 <h3 id="string">string<a class="headerlink" href="#string" title="Permanent link">&para;</a></h3>
 <p>Asserts that the input value is a string. If multiple values are provided, each one is evaluated in order until a string is obtained. If none of the inputs are strings, the expression is an error.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="p">[</span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">fallback</span><span class="o">:</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">fallback</span><span class="o">:</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="p">...]</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;string&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;name&quot;</span><span class="p">]]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -2769,6 +2815,12 @@
 </table>
 <h3 id="number">number<a class="headerlink" href="#number" title="Permanent link">&para;</a></h3>
 <p>Asserts that the input value is a number. If multiple values are provided, each one is evaluated in order until a number is obtained. If none of the inputs are numbers, the expression is an error.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="p">[</span><span class="s2">&quot;number&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">fallback</span><span class="o">:</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">fallback</span><span class="o">:</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="p">...]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;number&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;population&quot;</span><span class="p">]]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -2794,8 +2846,12 @@
 <ul>
 <li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/hover-styles/">Create a hover effect</a></li>
 </ul>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;boolean&quot;</span><span class="p">,[</span><span class="s2">&quot;feature-state&quot;</span><span class="p">,</span><span class="s2">&quot;hover&quot;</span><span class="p">],</span><span class="kc">false</span><span class="p">]</span>
-</span></code></pre></div>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="p">[</span><span class="s2">&quot;boolean&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">fallback</span><span class="o">:</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">fallback</span><span class="o">:</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="p">...]</span><span class="o">:</span><span class="w"> </span><span class="kr">boolean</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;boolean&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;feature-state&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;hover&quot;</span><span class="p">],</span><span class="w"> </span><span class="kc">false</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -2818,6 +2874,12 @@
 </table>
 <h3 id="object">object<a class="headerlink" href="#object" title="Permanent link">&para;</a></h3>
 <p>Asserts that the input value is an object. If multiple values are provided, each one is evaluated in order until an object is obtained. If none of the inputs are objects, the expression is an error.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="p">[</span><span class="s2">&quot;object&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">fallback</span><span class="o">:</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">fallback</span><span class="o">:</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="p">...]</span><span class="o">:</span><span class="w"> </span><span class="nx">object</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;object&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;some-property&quot;</span><span class="p">]]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -2840,6 +2902,19 @@
 </table>
 <h3 id="collator">collator<a class="headerlink" href="#collator" title="Permanent link">&para;</a></h3>
 <p>Returns a <code>collator</code> for use in locale-dependent comparison operations. The <code>case-sensitive</code> and <code>diacritic-sensitive</code> options default to <code>false</code>. The <code>locale</code> argument specifies the IETF language tag of the locale to use. If none is provided, the default locale is used. If the requested locale is not available, the <code>collator</code> will use a system-defined fallback locale. Use <code>resolved-locale</code> to test the results of locale fallback behavior.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="p">[</span><span class="s2">&quot;collator&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">collator</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;case-sensitive&quot;</span><span class="o">:</span><span class="w"> </span><span class="kr">boolean</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;diacritic-sensitive&quot;</span><span class="o">:</span><span class="w"> </span><span class="kr">boolean</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;locale&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="w"> </span><span class="p">}]</span><span class="o">:</span><span class="w"> </span><span class="nx">collator</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="w">    </span><span class="s2">&quot;collator&quot;</span><span class="p">,</span>
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="w">        </span><span class="nt">&quot;case-sensitive&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="w">        </span><span class="nt">&quot;diacritic-sensitive&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-28-6"><a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a><span class="w">        </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;fr&quot;</span>
+</span><span id="__span-28-7"><a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-28-8"><a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -2869,8 +2944,20 @@
 <li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/change-case-of-labels/">Change the case of labels</a></li>
 <li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/display-and-style-rich-text-labels/">Display and style rich text labels</a></li>
 </ul>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;format&quot;</span><span class="p">,[</span><span class="s2">&quot;upcase&quot;</span><span class="p">,[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="s2">&quot;FacilityName&quot;</span><span class="p">]],{</span><span class="nt">&quot;font-scale&quot;</span><span class="p">:</span><span class="mf">0.8</span><span class="p">},</span><span class="s2">&quot;\n&quot;</span><span class="p">,{},[</span><span class="s2">&quot;downcase&quot;</span><span class="p">,[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="s2">&quot;Comments&quot;</span><span class="p">]],{</span><span class="nt">&quot;font-scale&quot;</span><span class="p">:</span><span class="mf">0.6</span><span class="p">}]</span>
-</span></code></pre></div>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="p">[</span><span class="s2">&quot;format&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;text-font&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;text-color&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">color</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;font-scale&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">...]</span><span class="o">:</span><span class="w"> </span><span class="nx">formatted</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="w">    </span><span class="s2">&quot;format&quot;</span><span class="p">,</span>
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="w">    </span><span class="p">[</span><span class="s2">&quot;upcase&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;FacilityName&quot;</span><span class="p">]],</span>
+</span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="w">    </span><span class="p">{</span><span class="nt">&quot;font-scale&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="p">},</span>
+</span><span id="__span-30-5"><a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a><span class="w">    </span><span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+</span><span id="__span-30-6"><a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a><span class="w">    </span><span class="p">{},</span>
+</span><span id="__span-30-7"><a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a><span class="w">    </span><span class="p">[</span><span class="s2">&quot;downcase&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Comments&quot;</span><span class="p">]],</span>
+</span><span id="__span-30-8"><a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a><span class="w">    </span><span class="p">{</span><span class="nt">&quot;font-scale&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.6</span><span class="p">}</span>
+</span><span id="__span-30-9"><a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -2924,8 +3011,12 @@
 <ul>
 <li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/fallback-image/">Use a fallback image</a></li>
 </ul>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;image&quot;</span><span class="p">,</span><span class="s2">&quot;marker_15&quot;</span><span class="p">]</span>
-</span></code></pre></div>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="p">[</span><span class="s2">&quot;image&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">image</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;image&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;marker_15&quot;</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -2951,8 +3042,16 @@
 <ul>
 <li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/cluster-html/">Display HTML clusters with custom properties</a></li>
 </ul>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;number-format&quot;</span><span class="p">,[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="s2">&quot;mag&quot;</span><span class="p">],{</span><span class="nt">&quot;min-fraction-digits&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="nt">&quot;max-fraction-digits&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">}]</span>
-</span></code></pre></div>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="p">[</span><span class="s2">&quot;number-format&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;locale&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;currency&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;min-fraction-digits&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;max-fraction-digits&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="w"> </span><span class="p">}]</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="w">    </span><span class="s2">&quot;number-format&quot;</span><span class="p">,</span>
+</span><span id="__span-34-3"><a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a><span class="w">    </span><span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;mag&quot;</span><span class="p">],</span>
+</span><span id="__span-34-4"><a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a><span class="w">    </span><span class="p">{</span><span class="nt">&quot;min-fraction-digits&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;max-fraction-digits&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">}</span>
+</span><span id="__span-34-5"><a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -2978,8 +3077,12 @@
 <ul>
 <li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/timeline-animation/">Create a time slider</a></li>
 </ul>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;to-string&quot;</span><span class="p">,[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="s2">&quot;mag&quot;</span><span class="p">]]</span>
-</span></code></pre></div>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="p">[</span><span class="s2">&quot;to-string&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;to-string&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;mag&quot;</span><span class="p">]]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -3002,6 +3105,12 @@
 </table>
 <h3 id="to-number">to-number<a class="headerlink" href="#to-number" title="Permanent link">&para;</a></h3>
 <p>Converts the input value to a number, if possible. If the input is <code>null</code> or <code>false</code>, the result is 0. If the input is <code>true</code>, the result is 1. If the input is a string, it is converted to a number as specified by the <a href="https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type">"ToNumber Applied to the String Type" algorithm</a> of the ECMAScript Language Specification. If multiple values are provided, each one is evaluated in order until the first successful conversion is obtained. If none of the inputs can be converted, the expression is an error.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="p">[</span><span class="s2">&quot;to-number&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">fallback</span><span class="o">:</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">fallback</span><span class="o">:</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="p">...]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;to-number&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;someProperty&quot;</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -3024,6 +3133,12 @@
 </table>
 <h3 id="to-boolean">to-boolean<a class="headerlink" href="#to-boolean" title="Permanent link">&para;</a></h3>
 <p>Converts the input value to a boolean. The result is <code>false</code> when then input is an empty string, 0, <code>false</code>, <code>null</code>, or <code>NaN</code>; otherwise it is <code>true</code>.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="p">[</span><span class="s2">&quot;to-boolean&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="kr">boolean</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;to-boolean&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;someProperty&quot;</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -3049,8 +3164,12 @@
 <ul>
 <li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/visualize-population-density/">Visualize population density</a></li>
 </ul>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;to-color&quot;</span><span class="p">,</span><span class="s2">&quot;#edf8e9&quot;</span><span class="p">]</span>
-</span></code></pre></div>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="p">[</span><span class="s2">&quot;to-color&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">fallback</span><span class="o">:</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">fallback</span><span class="o">:</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="p">...]</span><span class="o">:</span><span class="w"> </span><span class="nx">color</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;to-color&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;#edf8e9&quot;</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -3074,6 +3193,12 @@
 <h2 id="lookup">Lookup<a class="headerlink" href="#lookup" title="Permanent link">&para;</a></h2>
 <h3 id="at">at<a class="headerlink" href="#at" title="Permanent link">&para;</a></h3>
 <p>Retrieves an item from an array.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="p">[</span><span class="s2">&quot;at&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">value</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;at&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;literal&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;c&quot;</span><span class="p">]],</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -3099,8 +3224,12 @@
 <ul>
 <li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/measure/">Measure distances</a></li>
 </ul>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;in&quot;</span><span class="p">,</span><span class="s2">&quot;$type&quot;</span><span class="p">,</span><span class="s2">&quot;Point&quot;</span><span class="p">]</span>
-</span></code></pre></div>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="p">[</span><span class="s2">&quot;in&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="kr">boolean</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;in&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;$type&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Point&quot;</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -3123,6 +3252,12 @@
 </table>
 <h3 id="index-of">index-of<a class="headerlink" href="#index-of" title="Permanent link">&para;</a></h3>
 <p>Returns the first position at which an item can be found in an array or a substring can be found in a string, or <code>-1</code> if the input cannot be found. Accepts an optional index from where to begin the search.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="p">[</span><span class="s2">&quot;index-of&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="o">?</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;index-of&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;baz&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;hello&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;foo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;world&quot;</span><span class="p">]]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -3145,6 +3280,12 @@
 </table>
 <h3 id="slice">slice<a class="headerlink" href="#slice" title="Permanent link">&para;</a></h3>
 <p>Returns an item from an array or a substring from a string from a specified start index, or between a start index and an end index if set. The return value is inclusive of the start index but not of the end index.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="p">[</span><span class="s2">&quot;slice&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="o">?</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">value</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-50-1"><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;slice&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;name&quot;</span><span class="p">],</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -3172,8 +3313,12 @@
 <li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/cluster-html/">Display HTML clusters with custom properties</a></li>
 <li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/3d-extrusion-floorplan/">Extrude polygons for 3D indoor mapping</a></li>
 </ul>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="s2">&quot;someProperty&quot;</span><span class="p">]</span>
-</span></code></pre></div>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-51-1"><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">string</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">value</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-52-1"><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;someProperty&quot;</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -3199,8 +3344,12 @@
 <ul>
 <li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/cluster/">Create and style clusters</a></li>
 </ul>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;has&quot;</span><span class="p">,</span><span class="s2">&quot;someProperty&quot;</span><span class="p">]</span>
-</span></code></pre></div>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-53-1"><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a><span class="p">[</span><span class="s2">&quot;has&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">string</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="kr">boolean</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-54-1"><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;has&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;someProperty&quot;</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -3223,6 +3372,12 @@
 </table>
 <h3 id="length">length<a class="headerlink" href="#length" title="Permanent link">&para;</a></h3>
 <p>Gets the length of an array or string.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-55-1"><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a><span class="p">[</span><span class="s2">&quot;length&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">array</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-56-1"><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;length&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;myArray&quot;</span><span class="p">]]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -3250,8 +3405,17 @@
 <li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/hover-styles/">Create a hover effect</a></li>
 <li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/cluster-html/">Display HTML clusters with custom properties</a></li>
 </ul>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;case&quot;</span><span class="p">,[</span><span class="s2">&quot;boolean&quot;</span><span class="p">,[</span><span class="s2">&quot;feature-state&quot;</span><span class="p">,</span><span class="s2">&quot;hover&quot;</span><span class="p">],</span><span class="kc">false</span><span class="p">],</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.5</span><span class="p">]</span>
-</span></code></pre></div>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-57-1"><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a><span class="p">[</span><span class="s2">&quot;case&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="nx">fallback</span><span class="o">:</span><span class="w"> </span><span class="nx">value</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">value</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-58-1"><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-58-2"><a id="__codelineno-58-2" name="__codelineno-58-2" href="#__codelineno-58-2"></a><span class="w">    </span><span class="s2">&quot;case&quot;</span><span class="p">,</span>
+</span><span id="__span-58-3"><a id="__codelineno-58-3" name="__codelineno-58-3" href="#__codelineno-58-3"></a><span class="w">    </span><span class="p">[</span><span class="s2">&quot;boolean&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;feature-state&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;hover&quot;</span><span class="p">],</span><span class="w"> </span><span class="kc">false</span><span class="p">],</span>
+</span><span id="__span-58-4"><a id="__codelineno-58-4" name="__codelineno-58-4" href="#__codelineno-58-4"></a><span class="w">    </span><span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-58-5"><a id="__codelineno-58-5" name="__codelineno-58-5" href="#__codelineno-58-5"></a><span class="w">    </span><span class="mf">0.5</span>
+</span><span id="__span-58-6"><a id="__codelineno-58-6" name="__codelineno-58-6" href="#__codelineno-58-6"></a><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -3277,6 +3441,20 @@
  - a single literal value; or
  - an array of literal values, whose values must be all strings or all numbers (e.g. <code>[100, 101]</code> or <code>["c", "b"]</code>). The input matches if any of the values in the array matches, similar to the <code>"in"</code> operator.
 Each label must be unique. If the input type does not match the type of the labels, the result will be the fallback value.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-59-1"><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a><span class="p">[</span><span class="s2">&quot;match&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="nx">fallback</span><span class="o">:</span><span class="w"> </span><span class="nx">value</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">value</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-60-1"><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-60-2"><a id="__codelineno-60-2" name="__codelineno-60-2" href="#__codelineno-60-2"></a><span class="w">    </span><span class="s2">&quot;match&quot;</span><span class="p">,</span>
+</span><span id="__span-60-3"><a id="__codelineno-60-3" name="__codelineno-60-3" href="#__codelineno-60-3"></a><span class="w">    </span><span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;building_type&quot;</span><span class="p">],</span>
+</span><span id="__span-60-4"><a id="__codelineno-60-4" name="__codelineno-60-4" href="#__codelineno-60-4"></a><span class="w">    </span><span class="s2">&quot;residential&quot;</span><span class="p">,</span>
+</span><span id="__span-60-5"><a id="__codelineno-60-5" name="__codelineno-60-5" href="#__codelineno-60-5"></a><span class="w">    </span><span class="s2">&quot;#f00&quot;</span><span class="p">,</span>
+</span><span id="__span-60-6"><a id="__codelineno-60-6" name="__codelineno-60-6" href="#__codelineno-60-6"></a><span class="w">    </span><span class="s2">&quot;commercial&quot;</span><span class="p">,</span>
+</span><span id="__span-60-7"><a id="__codelineno-60-7" name="__codelineno-60-7" href="#__codelineno-60-7"></a><span class="w">    </span><span class="s2">&quot;#0f0&quot;</span><span class="p">,</span>
+</span><span id="__span-60-8"><a id="__codelineno-60-8" name="__codelineno-60-8" href="#__codelineno-60-8"></a><span class="w">    </span><span class="s2">&quot;#000&quot;</span>
+</span><span id="__span-60-9"><a id="__codelineno-60-9" name="__codelineno-60-9" href="#__codelineno-60-9"></a><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -3302,8 +3480,16 @@ Each label must be unique. If the input type does not match the type of the labe
 <ul>
 <li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/fallback-image/">Use a fallback image</a></li>
 </ul>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;coalesce&quot;</span><span class="p">,[</span><span class="s2">&quot;image&quot;</span><span class="p">,[</span><span class="s2">&quot;concat&quot;</span><span class="p">,[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="s2">&quot;icon&quot;</span><span class="p">],</span><span class="s2">&quot;_15&quot;</span><span class="p">]],[</span><span class="s2">&quot;image&quot;</span><span class="p">,</span><span class="s2">&quot;marker_15&quot;</span><span class="p">]]</span>
-</span></code></pre></div>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-61-1"><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a><span class="p">[</span><span class="s2">&quot;coalesce&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">coalesce</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">fallback</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">value</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-62-1"><a id="__codelineno-62-1" name="__codelineno-62-1" href="#__codelineno-62-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-62-2"><a id="__codelineno-62-2" name="__codelineno-62-2" href="#__codelineno-62-2"></a><span class="w">    </span><span class="s2">&quot;coalesce&quot;</span><span class="p">,</span>
+</span><span id="__span-62-3"><a id="__codelineno-62-3" name="__codelineno-62-3" href="#__codelineno-62-3"></a><span class="w">    </span><span class="p">[</span><span class="s2">&quot;image&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;concat&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;icon&quot;</span><span class="p">],</span><span class="w"> </span><span class="s2">&quot;_15&quot;</span><span class="p">]],</span>
+</span><span id="__span-62-4"><a id="__codelineno-62-4" name="__codelineno-62-4" href="#__codelineno-62-4"></a><span class="w">    </span><span class="p">[</span><span class="s2">&quot;image&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;marker_15&quot;</span><span class="p">]</span>
+</span><span id="__span-62-5"><a id="__codelineno-62-5" name="__codelineno-62-5" href="#__codelineno-62-5"></a><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -3332,8 +3518,12 @@ Each label must be unique. If the input type does not match the type of the labe
 <li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/3d-buildings/">Display buildings in 3D</a></li>
 <li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/filter-markers/">Filter symbols by toggling a list</a></li>
 </ul>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;==&quot;</span><span class="p">,</span><span class="s2">&quot;$type&quot;</span><span class="p">,</span><span class="s2">&quot;Polygon&quot;</span><span class="p">]</span>
-</span></code></pre></div>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-63-1"><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a><span class="p">[</span><span class="s2">&quot;==&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">collator</span><span class="o">?</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="kr">boolean</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-64-1"><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;==&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;$type&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Polygon&quot;</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -3366,8 +3556,12 @@ Each label must be unique. If the input type does not match the type of the labe
 <ul>
 <li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/cluster-html/">Display HTML clusters with custom properties</a></li>
 </ul>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;!=&quot;</span><span class="p">,</span><span class="s2">&quot;cluster&quot;</span><span class="p">,</span><span class="kc">true</span><span class="p">]</span>
-</span></code></pre></div>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-65-1"><a id="__codelineno-65-1" name="__codelineno-65-1" href="#__codelineno-65-1"></a><span class="p">[</span><span class="s2">&quot;!=&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">collator</span><span class="o">?</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="kr">boolean</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-66-1"><a id="__codelineno-66-1" name="__codelineno-66-1" href="#__codelineno-66-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;!=&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;cluster&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -3397,6 +3591,12 @@ Each label must be unique. If the input type does not match the type of the labe
 </table>
 <h3 id="_3">&gt;<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>Returns <code>true</code> if the first input is strictly greater than the second, <code>false</code> otherwise. The arguments are required to be either both strings or both numbers; if during evaluation they are not, expression evaluation produces an error. Cases where this constraint is known not to hold at parse time are considered in valid and will produce a parse error. Accepts an optional <code>collator</code> argument to control locale-dependent string comparisons.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-67-1"><a id="__codelineno-67-1" name="__codelineno-67-1" href="#__codelineno-67-1"></a><span class="p">[</span><span class="s2">&quot;&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">collator</span><span class="o">?</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="kr">boolean</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-68-1"><a id="__codelineno-68-1" name="__codelineno-68-1" href="#__codelineno-68-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;mag&quot;</span><span class="p">],</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -3429,8 +3629,12 @@ Each label must be unique. If the input type does not match the type of the labe
 <ul>
 <li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/cluster-html/">Display HTML clusters with custom properties</a></li>
 </ul>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&lt;&quot;</span><span class="p">,[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="s2">&quot;mag&quot;</span><span class="p">],</span><span class="mi">2</span><span class="p">]</span>
-</span></code></pre></div>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-69-1"><a id="__codelineno-69-1" name="__codelineno-69-1" href="#__codelineno-69-1"></a><span class="p">[</span><span class="s2">&quot;&lt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">collator</span><span class="o">?</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="kr">boolean</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-70-1"><a id="__codelineno-70-1" name="__codelineno-70-1" href="#__codelineno-70-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&lt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;mag&quot;</span><span class="p">],</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -3463,8 +3667,12 @@ Each label must be unique. If the input type does not match the type of the labe
 <ul>
 <li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/cluster-html/">Display HTML clusters with custom properties</a></li>
 </ul>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&gt;=&quot;</span><span class="p">,[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="s2">&quot;mag&quot;</span><span class="p">],</span><span class="mi">6</span><span class="p">]</span>
-</span></code></pre></div>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-71-1"><a id="__codelineno-71-1" name="__codelineno-71-1" href="#__codelineno-71-1"></a><span class="p">[</span><span class="s2">&quot;&gt;=&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">collator</span><span class="o">?</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="kr">boolean</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-72-1"><a id="__codelineno-72-1" name="__codelineno-72-1" href="#__codelineno-72-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&gt;=&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;mag&quot;</span><span class="p">],</span><span class="w"> </span><span class="mi">6</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -3494,6 +3702,12 @@ Each label must be unique. If the input type does not match the type of the labe
 </table>
 <h3 id="_6">&lt;=<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p>Returns <code>true</code> if the first input is less than or equal to the second, <code>false</code> otherwise. The arguments are required to be either both strings or both numbers; if during evaluation they are not, expression evaluation produces an error. Cases where this constraint is known not to hold at parse time are considered in valid and will produce a parse error. Accepts an optional <code>collator</code> argument to control locale-dependent string comparisons.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-73-1"><a id="__codelineno-73-1" name="__codelineno-73-1" href="#__codelineno-73-1"></a><span class="p">[</span><span class="s2">&quot;&lt;=&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">collator</span><span class="o">?</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="kr">boolean</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-74-1"><a id="__codelineno-74-1" name="__codelineno-74-1" href="#__codelineno-74-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&lt;=&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;mag&quot;</span><span class="p">],</span><span class="w"> </span><span class="mi">6</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -3526,8 +3740,12 @@ Each label must be unique. If the input type does not match the type of the labe
 <ul>
 <li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/cluster-html/">Display HTML clusters with custom properties</a></li>
 </ul>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;all&quot;</span><span class="p">,[</span><span class="s2">&quot;&gt;=&quot;</span><span class="p">,[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="s2">&quot;mag&quot;</span><span class="p">],</span><span class="mi">4</span><span class="p">],[</span><span class="s2">&quot;&lt;&quot;</span><span class="p">,[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="s2">&quot;mag&quot;</span><span class="p">],</span><span class="mi">5</span><span class="p">]]</span>
-</span></code></pre></div>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-75-1"><a id="__codelineno-75-1" name="__codelineno-75-1" href="#__codelineno-75-1"></a><span class="p">[</span><span class="s2">&quot;all&quot;</span><span class="p">,</span><span class="w"> </span><span class="kr">boolean</span><span class="p">,</span><span class="w"> </span><span class="kr">boolean</span><span class="p">,</span><span class="w"> </span><span class="p">...]</span><span class="o">:</span><span class="w"> </span><span class="kr">boolean</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-76-1"><a id="__codelineno-76-1" name="__codelineno-76-1" href="#__codelineno-76-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;all&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&gt;=&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;mag&quot;</span><span class="p">],</span><span class="w"> </span><span class="mi">4</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&lt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;mag&quot;</span><span class="p">],</span><span class="w"> </span><span class="mi">5</span><span class="p">]]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -3550,6 +3768,12 @@ Each label must be unique. If the input type does not match the type of the labe
 </table>
 <h3 id="any">any<a class="headerlink" href="#any" title="Permanent link">&para;</a></h3>
 <p>Returns <code>true</code> if any of the inputs are <code>true</code>, <code>false</code> otherwise. The inputs are evaluated in order, and evaluation is short-circuiting: once an input expression evaluates to <code>true</code>, the result is <code>true</code> and no further input expressions are evaluated.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-77-1"><a id="__codelineno-77-1" name="__codelineno-77-1" href="#__codelineno-77-1"></a><span class="p">[</span><span class="s2">&quot;any&quot;</span><span class="p">,</span><span class="w"> </span><span class="kr">boolean</span><span class="p">,</span><span class="w"> </span><span class="kr">boolean</span><span class="p">,</span><span class="w"> </span><span class="p">...]</span><span class="o">:</span><span class="w"> </span><span class="kr">boolean</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-78-1"><a id="__codelineno-78-1" name="__codelineno-78-1" href="#__codelineno-78-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;any&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&gt;=&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;mag&quot;</span><span class="p">],</span><span class="w"> </span><span class="mi">4</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&lt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;mag&quot;</span><span class="p">],</span><span class="w"> </span><span class="mi">5</span><span class="p">]]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -3575,8 +3799,12 @@ Each label must be unique. If the input type does not match the type of the labe
 <ul>
 <li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/cluster/">Create and style clusters</a></li>
 </ul>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;!&quot;</span><span class="p">,[</span><span class="s2">&quot;has&quot;</span><span class="p">,</span><span class="s2">&quot;point_count&quot;</span><span class="p">]]</span>
-</span></code></pre></div>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-79-1"><a id="__codelineno-79-1" name="__codelineno-79-1" href="#__codelineno-79-1"></a><span class="p">[</span><span class="s2">&quot;!&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">collator</span><span class="o">?</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="kr">boolean</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-80-1"><a id="__codelineno-80-1" name="__codelineno-80-1" href="#__codelineno-80-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;!&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;has&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;point_count&quot;</span><span class="p">]]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -3601,6 +3829,20 @@ Each label must be unique. If the input type does not match the type of the labe
 <p>Returns <code>true</code> if the evaluated feature is fully contained inside a boundary of the input geometry, <code>false</code> otherwise. The input value can be a valid GeoJSON of type <code>Polygon</code>, <code>MultiPolygon</code>, <code>Feature</code>, or <code>FeatureCollection</code>. Supported features for evaluation:
 - <code>Point</code>: Returns <code>false</code> if a point is on the boundary or falls outside the boundary.
 - <code>LineString</code>: Returns <code>false</code> if any part of a line falls outside the boundary, the line intersects the boundary, or a line's endpoint is on the boundary.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-81-1"><a id="__codelineno-81-1" name="__codelineno-81-1" href="#__codelineno-81-1"></a><span class="p">[</span><span class="s2">&quot;within&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">GeoJSON</span><span class="w"> </span><span class="nx">geometry</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="kr">boolean</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-82-1"><a id="__codelineno-82-1" name="__codelineno-82-1" href="#__codelineno-82-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-82-2"><a id="__codelineno-82-2" name="__codelineno-82-2" href="#__codelineno-82-2"></a><span class="w">    </span><span class="s2">&quot;within&quot;</span><span class="p">,</span>
+</span><span id="__span-82-3"><a id="__codelineno-82-3" name="__codelineno-82-3" href="#__codelineno-82-3"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-82-4"><a id="__codelineno-82-4" name="__codelineno-82-4" href="#__codelineno-82-4"></a><span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Polygon&quot;</span><span class="p">,</span>
+</span><span id="__span-82-5"><a id="__codelineno-82-5" name="__codelineno-82-5" href="#__codelineno-82-5"></a><span class="w">        </span><span class="nt">&quot;coordinates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-82-6"><a id="__codelineno-82-6" name="__codelineno-82-6" href="#__codelineno-82-6"></a><span class="w">            </span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">]]</span>
+</span><span id="__span-82-7"><a id="__codelineno-82-7" name="__codelineno-82-7" href="#__codelineno-82-7"></a><span class="w">        </span><span class="p">]</span>
+</span><span id="__span-82-8"><a id="__codelineno-82-8" name="__codelineno-82-8" href="#__codelineno-82-8"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-82-9"><a id="__codelineno-82-9" name="__codelineno-82-9" href="#__codelineno-82-9"></a><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -3627,8 +3869,12 @@ Each label must be unique. If the input type does not match the type of the labe
 <ul>
 <li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/cluster/">Create and style clusters</a></li>
 </ul>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;step&quot;</span><span class="p">,[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="s2">&quot;point_count&quot;</span><span class="p">],</span><span class="mi">20</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">750</span><span class="p">,</span><span class="mi">40</span><span class="p">]</span>
-</span></code></pre></div>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-83-1"><a id="__codelineno-83-1" name="__codelineno-83-1" href="#__codelineno-83-1"></a><span class="p">[</span><span class="s2">&quot;step&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">step</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w"> </span><span class="p">...]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-84-1"><a id="__codelineno-84-1" name="__codelineno-84-1" href="#__codelineno-84-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;step&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;point_count&quot;</span><span class="p">],</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="mi">750</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -3665,8 +3911,20 @@ Each label must be unique. If the input type does not match the type of the labe
 <li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/heatmap-layer/">Create a heatmap layer</a></li>
 <li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/visualize-population-density/">Visualize population density</a></li>
 </ul>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;interpolate&quot;</span><span class="p">,[</span><span class="s2">&quot;linear&quot;</span><span class="p">],[</span><span class="s2">&quot;zoom&quot;</span><span class="p">],</span><span class="mi">15</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">15.05</span><span class="p">,[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="s2">&quot;height&quot;</span><span class="p">]]</span>
-</span></code></pre></div>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-85-1"><a id="__codelineno-85-1" name="__codelineno-85-1" href="#__codelineno-85-1"></a><span class="p">[</span><span class="s2">&quot;interpolate&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;linear&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;exponential&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">base</span><span class="p">]</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;cubic-bezier&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">x1</span><span class="p">,</span><span class="w"> </span><span class="nx">y1</span><span class="p">,</span><span class="w"> </span><span class="nx">x2</span><span class="p">,</span><span class="w"> </span><span class="nx">y2</span><span class="p">],</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w"> </span><span class="p">...]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">array</span><span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">color</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-86-1"><a id="__codelineno-86-1" name="__codelineno-86-1" href="#__codelineno-86-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-86-2"><a id="__codelineno-86-2" name="__codelineno-86-2" href="#__codelineno-86-2"></a><span class="w">    </span><span class="s2">&quot;interpolate&quot;</span><span class="p">,</span>
+</span><span id="__span-86-3"><a id="__codelineno-86-3" name="__codelineno-86-3" href="#__codelineno-86-3"></a><span class="w">    </span><span class="p">[</span><span class="s2">&quot;linear&quot;</span><span class="p">],</span>
+</span><span id="__span-86-4"><a id="__codelineno-86-4" name="__codelineno-86-4" href="#__codelineno-86-4"></a><span class="w">    </span><span class="p">[</span><span class="s2">&quot;zoom&quot;</span><span class="p">],</span>
+</span><span id="__span-86-5"><a id="__codelineno-86-5" name="__codelineno-86-5" href="#__codelineno-86-5"></a><span class="w">    </span><span class="mi">15</span><span class="p">,</span>
+</span><span id="__span-86-6"><a id="__codelineno-86-6" name="__codelineno-86-6" href="#__codelineno-86-6"></a><span class="w">    </span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-86-7"><a id="__codelineno-86-7" name="__codelineno-86-7" href="#__codelineno-86-7"></a><span class="w">    </span><span class="mf">15.05</span><span class="p">,</span>
+</span><span id="__span-86-8"><a id="__codelineno-86-8" name="__codelineno-86-8" href="#__codelineno-86-8"></a><span class="w">    </span><span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;height&quot;</span><span class="p">]</span>
+</span><span id="__span-86-9"><a id="__codelineno-86-9" name="__codelineno-86-9" href="#__codelineno-86-9"></a><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -3689,6 +3947,20 @@ Each label must be unique. If the input type does not match the type of the labe
 </table>
 <h3 id="interpolate-hcl">interpolate-hcl<a class="headerlink" href="#interpolate-hcl" title="Permanent link">&para;</a></h3>
 <p>Produces continuous, smooth results by interpolating between pairs of input and output values ("stops"). Works like <code>interpolate</code>, but the output type must be <code>color</code>, and the interpolation is performed in the Hue-Chroma-Luminance color space.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-87-1"><a id="__codelineno-87-1" name="__codelineno-87-1" href="#__codelineno-87-1"></a><span class="p">[</span><span class="s2">&quot;interpolate-hcl&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;linear&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;exponential&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">base</span><span class="p">]</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;cubic-bezier&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">x1</span><span class="p">,</span><span class="w"> </span><span class="nx">y1</span><span class="p">,</span><span class="w"> </span><span class="nx">x2</span><span class="p">,</span><span class="w"> </span><span class="nx">y2</span><span class="p">],</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w"> </span><span class="p">...]</span><span class="o">:</span><span class="w"> </span><span class="nx">color</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-88-1"><a id="__codelineno-88-1" name="__codelineno-88-1" href="#__codelineno-88-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-88-2"><a id="__codelineno-88-2" name="__codelineno-88-2" href="#__codelineno-88-2"></a><span class="w">    </span><span class="s2">&quot;interpolate-hcl&quot;</span><span class="p">,</span>
+</span><span id="__span-88-3"><a id="__codelineno-88-3" name="__codelineno-88-3" href="#__codelineno-88-3"></a><span class="w">    </span><span class="p">[</span><span class="s2">&quot;linear&quot;</span><span class="p">],</span>
+</span><span id="__span-88-4"><a id="__codelineno-88-4" name="__codelineno-88-4" href="#__codelineno-88-4"></a><span class="w">    </span><span class="p">[</span><span class="s2">&quot;zoom&quot;</span><span class="p">],</span>
+</span><span id="__span-88-5"><a id="__codelineno-88-5" name="__codelineno-88-5" href="#__codelineno-88-5"></a><span class="w">    </span><span class="mi">15</span><span class="p">,</span>
+</span><span id="__span-88-6"><a id="__codelineno-88-6" name="__codelineno-88-6" href="#__codelineno-88-6"></a><span class="w">    </span><span class="s2">&quot;#f00&quot;</span><span class="p">,</span>
+</span><span id="__span-88-7"><a id="__codelineno-88-7" name="__codelineno-88-7" href="#__codelineno-88-7"></a><span class="w">    </span><span class="mf">15.05</span><span class="p">,</span>
+</span><span id="__span-88-8"><a id="__codelineno-88-8" name="__codelineno-88-8" href="#__codelineno-88-8"></a><span class="w">    </span><span class="s2">&quot;#00f&quot;</span>
+</span><span id="__span-88-9"><a id="__codelineno-88-9" name="__codelineno-88-9" href="#__codelineno-88-9"></a><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -3711,6 +3983,20 @@ Each label must be unique. If the input type does not match the type of the labe
 </table>
 <h3 id="interpolate-lab">interpolate-lab<a class="headerlink" href="#interpolate-lab" title="Permanent link">&para;</a></h3>
 <p>Produces continuous, smooth results by interpolating between pairs of input and output values ("stops"). Works like <code>interpolate</code>, but the output type must be <code>color</code>, and the interpolation is performed in the CIELAB color space.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-89-1"><a id="__codelineno-89-1" name="__codelineno-89-1" href="#__codelineno-89-1"></a><span class="p">[</span><span class="s2">&quot;interpolate-lab&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;linear&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;exponential&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">base</span><span class="p">]</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;cubic-bezier&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">x1</span><span class="p">,</span><span class="w"> </span><span class="nx">y1</span><span class="p">,</span><span class="w"> </span><span class="nx">x2</span><span class="p">,</span><span class="w"> </span><span class="nx">y2</span><span class="p">],</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w"> </span><span class="p">...]</span><span class="o">:</span><span class="w"> </span><span class="nx">color</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-90-1"><a id="__codelineno-90-1" name="__codelineno-90-1" href="#__codelineno-90-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-90-2"><a id="__codelineno-90-2" name="__codelineno-90-2" href="#__codelineno-90-2"></a><span class="w">    </span><span class="s2">&quot;interpolate-lab&quot;</span><span class="p">,</span>
+</span><span id="__span-90-3"><a id="__codelineno-90-3" name="__codelineno-90-3" href="#__codelineno-90-3"></a><span class="w">    </span><span class="p">[</span><span class="s2">&quot;linear&quot;</span><span class="p">],</span>
+</span><span id="__span-90-4"><a id="__codelineno-90-4" name="__codelineno-90-4" href="#__codelineno-90-4"></a><span class="w">    </span><span class="p">[</span><span class="s2">&quot;zoom&quot;</span><span class="p">],</span>
+</span><span id="__span-90-5"><a id="__codelineno-90-5" name="__codelineno-90-5" href="#__codelineno-90-5"></a><span class="w">    </span><span class="mi">15</span><span class="p">,</span>
+</span><span id="__span-90-6"><a id="__codelineno-90-6" name="__codelineno-90-6" href="#__codelineno-90-6"></a><span class="w">    </span><span class="s2">&quot;#f00&quot;</span><span class="p">,</span>
+</span><span id="__span-90-7"><a id="__codelineno-90-7" name="__codelineno-90-7" href="#__codelineno-90-7"></a><span class="w">    </span><span class="mf">15.05</span><span class="p">,</span>
+</span><span id="__span-90-8"><a id="__codelineno-90-8" name="__codelineno-90-8" href="#__codelineno-90-8"></a><span class="w">    </span><span class="s2">&quot;#00f&quot;</span>
+</span><span id="__span-90-9"><a id="__codelineno-90-9" name="__codelineno-90-9" href="#__codelineno-90-9"></a><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -3734,6 +4020,12 @@ Each label must be unique. If the input type does not match the type of the labe
 <h2 id="math">Math<a class="headerlink" href="#math" title="Permanent link">&para;</a></h2>
 <h3 id="ln2">ln2<a class="headerlink" href="#ln2" title="Permanent link">&para;</a></h3>
 <p>Returns mathematical constant ln(2).</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-91-1"><a id="__codelineno-91-1" name="__codelineno-91-1" href="#__codelineno-91-1"></a><span class="p">[</span><span class="s2">&quot;ln2&quot;</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-92-1"><a id="__codelineno-92-1" name="__codelineno-92-1" href="#__codelineno-92-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ln2&quot;</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -3756,6 +4048,12 @@ Each label must be unique. If the input type does not match the type of the labe
 </table>
 <h3 id="pi">pi<a class="headerlink" href="#pi" title="Permanent link">&para;</a></h3>
 <p>Returns the mathematical constant pi.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-93-1"><a id="__codelineno-93-1" name="__codelineno-93-1" href="#__codelineno-93-1"></a><span class="p">[</span><span class="s2">&quot;pi&quot;</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-94-1"><a id="__codelineno-94-1" name="__codelineno-94-1" href="#__codelineno-94-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;pi&quot;</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -3778,6 +4076,12 @@ Each label must be unique. If the input type does not match the type of the labe
 </table>
 <h3 id="e">e<a class="headerlink" href="#e" title="Permanent link">&para;</a></h3>
 <p>Returns the mathematical constant e.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-95-1"><a id="__codelineno-95-1" name="__codelineno-95-1" href="#__codelineno-95-1"></a><span class="p">[</span><span class="s2">&quot;e&quot;</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-96-1"><a id="__codelineno-96-1" name="__codelineno-96-1" href="#__codelineno-96-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;e&quot;</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -3800,6 +4104,12 @@ Each label must be unique. If the input type does not match the type of the labe
 </table>
 <h3 id="_8">+<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p>Returns the sum of the inputs.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-97-1"><a id="__codelineno-97-1" name="__codelineno-97-1" href="#__codelineno-97-1"></a><span class="p">[</span><span class="s2">&quot;+&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w"> </span><span class="p">...]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-98-1"><a id="__codelineno-98-1" name="__codelineno-98-1" href="#__codelineno-98-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;+&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -3822,6 +4132,12 @@ Each label must be unique. If the input type does not match the type of the labe
 </table>
 <h3 id="_9">*<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <p>Returns the product of the inputs.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-99-1"><a id="__codelineno-99-1" name="__codelineno-99-1" href="#__codelineno-99-1"></a><span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w"> </span><span class="p">...]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-100-1"><a id="__codelineno-100-1" name="__codelineno-100-1" href="#__codelineno-100-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -3844,6 +4160,12 @@ Each label must be unique. If the input type does not match the type of the labe
 </table>
 <h3 id="-">-<a class="headerlink" href="#-" title="Permanent link">&para;</a></h3>
 <p>For two inputs, returns the result of subtracting the second input from the first. For a single input, returns the result of subtracting it from 0.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-101-1"><a id="__codelineno-101-1" name="__codelineno-101-1" href="#__codelineno-101-1"></a><span class="p">[</span><span class="s2">&quot;-&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="o">?</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-102-1"><a id="__codelineno-102-1" name="__codelineno-102-1" href="#__codelineno-102-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;-&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -3869,8 +4191,12 @@ Each label must be unique. If the input type does not match the type of the labe
 <ul>
 <li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/visualize-population-density/">Visualize population density</a></li>
 </ul>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/&quot;</span><span class="p">,[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="s2">&quot;population&quot;</span><span class="p">],[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="s2">&quot;sq-km&quot;</span><span class="p">]]</span>
-</span></code></pre></div>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-103-1"><a id="__codelineno-103-1" name="__codelineno-103-1" href="#__codelineno-103-1"></a><span class="p">[</span><span class="s2">&quot;/&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-104-1"><a id="__codelineno-104-1" name="__codelineno-104-1" href="#__codelineno-104-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;population&quot;</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;sq-km&quot;</span><span class="p">]]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -3893,6 +4219,12 @@ Each label must be unique. If the input type does not match the type of the labe
 </table>
 <h3 id="_11">%<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <p>Returns the remainder after integer division of the first input by the second.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-105-1"><a id="__codelineno-105-1" name="__codelineno-105-1" href="#__codelineno-105-1"></a><span class="p">[</span><span class="s2">&quot;%&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-106-1"><a id="__codelineno-106-1" name="__codelineno-106-1" href="#__codelineno-106-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;%&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -3915,6 +4247,12 @@ Each label must be unique. If the input type does not match the type of the labe
 </table>
 <h3 id="_12">^<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <p>Returns the result of raising the first input to the power specified by the second.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-107-1"><a id="__codelineno-107-1" name="__codelineno-107-1" href="#__codelineno-107-1"></a><span class="p">[</span><span class="s2">&quot;^&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-108-1"><a id="__codelineno-108-1" name="__codelineno-108-1" href="#__codelineno-108-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;^&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -3937,6 +4275,12 @@ Each label must be unique. If the input type does not match the type of the labe
 </table>
 <h3 id="sqrt">sqrt<a class="headerlink" href="#sqrt" title="Permanent link">&para;</a></h3>
 <p>Returns the square root of the input.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-109-1"><a id="__codelineno-109-1" name="__codelineno-109-1" href="#__codelineno-109-1"></a><span class="p">[</span><span class="s2">&quot;sqrt&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-110-1"><a id="__codelineno-110-1" name="__codelineno-110-1" href="#__codelineno-110-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;sqrt&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -3959,6 +4303,12 @@ Each label must be unique. If the input type does not match the type of the labe
 </table>
 <h3 id="log10">log10<a class="headerlink" href="#log10" title="Permanent link">&para;</a></h3>
 <p>Returns the base-ten logarithm of the input.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-111-1"><a id="__codelineno-111-1" name="__codelineno-111-1" href="#__codelineno-111-1"></a><span class="p">[</span><span class="s2">&quot;log10&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-112-1"><a id="__codelineno-112-1" name="__codelineno-112-1" href="#__codelineno-112-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;log10&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -3981,6 +4331,12 @@ Each label must be unique. If the input type does not match the type of the labe
 </table>
 <h3 id="ln">ln<a class="headerlink" href="#ln" title="Permanent link">&para;</a></h3>
 <p>Returns the natural logarithm of the input.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-113-1"><a id="__codelineno-113-1" name="__codelineno-113-1" href="#__codelineno-113-1"></a><span class="p">[</span><span class="s2">&quot;ln&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-114-1"><a id="__codelineno-114-1" name="__codelineno-114-1" href="#__codelineno-114-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ln&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -4003,6 +4359,12 @@ Each label must be unique. If the input type does not match the type of the labe
 </table>
 <h3 id="log2">log2<a class="headerlink" href="#log2" title="Permanent link">&para;</a></h3>
 <p>Returns the base-two logarithm of the input.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-115-1"><a id="__codelineno-115-1" name="__codelineno-115-1" href="#__codelineno-115-1"></a><span class="p">[</span><span class="s2">&quot;log2&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-116-1"><a id="__codelineno-116-1" name="__codelineno-116-1" href="#__codelineno-116-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;log2&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -4025,6 +4387,12 @@ Each label must be unique. If the input type does not match the type of the labe
 </table>
 <h3 id="sin">sin<a class="headerlink" href="#sin" title="Permanent link">&para;</a></h3>
 <p>Returns the sine of the input.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-117-1"><a id="__codelineno-117-1" name="__codelineno-117-1" href="#__codelineno-117-1"></a><span class="p">[</span><span class="s2">&quot;sin&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-118-1"><a id="__codelineno-118-1" name="__codelineno-118-1" href="#__codelineno-118-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;sin&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -4047,6 +4415,12 @@ Each label must be unique. If the input type does not match the type of the labe
 </table>
 <h3 id="cos">cos<a class="headerlink" href="#cos" title="Permanent link">&para;</a></h3>
 <p>Returns the cosine of the input.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-119-1"><a id="__codelineno-119-1" name="__codelineno-119-1" href="#__codelineno-119-1"></a><span class="p">[</span><span class="s2">&quot;cos&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-120-1"><a id="__codelineno-120-1" name="__codelineno-120-1" href="#__codelineno-120-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;cos&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -4069,6 +4443,12 @@ Each label must be unique. If the input type does not match the type of the labe
 </table>
 <h3 id="tan">tan<a class="headerlink" href="#tan" title="Permanent link">&para;</a></h3>
 <p>Returns the tangent of the input.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-121-1"><a id="__codelineno-121-1" name="__codelineno-121-1" href="#__codelineno-121-1"></a><span class="p">[</span><span class="s2">&quot;tan&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-122-1"><a id="__codelineno-122-1" name="__codelineno-122-1" href="#__codelineno-122-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;tan&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -4091,6 +4471,12 @@ Each label must be unique. If the input type does not match the type of the labe
 </table>
 <h3 id="asin">asin<a class="headerlink" href="#asin" title="Permanent link">&para;</a></h3>
 <p>Returns the arcsine of the input.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-123-1"><a id="__codelineno-123-1" name="__codelineno-123-1" href="#__codelineno-123-1"></a><span class="p">[</span><span class="s2">&quot;asin&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-124-1"><a id="__codelineno-124-1" name="__codelineno-124-1" href="#__codelineno-124-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;asin&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -4113,6 +4499,12 @@ Each label must be unique. If the input type does not match the type of the labe
 </table>
 <h3 id="acos">acos<a class="headerlink" href="#acos" title="Permanent link">&para;</a></h3>
 <p>Returns the arccosine of the input.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-125-1"><a id="__codelineno-125-1" name="__codelineno-125-1" href="#__codelineno-125-1"></a><span class="p">[</span><span class="s2">&quot;acos&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-126-1"><a id="__codelineno-126-1" name="__codelineno-126-1" href="#__codelineno-126-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;acos&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -4135,6 +4527,12 @@ Each label must be unique. If the input type does not match the type of the labe
 </table>
 <h3 id="atan">atan<a class="headerlink" href="#atan" title="Permanent link">&para;</a></h3>
 <p>Returns the arctangent of the input.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-127-1"><a id="__codelineno-127-1" name="__codelineno-127-1" href="#__codelineno-127-1"></a><span class="p">[</span><span class="s2">&quot;atan&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-128-1"><a id="__codelineno-128-1" name="__codelineno-128-1" href="#__codelineno-128-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;atan&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -4157,6 +4555,12 @@ Each label must be unique. If the input type does not match the type of the labe
 </table>
 <h3 id="min">min<a class="headerlink" href="#min" title="Permanent link">&para;</a></h3>
 <p>Returns the minimum value of the inputs.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-129-1"><a id="__codelineno-129-1" name="__codelineno-129-1" href="#__codelineno-129-1"></a><span class="p">[</span><span class="s2">&quot;min&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w"> </span><span class="p">...]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-130-1"><a id="__codelineno-130-1" name="__codelineno-130-1" href="#__codelineno-130-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;min&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -4179,6 +4583,12 @@ Each label must be unique. If the input type does not match the type of the labe
 </table>
 <h3 id="max">max<a class="headerlink" href="#max" title="Permanent link">&para;</a></h3>
 <p>Returns the maximum value of the inputs.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-131-1"><a id="__codelineno-131-1" name="__codelineno-131-1" href="#__codelineno-131-1"></a><span class="p">[</span><span class="s2">&quot;max&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w"> </span><span class="p">...]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-132-1"><a id="__codelineno-132-1" name="__codelineno-132-1" href="#__codelineno-132-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;max&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -4201,6 +4611,12 @@ Each label must be unique. If the input type does not match the type of the labe
 </table>
 <h3 id="round">round<a class="headerlink" href="#round" title="Permanent link">&para;</a></h3>
 <p>Rounds the input to the nearest integer. Halfway values are rounded away from zero. For example, <code>["round", -1.5]</code> evaluates to -2.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-133-1"><a id="__codelineno-133-1" name="__codelineno-133-1" href="#__codelineno-133-1"></a><span class="p">[</span><span class="s2">&quot;round&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-134-1"><a id="__codelineno-134-1" name="__codelineno-134-1" href="#__codelineno-134-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;round&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">1.5</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -4223,6 +4639,12 @@ Each label must be unique. If the input type does not match the type of the labe
 </table>
 <h3 id="abs">abs<a class="headerlink" href="#abs" title="Permanent link">&para;</a></h3>
 <p>Returns the absolute value of the input.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-135-1"><a id="__codelineno-135-1" name="__codelineno-135-1" href="#__codelineno-135-1"></a><span class="p">[</span><span class="s2">&quot;abs&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-136-1"><a id="__codelineno-136-1" name="__codelineno-136-1" href="#__codelineno-136-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;abs&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">-1.5</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -4245,6 +4667,12 @@ Each label must be unique. If the input type does not match the type of the labe
 </table>
 <h3 id="ceil">ceil<a class="headerlink" href="#ceil" title="Permanent link">&para;</a></h3>
 <p>Returns the smallest integer that is greater than or equal to the input.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-137-1"><a id="__codelineno-137-1" name="__codelineno-137-1" href="#__codelineno-137-1"></a><span class="p">[</span><span class="s2">&quot;ceil&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-138-1"><a id="__codelineno-138-1" name="__codelineno-138-1" href="#__codelineno-138-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ceil&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">1.5</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -4267,6 +4695,12 @@ Each label must be unique. If the input type does not match the type of the labe
 </table>
 <h3 id="floor">floor<a class="headerlink" href="#floor" title="Permanent link">&para;</a></h3>
 <p>Returns the largest integer that is less than or equal to the input.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-139-1"><a id="__codelineno-139-1" name="__codelineno-139-1" href="#__codelineno-139-1"></a><span class="p">[</span><span class="s2">&quot;floor&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-140-1"><a id="__codelineno-140-1" name="__codelineno-140-1" href="#__codelineno-140-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;floor&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">1.5</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -4289,6 +4723,12 @@ Each label must be unique. If the input type does not match the type of the labe
 </table>
 <h3 id="distance">distance<a class="headerlink" href="#distance" title="Permanent link">&para;</a></h3>
 <p>Returns the shortest distance in meters between the evaluated feature and the input geometry. The input value can be a valid GeoJSON of type <code>Point</code>, <code>MultiPoint</code>, <code>LineString</code>, <code>MultiLineString</code>, <code>Polygon</code>, <code>MultiPolygon</code>, <code>Feature</code>, or <code>FeatureCollection</code>. Distance values returned may vary in precision due to loss in precision from encoding geometries, particularly below zoom level 13.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-141-1"><a id="__codelineno-141-1" name="__codelineno-141-1" href="#__codelineno-141-1"></a><span class="p">[</span><span class="s2">&quot;distance&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">GeoJSON</span><span class="w"> </span><span class="nx">geometry</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-142-1"><a id="__codelineno-142-1" name="__codelineno-142-1" href="#__codelineno-142-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;distance&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Point&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;coordinates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">]}]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -4312,6 +4752,12 @@ Each label must be unique. If the input type does not match the type of the labe
 <h2 id="color">Color<a class="headerlink" href="#color" title="Permanent link">&para;</a></h2>
 <h3 id="to-rgba">to-rgba<a class="headerlink" href="#to-rgba" title="Permanent link">&para;</a></h3>
 <p>Returns a four-element array containing the input color's red, green, blue, and alpha components, in that order.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-143-1"><a id="__codelineno-143-1" name="__codelineno-143-1" href="#__codelineno-143-1"></a><span class="p">[</span><span class="s2">&quot;to-rgba&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">color</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">array</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-144-1"><a id="__codelineno-144-1" name="__codelineno-144-1" href="#__codelineno-144-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;to-rgba&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;#ff0000&quot;</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -4334,6 +4780,12 @@ Each label must be unique. If the input type does not match the type of the labe
 </table>
 <h3 id="rgb">rgb<a class="headerlink" href="#rgb" title="Permanent link">&para;</a></h3>
 <p>Creates a color value from red, green, and blue components, which must range between 0 and 255, and an alpha component of 1. If any component is out of range, the expression is an error.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-145-1"><a id="__codelineno-145-1" name="__codelineno-145-1" href="#__codelineno-145-1"></a><span class="p">[</span><span class="s2">&quot;rgb&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">color</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-146-1"><a id="__codelineno-146-1" name="__codelineno-146-1" href="#__codelineno-146-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;rgb&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -4356,6 +4808,12 @@ Each label must be unique. If the input type does not match the type of the labe
 </table>
 <h3 id="rgba">rgba<a class="headerlink" href="#rgba" title="Permanent link">&para;</a></h3>
 <p>Creates a color value from red, green, blue components, which must range between 0 and 255, and an alpha component which must range between 0 and 1. If any component is out of range, the expression is an error.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-147-1"><a id="__codelineno-147-1" name="__codelineno-147-1" href="#__codelineno-147-1"></a><span class="p">[</span><span class="s2">&quot;rgba&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">color</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-148-1"><a id="__codelineno-148-1" name="__codelineno-148-1" href="#__codelineno-148-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;rgba&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -4379,6 +4837,12 @@ Each label must be unique. If the input type does not match the type of the labe
 <h2 id="feature-data">Feature data<a class="headerlink" href="#feature-data" title="Permanent link">&para;</a></h2>
 <h3 id="properties">properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h3>
 <p>Gets the feature properties object.  Note that in some cases, it may be more efficient to use ["get", "property_name"] directly.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-149-1"><a id="__codelineno-149-1" name="__codelineno-149-1" href="#__codelineno-149-1"></a><span class="p">[</span><span class="s2">&quot;properties&quot;</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">value</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-150-1"><a id="__codelineno-150-1" name="__codelineno-150-1" href="#__codelineno-150-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;properties&quot;</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -4404,8 +4868,12 @@ Each label must be unique. If the input type does not match the type of the labe
 <ul>
 <li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/hover-styles/">Create a hover effect</a></li>
 </ul>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;feature-state&quot;</span><span class="p">,</span><span class="s2">&quot;hover&quot;</span><span class="p">]</span>
-</span></code></pre></div>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-151-1"><a id="__codelineno-151-1" name="__codelineno-151-1" href="#__codelineno-151-1"></a><span class="p">[</span><span class="s2">&quot;feature-state&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">string</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">value</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-152-1"><a id="__codelineno-152-1" name="__codelineno-152-1" href="#__codelineno-152-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;feature-state&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;hover&quot;</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -4428,6 +4896,12 @@ Each label must be unique. If the input type does not match the type of the labe
 </table>
 <h3 id="geometry-type">geometry-type<a class="headerlink" href="#geometry-type" title="Permanent link">&para;</a></h3>
 <p>Gets the feature's geometry type: <code>Point</code>, <code>MultiPoint</code>, <code>LineString</code>, <code>MultiLineString</code>, <code>Polygon</code>, <code>MultiPolygon</code>.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-153-1"><a id="__codelineno-153-1" name="__codelineno-153-1" href="#__codelineno-153-1"></a><span class="p">[</span><span class="s2">&quot;geometry-type&quot;</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-154-1"><a id="__codelineno-154-1" name="__codelineno-154-1" href="#__codelineno-154-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;==&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;geometry-type&quot;</span><span class="p">],</span><span class="w"> </span><span class="s2">&quot;Polygon&quot;</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -4450,6 +4924,12 @@ Each label must be unique. If the input type does not match the type of the labe
 </table>
 <h3 id="id">id<a class="headerlink" href="#id" title="Permanent link">&para;</a></h3>
 <p>Gets the feature's id, if it has one.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-155-1"><a id="__codelineno-155-1" name="__codelineno-155-1" href="#__codelineno-155-1"></a><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">value</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-156-1"><a id="__codelineno-156-1" name="__codelineno-156-1" href="#__codelineno-156-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -4472,6 +4952,12 @@ Each label must be unique. If the input type does not match the type of the labe
 </table>
 <h3 id="line-progress">line-progress<a class="headerlink" href="#line-progress" title="Permanent link">&para;</a></h3>
 <p>Gets the progress along a gradient line. Can only be used in the <code>line-gradient</code> property.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-157-1"><a id="__codelineno-157-1" name="__codelineno-157-1" href="#__codelineno-157-1"></a><span class="p">[</span><span class="s2">&quot;line-progress&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-158-1"><a id="__codelineno-158-1" name="__codelineno-158-1" href="#__codelineno-158-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;line-progress&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -4494,6 +4980,12 @@ Each label must be unique. If the input type does not match the type of the labe
 </table>
 <h3 id="accumulated">accumulated<a class="headerlink" href="#accumulated" title="Permanent link">&para;</a></h3>
 <p>Gets the value of a cluster property accumulated so far. Can only be used in the <code>clusterProperties</code> option of a clustered GeoJSON source.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-159-1"><a id="__codelineno-159-1" name="__codelineno-159-1" href="#__codelineno-159-1"></a><span class="p">[</span><span class="s2">&quot;accumulated&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">string</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">value</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-160-1"><a id="__codelineno-160-1" name="__codelineno-160-1" href="#__codelineno-160-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;accumulated&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;sum&quot;</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -4517,6 +5009,20 @@ Each label must be unique. If the input type does not match the type of the labe
 <h2 id="zoom">Zoom<a class="headerlink" href="#zoom" title="Permanent link">&para;</a></h2>
 <h3 id="zoom_1">zoom<a class="headerlink" href="#zoom_1" title="Permanent link">&para;</a></h3>
 <p>Gets the current zoom level.  Note that in style layout and paint properties, ["zoom"] may only appear as the input to a top-level "step" or "interpolate" expression.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-161-1"><a id="__codelineno-161-1" name="__codelineno-161-1" href="#__codelineno-161-1"></a><span class="p">[</span><span class="s2">&quot;zoom&quot;</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-162-1"><a id="__codelineno-162-1" name="__codelineno-162-1" href="#__codelineno-162-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-162-2"><a id="__codelineno-162-2" name="__codelineno-162-2" href="#__codelineno-162-2"></a><span class="w">    </span><span class="s2">&quot;interpolate&quot;</span><span class="p">,</span>
+</span><span id="__span-162-3"><a id="__codelineno-162-3" name="__codelineno-162-3" href="#__codelineno-162-3"></a><span class="w">    </span><span class="p">[</span><span class="s2">&quot;linear&quot;</span><span class="p">],</span>
+</span><span id="__span-162-4"><a id="__codelineno-162-4" name="__codelineno-162-4" href="#__codelineno-162-4"></a><span class="w">    </span><span class="p">[</span><span class="s2">&quot;zoom&quot;</span><span class="p">],</span>
+</span><span id="__span-162-5"><a id="__codelineno-162-5" name="__codelineno-162-5" href="#__codelineno-162-5"></a><span class="w">    </span><span class="mi">15</span><span class="p">,</span>
+</span><span id="__span-162-6"><a id="__codelineno-162-6" name="__codelineno-162-6" href="#__codelineno-162-6"></a><span class="w">    </span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-162-7"><a id="__codelineno-162-7" name="__codelineno-162-7" href="#__codelineno-162-7"></a><span class="w">    </span><span class="mf">15.05</span><span class="p">,</span>
+</span><span id="__span-162-8"><a id="__codelineno-162-8" name="__codelineno-162-8" href="#__codelineno-162-8"></a><span class="w">    </span><span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;height&quot;</span><span class="p">]</span>
+</span><span id="__span-162-9"><a id="__codelineno-162-9" name="__codelineno-162-9" href="#__codelineno-162-9"></a><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -4540,6 +5046,12 @@ Each label must be unique. If the input type does not match the type of the labe
 <h2 id="heatmap">Heatmap<a class="headerlink" href="#heatmap" title="Permanent link">&para;</a></h2>
 <h3 id="heatmap-density">heatmap-density<a class="headerlink" href="#heatmap-density" title="Permanent link">&para;</a></h3>
 <p>Gets the kernel density estimation of a pixel in a heatmap layer, which is a relative measure of how many data points are crowded around a particular pixel. Can only be used in the <code>heatmap-color</code> property.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-163-1"><a id="__codelineno-163-1" name="__codelineno-163-1" href="#__codelineno-163-1"></a><span class="p">[</span><span class="s2">&quot;heatmap-density&quot;</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-164-1"><a id="__codelineno-164-1" name="__codelineno-164-1" href="#__codelineno-164-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;heatmap-density&quot;</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -4563,6 +5075,12 @@ Each label must be unique. If the input type does not match the type of the labe
 <h2 id="string_1">String<a class="headerlink" href="#string_1" title="Permanent link">&para;</a></h2>
 <h3 id="is-supported-script">is-supported-script<a class="headerlink" href="#is-supported-script" title="Permanent link">&para;</a></h3>
 <p>Returns <code>true</code> if the input string is expected to render legibly. Returns <code>false</code> if the input string contains sections that cannot be rendered without potential loss of meaning (e.g. Indic scripts that require complex text shaping, or right-to-left scripts if the the <code>mapbox-gl-rtl-text</code> plugin is not in use in MapLibre GL JS).</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-165-1"><a id="__codelineno-165-1" name="__codelineno-165-1" href="#__codelineno-165-1"></a><span class="p">[</span><span class="s2">&quot;is-supported-script&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">string</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="kr">boolean</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-166-1"><a id="__codelineno-166-1" name="__codelineno-166-1" href="#__codelineno-166-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;is-supported-script&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;दिल्ली&quot;</span><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -4588,8 +5106,12 @@ Each label must be unique. If the input type does not match the type of the labe
 <ul>
 <li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/change-case-of-labels/">Change the case of labels</a></li>
 </ul>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;upcase&quot;</span><span class="p">,[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span>
-</span></code></pre></div>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-167-1"><a id="__codelineno-167-1" name="__codelineno-167-1" href="#__codelineno-167-1"></a><span class="p">[</span><span class="s2">&quot;upcase&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">string</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-168-1"><a id="__codelineno-168-1" name="__codelineno-168-1" href="#__codelineno-168-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;upcase&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;name&quot;</span><span class="p">]]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -4615,8 +5137,12 @@ Each label must be unique. If the input type does not match the type of the labe
 <ul>
 <li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/change-case-of-labels/">Change the case of labels</a></li>
 </ul>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;downcase&quot;</span><span class="p">,[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span>
-</span></code></pre></div>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-169-1"><a id="__codelineno-169-1" name="__codelineno-169-1" href="#__codelineno-169-1"></a><span class="p">[</span><span class="s2">&quot;downcase&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">string</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-170-1"><a id="__codelineno-170-1" name="__codelineno-170-1" href="#__codelineno-170-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;downcase&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;name&quot;</span><span class="p">]]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -4645,8 +5171,12 @@ Each label must be unique. If the input type does not match the type of the labe
 <li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/fallback-image/">Use a fallback image</a></li>
 <li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/variable-label-placement/">Variable label placement</a></li>
 </ul>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;concat&quot;</span><span class="p">,</span><span class="s2">&quot;square-rgb-&quot;</span><span class="p">,[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="s2">&quot;color&quot;</span><span class="p">]]</span>
-</span></code></pre></div>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-171-1"><a id="__codelineno-171-1" name="__codelineno-171-1" href="#__codelineno-171-1"></a><span class="p">[</span><span class="s2">&quot;concat&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w"> </span><span class="p">...]</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-172-1"><a id="__codelineno-172-1" name="__codelineno-172-1" href="#__codelineno-172-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;concat&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;square-rgb-&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;color&quot;</span><span class="p">]]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -4669,6 +5199,22 @@ Each label must be unique. If the input type does not match the type of the labe
 </table>
 <h3 id="resolved-locale">resolved-locale<a class="headerlink" href="#resolved-locale" title="Permanent link">&para;</a></h3>
 <p>Returns the IETF language tag of the locale being used by the provided <code>collator</code>. This can be used to determine the default system locale, or to determine if a requested locale was successfully loaded.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-173-1"><a id="__codelineno-173-1" name="__codelineno-173-1" href="#__codelineno-173-1"></a><span class="p">[</span><span class="s2">&quot;resolved-locale&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">collator</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-174-1"><a id="__codelineno-174-1" name="__codelineno-174-1" href="#__codelineno-174-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-174-2"><a id="__codelineno-174-2" name="__codelineno-174-2" href="#__codelineno-174-2"></a><span class="w">    </span><span class="s2">&quot;resolved-locale&quot;</span><span class="p">,</span>
+</span><span id="__span-174-3"><a id="__codelineno-174-3" name="__codelineno-174-3" href="#__codelineno-174-3"></a><span class="w">    </span><span class="p">[</span>
+</span><span id="__span-174-4"><a id="__codelineno-174-4" name="__codelineno-174-4" href="#__codelineno-174-4"></a><span class="w">        </span><span class="s2">&quot;collator&quot;</span><span class="p">,</span>
+</span><span id="__span-174-5"><a id="__codelineno-174-5" name="__codelineno-174-5" href="#__codelineno-174-5"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-174-6"><a id="__codelineno-174-6" name="__codelineno-174-6" href="#__codelineno-174-6"></a><span class="w">            </span><span class="nt">&quot;case-sensitive&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-174-7"><a id="__codelineno-174-7" name="__codelineno-174-7" href="#__codelineno-174-7"></a><span class="w">            </span><span class="nt">&quot;diacritic-sensitive&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-174-8"><a id="__codelineno-174-8" name="__codelineno-174-8" href="#__codelineno-174-8"></a><span class="w">            </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;de&quot;</span>
+</span><span id="__span-174-9"><a id="__codelineno-174-9" name="__codelineno-174-9" href="#__codelineno-174-9"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-174-10"><a id="__codelineno-174-10" name="__codelineno-174-10" href="#__codelineno-174-10"></a><span class="w">    </span><span class="p">]</span>
+</span><span id="__span-174-11"><a id="__codelineno-174-11" name="__codelineno-174-11" href="#__codelineno-174-11"></a><span class="p">]</span>
+</span></code></pre></div></p>
 <table>
 <thead>
 <tr>
