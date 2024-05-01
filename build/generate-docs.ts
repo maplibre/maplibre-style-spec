@@ -65,7 +65,6 @@ function topicElement(key: string, value: JsonObject): boolean {
  * @returns formatted JSON
  */
 function formatJSON(obj: any): string {
-    console.log(Object.keys(obj));
     return jsonStringify(obj, {
         indent: 4,
         maxLength: 60
