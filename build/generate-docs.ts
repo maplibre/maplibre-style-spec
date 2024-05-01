@@ -448,9 +448,9 @@ function createExpressionsContent() {
             }
             content += `\n### ${key}\n`;
             content += `${value.doc}\n`;
-            if ('example' in value) {
-                content += `\n\`\`\`json\n"some-property": ${JSON.stringify(value.example)}\n\`\`\`\n`;
-            }
+            value.example.syntax.method.unshift(`"${key}"`);
+            content += `\nSyntax:\n\`\`\`js\n[${value.example.syntax.method.join(", ")}]: ${value.example.syntax.result}\n\`\`\`\n`;
+            content += `\nExample:\n\`\`\`json\n"some-property": ${JSON.stringify(value.example.value)}\n\`\`\`\n`;
             content += sdkSupportToMarkdown(value['sdk-support'] as any);
             content += '\n';
         }
