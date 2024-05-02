@@ -110,6 +110,13 @@ describe('evaluate expression', () => {
         expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(0, 2);
         getGeometry(featureInTile, {type: 'LineString', coordinates: [[3, 2], [3, 4]]}, canonical);
         expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(0, 2);
+        getGeometry(featureInTile, {type: 'Polygon', coordinates: [[[0, 0], [0, 5], [5, 5], [5, 0], [0, 0]]]}, canonical);
+        expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBe(0);
+        getGeometry(featureInTile, {type: 'Polygon', coordinates: [[[0, 0], [0, 2.999], [3, 2.999], [3, 0], [0, 0]]]}, canonical);
+        expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(110.5, 0);
+        // polygon with hole - direction is important!
+        getGeometry(featureInTile, {type: 'Polygon', coordinates: [[[0, 0], [0, 5], [5, 5], [5, 0], [0, 0]], [[2.999, 2.999], [3.001, 2.999], [3.001, 3.001], [2.999, 3.001], [2.999, 2.999]]]}, canonical);
+        expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(110.5, 0);
     });
 
     test('expression, distance from line', () => {
@@ -136,7 +143,73 @@ describe('evaluate expression', () => {
         expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(111.1, 0);
         getGeometry(featureInTile, {type: 'LineString', coordinates: [[2.5, 3.5], [3.5, 3.5]]}, canonical);
         expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBe(0);
+        getGeometry(featureInTile, {type: 'Polygon', coordinates: [[[0, 0], [0, 5], [5, 5], [5, 0], [0, 0]]]}, canonical);
+        expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBe(0);
+        getGeometry(featureInTile, {type: 'Polygon', coordinates: [[[0, 0], [0, 2.999], [3, 2.999], [3, 0], [0, 0]]]}, canonical);
+        expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(110.5, 0);
+        // polygon with hole - direction is important!
+        getGeometry(featureInTile, {type: 'Polygon', coordinates: [[[0, 0], [0, 5], [5, 5], [5, 0], [0, 0]], [[2.999, 2.999], [3.001, 2.999], [3.001, 4.001], [2.999, 4.001], [2.999, 2.999]]]}, canonical);
+        expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(110.5, 0);
     });
 
-    // HM TODO: polygon tests
+    test('expression, distance from polygon', () => {
+        const response = createExpression(
+            ['distance', {'type': 'Polygon', coordinates: [[[3, 3], [3, 4], [4, 4], [4, 3], [3, 3]]]}],
+            {
+                type: 'number',
+                'property-type': 'data-constant',
+                expression: {
+                    'interpolated': false,
+                    'parameters': ['zoom']
+                }
+            } as StylePropertySpecification);
+        const canonical = {z: 20, x: 3, y: 3} as ICanonicalTileID;
+        const featureInTile = {} as Feature;
+        const value = response.value as StyleExpression;
+        getGeometry(featureInTile, {type: 'Point', coordinates: [3, 3]}, canonical);
+        expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(0, 2);
+        getGeometry(featureInTile, {type: 'Point', coordinates: [3.001, 3.001]}, canonical);
+        expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBe(0);
+        getGeometry(featureInTile, {type: 'Point', coordinates: [2.999, 3]}, canonical);
+        expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(111.1, 0);
+        getGeometry(featureInTile, {type: 'LineString', coordinates: [[2.999, 3], [2.999, 4]]}, canonical);
+        expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(111.1, 0);
+        getGeometry(featureInTile, {type: 'LineString', coordinates: [[2.5, 3.5], [3.5, 3.5]]}, canonical);
+        expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBe(0);
+        getGeometry(featureInTile, {type: 'Polygon', coordinates: [[[0, 0], [0, 5], [5, 5], [5, 0], [0, 0]]]}, canonical);
+        expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBe(0);
+        getGeometry(featureInTile, {type: 'Polygon', coordinates: [[[0, 0], [0, 2.999], [3, 2.999], [3, 0], [0, 0]]]}, canonical);
+        expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(110.5, 0);
+        getGeometry(featureInTile, {type: 'Polygon', coordinates: [[[3.5, 3.5], [3.5, 3.6], [3.6, 3.6], [3.6, 3.5], [3.5, 3.5]]]}, canonical);
+        expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBe(0);
+        // polygon with hole - direction is important!
+        getGeometry(featureInTile, {type: 'Polygon', coordinates: [[[0, 0], [0, 5], [5, 5], [5, 0], [0, 0]], [[2.999, 2.999], [4.001, 2.999,], [4.001, 4.001], [2.999, 4.001], [2.999, 2.999]]]}, canonical);
+        expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(110.5, 0);
+    });
+
+    test('expression, distance from polyg-on with hole', () => {
+        const response = createExpression(
+            ['distance', {'type': 'Polygon', coordinates: [[[0, 0], [0, 5], [5, 5], [5, 0], [0, 0]], [[2.999, 2.999], [2.999, 4.001], [4.001, 4.001], [4.001, 2.999], [2.999, 2.999]]]}],
+            {
+                type: 'number',
+                'property-type': 'data-constant',
+                expression: {
+                    'interpolated': false,
+                    'parameters': ['zoom']
+                }
+            } as StylePropertySpecification);
+        const canonical = {z: 20, x: 3, y: 3} as ICanonicalTileID;
+        const featureInTile = {} as Feature;
+        const value = response.value as StyleExpression;
+        getGeometry(featureInTile, {type: 'Point', coordinates: [3, 3]}, canonical);
+        expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(110.5, 0);
+        getGeometry(featureInTile, {type: 'Point', coordinates: [2.999, 2.999]}, canonical);
+        expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(0);
+        getGeometry(featureInTile, {type: 'LineString', coordinates: [[3, 3], [3, 4]]}, canonical);
+        expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(110.5, 0);
+        getGeometry(featureInTile, {type: 'LineString', coordinates: [[2.5, 3.5], [3.5, 3.5]]}, canonical);
+        expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBe(0);
+        getGeometry(featureInTile, {type: 'Polygon', coordinates: [[[0, 0], [0, 5], [5, 5], [5, 0], [0, 0]]]}, canonical);
+        expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBe(0);
+    });
 });

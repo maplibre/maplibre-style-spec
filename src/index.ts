@@ -110,6 +110,7 @@ import {VariableAnchorOffsetCollectionSpecification} from './types.g';
 import format from './format';
 import validate from './validate/validate';
 import migrate from './migrate';
+import {classifyRings} from './util/geometry_util';
 
 const expression = {
     StyleExpression,
@@ -187,6 +188,7 @@ export {
     format,
     validate,
     migrate,
+    classifyRings,
 
     ColorType,
     interpolates,

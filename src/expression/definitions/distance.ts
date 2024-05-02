@@ -3,7 +3,7 @@ import ParsingContext from '../parsing_context';
 import {NumberType, Type} from '../types';
 import {isValue} from '../values';
 import EvaluationContext from '../evaluation_context';
-import {BBox, boxWithinBox, getLngLatFromTileCoord, pointWithinPolygon, segmentIntersectSegment, updateBBox} from '../../util/geometry_util';
+import {BBox, boxWithinBox, classifyRings, getLngLatFromTileCoord, pointWithinPolygon, segmentIntersectSegment, updateBBox} from '../../util/geometry_util';
 import TinyQueue from 'tinyqueue';
 import CheapRuler from '../../util/cheap_ruler';
 
@@ -61,7 +61,7 @@ function getBBox(coords: [number, number][], range: IndexRange): BBox {
 }
 
 function getPolygonBBox(polygon: [number, number][][]): BBox {
-    const bbox: BBox = [-Infinity, -Infinity, Infinity, Infinity];
+    const bbox: BBox = [Infinity, Infinity, -Infinity, -Infinity];
     for (const ring of polygon) {
         for (const coord of ring) {
             updateBBox(bbox, coord);
@@ -221,8 +221,8 @@ function lineToPolygonDistance(line: [number, number][],
 
 function polygonIntersect(poly1: [number, number][][], poly2: [number, number][][]): boolean {
     for (const ring of poly1) {
-        for (let i = 0; i <= ring.length - 1; ++i) {
-            if (pointWithinPolygon(ring[i], poly2, true)) {
+        for (const point of ring) {
+            if (pointWithinPolygon(point, poly2, true)) {
                 return true;
             }
         }
@@ -470,27 +470,32 @@ function lineStringToGeometryDistance(ctx: EvaluationContext, geometries: Simple
 
 function polygonToGeometryDistance(ctx: EvaluationContext, geometries: SimpleGeometry[]) {
     const tilePolygon = ctx.geometry();
-    // HM TODO: classify rings etc...
-    const polygon = [tilePolygon.flat().map(p => getLngLatFromTileCoord([p.x, p.y], ctx.canonical) as [number, number])];
     if (tilePolygon.length === 0 || tilePolygon[0].length === 0) {
         return NaN;
     }
-    const ruler = new CheapRuler(polygon[0][0][1]);
+    const polygons = classifyRings(tilePolygon, 0).map(polygon => {
+        return polygon.map(ring => {
+            return ring.map(p => getLngLatFromTileCoord([p.x, p.y], ctx.canonical) as [number, number]);
+        });
+    });
+    const ruler = new CheapRuler(polygons[0][0][0][1]);
     let dist = Infinity;
     for (const geometry of geometries) {
-        switch (geometry.type) {
-            case 'Point':
-                dist = Math.min(dist, pointsToPolygonDistance([geometry.coordinates as [number, number]], false, polygon, ruler, dist));
-                break;
-            case 'LineString':
-                dist = Math.min(dist, pointsToPolygonDistance(geometry.coordinates as [number, number][], true, polygon, ruler, dist));
-                break;
-            case 'Polygon':
-                dist = Math.min(dist, polygonToPolygonDistance(polygon, geometry.coordinates as [number, number][][], ruler, dist));
-                break;
-        }
-        if (dist === 0.0) {
-            return dist;
+        for (const polygon of polygons) {
+            switch (geometry.type) {
+                case 'Point':
+                    dist = Math.min(dist, pointsToPolygonDistance([geometry.coordinates as [number, number]], false, polygon, ruler, dist));
+                    break;
+                case 'LineString':
+                    dist = Math.min(dist, pointsToPolygonDistance(geometry.coordinates as [number, number][], true, polygon, ruler, dist));
+                    break;
+                case 'Polygon':
+                    dist = Math.min(dist, polygonToPolygonDistance(polygon, geometry.coordinates as [number, number][][], ruler, dist));
+                    break;
+            }
+            if (dist === 0.0) {
+                return dist;
+            }
         }
     }
     return dist;
