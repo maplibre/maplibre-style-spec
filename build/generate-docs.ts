@@ -29,6 +29,8 @@ type JsonObject = {
     expression?: { interpolated?: boolean; parameters?: string[]};
     transition?: boolean;
     values?: {[key: string]: { doc: string; 'sdk-support'?: JsonSdkSupport }} | number[];
+    minimum?: number;
+    maximum?: number;
 }
 
 /**
@@ -154,6 +156,12 @@ function typeToMakrdownLink(type: string): string {
     }
 }
 
+function formatRange(minimum?: number, maximum?: number) {
+    const from = minimum === undefined ? '-∞' : minimum;
+    const to = maximum === undefined ? '∞' : maximum;
+    return `&#91;${from}, ${to}&#93;`;
+}
+
 /**
  * Converts the property to markdown format - this is a property with example, sdk support, default and other details.
  * @param key - the name of the json property
@@ -169,10 +177,17 @@ function convertPropertyToMarkdown(key: string, value: JsonObject, keyPrefix = '
     }
     const valueType = typeToMakrdownLink(value.type);
     if (value.required) {
-        markdown += `Required${valueType}. `;
+        markdown += `Required${valueType}`;
     } else {
-        markdown += `Optional${valueType}. `;
+        markdown += `Optional${valueType}`;
     }
+
+    if (value.minimum !== undefined || value.maximum !== undefined) {
+        markdown += ' in range ' + formatRange(value.minimum, value.maximum);
+    }
+
+    markdown += '. '
+
     const isEnum = value.type === 'enum' && value.values && !Array.isArray(value.values);
     if (isEnum) {
         markdown += `Possible values: \`${Object.keys(value.values).join('`, `')}\`. `;
@@ -196,8 +211,8 @@ function convertPropertyToMarkdown(key: string, value: JsonObject, keyPrefix = '
     if (value.transition) {
         markdown += 'Transitionable. ';
     }
-    // Remove extra space at the end
-    markdown = `${markdown.substring(0, markdown.length - 2)}*\n\n${value.doc}\n\n`;
+
+    markdown = `${markdown.trim()}*\n\n${value.doc}\n\n`;
 
     if (isEnum) {
         for (const [enumKey, enumValue] of Object.entries(value.values)) {
