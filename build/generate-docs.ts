@@ -183,10 +183,10 @@ function convertPropertyToMarkdown(key: string, value: JsonObject, keyPrefix = '
     }
 
     if (value.minimum !== undefined || value.maximum !== undefined) {
-        markdown += ' in range ' + formatRange(value.minimum, value.maximum);
+        markdown += ` in range ${formatRange(value.minimum, value.maximum)}`;
     }
 
-    markdown += '. '
+    markdown += '. ';
 
     const isEnum = value.type === 'enum' && value.values && !Array.isArray(value.values);
     if (isEnum) {
