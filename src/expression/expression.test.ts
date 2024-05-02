@@ -1,9 +1,10 @@
 import {createPropertyExpression, Feature, GlobalProperties, StylePropertyExpression} from '../expression';
 import definitions from './definitions';
 import v8 from '../reference/v8.json' assert {type: 'json'};
-import {StylePropertySpecification} from '..';
+import {createExpression, ICanonicalTileID, StyleExpression, StylePropertySpecification} from '..';
 import ParsingError from './parsing_error';
 import {VariableAnchorOffsetCollection} from './values';
+import {getGeometry} from '../../test/lib/geometry';
 
 // filter out interal "error" and "filter-*" expressions from definition list
 const filterExpressionRegex = /filter-/;
@@ -85,4 +86,57 @@ describe('evaluate expression', () => {
         expect(console.warn).not.toHaveBeenCalled();
     });
 
+    test('expression, distance from point', () => {
+        const response = createExpression(
+            ['distance', {'type': 'Point', coordinates: [3, 3]}],
+            {
+                type: 'number',
+                'property-type': 'data-constant',
+                expression: {
+                    'interpolated': false,
+                    'parameters': ['zoom']
+                }
+            } as StylePropertySpecification);
+        const canonical = {z: 20, x: 3, y: 3} as ICanonicalTileID;
+        const featureInTile = {} as Feature;
+        const value = response.value as StyleExpression;
+        getGeometry(featureInTile, {type: 'Point', coordinates: [3, 3]}, canonical);
+        expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(0, 2);
+        getGeometry(featureInTile, {type: 'Point', coordinates: [3, 3.001]}, canonical);
+        expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(110.5, 0);
+        getGeometry(featureInTile, {type: 'Point', coordinates: [3.001, 3]}, canonical);
+        expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(111.1, 0);
+        getGeometry(featureInTile, {type: 'LineString', coordinates: [[2, 3], [4, 3]]}, canonical);
+        expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(0, 2);
+        getGeometry(featureInTile, {type: 'LineString', coordinates: [[3, 2], [3, 4]]}, canonical);
+        expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(0, 2);
+    });
+
+    test('expression, distance from line', () => {
+        const response = createExpression(
+            ['distance', {'type': 'LineString', coordinates: [[3, 3], [3, 4]]}],
+            {
+                type: 'number',
+                'property-type': 'data-constant',
+                expression: {
+                    'interpolated': false,
+                    'parameters': ['zoom']
+                }
+            } as StylePropertySpecification);
+        const canonical = {z: 20, x: 3, y: 3} as ICanonicalTileID;
+        const featureInTile = {} as Feature;
+        const value = response.value as StyleExpression;
+        getGeometry(featureInTile, {type: 'Point', coordinates: [3, 3]}, canonical);
+        expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(0, 2);
+        getGeometry(featureInTile, {type: 'Point', coordinates: [3, 3.001]}, canonical);
+        expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(110.5, 0);
+        getGeometry(featureInTile, {type: 'Point', coordinates: [3.001, 3]}, canonical);
+        expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(111.1, 0);
+        getGeometry(featureInTile, {type: 'LineString', coordinates: [[3.001, 3], [3.001, 4]]}, canonical);
+        expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(111.1, 0);
+        getGeometry(featureInTile, {type: 'LineString', coordinates: [[2.5, 3.5], [3.5, 3.5]]}, canonical);
+        expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBe(0);
+    });
+
+    // HM TODO: polygon tests
 });
