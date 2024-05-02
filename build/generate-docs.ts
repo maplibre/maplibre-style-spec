@@ -157,9 +157,9 @@ function typeToMakrdownLink(type: string): string {
 }
 
 function formatRange(minimum?: number, maximum?: number) {
-    const from = minimum === undefined ? '-∞' : minimum;
-    const to = maximum === undefined ? '∞' : maximum;
-    return `&#91;${from}, ${to}&#93;`;
+    const from = minimum === undefined ? '(-∞' : `[${minimum}`;
+    const to = maximum === undefined ? '∞)' : `${maximum}]`;
+    return `${from}, ${to}`;
 }
 
 /**
