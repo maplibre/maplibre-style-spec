@@ -105,7 +105,7 @@ export function pointWithinPolygon(point: [number, number], rings: [number, numb
 }
 
 export function pointWithinPolygons(point: [number, number], polygons: [number, number][][][]) {
-    for (let polygon of polygons) {
+    for (const polygon of polygons) {
         if (pointWithinPolygon(point, polygon)) return true;
     }
     return false;
