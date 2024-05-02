@@ -707,7 +707,7 @@
 <div class="language-json highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="err">ligh</span><span class="kc">t</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;anchor&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;viewport&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;white&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;intensity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.4</span><span class="p">}</span>
 </span></code></pre></div>
 <h2 id="anchor">anchor<a class="headerlink" href="#anchor" title="Permanent link">&para;</a></h2>
-<p><em>Optional <a href="../types/#enum">enum</a>. Possible values: <code>map</code>, <code>viewport</code>. Defaults to <code>viewport</code></em></p>
+<p><em>Optional <a href="../types/#enum">enum</a>. Possible values: <code>map</code>, <code>viewport</code>. Defaults to <code>viewport</code>.</em></p>
 <p>Whether extruded geometries are lit relative to the map or viewport.</p>
 <ul>
 <li><code>map</code>: The position of the light source is aligned to the rotation of the map.</li>
@@ -736,7 +736,7 @@
 </tbody>
 </table>
 <h2 id="position">position<a class="headerlink" href="#position" title="Permanent link">&para;</a></h2>
-<p><em>Optional <a href="../types/#array">array</a>. Defaults to <code>1.15,210,30</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable</em></p>
+<p><em>Optional <a href="../types/#array">array</a>. Defaults to <code>1.15,210,30</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
 <p>Position of the light source relative to lit (extruded) geometries, in [r radial coordinate, a azimuthal angle, p polar angle] where r indicates the distance from the center of the base of an object to its light, a indicates the position of the light relative to 0° (0° when <code>light.anchor</code> is set to <code>viewport</code> corresponds to the top of the viewport, or 0° when <code>light.anchor</code> is set to <code>map</code> corresponds to due north, and degrees proceed clockwise), and p indicates the height of the light (from 0°, directly above, to 180°, directly below).</p>
 <div class="language-json highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="err">posi</span><span class="kc">t</span><span class="err">io</span><span class="kc">n</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">1.5</span><span class="p">,</span><span class="w"> </span><span class="mi">90</span><span class="p">,</span><span class="w"> </span><span class="mi">80</span><span class="p">]</span>
 </span></code></pre></div>
@@ -761,7 +761,7 @@
 </tbody>
 </table>
 <h2 id="color">color<a class="headerlink" href="#color" title="Permanent link">&para;</a></h2>
-<p><em>Optional <a href="../types/#color">color</a>. Defaults to <code>#ffffff</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable</em></p>
+<p><em>Optional <a href="../types/#color">color</a>. Defaults to <code>#ffffff</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
 <p>Color tint for lighting extruded geometries.</p>
 <table>
 <thead>
@@ -784,7 +784,7 @@
 </tbody>
 </table>
 <h2 id="intensity">intensity<a class="headerlink" href="#intensity" title="Permanent link">&para;</a></h2>
-<p><em>Optional <a href="../types/#number">number</a>. Defaults to <code>0.5</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable</em></p>
+<p><em>Optional <a href="../types/#number">number</a> in range [0, 1]. Defaults to <code>0.5</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
 <p>Intensity of lighting (on a scale from 0 to 1). Higher numbers will present as more extreme contrast.</p>
 <table>
 <thead>

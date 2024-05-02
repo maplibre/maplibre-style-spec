@@ -1861,41 +1861,41 @@
 </tbody>
 </table>
 <h3 id="type">type<a class="headerlink" href="#type" title="Permanent link">&para;</a></h3>
-<p><em>Required <a href="../types/#enum">enum</a>. Possible values: <code>vector</code></em></p>
+<p><em>Required <a href="../types/#enum">enum</a>. Possible values: <code>vector</code>.</em></p>
 <p>The type of the source.</p>
 <ul>
 <li><code>vector</code>: A vector tile source.</li>
 </ul>
 <h3 id="url">url<a class="headerlink" href="#url" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#string">string</a></em></p>
+<p><em>Optional <a href="../types/#string">string</a>.</em></p>
 <p>A URL to a TileJSON resource. Supported protocols are <code>http:</code> and <code>https:</code>.</p>
 <h3 id="tiles">tiles<a class="headerlink" href="#tiles" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#array">array</a></em></p>
+<p><em>Optional <a href="../types/#array">array</a>.</em></p>
 <p>An array of one or more tile source URLs, as in the TileJSON spec.</p>
 <h3 id="bounds">bounds<a class="headerlink" href="#bounds" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#array">array</a>. Defaults to <code>-180,-85.051129,180,85.051129</code></em></p>
+<p><em>Optional <a href="../types/#array">array</a>. Defaults to <code>-180,-85.051129,180,85.051129</code>.</em></p>
 <p>An array containing the longitude and latitude of the southwest and northeast corners of the source's bounding box in the following order: <code>[sw.lng, sw.lat, ne.lng, ne.lat]</code>. When this property is included in a source, no tiles outside of the given bounds are requested by MapLibre.</p>
 <h3 id="scheme">scheme<a class="headerlink" href="#scheme" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#enum">enum</a>. Possible values: <code>xyz</code>, <code>tms</code>. Defaults to <code>xyz</code></em></p>
+<p><em>Optional <a href="../types/#enum">enum</a>. Possible values: <code>xyz</code>, <code>tms</code>. Defaults to <code>xyz</code>.</em></p>
 <p>Influences the y direction of the tile coordinates. The global-mercator (aka Spherical Mercator) profile is assumed.</p>
 <ul>
 <li><code>xyz</code>: Slippy map tilenames scheme.</li>
 <li><code>tms</code>: OSGeo spec scheme.</li>
 </ul>
 <h3 id="minzoom">minzoom<a class="headerlink" href="#minzoom" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#number">number</a>. Defaults to <code>0</code></em></p>
+<p><em>Optional <a href="../types/#number">number</a>. Defaults to <code>0</code>.</em></p>
 <p>Minimum zoom level for which tiles are available, as in the TileJSON spec.</p>
 <h3 id="maxzoom">maxzoom<a class="headerlink" href="#maxzoom" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#number">number</a>. Defaults to <code>22</code></em></p>
+<p><em>Optional <a href="../types/#number">number</a>. Defaults to <code>22</code>.</em></p>
 <p>Maximum zoom level for which tiles are available, as in the TileJSON spec. Data from tiles at the maxzoom are used when displaying the map at higher zoom levels.</p>
 <h3 id="attribution">attribution<a class="headerlink" href="#attribution" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#string">string</a></em></p>
+<p><em>Optional <a href="../types/#string">string</a>.</em></p>
 <p>Contains an attribution to be displayed when the map is shown to a user.</p>
 <h3 id="promoteid">promoteId<a class="headerlink" href="#promoteid" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/">promoteId</a></em></p>
+<p><em>Optional <a href="../types/">promoteId</a>.</em></p>
 <p>A property to use as a feature id (for feature state). Either a property name, or an object of the form <code>{&lt;sourceLayer&gt;: &lt;propertyName&gt;}</code>. If specified as a string for a vector tile source, the same property is used across all its source layers.</p>
 <h3 id="volatile">volatile<a class="headerlink" href="#volatile" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#boolean">boolean</a>. Defaults to <code>false</code></em></p>
+<p><em>Optional <a href="../types/#boolean">boolean</a>. Defaults to <code>false</code>.</em></p>
 <p>A setting to determine whether a source's tiles are cached locally.</p>
 <table>
 <thead>
@@ -1950,41 +1950,41 @@
 </tbody>
 </table>
 <h3 id="type_1">type<a class="headerlink" href="#type_1" title="Permanent link">&para;</a></h3>
-<p><em>Required <a href="../types/#enum">enum</a>. Possible values: <code>raster</code></em></p>
+<p><em>Required <a href="../types/#enum">enum</a>. Possible values: <code>raster</code>.</em></p>
 <p>The type of the source.</p>
 <ul>
 <li><code>raster</code>: A raster tile source.</li>
 </ul>
 <h3 id="url_1">url<a class="headerlink" href="#url_1" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#string">string</a></em></p>
+<p><em>Optional <a href="../types/#string">string</a>.</em></p>
 <p>A URL to a TileJSON resource. Supported protocols are <code>http:</code> and <code>https:</code>.</p>
 <h3 id="tiles_1">tiles<a class="headerlink" href="#tiles_1" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#array">array</a></em></p>
+<p><em>Optional <a href="../types/#array">array</a>.</em></p>
 <p>An array of one or more tile source URLs, as in the TileJSON spec.</p>
 <h3 id="bounds_1">bounds<a class="headerlink" href="#bounds_1" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#array">array</a>. Defaults to <code>-180,-85.051129,180,85.051129</code></em></p>
+<p><em>Optional <a href="../types/#array">array</a>. Defaults to <code>-180,-85.051129,180,85.051129</code>.</em></p>
 <p>An array containing the longitude and latitude of the southwest and northeast corners of the source's bounding box in the following order: <code>[sw.lng, sw.lat, ne.lng, ne.lat]</code>. When this property is included in a source, no tiles outside of the given bounds are requested by MapLibre.</p>
 <h3 id="minzoom_1">minzoom<a class="headerlink" href="#minzoom_1" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#number">number</a>. Defaults to <code>0</code></em></p>
+<p><em>Optional <a href="../types/#number">number</a>. Defaults to <code>0</code>.</em></p>
 <p>Minimum zoom level for which tiles are available, as in the TileJSON spec.</p>
 <h3 id="maxzoom_1">maxzoom<a class="headerlink" href="#maxzoom_1" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#number">number</a>. Defaults to <code>22</code></em></p>
+<p><em>Optional <a href="../types/#number">number</a>. Defaults to <code>22</code>.</em></p>
 <p>Maximum zoom level for which tiles are available, as in the TileJSON spec. Data from tiles at the maxzoom are used when displaying the map at higher zoom levels.</p>
 <h3 id="tilesize">tileSize<a class="headerlink" href="#tilesize" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#number">number</a>. Units in pixels. Defaults to <code>512</code></em></p>
+<p><em>Optional <a href="../types/#number">number</a>. Units in pixels. Defaults to <code>512</code>.</em></p>
 <p>The minimum visual size to display tiles for this layer. Only configurable for raster layers.</p>
 <h3 id="scheme_1">scheme<a class="headerlink" href="#scheme_1" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#enum">enum</a>. Possible values: <code>xyz</code>, <code>tms</code>. Defaults to <code>xyz</code></em></p>
+<p><em>Optional <a href="../types/#enum">enum</a>. Possible values: <code>xyz</code>, <code>tms</code>. Defaults to <code>xyz</code>.</em></p>
 <p>Influences the y direction of the tile coordinates. The global-mercator (aka Spherical Mercator) profile is assumed.</p>
 <ul>
 <li><code>xyz</code>: Slippy map tilenames scheme.</li>
 <li><code>tms</code>: OSGeo spec scheme.</li>
 </ul>
 <h3 id="attribution_1">attribution<a class="headerlink" href="#attribution_1" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#string">string</a></em></p>
+<p><em>Optional <a href="../types/#string">string</a>.</em></p>
 <p>Contains an attribution to be displayed when the map is shown to a user.</p>
 <h3 id="volatile_1">volatile<a class="headerlink" href="#volatile_1" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#boolean">boolean</a>. Defaults to <code>false</code></em></p>
+<p><em>Optional <a href="../types/#boolean">boolean</a>. Defaults to <code>false</code>.</em></p>
 <p>A setting to determine whether a source's tiles are cached locally.</p>
 <table>
 <thead>
@@ -2039,34 +2039,34 @@
 </tbody>
 </table>
 <h3 id="type_2">type<a class="headerlink" href="#type_2" title="Permanent link">&para;</a></h3>
-<p><em>Required <a href="../types/#enum">enum</a>. Possible values: <code>raster-dem</code></em></p>
+<p><em>Required <a href="../types/#enum">enum</a>. Possible values: <code>raster-dem</code>.</em></p>
 <p>The type of the source.</p>
 <ul>
 <li><code>raster-dem</code>: A RGB-encoded raster DEM source</li>
 </ul>
 <h3 id="url_2">url<a class="headerlink" href="#url_2" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#string">string</a></em></p>
+<p><em>Optional <a href="../types/#string">string</a>.</em></p>
 <p>A URL to a TileJSON resource. Supported protocols are <code>http:</code> and <code>https:</code>.</p>
 <h3 id="tiles_2">tiles<a class="headerlink" href="#tiles_2" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#array">array</a></em></p>
+<p><em>Optional <a href="../types/#array">array</a>.</em></p>
 <p>An array of one or more tile source URLs, as in the TileJSON spec.</p>
 <h3 id="bounds_2">bounds<a class="headerlink" href="#bounds_2" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#array">array</a>. Defaults to <code>-180,-85.051129,180,85.051129</code></em></p>
+<p><em>Optional <a href="../types/#array">array</a>. Defaults to <code>-180,-85.051129,180,85.051129</code>.</em></p>
 <p>An array containing the longitude and latitude of the southwest and northeast corners of the source's bounding box in the following order: <code>[sw.lng, sw.lat, ne.lng, ne.lat]</code>. When this property is included in a source, no tiles outside of the given bounds are requested by MapLibre.</p>
 <h3 id="minzoom_2">minzoom<a class="headerlink" href="#minzoom_2" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#number">number</a>. Defaults to <code>0</code></em></p>
+<p><em>Optional <a href="../types/#number">number</a>. Defaults to <code>0</code>.</em></p>
 <p>Minimum zoom level for which tiles are available, as in the TileJSON spec.</p>
 <h3 id="maxzoom_2">maxzoom<a class="headerlink" href="#maxzoom_2" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#number">number</a>. Defaults to <code>22</code></em></p>
+<p><em>Optional <a href="../types/#number">number</a>. Defaults to <code>22</code>.</em></p>
 <p>Maximum zoom level for which tiles are available, as in the TileJSON spec. Data from tiles at the maxzoom are used when displaying the map at higher zoom levels.</p>
 <h3 id="tilesize_1">tileSize<a class="headerlink" href="#tilesize_1" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#number">number</a>. Units in pixels. Defaults to <code>512</code></em></p>
+<p><em>Optional <a href="../types/#number">number</a>. Units in pixels. Defaults to <code>512</code>.</em></p>
 <p>The minimum visual size to display tiles for this layer. Only configurable for raster layers.</p>
 <h3 id="attribution_2">attribution<a class="headerlink" href="#attribution_2" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#string">string</a></em></p>
+<p><em>Optional <a href="../types/#string">string</a>.</em></p>
 <p>Contains an attribution to be displayed when the map is shown to a user.</p>
 <h3 id="encoding">encoding<a class="headerlink" href="#encoding" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#enum">enum</a>. Possible values: <code>terrarium</code>, <code>mapbox</code>, <code>custom</code>. Defaults to <code>mapbox</code></em></p>
+<p><em>Optional <a href="../types/#enum">enum</a>. Possible values: <code>terrarium</code>, <code>mapbox</code>, <code>custom</code>. Defaults to <code>mapbox</code>.</em></p>
 <p>The encoding used by this source. Mapbox Terrain RGB is used by default.</p>
 <ul>
 <li><code>terrarium</code>: Terrarium format PNG tiles. See https://aws.amazon.com/es/public-datasets/terrain/ for more info.</li>
@@ -2074,7 +2074,7 @@
 <li><code>custom</code>: Decodes tiles using the redFactor, blueFactor, greenFactor, baseShift parameters.</li>
 </ul>
 <h3 id="redfactor">redFactor<a class="headerlink" href="#redfactor" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#number">number</a>. Defaults to <code>1</code></em></p>
+<p><em>Optional <a href="../types/#number">number</a>. Defaults to <code>1</code>.</em></p>
 <p>Value that will be multiplied by the red channel value when decoding. Only used on custom encodings.</p>
 <table>
 <thead>
@@ -2097,7 +2097,7 @@
 </tbody>
 </table>
 <h3 id="bluefactor">blueFactor<a class="headerlink" href="#bluefactor" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#number">number</a>. Defaults to <code>1</code></em></p>
+<p><em>Optional <a href="../types/#number">number</a>. Defaults to <code>1</code>.</em></p>
 <p>Value that will be multiplied by the blue channel value when decoding. Only used on custom encodings.</p>
 <table>
 <thead>
@@ -2120,7 +2120,7 @@
 </tbody>
 </table>
 <h3 id="greenfactor">greenFactor<a class="headerlink" href="#greenfactor" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#number">number</a>. Defaults to <code>1</code></em></p>
+<p><em>Optional <a href="../types/#number">number</a>. Defaults to <code>1</code>.</em></p>
 <p>Value that will be multiplied by the green channel value when decoding. Only used on custom encodings.</p>
 <table>
 <thead>
@@ -2143,7 +2143,7 @@
 </tbody>
 </table>
 <h3 id="baseshift">baseShift<a class="headerlink" href="#baseshift" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#number">number</a>. Defaults to <code>0</code></em></p>
+<p><em>Optional <a href="../types/#number">number</a>. Defaults to <code>0</code>.</em></p>
 <p>Value that will be added to the encoding mix when decoding. Only used on custom encodings.</p>
 <table>
 <thead>
@@ -2166,7 +2166,7 @@
 </tbody>
 </table>
 <h3 id="volatile_2">volatile<a class="headerlink" href="#volatile_2" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#boolean">boolean</a>. Defaults to <code>false</code></em></p>
+<p><em>Optional <a href="../types/#boolean">boolean</a>. Defaults to <code>false</code>.</em></p>
 <p>A setting to determine whether a source's tiles are cached locally.</p>
 <table>
 <thead>
@@ -2246,59 +2246,59 @@
 </tbody>
 </table>
 <h3 id="type_3">type<a class="headerlink" href="#type_3" title="Permanent link">&para;</a></h3>
-<p><em>Required <a href="../types/#enum">enum</a>. Possible values: <code>geojson</code></em></p>
+<p><em>Required <a href="../types/#enum">enum</a>. Possible values: <code>geojson</code>.</em></p>
 <p>The data type of the GeoJSON source.</p>
 <ul>
 <li><code>geojson</code>: A GeoJSON data source.</li>
 </ul>
 <h3 id="data">data<a class="headerlink" href="#data" title="Permanent link">&para;</a></h3>
-<p><em>Required</em></p>
+<p><em>Required.</em></p>
 <p>A URL to a GeoJSON file, or inline GeoJSON.</p>
 <h3 id="maxzoom_3">maxzoom<a class="headerlink" href="#maxzoom_3" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#number">number</a>. Defaults to <code>18</code></em></p>
+<p><em>Optional <a href="../types/#number">number</a>. Defaults to <code>18</code>.</em></p>
 <p>Maximum zoom level at which to create vector tiles (higher means greater detail at high zoom levels).</p>
 <h3 id="attribution_3">attribution<a class="headerlink" href="#attribution_3" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#string">string</a></em></p>
+<p><em>Optional <a href="../types/#string">string</a>.</em></p>
 <p>Contains an attribution to be displayed when the map is shown to a user.</p>
 <h3 id="buffer">buffer<a class="headerlink" href="#buffer" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#number">number</a>. Defaults to <code>128</code></em></p>
+<p><em>Optional <a href="../types/#number">number</a> in range [0, 512]. Defaults to <code>128</code>.</em></p>
 <p>Size of the tile buffer on each side. A value of 0 produces no buffer. A value of 512 produces a buffer as wide as the tile itself. Larger values produce fewer rendering artifacts near tile edges and slower performance.</p>
 <h3 id="filter">filter<a class="headerlink" href="#filter" title="Permanent link">&para;</a></h3>
-<p><em>Optional</em></p>
+<p><em>Optional.</em></p>
 <p>An expression for filtering features prior to processing them for rendering.</p>
 <h3 id="tolerance">tolerance<a class="headerlink" href="#tolerance" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#number">number</a>. Defaults to <code>0.375</code></em></p>
+<p><em>Optional <a href="../types/#number">number</a>. Defaults to <code>0.375</code>.</em></p>
 <p>Douglas-Peucker simplification tolerance (higher means simpler geometries and faster performance).</p>
 <h3 id="cluster">cluster<a class="headerlink" href="#cluster" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#boolean">boolean</a>. Defaults to <code>false</code></em></p>
+<p><em>Optional <a href="../types/#boolean">boolean</a>. Defaults to <code>false</code>.</em></p>
 <p>If the data is a collection of point features, setting this to true clusters the points by radius into groups. Cluster groups become new <code>Point</code> features in the source with additional properties:
  * <code>cluster</code> Is <code>true</code> if the point is a cluster 
  * <code>cluster_id</code> A unqiue id for the cluster to be used in conjunction with the <a href="https://maplibre.org/maplibre-gl-js-docs/api/sources/#geojsonsource#getclusterexpansionzoom">cluster inspection methods</a>
  * <code>point_count</code> Number of original points grouped into this cluster
  * <code>point_count_abbreviated</code> An abbreviated point count</p>
 <h3 id="clusterradius">clusterRadius<a class="headerlink" href="#clusterradius" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#number">number</a>. Defaults to <code>50</code></em></p>
+<p><em>Optional <a href="../types/#number">number</a> in range [0, ∞). Defaults to <code>50</code>.</em></p>
 <p>Radius of each cluster if clustering is enabled. A value of 512 indicates a radius equal to the width of a tile.</p>
 <h3 id="clustermaxzoom">clusterMaxZoom<a class="headerlink" href="#clustermaxzoom" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#number">number</a></em></p>
+<p><em>Optional <a href="../types/#number">number</a>.</em></p>
 <p>Max zoom on which to cluster points if clustering is enabled. Defaults to one zoom less than maxzoom (so that last zoom features are not clustered). Clusters are re-evaluated at integer zoom levels so setting clusterMaxZoom to 14 means the clusters will be displayed until z15.</p>
 <h3 id="clusterminpoints">clusterMinPoints<a class="headerlink" href="#clusterminpoints" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#number">number</a></em></p>
+<p><em>Optional <a href="../types/#number">number</a>.</em></p>
 <p>Minimum number of points necessary to form a cluster if clustering is enabled. Defaults to <code>2</code>.</p>
 <h3 id="clusterproperties">clusterProperties<a class="headerlink" href="#clusterproperties" title="Permanent link">&para;</a></h3>
-<p><em>Optional</em></p>
+<p><em>Optional.</em></p>
 <p>An object defining custom properties on the generated clusters if clustering is enabled, aggregating values from clustered points. Has the form <code>{"property_name": [operator, map_expression]}</code>. <code>operator</code> is any expression function that accepts at least 2 operands (e.g. <code>"+"</code> or <code>"max"</code>) — it accumulates the property value from clusters/points the cluster contains; <code>map_expression</code> produces the value of a single point.</p>
 <p>Example: <code>{"sum": ["+", ["get", "scalerank"]]}</code>.</p>
 <p>For more advanced use cases, in place of <code>operator</code>, you can use a custom reduce expression that references a special <code>["accumulated"]</code> value, e.g.:
 <code>{"sum": [["+", ["accumulated"], ["get", "sum"]], ["get", "scalerank"]]}</code></p>
 <h3 id="linemetrics">lineMetrics<a class="headerlink" href="#linemetrics" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#boolean">boolean</a>. Defaults to <code>false</code></em></p>
+<p><em>Optional <a href="../types/#boolean">boolean</a>. Defaults to <code>false</code>.</em></p>
 <p>Whether to calculate line distance metrics. This is required for line layers that specify <code>line-gradient</code> values.</p>
 <h3 id="generateid">generateId<a class="headerlink" href="#generateid" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#boolean">boolean</a>. Defaults to <code>false</code></em></p>
+<p><em>Optional <a href="../types/#boolean">boolean</a>. Defaults to <code>false</code>.</em></p>
 <p>Whether to generate ids for the geojson features. When enabled, the <code>feature.id</code> property will be auto assigned based on its index in the <code>features</code> array, over-writing any previous values.</p>
 <h3 id="promoteid_1">promoteId<a class="headerlink" href="#promoteid_1" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/">promoteId</a></em></p>
+<p><em>Optional <a href="../types/">promoteId</a>.</em></p>
 <p>A property to use as a feature id (for feature state). Either a property name, or an object of the form <code>{&lt;sourceLayer&gt;: &lt;propertyName&gt;}</code>.</p>
 <h2 id="video">video<a class="headerlink" href="#video" title="Permanent link">&para;</a></h2>
 <p>A video source. The <code>urls</code> value is an array. For each URL in the array, a video element <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source">source</a> will be created. To support the video across browsers, supply URLs in multiple formats.</p>
@@ -2341,16 +2341,16 @@
 </tbody>
 </table>
 <h3 id="type_4">type<a class="headerlink" href="#type_4" title="Permanent link">&para;</a></h3>
-<p><em>Required <a href="../types/#enum">enum</a>. Possible values: <code>video</code></em></p>
+<p><em>Required <a href="../types/#enum">enum</a>. Possible values: <code>video</code>.</em></p>
 <p>The data type of the video source.</p>
 <ul>
 <li><code>video</code>: A video data source.</li>
 </ul>
 <h3 id="urls">urls<a class="headerlink" href="#urls" title="Permanent link">&para;</a></h3>
-<p><em>Required <a href="../types/#array">array</a></em></p>
+<p><em>Required <a href="../types/#array">array</a>.</em></p>
 <p>URLs to video content in order of preferred format.</p>
 <h3 id="coordinates">coordinates<a class="headerlink" href="#coordinates" title="Permanent link">&para;</a></h3>
-<p><em>Required <a href="../types/#array">array</a></em></p>
+<p><em>Required <a href="../types/#array">array</a>.</em></p>
 <p>Corners of video specified in longitude, latitude pairs.</p>
 <h2 id="image">image<a class="headerlink" href="#image" title="Permanent link">&para;</a></h2>
 <p>An image source. The <code>url</code> value contains the image location. The <code>coordinates</code> array contains <code>[longitude, latitude]</code> pairs for the image corners listed in clockwise order: top left, top right, bottom right, bottom left.</p>
@@ -2388,16 +2388,16 @@
 </tbody>
 </table>
 <h3 id="type_5">type<a class="headerlink" href="#type_5" title="Permanent link">&para;</a></h3>
-<p><em>Required <a href="../types/#enum">enum</a>. Possible values: <code>image</code></em></p>
+<p><em>Required <a href="../types/#enum">enum</a>. Possible values: <code>image</code>.</em></p>
 <p>The data type of the image source.</p>
 <ul>
 <li><code>image</code>: An image data source.</li>
 </ul>
 <h3 id="url_3">url<a class="headerlink" href="#url_3" title="Permanent link">&para;</a></h3>
-<p><em>Required <a href="../types/#string">string</a></em></p>
+<p><em>Required <a href="../types/#string">string</a>.</em></p>
 <p>URL that points to an image.</p>
 <h3 id="coordinates_1">coordinates<a class="headerlink" href="#coordinates_1" title="Permanent link">&para;</a></h3>
-<p><em>Required <a href="../types/#array">array</a></em></p>
+<p><em>Required <a href="../types/#array">array</a>.</em></p>
 <p>Corners of image specified in longitude, latitude pairs.</p>
 
 
