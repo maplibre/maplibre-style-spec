@@ -36,24 +36,24 @@ function splitRange(range: IndexRange, isLine: boolean): [IndexRange, IndexRange
         if (size === 2) {
             return [range, null];
         }
-        const size1 = size / 2;
+        const size1 = Math.floor(size / 2);
         return [[range[0], range[0] + size1],
             [range[0] + size1, range[1]]];
     }
     if (size === 1) {
         return [range, null];
     }
-    const size1 = size / 2 - 1;
+    const size1 = Math.floor(size / 2) - 1;
     return [[range[0], range[0] + size1],
         [range[0] + size1 + 1, range[1]]];
 }
 
 function getBBox(coords: [number, number][], range: IndexRange): BBox {
     if (!isRangeSafe(range, coords.length)) {
-        return [-Infinity, -Infinity, Infinity, Infinity];
+        return [Infinity, Infinity, -Infinity, -Infinity];
     }
 
-    const bbox: BBox = [-Infinity, -Infinity, Infinity, Infinity];
+    const bbox: BBox = [Infinity, Infinity, -Infinity, -Infinity];
     for (let i = range[0]; i <= range[1]; ++i) {
         updateBBox(bbox, coords[i]);
     }
@@ -428,7 +428,7 @@ function pointToGeometryDistance(ctx: EvaluationContext, geometries: SimpleGeome
                 dist = Math.min(dist, pointSetToPointSetDistance(pointPosition, false, [geometry.coordinates as [number, number]], false, ruler, dist));
                 break;
             case 'LineString':
-                dist = Math.min(dist, pointSetToPointSetDistance(pointPosition, false, geometry.coordinates as [number, number][], false, ruler, dist));
+                dist = Math.min(dist, pointSetToPointSetDistance(pointPosition, false, geometry.coordinates as [number, number][], true, ruler, dist));
                 break;
             case 'Polygon':
                 dist = Math.min(dist, pointsToPolygonDistance(pointPosition, false, geometry.coordinates as [number, number][][], ruler, dist));
@@ -502,7 +502,7 @@ function polygonToGeometryDistance(ctx: EvaluationContext, geometries: SimpleGeo
 
 }
 
-function toSimpleGeometry(geometry: GeoJSON.Geometry): SimpleGeometry[] {
+function toSimpleGeometry(geometry: Exclude<GeoJSON.Geometry, GeoJSON.GeometryCollection>): SimpleGeometry[] {
     if (geometry.type === 'MultiPolygon') {
         return geometry.coordinates.map(polygon => {
             return {
@@ -526,9 +526,6 @@ function toSimpleGeometry(geometry: GeoJSON.Geometry): SimpleGeometry[] {
                 coordinates: point
             };
         });
-    }
-    if (geometry.type === 'GeometryCollection') {
-        throw new Error('GeometryCollection is not supported');
     }
     return [geometry];
 }
