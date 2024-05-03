@@ -97,7 +97,7 @@ export default class CheapRuler {
         };
     }
 
-    private wrap(deg) {
+    private wrap(deg: number) {
         while (deg < -180) deg += 360;
         while (deg > 180) deg -= 360;
         return deg;
