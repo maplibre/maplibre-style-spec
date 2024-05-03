@@ -319,7 +319,8 @@ function pointsToPolygonDistance(points: [number, number][],
         const range = distPair[1];
 
         // In case the set size are relatively small, we could use brute-force directly
-        if (getRangeSize(range) <= MinLinePointsSize) {
+        const threshold = isLine ? MinLinePointsSize : MinPointsSize;
+        if (getRangeSize(range) <= threshold) {
             if (!isRangeSafe(range, points.length)) {
                 return NaN;
             }
