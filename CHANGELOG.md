@@ -1,13 +1,19 @@
 ## main
 
 ### ✨ Features and improvements
-
-- Support `distance` expression in web style spec - [#642](https://github.com/maplibre/maplibre-style-spec/pull/642)
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
-
 - _...Add new stuff here..._
+
+## 20.2.0
+
+### ✨ Features and improvements
+
+- Support `distance` expression in web style spec - [#642](https://github.com/maplibre/maplibre-style-spec/pull/642)
+
+### 🐞 Bug fixes
+
 
 ## 20.1.1
 
