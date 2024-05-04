@@ -12,9 +12,6 @@
 
 - Support `distance` expression in web style spec - [#642](https://github.com/maplibre/maplibre-style-spec/pull/642)
 
-### 🐞 Bug fixes
-
-
 ## 20.1.1
 
 ### 🐞 Bug fixes
