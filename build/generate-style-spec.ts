@@ -199,6 +199,7 @@ export type ExpressionSpecification =
         ...(ExpressionInputType | ExpressionInputType[] | ExpressionSpecification)[], // repeated as above
         ExpressionInputType | ExpressionSpecification]
     | ['within', unknown | ExpressionSpecification]
+    | ['distance', unknown | ExpressionSpecification]
     // Ramps, scales, curves
     | ['interpolate', InterpolationSpecification, number | ExpressionSpecification,
         ...(number | number[] | ColorSpecification | ExpressionSpecification)[]] // alternating number and number | number[] | ColorSpecification

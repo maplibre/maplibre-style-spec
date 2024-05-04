@@ -27,6 +27,7 @@ import FormatExpression from './format';
 import ImageExpression from './image';
 import Length from './length';
 import Within from './within';
+import Distance from './distance';
 
 import type {ExpressionRegistry} from '../expression';
 
@@ -66,7 +67,8 @@ export const expressions: ExpressionRegistry = {
     'to-number': Coercion,
     'to-string': Coercion,
     'var': Var,
-    'within': Within
+    'within': Within,
+    'distance': Distance
 };
 
 export default expressions;

@@ -21,10 +21,10 @@ import Literal from './definitions/literal';
 import Assertion from './definitions/assertion';
 import Coercion from './definitions/coercion';
 import Var from './definitions/var';
+import Distance from './definitions/distance';
 
 import type {Expression, ExpressionRegistry} from './expression';
 import type {Value} from './values';
-
 import type {Type} from './types';
 
 import {typeOf, Color, validateRGBA, toString as valueToString} from './values';
@@ -664,6 +664,8 @@ function isExpressionConstant(expression: Expression) {
         return false;
     } else if (expression instanceof Within) {
         return false;
+    } else if (expression instanceof Distance) {
+        return false;
     }
 
     const isTypeAnnotation = expression instanceof Coercion ||
@@ -713,6 +715,9 @@ function isFeatureConstant(e: Expression) {
     }
 
     if (e instanceof Within) {
+        return false;
+    }
+    if (e instanceof Distance) {
         return false;
     }
 
