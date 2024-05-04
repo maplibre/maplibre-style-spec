@@ -4,7 +4,7 @@ import {RingWithArea, classifyRings} from './classify_rings';
 describe('classifyRings', () => {
     test('classified.length', () => {
         let geometry: Point2D[][];
-        let classified: RingWithArea[][];
+        let classified: RingWithArea<Point2D>[][];
 
         geometry = [
             [

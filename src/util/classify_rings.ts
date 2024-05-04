@@ -1,7 +1,7 @@
 import quickselect from 'quickselect';
 import {Point2D} from '../point2d';
 
-export type RingWithArea = Point2D[] & { area?: number };
+export type RingWithArea<T extends Point2D> = T[] & { area?: number };
 
 /**
  * Classifies an array of rings into polygons with outer rings and holes
@@ -9,13 +9,13 @@ export type RingWithArea = Point2D[] & { area?: number };
  * @param maxRings - the maximum number of rings to include in a polygon, use 0 to include all rings
  * @returns an array of polygons with internal rings as holes
  */
-export function classifyRings(rings: RingWithArea[], maxRings?: number): RingWithArea[][] {
+export function classifyRings<T extends Point2D>(rings: RingWithArea<T>[], maxRings?: number): RingWithArea<T>[][] {
     const len = rings.length;
 
     if (len <= 1) return [rings];
 
-    const polygons: Point2D[][][] = [];
-    let polygon: Point2D[][];
+    const polygons: T[][][] = [];
+    let polygon: T[][];
     let ccw: boolean | undefined;
 
     for (const ring of rings) {
@@ -60,7 +60,7 @@ function compareAreas(a: {area: number}, b: {area: number}) {
  * @param ring - Exterior or interior ring
  * @returns Signed area
  */
-export function calculateSignedArea(ring: Point2D[]): number {
+function calculateSignedArea(ring: Point2D[]): number {
     let sum = 0;
     for (let i = 0, len = ring.length, j = len - 1, p1, p2; i < len; j = i++) {
         p1 = ring[i];
