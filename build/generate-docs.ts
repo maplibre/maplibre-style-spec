@@ -87,6 +87,22 @@ function codeBlockMarkdown(code: string, language = 'json'): string {
     return `\`\`\`${language}\n${code}\n\`\`\`\n`;
 }
 
+/** Renders the contents of a cell in the support matrix
+ * @param support - the support string in the style spec
+ * @returns Markdown for support cell
+ */
+function supportCell(support?: string) {
+    // if no information is present in the style spec, we assume there is no support
+    if (support === undefined) return 'Not supported yet';
+
+    // if the string is an issue link, generate a link to it
+    // there is no support yet but there is a tracking issue
+    const maplibreIssue = /https:\/\/github.com\/maplibre\/[^/]+\/issues\/(\d+)/;
+    const match  = support.match(maplibreIssue);
+    if (match) return `[#${match[1]}](${support})`;
+    return support;
+}
+
 /**
  * Converts the sdk support object to markdown table format.
  * @param support - the sdk support object
@@ -99,7 +115,7 @@ function sdkSupportToMarkdown(support: JsonSdkSupport): string {
     markdown += '|-----------|--------------|-----------|-------|---------|\n';
     for (const row of rows) {
         const supportMatrix = support[row];
-        markdown += `|${row}|${supportMatrix.js || 'Not supported yet'}|${supportMatrix.android || 'Not supported yet'}|${supportMatrix.ios || 'Not supported yet'}|${supportMatrix.macos || 'Not supported yet'}|\n`;
+        markdown += `|${row}|${supportCell(supportMatrix.js)}|${supportCell(supportMatrix.android)}|${supportCell(supportMatrix.ios)}|${supportCell(supportMatrix.macos)}|\n`;
     }
     return markdown;
 
