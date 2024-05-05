@@ -2140,7 +2140,7 @@
       "property-type": "data-constant"
     },
     "text-variable-anchor-offset": {
-      "type": "array",
+      "type": "variableAnchorOffsetCollection",
       "requires": [
         "text-field",
         {
