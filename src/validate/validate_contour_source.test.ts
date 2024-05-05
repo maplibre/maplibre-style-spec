@@ -32,18 +32,16 @@ describe('Validate source_contour', () => {
     test('Should return errors according to spec violations', () => {
         const errors = validateContourSource({
             validateSpec,
-            value: {type: 'contour', source: {} as any, unit: 'garbage' as any, intervals: {} as any, majorMultiplier: {} as any, maxzoom: '1' as any, minzoom: '2' as any, overzoom: '3' as any}, styleSpec: v8, style: {} as any,
+            value: {type: 'contour', source: {} as any, unit: 'garbage' as any, intervals: {} as any, majorMultiplier: {} as any, overzoom: '3' as any}, styleSpec: v8, style: {} as any,
             sourceName: 'contour-source'
         });
-        expect(errors).toHaveLength(8);
+        expect(errors).toHaveLength(6);
         checkErrorMessage(errors[0].message, 'source', 'raster-dem', 'contour-source');
         checkErrorMessage(errors[1].message, 'source', 'string', 'object');
         checkErrorMessage(errors[2].message, 'unit', '[meters, feet] or number', 'garbage');
         checkErrorMessage(errors[3].message, 'intervals', 'literal', 'Bare object');
         checkErrorMessage(errors[4].message, 'majorMultiplier', 'literal', 'Bare object');
-        checkErrorMessage(errors[5].message, 'maxzoom', 'number', 'string');
-        checkErrorMessage(errors[6].message, 'minzoom', 'number', 'string');
-        checkErrorMessage(errors[7].message, 'overzoom', 'number', 'string');
+        checkErrorMessage(errors[5].message, 'overzoom', 'number', 'string');
     });
 
     test('Should return errors if interval or major definitions are malformed', () => {
@@ -133,8 +131,6 @@ describe('Validate source_contour', () => {
             source: 'dem',
             intervals: ['step', ['zoom'], 5, 10, 3],
             majorMultiplier: 500,
-            maxzoom: 16,
-            minzoom: 4,
             overzoom: 2,
             unit: 'feet',
         };
