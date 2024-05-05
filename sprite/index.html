@@ -815,6 +815,30 @@
 </span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="p">}</span>
 </span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>SDK Support</th>
+<th>MapLibre GL JS</th>
+<th>Android SDK</th>
+<th>iOS SDK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>basic functionality</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><code>textFitWidth</code>, <code>textFitHeight</code></td>
+<td>4.2.0</td>
+<td>Not supported yet</td>
+<td>Not supported yet</td>
+</tr>
+</tbody>
+</table>
 <h3 id="optional-properties">Optional Properties<a class="headerlink" href="#optional-properties" title="Permanent link">&para;</a></h3>
 <p>Apart from these required properties, the following optional properties are supported:</p>
 <ul>
@@ -822,6 +846,8 @@
 <li><code>stretchX</code>: An array of two-element arrays, consisting of two numbers that represent the <em>from</em> position and the <em>to</em> position of areas that can be stretched.</li>
 <li><code>stretchY</code>: Same as <code>stretchX</code>, but for the vertical dimension.</li>
 <li><code>sdf</code>: Boolean. If <code>true</code> then the image is handled as a signed-distance field (SDF) and its color can be set at runtime using the <a href="../layers/#icon-color"><code>icon-color</code></a> and <a href="../layers/#icon-halo-color"><code>icon-halo-color</code></a> properties. Defaults to <code>false</code>.</li>
+<li><code>textFitWidth</code>: TextFit enum of the value stretchOrShrink (or undefined), stretchOnly, proportional describing the behavior, horizontally, when scaling a sprite due to 'icon-text-fit': 'both'.</li>
+<li><code>textFitHeight</code>: Same as <code>textFitWidth</code> except vertically.</li>
 </ul>
 <h4 id="stretch-properties">Stretch Properties<a class="headerlink" href="#stretch-properties" title="Permanent link">&para;</a></h4>
 <p>The following image gives a bit more infomation regarding the stretch properties:</p>
@@ -839,6 +865,23 @@
 </span></code></pre></div>
 The red highlighted part is where the stretch will occur over the Y axis and the blue highlight is for the X axis.
 <img alt="popup-stretch" src="https://maplibre.org/maplibre-gl-js/docs/assets/popup_debug.png" /></p>
+<h4 id="text-fit-properties">Text Fit Properties<a class="headerlink" href="#text-fit-properties" title="Permanent link">&para;</a></h4>
+<p>The properties <code>textFitWidth</code> and <code>textFitHeight</code> alter how a sprite's content rectangle maps to its contents when scaling a sprite.  These properties are defined with the enum TextFit which may have the following values:
+* <code>stretchOrShrink</code> (or omitted)
+* <code>stretchOnly</code> 
+* <code>proportional</code></p>
+<p>The primary use cases of interest are:
+1. Both properties are undefined or stretchOrShrink</p>
+<p>The content rectangle scales precisely to contain its contents.</p>
+<ol>
+<li>textFitWidth = stretchOnly and textFitHeight = proportional</li>
+</ol>
+<p>The content rectangle scales to precisely contain the height of its contents but the width will not shrink smaller than the aspect ratio of the original content rectangle. This is primarily useful for shields that shouldn't become too narrow if their contents are narrow (like the number "1").</p>
+<ol>
+<li>textFitWidth = proportional and textFitHeight = stretchOnly</li>
+</ol>
+<p>The content rectangle scales to precisely contain the width of its contents but the height will not shrink smaller than the aspect ratio of the original content rectangle. This may be useful scenarios like no. 2 except with vertically written scripts (using <code>"text-writing-mode": ["vertical"]</code>).</p>
+<p><img alt="image" src="https://github.com/DavidBuerer/maplibre-style-spec/assets/29717748/5fc7134e-28dc-4c3c-b89e-d89b50b8dbfa" /></p>
 <h2 id="high-dpi-devices">High-DPI Devices<a class="headerlink" href="#high-dpi-devices" title="Permanent link">&para;</a></h2>
 <p>On high-DPI devices, <code>@2x</code> is appended to  the URLs described above. For example, if you specified <code>"sprite": "https://example.com/sprite"</code>, renderers would load <code>https://example.com/sprite.json</code> and <code>https://example.com/sprite.png</code>, or <code>https://example.com/sprite@2x.json</code> and <code>https://example.com/sprite@2x.png</code>.</p>
 <h2 id="generating-sprites">Generating Sprites<a class="headerlink" href="#generating-sprites" title="Permanent link">&para;</a></h2>
