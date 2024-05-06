@@ -5,7 +5,7 @@ The [`gl-style-migrate`](https://github.com/maplibre/maplibre-style-spec/blob/ma
 
 ## Function
 
-As of [v0.41.0](https://github.com/maplibre/maplibre-gl-js/blob/main/CHANGELOG.md#0410-october-11-2017), [property expressions](./expressions.md) is the preferred method for styling features based on zoom level or the feature's properties. Zoom and property functions are still supported but are not recommended.
+As of [MapLibre GL JS 0.41.0](https://github.com/maplibre/maplibre-gl-js/blob/main/CHANGELOG.md#0410-october-11-2017), [property expressions](./expressions.md) is the preferred method for styling features based on zoom level or the feature's properties. Zoom and property functions are still supported but are not recommended.
 
 The value for any layout or paint property may be specified as a _function_. Functions allow you to make the appearance of a map feature change with the current zoom level and/or the feature's properties.
 

@@ -139,17 +139,19 @@ function requiresToMarkdown(requires: any[]): string {
     return markdown;
 }
 
+type MdLink = {text: string, link: string, anchor?: string};
+
 /**
  * Converts the type to markdown link format - the link should be to the relevant section in the right file.
  * @param type - the type of the property
  * @returns the markdown link string
  */
-function typeToMakrdownLink(type: string): string {
+export function typeToMarkdownLink(type: string): MdLink | null {
     switch (type.toLocaleLowerCase()) {
         case '*':
-            return '';
+            return null;
         case 'promoteid':
-            return ` [${type}](types.md)`;
+            return {text: type, link: "types.md"};
         case 'color':
         case 'number':
         case 'string':
@@ -159,16 +161,21 @@ function typeToMakrdownLink(type: string): string {
         case 'formatted':
         case 'resolvedimage':
         case 'padding':
-            return ` [${type}](types.md#${type.toLocaleLowerCase()})`;
+            return {text: type, link: "types.md", anchor: type.toLocaleLowerCase()};
         case 'filter':
-            return ` [${type}](expressions.md)`;
+            return {text: type, link: "expressions.md"};
         case 'paint':
         case 'layout':
-            return ` [${type}](layers.md#${type.toLocaleLowerCase()})`;
+            return {text: type, link: "layers.md", anchor: type.toLocaleLowerCase()};
         default:
             // top level types have their own file
-            return ` [${type}](${type}.md)`;
+            return {text: type, link: `${type}.md`};
     }
+}
+
+function formatMdLink(mdLink: MdLink) {
+    const {link, text, anchor} = mdLink;
+    return `[${text}](${link}${anchor ? `#${anchor}` : ''})`;
 }
 
 function formatRange(minimum?: number, maximum?: number) {
@@ -190,7 +197,9 @@ function convertPropertyToMarkdown(key: string, value: JsonObject, keyPrefix = '
     if (paintLayoutText) {
         markdown += `[${paintLayoutText}](#${paintLayoutText.toLowerCase()}) property. `;
     }
-    const valueType = typeToMakrdownLink(value.type);
+
+    const mdLink = typeToMarkdownLink(value.type);
+    const valueType = mdLink ? ` ${formatMdLink(mdLink)}` : '';
     if (value.required) {
         markdown += `Required${valueType}`;
     } else {
