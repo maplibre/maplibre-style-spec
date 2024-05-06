@@ -1513,6 +1513,9 @@
           "android": "2.0.1",
           "ios": "2.0.0"
         },
+        "different paddings per side": {
+          "js": "2.2.0",
+        },
         "data-driven styling": {
           "js": "2.2.0"
         }
