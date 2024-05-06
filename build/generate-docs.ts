@@ -14,7 +14,6 @@ type JsonSdkSupport = {
         js?: string;
         android?: string;
         ios?: string;
-        macos?: string;
     };
 }
 
@@ -111,11 +110,11 @@ function supportCell(support?: string) {
 function sdkSupportToMarkdown(support: JsonSdkSupport): string {
     let markdown = '\n';
     const rows = Object.keys(support);
-    markdown += '|SDK Support|MapLibre GL JS|Android SDK|iOS SDK|macOS SDK|\n';
-    markdown += '|-----------|--------------|-----------|-------|---------|\n';
+    markdown += '|SDK Support|MapLibre GL JS|MapLibre Native<br>Android|MapLibre Native<br>iOS\n';
+    markdown += '|-----------|--------------|-----------|-------\n';
     for (const row of rows) {
         const supportMatrix = support[row];
-        markdown += `|${row}|${supportCell(supportMatrix.js)}|${supportCell(supportMatrix.android)}|${supportCell(supportMatrix.ios)}|${supportCell(supportMatrix.macos)}|\n`;
+        markdown += `|${row}|${supportCell(supportMatrix.js)}|${supportCell(supportMatrix.android)}|${supportCell(supportMatrix.ios)}|\n`;
     }
     return markdown;
 
@@ -322,8 +321,7 @@ function createSourcesContent() {
                 'basic functionality': {
                     js: '0.10.0',
                     android: '2.0.1',
-                    ios: '2.0.0',
-                    macos: '0.1.0'
+                    ios: '2.0.0'
                 }
             }
         },
@@ -342,8 +340,7 @@ function createSourcesContent() {
                 'basic functionality': {
                     js: '0.10.0',
                     android: '2.0.1',
-                    ios: '2.0.0',
-                    macos: '0.1.0'
+                    ios: '2.0.0'
                 }
             }
         },
@@ -390,20 +387,17 @@ function createSourcesContent() {
                 'basic functionality': {
                     js: '0.10.0',
                     android: '2.0.1',
-                    ios: '2.0.0',
-                    macos: '0.1.0'
+                    ios: '2.0.0'
                 },
                 clustering: {
                     js: '0.14.0',
                     android: '4.2.0',
-                    ios: '3.4.0',
-                    macos: '0.3.0'
+                    ios: '3.4.0'
                 },
                 'line distance metrics': {
                     js: '0.45.0',
                     android: '6.5.0',
-                    ios: '4.4.0',
-                    macos: '0.11.0'
+                    ios: '4.4.0'
                 }
             }
         },
@@ -425,8 +419,7 @@ function createSourcesContent() {
                 'basic functionality': {
                     js: '0.10.0',
                     android: '5.2.0',
-                    ios: '3.7.0',
-                    macos: '0.6.0'
+                    ios: '3.7.0'
                 }
             }
         },
