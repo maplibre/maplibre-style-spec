@@ -42,7 +42,8 @@ test('ensure all types have documentation', async () => {
         'source',
         'function',
         'expression',
-        'property-type'
+        'property-type',
+        'variableAnchorOffsetCollection'  // https://github.com/maplibre/maplibre-style-spec/issues/646
     ]);
     const typesFromStyleSpec = [...getTypesFromStyleSpec(styleSpec)].filter(type => !excludedTypes.has(type));
 
