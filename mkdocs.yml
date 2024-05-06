@@ -12,7 +12,6 @@ theme:
     - content.code.copy
     - toc.follow
     - search.suggest
-    - search.highlight
     - navigation.instant
     - navigation.sections
     - navigation.top  # back to top button
