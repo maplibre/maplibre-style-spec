@@ -46,6 +46,8 @@
     "no-invalid-this": "off",
     "no-buffer-constructor": "off",
 
+    "require-atomic-updates": ["error", { "allowProperties": true }],
+
     "array-bracket-spacing": "error",
     "consistent-return": "off",
     "global-require": "off",

@@ -139,7 +139,7 @@ function requiresToMarkdown(requires: any[]): string {
     return markdown;
 }
 
-type MdLink = {text: string, link: string, anchor?: string};
+type MdLink = {text: string; link: string; anchor?: string};
 
 /**
  * Converts the type to markdown link format - the link should be to the relevant section in the right file.
@@ -151,7 +151,7 @@ export function typeToMarkdownLink(type: string): MdLink | null {
         case '*':
             return null;
         case 'promoteid':
-            return {text: type, link: "types.md"};
+            return {text: type, link: 'types.md'};
         case 'color':
         case 'number':
         case 'string':
@@ -161,12 +161,12 @@ export function typeToMarkdownLink(type: string): MdLink | null {
         case 'formatted':
         case 'resolvedimage':
         case 'padding':
-            return {text: type, link: "types.md", anchor: type.toLocaleLowerCase()};
+            return {text: type, link: 'types.md', anchor: type.toLocaleLowerCase()};
         case 'filter':
-            return {text: type, link: "expressions.md"};
+            return {text: type, link: 'expressions.md'};
         case 'paint':
         case 'layout':
-            return {text: type, link: "layers.md", anchor: type.toLocaleLowerCase()};
+            return {text: type, link: 'layers.md', anchor: type.toLocaleLowerCase()};
         default:
             // top level types have their own file
             return {text: type, link: `${type}.md`};
