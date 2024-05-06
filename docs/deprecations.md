@@ -64,16 +64,16 @@ The color space in which colors interpolated. Interpolating colors in perceptual
 `hcl`: Use the HCL color space to interpolate color values, interpolating the Hue, Chroma, and Luminance channels individually.
             
 
-|SDK Support|MapLibre GL JS|Android SDK|iOS SDK|macOS SDK|
-|-----------|--------------|-----------|-------|---------|
-|basic functionality|0.10.0|2.0.1|2.0.0|0.1.0|
-|`property`|0.18.0|0.18.0|0.18.0|0.4.0|
-|`code`|0.18.0|5.0.0|5.0.0|5.0.0|
-|`exponential` type|0.18.0|5.0.0|3.5.0|0.4.0|
-|`interval` type|0.18.0|5.0.0|3.5.0|0.4.0|
-|`categorical` type|0.18.0|5.0.0|3.5.0|0.4.0|
-|`identity` type|0.26.0|5.0.0|3.5.0|0.4.0|
-|`default`|0.33.0|5.0.0|3.5.0|0.4.0|
+|SDK Support|MapLibre GL JS|MapLibre Native<br>Android|MapLibre Native<br>iOS|
+|-----------|--------------|-----------|-------|
+|basic functionality|0.10.0|2.0.1|2.0.0|
+|`property`|0.18.0|0.18.0|0.18.0|
+|`code`|0.18.0|5.0.0|5.0.0|
+|`exponential` type|0.18.0|5.0.0|3.5.0|
+|`interval` type|0.18.0|5.0.0|3.5.0|
+|`categorical` type|0.18.0|5.0.0|3.5.0|
+|`identity` type|0.26.0|5.0.0|3.5.0|
+|`default`|0.33.0|5.0.0|3.5.0|
 |`colorSpace`|0.26.0|
 
 ### Zoom and Property functions
@@ -212,7 +212,7 @@ The combining filter "all" takes the three other filters that follow it and requ
 ```
 
 
-|SDK Support|MapLibre GL JS|Android SDK|iOS SDK|macOS SDK|
-|-----------|--------------|-----------|-------|---------|
-|basic functionality|0.10.0|2.0.1|2.0.0|0.1.0|
-|`has` / `!has`|0.19.0|4.1.0|3.3.0|0.1.0|
+|SDK Support|MapLibre GL JS|MapLibre Native<br>Android|MapLibre Native<br>iOS|
+|-----------|--------------|-----------|-------|
+|basic functionality|0.10.0|2.0.1|2.0.0|
+|`has` / `!has`|0.19.0|4.1.0|3.3.0|
