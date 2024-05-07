@@ -112,10 +112,23 @@ Enums are a closed set of possible string values. Failing to provide a value wit
 
 ## Padding
 
-Paddings are similar to [CCS' padding object](https://developer.mozilla.org/en-US/docs/Web/CSS/padding) where you can specify padding in all directions using a single number, top-bottom left-right using two numbers and top, right, bottom, left using four numbers.
+!!! note
+
+    MapLibre Native only supports a single float as padding (see [#2363](https://github.com/maplibre/maplibre-native/issues/2368)).
+
+Values are declared similar to [CSS padding syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/padding) syntax:
+
+- A single value applies to all four sides, e.g. `[2]`;
+- two values apply to [top/bottom, left/right], e.g. `[2, 3]`;
+- three values apply to [top, left/right, bottom] e.g. `[2, 3, 1]`;
+- four values apply to [top, right, bottom, left], e.g. `[2, 3, 1, 0]`.
+
+A single float is accepted for backwards-compatibility, and treated the same as a one-element array — padding applied to all sides.
+
+The following example applies 2em padding on top and bottom and 3em padding left and right.
 
 ```json
 {
-    "icon-padding": [2]
+    "icon-padding": [2, 3]
 }
 ```
