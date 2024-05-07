@@ -4,6 +4,8 @@ repo_url: https://github.com/maplibre/maplibre-style-spec
 site_description: Documentation for the MapLibre Style Specification
 extra_css:
   - assets/extra.css
+exclude_docs: |
+  Dockerfile
 theme:
   name: 'material'
   favicon: https://maplibre.org/favicon.ico
@@ -61,3 +63,6 @@ plugins:
   - social:
       cards_layout_options:
         background_color: '#295DAA'
+  - htmlproofer:
+      enabled: !ENV [ENABLED_HTMLPROOFER, True]
+      raise_error_after_finish: True

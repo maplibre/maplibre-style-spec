@@ -144,9 +144,10 @@ function requiresToMarkdown(requires: any[]): string {
  * @param type - the type of the property
  * @returns the markdown link string
  */
-function typeToMakrdownLink(type: string): string {
+function typeToMarkdownLink(type: string): string {
     switch (type.toLocaleLowerCase()) {
         case '*':
+        case 'variableanchoroffsetcollection':
             return '';
         case 'promoteid':
             return ` [${type}](types.md)`;
@@ -190,11 +191,11 @@ function convertPropertyToMarkdown(key: string, value: JsonObject, keyPrefix = '
     if (paintLayoutText) {
         markdown += `[${paintLayoutText}](#${paintLayoutText.toLowerCase()}) property. `;
     }
-    const valueType = typeToMakrdownLink(value.type);
+    const mdLink = typeToMarkdownLink(value.type);
     if (value.required) {
-        markdown += `Required${valueType}`;
+        markdown += `Required${mdLink}`;
     } else {
-        markdown += `Optional${valueType}`;
+        markdown += `Optional${mdLink}`;
     }
 
     if (value.minimum !== undefined || value.maximum !== undefined) {
