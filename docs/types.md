@@ -116,7 +116,7 @@ Enums are a closed set of possible string values. Failing to provide a value wit
 
     MapLibre Native only supports a single float as padding (see [#2363](https://github.com/maplibre/maplibre-native/issues/2368)).
 
-Values are declared similar to [CSS padding syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/padding) syntax:
+An array of floats with syntax similar to [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS/padding):
 
 - A single value applies to all four sides, e.g. `[2]`;
 - two values apply to [top/bottom, left/right], e.g. `[2, 3]`;
