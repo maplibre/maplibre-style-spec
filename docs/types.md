@@ -123,7 +123,7 @@ An array of numbers with syntax similar to [CSS](https://developer.mozilla.org/e
 - three values apply to [top, left/right, bottom] e.g. `[2, 3, 1]`;
 - four values apply to [top, right, bottom, left], e.g. `[2, 3, 1, 0]`.
 
-A single float is accepted for backwards-compatibility, and treated the same as a one-element array — padding applied to all sides.
+A single number is accepted for backwards-compatibility, and treated the same as a one-element array — padding applied to all sides.
 
 The following example applies 2em padding on top and bottom and 3em padding left and right.
 
