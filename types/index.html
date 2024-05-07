@@ -878,9 +878,41 @@
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="p">}</span>
 </span></code></pre></div>
 <h2 id="padding">Padding<a class="headerlink" href="#padding" title="Permanent link">&para;</a></h2>
-<p>Paddings are similar to <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/padding">CCS' padding object</a> where you can specify padding in all directions using a single number, top-bottom left-right using two numbers and top, right, bottom, left using four numbers.</p>
+<table>
+<thead>
+<tr>
+<th>SDK Support</th>
+<th>MapLibre GL JS</th>
+<th>MapLibre Native<br>Android</th>
+<th>MapLibre Native<br>iOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Single number</td>
+<td>0.10.0</td>
+<td>2.0.1</td>
+<td>2.0.0</td>
+</tr>
+<tr>
+<td>Array of numbers</td>
+<td>2.2.0</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/2368">#2363</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/2368">#2363</a>)</td>
+</tr>
+</tbody>
+</table>
+<p>An array of numbers with syntax similar to <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/padding">CSS</a>:</p>
+<ul>
+<li>A single value applies to all four sides, e.g. <code>[2]</code>;</li>
+<li>two values apply to [top/bottom, left/right], e.g. <code>[2, 3]</code>;</li>
+<li>three values apply to [top, left/right, bottom] e.g. <code>[2, 3, 1]</code>;</li>
+<li>four values apply to [top, right, bottom, left], e.g. <code>[2, 3, 1, 0]</code>.</li>
+</ul>
+<p>A single number is accepted for backwards-compatibility, and treated the same as a one-element array — padding applied to all sides.</p>
+<p>The following example applies 2em padding on top and bottom and 3em padding left and right.</p>
 <div class="language-json highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="p">{</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="nt">&quot;icon-padding&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="nt">&quot;icon-padding&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span>
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">}</span>
 </span></code></pre></div>
 
