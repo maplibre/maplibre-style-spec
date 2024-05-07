@@ -147,7 +147,7 @@ function requiresToMarkdown(requires: any[]): string {
 function typeToMarkdownLink(type: string): string {
     switch (type.toLocaleLowerCase()) {
         case '*':
-        // case 'variableanchoroffsetcollection':
+        case 'variableanchoroffsetcollection':
             return '';
         case 'promoteid':
             return ` [${type}](types.md)`;
