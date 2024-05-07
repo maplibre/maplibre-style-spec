@@ -98,7 +98,7 @@ function supportCell(support?: string) {
     // there is no support yet but there is a tracking issue
     const maplibreIssue = /https:\/\/github.com\/maplibre\/[^/]+\/issues\/(\d+)/;
     const match  = support.match(maplibreIssue);
-    if (match) return `[#${match[1]}](${support})`;
+    if (match) return `❌ ([#${match[1]}](${support}))`;
     return support;
 }
 

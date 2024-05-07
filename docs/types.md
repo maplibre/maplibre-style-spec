@@ -112,9 +112,10 @@ Enums are a closed set of possible string values. Failing to provide a value wit
 
 ## Padding
 
-!!! note
-
-    MapLibre Native only supports a single float as padding (see [#2363](https://github.com/maplibre/maplibre-native/issues/2368)).
+|SDK Support|MapLibre GL JS|MapLibre Native<br>Android|MapLibre Native<br>iOS|
+|-----------|--------------|-----------|-------|
+|Single number| 0.10.0 | 2.0.1 | 2.0.0 |
+|Array of numbers| 2.2.0 | ❌ ([#2363](https://github.com/maplibre/maplibre-native/issues/2368)) | ❌ ([#2363](https://github.com/maplibre/maplibre-native/issues/2368)) |
 
 An array of numbers with syntax similar to [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS/padding):
 
