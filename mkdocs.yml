@@ -64,5 +64,3 @@ plugins:
   - htmlproofer:
       enabled: !ENV [ENABLED_HTMLPROOFER, True]
       raise_error_after_finish: True
-      raise_error_excludes:
-        404: ['variableAnchorOffsetCollection.md']  # https://github.com/maplibre/maplibre-style-spec/issues/646
