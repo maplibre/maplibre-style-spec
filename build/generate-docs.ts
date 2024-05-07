@@ -145,7 +145,6 @@ function requiresToMarkdown(requires: any[]): string {
  * @returns the markdown link string
  */
 function typeToMarkdownLink(type: string): string {
-    console.log(type);
     switch (type.toLocaleLowerCase()) {
         case '*':
         case 'variableanchoroffsetcollection':
