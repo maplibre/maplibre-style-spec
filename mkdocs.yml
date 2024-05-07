@@ -61,3 +61,7 @@ plugins:
   - social:
       cards_layout_options:
         background_color: '#295DAA'
+  - htmlproofer:
+      raise_error_after_finish: True
+      raise_error_excludes:
+        404: ['variableAnchorOffsetCollection.md']  # https://github.com/maplibre/maplibre-style-spec/issues/646
