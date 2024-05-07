@@ -5873,7 +5873,7 @@
 </tbody>
 </table>
 <h3 id="text-variable-anchor-offset">text-variable-anchor-offset<a class="headerlink" href="#text-variable-anchor-offset" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional <a href="variableAnchorOffsetCollection.md">variableAnchorOffsetCollection</a>. Requires <code>text-field</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional. Requires <code>text-field</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
 <p>To increase the chance of placing high-priority labels on the map, you can provide an array of <code>text-anchor</code> locations, each paired with an offset value. The renderer will attempt to place the label at each location, in order, before moving on to the next location+offset. Use <code>text-justify: auto</code> to choose justification based on anchor position. </p>
 <p>The length of the array must be even, and must alternate between enum and point entries. i.e., each anchor location must be accompanied by a point, and that point defines the offset when the corresponding anchor location is used. Positive offset values indicate right and down, while negative values indicate left and up. Anchor locations may repeat, allowing the renderer to try multiple offsets to try and place a label using the same anchor. </p>
 <p>When present, this property takes precedence over <code>text-anchor</code>, <code>text-variable-anchor</code>, <code>text-offset</code>, and <code>text-radial-offset</code>. </p>
