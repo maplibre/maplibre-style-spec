@@ -407,7 +407,7 @@ function createSourcesContent() {
             example: {
                 'image': {
                     'type': 'image',
-                    'url': 'https://maplibre.org/maplibre-gl-js-docs/assets/radar.gif',
+                    'url': 'https://maplibre.org/maplibre-gl-js/docs/assets/radar.gif',
                     'coordinates': [
                         [-80.425, 46.437],
                         [-71.516, 46.437],
