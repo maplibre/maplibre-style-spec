@@ -2791,7 +2791,7 @@
         "doc": "Determines whether an item exists in an array or a substring exists in a string.\n\n - [Measure distances](https://maplibre.org/maplibre-gl-js/docs/examples/measure/)",
         "example": {
           "syntax": {
-            "method": ["value", "value"],
+            "method": [["get", "value"], ["literal", "value"]],
             "result": "boolean"
           },
           "value": ["in", "$type", "Point"]
