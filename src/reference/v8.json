@@ -1857,7 +1857,12 @@
       "units": "ems",
       "doc": "The maximum line width for text wrapping.",
       "requires": [
-        "text-field"
+        "text-field",
+        {
+          "symbol-placement": [
+            "point"
+          ]
+        }
       ],
       "sdk-support": {
         "basic functionality": {
