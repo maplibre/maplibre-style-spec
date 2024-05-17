@@ -1,6 +1,8 @@
 ## main
 
 ### ✨ Features and improvements
+
+- Document `text-max-width` only applies with `symbol-placement: 'point'` - [#666](https://github.com/maplibre/maplibre-style-spec/pull/666)
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
