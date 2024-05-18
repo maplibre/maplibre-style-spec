@@ -173,7 +173,6 @@ function requiresArrayToMarkdown(values: any[]): string {
     return markdown;
 }
 
-
 /**
  * Converts the type to markdown link format - the link should be to the relevant section in the right file.
  * @param type - the type of the property
