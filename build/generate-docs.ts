@@ -134,10 +134,45 @@ function requiresToMarkdown(requires: any[]): string {
             markdown += `Requires source to be \`${require.source}\`. `;
         } else if (typeof require === 'string') {
             markdown += `Requires \`${require}\`. `;
+        } else if (typeof require === 'object') {
+            for (const [key, value] of Object.entries(require)) {
+                markdown += `Requires \`${key}\` of `;
+                if (Array.isArray(value)) {
+                    markdown += `${requiresArrayToMarkdown(value)}. `;
+                } else {
+                    markdown += `\`${value}\`. `;
+                }
+            }
         }
     }
     return markdown;
 }
+
+/**
+ * Converts an array of objects to a list format in a string.
+ * @param values - a list of values
+ * @returns text that a user can read
+ * @example ['a'] -> 'a'
+ * @example ['a', 'b'], -> 'a or b'
+ * @example ['a', 'b', c'] -> 'a, b, or c'
+ */
+function requiresArrayToMarkdown(values: any[]): string {
+    const total = values.length;
+    let markdown = '';
+    let remaining = total;
+    for (const value of values) {
+        markdown += `\`${value}\``;
+        remaining -= 1;
+        if (total > 2 && remaining > 0) {
+            markdown += ', ';
+        }
+        if (total > 1 && remaining === 1) {
+            markdown += ' or ';
+        }
+    }
+    return markdown;
+}
+
 
 /**
  * Converts the type to markdown link format - the link should be to the relevant section in the right file.
