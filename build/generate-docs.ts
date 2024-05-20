@@ -136,7 +136,7 @@ function requiresToMarkdown(requires: any[]): string {
             markdown += `Requires \`${require}\`. `;
         } else if (typeof require === 'object') {
             for (const [key, value] of Object.entries(require)) {
-                markdown += `Requires \`${key}\` of `;
+                markdown += `Requires \`${key}\` to be `;
                 if (Array.isArray(value)) {
                     markdown += `${requiresArrayToMarkdown(value)}. `;
                 } else {
@@ -153,21 +153,18 @@ function requiresToMarkdown(requires: any[]): string {
  * @param values - a list of values
  * @returns text that a user can read
  * @example ['a'] -> 'a'
- * @example ['a', 'b'], -> 'a or b'
- * @example ['a', 'b', c'] -> 'a, b, or c'
+ * @example ['a', 'b'], -> 'one of a, b'
+ * @example ['a', 'b', c'] -> 'one of a, b, c'
  */
 function requiresArrayToMarkdown(values: any[]): string {
     const total = values.length;
-    let markdown = '';
     let remaining = total;
+    let markdown = remaining > 1 ? 'one of ' : '';
     for (const value of values) {
         markdown += `\`${value}\``;
         remaining -= 1;
-        if (total > 2 && remaining > 0) {
+        if (remaining > 0) {
             markdown += ', ';
-        }
-        if (total > 1 && remaining === 1) {
-            markdown += ' or ';
         }
     }
     return markdown;
@@ -561,4 +558,3 @@ createLayersContent();
 createSourcesContent();
 createExpressionsContent();
 createMainTopics();
-
