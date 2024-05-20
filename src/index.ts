@@ -69,7 +69,7 @@ export type StylePropertySpecification = {
     default?: VariableAnchorOffsetCollectionSpecification;
 };
 
-import v8Spec from './reference/v8.json' assert {type: 'json'};
+import v8Spec from './reference/v8.json' with {type: 'json'};
 const v8 = v8Spec as any;
 import latest from './reference/latest';
 import derefLayers from './deref';

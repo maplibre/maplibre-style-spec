@@ -1,6 +1,6 @@
 import validateSpec from './validate';
 import validateTerrain from './validate_terrain';
-import v8 from '../reference/v8.json' assert {type: 'json'};
+import v8 from '../reference/v8.json' with {type: 'json'};
 
 describe('Validate Terrain', () => {
     test('Should return error in case terrain is not an object', () => {

@@ -1,7 +1,7 @@
 import ValidationError from '../error/validation_error';
 import getType from '../util/get_type';
 import type {RasterDEMSourceSpecification, StyleSpecification} from '../types.g';
-import v8 from '../reference/v8.json' assert {type: 'json'};
+import v8 from '../reference/v8.json' with {type: 'json'};
 import {unbundle} from '../util/unbundle_jsonlint';
 
 interface ValidateRasterDENSourceOptions {
