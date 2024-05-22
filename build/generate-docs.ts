@@ -138,33 +138,14 @@ function requiresToMarkdown(requires: any[]): string {
             for (const [key, value] of Object.entries(require)) {
                 markdown += `Requires \`${key}\` to be `;
                 if (Array.isArray(value)) {
-                    markdown += `${requiresArrayToMarkdown(value)}. `;
+                    if (value.length > 1) {
+                        markdown += 'one of ';
+                    }
+                    markdown += `${value.map((x) => `\`${x}\``).join(', ')}. `;
                 } else {
                     markdown += `\`${value}\`. `;
                 }
             }
-        }
-    }
-    return markdown;
-}
-
-/**
- * Converts an array of objects to a list format in a string.
- * @param values - a list of values
- * @returns text that a user can read
- * @example ['a'] -> 'a'
- * @example ['a', 'b'], -> 'one of a, b'
- * @example ['a', 'b', c'] -> 'one of a, b, c'
- */
-function requiresArrayToMarkdown(values: any[]): string {
-    const total = values.length;
-    let remaining = total;
-    let markdown = remaining > 1 ? 'one of ' : '';
-    for (const value of values) {
-        markdown += `\`${value}\``;
-        remaining -= 1;
-        if (remaining > 0) {
-            markdown += ', ';
         }
     }
     return markdown;
