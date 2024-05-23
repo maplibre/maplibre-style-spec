@@ -134,6 +134,18 @@ function requiresToMarkdown(requires: any[]): string {
             markdown += `Requires source to be \`${require.source}\`. `;
         } else if (typeof require === 'string') {
             markdown += `Requires \`${require}\`. `;
+        } else if (typeof require === 'object') {
+            for (const [key, value] of Object.entries(require)) {
+                markdown += `Requires \`${key}\` to be `;
+                if (Array.isArray(value)) {
+                    if (value.length > 1) {
+                        markdown += 'one of ';
+                    }
+                    markdown += `${value.map((x) => `\`${x}\``).join(', ')}. `;
+                } else {
+                    markdown += `\`${value}\`. `;
+                }
+            }
         }
     }
     return markdown;
@@ -527,4 +539,3 @@ createLayersContent();
 createSourcesContent();
 createExpressionsContent();
 createMainTopics();
-
