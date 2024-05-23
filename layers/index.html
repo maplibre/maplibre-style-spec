@@ -3785,7 +3785,7 @@
 </tbody>
 </table>
 <h3 id="fill-outline-color">fill-outline-color<a class="headerlink" href="#fill-outline-color" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#color">color</a>. Disabled by <code>fill-pattern</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#color">color</a>. Disabled by <code>fill-pattern</code>. Requires <code>fill-antialias</code> to be <code>true</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
 <p>The outline color of the fill. Matches the value of <code>fill-color</code> if unspecified.</p>
 <table>
 <thead>
@@ -4653,7 +4653,7 @@
 </tbody>
 </table>
 <h3 id="line-miter-limit">line-miter-limit<a class="headerlink" href="#line-miter-limit" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#number">number</a>. Defaults to <code>2</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#number">number</a>. Defaults to <code>2</code>. Requires <code>line-join</code> to be <code>miter</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
 <p>Used to automatically convert miter joins to bevel joins for sharp angles.</p>
 <table>
 <thead>
@@ -4674,7 +4674,7 @@
 </tbody>
 </table>
 <h3 id="line-round-limit">line-round-limit<a class="headerlink" href="#line-round-limit" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#number">number</a>. Defaults to <code>1.05</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#number">number</a>. Defaults to <code>1.05</code>. Requires <code>line-join</code> to be <code>round</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
 <p>Used to automatically convert round joins to miter joins for shallow angles.</p>
 <table>
 <thead>
@@ -5069,7 +5069,7 @@
 </tbody>
 </table>
 <h3 id="symbol-spacing">symbol-spacing<a class="headerlink" href="#symbol-spacing" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#number">number</a> in range [1, ∞). Units in pixels. Defaults to <code>250</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#number">number</a> in range [1, ∞). Units in pixels. Defaults to <code>250</code>. Requires <code>symbol-placement</code> to be <code>line</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
 <p>Distance between two symbol anchors.</p>
 <table>
 <thead>
@@ -5345,7 +5345,7 @@
 </tbody>
 </table>
 <h3 id="icon-text-fit-padding">icon-text-fit-padding<a class="headerlink" href="#icon-text-fit-padding" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#array">array</a>. Units in pixels. Defaults to <code>0,0,0,0</code>. Requires <code>icon-image</code>. Requires <code>text-field</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#array">array</a>. Units in pixels. Defaults to <code>0,0,0,0</code>. Requires <code>icon-image</code>. Requires <code>text-field</code>. Requires <code>icon-text-fit</code> to be one of <code>both</code>, <code>width</code>, <code>height</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
 <p>Size of the additional area added to dimensions determined by <code>icon-text-fit</code>, in clockwise order: top, right, bottom, left.</p>
 <table>
 <thead>
@@ -5447,7 +5447,7 @@
 </tbody>
 </table>
 <h3 id="icon-keep-upright">icon-keep-upright<a class="headerlink" href="#icon-keep-upright" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#boolean">boolean</a>. Defaults to <code>false</code>. Requires <code>icon-image</code>.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#boolean">boolean</a>. Defaults to <code>false</code>. Requires <code>icon-image</code>. Requires <code>icon-rotation-alignment</code> to be <code>map</code>. Requires <code>symbol-placement</code> to be one of <code>line</code>, <code>line-center</code>.</em></p>
 <p>If true, the icon may be flipped to prevent it from being rendered upside-down.</p>
 <table>
 <thead>
@@ -5852,7 +5852,7 @@
 </tbody>
 </table>
 <h3 id="text-variable-anchor">text-variable-anchor<a class="headerlink" href="#text-variable-anchor" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#array">array</a>. Requires <code>text-field</code>.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#array">array</a>. Requires <code>text-field</code>. Requires <code>symbol-placement</code> to be <code>point</code>.</em></p>
 <p>To increase the chance of placing high-priority labels on the map, you can provide an array of <code>text-anchor</code> locations: the renderer will attempt to place the label at each location, in order, before moving onto the next label. Use <code>text-justify: auto</code> to choose justification based on anchor position. To apply an offset, use the <code>text-radial-offset</code> or the two-dimensional <code>text-offset</code>.</p>
 <table>
 <thead>
@@ -5873,7 +5873,7 @@
 </tbody>
 </table>
 <h3 id="text-variable-anchor-offset">text-variable-anchor-offset<a class="headerlink" href="#text-variable-anchor-offset" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional. Requires <code>text-field</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional. Requires <code>text-field</code>. Requires <code>symbol-placement</code> to be <code>point</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
 <p>To increase the chance of placing high-priority labels on the map, you can provide an array of <code>text-anchor</code> locations, each paired with an offset value. The renderer will attempt to place the label at each location, in order, before moving on to the next location+offset. Use <code>text-justify: auto</code> to choose justification based on anchor position. </p>
 <p>The length of the array must be even, and must alternate between enum and point entries. i.e., each anchor location must be accompanied by a point, and that point defines the offset when the corresponding anchor location is used. Positive offset values indicate right and down, while negative values indicate left and up. Anchor locations may repeat, allowing the renderer to try multiple offsets to try and place a label using the same anchor. </p>
 <p>When present, this property takes precedence over <code>text-anchor</code>, <code>text-variable-anchor</code>, <code>text-offset</code>, and <code>text-radial-offset</code>. </p>
@@ -5944,7 +5944,7 @@
 </tbody>
 </table>
 <h3 id="text-max-angle">text-max-angle<a class="headerlink" href="#text-max-angle" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#number">number</a>. Units in degrees. Defaults to <code>45</code>. Requires <code>text-field</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#number">number</a>. Units in degrees. Defaults to <code>45</code>. Requires <code>text-field</code>. Requires <code>symbol-placement</code> to be one of <code>line</code>, <code>line-center</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
 <p>Maximum angle change between adjacent characters.</p>
 <table>
 <thead>
@@ -5965,7 +5965,7 @@
 </tbody>
 </table>
 <h3 id="text-writing-mode">text-writing-mode<a class="headerlink" href="#text-writing-mode" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#array">array</a>. Requires <code>text-field</code>.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#array">array</a>. Requires <code>text-field</code>. Requires <code>symbol-placement</code> to be <code>point</code>.</em></p>
 <p>The property allows control over a symbol's orientation. Note that the property values act as a hint, so that a symbol whose language doesn’t support the provided orientation will be laid out in its natural orientation. Example: English point symbol will be rendered horizontally even if array value contains single 'vertical' enum value. The order of elements in an array define priority order for the placement of an orientation variant.</p>
 <table>
 <thead>
@@ -6034,7 +6034,7 @@
 </tbody>
 </table>
 <h3 id="text-keep-upright">text-keep-upright<a class="headerlink" href="#text-keep-upright" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#boolean">boolean</a>. Defaults to <code>true</code>. Requires <code>text-field</code>.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#boolean">boolean</a>. Defaults to <code>true</code>. Requires <code>text-field</code>. Requires <code>text-rotation-alignment</code> to be <code>map</code>. Requires <code>symbol-placement</code> to be one of <code>line</code>, <code>line-center</code>.</em></p>
 <p>If true, the text may be flipped vertically to prevent it from being rendered upside-down.</p>
 <table>
 <thead>
