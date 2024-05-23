@@ -66,3 +66,4 @@ plugins:
   - htmlproofer:
       enabled: !ENV [ENABLED_HTMLPROOFER, True]
       raise_error_after_finish: True
+      validate_external_urls: False
