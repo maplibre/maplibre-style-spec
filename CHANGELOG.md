@@ -1,7 +1,6 @@
 ## main
 
 ### ✨ Features and improvements
-- remove custom `stringify` function in test [#668](https://github.com/maplibre/maplibre-style-spec/issues/668))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
