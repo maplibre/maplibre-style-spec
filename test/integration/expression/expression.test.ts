@@ -51,7 +51,7 @@ describe('expression', () => {
                 delete fixture.metadata;
 
                 const fname = path.join(__dirname, expressionTestFileName);
-                fs.writeFileSync(fname, JSON.stringify(fixture));
+                fs.writeFileSync(fname, JSON.stringify(fixture, null, 2));
                 return;
             }
 
