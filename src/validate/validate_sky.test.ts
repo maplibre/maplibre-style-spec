@@ -1,6 +1,6 @@
 import validateSky from './validate_sky';
 import validateSpec from './validate';
-import v8 from '../reference/v8.json' assert {type: 'json'};
+import v8 from '../reference/v8.json' with {type: 'json'};
 import {SkySpecification} from '../types.g';
 
 describe('Validate sky', () => {

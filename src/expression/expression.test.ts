@@ -1,6 +1,6 @@
 import {createPropertyExpression, Feature, GlobalProperties, StylePropertyExpression} from '../expression';
 import definitions from './definitions';
-import v8 from '../reference/v8.json' assert {type: 'json'};
+import v8 from '../reference/v8.json' with {type: 'json'};
 import {createExpression, ICanonicalTileID, StyleExpression, StylePropertySpecification} from '..';
 import ParsingError from './parsing_error';
 import {VariableAnchorOffsetCollection} from './values';

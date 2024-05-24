@@ -1,6 +1,6 @@
 import ValidationError from '../error/validation_error';
 import getType from '../util/get_type';
-import v8 from '../reference/v8.json' assert {type: 'json'};
+import v8 from '../reference/v8.json' with {type: 'json'};
 import {SkySpecification, StyleSpecification} from '../types.g';
 
 interface ValidateSkyOptions {
