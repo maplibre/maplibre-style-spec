@@ -1,5 +1,9 @@
 {
-  "expression": [">", null, null],
+  "expression": [
+    ">",
+    null,
+    null
+  ],
   "expected": {
     "compiled": {
       "result": "error",

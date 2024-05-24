@@ -3,13 +3,35 @@
     "type": "array",
     "value": "string",
     "property-type": "data-driven",
-    "expression": {"parameters": ["zoom", "feature"]}
+    "expression": {
+      "parameters": [
+        "zoom",
+        "feature"
+      ]
+    }
   },
   "expression": [
     "case",
-    ["boolean", ["get", "x"]],
-    ["literal", ["one"]],
-    ["literal", ["one", "two"]]
+    [
+      "boolean",
+      [
+        "get",
+        "x"
+      ]
+    ],
+    [
+      "literal",
+      [
+        "one"
+      ]
+    ],
+    [
+      "literal",
+      [
+        "one",
+        "two"
+      ]
+    ]
   ],
   "inputs": [],
   "expected": {

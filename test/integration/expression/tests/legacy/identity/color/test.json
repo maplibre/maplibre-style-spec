@@ -1,14 +1,42 @@
 {
-  "expression": {"type": "identity", "property": "p"},
+  "expression": {
+    "type": "identity",
+    "property": "p"
+  },
   "inputs": [
-    [{}, {"properties": {}}],
-    [{}, {"properties": {"p": "blue"}}],
-    [{}, {"properties": {"p": 0}}]
+    [
+      {},
+      {
+        "properties": {}
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": "blue"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": 0
+        }
+      }
+    ]
   ],
   "propertySpec": {
     "type": "color",
     "property-type": "data-driven",
-    "expression": {"interpolated": false, "parameters": ["zoom", "feature"]}
+    "expression": {
+      "interpolated": false,
+      "parameters": [
+        "zoom",
+        "feature"
+      ]
+    }
   },
   "expected": {
     "compiled": {
@@ -18,9 +46,18 @@
       "type": "color"
     },
     "outputs": [
-      {"error": "Could not parse color from value 'null'"},
-      [0, 0, 1, 1],
-      {"error": "Could not parse color from value '0'"}
+      {
+        "error": "Could not parse color from value 'null'"
+      },
+      [
+        0,
+        0,
+        1,
+        1
+      ],
+      {
+        "error": "Could not parse color from value '0'"
+      }
     ]
   }
 }

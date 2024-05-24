@@ -1,9 +1,46 @@
 {
-  "expression": ["!=", ["string", ["get", "x"]], ["get", "y"]],
+  "expression": [
+    "!=",
+    [
+      "string",
+      [
+        "get",
+        "x"
+      ]
+    ],
+    [
+      "get",
+      "y"
+    ]
+  ],
   "inputs": [
-    [{}, {"properties": {"x": "1", "y": "1"}}],
-    [{}, {"properties": {"x": "1", "y": 1}}],
-    [{}, {"properties": {"x": "1", "y": "2"}}]
+    [
+      {},
+      {
+        "properties": {
+          "x": "1",
+          "y": "1"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "1",
+          "y": 1
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "1",
+          "y": "2"
+        }
+      }
+    ]
   ],
   "expected": {
     "compiled": {
@@ -12,6 +49,10 @@
       "isZoomConstant": true,
       "type": "boolean"
     },
-    "outputs": [false, true, true]
+    "outputs": [
+      false,
+      true,
+      true
+    ]
   }
 }

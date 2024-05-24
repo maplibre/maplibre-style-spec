@@ -1,6 +1,15 @@
 {
-  "expression": ["literal", {}, []],
-  "inputs": [[{}, {}]],
+  "expression": [
+    "literal",
+    {},
+    []
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
   "expected": {
     "compiled": {
       "result": "error",

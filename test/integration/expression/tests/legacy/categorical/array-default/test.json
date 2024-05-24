@@ -2,21 +2,75 @@
   "expression": {
     "type": "categorical",
     "property": "p",
-    "stops": [[0, [0]], [1, [1]]],
-    "default": [-1]
+    "stops": [
+      [
+        0,
+        [
+          0
+        ]
+      ],
+      [
+        1,
+        [
+          1
+        ]
+      ]
+    ],
+    "default": [
+      -1
+    ]
   },
   "propertySpec": {
     "type": "array",
     "value": "number",
     "property-type": "data-driven",
-    "expression": {"interpolated": false, "parameters": ["zoom", "feature"]}
+    "expression": {
+      "interpolated": false,
+      "parameters": [
+        "zoom",
+        "feature"
+      ]
+    }
   },
   "inputs": [
-    [{}, {"properties": {}}],
-    [{}, {"properties": {"p": 0}}],
-    [{}, {"properties": {"p": 1}}],
-    [{}, {"properties": {"p": 2}}],
-    [{}, {"properties": {"p": "0"}}]
+    [
+      {},
+      {
+        "properties": {}
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": 0
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": 1
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": 2
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": "0"
+        }
+      }
+    ]
   ],
   "expected": {
     "compiled": {
@@ -25,6 +79,22 @@
       "isZoomConstant": true,
       "type": "array<number>"
     },
-    "outputs": [[-1], [0], [1], [-1], [-1]]
+    "outputs": [
+      [
+        -1
+      ],
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        -1
+      ],
+      [
+        -1
+      ]
+    ]
   }
 }

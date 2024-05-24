@@ -1,10 +1,42 @@
 {
-  "expression": ["get", "p"],
-  "propertySpec": {"type": "string"},
+  "expression": [
+    "get",
+    "p"
+  ],
+  "propertySpec": {
+    "type": "string",
+    "property-type": "data-driven",
+    "expression": {
+      "interpolated": true,
+      "parameters": [
+        "zoom",
+        "feature"
+      ]
+    }
+  },
   "inputs": [
-    [{}, {"properties": {}}],
-    [{}, {"properties": {"p": 0}}],
-    [{}, {"properties": {"p": "a"}}]
+    [
+      {},
+      {
+        "properties": {}
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": 0
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": "a"
+        }
+      }
+    ]
   ],
   "expected": {
     "compiled": {
@@ -13,6 +45,10 @@
       "isZoomConstant": true,
       "type": "string"
     },
-    "outputs": ["", "0", "a"]
+    "outputs": [
+      "",
+      "0",
+      "a"
+    ]
   }
 }

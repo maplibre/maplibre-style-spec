@@ -1,16 +1,58 @@
 {
-  "expression": {"type": "identity", "property": "p", "default": [-1]},
+  "expression": {
+    "type": "identity",
+    "property": "p",
+    "default": [
+      -1
+    ]
+  },
   "inputs": [
-    [{}, {"properties": {}}],
-    [{}, {"properties": {"p": [0]}}],
-    [{}, {"properties": {"p": [1]}}],
-    [{}, {"properties": {"p": "wrong type"}}]
+    [
+      {},
+      {
+        "properties": {}
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": [
+            0
+          ]
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": [
+            1
+          ]
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": "wrong type"
+        }
+      }
+    ]
   ],
   "propertySpec": {
     "type": "array",
     "value": "number",
     "property-type": "data-driven",
-    "expression": {"interpolated": false, "parameters": ["zoom", "feature"]}
+    "expression": {
+      "interpolated": false,
+      "parameters": [
+        "zoom",
+        "feature"
+      ]
+    }
   },
   "expected": {
     "compiled": {
@@ -19,6 +61,19 @@
       "isZoomConstant": true,
       "type": "array<number>"
     },
-    "outputs": [[-1], [0], [1], [-1]]
+    "outputs": [
+      [
+        -1
+      ],
+      [
+        0
+      ],
+      [
+        1
+      ],
+      [
+        -1
+      ]
+    ]
   }
 }

@@ -1,6 +1,22 @@
 {
-  "expression": ["-", ["get", "x"], 7],
-  "inputs": [[{}, {"properties": {"x": 0}}]],
+  "expression": [
+    "-",
+    [
+      "get",
+      "x"
+    ],
+    7
+  ],
+  "inputs": [
+    [
+      {},
+      {
+        "properties": {
+          "x": 0
+        }
+      }
+    ]
+  ],
   "expected": {
     "compiled": {
       "result": "success",
@@ -8,6 +24,8 @@
       "isZoomConstant": true,
       "type": "number"
     },
-    "outputs": [-7]
+    "outputs": [
+      -7
+    ]
   }
 }

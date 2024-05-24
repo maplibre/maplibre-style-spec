@@ -1,18 +1,58 @@
 {
   "expression": [
     "interpolate-lab",
-    ["linear"],
-    ["get", "x"],
+    [
+      "linear"
+    ],
+    [
+      "get",
+      "x"
+    ],
     1,
     "red",
     11,
-    ["get", "color"]
+    [
+      "get",
+      "color"
+    ]
   ],
   "inputs": [
-    [{}, {"properties": {"x": 0, "color": "blue"}}],
-    [{}, {"properties": {"x": 5, "color": "blue"}}],
-    [{}, {"properties": {"x": 11, "color": "blue"}}],
-    [{}, {"properties": {"x": 11, "color": "oops blue"}}]
+    [
+      {},
+      {
+        "properties": {
+          "x": 0,
+          "color": "blue"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 5,
+          "color": "blue"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 11,
+          "color": "blue"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 11,
+          "color": "oops blue"
+        }
+      }
+    ]
   ],
   "expected": {
     "compiled": {
@@ -22,10 +62,27 @@
       "type": "color"
     },
     "outputs": [
-      [1, 0, 0, 1],
-      [0.8140950912052022, 0, 0.4447724350959299, 1],
-      [0, 0, 1, 1],
-      {"error": "Could not parse color from value 'oops blue'"}
+      [
+        1,
+        0,
+        0,
+        1
+      ],
+      [
+        0.814095,
+        0,
+        0.444772,
+        1
+      ],
+      [
+        0,
+        0,
+        1,
+        1
+      ],
+      {
+        "error": "Could not parse color from value 'oops blue'"
+      }
     ]
   }
 }

@@ -1,15 +1,98 @@
 {
-  "expression": ["typeof", ["get", "x"]],
+  "expression": [
+    "typeof",
+    [
+      "get",
+      "x"
+    ]
+  ],
   "inputs": [
-    [{}, {"properties": {"x": null}}],
-    [{}, {"properties": {"x": "s"}}],
-    [{}, {"properties": {"x": 0}}],
-    [{}, {"properties": {"x": false}}],
-    [{}, {"properties": {"x": [1, 2, 3]}}],
-    [{}, {"properties": {"x": ["a", "b", "c"]}}],
-    [{}, {"properties": {"x": [true, false]}}],
-    [{}, {"properties": {"x": [1, false]}}],
-    [{}, {"properties": {"x": {}}}]
+    [
+      {},
+      {
+        "properties": {
+          "x": null
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "s"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 0
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": false
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": [
+            1,
+            2,
+            3
+          ]
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": [
+            "a",
+            "b",
+            "c"
+          ]
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": [
+            true,
+            false
+          ]
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": [
+            1,
+            false
+          ]
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": {}
+        }
+      }
+    ]
   ],
   "expected": {
     "compiled": {

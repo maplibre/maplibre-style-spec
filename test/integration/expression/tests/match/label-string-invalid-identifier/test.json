@@ -1,17 +1,63 @@
 {
   "expression": [
     "match",
-    ["string", ["get", "x"]],
-    ["0-1", "a.b", "{}", "weird\u2028json\u2029issue"],
+    [
+      "string",
+      [
+        "get",
+        "x"
+      ]
+    ],
+    [
+      "0-1",
+      "a.b",
+      "{}",
+      "weird json issue"
+    ],
     "match",
     "otherwise"
   ],
   "inputs": [
-    [{}, {"properties": {"x": "0-1"}}],
-    [{}, {"properties": {"x": "a.b"}}],
-    [{}, {"properties": {"x": "{}"}}],
-    [{}, {"properties": {"x": "weird\u2028json\u2029issue"}}],
-    [{}, {"properties": {"x": "1"}}]
+    [
+      {},
+      {
+        "properties": {
+          "x": "0-1"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "a.b"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "{}"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "weird json issue"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "1"
+        }
+      }
+    ]
   ],
   "expected": {
     "compiled": {
@@ -20,6 +66,12 @@
       "isZoomConstant": true,
       "type": "string"
     },
-    "outputs": ["match", "match", "match", "match", "otherwise"]
+    "outputs": [
+      "match",
+      "match",
+      "match",
+      "match",
+      "otherwise"
+    ]
   }
 }

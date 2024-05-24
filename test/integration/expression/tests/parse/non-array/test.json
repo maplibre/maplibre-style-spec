@@ -1,5 +1,13 @@
 {
-  "expression": ["+", ["-", 0, {}], 10],
+  "expression": [
+    "+",
+    [
+      "-",
+      0,
+      {}
+    ],
+    10
+  ],
   "expected": {
     "compiled": {
       "result": "error",

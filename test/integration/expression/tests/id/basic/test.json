@@ -1,6 +1,25 @@
 {
-  "expression": ["id"],
-  "inputs": [[{}, {}], [{}, {"id": 1}], [{}, {"id": "one"}]],
+  "expression": [
+    "id"
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ],
+    [
+      {},
+      {
+        "id": 1
+      }
+    ],
+    [
+      {},
+      {
+        "id": "one"
+      }
+    ]
+  ],
   "expected": {
     "compiled": {
       "result": "success",
@@ -8,6 +27,10 @@
       "isZoomConstant": true,
       "type": "value"
     },
-    "outputs": [null, 1, "one"]
+    "outputs": [
+      null,
+      1,
+      "one"
+    ]
   }
 }

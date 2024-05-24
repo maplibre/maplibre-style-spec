@@ -1,6 +1,17 @@
 {
-  "expression": ["literal", [1, "2"]],
-  "inputs": [[{}, {}]],
+  "expression": [
+    "literal",
+    [
+      1,
+      "2"
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
   "expected": {
     "compiled": {
       "result": "success",
@@ -8,6 +19,11 @@
       "isZoomConstant": true,
       "type": "array<value, 2>"
     },
-    "outputs": [[1, "2"]]
+    "outputs": [
+      [
+        1,
+        "2"
+      ]
+    ]
   }
 }

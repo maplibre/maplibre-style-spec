@@ -1,6 +1,20 @@
 {
-  "expression": ["to-string", ["rgba", 85, 255, 0, 0.5]],
-  "inputs": [[{}, {}]],
+  "expression": [
+    "to-string",
+    [
+      "rgba",
+      85,
+      255,
+      0,
+      0.5
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
   "expected": {
     "compiled": {
       "result": "success",
@@ -8,6 +22,8 @@
       "isZoomConstant": true,
       "type": "string"
     },
-    "outputs": ["rgba(85,255,0,0.5)"]
+    "outputs": [
+      "rgba(85,255,0,0.5)"
+    ]
   }
 }

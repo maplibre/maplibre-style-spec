@@ -1,8 +1,31 @@
 {
-  "expression": ["!", ["boolean", ["get", "x"]]],
+  "expression": [
+    "!",
+    [
+      "boolean",
+      [
+        "get",
+        "x"
+      ]
+    ]
+  ],
   "inputs": [
-    [{}, {"properties": {"x": true}}],
-    [{}, {"properties": {"x": false}}]
+    [
+      {},
+      {
+        "properties": {
+          "x": true
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": false
+        }
+      }
+    ]
   ],
   "expected": {
     "compiled": {
@@ -11,6 +34,9 @@
       "isZoomConstant": true,
       "type": "boolean"
     },
-    "outputs": [false, true]
+    "outputs": [
+      false,
+      true
+    ]
   }
 }

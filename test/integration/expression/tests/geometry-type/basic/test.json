@@ -1,7 +1,26 @@
 {
-  "expression": ["geometry-type"],
+  "expression": [
+    "geometry-type"
+  ],
   "inputs": [
-    [{}, {"geometry": {"type": "LineString", "coordinates": [[0, 0], [10, 0]]}}]
+    [
+      {},
+      {
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              0,
+              0
+            ],
+            [
+              10,
+              0
+            ]
+          ]
+        }
+      }
+    ]
   ],
   "expected": {
     "compiled": {
@@ -10,6 +29,8 @@
       "isZoomConstant": true,
       "type": "string"
     },
-    "outputs": ["LineString"]
+    "outputs": [
+      "LineString"
+    ]
   }
 }

@@ -3,13 +3,48 @@
     "type": "array",
     "value": "string",
     "property-type": "data-driven",
-    "expression": {"parameters": ["zoom", "feature"]}
+    "expression": {
+      "parameters": [
+        "zoom",
+        "feature"
+      ]
+    }
   },
-  "expression": ["get", "array"],
+  "expression": [
+    "get",
+    "array"
+  ],
   "inputs": [
-    [{}, {"properties": {"array": ["a", "b"]}}],
-    [{}, {"properties": {"array": [1, 2]}}],
-    [{}, {"properties": {"array": "not"}}]
+    [
+      {},
+      {
+        "properties": {
+          "array": [
+            "a",
+            "b"
+          ]
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "array": [
+            1,
+            2
+          ]
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "array": "not"
+        }
+      }
+    ]
   ],
   "expected": {
     "compiled": {
@@ -19,7 +54,10 @@
       "type": "array<string>"
     },
     "outputs": [
-      ["a", "b"],
+      [
+        "a",
+        "b"
+      ],
       {
         "error": "Expected value to be of type array<string>, but found array<number, 2> instead."
       },

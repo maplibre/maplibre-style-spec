@@ -1,6 +1,16 @@
 {
-  "expression": ["max", 0, -1, 100],
-  "inputs": [[{}, {}]],
+  "expression": [
+    "max",
+    0,
+    -1,
+    100
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
   "expected": {
     "compiled": {
       "result": "success",
@@ -8,6 +18,8 @@
       "isZoomConstant": true,
       "type": "number"
     },
-    "outputs": [100]
+    "outputs": [
+      100
+    ]
   }
 }

@@ -1,10 +1,52 @@
 {
-  "expression": ["<", ["get", "x"], ["get", "y"]],
+  "expression": [
+    "<",
+    [
+      "get",
+      "x"
+    ],
+    [
+      "get",
+      "y"
+    ]
+  ],
   "inputs": [
-    [{}, {"properties": {"x": "10", "y": "2"}}],
-    [{}, {"properties": {"x": 1, "y": 10}}],
-    [{}, {"properties": {"x": "1", "y": 1}}],
-    [{}, {"properties": {"x": 1, "y": "1"}}]
+    [
+      {},
+      {
+        "properties": {
+          "x": "10",
+          "y": "2"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 1,
+          "y": 10
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "1",
+          "y": 1
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 1,
+          "y": "1"
+        }
+      }
+    ]
   ],
   "expected": {
     "compiled": {

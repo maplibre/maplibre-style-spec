@@ -2,21 +2,83 @@
   "expression": {
     "type": "exponential",
     "property": "p",
-    "stops": [[0, 0], [1, 1]]
+    "stops": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ]
+    ]
   },
   "propertySpec": {
     "type": "number",
     "property-type": "data-driven",
-    "expression": {"interpolated": true, "parameters": ["zoom", "feature"]}
+    "expression": {
+      "interpolated": true,
+      "parameters": [
+        "zoom",
+        "feature"
+      ]
+    }
   },
   "inputs": [
-    [{}, {"properties": {}}],
-    [{}, {"properties": {"p": -1}}],
-    [{}, {"properties": {"p": 0}}],
-    [{}, {"properties": {"p": 0.5}}],
-    [{}, {"properties": {"p": 1}}],
-    [{}, {"properties": {"p": 2}}],
-    [{}, {"properties": {"p": "0"}}]
+    [
+      {},
+      {
+        "properties": {}
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": -1
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": 0
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": 0.5
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": 1
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": 2
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": "0"
+        }
+      }
+    ]
   ],
   "expected": {
     "compiled": {
@@ -26,7 +88,9 @@
       "type": "number"
     },
     "outputs": [
-      {"error": "Expected value to be of type number, but found null instead."},
+      {
+        "error": "Expected value to be of type number, but found null instead."
+      },
       0,
       0,
       0.5,

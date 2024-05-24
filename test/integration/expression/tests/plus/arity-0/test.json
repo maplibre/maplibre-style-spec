@@ -1,6 +1,13 @@
 {
-  "expression": ["+"],
-  "inputs": [[{}, {}]],
+  "expression": [
+    "+"
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
   "expected": {
     "compiled": {
       "result": "success",
@@ -8,6 +15,8 @@
       "isZoomConstant": true,
       "type": "number"
     },
-    "outputs": [0]
+    "outputs": [
+      0
+    ]
   }
 }

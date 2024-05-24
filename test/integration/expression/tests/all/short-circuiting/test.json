@@ -1,6 +1,18 @@
 {
-  "expression": ["all", false, ["error", "unreachable"]],
-  "inputs": [[{}, {}]],
+  "expression": [
+    "all",
+    false,
+    [
+      "error",
+      "unreachable"
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
   "expected": {
     "compiled": {
       "result": "success",
@@ -8,6 +20,8 @@
       "isZoomConstant": true,
       "type": "boolean"
     },
-    "outputs": [false]
+    "outputs": [
+      false
+    ]
   }
 }

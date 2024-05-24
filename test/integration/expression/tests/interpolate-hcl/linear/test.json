@@ -1,18 +1,58 @@
 {
   "expression": [
     "interpolate-hcl",
-    ["linear"],
-    ["get", "x"],
+    [
+      "linear"
+    ],
+    [
+      "get",
+      "x"
+    ],
     1,
     "red",
     11,
-    ["get", "color"]
+    [
+      "get",
+      "color"
+    ]
   ],
   "inputs": [
-    [{}, {"properties": {"x": 0, "color": "blue"}}],
-    [{}, {"properties": {"x": 5, "color": "blue"}}],
-    [{}, {"properties": {"x": 11, "color": "blue"}}],
-    [{}, {"properties": {"x": 11, "color": "oops blue"}}]
+    [
+      {},
+      {
+        "properties": {
+          "x": 0,
+          "color": "blue"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 5,
+          "color": "blue"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 11,
+          "color": "blue"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 11,
+          "color": "oops blue"
+        }
+      }
+    ]
   ],
   "expected": {
     "compiled": {
@@ -22,10 +62,27 @@
       "type": "color"
     },
     "outputs": [
-      [1, 0, 0, 1],
-      [1, 0, 0.4251124784649884, 1],
-      [0, 0, 1, 1],
-      {"error": "Could not parse color from value 'oops blue'"}
+      [
+        1,
+        0,
+        0,
+        1
+      ],
+      [
+        1,
+        0,
+        0.425112,
+        1
+      ],
+      [
+        0,
+        0,
+        1,
+        1
+      ],
+      {
+        "error": "Could not parse color from value 'oops blue'"
+      }
     ]
   }
 }

@@ -1,6 +1,14 @@
 {
-  "expression": ["literal", "hello"],
-  "inputs": [[{}, {}]],
+  "expression": [
+    "literal",
+    "hello"
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
   "expected": {
     "compiled": {
       "result": "success",
@@ -8,6 +16,8 @@
       "isZoomConstant": true,
       "type": "string"
     },
-    "outputs": ["hello"]
+    "outputs": [
+      "hello"
+    ]
   }
 }

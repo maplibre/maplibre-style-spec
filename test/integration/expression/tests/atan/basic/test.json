@@ -1,6 +1,14 @@
 {
-  "expression": ["atan", 1],
-  "inputs": [[{}, {}]],
+  "expression": [
+    "atan",
+    1
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
   "expected": {
     "compiled": {
       "result": "success",
@@ -8,6 +16,8 @@
       "isZoomConstant": true,
       "type": "number"
     },
-    "outputs": [0.785398]
+    "outputs": [
+      0.785398
+    ]
   }
 }
