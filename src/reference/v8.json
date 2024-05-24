@@ -1240,7 +1240,9 @@
       ],
       "sdk-support": {
         "basic functionality": {
-          "js": "2.1.0"
+          "js": "2.1.0",
+          "android": "https://github.com/maplibre/maplibre-native/issues/251",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/251"
         }
       },
       "expression": {
@@ -2425,7 +2427,9 @@
       ],
       "sdk-support": {
         "basic functionality": {
-          "js": "2.1.0"
+          "js": "2.1.0",
+          "android": "https://github.com/maplibre/maplibre-native/issues/251",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/251"
         }
       },
       "expression": {
