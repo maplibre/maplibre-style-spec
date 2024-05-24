@@ -3,16 +3,45 @@
     "type": "array",
     "value": "string",
     "property-type": "data-driven",
-    "expression": {"parameters": ["zoom", "feature"]}
+    "expression": {
+      "parameters": [
+        "zoom",
+        "feature"
+      ]
+    }
   },
   "expression": [
     "match",
-    ["number", ["get", "x"]],
+    [
+      "number",
+      [
+        "get",
+        "x"
+      ]
+    ],
     0,
-    ["literal", ["one"]],
+    [
+      "literal",
+      [
+        "one"
+      ]
+    ],
     10,
-    ["literal", ["one", "two"]],
-    ["literal", ["one", "two", "three"]]
+    [
+      "literal",
+      [
+        "one",
+        "two"
+      ]
+    ],
+    [
+      "literal",
+      [
+        "one",
+        "two",
+        "three"
+      ]
+    ]
   ],
   "inputs": [],
   "expected": {

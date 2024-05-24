@@ -1,8 +1,31 @@
 {
-  "expression": ["format", "a", {"font-scale": ["get", "font-scale"]}],
+  "expression": [
+    "format",
+    "a",
+    {
+      "font-scale": [
+        "get",
+        "font-scale"
+      ]
+    }
+  ],
   "inputs": [
-    [{}, {"properties": {"font-scale": 1.5}}],
-    [{}, {"properties": {"font-scale": 0.5}}]
+    [
+      {},
+      {
+        "properties": {
+          "font-scale": 1.5
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "font-scale": 0.5
+        }
+      }
+    ]
   ],
   "expected": {
     "compiled": {

@@ -1,6 +1,14 @@
 {
-  "expression": ["length", 0],
-  "inputs": [[{}, {}]],
+  "expression": [
+    "length",
+    0
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
   "expected": {
     "compiled": {
       "result": "error",

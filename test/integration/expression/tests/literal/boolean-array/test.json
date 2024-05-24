@@ -1,6 +1,17 @@
 {
-  "expression": ["literal", [true, false]],
-  "inputs": [[{}, {}]],
+  "expression": [
+    "literal",
+    [
+      true,
+      false
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
   "expected": {
     "compiled": {
       "result": "success",
@@ -8,6 +19,11 @@
       "isZoomConstant": true,
       "type": "array<boolean, 2>"
     },
-    "outputs": [[true, false]]
+    "outputs": [
+      [
+        true,
+        false
+      ]
+    ]
   }
 }

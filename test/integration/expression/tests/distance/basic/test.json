@@ -1,33 +1,52 @@
 {
-    "expression": [
-      "distance",
-      {
-        "type": "FeatureCollection",
-        "features": [
-            {
-                "type": "Feature",
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [3, 3]
-                }
-            }
-        ]
-      }
-    ],
-    "inputs": [
-      [
-        {"zoom": 20, "canonicalID": {"z": 20, "x": 3, "y": 3}},
-        {"geometry": {"type": "Point", "coordinates": [3, 3]}}
+  "expression": [
+    "distance",
+    {
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              3,
+              3
+            ]
+          }
+        }
       ]
-    ],
-    "expected": {
-      "compiled": {
-        "result": "success",
-        "isFeatureConstant": false,
-        "isZoomConstant": true,
-        "type": "number"
-      },
-      "outputs": [0.0017018857364025284]
     }
+  ],
+  "inputs": [
+    [
+      {
+        "zoom": 20,
+        "canonicalID": {
+          "z": 20,
+          "x": 3,
+          "y": 3
+        }
+      },
+      {
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            3,
+            3
+          ]
+        }
+      }
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": false,
+      "isZoomConstant": true,
+      "type": "number"
+    },
+    "outputs": [
+      0.00170188
+    ]
   }
-  
+}

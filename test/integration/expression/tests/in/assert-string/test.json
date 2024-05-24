@@ -1,13 +1,58 @@
 {
   "expression": [
     "boolean",
-    ["in", ["get", "substr"], ["string", ["get", "str"]]]
+    [
+      "in",
+      [
+        "get",
+        "substr"
+      ],
+      [
+        "string",
+        [
+          "get",
+          "str"
+        ]
+      ]
+    ]
   ],
   "inputs": [
-    [{}, {"properties": {"substr": null, "str": "helloworld"}}],
-    [{}, {"properties": {"substr": "foo", "str": "helloworld"}}],
-    [{}, {"properties": {"substr": "low", "str": "helloworld"}}],
-    [{}, {"properties": {"substr": "low", "str": null}}]
+    [
+      {},
+      {
+        "properties": {
+          "substr": null,
+          "str": "helloworld"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "substr": "foo",
+          "str": "helloworld"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "substr": "low",
+          "str": "helloworld"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "substr": "low",
+          "str": null
+        }
+      }
+    ]
   ],
   "expected": {
     "compiled": {
@@ -20,7 +65,9 @@
       false,
       false,
       true,
-      {"error": "Expected value to be of type string, but found null instead."}
+      {
+        "error": "Expected value to be of type string, but found null instead."
+      }
     ]
   }
 }

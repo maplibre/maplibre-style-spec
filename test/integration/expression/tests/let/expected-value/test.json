@@ -2,20 +2,55 @@
   "expression": [
     "let",
     "density",
-    ["/", ["get", "population"], ["get", "sq-km"]],
+    [
+      "/",
+      [
+        "get",
+        "population"
+      ],
+      [
+        "get",
+        "sq-km"
+      ]
+    ],
     [
       "interpolate",
-      ["linear"],
-      ["var", "density"],
+      [
+        "linear"
+      ],
+      [
+        "var",
+        "density"
+      ],
       1,
       "#000000",
       100,
       "#ffffff"
     ]
   ],
-  "propertySpec": {"type": "color"},
+  "propertySpec": {
+    "type": "color",
+    "property-type": "data-driven",
+    "expression": {
+      "interpolated": true,
+      "parameters": [
+        "zoom",
+        "feature"
+      ]
+    }
+  },
   "description": "let should preserve expected type for child expressions. If the expected 'color' type in this test were not preserved, it would not get passed into the interpolation and the literal strings wouldn't automatically coerce to the 'color' type",
-  "inputs": [[{}, {"properties": {"population": 100, "sq-km": 10}}]],
+  "inputs": [
+    [
+      {},
+      {
+        "properties": {
+          "population": 100,
+          "sq-km": 10
+        }
+      }
+    ]
+  ],
   "expected": {
     "compiled": {
       "result": "success",
@@ -23,6 +58,13 @@
       "isZoomConstant": true,
       "type": "color"
     },
-    "outputs": [[0.090909, 0.090909, 0.090909, 1]]
+    "outputs": [
+      [
+        0.090909,
+        0.090909,
+        0.090909,
+        1
+      ]
+    ]
   }
 }

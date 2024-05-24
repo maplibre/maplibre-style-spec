@@ -1,12 +1,64 @@
 {
-  "expression": ["match", ["string", ["get", "x"]], "0", "match", "otherwise"],
+  "expression": [
+    "match",
+    [
+      "string",
+      [
+        "get",
+        "x"
+      ]
+    ],
+    "0",
+    "match",
+    "otherwise"
+  ],
   "inputs": [
-    [{}, {"properties": {"x": "0"}}],
-    [{}, {"properties": {"x": "1"}}],
-    [{}, {"properties": {"x": 0}}],
-    [{}, {"properties": {"x": false}}],
-    [{}, {"properties": {"x": null}}],
-    [{}, {"properties": {}}]
+    [
+      {},
+      {
+        "properties": {
+          "x": "0"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "1"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 0
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": false
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": null
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {}
+      }
+    ]
   ],
   "expected": {
     "compiled": {
@@ -24,8 +76,12 @@
       {
         "error": "Expected value to be of type string, but found boolean instead."
       },
-      {"error": "Expected value to be of type string, but found null instead."},
-      {"error": "Expected value to be of type string, but found null instead."}
+      {
+        "error": "Expected value to be of type string, but found null instead."
+      },
+      {
+        "error": "Expected value to be of type string, but found null instead."
+      }
     ]
   }
 }

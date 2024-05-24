@@ -1,6 +1,14 @@
 {
-  "expression": ["acos", 0.5],
-  "inputs": [[{}, {}]],
+  "expression": [
+    "acos",
+    0.5
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
   "expected": {
     "compiled": {
       "result": "success",
@@ -8,6 +16,8 @@
       "isZoomConstant": true,
       "type": "number"
     },
-    "outputs": [1.04719]
+    "outputs": [
+      1.04719
+    ]
   }
 }

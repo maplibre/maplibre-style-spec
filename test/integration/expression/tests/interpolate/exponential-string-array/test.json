@@ -1,19 +1,41 @@
 {
   "expression": [
     "interpolate",
-    ["exponential", 2],
-    ["number", ["get", "x"]],
+    [
+      "exponential",
+      2
+    ],
+    [
+      "number",
+      [
+        "get",
+        "x"
+      ]
+    ],
     1,
-    ["literal", ["a"]],
+    [
+      "literal",
+      [
+        "a"
+      ]
+    ],
     3,
-    ["literal", ["b"]]
+    [
+      "literal",
+      [
+        "b"
+      ]
+    ]
   ],
   "inputs": [],
   "expected": {
     "compiled": {
       "result": "error",
       "errors": [
-        {"key": "", "error": "Type array<string, 1> is not interpolatable."}
+        {
+          "key": "",
+          "error": "Type array<string, 1> is not interpolatable."
+        }
       ]
     }
   }

@@ -1,5 +1,17 @@
 {
-  "expression": ["==", ["get", "x"], ["literal", [1]]],
+  "expression": [
+    "==",
+    [
+      "get",
+      "x"
+    ],
+    [
+      "literal",
+      [
+        1
+      ]
+    ]
+  ],
   "expected": {
     "compiled": {
       "result": "error",

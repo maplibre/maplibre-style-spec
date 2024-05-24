@@ -1,9 +1,36 @@
 {
-  "expression": ["length", ["get", "x"]],
+  "expression": [
+    "length",
+    [
+      "get",
+      "x"
+    ]
+  ],
   "inputs": [
-    [{}, {"properties": {"x": "a string"}}],
-    [{}, {"properties": {"x": []}}],
-    [{}, {"properties": {"x": 0}}]
+    [
+      {},
+      {
+        "properties": {
+          "x": "a string"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": []
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 0
+        }
+      }
+    ]
   ],
   "expected": {
     "compiled": {

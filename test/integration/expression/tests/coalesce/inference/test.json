@@ -1,11 +1,57 @@
 {
-  "propertySpec": {"type": "string"},
-  "expression": ["coalesce", ["get", "a"], ["get", "b"]],
+  "propertySpec": {
+    "type": "string",
+    "property-type": "data-driven",
+    "expression": {
+      "interpolated": true,
+      "parameters": [
+        "zoom",
+        "feature"
+      ]
+    }
+  },
+  "expression": [
+    "coalesce",
+    [
+      "get",
+      "a"
+    ],
+    [
+      "get",
+      "b"
+    ]
+  ],
   "inputs": [
-    [{}, {"properties": {"a": "one"}}],
-    [{}, {"properties": {"b": "two"}}],
-    [{}, {"properties": {"b": 5}}],
-    [{}, {"properties": {}}]
+    [
+      {},
+      {
+        "properties": {
+          "a": "one"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "b": "two"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "b": 5
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {}
+      }
+    ]
   ],
   "expected": {
     "compiled": {
@@ -14,6 +60,11 @@
       "isZoomConstant": true,
       "type": "string"
     },
-    "outputs": ["one", "two", "5", ""]
+    "outputs": [
+      "one",
+      "two",
+      "5",
+      ""
+    ]
   }
 }

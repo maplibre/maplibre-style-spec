@@ -1,11 +1,31 @@
 {
-  "propertySpec": {"type": "string"},
-  "expression": ["coalesce", ["get", "a"], 5],
+  "propertySpec": {
+    "type": "string",
+    "property-type": "data-driven",
+    "expression": {
+      "interpolated": true,
+      "parameters": [
+        "zoom",
+        "feature"
+      ]
+    }
+  },
+  "expression": [
+    "coalesce",
+    [
+      "get",
+      "a"
+    ],
+    5
+  ],
   "expected": {
     "compiled": {
       "result": "error",
       "errors": [
-        {"key": "[2]", "error": "Expected string but found number instead."}
+        {
+          "key": "[2]",
+          "error": "Expected string but found number instead."
+        }
       ]
     }
   }

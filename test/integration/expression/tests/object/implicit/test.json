@@ -1,8 +1,31 @@
 {
-  "expression": ["get", "b", ["get", "a"]],
+  "expression": [
+    "get",
+    "b",
+    [
+      "get",
+      "a"
+    ]
+  ],
   "inputs": [
-    [{}, {"properties": {"a": {"b": 0}}}],
-    [{}, {"properties": {"a": "not"}}]
+    [
+      {},
+      {
+        "properties": {
+          "a": {
+            "b": 0
+          }
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "a": "not"
+        }
+      }
+    ]
   ],
   "expected": {
     "compiled": {

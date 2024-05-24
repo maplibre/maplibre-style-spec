@@ -1,14 +1,57 @@
 {
   "expression": [
     "<",
-    ["string", ["get", "lhs"]],
-    ["get", "rhs"],
-    ["collator", {"case-sensitive": ["==", 1, 1], "locale": "en"}]
+    [
+      "string",
+      [
+        "get",
+        "lhs"
+      ]
+    ],
+    [
+      "get",
+      "rhs"
+    ],
+    [
+      "collator",
+      {
+        "case-sensitive": [
+          "==",
+          1,
+          1
+        ],
+        "locale": "en"
+      }
+    ]
   ],
   "inputs": [
-    [{}, {"properties": {"lhs": "a", "rhs": "ä"}}],
-    [{}, {"properties": {"lhs": "a", "rhs": "A"}}],
-    [{}, {"properties": {"lhs": "ä", "rhs": "b"}}]
+    [
+      {},
+      {
+        "properties": {
+          "lhs": "a",
+          "rhs": "ä"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "lhs": "a",
+          "rhs": "A"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "lhs": "ä",
+          "rhs": "b"
+        }
+      }
+    ]
   ],
   "expected": {
     "compiled": {
@@ -17,6 +60,10 @@
       "isZoomConstant": true,
       "type": "boolean"
     },
-    "outputs": [false, true, true]
+    "outputs": [
+      false,
+      true,
+      true
+    ]
   }
 }

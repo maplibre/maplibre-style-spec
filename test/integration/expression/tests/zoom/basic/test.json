@@ -1,6 +1,25 @@
 {
-  "expression": ["interpolate", ["linear"], ["zoom"], 0, 0, 30, 30],
-  "inputs": [[{"zoom": 5}, {}]],
+  "expression": [
+    "interpolate",
+    [
+      "linear"
+    ],
+    [
+      "zoom"
+    ],
+    0,
+    0,
+    30,
+    30
+  ],
+  "inputs": [
+    [
+      {
+        "zoom": 5
+      },
+      {}
+    ]
+  ],
   "expected": {
     "compiled": {
       "result": "success",
@@ -8,6 +27,8 @@
       "isZoomConstant": false,
       "type": "number"
     },
-    "outputs": [5]
+    "outputs": [
+      5
+    ]
   }
 }

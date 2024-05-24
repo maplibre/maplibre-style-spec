@@ -1,6 +1,11 @@
 {
   "expression": "ahoy!",
-  "inputs": [[{}, {}]],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
   "expected": {
     "compiled": {
       "result": "success",
@@ -8,6 +13,8 @@
       "isZoomConstant": true,
       "type": "string"
     },
-    "outputs": ["ahoy!"]
+    "outputs": [
+      "ahoy!"
+    ]
   }
 }

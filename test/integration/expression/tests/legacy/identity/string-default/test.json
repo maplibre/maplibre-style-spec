@@ -1,15 +1,51 @@
 {
-  "expression": {"type": "identity", "property": "p", "default": "default"},
+  "expression": {
+    "type": "identity",
+    "property": "p",
+    "default": "default"
+  },
   "inputs": [
-    [{}, {"properties": {}}],
-    [{}, {"properties": {"p": "0"}}],
-    [{}, {"properties": {"p": "1"}}],
-    [{}, {"properties": {"p": 0}}]
+    [
+      {},
+      {
+        "properties": {}
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": "0"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": "1"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": 0
+        }
+      }
+    ]
   ],
   "propertySpec": {
     "type": "string",
     "property-type": "data-driven",
-    "expression": {"interpolated": false, "parameters": ["zoom", "feature"]}
+    "expression": {
+      "interpolated": false,
+      "parameters": [
+        "zoom",
+        "feature"
+      ]
+    }
   },
   "expected": {
     "compiled": {
@@ -18,6 +54,11 @@
       "isZoomConstant": true,
       "type": "string"
     },
-    "outputs": ["default", "0", "1", "default"]
+    "outputs": [
+      "default",
+      "0",
+      "1",
+      "default"
+    ]
   }
 }

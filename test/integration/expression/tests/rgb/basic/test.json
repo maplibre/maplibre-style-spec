@@ -1,6 +1,16 @@
 {
-  "expression": ["rgb", 0, 0, 255],
-  "inputs": [[{}, {}]],
+  "expression": [
+    "rgb",
+    0,
+    0,
+    255
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
   "expected": {
     "compiled": {
       "result": "success",
@@ -8,6 +18,13 @@
       "isZoomConstant": true,
       "type": "color"
     },
-    "outputs": [[0, 0, 1, 1]]
+    "outputs": [
+      [
+        0,
+        0,
+        1,
+        1
+      ]
+    ]
   }
 }

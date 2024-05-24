@@ -1,13 +1,77 @@
 {
   "expression": [
     "number",
-    ["at", ["number", ["get", "i"]], ["array", ["get", "arr"]]]
+    [
+      "at",
+      [
+        "number",
+        [
+          "get",
+          "i"
+        ]
+      ],
+      [
+        "array",
+        [
+          "get",
+          "arr"
+        ]
+      ]
+    ]
   ],
   "inputs": [
-    [{}, {"properties": {"i": 1, "arr": [9, 8, 7]}}],
-    [{}, {"properties": {"i": -1, "arr": [9, 8, 7]}}],
-    [{}, {"properties": {"i": 4, "arr": [9, 8, 7]}}],
-    [{}, {"properties": {"i": 1.5, "arr": [9, 8, 7]}}]
+    [
+      {},
+      {
+        "properties": {
+          "i": 1,
+          "arr": [
+            9,
+            8,
+            7
+          ]
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "i": -1,
+          "arr": [
+            9,
+            8,
+            7
+          ]
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "i": 4,
+          "arr": [
+            9,
+            8,
+            7
+          ]
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "i": 1.5,
+          "arr": [
+            9,
+            8,
+            7
+          ]
+        }
+      }
+    ]
   ],
   "expected": {
     "compiled": {
@@ -18,9 +82,15 @@
     },
     "outputs": [
       8,
-      {"error": "Array index out of bounds: -1 < 0."},
-      {"error": "Array index out of bounds: 4 > 2."},
-      {"error": "Array index must be an integer, but found 1.5 instead."}
+      {
+        "error": "Array index out of bounds: -1 < 0."
+      },
+      {
+        "error": "Array index out of bounds: 4 > 2."
+      },
+      {
+        "error": "Array index must be an integer, but found 1.5 instead."
+      }
     ]
   }
 }

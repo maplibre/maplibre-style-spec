@@ -1,7 +1,13 @@
 {
   "expression": [
     "match",
-    ["string", ["get", "x"]],
+    [
+      "string",
+      [
+        "get",
+        "x"
+      ]
+    ],
     "0",
     "match",
     "0",
@@ -11,7 +17,12 @@
   "expected": {
     "compiled": {
       "result": "error",
-      "errors": [{"key": "[4]", "error": "Branch labels must be unique."}]
+      "errors": [
+        {
+          "key": "[4]",
+          "error": "Branch labels must be unique."
+        }
+      ]
     }
   }
 }

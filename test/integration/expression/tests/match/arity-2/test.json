@@ -1,11 +1,23 @@
 {
-  "expression": ["match", "x", "y"],
-  "inputs": [[{}, {}]],
+  "expression": [
+    "match",
+    "x",
+    "y"
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
   "expected": {
     "compiled": {
       "result": "error",
       "errors": [
-        {"key": "", "error": "Expected at least 4 arguments, but found only 2."}
+        {
+          "key": "",
+          "error": "Expected at least 4 arguments, but found only 2."
+        }
       ]
     }
   }

@@ -1,14 +1,72 @@
 {
-  "expression": ["boolean", ["get", "x"]],
+  "expression": [
+    "boolean",
+    [
+      "get",
+      "x"
+    ]
+  ],
   "inputs": [
-    [{}, {}],
-    [{}, {"properties": {"x": true}}],
-    [{}, {"properties": {"x": false}}],
-    [{}, {"properties": {"x": ""}}],
-    [{}, {"properties": {"x": "false"}}],
-    [{}, {"properties": {"x": 0}}],
-    [{}, {"properties": {"x": 1}}],
-    [{}, {"properties": {"x": null}}]
+    [
+      {},
+      {}
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": true
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": false
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": ""
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "false"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 0
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 1
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": null
+        }
+      }
+    ]
   ],
   "expected": {
     "compiled": {
@@ -35,7 +93,9 @@
       {
         "error": "Expected value to be of type boolean, but found number instead."
       },
-      {"error": "Expected value to be of type boolean, but found null instead."}
+      {
+        "error": "Expected value to be of type boolean, but found null instead."
+      }
     ]
   }
 }

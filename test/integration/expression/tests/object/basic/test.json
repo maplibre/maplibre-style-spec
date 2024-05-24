@@ -1,11 +1,54 @@
 {
-  "expression": ["object", ["get", "x"]],
+  "expression": [
+    "object",
+    [
+      "get",
+      "x"
+    ]
+  ],
   "inputs": [
-    [{}, {"properties": {"x": {"inner": "object"}}}],
-    [{}, {"properties": {"x": 1}}],
-    [{}, {"properties": {"x": "1"}}],
-    [{}, {"properties": {"x": false}}],
-    [{}, {"properties": {"x": null}}]
+    [
+      {},
+      {
+        "properties": {
+          "x": {
+            "inner": "object"
+          }
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 1
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "1"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": false
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": null
+        }
+      }
+    ]
   ],
   "expected": {
     "compiled": {
@@ -15,7 +58,9 @@
       "type": "object"
     },
     "outputs": [
-      {"inner": "object"},
+      {
+        "inner": "object"
+      },
       {
         "error": "Expected value to be of type object, but found number instead."
       },
@@ -25,7 +70,9 @@
       {
         "error": "Expected value to be of type object, but found boolean instead."
       },
-      {"error": "Expected value to be of type object, but found null instead."}
+      {
+        "error": "Expected value to be of type object, but found null instead."
+      }
     ]
   }
 }

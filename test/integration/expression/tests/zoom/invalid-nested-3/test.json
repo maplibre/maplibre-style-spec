@@ -2,10 +2,39 @@
   "expression": [
     "let",
     "x",
-    ["interpolate", ["linear"], ["zoom"], 0, 0, 1, 1],
-    ["interpolate", ["linear"], ["zoom"], 0, 0, 1, 1]
+    [
+      "interpolate",
+      [
+        "linear"
+      ],
+      [
+        "zoom"
+      ],
+      0,
+      0,
+      1,
+      1
+    ],
+    [
+      "interpolate",
+      [
+        "linear"
+      ],
+      [
+        "zoom"
+      ],
+      0,
+      0,
+      1,
+      1
+    ]
   ],
-  "inputs": [[{}, {}]],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
   "expected": {
     "compiled": {
       "result": "error",

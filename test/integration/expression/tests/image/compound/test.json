@@ -1,9 +1,23 @@
 {
-  "expression": ["image", ["get", "icon"]],
+  "expression": [
+    "image",
+    [
+      "get",
+      "icon"
+    ]
+  ],
   "inputs": [
     [
-      {"availableImages": ["monument-15"]},
-      {"properties": {"icon": "monument-15"}}
+      {
+        "availableImages": [
+          "monument-15"
+        ]
+      },
+      {
+        "properties": {
+          "icon": "monument-15"
+        }
+      }
     ]
   ],
   "expected": {
@@ -13,6 +27,11 @@
       "isZoomConstant": true,
       "type": "resolvedImage"
     },
-    "outputs": [{"name": "monument-15", "available": true}]
+    "outputs": [
+      {
+        "name": "monument-15",
+        "available": true
+      }
+    ]
   }
 }

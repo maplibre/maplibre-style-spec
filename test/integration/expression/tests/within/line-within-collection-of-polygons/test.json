@@ -1,56 +1,212 @@
 {
-    "expression": [
-      "within",
+  "expression": [
+    "within",
+    {
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  10,
+                  0
+                ],
+                [
+                  10,
+                  5
+                ],
+                [
+                  15,
+                  5
+                ],
+                [
+                  15,
+                  0
+                ],
+                [
+                  10,
+                  0
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  5
+                ],
+                [
+                  5,
+                  5
+                ],
+                [
+                  5,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ]
+              ]
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "inputs": [
+    [
       {
-        "type": "FeatureCollection",
-        "features": [
-            {
-                "type": "Feature",
-                "geometry": {
-                    "type": "Polygon",
-                    "coordinates": [[[10, 0], [10, 5], [15, 5], [15, 0], [10, 0]]]
-                }
-            },
-            {
-                "type": "Feature",
-                "geometry": {
-                    "type": "Polygon",
-                    "coordinates": [[[0, 0], [0, 5], [5, 5], [5, 0], [0, 0]]]
-                }
-            }
-        ]
+        "zoom": 3,
+        "canonicalID": {
+          "z": 3,
+          "x": 3,
+          "y": 3
+        }
+      },
+      {
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              1,
+              1
+            ],
+            [
+              4,
+              4
+            ]
+          ]
+        }
       }
     ],
-    "inputs": [
-      [
-        {"zoom": 3, "canonicalID": {"z": 3, "x": 3, "y": 3}},
-        {"geometry": {"type": "LineString", "coordinates": [[1, 1], [4, 4]]}}
-      ],
-      [
-        {"zoom": 3, "canonicalID": {"z": 3, "x": 3, "y": 3}},
-        {"geometry": {"type": "LineString", "coordinates": [[3, 3], [6, 6]]}}
-      ],
-      [
-        {"zoom": 3, "canonicalID": {"z": 3, "x": 3, "y": 3}},
-        {"geometry": {"type": "LineString", "coordinates": [[11, 1], [14, 4]]}}
-      ],
-      [
-        {"zoom": 3, "canonicalID": {"z": 3, "x": 3, "y": 3}},
-        {"geometry": {"type": "LineString", "coordinates": [[11, 1], [16, 4]]}}
-      ],
-      [
-        {"zoom": 3, "canonicalID": {"z": 3, "x": 3, "y": 3}},
-        {"geometry": {"type": "LineString", "coordinates": [[3, 3], [13, 3]]}}
-      ]
-    ],
-    "expected": {
-      "compiled": {
-        "result": "success",
-        "isFeatureConstant": false,
-        "isZoomConstant": true,
-        "type": "boolean"
+    [
+      {
+        "zoom": 3,
+        "canonicalID": {
+          "z": 3,
+          "x": 3,
+          "y": 3
+        }
       },
-      "outputs": [true, false, true, false, false]
-    }
+      {
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              3,
+              3
+            ],
+            [
+              6,
+              6
+            ]
+          ]
+        }
+      }
+    ],
+    [
+      {
+        "zoom": 3,
+        "canonicalID": {
+          "z": 3,
+          "x": 3,
+          "y": 3
+        }
+      },
+      {
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              11,
+              1
+            ],
+            [
+              14,
+              4
+            ]
+          ]
+        }
+      }
+    ],
+    [
+      {
+        "zoom": 3,
+        "canonicalID": {
+          "z": 3,
+          "x": 3,
+          "y": 3
+        }
+      },
+      {
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              11,
+              1
+            ],
+            [
+              16,
+              4
+            ]
+          ]
+        }
+      }
+    ],
+    [
+      {
+        "zoom": 3,
+        "canonicalID": {
+          "z": 3,
+          "x": 3,
+          "y": 3
+        }
+      },
+      {
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              3,
+              3
+            ],
+            [
+              13,
+              3
+            ]
+          ]
+        }
+      }
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": false,
+      "isZoomConstant": true,
+      "type": "boolean"
+    },
+    "outputs": [
+      true,
+      false,
+      true,
+      false,
+      false
+    ]
   }
-  
+}

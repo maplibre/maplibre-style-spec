@@ -3,8 +3,21 @@
     "number",
     [
       "interpolate",
-      ["cubic-bezier", 0, 0, 1, 1, 1],
-      ["number", ["get", "x"]],
+      [
+        "cubic-bezier",
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      [
+        "number",
+        [
+          "get",
+          "x"
+        ]
+      ],
       0,
       0,
       100,
