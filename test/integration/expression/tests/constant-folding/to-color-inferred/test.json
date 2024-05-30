@@ -1,0 +1,36 @@
+{
+  "propertySpec": {
+    "type": "color",
+    "property-type": "data-driven",
+    "expression": {
+      "interpolated": true,
+      "parameters": [
+        "zoom",
+        "feature"
+      ]
+    }
+  },
+  "expression": "red",
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": true,
+      "isZoomConstant": true,
+      "type": "color"
+    },
+    "outputs": [
+      [
+        1,
+        0,
+        0,
+        1
+      ]
+    ]
+  }
+}

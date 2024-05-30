@@ -1,0 +1,31 @@
+{
+  "expression": [
+    "number",
+    [
+      "get",
+      "icon"
+    ]
+  ],
+  "propertySpec": {
+    "type": "resolvedImage",
+    "property-type": "data-driven",
+    "expression": {
+      "interpolated": true,
+      "parameters": [
+        "zoom",
+        "feature"
+      ]
+    }
+  },
+  "expected": {
+    "compiled": {
+      "result": "error",
+      "errors": [
+        {
+          "key": "",
+          "error": "Expected resolvedImage but found number instead."
+        }
+      ]
+    }
+  }
+}

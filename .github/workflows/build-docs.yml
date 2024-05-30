@@ -1,6 +1,9 @@
-name: Docs - Build and Deploy
+name: Docs - Build (& Deploy)
 
 on:
+  push:
+    branches:
+    - main
   pull_request:
     branches:
     - main
@@ -10,9 +13,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - uses: actions/setup-node@v3
+    - uses: actions/setup-node@v4
       with:
-        node-version: 18
+        node-version-file: '.nvmrc'
 
     - name: Install NPM packages
       run: npm ci
@@ -23,7 +26,12 @@ jobs:
         npm run generate-typings
 
     - name: Build docs
-      run: |
-        cd ./docs
-        npm ci
-        npm run build
+      run: npm run mkdocs-build
+      
+
+    - name: Deploy
+      if: github.ref == 'refs/heads/main'
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        branch: gh-pages
+        folder: site

@@ -17,9 +17,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
-          node-version: lts/*
+          node-version-file: '.nvmrc'
       - run: npm ci
       - run: npm run lint
         if: success() || failure()
@@ -30,17 +30,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
-          node-version: lts/*
+          node-version-file: '.nvmrc'
       - run: npm ci
       - run: npm run jest-ci -- --coverage --coverageDirectory=coverage-unit --coverageReporters json --selectProjects unit
       - run: npm run jest-ci -- --coverage --coverageDirectory=coverage-integration --coverageReporters json --selectProjects integration
       - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4
         with:
           files: ${{ github.workspace }}/coverage-unit/coverage-final.json, ${{ github.workspace }}/coverage-integration/coverage-final.json
           verbose: true
+          token: ${{ secrets.CODECOV_TOKEN }}
   packaging-tests:
     name: Packaging and Build tests
     strategy:
@@ -49,9 +50,9 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
-          node-version: lts/*
+          node-version-file: '.nvmrc'
       - run: npm ci
       - run: npm run generate-style-spec
       - run: npm run generate-typings

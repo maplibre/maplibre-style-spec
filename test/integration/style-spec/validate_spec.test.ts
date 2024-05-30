@@ -1,4 +1,4 @@
-import glob from 'glob';
+import {globSync} from 'glob';
 import fs from 'fs';
 import path from 'path';
 import validate from '../../../src/validate_style';
@@ -7,7 +7,7 @@ import reference from '../../../src/reference/latest';
 const UPDATE = !!process.env.UPDATE;
 
 describe('validate_spec', () => {
-    glob.sync('test/integration/style-spec/tests/*.input.json').forEach((file) => {
+    globSync('test/integration/style-spec/tests/*.input.json').forEach((file) => {
         test(path.basename(file), () => {
             const outputfile = file.replace('.input', '.output');
             const style = fs.readFileSync(file);
@@ -19,8 +19,7 @@ describe('validate_spec', () => {
     });
 
     test('errors from validate do not contain line numbers', () => {
-        const fixtures = glob.sync('test/integration/style-spec/tests/*.input.json');
-        const style = JSON.parse(fs.readFileSync(fixtures[0]).toString());
+        const style = JSON.parse(fs.readFileSync('test/integration/style-spec/tests/bad-color.input.json', 'utf8'));
 
         const result = validate(style, reference);
         expect(result[0].line).toBeUndefined();

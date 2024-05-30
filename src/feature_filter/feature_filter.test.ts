@@ -1,11 +1,10 @@
 import {default as createFilter, isExpressionFilter} from '.';
 
 import convertFilter from './convert';
-import MercatorCoordinate from '../coordinates/mercator_coordinate';
-import EXTENT from '../extent';
 import {ICanonicalTileID} from '../tiles_and_coordinates';
 import {ExpressionFilterSpecification, ExpressionInputType, ExpressionSpecification, FilterSpecification} from '../types.g';
 import {Feature} from '../expression';
+import {getGeometry} from '../../test/lib/geometry';
 
 describe('filter', () => {
     test('expressions transpilation test', () => {
@@ -154,35 +153,22 @@ describe('filter', () => {
     });
 
     test('expression, within', () => {
-        const getPointFromLngLat = (lng, lat, canonical) => {
-            const p = MercatorCoordinate.fromLngLat({lng, lat}, 0);
-            const tilesAtZoom = Math.pow(2, canonical.z);
-            return {
-                x: (p.x * tilesAtZoom - canonical.x) * EXTENT,
-                y: (p.y * tilesAtZoom - canonical.y) * EXTENT,
-            };
-        };
-        const withinFilter =  createFilter(['within', {'type': 'Polygon', 'coordinates': [[[0, 0], [5, 0], [5, 5], [0, 5], [0, 0]]]}]);
+        const withinFilter = createFilter(['within', {'type': 'Polygon', 'coordinates': [[[0, 0], [5, 0], [5, 5], [0, 5], [0, 0]]]}]);
         expect(withinFilter.needGeometry).toBe(true);
         const canonical = {z: 3, x: 3, y: 3} as ICanonicalTileID;
-        expect(
-            withinFilter.filter({zoom: 3}, {type: 1, geometry: [[getPointFromLngLat(2, 2, canonical)]]} as Feature, canonical)
-        ).toBe(true);
-        expect(
-            withinFilter.filter({zoom: 3}, {type: 1, geometry: [[getPointFromLngLat(6, 6, canonical)]]} as Feature, canonical)
-        ).toBe(false);
-        expect(
-            withinFilter.filter({zoom: 3}, {type: 1, geometry: [[getPointFromLngLat(5, 5, canonical)]]} as Feature, canonical)
-        ).toBe(false);
-        expect(
-            withinFilter.filter({zoom: 3}, {type: 2, geometry: [[getPointFromLngLat(2, 2, canonical), getPointFromLngLat(3, 3, canonical)]]} as Feature, canonical)
-        ).toBe(true);
-        expect(
-            withinFilter.filter({zoom: 3}, {type: 2, geometry: [[getPointFromLngLat(6, 6, canonical), getPointFromLngLat(2, 2, canonical)]]} as Feature, canonical)
-        ).toBe(false);
-        expect(
-            withinFilter.filter({zoom: 3}, {type: 2, geometry: [[getPointFromLngLat(5, 5, canonical), getPointFromLngLat(2, 2, canonical)]]} as Feature, canonical)
-        ).toBe(false);
+        const featureInTile = {} as Feature;
+        getGeometry(featureInTile, {type: 'Point', coordinates: [2, 2]}, canonical);
+        expect(withinFilter.filter({zoom: 3}, featureInTile, canonical)).toBe(true);
+        getGeometry(featureInTile, {type: 'Point', coordinates: [6, 6]}, canonical);
+        expect(withinFilter.filter({zoom: 3}, featureInTile, canonical)).toBe(false);
+        getGeometry(featureInTile, {type: 'Point', coordinates: [5, 5]}, canonical);
+        expect(withinFilter.filter({zoom: 3}, featureInTile, canonical)).toBe(false);
+        getGeometry(featureInTile, {type: 'LineString', coordinates: [[2, 2], [3, 3]]}, canonical);
+        expect(withinFilter.filter({zoom: 3}, featureInTile, canonical)).toBe(true);
+        getGeometry(featureInTile, {type: 'LineString', coordinates: [[6, 6], [2, 2]]}, canonical);
+        expect(withinFilter.filter({zoom: 3}, featureInTile, canonical)).toBe(false);
+        getGeometry(featureInTile, {type: 'LineString', coordinates: [[5, 5], [2, 2]]}, canonical);
+        expect(withinFilter.filter({zoom: 3}, featureInTile, canonical)).toBe(false);
     });
 
     legacyFilterTests(createFilter);

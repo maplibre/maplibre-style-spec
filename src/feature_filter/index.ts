@@ -1,7 +1,7 @@
 import {createExpression} from '../expression';
 import type {GlobalProperties, Feature} from '../expression';
 import {ICanonicalTileID} from '../tiles_and_coordinates';
-import {StylePropertySpecification} from '../style-spec';
+import {StylePropertySpecification} from '..';
 import {ExpressionFilterSpecification} from '../types.g';
 
 type FilterExpression = (
@@ -106,7 +106,7 @@ function compare(a, b) {
 
 function geometryNeeded(filter) {
     if (!Array.isArray(filter)) return false;
-    if (filter[0] === 'within') return true;
+    if (filter[0] === 'within' || filter[0] === 'distance') return true;
     for (let index = 1; index < filter.length; index++) {
         if (geometryNeeded(filter[index])) return true;
     }
@@ -131,8 +131,7 @@ function convertFilter(filter?: Array<any> | null): unknown {
                                     op === '!in' ? convertNegation(convertInOp(filter[1], filter.slice(2))) :
                                         op === 'has' ? convertHasOp(filter[1]) :
                                             op === '!has' ? convertNegation(convertHasOp(filter[1])) :
-                                                op === 'within' ? filter :
-                                                    true;
+                                                true;
     return converted;
 }
 

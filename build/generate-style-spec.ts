@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as properties from '../src/util/properties';
 
-import spec from '../src/reference/v8.json' assert {type: 'json'};
+import spec from '../src/reference/v8.json' with {type: 'json'};
 
 function unionType(values) {
     if (Array.isArray(values)) {
@@ -34,6 +34,8 @@ function propertyType(property) {
             }
             case 'light':
                 return 'LightSpecification';
+            case 'sky':
+                return 'SkySpecification';
             case 'sources':
                 return '{[_: string]: SourceSpecification}';
             case '*':
@@ -197,6 +199,7 @@ export type ExpressionSpecification =
         ...(ExpressionInputType | ExpressionInputType[] | ExpressionSpecification)[], // repeated as above
         ExpressionInputType | ExpressionSpecification]
     | ['within', unknown | ExpressionSpecification]
+    | ['distance', unknown | ExpressionSpecification]
     // Ramps, scales, curves
     | ['interpolate', InterpolationSpecification, number | ExpressionSpecification,
         ...(number | number[] | ColorSpecification | ExpressionSpecification)[]] // alternating number and number | number[] | ColorSpecification
@@ -312,9 +315,18 @@ ${objectDeclaration('StyleSpecification', spec.$root)}
 
 ${objectDeclaration('LightSpecification', spec.light)}
 
+${objectDeclaration('SkySpecification', spec.sky)}
+
 ${objectDeclaration('TerrainSpecification', spec.terrain)}
 
-${spec.source.map(key => objectDeclaration(sourceTypeName(key), spec[key])).join('\n\n')}
+${spec.source.map(key => {
+        let str = objectDeclaration(sourceTypeName(key), spec[key]);
+        if (sourceTypeName(key) === 'GeoJSONSourceSpecification') {
+        // This is done in order to overcome the type system's inability to express this type:
+            str = str.replace(/unknown/, 'GeoJSON.GeoJSON | string');
+        }
+        return str;
+    }).join('\n\n')}
 
 export type SourceSpecification =
 ${spec.source.map(key => `    | ${sourceTypeName(key)}`).join('\n')}

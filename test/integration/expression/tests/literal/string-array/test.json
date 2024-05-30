@@ -1,0 +1,29 @@
+{
+  "expression": [
+    "literal",
+    [
+      "1",
+      "2"
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": true,
+      "isZoomConstant": true,
+      "type": "array<string, 2>"
+    },
+    "outputs": [
+      [
+        "1",
+        "2"
+      ]
+    ]
+  }
+}

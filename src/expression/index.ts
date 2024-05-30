@@ -23,7 +23,7 @@ import {supportsPropertyExpression, supportsZoomExpression, supportsInterpolatio
 import type {Type, EvaluationKind} from './types';
 import type {Value} from './values';
 import type {Expression} from './expression';
-import type {StylePropertySpecification} from '../style-spec';
+import type {StylePropertySpecification} from '..';
 import type {Result} from '../util/result';
 import type {InterpolationType} from './definitions/interpolate';
 import type {PropertyValueSpecification, VariableAnchorOffsetCollectionSpecification} from '../types.g';
@@ -31,7 +31,7 @@ import type {FormattedSection} from './types/formatted';
 import type {Point2D} from '../point2d';
 
 export type Feature = {
-    readonly type: 1 | 2 | 3 | 'Unknown' | 'Point' | 'MultiPoint' | 'LineString' | 'MultiLineString' | 'Polygon' | 'MultiPolygon';
+    readonly type: 0 | 1 | 2 | 3 | 'Unknown' | 'Point' | 'MultiPoint' | 'LineString' | 'MultiLineString' | 'Polygon' | 'MultiPolygon';
     readonly id?: any;
     readonly properties: {[_: string]: any};
     readonly patterns?: {

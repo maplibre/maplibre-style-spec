@@ -1,0 +1,54 @@
+{
+  "expression": [
+    "get",
+    "p"
+  ],
+  "propertySpec": {
+    "type": "string",
+    "property-type": "data-driven",
+    "expression": {
+      "interpolated": true,
+      "parameters": [
+        "zoom",
+        "feature"
+      ]
+    }
+  },
+  "inputs": [
+    [
+      {},
+      {
+        "properties": {}
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": 0
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": "a"
+        }
+      }
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": false,
+      "isZoomConstant": true,
+      "type": "string"
+    },
+    "outputs": [
+      "",
+      "0",
+      "a"
+    ]
+  }
+}

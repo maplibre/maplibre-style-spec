@@ -1,10 +1,61 @@
 ## main
 
+### ✨ Features and improvements
+- _...Add new stuff here..._
+
+### 🐞 Bug fixes
+- Change `assert` to `with` in JSON modules. Requires Node.js 18.20.0 or later, and supports Node.js 22.0.0 or later - [#675](https://github.com/maplibre/maplibre-style-spec/pull/675)
+
+## 20.2.0
+
+### ✨ Features and improvements
+
+- Support `distance` expression in web style spec - [#642](https://github.com/maplibre/maplibre-style-spec/pull/642)
+
+## 20.1.1
+
+### 🐞 Bug fixes
+
+- Add missing sky in diff results [#518](https://github.com/maplibre/maplibre-style-spec/pull/518)
+
+## 20.1.0
+
+### ✨ Features and improvements
+
+- Add `latest.json` to dist folder to allow using the full version of the spec [#490](https://github.com/maplibre/maplibre-style-spec/pull/490)
+
+## 20.0.0
+
+### ✨ Features and improvements
+
+* Add back `migrate`, `validate` and `format` to the exported methods of this package [#464](https://github.com/maplibre/maplibre-style-spec/pull/464)
+* Add terrain to diff method and improve type. This also removes the `operations` from the API [#460](https://github.com/maplibre/maplibre-style-spec/pull/460)
+* Improve the type of `data` in the `GeoJSONSourceSpecification` for TypeScript [#463](https://github.com/maplibre/maplibre-style-spec/pull/463).
+* Add expression tests to this repo [#476](https://github.com/maplibre/maplibre-style-spec/pull/476)
+* Add Sky spec, this is only the definition, no implementation at this point, only validation [#478](https://github.com/maplibre/maplibre-style-spec/pull/478)
+
+### 🐞 Bug fixes
+
+- Fix queryRenderedFeatures Within a FeatureCollection of polygons [#477](https://github.com/maplibre/maplibre-style-spec/pull/477)
+
+## 19.3.3
+
+### ✨ Features and improvements
+
+* Improve types for feature to include `unknown` [#365](https://github.com/maplibre/maplibre-style-spec/pull/365)
+* Improve sprite documentation and supported versions [#390](https://github.com/maplibre/maplibre-style-spec/pull/390)
+
+
 ## 19.3.2
+
+### ✨ Features and improvements
+
 * Add raster dem source `redFactor`, `greenFactor`, `blueFactor`, `baseShift` properties [#326](https://github.com/maplibre/maplibre-style-spec/issues/326)
 * Improve error messages around `hillshade` layers not using `raster-dem` sources [#353](https://github.com/maplibre/maplibre-style-spec/pull/353)
 
 ## 19.3.1
+
+### ✨ Features and improvements
 
 * Document `raster-fade-duration` property's effect on rendering a video. [#297](https://github.com/maplibre/maplibre-style-spec/pull/297)
 * Add and expose `isZoomExpression`. [#267](https://github.com/maplibre/maplibre-style-spec/issues/267)
