@@ -560,7 +560,7 @@ describe('diff', () => {
                 'fog-ground-blend': 0.2
             }
         } as StyleSpecification)).toEqual([
-            {command: 'setSky', args: [{'fog-color': 'green', 'fog-blend': 0.2}]},
+            {command: 'setSky', args: [{'fog-color': 'green', 'fog-ground-blend': 0.2}]},
         ]);
     });
 });
