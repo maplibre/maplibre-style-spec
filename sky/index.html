@@ -488,6 +488,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#horizon-color" class="md-nav__link">
+    <span class="md-ellipsis">
+      horizon-color
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#fog-color" class="md-nav__link">
     <span class="md-ellipsis">
       fog-color
@@ -497,18 +506,36 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#fog-blend" class="md-nav__link">
+  <a href="#fog-ground-blend" class="md-nav__link">
     <span class="md-ellipsis">
-      fog-blend
+      fog-ground-blend
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#horizon-blend" class="md-nav__link">
+  <a href="#horizon-fog-blend" class="md-nav__link">
     <span class="md-ellipsis">
-      horizon-blend
+      horizon-fog-blend
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sky-horizon-blend" class="md-nav__link">
+    <span class="md-ellipsis">
+      sky-horizon-blend
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atmosphere-blend" class="md-nav__link">
+    <span class="md-ellipsis">
+      atmosphere-blend
     </span>
   </a>
   
@@ -658,6 +685,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#horizon-color" class="md-nav__link">
+    <span class="md-ellipsis">
+      horizon-color
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#fog-color" class="md-nav__link">
     <span class="md-ellipsis">
       fog-color
@@ -667,18 +703,36 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#fog-blend" class="md-nav__link">
+  <a href="#fog-ground-blend" class="md-nav__link">
     <span class="md-ellipsis">
-      fog-blend
+      fog-ground-blend
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#horizon-blend" class="md-nav__link">
+  <a href="#horizon-fog-blend" class="md-nav__link">
     <span class="md-ellipsis">
-      horizon-blend
+      horizon-fog-blend
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sky-horizon-blend" class="md-nav__link">
+    <span class="md-ellipsis">
+      sky-horizon-blend
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atmosphere-blend" class="md-nav__link">
+    <span class="md-ellipsis">
+      atmosphere-blend
     </span>
   </a>
   
@@ -703,26 +757,48 @@
 
 
 <h1 id="sky">Sky<a class="headerlink" href="#sky" title="Permanent link">&para;</a></h1>
-<p>The map's sky configuration.</p>
+<p>The map's sky configuration. <strong>Note:</strong> this definition is still experimental and is under develoment in maplibre-gl-js.</p>
 <div class="language-json highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="err">sky</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="nt">&quot;sky-color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#199EF3&quot;</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nt">&quot;fog-color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#00ff00&quot;</span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nt">&quot;horizon-blend&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="nt">&quot;fog-blend&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.6</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">}</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nt">&quot;sky-horizon-blend&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nt">&quot;horizon-color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#ffffff&quot;</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="nt">&quot;horizon-fog-blend&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="nt">&quot;fog-color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#0000ff&quot;</span><span class="p">,</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="nt">&quot;fog-ground-blend&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="nt">&quot;atmosphere-blend&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">        </span><span class="s2">&quot;interpolate&quot;</span><span class="p">,</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">        </span><span class="p">[</span><span class="s2">&quot;linear&quot;</span><span class="p">],</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">        </span><span class="p">[</span><span class="s2">&quot;zoom&quot;</span><span class="p">],</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">        </span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">        </span><span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">        </span><span class="mi">10</span><span class="p">,</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">        </span><span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">        </span><span class="mi">12</span><span class="p">,</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">        </span><span class="mi">0</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="p">]</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="p">}</span>
 </span></code></pre></div>
 <h2 id="sky-color">sky-color<a class="headerlink" href="#sky-color" title="Permanent link">&para;</a></h2>
 <p><em>Optional <a href="../types/#color">color</a>. Defaults to <code>#88C6FC</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
 <p>The base color for the sky.</p>
+<h2 id="horizon-color">horizon-color<a class="headerlink" href="#horizon-color" title="Permanent link">&para;</a></h2>
+<p><em>Optional <a href="../types/#color">color</a>. Defaults to <code>#ffffff</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
+<p>The base color at the horizon.</p>
 <h2 id="fog-color">fog-color<a class="headerlink" href="#fog-color" title="Permanent link">&para;</a></h2>
 <p><em>Optional <a href="../types/#color">color</a>. Defaults to <code>#ffffff</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
-<p>The base color for the fog.</p>
-<h2 id="fog-blend">fog-blend<a class="headerlink" href="#fog-blend" title="Permanent link">&para;</a></h2>
+<p>The base color for the fog. Requires 3D terrain.</p>
+<h2 id="fog-ground-blend">fog-ground-blend<a class="headerlink" href="#fog-ground-blend" title="Permanent link">&para;</a></h2>
 <p><em>Optional <a href="../types/#number">number</a> in range [0, 1]. Defaults to <code>0.5</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
 <p>How to blend the fog over the 3D terrain. A value between 0 and 1. Where 0 is the map center and 1 is the horizon</p>
-<h2 id="horizon-blend">horizon-blend<a class="headerlink" href="#horizon-blend" title="Permanent link">&para;</a></h2>
+<h2 id="horizon-fog-blend">horizon-fog-blend<a class="headerlink" href="#horizon-fog-blend" title="Permanent link">&para;</a></h2>
 <p><em>Optional <a href="../types/#number">number</a> in range [0, 1]. Defaults to <code>0.8</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
-<p>How to blend the fog and sky color at the horizon. A value between 0 and 1. Where 0 is the horizon and 1 is map-height / 2</p>
+<p>How to blend the fog color and the horizon color. A value between 0 and 1. Where 0 is the horizon and 1 is map-height / 2</p>
+<h2 id="sky-horizon-blend">sky-horizon-blend<a class="headerlink" href="#sky-horizon-blend" title="Permanent link">&para;</a></h2>
+<p><em>Optional <a href="../types/#number">number</a> in range [0, 1]. Defaults to <code>0.8</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
+<p>How to blend the atmosphere. A value between 0 and 1. Where 1 is visible atmosphere and 0 is hidden. It is best to interpolate this expression when using globe</p>
+<h2 id="atmosphere-blend">atmosphere-blend<a class="headerlink" href="#atmosphere-blend" title="Permanent link">&para;</a></h2>
+<p><em>Optional <a href="../types/#number">number</a> in range [0, 1]. Defaults to <code>0.8</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
+<p>How to blend the the sky color and the horizon color. A value between 0 and 1.</p>
 
 
 
