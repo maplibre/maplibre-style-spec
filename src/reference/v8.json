@@ -65,12 +65,21 @@
     },
     "sky": {
       "type": "sky",
-      "doc": "The map's sky configuration.",
+      "doc": "The map's sky configuration. **Note:** this definition is still experimental and is under develoment in maplibre-gl-js.",
       "example": {
-          "sky-color": "#199EF3",
-          "fog-color": "#00ff00",
-          "horizon-blend": 0.5,
-          "fog-blend": 0.6
+        "sky-color": "#199EF3",
+        "sky-horizon-blend": 0.5,
+        "horizon-color": "#ffffff",
+        "horizon-fog-blend": 0.5,
+        "fog-color": "#0000ff",
+        "fog-ground-blend": 0.5,
+        "atmosphere-blend": ["interpolate",
+          ["linear"],
+          ["zoom"],
+          0,1,
+          10,1,
+          12,0
+        ]
       }
     },
     "terrain": {
@@ -4357,6 +4366,19 @@
       "transition": true,
       "doc": "The base color for the sky."
     },
+    "horizon-color": {
+      "type": "color",
+      "property-type": "data-constant",
+      "default": "#ffffff",
+      "expression": {
+        "interpolated": true,
+        "parameters": [
+          "zoom"
+        ]
+      },
+      "transition": true,
+      "doc": "The base color at the horizon."
+    },
     "fog-color": {
       "type": "color",
       "property-type": "data-constant",
@@ -4368,9 +4390,9 @@
         ]
       },
       "transition": true,
-      "doc": "The base color for the fog."
+      "doc": "The base color for the fog. Requires 3D terrain."
     },
-    "fog-blend": {
+    "fog-ground-blend": {
       "type": "number",
       "property-type": "data-constant",
       "default": 0.5,
@@ -4385,7 +4407,7 @@
       "transition": true,
       "doc": "How to blend the fog over the 3D terrain. A value between 0 and 1. Where 0 is the map center and 1 is the horizon"
     },
-    "horizon-blend": {
+    "horizon-fog-blend": {
       "type": "number",
       "property-type": "data-constant",
       "default": 0.8,
@@ -4398,7 +4420,37 @@
         ]
       },
       "transition": true,
-      "doc": "How to blend the fog and sky color at the horizon. A value between 0 and 1. Where 0 is the horizon and 1 is map-height / 2"
+      "doc": "How to blend the fog color and the horizon color. A value between 0 and 1. Where 0 is the horizon and 1 is map-height / 2"
+    },
+    "sky-horizon-blend": {
+      "type": "number",
+      "property-type": "data-constant",
+      "default": 0.8,
+      "minimum": 0,
+      "maximum": 1,
+      "expression": {
+        "interpolated": true,
+        "parameters": [
+          "zoom"
+        ]
+      },
+      "transition": true,
+      "doc": "How to blend the atmosphere. A value between 0 and 1. Where 1 is visible atmosphere and 0 is hidden. It is best to interpolate this expression when using globe"
+    },
+    "atmosphere-blend": {
+      "type": "number",
+      "property-type": "data-constant",
+      "default": 0.8,
+      "minimum": 0,
+      "maximum": 1,
+      "expression": {
+        "interpolated": true,
+        "parameters": [
+          "zoom"
+        ]
+      },
+      "transition": true,
+      "doc": "How to blend the the sky color and the horizon color. A value between 0 and 1."
     }
   },
   "terrain": {
