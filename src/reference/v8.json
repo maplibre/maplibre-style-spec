@@ -65,7 +65,7 @@
     },
     "sky": {
       "type": "sky",
-      "doc": "The map's sky configuration. This definition is still experimental and is under develoment.",
+      "doc": "The map's sky configuration. **Note:** this definition is still experimental and is under develoment in maplibre-gl-js.",
       "example": {
         "sky-color": "#199EF3",
         "sky-horizon-blend": 0.5,
