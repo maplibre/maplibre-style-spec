@@ -2822,7 +2822,7 @@
         "sdk-support": {
           "basic functionality": {
             "js": "1.10.0",
-            "android": "11.0.0",
+            "android": "10.3.0",
             "ios": "6.0.0"
           }
         }
