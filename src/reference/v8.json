@@ -84,7 +84,7 @@
     },
     "projection": {
       "type": "projection",
-      "doc": "The projection configuration. ** Note: ** this definition is still experimental and is under development in maplibre-gl-js.",
+      "doc": "The projection configuration. **Note:** this definition is still experimental and is under development in maplibre-gl-js.",
       "example": {
         "type": "globe"
       }

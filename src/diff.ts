@@ -28,7 +28,7 @@ export type DiffOperationsMap = {
     'setLight': [LightSpecification];
     'setTerrain': [TerrainSpecification];
     'setSky': [SkySpecification];
-    'setProjection': [ProjectionSpecification]
+    'setProjection': [ProjectionSpecification];
 }
 
 export type DiffOperations = keyof DiffOperationsMap;
