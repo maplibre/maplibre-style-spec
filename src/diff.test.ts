@@ -563,4 +563,16 @@ describe('diff', () => {
             {command: 'setSky', args: [{'fog-color': 'green', 'fog-ground-blend': 0.2}]},
         ]);
     });
+
+    test('set projection', () => {
+        expect(diffStyles({
+        } as StyleSpecification,
+        {
+            projection: {
+                type: 'globe'
+            }
+        } as StyleSpecification)).toEqual([
+            {command: 'setProjection', args: [{type: 'globe'}]},
+        ]);
+    });
 });

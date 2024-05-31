@@ -1,9 +1,13 @@
 ## main
 
 ### ✨ Features and improvements
+
+- Added `Projection` specifications [#687](https://github.com/maplibre/maplibre-style-spec/pull/687)
+- Updated `Sky` specifications to support atmosphere and other required features [#686](https://github.com/maplibre/maplibre-style-spec/pull/686)
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
+
 - Change `assert` to `with` in JSON modules. Requires Node.js 18.20.0 or later, and supports Node.js 22.0.0 or later - [#675](https://github.com/maplibre/maplibre-style-spec/pull/675)
 
 ## 20.2.0
