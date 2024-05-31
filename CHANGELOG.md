@@ -7,6 +7,7 @@
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
+
 - Change `assert` to `with` in JSON modules. Requires Node.js 18.20.0 or later, and supports Node.js 22.0.0 or later - [#675](https://github.com/maplibre/maplibre-style-spec/pull/675)
 
 ## 20.2.0
