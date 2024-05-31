@@ -82,6 +82,13 @@
         ]
       }
     },
+    "projection": {
+      "type": "projection",
+      "doc": "The projection configuration. ** Note: ** this definition is still experimental and is under development in maplibre-gl-js.",
+      "example": {
+        "type": "globe"
+      }
+    },
     "terrain": {
       "type": "terrain",
       "doc": "The terrain configuration.",
@@ -4472,6 +4479,21 @@
       "sdk-support": {
         "basic functionality": {
           "js": "2.2.0"
+        }
+      }
+    }
+  },
+  "projection": {
+    "type": {
+      "type": "enum",
+      "doc": "The projection type.",
+      "default": "mercator",
+      "values": {
+        "mercator": {
+          "doc": "The Mercator projection."
+        },
+        "globe": {
+          "doc": "The globe projection."
         }
       }
     }

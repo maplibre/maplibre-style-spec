@@ -319,6 +319,8 @@ ${objectDeclaration('SkySpecification', spec.sky)}
 
 ${objectDeclaration('TerrainSpecification', spec.terrain)}
 
+${objectDeclaration('ProjectionSpecification', spec.projection)}
+
 ${spec.source.map(key => {
         let str = objectDeclaration(sourceTypeName(key), spec[key]);
         if (sourceTypeName(key) === 'GeoJSONSourceSpecification') {
