@@ -1,6 +1,9 @@
 ## main
 
 ### ✨ Features and improvements
+
+- Added `Projection` specifications [#687](https://github.com/maplibre/maplibre-style-spec/pull/687)
+- Updated `Sky` specifications to support atmosphere and other required features [#]()
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
