@@ -2,9 +2,17 @@
 
 ### ✨ Features and improvements
 
+- _...Add new stuff here..._
+
+### 🐞 Bug fixes
+- _...Add new stuff here..._
+
+## 20.3.0
+
+### ✨ Features and improvements
+
 - Added `Projection` specifications [#687](https://github.com/maplibre/maplibre-style-spec/pull/687)
 - Updated `Sky` specifications to support atmosphere and other required features [#686](https://github.com/maplibre/maplibre-style-spec/pull/686)
-- _...Add new stuff here..._
 
 ### 🐞 Bug fixes
 
