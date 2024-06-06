@@ -3,6 +3,8 @@
 Some style properties are no longer the preferred method of accomplishing a particular styling goal. While they are still supported, it is not recommended to use them in new styles as they may not function as intended when using both deprecated and non-deprecated style properties. The following is provided as reference for users who need to continue maintaining legacy styles while transitioning to preferred style properties.
 The [`gl-style-migrate`](https://github.com/maplibre/maplibre-style-spec/blob/main/README.md#gl-style-migrate) tool can be used to migrate style files to the latest version and replace deprecated expressions with their supported equivalents.
 
+In most cases of deprecated filters you should add a `get` and `literal` to convert from old to new syntax, for example `[">=", "count", 5]` should be converted to `[">=", ["get", "count"], 5]` and `["in", "nature", "road", "highway"]` to `["in", ["get", "nature"], ["literal", ["road", "highway"]]]`. 
+
 ## Function
 
 As of [v0.41.0](https://github.com/maplibre/maplibre-gl-js/blob/main/CHANGELOG.md#0410-october-11-2017), [property expressions](./expressions.md) is the preferred method for styling features based on zoom level or the feature's properties. Zoom and property functions are still supported but are not recommended.
