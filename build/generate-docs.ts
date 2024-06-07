@@ -370,7 +370,9 @@ function createSourcesContent() {
             },
             'sdk-support': {
                 'basic functionality': {
-                    js: '0.43.0'
+                    js: '0.43.0',
+                    android: '6.0.0',
+                    ios: '4.0.0'
                 }
             }
         },
