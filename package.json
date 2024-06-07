@@ -22,7 +22,7 @@
     "generate-typings": "node --no-warnings --loader ts-node/esm build/generate-typings.ts",
     "generate-docs": "node ${WATCH+--watch} --no-warnings --loader ts-node/esm build/generate-docs.ts",
     "mkdocs": "docker run --rm -it -p 8000:8000 -v ${PWD}:/docs squidfunk/mkdocs-material",
-    "mkdocs-build": "npm run generate-docs && docker run --rm -v ${PWD}:/docs squidfunk/mkdocs-material build",
+    "mkdocs-build": "npm run generate-docs && docker run --rm -v ${PWD}:/docs squidfunk/mkdocs-material build --strict",
     "test-build": "jest --selectProjects=build",
     "test-integration": "jest --selectProjects=integration",
     "test-unit": "jest --selectProjects=unit",
