@@ -66,10 +66,6 @@ class IndexOf implements Expression {
         }
 
         if (isValidNativeType(haystack, ['string'])) {
-            if (needle === '') {
-                // String.prototype.indexOf considers any string to contain an empty string, unlike Array.prototype.indexOf.
-                return 0;
-            }
             const rawIndex = haystack.indexOf(needle, fromIndex);
             if (rawIndex === -1) {
                 return -1;
