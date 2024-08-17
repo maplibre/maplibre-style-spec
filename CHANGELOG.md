@@ -5,6 +5,7 @@
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
+- The `index-of`, `length`, and `slice` expression operators count a UTF-16 surrogate pair as a single character. ([#779](https://github.com/maplibre/maplibre-style-spec/pull/779))
 - _...Add new stuff here..._
 
 ## 20.3.0
