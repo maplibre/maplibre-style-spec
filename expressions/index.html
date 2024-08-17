@@ -3229,7 +3229,7 @@
 </tbody>
 </table>
 <h3 id="index-of">index-of<a class="headerlink" href="#index-of" title="Permanent link">&para;</a></h3>
-<p>Returns the first position at which an item can be found in an array or a substring can be found in a string, or <code>-1</code> if the input cannot be found. Accepts an optional index from where to begin the search.</p>
+<p>Returns the first position at which an item can be found in an array or a substring can be found in a string, or <code>-1</code> if the input cannot be found. Accepts an optional index from where to begin the search. In a string, a UTF-16 surrogate pair counts as a single position.</p>
 <p>Syntax:
 <div class="language-js highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="p">[</span><span class="s2">&quot;index-of&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="o">?</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
 </span></code></pre></div></p>
@@ -3255,7 +3255,7 @@
 </tbody>
 </table>
 <h3 id="slice">slice<a class="headerlink" href="#slice" title="Permanent link">&para;</a></h3>
-<p>Returns an item from an array or a substring from a string from a specified start index, or between a start index and an end index if set. The return value is inclusive of the start index but not of the end index.</p>
+<p>Returns an item from an array or a substring from a string from a specified start index, or between a start index and an end index if set. The return value is inclusive of the start index but not of the end index. In a string, a UTF-16 surrogate pair counts as a single position.</p>
 <p>Syntax:
 <div class="language-js highlight"><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="p">[</span><span class="s2">&quot;slice&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="o">?</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">value</span>
 </span></code></pre></div></p>
@@ -3341,7 +3341,7 @@
 </tbody>
 </table>
 <h3 id="length">length<a class="headerlink" href="#length" title="Permanent link">&para;</a></h3>
-<p>Gets the length of an array or string.</p>
+<p>Gets the length of an array or string. In a string, a UTF-16 surrogate pair counts as a single position.</p>
 <p>Syntax:
 <div class="language-js highlight"><pre><span></span><code><span id="__span-55-1"><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a><span class="p">[</span><span class="s2">&quot;length&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">array</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
 </span></code></pre></div></p>
