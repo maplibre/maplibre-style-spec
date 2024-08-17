@@ -56,16 +56,19 @@ class Slice implements Expression {
         const input = (this.input.evaluate(ctx) as any);
         const beginIndex = (this.beginIndex.evaluate(ctx) as number);
 
-        if (!isValidNativeType(input, ['string', 'array'])) {
+        let endIndex;
+        if (this.endIndex) {
+            endIndex = (this.endIndex.evaluate(ctx) as number);
+        }
+
+        if (isValidNativeType(input, ['string'])) {
+            // Indices may be affected by surrogate pairs.
+            return [...input].slice(beginIndex, endIndex).join('');
+        } else if (isValidNativeType(input, ['array'])) {
+            return input.slice(beginIndex, endIndex);
+        } else {
             throw new RuntimeError(`Expected first argument to be of type array or string, but found ${toString(typeOf(input))} instead.`);
         }
-
-        if (this.endIndex) {
-            const endIndex = (this.endIndex.evaluate(ctx) as number);
-            return input.slice(beginIndex, endIndex);
-        }
-
-        return input.slice(beginIndex);
     }
 
     eachChild(fn: (_: Expression) => void) {

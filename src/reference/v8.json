@@ -2826,7 +2826,7 @@
         }
       },
       "index-of": {
-        "doc": "Returns the first position at which an item can be found in an array or a substring can be found in a string, or `-1` if the input cannot be found. Accepts an optional index from where to begin the search.",
+        "doc": "Returns the first position at which an item can be found in an array or a substring can be found in a string, or `-1` if the input cannot be found. Accepts an optional index from where to begin the search. In a string, a UTF-16 surrogate pair counts as a single position.",
         "example": {
           "syntax": {
             "method": ["value", "value", "number?"],
@@ -2844,7 +2844,7 @@
         }
       },
       "slice": {
-        "doc": "Returns an item from an array or a substring from a string from a specified start index, or between a start index and an end index if set. The return value is inclusive of the start index but not of the end index.",
+        "doc": "Returns an item from an array or a substring from a string from a specified start index, or between a start index and an end index if set. The return value is inclusive of the start index but not of the end index. In a string, a UTF-16 surrogate pair counts as a single position.",
         "example": {
           "syntax": {
             "method": ["value", "number", "number?"],
@@ -3380,7 +3380,7 @@
         }
       },
       "length": {
-        "doc": "Gets the length of an array or string.",
+        "doc": "Gets the length of an array or string. In a string, a UTF-16 surrogate pair counts as a single position.",
         "example": {
           "syntax": {
             "method": ["array"],
