@@ -240,11 +240,11 @@ function convertPropertyToMarkdown(key: string, value: JsonObject, keyPrefix = '
         markdown += 'Transitionable. ';
     }
 
-    markdown = `${markdown.trim()}*\n\n${value.doc}\n\n`;
+    markdown = `${markdown.trim()}*\n\n${value.doc.replace('\n', '\n\n')}\n\n`;
 
     if (isEnum) {
         for (const [enumKey, enumValue] of Object.entries(value.values)) {
-            markdown += `* \`${enumKey}\`: ${enumValue.doc}\n`;
+            markdown += `* \`${enumKey}\`: ${enumValue.doc.replace('\n', '\n\n')}\n`;
         }
     }
 
@@ -292,7 +292,7 @@ ${codeBlockMarkdown(`
 function createLayersContent() {
     let content = '# Layers\n\n';
 
-    content += `${v8.$root.layers.doc}\n\n`;
+    content += `${v8.$root.layers.doc.replace('\n', '\n\n')}\n\n`;
     content += exampleToMarkdown('layers', v8.$root.layers.example);
 
     content += '## Layer Properties\n\n';
@@ -465,7 +465,7 @@ function createSourcesContent() {
 
     let content = '# Sources\n\n';
 
-    content += `${v8.$root.sources.doc}\n\n`;
+    content += `${v8.$root.sources.doc.replace('\n', '\n\n')}\n\n`;
     content += exampleToMarkdown('sources', v8.$root.sources.example);
 
     for (const sourceKey of v8.source) {
@@ -502,7 +502,7 @@ function createExpressionsContent() {
                 continue;
             }
             content += `\n### ${key}\n`;
-            content += `${value.doc}\n`;
+            content += `${value.doc.replace('\n', '\n\n')}\n`;
             value.example.syntax.method.unshift(`"${key}"`);
             content += `\nSyntax:\n${codeBlockMarkdown(`[${value.example.syntax.method.join(', ')}]: ${value.example.syntax.result}`, 'js')}\n`;
             content += `\nExample:\n${codeBlockMarkdown(`"some-property": ${formatJSON(value.example.value)}`)}\n`;
@@ -523,7 +523,7 @@ function createMainTopics() {
             continue;
         }
         let content = `# ${capitalize(key)}\n\n`;
-        content += `${value.doc}\n\n`;
+        content += `${value.doc.replace('\n', '\n\n')}\n\n`;
         content += exampleToMarkdown(key, value.example);
 
         if (value.type in v8) {
