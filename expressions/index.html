@@ -2936,13 +2936,23 @@
 </tbody>
 </table>
 <h3 id="format">format<a class="headerlink" href="#format" title="Permanent link">&para;</a></h3>
-<p>Returns a <code>formatted</code> string for displaying mixed-format text in the <code>text-field</code> property. The input may contain a string literal or expression, including an <a href="#image"><code>'image'</code></a> expression. Strings may be followed by a style override object that supports the following properties:
-- <code>"text-font"</code>: Overrides the font stack specified by the root layout property.
-- <code>"text-color"</code>: Overrides the color specified by the root paint property.
-- <code>"font-scale"</code>: Applies a scaling factor on <code>text-size</code> as specified by the root layout property.</p>
+<p>Returns a <code>formatted</code> string for displaying mixed-format text in the <code>text-field</code> property. The input may contain a string literal or expression, including an <a href="#image"><code>'image'</code></a> expression. Strings may be followed by a style override object that supports the following properties:</p>
 <ul>
-<li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/change-case-of-labels/">Change the case of labels</a></li>
-<li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/display-and-style-rich-text-labels/">Display and style rich text labels</a></li>
+<li>
+<p><code>"text-font"</code>: Overrides the font stack specified by the root layout property.</p>
+</li>
+<li>
+<p><code>"text-color"</code>: Overrides the color specified by the root paint property.</p>
+</li>
+<li>
+<p><code>"font-scale"</code>: Applies a scaling factor on <code>text-size</code> as specified by the root layout property.</p>
+</li>
+<li>
+<p><a href="https://maplibre.org/maplibre-gl-js/docs/examples/change-case-of-labels/">Change the case of labels</a></p>
+</li>
+<li>
+<p><a href="https://maplibre.org/maplibre-gl-js/docs/examples/display-and-style-rich-text-labels/">Display and style rich text labels</a></p>
+</li>
 </ul>
 <p>Syntax:
 <div class="language-js highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="p">[</span><span class="s2">&quot;format&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;text-font&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;text-color&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">color</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;font-scale&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">...]</span><span class="o">:</span><span class="w"> </span><span class="nx">formatted</span>
@@ -2952,7 +2962,7 @@
 </span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="w">    </span><span class="s2">&quot;format&quot;</span><span class="p">,</span>
 </span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="w">    </span><span class="p">[</span><span class="s2">&quot;upcase&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;FacilityName&quot;</span><span class="p">]],</span>
 </span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="w">    </span><span class="p">{</span><span class="nt">&quot;font-scale&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="p">},</span>
-</span><span id="__span-30-5"><a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a><span class="w">    </span><span class="s2">&quot;\n&quot;</span><span class="p">,</span>
+</span><span id="__span-30-5"><a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a><span class="w">    </span><span class="s2">&quot;\n\n&quot;</span><span class="p">,</span>
 </span><span id="__span-30-6"><a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a><span class="w">    </span><span class="p">{},</span>
 </span><span id="__span-30-7"><a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a><span class="w">    </span><span class="p">[</span><span class="s2">&quot;downcase&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Comments&quot;</span><span class="p">]],</span>
 </span><span id="__span-30-8"><a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a><span class="w">    </span><span class="p">{</span><span class="nt">&quot;font-scale&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.6</span><span class="p">}</span>
@@ -3283,9 +3293,15 @@
 <h3 id="get">get<a class="headerlink" href="#get" title="Permanent link">&para;</a></h3>
 <p>Retrieves a property value from the current feature's properties, or from another object if a second argument is provided. Returns null if the requested property is missing.</p>
 <ul>
-<li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/change-case-of-labels/">Change the case of labels</a></li>
-<li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/cluster-html/">Display HTML clusters with custom properties</a></li>
-<li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/3d-extrusion-floorplan/">Extrude polygons for 3D indoor mapping</a></li>
+<li>
+<p><a href="https://maplibre.org/maplibre-gl-js/docs/examples/change-case-of-labels/">Change the case of labels</a></p>
+</li>
+<li>
+<p><a href="https://maplibre.org/maplibre-gl-js/docs/examples/cluster-html/">Display HTML clusters with custom properties</a></p>
+</li>
+<li>
+<p><a href="https://maplibre.org/maplibre-gl-js/docs/examples/3d-extrusion-floorplan/">Extrude polygons for 3D indoor mapping</a></p>
+</li>
 </ul>
 <p>Syntax:
 <div class="language-js highlight"><pre><span></span><code><span id="__span-51-1"><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">string</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">value</span>
@@ -3370,8 +3386,12 @@
 <h3 id="case">case<a class="headerlink" href="#case" title="Permanent link">&para;</a></h3>
 <p>Selects the first output whose corresponding test condition evaluates to true, or the fallback value otherwise.</p>
 <ul>
-<li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/hover-styles/">Create a hover effect</a></li>
-<li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/cluster-html/">Display HTML clusters with custom properties</a></li>
+<li>
+<p><a href="https://maplibre.org/maplibre-gl-js/docs/examples/hover-styles/">Create a hover effect</a></p>
+</li>
+<li>
+<p><a href="https://maplibre.org/maplibre-gl-js/docs/examples/cluster-html/">Display HTML clusters with custom properties</a></p>
+</li>
 </ul>
 <p>Syntax:
 <div class="language-js highlight"><pre><span></span><code><span id="__span-57-1"><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a><span class="p">[</span><span class="s2">&quot;case&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="nx">fallback</span><span class="o">:</span><span class="w"> </span><span class="nx">value</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">value</span>
@@ -3403,10 +3423,16 @@
 </tbody>
 </table>
 <h3 id="match">match<a class="headerlink" href="#match" title="Permanent link">&para;</a></h3>
-<p>Selects the output whose label value matches the input value, or the fallback value if no match is found. The input can be any expression (e.g. <code>["get", "building_type"]</code>). Each label must be either:
- - a single literal value; or
- - an array of literal values, whose values must be all strings or all numbers (e.g. <code>[100, 101]</code> or <code>["c", "b"]</code>). The input matches if any of the values in the array matches, similar to the <code>"in"</code> operator.
-Each label must be unique. If the input type does not match the type of the labels, the result will be the fallback value.</p>
+<p>Selects the output whose label value matches the input value, or the fallback value if no match is found. The input can be any expression (e.g. <code>["get", "building_type"]</code>). Each label must be either:</p>
+<ul>
+<li>
+<p>a single literal value; or</p>
+</li>
+<li>
+<p>an array of literal values, whose values must be all strings or all numbers (e.g. <code>[100, 101]</code> or <code>["c", "b"]</code>). The input matches if any of the values in the array matches, similar to the <code>"in"</code> operator.</p>
+</li>
+</ul>
+<p>Each label must be unique. If the input type does not match the type of the labels, the result will be the fallback value.</p>
 <p>Syntax:
 <div class="language-js highlight"><pre><span></span><code><span id="__span-59-1"><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a><span class="p">[</span><span class="s2">&quot;match&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="nx">fallback</span><span class="o">:</span><span class="w"> </span><span class="nx">value</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">value</span>
 </span></code></pre></div></p>
@@ -3475,10 +3501,18 @@ Each label must be unique. If the input type does not match the type of the labe
 <h3 id="_1">==<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
 <p>Returns <code>true</code> if the input values are equal, <code>false</code> otherwise. The comparison is strictly typed: values of different runtime types are always considered unequal. Cases where the types are known to be different at parse time are considered invalid and will produce a parse error. Accepts an optional <code>collator</code> argument to control locale-dependent string comparisons.</p>
 <ul>
-<li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/multiple-geometries/">Add multiple geometries from one GeoJSON source</a></li>
-<li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/timeline-animation/">Create a time slider</a></li>
-<li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/3d-buildings/">Display buildings in 3D</a></li>
-<li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/filter-markers/">Filter symbols by toggling a list</a></li>
+<li>
+<p><a href="https://maplibre.org/maplibre-gl-js/docs/examples/multiple-geometries/">Add multiple geometries from one GeoJSON source</a></p>
+</li>
+<li>
+<p><a href="https://maplibre.org/maplibre-gl-js/docs/examples/timeline-animation/">Create a time slider</a></p>
+</li>
+<li>
+<p><a href="https://maplibre.org/maplibre-gl-js/docs/examples/3d-buildings/">Display buildings in 3D</a></p>
+</li>
+<li>
+<p><a href="https://maplibre.org/maplibre-gl-js/docs/examples/filter-markers/">Filter symbols by toggling a list</a></p>
+</li>
 </ul>
 <p>Syntax:
 <div class="language-js highlight"><pre><span></span><code><span id="__span-63-1"><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a><span class="p">[</span><span class="s2">&quot;==&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">collator</span><span class="o">?</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="kr">boolean</span>
@@ -3764,9 +3798,15 @@ Each label must be unique. If the input type does not match the type of the labe
 </tbody>
 </table>
 <h3 id="within">within<a class="headerlink" href="#within" title="Permanent link">&para;</a></h3>
-<p>Returns <code>true</code> if the evaluated feature is fully contained inside a boundary of the input geometry, <code>false</code> otherwise. The input value can be a valid GeoJSON of type <code>Polygon</code>, <code>MultiPolygon</code>, <code>Feature</code>, or <code>FeatureCollection</code>. Supported features for evaluation:
-- <code>Point</code>: Returns <code>false</code> if a point is on the boundary or falls outside the boundary.
-- <code>LineString</code>: Returns <code>false</code> if any part of a line falls outside the boundary, the line intersects the boundary, or a line's endpoint is on the boundary.</p>
+<p>Returns <code>true</code> if the evaluated feature is fully contained inside a boundary of the input geometry, <code>false</code> otherwise. The input value can be a valid GeoJSON of type <code>Polygon</code>, <code>MultiPolygon</code>, <code>Feature</code>, or <code>FeatureCollection</code>. Supported features for evaluation:</p>
+<ul>
+<li>
+<p><code>Point</code>: Returns <code>false</code> if a point is on the boundary or falls outside the boundary.</p>
+</li>
+<li>
+<p><code>LineString</code>: Returns <code>false</code> if any part of a line falls outside the boundary, the line intersects the boundary, or a line's endpoint is on the boundary.</p>
+</li>
+</ul>
 <p>Syntax:
 <div class="language-js highlight"><pre><span></span><code><span id="__span-81-1"><a id="__codelineno-81-1" name="__codelineno-81-1" href="#__codelineno-81-1"></a><span class="p">[</span><span class="s2">&quot;within&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">GeoJSON</span><span class="w"> </span><span class="nx">geometry</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="kr">boolean</span>
 </span></code></pre></div></p>
@@ -3833,17 +3873,27 @@ Each label must be unique. If the input type does not match the type of the labe
 <p>Produces continuous, smooth results by interpolating between pairs of input and output values ("stops"). The <code>input</code> may be any numeric expression (e.g., <code>["get", "population"]</code>). Stop inputs must be numeric literals in strictly ascending order. The output type must be <code>number</code>, <code>array&lt;number&gt;</code>, or <code>color</code>.</p>
 <p>Interpolation types:</p>
 <ul>
-<li><code>["linear"]</code>, or an expression returning one of those types: Interpolates linearly between the pair of stops just less than and just greater than the input.</li>
-<li><code>["exponential", base]</code>: Interpolates exponentially between the stops just less than and just greater than the input. <code>base</code> controls the rate at which the output increases: higher values make the output increase more towards the high end of the range. With values close to 1 the output increases linearly.</li>
+<li>
+<p><code>["linear"]</code>, or an expression returning one of those types: Interpolates linearly between the pair of stops just less than and just greater than the input.</p>
+</li>
+<li>
+<p><code>["exponential", base]</code>: Interpolates exponentially between the stops just less than and just greater than the input. <code>base</code> controls the rate at which the output increases: higher values make the output increase more towards the high end of the range. With values close to 1 the output increases linearly.</p>
+</li>
 <li>
 <p><code>["cubic-bezier", x1, y1, x2, y2]</code>: Interpolates using the cubic bezier curve defined by the given control points.</p>
 </li>
 <li>
 <p><a href="https://maplibre.org/maplibre-gl-js/docs/examples/animate-camera-around-point/">Animate map camera around a point</a></p>
 </li>
-<li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/change-building-color-based-on-zoom-level/">Change building color based on zoom level</a></li>
-<li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/heatmap-layer/">Create a heatmap layer</a></li>
-<li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/visualize-population-density/">Visualize population density</a></li>
+<li>
+<p><a href="https://maplibre.org/maplibre-gl-js/docs/examples/change-building-color-based-on-zoom-level/">Change building color based on zoom level</a></p>
+</li>
+<li>
+<p><a href="https://maplibre.org/maplibre-gl-js/docs/examples/heatmap-layer/">Create a heatmap layer</a></p>
+</li>
+<li>
+<p><a href="https://maplibre.org/maplibre-gl-js/docs/examples/visualize-population-density/">Visualize population density</a></p>
+</li>
 </ul>
 <p>Syntax:
 <div class="language-js highlight"><pre><span></span><code><span id="__span-85-1"><a id="__codelineno-85-1" name="__codelineno-85-1" href="#__codelineno-85-1"></a><span class="p">[</span><span class="s2">&quot;interpolate&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;linear&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;exponential&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">base</span><span class="p">]</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;cubic-bezier&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">x1</span><span class="p">,</span><span class="w"> </span><span class="nx">y1</span><span class="p">,</span><span class="w"> </span><span class="nx">x2</span><span class="p">,</span><span class="w"> </span><span class="nx">y2</span><span class="p">],</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w"> </span><span class="p">...]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">array</span><span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">color</span>
@@ -5014,10 +5064,18 @@ Each label must be unique. If the input type does not match the type of the labe
 <h3 id="concat">concat<a class="headerlink" href="#concat" title="Permanent link">&para;</a></h3>
 <p>Returns a <code>string</code> consisting of the concatenation of the inputs. Each input is converted to a string as if by <code>to-string</code>.</p>
 <ul>
-<li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/add-image-missing-generated/">Add a generated icon to the map</a></li>
-<li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/timeline-animation/">Create a time slider</a></li>
-<li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/fallback-image/">Use a fallback image</a></li>
-<li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/variable-label-placement/">Variable label placement</a></li>
+<li>
+<p><a href="https://maplibre.org/maplibre-gl-js/docs/examples/add-image-missing-generated/">Add a generated icon to the map</a></p>
+</li>
+<li>
+<p><a href="https://maplibre.org/maplibre-gl-js/docs/examples/timeline-animation/">Create a time slider</a></p>
+</li>
+<li>
+<p><a href="https://maplibre.org/maplibre-gl-js/docs/examples/fallback-image/">Use a fallback image</a></p>
+</li>
+<li>
+<p><a href="https://maplibre.org/maplibre-gl-js/docs/examples/variable-label-placement/">Variable label placement</a></p>
+</li>
 </ul>
 <p>Syntax:
 <div class="language-js highlight"><pre><span></span><code><span id="__span-171-1"><a id="__codelineno-171-1" name="__codelineno-171-1" href="#__codelineno-171-1"></a><span class="p">[</span><span class="s2">&quot;concat&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w"> </span><span class="p">...]</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span>
