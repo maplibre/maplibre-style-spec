@@ -469,11 +469,11 @@ function createSourcesContent() {
     content += exampleToMarkdown('sources', v8.$root.sources.example);
 
     for (const sourceKey of v8.source) {
-        const srouceName = sourceKey.replace('source_', '').replace('_', '-');
-        content += `## ${srouceName}\n\n`;
-        content += `${sourcesExtraData[srouceName].doc}\n\n`;
-        content += exampleToMarkdown('sources', sourcesExtraData[srouceName].example);
-        content += sdkSupportToMarkdown(sourcesExtraData[srouceName]['sdk-support']);
+        const sourceName = sourceKey.replace('source_', '').replace('_', '-');
+        content += `## ${sourceName}\n\n`;
+        content += `${sourcesExtraData[sourceName].doc}\n\n`;
+        content += exampleToMarkdown('sources', sourcesExtraData[sourceName].example);
+        content += sdkSupportToMarkdown(sourcesExtraData[sourceName]['sdk-support']);
         content += '\n';
         for (const [key, value] of Object.entries(v8[sourceKey])) {
             if (key === '*') continue;
