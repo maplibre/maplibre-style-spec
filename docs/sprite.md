@@ -130,4 +130,4 @@ On high-DPI devices, `@2x` is appended to  the URLs described above. For example
 
 ## Generating Sprites
 
-A tool that can generate sprites from svg files can be found in here: [@elastic/spritezero](https://www.npmjs.com/package/@elastic/spritezero)
+There are tools that can generate sprites from SVG files, such as [spreet](https://github.com/flother/spreet) and [spritezero](https://www.npmjs.com/package/@elastic/spritezero).
