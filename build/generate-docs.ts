@@ -90,9 +90,11 @@ function codeBlockMarkdown(code: string, language = 'json'): string {
  * @param support - the support string in the style spec
  * @returns Markdown for support cell
  */
-function supportCell(support?: string) {
+function supportCell(support?: string): string {
     // if no information is present in the style spec, we assume there is no support
     if (support === undefined) return 'Not supported yet';
+    if (support === 'wontfix') return 'Not planned';
+    if (support === 'supported') return '✅';
 
     // if the string is an issue link, generate a link to it
     // there is no support yet but there is a tracking issue

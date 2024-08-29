@@ -247,7 +247,8 @@
       "sdk-support": {
         "basic functionality": {
           "android": "9.3.0",
-          "ios": "5.10.0"
+          "ios": "5.10.0",
+          "js": "wontfix"
         }
       }
     },
@@ -328,7 +329,8 @@
       "sdk-support": {
         "basic functionality": {
           "android": "9.3.0",
-          "ios": "5.10.0"
+          "ios": "5.10.0",
+          "js": "wontfix"
         }
       }
     },
@@ -403,7 +405,19 @@
         }
       },
       "default": "mapbox",
-      "doc": "The encoding used by this source. Mapbox Terrain RGB is used by default."
+      "doc": "The encoding used by this source. Mapbox Terrain RGB is used by default.",
+      "sdk-support": {
+        "mapbox, terrarium": {
+          "js": "0.43.0",
+          "ios": "6.0.0",
+          "android": "6.0.0"
+        },
+        "custom": {
+          "js": "3.4.0",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/2783",
+          "android": "https://github.com/maplibre/maplibre-native/issues/2783"
+        }
+      }
     },
     "redFactor": {
       "type": "number",
@@ -411,7 +425,9 @@
       "doc": "Value that will be multiplied by the red channel value when decoding. Only used on custom encodings.",
       "sdk-support": {
         "basic functionality": {
-          "js": "3.4"
+          "js": "3.4.0",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/2783",
+          "android": "https://github.com/maplibre/maplibre-native/issues/2783"
         }
       }
     },
@@ -421,7 +437,9 @@
       "doc": "Value that will be multiplied by the blue channel value when decoding. Only used on custom encodings.",
       "sdk-support": {
         "basic functionality": {
-          "js": "3.4"
+          "js": "3.4.0",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/2783",
+          "android": "https://github.com/maplibre/maplibre-native/issues/2783"
         }
       }
     },
@@ -431,7 +449,9 @@
       "doc": "Value that will be multiplied by the green channel value when decoding. Only used on custom encodings.",
       "sdk-support": {
         "basic functionality": {
-          "js": "3.4"
+          "js": "3.4.0",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/2358",
+          "android": "https://github.com/maplibre/maplibre-native/issues/2783"
         }
       }
     },   
@@ -441,7 +461,9 @@
       "doc": "Value that will be added to the encoding mix when decoding. Only used on custom encodings.",
       "sdk-support": {
         "basic functionality": {
-          "js": "3.4"
+          "js": "3.4.0",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/2783",
+          "android": "https://github.com/maplibre/maplibre-native/issues/2783"
         }
       }
     },    
@@ -452,7 +474,8 @@
       "sdk-support": {
         "basic functionality": {
           "android": "9.3.0",
-          "ios": "5.10.0"
+          "ios": "5.10.0",
+          "js": "wontfix"
         }
       }
     },
@@ -2967,7 +2990,9 @@
         "group": "Ramps, scales, curves",
         "sdk-support": {
           "basic functionality": {
-            "js": "0.49.0"
+            "js": "0.49.0",
+            "ios": "https://github.com/maplibre/maplibre-native/issues/2784",
+            "android": "https://github.com/maplibre/maplibre-native/issues/2784"
           }
         }
       },
@@ -2983,7 +3008,9 @@
         "group": "Ramps, scales, curves",
         "sdk-support": {
           "basic functionality": {
-            "js": "0.49.0"
+            "js": "0.49.0",
+            "ios": "https://github.com/maplibre/maplibre-native/issues/2784",
+            "android": "https://github.com/maplibre/maplibre-native/issues/2784"
           }
         }
       },
@@ -3217,7 +3244,9 @@
         "group": "Types",
         "sdk-support": {
           "basic functionality": {
-            "js": "0.54.0"
+            "js": "0.54.0",
+            "android": "8.4.0",
+            "ios": "supported"
           }
         }
       },
@@ -3431,7 +3460,9 @@
         "group": "Feature data",
         "sdk-support": {
           "basic functionality": {
-            "js": "0.46.0"
+            "js": "0.46.0",
+            "ios": "https://github.com/maplibre/maplibre-native/issues/1698",
+            "android": "https://github.com/maplibre/maplibre-native/issues/1698"
           }
         }
       },
@@ -3537,7 +3568,9 @@
         "group": "Feature data",
         "sdk-support": {
           "basic functionality": {
-            "js": "0.53.0"
+            "js": "0.53.0",
+            "ios": "supported",
+            "android": "supported"
           }
         }
       },
@@ -4178,7 +4211,8 @@
         "sdk-support": {
           "basic functionality": {
             "js": "0.45.0",
-            "android": "6.6.0"
+            "android": "6.6.0",
+            "ios": "supported"
           }
         }
       },
@@ -4471,7 +4505,9 @@
       "required": true,
       "sdk-support": {
         "basic functionality": {
-          "js": "2.2.0"
+          "js": "2.2.0",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/252",
+          "android": "https://github.com/maplibre/maplibre-native/issues/252"
         }
       }
     },
@@ -4482,7 +4518,9 @@
       "default": 1.0,
       "sdk-support": {
         "basic functionality": {
-          "js": "2.2.0"
+          "js": "2.2.0",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/252",
+          "android": "https://github.com/maplibre/maplibre-native/issues/252"
         }
       }
     }
@@ -4915,7 +4953,8 @@
       "sdk-support": {
         "basic functionality": {
           "js": "0.50.0",
-          "ios": "4.7.0"
+          "ios": "4.7.0",
+          "android": "7.0.0"
         }
       },
       "expression": {
@@ -5178,7 +5217,11 @@
           "android": "2.0.1",
           "ios": "2.0.0"
         },
-        "data-driven styling": {}
+        "data-driven styling": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/1235",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/744",
+          "android": "https://github.com/maplibre/maplibre-native/issues/744"
+        }
       },
       "expression": {
         "interpolated": false,
