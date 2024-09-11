@@ -21,7 +21,7 @@ export default class CheapRuler {
 
         // multipliers for converting longitude and latitude degrees into distance
         this.kx = m * w * coslat;        // based on normal radius of curvature
-        this.ky = m * w * w2 * (1 - E2); // based on meridonal radius of curvature
+        this.ky = m * w * w2 * (1 - E2); // based on meridional radius of curvature
     }
 
     /**

@@ -12,7 +12,7 @@ import type {StyleSpecification} from './types.g';
  * @returns a migrated style
  * @example
  * const fs = require('fs');
- * csont migrate = require('@maplibre/maplibre-gl-style-spec').migrate;
+ * const migrate = require('@maplibre/maplibre-gl-style-spec').migrate;
  * const style = fs.readFileSync('./style.json', 'utf8');
  * fs.writeFileSync('./style.json', JSON.stringify(migrate(style)));
  */

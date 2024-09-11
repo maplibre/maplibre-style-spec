@@ -6,7 +6,7 @@ import ParsingError from './parsing_error';
 import {VariableAnchorOffsetCollection} from './values';
 import {getGeometry} from '../../test/lib/geometry';
 
-// filter out interal "error" and "filter-*" expressions from definition list
+// filter out internal "error" and "filter-*" expressions from definition list
 const filterExpressionRegex = /filter-/;
 const definitionList = Object.keys(definitions).filter((expression) => {
     return expression !== 'error' && !filterExpressionRegex.exec(expression);

@@ -36,7 +36,7 @@ Note that generated files should not be checked in and they are excluded in `.gi
 ## NPM Package
 
 
-The MapLibre style specification and utilities are published as a seperate npm
+The MapLibre style specification and utilities are published as a separate npm
 package so that they can be installed without the bulk of GL JS.
 
     npm install @maplibre/maplibre-gl-style-spec

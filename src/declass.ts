@@ -5,7 +5,7 @@ export default declassStyle;
 
 /**
  * Returns a new style with the given 'paint classes' merged into each layer's
- * main `paint` definiton, and with all `paint.*` properties removed.
+ * main `paint` definition, and with all `paint.*` properties removed.
  *
  * @private
  * @param {Object} style A style JSON object.
