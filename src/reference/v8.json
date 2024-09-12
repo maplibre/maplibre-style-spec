@@ -2820,10 +2820,10 @@
         "doc": "Retrieves an item from an array.",
         "example": {
           "syntax": {
-            "method": ["value", "number"],
+            "method": ["number", "value"],
             "result": "value"
           },
-          "value": ["at", ["literal", ["a", "b", "c"]], 1]
+          "value": ["at", 1, ["literal", ["a", "b", "c"]]]
         },
         "group": "Lookup",
         "sdk-support": {
