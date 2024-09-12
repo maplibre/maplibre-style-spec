@@ -6,7 +6,6 @@
 
 ### 🐞 Bug fixes
 
-- In the documentation, fixed the order of the parameters to the "at" expression. ([#811](https://github.com/maplibre/maplibre-style-spec/pull/811))
 - _...Add new stuff here..._
 
 ## 20.3.1
