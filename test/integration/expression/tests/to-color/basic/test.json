@@ -104,7 +104,7 @@
         1
       ],
       {
-        "error": "Invalid rbga value [0,255]: expected an array containing either three or four numeric values."
+        "error": "Invalid rgba value [0,255]: expected an array containing either three or four numeric values."
       }
     ]
   }
