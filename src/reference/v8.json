@@ -65,7 +65,7 @@
     },
     "sky": {
       "type": "sky",
-      "doc": "The map's sky configuration. **Note:** this definition is still experimental and is under develoment in maplibre-gl-js.",
+      "doc": "The map's sky configuration. **Note:** this definition is still experimental and is under development in maplibre-gl-js.",
       "example": {
         "sky-color": "#199EF3",
         "sky-horizon-blend": 0.5,
@@ -528,7 +528,7 @@
     "cluster": {
       "type": "boolean",
       "default": false,
-      "doc": "If the data is a collection of point features, setting this to true clusters the points by radius into groups. Cluster groups become new `Point` features in the source with additional properties:\n\n * `cluster` Is `true` if the point is a cluster \n\n * `cluster_id` A unqiue id for the cluster to be used in conjunction with the [cluster inspection methods](https://maplibre.org/maplibre-gl-js/docs/API/classes/GeoJSONSource/#getclusterexpansionzoom)\n\n * `point_count` Number of original points grouped into this cluster\n\n * `point_count_abbreviated` An abbreviated point count"
+      "doc": "If the data is a collection of point features, setting this to true clusters the points by radius into groups. Cluster groups become new `Point` features in the source with additional properties:\n\n * `cluster` Is `true` if the point is a cluster \n\n * `cluster_id` A unique id for the cluster to be used in conjunction with the [cluster inspection methods](https://maplibre.org/maplibre-gl-js/docs/API/classes/GeoJSONSource/#getclusterexpansionzoom)\n\n * `point_count` Number of original points grouped into this cluster\n\n * `point_count_abbreviated` An abbreviated point count"
     },
     "clusterRadius": {
       "type": "number",

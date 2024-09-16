@@ -61,13 +61,13 @@ describe('expression', () => {
             try {
                 expect(compileOk).toBeTruthy();
             } catch (e) {
-                throw new Error(`Compilation Falied:\nExpected ${JSON.stringify(expected.compiled)}\nResult   ${JSON.stringify(result.compiled)}`);
+                throw new Error(`Compilation Failed:\nExpected ${JSON.stringify(expected.compiled)}\nResult   ${JSON.stringify(result.compiled)}`);
             }
 
             try {
                 expect(evalOk).toBeTruthy();
             } catch (e) {
-                throw new Error(`Evaluation Falied:\nExpected ${JSON.stringify(expected.outputs)}\nResult   ${JSON.stringify(result.outputs)}`);
+                throw new Error(`Evaluation Failed:\nExpected ${JSON.stringify(expected.outputs)}\nResult   ${JSON.stringify(result.outputs)}`);
             }
 
         });

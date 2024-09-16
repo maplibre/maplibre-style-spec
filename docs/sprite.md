@@ -88,7 +88,7 @@ The following image gives a bit more infomation regarding the stretch properties
 
 ```json
 {
-    "sheild": {
+    "shield": {
         "width": 25,
         "height": 30,
         "x": 0,
