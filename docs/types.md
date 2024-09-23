@@ -115,7 +115,7 @@ Enums are a closed set of possible string values. Failing to provide a value wit
 |SDK Support|MapLibre GL JS|MapLibre Native<br>Android|MapLibre Native<br>iOS|
 |-----------|--------------|-----------|-------|
 |Single number| 0.10.0 | 2.0.1 | 2.0.0 |
-|Array of numbers| 2.2.0 | ❌ ([#2363](https://github.com/maplibre/maplibre-native/issues/2368)) | ❌ ([#2363](https://github.com/maplibre/maplibre-native/issues/2368)) |
+|Array of numbers| 2.2.0 | 11.5.0 | 6.7.0 |
 
 An array of numbers with syntax similar to [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS/padding):
 
