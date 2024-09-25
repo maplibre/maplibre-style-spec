@@ -19,7 +19,7 @@
   "scripts": {
     "build": "rollup --configPlugin @rollup/plugin-typescript -c rollup.config.ts && cp ./src/reference/v8.json ./dist/latest.json",
     "generate-style-spec": "node --no-warnings --loader ts-node/esm build/generate-style-spec.ts",
-    "generate-typings": "node --no-warnings --loader ts-node/esm build/generate-typings.ts",
+    "generate-typings": "dts-bundle-generator -o ./dist/index.d.ts ./src/index.ts",
     "generate-docs": "node ${WATCH+--watch} --no-warnings --loader ts-node/esm build/generate-docs.ts",
     "mkdocs": "docker run --rm -it -p 8000:8000 -v ${PWD}:/docs squidfunk/mkdocs-material",
     "mkdocs-build": "npm run generate-docs && docker run --rm -v ${PWD}:/docs squidfunk/mkdocs-material build --strict",
@@ -64,7 +64,7 @@
     "@rollup/plugin-replace": "^5.0.7",
     "@rollup/plugin-strip": "^3.0.4",
     "@rollup/plugin-terser": "^0.4.4",
-    "@rollup/plugin-typescript": "^11.1.6",
+    "@rollup/plugin-typescript": "^12.1.0",
     "@types/eslint": "^8.56.6",
     "@types/geojson": "^7946.0.14",
     "@types/jest": "^29.5.13",
