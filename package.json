@@ -12,6 +12,7 @@
     "maplibre-gl-js"
   ],
   "license": "ISC",
+  "homepage": "https://maplibre.org/maplibre-style-spec/",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
