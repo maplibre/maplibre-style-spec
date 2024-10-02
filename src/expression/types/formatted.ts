@@ -1,19 +1,23 @@
 import type Color from '../../util/color';
 import type ResolvedImage from '../types/resolved_image';
 
+type VerticalAlign = 'baseline' | 'center' | 'top';
+
 export class FormattedSection {
     text: string;
     image: ResolvedImage | null;
     scale: number | null;
     fontStack: string | null;
     textColor: Color | null;
+    verticalAlign: VerticalAlign | null;
 
-    constructor(text: string, image: ResolvedImage | null, scale: number | null, fontStack: string | null, textColor: Color | null) {
+    constructor(text: string, image: ResolvedImage | null, scale: number | null, fontStack: string | null, textColor: Color | null, verticalAlign: VerticalAlign | null) {
         this.text = text;
         this.image = image;
         this.scale = scale;
         this.fontStack = fontStack;
         this.textColor = textColor;
+        this.verticalAlign = verticalAlign;
     }
 }
 
@@ -25,7 +29,7 @@ export default class Formatted {
     }
 
     static fromString(unformatted: string): Formatted {
-        return new Formatted([new FormattedSection(unformatted, null, null, null, null)]);
+        return new Formatted([new FormattedSection(unformatted, null, null, null, null, null)]);
     }
 
     isEmpty(): boolean {
