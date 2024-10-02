@@ -7,7 +7,7 @@ import {
     ColorType,
     ResolvedImageType,
 } from '../types';
-import Formatted, {FormattedSection} from '../types/formatted';
+import Formatted, {FormattedSection, VERTICAL_ALIGN_OPTIONS, VerticalAlign} from '../types/formatted';
 import {toString, typeOf} from '../values';
 
 import type {Expression} from '../expression';
@@ -72,6 +72,10 @@ export default class FormatExpression implements Expression {
 
                 let verticalAlign = null;
                 if (arg['vertical-align']) {
+                    if (typeof arg['vertical-align'] === 'string' && !VERTICAL_ALIGN_OPTIONS.includes(arg['vertical-align'] as VerticalAlign)) {
+                        return context.error(`\`vertical-align\` must be one of: 'baseline', 'center', 'top' but found '${arg['vertical-align']}' instead.`) as null;
+                    }
+
                     verticalAlign = context.parse(arg['vertical-align'], 1, StringType);
                     if (!verticalAlign) return null;
                 }

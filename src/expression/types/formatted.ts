@@ -1,7 +1,8 @@
 import type Color from '../../util/color';
 import type ResolvedImage from '../types/resolved_image';
 
-type VerticalAlign = 'baseline' | 'center' | 'top';
+export const VERTICAL_ALIGN_OPTIONS = ['baseline', 'center', 'top'] as const;
+export type VerticalAlign = typeof VERTICAL_ALIGN_OPTIONS[number];
 
 export class FormattedSection {
     text: string;
