@@ -59,7 +59,12 @@
       "default": 0,
       "units": "degrees",
       "doc": "Default roll, in degrees. The roll angle is measured counterclockwise about the camera boresight. The style roll will be used only if the map has not been positioned by other means (e.g. map options or user interaction).",
-      "example": 45
+      "example": 45,
+      "sdk-support": {
+        "basic functionality": {
+          "js": "5.0"
+        }
+      }
     },
     "light": {
       "type": "light",
