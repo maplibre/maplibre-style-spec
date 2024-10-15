@@ -307,7 +307,7 @@ describe('diff', () => {
             roll: 1
         } as StyleSpecification, {
         } as StyleSpecification)).toEqual([
-            {command: 'setRoll', args: [0]}
+            {command: 'setRoll', args: [undefined]}
         ]);
     });
 
