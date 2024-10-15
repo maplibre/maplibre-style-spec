@@ -302,6 +302,15 @@ describe('diff', () => {
         ]);
     });
 
+    test('set roll to undefined', () => {
+        expect(diffStyles({
+            roll: 1
+        } as StyleSpecification, {
+        } as StyleSpecification)).toEqual([
+            {command: 'setRoll', args: [undefined]}
+        ]);
+    });
+
     test('set roll', () => {
         expect(diffStyles({
             roll: 0
