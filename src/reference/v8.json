@@ -62,7 +62,9 @@
       "example": 45,
       "sdk-support": {
         "basic functionality": {
-          "js": "5.0"
+          "js": "5.0.0",
+          "android": "wontfix",
+          "ios": "wontfix"
         }
       }
     },
