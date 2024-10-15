@@ -2,6 +2,7 @@
 
 ### ✨ Features and improvements
 
+* Added `roll` property to stylesheet ([#850](https://github.com/maplibre/maplibre-style-spec/issues/850))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
