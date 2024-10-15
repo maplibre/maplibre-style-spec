@@ -63,8 +63,8 @@
       "sdk-support": {
         "basic functionality": {
           "js": "5.0.0",
-          "android": "wontfix",
-          "ios": "wontfix"
+          "android": "https://github.com/maplibre/maplibre-native/issues/2941",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/2941"
         }
       }
     },
