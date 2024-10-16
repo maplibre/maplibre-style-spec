@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="https://maplibre.org/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.41">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.8c3ca2c6.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.0253249f.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
@@ -542,6 +542,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#roll" class="md-nav__link">
+    <span class="md-ellipsis">
+      roll
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#light" class="md-nav__link">
     <span class="md-ellipsis">
       light
@@ -840,6 +849,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#roll" class="md-nav__link">
+    <span class="md-ellipsis">
+      roll
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#light" class="md-nav__link">
     <span class="md-ellipsis">
       light
@@ -993,78 +1011,101 @@
 <p>Default pitch, in degrees. Zero is perpendicular to the surface, for a look straight down at the map, while a greater value like 60 looks ahead towards the horizon. The style pitch will be used only if the map has not been positioned by other means (e.g. map options or user interaction).</p>
 <div class="language-json highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="err">pi</span><span class="kc">t</span><span class="err">ch</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span>
 </span></code></pre></div>
+<h2 id="roll">roll<a class="headerlink" href="#roll" title="Permanent link">&para;</a></h2>
+<p><em>Optional <a href="../types/#number">number</a>. Units in degrees. Defaults to <code>0</code>.</em></p>
+<p>Default roll, in degrees. The roll angle is measured counterclockwise about the camera boresight. The style roll will be used only if the map has not been positioned by other means (e.g. map options or user interaction).</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="err">roll</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span>
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>SDK Support</th>
+<th>MapLibre GL JS</th>
+<th>MapLibre Native<br>Android</th>
+<th>MapLibre Native<br>iOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>basic functionality</td>
+<td>5.0.0</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/2941">#2941</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/2941">#2941</a>)</td>
+</tr>
+</tbody>
+</table>
 <h2 id="light">light<a class="headerlink" href="#light" title="Permanent link">&para;</a></h2>
 <p><em>Optional <a href="../light/">light</a>.</em></p>
 <p>The global light source.</p>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="err">ligh</span><span class="kc">t</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;anchor&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;viewport&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;white&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;intensity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.4</span><span class="p">}</span>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="err">ligh</span><span class="kc">t</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;anchor&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;viewport&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;white&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;intensity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.4</span><span class="p">}</span>
 </span></code></pre></div>
 <h2 id="sky">sky<a class="headerlink" href="#sky" title="Permanent link">&para;</a></h2>
 <p><em>Optional <a href="../sky/">sky</a>.</em></p>
 <p>The map's sky configuration. <strong>Note:</strong> this definition is still experimental and is under development in maplibre-gl-js.</p>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="err">sky</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="nt">&quot;sky-color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#199EF3&quot;</span><span class="p">,</span>
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="nt">&quot;sky-horizon-blend&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span>
-</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="nt">&quot;horizon-color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#ffffff&quot;</span><span class="p">,</span>
-</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="nt">&quot;horizon-fog-blend&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span>
-</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">    </span><span class="nt">&quot;fog-color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#0000ff&quot;</span><span class="p">,</span>
-</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">    </span><span class="nt">&quot;fog-ground-blend&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span>
-</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">    </span><span class="nt">&quot;atmosphere-blend&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">        </span><span class="s2">&quot;interpolate&quot;</span><span class="p">,</span>
-</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">        </span><span class="p">[</span><span class="s2">&quot;linear&quot;</span><span class="p">],</span>
-</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">        </span><span class="p">[</span><span class="s2">&quot;zoom&quot;</span><span class="p">],</span>
-</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">        </span><span class="mi">0</span><span class="p">,</span>
-</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">        </span><span class="mi">1</span><span class="p">,</span>
-</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">        </span><span class="mi">10</span><span class="p">,</span>
-</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="w">        </span><span class="mi">1</span><span class="p">,</span>
-</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="w">        </span><span class="mi">12</span><span class="p">,</span>
-</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="w">        </span><span class="mi">0</span>
-</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="w">    </span><span class="p">]</span>
-</span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="p">}</span>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="err">sky</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="nt">&quot;sky-color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#199EF3&quot;</span><span class="p">,</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="nt">&quot;sky-horizon-blend&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="nt">&quot;horizon-color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#ffffff&quot;</span><span class="p">,</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">    </span><span class="nt">&quot;horizon-fog-blend&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">    </span><span class="nt">&quot;fog-color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#0000ff&quot;</span><span class="p">,</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">    </span><span class="nt">&quot;fog-ground-blend&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">    </span><span class="nt">&quot;atmosphere-blend&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">        </span><span class="s2">&quot;interpolate&quot;</span><span class="p">,</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="w">        </span><span class="p">[</span><span class="s2">&quot;linear&quot;</span><span class="p">],</span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w">        </span><span class="p">[</span><span class="s2">&quot;zoom&quot;</span><span class="p">],</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="w">        </span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="w">        </span><span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="w">        </span><span class="mi">10</span><span class="p">,</span>
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="w">        </span><span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="w">        </span><span class="mi">12</span><span class="p">,</span>
+</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="w">        </span><span class="mi">0</span>
+</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="w">    </span><span class="p">]</span>
+</span><span id="__span-10-19"><a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="p">}</span>
 </span></code></pre></div>
 <h2 id="projection">projection<a class="headerlink" href="#projection" title="Permanent link">&para;</a></h2>
 <p><em>Optional <a href="../projection/">projection</a>.</em></p>
 <p>The projection configuration. <strong>Note:</strong> this definition is still experimental and is under development in maplibre-gl-js.</p>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="err">projec</span><span class="kc">t</span><span class="err">io</span><span class="kc">n</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;globe&quot;</span><span class="p">}</span>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="err">projec</span><span class="kc">t</span><span class="err">io</span><span class="kc">n</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;globe&quot;</span><span class="p">}</span>
 </span></code></pre></div>
 <h2 id="terrain">terrain<a class="headerlink" href="#terrain" title="Permanent link">&para;</a></h2>
 <p><em>Optional <a href="../terrain/">terrain</a>.</em></p>
 <p>The terrain configuration.</p>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kc">terra</span><span class="err">i</span><span class="kc">n</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;raster-dem-source&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;exaggeration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">}</span>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kc">terra</span><span class="err">i</span><span class="kc">n</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;raster-dem-source&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;exaggeration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">}</span>
 </span></code></pre></div>
 <h2 id="sources">sources<a class="headerlink" href="#sources" title="Permanent link">&para;</a></h2>
 <p><em>Required <a href="../sources/">sources</a>.</em></p>
 <p>Sources state which data the map should display. Specify the type of source with the <code>type</code> property. Adding a source isn't enough to make data appear on the map because sources don't contain styling details like color or width. Layers refer to a source and give it a visual representation. This makes it possible to style the same source in different ways, like differentiating between types of roads in a highways layer.</p>
 <p>Tiled sources (vector and raster) must specify their details according to the <a href="https://github.com/mapbox/tilejson-spec">TileJSON specification</a>.</p>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="err">sources</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="nt">&quot;maplibre-demotiles&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vector&quot;</span><span class="p">,</span>
-</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">        </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demotiles.maplibre.org/tiles/tiles.json&quot;</span>
-</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">    </span><span class="p">},</span>
-</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">    </span><span class="nt">&quot;maplibre-tilejson&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vector&quot;</span><span class="p">,</span>
-</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">        </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://api.example.com/tilejson.json&quot;</span>
-</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="w">    </span><span class="p">},</span>
-</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="w">    </span><span class="nt">&quot;maplibre-streets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vector&quot;</span><span class="p">,</span>
-</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="w">        </span><span class="nt">&quot;tiles&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="w">            </span><span class="s2">&quot;http://a.example.com/tiles/{z}/{x}/{y}.pbf&quot;</span><span class="p">,</span>
-</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="w">            </span><span class="s2">&quot;http://b.example.com/tiles/{z}/{x}/{y}.pbf&quot;</span>
-</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="w">        </span><span class="p">],</span>
-</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a><span class="w">        </span><span class="nt">&quot;maxzoom&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span>
-</span><span id="__span-12-17"><a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a><span class="w">    </span><span class="p">},</span>
-</span><span id="__span-12-18"><a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a><span class="w">    </span><span class="nt">&quot;wms-imagery&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-12-19"><a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a><span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;raster&quot;</span><span class="p">,</span>
-</span><span id="__span-12-20"><a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a><span class="w">        </span><span class="nt">&quot;tiles&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-12-21"><a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a><span class="w">            </span><span class="s2">&quot;http://a.example.com/wms?bbox={bbox-epsg-3857}&amp;format=image/png&amp;service=WMS&amp;version=1.1.1&amp;request=GetMap&amp;srs=EPSG:3857&amp;width=256&amp;height=256&amp;layers=example&quot;</span>
-</span><span id="__span-12-22"><a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a><span class="w">        </span><span class="p">],</span>
-</span><span id="__span-12-23"><a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a><span class="w">        </span><span class="nt">&quot;tileSize&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">256</span>
-</span><span id="__span-12-24"><a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-12-25"><a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a><span class="p">}</span>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="err">sources</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span><span class="nt">&quot;maplibre-demotiles&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vector&quot;</span><span class="p">,</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">        </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demotiles.maplibre.org/tiles/tiles.json&quot;</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="w">    </span><span class="nt">&quot;maplibre-tilejson&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vector&quot;</span><span class="p">,</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="w">        </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://api.example.com/tilejson.json&quot;</span>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="w">    </span><span class="nt">&quot;maplibre-streets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vector&quot;</span><span class="p">,</span>
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="w">        </span><span class="nt">&quot;tiles&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="w">            </span><span class="s2">&quot;http://a.example.com/tiles/{z}/{x}/{y}.pbf&quot;</span><span class="p">,</span>
+</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="w">            </span><span class="s2">&quot;http://b.example.com/tiles/{z}/{x}/{y}.pbf&quot;</span>
+</span><span id="__span-13-15"><a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a><span class="w">        </span><span class="p">],</span>
+</span><span id="__span-13-16"><a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a><span class="w">        </span><span class="nt">&quot;maxzoom&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span>
+</span><span id="__span-13-17"><a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-13-18"><a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a><span class="w">    </span><span class="nt">&quot;wms-imagery&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-13-19"><a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a><span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;raster&quot;</span><span class="p">,</span>
+</span><span id="__span-13-20"><a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a><span class="w">        </span><span class="nt">&quot;tiles&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-13-21"><a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a><span class="w">            </span><span class="s2">&quot;http://a.example.com/wms?bbox={bbox-epsg-3857}&amp;format=image/png&amp;service=WMS&amp;version=1.1.1&amp;request=GetMap&amp;srs=EPSG:3857&amp;width=256&amp;height=256&amp;layers=example&quot;</span>
+</span><span id="__span-13-22"><a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a><span class="w">        </span><span class="p">],</span>
+</span><span id="__span-13-23"><a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a><span class="w">        </span><span class="nt">&quot;tileSize&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">256</span>
+</span><span id="__span-13-24"><a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-13-25"><a id="__codelineno-13-25" name="__codelineno-13-25" href="#__codelineno-13-25"></a><span class="p">}</span>
 </span></code></pre></div>
 <h2 id="sprite">sprite<a class="headerlink" href="#sprite" title="Permanent link">&para;</a></h2>
 <p><em>Optional <a href="../sprite/">sprite</a>.</em></p>
 <p>An array of <code>{id: 'my-sprite', url: 'https://example.com/sprite'}</code> objects. Each object should represent a unique URL to load a sprite from and and a unique ID to use as a prefix when referencing images from that sprite (i.e. 'my-sprite:image'). All the URLs are internally extended to load both .json and .png files. If the <code>id</code> field is equal to 'default', the prefix is omitted (just 'image' instead of 'default:image'). All the IDs and URLs must be unique. For backwards compatibility, instead of an array, one can also provide a single string that represent a URL to load the sprite from. The images in this case won't be prefixed.</p>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="err">spri</span><span class="kc">te</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demotiles.maplibre.org/styles/osm-bright-gl-style/sprite&quot;</span>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="err">spri</span><span class="kc">te</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demotiles.maplibre.org/styles/osm-bright-gl-style/sprite&quot;</span>
 </span></code></pre></div>
 <h2 id="glyphs">glyphs<a class="headerlink" href="#glyphs" title="Permanent link">&para;</a></h2>
 <p><em>Optional <a href="../types/#string">string</a>.</em></p>
@@ -1079,26 +1120,26 @@
 </li>
 </ul>
 <p>This property is required if any layer uses the <code>text-field</code> layout property. The URL must be absolute, containing the <a href="https://en.wikipedia.org/wiki/URL#Syntax">scheme, authority and path components</a>.</p>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="err">glyphs</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf&quot;</span>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="err">glyphs</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf&quot;</span>
 </span></code></pre></div>
 <h2 id="transition">transition<a class="headerlink" href="#transition" title="Permanent link">&para;</a></h2>
 <p><em>Optional <a href="../transition/">transition</a>.</em></p>
 <p>A global transition definition to use as a default across properties, to be used for timing transitions between one value and the next when no property-specific transition is set. Collision-based symbol fading is controlled independently of the style's <code>transition</code> property.</p>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kc">trans</span><span class="err">i</span><span class="kc">t</span><span class="err">io</span><span class="kc">n</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;duration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;delay&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">}</span>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kc">trans</span><span class="err">i</span><span class="kc">t</span><span class="err">io</span><span class="kc">n</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;duration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;delay&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">}</span>
 </span></code></pre></div>
 <h2 id="layers">layers<a class="headerlink" href="#layers" title="Permanent link">&para;</a></h2>
 <p><em>Required <a href="../types/#array">array</a>.</em></p>
 <p>A style's <code>layers</code> property lists all the layers available in that style. The type of layer is specified by the <code>type</code> property, and must be one of <code>background</code>, <code>fill</code>, <code>line</code>, <code>symbol</code>, <code>raster</code>, <code>circle</code>, <code>fill-extrusion</code>, <code>heatmap</code>, <code>hillshade</code>.</p>
 <p>Except for layers of the <code>background</code> type, each layer needs to refer to a source. Layers take the data that they get from a source, optionally filter features, and then define how those features are styled.</p>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="err">layers</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">    </span><span class="p">{</span>
-</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;coastline&quot;</span><span class="p">,</span>
-</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">        </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;maplibre&quot;</span><span class="p">,</span>
-</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">        </span><span class="nt">&quot;source-layer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;countries&quot;</span><span class="p">,</span>
-</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;line&quot;</span><span class="p">,</span>
-</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="w">        </span><span class="nt">&quot;paint&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;line-color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#198EC8&quot;</span><span class="p">}</span>
-</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="p">]</span>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="err">layers</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;coastline&quot;</span><span class="p">,</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="w">        </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;maplibre&quot;</span><span class="p">,</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="w">        </span><span class="nt">&quot;source-layer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;countries&quot;</span><span class="p">,</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;line&quot;</span><span class="p">,</span>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="w">        </span><span class="nt">&quot;paint&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;line-color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#198EC8&quot;</span><span class="p">}</span>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="p">]</span>
 </span></code></pre></div>
 
 
@@ -1219,7 +1260,7 @@
     <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "toc.follow", "search.suggest", "navigation.instant", "navigation.sections", "navigation.top"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.525ec568.min.js"></script>
+      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
       
     
   </body>
