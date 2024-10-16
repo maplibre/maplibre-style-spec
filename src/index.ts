@@ -94,7 +94,7 @@ import EvaluationContext from './expression/evaluation_context';
 import {FormattedType, NullType, Type, toString, ColorType} from './expression/types';
 
 import interpolates, {interpolateFactory} from './util/interpolate';
-import expressions from './expression/definitions';
+import {expressions} from './expression/definitions';
 import Interpolate from './expression/definitions/interpolate';
 import type {InterpolationType} from './expression/definitions/interpolate';
 

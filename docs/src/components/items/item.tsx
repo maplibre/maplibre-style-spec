@@ -3,6 +3,7 @@ import Property from '../property.jsx';
 import Subtitle from '../subtitle.jsx';
 import {Markdown} from '~/components/markdown/markdown';
 import {Show} from 'solid-js';
+import {A} from '@solidjs/router';
 
 export default function Item (props:{
     id: string;
@@ -31,18 +32,18 @@ export default function Item (props:{
                 return (
                     <span>
                         {' '}
-                        <a href={`${import.meta.env.BASE_URL}light/`}>
+                        <A href={'/light/'}>
                             light
-                        </a>
+                        </A>
                     </span>
                 );
             case 'transition':
                 return (
                     <span>
                         {' '}
-                        <a href={`${import.meta.env.BASE_URL}transition/`}>
+                        <A href={'/transition/'}>
                             transition
-                        </a>
+                        </A>
                     </span>
                 );
             case 'sources':
@@ -50,9 +51,9 @@ export default function Item (props:{
                     <span>
                         {' '}
                         object with{' '}
-                        <a href={`${import.meta.env.BASE_URL}sources/`}>
+                        <A href={'/sources/'}>
                             source
-                        </a>{' '}
+                        </A>{' '}
                         values
                     </span>
                 );
@@ -60,19 +61,19 @@ export default function Item (props:{
                 return (
                     <span>
                         {' '}
-                        <a href={`${import.meta.env.BASE_URL}layers/`}>
+                        <A href={'/layers/'}>
                             layer
                             <Show when={plural}>s</Show>
-                        </a>
+                        </A>
                     </span>
                 );
             case 'array':
                 return (
                     <span>
                         {' '}
-                        <a href={`${import.meta.env.BASE_URL}types/#array`}>
+                        <A href={'/types/#array'}>
                             array
-                        </a>
+                        </A>
                         <Show when={spec.value}>
                             <span>
                                 {' of '}
@@ -90,54 +91,54 @@ export default function Item (props:{
                 return (
                     <span>
                         {' '}
-                        <a href={`${import.meta.env.BASE_URL}expressions/`}>
+                        <A href={'/expressions/'}>
                             expression
                             <Show when={plural}>s</Show>
-                        </a>
+                        </A>
                     </span>
                 );
             case 'layout':
                 return (
                     <span>
                         {' '}
-                        <a href={`${import.meta.env.BASE_URL}layers/#layout-property`}>
+                        <A href={'/layers/#layout-property'}>
                             layout
-                        </a>
+                        </A>
                     </span>
                 );
             case 'paint':
                 return (
                     <span>
                         {' '}
-                        <a href={`${import.meta.env.BASE_URL}layers/#paint-property`}>
+                        <A href={'/layers/#paint-property'}>
                             paint
-                        </a>
+                        </A>
                     </span>
                 );
             case 'variableAnchorOffsetCollection':
                 return (
                     <span>
                         {' '}
-                        <a href={`${import.meta.env.BASE_URL}types/#array`}>
+                        <A href={'/types/#array'}>
                             array
-                        </a> containing alternating <a href={`${import.meta.env.BASE_URL}layers/#layout-symbol-text-anchor`}>
+                        </A> containing alternating <A href={'/layers/#layout-symbol-text-anchor'}>
                             text-anchor
-                        </a> and <a href={`${import.meta.env.BASE_URL}types/#point`}>
+                        </A> and <A href={'/types/#point'}>
                             point
-                        </a> values
+                        </A> values
                     </span>
                 );
             default:
                 return (
                     <span>
                         {' '}
-                        <a
-                            href={`${import.meta.env.BASE_URL}types/#${spec.type}`}
+                        <A
+                            href={`/types/#${spec.type}`}
                         >
                             <span>{spec.type}
                                 <Show when={plural}>s</Show>
                             </span>
-                        </a>
+                        </A>
                     </span>
                 );
         }
@@ -191,14 +192,14 @@ export default function Item (props:{
             </Property>
             <Subtitle>
                 <Show when={props.kind === 'paint'}>
-                    <a href={`${import.meta.env.BASE_URL}layers/#paint-property`}>
+                    <A href={'/layers/#paint-property'}>
                                 Paint
-                    </a><span>{' property. '}</span>
+                    </A><span>{' property. '}</span>
                 </Show>
                 <Show when={props.kind === 'layout'}>
-                    <a href={`${import.meta.env.BASE_URL}layers/#layout-property`}>
+                    <A href={'/layers/#layout-property'}>
                                 Layout
-                    </a>{' property. '}
+                    </A>{' property. '}
                 </Show>
 
                 <Show when={props.required} fallback="Optional">Required</Show>
@@ -254,10 +255,10 @@ export default function Item (props:{
                         'feature-state'
                     )}>
                         <em class="color-gray">
-                            <a href={`${import.meta.env.BASE_URL}expressions/#feature-state`}>
+                            <A href={'/expressions/#feature-state'}>
 
                                 <code>feature-state</code>
-                            </a>
+                            </A>
                         </em>
                     </Show>
                     <Show when={props.expression.interpolated &&
@@ -267,10 +268,10 @@ export default function Item (props:{
                         <span>{' and '}</span>
                     </Show>
                     <Show when={props.expression.interpolated}>
-                        <a href={`${import.meta.env.BASE_URL}expressions/#interpolate`}>
+                        <A href={'/expressions/#interpolate'}>
 
                             <code>interpolate</code>
-                        </a>
+                        </A>
                     </Show>
                     <span>{' expressions. '}</span>
                 </Show>

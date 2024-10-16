@@ -4,6 +4,7 @@ import {renderSignature} from './render-signature';
 import Property from '~/components/property.jsx';
 import related from './expressions-related.json';
 import {Markdown} from '~/components/markdown/markdown.jsx';
+import {A} from '@solidjs/router';
 
 interface IExpressionReference {
     group: string;
@@ -33,7 +34,7 @@ export default function ExpressionReference (props: IExpressionReference) {
                 <ul class="mb18">
                     {links.map((link) => (
                         <li>
-                            <a href={link.href}>{link.title}</a>
+                            <A href={link.href}>{link.title}</A>
                         </li>
                     ))}
                 </ul>

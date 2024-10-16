@@ -1,13 +1,13 @@
 import {Markdown} from '~/components/markdown/markdown';
 import ref from '../../../../src/reference/latest';
 import {Items} from '../../components/items/items';
-function Root() {
+function Sky() {
 
     const md = `# Sky
 
 Add sky and fog to the map.
 
-This feautre is still under development and is not yet available in the latest release.
+This feature is still under development and is not yet available in the latest release.
 
 \`\`\`json
 "sky": ${JSON.stringify(ref.$root.sky.example, null, 2)}
@@ -23,4 +23,4 @@ This feautre is still under development and is not yet available in the latest r
     );
 }
 
-export default Root;
+export default Sky;
