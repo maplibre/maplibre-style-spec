@@ -3,8 +3,17 @@
     "number",
     [
       "interpolate",
-      ["exponential", 1],
-      ["number", ["get", "x"]],
+      [
+        "exponential",
+        1
+      ],
+      [
+        "number",
+        [
+          "get",
+          "x"
+        ]
+      ],
       2,
       100,
       55,
@@ -36,15 +45,78 @@
     ]
   ],
   "inputs": [
-    [{}, {"properties": {"x": 2}}],
-    [{}, {"properties": {"x": 20}}],
-    [{}, {"properties": {"x": 607}}],
-    [{}, {"properties": {"x": 680}}],
-    [{}, {"properties": {"x": 4927}}],
-    [{}, {"properties": {"x": 7300}}],
-    [{}, {"properties": {"x": 10000}}],
-    [{}, {"properties": {"x": 20000}}],
-    [{}, {"properties": {"x": 40000}}]
+    [
+      {},
+      {
+        "properties": {
+          "x": 2
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 20
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 607
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 680
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 4927
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 7300
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 10000
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 20000
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 40000
+        }
+      }
+    ]
   ],
   "expected": {
     "compiled": {

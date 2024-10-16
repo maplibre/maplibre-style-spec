@@ -69,7 +69,7 @@ export type StylePropertySpecification = {
     default?: VariableAnchorOffsetCollectionSpecification;
 };
 
-import v8Spec from './reference/v8.json' assert {type: 'json'};
+import v8Spec from './reference/v8.json' with {type: 'json'};
 const v8 = v8Spec as any;
 import latest from './reference/latest';
 import derefLayers from './deref';
@@ -94,7 +94,7 @@ import EvaluationContext from './expression/evaluation_context';
 import {FormattedType, NullType, Type, toString, ColorType} from './expression/types';
 
 import interpolates, {interpolateFactory} from './util/interpolate';
-import expressions from './expression/definitions';
+import {expressions} from './expression/definitions';
 import Interpolate from './expression/definitions/interpolate';
 import type {InterpolationType} from './expression/definitions/interpolate';
 
@@ -110,6 +110,7 @@ import {VariableAnchorOffsetCollectionSpecification} from './types.g';
 import format from './format';
 import validate from './validate/validate';
 import migrate from './migrate';
+import {classifyRings} from './util/classify_rings';
 
 const expression = {
     StyleExpression,
@@ -187,6 +188,7 @@ export {
     format,
     validate,
     migrate,
+    classifyRings,
 
     ColorType,
     interpolates,

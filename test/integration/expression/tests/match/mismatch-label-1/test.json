@@ -1,7 +1,10 @@
 {
   "expression": [
     "match",
-    ["get", "x"],
+    [
+      "get",
+      "x"
+    ],
     "a",
     "the letter a",
     0,
@@ -14,7 +17,10 @@
     "compiled": {
       "result": "error",
       "errors": [
-        {"key": "[4]", "error": "Expected string but found number instead."}
+        {
+          "key": "[4]",
+          "error": "Expected string but found number instead."
+        }
       ]
     }
   }

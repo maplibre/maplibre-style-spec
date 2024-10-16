@@ -1,12 +1,48 @@
 {
   "expression": [
     "number",
-    ["interpolate", ["exponential", 2], ["number", ["get", "x"]], 1, 2]
+    [
+      "interpolate",
+      [
+        "exponential",
+        2
+      ],
+      [
+        "number",
+        [
+          "get",
+          "x"
+        ]
+      ],
+      1,
+      2
+    ]
   ],
   "inputs": [
-    [{}, {"properties": {"x": 0}}],
-    [{}, {"properties": {"x": 1}}],
-    [{}, {"properties": {"x": 2}}]
+    [
+      {},
+      {
+        "properties": {
+          "x": 0
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 1
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 2
+        }
+      }
+    ]
   ],
   "expected": {
     "compiled": {
@@ -15,6 +51,10 @@
       "isZoomConstant": true,
       "type": "number"
     },
-    "outputs": [2, 2, 2]
+    "outputs": [
+      2,
+      2,
+      2
+    ]
   }
 }

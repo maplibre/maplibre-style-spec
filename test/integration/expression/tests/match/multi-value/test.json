@@ -3,20 +3,67 @@
     "string",
     [
       "match",
-      ["string", ["get", "x"]],
-      ["a", "A"],
+      [
+        "string",
+        [
+          "get",
+          "x"
+        ]
+      ],
+      [
+        "a",
+        "A"
+      ],
       "Apple",
-      ["b", "B"],
+      [
+        "b",
+        "B"
+      ],
       "Banana",
       "Kumquat"
     ]
   ],
   "inputs": [
-    [{}, {"properties": {"x": "a"}}],
-    [{}, {"properties": {"x": "A"}}],
-    [{}, {"properties": {"x": "b"}}],
-    [{}, {"properties": {"x": "B"}}],
-    [{}, {"properties": {"x": "c"}}]
+    [
+      {},
+      {
+        "properties": {
+          "x": "a"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "A"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "b"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "B"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "c"
+        }
+      }
+    ]
   ],
   "expected": {
     "compiled": {
@@ -25,6 +72,12 @@
       "isZoomConstant": true,
       "type": "string"
     },
-    "outputs": ["Apple", "Apple", "Banana", "Banana", "Kumquat"]
+    "outputs": [
+      "Apple",
+      "Apple",
+      "Banana",
+      "Banana",
+      "Kumquat"
+    ]
   }
 }

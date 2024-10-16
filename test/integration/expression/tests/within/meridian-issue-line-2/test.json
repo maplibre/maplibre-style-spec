@@ -4,35 +4,104 @@
     {
       "type": "Polygon",
       "coordinates": [
-        [[-185, 60], [175, 60], [175, 65], [-185, 65], [-185, 60]]
+        [
+          [
+            -185,
+            60
+          ],
+          [
+            175,
+            60
+          ],
+          [
+            175,
+            65
+          ],
+          [
+            -185,
+            65
+          ],
+          [
+            -185,
+            60
+          ]
+        ]
       ]
     }
   ],
   "inputs": [
     [
-      {"zoom": 0, "canonicalID": {"z": 0, "x": 0, "y": 0}},
+      {
+        "zoom": 0,
+        "canonicalID": {
+          "z": 0,
+          "x": 0,
+          "y": 0
+        }
+      },
       {
         "geometry": {
           "type": "LineString",
-          "coordinates": [[-183, 61], [-179, 62]]
+          "coordinates": [
+            [
+              -183,
+              61
+            ],
+            [
+              -179,
+              62
+            ]
+          ]
         }
       }
     ],
     [
-      {"zoom": 0, "canonicalID": {"z": 0, "x": 0, "y": 0}},
+      {
+        "zoom": 0,
+        "canonicalID": {
+          "z": 0,
+          "x": 0,
+          "y": 0
+        }
+      },
       {
         "geometry": {
           "type": "LineString",
-          "coordinates": [[-183, 61], [181, 63]]
+          "coordinates": [
+            [
+              -183,
+              61
+            ],
+            [
+              181,
+              63
+            ]
+          ]
         }
       }
     ],
     [
-      {"zoom": 0, "canonicalID": {"z": 0, "x": 0, "y": 0}},
+      {
+        "zoom": 0,
+        "canonicalID": {
+          "z": 0,
+          "x": 0,
+          "y": 0
+        }
+      },
       {
         "geometry": {
           "type": "LineString",
-          "coordinates": [[-183, 62], [55, 63.5]]
+          "coordinates": [
+            [
+              -183,
+              62
+            ],
+            [
+              55,
+              63.5
+            ]
+          ]
         }
       }
     ]
@@ -44,6 +113,10 @@
       "isZoomConstant": true,
       "type": "boolean"
     },
-    "outputs": [true, false, true]
+    "outputs": [
+      true,
+      false,
+      true
+    ]
   }
 }

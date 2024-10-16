@@ -1,6 +1,31 @@
 {
-  "expression": ["concat", ["get", "a"], ["get", "1"], ["get", "true"]],
-  "inputs": [[{}, {"properties": {"1": 1, "a": "a", "true": true}}]],
+  "expression": [
+    "concat",
+    [
+      "get",
+      "a"
+    ],
+    [
+      "get",
+      "1"
+    ],
+    [
+      "get",
+      "true"
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {
+        "properties": {
+          "1": 1,
+          "a": "a",
+          "true": true
+        }
+      }
+    ]
+  ],
   "expected": {
     "compiled": {
       "result": "success",
@@ -8,6 +33,8 @@
       "isZoomConstant": true,
       "type": "string"
     },
-    "outputs": ["a1true"]
+    "outputs": [
+      "a1true"
+    ]
   }
 }

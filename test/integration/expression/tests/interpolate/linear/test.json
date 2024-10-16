@@ -2,16 +2,76 @@
   "propertySpec": {
     "type": "number",
     "property-type": "data-driven",
-    "expression": {"parameters": ["zoom", "feature"]}
+    "expression": {
+      "parameters": [
+        "zoom",
+        "feature"
+      ]
+    }
   },
-  "expression": ["interpolate", ["linear"], ["get", "x"], 0, 100, 10, 200],
+  "expression": [
+    "interpolate",
+    [
+      "linear"
+    ],
+    [
+      "get",
+      "x"
+    ],
+    0,
+    100,
+    10,
+    200
+  ],
   "inputs": [
-    [{}, {"properties": {"x": 0}}],
-    [{}, {"properties": {"x": 5}}],
-    [{}, {"properties": {"x": 10}}],
-    [{}, {"properties": {"x": -1234}}],
-    [{}, {"properties": {"x": 1234}}],
-    [{}, {"properties": {"x": "abcd"}}]
+    [
+      {},
+      {
+        "properties": {
+          "x": 0
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 5
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 10
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": -1234
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 1234
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "abcd"
+        }
+      }
+    ]
   ],
   "expected": {
     "compiled": {

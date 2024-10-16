@@ -1,6 +1,16 @@
 {
-  "expression": ["min", 0, -1, 10],
-  "inputs": [[{}, {}]],
+  "expression": [
+    "min",
+    0,
+    -1,
+    10
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
   "expected": {
     "compiled": {
       "result": "success",
@@ -8,6 +18,8 @@
       "isZoomConstant": true,
       "type": "number"
     },
-    "outputs": [-1]
+    "outputs": [
+      -1
+    ]
   }
 }

@@ -1,14 +1,43 @@
 {
-  "expression": {"type": "identity", "property": "p", "default": "red"},
+  "expression": {
+    "type": "identity",
+    "property": "p",
+    "default": "red"
+  },
   "inputs": [
-    [{}, {"properties": {}}],
-    [{}, {"properties": {"p": "blue"}}],
-    [{}, {"properties": {"p": 0}}]
+    [
+      {},
+      {
+        "properties": {}
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": "blue"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": 0
+        }
+      }
+    ]
   ],
   "propertySpec": {
     "type": "color",
     "property-type": "data-driven",
-    "expression": {"interpolated": false, "parameters": ["zoom", "feature"]}
+    "expression": {
+      "interpolated": false,
+      "parameters": [
+        "zoom",
+        "feature"
+      ]
+    }
   },
   "expected": {
     "compiled": {
@@ -17,6 +46,25 @@
       "isZoomConstant": true,
       "type": "color"
     },
-    "outputs": [[1, 0, 0, 1], [0, 0, 1, 1], [1, 0, 0, 1]]
+    "outputs": [
+      [
+        1,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        1,
+        1
+      ],
+      [
+        1,
+        0,
+        0,
+        1
+      ]
+    ]
   }
 }

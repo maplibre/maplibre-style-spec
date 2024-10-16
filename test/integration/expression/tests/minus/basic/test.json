@@ -1,6 +1,15 @@
 {
-  "expression": ["-", 5, 7],
-  "inputs": [[{}, {}]],
+  "expression": [
+    "-",
+    5,
+    7
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
   "expected": {
     "compiled": {
       "result": "success",
@@ -8,6 +17,8 @@
       "isZoomConstant": true,
       "type": "number"
     },
-    "outputs": [-2]
+    "outputs": [
+      -2
+    ]
   }
 }

@@ -1,6 +1,25 @@
 {
-  "expression": ["format", ["image", "monument-15"], ["image", "beach-11"]],
-  "inputs": [[{"availableImages": ["monument-15"]}, {}]],
+  "expression": [
+    "format",
+    [
+      "image",
+      "monument-15"
+    ],
+    [
+      "image",
+      "beach-11"
+    ]
+  ],
+  "inputs": [
+    [
+      {
+        "availableImages": [
+          "monument-15"
+        ]
+      },
+      {}
+    ]
+  ],
   "expected": {
     "compiled": {
       "result": "success",
@@ -13,14 +32,20 @@
         "sections": [
           {
             "text": "",
-            "image": {"name": "monument-15", "available": true},
+            "image": {
+              "name": "monument-15",
+              "available": true
+            },
             "scale": null,
             "fontStack": null,
             "textColor": null
           },
           {
             "text": "",
-            "image": {"name": "beach-11", "available": false},
+            "image": {
+              "name": "beach-11",
+              "available": false
+            },
             "scale": null,
             "fontStack": null,
             "textColor": null

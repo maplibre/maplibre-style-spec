@@ -1,6 +1,14 @@
 {
-  "expression": ["downcase", "StRiNg"],
-  "inputs": [[{}, {}]],
+  "expression": [
+    "downcase",
+    "StRiNg"
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
   "expected": {
     "compiled": {
       "result": "success",
@@ -8,6 +16,8 @@
       "isZoomConstant": true,
       "type": "string"
     },
-    "outputs": ["string"]
+    "outputs": [
+      "string"
+    ]
   }
 }

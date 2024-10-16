@@ -1,8 +1,40 @@
 {
-  "expression": ["all", ["boolean", ["get", "x"]], ["boolean", ["get", "y"]]],
+  "expression": [
+    "all",
+    [
+      "boolean",
+      [
+        "get",
+        "x"
+      ]
+    ],
+    [
+      "boolean",
+      [
+        "get",
+        "y"
+      ]
+    ]
+  ],
   "inputs": [
-    [{}, {"properties": {"x": true, "y": false}}],
-    [{}, {"properties": {"x": true, "y": true}}]
+    [
+      {},
+      {
+        "properties": {
+          "x": true,
+          "y": false
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": true,
+          "y": true
+        }
+      }
+    ]
   ],
   "expected": {
     "compiled": {
@@ -11,6 +43,9 @@
       "isZoomConstant": true,
       "type": "boolean"
     },
-    "outputs": [false, true]
+    "outputs": [
+      false,
+      true
+    ]
   }
 }

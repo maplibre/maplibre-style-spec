@@ -9,8 +9,54 @@
           "geometry": {
             "type": "MultiPolygon",
             "coordinates": [
-              [[[10, 0], [10, 5], [15, 5], [15, 0], [10, 0]]],
-              [[[110, 0], [110, 5], [115, 5], [115, 0], [110, 0]]]
+              [
+                [
+                  [
+                    10,
+                    0
+                  ],
+                  [
+                    10,
+                    5
+                  ],
+                  [
+                    15,
+                    5
+                  ],
+                  [
+                    15,
+                    0
+                  ],
+                  [
+                    10,
+                    0
+                  ]
+                ]
+              ],
+              [
+                [
+                  [
+                    110,
+                    0
+                  ],
+                  [
+                    110,
+                    5
+                  ],
+                  [
+                    115,
+                    5
+                  ],
+                  [
+                    115,
+                    0
+                  ],
+                  [
+                    110,
+                    0
+                  ]
+                ]
+              ]
             ]
           }
         },
@@ -19,8 +65,54 @@
           "geometry": {
             "type": "MultiPolygon",
             "coordinates": [
-              [[[0, 0], [0, 5], [5, 5], [5, 0], [0, 0]]],
-              [[[50, 0], [50, 5], [55, 5], [55, 0], [50, 0]]]
+              [
+                [
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    5
+                  ],
+                  [
+                    5,
+                    5
+                  ],
+                  [
+                    5,
+                    0
+                  ],
+                  [
+                    0,
+                    0
+                  ]
+                ]
+              ],
+              [
+                [
+                  [
+                    50,
+                    0
+                  ],
+                  [
+                    50,
+                    5
+                  ],
+                  [
+                    55,
+                    5
+                  ],
+                  [
+                    55,
+                    0
+                  ],
+                  [
+                    50,
+                    0
+                  ]
+                ]
+              ]
             ]
           }
         }
@@ -29,28 +121,118 @@
   ],
   "inputs": [
     [
-      {"zoom": 3, "canonicalID": {"z": 3, "x": 3, "y": 3}},
-      {"geometry": {"type": "Point", "coordinates": [6, 6]}}
+      {
+        "zoom": 3,
+        "canonicalID": {
+          "z": 3,
+          "x": 3,
+          "y": 3
+        }
+      },
+      {
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            6,
+            6
+          ]
+        }
+      }
     ],
     [
-      {"zoom": 3, "canonicalID": {"z": 3, "x": 3, "y": 3}},
-      {"geometry": {"type": "Point", "coordinates": [2, 2]}}
+      {
+        "zoom": 3,
+        "canonicalID": {
+          "z": 3,
+          "x": 3,
+          "y": 3
+        }
+      },
+      {
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            2,
+            2
+          ]
+        }
+      }
     ],
     [
-      {"zoom": 3, "canonicalID": {"z": 3, "x": 3, "y": 3}},
-      {"geometry": {"type": "Point", "coordinates": [12, 2]}}
+      {
+        "zoom": 3,
+        "canonicalID": {
+          "z": 3,
+          "x": 3,
+          "y": 3
+        }
+      },
+      {
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            12,
+            2
+          ]
+        }
+      }
     ],
     [
-      {"zoom": 3, "canonicalID": {"z": 3, "x": 3, "y": 3}},
-      {"geometry": {"type": "Point", "coordinates": [22, 2]}}
+      {
+        "zoom": 3,
+        "canonicalID": {
+          "z": 3,
+          "x": 3,
+          "y": 3
+        }
+      },
+      {
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            22,
+            2
+          ]
+        }
+      }
     ],
     [
-      {"zoom": 3, "canonicalID": {"z": 3, "x": 3, "y": 3}},
-      {"geometry": {"type": "Point", "coordinates": [52, 2]}}
-    ],    
+      {
+        "zoom": 3,
+        "canonicalID": {
+          "z": 3,
+          "x": 3,
+          "y": 3
+        }
+      },
+      {
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            52,
+            2
+          ]
+        }
+      }
+    ],
     [
-      {"zoom": 3, "canonicalID": {"z": 3, "x": 3, "y": 3}},
-      {"geometry": {"type": "Point", "coordinates": [112, 2]}}
+      {
+        "zoom": 3,
+        "canonicalID": {
+          "z": 3,
+          "x": 3,
+          "y": 3
+        }
+      },
+      {
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            112,
+            2
+          ]
+        }
+      }
     ]
   ],
   "expected": {
@@ -60,6 +242,13 @@
       "isZoomConstant": true,
       "type": "boolean"
     },
-    "outputs": [false, true, true, false, true, true]
+    "outputs": [
+      false,
+      true,
+      true,
+      false,
+      true,
+      true
+    ]
   }
 }

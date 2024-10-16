@@ -1,6 +1,14 @@
 {
-  "expression": ["cos", 0],
-  "inputs": [[{}, {}]],
+  "expression": [
+    "cos",
+    0
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
   "expected": {
     "compiled": {
       "result": "success",
@@ -8,6 +16,8 @@
       "isZoomConstant": true,
       "type": "number"
     },
-    "outputs": [1]
+    "outputs": [
+      1
+    ]
   }
 }

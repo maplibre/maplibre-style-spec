@@ -1,6 +1,14 @@
 {
-  "expression": ["any", false],
-  "inputs": [[{}, {}]],
+  "expression": [
+    "any",
+    false
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
   "expected": {
     "compiled": {
       "result": "success",
@@ -8,6 +16,8 @@
       "isZoomConstant": true,
       "type": "boolean"
     },
-    "outputs": [false]
+    "outputs": [
+      false
+    ]
   }
 }

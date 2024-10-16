@@ -22,11 +22,7 @@ const rollupPlugins = [
             '_token_stack:': ''
         }
     }),
-    typescript({
-        compilerOptions: {
-            declaration: false,
-        }
-    }),
+    typescript(),
     commonjs()
 ];
 

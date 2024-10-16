@@ -1,6 +1,17 @@
 {
-  "expression": ["properties"],
-  "inputs": [[{}, {"properties": {"x": 5}}]],
+  "expression": [
+    "properties"
+  ],
+  "inputs": [
+    [
+      {},
+      {
+        "properties": {
+          "x": 5
+        }
+      }
+    ]
+  ],
   "expected": {
     "compiled": {
       "result": "success",
@@ -8,6 +19,10 @@
       "isZoomConstant": true,
       "type": "object"
     },
-    "outputs": [{"x": 5}]
+    "outputs": [
+      {
+        "x": 5
+      }
+    ]
   }
 }

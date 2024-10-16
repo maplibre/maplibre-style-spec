@@ -3,8 +3,20 @@
     "number",
     [
       "interpolate",
-      ["cubic-bezier", 0.42, 0, 0.58, 1],
-      ["number", ["get", "x"]],
+      [
+        "cubic-bezier",
+        0.42,
+        0,
+        0.58,
+        1
+      ],
+      [
+        "number",
+        [
+          "get",
+          "x"
+        ]
+      ],
       0,
       0,
       100,
@@ -12,17 +24,94 @@
     ]
   ],
   "inputs": [
-    [{}, {"properties": {"x": 0}}],
-    [{}, {"properties": {"x": 10}}],
-    [{}, {"properties": {"x": 20}}],
-    [{}, {"properties": {"x": 30}}],
-    [{}, {"properties": {"x": 40}}],
-    [{}, {"properties": {"x": 50}}],
-    [{}, {"properties": {"x": 60}}],
-    [{}, {"properties": {"x": 70}}],
-    [{}, {"properties": {"x": 80}}],
-    [{}, {"properties": {"x": 90}}],
-    [{}, {"properties": {"x": 100}}]
+    [
+      {},
+      {
+        "properties": {
+          "x": 0
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 10
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 20
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 30
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 40
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 50
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 60
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 70
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 80
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 90
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 100
+        }
+      }
+    ]
   ],
   "expected": {
     "compiled": {

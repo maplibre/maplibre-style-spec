@@ -2,7 +2,13 @@
   "expression": [
     "match",
     "x",
-    ["string", ["get", "y"]],
+    [
+      "string",
+      [
+        "get",
+        "y"
+      ]
+    ],
     "thing one",
     "thing two"
   ],
@@ -10,7 +16,10 @@
     "compiled": {
       "result": "error",
       "errors": [
-        {"key": "[2]", "error": "Branch labels must be numbers or strings."}
+        {
+          "key": "[2]",
+          "error": "Branch labels must be numbers or strings."
+        }
       ]
     }
   }

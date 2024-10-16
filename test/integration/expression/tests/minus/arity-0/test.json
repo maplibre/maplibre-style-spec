@@ -1,6 +1,13 @@
 {
-  "expression": ["-"],
-  "inputs": [[{}, {}]],
+  "expression": [
+    "-"
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
   "expected": {
     "compiled": {
       "result": "error",

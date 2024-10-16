@@ -1,7 +1,6 @@
 import ValidationError from '../error/validation_error';
 import getType from '../util/get_type';
-import validate from './validate';
-import v8 from '../reference/v8.json' assert {type: 'json'};
+import v8 from '../reference/v8.json' with {type: 'json'};
 import {SkySpecification, StyleSpecification} from '../types.g';
 
 interface ValidateSkyOptions {
@@ -28,7 +27,7 @@ export default function validateSky(options: ValidateSkyOptions) {
     let errors = [];
     for (const key in sky) {
         if (skySpec[key]) {
-            errors = errors.concat(validate({
+            errors = errors.concat(options.validateSpec({
                 key,
                 value: sky[key],
                 valueSpec: skySpec[key],
