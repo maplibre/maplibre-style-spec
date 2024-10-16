@@ -1,8 +1,33 @@
 {
-  "expression": ["at", 0, ["get", "array"]],
+  "expression": [
+    "at",
+    0,
+    [
+      "get",
+      "array"
+    ]
+  ],
   "inputs": [
-    [{}, {"properties": {"array": [0, 1, 2]}}],
-    [{}, {"properties": {"array": "not"}}]
+    [
+      {},
+      {
+        "properties": {
+          "array": [
+            0,
+            1,
+            2
+          ]
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "array": "not"
+        }
+      }
+    ]
   ],
   "expected": {
     "compiled": {
@@ -13,7 +38,9 @@
     },
     "outputs": [
       0,
-      {"error": "Expected value to be of type array, but found string instead."}
+      {
+        "error": "Expected value to be of type array, but found string instead."
+      }
     ]
   }
 }

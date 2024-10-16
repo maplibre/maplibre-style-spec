@@ -1,11 +1,45 @@
 {
-  "expression": ["has", "x"],
+  "expression": [
+    "has",
+    "x"
+  ],
   "inputs": [
-    [{}, {}],
-    [{}, {"properties": {"x": 1}}],
-    [{}, {"properties": {"x": 0}}],
-    [{}, {"properties": {"x": false}}],
-    [{}, {"properties": {"x": null}}]
+    [
+      {},
+      {}
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 1
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 0
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": false
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": null
+        }
+      }
+    ]
   ],
   "expected": {
     "compiled": {
@@ -14,6 +48,12 @@
       "isZoomConstant": true,
       "type": "boolean"
     },
-    "outputs": [false, true, true, true, true]
+    "outputs": [
+      false,
+      true,
+      true,
+      true,
+      true
+    ]
   }
 }

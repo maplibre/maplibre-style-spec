@@ -4,8 +4,36 @@
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
-
 - _...Add new stuff here..._
+
+## 20.4.0
+
+### ✨ Features and improvements
+
+* Added `roll` property to stylesheet ([#850](https://github.com/maplibre/maplibre-style-spec/issues/850))
+
+## 20.3.1
+
+### 🐞 Bug fixes
+
+- The `index-of`, `length`, and `slice` expression operators count a UTF-16 surrogate pair as a single character. ([#779](https://github.com/maplibre/maplibre-style-spec/pull/779))
+
+## 20.3.0
+
+### ✨ Features and improvements
+
+- Added `Projection` specifications [#687](https://github.com/maplibre/maplibre-style-spec/pull/687)
+- Updated `Sky` specifications to support atmosphere and other required features [#686](https://github.com/maplibre/maplibre-style-spec/pull/686)
+
+### 🐞 Bug fixes
+
+- Change `assert` to `with` in JSON modules. Requires Node.js 18.20.0 or later, and supports Node.js 22.0.0 or later - [#675](https://github.com/maplibre/maplibre-style-spec/pull/675)
+
+## 20.2.0
+
+### ✨ Features and improvements
+
+- Support `distance` expression in web style spec - [#642](https://github.com/maplibre/maplibre-style-spec/pull/642)
 
 ## 20.1.1
 

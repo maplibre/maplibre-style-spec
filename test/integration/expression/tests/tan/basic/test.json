@@ -1,6 +1,14 @@
 {
-  "expression": ["tan", 0.7853981633974483],
-  "inputs": [[{}, {}]],
+  "expression": [
+    "tan",
+    0.7853981633974483
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
   "expected": {
     "compiled": {
       "result": "success",
@@ -8,6 +16,8 @@
       "isZoomConstant": true,
       "type": "number"
     },
-    "outputs": [0.999999]
+    "outputs": [
+      0.999999
+    ]
   }
 }

@@ -1,16 +1,55 @@
 {
-  "expression": {"type": "identity", "property": "p", "default": "a"},
+  "expression": {
+    "type": "identity",
+    "property": "p",
+    "default": "a"
+  },
   "inputs": [
-    [{}, {"properties": {}}],
-    [{}, {"properties": {"p": "a"}}],
-    [{}, {"properties": {"p": "b"}}],
-    [{}, {"properties": {"p": "c"}}]
+    [
+      {},
+      {
+        "properties": {}
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": "a"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": "b"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": "c"
+        }
+      }
+    ]
   ],
   "propertySpec": {
     "type": "enum",
-    "values": {"a": {}, "b": {}},
+    "values": {
+      "a": {},
+      "b": {}
+    },
     "property-type": "data-driven",
-    "expression": {"interpolated": false, "parameters": ["zoom", "feature"]}
+    "expression": {
+      "interpolated": false,
+      "parameters": [
+        "zoom",
+        "feature"
+      ]
+    }
   },
   "expected": {
     "compiled": {
@@ -19,6 +58,11 @@
       "isZoomConstant": true,
       "type": "string"
     },
-    "outputs": ["a", "a", "b", "a"]
+    "outputs": [
+      "a",
+      "a",
+      "b",
+      "a"
+    ]
   }
 }

@@ -1,6 +1,24 @@
 {
-  "expression": ["length", ["string", ["get", "x"]]],
-  "inputs": [[{}, {"properties": {"x": "a string"}}]],
+  "expression": [
+    "length",
+    [
+      "string",
+      [
+        "get",
+        "x"
+      ]
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {
+        "properties": {
+          "x": "a string"
+        }
+      }
+    ]
+  ],
   "expected": {
     "compiled": {
       "result": "success",
@@ -8,6 +26,8 @@
       "isZoomConstant": true,
       "type": "number"
     },
-    "outputs": [8]
+    "outputs": [
+      8
+    ]
   }
 }

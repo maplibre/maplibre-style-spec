@@ -1,9 +1,42 @@
 {
-  "expression": ["array", "number", null, ["get", "x"], ["literal", [0]]],
+  "expression": [
+    "array",
+    "number",
+    null,
+    [
+      "get",
+      "x"
+    ],
+    [
+      "literal",
+      [
+        0
+      ]
+    ]
+  ],
   "inputs": [
-    [{}, {}],
-    [{}, {"properties": {"x": []}}],
-    [{}, {"properties": {"x": ["1"]}}]
+    [
+      {},
+      {}
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": []
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": [
+            "1"
+          ]
+        }
+      }
+    ]
   ],
   "expected": {
     "compiled": {
@@ -12,6 +45,14 @@
       "isZoomConstant": true,
       "type": "array<number>"
     },
-    "outputs": [[0], [], [0]]
+    "outputs": [
+      [
+        0
+      ],
+      [],
+      [
+        0
+      ]
+    ]
   }
 }

@@ -4,9 +4,21 @@
     "value": "number",
     "length": 3,
     "property-type": "data-driven",
-    "expression": {"parameters": ["zoom", "feature"]}
+    "expression": {
+      "parameters": [
+        "zoom",
+        "feature"
+      ]
+    }
   },
-  "expression": ["array", "number", ["get", "x"]],
+  "expression": [
+    "array",
+    "number",
+    [
+      "get",
+      "x"
+    ]
+  ],
   "inputs": [],
   "expected": {
     "compiled": {

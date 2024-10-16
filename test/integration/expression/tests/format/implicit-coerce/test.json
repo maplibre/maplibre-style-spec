@@ -1,10 +1,45 @@
 {
-  "expression": ["to-string", ["get", "p"]],
-  "propertySpec": {"type": "formatted"},
+  "expression": [
+    "to-string",
+    [
+      "get",
+      "p"
+    ]
+  ],
+  "propertySpec": {
+    "type": "formatted",
+    "property-type": "data-driven",
+    "expression": {
+      "interpolated": true,
+      "parameters": [
+        "zoom",
+        "feature"
+      ]
+    }
+  },
   "inputs": [
-    [{}, {"properties": {}}],
-    [{}, {"properties": {"p": 0}}],
-    [{}, {"properties": {"p": "a"}}]
+    [
+      {},
+      {
+        "properties": {}
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": 0
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": "a"
+        }
+      }
+    ]
   ],
   "expected": {
     "compiled": {

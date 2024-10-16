@@ -302,6 +302,25 @@ describe('diff', () => {
         ]);
     });
 
+    test('set roll to undefined', () => {
+        expect(diffStyles({
+            roll: 1
+        } as StyleSpecification, {
+        } as StyleSpecification)).toEqual([
+            {command: 'setRoll', args: [undefined]}
+        ]);
+    });
+
+    test('set roll', () => {
+        expect(diffStyles({
+            roll: 0
+        } as StyleSpecification, {
+            roll: 1
+        } as StyleSpecification)).toEqual([
+            {command: 'setRoll', args: [1]}
+        ]);
+    });
+
     test('no changes in light', () => {
         expect(diffStyles({
             light: {
@@ -557,10 +576,22 @@ describe('diff', () => {
         {
             sky: {
                 'fog-color': 'green',
-                'fog-blend': 0.2
+                'fog-ground-blend': 0.2
             }
         } as StyleSpecification)).toEqual([
-            {command: 'setSky', args: [{'fog-color': 'green', 'fog-blend': 0.2}]},
+            {command: 'setSky', args: [{'fog-color': 'green', 'fog-ground-blend': 0.2}]},
+        ]);
+    });
+
+    test('set projection', () => {
+        expect(diffStyles({
+        } as StyleSpecification,
+        {
+            projection: {
+                type: 'globe'
+            }
+        } as StyleSpecification)).toEqual([
+            {command: 'setProjection', args: [{type: 'globe'}]},
         ]);
     });
 });

@@ -2,10 +2,40 @@
   "expression": [
     "let",
     "x",
-    ["number", ["get", "a"]],
-    ["interpolate", ["linear"], ["zoom"], 0, 0, 30, ["var", "x"]]
+    [
+      "number",
+      [
+        "get",
+        "a"
+      ]
+    ],
+    [
+      "interpolate",
+      [
+        "linear"
+      ],
+      [
+        "zoom"
+      ],
+      0,
+      0,
+      30,
+      [
+        "var",
+        "x"
+      ]
+    ]
   ],
-  "inputs": [[{"zoom": 5}, {"a": 30}]],
+  "inputs": [
+    [
+      {
+        "zoom": 5
+      },
+      {
+        "a": 30
+      }
+    ]
+  ],
   "expected": {
     "compiled": {
       "result": "success",
@@ -14,7 +44,9 @@
       "type": "number"
     },
     "outputs": [
-      {"error": "Expected value to be of type number, but found null instead."}
+      {
+        "error": "Expected value to be of type number, but found null instead."
+      }
     ]
   }
 }

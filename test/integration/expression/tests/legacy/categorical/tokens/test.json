@@ -2,20 +2,63 @@
   "expression": {
     "type": "categorical",
     "property": "p",
-    "stops": [["0", "0 {a}"], ["1", "1 {b}"]],
+    "stops": [
+      [
+        "0",
+        "0 {a}"
+      ],
+      [
+        "1",
+        "1 {b}"
+      ]
+    ],
     "default": "default"
   },
   "propertySpec": {
     "type": "string",
     "property-type": "data-driven",
-    "expression": {"interpolated": true, "parameters": ["zoom", "feature"]},
+    "expression": {
+      "interpolated": true,
+      "parameters": [
+        "zoom",
+        "feature"
+      ]
+    },
     "tokens": true
   },
   "inputs": [
-    [{}, {"properties": {}}],
-    [{}, {"properties": {"p": "0", "a": "a"}}],
-    [{}, {"properties": {"p": "1", "b": "b"}}],
-    [{}, {"properties": {"p": 0}}]
+    [
+      {},
+      {
+        "properties": {}
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": "0",
+          "a": "a"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": "1",
+          "b": "b"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": 0
+        }
+      }
+    ]
   ],
   "expected": {
     "compiled": {
@@ -24,6 +67,11 @@
       "isZoomConstant": true,
       "type": "string"
     },
-    "outputs": ["default", "0 {a}", "1 {b}", "default"]
+    "outputs": [
+      "default",
+      "0 {a}",
+      "1 {b}",
+      "default"
+    ]
   }
 }

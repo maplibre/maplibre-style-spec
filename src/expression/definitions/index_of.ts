@@ -60,16 +60,24 @@ class IndexOf implements Expression {
             throw new RuntimeError(`Expected first argument to be of type boolean, string, number or null, but found ${toString(typeOf(needle))} instead.`);
         }
 
-        if (!isValidNativeType(haystack, ['string', 'array'])) {
+        let fromIndex;
+        if (this.fromIndex) {
+            fromIndex = (this.fromIndex.evaluate(ctx) as number);
+        }
+
+        if (isValidNativeType(haystack, ['string'])) {
+            const rawIndex = haystack.indexOf(needle, fromIndex);
+            if (rawIndex === -1) {
+                return -1;
+            } else {
+                // The index may be affected by surrogate pairs, so get the length of the preceding substring.
+                return [...haystack.slice(0, rawIndex)].length;
+            }
+        } else if (isValidNativeType(haystack, ['array'])) {
+            return haystack.indexOf(needle, fromIndex);
+        } else {
             throw new RuntimeError(`Expected second argument to be of type array or string, but found ${toString(typeOf(haystack))} instead.`);
         }
-
-        if (this.fromIndex) {
-            const fromIndex = (this.fromIndex.evaluate(ctx) as number);
-            return haystack.indexOf(needle, fromIndex);
-        }
-
-        return haystack.indexOf(needle);
     }
 
     eachChild(fn: (_: Expression) => void) {

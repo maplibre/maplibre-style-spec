@@ -3,16 +3,61 @@
     "within",
     {
       "type": "Polygon",
-      "coordinates": [[[0, 0], [0, 5], [5, 5], [5, 0], [0, 0]]]
+      "coordinates": [
+        [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            5
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            5,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ]
+      ]
     }
   ],
   "inputs": [
     [
-      {"zoom": 3, "canonicalID": {"z": 3, "x": 3, "y": 3}},
+      {
+        "zoom": 3,
+        "canonicalID": {
+          "z": 3,
+          "x": 3,
+          "y": 3
+        }
+      },
       {
         "geometry": {
           "type": "Polygon",
-          "coordinates": [[[3, 3], [6, 6], [3, 3]]]
+          "coordinates": [
+            [
+              [
+                3,
+                3
+              ],
+              [
+                6,
+                6
+              ],
+              [
+                3,
+                3
+              ]
+            ]
+          ]
         }
       }
     ]
@@ -24,6 +69,8 @@
       "isZoomConstant": true,
       "type": "boolean"
     },
-    "outputs": [false]
+    "outputs": [
+      false
+    ]
   }
 }

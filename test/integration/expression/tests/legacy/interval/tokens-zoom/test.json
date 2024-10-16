@@ -1,14 +1,59 @@
 {
-  "expression": {"type": "interval", "stops": [[0, "0 {a}"], [1, "{b}"]]},
+  "expression": {
+    "type": "interval",
+    "stops": [
+      [
+        0,
+        "0 {a}"
+      ],
+      [
+        1,
+        "{b}"
+      ]
+    ]
+  },
   "inputs": [
-    [{"zoom": 0}, {"properties": {"a": "a", "b": 2}}],
-    [{"zoom": 1}, {"properties": {"a": "a", "b": 2}}],
-    [{"zoom": 0}, {"properties": {}}]
+    [
+      {
+        "zoom": 0
+      },
+      {
+        "properties": {
+          "a": "a",
+          "b": 2
+        }
+      }
+    ],
+    [
+      {
+        "zoom": 1
+      },
+      {
+        "properties": {
+          "a": "a",
+          "b": 2
+        }
+      }
+    ],
+    [
+      {
+        "zoom": 0
+      },
+      {
+        "properties": {}
+      }
+    ]
   ],
   "propertySpec": {
     "type": "string",
     "property-type": "data-driven",
-    "expression": {"interpolated": true, "parameters": ["zoom", "feature"]},
+    "expression": {
+      "interpolated": true,
+      "parameters": [
+        "zoom",
+        "feature"
+      ]
+    },
     "tokens": true
   },
   "expected": {
@@ -18,6 +63,10 @@
       "isZoomConstant": false,
       "type": "string"
     },
-    "outputs": ["0 a", "2", "0 "]
+    "outputs": [
+      "0 a",
+      "2",
+      "0 "
+    ]
   }
 }

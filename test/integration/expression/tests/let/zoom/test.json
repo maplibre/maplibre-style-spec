@@ -2,20 +2,54 @@
   "expression": [
     "let",
     "z0_value",
-    ["number", ["get", "a"]],
+    [
+      "number",
+      [
+        "get",
+        "a"
+      ]
+    ],
     "z20_value",
-    ["number", ["get", "b"]],
+    [
+      "number",
+      [
+        "get",
+        "b"
+      ]
+    ],
     [
       "interpolate",
-      ["linear"],
-      ["zoom"],
+      [
+        "linear"
+      ],
+      [
+        "zoom"
+      ],
       0,
-      ["var", "z0_value"],
+      [
+        "var",
+        "z0_value"
+      ],
       20,
-      ["var", "z20_value"]
+      [
+        "var",
+        "z20_value"
+      ]
     ]
   ],
-  "inputs": [[{"zoom": 10}, {"properties": {"a": 10, "b": 30}}]],
+  "inputs": [
+    [
+      {
+        "zoom": 10
+      },
+      {
+        "properties": {
+          "a": 10,
+          "b": 30
+        }
+      }
+    ]
+  ],
   "expected": {
     "compiled": {
       "result": "success",
@@ -23,6 +57,8 @@
       "isZoomConstant": false,
       "type": "number"
     },
-    "outputs": [20]
+    "outputs": [
+      20
+    ]
   }
 }

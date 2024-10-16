@@ -1,15 +1,51 @@
 {
-  "expression": {"type": "identity", "property": "p", "default": true},
+  "expression": {
+    "type": "identity",
+    "property": "p",
+    "default": true
+  },
   "inputs": [
-    [{}, {"properties": {}}],
-    [{}, {"properties": {"p": true}}],
-    [{}, {"properties": {"p": false}}],
-    [{}, {"properties": {"p": "wrong type"}}]
+    [
+      {},
+      {
+        "properties": {}
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": true
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": false
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": "wrong type"
+        }
+      }
+    ]
   ],
   "propertySpec": {
     "type": "boolean",
     "property-type": "data-driven",
-    "expression": {"interpolated": false, "parameters": ["zoom", "feature"]}
+    "expression": {
+      "interpolated": false,
+      "parameters": [
+        "zoom",
+        "feature"
+      ]
+    }
   },
   "expected": {
     "compiled": {
@@ -18,6 +54,11 @@
       "isZoomConstant": true,
       "type": "boolean"
     },
-    "outputs": [true, true, false, true]
+    "outputs": [
+      true,
+      true,
+      false,
+      true
+    ]
   }
 }

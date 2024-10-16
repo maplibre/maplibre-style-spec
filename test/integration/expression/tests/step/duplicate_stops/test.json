@@ -1,6 +1,19 @@
 {
-  "expression": ["step", 0, "a", 0, "b", 0, "c"],
-  "inputs": [[{}, {}]],
+  "expression": [
+    "step",
+    0,
+    "a",
+    0,
+    "b",
+    0,
+    "c"
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
   "expected": {
     "compiled": {
       "result": "error",

@@ -1,10 +1,44 @@
 {
-  "expression": ["string", ["get", "x"]],
+  "expression": [
+    "string",
+    [
+      "get",
+      "x"
+    ]
+  ],
   "inputs": [
-    [{}, {"properties": {"x": "1"}}],
-    [{}, {"properties": {"x": 1}}],
-    [{}, {"properties": {"x": false}}],
-    [{}, {"properties": {"x": null}}]
+    [
+      {},
+      {
+        "properties": {
+          "x": "1"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 1
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": false
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": null
+        }
+      }
+    ]
   ],
   "expected": {
     "compiled": {
@@ -21,7 +55,9 @@
       {
         "error": "Expected value to be of type string, but found boolean instead."
       },
-      {"error": "Expected value to be of type string, but found null instead."}
+      {
+        "error": "Expected value to be of type string, but found null instead."
+      }
     ]
   }
 }

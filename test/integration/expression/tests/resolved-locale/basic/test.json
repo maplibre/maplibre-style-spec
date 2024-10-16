@@ -5,12 +5,21 @@
       "resolved-locale",
       [
         "collator",
-        {"case-sensitive": true, "diacritic-sensitive": true, "locale": "en"}
+        {
+          "case-sensitive": true,
+          "diacritic-sensitive": true,
+          "locale": "en"
+        }
       ]
     ],
     "en"
   ],
-  "inputs": [[{}, {}]],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
   "expected": {
     "compiled": {
       "result": "success",
@@ -18,6 +27,8 @@
       "isZoomConstant": true,
       "type": "boolean"
     },
-    "outputs": [true]
+    "outputs": [
+      true
+    ]
   }
 }

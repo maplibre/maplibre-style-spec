@@ -2,11 +2,36 @@
   "expression": [
     "number-format",
     123456.789,
-    {"locale": ["get", "locale"], "currency": ["get", "currency"]}
+    {
+      "locale": [
+        "get",
+        "locale"
+      ],
+      "currency": [
+        "get",
+        "currency"
+      ]
+    }
   ],
   "inputs": [
-    [{}, {"properties": {"locale": "en-US", "currency": "JPY"}}],
-    [{}, {"properties": {"locale": "en-US", "currency": "EUR"}}]
+    [
+      {},
+      {
+        "properties": {
+          "locale": "en-US",
+          "currency": "JPY"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "locale": "en-US",
+          "currency": "EUR"
+        }
+      }
+    ]
   ],
   "expected": {
     "compiled": {
@@ -15,6 +40,9 @@
       "isZoomConstant": true,
       "type": "string"
     },
-    "outputs": ["¥123,457", "€123,456.79"]
+    "outputs": [
+      "¥123,457",
+      "€123,456.79"
+    ]
   }
 }

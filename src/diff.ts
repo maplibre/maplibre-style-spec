@@ -1,5 +1,5 @@
 
-import {GeoJSONSourceSpecification, LayerSpecification, LightSpecification, SkySpecification, SourceSpecification, SpriteSpecification, StyleSpecification, TerrainSpecification, TransitionSpecification} from './types.g';
+import {GeoJSONSourceSpecification, LayerSpecification, LightSpecification, ProjectionSpecification, SkySpecification, SourceSpecification, SpriteSpecification, StyleSpecification, TerrainSpecification, TransitionSpecification} from './types.g';
 import isEqual from './util/deep_equal';
 
 /**
@@ -22,12 +22,14 @@ export type DiffOperationsMap = {
     'setZoom': [number];
     'setBearing': [number];
     'setPitch': [number];
+    'setRoll': [number];
     'setSprite': [SpriteSpecification];
     'setGlyphs': [string];
     'setTransition': [TransitionSpecification];
     'setLight': [LightSpecification];
     'setTerrain': [TerrainSpecification];
     'setSky': [SkySpecification];
+    'setProjection': [ProjectionSpecification];
 }
 
 export type DiffOperations = keyof DiffOperationsMap;
@@ -286,6 +288,9 @@ function diffStyles(before: StyleSpecification, after: StyleSpecification): Diff
         if (!isEqual(before.pitch, after.pitch)) {
             commands.push({command: 'setPitch', args: [after.pitch]});
         }
+        if (!isEqual(before.roll, after.roll)) {
+            commands.push({command: 'setRoll', args: [after.roll]});
+        }
         if (!isEqual(before.sprite, after.sprite)) {
             commands.push({command: 'setSprite', args: [after.sprite]});
         }
@@ -303,6 +308,9 @@ function diffStyles(before: StyleSpecification, after: StyleSpecification): Diff
         }
         if (!isEqual(before.sky, after.sky)) {
             commands.push({command: 'setSky', args: [after.sky]});
+        }
+        if (!isEqual(before.projection, after.projection)) {
+            commands.push({command: 'setProjection', args: [after.projection]});
         }
 
         // Handle changes to `sources`

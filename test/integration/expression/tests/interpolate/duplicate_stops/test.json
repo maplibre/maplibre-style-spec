@@ -1,6 +1,21 @@
 {
-  "expression": ["interpolate", ["linear"], 0, 0, 1, 0, 2],
-  "inputs": [[{}, {}]],
+  "expression": [
+    "interpolate",
+    [
+      "linear"
+    ],
+    0,
+    0,
+    1,
+    0,
+    2
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
   "expected": {
     "compiled": {
       "result": "error",

@@ -1,14 +1,34 @@
 {
   "expression": [
     "format",
-    ["get", "a"],
+    [
+      "get",
+      "a"
+    ],
     {},
-    ["get", "1"],
+    [
+      "get",
+      "1"
+    ],
     {},
-    ["get", "true"],
+    [
+      "get",
+      "true"
+    ],
     {}
   ],
-  "inputs": [[{}, {"properties": {"1": 1, "a": "a", "true": true}}]],
+  "inputs": [
+    [
+      {},
+      {
+        "properties": {
+          "1": 1,
+          "a": "a",
+          "true": true
+        }
+      }
+    ]
+  ],
   "expected": {
     "compiled": {
       "result": "success",

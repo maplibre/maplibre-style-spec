@@ -1,6 +1,11 @@
 {
-  "expression": "ah\u2028\u2029oy!",
-  "inputs": [[{}, {}]],
+  "expression": "ah  oy!",
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
   "expected": {
     "compiled": {
       "result": "success",
@@ -8,6 +13,8 @@
       "isZoomConstant": true,
       "type": "string"
     },
-    "outputs": ["ah\u2028\u2029oy!"]
+    "outputs": [
+      "ah  oy!"
+    ]
   }
 }

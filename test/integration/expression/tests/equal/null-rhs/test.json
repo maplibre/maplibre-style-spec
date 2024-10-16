@@ -1,6 +1,28 @@
 {
-  "expression": ["==", null, ["get", "x"]],
-  "inputs": [[{}, {"properties": {}}], [{}, {"properties": {"x": 1}}]],
+  "expression": [
+    "==",
+    null,
+    [
+      "get",
+      "x"
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {
+        "properties": {}
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 1
+        }
+      }
+    ]
+  ],
   "expected": {
     "compiled": {
       "result": "success",
@@ -8,6 +30,9 @@
       "isZoomConstant": true,
       "type": "boolean"
     },
-    "outputs": [true, false]
+    "outputs": [
+      true,
+      false
+    ]
   }
 }

@@ -1,10 +1,54 @@
 {
-  "expression": ["array", "string", ["get", "x"]],
+  "expression": [
+    "array",
+    "string",
+    [
+      "get",
+      "x"
+    ]
+  ],
   "inputs": [
-    [{}, {"properties": {"x": ["a", "b"]}}],
-    [{}, {"properties": {"x": [1, 2]}}],
-    [{}, {"properties": {"x": [1, "b"]}}],
-    [{}, {"properties": {"x": []}}]
+    [
+      {},
+      {
+        "properties": {
+          "x": [
+            "a",
+            "b"
+          ]
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": [
+            1,
+            2
+          ]
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": [
+            1,
+            "b"
+          ]
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": []
+        }
+      }
+    ]
   ],
   "expected": {
     "compiled": {
@@ -14,7 +58,10 @@
       "type": "array<string>"
     },
     "outputs": [
-      ["a", "b"],
+      [
+        "a",
+        "b"
+      ],
       {
         "error": "Expected value to be of type array<string>, but found array<number, 2> instead."
       },

@@ -3,14 +3,58 @@
     "rgba",
     0,
     0,
-    ["number", ["get", "b"]],
-    ["number", ["get", "a"]]
+    [
+      "number",
+      [
+        "get",
+        "b"
+      ]
+    ],
+    [
+      "number",
+      [
+        "get",
+        "a"
+      ]
+    ]
   ],
   "inputs": [
-    [{}, {"properties": {"b": -1, "a": 1}}],
-    [{}, {"properties": {"b": 256, "a": 1}}],
-    [{}, {"properties": {"b": 255, "a": -0.5}}],
-    [{}, {"properties": {"b": 256, "a": 1.5}}]
+    [
+      {},
+      {
+        "properties": {
+          "b": -1,
+          "a": 1
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "b": 256,
+          "a": 1
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "b": 255,
+          "a": -0.5
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "b": 256,
+          "a": 1.5
+        }
+      }
+    ]
   ],
   "expected": {
     "compiled": {

@@ -1,9 +1,46 @@
 {
-  "expression": ["boolean", ["in", ["get", "needle"], ["get", "haystack"]]],
+  "expression": [
+    "boolean",
+    [
+      "in",
+      [
+        "get",
+        "needle"
+      ],
+      [
+        "get",
+        "haystack"
+      ]
+    ]
+  ],
   "inputs": [
-    [{}, {"properties": {"needle": 1, "haystack": 123}}],
-    [{}, {"properties": {"needle": "foo", "haystack": {}}}],
-    [{}, {"properties": {"needle": "foo", "haystack": null}}]
+    [
+      {},
+      {
+        "properties": {
+          "needle": 1,
+          "haystack": 123
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "needle": "foo",
+          "haystack": {}
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "needle": "foo",
+          "haystack": null
+        }
+      }
+    ]
   ],
   "expected": {
     "compiled": {

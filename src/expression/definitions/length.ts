@@ -33,7 +33,8 @@ class Length implements Expression {
     evaluate(ctx: EvaluationContext) {
         const input = this.input.evaluate(ctx);
         if (typeof input === 'string') {
-            return input.length;
+            // The length may be affected by surrogate pairs.
+            return [...input].length;
         } else if (Array.isArray(input)) {
             return input.length;
         } else {

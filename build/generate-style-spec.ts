@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as properties from '../src/util/properties';
 
-import spec from '../src/reference/v8.json' assert {type: 'json'};
+import spec from '../src/reference/v8.json' with {type: 'json'};
 
 function unionType(values) {
     if (Array.isArray(values)) {
@@ -199,6 +199,7 @@ export type ExpressionSpecification =
         ...(ExpressionInputType | ExpressionInputType[] | ExpressionSpecification)[], // repeated as above
         ExpressionInputType | ExpressionSpecification]
     | ['within', unknown | ExpressionSpecification]
+    | ['distance', unknown | ExpressionSpecification]
     // Ramps, scales, curves
     | ['interpolate', InterpolationSpecification, number | ExpressionSpecification,
         ...(number | number[] | ColorSpecification | ExpressionSpecification)[]] // alternating number and number | number[] | ColorSpecification
@@ -317,6 +318,8 @@ ${objectDeclaration('LightSpecification', spec.light)}
 ${objectDeclaration('SkySpecification', spec.sky)}
 
 ${objectDeclaration('TerrainSpecification', spec.terrain)}
+
+${objectDeclaration('ProjectionSpecification', spec.projection)}
 
 ${spec.source.map(key => {
         let str = objectDeclaration(sourceTypeName(key), spec[key]);

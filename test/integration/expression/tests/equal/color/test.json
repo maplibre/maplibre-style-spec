@@ -1,5 +1,15 @@
 {
-  "expression": ["==", ["get", "x"], ["to-color", "red"]],
+  "expression": [
+    "==",
+    [
+      "get",
+      "x"
+    ],
+    [
+      "to-color",
+      "red"
+    ]
+  ],
   "expected": {
     "compiled": {
       "result": "error",

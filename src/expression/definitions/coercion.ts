@@ -71,7 +71,7 @@ class Coercion implements Expression {
                         if (c) return c;
                     } else if (Array.isArray(input)) {
                         if (input.length < 3 || input.length > 4) {
-                            error = `Invalid rbga value ${JSON.stringify(input)}: expected an array containing either three or four numeric values.`;
+                            error = `Invalid rgba value ${JSON.stringify(input)}: expected an array containing either three or four numeric values.`;
                         } else {
                             error = validateRGBA(input[0], input[1], input[2], input[3]);
                         }

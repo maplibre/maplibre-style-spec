@@ -13,11 +13,30 @@ If you want to contribute to the style specification, please open an issue with 
 
 We aim to avoid breaking changes in the MapLibre style specification, because it makes life easier for our users.
 
+## Documentation
+
+The [documentation](https://maplibre.org/maplibre-style-spec) of the style specification also lives in this repository. We use [MkDocs](https://www.mkdocs.org/) with the [Material for MkDocs](https://squidfunk.github.io/mkdocs-material) theme. 
+
+To work on the documentation locally, you need to have Docker installed and running. Start MkDocs with
+
+```
+npm run mkdocs
+```
+
+Most of the documentation is generated (from e.g. `v8.json`). In another terminal, run:
+
+```
+WATCH=1 npm run generate-docs
+```
+
+This will re-run the generation script when needed.
+
+Note that generated files should not be checked in and they are excluded in `.gitignore`. Make sure to keep this file up-to-date and ignore generated files while making sure static Markdown files are not ignored.
 
 ## NPM Package
 
 
-The MapLibre style specification and utilities are published as a seperate npm
+The MapLibre style specification and utilities are published as a separate npm
 package so that they can be installed without the bulk of GL JS.
 
     npm install @maplibre/maplibre-gl-style-spec

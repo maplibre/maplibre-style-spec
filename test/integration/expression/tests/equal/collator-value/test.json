@@ -1,17 +1,77 @@
 {
   "expression": [
     "==",
-    ["get", "x"],
-    ["get", "y"],
-    ["collator", {"case-sensitive": false, "diacritic-sensitive": false}]
+    [
+      "get",
+      "x"
+    ],
+    [
+      "get",
+      "y"
+    ],
+    [
+      "collator",
+      {
+        "case-sensitive": false,
+        "diacritic-sensitive": false
+      }
+    ]
   ],
   "inputs": [
-    [{}, {"properties": {"x": "a", "y": "A"}}],
-    [{}, {"properties": {"x": "1", "y": "2"}}],
-    [{}, {"properties": {"x": "1", "y": null}}],
-    [{}, {"properties": {"x": null, "y": null}}],
-    [{}, {"properties": {"x": 1, "y": "1"}}],
-    [{}, {"properties": {"x": 1, "y": 1}}]
+    [
+      {},
+      {
+        "properties": {
+          "x": "a",
+          "y": "A"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "1",
+          "y": "2"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "1",
+          "y": null
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": null,
+          "y": null
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 1,
+          "y": "1"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 1,
+          "y": 1
+        }
+      }
+    ]
   ],
   "expected": {
     "compiled": {
@@ -20,6 +80,13 @@
       "isZoomConstant": true,
       "type": "boolean"
     },
-    "outputs": [true, false, false, true, false, true]
+    "outputs": [
+      true,
+      false,
+      false,
+      true,
+      false,
+      true
+    ]
   }
 }

@@ -2,22 +2,84 @@
   "expression": {
     "type": "exponential",
     "property": "p",
-    "stops": [[0, "black"], [1, "white"]],
+    "stops": [
+      [
+        0,
+        "black"
+      ],
+      [
+        1,
+        "white"
+      ]
+    ],
     "colorSpace": "lab"
   },
   "propertySpec": {
     "type": "color",
     "property-type": "data-driven",
-    "expression": {"interpolated": true, "parameters": ["zoom", "feature"]}
+    "expression": {
+      "interpolated": true,
+      "parameters": [
+        "zoom",
+        "feature"
+      ]
+    }
   },
   "inputs": [
-    [{}, {"properties": {}}],
-    [{}, {"properties": {"p": -1}}],
-    [{}, {"properties": {"p": 0}}],
-    [{}, {"properties": {"p": 0.5}}],
-    [{}, {"properties": {"p": 1}}],
-    [{}, {"properties": {"p": 2}}],
-    [{}, {"properties": {"p": "0"}}]
+    [
+      {},
+      {
+        "properties": {}
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": -1
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": 0
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": 0.5
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": 1
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": 2
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": "0"
+        }
+      }
+    ]
   ],
   "expected": {
     "compiled": {
@@ -27,12 +89,39 @@
       "type": "color"
     },
     "outputs": [
-      {"error": "Expected value to be of type number, but found null instead."},
-      [0, 0, 0, 1],
-      [0, 0, 0, 1],
-      [0.466326, 0.466326, 0.466326, 1],
-      [1, 1, 1, 1],
-      [1, 1, 1, 1],
+      {
+        "error": "Expected value to be of type number, but found null instead."
+      },
+      [
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        0.466326,
+        0.466326,
+        0.466326,
+        1
+      ],
+      [
+        1,
+        1,
+        1,
+        1
+      ],
+      [
+        1,
+        1,
+        1,
+        1
+      ],
       {
         "error": "Expected value to be of type number, but found string instead."
       }

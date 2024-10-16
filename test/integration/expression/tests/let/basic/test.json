@@ -2,12 +2,51 @@
   "expression": [
     "let",
     "a",
-    ["number", ["get", "a"]],
+    [
+      "number",
+      [
+        "get",
+        "a"
+      ]
+    ],
     "b",
-    ["number", ["get", "b"]],
-    ["+", ["+", ["var", "a"], ["var", "b"]], ["var", "a"]]
+    [
+      "number",
+      [
+        "get",
+        "b"
+      ]
+    ],
+    [
+      "+",
+      [
+        "+",
+        [
+          "var",
+          "a"
+        ],
+        [
+          "var",
+          "b"
+        ]
+      ],
+      [
+        "var",
+        "a"
+      ]
+    ]
   ],
-  "inputs": [[{}, {"properties": {"a": 1, "b": 2}}]],
+  "inputs": [
+    [
+      {},
+      {
+        "properties": {
+          "a": 1,
+          "b": 2
+        }
+      }
+    ]
+  ],
   "expected": {
     "compiled": {
       "result": "success",
@@ -15,6 +54,8 @@
       "isZoomConstant": true,
       "type": "number"
     },
-    "outputs": [4]
+    "outputs": [
+      4
+    ]
   }
 }
