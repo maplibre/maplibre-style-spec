@@ -60,7 +60,7 @@ function compareAreas(a: {area: number}, b: {area: number}) {
  * @param ring - Exterior or interior ring
  * @returns Signed area
  */
-function calculateSignedArea(ring: Point2D[]): number {
+export function calculateSignedArea(ring: Point2D[]): number {
     let sum = 0;
     for (let i = 0, len = ring.length, j = len - 1, p1, p2; i < len; j = i++) {
         p1 = ring[i];
