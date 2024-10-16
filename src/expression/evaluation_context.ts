@@ -2,6 +2,7 @@ import {Color} from './values';
 import type {FormattedSection} from './types/formatted';
 import type {GlobalProperties, Feature, FeatureState} from './index';
 import {ICanonicalTileID} from '../tiles_and_coordinates';
+import {calculateSignedArea} from '../util/classify_rings';
 
 const geometryTypes = ['Unknown', 'Point', 'LineString', 'Polygon'];
 const simpleGeometryType = {
@@ -39,18 +40,6 @@ class EvaluationContext {
         return this.feature && 'id' in this.feature ? this.feature.id : null;
     }
 
-    // Bluntly copied from
-    // https://github.com/mapbox/vector-tile-js/blob/77851380b63b07fd0af3d5a3f144cc86fb39fdd1/lib/vectortilefeature.js#L225-L233
-    _signedArea(ring) {
-        let sum = 0;
-        for (let i = 0, len = ring.length, j = len - 1, p1, p2; i < len; j = i++) {
-            p1 = ring[i];
-            p2 = ring[j];
-            sum += (p2.x - p1.x) * (p1.y + p2.y);
-        }
-        return sum;
-    }
-
     geometryDollarType() {
         return this.feature ?
             typeof this.feature.type === 'number' ? geometryTypes[this.feature.type] : simpleGeometryType[this.feature.type] :
@@ -75,7 +64,7 @@ class EvaluationContext {
                         case 'Polygon':
                             // Following https://github.com/mapbox/vector-tile-js/blob/77851380b63b07fd0af3d5a3f144cc86fb39fdd1/lib/vectortilefeature.js#L197
                             for (let i = 0, ccw; i < len; i++) {
-                                const area = this._signedArea(geom[i]);
+                                const area = calculateSignedArea(geom[i]);
                                 if (area === 0) continue;
                                 if (ccw === undefined) {
                                     ccw = area < 0;
