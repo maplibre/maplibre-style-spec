@@ -1,13 +1,16 @@
 ## main
 
 ### ✨ Features and improvements
-
-* Added `roll` property to stylesheet ([#850](https://github.com/maplibre/maplibre-style-spec/issues/850))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
-
 - _...Add new stuff here..._
+
+## 20.4.0
+
+### ✨ Features and improvements
+
+* Added `roll` property to stylesheet ([#850](https://github.com/maplibre/maplibre-style-spec/issues/850))
 
 ## 20.3.1
 
