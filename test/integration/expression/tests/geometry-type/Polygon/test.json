@@ -7,9 +7,11 @@
       {},
       {
         "geometry": {
-          "type": "LineString",
-          "coordinates":
-            [[0, 0], [10, 0]]
+          "type": "Polygon",
+          "coordinates": [
+            [[0, 0], [3, 0], [3, 3], [0, 3], [0, 0]],
+            [[1, 1], [1, 2], [2, 2], [2, 1], [1, 1]]
+          ]
         }
       }
     ]
@@ -22,7 +24,7 @@
       "type": "string"
     },
     "outputs": [
-      "LineString"
+      "Polygon"
     ]
   }
 }

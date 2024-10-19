@@ -7,9 +7,11 @@
       {},
       {
         "geometry": {
-          "type": "LineString",
-          "coordinates":
-            [[0, 0], [10, 0]]
+          "type": "MultiLineString",
+          "coordinates": [
+            [[0, 0], [10, 10]],
+            [[10, 0], [0, 10]]
+          ]
         }
       }
     ]
@@ -22,7 +24,7 @@
       "type": "string"
     },
     "outputs": [
-      "LineString"
+      "MultiLineString"
     ]
   }
 }
