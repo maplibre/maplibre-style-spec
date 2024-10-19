@@ -48,36 +48,30 @@ class EvaluationContext {
 
     geometryType() {
         let geometryType = this.feature.type;
-        if (typeof geometryType === 'number') {
-            geometryType = geometryTypes[this.feature.type];
-            if (geometryType !== 'Unknown') {
-                const geom = this.geometry();
-                const len = geom.length;
-                if (len > 1) {
-                    switch (geometryType) {
-                        case 'Point':
-                            geometryType = 'MultiPoint';
-                            break;
-                        case 'LineString':
-                            geometryType = 'MultiLineString';
-                            break;
-                        case 'Polygon':
-                            // Following https://github.com/mapbox/vector-tile-js/blob/77851380b63b07fd0af3d5a3f144cc86fb39fdd1/lib/vectortilefeature.js#L197
-                            for (let i = 0, ccw; i < len; i++) {
-                                const area = calculateSignedArea(geom[i]);
-                                if (area === 0) continue;
-                                if (ccw === undefined) {
-                                    ccw = area < 0;
-                                } else if (ccw === area < 0) {
-                                    geometryType = 'MultiPolygon';
-                                    break;
-                                }
-                            }
-                            break;
-                        default:
-                            break;
-                    }
-                }
+        if (typeof geometryType !== 'number') {
+            return geometryType;
+        }
+        geometryType = geometryTypes[this.feature.type];
+        if (geometryType === 'Unknown') {
+            return geometryType;
+        }
+        const geom = this.geometry();
+        const len = geom.length;
+        if (len === 1) {
+            return geometryType;
+        }
+        if (geometryType !== 'Polygon') {
+            return `Multi${geometryType}`;
+        }
+        // Following https://github.com/mapbox/vector-tile-js/blob/77851380b63b07fd0af3d5a3f144cc86fb39fdd1/lib/vectortilefeature.js#L197
+        for (let i = 0, ccw; i < len; i++) {
+            const area = calculateSignedArea(geom[i]);
+            if (area === 0) continue;
+            if (ccw === undefined) {
+                ccw = area < 0;
+            } else if (ccw === area < 0) {
+                // Same direction as the first ring -> a second outer ring
+                return 'MultiPolygon';
             }
         }
         return geometryType;
