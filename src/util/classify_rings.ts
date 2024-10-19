@@ -72,7 +72,7 @@ function calculateSignedArea(ring: Point2D[]): number {
 
 /**
  * Returns if there are multiple outer rings.
- * The first ring is a outer ring. Its direction, cw or ccw, defines the direction of outer rings.
+ * The first ring is an outer ring. Its direction, cw or ccw, defines the direction of outer rings.
  *
  * @param rings - List of rings
  * @returns Are there multiple outer rings
