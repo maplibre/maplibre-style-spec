@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="https://maplibre.org/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.41">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
     
     
       
@@ -1011,6 +1011,36 @@
 <p>Default pitch, in degrees. Zero is perpendicular to the surface, for a look straight down at the map, while a greater value like 60 looks ahead towards the horizon. The style pitch will be used only if the map has not been positioned by other means (e.g. map options or user interaction).</p>
 <div class="language-json highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="err">pi</span><span class="kc">t</span><span class="err">ch</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span>
 </span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>SDK Support</th>
+<th>MapLibre GL JS</th>
+<th>MapLibre Native<br>Android</th>
+<th>MapLibre Native<br>iOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0-60 degrees</td>
+<td>0.8.0</td>
+<td>1.0.0</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>0-85 degrees</td>
+<td>2.0.0</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/1909">#1909</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/1909">#1909</a>)</td>
+</tr>
+<tr>
+<td>0-180 degrees</td>
+<td>5.0.0</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/1909">#1909</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/1909">#1909</a>)</td>
+</tr>
+</tbody>
+</table>
 <h2 id="roll">roll<a class="headerlink" href="#roll" title="Permanent link">&para;</a></h2>
 <p><em>Optional <a href="../types/#number">number</a>. Units in degrees. Defaults to <code>0</code>.</em></p>
 <p>Default roll, in degrees. The roll angle is measured counterclockwise about the camera boresight. The style roll will be used only if the map has not been positioned by other means (e.g. map options or user interaction).</p>
