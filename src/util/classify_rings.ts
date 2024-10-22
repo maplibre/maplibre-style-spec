@@ -14,8 +14,8 @@ export function classifyRings<T extends Point2D>(rings: RingWithArea<T>[], maxRi
 
     if (len <= 1) return [rings];
 
-    const polygons: T[][][] = [];
-    let polygon: T[][];
+    const polygons: RingWithArea<T>[][] = [];
+    let polygon: RingWithArea<T>[];
     let ccw: boolean | undefined;
 
     for (const ring of rings) {
@@ -48,7 +48,7 @@ export function classifyRings<T extends Point2D>(rings: RingWithArea<T>[], maxRi
     return polygons;
 }
 
-function compareAreas(a: {area: number}, b: {area: number}) {
+function compareAreas<T extends Point2D>(a: RingWithArea<T>, b: RingWithArea<T>): number {
     return b.area - a.area;
 }
 
