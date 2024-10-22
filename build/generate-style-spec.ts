@@ -323,9 +323,13 @@ ${objectDeclaration('ProjectionSpecification', spec.projection)}
 
 ${spec.source.map(key => {
         let str = objectDeclaration(sourceTypeName(key), spec[key]);
+        // This are done in order to overcome the type system's inability to express these types:
         if (sourceTypeName(key) === 'GeoJSONSourceSpecification') {
-        // This is done in order to overcome the type system's inability to express this type:
             str = str.replace(/unknown/, 'GeoJSON.GeoJSON | string');
+        }
+        if (sourceTypeName(key) === 'ContourSourceSpecification') {
+            str = str.replace(/("unit"\?: )unknown/, '$1"meters" | "feet" | number');
+            str = str.replaceAll(/unknown/g, 'PropertyValueSpecification<number>');
         }
         return str;
     }).join('\n\n')}

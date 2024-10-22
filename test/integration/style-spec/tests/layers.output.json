@@ -1,90 +1,90 @@
 [
   {
     "message": "layers[0]: either \"type\" or \"ref\" is required",
-    "line": 27
+    "line": 31
   },
   {
     "message": "layers[1]: missing required property \"id\"",
-    "line": 32
+    "line": 36
   },
   {
     "message": "layers[3]: \"type\" is prohibited for ref layers",
-    "line": 46
-  },
-  {
-    "message": "layers[3]: \"source\" is prohibited for ref layers",
-    "line": 47
-  },
-  {
-    "message": "layers[3]: \"source-layer\" is prohibited for ref layers",
-    "line": 48
-  },
-  {
-    "message": "layers[3]: \"filter\" is prohibited for ref layers",
-    "line": 49
-  },
-  {
-    "message": "layers[3]: \"layout\" is prohibited for ref layers",
     "line": 50
   },
   {
-    "message": "layers[4]: ref layer \"not-found\" not found",
+    "message": "layers[3]: \"source\" is prohibited for ref layers",
+    "line": 51
+  },
+  {
+    "message": "layers[3]: \"source-layer\" is prohibited for ref layers",
+    "line": 52
+  },
+  {
+    "message": "layers[3]: \"filter\" is prohibited for ref layers",
+    "line": 53
+  },
+  {
+    "message": "layers[3]: \"layout\" is prohibited for ref layers",
     "line": 54
   },
   {
-    "message": "layers[5]: ref cannot reference another ref layer",
+    "message": "layers[4]: ref layer \"not-found\" not found",
     "line": 58
   },
   {
+    "message": "layers[5]: ref cannot reference another ref layer",
+    "line": 62
+  },
+  {
     "message": "layers[6]: missing required property \"source\"",
-    "line": 60
+    "line": 64
   },
   {
     "message": "layers[7]: source \"not-found\" not found",
-    "line": 67
+    "line": 71
   },
   {
     "message": "layers[8]: layer \"vector-raster-mismatch\" requires a vector source",
-    "line": 72
+    "line": 76
   },
   {
     "message": "layers[9]: layer \"raster-vector-mismatch\" requires a raster source",
-    "line": 77
+    "line": 81
   },
   {
     "message": "layers[10]: layer \"raster-hillshade-mismatch\" requires a raster-dem source",
-    "line": 83
+    "line": 87
   },
   {
     "message": "layers[11]: layer \"vector-hillshade-mismatch\" requires a raster-dem source",
-    "line": 89
+    "line": 93
   },
   {
     "message": "layers[12]: raster-dem source can only be used with layer type 'hillshade'.",
-    "line": 95
+    "line": 99
   },
   {
-    "message": "layers[14]: duplicate layer id \"duplicate\", previously used at line 99",
-    "line": 105
+    "message": "layers[14]: duplicate layer id \"duplicate\", previously used at line 103",
+    "line": 109
   },
   {
     "message": "layers[15].type: expected one of [fill, line, symbol, circle, heatmap, fill-extrusion, raster, hillshade, background], \"invalid\" found",
-    "line": 112
+    "line": 116
   },
   {
     "message": "layers[16]: layer \"missing-source-layer\" must specify a \"source-layer\"",
-    "line": 122
+    "line": 126
   },
   {
     "message": "layers[18]: layer \"line-gradient-bad\" specifies a line-gradient, which requires a GeoJSON source with `lineMetrics` enabled.",
-    "line": 134
+    "line": 138
   },
   {
     "message": "layers[19]: layer \"line-gradient-missing-lineMetrics\" specifies a line-gradient, which requires a GeoJSON source with `lineMetrics` enabled.",
-    "line": 148
+    "line": 152
   },
   {
     "message": "layers[21].type: expected one of [fill, line, symbol, circle, heatmap, fill-extrusion, raster, hillshade, background], \"custom\" found",
-    "line": 178
+    "line": 182
   }
 ]

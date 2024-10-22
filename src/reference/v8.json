@@ -204,6 +204,7 @@
     "source_vector",
     "source_raster",
     "source_raster_dem",
+    "source_contour",
     "source_geojson",
     "source_video",
     "source_image"
@@ -513,6 +514,43 @@
     "*": {
       "type": "*",
       "doc": "Other keys to configure the data source."
+    }
+  },
+  "source_contour": {
+    "type": {
+      "required": true,
+      "type": "enum",
+      "values": {
+        "contour": {
+          "doc": "Contour lines derived from a [`raster-dem`](#raster-dem) source"
+        }
+      },
+      "doc": "The type of the source."
+    },
+    "source": {
+      "type": "string",
+      "doc": "ID of the [`raster-dem`](#raster-dem) source for the contour lines.",
+      "required": true
+    },
+    "unit": {
+      "type": "*",
+      "default": "meters",
+      "doc": "Elevation unit of the generated contour lines: `\"feet\"`, `\"meters\"`, or a number to specify the length of a custom unit to divide raw elevation in meters by."
+    },
+    "intervals": {
+      "type": "*",
+      "default": 100,
+      "doc": "Vertical spacing between contour lines in the unit specified. This can be a constant value like `100` or an expression that changes by zoom level like `[\"step\", [\"zoom\"], 100, 12, 50]` to use 100 at z11 and below or 50 at z12 and higher."
+    },
+    "majorMultiplier": {
+      "type": "*",
+      "default": 5,
+      "doc": "Set `major=true` tag on every Nth contour line to help create \"index\" contours. This can be a constant like `5` or an expression that changes by zoom level like `[\"step\", [\"zoom\"], 5, 12, 10]` to use 5 at z11 and below or 10 at z12 and higher."
+    },
+    "overzoom": {
+      "type": "number",
+      "default": 1,
+      "doc": "Generate contours at each zoom from `raster-dem` tiles at a lower zoom level so they appear smoother and to limit overfetching border tiles. For example `overzoom: 1` uses z13 `raster-dem` tiles to render z14 contour lines."
     }
   },
   "source_geojson": {

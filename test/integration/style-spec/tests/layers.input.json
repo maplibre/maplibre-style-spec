@@ -13,6 +13,10 @@
       "type": "raster-dem",
       "url": "https://demotiles.maplibre.org/terrain-tiles/tiles.json"
     },
+    "contour": {
+      "type": "contour",
+      "source": "raster-dem"
+    },
     "geojson": {
       "type": "geojson",
       "data": {}
@@ -178,6 +182,11 @@
       "type": "custom",
       "source": "vector",
       "source-layer": "layer"
+    },
+    {
+      "id": "contour-line",
+      "type": "line",
+      "source": "contour"
     }
   ]
 }
