@@ -7,9 +7,9 @@
       {},
       {
         "geometry": {
-          "type": "LineString",
+          "type": "Point",
           "coordinates":
-            [[0, 0], [10, 0]]
+            [10, 0]
         }
       }
     ]
@@ -22,7 +22,7 @@
       "type": "string"
     },
     "outputs": [
-      "LineString"
+      "Point"
     ]
   }
 }
