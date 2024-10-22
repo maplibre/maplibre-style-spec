@@ -1,10 +1,17 @@
 ## main
 
 ### ✨ Features and improvements
-- Aligned the implementation of `["geometry-type"]` with [its spec](https://maplibre.org/maplibre-style-spec/expressions/#geometry-type). Now, when applicable, `["geometry-type"]` returns values not available while using `"$type"`: `"MultiPoint"`, `"MultiLineString"`, and `"MultiPolygon"`. The behaviour of `"$type"` has not changed. ([#519](https://github.com/maplibre/maplibre-style-spec/pull/519))
+- _...Add new stuff here..._
 
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
+
+## 21.0.0
+
+### ✨ Features and improvements
+- Aligned the implementation of `["geometry-type"]` with [its spec](https://maplibre.org/maplibre-style-spec/expressions/#geometry-type). Now, when applicable, `["geometry-type"]` returns values not available while using `"$type"`: `"MultiPoint"`, `"MultiLineString"`, and `"MultiPolygon"`. The behaviour of `"$type"` has not changed. ([#519](https://github.com/maplibre/maplibre-style-spec/pull/519))
+
+### 🐞 Bug fixes
 
 ## 20.4.0
 
