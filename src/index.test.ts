@@ -1,5 +1,4 @@
 
-/* eslint-disable import/namespace */
 import * as spec from '.';
 
 describe('style-spec', () => {
