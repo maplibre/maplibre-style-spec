@@ -20,7 +20,7 @@ const regex = /^## (\d+\.\d+\.\d+.*?)\n(.+?)(?=\n^## \d+\.\d+\.\d+.*?\n)/gms;
 
 let releaseNotes = [];
 let match;
-// eslint-disable-next-line no-cond-assign
+ 
 while (match = regex.exec(changelog)) {
     releaseNotes.push({
         'version': match[1],
@@ -41,5 +41,5 @@ ${latest.changelog}
 
 ${semver.prerelease(latest.version) ? 'Pre-release version' : ''}`;
 
-// eslint-disable-next-line eol-last
+ 
 process.stdout.write(templatedReleaseNotes.trimEnd());

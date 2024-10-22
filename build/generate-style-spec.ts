@@ -67,9 +67,9 @@ function objectDeclaration(key, properties) {
 function objectType(properties, indent) {
     return `{
 ${Object.keys(properties)
-        .filter(k => k !== '*')
-        .map(k => `    ${indent}${propertyDeclaration(k, properties[k])}`)
-        .join(',\n')}
+    .filter(k => k !== '*')
+    .map(k => `    ${indent}${propertyDeclaration(k, properties[k])}`)
+    .join(',\n')}
 ${indent}}`;
 }
 
@@ -322,13 +322,13 @@ ${objectDeclaration('TerrainSpecification', spec.terrain)}
 ${objectDeclaration('ProjectionSpecification', spec.projection)}
 
 ${spec.source.map(key => {
-        let str = objectDeclaration(sourceTypeName(key), spec[key]);
-        if (sourceTypeName(key) === 'GeoJSONSourceSpecification') {
+    let str = objectDeclaration(sourceTypeName(key), spec[key]);
+    if (sourceTypeName(key) === 'GeoJSONSourceSpecification') {
         // This is done in order to overcome the type system's inability to express this type:
-            str = str.replace(/unknown/, 'GeoJSON.GeoJSON | string');
-        }
-        return str;
-    }).join('\n\n')}
+        str = str.replace(/unknown/, 'GeoJSON.GeoJSON | string');
+    }
+    return str;
+}).join('\n\n')}
 
 export type SourceSpecification =
 ${spec.source.map(key => `    | ${sourceTypeName(key)}`).join('\n')}

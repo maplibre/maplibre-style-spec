@@ -8,7 +8,6 @@ export default function validateNumber(options) {
     const valueSpec = options.valueSpec;
     let type = getType(value);
 
-    // eslint-disable-next-line no-self-compare
     if (type === 'number' && value !== value) {
         type = 'NaN';
     }

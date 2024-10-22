@@ -49,7 +49,7 @@ export function parseCssColor(input: string): RGBColor | undefined {
         if (hexRegexp.test(input)) {
             const step = input.length < 6 ? 1 : 2;
             let i = 1;
-            return [ // eslint-disable-line no-return-assign
+            return [
                 parseHex(input.slice(i, i += step)),
                 parseHex(input.slice(i, i += step)),
                 parseHex(input.slice(i, i += step)),
