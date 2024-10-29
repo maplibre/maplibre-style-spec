@@ -19,6 +19,7 @@ export type DiffOperationsMap = {
     'setLayerZoomRange': [string, number, number];
     'setLayerProperty': [string, string, unknown];
     'setCenter': [number[]];
+    'setCenterAltitude': [number];
     'setZoom': [number];
     'setBearing': [number];
     'setPitch': [number];
@@ -278,6 +279,9 @@ function diffStyles(before: StyleSpecification, after: StyleSpecification): Diff
         }
         if (!isEqual(before.center, after.center)) {
             commands.push({command: 'setCenter', args: [after.center]});
+        }
+        if (!isEqual(before.centerAltitude, after.centerAltitude)) {
+            commands.push({command: 'setCenterAltitude', args: [after.centerAltitude]});
         }
         if (!isEqual(before.zoom, after.zoom)) {
             commands.push({command: 'setZoom', args: [after.zoom]});
