@@ -2154,8 +2154,8 @@
       "sdk-support": {
         "basic functionality": {
           "js": "3.3.0",
-          "ios": "https://github.com/maplibre/maplibre-native/issues/2358",
-          "android": "https://github.com/maplibre/maplibre-native/issues/2358"
+          "ios": "6.8.0",
+          "android": "11.6.0"
         },
         "data-driven styling": {
           "js": "3.3.0",
