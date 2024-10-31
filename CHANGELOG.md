@@ -1,8 +1,6 @@
 ## main
 
 ### ✨ Features and improvements
-
-- Added `centerAltitude` property to stylesheet ([#851](https://github.com/maplibre/maplibre-style-spec/issues/851))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
