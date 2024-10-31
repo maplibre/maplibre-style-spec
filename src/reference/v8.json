@@ -34,6 +34,18 @@
         40.7736
       ]
     },
+    "centerAltitude": {
+      "type": "number",
+      "doc": "Default map center altitude in meters above sea level. The style center altitude defines the altitude where the camera is looking at and will be used only if the map has not been positioned by other means (e.g. map options or user interaction).",
+      "example": 123.4,
+      "sdk-support": {
+        "basic functionality": {
+          "js": "5.0.0",
+          "android": "https://github.com/maplibre/maplibre-native/issues/2980",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/2980"
+        }
+      }
+    },
     "zoom": {
       "type": "number",
       "doc": "Default zoom level.  The style zoom will be used only if the map has not been positioned by other means (e.g. map options or user interaction).",
