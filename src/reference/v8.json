@@ -36,7 +36,7 @@
     },
     "centerAltitude": {
       "type": "number",
-      "doc": "Default map center altitude in meters above sea level.  The style center altitude will be used only if the map has not been positioned by other means (e.g. map options or user interaction).",
+      "doc": "Default map center altitude in meters above sea level. The style center altitude defines the altitude where the camera is looking at and will be used only if the map has not been positioned by other means (e.g. map options or user interaction).",
       "example": 123.4,
       "sdk-support": {
         "basic functionality": {
