@@ -1,6 +1,7 @@
 ## main
 
 ### ✨ Features and improvements
+- Rename adaptive globe from `globe` to `globe-to-mercator` ([#878](https://github.com/maplibre/maplibre-style-spec/pull/878))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes

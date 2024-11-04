@@ -129,7 +129,7 @@
       "type": "projection",
       "doc": "The projection configuration. **Note:** this definition is still experimental and is under development in maplibre-gl-js.",
       "example": {
-        "type": "globe"
+        "type": "globe-to-mercator"
       }
     },
     "terrain": {
@@ -4538,7 +4538,7 @@
         ]
       },
       "transition": true,
-      "doc": "How to blend the atmosphere. Where 1 is visible atmosphere and 0 is hidden. It is best to interpolate this expression when using globe projection."
+      "doc": "How to blend the atmosphere. Where 1 is visible atmosphere and 0 is hidden. It is best to interpolate this expression when using globe-to-mercator projection."
     }
   },
   "terrain": {
@@ -4575,10 +4575,10 @@
       "default": "mercator",
       "values": {
         "mercator": {
-          "doc": "The Mercator projection."
+          "doc": "Web Mercator projection."
         },
-        "globe": {
-          "doc": "The globe projection."
+        "globe-to-mercator": {
+          "doc":  "Spherical projection with zoom transition to Web Mercator projection."
         }
       }
     }
