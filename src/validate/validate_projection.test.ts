@@ -26,11 +26,11 @@ describe('Validate projection', () => {
     test('Should return errors according to spec violations', () => {
         const errors = validateProjection({validateSpec, value: {type: 1 as any}, styleSpec: v8, style: {} as any});
         expect(errors).toHaveLength(1);
-        expect(errors[0].message).toBe('type: expected one of [mercator, globe-mercator], 1 found');
+        expect(errors[0].message).toBe('type: expected one of [mercator, globe-to-mercator], 1 found');
     });
 
     test('Should pass if everything is according to spec', () => {
-        let errors = validateProjection({validateSpec, value: {type: 'globe-mercator'}, styleSpec: v8, style: {} as any});
+        let errors = validateProjection({validateSpec, value: {type: 'globe-to-mercator'}, styleSpec: v8, style: {} as any});
         expect(errors).toHaveLength(0);
         errors = validateProjection({validateSpec, value: {type: 'mercator'}, styleSpec: v8, style: {} as any});
         expect(errors).toHaveLength(0);
