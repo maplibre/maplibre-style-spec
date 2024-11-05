@@ -6,7 +6,6 @@ enum Proj {
 }
 
 describe('Projection class', () => {
-
     test('should serialize transition to string format', () => {
         expect(`${new Projection({from: Proj.Mercator, to: Proj.Globe, interpolation: 0.2})}`).toBe('["mercator-to-globe", 0.2]');
         expect(`${new Projection({from: Proj.Globe, to: Proj.Mercator, interpolation: 0.1})}`).toBe('["globe-to-mercator", 0.1]'); 
