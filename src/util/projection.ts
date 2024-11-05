@@ -16,7 +16,6 @@ export class ProjectionTransition {
     from: Projection;
     to: Projection;
     interpolation: number;
-    
 
     constructor(from: Projection, to: Projection, interpolation: number) {
         this.from = from;
