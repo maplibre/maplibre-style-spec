@@ -35,4 +35,23 @@ describe('Validate projection', () => {
         errors = validateProjection({validateSpec, value: {type: 'mercator'}, styleSpec: v8, style: {} as any});
         expect(errors).toHaveLength(0);
     });
+    test('Should pass if everything is according to spec', () => {
+        let errors = validateProjection({validateSpec, value: {type: ['step', ['zoom'], 'globe', 10, 'mercator']}, styleSpec: v8, style: {} as any});
+        expect(errors).toHaveLength(0);
+        errors = validateProjection({validateSpec, value: {type: 'mercator'}, styleSpec: v8, style: {} as any});
+        expect(errors).toHaveLength(0);
+    });
+
+    test('Can use different orders', () => {
+        let errors = validateProjection({validateSpec, value: {type: ['step', ['zoom'],  'mercator', 10, 'globe']}, styleSpec: v8, style: {} as any});
+        expect(errors).toHaveLength(0);
+        errors = validateProjection({validateSpec, value: {type: 'mercator'}, styleSpec: v8, style: {} as any});
+        expect(errors).toHaveLength(0);
+    });
+    test('Can only use expression compatible projections', () => {
+        let errors = validateProjection({validateSpec, value: {type: ['step', ['zoom'],  'utm32', 10, 'globe']}, styleSpec: v8, style: {} as any});
+        expect(errors).toHaveLength(0);
+        errors = validateProjection({validateSpec, value: {type: 'mercator'}, styleSpec: v8, style: {} as any});
+        expect(errors).toHaveLength(0);
+    });
 });

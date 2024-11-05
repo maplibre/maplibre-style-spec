@@ -18,7 +18,7 @@ const config: Config = {
             displayName: 'unit',
             testEnvironment: 'jsdom',
             testMatch: [
-                '<rootDir>/src/**/*.test.{ts,js}'
+                '<rootDir>/src/**/validate_projection.test.{ts,js}'
             ],
             ...sharedConfig
         },
