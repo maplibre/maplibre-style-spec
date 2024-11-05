@@ -1,7 +1,7 @@
 import UnitBezier from '@mapbox/unitbezier';
 
 import interpolate from '../../util/interpolate';
-import {array, ArrayType, ColorType, ColorTypeT, NumberType, NumberTypeT, PaddingType, PaddingTypeT, VariableAnchorOffsetCollectionType, VariableAnchorOffsetCollectionTypeT, toString, verifyType} from '../types';
+import {array, ArrayType, ColorType, ProjectionTypeT, ColorTypeT, NumberType, NumberTypeT, PaddingType, PaddingTypeT, VariableAnchorOffsetCollectionType, VariableAnchorOffsetCollectionTypeT, toString, verifyType, ProjectionType} from '../types';
 import {findStopLessThanOrEqualTo} from '../stops';
 
 import type {Stops} from '../stops';
@@ -19,18 +19,18 @@ export type InterpolationType = {
     name: 'cubic-bezier';
     controlPoints: [number, number, number, number];
 };
-type InterpolatedValueType = NumberTypeT | ColorTypeT | PaddingTypeT | VariableAnchorOffsetCollectionTypeT | ArrayType<NumberTypeT>;
+type InterpolatedValueType = NumberTypeT | ColorTypeT | ProjectionTypeT | PaddingTypeT | VariableAnchorOffsetCollectionTypeT | ArrayType<NumberTypeT>;
 
 class Interpolate implements Expression {
     type: InterpolatedValueType;
 
-    operator: 'interpolate' | 'interpolate-hcl' | 'interpolate-lab';
+    operator: 'interpolate' | 'interpolate-hcl' | 'interpolate-lab' | 'interpolate-projection';
     interpolation: InterpolationType;
     input: Expression;
     labels: Array<number>;
     outputs: Array<Expression>;
 
-    constructor(type: InterpolatedValueType, operator: 'interpolate' | 'interpolate-hcl' | 'interpolate-lab', interpolation: InterpolationType, input: Expression, stops: Stops) {
+    constructor(type: InterpolatedValueType, operator: 'interpolate' | 'interpolate-hcl' | 'interpolate-lab' | 'interpolate-projection', interpolation: InterpolationType, input: Expression, stops: Stops) {
         this.type = type;
         this.operator = operator;
         this.interpolation = interpolation;
@@ -135,6 +135,7 @@ class Interpolate implements Expression {
 
         if (!verifyType(outputType, NumberType) &&
             !verifyType(outputType, ColorType) &&
+            !verifyType(outputType, ProjectionType) &&
             !verifyType(outputType, PaddingType) &&
             !verifyType(outputType, VariableAnchorOffsetCollectionType) &&
             !verifyType(outputType, array(NumberType))
@@ -174,6 +175,8 @@ class Interpolate implements Expression {
         switch (this.operator) {
             case 'interpolate':
                 return interpolate[this.type.kind](outputLower, outputUpper, t);
+            case 'interpolate-projection':
+                return interpolate.projection(outputLower, outputUpper, t);
             case 'interpolate-hcl':
                 return interpolate.color(outputLower, outputUpper, t, 'hcl');
             case 'interpolate-lab':
