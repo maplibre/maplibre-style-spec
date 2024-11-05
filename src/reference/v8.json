@@ -139,7 +139,9 @@
             "type": [
               "step",
               ["zoom"],
-              "globe", 10, "mercator"
+              "globe",
+              10, "globe",
+              12, "mercator"
             ]
           }
         } 
