@@ -126,10 +126,55 @@
       }
     },
     "projection": {
-      "type": "projection",
-      "doc": "The projection configuration. **Note:** this definition is still experimental and is under development in maplibre-gl-js.",
-      "example": {
-        "type": "globe"
+      "type": {
+        "type": ["enum", "expression"],
+        "doc": "The projection type. Can be specified as a string, or as an expression for supported projection types.",
+        "default": "mercator",
+        "values": {
+          "mercator": {
+            "doc": "Web Mercator projection.",
+            "expression-compatible": true
+          },
+          "globe": {
+            "doc": "Spherical projection.",
+            "expression-compatible": true
+          },
+          "utm32": {
+            "doc": "Metric central europe.",
+            "expression-compatible": false
+          },
+          "albers": {
+            "doc": "Albers equal-area conic projection.",
+            "expression-compatible": true
+          },
+          "equalEarth": {
+            "doc": "Equal Earth projection.",
+            "expression-compatible": true
+          }
+        },
+        "expression": {
+          "interpolated": true,
+          "parameters": ["zoom"],
+          "validate": "return value.expressionCompatible === true"
+        },
+        "example": {
+          "simple": {
+            "projection": {
+              "type": "albers"
+            }
+          },
+          "expression": {
+            "projection": {
+              "type": [
+                "interpolate",
+                ["linear"],
+                ["zoom"],
+                10, "globe",
+                12, "mercator"
+              ]
+            }
+          }
+        }
       }
     },
     "terrain": {
