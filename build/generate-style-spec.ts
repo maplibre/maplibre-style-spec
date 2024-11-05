@@ -17,51 +17,33 @@ function propertyType(property) {
     }
 
     const baseType = (() => {
-        if (typeof property.type === 'string') {
-
-            switch (property.type) {
-                case 'string':
-                case 'number':
-                case 'boolean':
-                    return property.type;
-                case 'enum':
-                    return unionType(property.values);
-                case 'array': {
-                    const elementType = propertyType(typeof property.value === 'string' ? {type: property.value, values: property.values} : property.value);
-                    if (property.length) {
-                        return `[${Array(property.length).fill(elementType).join(', ')}]`;
-                    } else {
-                        return `Array<${elementType}>`;
-                    }
-                }
-                case 'light':
-                    return 'LightSpecification';
-                case 'sky':
-                    return 'SkySpecification';
-                case 'sources':
-                    return '{[_: string]: SourceSpecification}';
-                case 'projection:':
-                    return 'ProjectionSpecification';
-                case '*':
-                    return 'unknown';
-                default:
-                    if (typeof property.type === 'string') {
-                        return `${property.type.slice(0, 1).toUpperCase()}${property.type.slice(1)}Specification`;
-                    } else {
-                        throw new Error(`Unexpected property type: ${JSON.stringify(property.type)}`);
-                    }
-            }
-        } else if (typeof property.type === 'object' && Array.isArray(property.type)) {
-            // Handle complex type definitions, e.g., union of types
-            return property.type.map(t => {
-                if (typeof t === 'string') {
-                    return `${t.slice(0, 1).toUpperCase()}${t.slice(1)}Specification`;
+        switch (property.type) {
+            case 'string':
+            case 'number':
+            case 'boolean':
+                return property.type;
+            case 'enum':
+                return unionType(property.values);
+            case 'array': {
+                const elementType = propertyType(typeof property.value === 'string' ? {type: property.value, values: property.values} : property.value);
+                if (property.length) {
+                    return `[${Array(property.length).fill(elementType).join(', ')}]`;
                 } else {
-                    throw new Error(`Unexpected type in array: ${JSON.stringify(t)}`);
+                    return `Array<${elementType}>`;
                 }
-            }).join(' | ');
-        } else {
-            throw new Error(`Unexpected property type: ${JSON.stringify(property.type)}`);
+            }
+            case 'light':
+                return 'LightSpecification';
+            case 'sky':
+                return 'SkySpecification';
+            case 'sources':
+                return '{[_: string]: SourceSpecification}';
+            case 'projection:':
+                return 'ProjectionSpecification';
+            case '*':
+                return 'unknown';
+            default:
+                return `${property.type.slice(0, 1).toUpperCase()}${property.type.slice(1)}Specification`;
         }
     })();
 
