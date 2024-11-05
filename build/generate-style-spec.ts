@@ -209,7 +209,7 @@ export type ExpressionSpecification =
     | ['interpolate', InterpolationSpecification, number | ExpressionSpecification,
         ...(number | number[] | ColorSpecification | ExpressionSpecification)[]] // alternating number and number | number[] | ColorSpecification
     | ['interpolate-projection', InterpolationSpecification, number | ExpressionSpecification,
-        ...(number | ProjectionSpecification)[]] // alternating Projection
+        ...(number | Projection)[]] // alternating Projection
     | ['interpolate-hcl', InterpolationSpecification, number | ExpressionSpecification,
         ...(number | ColorSpecification)[]] // alternating number and ColorSpecificaton
     | ['interpolate-lab', InterpolationSpecification, number | ExpressionSpecification,
