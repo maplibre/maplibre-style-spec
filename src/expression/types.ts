@@ -14,7 +14,7 @@ export type ColorTypeT = {
     kind: 'color';
 };
 export type ProjectionTypeT = {
-    kind: 'string';
+    kind: 'projection';
 };
 export type ObjectTypeT = {
     kind: 'object';
@@ -59,7 +59,7 @@ export const NumberType = {kind: 'number'} as NumberTypeT;
 export const StringType = {kind: 'string'} as StringTypeT;
 export const BooleanType = {kind: 'boolean'} as BooleanTypeT;
 export const ColorType = {kind: 'color'} as ColorTypeT;
-export const ProjectionType = {kind: 'string'} as ProjectionTypeT;
+export const ProjectionType = {kind: 'projection'} as ProjectionTypeT;
 export const ObjectType = {kind: 'object'} as ObjectTypeT;
 export const ValueType = {kind: 'value'} as ValueTypeT;
 export const ErrorType = {kind: 'error'} as ErrorTypeT;
