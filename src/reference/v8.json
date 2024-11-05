@@ -137,11 +137,9 @@
         "expression": {
           "projection": {
             "type": [
-              "interpolate",
-              ["linear"],
+              "step",
               ["zoom"],
-              10, "globe",
-              12, "mercator"
+              "globe", 10, "mercator"
             ]
           }
         } 
