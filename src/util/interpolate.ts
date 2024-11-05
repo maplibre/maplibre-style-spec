@@ -3,8 +3,8 @@ import Color from './color';
 import Padding from './padding';
 import VariableAnchorOffsetCollection from './variable_anchor_offset_collection';
 import RuntimeError from '../expression/runtime_error';
-import {VariableAnchorOffsetCollectionSpecification} from '../types.g';
-import {Projection, ProjectionTransition} from './projection';
+import type {VariableAnchorOffsetCollectionSpecification} from '../types.g';
+import {type Projection, ProjectionTransition} from './projection';
 
 export type InterpolationColorSpace = 'rgb' | 'hcl' | 'lab';
 
