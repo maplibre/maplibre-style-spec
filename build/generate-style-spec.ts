@@ -124,6 +124,9 @@ fs.writeFileSync('src/types.g.ts',
 
 export type ColorSpecification = string;
 
+type Projection = {from: string | Projection, to: string | Projection, transition: number};
+export type ProjectionSpecification = {type: PropertyValueSpecification<Projection> };
+
 export type PaddingSpecification = number | number[];
 
 export type VariableAnchorOffsetCollectionSpecification = Array<string | [number, number]>;
@@ -320,8 +323,6 @@ ${objectDeclaration('LightSpecification', spec.light)}
 ${objectDeclaration('SkySpecification', spec.sky)}
 
 ${objectDeclaration('TerrainSpecification', spec.terrain)}
-
-${objectDeclaration('ProjectionSpecification', spec.projection)}
 
 ${spec.source.map(key => {
     let str = objectDeclaration(sourceTypeName(key), spec[key]);
