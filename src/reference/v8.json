@@ -4585,7 +4585,7 @@
   },
   "projection": {
     "type": {
-      "type": "enum",
+      "type": "projection",
       "doc": "The projection type. Can be specified as a string, or as an expression for supported projection types.",
       "default": "mercator",
       "values": {
