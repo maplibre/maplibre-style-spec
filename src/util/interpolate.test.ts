@@ -3,6 +3,7 @@ import interpolate, {isSupportedInterpolationColorSpace} from './interpolate';
 import Color from './color';
 import Padding from './padding';
 import VariableAnchorOffsetCollection from './variable_anchor_offset_collection';
+import { Projection, ProjectionTransition } from './projection';
 
 describe('interpolate', () => {
 
@@ -115,6 +116,16 @@ describe('interpolate', () => {
         const i11nFn = (t: number) => interpolate.padding(padding, targetPadding, t);
         expect(i11nFn(0.5)).toBeInstanceOf(Padding);
         expect(i11nFn(0.5)).toEqual(new Padding([0.5, 1, 3, 2]));
+    });
+
+    test('interpolate projection', () => {
+        
+        const Globe = new Projection('globe');
+        const Mercator = new Projection('mercator');
+
+        const i11nFn = (t: number) => interpolate.projection(Globe, Mercator, t);
+        expect(i11nFn(0.5)).toBeInstanceOf(ProjectionTransition);
+        expect(i11nFn(0.5)).toEqual(new ProjectionTransition(Globe, Mercator, 0.5));
     });
 
     describe('interpolate variableAnchorOffsetCollection', () => {
