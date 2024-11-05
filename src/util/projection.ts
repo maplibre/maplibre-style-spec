@@ -13,17 +13,18 @@ export class Projection {
 
 export class ProjectionTransition {
 
-    projection: string;
-    interpolation;
+    from: Projection;
+    to: Projection;
+    interpolation: number;
+    
 
     constructor(from: Projection, to: Projection, interpolation: number) {
-        
-        this.projection = `${from}-to-${to}`;
+        this.from = from;
+        this.to = to;
         this.interpolation = interpolation;
-
     }
 
     toString(): string {
-        return `["${this.projection}", ${this.interpolation}]`;
+        return `["${this.from}", "${this.to}", ${this.interpolation}]`;
     }
 }
