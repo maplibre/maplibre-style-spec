@@ -125,7 +125,7 @@ describe('interpolate', () => {
 
         const i11nFn = (t: number) => interpolate.projection(Globe, Mercator, t);
         expect(i11nFn(0.5)).toBeInstanceOf(ProjectionTransition);
-        expect(i11nFn(0.5)).toEqual(new ProjectionTransition(Globe, Mercator, 0.5));
+        expect(i11nFn(0.5).toString()).toBe('["globe-to-mercator", 0.5]');
     });
 
     describe('interpolate variableAnchorOffsetCollection', () => {
