@@ -4600,7 +4600,7 @@
         }
       },
       "expression": {
-        "interpolated": false,
+        "interpolated": true,
         "parameters": ["zoom"]
       },
       "property-type": "data-constant"

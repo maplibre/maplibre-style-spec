@@ -24,13 +24,13 @@ type InterpolatedValueType = NumberTypeT | ColorTypeT | ProjectionTypeT | Paddin
 class Interpolate implements Expression {
     type: InterpolatedValueType;
 
-    operator: 'interpolate' | 'interpolate-hcl' | 'interpolate-lab' | 'interpolate-projection';
+    operator: 'interpolate' | 'interpolate-hcl' | 'interpolate-lab' | 'interpolate-proj';
     interpolation: InterpolationType;
     input: Expression;
     labels: Array<number>;
     outputs: Array<Expression>;
 
-    constructor(type: InterpolatedValueType, operator: 'interpolate' | 'interpolate-hcl' | 'interpolate-lab' | 'interpolate-projection', interpolation: InterpolationType, input: Expression, stops: Stops) {
+    constructor(type: InterpolatedValueType, operator: 'interpolate' | 'interpolate-hcl' | 'interpolate-lab' | 'interpolate-proj', interpolation: InterpolationType, input: Expression, stops: Stops) {
         this.type = type;
         this.operator = operator;
         this.interpolation = interpolation;
@@ -175,7 +175,7 @@ class Interpolate implements Expression {
         switch (this.operator) {
             case 'interpolate':
                 return interpolate[this.type.kind](outputLower, outputUpper, t);
-            case 'interpolate-projection':
+            case 'interpolate-proj':
                 return interpolate.projection(outputLower, outputUpper, t);
             case 'interpolate-hcl':
                 return interpolate.color(outputLower, outputUpper, t, 'hcl');
