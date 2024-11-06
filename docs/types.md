@@ -134,9 +134,9 @@ The following example applies 2em padding on top and bottom and 3em padding left
 }
 ```
 
-## Projection Mode
+## Projection Type
 
-There are currently two projection modes implemented.
+There are currently two projection types implemented.
 
 - `mercator` - A web mercator projection
 - `globe` - A spherical projection

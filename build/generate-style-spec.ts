@@ -124,10 +124,9 @@ fs.writeFileSync('src/types.g.ts',
 
 export type ColorSpecification = string;
 
-export type ProjectionSpecification = {"mode":ProjectionType}
 export type PrimitiveProjection = 'mercator' | 'globe';
 export type ProjectionTransition = [PrimitiveProjection, PrimitiveProjection, number];
-export type ProjectionType = PrimitiveProjection | ProjectionTransition | PropertyValueSpecification<ProjectionTransition>
+export type ProjectionTypeSpecification = PrimitiveProjection | ProjectionTransition | PropertyValueSpecification<ProjectionTransition>
 
 
 export type PaddingSpecification = number | number[];
@@ -326,6 +325,8 @@ ${objectDeclaration('StyleSpecification', spec.$root)}
 ${objectDeclaration('LightSpecification', spec.light)}
 
 ${objectDeclaration('SkySpecification', spec.sky)}
+
+${objectDeclaration('ProjectionSpecification', spec.projection)}
 
 ${objectDeclaration('TerrainSpecification', spec.terrain)}
 

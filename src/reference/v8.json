@@ -129,7 +129,7 @@
       "type": "projection",
       "doc": "The projection type. Can be specified as a string, or as an expression for supported projection types.",
       "example": {
-        "mode": [
+        "type": [
           "interpolate-projection",
           ["linear"],
           ["zoom"],
@@ -4576,8 +4576,8 @@
     }
   },
   "projection": {
-    "mode": {
-      "type": "projection-mode",
+    "type": {
+      "type": "projectionType",
       "doc": "The projection type. Can be specified as a string, or as an expression for supported projection types.",
       "default": "mercator",
       "values": {

@@ -1,4 +1,4 @@
-import {PrimitiveProjection, ProjectionTransition, ProjectionType, PropertyValueSpecification} from '../types.g';
+import {PrimitiveProjection, ProjectionTransition, ProjectionTypeSpecification, PropertyValueSpecification} from '../types.g';
 
 export class Projection {
     readonly from: PrimitiveProjection;
@@ -25,7 +25,7 @@ export class Projection {
     }
 }
 
-export function isProjectionType(value: unknown): value is ProjectionType {
+export function isProjectionType(value: unknown): value is ProjectionTypeSpecification {
     return isPrimitiveProjection(value) || isProjectionTransition(value) || isPropertyValueSpecification(value);
 }
 

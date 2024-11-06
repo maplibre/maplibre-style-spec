@@ -1,19 +1,19 @@
 import ValidationError from '../error/validation_error';
 import getType from '../util/get_type';
 import v8 from '../reference/v8.json' with {type: 'json'};
-import {ProjectionType, StyleSpecification} from '../types.g';
+import {ProjectionTypeSpecification, StyleSpecification} from '../types.g';
 import {isPrimitiveProjection, isProjectionTransition, isProjectionType} from '../util/projection';
 
 interface ValidateProjectionOptions {
     sourceName?: string;
-    value: ProjectionType;
+    value: ProjectionTypeSpecification;
     styleSpec: typeof v8;
     style: StyleSpecification;
     validateSpec: Function;
 }
 
 export default function validateProjectionMode(options: ValidateProjectionOptions) {
-    const projectionType: ProjectionType = options.value;
+    const projectionType: ProjectionTypeSpecification = options.value;
 
     if (!projectionType){
 
