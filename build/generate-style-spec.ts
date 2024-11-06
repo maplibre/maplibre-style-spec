@@ -125,8 +125,35 @@ fs.writeFileSync('src/types.g.ts',
 export type ColorSpecification = string;
 
 export type PrimitiveProjection = 'mercator' | 'globe';
-export type ProjectionTransition = {from: PrimitiveProjection, to: PrimitiveProjection, transition: number};
-export type ProjectionSpecification = PrimitiveProjection | ProjectionTransition | PropertyValueSpecification<ProjectionTransition>
+export type ProjectionTransition = [PrimitiveProjection, PrimitiveProjection, number];
+export type ProjectionType = PrimitiveProjection | ProjectionTransition | PropertyValueSpecification<ProjectionTransition>
+export type ProjectionSpecification = {"mode":ProjectionType}
+
+
+
+export function isProjectionType(value: unknown): value is ProjectionType {
+    return isPrimitiveProjection(value) || isProjectionTransition(value) || isPropertyValueSpecification(value);
+}
+
+export function isPropertyValueSpecification(value: unknown): value is PropertyValueSpecification<ProjectionTransition> {
+
+    if (['interpolate-projection', 'step', 'literal'].includes(value[0])) {
+        return true
+    }
+    return false
+}
+
+export function isProjectionTransition(value: unknown): value is [PrimitiveProjection, PrimitiveProjection, number] {
+    return Array.isArray(value) &&
+        value.length === 3 &&
+        isPrimitiveProjection(value[0]) &&
+        isPrimitiveProjection(value[1]) &&
+        typeof value[2] === 'number';
+}
+
+export function isPrimitiveProjection(value: unknown): value is PrimitiveProjection {
+    return value === 'mercator' || value === 'globe';
+}
 
 export type PaddingSpecification = number | number[];
 

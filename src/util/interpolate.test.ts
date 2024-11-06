@@ -3,7 +3,8 @@ import interpolate, {isSupportedInterpolationColorSpace} from './interpolate';
 import Color from './color';
 import Padding from './padding';
 import VariableAnchorOffsetCollection from './variable_anchor_offset_collection';
-import {makeProjection, Projection} from './projection';
+import {makeProjection, ProjectionTransition} from './projection';
+import { isProjectionTransition } from '../types.g';
 
 describe('interpolate', () => {
 
@@ -120,8 +121,8 @@ describe('interpolate', () => {
 
     test('interpolate projection', () => {
         const i11nFn = (t: number) => interpolate.projection('globe', 'mercator', t);
-        expect(i11nFn(0.5)).toBeInstanceOf(Projection);
-        expect(i11nFn(0.5)).toEqual({'from': "globe", 'to': "mercator", 'transition': 0.5});
+        expect( isProjectionTransition( i11nFn(0.5) )).toBeTruthy();
+        expect(i11nFn(0.5)).toEqual(["globe", "mercator",0.5]);
     });
 
     describe('interpolate variableAnchorOffsetCollection', () => {

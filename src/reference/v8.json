@@ -5418,7 +5418,7 @@
   },
   "projection": {
     "mode": {
-      "type": "projection",
+      "type": "projection-mode",
       "doc": "The projection type. Can be specified as a string, or as an expression for supported projection types.",
       "default": "mercator",
       "values": {
