@@ -2,7 +2,6 @@ import validateProjection from './validate_projection';
 import validateSpec from './validate';
 import v8 from '../reference/v8.json' with {type: 'json'};
 
-
 describe('Validate projection', () => {
     it('Should pass when value is undefined', () => {
         const errors = validateProjection({validateSpec, value: undefined, styleSpec: v8, style: {} as any});

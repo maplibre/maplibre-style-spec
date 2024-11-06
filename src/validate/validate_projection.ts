@@ -33,10 +33,10 @@ function isProjectionSpecification(projection: any): projection is ProjectionSpe
 }
 
 export default function validateProjection(options: ValidateProjectionOptions) {
-    let projection = options.value;
-    const styleSpec = options.styleSpec;
-    const projectionSpec = styleSpec.projection;
-    const style = options.style;
+    const projection = options.value;
+    // const styleSpec = options.styleSpec;
+    // const projectionSpec = styleSpec.projection;
+    // const style = options.style;
 
     const rootType = getType(projection);
     if (projection === undefined) {
@@ -50,7 +50,7 @@ export default function validateProjection(options: ValidateProjectionOptions) {
     } else if (rootType === 'array' && !isProjectionSpecification(projection)) {
         return [new ValidationError('projection', projection, 'does not fit the type ProjectionSpecification')];
     }  else if (!['array', 'object', 'string'].includes(rootType)) {
-        return [new ValidationError('projection', projection, 'expected array, object, string - found ' + rootType)];
+        return [new ValidationError('projection', projection, `expected array, object, string - found ${rootType}`)];
     } 
     return [];
 }
