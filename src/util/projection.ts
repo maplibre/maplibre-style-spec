@@ -11,7 +11,6 @@ export class Projection {
     }
 
     static parse(input: Projection | string | undefined | null): Projection | undefined {
-        // in zoom-and-property function input could be an instance of Color class
         if (input instanceof Projection) {
             return input;
         }

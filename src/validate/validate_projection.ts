@@ -26,7 +26,6 @@ export default function validateProjection(options: ValidateProjectionOptions) {
 
     let errors = [];
     for (const key in projection) {
-        console.log('KEY', key, projection[key])
         if (projSpec[key]) {
             errors = errors.concat(options.validateSpec({
                 key,
