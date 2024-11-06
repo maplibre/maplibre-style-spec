@@ -133,3 +133,10 @@ The following example applies 2em padding on top and bottom and 3em padding left
     "icon-padding": [2, 3]
 }
 ```
+
+## Projection Mode
+
+There are currently two projection modes implemented.
+
+- `mercator` - A web mercator projection
+- `globe` - A spherical projection
