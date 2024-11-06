@@ -129,16 +129,14 @@
       "type": "projection",
       "doc": "The projection type. Can be specified as a string, or as an expression for supported projection types.",
       "example": {
-        "projection": {
-          "mode": [
-            "interpolate-projection",
-            ["linear"],
-            ["zoom"],
-            0, "globe",
-            10, "globe",
-            12, "mercator"
-          ]      
-        }
+        "mode": [
+          "interpolate-projection",
+          ["linear"],
+          ["zoom"],
+          0, "globe",
+          10, "globe",
+          12, "mercator"
+        ]
       }
     },
     "terrain": {
