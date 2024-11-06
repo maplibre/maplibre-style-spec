@@ -14,7 +14,7 @@ interface ValidateProjectionOptions {
 export default function validateProjection(options: ValidateProjectionOptions) {
     const projection = options.value;
     const styleSpec = options.styleSpec;
-    const projSpec = styleSpec.projection;
+    const projectionSpec = styleSpec.projection;
     const style = options.style;
 
     const rootType = getType(projection);
@@ -26,11 +26,11 @@ export default function validateProjection(options: ValidateProjectionOptions) {
 
     let errors = [];
     for (const key in projection) {
-        if (projSpec[key]) {
+        if (projectionSpec[key]) {
             errors = errors.concat(options.validateSpec({
                 key,
                 value: projection[key],
-                valueSpec: projSpec[key],
+                valueSpec: projectionSpec[key],
                 style,
                 styleSpec
             }));
