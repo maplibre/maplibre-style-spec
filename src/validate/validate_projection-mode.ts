@@ -2,7 +2,7 @@ import ValidationError from '../error/validation_error';
 import getType from '../util/get_type';
 import v8 from '../reference/v8.json' with {type: 'json'};
 import {ProjectionType, StyleSpecification} from '../types.g';
-import {isPrimitiveProjection, isProjectionTransition, isProjectionTyp} from '../util/projection';
+import {isPrimitiveProjection, isProjectionTransition, isProjectionType} from '../util/projection';
 
 interface ValidateProjectionOptions {
     sourceName?: string;
