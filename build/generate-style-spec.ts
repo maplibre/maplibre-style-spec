@@ -126,8 +126,8 @@ export type ColorSpecification = string;
 
 export type ProjectionSpecification = {"mode":ProjectionType}
 export type PrimitiveProjection = 'mercator' | 'globe';
-export type ProjectionTransition = [PrimitiveProjection, PrimitiveProjection, number];
-export type ProjectionType = PrimitiveProjection | ProjectionTransition | PropertyValueSpecification<ProjectionTransition>
+export type PrimitiveTransition = [PrimitiveProjection, PrimitiveProjection, number];
+export type ProjectionType = PrimitiveProjection | PrimitiveTransition | PropertyValueSpecification<PrimitiveTransition>
 
 
 export type PaddingSpecification = number | number[];
