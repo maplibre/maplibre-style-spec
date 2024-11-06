@@ -129,47 +129,15 @@
       "type": "projection",
       "doc": "The projection type. Can be specified as a string, or as an expression for supported projection types.",
       "example": {
-        "single-projection": {
-          "projection": {
-            "mode": "mercator"
-          }
-        },
-        "transition-intermediate": {
-          "projection": {"mode": ["globe", "mercator", 0.7]}
-        },
-        "instant-transition": {
-          "projection": {
-            "mode": [
-              "step",
-              [
-                "zoom"
-              ],
-              "globe",
-              10,
-              "globe",
-              12,
-              "mercator"
-            ]
-          }
-        },
-        "animated-transition": {
-          "projection": {
-            "mode": [
-              "interpolate-projection",
-              [
-                "linear"
-              ],
-              [
-                "zoom"
-              ],
-              0,
-              "globe",
-              10,
-              "globe",
-              12,
-              "mercator"
-            ]
-          }
+        "projection": {
+          "mode": [
+            "interpolate-projection",
+            ["linear"],
+            ["zoom"],
+            0, "globe",
+            10, "globe",
+            12, "mercator"
+          ]      
         }
       }
     },

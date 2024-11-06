@@ -140,3 +140,29 @@ There are currently two projection modes implemented.
 
 - `mercator` - A web mercator projection
 - `globe` - A spherical projection
+
+
+**Use a single projection**
+
+mode: "mercator"
+
+**Change projection at zoom level**
+
+mode: ["step", ["zoom"],
+    "globe",
+    10, "globe",
+    12, "mercator"
+]
+
+**Animate between different projections based on zoom level**
+
+mode: ["interpolate-projection", ["linear"], ["zoom"],
+    0,"globe",
+    10,"globe",
+    12,"mercator"
+]
+
+**Use a projection transition intermediate**
+
+mode: ["globe", "mercator", 0.7]
+
