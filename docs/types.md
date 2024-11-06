@@ -153,7 +153,6 @@ mode: "mercator"
 ```ts
 mode: ["step", ["zoom"],
     "globe",
-    10, "globe",
     12, "mercator"
 ]
 ```
