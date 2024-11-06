@@ -129,7 +129,7 @@
       "type": "projection",
       "doc": "The projection configuration. **Note:** this definition is still experimental and is under development in maplibre-gl-js.",
       "example": {
-        "type": "globe"
+        "mode": "globe"
       }
     },
     "terrain": {
@@ -4569,16 +4569,16 @@
     }
   },
   "projection": {
-    "type": {
+    "mode": {
       "type": "enum",
-      "doc": "The projection type.",
+      "doc": "The projection mode.",
       "default": "mercator",
       "values": {
         "mercator": {
-          "doc": "The Mercator projection."
+          "doc": "Web Mercator projection."
         },
         "globe": {
-          "doc": "The globe projection."
+          "doc": "Globe projection."
         }
       }
     }

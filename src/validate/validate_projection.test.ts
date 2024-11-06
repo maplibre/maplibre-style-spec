@@ -24,15 +24,15 @@ describe('Validate projection', () => {
     });
 
     test('Should return errors according to spec violations', () => {
-        const errors = validateProjection({validateSpec, value: {type: 1 as any}, styleSpec: v8, style: {} as any});
+        const errors = validateProjection({validateSpec, value: {mode: 1 as any}, styleSpec: v8, style: {} as any});
         expect(errors).toHaveLength(1);
-        expect(errors[0].message).toBe('type: expected one of [mercator, globe], 1 found');
+        expect(errors[0].message).toBe('mode: expected one of [mercator, globe], 1 found');
     });
 
     test('Should pass if everything is according to spec', () => {
-        let errors = validateProjection({validateSpec, value: {type: 'globe'}, styleSpec: v8, style: {} as any});
+        let errors = validateProjection({validateSpec, value: {mode: 'globe'}, styleSpec: v8, style: {} as any});
         expect(errors).toHaveLength(0);
-        errors = validateProjection({validateSpec, value: {type: 'mercator'}, styleSpec: v8, style: {} as any});
+        errors = validateProjection({validateSpec, value: {mode: 'mercator'}, styleSpec: v8, style: {} as any});
         expect(errors).toHaveLength(0);
     });
 });
