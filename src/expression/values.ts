@@ -9,6 +9,7 @@ import {NullType, NumberType, StringType, BooleanType, ColorType, ObjectType, Va
 
 import type {Type} from './types';
 import {ProjectionTransition, isProjectionTransition} from '../types.g';
+import { Projection } from '../util/projection';
 
 export function validateRGBA(r: unknown, g: unknown, b: unknown, a?: unknown): string | null {
     if (!(
@@ -38,7 +39,7 @@ export function isValue(mixed: unknown): boolean {
         typeof mixed === 'string' ||
         typeof mixed === 'boolean' ||
         typeof mixed === 'number' ||
-        isProjectionTransition(mixed) ||
+        mixed instanceof Projection ||
         mixed instanceof Color ||
         mixed instanceof Collator ||
         mixed instanceof Formatted ||
