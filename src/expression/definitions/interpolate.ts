@@ -180,7 +180,7 @@ class Interpolate implements Expression {
 
         switch (this.operator) {
             case 'interpolate':
-                return interpolate[ this.type.kind ](outputLower, outputUpper, t);
+                return interpolate[this.type.kind](outputLower, outputUpper, t);
             case 'interpolate-projection':
                 return interpolate.projection(outputLower, outputUpper, t);
             case 'interpolate-hcl':
