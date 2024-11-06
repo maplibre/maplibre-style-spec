@@ -108,6 +108,8 @@ class Interpolate implements Expression {
         let outputType: Type = null;
         if (operator === 'interpolate-hcl' || operator === 'interpolate-lab') {
             outputType = ColorType;
+        } else if (operator === 'interpolate-projection') {
+            outputType = ProjectionType;
         } else if (context.expectedType && context.expectedType.kind !== 'value') {
             outputType = context.expectedType;
         }
@@ -172,9 +174,13 @@ class Interpolate implements Expression {
         const outputLower = outputs[index].evaluate(ctx);
         const outputUpper = outputs[index + 1].evaluate(ctx);
 
+        if (this.type.kind === 'projection') {
+            return interpolate.projection(outputLower, outputUpper, t);
+        }
+
         switch (this.operator) {
             case 'interpolate':
-                return interpolate[this.type.kind](outputLower, outputUpper, t);
+                return interpolate[ this.type.kind ](outputLower, outputUpper, t);
             case 'interpolate-projection':
                 return interpolate.projection(outputLower, outputUpper, t);
             case 'interpolate-hcl':

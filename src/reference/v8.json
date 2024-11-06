@@ -4584,7 +4584,7 @@
     }
   },
   "projection": {
-    "type": {
+    "mode": {
       "type": "projection",
       "doc": "The projection type. Can be specified as a string, or as an expression for supported projection types.",
       "default": "mercator",
@@ -4601,8 +4601,11 @@
       },
       "expression": {
         "interpolated": true,
-        "parameters": ["zoom"]
+        "parameters": ["zoom"],
+        "operators": ["interpolate-projection"]
       },
+      "values": ["mercator", "globe"],
+
       "property-type": "data-constant"
     }
   },

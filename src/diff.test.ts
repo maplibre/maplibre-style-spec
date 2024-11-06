@@ -607,10 +607,16 @@ describe('diff', () => {
         } as StyleSpecification,
         {
             projection: {
-                type: 'globe'
+                from: 'mercator',
+                to: 'globe',
+                transition: 1
             }
         } as StyleSpecification)).toEqual([
-            {command: 'setProjection', args: [{type: 'globe'}]},
+            {command: 'setProjection', args: [{
+                from: 'mercator',
+                to: 'globe',
+                transition: 1
+            }]},
         ]);
     });
 });

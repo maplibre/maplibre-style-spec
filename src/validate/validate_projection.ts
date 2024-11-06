@@ -1,7 +1,7 @@
 import ValidationError from '../error/validation_error';
 import getType from '../util/get_type';
 import v8 from '../reference/v8.json' with {type: 'json'};
-import {ProjectionSpecification, StyleSpecification} from '../types.g';
+import {PrimitiveProjection, ProjectionSpecification, ProjectionTransition, StyleSpecification} from '../types.g';
 
 interface ValidateProjectionOptions {
     sourceName?: string;
@@ -11,8 +11,29 @@ interface ValidateProjectionOptions {
     validateSpec: Function;
 }
 
+function isProjectionTransition(projection: any): projection is ProjectionTransition {
+    return projection && typeof projection === 'object' && 'from' in projection && 'to' in projection && 'transition' in projection;
+}
+
+function isPrimitiveProjection(projection: any): projection is PrimitiveProjection {
+    return typeof projection === 'string' && (projection === 'mercator' || projection === 'globe');
+}
+function isProjectionSpecification(projection: any): projection is ProjectionSpecification {
+    if (isPrimitiveProjection(projection) || isProjectionTransition(projection)) {
+        return true;
+    }
+
+    if (Array.isArray(projection) && projection.length > 0) {
+        if (['literal', 'step', 'interpolate-projection'].includes(projection[0])) {
+            return true
+        }
+    }
+
+    return false;
+}
+
 export default function validateProjection(options: ValidateProjectionOptions) {
-    const projection = options.value;
+    let projection = options.value;
     const styleSpec = options.styleSpec;
     const projectionSpec = styleSpec.projection;
     const style = options.style;
@@ -20,24 +41,16 @@ export default function validateProjection(options: ValidateProjectionOptions) {
     const rootType = getType(projection);
     if (projection === undefined) {
         return [];
-    } else if (rootType !== 'object') {
-        return [new ValidationError('projection', projection, `object expected, ${rootType} found`)];
-    }
-
-    let errors = [];
-    for (const key in projection) {
-        if (projectionSpec[key]) {
-            errors = errors.concat(options.validateSpec({
-                key,
-                value: projection[key],
-                valueSpec: projectionSpec[key],
-                style,
-                styleSpec
-            }));
-        } else {
-            errors = errors.concat([new ValidationError(key, projection[key], `unknown property "${key}"`)]);
-        }
-    }
-
-    return errors;
+    } 
+    
+    if (rootType === 'string' && !isPrimitiveProjection(projection)) {
+        return [new ValidationError('projection', projection, 'does not fit the type PrimitiveProjection')];
+    } else if (rootType === 'object' && !isProjectionTransition(projection)) {
+        return [new ValidationError('projection', projection, 'does not fit the type ProjectionTransition')];
+    } else if (rootType === 'array' && !isProjectionSpecification(projection)) {
+        return [new ValidationError('projection', projection, 'does not fit the type ProjectionSpecification')];
+    }  else if (!['array', 'object', 'string'].includes(rootType)) {
+        return [new ValidationError('projection', projection, 'expected array, object, string - found ' + rootType)];
+    } 
+    return [];
 }

@@ -3,11 +3,11 @@ export function makeProjection(projection: string) {
 }
 export class Projection {
 
-    from: Projection | string;
-    to: Projection | string;
+    from: string;
+    to: string;
     transition: number;
 
-    constructor(from: Projection | string, to: Projection | string, transition: number) {
+    constructor(from: string, to: string, transition: number) {
         this.from = from;
         this.to = to;
         this.transition = transition;

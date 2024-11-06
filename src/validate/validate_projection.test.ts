@@ -1,7 +1,7 @@
 import validateProjection from './validate_projection';
 import validateSpec from './validate';
 import v8 from '../reference/v8.json' with {type: 'json'};
-import {ProjectionSpecification} from '../types.g';
+
 
 describe('Validate projection', () => {
     it('Should pass when value is undefined', () => {
@@ -9,32 +9,32 @@ describe('Validate projection', () => {
         expect(errors).toHaveLength(0);
     });
 
-    test('Should return error when value is not an object', () => {
-        const errors = validateProjection({validateSpec, value: '' as unknown as ProjectionSpecification, styleSpec: v8, style: {} as any});
-        expect(errors).toHaveLength(1);
-        expect(errors[0].message).toContain('object');
-        expect(errors[0].message).toContain('expected');
-    });
-
     test('Should return error in case of unknown property', () => {
         const errors = validateProjection({validateSpec, value: {a: 1} as any, styleSpec: v8, style: {} as any});
         expect(errors).toHaveLength(1);
-        expect(errors[0].message).toContain('a');
-        expect(errors[0].message).toContain('unknown');
+        expect(errors[0].message).toContain('projection: does not fit the type ProjectionTransition');
     });
 
     test('Should return errors according to spec violations', () => {
-        const errors = validateProjection({validateSpec, value: {type: 1 as any}, styleSpec: v8, style: {} as any});
+        const errors = validateProjection({validateSpec, value: 1 as any, styleSpec: v8, style: {} as any});
         expect(errors).toHaveLength(1);
-        expect(errors[0].message).toBe('type: expected one of [mercator, globe, vertical-perspective], 1 found');
+        expect(errors[0].message).toBe('projection: expected array, object, string - found number');
+    });
+
+    test('Should return error when value is null', () => {
+        const errors = validateProjection({validateSpec, value: null as any, styleSpec: v8, style: {} as any});
+        expect(errors).toHaveLength(1);
+        expect(errors[0].message).toContain('projection: expected array, object, string - found null');
     });
 
     test('Should pass if everything is according to spec', () => {
-        let errors = validateProjection({validateSpec, value: {type: ['step', ['zoom'], ['literal',{'from': 'globe', 'to': 'globe', transition: 1}], 10, ['literal',{'from': 'mercator', 'to': 'mercator', transition: 1}]]}, styleSpec: v8, style: {} as any});
+        let errors = validateProjection({validateSpec, value: ['step', ['zoom'], 'globe', 10, 'mercator'], styleSpec: v8, style: {} as any});
         expect(errors).toHaveLength(0);
-        errors = validateProjection({validateSpec, value: {type: ['literal', {'from': 'mercator', 'to': 'mercator', transition: 1}]}, styleSpec: v8, style: {} as any});
+        errors = validateProjection({validateSpec, value: {'from': 'mercator', 'to': 'mercator', transition: 1}, styleSpec: v8, style: {} as any});
         expect(errors).toHaveLength(0);
-        errors = validateProjection({validateSpec, value: {type: ['interpolate-projection', ['linear'],['zoom'], 0, {'from': 'globe', 'to': 'globe', transition: 1}, 10, {'from': 'mercator', 'to': 'mercator', transition: 1}]}, styleSpec: v8, style: {} as any});
+        errors = validateProjection({validateSpec, value: 'mercator', styleSpec: v8, style: {} as any});
+        expect(errors).toHaveLength(0);
+        errors = validateProjection({validateSpec, value: ['interpolate-projection', ['linear'], ['zoom'], 0, 'mercator', 5, 'globe'], styleSpec: v8, style: {} as any});
         expect(errors).toHaveLength(0);
   
     });

@@ -124,8 +124,9 @@ fs.writeFileSync('src/types.g.ts',
 
 export type ColorSpecification = string;
 
-type Projection = {from: string | Projection, to: string | Projection, transition: number};
-export type ProjectionSpecification = { type: PropertyValueSpecification<Projection> };
+export type PrimitiveProjection = 'mercator' | 'globe';
+export type ProjectionTransition = {from: PrimitiveProjection, to: PrimitiveProjection, transition: number};
+export type ProjectionSpecification = PrimitiveProjection | ProjectionTransition | PropertyValueSpecification<ProjectionTransition>
 
 export type PaddingSpecification = number | number[];
 
@@ -209,7 +210,7 @@ export type ExpressionSpecification =
     | ['interpolate', InterpolationSpecification, number | ExpressionSpecification,
         ...(number | number[] | ColorSpecification | ExpressionSpecification)[]] // alternating number and number | number[] | ColorSpecification
     | ['interpolate-projection', InterpolationSpecification, number | ExpressionSpecification,
-        ...(number | Projection)[]] // alternating Projection
+        ...(number | PrimitiveProjection)[]] // alternating Projection
     | ['interpolate-hcl', InterpolationSpecification, number | ExpressionSpecification,
         ...(number | ColorSpecification)[]] // alternating number and ColorSpecificaton
     | ['interpolate-lab', InterpolationSpecification, number | ExpressionSpecification,
