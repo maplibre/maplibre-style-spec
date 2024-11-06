@@ -3,7 +3,6 @@ import interpolate, {isSupportedInterpolationColorSpace} from './interpolate';
 import Color from './color';
 import Padding from './padding';
 import VariableAnchorOffsetCollection from './variable_anchor_offset_collection';
-import {makeProjection, ProjectionTransition} from './projection';
 import { isProjectionTransition } from '../types.g';
 
 describe('interpolate', () => {

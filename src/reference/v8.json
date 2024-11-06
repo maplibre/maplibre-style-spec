@@ -147,13 +147,7 @@
           }
         },
         "transition-intermediate": {
-          "projection": {
-            "mode": {
-              "from": "globe",
-              "to": "mercator",
-              "transition": 0.7
-            }
-          }
+          "projection": ["globe","mercator", 0.7]
         },
         "instant-transition": {
           "projection": {
