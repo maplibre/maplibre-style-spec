@@ -147,7 +147,7 @@
           }
         },
         "transition-intermediate": {
-          "projection": ["globe","mercator", 0.7]
+          "projection": {"mode": ["globe", "mercator", 0.7]}
         },
         "instant-transition": {
           "projection": {

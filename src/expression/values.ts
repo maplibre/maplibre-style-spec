@@ -8,11 +8,7 @@ import ResolvedImage from './types/resolved_image';
 import {NullType, NumberType, StringType, BooleanType, ColorType, ObjectType, ValueType, CollatorType, FormattedType, ResolvedImageType, array, PaddingType, VariableAnchorOffsetCollectionType, ProjectionType} from './types';
 
 import type {Type} from './types';
-import { ProjectionTransition, isProjectionTransition } from '../types.g';
-
-
-
-
+import {ProjectionTransition, isProjectionTransition} from '../types.g';
 
 export function validateRGBA(r: unknown, g: unknown, b: unknown, a?: unknown): string | null {
     if (!(
@@ -36,8 +32,6 @@ export function validateRGBA(r: unknown, g: unknown, b: unknown, a?: unknown): s
 export type Value = null | string | boolean | number | Color | ProjectionTransition | Collator | Formatted | Padding | ResolvedImage | VariableAnchorOffsetCollection | ReadonlyArray<Value> | {
     readonly [x: string]: Value;
 };
-
-
 
 export function isValue(mixed: unknown): boolean {
     if (mixed === null ||
