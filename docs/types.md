@@ -142,8 +142,8 @@ The `projectionTransition` is used to configure which projection to use for the 
 
 There are currently two projections implemented.
 
-- `mercator` - Web Mercator projection
-- `stereographic` - Stereographic sphere projection
+- `mercator` - Web Mercator projection.
+- `stereographic` - Stereographic projection.
 
 And the following [presets](#use-a-projection-preset)
 
