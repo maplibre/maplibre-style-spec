@@ -128,8 +128,8 @@ export type ColorSpecification = string;
 
 export type ProjectionPresetT = ${projectionTypes.presets.map(p => `'${p}'`).join(' | ')};
 export type ProjectionPrimitiveT =  ${projectionTypes.projections.map(p => `'${p}'`).join(' | ')};
-export type ProjectionTransitionT = [ProjectionPrimitiveT, ProjectionPrimitiveT, number];
-export type ProjectionTransitionSpecification = ProjectionPresetT | ProjectionPrimitiveT | ProjectionTransitionT | PropertyValueSpecification<ProjectionTransitionT>
+export type ProjectionT = [ProjectionPrimitiveT, ProjectionPrimitiveT, number];
+export type ProjectionSpecification = ProjectionPresetT | ProjectionPrimitiveT | ProjectionT | PropertyValueSpecification<ProjectionT>
 
 
 export type PaddingSpecification = number | number[];

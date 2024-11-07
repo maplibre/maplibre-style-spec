@@ -1,39 +1,73 @@
-import validateProjectionConfig from './validate_projection';
-import validateSpec from './validate';
 import v8 from '../reference/v8.json' with {type: 'json'};
+import validateProjection from './validate_projection';
 
-describe('Validate projection', () => {
-    it('Should pass when value is undefined', () => {
-        const errors = validateProjectionConfig({validateSpec, value: undefined, styleSpec: v8, style: {} as any});
+describe('validateProjection function', () => {
+
+    const key = 'sample_projection_key';
+
+    test('should return error when projection is not a string or array', () => {
+        expect(validateProjection({key, value: 0})).toMatchObject([
+            {message: `${key}: projection expected, invalid type "number" found`},
+        ]);
+        expect(validateProjection({key, value: {}})).toMatchObject([
+            {message: `${key}: projection expected, invalid type "object" found`},
+        ]);
+        expect(validateProjection({key, value: false})).toMatchObject([
+            {message: `${key}: projection expected, invalid type "boolean" found`},
+        ]);
+        expect(validateProjection({key, value: null})).toMatchObject([
+            {message: `${key}: projection expected, invalid type "null" found`},
+        ]);
+        expect(validateProjection({key, value: undefined})).toMatchObject([
+            {message: `${key}: projection expected, invalid type "undefined" found`},
+        ]);
+    });
+    
+    test('should return no errors when projection is valid projection string', () => {
+        const validProjectionString = [...v8.projectionConfig.type.values.presets, ...v8.projectionConfig.type.values.projections] 
+        
+        for (const value of validProjectionString) {
+            const errors = validateProjection({key, value});
+            expect(errors).toHaveLength(0);
+        }
+    });
+    test('should errors when projection is invalid projection primitive or preset', () => {
+        const invalidProjectionString = [
+            'incalid',
+        ];
+
+        for (const value of invalidProjectionString) {
+            const errors = validateProjection({key, value});
+            expect(errors).toHaveLength(1);
+        }
+    });
+    
+    test('Should error when projection is an invalid projection transition', () => {
+        const errors = validateProjection({value: [3, 'mercator', 0.3], key});
+        expect(errors).toMatchObject([
+            {message: `${key}: projection expected, invalid array [3,\"mercator\",0.3] found`},
+        ]);
+    });
+
+    test('Should error when preset is used as primitive', () => {
+        const errors = validateProjection({value: ['globe', 'mercator', 0.3], key});
+        expect(errors).toMatchObject([
+            {message: `${key}: projection expected, invalid array [\"globe\",\"mercator\",0.3] found`},
+        ]);
+    });
+
+    test('Should return no errors when projection is valid projection transition', () => {
+        const errors = validateProjection({value: ['mercator', 'mercator', 0.3], key});
         expect(errors).toHaveLength(0);
     });
 
-    test('Should return error in case of unknown property', () => {
-        const errors = validateProjectionConfig({validateSpec, value: {a: 1} as any, styleSpec: v8, style: {} as any});
-        expect(errors).toHaveLength(1);
-        expect(errors[0].message).toContain('a: unknown property \"a\"');
+    test('Should return no errors when projection is valid interpolation-projection expression', () => {
+        const errors = validateProjection({value: ['interpolate-projection', ['linear'], ['zoom'], 0, 'mercator', 5, 'globe'], key});
+        expect(errors).toHaveLength(0);
     });
 
-    test('Should return errors according to spec violations', () => {
-        const errors = validateProjectionConfig({validateSpec, value: 1 as any, styleSpec: v8, style: {} as any});
-        expect(errors).toHaveLength(1);
-        expect(errors[0].message).toBe('projection: object expected, number found');
-    });
-
-    test('Should return error when value is null', () => {
-        const errors = validateProjectionConfig({validateSpec, value: null as any, styleSpec: v8, style: {} as any});
-        expect(errors).toHaveLength(1);
-        expect(errors[0].message).toContain('projection: object expected, null found');
-    });
-
-    test('Should pass if everything is according to spec', () => {
-        let errors = validateProjectionConfig({validateSpec, value: {'type': ['step', ['zoom'], 'globe', 10, 'mercator']}, styleSpec: v8, style: {} as any});
-        expect(errors).toHaveLength(0);
-        errors = validateProjectionConfig({validateSpec, value: {'type': ['mercator', 'mercator', 0.3]}, styleSpec: v8, style: {} as any});
-        expect(errors).toHaveLength(0);
-        errors = validateProjectionConfig({validateSpec, value: {'type': 'mercator'}, styleSpec: v8, style: {} as any});
-        expect(errors).toHaveLength(0);
-        errors = validateProjectionConfig({validateSpec, value: {'type': ['interpolate-projection', ['linear'], ['zoom'], 0, 'mercator', 5, 'stereographic']}, styleSpec: v8, style: {} as any});
+    test('Should return no errors when projection is valid step expression', () => {
+        const errors = validateProjection({value: ['step', ['zoom'], 'globe', 10, 'mercator'], key});
         expect(errors).toHaveLength(0);
     });
 

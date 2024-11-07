@@ -3065,11 +3065,11 @@
         }
       },
       "interpolate-projection": {
-        "doc": "Produces continuous, smooth results by interpolating between pairs of input and output values (\"stops\"). Works like `interpolate`, but the output type must be a [`projectionTransition`](./types.md#projectiontransition).",
+        "doc": "Produces continuous, smooth results by interpolating between pairs of input and output values (\"stops\"). Works like `interpolate`, but the output type must be a [`projection`](./types.md#projection).",
         "example": {
           "syntax": {
             "method": ["[\"linear\"] | [\"exponential\", base] | [\"cubic-bezier\", x1, y1, x2, y2]", "number", "string", "number", "..."],
-            "result": "projectionTransition"
+            "result": "projection"
           },
           "value": ["interpolate-projection", ["linear"], ["zoom"], 0, "globe", 10, "globe", 12, "mercator"]
         },
@@ -4590,9 +4590,9 @@
       }
     }
   },
-  "projection": {
+  "projectionConfig": {
     "type": {
-      "type": "projectionTransition",
+      "type": "projection",
       "doc": "The projection type. Can be specified as a string, a transition state, or an expression.",
       "default": "mercator",
       "values": {

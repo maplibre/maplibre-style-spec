@@ -4,7 +4,7 @@ import Padding from './padding';
 import VariableAnchorOffsetCollection from './variable_anchor_offset_collection';
 import RuntimeError from '../expression/runtime_error';
 import type {ProjectionPrimitiveT, VariableAnchorOffsetCollectionSpecification} from '../types.g';
-import {ProjectionTransition} from './projection';
+import {Projection} from './projection';
 
 export type InterpolationColorSpace = 'rgb' | 'hcl' | 'lab';
 
@@ -24,11 +24,11 @@ export function isSupportedInterpolationColorSpace(colorSpace: string): colorSpa
  * @returns interpolation fn
  * @deprecated use `interpolate[type]` instead
  */
-export const interpolateFactory = (interpolationType: 'number'|'color'|'projectionTransition'|'array'|'padding'|'variableAnchorOffsetCollection') => {
+export const interpolateFactory = (interpolationType: 'number'|'color'|'projection'|'array'|'padding'|'variableAnchorOffsetCollection') => {
     switch (interpolationType) {
         case 'number': return number;
         case 'color': return color;
-        case 'projectionTransition': return projectionTransition;
+        case 'projection': return projection;
         case 'array': return array;
         case 'padding': return padding;
         case 'variableAnchorOffsetCollection': return variableAnchorOffsetCollection;
@@ -39,8 +39,8 @@ function number(from: number, to: number, t: number): number {
     return from + t * (to - from);
 }
 
-function projectionTransition(from: ProjectionPrimitiveT, to: ProjectionPrimitiveT, interpolation: number): ProjectionTransition {
-    return new ProjectionTransition(from, to, interpolation);
+function projection(from: ProjectionPrimitiveT, to: ProjectionPrimitiveT, interpolation: number): Projection {
+    return new Projection(from, to, interpolation);
 }
 
 function color(from: Color, to: Color, t: number, spaceKey: InterpolationColorSpace = 'rgb'): Color {
@@ -128,7 +128,7 @@ function variableAnchorOffsetCollection(from: VariableAnchorOffsetCollection, to
 const interpolate = {
     number,
     color,
-    projectionTransition,
+    projection,
     array,
     padding,
     variableAnchorOffsetCollection

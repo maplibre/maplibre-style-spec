@@ -136,9 +136,9 @@ The following example applies 2em padding on top and bottom and 3em padding left
 
 
 
-## ProjectionTransition
+## Projection
 
-The `projectionTransition` is used to configure which projection to use for the map.
+The `projection` is used to configure which projection to use for the map.
 
 There are currently two projections implemented.
 
@@ -147,7 +147,7 @@ There are currently two projections implemented.
 
 And the following [presets](#use-a-projection-preset)
 
-The `projectionTransition` output sent to the renderer is always of the shape:
+The `projection` output sent to the renderer is always of the shape:
 
 `[from, to, transition]: [string, string, number]`
 

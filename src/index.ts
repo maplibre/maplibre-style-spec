@@ -81,6 +81,7 @@ import featureFilter, {isExpressionFilter} from './feature_filter';
 
 import convertFilter from './feature_filter/convert';
 import Color from './util/color';
+import {Projection} from './util/projection';
 import Padding from './util/padding';
 import VariableAnchorOffsetCollection from './util/variable_anchor_offset_collection';
 import Formatted, {FormattedSection} from './expression/types/formatted';
@@ -91,7 +92,7 @@ import ResolvedImage from './expression/types/resolved_image';
 import {supportsPropertyExpression} from './util/properties';
 import {IMercatorCoordinate, ICanonicalTileID, ILngLat, ILngLatLike} from './tiles_and_coordinates';
 import EvaluationContext from './expression/evaluation_context';
-import {FormattedType, NullType, Type, toString, ColorType} from './expression/types';
+import {FormattedType, NullType, Type, toString, ColorType, ProjectionType} from './expression/types';
 
 import interpolates, {interpolateFactory} from './util/interpolate';
 import {expressions} from './expression/definitions';
@@ -139,6 +140,7 @@ export {
     ValidationError,
     ParsingError,
     FeatureState,
+    Projection,
     Color,
     Step,
     CompoundExpression,
@@ -190,6 +192,7 @@ export {
     migrate,
     classifyRings,
 
+    ProjectionType,
     ColorType,
     interpolates,
     v8,

@@ -26,8 +26,8 @@ import validatePadding from './validate_padding';
 import validateVariableAnchorOffsetCollection from './validate_variable_anchor_offset_collection';
 import validateSprite from './validate_sprite';
 import ValidationError from '../error/validation_error';
-import validateProjectionConfig from './validate_projection';
-import validateProjectionTransition from './validate_projection_type';
+import validateProjectionConfig from './validate_projectionconfig';
+import validateProjection from './validate_projection';
 
 const VALIDATORS = {
     '*'() {
@@ -47,8 +47,8 @@ const VALIDATORS = {
     'light': validateLight,
     'sky': validateSky,
     'terrain': validateTerrain,
-    'projection': validateProjectionConfig,
-    'projectionTransition': validateProjectionTransition,
+    'projectionConfig': validateProjectionConfig,
+    'projection': validateProjection,
     'string': validateString,
     'formatted': validateFormatted,
     'resolvedImage': validateImage,

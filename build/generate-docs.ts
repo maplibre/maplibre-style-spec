@@ -166,7 +166,7 @@ function typeToMarkdownLink(type: string): string {
         case 'promoteid':
             return ` [${type}](types.md)`;
         case 'color':
-        case 'projectiontransition':
+        case 'projection':
         case 'number':
         case 'string':
         case 'boolean':
@@ -181,6 +181,8 @@ function typeToMarkdownLink(type: string): string {
         case 'paint':
         case 'layout':
             return ` [${type}](layers.md#${type.toLocaleLowerCase()})`;
+        case 'projectionconfig':
+            return ' [projectionConfig](projection.md)';    
         default:
             // top level types have their own file
             return ` [${type}](${type}.md)`;
@@ -220,8 +222,8 @@ function convertPropertyToMarkdown(key: string, value: JsonObject, keyPrefix = '
     markdown += '. ';
 
     // Projection type:
-    const isProjectionTransition = value.type === 'projectionTransition' && value.values && !Array.isArray(value.values);
-    if (isProjectionTransition) {
+    const isProjection = value.type === 'projection' && value.values && !Array.isArray(value.values);
+    if (isProjection) {
         markdown += '\n\r';
         markdown += `Projections: ${value.values['projections'].map(val=>`\`${val}\``).join(', ')}. `;
         markdown += '\n\r';

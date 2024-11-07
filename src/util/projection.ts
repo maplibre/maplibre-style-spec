@@ -1,7 +1,7 @@
 import v8 from '../reference/v8.json' with { type: 'json' };
-import {ProjectionPrimitiveT, ProjectionTransitionT, ProjectionTransitionSpecification, PropertyValueSpecification} from '../types.g';
+import {ProjectionPrimitiveT, ProjectionT, ProjectionSpecification, PropertyValueSpecification} from '../types.g';
 
-export class ProjectionTransition {
+export class Projection {
     readonly from: ProjectionPrimitiveT;
     readonly to: ProjectionPrimitiveT;
     readonly transition: number;
@@ -16,11 +16,11 @@ export class ProjectionTransition {
     }
 }
 
-export function isProjectionTransitionConfig(value: unknown): value is ProjectionTransitionSpecification {
-    return isProjectionPrimitive(value) || isProjectionTransitionValue(value) || isPropertyValueSpecification(value);
+export function isProjectionConfig(value: unknown): value is ProjectionSpecification {
+    return isProjectionPrimitive(value) || isProjectionValue(value) || isPropertyValueSpecification(value);
 }
 
-export function isPropertyValueSpecification(value: unknown): value is PropertyValueSpecification<ProjectionTransitionT> {
+export function isPropertyValueSpecification(value: unknown): value is PropertyValueSpecification<ProjectionT> {
 
     if (['interpolate-projection', 'step', 'literal'].includes(value[0])) {
         return true
@@ -28,7 +28,7 @@ export function isPropertyValueSpecification(value: unknown): value is PropertyV
     return false
 }
 
-export function isProjectionTransitionValue(value: unknown): value is ProjectionTransitionT {
+export function isProjectionValue(value: unknown): value is ProjectionT {
     return Array.isArray(value) &&
         value.length === 3 &&
         isProjectionPrimitive(value[0]) &&
@@ -37,9 +37,9 @@ export function isProjectionTransitionValue(value: unknown): value is Projection
 }
 
 export function isProjectionPrimitive(value: unknown): value is ProjectionPrimitiveT {
-    return v8.projection.type.values.projections.includes(value as string);
+    return v8.projectionConfig.type.values.projections.includes(value as string);
 }
 
 export function isProjectionPreset(value: unknown): value is ProjectionPrimitiveT {
-    return v8.projection.type.values.presets.includes(value as string);
+    return v8.projectionConfig.type.values.presets.includes(value as string);
 }

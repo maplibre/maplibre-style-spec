@@ -1,43 +1,20 @@
 import ValidationError from '../error/validation_error';
 import getType from '../util/get_type';
-import v8 from '../reference/v8.json' with {type: 'json'};
-import {ProjectionConfigSpecification, StyleSpecification} from '../types.g';
+import {isProjectionPreset, isProjectionPrimitive, isProjectionConfig} from '../util/projection';
 
-interface ValidateProjectionConfigOptions {
-    sourceName?: string;
-    value: ProjectionConfigSpecification;
-    styleSpec: typeof v8;
-    style: StyleSpecification;
-    validateSpec: Function;
-}
+export default function validateProjection(options) {
 
-export default function validateProjectionConfig(options: ValidateProjectionConfigOptions) {
-    const projection = options.value;
-    const styleSpec = options.styleSpec;
-    const projectionSpec = styleSpec.projection;
-    const style = options.style;
+    const key = options.key;
+    const value = options.value;
+    const type = getType(value);
 
-    const rootType = getType(projection);
-    if (projection === undefined) {
-        return [];
-    } else if (rootType !== 'object') {
-        return [new ValidationError('projection', projection, `object expected, ${rootType} found`)];
-    }
-
-    let errors = [];
-    for (const key in projection) {
-        if (projectionSpec[key]) {
-            errors = errors.concat(options.validateSpec({
-                key,
-                value: projection[key],
-                valueSpec: projectionSpec[key],
-                style,
-                styleSpec
-            }));
-        } else {
-            errors = errors.concat([new ValidationError(key, projection[key], `unknown property "${key}"`)]);
-        }
-    }
-
-    return errors;
+    if (type === 'string' && !(isProjectionPrimitive(value) || isProjectionPreset(value))) {
+        return [new ValidationError(key, value, `projection expected, invalid string "${value}" found`)];
+    } else if (type === 'array' && !isProjectionConfig(value)) {
+        return [new ValidationError(key, value, `projection expected, invalid array ${JSON.stringify(value)} found`)];
+    }  else if (!['array', 'string'].includes(type)) {
+        return [new ValidationError(key, value, `projection expected, invalid type "${type}" found`)];
+    } 
+    
+    return [];
 }
