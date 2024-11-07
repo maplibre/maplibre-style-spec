@@ -126,7 +126,7 @@
       }
     },
     "projection": {
-      "type": "projection",
+      "type": "projectionConfig",
       "doc": "The projection configuration",
       "example": {
         "type": [

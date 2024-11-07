@@ -329,7 +329,7 @@ ${objectDeclaration('LightSpecification', spec.light)}
 
 ${objectDeclaration('SkySpecification', spec.sky)}
 
-${objectDeclaration('ProjectionSpecification', spec.projection)}
+${objectDeclaration('ProjectionConfigSpecification', spec.projection)}
 
 ${objectDeclaration('TerrainSpecification', spec.terrain)}
 
