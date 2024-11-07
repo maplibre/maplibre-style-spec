@@ -134,13 +134,18 @@ The following example applies 2em padding on top and bottom and 3em padding left
 }
 ```
 
-## Projection Type
+## ProjectionType
 
-There are currently two projection types implemented.
+The `projectionType` type is used to define the projection of the map.
+
+There are currently two projections implemented.
 
 - `mercator` - Web Mercator projection
 - `globe` - Globe projection
 
+This value can be uses either with a single projection or as an intermediate between two.
+
+It's possible to use an expression to change projection between zoom levels using a [`camera expression`](./expressions.md#camera-expressions), either with an immediate [`step`](./expressions.md#step), or an animated [`interpolate-projection`](./expressions.md#interpolate-projection).
 
 **Use a single projection**
 
