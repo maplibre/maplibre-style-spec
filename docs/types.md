@@ -147,8 +147,6 @@ There are currently two projections implemented.
 
 And the following [presets](#use-a-projection-preset)
 
-- `globe` - Globe projection
-
 The `projectionTransition` output sent to the renderer is always of the shape:
 
 `[from, to, transition]: [string, string, number]`
