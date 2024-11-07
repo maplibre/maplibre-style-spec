@@ -118,7 +118,7 @@ function layerType(key) {
 
 const layerTypes = Object.keys(spec.layer.type.values);
 
-const projectionTypes = spec.projection.type.values;
+const projectionTypes = spec.projectionConfig.type.values;
 
 fs.writeFileSync('src/types.g.ts',
     `// Generated code; do not edit. Edit build/generate-style-spec.ts instead.
@@ -329,7 +329,7 @@ ${objectDeclaration('LightSpecification', spec.light)}
 
 ${objectDeclaration('SkySpecification', spec.sky)}
 
-${objectDeclaration('ProjectionConfigSpecification', spec.projection)}
+${objectDeclaration('ProjectionConfigSpecification', spec.projectionConfig)}
 
 ${objectDeclaration('TerrainSpecification', spec.terrain)}
 
