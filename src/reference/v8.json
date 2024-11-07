@@ -4613,13 +4613,19 @@
         ]
       },
       "values": {
-        "projections": [
-          "mercator",
-          "stereographic"
-        ],
-        "presets": [
-          "globe"
-        ]
+        "projections": {
+          "mercator": {
+            "doc": "Web Mercator projection."
+          },
+          "stereographic": {
+            "doc": "Stereographic projection."
+          }
+        },
+        "presets": {
+          "globe": {
+            "doc": "Globe projection with zoom transition from Stereographic projection to Web Mercator projection."
+          }
+        }
       },
       "property-type": "data-constant"
     }
