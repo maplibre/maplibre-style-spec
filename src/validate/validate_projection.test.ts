@@ -26,7 +26,7 @@ describe('Validate projection', () => {
     test('Should return errors according to spec violations', () => {
         const errors = validateProjection({validateSpec, value: {type: 1 as any}, styleSpec: v8, style: {} as any});
         expect(errors).toHaveLength(1);
-        expect(errors[0].message).toBe('type: expected one of [mercator, globe], 1 found');
+        expect(errors[0].message).toBe('type: expected one of [mercator, globe, stereographic], 1 found');
     });
 
     test('Should pass if everything is according to spec', () => {

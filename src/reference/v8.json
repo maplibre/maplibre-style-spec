@@ -4575,10 +4575,13 @@
       "default": "mercator",
       "values": {
         "mercator": {
-          "doc": "The Mercator projection."
+          "doc": "Web Mercator projection."
         },
         "globe": {
-          "doc": "The globe projection."
+          "doc": "Globe projection. Adaptive transition from Stereographic to Mercator."
+        },
+        "stereographic": {
+          "doc": "Stereographic projection."
         }
       }
     }
