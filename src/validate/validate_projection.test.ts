@@ -27,13 +27,13 @@ describe('Validate projection', () => {
     });
 
     test('Should pass if everything is according to spec', () => {
-        let errors = validateProjection({validateSpec, value: {'mode': ['step', ['zoom'], 'globe', 10, 'mercator']}, styleSpec: v8, style: {} as any});
+        let errors = validateProjection({validateSpec, value: {'type': ['step', ['zoom'], 'globe', 10, 'mercator']}, styleSpec: v8, style: {} as any});
         expect(errors).toHaveLength(0);
-        errors = validateProjection({validateSpec, value: {'mode': ['mercator', 'mercator', 0.3]}, styleSpec: v8, style: {} as any});
+        errors = validateProjection({validateSpec, value: {'type': ['mercator', 'mercator', 0.3]}, styleSpec: v8, style: {} as any});
         expect(errors).toHaveLength(0);
-        errors = validateProjection({validateSpec, value: {'mode': 'mercator'}, styleSpec: v8, style: {} as any});
+        errors = validateProjection({validateSpec, value: {'type': 'mercator'}, styleSpec: v8, style: {} as any});
         expect(errors).toHaveLength(0);
-        errors = validateProjection({validateSpec, value: {'mode': ['interpolate-projection', ['linear'], ['zoom'], 0, 'mercator', 5, 'globe']}, styleSpec: v8, style: {} as any});
+        errors = validateProjection({validateSpec, value: {'type': ['interpolate-projection', ['linear'], ['zoom'], 0, 'mercator', 5, 'globe']}, styleSpec: v8, style: {} as any});
         expect(errors).toHaveLength(0);
   
     });
