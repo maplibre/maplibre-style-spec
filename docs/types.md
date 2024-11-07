@@ -169,11 +169,12 @@ type: ["step", ["zoom"],
     "stereographic",
     11, "mercator"
 ]
-```
 
-`output at zoom 10.9: ["stereographic", "stereographic", 1]`
-`output at zoom 11.0: ["stereographic", "stereographic", 1]`
-`output at zoom 11.1: ["mercator", "mercator", 1]`
+
+output at zoom 10.9: ["stereographic", "stereographic", 1]
+output at zoom 11.0: ["stereographic", "stereographic", 1]
+output at zoom 11.1: ["mercator", "mercator", 1]
+```
 
 #### Animate between different projections based on zoom level**
 
@@ -185,11 +186,13 @@ type: ["interpolate-projection", ["linear"], ["zoom"],
     10,"stereographic",
     12,"mercator"
 ]
+
+
+output at zoom 10: ["stereographic", "stereographic", 1]
+output at zoom 11: ["stereographic", "mercator", 0.5]
+output at zoom 12: ["mercator", "mercator", 1]
 ```
 
-`output at zoom 10: ["stereographic", "stereographic", 1]`
-`output at zoom 11: ["stereographic", "mercator", 0.5]`
-`output at zoom 12: ["mercator", "mercator", 1]`
 
 #### Provide a constant `projection` transition
 
