@@ -3069,7 +3069,7 @@
         "example": {
           "syntax": {
             "method": ["[\"linear\"] | [\"exponential\", base] | [\"cubic-bezier\", x1, y1, x2, y2]", "number", "string", "number", "..."],
-            "result": "projection"
+            "result": "projectionTransition"
           },
           "value": ["interpolate-projection", ["linear"], ["zoom"], 0, "globe", 10, "globe", 12, "mercator"]
         },
