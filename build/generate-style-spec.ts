@@ -118,14 +118,16 @@ function layerType(key) {
 
 const layerTypes = Object.keys(spec.layer.type.values);
 
+const projectionTypes = spec.projection.type.values;
+
 fs.writeFileSync('src/types.g.ts',
     `// Generated code; do not edit. Edit build/generate-style-spec.ts instead.
 /* eslint-disable */
 
 export type ColorSpecification = string;
 
-export type ProjectionPreset = 'globe';
-export type ProjectionPrimitive = 'mercator' | 'stereographic';
+export type ProjectionPreset = ${projectionTypes.presets.map(p => `'${p}'`).join(' | ')};
+export type ProjectionPrimitive =  ${projectionTypes.projections.map(p => `'${p}'`).join(' | ')};
 export type ProjectionTransition = [ProjectionPrimitive, ProjectionPrimitive, number];
 export type ProjectionTransitionSpecification = ProjectionPreset | ProjectionPrimitive | ProjectionTransition | PropertyValueSpecification<ProjectionTransition>
 

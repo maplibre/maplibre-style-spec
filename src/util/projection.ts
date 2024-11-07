@@ -1,3 +1,4 @@
+import v8 from '../reference/v8.json' with { type: 'json' };
 import {ProjectionPrimitive, ProjectionTransition, ProjectionTransitionSpecification, PropertyValueSpecification} from '../types.g';
 
 export class Projection {
@@ -36,9 +37,9 @@ export function isProjectionTransitionValue(value: unknown): value is Projection
 }
 
 export function isProjectionPrimitive(value: unknown): value is ProjectionPrimitive {
-    return value === 'mercator' || value === 'stereographic';
+    return v8.projection.type.values.projections.includes(value as string);
 }
 
 export function isProjectionPreset(value: unknown): value is ProjectionPrimitive {
-    return value === 'globe';
+    return v8.projection.type.values.presets.includes(value as string);
 }

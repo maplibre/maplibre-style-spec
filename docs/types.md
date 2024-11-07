@@ -168,13 +168,13 @@ Use a [`camera expression`](./expressions.md#camera-expressions), to discretely 
 
 ```ts
 type: ["step", ["zoom"],
-    "globe",
+    "stereographic",
     11, "mercator"
 ]
 ```
 
-`output at zoom 10.9: ["globe", "globe", 1]`
-`output at zoom 11.0: ["globe", "globe", 1]`
+`output at zoom 10.9: ["stereographic", "stereographic", 1]`
+`output at zoom 11.0: ["stereographic", "stereographic", 1]`
 `output at zoom 11.1: ["mercator", "mercator", 1]`
 
 #### Animate between different projections based on zoom level**

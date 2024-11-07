@@ -119,10 +119,11 @@ describe('interpolate', () => {
     });
 
     test('interpolate projection', () => {
-        const i11nFn = (t: number) => interpolate.projection('globe', 'mercator', t);
+        const i11nFn = (t: number) => interpolate.projection('stereographic', 'mercator', t);
         expect(i11nFn(0.5)).toBeInstanceOf(Projection);
-        expect(`${i11nFn(0.5)}`).toBe('["globe", "mercator", 0.5]');
+        expect(`${i11nFn(0.5)}`).toBe('["stereographic", "mercator", 0.5]');
     });
+    
 
     describe('interpolate variableAnchorOffsetCollection', () => {
         const i11nFn = interpolate.variableAnchorOffsetCollection;

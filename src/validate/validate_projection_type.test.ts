@@ -1,3 +1,4 @@
+import v8 from '../reference/v8.json' with {type: 'json'};
 import validateProjectionTransition from './validate_projection_type';
 
 describe('validateProjectionTransition function', () => {
@@ -23,12 +24,8 @@ describe('validateProjectionTransition function', () => {
     });
     
     test('should return no errors when projectionTransition is valid projection string', () => {
-        const validProjectionTransitionString = [
-            'mercator',
-            'stereographic',
-            'globe',
-        ];
-
+        const validProjectionTransitionString = [...v8.projection.type.values.presets, ...v8.projection.type.values.projections] 
+        
         for (const value of validProjectionTransitionString) {
             const errors = validateProjectionTransition({key, value});
             expect(errors).toHaveLength(0);
