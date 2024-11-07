@@ -10,24 +10,6 @@ export class Projection {
         this.transition = transition;
     }
 
-    // static parse(input: Projection | string | undefined | null): Projection | undefined {
-    //     if (input instanceof Projection) {
-    //         return input;
-    //     }
-
-    //     if (isProjectionTransition(input)){
-    //         return new Projection(input[0], input[1], input[2]);
-    //     }
-
-    //     if (isPrimitiveProjection(input)) {
-    //         return new Projection(input, input, 1);
-    //     }
-
-    //     else {
-    //         return 
-    //     }
-    // }
-
     toString() {
         return `["${this.from}", "${this.to}", ${this.transition}]`;
     }
