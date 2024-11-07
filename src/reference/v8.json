@@ -3076,6 +3076,7 @@
         "group": "Ramps, scales, curves",
         "sdk-support": {
           "basic functionality": {
+            "js": "5.0.0"
           }
         }
       },
@@ -4617,13 +4618,13 @@
           "mercator": {
             "doc": "Web Mercator projection."
           },
-          "stereographic": {
-            "doc": "Stereographic projection."
+          "general-perspective": {
+            "doc": "General Perspective projection."
           }
         },
         "presets": {
           "globe": {
-            "doc": "Globe projection with zoom transition from Stereographic projection to Web Mercator projection."
+            "doc": "Globe projection with zoom transition from General Perspective projection to Web Mercator projection."
           }
         }
       },

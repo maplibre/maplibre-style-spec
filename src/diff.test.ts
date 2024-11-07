@@ -606,10 +606,10 @@ describe('diff', () => {
         expect(diffStyles({
         } as StyleSpecification,
         {
-            projection: {type: ['stereographic', 'mercator', 0.5]}
+            projection: {type: ['general-perspective', 'mercator', 0.5]}
 
         } as StyleSpecification)).toEqual([
-            {command: 'setProjection', args: [{type: ['stereographic', 'mercator', 0.5]}]},
+            {command: 'setProjection', args: [{type: ['general-perspective', 'mercator', 0.5]}]},
         ]);
     });
 });

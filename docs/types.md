@@ -143,7 +143,7 @@ The `projection` is used to configure which projection to use for the map.
 There are currently two projections implemented.
 
 - `mercator` - [Web Mercator projection](https://en.wikipedia.org/wiki/Web_Mercator_projection)
-- `stereographic` - [Stereographic projection](https://en.wikipedia.org/wiki/Stereographic_projection)
+- `general-perspective` - [General Perspective projection](https://en.wikipedia.org/wiki/General_Perspective_projection)
 
 And the following [presets](#use-a-projection-preset)
 
@@ -166,30 +166,30 @@ Use a [`camera expression`](./expressions.md#camera-expressions), to discretely 
 
 ```ts
 type: ["step", ["zoom"],
-    "stereographic",
+    "general-perspective",
     11, "mercator"
 ]
 
 
-output at zoom 10.9: ["stereographic", "stereographic", 1]
-output at zoom 11.0: ["stereographic", "stereographic", 1]
+output at zoom 10.9: ["general-perspective", "general-perspective", 1]
+output at zoom 11.0: ["general-perspective", "general-perspective", 1]
 output at zoom 11.1: ["mercator", "mercator", 1]
 ```
 
 #### Animate between different projections based on zoom level**
 
-Use a [`camera expression`](./expressions.md#camera-expressions), to animate between projections based on zoom, using [`interpolate-projection`](./expressions.md#interpolate-projection) function. The example below will yield an adaptive globe that interpolates from `stereographic` to `mercator` between zoom 10 and 12.
+Use a [`camera expression`](./expressions.md#camera-expressions), to animate between projections based on zoom, using [`interpolate-projection`](./expressions.md#interpolate-projection) function. The example below will yield an adaptive globe that interpolates from `general-perspective` to `mercator` between zoom 10 and 12.
 
 ```ts
 type: ["interpolate-projection", ["linear"], ["zoom"],
-    0,"stereographic",
-    10,"stereographic",
+    0,"general-perspective",
+    10,"general-perspective",
     12,"mercator"
 ]
 
 
-output at zoom 10: ["stereographic", "stereographic", 1]
-output at zoom 11: ["stereographic", "mercator", 0.5]
+output at zoom 10: ["general-perspective", "general-perspective", 1]
+output at zoom 11: ["general-perspective", "mercator", 0.5]
 output at zoom 12: ["mercator", "mercator", 1]
 ```
 
@@ -197,7 +197,7 @@ output at zoom 12: ["mercator", "mercator", 1]
 #### Provide a `projection` 
 
 ```ts
-type: ["stereographic", "mercator", 0.7]
+type: ["general-perspective", "mercator", 0.7]
 ```
 
 #### Use a projection preset
@@ -220,4 +220,4 @@ There are also additional presets that yield commonly used expressions:
 
 | Preset | Full value | Description |
 |--------|------------|-------------|
-| `globe` | `["interpolate-projection", ["linear"], ["zoom"],`<br>`0, "stereographic", 10, "stereographic", 12, "mercator"]` | Adaptive globe: interpolates from stereographic to mercator projection between zoom levels 10 and 12. |
+| `globe` | `["interpolate-projection", ["linear"], ["zoom"],`<br>`0, "general-perspective", 10, "general-perspective", 12, "mercator"]` | Adaptive globe: interpolates from general-perspective to mercator projection between zoom levels 10 and 12. |
