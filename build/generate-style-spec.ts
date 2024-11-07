@@ -126,10 +126,10 @@ fs.writeFileSync('src/types.g.ts',
 
 export type ColorSpecification = string;
 
-export type ProjectionPreset = ${projectionTypes.presets.map(p => `'${p}'`).join(' | ')};
-export type ProjectionPrimitive =  ${projectionTypes.projections.map(p => `'${p}'`).join(' | ')};
-export type ProjectionTransition = [ProjectionPrimitive, ProjectionPrimitive, number];
-export type ProjectionTransitionSpecification = ProjectionPreset | ProjectionPrimitive | ProjectionTransition | PropertyValueSpecification<ProjectionTransition>
+export type ProjectionPresetT = ${projectionTypes.presets.map(p => `'${p}'`).join(' | ')};
+export type ProjectionPrimitiveT =  ${projectionTypes.projections.map(p => `'${p}'`).join(' | ')};
+export type ProjectionTransitionT = [ProjectionPrimitiveT, ProjectionPrimitiveT, number];
+export type ProjectionTransitionSpecification = ProjectionPresetT | ProjectionPrimitiveT | ProjectionTransitionT | PropertyValueSpecification<ProjectionTransitionT>
 
 
 export type PaddingSpecification = number | number[];
@@ -214,7 +214,7 @@ export type ExpressionSpecification =
     | ['interpolate', InterpolationSpecification, number | ExpressionSpecification,
         ...(number | number[] | ColorSpecification | ExpressionSpecification)[]] // alternating number and number | number[] | ColorSpecification
     | ['interpolate-projection', InterpolationSpecification, number | ExpressionSpecification,
-        ...(number | ProjectionPrimitive)[]] // alternating Projection
+        ...(number | ProjectionPrimitiveT)[]] // alternating Projection
     | ['interpolate-hcl', InterpolationSpecification, number | ExpressionSpecification,
         ...(number | ColorSpecification)[]] // alternating number and ColorSpecificaton
     | ['interpolate-lab', InterpolationSpecification, number | ExpressionSpecification,

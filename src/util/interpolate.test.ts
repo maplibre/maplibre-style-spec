@@ -3,7 +3,7 @@ import interpolate, {isSupportedInterpolationColorSpace} from './interpolate';
 import Color from './color';
 import Padding from './padding';
 import VariableAnchorOffsetCollection from './variable_anchor_offset_collection';
-import {Projection} from './projection';
+import {ProjectionTransition} from './projection';
 
 describe('interpolate', () => {
 
@@ -120,7 +120,7 @@ describe('interpolate', () => {
 
     test('interpolate projection', () => {
         const i11nFn = (t: number) => interpolate.projection('stereographic', 'mercator', t);
-        expect(i11nFn(0.5)).toBeInstanceOf(Projection);
+        expect(i11nFn(0.5)).toBeInstanceOf(ProjectionTransition);
         expect(`${i11nFn(0.5)}`).toBe('["stereographic", "mercator", 0.5]');
     });
 

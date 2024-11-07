@@ -13,8 +13,8 @@ export type BooleanTypeT = {
 export type ColorTypeT = {
     kind: 'color';
 };
-export type ProjectionTransitionT = {
-    kind: 'projection';
+export type ProjectionTransitionTypeT = {
+    kind: 'projectionTransition';
 };
 export type ObjectTypeT = {
     kind: 'object';
@@ -43,7 +43,7 @@ export type VariableAnchorOffsetCollectionTypeT = {
 
 export type EvaluationKind = 'constant' | 'source' | 'camera' | 'composite';
 
-export type Type = NullTypeT | NumberTypeT | StringTypeT | BooleanTypeT | ColorTypeT | ProjectionTransitionT | ObjectTypeT | ValueTypeT |
+export type Type = NullTypeT | NumberTypeT | StringTypeT | BooleanTypeT | ColorTypeT | ProjectionTransitionTypeT | ObjectTypeT | ValueTypeT |
 ArrayType | ErrorTypeT | CollatorTypeT | FormattedTypeT | PaddingTypeT | ResolvedImageTypeT | VariableAnchorOffsetCollectionTypeT;
 
 export interface ArrayType<T extends Type = Type> {
@@ -59,7 +59,7 @@ export const NumberType = {kind: 'number'} as NumberTypeT;
 export const StringType = {kind: 'string'} as StringTypeT;
 export const BooleanType = {kind: 'boolean'} as BooleanTypeT;
 export const ColorType = {kind: 'color'} as ColorTypeT;
-export const ProjectionTransition = {kind: 'projection'} as ProjectionTransitionT;
+export const ProjectionTransitionType = {kind: 'projectionTransition'} as ProjectionTransitionTypeT;
 export const ObjectType = {kind: 'object'} as ObjectTypeT;
 export const ValueType = {kind: 'value'} as ValueTypeT;
 export const ErrorType = {kind: 'error'} as ErrorTypeT;
@@ -94,7 +94,7 @@ const valueMemberTypes = [
     StringType,
     BooleanType,
     ColorType,
-    ProjectionTransition,
+    ProjectionTransitionType,
     FormattedType,
     ObjectType,
     array(ValueType),
