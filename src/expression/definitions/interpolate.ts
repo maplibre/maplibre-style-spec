@@ -175,14 +175,14 @@ class Interpolate implements Expression {
         const outputUpper = outputs[index + 1].evaluate(ctx);
 
         if (this.type.kind === 'projectionTransition') {
-            return interpolate.projection(outputLower, outputUpper, t);
+            return interpolate.projectionTransition(outputLower, outputUpper, t);
         }
 
         switch (this.operator) {
             case 'interpolate':
                 return interpolate[this.type.kind](outputLower, outputUpper, t);
             case 'interpolate-projection':
-                return interpolate.projection(outputLower, outputUpper, t);
+                return interpolate.projectionTransition(outputLower, outputUpper, t);
             case 'interpolate-hcl':
                 return interpolate.color(outputLower, outputUpper, t, 'hcl');
             case 'interpolate-lab':

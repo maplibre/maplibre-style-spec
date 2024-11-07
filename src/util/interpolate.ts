@@ -24,11 +24,11 @@ export function isSupportedInterpolationColorSpace(colorSpace: string): colorSpa
  * @returns interpolation fn
  * @deprecated use `interpolate[type]` instead
  */
-export const interpolateFactory = (interpolationType: 'number'|'color'|'projection'|'array'|'padding'|'variableAnchorOffsetCollection') => {
+export const interpolateFactory = (interpolationType: 'number'|'color'|'projectionTransition'|'array'|'padding'|'variableAnchorOffsetCollection') => {
     switch (interpolationType) {
         case 'number': return number;
         case 'color': return color;
-        case 'projection': return projection;
+        case 'projectionTransition': return projectionTransition;
         case 'array': return array;
         case 'padding': return padding;
         case 'variableAnchorOffsetCollection': return variableAnchorOffsetCollection;
@@ -39,7 +39,7 @@ function number(from: number, to: number, t: number): number {
     return from + t * (to - from);
 }
 
-function projection(from: ProjectionPrimitiveT, to: ProjectionPrimitiveT, interpolation: number): ProjectionTransition {
+function projectionTransition(from: ProjectionPrimitiveT, to: ProjectionPrimitiveT, interpolation: number): ProjectionTransition {
     return new ProjectionTransition(from, to, interpolation);
 }
 
@@ -128,7 +128,7 @@ function variableAnchorOffsetCollection(from: VariableAnchorOffsetCollection, to
 const interpolate = {
     number,
     color,
-    projection,
+    projectionTransition,
     array,
     padding,
     variableAnchorOffsetCollection

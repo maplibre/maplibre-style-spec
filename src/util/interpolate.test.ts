@@ -119,7 +119,7 @@ describe('interpolate', () => {
     });
 
     test('interpolate projection', () => {
-        const i11nFn = (t: number) => interpolate.projection('stereographic', 'mercator', t);
+        const i11nFn = (t: number) => interpolate.projectionTransition('stereographic', 'mercator', t);
         expect(i11nFn(0.5)).toBeInstanceOf(ProjectionTransition);
         expect(`${i11nFn(0.5)}`).toBe('["stereographic", "mercator", 0.5]');
     });
