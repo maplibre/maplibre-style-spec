@@ -1,6 +1,7 @@
 ## main
 
 ### ✨ Features and improvements
+Add `general-perspective` projection ([#890](https://github.com/maplibre/maplibre-style-spec/pull/890))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes

@@ -4575,10 +4575,13 @@
       "default": "mercator",
       "values": {
         "mercator": {
-          "doc": "The Mercator projection."
+          "doc": "Web Mercator projection."
         },
         "globe": {
-          "doc": "The globe projection."
+          "doc": "Globe projection. Zoom transition from General Perspective projection to Web Mercator projection."
+        },
+        "general-perspective": {
+          "doc": "General Perspective projection."
         }
       }
     }
