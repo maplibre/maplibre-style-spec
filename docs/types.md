@@ -145,13 +145,13 @@ There are currently two projection types implemented.
 **Use a single projection**
 
 ```ts
-mode: "mercator"
+type: "mercator"
 ```
 
 **Change projection at zoom level**
 
 ```ts
-mode: ["step", ["zoom"],
+type: ["step", ["zoom"],
     "globe",
     11, "mercator"
 ]
@@ -160,7 +160,7 @@ mode: ["step", ["zoom"],
 **Animate between different projections based on zoom level**
 
 ```ts
-mode: ["interpolate-projection", ["linear"], ["zoom"],
+type: ["interpolate-projection", ["linear"], ["zoom"],
     0,"globe",
     10,"globe",
     12,"mercator"
@@ -170,5 +170,5 @@ mode: ["interpolate-projection", ["linear"], ["zoom"],
 **Use a projection transition intermediate**
 
 ```ts
-mode: ["globe", "mercator", 0.7]
+type: ["globe", "mercator", 0.7]
 ```
