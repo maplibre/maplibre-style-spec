@@ -1,6 +1,7 @@
 ## main
 
 ### ✨ Features and improvements
+Add `stereographic` projection
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
