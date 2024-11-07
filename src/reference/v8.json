@@ -3065,7 +3065,7 @@
         }
       },
       "interpolate-projection": {
-        "doc": "Produces continuous, smooth results by interpolating between pairs of input and output values (\"stops\"). Works like `interpolate`, but the output type must be a [`projectionTransition](./types.md#projection-transition).",
+        "doc": "Produces continuous, smooth results by interpolating between pairs of input and output values (\"stops\"). Works like `interpolate`, but the output type must be a [`projectionTransition](./types.md#projectiontransition).",
         "example": {
           "syntax": {
             "method": ["[\"linear\"] | [\"exponential\", base] | [\"cubic-bezier\", x1, y1, x2, y2]", "number", "string", "number", "..."],
