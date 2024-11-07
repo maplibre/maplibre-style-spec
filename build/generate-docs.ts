@@ -219,6 +219,16 @@ function convertPropertyToMarkdown(key: string, value: JsonObject, keyPrefix = '
 
     markdown += '. ';
 
+    // Projection type:
+    const isProjectionTransition = value.type === 'projectionTransition' && value.values && !Array.isArray(value.values);
+    if (isProjectionTransition) {
+        markdown += '\n\r';
+        markdown += `Projections: ${value.values['projections'].map(val=>`\`${val}\``).join(', ')}. `;
+        markdown += '\n\r';
+        markdown += `Presets: ${value.values['presets'].map(val=>`\`${val}\``).join(', ')}. `;
+        markdown += '\n\r';
+    }
+    
     const isEnum = value.type === 'enum' && value.values && !Array.isArray(value.values);
     if (isEnum) {
         markdown += `Possible values: \`${Object.keys(value.values).join('`, `')}\`. `;

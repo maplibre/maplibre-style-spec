@@ -127,7 +127,7 @@
     },
     "projection": {
       "type": "projection",
-      "doc": "The projection type. Can be specified as a string, or as an expression for supported projection types.",
+      "doc": "The projection configuration",
       "example": {
         "type": [
           "interpolate-projection",
@@ -4593,7 +4593,7 @@
   "projection": {
     "type": {
       "type": "projectionTransition",
-      "doc": "The projection type. Can be specified as a string, or as an expression for supported projection types.",
+      "doc": "The projection type. Can be specified as a string, a transition state, or an expression.",
       "default": "mercator",
       "values": {
         "mercator": {
@@ -4610,15 +4610,17 @@
         "interpolated": true,
         "parameters": [
           "zoom"
-        ],
-        "operators": [
-          "interpolate-projection"
         ]
       },
-      "values": [
-        "mercator",
-        "globe"
-      ],
+      "values": {
+        "projections": [
+          "mercator",
+          "stereographic"
+        ],
+        "presets": [
+          "globe"
+        ]
+      },
       "property-type": "data-constant"
     }
   },
