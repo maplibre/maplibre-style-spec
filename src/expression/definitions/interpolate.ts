@@ -1,7 +1,7 @@
 import UnitBezier from '@mapbox/unitbezier';
 
 import interpolate from '../../util/interpolate';
-import {array, ArrayType, ColorType, ProjectionTypeT, ColorTypeT, NumberType, NumberTypeT, PaddingType, PaddingTypeT, VariableAnchorOffsetCollectionType, VariableAnchorOffsetCollectionTypeT, toString, verifyType, ProjectionType} from '../types';
+import {array, ArrayType, ColorType, ProjectionTransitionT, ColorTypeT, NumberType, NumberTypeT, PaddingType, PaddingTypeT, VariableAnchorOffsetCollectionType, VariableAnchorOffsetCollectionTypeT, toString, verifyType, ProjectionTransition} from '../types';
 import {findStopLessThanOrEqualTo} from '../stops';
 
 import type {Stops} from '../stops';
@@ -19,7 +19,7 @@ export type InterpolationType = {
     name: 'cubic-bezier';
     controlPoints: [number, number, number, number];
 };
-type InterpolatedValueType = NumberTypeT | ColorTypeT | ProjectionTypeT | PaddingTypeT | VariableAnchorOffsetCollectionTypeT | ArrayType<NumberTypeT>;
+type InterpolatedValueType = NumberTypeT | ColorTypeT | ProjectionTransitionT | PaddingTypeT | VariableAnchorOffsetCollectionTypeT | ArrayType<NumberTypeT>;
 type InterpolationOperator = 'interpolate' | 'interpolate-hcl' | 'interpolate-lab' | 'interpolate-projection';
 class Interpolate implements Expression {
     type: InterpolatedValueType;
@@ -109,7 +109,7 @@ class Interpolate implements Expression {
         if (operator === 'interpolate-hcl' || operator === 'interpolate-lab') {
             outputType = ColorType;
         } else if (operator === 'interpolate-projection') {
-            outputType = ProjectionType;
+            outputType = ProjectionTransition;
         } else if (context.expectedType && context.expectedType.kind !== 'value') {
             outputType = context.expectedType;
         }
@@ -137,7 +137,7 @@ class Interpolate implements Expression {
 
         if (!verifyType(outputType, NumberType) &&
             !verifyType(outputType, ColorType) &&
-            !verifyType(outputType, ProjectionType) &&
+            !verifyType(outputType, ProjectionTransition) &&
             !verifyType(outputType, PaddingType) &&
             !verifyType(outputType, VariableAnchorOffsetCollectionType) &&
             !verifyType(outputType, array(NumberType))

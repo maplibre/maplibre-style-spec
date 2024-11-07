@@ -33,7 +33,7 @@ describe('Validate projection', () => {
         expect(errors).toHaveLength(0);
         errors = validateProjection({validateSpec, value: {'type': 'mercator'}, styleSpec: v8, style: {} as any});
         expect(errors).toHaveLength(0);
-        errors = validateProjection({validateSpec, value: {'type': ['interpolate-projection', ['linear'], ['zoom'], 0, 'mercator', 5, 'globe']}, styleSpec: v8, style: {} as any});
+        errors = validateProjection({validateSpec, value: {'type': ['interpolate-projection', ['linear'], ['zoom'], 0, 'mercator', 5, 'stereographic']}, styleSpec: v8, style: {} as any});
         expect(errors).toHaveLength(0);
     });
 

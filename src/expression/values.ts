@@ -5,7 +5,7 @@ import Formatted from './types/formatted';
 import Padding from '../util/padding';
 import VariableAnchorOffsetCollection from '../util/variable_anchor_offset_collection';
 import ResolvedImage from './types/resolved_image';
-import {NullType, NumberType, StringType, BooleanType, ColorType, ObjectType, ValueType, CollatorType, FormattedType, ResolvedImageType, array, PaddingType, VariableAnchorOffsetCollectionType, ProjectionType} from './types';
+import {NullType, NumberType, StringType, BooleanType, ColorType, ObjectType, ValueType, CollatorType, FormattedType, ResolvedImageType, array, PaddingType, VariableAnchorOffsetCollectionType, ProjectionTransition} from './types';
 
 import type {Type} from './types';
 import {Projection} from '../util/projection';
@@ -77,7 +77,7 @@ export function typeOf(value: Value): Type {
     } else if (value instanceof Color) {
         return ColorType;
     } else if (value instanceof Projection) {
-        return ProjectionType;
+        return ProjectionTransition;
     } else if (value instanceof Collator) {
         return CollatorType;
     } else if (value instanceof Formatted) {

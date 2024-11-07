@@ -134,26 +134,37 @@ The following example applies 2em padding on top and bottom and 3em padding left
 }
 ```
 
-## ProjectionType
 
-The `projectionType` type is used to define the projection of the map.
+
+## ProjectionTransition
+
+The `projectionTransition` is used to configure which projection to use for the map.
 
 There are currently two projections implemented.
 
 - `mercator` - Web Mercator projection
+- `stereographic` - Stereographic sphere projection
+
+And the following [presets](#use-a-projection-preset)
+
 - `globe` - Globe projection
 
-This value can be uses either with a single projection or as an intermediate between two.
+The `projectionTransition` output sent to the renderer is always of the shape:
 
-It's possible to use an expression to change projection between zoom levels using a [`camera expression`](./expressions.md#camera-expressions), either with an immediate [`step`](./expressions.md#step), or an animated [`interpolate-projection`](./expressions.md#interpolate-projection).
+`[from, to, transition]: [string, string, number]`
 
-**Use a single projection**
+- `from` is the transition of lower zoom level
+- `to` is the transition of higher zoom level
+- `transition` is the interpolation value, going from 0 to 1, with 0 being in the `from` projection, and 1 being in the `to` projection.
 
-```ts
-type: "mercator"
-```
+In case `from` and `to` are equal, the `transition` will have no effect.
 
-**Change projection at zoom level**
+### Examples
+
+#### Step between projection at discrete zoom levels
+
+Use a [`camera expression`](./expressions.md#camera-expressions), to discretely [`step`](./expressions.md#step) between projections at certain zoom levels.
+
 
 ```ts
 type: ["step", ["zoom"],
@@ -162,18 +173,50 @@ type: ["step", ["zoom"],
 ]
 ```
 
-**Animate between different projections based on zoom level**
+`output at zoom 10.9: ["globe", "globe", 1]`
+`output at zoom 11.0: ["globe", "globe", 1]`
+`output at zoom 11.1: ["mercator", "mercator", 1]`
+
+#### Animate between different projections based on zoom level**
+
+Use a [`camera expression`](./expressions.md#camera-expressions), to animate between projections based on zoom, using [`interpolate-projection`](./expressions.md#interpolate-projection) function. The example below will yield an adaptive globe that transitions from `stereographic` to `mercator` between zoom 10 and 12.
 
 ```ts
 type: ["interpolate-projection", ["linear"], ["zoom"],
-    0,"globe",
-    10,"globe",
+    0,"stereographic",
+    10,"stereographic",
     12,"mercator"
 ]
 ```
 
-**Use a projection transition intermediate**
+`output at zoom 10: ["stereographic", "stereographic", 1]`
+`output at zoom 11: ["stereographic", "mercator", 0.5]`
+`output at zoom 12: ["mercator", "mercator", 1]`
+
+#### Provide a constant `projection` transition
 
 ```ts
-type: ["globe", "mercator", 0.7]
+type: ["stereographic", "mercator", 0.7]
 ```
+
+#### Use a projection preset
+
+For all supported projections, providing just name will convert into the projection transition syntax for convenience:
+
+
+```ts
+type: "mercator"
+```
+
+Is equivalent to:
+
+```ts
+["mercator", "mercator", 1]
+```
+
+There are also additional presets that yield commonly used expressions:
+
+
+| Preset | Full value | Description |
+|--------|------------|-------------|
+| `globe` | `["interpolate-projection", ["linear"], ["zoom"],`<br>`0, "stereographic", 10, "stereographic", 12, "mercator"]` | Adaptive globe: Transitions from stereographic to mercator projection between zoom levels 10 and 12. |

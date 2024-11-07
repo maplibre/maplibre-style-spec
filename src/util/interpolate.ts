@@ -3,7 +3,7 @@ import Color from './color';
 import Padding from './padding';
 import VariableAnchorOffsetCollection from './variable_anchor_offset_collection';
 import RuntimeError from '../expression/runtime_error';
-import type {PrimitiveProjection, VariableAnchorOffsetCollectionSpecification} from '../types.g';
+import type {ProjectionPrimitive, VariableAnchorOffsetCollectionSpecification} from '../types.g';
 import {Projection} from './projection';
 
 export type InterpolationColorSpace = 'rgb' | 'hcl' | 'lab';
@@ -39,7 +39,7 @@ function number(from: number, to: number, t: number): number {
     return from + t * (to - from);
 }
 
-function projection(from: PrimitiveProjection, to: PrimitiveProjection, interpolation: number): Projection {
+function projection(from: ProjectionPrimitive, to: ProjectionPrimitive, interpolation: number): Projection {
     return new Projection(from, to, interpolation);
 }
 

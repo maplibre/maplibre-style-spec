@@ -70,7 +70,7 @@ function validSchema(k, v, obj, ref, version, kind) {
         'padding',
         'variableAnchorOffsetCollection',
         'sprite',
-        'projectionType'
+        'projectionTransition'
     ]);
     const keys = [
         'default',
