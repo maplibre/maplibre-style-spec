@@ -123,7 +123,6 @@ describe('interpolate', () => {
         expect(i11nFn(0.5)).toBeInstanceOf(Projection);
         expect(`${i11nFn(0.5)}`).toBe('["stereographic", "mercator", 0.5]');
     });
-    
 
     describe('interpolate variableAnchorOffsetCollection', () => {
         const i11nFn = interpolate.variableAnchorOffsetCollection;
