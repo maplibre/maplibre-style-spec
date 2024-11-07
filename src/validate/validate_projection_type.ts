@@ -1,36 +1,20 @@
 import ValidationError from '../error/validation_error';
 import getType from '../util/get_type';
-import v8 from '../reference/v8.json' with {type: 'json'};
-import {ProjectionTypeSpecification, StyleSpecification} from '../types.g';
 import {isPrimitiveProjection, isProjectionType} from '../util/projection';
 
-interface ValidateProjectionOptions {
-    sourceName?: string;
-    value: ProjectionTypeSpecification;
-    styleSpec: typeof v8;
-    style: StyleSpecification;
-    validateSpec: Function;
-}
+export default function validatevalue(options) {
 
-export default function validateProjectionMode(options: ValidateProjectionOptions) {
-    const projectionType: ProjectionTypeSpecification = options.value;
+    const key = options.key;
+    const value = options.value;
+    const type = getType(value);
 
-    if (!projectionType){
-
-        return [new ValidationError('projection.type', projectionType, 'value is missing')];
-    }
-
-    const rootType = getType(projectionType);
-    if (projectionType === undefined) {
-        return [];
+    if (type === 'string' && !isPrimitiveProjection(value)) {
+        return [new ValidationError(key, value, `projectionType expected, invalid string "${value}" found`)];
+    } else if (type === 'array' && !isProjectionType(value)) {
+        return [new ValidationError(key, value, `projectionType expected, invalid array ${JSON.stringify(value)} found`)];
+    }  else if (!['array', 'string'].includes(type)) {
+        return [new ValidationError(key, value, `projectionType expected, invalid type "${type}" found`)];
     } 
     
-    if (rootType === 'string' && !isPrimitiveProjection(projectionType)) {
-        return [new ValidationError('projection.type', projectionType, `found "${projectionType}", expected "mercator" or "globe".`)];
-    } else if (rootType === 'array' && !isProjectionType(projectionType)) {
-        return [new ValidationError('projection.type', projectionType, `incorrect syntax, found ${JSON.parse(projectionType)}.`)];
-    }  else if (!['array', 'string'].includes(rootType)) {
-        return [new ValidationError('projection.type', projectionType, `found value of type "${rootType}", expected string or array`)];
-    } 
     return [];
 }

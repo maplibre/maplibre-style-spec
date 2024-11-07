@@ -10,15 +10,23 @@ export class Projection {
         this.transition = transition;
     }
 
-    static parse(input: Projection | string | undefined | null): Projection | undefined {
-        if (input instanceof Projection) {
-            return input;
-        }
+    // static parse(input: Projection | string | undefined | null): Projection | undefined {
+    //     if (input instanceof Projection) {
+    //         return input;
+    //     }
 
-        if (isPrimitiveProjection(input)) {
-            return new Projection(input, input, 1);
-        }
-    }
+    //     if (isProjectionTransition(input)){
+    //         return new Projection(input[0], input[1], input[2]);
+    //     }
+
+    //     if (isPrimitiveProjection(input)) {
+    //         return new Projection(input, input, 1);
+    //     }
+
+    //     else {
+    //         return 
+    //     }
+    // }
 
     toString() {
         return `["${this.from}", "${this.to}", ${this.transition}]`;
@@ -37,7 +45,7 @@ export function isPropertyValueSpecification(value: unknown): value is PropertyV
     return false
 }
 
-export function isProjectionTransition(value: unknown): value is [PrimitiveProjection, PrimitiveProjection, number] {
+export function isProjectionTransition(value: unknown): value is ProjectionTransition {
     return Array.isArray(value) &&
         value.length === 3 &&
         isPrimitiveProjection(value[0]) &&
