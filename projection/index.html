@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="https://maplibre.org/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.44">
     
     
       
@@ -673,11 +673,12 @@
 <div class="language-json highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="err">projec</span><span class="kc">t</span><span class="err">io</span><span class="kc">n</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;globe&quot;</span><span class="p">}</span>
 </span></code></pre></div>
 <h2 id="type">type<a class="headerlink" href="#type" title="Permanent link">&para;</a></h2>
-<p><em>Optional <a href="../types/#enum">enum</a>. Possible values: <code>mercator</code>, <code>globe</code>. Defaults to <code>mercator</code>.</em></p>
+<p><em>Optional <a href="../types/#enum">enum</a>. Possible values: <code>mercator</code>, <code>globe</code>, <code>general-perspective</code>. Defaults to <code>mercator</code>.</em></p>
 <p>The projection type.</p>
 <ul>
-<li><code>mercator</code>: The Mercator projection.</li>
-<li><code>globe</code>: The globe projection.</li>
+<li><code>mercator</code>: Web Mercator projection.</li>
+<li><code>globe</code>: Globe projection. Zoom transition from General Perspective projection to Web Mercator projection.</li>
+<li><code>general-perspective</code>: General Perspective projection.</li>
 </ul>
 
 
