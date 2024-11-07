@@ -4578,10 +4578,10 @@
           "doc": "Web Mercator projection."
         },
         "globe": {
-          "doc": "Globe projection. Zoom transition from Stereographic projection to Web Mercator projection."
+          "doc": "Globe projection. Zoom transition from General Perspective projection to Web Mercator projection."
         },
-        "stereographic": {
-          "doc": "Stereographic projection."
+        "general-perspective": {
+          "doc": "General Perspective projection."
         }
       }
     }
