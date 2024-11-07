@@ -24,7 +24,7 @@ describe('validateProjection function', () => {
     });
     
     test('should return no errors when projection is valid projection string', () => {
-        const validProjectionString = [...v8.projectionConfig.type.values.presets, ...v8.projectionConfig.type.values.projections] 
+        const validProjectionString = [...Object.keys(v8.projectionConfig.type.values.presets), ...Object.keys(v8.projectionConfig.type.values.projections)] 
         
         for (const value of validProjectionString) {
             const errors = validateProjection({key, value});

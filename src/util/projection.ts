@@ -37,9 +37,9 @@ export function isProjectionValue(value: unknown): value is ProjectionT {
 }
 
 export function isProjectionPrimitive(value: unknown): value is ProjectionPrimitiveT {
-    return v8.projectionConfig.type.values.projections.includes(value as string);
+    return Object.keys(v8.projectionConfig.type.values.projections).includes(value as string);
 }
 
 export function isProjectionPreset(value: unknown): value is ProjectionPrimitiveT {
-    return v8.projectionConfig.type.values.presets.includes(value as string);
+    return Object.keys(v8.projectionConfig.type.values.presets).includes(value as string);
 }
