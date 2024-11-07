@@ -138,8 +138,8 @@ The following example applies 2em padding on top and bottom and 3em padding left
 
 There are currently two projection types implemented.
 
-- `mercator` - A web mercator projection
-- `globe` - A spherical projection
+- `mercator` - Web Mercator projection
+- `globe` - Globe projection
 
 
 **Use a single projection**

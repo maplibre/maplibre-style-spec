@@ -24,11 +24,11 @@ export function isSupportedInterpolationColorSpace(colorSpace: string): colorSpa
  * @returns interpolation fn
  * @deprecated use `interpolate[type]` instead
  */
-export const interpolateFactory = (interpolationType: 'number'|'color'|'projection-mode'|'array'|'padding'|'variableAnchorOffsetCollection') => {
+export const interpolateFactory = (interpolationType: 'number'|'color'|'projectionType'|'array'|'padding'|'variableAnchorOffsetCollection') => {
     switch (interpolationType) {
         case 'number': return number;
         case 'color': return color;
-        case 'projection-mode': return projection;
+        case 'projectionType': return projection;
         case 'array': return array;
         case 'padding': return padding;
         case 'variableAnchorOffsetCollection': return variableAnchorOffsetCollection;

@@ -17,7 +17,7 @@ export default function validateProjectionMode(options: ValidateProjectionOption
 
     if (!projectionType){
 
-        return [new ValidationError('projection-mode', projectionType, 'projection mode is missing')];
+        return [new ValidationError('projection.type', projectionType, 'value is missing')];
     }
 
     const rootType = getType(projectionType);
@@ -26,13 +26,11 @@ export default function validateProjectionMode(options: ValidateProjectionOption
     } 
     
     if (rootType === 'string' && !isPrimitiveProjection(projectionType)) {
-        return [new ValidationError('projection-mode', projectionType, 'does not fit the type PrimitiveProjection')];
-    } else if (rootType === 'object' && !isProjectionTransition(projectionType)) {
-        return [new ValidationError('projection-mode', projectionType, 'does not fit the type ProjectionTransition')];
+        return [new ValidationError('projection.type', projectionType, `found "${projectionType}", expected "mercator" or "globe".`)];
     } else if (rootType === 'array' && !isProjectionType(projectionType)) {
-        return [new ValidationError('projection-mode', projectionType, 'does not fit the type ProjectionType')];
-    }  else if (!['array', 'object', 'string'].includes(rootType)) {
-        return [new ValidationError('projection-mode', projectionType, `expected array, object, string - found ${rootType}`)];
+        return [new ValidationError('projection.type', projectionType, `incorrect syntax, found ${JSON.parse(projectionType)}.`)];
+    }  else if (!['array', 'string'].includes(rootType)) {
+        return [new ValidationError('projection.type', projectionType, `found value of type "${rootType}", expected string or array`)];
     } 
     return [];
 }
