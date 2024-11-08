@@ -4578,10 +4578,10 @@
           "doc": "Web Mercator projection."
         },
         "globe": {
-          "doc": "Globe projection. Zoom transition from General Perspective projection to Web Mercator projection."
+          "doc": "Globe projection. Zoom transition from Vertical Perspective projection to Web Mercator projection."
         },
         "vertical-perspective": {
-          "doc": "General Perspective projection."
+          "doc": "Vertical Perspective projection."
         }
       }
     }
