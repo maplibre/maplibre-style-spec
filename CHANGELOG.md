@@ -1,11 +1,15 @@
 ## main
 
 ### ✨ Features and improvements
-Add `vertical-perspective` projection ([#890](https://github.com/maplibre/maplibre-style-spec/pull/890))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
+
+## 21.2.0
+
+### ✨ Features and improvements
+Add `vertical-perspective` projection ([#890](https://github.com/maplibre/maplibre-style-spec/pull/890))
 
 ## 21.1.0
 
