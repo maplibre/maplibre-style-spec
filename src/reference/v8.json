@@ -4580,7 +4580,7 @@
         "globe": {
           "doc": "Globe projection. Zoom transition from General Perspective projection to Web Mercator projection."
         },
-        "general-perspective": {
+        "vertical-perspective": {
           "doc": "General Perspective projection."
         }
       }
