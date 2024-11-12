@@ -192,9 +192,9 @@ class Within implements Expression {
 
     evaluate(ctx: EvaluationContext) {
         if (ctx.geometry() != null && ctx.canonicalID() != null) {
-            if (ctx.geometryType() === 'Point') {
+            if (ctx.geometryDollarType() === 'Point') {
                 return pointsWithinPolygons(ctx, this.geometries);
-            } else if (ctx.geometryType() === 'LineString') {
+            } else if (ctx.geometryDollarType() === 'LineString') {
                 return linesWithinPolygons(ctx, this.geometries);
             }
         }

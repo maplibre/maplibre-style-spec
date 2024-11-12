@@ -60,13 +60,13 @@ describe('expression', () => {
             const evalOk = compileOk && deepEqual(result.outputs, expected.outputs, DECIMAL_SIGNIFICANT_FIGURES);
             try {
                 expect(compileOk).toBeTruthy();
-            } catch (e) {
+            } catch {
                 throw new Error(`Compilation Failed:\nExpected ${JSON.stringify(expected.compiled)}\nResult   ${JSON.stringify(result.compiled)}`);
             }
 
             try {
                 expect(evalOk).toBeTruthy();
-            } catch (e) {
+            } catch {
                 throw new Error(`Evaluation Failed:\nExpected ${JSON.stringify(expected.outputs)}\nResult   ${JSON.stringify(result.outputs)}`);
             }
 

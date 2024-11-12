@@ -19,9 +19,11 @@ export type DiffOperationsMap = {
     'setLayerZoomRange': [string, number, number];
     'setLayerProperty': [string, string, unknown];
     'setCenter': [number[]];
+    'setCenterAltitude': [number];
     'setZoom': [number];
     'setBearing': [number];
     'setPitch': [number];
+    'setRoll': [number];
     'setSprite': [SpriteSpecification];
     'setGlyphs': [string];
     'setTransition': [TransitionSpecification];
@@ -278,6 +280,9 @@ function diffStyles(before: StyleSpecification, after: StyleSpecification): Diff
         if (!isEqual(before.center, after.center)) {
             commands.push({command: 'setCenter', args: [after.center]});
         }
+        if (!isEqual(before.centerAltitude, after.centerAltitude)) {
+            commands.push({command: 'setCenterAltitude', args: [after.centerAltitude]});
+        }
         if (!isEqual(before.zoom, after.zoom)) {
             commands.push({command: 'setZoom', args: [after.zoom]});
         }
@@ -286,6 +291,9 @@ function diffStyles(before: StyleSpecification, after: StyleSpecification): Diff
         }
         if (!isEqual(before.pitch, after.pitch)) {
             commands.push({command: 'setPitch', args: [after.pitch]});
+        }
+        if (!isEqual(before.roll, after.roll)) {
+            commands.push({command: 'setRoll', args: [after.roll]});
         }
         if (!isEqual(before.sprite, after.sprite)) {
             commands.push({command: 'setSprite', args: [after.sprite]});

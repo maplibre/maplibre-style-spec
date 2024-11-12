@@ -272,6 +272,25 @@ describe('diff', () => {
         ]);
     });
 
+    test('set centerAltitude to undefined', () => {
+        expect(diffStyles({
+            centerAltitude: 1
+        } as StyleSpecification, {
+        } as StyleSpecification)).toEqual([
+            {command: 'setCenterAltitude', args: [undefined]}
+        ]);
+    });
+
+    test('set centerAltitude', () => {
+        expect(diffStyles({
+            centerAltitude: 0
+        } as StyleSpecification, {
+            centerAltitude: 1
+        } as StyleSpecification)).toEqual([
+            {command: 'setCenterAltitude', args: [1]}
+        ]);
+    });
+
     test('set zoom', () => {
         expect(diffStyles({
             zoom: 12
@@ -299,6 +318,25 @@ describe('diff', () => {
             pitch: 1
         } as StyleSpecification)).toEqual([
             {command: 'setPitch', args: [1]}
+        ]);
+    });
+
+    test('set roll to undefined', () => {
+        expect(diffStyles({
+            roll: 1
+        } as StyleSpecification, {
+        } as StyleSpecification)).toEqual([
+            {command: 'setRoll', args: [undefined]}
+        ]);
+    });
+
+    test('set roll', () => {
+        expect(diffStyles({
+            roll: 0
+        } as StyleSpecification, {
+            roll: 1
+        } as StyleSpecification)).toEqual([
+            {command: 'setRoll', args: [1]}
         ]);
     });
 

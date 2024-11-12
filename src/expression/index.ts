@@ -105,7 +105,6 @@ export class StyleExpression {
 
         try {
             const val = this.expression.evaluate(this._evaluator);
-            // eslint-disable-next-line no-self-compare
             if (val === null || val === undefined || (typeof val === 'number' && val !== val)) {
                 return this._defaultValue;
             }

@@ -14,8 +14,8 @@ export function classifyRings<T extends Point2D>(rings: RingWithArea<T>[], maxRi
 
     if (len <= 1) return [rings];
 
-    const polygons: T[][][] = [];
-    let polygon: T[][];
+    const polygons: RingWithArea<T>[][] = [];
+    let polygon: RingWithArea<T>[];
     let ccw: boolean | undefined;
 
     for (const ring of rings) {
@@ -48,7 +48,7 @@ export function classifyRings<T extends Point2D>(rings: RingWithArea<T>[], maxRi
     return polygons;
 }
 
-function compareAreas(a: {area: number}, b: {area: number}) {
+function compareAreas<T extends Point2D>(a: RingWithArea<T>, b: RingWithArea<T>): number {
     return b.area - a.area;
 }
 
@@ -68,4 +68,28 @@ function calculateSignedArea(ring: Point2D[]): number {
         sum += (p2.x - p1.x) * (p1.y + p2.y);
     }
     return sum;
+}
+
+/**
+ * Returns if there are multiple outer rings.
+ * The first ring is an outer ring. Its direction, cw or ccw, defines the direction of outer rings.
+ *
+ * @param rings - List of rings
+ * @returns Are there multiple outer rings
+ */
+export function hasMultipleOuterRings(rings: Point2D[][]): boolean {
+    // Following https://github.com/mapbox/vector-tile-js/blob/77851380b63b07fd0af3d5a3f144cc86fb39fdd1/lib/vectortilefeature.js#L197
+    const len = rings.length;
+    for (let i = 0, direction; i < len; i++) {
+        const area = calculateSignedArea(rings[i]);
+        if (area === 0) continue;
+        if (direction === undefined) {
+            // Keep the direction of the first ring
+            direction = area < 0;
+        } else if (direction === area < 0) {
+            // Same direction as the first ring -> a second outer ring
+            return true;
+        }
+    }
+    return false;
 }
