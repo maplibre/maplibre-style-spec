@@ -162,6 +162,7 @@ function evaluateExpression(fixture: ExpressionFixture, expression: Result<Style
             }
 
             let value = expressionValue.evaluateWithoutErrorHandling(input[0], feature, {}, canonical, availableImages);
+            console.log("Value:", value)
 
             if (type.kind === 'color') {
                 value = [value.r, value.g, value.b, value.a];

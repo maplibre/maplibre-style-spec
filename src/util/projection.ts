@@ -11,6 +11,10 @@ export class Projection {
         this.transition = transition;
     }
 
+    toJSON() {
+        return [this.from, this.to, this.transition];
+    }
+
     toString() {
         return `["${this.from}", "${this.to}", ${this.transition}]`;
     }
