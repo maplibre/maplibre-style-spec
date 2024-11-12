@@ -1,7 +1,6 @@
 ## main
 
 ### ✨ Features and improvements
-Add `vertical-perspective` projection ([#890](https://github.com/maplibre/maplibre-style-spec/pull/890))
 - Add projection type expression syntax ([#888](https://github.com/maplibre/maplibre-style-spec/pull/888))
 - _...Add new stuff here..._
 
@@ -11,7 +10,7 @@ Add `vertical-perspective` projection ([#890](https://github.com/maplibre/maplib
 ## 21.2.0
 
 ### ✨ Features and improvements
-Add `vertical-perspective` projection ([#890](https://github.com/maplibre/maplibre-style-spec/pull/890))
+- Add `vertical-perspective` projection ([#890](https://github.com/maplibre/maplibre-style-spec/pull/890))
 
 ## 21.1.0
 
