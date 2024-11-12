@@ -3076,7 +3076,9 @@
         "group": "Ramps, scales, curves",
         "sdk-support": {
           "basic functionality": {
-            "js": "5.0.0"
+            "js": "https://github.com/maplibre/maplibre-gl-js/issues/5039",
+            "ios": "https://github.com/maplibre/maplibre-native/issues/3013",
+            "android": "https://github.com/maplibre/maplibre-native/issues/3013"
           }
         }
       },
