@@ -4595,31 +4595,14 @@
     "type": {
       "type": "projection",
       "doc": "The projection type. Can be specified as a string, a transition state, or an expression.",
-      "default": "mercator",
-      "values": {
-        "mercator": {
-          "doc": "Web Mercator projection."
-        },
-        "globe": {
-          "doc": "Globe projection. Zoom transition from Vertical Perspective projection to Web Mercator projection."
-        },
-        "vertical-perspective": {
-          "doc": "Vertical Perspective projection."
-        }
-      },
-      "expression": {
-        "interpolated": true,
-        "parameters": [
-          "zoom"
-        ]
-      },
+      "default": "mercator",   
       "values": {
         "projections": {
           "mercator": {
             "doc": "Web Mercator projection."
           },
-          "general-perspective": {
-            "doc": "General Perspective projection."
+          "vertical-perspective": {
+            "doc": "Vertical Perspective projection."
           }
         },
         "presets": {

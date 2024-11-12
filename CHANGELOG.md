@@ -1,7 +1,7 @@
 ## main
 
 ### ✨ Features and improvements
-Add `general-perspective` projection ([#890](https://github.com/maplibre/maplibre-style-spec/pull/890))
+Add `vertical-perspective` projection ([#890](https://github.com/maplibre/maplibre-style-spec/pull/890))
 - Add projection type expression syntax ([#888](https://github.com/maplibre/maplibre-style-spec/pull/888))
 - _...Add new stuff here..._
 
