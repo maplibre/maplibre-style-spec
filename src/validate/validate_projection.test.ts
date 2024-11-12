@@ -62,12 +62,12 @@ describe('validateProjection function', () => {
     });
 
     test('Should return no errors when projection is valid interpolation-projection expression', () => {
-        const errors = validateProjection({value: ['interpolate-projection', ['linear'], ['zoom'], 0, 'mercator', 5, 'globe'], key});
+        const errors = validateProjection({value: ['interpolate-projection', ['linear'], ['zoom'], 0, 'mercator', 5, 'vertical-perspective'], key});
         expect(errors).toHaveLength(0);
     });
 
     test('Should return no errors when projection is valid step expression', () => {
-        const errors = validateProjection({value: ['step', ['zoom'], 'globe', 10, 'mercator'], key});
+        const errors = validateProjection({value: ['step', ['zoom'], 'vertical-perspective', 10, 'mercator'], key});
         expect(errors).toHaveLength(0);
     });
 

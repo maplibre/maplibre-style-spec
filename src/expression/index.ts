@@ -440,7 +440,7 @@ function findZoomCurve(expression: Expression): Step | Interpolate | ExpressionP
     return result;
 }
 
-import {ColorType, StringType, NumberType, BooleanType, ValueType, FormattedType, PaddingType, ResolvedImageType, VariableAnchorOffsetCollectionType, array} from './types';
+import {ColorType, StringType, NumberType, BooleanType, ValueType, FormattedType, PaddingType, ResolvedImageType, VariableAnchorOffsetCollectionType, array, ProjectionType} from './types';
 import Padding from '../util/padding';
 import {ICanonicalTileID} from '../tiles_and_coordinates';
 
@@ -453,6 +453,7 @@ function getExpectedType(spec: StylePropertySpecification): Type {
         boolean: BooleanType,
         formatted: FormattedType,
         padding: PaddingType,
+        projection: ProjectionType,
         resolvedImage: ResolvedImageType,
         variableAnchorOffsetCollection: VariableAnchorOffsetCollectionType
     };
