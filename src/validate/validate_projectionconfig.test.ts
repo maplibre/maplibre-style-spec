@@ -26,8 +26,28 @@ describe('Validate projection', () => {
         expect(errors[0].message).toContain('projection: object expected, null found');
     });
 
-    test('Should pass if everything is according to spec', () => {
+    test('Should pass step function', () => {
+        const errors = validateProjectionConfig({validateSpec, value: {'type': ['step', ['zoom'], 'vertical-perspective', 10, 'mercator']}, styleSpec: v8, style: {} as any});
+        expect(errors).toHaveLength(0);
+    });
+
+    test('Should pass string value for single projection', () => {
         const errors = validateProjectionConfig({validateSpec, value: {'type': 'mercator'}, styleSpec: v8, style: {} as any});
+        expect(errors).toHaveLength(0);
+    });
+    
+    test('Should pass string value for preset', () => {
+        const errors = validateProjectionConfig({validateSpec, value: {'type': 'globe'}, styleSpec: v8, style: {} as any});
+        expect(errors).toHaveLength(0);
+    });
+
+    test('Should pass if [proj, proj, number]', () => {
+        const errors = validateProjectionConfig({validateSpec, value: {'type': ['mercator', 'mercator', 0.3]}, styleSpec: v8, style: {} as any});
+        expect(errors).toHaveLength(0);
+    });
+
+    test('should parse iterpolate-projection', () => {
+        const errors = validateProjectionConfig({validateSpec, value: {'type': ['interpolate-projection', ['linear'], ['zoom'], 0, 'mercator', 5, 'vertical-perspective']}, styleSpec: v8, style: {} as any});
         expect(errors).toHaveLength(0);
     });
 
