@@ -1,22 +1,20 @@
 import v8 from '../reference/v8.json' with { type: 'json' };
 import {ProjectionPrimitiveT, ProjectionT, ProjectionSpecification, PropertyValueSpecification} from '../types.g';
 
-export class Projection {
-    readonly from: ProjectionPrimitiveT;
-    readonly to: ProjectionPrimitiveT;
-    readonly transition: number;
+export class Projection extends Array {
     constructor(from: ProjectionPrimitiveT, to: ProjectionPrimitiveT, transition: number){
-        this.from = from;
-        this.to = to;
-        this.transition = transition;
+        super(3);
+        this[0] = from;
+        this[1] = to;
+        this[2] = transition;
     }
-
-    toJSON() {
-        return [this.from, this.to, this.transition];
-    }
+    
+    get from() { return this[0]; }
+    get to() { return this[1]; }
+    get transition() { return this[2]; }
 
     toString() {
-        return `["${this.from}", "${this.to}", ${this.transition}]`;
+        return `["${this[0]}", "${this[1]}", ${this[2]}]`;
     }
 }
 

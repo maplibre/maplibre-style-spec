@@ -58,6 +58,7 @@ describe('expression', () => {
             const expected = fixture.expected;
             const compileOk = deepEqual(result.compiled, expected.compiled, DECIMAL_SIGNIFICANT_FIGURES);
             const evalOk = compileOk && deepEqual(result.outputs, expected.outputs, DECIMAL_SIGNIFICANT_FIGURES);
+
             try {
                 expect(compileOk).toBeTruthy();
             } catch {
@@ -162,8 +163,7 @@ function evaluateExpression(fixture: ExpressionFixture, expression: Result<Style
             }
 
             let value = expressionValue.evaluateWithoutErrorHandling(input[0], feature, {}, canonical, availableImages);
-            console.log("Value:", value)
-
+            
             if (type.kind === 'color') {
                 value = [value.r, value.g, value.b, value.a];
             }
