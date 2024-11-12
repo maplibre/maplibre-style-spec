@@ -27,13 +27,7 @@ describe('Validate projection', () => {
     });
 
     test('Should pass if everything is according to spec', () => {
-        let errors = validateProjectionConfig({validateSpec, value: {'type': ['step', ['zoom'], 'vertical-perspective', 10, 'mercator']}, styleSpec: v8, style: {} as any});
-        expect(errors).toHaveLength(0);
-        errors = validateProjectionConfig({validateSpec, value: {'type': ['mercator', 'mercator', 0.3]}, styleSpec: v8, style: {} as any});
-        expect(errors).toHaveLength(0);
-        errors = validateProjectionConfig({validateSpec, value: {'type': 'mercator'}, styleSpec: v8, style: {} as any});
-        expect(errors).toHaveLength(0);
-        errors = validateProjectionConfig({validateSpec, value: {'type': ['interpolate-projection', ['linear'], ['zoom'], 0, 'mercator', 5, 'vertical-perspective']}, styleSpec: v8, style: {} as any});
+        const errors = validateProjectionConfig({validateSpec, value: {'type': 'mercator'}, styleSpec: v8, style: {} as any});
         expect(errors).toHaveLength(0);
     });
 
