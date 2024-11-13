@@ -185,9 +185,9 @@ type: ["interpolate-projection", ["linear"], ["zoom"],
 ]
 
 
-output at zoom 9.9: "vertical-perspective"
-output at zoom 11: ["vertical-perspective", "mercator", 0.5]
-output at zoom 12: ["vertical-perspective", "mercator", 1]
+output at zoom 9.9:  "vertical-perspective"
+output at zoom 11:   ["vertical-perspective", "mercator", 0.5]
+output at zoom 12:   ["vertical-perspective", "mercator", 1]
 output at zoom 12.1: "mercator"
 ```
 
