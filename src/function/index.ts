@@ -23,6 +23,7 @@ export function createFunction(parameters, propertySpec) {
     const featureDependent = zoomAndFeatureDependent || parameters.property !== undefined;
     const zoomDependent = zoomAndFeatureDependent || !featureDependent;
     const type = parameters.type || (supportsInterpolation(propertySpec) ? 'exponential' : 'interval');
+
     if (isColor || propertySpec.type === 'padding') {
         const parseFn = isColor ? Color.parse : Padding.parse;
 
