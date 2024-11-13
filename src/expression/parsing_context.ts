@@ -120,7 +120,7 @@ class ParsingContext {
                     //
                     if ((expected.kind === 'string' || expected.kind === 'number' || expected.kind === 'boolean' || expected.kind === 'object' || expected.kind === 'array') && actual.kind === 'value') {
                         parsed = annotate(parsed, expected, options.typeAnnotation || 'assert');
-                    } else if ((expected.kind === 'projection') && (actual.kind === 'string')) {
+                    } else if ((expected.kind === 'projection') && (actual.kind === 'string' || actual.kind === 'array')) {
                         parsed = annotate(parsed, expected, options.typeAnnotation || 'coerce');
                     } else if ((expected.kind === 'color' || expected.kind === 'formatted' || expected.kind === 'resolvedImage') && (actual.kind === 'value' || actual.kind === 'string')) {
                         parsed = annotate(parsed, expected, options.typeAnnotation || 'coerce');

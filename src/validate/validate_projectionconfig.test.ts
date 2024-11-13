@@ -42,7 +42,7 @@ describe('Validate projectionConfig', () => {
     });
 
     test('should parse iterpolate-projection', () => {
-        const errors = validateProjectionConfig({validateSpec, value: {'type': ['interpolate-projection', ['linear'], ['zoom'], 0, 'mercator', 5, 'vertical-perspective']}, styleSpec: v8, style: {} as any});
+        const errors = validateProjectionConfig({validateSpec, value: {'type': ['interpolate', ['linear'], ['zoom'], 0, 'mercator', 5, 'vertical-perspective']}, styleSpec: v8, style: {} as any});
         expect(errors).toHaveLength(0);
     });
 

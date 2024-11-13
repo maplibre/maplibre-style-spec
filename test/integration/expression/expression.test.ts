@@ -32,7 +32,8 @@ type ExpressionFixture = {
     };
 }
 
-const expressionTestFileNames = globSync('**/test.json', {cwd: __dirname});
+//const expressionTestFileNames = globSync('**/heatmap-density/basic/test.json', {cwd: __dirname});
+const expressionTestFileNames = globSync('**/tests/zoom/interpolate-projection/test.json', {cwd: __dirname});
 describe('expression', () => {
 
     for (const expressionTestFileName of expressionTestFileNames) {

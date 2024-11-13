@@ -67,6 +67,12 @@ export type StylePropertySpecification = {
     expression?: ExpressionSpecificationDefinition;
     transition: boolean;
     default?: VariableAnchorOffsetCollectionSpecification;
+} | {
+    type: 'projection';
+    'property-type': ExpressionType;
+    expression?: ExpressionSpecificationDefinition;
+    transition: boolean;
+    default?: ProjectionSpecification;
 };
 
 import v8Spec from './reference/v8.json' with {type: 'json'};
@@ -107,7 +113,7 @@ import {typeOf} from './expression/values';
 import FormatExpression from './expression/definitions/format';
 import Literal from './expression/definitions/literal';
 import CompoundExpression from './expression/compound_expression';
-import {VariableAnchorOffsetCollectionSpecification} from './types.g';
+import {ProjectionSpecification, VariableAnchorOffsetCollectionSpecification} from './types.g';
 import format from './format';
 import validate from './validate/validate';
 import migrate from './migrate';

@@ -1,6 +1,6 @@
 {
     "expression": [
-      "interpolate-projection",
+      "interpolate",
       [
         "linear"
       ],

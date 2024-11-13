@@ -42,7 +42,7 @@ describe('validateProjection function', () => {
     });
 
     test('Should return no errors when projection is valid interpolation-projection expression', () => {
-        const errors = validateProjection({value: ['interpolate-projection', ['linear'], ['zoom'], 0, 'mercator', 5, 'vertical-perspective'], key});
+        const errors = validateProjection({value: ['interpolate', ['linear'], ['zoom'], 0, 'mercator', 5, 'vertical-perspective'], key});
         expect(errors).toHaveLength(0);
     });
 

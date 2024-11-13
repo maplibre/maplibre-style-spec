@@ -130,7 +130,7 @@
       "doc": "The projection configuration",
       "example": {
         "type": [
-          "interpolate-projection",
+          "interpolate",
           ["linear"],
           ["zoom"],
           10, "globe",
@@ -3063,24 +3063,6 @@
           }
         }
       },
-      "interpolate-projection": {
-        "doc": "Produces continuous, smooth results by interpolating between pairs of input and output values (\"stops\"). Works like `interpolate`, but the output type must be a [`projection`](./types.md#projection).",
-        "example": {
-          "syntax": {
-            "method": ["[\"linear\"] | [\"exponential\", base] | [\"cubic-bezier\", x1, y1, x2, y2]", "number", "string", "number", "..."],
-            "result": "projection"
-          },
-          "value": ["interpolate-projection", ["linear"], ["zoom"], 10, "vertical-perspective", 12, "mercator"]
-        },
-        "group": "Ramps, scales, curves",
-        "sdk-support": {
-          "basic functionality": {
-            "js": "https://github.com/maplibre/maplibre-gl-js/issues/5039",
-            "ios": "https://github.com/maplibre/maplibre-native/issues/3013",
-            "android": "https://github.com/maplibre/maplibre-native/issues/3013"
-          }
-        }
-      },
       "ln2": {
         "doc": "Returns mathematical constant ln(2).",
         "example": {
@@ -4597,7 +4579,13 @@
       "type": "projection",
       "doc": "The projection type. Can be specified as a string, a transition state, or an expression.",
       "default": "mercator",   
-      "property-type": "data-constant"
+      "property-type": "data-constant",
+      "expression": {
+        "interpolated": true,
+        "parameters": [
+          "zoom"
+        ]
+      }
     }
   },
   "paint": [

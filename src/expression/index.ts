@@ -334,7 +334,7 @@ export function createPropertyExpression(expressionInput: unknown, propertySpec:
 }
 
 import {isFunction, createFunction} from '../function';
-import {Color, VariableAnchorOffsetCollection} from './values';
+import {Color, Projection, VariableAnchorOffsetCollection} from './values';
 
 // serialization wrapper for old-style stop functions normalized to the
 // expression interface
@@ -385,12 +385,15 @@ export function normalizePropertyExpression<T>(
 
     } else {
         let constant: any = value;
+        console.log('normalizePropertyExpression', specification.type, value);
         if (specification.type === 'color' && typeof value === 'string') {
             constant = Color.parse(value);
         } else if (specification.type === 'padding' && (typeof value === 'number' || Array.isArray(value))) {
             constant = Padding.parse(value as (number | number[]));
         } else if (specification.type === 'variableAnchorOffsetCollection' && Array.isArray(value)) {
             constant = VariableAnchorOffsetCollection.parse(value as VariableAnchorOffsetCollectionSpecification);
+        } else if (specification.type === 'projection' && typeof value === 'string') {
+            constant = Projection.parse(value);
         }
         return {
             kind: 'constant',
@@ -477,6 +480,8 @@ function getDefaultValue(spec: StylePropertySpecification): Value {
         return Padding.parse(spec.default) || null;
     } else if (spec.type === 'variableAnchorOffsetCollection') {
         return VariableAnchorOffsetCollection.parse(spec.default) || null;
+    } else if (spec.type === 'projection') {
+        return Projection.parse(spec.default) || null;
     } else if (spec.default === undefined) {
         return null;
     } else {

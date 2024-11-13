@@ -20,7 +20,7 @@ export type InterpolationType = {
     controlPoints: [number, number, number, number];
 };
 type InterpolatedValueType = NumberTypeT | ColorTypeT | ProjectionTypeT | PaddingTypeT | VariableAnchorOffsetCollectionTypeT | ArrayType<NumberTypeT>;
-type InterpolationOperator = 'interpolate' | 'interpolate-hcl' | 'interpolate-lab' | 'interpolate-projection';
+type InterpolationOperator = 'interpolate' | 'interpolate-hcl' | 'interpolate-lab';
 class Interpolate implements Expression {
     type: InterpolatedValueType;
 
@@ -108,8 +108,6 @@ class Interpolate implements Expression {
         let outputType: Type = null;
         if (operator === 'interpolate-hcl' || operator === 'interpolate-lab') {
             outputType = ColorType;
-        } else if (operator === 'interpolate-projection') {
-            outputType = ProjectionType;
         } else if (context.expectedType && context.expectedType.kind !== 'value') {
             outputType = context.expectedType;
         }
@@ -128,8 +126,9 @@ class Interpolate implements Expression {
             if (stops.length && stops[stops.length - 1][0] >= label) {
                 return context.error('Input/output pairs for "interpolate" expressions must be arranged with input values in strictly ascending order.', labelKey) as null;
             }
-
+            console.log("parsing", value, valueKey, outputType);
             const parsed = context.parse(value, valueKey, outputType);
+            //console.log(parsed, value, valueKey, outputType);
             if (!parsed) return null;
             outputType = outputType || parsed.type;
             stops.push([label, parsed]);
@@ -187,14 +186,13 @@ class Interpolate implements Expression {
                         return interpolate.padding(outputLower, outputUpper, t);
                     case 'variableAnchorOffsetCollection':
                         return interpolate.variableAnchorOffsetCollection(outputLower, outputUpper, t);
+                    case 'projection':
+                        return interpolate.projection(outputLower, outputUpper, t);
                 }
             case 'interpolate-hcl':
                 return interpolate.color(outputLower, outputUpper, t, 'hcl');
             case 'interpolate-lab':
                 return interpolate.color(outputLower, outputUpper, t, 'lab');
-            case 'interpolate-projection': {
-                return interpolate.projection(outputLower, outputUpper, t);
-            }
         }
     }
 

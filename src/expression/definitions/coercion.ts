@@ -1,5 +1,5 @@
 import {BooleanType, ColorType, NumberType, StringType, ValueType} from '../types';
-import {Color, Padding, VariableAnchorOffsetCollection, toString as valueToString, validateRGBA} from '../values';
+import {Color, Padding, VariableAnchorOffsetCollection, toString as valueToString, validateRGBA, Projection} from '../values';
 import RuntimeError from '../runtime_error';
 import Formatted from '../types/formatted';
 import ResolvedImage from '../types/resolved_image';
@@ -123,6 +123,8 @@ class Coercion implements Expression {
                 return Formatted.fromString(valueToString(this.args[0].evaluate(ctx)));
             case 'resolvedImage':
                 return ResolvedImage.fromString(valueToString(this.args[0].evaluate(ctx)));
+            case 'projection':
+                return Projection.parse(this.args[0].evaluate(ctx));
             default:
                 return valueToString(this.args[0].evaluate(ctx));
         }

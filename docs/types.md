@@ -176,10 +176,10 @@ output at zoom 11.1: "mercator"
 
 #### Animate between different projections based on zoom level**
 
-Use a [`camera expression`](./expressions.md#camera-expressions), to animate between projections based on zoom, using [`interpolate-projection`](./expressions.md#interpolate-projection) function. The example below will yield an adaptive globe that interpolates from `vertical-perspective` to `mercator` between zoom 10 and 12.
+Use a [`camera expression`](./expressions.md#camera-expressions), to animate between projections based on zoom, using [`interpolate`](./expressions.md#interpolate) function. The example below will yield an adaptive globe that interpolates from `vertical-perspective` to `mercator` between zoom 10 and 12.
 
 ```ts
-type: ["interpolate-projection", ["linear"], ["zoom"],
+type: ["interpolate", ["linear"], ["zoom"],
     10,"vertical-perspective",
     12,"mercator"
 ]
@@ -205,4 +205,4 @@ There are also additional presets that yield commonly used expressions:
 
 | Preset | Full value | Description |
 |--------|------------|-------------|
-| `globe` | `["interpolate-projection", ["linear"], ["zoom"],`<br>`10, "vertical-perspective", 12, "mercator"]` | Adaptive globe: interpolates from vertical-perspective to mercator projection between zoom levels 10 and 12. |
+| `globe` | `["interpolate", ["linear"], ["zoom"],`<br>`10, "vertical-perspective", 12, "mercator"]` | Adaptive globe: interpolates from vertical-perspective to mercator projection between zoom levels 10 and 12. |

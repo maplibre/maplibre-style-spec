@@ -207,9 +207,7 @@ export type ExpressionSpecification =
     | ['distance', unknown | ExpressionSpecification]
     // Ramps, scales, curves
     | ['interpolate', InterpolationSpecification, number | ExpressionSpecification,
-        ...(number | number[] | ColorSpecification | ExpressionSpecification)[]] // alternating number and number | number[] | ColorSpecification
-    | ['interpolate-projection', InterpolationSpecification, number | ExpressionSpecification,
-        ...(number | string)[]] // alternating Projection
+        ...(number | number[] | ColorSpecification | ExpressionSpecification | ProjectionSpecification )[]] // alternating number and number | number[] | ColorSpecification
     | ['interpolate-hcl', InterpolationSpecification, number | ExpressionSpecification,
         ...(number | ColorSpecification)[]] // alternating number and ColorSpecificaton
     | ['interpolate-lab', InterpolationSpecification, number | ExpressionSpecification,
