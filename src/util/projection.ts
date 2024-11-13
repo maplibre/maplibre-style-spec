@@ -1,7 +1,7 @@
 import v8 from '../reference/v8.json' with { type: 'json' };
 import {ProjectionPrimitiveT, ProjectionT, ProjectionSpecification, PropertyValueSpecification} from '../types.g';
 
-export class Projection extends Array {
+export default class Projection extends Array {
     constructor(from: ProjectionPrimitiveT, to: ProjectionPrimitiveT, transition: number){
         super(3);
         this[0] = from;

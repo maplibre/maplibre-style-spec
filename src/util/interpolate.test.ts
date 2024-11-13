@@ -3,7 +3,7 @@ import interpolate, {isSupportedInterpolationColorSpace} from './interpolate';
 import Color from './color';
 import Padding from './padding';
 import VariableAnchorOffsetCollection from './variable_anchor_offset_collection';
-import {Projection} from './projection';
+import Projection from './projection';
 
 describe('interpolate', () => {
 

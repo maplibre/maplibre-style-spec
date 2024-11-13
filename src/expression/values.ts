@@ -8,7 +8,7 @@ import ResolvedImage from './types/resolved_image';
 import {NullType, NumberType, StringType, BooleanType, ColorType, ObjectType, ValueType, CollatorType, FormattedType, ResolvedImageType, array, PaddingType, VariableAnchorOffsetCollectionType, ProjectionType} from './types';
 
 import type {Type} from './types';
-import {Projection} from '../util/projection';
+import Projection from '../util/projection';
 
 export function validateRGBA(r: unknown, g: unknown, b: unknown, a?: unknown): string | null {
     if (!(

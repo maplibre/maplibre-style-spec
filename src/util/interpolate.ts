@@ -4,7 +4,7 @@ import Padding from './padding';
 import VariableAnchorOffsetCollection from './variable_anchor_offset_collection';
 import RuntimeError from '../expression/runtime_error';
 import type {ProjectionPrimitiveT, VariableAnchorOffsetCollectionSpecification} from '../types.g';
-import {Projection} from './projection';
+import Projection from './projection';
 
 export type InterpolationColorSpace = 'rgb' | 'hcl' | 'lab';
 

@@ -81,7 +81,7 @@ import featureFilter, {isExpressionFilter} from './feature_filter';
 
 import convertFilter from './feature_filter/convert';
 import Color from './util/color';
-import {Projection} from './util/projection';
+import Projection from './util/projection';
 import Padding from './util/padding';
 import VariableAnchorOffsetCollection from './util/variable_anchor_offset_collection';
 import Formatted, {FormattedSection} from './expression/types/formatted';

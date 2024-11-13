@@ -1,4 +1,4 @@
-import {Projection} from './projection';
+import Projection from './projection';
 
 describe('Projection class', () => {
 
