@@ -20,7 +20,7 @@ import {RuntimeError} from './runtime_error';
 import {success, error} from '../util/result';
 import {supportsPropertyExpression, supportsZoomExpression, supportsInterpolation} from '../util/properties';
 
-import {ColorType, StringType, NumberType, BooleanType, ValueType, FormattedType, PaddingType, ResolvedImageType, VariableAnchorOffsetCollectionType, array, type Type, type EvaluationKind} from './types';
+import {ColorType, StringType, NumberType, BooleanType, ValueType, FormattedType, PaddingType, ResolvedImageType, VariableAnchorOffsetCollectionType, array, type Type, type EvaluationKind, ProjectionDefinitionType} from './types';
 import type {Value} from './values';
 import type {Expression} from './expression';
 import type {StylePropertySpecification} from '..';
@@ -394,6 +394,8 @@ export function normalizePropertyExpression<T>(
             constant = Padding.parse(value as PaddingSpecification);
         } else if (specification.type === 'variableAnchorOffsetCollection' && Array.isArray(value)) {
             constant = VariableAnchorOffsetCollection.parse(value as VariableAnchorOffsetCollectionSpecification);
+        } else if (specification.type === 'projectionDefinition' && typeof value === 'string') {
+            constant = ProjectionDefinition.parse(value);
         }
         return {
             kind: 'constant',
@@ -452,6 +454,7 @@ function getExpectedType(spec: StylePropertySpecification): Type {
         boolean: BooleanType,
         formatted: FormattedType,
         padding: PaddingType,
+        projectionDefinition: ProjectionDefinitionType,
         resolvedImage: ResolvedImageType,
         variableAnchorOffsetCollection: VariableAnchorOffsetCollectionType
     };
@@ -475,6 +478,8 @@ function getDefaultValue(spec: StylePropertySpecification): Value {
         return Padding.parse(spec.default) || null;
     } else if (spec.type === 'variableAnchorOffsetCollection') {
         return VariableAnchorOffsetCollection.parse(spec.default) || null;
+    } else if (spec.type === 'projectionDefinition') {
+        return ProjectionDefinition.parse(spec.default) || null;
     } else if (spec.default === undefined) {
         return null;
     } else {

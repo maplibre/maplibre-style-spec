@@ -126,6 +126,8 @@ export class Coercion implements Expression {
                 return Formatted.fromString(valueToString(this.args[0].evaluate(ctx)));
             case 'resolvedImage':
                 return ResolvedImage.fromString(valueToString(this.args[0].evaluate(ctx)));
+            case 'projectionDefinition':
+                return this.args[0].evaluate(ctx);
             default:
                 return valueToString(this.args[0].evaluate(ctx));
         }

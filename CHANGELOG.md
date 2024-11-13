@@ -2,6 +2,7 @@
 
 ### ✨ Features and improvements
 - Use named imports internally - no package entrypoints changed ([#904](https://github.com/maplibre/maplibre-style-spec/pull/904))
+- Add projection type expression syntax ([#888](https://github.com/maplibre/maplibre-style-spec/pull/888))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
@@ -10,7 +11,7 @@
 ## 21.2.0
 
 ### ✨ Features and improvements
-Add `vertical-perspective` projection ([#890](https://github.com/maplibre/maplibre-style-spec/pull/890))
+- Add `vertical-perspective` projection ([#890](https://github.com/maplibre/maplibre-style-spec/pull/890))
 
 ## 21.1.0
 

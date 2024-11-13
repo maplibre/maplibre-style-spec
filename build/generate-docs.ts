@@ -166,6 +166,7 @@ function typeToMarkdownLink(type: string): string {
         case 'promoteid':
             return ` [${type}](types.md)`;
         case 'color':
+        case 'projectiondefinition':
         case 'number':
         case 'string':
         case 'boolean':

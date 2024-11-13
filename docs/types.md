@@ -133,3 +133,76 @@ The following example applies 2em padding on top and bottom and 3em padding left
     "icon-padding": [2, 3]
 }
 ```
+
+## ProjectionDefinition
+
+The `projection` is used to configure which projection to use for the map.
+
+There are currently two projections implemented.
+
+- `mercator` - [Web Mercator projection](https://en.wikipedia.org/wiki/Web_Mercator_projection)
+- `vertical-perspective` - [Vertical Perspective projection](https://en.wikipedia.org/wiki/General_Perspective_projection)
+
+And the following [presets](#use-a-projection-preset)
+
+The `projection` output sent to the renderer is always of the shape:
+
+`[from, to, transition]: [string, string, number]`
+
+- `from` is the projection of lower zoom level
+- `to` is the projection of higher zoom level
+- `transition` is the interpolation value, going from 0 to 1, with 0 being in the `from` projection, and 1 being in the `to` projection.
+
+In case `from` and `to` are equal, the `transition` will have no effect.
+
+### Examples
+
+#### Step between projection at discrete zoom levels
+
+Use a [`camera expression`](./expressions.md#camera-expressions), to discretely [`step`](./expressions.md#step) between projections at certain zoom levels.
+
+
+```ts
+type: ["step", ["zoom"],
+    "vertical-perspective",
+    11, "mercator"
+]
+
+
+output at zoom 10.9: "vertical-perspective"
+output at zoom 11.0: "vertical-perspective"
+output at zoom 11.1: "mercator"
+```
+
+#### Animate between different projections based on zoom level**
+
+Use a [`camera expression`](./expressions.md#camera-expressions), to animate between projections based on zoom, using [`interpolate`](./expressions.md#interpolate) function. The example below will yield an adaptive globe that interpolates from `vertical-perspective` to `mercator` between zoom 10 and 12.
+
+```ts
+type: ["interpolate", ["linear"], ["zoom"],
+    10,"vertical-perspective",
+    12,"mercator"
+]
+
+
+output at zoom 9.9:  "vertical-perspective"
+output at zoom 11:   ["vertical-perspective", "mercator", 0.5]
+output at zoom 12:   ["vertical-perspective", "mercator", 1]
+output at zoom 12.1: "mercator"
+```
+
+
+#### Provide a `projection` 
+
+```ts
+type: ["vertical-perspective", "mercator", 0.7]
+```
+
+#### Use a projection preset
+
+There are also additional presets that yield commonly used expressions:
+
+
+| Preset | Full value | Description |
+|--------|------------|-------------|
+| `globe` | `["interpolate", ["linear"], ["zoom"],`<br>`10, "vertical-perspective", 12, "mercator"]` | Adaptive globe: interpolates from vertical-perspective to mercator projection between zoom levels 10 and 12. |
