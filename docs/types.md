@@ -171,9 +171,9 @@ type: ["step", ["zoom"],
 ]
 
 
-output at zoom 10.9: ["vertical-perspective", "vertical-perspective", 1]
-output at zoom 11.0: ["vertical-perspective", "vertical-perspective", 1]
-output at zoom 11.1: ["mercator", "mercator", 1]
+output at zoom 10.9: "vertical-perspective"
+output at zoom 11.0: "vertical-perspective"
+output at zoom 11.1: "mercator"
 ```
 
 #### Animate between different projections based on zoom level**
