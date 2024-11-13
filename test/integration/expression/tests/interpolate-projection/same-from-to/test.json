@@ -1,4 +1,14 @@
 {
+    "propertySpec": {
+      "type": "projection",
+      "property-type": "data-constant",
+      "expression": {
+        "interpolated": true,
+        "parameters": [
+          "zoom"
+        ]
+      }
+    },
     "expression": [
       "interpolate",
       [

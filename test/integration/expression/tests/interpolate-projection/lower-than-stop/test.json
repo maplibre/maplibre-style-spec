@@ -1,4 +1,14 @@
 {
+    "propertySpec": {
+      "type": "projection",
+      "property-type": "data-constant",
+      "expression": {
+        "interpolated": true,
+        "parameters": [
+          "zoom"
+        ]
+      }
+    },
     "expression": [
       "interpolate",
       [
@@ -28,7 +38,7 @@
         "type": "projection"
       },
       "outputs": [
-        "vertical-perspective"
+        ["vertical-perspective", "vertical-perspective", 1]
       ]
     }
   }
