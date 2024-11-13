@@ -127,7 +127,6 @@ export type ColorSpecification = string;
 export type ProjectionT = [string, string, number];
 export type ProjectionSpecification = string | ProjectionT | PropertyValueSpecification<ProjectionT>
 
-
 export type PaddingSpecification = number | number[];
 
 export type VariableAnchorOffsetCollectionSpecification = Array<string | [number, number]>;
