@@ -385,7 +385,6 @@ export function normalizePropertyExpression<T>(
 
     } else {
         let constant: any = value;
-        console.log('normalizePropertyExpression', specification.type, value);
         if (specification.type === 'color' && typeof value === 'string') {
             constant = Color.parse(value);
         } else if (specification.type === 'padding' && (typeof value === 'number' || Array.isArray(value))) {
