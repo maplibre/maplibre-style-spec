@@ -4598,21 +4598,6 @@
       "type": "projection",
       "doc": "The projection type. Can be specified as a string, a transition state, or an expression.",
       "default": "mercator",   
-      "values": {
-        "projections": {
-          "mercator": {
-            "doc": "Web Mercator projection."
-          },
-          "vertical-perspective": {
-            "doc": "Vertical Perspective projection."
-          }
-        },
-        "presets": {
-          "globe": {
-            "doc": "Globe projection with zoom transition from General Perspective projection to Web Mercator projection."
-          }
-        }
-      },
       "property-type": "data-constant"
     }
   },

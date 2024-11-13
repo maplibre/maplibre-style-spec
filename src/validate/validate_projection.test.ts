@@ -1,4 +1,3 @@
-import v8 from '../reference/v8.json' with {type: 'json'};
 import validateProjection from './validate_projection';
 
 describe('validateProjection function', () => {
@@ -6,6 +5,8 @@ describe('validateProjection function', () => {
     const key = 'sample_projection_key';
 
     test('should return error when projection is not a string or array', () => {
+        expect(validateProjection({key, value: ''})).toHaveLength(0);
+
         expect(validateProjection({key, value: 0})).toMatchObject([
             {message: `${key}: projection expected, invalid type "number" found`},
         ]);
@@ -23,25 +24,6 @@ describe('validateProjection function', () => {
         ]);
     });
     
-    test('should return no errors when projection is valid projection string', () => {
-        const validProjectionString = [...Object.keys(v8.projectionConfig.type.values.presets), ...Object.keys(v8.projectionConfig.type.values.projections)] 
-        
-        for (const value of validProjectionString) {
-            const errors = validateProjection({key, value});
-            expect(errors).toHaveLength(0);
-        }
-    });
-    test('should errors when projection is invalid projection primitive or preset', () => {
-        const invalidProjectionString = [
-            'incalid',
-        ];
-
-        for (const value of invalidProjectionString) {
-            const errors = validateProjection({key, value});
-            expect(errors).toHaveLength(1);
-        }
-    });
-    
     test('Should error when projection is an invalid projection transition', () => {
         const errors = validateProjection({value: [3, 'mercator', 0.3], key});
         expect(errors).toMatchObject([
@@ -54,30 +36,9 @@ describe('validateProjection function', () => {
         expect(errors).toHaveLength(0);
     });
   
-    test('Should error if preset expression string is not defined', () => {
-        const errors = validateProjection({value: 'unknownPreset', key});
-        expect(errors).toMatchObject([
-            {message: `${key}: projection expected, invalid string \"unknownPreset\" found`},
-        ]);
-    });
-    
     test('Should allow primitive projection string', () => {
         const errors = validateProjection({value: 'mercator', key});
         expect(errors).toHaveLength(0);
-    });
-
-    test('Should error if primitive projection string is not defined', () => {
-        const errors = validateProjection({value: 'unknownPrimitive', key});
-        expect(errors).toMatchObject([
-            {message: `${key}: projection expected, invalid string \"unknownPrimitive\" found`},
-        ]);
-    });
-
-    test('Should error when preset is used as primitive', () => {
-        const errors = validateProjection({value: ['globe', 'mercator', 0.3], key});
-        expect(errors).toMatchObject([
-            {message: `${key}: projection expected, invalid array [\"globe\",\"mercator\",0.3] found`},
-        ]);
     });
 
     test('Should return no errors when projection is valid projection transition', () => {

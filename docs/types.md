@@ -134,8 +134,6 @@ The following example applies 2em padding on top and bottom and 3em padding left
 }
 ```
 
-
-
 ## Projection
 
 The `projection` is used to configure which projection to use for the map.
@@ -190,7 +188,7 @@ type: ["interpolate-projection", ["linear"], ["zoom"],
 
 output at zoom 10: ["vertical-perspective", "vertical-perspective", 1]
 output at zoom 11: ["vertical-perspective", "mercator", 0.5]
-output at zoom 12: ["mercator", "mercator", 1]
+output at zoom 12: "mercator"
 ```
 
 
@@ -201,19 +199,6 @@ type: ["vertical-perspective", "mercator", 0.7]
 ```
 
 #### Use a projection preset
-
-For all supported projections, providing just name will convert into the projection syntax for convenience:
-
-
-```ts
-type: "mercator"
-```
-
-Is equivalent to:
-
-```ts
-["mercator", "mercator", 1]
-```
 
 There are also additional presets that yield commonly used expressions:
 

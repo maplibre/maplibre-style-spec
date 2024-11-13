@@ -118,18 +118,14 @@ function layerType(key) {
 
 const layerTypes = Object.keys(spec.layer.type.values);
 
-const projectionTypes = spec.projectionConfig.type.values;
-
 fs.writeFileSync('src/types.g.ts',
     `// Generated code; do not edit. Edit build/generate-style-spec.ts instead.
 /* eslint-disable */
 
 export type ColorSpecification = string;
 
-export type ProjectionPresetT = ${Object.keys(projectionTypes.presets).map(p => `'${p}'`).join(' | ')};
-export type ProjectionPrimitiveT =  ${Object.keys(projectionTypes.projections).map(p => `'${p}'`).join(' | ')};
-export type ProjectionT = [ProjectionPrimitiveT, ProjectionPrimitiveT, number];
-export type ProjectionSpecification = ProjectionPresetT | ProjectionPrimitiveT | ProjectionT | PropertyValueSpecification<ProjectionT>
+export type ProjectionT = [string, string, number];
+export type ProjectionSpecification = string | ProjectionT | PropertyValueSpecification<ProjectionT>
 
 
 export type PaddingSpecification = number | number[];
@@ -214,7 +210,7 @@ export type ExpressionSpecification =
     | ['interpolate', InterpolationSpecification, number | ExpressionSpecification,
         ...(number | number[] | ColorSpecification | ExpressionSpecification)[]] // alternating number and number | number[] | ColorSpecification
     | ['interpolate-projection', InterpolationSpecification, number | ExpressionSpecification,
-        ...(number | ProjectionPrimitiveT)[]] // alternating Projection
+        ...(number | string)[]] // alternating Projection
     | ['interpolate-hcl', InterpolationSpecification, number | ExpressionSpecification,
         ...(number | ColorSpecification)[]] // alternating number and ColorSpecificaton
     | ['interpolate-lab', InterpolationSpecification, number | ExpressionSpecification,
