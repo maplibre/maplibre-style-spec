@@ -1,5 +1,5 @@
 import {BooleanType, ColorType, NumberType, StringType, ValueType} from '../types';
-import {Color, Padding, VariableAnchorOffsetCollection, toString as valueToString, validateRGBA, Projection} from '../values';
+import {Color, Padding, VariableAnchorOffsetCollection, toString as valueToString, validateRGBA} from '../values';
 import RuntimeError from '../runtime_error';
 import Formatted from '../types/formatted';
 import ResolvedImage from '../types/resolved_image';
