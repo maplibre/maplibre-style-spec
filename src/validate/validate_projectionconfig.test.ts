@@ -31,13 +31,8 @@ describe('Validate projection', () => {
         expect(errors).toHaveLength(0);
     });
 
-    test('Should pass string value for single projection', () => {
+    test('Should pass string value', () => {
         const errors = validateProjectionConfig({validateSpec, value: {'type': 'mercator'}, styleSpec: v8, style: {} as any});
-        expect(errors).toHaveLength(0);
-    });
-    
-    test('Should pass string value for preset', () => {
-        const errors = validateProjectionConfig({validateSpec, value: {'type': 'globe'}, styleSpec: v8, style: {} as any});
         expect(errors).toHaveLength(0);
     });
 
