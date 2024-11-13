@@ -174,7 +174,6 @@ class Interpolate implements Expression {
         const outputLower = outputs[index].evaluate(ctx);
         const outputUpper = outputs[index + 1].evaluate(ctx);
         
-
         switch (this.operator) {
             case 'interpolate':
                 return interpolate[this.type.kind.toString()](outputLower, outputUpper, t);
