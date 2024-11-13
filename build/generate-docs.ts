@@ -220,7 +220,7 @@ function convertPropertyToMarkdown(key: string, value: JsonObject, keyPrefix = '
     }
 
     markdown += '. ';
-    
+
     const isEnum = value.type === 'enum' && value.values && !Array.isArray(value.values);
     if (isEnum) {
         markdown += `Possible values: \`${Object.keys(value.values).join('`, `')}\`. `;
