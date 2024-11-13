@@ -176,7 +176,18 @@ class Interpolate implements Expression {
         
         switch (this.operator) {
             case 'interpolate':
-                return interpolate[this.type.kind.toString()](outputLower, outputUpper, t);
+                switch (this.type.kind) {
+                    case 'number':
+                        return interpolate.number(outputLower, outputUpper, t);
+                    case 'color':
+                        return interpolate.color(outputLower, outputUpper, t, 'rgb');
+                    case 'array':
+                        return interpolate.array(outputLower, outputUpper, t);
+                    case 'padding':
+                        return interpolate.padding(outputLower, outputUpper, t);
+                    case 'variableAnchorOffsetCollection':
+                        return interpolate.variableAnchorOffsetCollection(outputLower, outputUpper, t);
+                }
             case 'interpolate-hcl':
                 return interpolate.color(outputLower, outputUpper, t, 'hcl');
             case 'interpolate-lab':
