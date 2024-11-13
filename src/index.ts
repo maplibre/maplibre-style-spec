@@ -39,6 +39,7 @@ import {format} from './format';
 import {validate} from './validate/validate';
 import {migrate} from './migrate';
 import {classifyRings} from './util/classify_rings';
+import ProjectionDefinition from './expression/types/projection_definition';
 
 type ExpressionType = 'data-driven' | 'cross-faded' | 'cross-faded-data-driven' | 'color-ramp' | 'data-constant' | 'constant';
 type ExpressionParameters = Array<'zoom' | 'feature' | 'feature-state' | 'heatmap-density' | 'line-progress'>;
@@ -109,6 +110,12 @@ export type StylePropertySpecification = {
     expression?: ExpressionSpecificationDefinition;
     transition: boolean;
     default?: VariableAnchorOffsetCollectionSpecification;
+} | {
+    type: 'projectionDefinition';
+    'property-type': ExpressionType;
+    expression?: ExpressionSpecificationDefinition;
+    transition: boolean;
+    default?: ProjectionDefinitionSpecification;
 };
 
 const expression = {
@@ -138,6 +145,7 @@ export {
     ValidationError,
     ParsingError,
     FeatureState,
+    ProjectionDefinition,
     Color,
     Step,
     CompoundExpression,
@@ -188,6 +196,7 @@ export {
     migrate,
     classifyRings,
 
+    ProjectionDefinitionType,
     ColorType,
     interpolateFactory as interpolates,
     v8,

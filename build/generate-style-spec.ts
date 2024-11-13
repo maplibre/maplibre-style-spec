@@ -37,6 +37,8 @@ function propertyType(property) {
                 return 'SkySpecification';
             case 'sources':
                 return '{[_: string]: SourceSpecification}';
+            case 'projection:':
+                return 'ProjectionSpecification';
             case '*':
                 return 'unknown';
             default:
@@ -121,6 +123,9 @@ writeFileSync('src/types.g.ts',
 
 export type ColorSpecification = string;
 
+export type ProjectionDefinitionT = [string, string, number];
+export type ProjectionDefinitionSpecification = string | ProjectionDefinitionT | PropertyValueSpecification<ProjectionDefinitionT>
+
 export type PaddingSpecification = number | number[];
 
 export type VariableAnchorOffsetCollectionSpecification = Array<string | [number, number]>;
@@ -201,7 +206,7 @@ export type ExpressionSpecification =
     | ['distance', unknown | ExpressionSpecification]
     // Ramps, scales, curves
     | ['interpolate', InterpolationSpecification, number | ExpressionSpecification,
-        ...(number | number[] | ColorSpecification | ExpressionSpecification)[]] // alternating number and number | number[] | ColorSpecification
+        ...(number | number[] | ColorSpecification | ExpressionSpecification | ProjectionDefinitionSpecification )[]] // alternating number and number | number[] | ColorSpecification
     | ['interpolate-hcl', InterpolationSpecification, number | ExpressionSpecification,
         ...(number | ColorSpecification)[]] // alternating number and ColorSpecificaton
     | ['interpolate-lab', InterpolationSpecification, number | ExpressionSpecification,
@@ -316,9 +321,9 @@ ${objectDeclaration('LightSpecification', spec.light)}
 
 ${objectDeclaration('SkySpecification', spec.sky)}
 
-${objectDeclaration('TerrainSpecification', spec.terrain)}
-
 ${objectDeclaration('ProjectionSpecification', spec.projection)}
+
+${objectDeclaration('TerrainSpecification', spec.terrain)}
 
 ${spec.source.map(key => {
     let str = objectDeclaration(sourceTypeName(key), spec[key]);

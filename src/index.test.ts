@@ -69,7 +69,8 @@ function validSchema(k, v, obj, ref, version, kind) {
         'promoteId',
         'padding',
         'variableAnchorOffsetCollection',
-        'sprite'
+        'sprite',
+        'projectionDefinition'
     ]);
     const keys = [
         'default',
