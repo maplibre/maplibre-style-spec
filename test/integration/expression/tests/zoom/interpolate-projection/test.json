@@ -18,9 +18,9 @@
       "zoom"
     ],
     0,
-    ["literal", ["vertical-perspective", "vertical-perspective", 1]],
+    "vertical-perspective",
     10,
-    ["literal", ["mercator", "mercator", 1]]
+    "mercator"
   ],
   "inputs": [
     [

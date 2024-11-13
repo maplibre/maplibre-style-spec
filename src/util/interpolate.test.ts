@@ -119,7 +119,7 @@ describe('interpolate', () => {
     });
 
     test('interpolate projection', () => {
-        const i11nFn = (t: number) => interpolate.projection(Projection.parse('vertical-perspective'), Projection.parse('mercator'), t);
+        const i11nFn = (t: number) => interpolate.projection('vertical-perspective', 'mercator', t);
         expect(i11nFn(0.5)).toBeInstanceOf(Projection);
         expect(`${i11nFn(0.5)}`).toBe('["vertical-perspective", "mercator", 0.5]');
     });

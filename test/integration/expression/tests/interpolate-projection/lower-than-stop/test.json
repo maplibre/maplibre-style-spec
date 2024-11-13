@@ -38,7 +38,7 @@
         "type": "projection"
       },
       "outputs": [
-        ["vertical-perspective", "vertical-perspective", 1]
+        "vertical-perspective"
       ]
     }
   }
