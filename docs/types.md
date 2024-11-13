@@ -204,4 +204,4 @@ There are also additional presets that yield commonly used expressions:
 
 | Preset | Full value | Description |
 |--------|------------|-------------|
-| `globe` | `["interpolate-projection", ["linear"], ["zoom"],`<br>`0, "vertical-perspective", 10, "vertical-perspective", 12, "mercator"]` | Adaptive globe: interpolates from vertical-perspective to mercator projection between zoom levels 10 and 12. |
+| `globe` | `["interpolate-projection", ["linear"], ["zoom"],`<br>`10, "vertical-perspective", 12, "mercator"]` | Adaptive globe: interpolates from vertical-perspective to mercator projection between zoom levels 10 and 12. |
