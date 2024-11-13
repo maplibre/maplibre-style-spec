@@ -123,4 +123,4 @@ export function toString(value: Value) {
     }
 }
 
-export {Color, Collator, Projection as Projection, Padding, VariableAnchorOffsetCollection};
+export {Color, Collator, Projection, Padding, VariableAnchorOffsetCollection};
