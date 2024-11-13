@@ -180,7 +180,6 @@ Use a [`camera expression`](./expressions.md#camera-expressions), to animate bet
 
 ```ts
 type: ["interpolate-projection", ["linear"], ["zoom"],
-    0,"vertical-perspective",
     10,"vertical-perspective",
     12,"mercator"
 ]
