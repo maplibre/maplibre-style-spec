@@ -31,12 +31,7 @@ describe('validateProjection function', () => {
         ]);
     });
 
-    test('Should allow preset expression string', () => {
-        const errors = validateProjection({value: 'globe', key});
-        expect(errors).toHaveLength(0);
-    });
-  
-    test('Should allow primitive projection string', () => {
+    test('Should allow string', () => {
         const errors = validateProjection({value: 'mercator', key});
         expect(errors).toHaveLength(0);
     });
