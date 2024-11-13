@@ -39,8 +39,8 @@ function number(from: number, to: number, t: number): number {
     return from + t * (to - from);
 }
 
-function projection(from: Projection, to: Projection, interpolation: number): Projection {
-    return new Projection(from.from, to.to, interpolation);
+function projection(from: string, to: string, interpolation: number): Projection {
+    return new Projection(from, to, interpolation);
 }
 
 function color(from: Color, to: Color, t: number, spaceKey: InterpolationColorSpace = 'rgb'): Color {

@@ -38,7 +38,7 @@
         "type": "projection"
       },
       "outputs": [
-          ["mercator", "mercator", 1]
+          "mercator"
       ]
     }
   }

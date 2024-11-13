@@ -392,7 +392,7 @@ export function normalizePropertyExpression<T>(
         } else if (specification.type === 'variableAnchorOffsetCollection' && Array.isArray(value)) {
             constant = VariableAnchorOffsetCollection.parse(value as VariableAnchorOffsetCollectionSpecification);
         } else if (specification.type === 'projection' && typeof value === 'string') {
-            constant = Projection.parse(value);
+            constant = value;
         }
         return {
             kind: 'constant',
