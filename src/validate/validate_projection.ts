@@ -5,7 +5,9 @@ import {isProjectionPreset, isProjectionPrimitive, isProjectionValue, isProperty
 export default function validateProjection(options) {
 
     const key = options.key;
-    const value = options.value;
+    let value = options.value;
+    value = value instanceof String ? value.valueOf() : value;
+
     const type = getType(value);
 
     if (type === 'string' && !(isProjectionPrimitive(value) || isProjectionPreset(value))) {

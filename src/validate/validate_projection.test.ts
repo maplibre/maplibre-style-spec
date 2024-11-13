@@ -49,6 +49,30 @@ describe('validateProjection function', () => {
         ]);
     });
 
+    test('Should allow preset expression string', () => {
+        const errors = validateProjection({value: 'globe', key});
+        expect(errors).toHaveLength(0);
+    });
+  
+    test('Should error if preset expression string is not defined', () => {
+        const errors = validateProjection({value: 'unknownPreset', key});
+        expect(errors).toMatchObject([
+            {message: `${key}: projection expected, invalid string \"unknownPreset\" found`},
+        ]);
+    });
+    
+    test('Should allow primitive projection string', () => {
+        const errors = validateProjection({value: 'mercator', key});
+        expect(errors).toHaveLength(0);
+    });
+
+    test('Should error if primitive projection string is not defined', () => {
+        const errors = validateProjection({value: 'unknownPrimitive', key});
+        expect(errors).toMatchObject([
+            {message: `${key}: projection expected, invalid string \"unknownPrimitive\" found`},
+        ]);
+    });
+
     test('Should error when preset is used as primitive', () => {
         const errors = validateProjection({value: ['globe', 'mercator', 0.3], key});
         expect(errors).toMatchObject([
