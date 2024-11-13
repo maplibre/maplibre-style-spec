@@ -2,7 +2,7 @@ import validateProjectionConfig from './validate_projectionconfig';
 import validateSpec from './validate';
 import v8 from '../reference/v8.json' with {type: 'json'};
 
-describe('Validate projection', () => {
+describe('Validate projectionConfig', () => {
     it('Should pass when value is undefined', () => {
         const errors = validateProjectionConfig({validateSpec, value: undefined, styleSpec: v8, style: {} as any});
         expect(errors).toHaveLength(0);
@@ -41,8 +41,8 @@ describe('Validate projection', () => {
         expect(errors).toHaveLength(0);
     });
 
-    test('should parse iterpolate-projection', () => {
-        const errors = validateProjectionConfig({validateSpec, value: {'type': ['interpolate-projection', ['linear'], ['zoom'], 0, 'mercator', 5, 'vertical-perspective']}, styleSpec: v8, style: {} as any});
+    test('should parse iterpolate-projectionConfig', () => {
+        const errors = validateProjectionConfig({validateSpec, value: {'type': ['interpolate-projectionConfig', ['linear'], ['zoom'], 0, 'mercator', 5, 'vertical-perspective']}, styleSpec: v8, style: {} as any});
         expect(errors).toHaveLength(0);
     });
 
