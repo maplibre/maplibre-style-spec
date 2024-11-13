@@ -1,7 +1,7 @@
 import UnitBezier from '@mapbox/unitbezier';
 
 import interpolate from '../../util/interpolate';
-import {array, ArrayType, ColorType, ColorTypeT, NumberType, NumberTypeT, PaddingType, PaddingTypeT, VariableAnchorOffsetCollectionType, VariableAnchorOffsetCollectionTypeT, toString, verifyType} from '../types';
+import {array, ArrayType, ColorType, ProjectionTypeT, ColorTypeT, NumberType, NumberTypeT, PaddingType, PaddingTypeT, VariableAnchorOffsetCollectionType, VariableAnchorOffsetCollectionTypeT, toString, verifyType, ProjectionType} from '../types';
 import {findStopLessThanOrEqualTo} from '../stops';
 
 import type {Stops} from '../stops';
@@ -19,18 +19,18 @@ export type InterpolationType = {
     name: 'cubic-bezier';
     controlPoints: [number, number, number, number];
 };
-type InterpolatedValueType = NumberTypeT | ColorTypeT | PaddingTypeT | VariableAnchorOffsetCollectionTypeT | ArrayType<NumberTypeT>;
-
+type InterpolatedValueType = NumberTypeT | ColorTypeT | ProjectionTypeT | PaddingTypeT | VariableAnchorOffsetCollectionTypeT | ArrayType<NumberTypeT>;
+type InterpolationOperator = 'interpolate' | 'interpolate-hcl' | 'interpolate-lab' | 'interpolate-projection';
 class Interpolate implements Expression {
     type: InterpolatedValueType;
 
-    operator: 'interpolate' | 'interpolate-hcl' | 'interpolate-lab';
+    operator: InterpolationOperator ;
     interpolation: InterpolationType;
     input: Expression;
     labels: Array<number>;
     outputs: Array<Expression>;
 
-    constructor(type: InterpolatedValueType, operator: 'interpolate' | 'interpolate-hcl' | 'interpolate-lab', interpolation: InterpolationType, input: Expression, stops: Stops) {
+    constructor(type: InterpolatedValueType, operator: InterpolationOperator, interpolation: InterpolationType, input: Expression, stops: Stops) {
         this.type = type;
         this.operator = operator;
         this.interpolation = interpolation;
@@ -108,6 +108,8 @@ class Interpolate implements Expression {
         let outputType: Type = null;
         if (operator === 'interpolate-hcl' || operator === 'interpolate-lab') {
             outputType = ColorType;
+        } else if (operator === 'interpolate-projection') {
+            outputType = ProjectionType;
         } else if (context.expectedType && context.expectedType.kind !== 'value') {
             outputType = context.expectedType;
         }
@@ -135,6 +137,7 @@ class Interpolate implements Expression {
 
         if (!verifyType(outputType, NumberType) &&
             !verifyType(outputType, ColorType) &&
+            !verifyType(outputType, ProjectionType) &&
             !verifyType(outputType, PaddingType) &&
             !verifyType(outputType, VariableAnchorOffsetCollectionType) &&
             !verifyType(outputType, array(NumberType))
@@ -170,14 +173,28 @@ class Interpolate implements Expression {
 
         const outputLower = outputs[index].evaluate(ctx);
         const outputUpper = outputs[index + 1].evaluate(ctx);
-
+        
         switch (this.operator) {
             case 'interpolate':
-                return interpolate[this.type.kind](outputLower, outputUpper, t);
+                switch (this.type.kind) {
+                    case 'number':
+                        return interpolate.number(outputLower, outputUpper, t);
+                    case 'color':
+                        return interpolate.color(outputLower, outputUpper, t, 'rgb');
+                    case 'array':
+                        return interpolate.array(outputLower, outputUpper, t);
+                    case 'padding':
+                        return interpolate.padding(outputLower, outputUpper, t);
+                    case 'variableAnchorOffsetCollection':
+                        return interpolate.variableAnchorOffsetCollection(outputLower, outputUpper, t);
+                }
             case 'interpolate-hcl':
                 return interpolate.color(outputLower, outputUpper, t, 'hcl');
             case 'interpolate-lab':
                 return interpolate.color(outputLower, outputUpper, t, 'lab');
+            case 'interpolate-projection': {
+                return interpolate.projection(outputLower, outputUpper, t);
+            }
         }
     }
 

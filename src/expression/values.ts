@@ -5,9 +5,10 @@ import Formatted from './types/formatted';
 import Padding from '../util/padding';
 import VariableAnchorOffsetCollection from '../util/variable_anchor_offset_collection';
 import ResolvedImage from './types/resolved_image';
-import {NullType, NumberType, StringType, BooleanType, ColorType, ObjectType, ValueType, CollatorType, FormattedType, ResolvedImageType, array, PaddingType, VariableAnchorOffsetCollectionType} from './types';
+import {NullType, NumberType, StringType, BooleanType, ColorType, ObjectType, ValueType, CollatorType, FormattedType, ResolvedImageType, array, PaddingType, VariableAnchorOffsetCollectionType, ProjectionType} from './types';
 
 import type {Type} from './types';
+import Projection from '../util/projection';
 
 export function validateRGBA(r: unknown, g: unknown, b: unknown, a?: unknown): string | null {
     if (!(
@@ -28,7 +29,7 @@ export function validateRGBA(r: unknown, g: unknown, b: unknown, a?: unknown): s
     return null;
 }
 
-export type Value = null | string | boolean | number | Color | Collator | Formatted | Padding | ResolvedImage | VariableAnchorOffsetCollection | ReadonlyArray<Value> | {
+export type Value = null | string | boolean | number | Color | Projection | Collator | Formatted | Padding | ResolvedImage | VariableAnchorOffsetCollection | ReadonlyArray<Value> | {
     readonly [x: string]: Value;
 };
 
@@ -37,6 +38,7 @@ export function isValue(mixed: unknown): boolean {
         typeof mixed === 'string' ||
         typeof mixed === 'boolean' ||
         typeof mixed === 'number' ||
+        mixed instanceof Projection ||
         mixed instanceof Color ||
         mixed instanceof Collator ||
         mixed instanceof Formatted ||
@@ -74,6 +76,8 @@ export function typeOf(value: Value): Type {
         return NumberType;
     } else if (value instanceof Color) {
         return ColorType;
+    } else if (value instanceof Projection) {
+        return ProjectionType;
     } else if (value instanceof Collator) {
         return CollatorType;
     } else if (value instanceof Formatted) {
@@ -112,11 +116,11 @@ export function toString(value: Value) {
         return '';
     } else if (type === 'string' || type === 'number' || type === 'boolean') {
         return String(value);
-    } else if (value instanceof Color || value instanceof Formatted || value instanceof Padding || value instanceof VariableAnchorOffsetCollection || value instanceof ResolvedImage) {
+    } else if (value instanceof Color || value instanceof Projection || value instanceof Formatted || value instanceof Padding || value instanceof VariableAnchorOffsetCollection || value instanceof ResolvedImage) {
         return value.toString();
     } else {
         return JSON.stringify(value);
     }
 }
 
-export {Color, Collator, Padding, VariableAnchorOffsetCollection};
+export {Color, Collator, Projection, Padding, VariableAnchorOffsetCollection};

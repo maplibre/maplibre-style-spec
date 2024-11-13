@@ -166,6 +166,7 @@ function typeToMarkdownLink(type: string): string {
         case 'promoteid':
             return ` [${type}](types.md)`;
         case 'color':
+        case 'projection':
         case 'number':
         case 'string':
         case 'boolean':
@@ -180,6 +181,8 @@ function typeToMarkdownLink(type: string): string {
         case 'paint':
         case 'layout':
             return ` [${type}](layers.md#${type.toLocaleLowerCase()})`;
+        case 'projectionconfig':
+            return ' [projectionConfig](projection.md)';    
         default:
             // top level types have their own file
             return ` [${type}](${type}.md)`;

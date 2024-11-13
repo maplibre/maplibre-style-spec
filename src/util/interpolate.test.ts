@@ -3,6 +3,7 @@ import interpolate, {isSupportedInterpolationColorSpace} from './interpolate';
 import Color from './color';
 import Padding from './padding';
 import VariableAnchorOffsetCollection from './variable_anchor_offset_collection';
+import Projection from './projection';
 
 describe('interpolate', () => {
 
@@ -115,6 +116,12 @@ describe('interpolate', () => {
         const i11nFn = (t: number) => interpolate.padding(padding, targetPadding, t);
         expect(i11nFn(0.5)).toBeInstanceOf(Padding);
         expect(i11nFn(0.5)).toEqual(new Padding([0.5, 1, 3, 2]));
+    });
+
+    test('interpolate projection', () => {
+        const i11nFn = (t: number) => interpolate.projection('vertical-perspective', 'mercator', t);
+        expect(i11nFn(0.5)).toBeInstanceOf(Projection);
+        expect(`${i11nFn(0.5)}`).toBe('["vertical-perspective", "mercator", 0.5]');
     });
 
     describe('interpolate variableAnchorOffsetCollection', () => {

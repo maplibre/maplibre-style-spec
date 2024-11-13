@@ -126,10 +126,16 @@
       }
     },
     "projection": {
-      "type": "projection",
-      "doc": "The projection configuration. **Note:** this definition is still experimental and is under development in maplibre-gl-js.",
+      "type": "projectionConfig",
+      "doc": "The projection configuration",
       "example": {
-        "type": "globe"
+        "type": [
+          "interpolate-projection",
+          ["linear"],
+          ["zoom"],
+          10, "globe",
+          12, "mercator"
+        ]
       }
     },
     "terrain": {
@@ -3057,6 +3063,24 @@
           }
         }
       },
+      "interpolate-projection": {
+        "doc": "Produces continuous, smooth results by interpolating between pairs of input and output values (\"stops\"). Works like `interpolate`, but the output type must be a [`projection`](./types.md#projection).",
+        "example": {
+          "syntax": {
+            "method": ["[\"linear\"] | [\"exponential\", base] | [\"cubic-bezier\", x1, y1, x2, y2]", "number", "string", "number", "..."],
+            "result": "projection"
+          },
+          "value": ["interpolate-projection", ["linear"], ["zoom"], 10, "vertical-perspective", 12, "mercator"]
+        },
+        "group": "Ramps, scales, curves",
+        "sdk-support": {
+          "basic functionality": {
+            "js": "https://github.com/maplibre/maplibre-gl-js/issues/5039",
+            "ios": "https://github.com/maplibre/maplibre-native/issues/3013",
+            "android": "https://github.com/maplibre/maplibre-native/issues/3013"
+          }
+        }
+      },
       "ln2": {
         "doc": "Returns mathematical constant ln(2).",
         "example": {
@@ -4568,22 +4592,12 @@
       }
     }
   },
-  "projection": {
+  "projectionConfig": {
     "type": {
-      "type": "enum",
-      "doc": "The projection type.",
-      "default": "mercator",
-      "values": {
-        "mercator": {
-          "doc": "Web Mercator projection."
-        },
-        "globe": {
-          "doc": "Globe projection. Zoom transition from Vertical Perspective projection to Web Mercator projection."
-        },
-        "vertical-perspective": {
-          "doc": "Vertical Perspective projection."
-        }
-      }
+      "type": "projection",
+      "doc": "The projection type. Can be specified as a string, a transition state, or an expression.",
+      "default": "mercator",   
+      "property-type": "data-constant"
     }
   },
   "paint": [

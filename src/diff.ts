@@ -1,5 +1,5 @@
 
-import {GeoJSONSourceSpecification, LayerSpecification, LightSpecification, ProjectionSpecification, SkySpecification, SourceSpecification, SpriteSpecification, StyleSpecification, TerrainSpecification, TransitionSpecification} from './types.g';
+import {GeoJSONSourceSpecification, LayerSpecification, LightSpecification, ProjectionConfigSpecification, SkySpecification, SourceSpecification, SpriteSpecification, StyleSpecification, TerrainSpecification, TransitionSpecification} from './types.g';
 import isEqual from './util/deep_equal';
 
 /**
@@ -30,7 +30,7 @@ export type DiffOperationsMap = {
     'setLight': [LightSpecification];
     'setTerrain': [TerrainSpecification];
     'setSky': [SkySpecification];
-    'setProjection': [ProjectionSpecification];
+    'setProjection': [ProjectionConfigSpecification];
 }
 
 export type DiffOperations = keyof DiffOperationsMap;

@@ -1,43 +1,20 @@
 import ValidationError from '../error/validation_error';
 import getType from '../util/get_type';
-import v8 from '../reference/v8.json' with {type: 'json'};
-import {ProjectionSpecification, StyleSpecification} from '../types.g';
+import {isProjectionValue, isPropertyValueSpecification} from '../util/projection';
 
-interface ValidateProjectionOptions {
-    sourceName?: string;
-    value: ProjectionSpecification;
-    styleSpec: typeof v8;
-    style: StyleSpecification;
-    validateSpec: Function;
-}
+export default function validateProjection(options) {
 
-export default function validateProjection(options: ValidateProjectionOptions) {
-    const projection = options.value;
-    const styleSpec = options.styleSpec;
-    const projectionSpec = styleSpec.projection;
-    const style = options.style;
+    const key = options.key;
+    let value = options.value;
+    value = value instanceof String ? value.valueOf() : value;
 
-    const rootType = getType(projection);
-    if (projection === undefined) {
-        return [];
-    } else if (rootType !== 'object') {
-        return [new ValidationError('projection', projection, `object expected, ${rootType} found`)];
+    const type = getType(value);
+
+    if (type === 'array' && !isProjectionValue(value) && !isPropertyValueSpecification(value)) {
+        return [new ValidationError(key, value, `projection expected, invalid array ${JSON.stringify(value)} found`)];
+    }  else if (!['array', 'string'].includes(type)) {
+        return [new ValidationError(key, value, `projection expected, invalid type "${type}" found`)];
     }
 
-    let errors = [];
-    for (const key in projection) {
-        if (projectionSpec[key]) {
-            errors = errors.concat(options.validateSpec({
-                key,
-                value: projection[key],
-                valueSpec: projectionSpec[key],
-                style,
-                styleSpec
-            }));
-        } else {
-            errors = errors.concat([new ValidationError(key, projection[key], `unknown property "${key}"`)]);
-        }
-    }
-
-    return errors;
+    return [];
 }

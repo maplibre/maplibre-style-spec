@@ -1,0 +1,38 @@
+{
+    "expression": [
+      "interpolate-projection",
+      [
+        "linear"
+      ],
+      [
+        "zoom"
+      ],
+      0,
+      "mercator",
+      10,
+      "mercator"
+    ],
+    "inputs": [
+      [
+        {
+          "zoom": 5
+        },
+        {}
+      ]
+    ],
+    "expected": {
+      "compiled": {
+        "result": "success",
+        "isFeatureConstant": true,
+        "isZoomConstant": false,
+        "type": "projection"
+      },
+      "outputs": [
+        [
+          "mercator",
+          "mercator",
+          0.5
+        ]
+      ]
+    }
+  }
