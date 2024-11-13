@@ -126,9 +126,7 @@ class Interpolate implements Expression {
             if (stops.length && stops[stops.length - 1][0] >= label) {
                 return context.error('Input/output pairs for "interpolate" expressions must be arranged with input values in strictly ascending order.', labelKey) as null;
             }
-            console.log("parsing", value, valueKey, outputType);
             const parsed = context.parse(value, valueKey, outputType);
-            //console.log(parsed, value, valueKey, outputType);
             if (!parsed) return null;
             outputType = outputType || parsed.type;
             stops.push([label, parsed]);
