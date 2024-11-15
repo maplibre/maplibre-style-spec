@@ -1,4 +1,4 @@
-export default class ProjectionDefinition {
+export class ProjectionDefinition {
     public from
     public to
     public transition
