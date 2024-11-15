@@ -1,7 +1,7 @@
 import {globSync} from 'glob';
 import fs from 'fs';
 import path from 'path';
-import validate from '../../../src/validate_style';
+import {validateStyle as validate} from '../../../src/validate_style';
 import reference from '../../../src/reference/latest';
 
 const UPDATE = !!process.env.UPDATE;

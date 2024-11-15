@@ -1,5 +1,5 @@
 import validateSprite from './validate_sprite';
-import validateSpec from './validate';
+import {validate as validateSpec} from './validate';
 
 describe('Validate Sprite', () => {
     test('Should return error if type is not string or array', () => {

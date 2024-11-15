@@ -1,6 +1,6 @@
 
 import validateConstants from './validate/validate_constants';
-import validate from './validate/validate';
+import {validateStyle as validate} from './validate/validate';
 import latestStyleSpec from './reference/latest';
 
 import validateSource from './validate/validate_source';

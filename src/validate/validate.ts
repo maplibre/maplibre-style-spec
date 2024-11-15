@@ -71,7 +71,7 @@ const VALIDATORS = {
  * @param options.objectElementValidators - optional object of functions that will be called
  * @returns an array of errors, or an empty array if no errors are found.
  */
-export default function validate(options: {
+export function validate(options: {
     key: any;
     value: any;
     valueSpec: any;

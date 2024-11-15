@@ -18,7 +18,7 @@ import type {StyleSpecification} from './types.g';
  *   const errors = validate(style);
  */
 
-export default function validateStyle(style: StyleSpecification | string | Buffer, styleSpec = v8): Array<ValidationError> {
+export function validateStyle(style: StyleSpecification | string | Buffer, styleSpec = v8): Array<ValidationError> {
     let s = style;
 
     try {

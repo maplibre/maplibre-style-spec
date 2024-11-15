@@ -36,7 +36,7 @@ import Literal from './expression/definitions/literal';
 import CompoundExpression from './expression/compound_expression';
 import {VariableAnchorOffsetCollectionSpecification} from './types.g';
 import format from './format';
-import validate from './validate/validate';
+import {validate} from './validate/validate';
 import migrate from './migrate';
 import {classifyRings} from './util/classify_rings';
 
