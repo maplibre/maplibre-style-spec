@@ -23,7 +23,7 @@ import {supportsPropertyExpression, supportsZoomExpression, supportsInterpolatio
 import {ColorType, StringType, NumberType, BooleanType, ValueType, FormattedType, PaddingType, ResolvedImageType, VariableAnchorOffsetCollectionType, array, type Type, type EvaluationKind, ProjectionDefinitionType} from './types';
 import type {Value} from './values';
 import type {Expression} from './expression';
-import type {StylePropertySpecification} from '..';
+import {type StylePropertySpecification} from '..';
 import type {Result} from '../util/result';
 import type {InterpolationType} from './definitions/interpolate';
 import type {PaddingSpecification, PropertyValueSpecification, VariableAnchorOffsetCollectionSpecification} from '../types.g';
@@ -35,6 +35,7 @@ import {isFunction, createFunction} from '../function';
 import {Color} from './types/color';
 import {Padding} from './types/padding';
 import {VariableAnchorOffsetCollection} from './types/variable_anchor_offset_collection';
+import {ProjectionDefinition} from './types/projection_definition';
 
 export type Feature = {
     readonly type: 0 | 1 | 2 | 3 | 'Unknown' | 'Point' | 'MultiPoint' | 'LineString' | 'MultiLineString' | 'Polygon' | 'MultiPolygon';
