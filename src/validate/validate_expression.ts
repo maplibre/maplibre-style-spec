@@ -1,4 +1,4 @@
-import ValidationError from '../error/validation_error';
+import {ValidationError} from '../error/validation_error';
 
 import {createExpression, createPropertyExpression} from '../expression';
 import {deepUnbundle} from '../util/unbundle_jsonlint';

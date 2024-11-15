@@ -1,5 +1,5 @@
 
-import ValidationError from '../error/validation_error';
+import {ValidationError} from '../error/validation_error';
 import getType from '../util/get_type';
 import {isFunction} from '../function';
 import {unbundle, deepUnbundle} from '../util/unbundle_jsonlint';

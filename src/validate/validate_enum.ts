@@ -1,5 +1,5 @@
 
-import ValidationError from '../error/validation_error';
+import {ValidationError} from '../error/validation_error';
 import {unbundle} from '../util/unbundle_jsonlint';
 
 export function validateEnum(options) {

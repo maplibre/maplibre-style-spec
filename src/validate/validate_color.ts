@@ -1,4 +1,4 @@
-import ValidationError from '../error/validation_error';
+import {ValidationError} from '../error/validation_error';
 import getType from '../util/get_type';
 import Color from '../expression/types/color';
 

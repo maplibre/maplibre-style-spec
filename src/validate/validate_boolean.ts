@@ -1,6 +1,6 @@
 
 import getType from '../util/get_type';
-import ValidationError from '../error/validation_error';
+import {ValidationError} from '../error/validation_error';
 
 export function validateBoolean(options) {
     const value = options.value;

@@ -1,6 +1,6 @@
 
 import getType from '../util/get_type';
-import ValidationError from '../error/validation_error';
+import {ValidationError} from '../error/validation_error';
 
 export function validateNumber(options) {
     const key = options.key;

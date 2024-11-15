@@ -1,5 +1,5 @@
 
-import ValidationError from '../error/validation_error';
+import {ValidationError} from '../error/validation_error';
 import getType from '../util/get_type';
 
 export function validateObject(options): Array<ValidationError> {

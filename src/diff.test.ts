@@ -1,4 +1,4 @@
-import diffStyles from './diff';
+import {diffStyles} from './diff';
 import {StyleSpecification} from './types.g';
 
 describe('diff', () => {
