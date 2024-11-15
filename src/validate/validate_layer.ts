@@ -1,13 +1,13 @@
 
-import ValidationError from '../error/validation_error';
+import {ValidationError} from '../error/validation_error';
 import {unbundle} from '../util/unbundle_jsonlint';
-import validateObject from './validate_object';
-import validateFilter from './validate_filter';
-import validatePaintProperty from './validate_paint_property';
-import validateLayoutProperty from './validate_layout_property';
+import {validateObject} from './validate_object';
+import {validateFilter} from './validate_filter';
+import {validatePaintProperty} from './validate_paint_property';
+import {validateLayoutProperty} from './validate_layout_property';
 import extend from '../util/extend';
 
-export default function validateLayer(options) {
+export function validateLayer(options) {
     let errors = [];
 
     const layer = options.value;

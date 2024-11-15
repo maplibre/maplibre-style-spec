@@ -1,7 +1,7 @@
 import latest from './reference/latest';
 import {StyleSpecification} from './types.g';
 
-export default function emptyStyle(): StyleSpecification {
+export function emptyStyle(): StyleSpecification {
     const style = {};
 
     const version = latest['$version'];

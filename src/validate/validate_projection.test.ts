@@ -1,4 +1,4 @@
-import validateProjection from './validate_projection';
+import {validateProjection} from './validate_projection';
 import {validate as validateSpec} from './validate';
 import v8 from '../reference/v8.json' with {type: 'json'};
 import {ProjectionSpecification} from '../types.g';

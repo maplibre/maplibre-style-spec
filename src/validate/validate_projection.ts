@@ -11,7 +11,7 @@ interface ValidateProjectionOptions {
     validateSpec: Function;
 }
 
-export default function validateProjection(options: ValidateProjectionOptions) {
+export function validateProjection(options: ValidateProjectionOptions) {
     const projection = options.value;
     const styleSpec = options.styleSpec;
     const projectionSpec = styleSpec.projection;

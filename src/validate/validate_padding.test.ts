@@ -1,5 +1,5 @@
 import {validate as validateSpec} from './validate';
-import validatePadding from './validate_padding';
+import {validatePadding} from './validate_padding';
 
 describe('Validate Padding', () => {
     test('Should return error if type is not number or array', () => {

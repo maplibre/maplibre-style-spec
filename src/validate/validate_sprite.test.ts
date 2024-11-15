@@ -1,4 +1,4 @@
-import validateSprite from './validate_sprite';
+import {validateSprite} from './validate_sprite';
 import {validate as validateSpec} from './validate';
 
 describe('Validate Sprite', () => {

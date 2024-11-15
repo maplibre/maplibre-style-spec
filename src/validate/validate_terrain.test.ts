@@ -1,5 +1,5 @@
 import {validate as validateSpec} from './validate';
-import validateTerrain from './validate_terrain';
+import {validateTerrain} from './validate_terrain';
 import v8 from '../reference/v8.json' with {type: 'json'};
 
 describe('Validate Terrain', () => {

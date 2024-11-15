@@ -2,7 +2,7 @@
 import ValidationError from '../error/validation_error';
 import getType from '../util/get_type';
 
-export default function validateObject(options): Array<ValidationError> {
+export function validateObject(options): Array<ValidationError> {
     const key = options.key;
     const object = options.value;
     const elementSpecs = options.valueSpec || {};

@@ -1,4 +1,4 @@
-import validateSky from './validate_sky';
+import {validateSky} from './validate_sky';
 import {validate as validateSpec} from './validate';
 import v8 from '../reference/v8.json' with {type: 'json'};
 import {SkySpecification} from '../types.g';

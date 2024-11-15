@@ -1,6 +1,6 @@
-import validateObject from './validate_object';
-import validateString from './validate_string';
-import ValidationError from '../error/validation_error';
+import {validateObject} from './validate_object';
+import {validateString} from './validate_string';
+import {ValidationError} from '../error/validation_error';
 
 interface ValidateSpriteOptions {
     key: 'sprite';
@@ -8,7 +8,7 @@ interface ValidateSpriteOptions {
     validateSpec: Function;
 }
 
-export default function validateSprite(options: ValidateSpriteOptions) {
+export function validateSprite(options: ValidateSpriteOptions) {
     let errors = [];
 
     const sprite = options.value;

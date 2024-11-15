@@ -12,7 +12,7 @@ interface ValidateRasterDENSourceOptions {
     validateSpec: Function;
 }
 
-export default function validateRasterDEMSource(
+export function validateRasterDEMSource(
     options: ValidateRasterDENSourceOptions
 ): ValidationError[] {
 
