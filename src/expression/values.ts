@@ -1,9 +1,9 @@
 
-import Color from '../util/color';
+import Color from './types/color';
 import Collator from './types/collator';
 import Formatted from './types/formatted';
-import Padding from '../util/padding';
-import VariableAnchorOffsetCollection from '../util/variable_anchor_offset_collection';
+import Padding from './types/padding';
+import VariableAnchorOffsetCollection from './types/variable_anchor_offset_collection';
 import ResolvedImage from './types/resolved_image';
 import {NullType, NumberType, StringType, BooleanType, ColorType, ObjectType, ValueType, CollatorType, FormattedType, ResolvedImageType, array, PaddingType, VariableAnchorOffsetCollectionType} from './types';
 
@@ -118,5 +118,3 @@ export function toString(value: Value) {
         return JSON.stringify(value);
     }
 }
-
-export {Color, Collator, Padding, VariableAnchorOffsetCollection};

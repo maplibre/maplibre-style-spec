@@ -27,8 +27,9 @@ import type {Expression, ExpressionRegistry} from './expression';
 import type {Value} from './values';
 import type {Type} from './types';
 
-import {typeOf, Color, validateRGBA, toString as valueToString} from './values';
+import {typeOf, validateRGBA, toString as valueToString} from './values';
 import RuntimeError from './runtime_error';
+import Color from './types/color';
 
 export type Varargs = {
     type: Type;

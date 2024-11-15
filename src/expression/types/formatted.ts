@@ -1,4 +1,4 @@
-import type Color from '../../util/color';
+import type Color from '../../expression/types/color';
 import type ResolvedImage from '../types/resolved_image';
 
 export class FormattedSection {
