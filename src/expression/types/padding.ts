@@ -1,3 +1,5 @@
+import {interpolateArray} from '../../util/interpolate-primitives';
+
 /**
  * A set of four numbers representing padding around a box. Create instances from
  * bare arrays or numeric values using the static method `Padding.parse`.
@@ -59,6 +61,10 @@ class Padding {
 
     toString(): string {
         return JSON.stringify(this.values);
+    }
+
+    static interpolate(from: Padding, to: Padding, t: number): Padding {
+        return new Padding(interpolateArray(from.values, to.values, t));
     }
 }
 

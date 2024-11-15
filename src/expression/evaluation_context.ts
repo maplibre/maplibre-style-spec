@@ -1,8 +1,8 @@
-import {Color} from './values';
 import type {FormattedSection} from './types/formatted';
 import type {GlobalProperties, Feature, FeatureState} from './index';
 import {ICanonicalTileID} from '../tiles_and_coordinates';
 import {hasMultipleOuterRings} from '../util/classify_rings';
+import Color from './types/color';
 
 const geometryTypes = ['Unknown', 'Point', 'LineString', 'Polygon'];
 const simpleGeometryType = {
@@ -84,7 +84,7 @@ class EvaluationContext {
     parseColor(input: string): Color {
         let cached = this._parseColorCache[input];
         if (!cached) {
-            cached = this._parseColorCache[input] = Color.parse(input) as Color;
+            cached = this._parseColorCache[input] = Color.parse(input);
         }
         return cached;
     }

@@ -1,8 +1,11 @@
 import {BooleanType, ColorType, NumberType, StringType, ValueType} from '../types';
-import {Color, Padding, VariableAnchorOffsetCollection, toString as valueToString, validateRGBA} from '../values';
+import {toString as valueToString, validateRGBA} from '../values';
 import RuntimeError from '../runtime_error';
 import Formatted from '../types/formatted';
 import ResolvedImage from '../types/resolved_image';
+import Color from '../types/color';
+import Padding from '../types/padding';
+import VariableAnchorOffsetCollection from '../types/variable_anchor_offset_collection';
 
 import type {Expression} from '../expression';
 import type ParsingContext from '../parsing_context';

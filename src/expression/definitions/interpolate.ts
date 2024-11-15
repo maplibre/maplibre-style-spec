@@ -1,6 +1,5 @@
 import UnitBezier from '@mapbox/unitbezier';
 
-import interpolate from '../../util/interpolate';
 import {array, ArrayType, ColorType, ColorTypeT, NumberType, NumberTypeT, PaddingType, PaddingTypeT, VariableAnchorOffsetCollectionType, VariableAnchorOffsetCollectionTypeT, toString, verifyType} from '../types';
 import {findStopLessThanOrEqualTo} from '../stops';
 
@@ -9,6 +8,10 @@ import type {Expression} from '../expression';
 import type ParsingContext from '../parsing_context';
 import type EvaluationContext from '../evaluation_context';
 import type {Type} from '../types';
+import Color from '../types/color';
+import {interpolateArray, interpolateNumber} from '../../util/interpolate-primitives';
+import Padding from '../types/padding';
+import VariableAnchorOffsetCollection from '../types/variable_anchor_offset_collection';
 
 export type InterpolationType = {
     name: 'linear';
@@ -173,11 +176,22 @@ class Interpolate implements Expression {
 
         switch (this.operator) {
             case 'interpolate':
-                return interpolate[this.type.kind](outputLower, outputUpper, t);
+                switch (this.type.kind) {
+                    case 'number':
+                        return interpolateNumber(outputLower, outputUpper, t)
+                    case 'color':
+                        return Color.interpolate(outputLower, outputUpper, t);
+                    case 'padding':
+                        return Padding.interpolate(outputLower, outputUpper, t);
+                    case 'variableAnchorOffsetCollection':
+                        return VariableAnchorOffsetCollection.interpolate(outputLower, outputUpper, t);
+                    case 'array':
+                        return interpolateArray(outputLower, outputUpper, t);
+                }
             case 'interpolate-hcl':
-                return interpolate.color(outputLower, outputUpper, t, 'hcl');
+                return Color.interpolate(outputLower, outputUpper, t, 'hcl');
             case 'interpolate-lab':
-                return interpolate.color(outputLower, outputUpper, t, 'lab');
+                return Color.interpolate(outputLower, outputUpper, t, 'lab');
         }
     }
 
@@ -242,3 +256,11 @@ function exponentialInterpolation(input, base, lowerValue, upperValue) {
 }
 
 export default Interpolate;
+
+export const interpolateFactory = {
+    color: Color.interpolate,
+    number: interpolateNumber,
+    padding: Padding.interpolate,
+    variableAnchorOffsetCollection: VariableAnchorOffsetCollection.interpolate,
+    array: interpolateArray
+}

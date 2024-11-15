@@ -20,15 +20,21 @@ import RuntimeError from './runtime_error';
 import {success, error} from '../util/result';
 import {supportsPropertyExpression, supportsZoomExpression, supportsInterpolation} from '../util/properties';
 
-import type {Type, EvaluationKind} from './types';
+import {ColorType, StringType, NumberType, BooleanType, ValueType, FormattedType, PaddingType, ResolvedImageType, VariableAnchorOffsetCollectionType, array, type Type, type EvaluationKind} from './types';
 import type {Value} from './values';
 import type {Expression} from './expression';
 import type {StylePropertySpecification} from '..';
 import type {Result} from '../util/result';
 import type {InterpolationType} from './definitions/interpolate';
-import type {PropertyValueSpecification, VariableAnchorOffsetCollectionSpecification} from '../types.g';
+import type {PaddingSpecification, PropertyValueSpecification, VariableAnchorOffsetCollectionSpecification} from '../types.g';
 import type {FormattedSection} from './types/formatted';
 import type {Point2D} from '../point2d';
+
+import {ICanonicalTileID} from '../tiles_and_coordinates';
+import {isFunction, createFunction} from '../function';
+import Color from './types/color';
+import Padding from './types/padding';
+import VariableAnchorOffsetCollection from './types/variable_anchor_offset_collection';
 
 export type Feature = {
     readonly type: 0 | 1 | 2 | 3 | 'Unknown' | 'Point' | 'MultiPoint' | 'LineString' | 'MultiLineString' | 'Polygon' | 'MultiPolygon';
@@ -333,9 +339,6 @@ export function createPropertyExpression(expressionInput: unknown, propertySpec:
         (new ZoomDependentExpression('composite', expression.value, zoomCurve.labels, interpolationType) as CompositeExpression));
 }
 
-import {isFunction, createFunction} from '../function';
-import {Color, VariableAnchorOffsetCollection} from './values';
-
 // serialization wrapper for old-style stop functions normalized to the
 // expression interface
 export class StylePropertyFunction<T> {
@@ -388,7 +391,7 @@ export function normalizePropertyExpression<T>(
         if (specification.type === 'color' && typeof value === 'string') {
             constant = Color.parse(value);
         } else if (specification.type === 'padding' && (typeof value === 'number' || Array.isArray(value))) {
-            constant = Padding.parse(value as (number | number[]));
+            constant = Padding.parse(value as PaddingSpecification);
         } else if (specification.type === 'variableAnchorOffsetCollection' && Array.isArray(value)) {
             constant = VariableAnchorOffsetCollection.parse(value as VariableAnchorOffsetCollectionSpecification);
         }
@@ -439,10 +442,6 @@ function findZoomCurve(expression: Expression): Step | Interpolate | ExpressionP
 
     return result;
 }
-
-import {ColorType, StringType, NumberType, BooleanType, ValueType, FormattedType, PaddingType, ResolvedImageType, VariableAnchorOffsetCollectionType, array} from './types';
-import Padding from '../util/padding';
-import {ICanonicalTileID} from '../tiles_and_coordinates';
 
 function getExpectedType(spec: StylePropertySpecification): Type {
     const types = {
