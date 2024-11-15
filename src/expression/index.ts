@@ -30,7 +30,6 @@ import type {PaddingSpecification, PropertyValueSpecification, VariableAnchorOff
 import type {FormattedSection} from './types/formatted';
 import type {Point2D} from '../point2d';
 
-
 import {ICanonicalTileID} from '../tiles_and_coordinates';
 import {isFunction, createFunction} from '../function';
 import Color from './types/color';

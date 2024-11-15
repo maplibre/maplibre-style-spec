@@ -9,7 +9,7 @@ import type ParsingContext from '../parsing_context';
 import type EvaluationContext from '../evaluation_context';
 import type {Type} from '../types';
 import Color from '../types/color';
-import { interpolateArray, interpolateNumber } from '../../util/interpolate-primitives';
+import {interpolateArray, interpolateNumber} from '../../util/interpolate-primitives';
 import Padding from '../types/padding';
 import VariableAnchorOffsetCollection from '../types/variable_anchor_offset_collection';
 

@@ -1,7 +1,7 @@
 import Color, {isSupportedInterpolationColorSpace} from '../expression/types/color';
 import extend from '../util/extend';
 import getType from '../util/get_type';
-import Interpolate, { interpolateFactory } from '../expression/definitions/interpolate';
+import Interpolate, {interpolateFactory} from '../expression/definitions/interpolate';
 import Formatted from '../expression/types/formatted';
 import ResolvedImage from '../expression/types/resolved_image';
 import {supportsInterpolation} from '../util/properties';

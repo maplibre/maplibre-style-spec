@@ -1,4 +1,4 @@
-import {interpolateArray} from "../../util/interpolate-primitives";
+import {interpolateArray} from '../../util/interpolate-primitives';
 
 /**
  * A set of four numbers representing padding around a box. Create instances from
