@@ -1,5 +1,5 @@
 import {ValidationError} from '../error/validation_error';
-import getType from '../util/get_type';
+import {getType} from '../util/get_type';
 
 export function validateLight(options) {
     const light = options.value;

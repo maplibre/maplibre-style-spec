@@ -1,7 +1,7 @@
 
-import refProperties from './util/ref_properties';
+import {refProperties} from './util/ref_properties';
 
-function deref(layer, parent) {
+export default function deref(layer, parent) {
     const result = {};
 
     for (const k in layer) {
@@ -18,8 +18,6 @@ function deref(layer, parent) {
 
     return result;
 }
-
-export default derefLayers;
 
 /**
  * Given an array of layers, some of which may contain `ref` properties

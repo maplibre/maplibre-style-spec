@@ -1,4 +1,4 @@
-import declass from './declass';
+import {declassStyle as declass} from './declass';
 
 describe('declass', () => {
     test('declass a style, one class', () => {

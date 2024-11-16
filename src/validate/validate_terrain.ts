@@ -1,5 +1,5 @@
 import {ValidationError} from '../error/validation_error';
-import getType from '../util/get_type';
+import {getType} from '../util/get_type';
 import type {StyleSpecification, TerrainSpecification} from '../types.g';
 import v8 from '../reference/v8.json' with {type: 'json'};
 

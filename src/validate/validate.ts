@@ -1,5 +1,5 @@
 
-import extend from '../util/extend';
+import {extendBy as extend} from '../util/extend';
 import {unbundle, deepUnbundle} from '../util/unbundle_jsonlint';
 import {isExpression} from '../expression';
 import {isFunction} from '../function';

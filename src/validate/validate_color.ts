@@ -1,5 +1,5 @@
 import {ValidationError} from '../error/validation_error';
-import getType from '../util/get_type';
+import {getType} from '../util/get_type';
 import Color from '../expression/types/color';
 
 export function validateColor(options) {

@@ -5,7 +5,7 @@ import {validateObject} from './validate_object';
 import {validateEnum} from './validate_enum';
 import {validateExpression} from './validate_expression';
 import {validateString} from './validate_string';
-import getType from '../util/get_type';
+import {getType} from '../util/get_type';
 import {validateRasterDEMSource} from './validate_raster_dem_source';
 
 const objectElementValidators = {

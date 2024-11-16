@@ -1,6 +1,6 @@
 
 import {ValidationError} from '../error/validation_error';
-import getType from '../util/get_type';
+import {getType} from '../util/get_type';
 import {validateObject} from './validate_object';
 import {validateArray} from './validate_array';
 import {validateNumber} from './validate_number';

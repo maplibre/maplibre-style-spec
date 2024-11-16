@@ -1,5 +1,5 @@
 
-import extend from '../util/extend';
+import {extendBy as extend} from '../util/extend';
 import ExpressionParsingError from './parsing_error';
 import ParsingContext from './parsing_context';
 import EvaluationContext from './evaluation_context';

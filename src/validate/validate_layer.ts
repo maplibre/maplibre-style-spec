@@ -5,7 +5,7 @@ import {validateObject} from './validate_object';
 import {validateFilter} from './validate_filter';
 import {validatePaintProperty} from './validate_paint_property';
 import {validateLayoutProperty} from './validate_layout_property';
-import extend from '../util/extend';
+import {extendBy as extend} from '../util/extend';
 
 export function validateLayer(options) {
     let errors = [];

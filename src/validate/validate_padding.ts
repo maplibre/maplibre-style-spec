@@ -1,5 +1,5 @@
 import {ValidationError} from '../error/validation_error';
-import getType from '../util/get_type';
+import {getType} from '../util/get_type';
 import {validateNumber} from './validate_number';
 
 export function validatePadding(options) {

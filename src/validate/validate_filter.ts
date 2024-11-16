@@ -2,9 +2,9 @@
 import {ValidationError} from '../error/validation_error';
 import {validateExpression} from './validate_expression';
 import {validateEnum} from './validate_enum';
-import getType from '../util/get_type';
+import {getType} from '../util/get_type';
 import {unbundle, deepUnbundle} from '../util/unbundle_jsonlint';
-import extend from '../util/extend';
+import {extendBy as extend} from '../util/extend';
 import {isExpressionFilter} from '../feature_filter';
 
 export function validateFilter(options) {

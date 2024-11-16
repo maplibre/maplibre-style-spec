@@ -1,7 +1,5 @@
 
-import extend from './util/extend';
-
-export default declassStyle;
+import {extendBy as extend} from './util/extend';
 
 /**
  * Returns a new style with the given 'paint classes' merged into each layer's
@@ -18,7 +16,7 @@ export default declassStyle;
  * // nightStyle now has each layer's `paint.night` properties merged in to the
  * // main `paint` property.
  */
-function declassStyle(style, classes) {
+export function declassStyle(style, classes) {
     return extend({}, style, {
         layers: style.layers.map((layer) => {
             const result = classes.reduce(declassLayer, layer);

@@ -1,5 +1,5 @@
 
-import getType from '../util/get_type';
+import {getType} from '../util/get_type';
 import {ValidationError} from '../error/validation_error';
 
 export function validateNumber(options) {
