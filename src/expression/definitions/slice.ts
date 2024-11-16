@@ -3,19 +3,19 @@ import {
     NumberType,
     StringType,
     array,
-    toString,
+    typeToString,
     isValidType,
     isValidNativeType,
 } from '../types';
-import RuntimeError from '../runtime_error';
+import {RuntimeError} from '../runtime_error';
 import {typeOf} from '../values';
 
 import type {Expression} from '../expression';
-import type ParsingContext from '../parsing_context';
-import type EvaluationContext from '../evaluation_context';
+import type {ParsingContext} from '../parsing_context';
+import type {EvaluationContext} from '../evaluation_context';
 import type {Type} from '../types';
 
-class Slice implements Expression {
+export class Slice implements Expression {
     type: Type;
     input: Expression;
     beginIndex: Expression;
@@ -40,7 +40,7 @@ class Slice implements Expression {
         if (!input || !beginIndex) return null;
 
         if (!isValidType(input.type, [array(ValueType), StringType, ValueType])) {
-            return context.error(`Expected first argument to be of type array or string, but found ${toString(input.type)} instead`) as null;
+            return context.error(`Expected first argument to be of type array or string, but found ${typeToString(input.type)} instead`) as null;
         }
 
         if (args.length === 4) {
@@ -67,7 +67,7 @@ class Slice implements Expression {
         } else if (isValidNativeType(input, ['array'])) {
             return input.slice(beginIndex, endIndex);
         } else {
-            throw new RuntimeError(`Expected first argument to be of type array or string, but found ${toString(typeOf(input))} instead.`);
+            throw new RuntimeError(`Expected first argument to be of type array or string, but found ${typeToString(typeOf(input))} instead.`);
         }
     }
 
@@ -84,4 +84,3 @@ class Slice implements Expression {
     }
 }
 
-export default Slice;

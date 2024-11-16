@@ -1,12 +1,12 @@
 import {ResolvedImageType, StringType} from '../types';
-import ResolvedImage from '../types/resolved_image';
+import {ResolvedImage} from '../types/resolved_image';
 
 import type {Expression} from '../expression';
-import type EvaluationContext from '../evaluation_context';
-import type ParsingContext from '../parsing_context';
+import type {EvaluationContext} from '../evaluation_context';
+import type {ParsingContext} from '../parsing_context';
 import type {Type} from '../types';
 
-export default class ImageExpression implements Expression {
+export class ImageExpression implements Expression {
     type: Type;
     input: Expression;
 

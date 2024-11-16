@@ -1,6 +1,7 @@
 ## main
 
 ### ✨ Features and improvements
+- Use named imports internally - no package entrypoints changed ([#904](https://github.com/maplibre/maplibre-style-spec/pull/904))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes

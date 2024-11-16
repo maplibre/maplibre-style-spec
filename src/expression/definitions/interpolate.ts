@@ -1,17 +1,17 @@
 import UnitBezier from '@mapbox/unitbezier';
 
-import {array, ArrayType, ColorType, ColorTypeT, NumberType, NumberTypeT, PaddingType, PaddingTypeT, VariableAnchorOffsetCollectionType, VariableAnchorOffsetCollectionTypeT, toString, verifyType} from '../types';
+import {array, ArrayType, ColorType, ColorTypeT, NumberType, NumberTypeT, PaddingType, PaddingTypeT, VariableAnchorOffsetCollectionType, VariableAnchorOffsetCollectionTypeT, typeToString, verifyType} from '../types';
 import {findStopLessThanOrEqualTo} from '../stops';
 
 import type {Stops} from '../stops';
 import type {Expression} from '../expression';
-import type ParsingContext from '../parsing_context';
-import type EvaluationContext from '../evaluation_context';
+import type {ParsingContext} from '../parsing_context';
+import type {EvaluationContext} from '../evaluation_context';
 import type {Type} from '../types';
-import Color from '../types/color';
+import {Color} from '../types/color';
 import {interpolateArray, interpolateNumber} from '../../util/interpolate-primitives';
-import Padding from '../types/padding';
-import VariableAnchorOffsetCollection from '../types/variable_anchor_offset_collection';
+import {Padding} from '../types/padding';
+import {VariableAnchorOffsetCollection} from '../types/variable_anchor_offset_collection';
 
 export type InterpolationType = {
     name: 'linear';
@@ -24,7 +24,7 @@ export type InterpolationType = {
 };
 type InterpolatedValueType = NumberTypeT | ColorTypeT | PaddingTypeT | VariableAnchorOffsetCollectionTypeT | ArrayType<NumberTypeT>;
 
-class Interpolate implements Expression {
+export class Interpolate implements Expression {
     type: InterpolatedValueType;
 
     operator: 'interpolate' | 'interpolate-hcl' | 'interpolate-lab';
@@ -142,7 +142,7 @@ class Interpolate implements Expression {
             !verifyType(outputType, VariableAnchorOffsetCollectionType) &&
             !verifyType(outputType, array(NumberType))
         ) {
-            return context.error(`Type ${toString(outputType)} is not interpolatable.`) as null;
+            return context.error(`Type ${typeToString(outputType)} is not interpolatable.`) as null;
         }
 
         return new Interpolate(outputType, (operator as any), interpolation as InterpolationType, input as Expression, stops);
@@ -254,8 +254,6 @@ function exponentialInterpolation(input, base, lowerValue, upperValue) {
         return (Math.pow(base, progress) - 1) / (Math.pow(base, difference) - 1);
     }
 }
-
-export default Interpolate;
 
 export const interpolateFactory = {
     color: Color.interpolate,

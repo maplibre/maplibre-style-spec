@@ -1,5 +1,5 @@
-import ValidationError from '../error/validation_error';
-import getType from '../util/get_type';
+import {ValidationError} from '../error/validation_error';
+import {getType} from '../util/get_type';
 import v8 from '../reference/v8.json' with {type: 'json'};
 import {ProjectionSpecification, StyleSpecification} from '../types.g';
 
@@ -11,7 +11,7 @@ interface ValidateProjectionOptions {
     validateSpec: Function;
 }
 
-export default function validateProjection(options: ValidateProjectionOptions) {
+export function validateProjection(options: ValidateProjectionOptions) {
     const projection = options.value;
     const styleSpec = options.styleSpec;
     const projectionSpec = styleSpec.projection;

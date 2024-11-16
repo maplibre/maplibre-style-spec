@@ -5,15 +5,15 @@ import {ValueType} from '../types';
 import type {Type} from '../types';
 
 import type {Expression} from '../expression';
-import type ParsingContext from '../parsing_context';
-import type EvaluationContext from '../evaluation_context';
+import type {ParsingContext} from '../parsing_context';
+import type {EvaluationContext} from '../evaluation_context';
 
 // Map input label values to output expression index
 type Cases = {
     [k in number | string]: number;
 };
 
-class Match implements Expression {
+export class Match implements Expression {
     type: Type;
     inputType: Type;
 
@@ -115,4 +115,3 @@ class Match implements Expression {
     }
 }
 
-export default Match;

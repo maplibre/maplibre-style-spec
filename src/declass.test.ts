@@ -1,4 +1,4 @@
-import declass from './declass';
+import {declassStyle} from './declass';
 
 describe('declass', () => {
     test('declass a style, one class', () => {
@@ -16,7 +16,7 @@ describe('declass', () => {
             }]
         };
 
-        const declassed = declass(style, ['one']);
+        const declassed = declassStyle(style, ['one']);
 
         expect(declassed).not.toBe(style);
         expect(declassed.layers).not.toBe(style.layers);
@@ -47,7 +47,7 @@ describe('declass', () => {
             }]
         };
 
-        expect(declass(style, ['one'])).toEqual({
+        expect(declassStyle(style, ['one'])).toEqual({
             layers: [{
                 id: 'a',
                 paint: {
@@ -78,7 +78,7 @@ describe('declass', () => {
             }]
         };
 
-        expect(declass(style, ['one', 'two'])).toEqual({
+        expect(declassStyle(style, ['one', 'two'])).toEqual({
             layers: [{
                 id: 'a',
                 paint: {
@@ -104,7 +104,7 @@ describe('declass', () => {
             }]
         };
 
-        expect(declass(style, ['one'])).toEqual({
+        expect(declassStyle(style, ['one'])).toEqual({
             layers: [{
                 id: 'a',
                 paint: {

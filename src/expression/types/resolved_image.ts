@@ -3,7 +3,7 @@ export type ResolvedImageOptions = {
     available: boolean;
 };
 
-export default class ResolvedImage {
+export class ResolvedImage {
     name: string;
     available: boolean;
 

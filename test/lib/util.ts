@@ -1,4 +1,4 @@
-import Color from '../../src/expression/types/color';
+import {Color} from '../../src/expression/types/color';
 
 /**
  * @param toTest Color instance to test

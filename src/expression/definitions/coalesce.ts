@@ -1,12 +1,12 @@
 import {checkSubtype, ValueType} from '../types';
-import ResolvedImage from '../types/resolved_image';
+import {ResolvedImage} from '../types/resolved_image';
 
 import type {Expression} from '../expression';
-import type ParsingContext from '../parsing_context';
-import type EvaluationContext from '../evaluation_context';
+import type {ParsingContext} from '../parsing_context';
+import type {EvaluationContext} from '../evaluation_context';
 import type {Type} from '../types';
 
-class Coalesce implements Expression {
+export class Coalesce implements Expression {
     type: Type;
     args: Array<Expression>;
 
@@ -80,4 +80,3 @@ class Coalesce implements Expression {
     }
 }
 
-export default Coalesce;

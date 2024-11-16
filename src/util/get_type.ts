@@ -1,4 +1,4 @@
-export default function getType(val: unknown): string {
+export function getType(val: unknown): string {
     if (val instanceof Number) {
         return 'number';
     } else if (val instanceof String) {

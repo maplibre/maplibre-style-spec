@@ -7,12 +7,12 @@ import {
     ColorType,
     ResolvedImageType,
 } from '../types';
-import Formatted, {FormattedSection} from '../types/formatted';
-import {toString, typeOf} from '../values';
+import {Formatted, FormattedSection} from '../types/formatted';
+import {valueToString, typeOf} from '../values';
 
 import type {Expression} from '../expression';
-import type EvaluationContext from '../evaluation_context';
-import type ParsingContext from '../parsing_context';
+import type {EvaluationContext} from '../evaluation_context';
+import type {ParsingContext} from '../parsing_context';
 import type {Type} from '../types';
 
 type FormattedSectionExpression = {
@@ -24,7 +24,7 @@ type FormattedSectionExpression = {
     textColor: Expression | null;
 };
 
-export default class FormatExpression implements Expression {
+export class FormatExpression implements Expression {
     type: Type;
     sections: Array<FormattedSectionExpression>;
 
@@ -97,7 +97,7 @@ export default class FormatExpression implements Expression {
             }
 
             return new FormattedSection(
-                toString(evaluatedContent),
+                valueToString(evaluatedContent),
                 null,
                 section.scale ? section.scale.evaluate(ctx) : null,
                 section.font ? section.font.evaluate(ctx).join(',') : null,

@@ -1,4 +1,4 @@
-import migrate from './v8';
+import {migrateV8 as migrate} from './v8';
 
 describe('migrate v8', () => {
     test('split text-font', () => {

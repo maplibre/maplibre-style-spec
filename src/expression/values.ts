@@ -1,10 +1,10 @@
 
-import Color from './types/color';
-import Collator from './types/collator';
-import Formatted from './types/formatted';
-import Padding from './types/padding';
-import VariableAnchorOffsetCollection from './types/variable_anchor_offset_collection';
-import ResolvedImage from './types/resolved_image';
+import {Color} from './types/color';
+import {Collator} from './types/collator';
+import {Formatted} from './types/formatted';
+import {Padding} from './types/padding';
+import {VariableAnchorOffsetCollection} from './types/variable_anchor_offset_collection';
+import {ResolvedImage} from './types/resolved_image';
 import {NullType, NumberType, StringType, BooleanType, ColorType, ObjectType, ValueType, CollatorType, FormattedType, ResolvedImageType, array, PaddingType, VariableAnchorOffsetCollectionType} from './types';
 
 import type {Type} from './types';
@@ -106,7 +106,7 @@ export function typeOf(value: Value): Type {
     }
 }
 
-export function toString(value: Value) {
+export function valueToString(value: Value) {
     const type = typeof value;
     if (value === null) {
         return '';

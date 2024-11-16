@@ -1,8 +1,8 @@
 
-import getType from '../util/get_type';
-import ValidationError from '../error/validation_error';
+import {getType} from '../util/get_type';
+import {ValidationError} from '../error/validation_error';
 
-export default function validateString(options) {
+export function validateString(options) {
     const value = options.value;
     const key = options.key;
     const type = getType(value);

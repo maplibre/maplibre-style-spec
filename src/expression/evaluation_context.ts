@@ -2,7 +2,7 @@ import type {FormattedSection} from './types/formatted';
 import type {GlobalProperties, Feature, FeatureState} from './index';
 import {ICanonicalTileID} from '../tiles_and_coordinates';
 import {hasMultipleOuterRings} from '../util/classify_rings';
-import Color from './types/color';
+import {Color} from './types/color';
 
 const geometryTypes = ['Unknown', 'Point', 'LineString', 'Polygon'];
 const simpleGeometryType = {
@@ -15,7 +15,7 @@ const simpleGeometryType = {
     'MultiPolygon': 'Polygon'
 };
 
-class EvaluationContext {
+export class EvaluationContext {
     globals: GlobalProperties;
     feature: Feature;
     featureState: FeatureState;
@@ -89,5 +89,3 @@ class EvaluationContext {
         return cached;
     }
 }
-
-export default EvaluationContext;

@@ -1,3 +1,3 @@
 
-import spec from './v8.json' with { type: 'json' };
-export default spec as any;
+import  latest from './v8.json' with { type: 'json' };
+export {latest}

@@ -1,11 +1,11 @@
-import {toString, ValueType, BooleanType, CollatorType} from '../types';
-import Assertion from './assertion';
+import {typeToString, ValueType, BooleanType, CollatorType} from '../types';
+import {Assertion} from './assertion';
 import {typeOf} from '../values';
-import RuntimeError from '../runtime_error';
+import {RuntimeError} from '../runtime_error';
 
 import type {Expression} from '../expression';
-import type EvaluationContext from '../evaluation_context';
-import type ParsingContext from '../parsing_context';
+import type {EvaluationContext} from '../evaluation_context';
+import type {ParsingContext} from '../parsing_context';
 import type {Type} from '../types';
 
 type ComparisonOperator = '==' | '!=' | '<' | '>' | '<=' | '>=';
@@ -84,12 +84,12 @@ function makeComparison(op: ComparisonOperator, compareBasic, compareWithCollato
             let lhs = context.parse(args[1], 1, ValueType);
             if (!lhs) return null;
             if (!isComparableType(op, lhs.type)) {
-                return context.concat(1).error(`"${op}" comparisons are not supported for type '${toString(lhs.type)}'.`) as null;
+                return context.concat(1).error(`"${op}" comparisons are not supported for type '${typeToString(lhs.type)}'.`) as null;
             }
             let rhs = context.parse(args[2], 2, ValueType);
             if (!rhs) return null;
             if (!isComparableType(op, rhs.type)) {
-                return context.concat(2).error(`"${op}" comparisons are not supported for type '${toString(rhs.type)}'.`) as null;
+                return context.concat(2).error(`"${op}" comparisons are not supported for type '${typeToString(rhs.type)}'.`) as null;
             }
 
             if (
@@ -97,7 +97,7 @@ function makeComparison(op: ComparisonOperator, compareBasic, compareWithCollato
                 lhs.type.kind !== 'value' &&
                 rhs.type.kind !== 'value'
             ) {
-                return context.error(`Cannot compare types '${toString(lhs.type)}' and '${toString(rhs.type)}'.`) as null;
+                return context.error(`Cannot compare types '${typeToString(lhs.type)}' and '${typeToString(rhs.type)}'.`) as null;
             }
 
             if (isOrderComparison) {

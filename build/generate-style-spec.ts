@@ -1,7 +1,6 @@
-import * as fs from 'fs';
-import * as properties from '../src/util/properties';
-
+import {writeFileSync} from 'fs';
 import spec from '../src/reference/v8.json' with {type: 'json'};
+import {supportsPropertyExpression, supportsZoomExpression} from '../src/util/properties';
 
 function unionType(values) {
     if (Array.isArray(values)) {
@@ -45,9 +44,9 @@ function propertyType(property) {
         }
     })();
 
-    if (properties.supportsPropertyExpression(property)) {
+    if (supportsPropertyExpression(property)) {
         return `DataDrivenPropertyValueSpecification<${baseType}>`;
-    } else if (properties.supportsZoomExpression(property)) {
+    } else if (supportsZoomExpression(property)) {
         return `PropertyValueSpecification<${baseType}>`;
     } else if (property.expression) {
         return 'ExpressionSpecification';
@@ -116,7 +115,7 @@ function layerType(key) {
 
 const layerTypes = Object.keys(spec.layer.type.values);
 
-fs.writeFileSync('src/types.g.ts',
+writeFileSync('src/types.g.ts',
     `// Generated code; do not edit. Edit build/generate-style-spec.ts instead.
 /* eslint-disable */
 

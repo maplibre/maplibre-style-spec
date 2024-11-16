@@ -22,7 +22,7 @@ type CollatorOptions = {
     caseFirst?: 'upper' | 'lower' | 'false';
 };
 
-export default class Collator {
+export class Collator {
     locale: string | null;
     sensitivity: 'base' | 'accent' | 'case' | 'variant';
     collator: Intl$Collator;

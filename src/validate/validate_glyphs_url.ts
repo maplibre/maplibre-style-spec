@@ -1,8 +1,8 @@
 
-import ValidationError from '../error/validation_error';
-import validateString from './validate_string';
+import {ValidationError} from '../error/validation_error';
+import {validateString} from './validate_string';
 
-export default function validateGlyphsUrl(options) {
+export function validateGlyphsUrl(options) {
     const value = options.value;
     const key = options.key;
 

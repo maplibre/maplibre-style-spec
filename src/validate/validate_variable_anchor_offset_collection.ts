@@ -1,9 +1,9 @@
-import ValidationError from '../error/validation_error';
-import getType from '../util/get_type';
-import validateArray from './validate_array';
-import validateEnum from './validate_enum';
+import {ValidationError} from '../error/validation_error';
+import {getType} from '../util/get_type';
+import {validateArray} from './validate_array';
+import {validateEnum} from './validate_enum';
 
-export default function validateVariableAnchorOffsetCollection(options): ValidationError[] {
+export function validateVariableAnchorOffsetCollection(options): ValidationError[] {
     const key = options.key;
     const value = options.value;
     const type = getType(value);

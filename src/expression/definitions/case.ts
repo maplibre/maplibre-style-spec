@@ -2,13 +2,13 @@
 import {BooleanType} from '../types';
 
 import type {Expression} from '../expression';
-import type ParsingContext from '../parsing_context';
-import type EvaluationContext from '../evaluation_context';
+import type {ParsingContext} from '../parsing_context';
+import type {EvaluationContext} from '../evaluation_context';
 import type {Type} from '../types';
 
 type Branches = Array<[Expression, Expression]>;
 
-class Case implements Expression {
+export class Case implements Expression {
     type: Type;
 
     branches: Branches;
@@ -73,4 +73,3 @@ class Case implements Expression {
     }
 }
 
-export default Case;

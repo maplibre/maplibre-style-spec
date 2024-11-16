@@ -1,5 +1,5 @@
 import {expectCloseToArray, expectToMatchColor} from '../../../test/lib/util';
-import Color, {isSupportedInterpolationColorSpace} from './color';
+import {Color, isSupportedInterpolationColorSpace} from './color';
 
 describe('Color class', () => {
 
@@ -35,6 +35,12 @@ describe('Color class', () => {
         expect(color).toMatchObject({r: 0, g: 0, b: 0, a: 0});
         expect(Object.hasOwn(color, 'rgb')).toBe(true);
         expectCloseToArray(color.rgb, [0, 0, 0.5, 0]);
+    });
+
+    test('should have static properties, black', () => {
+        const color = Color.black;
+        expect(color).toMatchObject({r: 0, g: 0, b: 0, a: 1});
+        expectCloseToArray(color.rgb, [0, 0, 0, 1]);
     });
 
     test('should not keep a reference to the original color when alpha!=0', () => {

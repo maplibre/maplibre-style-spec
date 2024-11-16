@@ -1,15 +1,15 @@
 import {BooleanType, ColorType, NumberType, StringType, ValueType} from '../types';
-import {toString as valueToString, validateRGBA} from '../values';
-import RuntimeError from '../runtime_error';
-import Formatted from '../types/formatted';
-import ResolvedImage from '../types/resolved_image';
-import Color from '../types/color';
-import Padding from '../types/padding';
-import VariableAnchorOffsetCollection from '../types/variable_anchor_offset_collection';
+import {valueToString, validateRGBA} from '../values';
+import {RuntimeError} from '../runtime_error';
+import {Formatted} from '../types/formatted';
+import {ResolvedImage} from '../types/resolved_image';
+import {Color} from '../types/color';
+import {Padding} from '../types/padding';
+import {VariableAnchorOffsetCollection} from '../types/variable_anchor_offset_collection';
 
 import type {Expression} from '../expression';
-import type ParsingContext from '../parsing_context';
-import type EvaluationContext from '../evaluation_context';
+import type {ParsingContext} from '../parsing_context';
+import type {EvaluationContext} from '../evaluation_context';
 import type {Type} from '../types';
 
 const types = {
@@ -26,7 +26,7 @@ const types = {
  *
  * @private
  */
-class Coercion implements Expression {
+export class Coercion implements Expression {
     type: Type;
     args: Array<Expression>;
 
@@ -140,4 +140,3 @@ class Coercion implements Expression {
     }
 }
 
-export default Coercion;
