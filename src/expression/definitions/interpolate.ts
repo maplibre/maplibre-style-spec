@@ -26,7 +26,7 @@ type InterpolatedValueType = NumberTypeT | ColorTypeT | StringTypeT | Projection
 export class Interpolate implements Expression {
     type: InterpolatedValueType;
 
-    operator: 'interpolate' | 'interpolate-hcl' | 'interpolate-lab' ;
+    operator: 'interpolate' | 'interpolate-hcl' | 'interpolate-lab';
     interpolation: InterpolationType;
     input: Expression;
     labels: Array<number>;
@@ -172,7 +172,7 @@ export class Interpolate implements Expression {
 
         const outputLower = outputs[index].evaluate(ctx);
         const outputUpper = outputs[index + 1].evaluate(ctx);
-        
+
         switch (this.operator) {
             case 'interpolate':
                 switch (this.type.kind) {
