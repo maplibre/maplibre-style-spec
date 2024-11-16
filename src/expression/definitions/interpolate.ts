@@ -12,7 +12,7 @@ import type {Stops} from '../stops';
 import type {Expression} from '../expression';
 import type {ParsingContext} from '../parsing_context';
 import type {EvaluationContext} from '../evaluation_context';
-import type {ProjectionDefinitionTypeT, StringTypeT, Type} from '../types';
+import type {ProjectionDefinitionTypeT, Type} from '../types';
 
 export type InterpolationType = {
     name: 'linear';
@@ -23,7 +23,7 @@ export type InterpolationType = {
     name: 'cubic-bezier';
     controlPoints: [number, number, number, number];
 };
-type InterpolatedValueType = NumberTypeT | ColorTypeT | StringTypeT | ProjectionDefinitionTypeT | PaddingTypeT | VariableAnchorOffsetCollectionTypeT | ArrayType<NumberTypeT>;
+type InterpolatedValueType = NumberTypeT | ColorTypeT | ProjectionDefinitionTypeT | PaddingTypeT | VariableAnchorOffsetCollectionTypeT | ArrayType<NumberTypeT>;
 export class Interpolate implements Expression {
     type: InterpolatedValueType;
 

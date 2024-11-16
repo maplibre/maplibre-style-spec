@@ -8,14 +8,6 @@ export class ProjectionDefinition {
         this.to = to;
         this.transition = transition;
     }
-    
-    toString() {
-        return `["${this.from}", "${this.to}", ${this.transition}]`;
-    }
-
-    toJSON() {
-        return [this.from, this.to, this.transition];
-    }
 
     static interpolate(from: string, to: string, t: number) {
         return new ProjectionDefinition(from, to, t);
@@ -25,7 +17,7 @@ export class ProjectionDefinition {
         if (input instanceof ProjectionDefinition) {
             return input;
         }
-        if (Array.isArray(input) && input.length === 3) {
+        if (Array.isArray(input) && input.length === 3 && typeof input[0] === 'string' && typeof input[1] === 'string' && typeof input[2] === 'number') {
             return new ProjectionDefinition(input[0], input[1], input[2]);
         }
         if (typeof input === 'string') {

@@ -38,11 +38,11 @@
         "type": "projectionDefinition"
       },
       "outputs": [
-        [
-          "mercator",
-          "mercator",
-          0.5
-        ]
+        {
+          "from": "mercator",
+          "to": "mercator",
+          "transition": 0.5
+        }
       ]
     }
   }
