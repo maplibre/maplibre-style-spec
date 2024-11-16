@@ -1,7 +1,7 @@
 import v8Spec from './reference/v8.json' with {type: 'json'};
 const v8 = v8Spec as any;
 import latest from './reference/latest';
-import {deref as derefLayers} from './deref';
+import {derefLayers} from './deref';
 import {diffStyles as diff} from './diff';
 import {ValidationError} from './error/validation_error';
 import {ParsingError} from './error/parsing_error';
