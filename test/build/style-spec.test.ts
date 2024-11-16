@@ -1,5 +1,5 @@
 import {readdir} from 'fs/promises';
-import reference from '../../src/reference/latest';
+import {spec as reference} from '../../src/reference/latest';
 import fs from 'fs';
 
 const minBundle = fs.readFileSync('dist/index.mjs', 'utf8');

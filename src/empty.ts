@@ -1,4 +1,4 @@
-import latest from './reference/latest';
+import {spec as latest} from './reference/latest';
 import {StyleSpecification} from './types.g';
 
 export function emptyStyle(): StyleSpecification {

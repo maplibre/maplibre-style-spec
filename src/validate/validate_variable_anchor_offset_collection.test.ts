@@ -1,6 +1,6 @@
 import {validate} from './validate';
 import {validateVariableAnchorOffsetCollection} from './validate_variable_anchor_offset_collection';
-import latestStyleSpec from '../reference/latest';
+import {spec as latestStyleSpec} from '../reference/latest';
 
 describe('Validate variableAnchorOffsetCollection', () => {
     const validateOpts = {
