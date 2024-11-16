@@ -1,9 +1,5 @@
 export class ProjectionDefinition {
-    public from
-    public to
-    public transition
-
-    constructor(from: string, to: string, transition: number){
+    constructor(public from: string, public to: string, public transition: number){
         this.from = from;
         this.to = to;
         this.transition = transition;
