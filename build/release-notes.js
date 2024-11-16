@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
-import * as fs from 'fs';
+import {readFileSync} from 'fs';
 import semver from 'semver';
 
 const changelogPath = 'CHANGELOG.md';
-const changelog = fs.readFileSync(changelogPath, 'utf8');
+const changelog = readFileSync(changelogPath, 'utf8');
 
 /*
   Parse the raw changelog text and split it into individual releases.
