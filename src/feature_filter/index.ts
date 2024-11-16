@@ -77,7 +77,7 @@ const filterSpec = {
  * @param {Array} filter MapLibre filter
  * @returns {Function} filter-evaluating function
  */
-export function createFilter(filter: any): FeatureFilter {
+export function featureFilter(filter: any): FeatureFilter {
     if (filter === null || filter === undefined) {
         return {filter: () => true, needGeometry: false};
     }

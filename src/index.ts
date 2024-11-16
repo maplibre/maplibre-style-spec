@@ -1,12 +1,12 @@
 import v8Spec from './reference/v8.json' with {type: 'json'};
 const v8 = v8Spec as any;
-import {spec as latest} from './reference/latest';
+import {latest} from './reference/latest';
 import {derefLayers} from './deref';
-import {diffStyles as diff} from './diff';
+import {diff} from './diff';
 import {ValidationError} from './error/validation_error';
 import {ParsingError} from './error/parsing_error';
 import {FeatureState, StyleExpression, isExpression, isZoomExpression, createExpression, createPropertyExpression, normalizePropertyExpression, ZoomConstantExpression, ZoomDependentExpression, StylePropertyFunction, Feature, GlobalProperties, SourceExpression, CompositeExpression, StylePropertyExpression} from './expression';
-import {createFilter as featureFilter, isExpressionFilter} from './feature_filter';
+import {featureFilter, isExpressionFilter} from './feature_filter';
 
 import {convertFilter} from './feature_filter/convert';
 import {Color} from './expression/types/color';

@@ -1,11 +1,11 @@
 import {validate} from './validate';
 import {validateVariableAnchorOffsetCollection} from './validate_variable_anchor_offset_collection';
-import {spec} from '../reference/latest';
+import {latest} from '../reference/latest';
 
 describe('Validate variableAnchorOffsetCollection', () => {
     const validateOpts = {
         validateSpec: validate,
-        styleSpec: spec,
+        styleSpec: latest,
         key: 'myProp',
     };
     test('Should return error if type is not array', () => {

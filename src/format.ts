@@ -1,5 +1,5 @@
 
-import {spec} from './reference/latest';
+import {latest} from './reference/latest';
 import stringifyPretty from 'json-stringify-pretty-compact';
 
 function sortKeysBy(obj, reference) {
@@ -39,10 +39,10 @@ function sortKeysBy(obj, reference) {
  * fs.writeFileSync('./dest.min.json', format(style, 0));
  */
 export function format(style, space = 2) {
-    style = sortKeysBy(style, spec.$root);
+    style = sortKeysBy(style, latest.$root);
 
     if (style.layers) {
-        style.layers = style.layers.map((layer) => sortKeysBy(layer, spec.layer));
+        style.layers = style.layers.map((layer) => sortKeysBy(layer, latest.layer));
     }
 
     return stringifyPretty(style, {indent: space});

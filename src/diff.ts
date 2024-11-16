@@ -267,7 +267,7 @@ function diffLayers(before: LayerSpecification[], after: LayerSpecification[], c
  * @param {*} after stylesheet to compare to
  * @returns Array list of changes
  */
-export function diffStyles(before: StyleSpecification, after: StyleSpecification): DiffCommand<DiffOperations>[] {
+export function diff(before: StyleSpecification, after: StyleSpecification): DiffCommand<DiffOperations>[] {
     if (!before) return [{command: 'setStyle', args: [after]}];
 
     let commands: DiffCommand<DiffOperations>[] = [];
