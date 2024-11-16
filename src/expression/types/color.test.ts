@@ -37,6 +37,12 @@ describe('Color class', () => {
         expectCloseToArray(color.rgb, [0, 0, 0.5, 0]);
     });
 
+    test('should have static properties, black', () => {
+        const color = Color.black;
+        expect(color).toMatchObject({r: 0, g: 0, b: 0, a: 1});
+        expectCloseToArray(color.rgb, [0, 0, 0, 1]);
+    });
+
     test('should not keep a reference to the original color when alpha!=0', () => {
         const color = new Color(0, 0, 0.5, 0.001, false);
         expect(color).toMatchObject({r: 0, g: 0, b: expect.closeTo(0.5 * 0.001, 5), a: 0.001});
