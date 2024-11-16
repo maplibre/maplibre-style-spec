@@ -2,16 +2,17 @@ import UnitBezier from '@mapbox/unitbezier';
 
 import {array, ArrayType, ColorType, ColorTypeT, NumberType, NumberTypeT, PaddingType, PaddingTypeT, VariableAnchorOffsetCollectionType, VariableAnchorOffsetCollectionTypeT, typeToString, verifyType, ProjectionDefinitionType} from '../types';
 import {findStopLessThanOrEqualTo} from '../stops';
+import {Color} from '../types/color';
+import {interpolateArray, interpolateNumber} from '../../util/interpolate-primitives';
+import {Padding} from '../types/padding';
+import {VariableAnchorOffsetCollection} from '../types/variable_anchor_offset_collection';
+import {ProjectionDefinition} from '../types/projection_definition';
 
 import type {Stops} from '../stops';
 import type {Expression} from '../expression';
 import type {ParsingContext} from '../parsing_context';
 import type {EvaluationContext} from '../evaluation_context';
 import type {ProjectionDefinitionTypeT, StringTypeT, Type} from '../types';
-import {Color} from '../types/color';
-import {interpolateArray, interpolateNumber} from '../../util/interpolate-primitives';
-import {Padding} from '../types/padding';
-import {VariableAnchorOffsetCollection} from '../types/variable_anchor_offset_collection';
 
 export type InterpolationType = {
     name: 'linear';
@@ -186,6 +187,8 @@ export class Interpolate implements Expression {
                         return VariableAnchorOffsetCollection.interpolate(outputLower, outputUpper, t);
                     case 'array':
                         return interpolateArray(outputLower, outputUpper, t);
+                    case 'projectionDefinition':
+                        return ProjectionDefinition.interpolate(outputLower, outputUpper, t);
                 }
             case 'interpolate-hcl':
                 return Color.interpolate(outputLower, outputUpper, t, 'hcl');

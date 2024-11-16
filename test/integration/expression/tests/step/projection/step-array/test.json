@@ -1,6 +1,6 @@
 {
     "propertySpec": {
-      "type": "string",
+      "type": "projectionDefinition",
       "property-type": "data-constant",
       "expression": {
         "interpolated": true,
@@ -31,7 +31,7 @@
         "result": "success",
         "isFeatureConstant": true,
         "isZoomConstant": false,
-        "type": "string"
+        "type": "projectionDefinition"
       },
       "outputs": [
         [
