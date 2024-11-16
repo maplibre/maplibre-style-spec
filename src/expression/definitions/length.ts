@@ -1,11 +1,11 @@
 import {NumberType, toString} from '../types';
 
 import {typeOf} from '../values';
-import RuntimeError from '../runtime_error';
+import {RuntimeError} from '../runtime_error';
 
 import type {Expression} from '../expression';
-import type ParsingContext from '../parsing_context';
-import type EvaluationContext from '../evaluation_context';
+import type {ParsingContext} from '../parsing_context';
+import type {EvaluationContext} from '../evaluation_context';
 import type {Type} from '../types';
 
 export class Length implements Expression {

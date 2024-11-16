@@ -1,5 +1,5 @@
-import type Color from '../../expression/types/color';
-import type ResolvedImage from '../types/resolved_image';
+import type {Color} from '../../expression/types/color';
+import type {ResolvedImage} from '../types/resolved_image';
 
 export class FormattedSection {
     text: string;
@@ -17,7 +17,7 @@ export class FormattedSection {
     }
 }
 
-export default class Formatted {
+export class Formatted {
     sections: Array<FormattedSection>;
 
     constructor(sections: Array<FormattedSection>) {

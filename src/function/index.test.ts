@@ -1,8 +1,8 @@
 import {expectToMatchColor} from '../../test/lib/util';
 import {createFunction} from './index';
-import Color from '../expression/types/color';
-import Formatted from '../expression/types/formatted';
-import Padding from '../expression/types/padding';
+import {Color} from '../expression/types/color';
+import {Formatted} from '../expression/types/formatted';
+import {Padding} from '../expression/types/padding';
 
 describe('binary search', () => {
     test('will eventually terminate.', () => {

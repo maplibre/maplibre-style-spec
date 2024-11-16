@@ -4,7 +4,7 @@ import type {Expression} from './expression';
  * Tracks `let` bindings during expression parsing.
  * @private
  */
-class Scope {
+export class Scope {
     parent: Scope;
     bindings: {[_: string]: Expression};
     constructor(parent?: Scope, bindings: Array<[string, Expression]> = []) {
@@ -30,5 +30,3 @@ class Scope {
         return this.parent ? this.parent.has(name) : false;
     }
 }
-
-export default Scope;

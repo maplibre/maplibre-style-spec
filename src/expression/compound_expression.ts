@@ -11,25 +11,25 @@ import {toString,
     toString as typeToString,
 } from './types';
 
-import ParsingContext from './parsing_context';
-import EvaluationContext from './evaluation_context';
+import {ParsingContext} from './parsing_context';
+import {EvaluationContext} from './evaluation_context';
 
 import {expressions} from './definitions/index';
-import CollatorExpression from './definitions/collator';
-import Within from './definitions/within';
-import Literal from './definitions/literal';
-import Assertion from './definitions/assertion';
-import Coercion from './definitions/coercion';
-import Var from './definitions/var';
-import Distance from './definitions/distance';
+import {CollatorExpression} from './definitions/collator';
+import {Within} from './definitions/within';
+import {Literal} from './definitions/literal';
+import {Assertion} from './definitions/assertion';
+import {Coercion} from './definitions/coercion';
+import {Var} from './definitions/var';
+import {Distance} from './definitions/distance';
 
 import type {Expression, ExpressionRegistry} from './expression';
 import type {Value} from './values';
 import type {Type} from './types';
 
 import {typeOf, validateRGBA, toString as valueToString} from './values';
-import RuntimeError from './runtime_error';
-import Color from './types/color';
+import {RuntimeError} from './runtime_error';
+import {Color} from './types/color';
 
 export type Varargs = {
     type: Type;
@@ -42,7 +42,7 @@ type Definition = [Type, Signature, Evaluate] | {
     overloads: Array<[Signature, Evaluate]>;
 };
 
-class CompoundExpression implements Expression {
+export class CompoundExpression implements Expression {
     name: string;
     type: Type;
     _evaluate: Evaluate;
@@ -752,4 +752,3 @@ function isGlobalPropertyConstant(e: Expression, properties: Array<string>) {
 }
 
 export {isFeatureConstant, isGlobalPropertyConstant, isStateConstant, isExpressionConstant};
-export default CompoundExpression;

@@ -9,7 +9,7 @@ import {
     ICanonicalTileID,
     StylePropertyExpression
 } from '../../../src/index';
-import ExpressionParsingError from '../../../src/expression/parsing_error';
+import {ExpressionParsingError} from '../../../src/expression/parsing_error';
 import {Result} from '../../../src/util/result';
 import {getGeometry} from '../../lib/geometry';
 import {deepEqual, stripPrecision} from '../../lib/json-diff';

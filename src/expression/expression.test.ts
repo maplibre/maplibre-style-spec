@@ -1,10 +1,10 @@
 import {createPropertyExpression, Feature, GlobalProperties, StylePropertyExpression} from '../expression';
-import definitions from './definitions';
+import {expressions as definitions} from './definitions';
 import v8 from '../reference/v8.json' with {type: 'json'};
 import {createExpression, ICanonicalTileID, StyleExpression, StylePropertySpecification} from '..';
-import ParsingError from './parsing_error';
+import {ExpressionParsingError as ParsingError} from './parsing_error';
 import {getGeometry} from '../../test/lib/geometry';
-import VariableAnchorOffsetCollection from './types/variable_anchor_offset_collection';
+import {VariableAnchorOffsetCollection} from './types/variable_anchor_offset_collection';
 
 // filter out internal "error" and "filter-*" expressions from definition list
 const filterExpressionRegex = /filter-/;

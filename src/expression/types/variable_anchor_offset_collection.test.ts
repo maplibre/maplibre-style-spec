@@ -1,4 +1,4 @@
-import VariableAnchorOffsetCollection from './variable_anchor_offset_collection';
+import {VariableAnchorOffsetCollection} from './variable_anchor_offset_collection';
 
 describe('VariableAnchorOffsetCollection', () => {
     test('VariableAnchorOffsetCollection.parse', () => {

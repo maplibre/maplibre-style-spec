@@ -5,7 +5,7 @@ import {interpolateArray} from '../../util/interpolate-primitives';
  * bare arrays or numeric values using the static method `Padding.parse`.
  * @private
  */
-class Padding {
+export class Padding {
     /** Padding values are in CSS order: top, right, bottom, left */
     values: [number, number, number, number];
 
@@ -67,5 +67,3 @@ class Padding {
         return new Padding(interpolateArray(from.values, to.values, t));
     }
 }
-
-export default Padding;

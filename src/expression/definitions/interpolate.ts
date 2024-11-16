@@ -5,13 +5,13 @@ import {findStopLessThanOrEqualTo} from '../stops';
 
 import type {Stops} from '../stops';
 import type {Expression} from '../expression';
-import type ParsingContext from '../parsing_context';
-import type EvaluationContext from '../evaluation_context';
+import type {ParsingContext} from '../parsing_context';
+import type {EvaluationContext} from '../evaluation_context';
 import type {Type} from '../types';
-import Color from '../types/color';
+import {Color} from '../types/color';
 import {interpolateArray, interpolateNumber} from '../../util/interpolate-primitives';
-import Padding from '../types/padding';
-import VariableAnchorOffsetCollection from '../types/variable_anchor_offset_collection';
+import {Padding} from '../types/padding';
+import {VariableAnchorOffsetCollection} from '../types/variable_anchor_offset_collection';
 
 export type InterpolationType = {
     name: 'linear';

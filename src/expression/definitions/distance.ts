@@ -1,9 +1,9 @@
 import TinyQueue from 'tinyqueue';
 import {Expression} from '../expression';
-import ParsingContext from '../parsing_context';
+import {ParsingContext} from '../parsing_context';
 import {NumberType, Type} from '../types';
 import {isValue} from '../values';
-import EvaluationContext from '../evaluation_context';
+import {EvaluationContext} from '../evaluation_context';
 import {BBox, boxWithinBox, getLngLatFromTileCoord, pointWithinPolygon, segmentIntersectSegment, updateBBox} from '../../util/geometry_util';
 import {classifyRings} from '../../util/classify_rings';
 import CheapRuler from '../../util/cheap_ruler';

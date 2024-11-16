@@ -1,9 +1,9 @@
 import {checkSubtype, ValueType} from '../types';
-import ResolvedImage from '../types/resolved_image';
+import {ResolvedImage} from '../types/resolved_image';
 
 import type {Expression} from '../expression';
-import type ParsingContext from '../parsing_context';
-import type EvaluationContext from '../evaluation_context';
+import type {ParsingContext} from '../parsing_context';
+import type {EvaluationContext} from '../evaluation_context';
 import type {Type} from '../types';
 
 export class Coalesce implements Expression {

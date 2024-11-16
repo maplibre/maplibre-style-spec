@@ -7,12 +7,12 @@ import {
     ColorType,
     ResolvedImageType,
 } from '../types';
-import Formatted, {FormattedSection} from '../types/formatted';
+import {Formatted, FormattedSection} from '../types/formatted';
 import {toString, typeOf} from '../values';
 
 import type {Expression} from '../expression';
-import type EvaluationContext from '../evaluation_context';
-import type ParsingContext from '../parsing_context';
+import type {EvaluationContext} from '../evaluation_context';
+import type {ParsingContext} from '../parsing_context';
 import type {Type} from '../types';
 
 type FormattedSectionExpression = {

@@ -1,4 +1,4 @@
-class RuntimeError {
+export class RuntimeError {
     name: string;
     message: string;
 
@@ -11,5 +11,3 @@ class RuntimeError {
         return this.message;
     }
 }
-
-export default RuntimeError;

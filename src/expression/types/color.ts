@@ -20,7 +20,7 @@ export function isSupportedInterpolationColorSpace(colorSpace: string): colorSpa
  * Defined in sRGB color space and pre-blended with alpha.
  * @private
  */
-class Color {
+export class Color {
 
     readonly r: number;
     readonly g: number;
@@ -56,10 +56,10 @@ class Color {
         }
     }
 
-    static black: Color;
-    static white: Color;
-    static transparent: Color;
-    static red: Color;
+    static black = new Color(0, 0, 0, 1);
+    static white = new Color(1, 1, 1, 1);
+    static transparent = new Color(0, 0, 0, 0);
+    static red = new Color(1, 0, 0, 1);
 
     /**
      * Parses CSS color strings and converts colors to sRGB color space if needed.
@@ -206,9 +206,3 @@ class Color {
 
 }
 
-Color.black = new Color(0, 0, 0, 1);
-Color.white = new Color(1, 1, 1, 1);
-Color.transparent = new Color(0, 0, 0, 0);
-Color.red = new Color(1, 0, 0, 1);
-
-export default Color;

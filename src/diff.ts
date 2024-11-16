@@ -1,6 +1,6 @@
 
 import {GeoJSONSourceSpecification, LayerSpecification, LightSpecification, ProjectionSpecification, SkySpecification, SourceSpecification, SpriteSpecification, StyleSpecification, TerrainSpecification, TransitionSpecification} from './types.g';
-import isEqual from './util/deep_equal';
+import {deepEqual as isEqual} from './util/deep_equal';
 
 /**
  * Operations that can be performed by the diff.

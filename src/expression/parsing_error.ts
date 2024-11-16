@@ -1,4 +1,4 @@
-class ExpressionParsingError extends Error {
+export class ExpressionParsingError extends Error {
     key: string;
     message: string;
     constructor(key: string, message: string) {
@@ -7,5 +7,3 @@ class ExpressionParsingError extends Error {
         this.key = key;
     }
 }
-
-export default ExpressionParsingError;

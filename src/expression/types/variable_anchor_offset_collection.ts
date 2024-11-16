@@ -1,4 +1,4 @@
-import RuntimeError from '../runtime_error';
+import {RuntimeError} from '../runtime_error';
 import {interpolateNumber} from '../../util/interpolate-primitives';
 import type {VariableAnchorOffsetCollectionSpecification} from '../../types.g';
 
@@ -10,7 +10,7 @@ const anchors = new Set(['center', 'left', 'right', 'top', 'bottom', 'top-left',
  * bare arrays using the static method `VariableAnchorOffsetCollection.parse`.
  * @private
  */
-class VariableAnchorOffsetCollection {
+export class VariableAnchorOffsetCollection {
     /** Series of paired of anchor (string) and offset (point) values */
     values: VariableAnchorOffsetCollectionSpecification;
 
@@ -76,5 +76,3 @@ class VariableAnchorOffsetCollection {
         return new VariableAnchorOffsetCollection(output);
     }
 }
-
-export default VariableAnchorOffsetCollection;

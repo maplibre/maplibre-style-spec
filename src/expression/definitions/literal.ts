@@ -3,7 +3,7 @@ import {isValue, typeOf} from '../values';
 import type {Type} from '../types';
 import type {Value}  from '../values';
 import type {Expression} from '../expression';
-import type ParsingContext from '../parsing_context';
+import type {ParsingContext} from '../parsing_context';
 
 export class Literal implements Expression {
     type: Type;

@@ -1,12 +1,12 @@
-import Color, {isSupportedInterpolationColorSpace} from '../expression/types/color';
+import {Color, isSupportedInterpolationColorSpace} from '../expression/types/color';
 import {extendBy as extend} from '../util/extend';
 import {getType} from '../util/get_type';
-import Interpolate, {interpolateFactory} from '../expression/definitions/interpolate';
-import Formatted from '../expression/types/formatted';
-import ResolvedImage from '../expression/types/resolved_image';
+import {Interpolate, interpolateFactory} from '../expression/definitions/interpolate';
+import {Formatted} from '../expression/types/formatted';
+import {ResolvedImage} from '../expression/types/resolved_image';
 import {supportsInterpolation} from '../util/properties';
 import {findStopLessThanOrEqualTo} from '../expression/stops';
-import Padding from '../expression/types/padding';
+import {Padding} from '../expression/types/padding';
 
 export function isFunction(value) {
     return typeof value === 'object' && value !== null && !Array.isArray(value);

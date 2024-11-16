@@ -1,22 +1,22 @@
 
 import {extendBy as extend} from '../util/extend';
-import ExpressionParsingError from './parsing_error';
-import ParsingContext from './parsing_context';
-import EvaluationContext from './evaluation_context';
+import {ExpressionParsingError} from './parsing_error';
+import {ParsingContext} from './parsing_context';
+import {EvaluationContext} from './evaluation_context';
 
-import CompoundExpression, {isFeatureConstant,
+import {CompoundExpression, isFeatureConstant,
     isGlobalPropertyConstant,
     isStateConstant,
     isExpressionConstant
 } from './compound_expression';
 
-import Step from './definitions/step';
-import Interpolate from './definitions/interpolate';
-import Coalesce from './definitions/coalesce';
-import Let from './definitions/let';
-import definitions from './definitions';
+import {Step} from './definitions/step';
+import {Interpolate} from './definitions/interpolate';
+import {Coalesce} from './definitions/coalesce';
+import {Let} from './definitions/let';
+import {expressions as definitions} from './definitions';
 
-import RuntimeError from './runtime_error';
+import {RuntimeError} from './runtime_error';
 import {success, error} from '../util/result';
 import {supportsPropertyExpression, supportsZoomExpression, supportsInterpolation} from '../util/properties';
 
@@ -32,9 +32,9 @@ import type {Point2D} from '../point2d';
 
 import {ICanonicalTileID} from '../tiles_and_coordinates';
 import {isFunction, createFunction} from '../function';
-import Color from './types/color';
-import Padding from './types/padding';
-import VariableAnchorOffsetCollection from './types/variable_anchor_offset_collection';
+import {Color} from './types/color';
+import {Padding} from './types/padding';
+import {VariableAnchorOffsetCollection} from './types/variable_anchor_offset_collection';
 
 export type Feature = {
     readonly type: 0 | 1 | 2 | 3 | 'Unknown' | 'Point' | 'MultiPoint' | 'LineString' | 'MultiLineString' | 'Polygon' | 'MultiPolygon';

@@ -8,12 +8,12 @@ import {
     isValidType,
     isValidNativeType,
 } from '../types';
-import RuntimeError from '../runtime_error';
+import {RuntimeError} from '../runtime_error';
 import {typeOf} from '../values';
 
 import type {Expression} from '../expression';
-import type ParsingContext from '../parsing_context';
-import type EvaluationContext from '../evaluation_context';
+import type {ParsingContext} from '../parsing_context';
+import type {EvaluationContext} from '../evaluation_context';
 import type {Type} from '../types';
 
 export class IndexOf implements Expression {

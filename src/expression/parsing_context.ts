@@ -1,10 +1,10 @@
-import Scope from './scope';
+import {Scope} from './scope';
 import {checkSubtype} from './types';
-import ExpressionParsingError from './parsing_error';
-import Literal from './definitions/literal';
-import Assertion from './definitions/assertion';
-import Coercion from './definitions/coercion';
-import EvaluationContext from './evaluation_context';
+import {ExpressionParsingError} from './parsing_error';
+import {Literal} from './definitions/literal';
+import {Assertion} from './definitions/assertion';
+import {Coercion} from './definitions/coercion';
+import {EvaluationContext} from './evaluation_context';
 
 import type {Expression, ExpressionRegistry} from './expression';
 import type {Type} from './types';
@@ -13,7 +13,7 @@ import type {Type} from './types';
  * State associated parsing at a given point in an expression tree.
  * @private
  */
-class ParsingContext {
+export class ParsingContext {
     registry: ExpressionRegistry;
     path: Array<number>;
     key: string;
@@ -205,4 +205,3 @@ class ParsingContext {
     }
 }
 
-export default ParsingContext;
