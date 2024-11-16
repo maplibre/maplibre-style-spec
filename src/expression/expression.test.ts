@@ -648,10 +648,10 @@ describe('projection expression', () => {
         const response = createExpression(['step', ['zoom'], ['literal', ['vertical-perspective', 'mercator', 0.5]], 10, 'mercator'], { 
             type: 'projectionDefinition', 
             transition: false,
-            "property-type": "data-constant",
+            'property-type': 'data-constant',
             expression: {
                 interpolated: true,
-                parameters: ["zoom"]
+                parameters: ['zoom']
             }
         });
 
@@ -668,10 +668,10 @@ describe('projection expression', () => {
         const response = createExpression(['interpolate', ['linear'], ['zoom'], 8, 'vertical-perspective', 10, 'mercator'], { 
             type: 'projectionDefinition', 
             transition: false,
-            "property-type": "data-constant",
+            'property-type': 'data-constant',
             expression: {
                 interpolated: true,
-                parameters: ["zoom"]
+                parameters: ['zoom']
             }
         });
 
