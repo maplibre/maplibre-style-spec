@@ -23,18 +23,16 @@ export type InterpolationType = {
     controlPoints: [number, number, number, number];
 };
 type InterpolatedValueType = NumberTypeT | ColorTypeT | StringTypeT | ProjectionDefinitionTypeT | PaddingTypeT | VariableAnchorOffsetCollectionTypeT | ArrayType<NumberTypeT>;
-
-type InterpolationOperator = 'interpolate' | 'interpolate-hcl' | 'interpolate-lab';
 export class Interpolate implements Expression {
     type: InterpolatedValueType;
 
-    operator: InterpolationOperator ;
+    operator: 'interpolate' | 'interpolate-hcl' | 'interpolate-lab' ;
     interpolation: InterpolationType;
     input: Expression;
     labels: Array<number>;
     outputs: Array<Expression>;
 
-    constructor(type: InterpolatedValueType, operator: InterpolationOperator, interpolation: InterpolationType, input: Expression, stops: Stops) {
+    constructor(type: InterpolatedValueType, operator: 'interpolate' | 'interpolate-hcl' | 'interpolate-lab', interpolation: InterpolationType, input: Expression, stops: Stops) {
         this.type = type;
         this.operator = operator;
         this.interpolation = interpolation;
