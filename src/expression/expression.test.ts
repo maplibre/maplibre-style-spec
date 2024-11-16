@@ -645,7 +645,15 @@ describe('projection expression', () => {
     })
 
     test('step array', () => {
-        const response = createExpression(['step', ['zoom'], ['literal', ['vertical-perspective', 'mercator', 0.5]], 10, 'mercator']);
+        const response = createExpression(['step', ['zoom'], ['literal', ['vertical-perspective', 'mercator', 0.5]], 10, 'mercator'], { 
+            type: 'projectionDefinition', 
+            transition: false,
+            "property-type": "data-constant",
+            expression: {
+                interpolated: true,
+                parameters: ["zoom"]
+            }
+        });
 
         if (response.result === 'success') {
             expect(response.value.evaluate({zoom: 5})).toStrictEqual(['vertical-perspective', 'mercator', 0.5]);
@@ -656,25 +664,20 @@ describe('projection expression', () => {
         }
     })
 
-    test('interpolate color', () => {
-
-        const response = createExpression(['interpolate', ['linear'], ['zoom'], 8, 'vertical-perspective', 10, 'mercator']);
-
-        if (response.result === 'success') {
-            expect(response.value.evaluate({zoom: 5})).toBe('vertical-perspective');
-            expect(response.value.evaluate({zoom: 9})).toBe(['vertical-perspective', 'mercator', 0.5]);
-            expect(response.value.evaluate({zoom: 11})).toBe('mercator');
-        } else {
-            throw new Error('Failed to parse Interpolate expression');
-        }
-    })
-
     test('interpolate', () => {
-        const response = createExpression(['interpolate', ['linear'], ['zoom'], 8, 'vertical-perspective', 10, 'mercator']);
+        const response = createExpression(['interpolate', ['linear'], ['zoom'], 8, 'vertical-perspective', 10, 'mercator'], { 
+            type: 'projectionDefinition', 
+            transition: false,
+            "property-type": "data-constant",
+            expression: {
+                interpolated: true,
+                parameters: ["zoom"]
+            }
+        });
 
         if (response.result === 'success') {
             expect(response.value.evaluate({zoom: 5})).toBe('vertical-perspective');
-            expect(response.value.evaluate({zoom: 9})).toBe(['vertical-perspective', 'mercator', 0.5]);
+            expect(response.value.evaluate({zoom: 9})).toEqual({from: 'vertical-perspective', to: 'mercator', transition: 0.5});
             expect(response.value.evaluate({zoom: 11})).toBe('mercator');
         } else {
             throw new Error('Failed to parse Interpolate expression');

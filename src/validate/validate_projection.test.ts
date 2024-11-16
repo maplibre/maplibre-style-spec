@@ -25,7 +25,7 @@ describe('Validate projection', () => {
     test('Should return errors according to spec violations', () => {
         const errors = validateProjection({validateSpec: validate, value: {type: 1 as any}, styleSpec: v8, style: {} as any});
         expect(errors).toHaveLength(1);
-        expect(errors[0].message).toBe('projection: object expected, number found');
+        expect(errors[0].message).toBe('type: projection expected, invalid type \"number\" found');
     });
 
     test('Should return error when value is null', () => {
