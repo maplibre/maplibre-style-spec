@@ -354,5 +354,3 @@ export function diffStyles(before: StyleSpecification, after: StyleSpecification
 
     return commands;
 }
-
-
