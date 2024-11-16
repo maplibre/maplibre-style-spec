@@ -1,4 +1,4 @@
-import ProjectionDefinition from './projection_definition';
+import {ProjectionDefinition} from './projection_definition';
 
 describe('Projection class', () => {
 
