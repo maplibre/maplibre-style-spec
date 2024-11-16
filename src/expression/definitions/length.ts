@@ -1,4 +1,4 @@
-import {NumberType, toString} from '../types';
+import {NumberType, typeToString} from '../types';
 
 import {typeOf} from '../values';
 import {RuntimeError} from '../runtime_error';
@@ -25,7 +25,7 @@ export class Length implements Expression {
         if (!input) return null;
 
         if (input.type.kind !== 'array' && input.type.kind !== 'string' && input.type.kind !== 'value')
-            return context.error(`Expected argument of type string or array, but found ${toString(input.type)} instead.`) as null;
+            return context.error(`Expected argument of type string or array, but found ${typeToString(input.type)} instead.`) as null;
 
         return new Length(input);
     }
@@ -38,7 +38,7 @@ export class Length implements Expression {
         } else if (Array.isArray(input)) {
             return input.length;
         } else {
-            throw new RuntimeError(`Expected value to be of type string or array, but found ${toString(typeOf(input))} instead.`);
+            throw new RuntimeError(`Expected value to be of type string or array, but found ${typeToString(typeOf(input))} instead.`);
         }
     }
 

@@ -1,6 +1,6 @@
 
-import {migrateV8 as migrateToV8} from './migrate/v8';
-import {expressions as migrateToExpressions} from './migrate/expressions';
+import {migrateV8} from './migrate/v8';
+import {expressions} from './migrate/expressions';
 import {migrateColors} from './migrate/migrate_colors';
 import {eachProperty} from './visit';
 import type {StyleSpecification} from './types.g';
@@ -20,12 +20,12 @@ export function migrate(style: StyleSpecification): StyleSpecification {
     let migrated = false;
 
     if (style.version as any === 7) {
-        style = migrateToV8(style);
+        style = migrateV8(style);
         migrated = true;
     }
 
     if (style.version === 8) {
-        migrated = !!migrateToExpressions(style);
+        migrated = !!expressions(style);
         migrated = true;
     }
 

@@ -106,7 +106,7 @@ export function typeOf(value: Value): Type {
     }
 }
 
-export function toString(value: Value) {
+export function valueToString(value: Value) {
     const type = typeof value;
     if (value === null) {
         return '';

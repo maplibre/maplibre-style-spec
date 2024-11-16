@@ -1,14 +1,14 @@
 import {createPropertyExpression, Feature, GlobalProperties, StylePropertyExpression} from '../expression';
-import {expressions as definitions} from './definitions';
+import {expressions} from './definitions';
 import v8 from '../reference/v8.json' with {type: 'json'};
 import {createExpression, ICanonicalTileID, StyleExpression, StylePropertySpecification} from '..';
-import {ExpressionParsingError as ParsingError} from './parsing_error';
+import {ExpressionParsingError} from './parsing_error';
 import {getGeometry} from '../../test/lib/geometry';
 import {VariableAnchorOffsetCollection} from './types/variable_anchor_offset_collection';
 
 // filter out internal "error" and "filter-*" expressions from definition list
 const filterExpressionRegex = /filter-/;
-const definitionList = Object.keys(definitions).filter((expression) => {
+const definitionList = Object.keys(expressions).filter((expression) => {
     return expression !== 'error' && !filterExpressionRegex.exec(expression);
 }).sort();
 
@@ -34,7 +34,7 @@ describe('createPropertyExpression', () => {
             }
         } as StylePropertySpecification);
         expect(result).toBe('error');
-        expect((value as ParsingError[])).toHaveLength(1);
+        expect((value as ExpressionParsingError[])).toHaveLength(1);
         expect(value[0].message).toBe('"interpolate" expressions cannot be used with this property');
     });
 

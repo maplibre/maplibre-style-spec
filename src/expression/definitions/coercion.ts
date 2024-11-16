@@ -1,5 +1,5 @@
 import {BooleanType, ColorType, NumberType, StringType, ValueType} from '../types';
-import {toString as valueToString, validateRGBA} from '../values';
+import {valueToString, validateRGBA} from '../values';
 import {RuntimeError} from '../runtime_error';
 import {Formatted} from '../types/formatted';
 import {ResolvedImage} from '../types/resolved_image';

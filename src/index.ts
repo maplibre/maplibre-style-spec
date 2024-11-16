@@ -20,7 +20,7 @@ import {ResolvedImage} from './expression/types/resolved_image';
 import {supportsPropertyExpression} from './util/properties';
 import {IMercatorCoordinate, ICanonicalTileID, ILngLat, ILngLatLike} from './tiles_and_coordinates';
 import {EvaluationContext} from './expression/evaluation_context';
-import {FormattedType, NullType, Type, toString, ColorType} from './expression/types';
+import {FormattedType, NullType, Type, typeToString, ColorType} from './expression/types';
 
 import {expressions} from './expression/definitions';
 import {Interpolate} from './expression/definitions/interpolate';
@@ -182,7 +182,7 @@ export {
     convertFilter,
     featureFilter,
     typeOf,
-    toString,
+    typeToString as toString,
     format,
     validate,
     migrate,

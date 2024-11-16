@@ -1,5 +1,5 @@
 
-import {extendBy as extend} from '../util/extend';
+import {extendBy} from '../util/extend';
 import {ExpressionParsingError} from './parsing_error';
 import {ParsingContext} from './parsing_context';
 import {EvaluationContext} from './evaluation_context';
@@ -14,7 +14,7 @@ import {Step} from './definitions/step';
 import {Interpolate} from './definitions/interpolate';
 import {Coalesce} from './definitions/coalesce';
 import {Let} from './definitions/let';
-import {expressions as definitions} from './definitions';
+import {expressions} from './definitions';
 
 import {RuntimeError} from './runtime_error';
 import {success, error} from '../util/result';
@@ -132,7 +132,7 @@ export class StyleExpression {
 
 export function isExpression(expression: unknown) {
     return Array.isArray(expression) && expression.length > 0 &&
-        typeof expression[0] === 'string' && expression[0] in definitions;
+        typeof expression[0] === 'string' && expression[0] in expressions;
 }
 
 /**
@@ -145,7 +145,7 @@ export function isExpression(expression: unknown) {
  * @private
  */
 export function createExpression(expression: unknown, propertySpec?: StylePropertySpecification | null): Result<StyleExpression, Array<ExpressionParsingError>> {
-    const parser = new ParsingContext(definitions, isExpressionConstant, [], propertySpec ? getExpectedType(propertySpec) : undefined);
+    const parser = new ParsingContext(expressions, isExpressionConstant, [], propertySpec ? getExpectedType(propertySpec) : undefined);
 
     // For string-valued properties, coerce to string at the top level rather than asserting.
     const parsed = parser.parse(expression, undefined, undefined, undefined,
@@ -353,7 +353,7 @@ export class StylePropertyFunction<T> {
     constructor(parameters: PropertyValueSpecification<T>, specification: StylePropertySpecification) {
         this._parameters = parameters;
         this._specification = specification;
-        extend(this, createFunction(this._parameters, this._specification));
+        extendBy(this, createFunction(this._parameters, this._specification));
     }
 
     static deserialize<T>(serialized: {

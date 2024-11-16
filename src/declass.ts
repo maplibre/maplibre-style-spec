@@ -1,5 +1,5 @@
 
-import {extendBy as extend} from './util/extend';
+import {extendBy} from './util/extend';
 
 /**
  * Returns a new style with the given 'paint classes' merged into each layer's
@@ -17,7 +17,7 @@ import {extendBy as extend} from './util/extend';
  * // main `paint` property.
  */
 export function declassStyle(style, classes) {
-    return extend({}, style, {
+    return extendBy({}, style, {
         layers: style.layers.map((layer) => {
             const result = classes.reduce(declassLayer, layer);
 
@@ -34,7 +34,7 @@ export function declassStyle(style, classes) {
 }
 
 function declassLayer(layer, klass) {
-    return extend({}, layer, {
-        paint: extend({}, layer.paint, layer[`paint.${klass}`])
+    return extendBy({}, layer, {
+        paint: extendBy({}, layer.paint, layer[`paint.${klass}`])
     });
 }

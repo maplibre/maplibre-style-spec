@@ -6,7 +6,7 @@ import {
     NumberType,
     BooleanType,
     checkSubtype,
-    toString,
+    typeToString,
     array
 } from '../types';
 import {RuntimeError} from '../runtime_error';
@@ -89,7 +89,7 @@ export class Assertion implements Expression {
             if (!error) {
                 return value;
             } else if (i === this.args.length - 1) {
-                throw new RuntimeError(`Expected value to be of type ${toString(this.type)}, but found ${toString(typeOf(value))} instead.`);
+                throw new RuntimeError(`Expected value to be of type ${typeToString(this.type)}, but found ${typeToString(typeOf(value))} instead.`);
             }
         }
 

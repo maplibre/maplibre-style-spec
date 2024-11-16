@@ -73,9 +73,9 @@ export function array<T extends Type>(itemType: T, N?: number | null): ArrayType
     };
 }
 
-export function toString(type: Type): string {
+export function typeToString(type: Type): string {
     if (type.kind === 'array') {
-        const itemType = toString(type.itemType);
+        const itemType = typeToString(type.itemType);
         return typeof type.N === 'number' ?
             `array<${itemType}, ${type.N}>` :
             type.itemType.kind === 'value' ? 'array' : `array<${itemType}>`;
@@ -123,7 +123,7 @@ export function checkSubtype(expected: Type, t: Type): string {
         }
     }
 
-    return `Expected ${toString(expected)} but found ${toString(t)} instead.`;
+    return `Expected ${typeToString(expected)} but found ${typeToString(t)} instead.`;
 }
 
 export function isValidType(provided: Type, allowedTypes: Array<Type>): boolean {

@@ -1,6 +1,6 @@
 import UnitBezier from '@mapbox/unitbezier';
 
-import {array, ArrayType, ColorType, ColorTypeT, NumberType, NumberTypeT, PaddingType, PaddingTypeT, VariableAnchorOffsetCollectionType, VariableAnchorOffsetCollectionTypeT, toString, verifyType} from '../types';
+import {array, ArrayType, ColorType, ColorTypeT, NumberType, NumberTypeT, PaddingType, PaddingTypeT, VariableAnchorOffsetCollectionType, VariableAnchorOffsetCollectionTypeT, typeToString, verifyType} from '../types';
 import {findStopLessThanOrEqualTo} from '../stops';
 
 import type {Stops} from '../stops';
@@ -142,7 +142,7 @@ export class Interpolate implements Expression {
             !verifyType(outputType, VariableAnchorOffsetCollectionType) &&
             !verifyType(outputType, array(NumberType))
         ) {
-            return context.error(`Type ${toString(outputType)} is not interpolatable.`) as null;
+            return context.error(`Type ${typeToString(outputType)} is not interpolatable.`) as null;
         }
 
         return new Interpolate(outputType, (operator as any), interpolation as InterpolationType, input as Expression, stops);

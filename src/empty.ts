@@ -1,19 +1,19 @@
-import {spec as latest} from './reference/latest';
+import {spec} from './reference/latest';
 import {StyleSpecification} from './types.g';
 
 export function emptyStyle(): StyleSpecification {
     const style = {};
 
-    const version = latest['$version'];
-    for (const styleKey in latest['$root']) {
-        const spec = latest['$root'][styleKey];
+    const version = spec['$version'];
+    for (const styleKey in spec['$root']) {
+        const specification = spec['$root'][styleKey];
 
-        if (spec.required) {
+        if (specification.required) {
             let value = null;
             if (styleKey === 'version') {
                 value = version;
             } else {
-                if (spec.type === 'array') {
+                if (specification.type === 'array') {
                     value = [];
                 } else {
                     value = {};

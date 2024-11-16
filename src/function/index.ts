@@ -1,5 +1,5 @@
 import {Color, isSupportedInterpolationColorSpace} from '../expression/types/color';
-import {extendBy as extend} from '../util/extend';
+import {extendBy} from '../util/extend';
 import {getType} from '../util/get_type';
 import {Interpolate, interpolateFactory} from '../expression/definitions/interpolate';
 import {Formatted} from '../expression/types/formatted';
@@ -26,7 +26,7 @@ export function createFunction(parameters, propertySpec) {
     if (isColor || propertySpec.type === 'padding') {
         const parseFn = isColor ? Color.parse : Padding.parse;
 
-        parameters = extend({}, parameters);
+        parameters = extendBy({}, parameters);
 
         if (parameters.stops) {
             parameters.stops = parameters.stops.map((stop) => {

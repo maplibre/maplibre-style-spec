@@ -1,4 +1,4 @@
-import {groupByLayout as group} from './group_by_layout';
+import {groupByLayout} from './group_by_layout';
 
 describe('group by layout', () => {
     test('group layers whose ref properties are identical', () => {
@@ -10,13 +10,13 @@ describe('group by layout', () => {
             'id': 'child',
             'type': 'line'
         };
-        expect(group([a, b], {})).toEqual([[a, b]]);
-        expect(group([a, b], {})[0][0]).toBe(a);
-        expect(group([a, b], {})[0][1]).toBe(b);
+        expect(groupByLayout([a, b], {})).toEqual([[a, b]]);
+        expect(groupByLayout([a, b], {})[0][0]).toBe(a);
+        expect(groupByLayout([a, b], {})[0][1]).toBe(b);
     });
 
     test('group does not group unrelated layers', () => {
-        expect(group([
+        expect(groupByLayout([
             {
                 'id': 'parent',
                 'type': 'line'
@@ -37,7 +37,7 @@ describe('group by layout', () => {
     });
 
     test('group works even for differing layout key orders', () => {
-        expect(group([
+        expect(groupByLayout([
             {
                 'id': 'parent',
                 'type': 'line',

@@ -1,7 +1,7 @@
 
 import {validateConstants} from './validate/validate_constants';
 import {validate} from './validate/validate';
-import {spec as latestStyleSpec} from './reference/latest';
+import {spec} from './reference/latest';
 
 import {validateSource} from './validate/validate_source';
 import {validateLight} from './validate/validate_light';
@@ -28,7 +28,7 @@ import type {StyleSpecification} from './types.g';
  *   const validate = require('@maplibre/maplibre-gl-style-spec/').validateStyleMin;
  *   const errors = validate(style);
  */
-export function validateStyleMin(style: StyleSpecification, styleSpec = latestStyleSpec): Array<ValidationError> {
+export function validateStyleMin(style: StyleSpecification, styleSpec = spec): Array<ValidationError> {
 
     let errors: ValidationError[] = [];
 
