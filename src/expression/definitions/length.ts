@@ -8,7 +8,7 @@ import type ParsingContext from '../parsing_context';
 import type EvaluationContext from '../evaluation_context';
 import type {Type} from '../types';
 
-class Length implements Expression {
+export class Length implements Expression {
     type: Type;
     input: Expression;
 
@@ -51,4 +51,3 @@ class Length implements Expression {
     }
 }
 
-export default Length;

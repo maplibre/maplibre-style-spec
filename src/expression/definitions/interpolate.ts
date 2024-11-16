@@ -24,7 +24,7 @@ export type InterpolationType = {
 };
 type InterpolatedValueType = NumberTypeT | ColorTypeT | PaddingTypeT | VariableAnchorOffsetCollectionTypeT | ArrayType<NumberTypeT>;
 
-class Interpolate implements Expression {
+export class Interpolate implements Expression {
     type: InterpolatedValueType;
 
     operator: 'interpolate' | 'interpolate-hcl' | 'interpolate-lab';
@@ -254,8 +254,6 @@ function exponentialInterpolation(input, base, lowerValue, upperValue) {
         return (Math.pow(base, progress) - 1) / (Math.pow(base, difference) - 1);
     }
 }
-
-export default Interpolate;
 
 export const interpolateFactory = {
     color: Color.interpolate,

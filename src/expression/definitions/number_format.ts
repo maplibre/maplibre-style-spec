@@ -24,7 +24,7 @@ type NumberFormatOptions = {
     maximumFractionDigits?: null | string;
 };
 
-export default class NumberFormat implements Expression {
+export class NumberFormat implements Expression {
     type: Type;
     number: Expression;
     locale: Expression | null;   // BCP 47 language tag

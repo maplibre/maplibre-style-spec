@@ -13,7 +13,7 @@ type Cases = {
     [k in number | string]: number;
 };
 
-class Match implements Expression {
+export class Match implements Expression {
     type: Type;
     inputType: Type;
 
@@ -115,4 +115,3 @@ class Match implements Expression {
     }
 }
 
-export default Match;

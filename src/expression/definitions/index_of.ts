@@ -16,7 +16,7 @@ import type ParsingContext from '../parsing_context';
 import type EvaluationContext from '../evaluation_context';
 import type {Type} from '../types';
 
-class IndexOf implements Expression {
+export class IndexOf implements Expression {
     type: Type;
     needle: Expression;
     haystack: Expression;
@@ -93,4 +93,3 @@ class IndexOf implements Expression {
     }
 }
 
-export default IndexOf;

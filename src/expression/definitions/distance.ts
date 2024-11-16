@@ -532,7 +532,7 @@ function toSimpleGeometry(geometry: Exclude<GeoJSON.Geometry, GeoJSON.GeometryCo
     return [geometry];
 }
 
-class Distance implements Expression {
+export class Distance implements Expression {
     type: Type;
     geojson: GeoJSON.GeoJSON;
     geometries: SimpleGeometry[];
@@ -578,5 +578,3 @@ class Distance implements Expression {
         return true;
     }
 }
-
-export default Distance;

@@ -6,7 +6,7 @@ import type ParsingContext from '../parsing_context';
 import type EvaluationContext from '../evaluation_context';
 import type {Type} from '../types';
 
-class Coalesce implements Expression {
+export class Coalesce implements Expression {
     type: Type;
     args: Array<Expression>;
 
@@ -80,4 +80,3 @@ class Coalesce implements Expression {
     }
 }
 
-export default Coalesce;

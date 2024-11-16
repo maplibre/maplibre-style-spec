@@ -15,7 +15,7 @@ import type ParsingContext from '../parsing_context';
 import type EvaluationContext from '../evaluation_context';
 import type {Type} from '../types';
 
-class Slice implements Expression {
+export class Slice implements Expression {
     type: Type;
     input: Expression;
     beginIndex: Expression;
@@ -84,4 +84,3 @@ class Slice implements Expression {
     }
 }
 
-export default Slice;

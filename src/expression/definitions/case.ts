@@ -8,7 +8,7 @@ import type {Type} from '../types';
 
 type Branches = Array<[Expression, Expression]>;
 
-class Case implements Expression {
+export class Case implements Expression {
     type: Type;
 
     branches: Branches;
@@ -73,4 +73,3 @@ class Case implements Expression {
     }
 }
 
-export default Case;

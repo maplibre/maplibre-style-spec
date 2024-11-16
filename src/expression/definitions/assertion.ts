@@ -24,7 +24,7 @@ const types = {
     object: ObjectType
 };
 
-class Assertion implements Expression {
+export class Assertion implements Expression {
     type: Type;
     args: Array<Expression>;
 
@@ -104,5 +104,3 @@ class Assertion implements Expression {
         return this.args.every(arg => arg.outputDefined());
     }
 }
-
-export default Assertion;

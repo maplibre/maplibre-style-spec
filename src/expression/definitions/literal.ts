@@ -5,7 +5,7 @@ import type {Value}  from '../values';
 import type {Expression} from '../expression';
 import type ParsingContext from '../parsing_context';
 
-class Literal implements Expression {
+export class Literal implements Expression {
     type: Type;
     value: Value;
 
@@ -50,4 +50,3 @@ class Literal implements Expression {
     }
 }
 
-export default Literal;

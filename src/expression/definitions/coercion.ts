@@ -26,7 +26,7 @@ const types = {
  *
  * @private
  */
-class Coercion implements Expression {
+export class Coercion implements Expression {
     type: Type;
     args: Array<Expression>;
 
@@ -140,4 +140,3 @@ class Coercion implements Expression {
     }
 }
 
-export default Coercion;

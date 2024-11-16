@@ -1,5 +1,5 @@
 import {toString, ValueType, BooleanType, CollatorType} from '../types';
-import Assertion from './assertion';
+import {Assertion} from './assertion';
 import {typeOf} from '../values';
 import RuntimeError from '../runtime_error';
 

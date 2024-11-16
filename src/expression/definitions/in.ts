@@ -16,7 +16,7 @@ import type ParsingContext from '../parsing_context';
 import type EvaluationContext from '../evaluation_context';
 import type {Type} from '../types';
 
-class In implements Expression {
+export class In implements Expression {
     type: Type;
     needle: Expression;
     haystack: Expression;
@@ -72,4 +72,3 @@ class In implements Expression {
     }
 }
 
-export default In;

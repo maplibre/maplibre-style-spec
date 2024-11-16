@@ -24,7 +24,7 @@ type FormattedSectionExpression = {
     textColor: Expression | null;
 };
 
-export default class FormatExpression implements Expression {
+export class FormatExpression implements Expression {
     type: Type;
     sections: Array<FormattedSectionExpression>;
 

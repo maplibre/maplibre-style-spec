@@ -8,7 +8,7 @@ import type EvaluationContext from '../evaluation_context';
 import type {Type, ArrayType} from '../types';
 import type {Value} from '../values';
 
-class At implements Expression {
+export class At implements Expression {
     type: Type;
     index: Expression;
     input: Expression;
@@ -61,4 +61,3 @@ class At implements Expression {
     }
 }
 
-export default At;

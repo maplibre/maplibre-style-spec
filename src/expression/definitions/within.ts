@@ -143,7 +143,7 @@ function linesWithinPolygons(ctx: EvaluationContext, polygonGeometry: GeoJSONPol
     return true;
 }
 
-class Within implements Expression {
+export class Within implements Expression {
     type: Type;
     geojson: GeoJSON.GeoJSON;
     geometries: GeoJSONPolygons;
@@ -207,5 +207,3 @@ class Within implements Expression {
         return true;
     }
 }
-
-export default Within;

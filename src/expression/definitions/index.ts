@@ -1,18 +1,18 @@
 
-import Let from './let';
-import Var from './var';
-import Literal from './literal';
-import Assertion from './assertion';
-import Coercion from './coercion';
-import At from './at';
-import In from './in';
-import IndexOf from './index_of';
-import Match from './match';
-import Case from './case';
-import Slice from './slice';
-import Step from './step';
-import Interpolate from './interpolate';
-import Coalesce from './coalesce';
+import {Let} from './let';
+import {Var} from './var';
+import {Literal} from './literal';
+import {Assertion} from './assertion';
+import {Coercion} from './coercion';
+import {At} from './at';
+import {In} from './in';
+import {IndexOf} from './index_of';
+import {Match} from './match';
+import {Case} from './case';
+import {Slice} from './slice';
+import {Step} from './step';
+import {Interpolate} from './interpolate';
+import {Coalesce} from './coalesce';
 import {
     Equals,
     NotEquals,
@@ -21,13 +21,13 @@ import {
     LessThanOrEqual,
     GreaterThanOrEqual
 } from './comparison';
-import CollatorExpression from './collator';
-import NumberFormat from './number_format';
-import FormatExpression from './format';
-import ImageExpression from './image';
-import Length from './length';
-import Within from './within';
-import Distance from './distance';
+import {CollatorExpression} from './collator';
+import {NumberFormat} from './number_format';
+import {FormatExpression} from './format';
+import {ImageExpression} from './image';
+import {Length} from './length';
+import {Within} from './within';
+import {Distance} from './distance';
 
 import type {ExpressionRegistry} from '../expression';
 
@@ -70,5 +70,3 @@ export const expressions: ExpressionRegistry = {
     'within': Within,
     'distance': Distance
 };
-
-export default expressions;
