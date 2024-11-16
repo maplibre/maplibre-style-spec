@@ -6,7 +6,7 @@ import {isValue} from '../values';
 import {EvaluationContext} from '../evaluation_context';
 import {BBox, boxWithinBox, getLngLatFromTileCoord, pointWithinPolygon, segmentIntersectSegment, updateBBox} from '../../util/geometry_util';
 import {classifyRings} from '../../util/classify_rings';
-import CheapRuler from '../../util/cheap_ruler';
+import {CheapRuler} from '../../util/cheap_ruler';
 
 type SimpleGeometry = GeoJSON.Polygon | GeoJSON.LineString | GeoJSON.Point;
 

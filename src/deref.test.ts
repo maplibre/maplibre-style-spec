@@ -1,4 +1,4 @@
-import {deref} from './deref';
+import {derefLayers as deref} from './deref';
 
 describe('deref', () => {
     test('derefs a ref layer which follows its parent', () => {

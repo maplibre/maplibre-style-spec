@@ -1,6 +1,6 @@
-import {default as createFilter, isExpressionFilter} from '.';
+import {createFilter, isExpressionFilter} from '.';
 
-import convertFilter from './convert';
+import {convertFilter} from './convert';
 import {ICanonicalTileID} from '../tiles_and_coordinates';
 import {ExpressionFilterSpecification, ExpressionInputType, ExpressionSpecification, FilterSpecification} from '../types.g';
 import {Feature} from '../expression';

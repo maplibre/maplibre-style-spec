@@ -1,7 +1,7 @@
 
-import migrateToV8 from './migrate/v8';
-import migrateToExpressions from './migrate/expressions';
-import migrateColors from './migrate/migrate_colors';
+import {migrateV8 as migrateToV8} from './migrate/v8';
+import {expressions as migrateToExpressions} from './migrate/expressions';
+import {migrateColors} from './migrate/migrate_colors';
 import {eachProperty} from './visit';
 import type {StyleSpecification} from './types.g';
 
@@ -16,7 +16,7 @@ import type {StyleSpecification} from './types.g';
  * const style = fs.readFileSync('./style.json', 'utf8');
  * fs.writeFileSync('./style.json', JSON.stringify(migrate(style)));
  */
-export default function migrate(style: StyleSpecification): StyleSpecification {
+export function migrate(style: StyleSpecification): StyleSpecification {
     let migrated = false;
 
     if (style.version as any === 7) {

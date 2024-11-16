@@ -4,7 +4,7 @@
  * @param colorToMigrate Color value to migrate, could be a string or an expression.
  * @returns Color style value in supported format.
  */
-export default function migrateColors<T>(colorToMigrate: T): T {
+export function migrateColors<T>(colorToMigrate: T): T {
     return JSON.parse(migrateHslColors(JSON.stringify(colorToMigrate)));
 }
 

@@ -1,6 +1,6 @@
 // Note: Do not inherit from Error. It breaks when transpiling to ES5.
 
-export default class ParsingError {
+export class ParsingError {
     message: string;
     error: Error;
     line: number;

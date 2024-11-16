@@ -38,7 +38,7 @@ function sortKeysBy(obj, reference) {
  * fs.writeFileSync('./dest.json', format(style));
  * fs.writeFileSync('./dest.min.json', format(style, 0));
  */
-function format(style, space = 2) {
+export function format(style, space = 2) {
     style = sortKeysBy(style, reference.$root);
 
     if (style.layers) {
@@ -48,4 +48,3 @@ function format(style, space = 2) {
     return stringifyPretty(style, {indent: space});
 }
 
-export default format;

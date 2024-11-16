@@ -52,7 +52,7 @@ type ExpectedTypes = {[_: string]: ExpressionInputType};
  * false (legacy filter semantics) are equivalent: they cause the filter to
  * produce a `false` result.
  */
-export default function convertFilter(filter: FilterSpecification, expectedTypes: ExpectedTypes = {}): ExpressionFilterSpecification {
+export function convertFilter(filter: FilterSpecification, expectedTypes: ExpectedTypes = {}): ExpressionFilterSpecification {
     if (isExpressionFilter(filter)) return filter;
     if (!filter) return true;
 

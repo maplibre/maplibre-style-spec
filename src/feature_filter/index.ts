@@ -15,10 +15,7 @@ export type FeatureFilter = {
     needGeometry: boolean;
 };
 
-export default createFilter;
-export {isExpressionFilter};
-
-function isExpressionFilter(filter: any): filter is ExpressionFilterSpecification {
+export function isExpressionFilter(filter: any): filter is ExpressionFilterSpecification {
     if (filter === true || filter === false) {
         return true;
     }
@@ -80,7 +77,7 @@ const filterSpec = {
  * @param {Array} filter MapLibre filter
  * @returns {Function} filter-evaluating function
  */
-function createFilter(filter: any): FeatureFilter {
+export function createFilter(filter: any): FeatureFilter {
     if (filter === null || filter === undefined) {
         return {filter: () => true, needGeometry: false};
     }

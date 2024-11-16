@@ -1,4 +1,4 @@
-import ParsingError from './error/parsing_error';
+import {ParsingError} from './error/parsing_error';
 import jsonlint from '@mapbox/jsonlint-lines-primitives';
 import type {StyleSpecification} from './types.g';
 

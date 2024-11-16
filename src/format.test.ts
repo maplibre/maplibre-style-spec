@@ -1,4 +1,4 @@
-import format from './format';
+import {format} from './format';
 
 function roundtrip(style) {
     return JSON.parse(format(style));

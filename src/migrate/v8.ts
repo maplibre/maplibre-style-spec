@@ -34,7 +34,7 @@ function renameProperty(obj: Object, from: string, to: string) {
     obj[to] = obj[from]; delete obj[from];
 }
 
-export default function migrateV8(style: StyleSpecification) {
+export function migrateV8(style: StyleSpecification) {
     style.version = 8;
 
     // Rename properties, reverse coordinates in source and layers

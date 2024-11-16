@@ -1,4 +1,4 @@
-import group from './group_by_layout';
+import {groupByLayout as group} from './group_by_layout';
 
 describe('group by layout', () => {
     test('group layers whose ref properties are identical', () => {

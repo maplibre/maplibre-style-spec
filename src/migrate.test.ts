@@ -1,4 +1,4 @@
-import migrate from './migrate';
+import {migrate} from './migrate';
 import * as spec from '.';
 import v8 from './reference/v8.json' with {type: 'json'};
 import {validateStyle as validate} from './validate_style';

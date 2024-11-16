@@ -2,8 +2,8 @@
 
 import fs from 'fs';
 import minimist from 'minimist';
-import format from '../src/format';
-import migrate from '../src/migrate';
+import {format} from '../src/format';
+import {migrate} from '../src/migrate';
 const argv = minimist(process.argv.slice(2));
 
 if (argv.help || argv.h || (!argv._.length && process.stdin.isTTY)) {

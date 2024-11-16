@@ -1,7 +1,7 @@
 
 import {refProperties} from './util/ref_properties';
 
-export function deref(layer, parent) {
+function deref(layer, parent) {
     const result = {};
 
     for (const k in layer) {
@@ -32,7 +32,7 @@ export function deref(layer, parent) {
  * @param {Array<Layer>} layers
  * @returns {Array<Layer>}
  */
-function derefLayers(layers) {
+export function derefLayers(layers) {
     layers = layers.slice();
 
     const map = Object.create(null);
