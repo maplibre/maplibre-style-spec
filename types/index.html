@@ -686,6 +686,30 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#projectiondefinition" class="md-nav__link">
+    <span class="md-ellipsis">
+      ProjectionDefinition
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ProjectionDefinition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -807,6 +831,30 @@
       Padding
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#projectiondefinition" class="md-nav__link">
+    <span class="md-ellipsis">
+      ProjectionDefinition
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ProjectionDefinition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -935,6 +983,69 @@
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="nt">&quot;icon-padding&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span>
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">}</span>
 </span></code></pre></div>
+<h2 id="projectiondefinition">ProjectionDefinition<a class="headerlink" href="#projectiondefinition" title="Permanent link">&para;</a></h2>
+<p>The <code>projection</code> is used to configure which projection to use for the map.</p>
+<p>There are currently two projections implemented.</p>
+<ul>
+<li><code>mercator</code> - <a href="https://en.wikipedia.org/wiki/Web_Mercator_projection">Web Mercator projection</a></li>
+<li><code>vertical-perspective</code> - <a href="https://en.wikipedia.org/wiki/General_Perspective_projection">Vertical Perspective projection</a></li>
+</ul>
+<p>And the following <a href="#use-a-projection-preset">presets</a></p>
+<p>The <code>projection</code> output sent to the renderer is always of the shape:</p>
+<p><code>[from, to, transition]: [string, string, number]</code></p>
+<ul>
+<li><code>from</code> is the projection of lower zoom level</li>
+<li><code>to</code> is the projection of higher zoom level</li>
+<li><code>transition</code> is the interpolation value, going from 0 to 1, with 0 being in the <code>from</code> projection, and 1 being in the <code>to</code> projection.</li>
+</ul>
+<p>In case <code>from</code> and <code>to</code> are equal, the <code>transition</code> will have no effect.</p>
+<h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
+<h4 id="step-between-projection-at-discrete-zoom-levels">Step between projection at discrete zoom levels<a class="headerlink" href="#step-between-projection-at-discrete-zoom-levels" title="Permanent link">&para;</a></h4>
+<p>Use a <a href="../expressions/#camera-expressions"><code>camera expression</code></a>, to discretely <a href="../expressions/#step"><code>step</code></a> between projections at certain zoom levels.</p>
+<div class="language-ts highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;step&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;zoom&quot;</span><span class="p">],</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="s2">&quot;vertical-perspective&quot;</span><span class="p">,</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="mf">11</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;mercator&quot;</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="p">]</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="nx">output</span><span class="w"> </span><span class="nx">at</span><span class="w"> </span><span class="nx">zoom</span><span class="w"> </span><span class="mf">10.9</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;vertical-perspective&quot;</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="nx">output</span><span class="w"> </span><span class="nx">at</span><span class="w"> </span><span class="nx">zoom</span><span class="w"> </span><span class="mf">11.0</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;vertical-perspective&quot;</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="nx">output</span><span class="w"> </span><span class="nx">at</span><span class="w"> </span><span class="nx">zoom</span><span class="w"> </span><span class="mf">11.1</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;mercator&quot;</span>
+</span></code></pre></div>
+<h4 id="animate-between-different-projections-based-on-zoom-level">Animate between different projections based on zoom level**<a class="headerlink" href="#animate-between-different-projections-based-on-zoom-level" title="Permanent link">&para;</a></h4>
+<p>Use a <a href="../expressions/#camera-expressions"><code>camera expression</code></a>, to animate between projections based on zoom, using <a href="../expressions/#interpolate"><code>interpolate</code></a> function. The example below will yield an adaptive globe that interpolates from <code>vertical-perspective</code> to <code>mercator</code> between zoom 10 and 12.</p>
+<div class="language-ts highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;interpolate&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;linear&quot;</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;zoom&quot;</span><span class="p">],</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="mf">10</span><span class="p">,</span><span class="s2">&quot;vertical-perspective&quot;</span><span class="p">,</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span><span class="mf">12</span><span class="p">,</span><span class="s2">&quot;mercator&quot;</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="p">]</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="nx">output</span><span class="w"> </span><span class="nx">at</span><span class="w"> </span><span class="nx">zoom</span><span class="w"> </span><span class="mf">9.9</span><span class="o">:</span><span class="w">  </span><span class="s2">&quot;vertical-perspective&quot;</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="nx">output</span><span class="w"> </span><span class="nx">at</span><span class="w"> </span><span class="nx">zoom</span><span class="w"> </span><span class="mf">11</span><span class="o">:</span><span class="w">   </span><span class="p">[</span><span class="s2">&quot;vertical-perspective&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;mercator&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">]</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="nx">output</span><span class="w"> </span><span class="nx">at</span><span class="w"> </span><span class="nx">zoom</span><span class="w"> </span><span class="mf">12</span><span class="o">:</span><span class="w">   </span><span class="p">[</span><span class="s2">&quot;vertical-perspective&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;mercator&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">]</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="nx">output</span><span class="w"> </span><span class="nx">at</span><span class="w"> </span><span class="nx">zoom</span><span class="w"> </span><span class="mf">12.1</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;mercator&quot;</span>
+</span></code></pre></div>
+<h4 id="provide-a-projection">Provide a <code>projection</code><a class="headerlink" href="#provide-a-projection" title="Permanent link">&para;</a></h4>
+<div class="language-ts highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;vertical-perspective&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;mercator&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">0.7</span><span class="p">]</span>
+</span></code></pre></div>
+<h4 id="use-a-projection-preset">Use a projection preset<a class="headerlink" href="#use-a-projection-preset" title="Permanent link">&para;</a></h4>
+<p>There are also additional presets that yield commonly used expressions:</p>
+<table>
+<thead>
+<tr>
+<th>Preset</th>
+<th>Full value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>globe</code></td>
+<td><code>["interpolate", ["linear"], ["zoom"],</code><br><code>10, "vertical-perspective", 12, "mercator"]</code></td>
+<td>Adaptive globe: interpolates from vertical-perspective to mercator projection between zoom levels 10 and 12.</td>
+</tr>
+</tbody>
+</table>
 
 
 
