@@ -17,11 +17,8 @@ export function deepEqual(a, b, decimalSigFigs = 10): boolean {
     kb.sort();
 
     for (let i = 0; i < ka.length; i++)
-        if (ka[i] !== kb[i] || !deepEqual(a[ka[i]], b[ka[i]], decimalSigFigs)) {
-            // console.log('Mismatch at key:', ka[i], 'values:', a[ka[i]], b[ka[i]]);
-
+        if (ka[i] !== kb[i] || !deepEqual(a[ka[i]], b[ka[i]], decimalSigFigs))
             return false;
-        }
     return true;
 }
 
