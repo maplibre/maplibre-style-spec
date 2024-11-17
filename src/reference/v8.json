@@ -4580,6 +4580,7 @@
       "doc": "The projection definition type. Can be specified as a string, a transition state, or an expression.",
       "default": "mercator",   
       "property-type": "data-constant",
+      "transition": false,
       "expression": {
         "interpolated": true,
         "parameters": [

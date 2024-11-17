@@ -645,15 +645,7 @@ describe('projection expression', () => {
     })
 
     test('step array', () => {
-        const response = createExpression(['step', ['zoom'], ['literal', ['vertical-perspective', 'mercator', 0.5]], 10, 'mercator'], { 
-            type: 'projectionDefinition', 
-            transition: false,
-            'property-type': 'data-constant',
-            expression: {
-                interpolated: true,
-                parameters: ['zoom']
-            }
-        });
+        const response = createExpression(['step', ['zoom'], ['literal', ['vertical-perspective', 'mercator', 0.5]], 10, 'mercator'], v8.projection.type as StylePropertySpecification);
 
         if (response.result === 'success') {
             expect(response.value.evaluate({zoom: 5})).toStrictEqual(['vertical-perspective', 'mercator', 0.5]);
@@ -665,15 +657,7 @@ describe('projection expression', () => {
     })
 
     test('interpolate', () => {
-        const response = createExpression(['interpolate', ['linear'], ['zoom'], 8, 'vertical-perspective', 10, 'mercator'], { 
-            type: 'projectionDefinition', 
-            transition: false,
-            'property-type': 'data-constant',
-            expression: {
-                interpolated: true,
-                parameters: ['zoom']
-            }
-        });
+        const response = createExpression(['interpolate', ['linear'], ['zoom'], 8, 'vertical-perspective', 10, 'mercator'], v8.projection.type as StylePropertySpecification);
 
         if (response.result === 'success') {
             expect(response.value.evaluate({zoom: 5})).toBe('vertical-perspective');
