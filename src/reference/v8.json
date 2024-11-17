@@ -127,9 +127,15 @@
     },
     "projection": {
       "type": "projection",
-      "doc": "The projection configuration. **Note:** this definition is still experimental and is under development in maplibre-gl-js.",
+      "doc": "The projection configuration",
       "example": {
-        "type": "globe"
+        "type": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          10, "vertical-perspective",
+          12, "mercator"
+        ]
       }
     },
     "terrain": {
@@ -4570,19 +4576,16 @@
   },
   "projection": {
     "type": {
-      "type": "enum",
-      "doc": "The projection type.",
-      "default": "mercator",
-      "values": {
-        "mercator": {
-          "doc": "Web Mercator projection."
-        },
-        "globe": {
-          "doc": "Globe projection. Zoom transition from Vertical Perspective projection to Web Mercator projection."
-        },
-        "vertical-perspective": {
-          "doc": "Vertical Perspective projection."
-        }
+      "type": "projectionDefinition",
+      "doc": "The projection definition type. Can be specified as a string, a transition state, or an expression.",
+      "default": "mercator",   
+      "property-type": "data-constant",
+      "transition": false,
+      "expression": {
+        "interpolated": true,
+        "parameters": [
+          "zoom"
+        ]
       }
     }
   },

@@ -629,3 +629,43 @@ describe('slice expression', () => {
         expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toEqual([]);
     });
 });
+
+describe('projection expression', () => {
+
+    test('step', () => {
+        const response = createExpression(['step', ['zoom'], 'vertical-perspective', 10, 'mercator']);
+
+        if (response.result === 'success') {
+            expect(response.value.evaluate({zoom: 5})).toBe('vertical-perspective');
+            expect(response.value.evaluate({zoom: 10})).toBe('mercator');
+            expect(response.value.evaluate({zoom: 11})).toBe('mercator');
+        } else {
+            throw new Error('Failed to parse Step expression');
+        }
+    })
+
+    test('step array', () => {
+        const response = createExpression(['step', ['zoom'], ['literal', ['vertical-perspective', 'mercator', 0.5]], 10, 'mercator'], v8.projection.type as StylePropertySpecification);
+
+        if (response.result === 'success') {
+            expect(response.value.evaluate({zoom: 5})).toStrictEqual(['vertical-perspective', 'mercator', 0.5]);
+            expect(response.value.evaluate({zoom: 10})).toBe('mercator');
+            expect(response.value.evaluate({zoom: 11})).toBe('mercator');
+        } else {
+            throw new Error('Failed to parse Step expression');
+        }
+    })
+
+    test('interpolate', () => {
+        const response = createExpression(['interpolate', ['linear'], ['zoom'], 8, 'vertical-perspective', 10, 'mercator'], v8.projection.type as StylePropertySpecification);
+
+        if (response.result === 'success') {
+            expect(response.value.evaluate({zoom: 5})).toBe('vertical-perspective');
+            expect(response.value.evaluate({zoom: 9})).toEqual({from: 'vertical-perspective', to: 'mercator', transition: 0.5});
+            expect(response.value.evaluate({zoom: 11})).toBe('mercator');
+        } else {
+            throw new Error('Failed to parse Interpolate expression');
+        }
+    })
+
+});

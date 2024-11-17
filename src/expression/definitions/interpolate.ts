@@ -1,17 +1,18 @@
 import UnitBezier from '@mapbox/unitbezier';
 
-import {array, ArrayType, ColorType, ColorTypeT, NumberType, NumberTypeT, PaddingType, PaddingTypeT, VariableAnchorOffsetCollectionType, VariableAnchorOffsetCollectionTypeT, typeToString, verifyType} from '../types';
+import {array, ArrayType, ColorType, ColorTypeT, NumberType, NumberTypeT, PaddingType, PaddingTypeT, VariableAnchorOffsetCollectionType, VariableAnchorOffsetCollectionTypeT, typeToString, verifyType, ProjectionDefinitionType} from '../types';
 import {findStopLessThanOrEqualTo} from '../stops';
+import {Color} from '../types/color';
+import {interpolateArray, interpolateNumber} from '../../util/interpolate-primitives';
+import {Padding} from '../types/padding';
+import {VariableAnchorOffsetCollection} from '../types/variable_anchor_offset_collection';
+import {ProjectionDefinition} from '../types/projection_definition';
 
 import type {Stops} from '../stops';
 import type {Expression} from '../expression';
 import type {ParsingContext} from '../parsing_context';
 import type {EvaluationContext} from '../evaluation_context';
-import type {Type} from '../types';
-import {Color} from '../types/color';
-import {interpolateArray, interpolateNumber} from '../../util/interpolate-primitives';
-import {Padding} from '../types/padding';
-import {VariableAnchorOffsetCollection} from '../types/variable_anchor_offset_collection';
+import type {ProjectionDefinitionTypeT, Type} from '../types';
 
 export type InterpolationType = {
     name: 'linear';
@@ -22,8 +23,7 @@ export type InterpolationType = {
     name: 'cubic-bezier';
     controlPoints: [number, number, number, number];
 };
-type InterpolatedValueType = NumberTypeT | ColorTypeT | PaddingTypeT | VariableAnchorOffsetCollectionTypeT | ArrayType<NumberTypeT>;
-
+type InterpolatedValueType = NumberTypeT | ColorTypeT | ProjectionDefinitionTypeT | PaddingTypeT | VariableAnchorOffsetCollectionTypeT | ArrayType<NumberTypeT>;
 export class Interpolate implements Expression {
     type: InterpolatedValueType;
 
@@ -129,7 +129,6 @@ export class Interpolate implements Expression {
             if (stops.length && stops[stops.length - 1][0] >= label) {
                 return context.error('Input/output pairs for "interpolate" expressions must be arranged with input values in strictly ascending order.', labelKey) as null;
             }
-
             const parsed = context.parse(value, valueKey, outputType);
             if (!parsed) return null;
             outputType = outputType || parsed.type;
@@ -137,6 +136,7 @@ export class Interpolate implements Expression {
         }
 
         if (!verifyType(outputType, NumberType) &&
+            !verifyType(outputType, ProjectionDefinitionType) &&
             !verifyType(outputType, ColorType) &&
             !verifyType(outputType, PaddingType) &&
             !verifyType(outputType, VariableAnchorOffsetCollectionType) &&
@@ -187,6 +187,8 @@ export class Interpolate implements Expression {
                         return VariableAnchorOffsetCollection.interpolate(outputLower, outputUpper, t);
                     case 'array':
                         return interpolateArray(outputLower, outputUpper, t);
+                    case 'projectionDefinition':
+                        return ProjectionDefinition.interpolate(outputLower, outputUpper, t);
                 }
             case 'interpolate-hcl':
                 return Color.interpolate(outputLower, outputUpper, t, 'hcl');

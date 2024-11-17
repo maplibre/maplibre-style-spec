@@ -20,7 +20,7 @@ import {ResolvedImage} from './expression/types/resolved_image';
 import {supportsPropertyExpression} from './util/properties';
 import {IMercatorCoordinate, ICanonicalTileID, ILngLat, ILngLatLike} from './tiles_and_coordinates';
 import {EvaluationContext} from './expression/evaluation_context';
-import {FormattedType, NullType, Type, typeToString, ColorType} from './expression/types';
+import {FormattedType, NullType, Type, typeToString, ColorType, ProjectionDefinitionType} from './expression/types';
 
 import {expressions} from './expression/definitions';
 import {Interpolate} from './expression/definitions/interpolate';
@@ -34,11 +34,12 @@ import {typeOf} from './expression/values';
 import {FormatExpression} from './expression/definitions/format';
 import {Literal} from './expression/definitions/literal';
 import {CompoundExpression} from './expression/compound_expression';
-import {VariableAnchorOffsetCollectionSpecification} from './types.g';
+import {ColorSpecification, PaddingSpecification, ProjectionDefinitionSpecification, VariableAnchorOffsetCollectionSpecification} from './types.g';
 import {format} from './format';
 import {validate} from './validate/validate';
 import {migrate} from './migrate';
 import {classifyRings} from './util/classify_rings';
+import {ProjectionDefinition} from './expression/types/projection_definition';
 
 type ExpressionType = 'data-driven' | 'cross-faded' | 'cross-faded-data-driven' | 'color-ramp' | 'data-constant' | 'constant';
 type ExpressionParameters = Array<'zoom' | 'feature' | 'feature-state' | 'heatmap-density' | 'line-progress'>;
@@ -79,7 +80,7 @@ export type StylePropertySpecification = {
     'property-type': ExpressionType;
     expression?: ExpressionSpecificationDefinition;
     transition: boolean;
-    default?: string;
+    default?: ColorSpecification;
     overridable: boolean;
 } | {
     type: 'array';
@@ -102,13 +103,19 @@ export type StylePropertySpecification = {
     'property-type': ExpressionType;
     expression?: ExpressionSpecificationDefinition;
     transition: boolean;
-    default?: number | Array<number>;
+    default?: PaddingSpecification;
 } | {
     type: 'variableAnchorOffsetCollection';
     'property-type': ExpressionType;
     expression?: ExpressionSpecificationDefinition;
     transition: boolean;
     default?: VariableAnchorOffsetCollectionSpecification;
+} | {
+    type: 'projectionDefinition';
+    'property-type': ExpressionType;
+    expression?: ExpressionSpecificationDefinition;
+    transition: boolean;
+    default?: ProjectionDefinitionSpecification;
 };
 
 const expression = {
@@ -138,6 +145,7 @@ export {
     ValidationError,
     ParsingError,
     FeatureState,
+    ProjectionDefinition,
     Color,
     Step,
     CompoundExpression,
@@ -188,6 +196,7 @@ export {
     migrate,
     classifyRings,
 
+    ProjectionDefinitionType,
     ColorType,
     interpolateFactory as interpolates,
     v8,

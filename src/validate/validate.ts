@@ -27,6 +27,7 @@ import {validateVariableAnchorOffsetCollection} from './validate_variable_anchor
 import {validateSprite} from './validate_sprite';
 import {ValidationError} from '../error/validation_error';
 import {validateProjection} from './validate_projection';
+import {validateProjectionDefinition} from './validate_projectiondefinition';
 
 const VALIDATORS = {
     '*'() {
@@ -47,6 +48,7 @@ const VALIDATORS = {
     'sky': validateSky,
     'terrain': validateTerrain,
     'projection': validateProjection,
+    'projectionDefinition': validateProjectionDefinition,
     'string': validateString,
     'formatted': validateFormatted,
     'resolvedImage': validateImage,
