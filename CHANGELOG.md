@@ -12,8 +12,6 @@
 - Use named imports internally - no package entrypoints changed ([#904](https://github.com/maplibre/maplibre-style-spec/pull/904))
 - Add projection type expression syntax ([#888](https://github.com/maplibre/maplibre-style-spec/pull/888))
 
-### 🐞 Bug fixes
-
 ## 21.2.0
 
 ### ✨ Features and improvements
