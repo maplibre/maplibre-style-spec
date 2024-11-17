@@ -38,11 +38,11 @@
         "type": "projectionDefinition"
       },
       "outputs": [
-        {
-          "from": "vertical-perspective",
-          "to": "mercator",
-          "transition": 0.5
-        }
+        [
+          "vertical-perspective",
+          "mercator",
+          0.5
+        ]
       ]
     }
   }

@@ -7,10 +7,11 @@ export class ProjectionDefinition {
         this.from = from;
         this.to = to;
         this.transition = transition;
+        
     }
 
     static interpolate(from: string, to: string, t: number) {
-        return new ProjectionDefinition(from, to, t);
+        return new ProjectionDefinition(from, to, t).toJSON();
     }
 
     static parse(input?: any): ProjectionDefinition {
@@ -24,5 +25,13 @@ export class ProjectionDefinition {
             return new ProjectionDefinition(input, input, 1);
         }
         return undefined;
+    }
+
+    toString() {
+        return JSON.stringify(this.toJSON());
+    }
+
+    toJSON() {
+        return [this.from, this.to, this.transition];
     }
 }

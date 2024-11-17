@@ -645,15 +645,7 @@ describe('projection expression', () => {
     })
 
     test('step array', () => {
-        const response = createExpression(['step', ['zoom'], ['literal', ['vertical-perspective', 'mercator', 0.5]], 10, 'mercator'], { 
-            type: 'projectionDefinition', 
-            transition: false,
-            'property-type': 'data-constant',
-            expression: {
-                interpolated: true,
-                parameters: ['zoom']
-            }
-        });
+        const response = createExpression(['step', ['zoom'], ['literal', ['vertical-perspective', 'mercator', 0.5]], 10, 'mercator'], v8.projection.type as StylePropertySpecification);
 
         if (response.result === 'success') {
             expect(response.value.evaluate({zoom: 5})).toStrictEqual(['vertical-perspective', 'mercator', 0.5]);
@@ -665,19 +657,16 @@ describe('projection expression', () => {
     })
 
     test('interpolate', () => {
-        const response = createExpression(['interpolate', ['linear'], ['zoom'], 8, 'vertical-perspective', 10, 'mercator'], { 
-            type: 'projectionDefinition', 
-            transition: false,
-            'property-type': 'data-constant',
-            expression: {
-                interpolated: true,
-                parameters: ['zoom']
-            }
-        });
+
+        // Type assertion necessary, because TypeScript lack this type narrowing:
+        // https://github.com/microsoft/TypeScript/issues/32063
+        const response = createExpression(['interpolate', ['linear'], ['zoom'], 8, 'vertical-perspective', 10, 'mercator'], v8.projection.type as StylePropertySpecification);
 
         if (response.result === 'success') {
             expect(response.value.evaluate({zoom: 5})).toBe('vertical-perspective');
-            expect(response.value.evaluate({zoom: 9})).toEqual({from: 'vertical-perspective', to: 'mercator', transition: 0.5});
+            
+            expect(response.value.evaluate({zoom: 9})).toEqual(['vertical-perspective', 'mercator', 0.5]);
+
             expect(response.value.evaluate({zoom: 11})).toBe('mercator');
         } else {
             throw new Error('Failed to parse Interpolate expression');
