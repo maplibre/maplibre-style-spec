@@ -36,4 +36,16 @@ describe('Projection class', () => {
         expect(projection.to).toBe('vertical-perspective');
         expect(projection.transition).toBe(0.5);
     });
+
+    test('should parse projection object', () => {
+        const projection = ProjectionDefinition.parse({from: 'mercator', to: 'vertical-perspective', transition: 0.5});
+        expect(projection.from).toBe('mercator');
+        expect(projection.to).toBe('vertical-perspective');
+        expect(projection.transition).toBe(0.5);
+    });
+
+    test('should serialize projection', () => {
+        const projection = ProjectionDefinition.parse(['mercator', 'vertical-perspective', 0.5]);
+        expect(JSON.stringify(projection)).toBe('{\"from\":\"mercator\",\"to\":\"vertical-perspective\",\"transition\":0.5}');
+    });
 });
