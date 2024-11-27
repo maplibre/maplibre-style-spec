@@ -4,6 +4,7 @@
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
+- Remove extra "the"s in the documentation [#922](https://github.com/maplibre/maplibre-style-spec/pull/922)
 - _...Add new stuff here..._
 
 ## 22.0.0
