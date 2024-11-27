@@ -1,4 +1,4 @@
-import migrateColors from './migrate_colors';
+import {migrateColors} from './migrate_colors';
 
 describe('migrate colors', () => {
 

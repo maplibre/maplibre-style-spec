@@ -2,8 +2,8 @@ import {isValue} from '../values';
 import type {Type} from '../types';
 import {BooleanType} from '../types';
 import type {Expression} from '../expression';
-import type ParsingContext from '../parsing_context';
-import type EvaluationContext from '../evaluation_context';
+import type {ParsingContext} from '../parsing_context';
+import type {EvaluationContext} from '../evaluation_context';
 import {ICanonicalTileID} from '../../tiles_and_coordinates';
 import {BBox, EXTENT, boxWithinBox, getTileCoordinates, lineStringWithinPolygon, lineStringWithinPolygons, pointWithinPolygon, pointWithinPolygons, updateBBox} from '../../util/geometry_util';
 import {Point2D} from '../../point2d';
@@ -143,7 +143,7 @@ function linesWithinPolygons(ctx: EvaluationContext, polygonGeometry: GeoJSONPol
     return true;
 }
 
-class Within implements Expression {
+export class Within implements Expression {
     type: Type;
     geojson: GeoJSON.GeoJSON;
     geometries: GeoJSONPolygons;
@@ -207,5 +207,3 @@ class Within implements Expression {
         return true;
     }
 }
-
-export default Within;

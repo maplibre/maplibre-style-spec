@@ -1,4 +1,4 @@
-import validateColor from './validate_color';
+import {validateColor} from './validate_color';
 
 describe('validateColor function', () => {
 

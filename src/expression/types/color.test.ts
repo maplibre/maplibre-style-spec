@@ -1,21 +1,61 @@
-import {expectToMatchColor} from '../../test/lib/util';
-import interpolate, {isSupportedInterpolationColorSpace} from './interpolate';
-import Color from './color';
-import Padding from './padding';
-import VariableAnchorOffsetCollection from './variable_anchor_offset_collection';
+import {expectCloseToArray, expectToMatchColor} from '../../../test/lib/util';
+import {Color, isSupportedInterpolationColorSpace} from './color';
 
-describe('interpolate', () => {
+describe('Color class', () => {
 
-    test('interpolate number', () => {
-        expect(interpolate.number(-5, 5, 0.00)).toBe(-5.0);
-        expect(interpolate.number(-5, 5, 0.25)).toBe(-2.5);
-        expect(interpolate.number(-5, 5, 0.50)).toBe(0);
-        expect(interpolate.number(-5, 5, 0.75)).toBe(2.5);
-        expect(interpolate.number(-5, 5, 1.00)).toBe(5.0);
+    describe('parsing', () => {
 
-        expect(interpolate.number(0, 1, 0.5)).toBe(0.5);
-        expect(interpolate.number(-10, -5, 0.5)).toBe(-7.5);
-        expect(interpolate.number(5, 10, 0.5)).toBe(7.5);
+        test('should parse valid css color strings', () => {
+            expectToMatchColor(Color.parse('RED'), 'rgb(100% 0% 0% / 1)');
+            expectToMatchColor(Color.parse('#f00C'), 'rgb(100% 0% 0% / .8)');
+            expectToMatchColor(Color.parse('rgb(0 0 127.5 / 20%)'), 'rgb(0% 0% 50% / .2)');
+            expectToMatchColor(Color.parse('hsl(300deg 100% 25.1% / 0.7)'), 'rgb(50.2% 0% 50.2% / .7)');
+        });
+
+        test('should return undefined when provided with invalid CSS color string', () => {
+            expect(Color.parse(undefined)).toBeUndefined();
+            expect(Color.parse(null)).toBeUndefined();
+            expect(Color.parse('#invalid')).toBeUndefined();
+            expect(Color.parse('$123')).toBeUndefined();
+            expect(Color.parse('0F91')).toBeUndefined();
+            expect(Color.parse('rgb(#123)')).toBeUndefined();
+            expect(Color.parse('hsl(0,0,0)')).toBeUndefined();
+            expect(Color.parse('rgb(0deg,0,0)')).toBeUndefined();
+        });
+
+        test('should accept instances of Color class', () => {
+            const color = new Color(0, 0, 0, 0);
+            expect(Color.parse(color)).toBe(color);
+        });
+
+    });
+
+    test('should keep a reference to the original color when alpha=0', () => {
+        const color = new Color(0, 0, 0.5, 0, false);
+        expect(color).toMatchObject({r: 0, g: 0, b: 0, a: 0});
+        expect(Object.hasOwn(color, 'rgb')).toBe(true);
+        expectCloseToArray(color.rgb, [0, 0, 0.5, 0]);
+    });
+
+    test('should have static properties, black', () => {
+        const color = Color.black;
+        expect(color).toMatchObject({r: 0, g: 0, b: 0, a: 1});
+        expectCloseToArray(color.rgb, [0, 0, 0, 1]);
+    });
+
+    test('should not keep a reference to the original color when alpha!=0', () => {
+        const color = new Color(0, 0, 0.5, 0.001, false);
+        expect(color).toMatchObject({r: 0, g: 0, b: expect.closeTo(0.5 * 0.001, 5), a: 0.001});
+        expect(Object.hasOwn(color, 'rgb')).toBe(false);
+    });
+
+    test('should serialize to rgba format', () => {
+        expect(`${new Color(1, 1, 0, 1, false)}`).toBe('rgba(255,255,0,1)');
+        expect(`${new Color(0.2, 0, 1, 0.3, false)}`).toBe('rgba(51,0,255,0.3)');
+        expect(`${new Color(1, 1, 0, 0, false)}`).toBe('rgba(255,255,0,0)');
+        expect(`${Color.parse('purple')}`).toBe('rgba(128,0,128,1)');
+        expect(`${Color.parse('rgba(26,207,26,.73)')}`).toBe('rgba(26,207,26,0.73)');
+        expect(`${Color.parse('rgba(26,207,26,0)')}`).toBe('rgba(26,207,26,0)');
     });
 
     describe('interpolation color space', () => {
@@ -44,7 +84,7 @@ describe('interpolate', () => {
             const color = Color.parse('rgba(0,0,255,1)');
             const targetColor = Color.parse('rgba(0,255,0,.6)');
 
-            const i11nFn = (t: number) => interpolate.color(color, targetColor, t, 'rgb');
+            const i11nFn = (t: number) => Color.interpolate(color, targetColor, t, 'rgb');
             expectToMatchColor(i11nFn(0.00), 'rgb(0% 0% 100% / 1)');
             expectToMatchColor(i11nFn(0.25), 'rgb(0% 25% 75% / 0.9)');
             expectToMatchColor(i11nFn(0.50), 'rgb(0% 50% 50% / 0.8)');
@@ -56,7 +96,7 @@ describe('interpolate', () => {
             const color = Color.parse('rgba(0,0,255,1)');
             const targetColor = Color.parse('rgba(0,255,0,.6)');
 
-            const i11nFn = (t: number) => interpolate.color(color, targetColor, t, 'hcl');
+            const i11nFn = (t: number) => Color.interpolate(color, targetColor, t, 'hcl');
             expectToMatchColor(i11nFn(0.00), 'rgb(0% 0% 100% / 1)');
             expectToMatchColor(i11nFn(0.25), 'rgb(0% 49.37% 100% / 0.9)', 4);
             expectToMatchColor(i11nFn(0.50), 'rgb(0% 70.44% 100% / 0.8)', 4);
@@ -68,7 +108,7 @@ describe('interpolate', () => {
             const color = Color.parse('rgba(0,0,255,1)');
             const targetColor = Color.parse('rgba(0,255,0,.6)');
 
-            const i11nFn = (t: number) => interpolate.color(color, targetColor, t, 'lab');
+            const i11nFn = (t: number) => Color.interpolate(color, targetColor, t, 'lab');
             expectToMatchColor(i11nFn(0.00), 'rgb(0% 0% 100% / 1)');
             expectToMatchColor(i11nFn(0.25), 'rgb(39.64% 34.55% 83.36% / 0.9)', 4);
             expectToMatchColor(i11nFn(0.50), 'rgb(46.42% 56.82% 65.91% / 0.8)', 4);
@@ -80,7 +120,7 @@ describe('interpolate', () => {
             const color = Color.parse('rgba(0,0,255,0)');
             const targetColor = Color.parse('rgba(0,255,0,1)');
 
-            const i11nFn = (t: number) => interpolate.color(color, targetColor, t, 'rgb');
+            const i11nFn = (t: number) => Color.interpolate(color, targetColor, t, 'rgb');
             expectToMatchColor(i11nFn(0.00), 'rgb(0% 0% 0% / 0)');
             expectToMatchColor(i11nFn(0.25), 'rgb(0% 25% 75% / 0.25)');
             expectToMatchColor(i11nFn(0.50), 'rgb(0% 50% 50% / 0.5)');
@@ -93,7 +133,7 @@ describe('interpolate', () => {
             const targetColor = Color.parse('cyan');
 
             for (const space of ['rgb', 'hcl', 'lab'] as const) {
-                const i11nFn = (t: number) => interpolate.color(color, targetColor, t, space);
+                const i11nFn = (t: number) => Color.interpolate(color, targetColor, t, space);
                 const colorInBetween = i11nFn(0.5);
                 for (const key of ['r', 'g', 'b', 'a'] as const) {
                     expect(colorInBetween[ key ]).toBeGreaterThanOrEqual(0);
@@ -102,33 +142,6 @@ describe('interpolate', () => {
             }
         });
 
-    });
-
-    test('interpolate array', () => {
-        expect(interpolate.array([0, 0, 0, 0], [1, 2, 3, 4], 0.5)).toEqual([0.5, 1, 3 / 2, 2]);
-    });
-
-    test('interpolate padding', () => {
-        const padding = new Padding([0, 0, 0, 0]);
-        const targetPadding = new Padding([1, 2, 6, 4]);
-
-        const i11nFn = (t: number) => interpolate.padding(padding, targetPadding, t);
-        expect(i11nFn(0.5)).toBeInstanceOf(Padding);
-        expect(i11nFn(0.5)).toEqual(new Padding([0.5, 1, 3, 2]));
-    });
-
-    describe('interpolate variableAnchorOffsetCollection', () => {
-        const i11nFn = interpolate.variableAnchorOffsetCollection;
-        const parseFn = VariableAnchorOffsetCollection.parse;
-
-        test('should throw with mismatched endpoints', () => {
-            expect(() => i11nFn(parseFn(['top', [0, 0]]), parseFn(['bottom', [1, 1]]), 0.5)).toThrow('Cannot interpolate values containing mismatched anchors. from[0]: top, to[0]: bottom');
-            expect(() => i11nFn(parseFn(['top', [0, 0]]), parseFn(['top', [1, 1], 'bottom', [2, 2]]), 0.5)).toThrow('Cannot interpolate values of different length. from: ["top",[0,0]], to: ["top",[1,1],"bottom",[2,2]]');
-        });
-
-        test('should interpolate offsets', () => {
-            expect(i11nFn(parseFn(['top', [0, 0], 'bottom', [2, 2]]), parseFn(['top', [1, 1], 'bottom', [4, 4]]), 0.5).values).toEqual(['top', [0.5, 0.5], 'bottom', [3, 3]]);
-        });
     });
 
 });

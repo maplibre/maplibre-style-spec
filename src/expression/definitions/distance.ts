@@ -1,12 +1,12 @@
 import TinyQueue from 'tinyqueue';
 import {Expression} from '../expression';
-import ParsingContext from '../parsing_context';
+import {ParsingContext} from '../parsing_context';
 import {NumberType, Type} from '../types';
 import {isValue} from '../values';
-import EvaluationContext from '../evaluation_context';
+import {EvaluationContext} from '../evaluation_context';
 import {BBox, boxWithinBox, getLngLatFromTileCoord, pointWithinPolygon, segmentIntersectSegment, updateBBox} from '../../util/geometry_util';
 import {classifyRings} from '../../util/classify_rings';
-import CheapRuler from '../../util/cheap_ruler';
+import {CheapRuler} from '../../util/cheap_ruler';
 
 type SimpleGeometry = GeoJSON.Polygon | GeoJSON.LineString | GeoJSON.Point;
 
@@ -532,7 +532,7 @@ function toSimpleGeometry(geometry: Exclude<GeoJSON.Geometry, GeoJSON.GeometryCo
     return [geometry];
 }
 
-class Distance implements Expression {
+export class Distance implements Expression {
     type: Type;
     geojson: GeoJSON.GeoJSON;
     geometries: SimpleGeometry[];
@@ -578,5 +578,3 @@ class Distance implements Expression {
         return true;
     }
 }
-
-export default Distance;

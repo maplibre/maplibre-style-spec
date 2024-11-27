@@ -1,14 +1,14 @@
 import {createPropertyExpression, Feature, GlobalProperties, StylePropertyExpression} from '../expression';
-import definitions from './definitions';
+import {expressions} from './definitions';
 import v8 from '../reference/v8.json' with {type: 'json'};
 import {createExpression, ICanonicalTileID, StyleExpression, StylePropertySpecification} from '..';
-import ParsingError from './parsing_error';
-import {VariableAnchorOffsetCollection} from './values';
+import {ExpressionParsingError} from './parsing_error';
 import {getGeometry} from '../../test/lib/geometry';
+import {VariableAnchorOffsetCollection} from './types/variable_anchor_offset_collection';
 
 // filter out internal "error" and "filter-*" expressions from definition list
 const filterExpressionRegex = /filter-/;
-const definitionList = Object.keys(definitions).filter((expression) => {
+const definitionList = Object.keys(expressions).filter((expression) => {
     return expression !== 'error' && !filterExpressionRegex.exec(expression);
 }).sort();
 
@@ -34,7 +34,7 @@ describe('createPropertyExpression', () => {
             }
         } as StylePropertySpecification);
         expect(result).toBe('error');
-        expect((value as ParsingError[])).toHaveLength(1);
+        expect((value as ExpressionParsingError[])).toHaveLength(1);
         expect(value[0].message).toBe('"interpolate" expressions cannot be used with this property');
     });
 
@@ -628,4 +628,44 @@ describe('slice expression', () => {
         expect(response.result).toBe('success');
         expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toEqual([]);
     });
+});
+
+describe('projection expression', () => {
+
+    test('step', () => {
+        const response = createExpression(['step', ['zoom'], 'vertical-perspective', 10, 'mercator']);
+
+        if (response.result === 'success') {
+            expect(response.value.evaluate({zoom: 5})).toBe('vertical-perspective');
+            expect(response.value.evaluate({zoom: 10})).toBe('mercator');
+            expect(response.value.evaluate({zoom: 11})).toBe('mercator');
+        } else {
+            throw new Error('Failed to parse Step expression');
+        }
+    })
+
+    test('step array', () => {
+        const response = createExpression(['step', ['zoom'], ['literal', ['vertical-perspective', 'mercator', 0.5]], 10, 'mercator'], v8.projection.type as StylePropertySpecification);
+
+        if (response.result === 'success') {
+            expect(response.value.evaluate({zoom: 5})).toStrictEqual(['vertical-perspective', 'mercator', 0.5]);
+            expect(response.value.evaluate({zoom: 10})).toBe('mercator');
+            expect(response.value.evaluate({zoom: 11})).toBe('mercator');
+        } else {
+            throw new Error('Failed to parse Step expression');
+        }
+    })
+
+    test('interpolate', () => {
+        const response = createExpression(['interpolate', ['linear'], ['zoom'], 8, 'vertical-perspective', 10, 'mercator'], v8.projection.type as StylePropertySpecification);
+
+        if (response.result === 'success') {
+            expect(response.value.evaluate({zoom: 5})).toBe('vertical-perspective');
+            expect(response.value.evaluate({zoom: 9})).toEqual({from: 'vertical-perspective', to: 'mercator', transition: 0.5});
+            expect(response.value.evaluate({zoom: 11})).toBe('mercator');
+        } else {
+            throw new Error('Failed to parse Interpolate expression');
+        }
+    })
+
 });

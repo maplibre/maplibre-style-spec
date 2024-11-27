@@ -1,11 +1,12 @@
 
-import Color from '../util/color';
-import Collator from './types/collator';
-import Formatted from './types/formatted';
-import Padding from '../util/padding';
-import VariableAnchorOffsetCollection from '../util/variable_anchor_offset_collection';
-import ResolvedImage from './types/resolved_image';
-import {NullType, NumberType, StringType, BooleanType, ColorType, ObjectType, ValueType, CollatorType, FormattedType, ResolvedImageType, array, PaddingType, VariableAnchorOffsetCollectionType} from './types';
+import {Color} from './types/color';
+import {Collator} from './types/collator';
+import {Formatted} from './types/formatted';
+import {Padding} from './types/padding';
+import {VariableAnchorOffsetCollection} from './types/variable_anchor_offset_collection';
+import {ResolvedImage} from './types/resolved_image';
+import {ProjectionDefinition} from './types/projection_definition';
+import {NullType, NumberType, StringType, BooleanType, ColorType, ObjectType, ValueType, CollatorType, FormattedType, ResolvedImageType, array, PaddingType, VariableAnchorOffsetCollectionType, ProjectionDefinitionType} from './types';
 
 import type {Type} from './types';
 
@@ -28,7 +29,7 @@ export function validateRGBA(r: unknown, g: unknown, b: unknown, a?: unknown): s
     return null;
 }
 
-export type Value = null | string | boolean | number | Color | Collator | Formatted | Padding | ResolvedImage | VariableAnchorOffsetCollection | ReadonlyArray<Value> | {
+export type Value = null | string | boolean | number | Color | ProjectionDefinition | Collator | Formatted | Padding | ResolvedImage | VariableAnchorOffsetCollection | ReadonlyArray<Value> | {
     readonly [x: string]: Value;
 };
 
@@ -37,6 +38,7 @@ export function isValue(mixed: unknown): boolean {
         typeof mixed === 'string' ||
         typeof mixed === 'boolean' ||
         typeof mixed === 'number' ||
+        mixed instanceof ProjectionDefinition ||
         mixed instanceof Color ||
         mixed instanceof Collator ||
         mixed instanceof Formatted ||
@@ -74,6 +76,8 @@ export function typeOf(value: Value): Type {
         return NumberType;
     } else if (value instanceof Color) {
         return ColorType;
+    } else if (value instanceof ProjectionDefinition) {
+        return ProjectionDefinitionType;
     } else if (value instanceof Collator) {
         return CollatorType;
     } else if (value instanceof Formatted) {
@@ -106,17 +110,15 @@ export function typeOf(value: Value): Type {
     }
 }
 
-export function toString(value: Value) {
+export function valueToString(value: Value) {
     const type = typeof value;
     if (value === null) {
         return '';
     } else if (type === 'string' || type === 'number' || type === 'boolean') {
         return String(value);
-    } else if (value instanceof Color || value instanceof Formatted || value instanceof Padding || value instanceof VariableAnchorOffsetCollection || value instanceof ResolvedImage) {
+    } else if (value instanceof Color || value instanceof ProjectionDefinition || value instanceof Formatted || value instanceof Padding || value instanceof VariableAnchorOffsetCollection || value instanceof ResolvedImage) {
         return value.toString();
     } else {
         return JSON.stringify(value);
     }
 }
-
-export {Color, Collator, Padding, VariableAnchorOffsetCollection};

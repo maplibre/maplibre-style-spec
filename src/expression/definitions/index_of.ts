@@ -3,20 +3,20 @@ import {
     StringType,
     ValueType,
     NullType,
-    toString,
+    typeToString,
     NumberType,
     isValidType,
     isValidNativeType,
 } from '../types';
-import RuntimeError from '../runtime_error';
+import {RuntimeError} from '../runtime_error';
 import {typeOf} from '../values';
 
 import type {Expression} from '../expression';
-import type ParsingContext from '../parsing_context';
-import type EvaluationContext from '../evaluation_context';
+import type {ParsingContext} from '../parsing_context';
+import type {EvaluationContext} from '../evaluation_context';
 import type {Type} from '../types';
 
-class IndexOf implements Expression {
+export class IndexOf implements Expression {
     type: Type;
     needle: Expression;
     haystack: Expression;
@@ -40,7 +40,7 @@ class IndexOf implements Expression {
 
         if (!needle || !haystack) return null;
         if (!isValidType(needle.type, [BooleanType, StringType, NumberType, NullType, ValueType])) {
-            return context.error(`Expected first argument to be of type boolean, string, number or null, but found ${toString(needle.type)} instead`) as null;
+            return context.error(`Expected first argument to be of type boolean, string, number or null, but found ${typeToString(needle.type)} instead`) as null;
         }
 
         if (args.length === 4) {
@@ -57,7 +57,7 @@ class IndexOf implements Expression {
         const haystack = (this.haystack.evaluate(ctx) as any);
 
         if (!isValidNativeType(needle, ['boolean', 'string', 'number', 'null'])) {
-            throw new RuntimeError(`Expected first argument to be of type boolean, string, number or null, but found ${toString(typeOf(needle))} instead.`);
+            throw new RuntimeError(`Expected first argument to be of type boolean, string, number or null, but found ${typeToString(typeOf(needle))} instead.`);
         }
 
         let fromIndex;
@@ -76,7 +76,7 @@ class IndexOf implements Expression {
         } else if (isValidNativeType(haystack, ['array'])) {
             return haystack.indexOf(needle, fromIndex);
         } else {
-            throw new RuntimeError(`Expected second argument to be of type array or string, but found ${toString(typeOf(haystack))} instead.`);
+            throw new RuntimeError(`Expected second argument to be of type array or string, but found ${typeToString(typeOf(haystack))} instead.`);
         }
     }
 
@@ -93,4 +93,3 @@ class IndexOf implements Expression {
     }
 }
 
-export default IndexOf;

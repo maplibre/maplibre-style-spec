@@ -1,13 +1,11 @@
 
 import type {StylePropertySpecification} from '..';
 
-export default convertFunction;
-
 function convertLiteral(value) {
     return typeof value === 'object' ? ['literal', value] : value;
 }
 
-function convertFunction(parameters: any, propertySpec: StylePropertySpecification) {
+export function convertFunction(parameters: any, propertySpec: StylePropertySpecification) {
     let stops = parameters.stops;
     if (!stops) {
         // identity function

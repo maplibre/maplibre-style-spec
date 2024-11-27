@@ -1,9 +1,9 @@
 
-import ValidationError from '../error/validation_error';
-import getType from '../util/get_type';
-import validateObject from './validate_object';
-import validateArray from './validate_array';
-import validateNumber from './validate_number';
+import {ValidationError} from '../error/validation_error';
+import {getType} from '../util/get_type';
+import {validateObject} from './validate_object';
+import {validateArray} from './validate_array';
+import {validateNumber} from './validate_number';
 import {isExpression} from '../expression';
 import {unbundle, deepUnbundle} from '../util/unbundle_jsonlint';
 import {
@@ -12,7 +12,7 @@ import {
     supportsInterpolation
 } from '../util/properties';
 
-export default function validateFunction(options): Array<ValidationError> {
+export function validateFunction(options): Array<ValidationError> {
     const functionValueSpec = options.valueSpec;
     const functionType = unbundle(options.value.type);
     let stopKeyType;

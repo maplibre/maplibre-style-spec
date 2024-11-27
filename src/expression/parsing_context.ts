@@ -1,10 +1,10 @@
-import Scope from './scope';
+import {Scope} from './scope';
 import {checkSubtype} from './types';
-import ExpressionParsingError from './parsing_error';
-import Literal from './definitions/literal';
-import Assertion from './definitions/assertion';
-import Coercion from './definitions/coercion';
-import EvaluationContext from './evaluation_context';
+import {ExpressionParsingError} from './parsing_error';
+import {Literal} from './definitions/literal';
+import {Assertion} from './definitions/assertion';
+import {Coercion} from './definitions/coercion';
+import {EvaluationContext} from './evaluation_context';
 
 import type {Expression, ExpressionRegistry} from './expression';
 import type {Type} from './types';
@@ -13,7 +13,7 @@ import type {Type} from './types';
  * State associated parsing at a given point in an expression tree.
  * @private
  */
-class ParsingContext {
+export class ParsingContext {
     registry: ExpressionRegistry;
     path: Array<number>;
     key: string;
@@ -120,6 +120,8 @@ class ParsingContext {
                     //
                     if ((expected.kind === 'string' || expected.kind === 'number' || expected.kind === 'boolean' || expected.kind === 'object' || expected.kind === 'array') && actual.kind === 'value') {
                         parsed = annotate(parsed, expected, options.typeAnnotation || 'assert');
+                    } else if ((expected.kind === 'projectionDefinition') && (actual.kind === 'string' || actual.kind === 'array')) {
+                        parsed = annotate(parsed, expected, options.typeAnnotation || 'coerce');
                     } else if ((expected.kind === 'color' || expected.kind === 'formatted' || expected.kind === 'resolvedImage') && (actual.kind === 'value' || actual.kind === 'string')) {
                         parsed = annotate(parsed, expected, options.typeAnnotation || 'coerce');
                     } else if (expected.kind === 'padding' && (actual.kind === 'value' || actual.kind === 'number' || actual.kind === 'array')) {
@@ -205,4 +207,3 @@ class ParsingContext {
     }
 }
 
-export default ParsingContext;

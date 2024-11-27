@@ -4,11 +4,11 @@ import {findStopLessThanOrEqualTo} from '../stops';
 
 import type {Stops} from '../stops';
 import type {Expression} from '../expression';
-import type ParsingContext from '../parsing_context';
-import type EvaluationContext from '../evaluation_context';
+import type {ParsingContext} from '../parsing_context';
+import type {EvaluationContext} from '../evaluation_context';
 import type {Type} from '../types';
 
-class Step implements Expression {
+export class Step implements Expression {
     type: Type;
 
     input: Expression;
@@ -104,4 +104,3 @@ class Step implements Expression {
     }
 }
 
-export default Step;

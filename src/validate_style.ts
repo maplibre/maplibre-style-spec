@@ -1,7 +1,7 @@
 
-import validateStyleMin from './validate_style.min';
+import {validateStyleMin} from './validate_style.min';
 import {v8, ValidationError} from '.';
-import readStyle from './read_style';
+import {readStyle} from './read_style';
 import type {StyleSpecification} from './types.g';
 
 /**
@@ -18,7 +18,7 @@ import type {StyleSpecification} from './types.g';
  *   const errors = validate(style);
  */
 
-export default function validateStyle(style: StyleSpecification | string | Buffer, styleSpec = v8): Array<ValidationError> {
+export function validateStyle(style: StyleSpecification | string | Buffer, styleSpec = v8): Array<ValidationError> {
     let s = style;
 
     try {

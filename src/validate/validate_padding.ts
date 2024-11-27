@@ -1,8 +1,8 @@
-import ValidationError from '../error/validation_error';
-import getType from '../util/get_type';
-import validateNumber from './validate_number';
+import {ValidationError} from '../error/validation_error';
+import {getType} from '../util/get_type';
+import {validateNumber} from './validate_number';
 
-export default function validatePadding(options) {
+export function validatePadding(options) {
     const key = options.key;
     const value = options.value;
     const type = getType(value);

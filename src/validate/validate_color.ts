@@ -1,8 +1,8 @@
-import ValidationError from '../error/validation_error';
-import getType from '../util/get_type';
-import Color from '../util/color';
+import {ValidationError} from '../error/validation_error';
+import {getType} from '../util/get_type';
+import {Color} from '../expression/types/color';
 
-export default function validateColor(options) {
+export function validateColor(options) {
     const key = options.key;
     const value = options.value;
     const type = getType(value);

@@ -7,7 +7,7 @@ const FE = 1 / 298.257223563; // flattening
 const E2 = FE * (2 - FE);
 const RAD = Math.PI / 180;
 
-export default class CheapRuler {
+export class CheapRuler {
     private kx: number;
     private ky: number;
 

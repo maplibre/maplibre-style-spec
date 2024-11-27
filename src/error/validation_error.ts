@@ -1,6 +1,6 @@
 // Note: Do not inherit from Error. It breaks when transpiling to ES5.
 
-export default class ValidationError {
+export class ValidationError {
     message: string;
     identifier: string;
     line: number;

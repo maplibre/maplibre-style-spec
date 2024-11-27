@@ -1,9 +1,9 @@
 import type {Type} from '../types';
 import type {Expression} from '../expression';
-import type ParsingContext from '../parsing_context';
-import type EvaluationContext  from '../evaluation_context';
+import type {ParsingContext} from '../parsing_context';
+import type {EvaluationContext}  from '../evaluation_context';
 
-class Let implements Expression {
+export class Let implements Expression {
     type: Type;
     bindings: Array<[string, Expression]>;
     result: Expression;
@@ -57,5 +57,3 @@ class Let implements Expression {
         return this.result.outputDefined();
     }
 }
-
-export default Let;

@@ -1,9 +1,9 @@
 import type {Type} from '../types';
 import type {Expression} from '../expression';
-import type ParsingContext from '../parsing_context';
-import type EvaluationContext  from '../evaluation_context';
+import type {ParsingContext} from '../parsing_context';
+import type {EvaluationContext}  from '../evaluation_context';
 
-class Var implements Expression {
+export class Var implements Expression {
     type: Type;
     name: string;
     boundExpression: Expression;
@@ -37,4 +37,3 @@ class Var implements Expression {
     }
 }
 
-export default Var;

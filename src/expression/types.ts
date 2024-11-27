@@ -13,6 +13,9 @@ export type BooleanTypeT = {
 export type ColorTypeT = {
     kind: 'color';
 };
+export type ProjectionDefinitionTypeT = {
+    kind: 'projectionDefinition';
+};
 export type ObjectTypeT = {
     kind: 'object';
 };
@@ -40,7 +43,7 @@ export type VariableAnchorOffsetCollectionTypeT = {
 
 export type EvaluationKind = 'constant' | 'source' | 'camera' | 'composite';
 
-export type Type = NullTypeT | NumberTypeT | StringTypeT | BooleanTypeT | ColorTypeT | ObjectTypeT | ValueTypeT |
+export type Type = NullTypeT | NumberTypeT | StringTypeT | BooleanTypeT | ColorTypeT | ProjectionDefinitionTypeT | ObjectTypeT | ValueTypeT |
 ArrayType | ErrorTypeT | CollatorTypeT | FormattedTypeT | PaddingTypeT | ResolvedImageTypeT | VariableAnchorOffsetCollectionTypeT;
 
 export interface ArrayType<T extends Type = Type> {
@@ -56,6 +59,7 @@ export const NumberType = {kind: 'number'} as NumberTypeT;
 export const StringType = {kind: 'string'} as StringTypeT;
 export const BooleanType = {kind: 'boolean'} as BooleanTypeT;
 export const ColorType = {kind: 'color'} as ColorTypeT;
+export const ProjectionDefinitionType = {kind: 'projectionDefinition'} as ProjectionDefinitionTypeT;
 export const ObjectType = {kind: 'object'} as ObjectTypeT;
 export const ValueType = {kind: 'value'} as ValueTypeT;
 export const ErrorType = {kind: 'error'} as ErrorTypeT;
@@ -73,9 +77,9 @@ export function array<T extends Type>(itemType: T, N?: number | null): ArrayType
     };
 }
 
-export function toString(type: Type): string {
+export function typeToString(type: Type): string {
     if (type.kind === 'array') {
-        const itemType = toString(type.itemType);
+        const itemType = typeToString(type.itemType);
         return typeof type.N === 'number' ?
             `array<${itemType}, ${type.N}>` :
             type.itemType.kind === 'value' ? 'array' : `array<${itemType}>`;
@@ -90,6 +94,7 @@ const valueMemberTypes = [
     StringType,
     BooleanType,
     ColorType,
+    ProjectionDefinitionType,
     FormattedType,
     ObjectType,
     array(ValueType),
@@ -123,7 +128,7 @@ export function checkSubtype(expected: Type, t: Type): string {
         }
     }
 
-    return `Expected ${toString(expected)} but found ${toString(t)} instead.`;
+    return `Expected ${typeToString(expected)} but found ${typeToString(t)} instead.`;
 }
 
 export function isValidType(provided: Type, allowedTypes: Array<Type>): boolean {

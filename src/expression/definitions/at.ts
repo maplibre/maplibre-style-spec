@@ -1,14 +1,14 @@
 import {array, ValueType, NumberType} from '../types';
 
-import RuntimeError from '../runtime_error';
+import {RuntimeError} from '../runtime_error';
 
 import type {Expression} from '../expression';
-import type ParsingContext from '../parsing_context';
-import type EvaluationContext from '../evaluation_context';
+import type {ParsingContext} from '../parsing_context';
+import type {EvaluationContext} from '../evaluation_context';
 import type {Type, ArrayType} from '../types';
 import type {Value} from '../values';
 
-class At implements Expression {
+export class At implements Expression {
     type: Type;
     index: Expression;
     input: Expression;
@@ -61,4 +61,3 @@ class At implements Expression {
     }
 }
 
-export default At;

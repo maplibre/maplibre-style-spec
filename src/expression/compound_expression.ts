@@ -1,4 +1,4 @@
-import {toString,
+import {typeToString,
     NumberType,
     StringType,
     BooleanType,
@@ -8,27 +8,27 @@ import {toString,
     ErrorType,
     CollatorType,
     array,
-    toString as typeToString,
 } from './types';
 
-import ParsingContext from './parsing_context';
-import EvaluationContext from './evaluation_context';
+import {ParsingContext} from './parsing_context';
+import {EvaluationContext} from './evaluation_context';
 
 import {expressions} from './definitions/index';
-import CollatorExpression from './definitions/collator';
-import Within from './definitions/within';
-import Literal from './definitions/literal';
-import Assertion from './definitions/assertion';
-import Coercion from './definitions/coercion';
-import Var from './definitions/var';
-import Distance from './definitions/distance';
+import {CollatorExpression} from './definitions/collator';
+import {Within} from './definitions/within';
+import {Literal} from './definitions/literal';
+import {Assertion} from './definitions/assertion';
+import {Coercion} from './definitions/coercion';
+import {Var} from './definitions/var';
+import {Distance} from './definitions/distance';
 
 import type {Expression, ExpressionRegistry} from './expression';
 import type {Value} from './values';
 import type {Type} from './types';
 
-import {typeOf, Color, validateRGBA, toString as valueToString} from './values';
-import RuntimeError from './runtime_error';
+import {typeOf, validateRGBA, valueToString} from './values';
+import {RuntimeError} from './runtime_error';
+import {Color} from './types/color';
 
 export type Varargs = {
     type: Type;
@@ -41,7 +41,7 @@ type Definition = [Type, Signature, Evaluate] | {
     overloads: Array<[Signature, Evaluate]>;
 };
 
-class CompoundExpression implements Expression {
+export class CompoundExpression implements Expression {
     name: string;
     type: Type;
     _evaluate: Evaluate;
@@ -150,7 +150,7 @@ class CompoundExpression implements Expression {
             for (let i = 1; i < args.length; i++) {
                 const parsed = context.parse(args[i], 1 + actualTypes.length);
                 if (!parsed) return null;
-                actualTypes.push(toString(parsed.type));
+                actualTypes.push(typeToString(parsed.type));
             }
             context.error(`Expected arguments of type ${signatures}, but found (${actualTypes.join(', ')}) instead.`);
         }
@@ -646,9 +646,9 @@ CompoundExpression.register(expressions, {
 
 function stringifySignature(signature: Signature): string {
     if (Array.isArray(signature)) {
-        return `(${signature.map(toString).join(', ')})`;
+        return `(${signature.map(typeToString).join(', ')})`;
     } else {
-        return `(${toString(signature.type)}...)`;
+        return `(${typeToString(signature.type)}...)`;
     }
 }
 
@@ -751,4 +751,3 @@ function isGlobalPropertyConstant(e: Expression, properties: Array<string>) {
 }
 
 export {isFeatureConstant, isGlobalPropertyConstant, isStateConstant, isExpressionConstant};
-export default CompoundExpression;

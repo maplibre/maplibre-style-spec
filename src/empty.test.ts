@@ -1,5 +1,5 @@
-import emptyStyle from './empty';
-import validateStyleMin from './validate_style.min';
+import {emptyStyle} from './empty';
+import {validateStyleMin} from './validate_style.min';
 
 describe('empty', () => {
     test('it generates something', () => {

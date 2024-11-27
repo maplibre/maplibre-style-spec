@@ -1,5 +1,5 @@
 import {readdir} from 'fs/promises';
-import reference from '../../src/reference/latest';
+import {latest} from '../../src/reference/latest';
 import fs from 'fs';
 
 const minBundle = fs.readFileSync('dist/index.mjs', 'utf8');
@@ -34,7 +34,7 @@ describe('@maplibre/maplibre-gl-style-spec npm package', () => {
     });
 
     test('trims reference.json fields', () => {
-        expect(reference.$root.version.doc).toBeTruthy();
-        expect(minBundle.includes(reference.$root.version.doc)).toBeFalsy();
+        expect(latest.$root.version.doc).toBeTruthy();
+        expect(minBundle.includes(latest.$root.version.doc)).toBeFalsy();
     });
 });

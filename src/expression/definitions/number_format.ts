@@ -1,8 +1,8 @@
 import {StringType, NumberType} from '../types';
 
 import type {Expression} from '../expression';
-import type EvaluationContext from '../evaluation_context';
-import type ParsingContext from '../parsing_context';
+import type {EvaluationContext} from '../evaluation_context';
+import type {ParsingContext} from '../parsing_context';
 import type {Type} from '../types';
 
 declare let Intl: {
@@ -24,7 +24,7 @@ type NumberFormatOptions = {
     maximumFractionDigits?: null | string;
 };
 
-export default class NumberFormat implements Expression {
+export class NumberFormat implements Expression {
     type: Type;
     number: Expression;
     locale: Expression | null;   // BCP 47 language tag

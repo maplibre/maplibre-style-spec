@@ -1,11 +1,11 @@
 
-import ValidationError from '../error/validation_error';
-import getType from '../util/get_type';
+import {ValidationError} from '../error/validation_error';
+import {getType} from '../util/get_type';
 import {isFunction} from '../function';
 import {unbundle, deepUnbundle} from '../util/unbundle_jsonlint';
 import {supportsPropertyExpression} from '../util/properties';
 
-export default function validateProperty(options, propertyType) {
+export function validateProperty(options, propertyType) {
     const key = options.key;
     const validateSpec = options.validateSpec;
     const style = options.style;

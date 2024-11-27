@@ -1,5 +1,5 @@
 
-import refProperties from './util/ref_properties';
+import {refProperties} from './util/ref_properties';
 
 function deref(layer, parent) {
     const result = {};
@@ -19,8 +19,6 @@ function deref(layer, parent) {
     return result;
 }
 
-export default derefLayers;
-
 /**
  * Given an array of layers, some of which may contain `ref` properties
  * whose value is the `id` of another property, return a new array where
@@ -34,7 +32,7 @@ export default derefLayers;
  * @param {Array<Layer>} layers
  * @returns {Array<Layer>}
  */
-function derefLayers(layers) {
+export function derefLayers(layers) {
     layers = layers.slice();
 
     const map = Object.create(null);

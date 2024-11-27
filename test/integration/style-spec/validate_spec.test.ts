@@ -1,8 +1,8 @@
 import {globSync} from 'glob';
 import fs from 'fs';
 import path from 'path';
-import validate from '../../../src/validate_style';
-import reference from '../../../src/reference/latest';
+import {validateStyle as validate} from '../../../src/validate_style';
+import {latest} from '../../../src/reference/latest';
 
 const UPDATE = !!process.env.UPDATE;
 
@@ -21,7 +21,7 @@ describe('validate_spec', () => {
     test('errors from validate do not contain line numbers', () => {
         const style = JSON.parse(fs.readFileSync('test/integration/style-spec/tests/bad-color.input.json', 'utf8'));
 
-        const result = validate(style, reference);
+        const result = validate(style, latest);
         expect(result[0].line).toBeUndefined();
     });
 });
@@ -92,5 +92,5 @@ describe('Validate sdk-support in spec', () => {
         });
     }
 
-    checkRoot(reference, []);
+    checkRoot(latest, []);
 });

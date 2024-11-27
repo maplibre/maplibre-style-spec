@@ -9,7 +9,7 @@ import {
     ICanonicalTileID,
     StylePropertyExpression
 } from '../../../src/index';
-import ExpressionParsingError from '../../../src/expression/parsing_error';
+import {ExpressionParsingError} from '../../../src/expression/parsing_error';
 import {Result} from '../../../src/util/result';
 import {getGeometry} from '../../lib/geometry';
 import {deepEqual, stripPrecision} from '../../lib/json-diff';
@@ -57,13 +57,15 @@ describe('expression', () => {
 
             const expected = fixture.expected;
             const compileOk = deepEqual(result.compiled, expected.compiled, DECIMAL_SIGNIFICANT_FIGURES);
+            
             const evalOk = compileOk && deepEqual(result.outputs, expected.outputs, DECIMAL_SIGNIFICANT_FIGURES);
+            
             try {
                 expect(compileOk).toBeTruthy();
             } catch {
                 throw new Error(`Compilation Failed:\nExpected ${JSON.stringify(expected.compiled)}\nResult   ${JSON.stringify(result.compiled)}`);
             }
-
+            
             try {
                 expect(evalOk).toBeTruthy();
             } catch {
@@ -162,7 +164,7 @@ function evaluateExpression(fixture: ExpressionFixture, expression: Result<Style
             }
 
             let value = expressionValue.evaluateWithoutErrorHandling(input[0], feature, {}, canonical, availableImages);
-
+            
             if (type.kind === 'color') {
                 value = [value.r, value.g, value.b, value.a];
             }

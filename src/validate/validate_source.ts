@@ -1,18 +1,18 @@
 
-import ValidationError from '../error/validation_error';
+import {ValidationError} from '../error/validation_error';
 import {unbundle} from '../util/unbundle_jsonlint';
-import validateObject from './validate_object';
-import validateEnum from './validate_enum';
-import validateExpression from './validate_expression';
-import validateString from './validate_string';
-import getType from '../util/get_type';
-import validateRasterDEMSource from './validate_raster_dem_source';
+import {validateObject} from './validate_object';
+import {validateEnum} from './validate_enum';
+import {validateExpression} from './validate_expression';
+import {validateString} from './validate_string';
+import {getType} from '../util/get_type';
+import {validateRasterDEMSource} from './validate_raster_dem_source';
 
 const objectElementValidators = {
     promoteId: validatePromoteId
 };
 
-export default function validateSource(options) {
+export function validateSource(options) {
     const value = options.value;
     const key = options.key;
     const styleSpec = options.styleSpec;

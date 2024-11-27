@@ -1,13 +1,12 @@
-import Color from '../util/color';
-import extend from '../util/extend';
-import getType from '../util/get_type';
-import interpolate, {isSupportedInterpolationColorSpace} from '../util/interpolate';
-import Interpolate from '../expression/definitions/interpolate';
-import Formatted from '../expression/types/formatted';
-import ResolvedImage from '../expression/types/resolved_image';
+import {Color, isSupportedInterpolationColorSpace} from '../expression/types/color';
+import {extendBy} from '../util/extend';
+import {getType} from '../util/get_type';
+import {Interpolate, interpolateFactory} from '../expression/definitions/interpolate';
+import {Formatted} from '../expression/types/formatted';
+import {ResolvedImage} from '../expression/types/resolved_image';
 import {supportsInterpolation} from '../util/properties';
 import {findStopLessThanOrEqualTo} from '../expression/stops';
-import Padding from '../util/padding';
+import {Padding} from '../expression/types/padding';
 
 export function isFunction(value) {
     return typeof value === 'object' && value !== null && !Array.isArray(value);
@@ -27,7 +26,7 @@ export function createFunction(parameters, propertySpec) {
     if (isColor || propertySpec.type === 'padding') {
         const parseFn = isColor ? Color.parse : Padding.parse;
 
-        parameters = extend({}, parameters);
+        parameters = extendBy({}, parameters);
 
         if (parameters.stops) {
             parameters.stops = parameters.stops.map((stop) => {
@@ -174,7 +173,7 @@ function evaluateExponentialFunction(parameters, propertySpec, input) {
 
     const outputLower = parameters.stops[index][1];
     const outputUpper = parameters.stops[index + 1][1];
-    const interp = interpolate[propertySpec.type] || identityFunction;
+    const interp = interpolateFactory[propertySpec.type] || identityFunction;
 
     if (typeof outputLower.evaluate === 'function') {
         return {

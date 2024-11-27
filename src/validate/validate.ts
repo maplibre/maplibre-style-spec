@@ -1,32 +1,33 @@
 
-import extend from '../util/extend';
+import {extendBy} from '../util/extend';
 import {unbundle, deepUnbundle} from '../util/unbundle_jsonlint';
 import {isExpression} from '../expression';
 import {isFunction} from '../function';
 
-import validateFunction from './validate_function';
-import validateExpression from './validate_expression';
-import validateObject from './validate_object';
-import validateArray from './validate_array';
-import validateBoolean from './validate_boolean';
-import validateNumber from './validate_number';
-import validateColor from './validate_color';
-import validateConstants from './validate_constants';
-import validateEnum from './validate_enum';
-import validateFilter from './validate_filter';
-import validateLayer from './validate_layer';
-import validateSource from './validate_source';
-import validateLight from './validate_light';
-import validateSky from './validate_sky';
-import validateTerrain from './validate_terrain';
-import validateString from './validate_string';
-import validateFormatted from './validate_formatted';
-import validateImage from './validate_image';
-import validatePadding from './validate_padding';
-import validateVariableAnchorOffsetCollection from './validate_variable_anchor_offset_collection';
-import validateSprite from './validate_sprite';
-import ValidationError from '../error/validation_error';
-import validateProjection from './validate_projection';
+import {validateFunction} from './validate_function';
+import {validateExpression} from './validate_expression';
+import {validateObject} from './validate_object';
+import {validateArray} from './validate_array';
+import {validateBoolean} from './validate_boolean';
+import {validateNumber} from './validate_number';
+import {validateColor} from './validate_color';
+import {validateConstants} from './validate_constants';
+import {validateEnum} from './validate_enum';
+import {validateFilter} from './validate_filter';
+import {validateLayer} from './validate_layer';
+import {validateSource} from './validate_source';
+import {validateLight} from './validate_light';
+import {validateSky} from './validate_sky';
+import {validateTerrain} from './validate_terrain';
+import {validateString} from './validate_string';
+import {validateFormatted} from './validate_formatted';
+import {validateImage} from './validate_image';
+import {validatePadding} from './validate_padding';
+import {validateVariableAnchorOffsetCollection} from './validate_variable_anchor_offset_collection';
+import {validateSprite} from './validate_sprite';
+import {ValidationError} from '../error/validation_error';
+import {validateProjection} from './validate_projection';
+import {validateProjectionDefinition} from './validate_projectiondefinition';
 
 const VALIDATORS = {
     '*'() {
@@ -47,6 +48,7 @@ const VALIDATORS = {
     'sky': validateSky,
     'terrain': validateTerrain,
     'projection': validateProjection,
+    'projectionDefinition': validateProjectionDefinition,
     'string': validateString,
     'formatted': validateFormatted,
     'resolvedImage': validateImage,
@@ -71,7 +73,7 @@ const VALIDATORS = {
  * @param options.objectElementValidators - optional object of functions that will be called
  * @returns an array of errors, or an empty array if no errors are found.
  */
-export default function validate(options: {
+export function validate(options: {
     key: any;
     value: any;
     valueSpec: any;
@@ -94,7 +96,7 @@ export default function validate(options: {
         return VALIDATORS[valueSpec.type](options);
 
     } else {
-        const valid = validateObject(extend({}, options, {
+        const valid = validateObject(extendBy({}, options, {
             valueSpec: valueSpec.type ? styleSpec[valueSpec.type] : valueSpec
         }));
         return valid;
