@@ -73,7 +73,7 @@ export class FormatExpression implements Expression {
                 let verticalAlign = null;
                 if (arg['vertical-align']) {
                     if (typeof arg['vertical-align'] === 'string' && !VERTICAL_ALIGN_OPTIONS.includes(arg['vertical-align'] as VerticalAlign)) {
-                        return context.error(`\`vertical-align\` must be one of: 'baseline', 'center', 'top' but found '${arg['vertical-align']}' instead.`) as null;
+                        return context.error(`\`vertical-align\` must be one of: 'bottom', 'center', 'top' but found '${arg['vertical-align']}' instead.`) as null;
                     }
 
                     verticalAlign = context.parse(arg['vertical-align'], 1, StringType);
