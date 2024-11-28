@@ -3256,6 +3256,11 @@
             "android": "7.3.0",
             "ios": "4.10.0"
           },
+          "vertical-align": {
+            "js": "https://github.com/maplibre/maplibre-gl-js/issues/5043",
+            "android": "x",
+            "ios": "x"
+          },
           "image": {
             "js": "1.6.0",
             "android": "8.6.0",
