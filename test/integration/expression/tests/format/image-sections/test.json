@@ -8,7 +8,10 @@
     [
       "image",
       "beach-11"
-    ]
+    ],
+    {
+      "vertical-align": "center"
+    }
   ],
   "inputs": [
     [
@@ -50,7 +53,7 @@
             "scale": null,
             "fontStack": null,
             "textColor": null,
-            "verticalAlign": null
+            "verticalAlign": "center"
           }
         ]
       }
