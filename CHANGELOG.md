@@ -4,8 +4,13 @@
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
-- Fix issue with `geomtry-type` filter ([#924](https://github.com/maplibre/maplibre-style-spec/pull/924))
 - _...Add new stuff here..._
+
+## 22.0.1
+
+### 🐞 Bug fixes
+
+- Fix issue with `geomtry-type` filter ([#924](https://github.com/maplibre/maplibre-style-spec/pull/924))
 
 ## 22.0.0
 
