@@ -4253,7 +4253,7 @@
         }
       },
       "is-supported-script": {
-        "doc": "Returns `true` if the input string is expected to render legibly. Returns `false` if the input string contains sections that cannot be rendered without potential loss of meaning (e.g. Indic scripts that require complex text shaping, or right-to-left scripts if the the `mapbox-gl-rtl-text` plugin is not in use in MapLibre GL JS).",
+        "doc": "Returns `true` if the input string is expected to render legibly. Returns `false` if the input string contains sections that cannot be rendered without potential loss of meaning (e.g. Indic scripts that require complex text shaping, or right-to-left scripts if the `mapbox-gl-rtl-text` plugin is not in use in MapLibre GL JS).",
         "example": {
           "syntax": {
             "method": ["string"],
@@ -4534,7 +4534,7 @@
         ]
       },
       "transition": true,
-      "doc": "How to blend the the sky color and the horizon color. Where 1 is blending the color at the middle of the sky and 0 is not blending at all and using the sky color only."
+      "doc": "How to blend the sky color and the horizon color. Where 1 is blending the color at the middle of the sky and 0 is not blending at all and using the sky color only."
     },
     "atmosphere-blend": {
       "type": "number",
