@@ -171,6 +171,30 @@ describe('filter', () => {
         expect(withinFilter.filter({zoom: 3}, featureInTile, canonical)).toBe(false);
     });
 
+    test('expression, geomtery-type point', () => {
+        const withinFilter = featureFilter(['==', ['geometry-type'], 'Point']);
+        expect(withinFilter.needGeometry).toBe(true);
+        const canonical = {z: 3, x: 3, y: 3} as ICanonicalTileID;
+        const featureInTile = {
+            type: 1,
+            geometry: [[{x: 0, y: 0}]],
+            properties: {}
+        } as Feature;
+        expect(withinFilter.filter({zoom: 3}, featureInTile, canonical)).toBe(true);
+    });
+
+    test('expression, geomtery-type multipoint', () => {
+        const withinFilter = featureFilter(['==', ['geometry-type'], 'MultiPoint']);
+        expect(withinFilter.needGeometry).toBe(true);
+        const canonical = {z: 3, x: 3, y: 3} as ICanonicalTileID;
+        const featureInTile = {
+            type: 1,
+            geometry: [[{x: 0, y: 0}], [{x: 1, y: 1}]],
+            properties: {}
+        } as Feature;
+        expect(withinFilter.filter({zoom: 3}, featureInTile, canonical)).toBe(true);
+    });
+
     legacyFilterTests(featureFilter);
 
 });
