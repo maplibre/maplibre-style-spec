@@ -177,7 +177,7 @@ describe('filter', () => {
         const canonical = {z: 3, x: 3, y: 3} as ICanonicalTileID;
         const featureInTile = {
             type: 1,
-            geometry: [[{x:0, y:0}]],
+            geometry: [[{x: 0, y: 0}]],
             properties: {}
         } as Feature;
         expect(withinFilter.filter({zoom: 3}, featureInTile, canonical)).toBe(true);
@@ -189,7 +189,7 @@ describe('filter', () => {
         const canonical = {z: 3, x: 3, y: 3} as ICanonicalTileID;
         const featureInTile = {
             type: 1,
-            geometry: [[{x:0, y:0}], [{x:1, y:1}]],
+            geometry: [[{x: 0, y: 0}], [{x: 1, y: 1}]],
             properties: {}
         } as Feature;
         expect(withinFilter.filter({zoom: 3}, featureInTile, canonical)).toBe(true);
