@@ -2859,9 +2859,9 @@
         "group": "Types",
         "sdk-support": {
           "basic functionality": {
-            "js": "TODO",
-            "android": "TODO",
-            "ios": "TODO"
+            "js": "https://github.com/maplibre/maplibre-style-spec/issues/950",
+            "android": "https://github.com/maplibre/maplibre-style-spec/issues/950",
+            "ios": "https://github.com/maplibre/maplibre-style-spec/issues/950"
           }
         }
       },
