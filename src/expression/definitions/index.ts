@@ -28,6 +28,7 @@ import {ImageExpression} from './image';
 import {Length} from './length';
 import {Within} from './within';
 import {Distance} from './distance';
+import {Semiliteral} from './semiliteral';
 
 import type {ExpressionRegistry} from '../expression';
 
@@ -59,6 +60,7 @@ export const expressions: ExpressionRegistry = {
     'number': Assertion,
     'number-format': NumberFormat,
     'object': Assertion,
+    'semiliteral': Semiliteral,
     'slice': Slice,
     'step': Step,
     'string': Assertion,

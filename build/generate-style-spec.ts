@@ -162,6 +162,7 @@ export type ExpressionSpecification =
     | ['format', ...(string | ['image', ExpressionSpecification] | ExpressionSpecification | {'font-scale'?: number | ExpressionSpecification, 'text-font'?: string[] | ExpressionSpecification, 'text-color'?: ColorSpecification | ExpressionSpecification})[]] // string
     | ['image', unknown | ExpressionSpecification] // image
     | ['literal', unknown]
+    | ['semiliteral', unknown]
     | ['number', unknown | ExpressionSpecification, ...(unknown | ExpressionSpecification)[]] // number
     | ['number-format', number | ExpressionSpecification, {'locale'?: string | ExpressionSpecification, 'currency'?: string | ExpressionSpecification, 'min-fraction-digits'?: number | ExpressionSpecification, 'max-fraction-digits'?: number | ExpressionSpecification}] // string
     | ['object', unknown | ExpressionSpecification, ...(unknown | ExpressionSpecification)[]] // object
