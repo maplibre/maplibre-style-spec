@@ -10,7 +10,6 @@ import type {EvaluationContext} from '../evaluation_context';
 import type {Type} from '../types';
 import {typeOf, Value, isValue} from '../values';
 import {Literal} from './literal';
-import exp from 'constants';
 
 export abstract class Semiliteral implements Expression {
     type: Type;
