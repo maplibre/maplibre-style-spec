@@ -3232,7 +3232,7 @@
             "method": ["value", "{ \"text-font\": string, \"text-color\": color, \"font-scale\": number, \"vertical-align\": \"bottom\" | \"center\" | \"top\" }", "..."],
             "result": "formatted"
           },
-          "value": ["format", ["upcase", ["get", "FacilityName"]], {"font-scale": 0.8}, "\n\n", {}, ["downcase", ["get", "Comments"]], {"font-scale": 0.6}]
+          "value": ["format", ["upcase", ["get", "FacilityName"]], {"font-scale": 0.8}, "\n\n", {}, ["downcase", ["get", "Comments"]], {"font-scale": 0.6, "vertical-align": "center"}]
         },
         "group": "Types",
         "sdk-support": {
