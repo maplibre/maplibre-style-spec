@@ -139,4 +139,50 @@ describe('migrate', () => {
         });
     });
 
+    test('update "geometry-type" expressions in styles', () => {
+        const input = {
+            'version': 8,
+            'sources': {
+                'vector': {'type': 'vector', 'url': 'http://www.example.com/example.json'}
+            },
+            'layers': [
+                {
+                    'id': 'minimum',
+                    'type': 'symbol',
+                    'source': 'vector',
+                    'source-layer': 'layer',
+                    'layout': {'text-field': ['get', ['geometry-type']]},
+                }
+            ]
+        } as any;
+
+        const output = {
+            'version': 8,
+            'sources': {
+                'vector': {'type': 'vector', 'url': 'http://www.example.com/example.json'}
+            },
+            'layers': [
+                {
+                    'id': 'minimum',
+                    'type': 'symbol',
+                    'source': 'vector',
+                    'source-layer': 'layer',
+                    'layout': {
+                        'text-field': [
+                            'get',
+                            [
+                                'case',
+                                ['==', ['slice', ['geometry-type'], 0, 5], 'Multi'],
+                                ['slice', ['geometry-type'], 5],
+                                ['geometry-type'],
+                            ],
+                        ],
+                    },
+                }
+            ]
+        };
+
+        expect(migrate(input)).toEqual(output);
+    });
+
 });
