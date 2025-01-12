@@ -103,7 +103,7 @@ function compare(a, b) {
 
 function geometryNeeded(filter) {
     if (!Array.isArray(filter)) return false;
-    if (filter[0] === 'within' || filter[0] === 'distance' || filter[0] === 'geometry-type') return true;
+    if (filter[0] === 'within' || filter[0] === 'distance') return true;
     for (let index = 1; index < filter.length; index++) {
         if (geometryNeeded(filter[index])) return true;
     }
