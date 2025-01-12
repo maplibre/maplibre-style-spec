@@ -3516,7 +3516,7 @@
         }
       },
       "geometry-type": {
-        "doc": "Returns the feature's geometry type: Point, LineString, or Polygon. MultiPoint, MultiLineString, and MultiPolygon are returned as Point, LineString, and Polygon, respectively.",
+        "doc": "Returns the feature's simple geometry type: `Point`, `LineString`, or `Polygon`. `MultiPoint`, `MultiLineString`, and `MultiPolygon` are returned as `Point`, `LineString`, and `Polygon`, respectively.",
         "example": {
           "syntax": {
             "method": [],
