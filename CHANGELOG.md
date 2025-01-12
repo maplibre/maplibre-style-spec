@@ -1,7 +1,8 @@
 ## main
 
 ### ✨ Features and improvements
-- _...Add new stuff here..._
+
+- Adjust `geometry-type` expression specification and MapLibre GL JS implementation to the historic behavior of only returning `Point`, `LineString` or `Polygon`, not the `Multi...` variants of these. This reverts a recent change to the implementation, which was causing issues in a [large number of styles](https://github.com/maplibre/maplibre-style-spec/issues/965).
 
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
@@ -33,7 +34,7 @@
 
 ### ✨ Features and improvements
 
-- Aligned the implementation of `["geometry-type"]` with [its spec](https://maplibre.org/maplibre-style-spec/expressions/#geometry-type). Now, when applicable, `["geometry-type"]` returns values not available while using `"$type"`: `"MultiPoint"`, `"MultiLineString"`, and `"MultiPolygon"`. The behaviour of `"$type"` has not changed. ([#519](https://github.com/maplibre/maplibre-style-spec/pull/519))
+- ~~Aligned the implementation of `["geometry-type"]` with [its spec](https://maplibre.org/maplibre-style-spec/expressions/#geometry-type). Now, when applicable, `["geometry-type"]` returns values not available while using `"$type"`: `"MultiPoint"`, `"MultiLineString"`, and `"MultiPolygon"`. The behaviour of `"$type"` has not changed. ([#519](https://github.com/maplibre/maplibre-style-spec/pull/519))~~ This was reverted in 23.0.0 due to causing issues in [a large number of styles](https://github.com/maplibre/maplibre-style-spec/issues/965).
 
 ## 20.4.0
 
