@@ -11,7 +11,7 @@
 
 ### 🐞 Bug fixes
 
-- Fix issue with `geomtry-type` filter ([#924](https://github.com/maplibre/maplibre-style-spec/pull/924))
+- ~~Fix issue with `geomtry-type` filter ([#924](https://github.com/maplibre/maplibre-style-spec/pull/924))~~ This was reverted in 23.0.0 due to causing issues in [a large number of styles](https://github.com/maplibre/maplibre-style-spec/issues/965).
 
 ## 22.0.0
 
