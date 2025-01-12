@@ -192,9 +192,9 @@ export class Within implements Expression {
 
     evaluate(ctx: EvaluationContext) {
         if (ctx.geometry() != null && ctx.canonicalID() != null) {
-            if (ctx.geometryDollarType() === 'Point') {
+            if (ctx.geometryType() === 'Point') {
                 return pointsWithinPolygons(ctx, this.geometries);
-            } else if (ctx.geometryDollarType() === 'LineString') {
+            } else if (ctx.geometryType() === 'LineString') {
                 return linesWithinPolygons(ctx, this.geometries);
             }
         }
