@@ -12,8 +12,6 @@
 
 - Adjust `geometry-type` expression specification and MapLibre GL JS implementation to the historic behavior of only returning `Point`, `LineString` or `Polygon`, not the `Multi...` variants of these. This reverts a recent change to the implementation, which was causing issues in a [large number of styles](https://github.com/maplibre/maplibre-style-spec/issues/965).
 
-### 🐞 Bug fixes
-
 ## 22.0.1
 
 ### 🐞 Bug fixes
