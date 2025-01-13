@@ -11,5 +11,5 @@ export function readStyle(style: StyleSpecification | string | Buffer): StyleSpe
         }
     }
 
-    return style;
+    return style as StyleSpecification;
 }
