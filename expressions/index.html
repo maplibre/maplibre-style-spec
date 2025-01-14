@@ -2948,6 +2948,18 @@
 <p><code>"font-scale"</code>: Applies a scaling factor on <code>text-size</code> as specified by the root layout property.</p>
 </li>
 <li>
+<p><code>"vertical-align"</code>: Aligns vertically text section or image in relation to the row it belongs to. Possible values are: </p>
+<ul>
+<li><code>"bottom"</code> <em>default</em>: align the bottom of this section with the bottom of other sections.
+<img alt="Visual representation of bottom alignment" src="https://github.com/user-attachments/assets/0474a2fd-a4b2-417c-9187-7a13a28695bc"/></li>
+<li><code>"center"</code>: align the center of this section with the center of other sections.
+<img alt="Visual representation of center alignment" src="https://github.com/user-attachments/assets/92237455-be6d-4c5d-b8f6-8127effc1950"/></li>
+<li><code>"top"</code>: align the top of this section with the top of other sections.
+<img alt="Visual representation of top alignment" src="https://github.com/user-attachments/assets/45dccb28-d977-4abb-a006-4ea9792b7c53"/></li>
+<li>Refer to <a href="https://github.com/maplibre/maplibre-style-spec/issues/832">the design proposal</a> for more details.</li>
+</ul>
+</li>
+<li>
 <p><a href="https://maplibre.org/maplibre-gl-js/docs/examples/change-case-of-labels/">Change the case of labels</a></p>
 </li>
 <li>
@@ -2955,7 +2967,7 @@
 </li>
 </ul>
 <p>Syntax:
-<div class="language-js highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="p">[</span><span class="s2">&quot;format&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;text-font&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;text-color&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">color</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;font-scale&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">...]</span><span class="o">:</span><span class="w"> </span><span class="nx">formatted</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="p">[</span><span class="s2">&quot;format&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;text-font&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;text-color&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">color</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;font-scale&quot;</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;vertical-align&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;bottom&quot;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s2">&quot;center&quot;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s2">&quot;top&quot;</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="p">...]</span><span class="o">:</span><span class="w"> </span><span class="nx">formatted</span>
 </span></code></pre></div></p>
 <p>Example:
 <div class="language-json highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
@@ -2965,7 +2977,7 @@
 </span><span id="__span-30-5"><a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a><span class="w">    </span><span class="s2">&quot;\n\n&quot;</span><span class="p">,</span>
 </span><span id="__span-30-6"><a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a><span class="w">    </span><span class="p">{},</span>
 </span><span id="__span-30-7"><a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a><span class="w">    </span><span class="p">[</span><span class="s2">&quot;downcase&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Comments&quot;</span><span class="p">]],</span>
-</span><span id="__span-30-8"><a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a><span class="w">    </span><span class="p">{</span><span class="nt">&quot;font-scale&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.6</span><span class="p">}</span>
+</span><span id="__span-30-8"><a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a><span class="w">    </span><span class="p">{</span><span class="nt">&quot;font-scale&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.6</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;vertical-align&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;center&quot;</span><span class="p">}</span>
 </span><span id="__span-30-9"><a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a><span class="p">]</span>
 </span></code></pre></div></p>
 <table>
@@ -3001,6 +3013,12 @@
 <td>1.3.0</td>
 <td>7.3.0</td>
 <td>4.10.0</td>
+</tr>
+<tr>
+<td>vertical-align</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-gl-js/issues/5043">#5043</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/3055">#3055</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/3055">#3055</a>)</td>
 </tr>
 <tr>
 <td>image</td>
