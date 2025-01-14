@@ -3,9 +3,9 @@
     "format",
     "a",
     {
-      "font-scale": [
+      "vertical-align": [
         "get",
-        "font-scale"
+        "vertical-align"
       ]
     }
   ],
@@ -14,7 +14,7 @@
       {},
       {
         "properties": {
-          "font-scale": 1.5
+          "vertical-align": "center"
         }
       }
     ],
@@ -22,7 +22,7 @@
       {},
       {
         "properties": {
-          "font-scale": 0.5
+          "vertical-align": "top"
         }
       }
     ]
@@ -40,10 +40,10 @@
           {
             "text": "a",
             "image": null,
-            "scale": 1.5,
+            "scale": null,
             "fontStack": null,
             "textColor": null,
-            "verticalAlign": null
+            "verticalAlign": "center"
           }
         ]
       },
@@ -52,10 +52,10 @@
           {
             "text": "a",
             "image": null,
-            "scale": 0.5,
+            "scale": null,
             "fontStack": null,
             "textColor": null,
-            "verticalAlign": null
+            "verticalAlign": "top"
           }
         ]
       }

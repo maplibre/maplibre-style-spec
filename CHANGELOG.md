@@ -1,6 +1,7 @@
 ## main
 
 ### ✨ Features and improvements
+- Add `vertical-align` option to `format` expression ([#832](https://github.com/maplibre/maplibre-style-spec/issues/832))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
