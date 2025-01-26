@@ -1,10 +1,7 @@
-export class RuntimeError {
-    name: string;
-    message: string;
-
+export class RuntimeError extends Error {
     constructor(message: string) {
-        this.name = 'ExpressionEvaluationError';
-        this.message = message;
+        super(message);
+        this.name = 'RuntimeError';
     }
 
     toJSON() {
