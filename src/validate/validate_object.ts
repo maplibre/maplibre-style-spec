@@ -1,6 +1,7 @@
 
 import {ValidationError} from '../error/validation_error';
 import {getType} from '../util/get_type';
+import {hasOwn} from '../util/has_own';
 
 export function validateObject(options): Array<ValidationError> {
     const key = options.key;
@@ -19,12 +20,13 @@ export function validateObject(options): Array<ValidationError> {
 
     for (const objectKey in object) {
         const elementSpecKey = objectKey.split('.')[0]; // treat 'paint.*' as 'paint'
-        const elementSpec = elementSpecs[elementSpecKey] || elementSpecs['*'];
+        // objectKey comes from the user controlled style input, so elementSpecKey may be e.g. "__proto__"
+        const elementSpec = (hasOwn(elementSpecs, elementSpecKey) && elementSpecs[elementSpecKey]) || elementSpecs['*'];
 
         let validateElement;
-        if (elementValidators[elementSpecKey]) {
+        if (hasOwn(elementValidators, elementSpecKey) && elementValidators[elementSpecKey]) {
             validateElement = elementValidators[elementSpecKey];
-        } else if (elementSpecs[elementSpecKey]) {
+        } else if (hasOwn(elementSpecs, elementSpecKey) && elementSpecs[elementSpecKey]) {
             validateElement = validateSpec;
         } else if (elementValidators['*']) {
             validateElement = elementValidators['*'];
