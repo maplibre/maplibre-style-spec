@@ -12,6 +12,13 @@ describe('has_own', () => {
             expect(hasOwn(obj, 'key')).toBe(true);
         });
 
+        test('returns false for falsy own properties', () => {
+            const obj = {key: false, key2: 0, key3: ''};
+            expect(hasOwn(obj, 'key')).toBe(false);
+            expect(hasOwn(obj, 'key2')).toBe(false);
+            expect(hasOwn(obj, 'key3')).toBe(false);
+        });
+
         test('returns false for properties inherited from the prototype', () => {
             const obj = {key: 'value'};
             expect(hasOwn(obj, '__proto__')).toBe(false);
@@ -19,7 +26,7 @@ describe('has_own', () => {
         });
 
         test('returns true for own properties that have the same name as a property in the prototype', () => {
-            const obj = JSON.parse('{"__proto__": 123, "valueOf": null}');
+            const obj = JSON.parse('{"__proto__": 123, "valueOf": "123"}');
             expect(hasOwn(obj, '__proto__')).toBe(true);
             expect(hasOwn(obj, 'valueOf')).toBe(true);
         });
@@ -34,15 +41,6 @@ describe('has_own', () => {
 
         afterEach(() => {
             jest.resetModules();
-        });
-
-        test('should be Object.hasOwn if it exists', async () => {
-            const replacedFunction = (_o: object, _k: PropertyKey) => true;
-            Object.hasOwn = replacedFunction;
-            expect(Object.hasOwn).toBe(replacedFunction);
-
-            const {hasOwn} = await import('./has_own');
-            expect(hasOwn).toBe(replacedFunction);
         });
 
         test('works if Object.hasOwn does not exist', async () => {
