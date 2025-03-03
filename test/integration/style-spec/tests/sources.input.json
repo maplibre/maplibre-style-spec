@@ -49,6 +49,21 @@
         "zoom": ["+", ["zoom"]],
         "state": ["+", ["feature-state", "foo"]]
       }
+    },
+    "__proto__in-dot-separated-key-name-does-not-crash": {
+      "type": "raster",
+      "mazoom": 10,
+      "tileSize": 256,
+      "tiles": ["http://example.com/{x}/{y}/{z}.png"],
+      "__proto__.__proto__": 123
+    },
+    "key-names-with-object-prototype-methods-do-not-crash": {
+      "type": "raster",
+      "mazoom": 10,
+      "tileSize": 256,
+      "tiles": ["http://example.com/{x}/{y}/{z}.png"],
+      "valueOf": null,
+      "toLocaleString": 6
     }
   },
   "layers": []
