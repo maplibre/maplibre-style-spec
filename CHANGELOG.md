@@ -5,6 +5,7 @@
 
 ### 🐞 Bug fixes
 - Fix RuntimeError class, make it inherited from Error ([#983](https://github.com/maplibre/maplibre-style-spec/issues/983))
+- Fix `validate_object` crashing when object prototype keys used in style's objects ([#1028](https://github.com/maplibre/maplibre-style-spec/pull/1028))
 - Validate that `layers` array items are objects instead of throwing an error if not ([!1026](https://github.com/maplibre/maplibre-style-spec/pull/1026))
 
 ## 23.1.0
