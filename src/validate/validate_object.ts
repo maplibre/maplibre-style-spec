@@ -2,7 +2,6 @@
 import {ValidationError} from '../error/validation_error';
 import {getOwn} from '../util/get_own';
 import {getType} from '../util/get_type';
-import {hasOwn} from '../util/has_own';
 
 export function validateObject(options): Array<ValidationError> {
     const key = options.key;
@@ -25,9 +24,9 @@ export function validateObject(options): Array<ValidationError> {
         const elementSpec = getOwn(elementSpecs, elementSpecKey) || elementSpecs['*'];
 
         let validateElement;
-        if (hasOwn(elementValidators, elementSpecKey)) {
+        if (getOwn(elementValidators, elementSpecKey)) {
             validateElement = elementValidators[elementSpecKey];
-        } else if (hasOwn(elementSpecs, elementSpecKey)) {
+        } else if (getOwn(elementSpecs, elementSpecKey)) {
             validateElement = validateSpec;
         } else if (elementValidators['*']) {
             validateElement = elementValidators['*'];
