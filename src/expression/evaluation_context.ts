@@ -20,7 +20,9 @@ export class EvaluationContext {
         this.feature = null;
         this.featureState = null;
         this.formattedSection = null;
-        this._parseColorCache = {};
+        // the cache keys are user controlled (from the source JSON), so
+        // avoid prototype pollution by creating a record with a null prototype
+        this._parseColorCache = Object.create(null) as {[_: string]: Color};
         this.availableImages = null;
         this.canonical = null;
     }

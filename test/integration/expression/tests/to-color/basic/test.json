@@ -27,6 +27,14 @@
       {},
       {
         "properties": {
+          "x": "__proto__"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
           "x": "rgba(0, 255, 0, 1)"
         }
       }
@@ -84,6 +92,9 @@
       ],
       {
         "error": "Could not parse color from value 'invalid'"
+      },
+      {
+        "error": "Could not parse color from value '__proto__'"
       },
       [
         0,

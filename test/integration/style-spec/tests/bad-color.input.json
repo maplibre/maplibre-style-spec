@@ -25,6 +25,22 @@
       "paint": {
         "fill-outline-color": ["darken", 10, "#FF0000"]
       }
+    },
+    {
+      "id": "prototype",
+      "type": "fill",
+      "source": "vector",
+      "source-layer": "layer",
+      "paint": {
+        "fill-color": "__proto__",
+        "fill-outline-color":  {
+          "property": "fill",
+          "stops": [
+            [{ "zoom": 10, "value": 10 }, "valueOf"],
+            [{ "zoom": 11, "value": 20 }, "__proto__"]
+          ]
+        }
+      }
     }
   ]
 }
