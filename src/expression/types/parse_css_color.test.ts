@@ -31,6 +31,8 @@ describe('parseCssColor', () => {
             expect(parse('aqua-marine')).toBeUndefined();
             expect(parse('aqua_marine')).toBeUndefined();
             expect(parse('aqua marine')).toBeUndefined();
+            expect(parse('__proto__')).toBeUndefined();
+            expect(parse('valueOf')).toBeUndefined();
         });
 
     });

@@ -10,5 +10,17 @@
   {
     "message": "layers[1].paint.fill-outline-color: color expected, array found",
     "line": 26
+  },
+  {
+    "message": "layers[2].paint.fill-color: color expected, \"__proto__\" found",
+    "line": 35
+  },
+  {
+    "message": "layers[2].paint.fill-outline-color.stops[0][1]: color expected, \"valueOf\" found",
+    "line": 39
+  },
+  {
+    "message": "layers[2].paint.fill-outline-color.stops[1][1]: color expected, \"__proto__\" found",
+    "line": 40
   }
 ]

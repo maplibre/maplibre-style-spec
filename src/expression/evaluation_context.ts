@@ -13,14 +13,14 @@ export class EvaluationContext {
     availableImages: Array<string>;
     canonical: ICanonicalTileID;
 
-    _parseColorCache: {[_: string]: Color};
+    _parseColorCache: Map<string, Color>;
 
     constructor() {
         this.globals = null;
         this.feature = null;
         this.featureState = null;
         this.formattedSection = null;
-        this._parseColorCache = {};
+        this._parseColorCache = new Map<string, Color>();
         this.availableImages = null;
         this.canonical = null;
     }
@@ -46,9 +46,10 @@ export class EvaluationContext {
     }
 
     parseColor(input: string): Color {
-        let cached = this._parseColorCache[input];
+        let cached = this._parseColorCache.get(input);
         if (!cached) {
-            cached = this._parseColorCache[input] = Color.parse(input);
+            cached = Color.parse(input);
+            this._parseColorCache.set(input, cached);
         }
         return cached;
     }
