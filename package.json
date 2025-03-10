@@ -72,7 +72,7 @@
     "@types/jest": "^29.5.14",
     "@types/node": "^22.13.8",
     "@typescript-eslint/eslint-plugin": "^8.25.0",
-    "@typescript-eslint/parser": "^8.25.0",
+    "@typescript-eslint/parser": "^8.26.0",
     "dts-bundle-generator": "^9.5.1",
     "eslint": "^9.21.0",
     "eslint-plugin-jest": "^28.11.0",
