@@ -28,9 +28,9 @@ import {ImageExpression} from './image';
 import {Length} from './length';
 import {Within} from './within';
 import {Distance} from './distance';
+import {GlobalState} from './global_state';
 
 import type {ExpressionRegistry} from '../expression';
-import GlobalState from './global-state';
 
 export const expressions: ExpressionRegistry = {
     // special forms

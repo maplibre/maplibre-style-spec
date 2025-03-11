@@ -21,6 +21,7 @@ import {Assertion} from './definitions/assertion';
 import {Coercion} from './definitions/coercion';
 import {Var} from './definitions/var';
 import {Distance} from './definitions/distance';
+import {GlobalState} from './definitions/global_state';
 
 import type {Expression, ExpressionRegistry} from './expression';
 import type {Value} from './values';
@@ -29,7 +30,6 @@ import type {Type} from './types';
 import {typeOf, validateRGBA, valueToString} from './values';
 import {RuntimeError} from './runtime_error';
 import {Color} from './types/color';
-import GlobalState from './definitions/global-state';
 
 export type Varargs = {
     type: Type;

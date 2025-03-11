@@ -5,7 +5,7 @@ import { RuntimeError } from '../runtime_error';
 import { ParsingContext } from '../parsing_context';
 import { EvaluationContext } from '../evaluation_context';
 
-class GlobalState implements Expression {
+export class GlobalState implements Expression {
     type: Type;
     input: Expression;
 
@@ -51,5 +51,3 @@ class GlobalState implements Expression {
         return false;
     }
 }
-
-export default GlobalState;
