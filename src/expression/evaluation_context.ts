@@ -12,7 +12,6 @@ export class EvaluationContext {
     formattedSection: FormattedSection;
     availableImages: Array<string>;
     canonical: ICanonicalTileID;
-
     _parseColorCache: {[_: string]: Color};
 
     constructor() {

@@ -29,6 +29,7 @@ import type {Type} from './types';
 import {typeOf, validateRGBA, valueToString} from './values';
 import {RuntimeError} from './runtime_error';
 import {Color} from './types/color';
+import GlobalState from './definitions/global-state';
 
 export type Varargs = {
     type: Type;
@@ -665,6 +666,8 @@ function isExpressionConstant(expression: Expression) {
     } else if (expression instanceof Within) {
         return false;
     } else if (expression instanceof Distance) {
+        return false;
+    } else if (expression instanceof GlobalState) {
         return false;
     }
 

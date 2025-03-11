@@ -3286,6 +3286,24 @@
           }
         }
       },
+      "global-state": {
+        "doc": "Retrieves a property value from the global state. Returns null if the requested property is missing.\n\n - [Setting global state](https://maplibre.org/maplibre-gl-js/docs/examples/global-state/)",
+        "group": "Lookup",
+        "example": {
+          "syntax": {
+            "method": ["string"],
+            "result": "value"
+          },
+          "value": ["global-state", "someProperty"]
+        },
+        "sdk-support": {
+          "basic functionality": {
+            "js": "TBD",
+            "android": "TBD",
+            "ios": "TBD"
+          }
+        }
+      },
       "number-format": {
         "doc": "Converts the input number into a string representation using the providing formatting rules. If set, the `locale` argument specifies the locale to use, as a BCP 47 language tag. If set, the `currency` argument specifies an ISO 4217 code to use for currency-style formatting. If set, the `min-fraction-digits` and `max-fraction-digits` arguments specify the minimum and maximum number of fractional digits to include.\n\n - [Display HTML clusters with custom properties](https://maplibre.org/maplibre-gl-js/docs/examples/cluster-html/)",
         "example": {

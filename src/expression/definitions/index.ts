@@ -30,6 +30,7 @@ import {Within} from './within';
 import {Distance} from './distance';
 
 import type {ExpressionRegistry} from '../expression';
+import GlobalState from './global-state';
 
 export const expressions: ExpressionRegistry = {
     // special forms
@@ -68,5 +69,6 @@ export const expressions: ExpressionRegistry = {
     'to-string': Coercion,
     'var': Var,
     'within': Within,
-    'distance': Distance
+    'distance': Distance,
+    'global-state': GlobalState
 };
