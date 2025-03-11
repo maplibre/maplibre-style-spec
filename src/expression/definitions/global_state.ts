@@ -1,9 +1,9 @@
 import {Type, isValidType, StringType, ValueType, isValidNativeType, typeToString} from '../types';
 import type {Expression} from '../expression';
-import { valueToString } from '../values';
-import { RuntimeError } from '../runtime_error';
-import { ParsingContext } from '../parsing_context';
-import { EvaluationContext } from '../evaluation_context';
+import {valueToString} from '../values';
+import {RuntimeError} from '../runtime_error';
+import {ParsingContext} from '../parsing_context';
+import {EvaluationContext} from '../evaluation_context';
 
 export class GlobalState implements Expression {
     type: Type;
