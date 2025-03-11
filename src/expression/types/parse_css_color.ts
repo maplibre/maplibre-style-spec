@@ -1,3 +1,4 @@
+import {getOwn} from '../../util/get_own';
 import {HSLColor, hslToRgb, RGBColor} from './color_spaces';
 
 /**
@@ -37,7 +38,7 @@ export function parseCssColor(input: string): RGBColor | undefined {
     }
 
     // 'white', 'black', 'blue'
-    const namedColorsMatch = namedColors[input];
+    const namedColorsMatch = getOwn(namedColors, input);
     if (namedColorsMatch) {
         const [r, g, b] = namedColorsMatch;
         return [r / 255, g / 255, b / 255, 1];

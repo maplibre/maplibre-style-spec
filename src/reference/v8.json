@@ -3257,7 +3257,7 @@
             "ios": "4.10.0"
           },
           "vertical-align": {
-            "js": "https://github.com/maplibre/maplibre-gl-js/issues/5043",
+            "js": "5.1.0",
             "android": "https://github.com/maplibre/maplibre-native/issues/3055",
             "ios": "https://github.com/maplibre/maplibre-native/issues/3055"
           },
