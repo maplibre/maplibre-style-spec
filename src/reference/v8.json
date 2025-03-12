@@ -3298,9 +3298,9 @@
         },
         "sdk-support": {
           "basic functionality": {
-            "js": "TBD",
-            "android": "TBD",
-            "ios": "TBD"
+            "js": "https://github.com/maplibre/maplibre-gl-js/issues/4964",
+            "android": "https://github.com/maplibre/maplibre-native/issues/3302",
+            "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
           }
         }
       },
