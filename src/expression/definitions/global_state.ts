@@ -4,6 +4,7 @@ import {valueToString} from '../values';
 import {RuntimeError} from '../runtime_error';
 import {ParsingContext} from '../parsing_context';
 import {EvaluationContext} from '../evaluation_context';
+import {getOwn} from '../../util/get_own';
 
 export class GlobalState implements Expression {
     type: Type;
@@ -40,7 +41,7 @@ export class GlobalState implements Expression {
             throw new RuntimeError(`Global state property must be string, but found ${valueToString(key)} instead,`);
         }
 
-        return globalState[key];
+        return getOwn(globalState, key);
     }
 
     eachChild(fn: (_: Expression) => void) {
