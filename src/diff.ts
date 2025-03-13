@@ -31,6 +31,7 @@ export type DiffOperationsMap = {
     'setTerrain': [TerrainSpecification];
     'setSky': [SkySpecification];
     'setProjection': [ProjectionSpecification];
+    'setGlobalState': [Record<string, any>];
 }
 
 export type DiffOperations = keyof DiffOperationsMap;
@@ -279,6 +280,9 @@ export function diff(before: StyleSpecification, after: StyleSpecification): Dif
         }
         if (!deepEqual(before.center, after.center)) {
             commands.push({command: 'setCenter', args: [after.center]});
+        }
+        if (!deepEqual(before.state, after.state)) {
+            commands.push({command: 'setGlobalState', args: [after.state]});
         }
         if (!deepEqual(before.centerAltitude, after.centerAltitude)) {
             commands.push({command: 'setCenterAltitude', args: [after.centerAltitude]});
