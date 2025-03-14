@@ -1,10 +1,10 @@
 import {validateState} from './validate_state';
 import {validate} from './validate';
-import { StyleSpecification } from '../types.g';
-import { v8 } from '..';
+import {StyleSpecification} from '../types.g';
+import {v8} from '..';
 
-describe('Validate Sprite', () => {
-    test('Should return error if type is not string or array', () => {
+describe('Validate state', () => {
+    test('Should return error if type is not an object', () => {
         let errors = validateState({validateSpec: validate, key: 'state', value: 3, style: {} as StyleSpecification, styleSpec: {} as typeof v8});
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('state: object expected, number found');

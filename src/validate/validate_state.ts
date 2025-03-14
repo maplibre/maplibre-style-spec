@@ -1,7 +1,7 @@
 import {ValidationError} from '../error/validation_error';
 import {getType} from '../util/get_type';
 import v8 from '../reference/v8.json' with {type: 'json'};
-import {StateSpecification, StyleSpecification} from '../types.g';
+import {StyleSpecification} from '../types.g';
 
 interface ValidateStateOptions {
     key: 'state';
