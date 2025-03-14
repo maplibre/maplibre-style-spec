@@ -9,6 +9,7 @@ import {isFeatureConstant,
 
 import {Expression} from '../expression/expression';
 import {GlobalState} from '../expression/definitions/global_state';
+import { getOwn } from '../util/get_own';
 
 export function validateExpression(options: any): Array<ValidationError> {
     const expression = (options.expressionContext === 'property' ? createPropertyExpression : createExpression)(deepUnbundle(options.value), options.valueSpec);
@@ -46,11 +47,8 @@ export function validateExpression(options: any): Array<ValidationError> {
     const globalStateExpression = findGlobalStateExpression(expressionObj);
 
     if (globalStateExpression) {
-        // TODO: improve GlobalState parsing to avoid ts-ignore
-        // @ts-ignore
-        const key = globalStateExpression.input?.value;
-
-        if (!options.style.state?.[key]) {
+        const key = globalStateExpression.key;
+        if (options.style.state === undefined || getOwn(options.style.state, key) === undefined) {
             return [new ValidationError(options.key, options.value, `required "global-state" key "${key}" is not defined in the style state property.`)];
         }
     }

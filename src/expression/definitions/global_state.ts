@@ -1,33 +1,31 @@
-import {Type, isValidType, StringType, ValueType, isValidNativeType, typeToString} from '../types';
+import {Type, ValueType} from '../types';
 import type {Expression} from '../expression';
-import {valueToString} from '../values';
-import {RuntimeError} from '../runtime_error';
 import {ParsingContext} from '../parsing_context';
 import {EvaluationContext} from '../evaluation_context';
 import {getOwn} from '../../util/get_own';
 
 export class GlobalState implements Expression {
     type: Type;
-    input: Expression;
+    key: string;
 
-    constructor(input: Expression) {
+    constructor(key: string) {
         this.type = ValueType;
-        this.input = input;
+        this.key = key;
     }
 
     static parse(args: ReadonlyArray<unknown>, context: ParsingContext): Expression {
         if (args.length !== 2)
             return context.error(`Expected 1 argument, but found ${args.length - 1} instead.`) as null;
 
-        const input = context.parse(args[1], 1);
+        const key = args[1];
 
-        if (!isValidType(input.type, [StringType, ValueType])) {
-            return context.error(`Global state property must be string, but found ${typeToString(input.type)} instead.`) as null;
+        if (typeof key !== 'string') {
+            return context.error(`Global state property must be string, but found ${typeof args[1]} instead.`) as null;
         }
 
-        if (!input) return null;
+        if (!key) return null;
 
-        return new GlobalState(input);
+        return new GlobalState(key);
     }
 
     evaluate(ctx: EvaluationContext) {
@@ -35,18 +33,10 @@ export class GlobalState implements Expression {
 
         if (!globalState || Object.keys(globalState).length === 0) return null;
 
-        const key = this.input.evaluate(ctx);
-
-        if (!isValidNativeType(key, ['string'])) {
-            throw new RuntimeError(`Global state property must be string, but found ${valueToString(key)} instead,`);
-        }
-
-        return getOwn(globalState, key);
+        return getOwn(globalState, this.key);
     }
 
-    eachChild(fn: (_: Expression) => void) {
-        fn(this.input);
-    }
+    eachChild() {}
 
     outputDefined() {
         return false;

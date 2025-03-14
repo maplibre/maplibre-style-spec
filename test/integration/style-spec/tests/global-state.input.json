@@ -1,7 +1,8 @@
 {
   "version": 8,
   "state": {
-    "x": "green"
+    "x": "green",
+    "hasHalo": false
   },
   "sources": {
     "vector": {
@@ -16,7 +17,8 @@
       "source": "vector",
       "source-layer": "layer",
       "paint": {
-        "text-color": ["global-state", "x"]
+        "text-color": ["global-state", "x"],
+        "text-halo-width": ["case", ["global-state", "hasHalo"], 1, 0]
       }
     }
   ]
