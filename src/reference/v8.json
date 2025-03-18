@@ -100,7 +100,7 @@
     "state": {
       "type": "*",
       "default": {},
-      "doc": "The initial state of the style. This object is a set of key-value pairs. The state key must be a string. The value can be an expression or primitive type. State values can be retrieved with the [`global-state`](https://maplibre.org/maplibre-style-spec/expressions/#global-state) expression.",
+      "doc": "The initial state of the style. This object is a set of key-value pairs. The state key must be a string. The value can be an expression or primitive type. State values can be retrieved with the [`global-state`](https://maplibre.org/maplibre-style-spec/expressions/#global-state) expression.\n\nThis property is required if any layer uses the `global-state` expression.",
       "example": {
         "mode": "light",
         "prioritizedPoiCategories": ["food", "drink"]
@@ -3303,7 +3303,7 @@
         }
       },
       "global-state": {
-        "doc": "Retrieves a property value from the global state. Returns null if the requested property is missing.\n\n - [Setting global state](https://maplibre.org/maplibre-gl-js/docs/examples/global-state/)",
+        "doc": "Retrieves a property value from the [state](https://maplibre.org/maplibre-style-spec/root/#state) property. Default values must be defined in the `state` property.\n\n - [Setting global state](https://maplibre.org/maplibre-gl-js/docs/examples/global-state/)",
         "group": "Lookup",
         "example": {
           "syntax": {
