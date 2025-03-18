@@ -97,6 +97,22 @@
         }
       }
     },
+    "state": {
+      "type": "*",
+      "default": {},
+      "doc": "The initial state of the style. This object is a set of key-value pairs. The state key must be a string. The value can be an expression or primitive type. State values can be retrieved with the [`global-state`](https://maplibre.org/maplibre-style-spec/expressions/#global-state) expression.\n\nThis property is required if any layer uses the `global-state` expression.",
+      "example": {
+        "mode": "light",
+        "prioritizedPoiCategories": ["food", "drink"]
+      },
+      "sdk-support": {
+        "basic functionality": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/4964",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3302",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
+        }
+      }
+    },
     "light": {
       "type": "light",
       "doc": "The global light source.",
@@ -3283,6 +3299,24 @@
             "js": "1.4.0",
             "android": "8.6.0",
             "ios": "5.7.0"
+          }
+        }
+      },
+      "global-state": {
+        "doc": "Retrieves a property value from the [state](https://maplibre.org/maplibre-style-spec/root/#state) property. Default values must be defined in the `state` property.\n\n - [Setting global state](https://maplibre.org/maplibre-gl-js/docs/examples/global-state/)",
+        "group": "Lookup",
+        "example": {
+          "syntax": {
+            "method": ["string"],
+            "result": "value"
+          },
+          "value": ["global-state", "someProperty"]
+        },
+        "sdk-support": {
+          "basic functionality": {
+            "js": "https://github.com/maplibre/maplibre-gl-js/issues/4964",
+            "android": "https://github.com/maplibre/maplibre-native/issues/3302",
+            "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
           }
         }
       },

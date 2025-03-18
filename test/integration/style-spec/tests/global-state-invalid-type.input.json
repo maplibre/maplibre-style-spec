@@ -1,0 +1,23 @@
+{
+  "version": 8,
+  "state": {
+    "x": 1
+  },
+  "sources": {
+    "vector": {
+      "type": "vector",
+      "url": "https://demotiles.maplibre.org/tiles/tiles.json"
+    }
+  },
+  "layers": [
+    {
+      "id": "minimum",
+      "type": "symbol",
+      "source": "vector",
+      "source-layer": "layer",
+      "paint": {
+        "text-color": ["global-state", "x"]
+      }
+    }
+  ]
+}

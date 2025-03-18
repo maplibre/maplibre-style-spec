@@ -28,6 +28,7 @@ import {ImageExpression} from './image';
 import {Length} from './length';
 import {Within} from './within';
 import {Distance} from './distance';
+import {GlobalState} from './global_state';
 
 import type {ExpressionRegistry} from '../expression';
 
@@ -68,5 +69,6 @@ export const expressions: ExpressionRegistry = {
     'to-string': Coercion,
     'var': Var,
     'within': Within,
-    'distance': Distance
+    'distance': Distance,
+    'global-state': GlobalState
 };
