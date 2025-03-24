@@ -2992,10 +2992,10 @@
         }
       },
       "step": {
-        "doc": "Produces discrete, stepped results by evaluating a piecewise-constant function defined by pairs of input and output values (\"stops\"). The `input` may be any numeric expression (e.g., `[\"get\", \"population\"]`). Stop inputs must be numeric literals in strictly ascending order. Returns the output value of the stop just less than the input, or the first output if the input is less than the first stop.\n\n - [Create and style clusters](https://maplibre.org/maplibre-gl-js/docs/examples/cluster/)",
+        "doc": "Produces discrete, stepped results by evaluating a piecewise-constant function defined by pairs of input and output values (\"stops\"). The `input` may be any numeric expression (e.g., `[\"get\", \"population\"]`). Stop inputs must be numeric literals in strictly ascending order.\n\nReturns the output value of the stop just less than the input, or the first output if the input is less than the first stop.\n\n - [Create and style clusters](https://maplibre.org/maplibre-gl-js/docs/examples/cluster/)",
         "example": {
           "syntax": {
-            "method": ["step", "number", "number", "number", "..."],
+            "method": ["step", "input1", "output1", "input2", "output2", "..."],
             "result": "number"
           },
           "value": [ "step", ["get", "point_count"], 20, 100, 30, 750, 40]
@@ -3013,7 +3013,7 @@
         "doc": "Produces continuous, smooth results by interpolating between pairs of input and output values (\"stops\"). The `input` may be any numeric expression (e.g., `[\"get\", \"population\"]`). Stop inputs must be numeric literals in strictly ascending order. The output type must be `number`, `array<number>`, or `color`.\n\nInterpolation types:\n\n- `[\"linear\"]`, or an expression returning one of those types: Interpolates linearly between the pair of stops just less than and just greater than the input.\n\n- `[\"exponential\", base]`: Interpolates exponentially between the stops just less than and just greater than the input. `base` controls the rate at which the output increases: higher values make the output increase more towards the high end of the range. With values close to 1 the output increases linearly.\n\n- `[\"cubic-bezier\", x1, y1, x2, y2]`: Interpolates using the cubic bezier curve defined by the given control points.\n\n - [Animate map camera around a point](https://maplibre.org/maplibre-gl-js/docs/examples/animate-camera-around-point/)\n\n - [Change building color based on zoom level](https://maplibre.org/maplibre-gl-js/docs/examples/change-building-color-based-on-zoom-level/)\n\n - [Create a heatmap layer](https://maplibre.org/maplibre-gl-js/docs/examples/heatmap-layer/)\n\n - [Visualize population density](https://maplibre.org/maplibre-gl-js/docs/examples/visualize-population-density/)",
         "example": {
           "syntax": {
-            "method": ["[\"linear\"] | [\"exponential\", base] | [\"cubic-bezier\", x1, y1, x2, y2]", "number", "number", "number", "..."],
+            "method": ["[\"linear\"] | [\"exponential\", base] | [\"cubic-bezier\", x1, y1, x2, y2]", "input1", "output1", "input2", "output2", "..."],
             "result": "number | array<number> | color"
           },
           "value": ["interpolate", ["linear"], ["zoom"], 15, 0, 15.05, ["get", "height"]]
@@ -3031,7 +3031,7 @@
         "doc": "Produces continuous, smooth results by interpolating between pairs of input and output values (\"stops\"). Works like `interpolate`, but the output type must be `color`, and the interpolation is performed in the Hue-Chroma-Luminance color space.",
         "example": {
           "syntax": {
-            "method": ["[\"linear\"] | [\"exponential\", base] | [\"cubic-bezier\", x1, y1, x2, y2]", "number", "number", "number", "..."],
+            "method": ["[\"linear\"] | [\"exponential\", base] | [\"cubic-bezier\", x1, y1, x2, y2]", "input1", "output1", "input2", "output2", "..."],
             "result": "color"
           },
           "value": ["interpolate-hcl", ["linear"], ["zoom"], 15, "#f00", 15.05, "#00f"]
@@ -3049,7 +3049,7 @@
         "doc": "Produces continuous, smooth results by interpolating between pairs of input and output values (\"stops\"). Works like `interpolate`, but the output type must be `color`, and the interpolation is performed in the CIELAB color space.",
         "example": {
           "syntax": {
-            "method": ["[\"linear\"] | [\"exponential\", base] | [\"cubic-bezier\", x1, y1, x2, y2]", "number", "number", "number", "..."],
+            "method": ["[\"linear\"] | [\"exponential\", base] | [\"cubic-bezier\", x1, y1, x2, y2]", "input1", "output1", "input2", "output2", "..."],
             "result": "color"
           },
           "value": ["interpolate-lab", ["linear"], ["zoom"], 15, "#f00", 15.05, "#00f"]
