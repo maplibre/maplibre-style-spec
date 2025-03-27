@@ -6546,6 +6546,39 @@
         ]
       },
       "property-type": "data-constant"
+    },
+    "hillshade-method": {
+      "type": "enum",
+      "values": {
+        "standard": {
+          "doc": "The legacy hillshade method."
+        },
+        "igor": {
+          "doc": "Hliishade algorithm which tries to minimize effects on other map features beneath."
+        },
+        "combined": {
+          "doc": "Hillshade algorithm whose intensity scales with slope."
+        },
+        "multidirectional": {
+          "doc": "Hillshade with multiple illumination directions."
+        }
+      },
+      "default": "standard",
+      "doc": "The hillshade algorithm to use, one of 'standard', 'igor', 'combined', or 'multidirectional'.",
+      "sdk-support": {
+        "basic functionality": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/5665",
+          "android": "https://github.com/maplibre/maplibre-gl-js/issues/5665",
+          "ios": "https://github.com/maplibre/maplibre-gl-js/issues/5665"
+        }
+      },
+      "expression": {
+        "interpolated": false,
+        "parameters": [
+          "zoom"
+        ]
+      },
+      "property-type": "data-constant"
     }
   },
   "paint_background": {
