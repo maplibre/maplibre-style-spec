@@ -1,0 +1,7 @@
+[{
+  "line": 4,
+  "message": "state.missingDefault: default is required"
+},{
+  "line": 9,
+  "message": "state.notABoolean.default: boolean expected"
+}]

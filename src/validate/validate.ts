@@ -28,6 +28,7 @@ import {validateSprite} from './validate_sprite';
 import {ValidationError} from '../error/validation_error';
 import {validateProjection} from './validate_projection';
 import {validateProjectionDefinition} from './validate_projectiondefinition';
+import {validateState} from './validate_schema';
 
 const VALIDATORS = {
     '*'() {
@@ -55,6 +56,7 @@ const VALIDATORS = {
     'padding': validatePadding,
     'variableAnchorOffsetCollection': validateVariableAnchorOffsetCollection,
     'sprite': validateSprite,
+    'state': validateState
 };
 
 /**

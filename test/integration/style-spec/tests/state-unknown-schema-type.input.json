@@ -1,0 +1,16 @@
+{
+  "version": 8,
+  "sources": {
+    "vector": {
+      "type": "vector",
+      "url": "https://demotiles.maplibre.org/tiles/tiles.json"
+    }
+  },
+  "state": {
+    "someProperty": {
+      "type": "object",
+      "default": true
+    }
+  },
+  "layers": []
+}
