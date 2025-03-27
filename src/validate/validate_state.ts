@@ -1,23 +1,29 @@
 import {ValidationError} from '../error/validation_error';
 import {getType} from '../util/get_type';
-import v8 from '../reference/v8.json' with {type: 'json'};
-import {StyleSpecification} from '../types.g';
+import { isObjectLiteral } from '../util/is_object_literal';
+import { validateSchema } from './validate_schema';
 
 interface ValidateStateOptions {
-    key: 'state';
-    value: unknown; // we don't know how the user defined the "state"
-    styleSpec: typeof v8;
-    style: StyleSpecification;
-    validateSpec: Function;
+  key: 'state';
+  value: unknown;
 }
 
 export function validateState(options: ValidateStateOptions) {
-    const state = options.value;
-    const rootType = getType(state);
-    
-    if (rootType !== 'object') {
-        return [new ValidationError(options.key, state, `object expected, ${rootType} found`)];
-    }
+  if (!isObjectLiteral(options.value)) {
+    return [
+      new ValidationError(
+        options.key,
+        options.value,
+        `object expected, ${getType(options.value)} found`
+      ),
+    ];
+  }
 
-    return [];
+  const errors = [];
+  for (const key in options.value) {
+    const schema = options.value[key];
+    const propertyErrors = validateSchema(schema, `${options.key}.${key}`);
+    errors.push(...propertyErrors);
+  }
+  return errors;
 }

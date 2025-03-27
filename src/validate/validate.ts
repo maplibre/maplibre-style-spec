@@ -28,7 +28,7 @@ import {validateSprite} from './validate_sprite';
 import {ValidationError} from '../error/validation_error';
 import {validateProjection} from './validate_projection';
 import {validateProjectionDefinition} from './validate_projectiondefinition';
-import {validateState} from './validate_schema';
+import {validateState} from './validate_state';
 
 const VALIDATORS = {
     '*'() {
