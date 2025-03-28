@@ -39,6 +39,8 @@ function propertyType(property) {
                 return '{[_: string]: SourceSpecification}';
             case 'projection:':
                 return 'ProjectionSpecification';
+            case 'state':
+                return 'StateSpecification';
             case '*':
                 return 'unknown';
             default:
@@ -314,6 +316,10 @@ export type DataDrivenPropertyValueSpecification<T> =
     | SourceFunctionSpecification<T>
     | CompositeFunctionSpecification<T>
     | ExpressionSpecification;
+
+
+export type StateSpecification = Record<string, SchemaSpecification>;
+export type SchemaSpecification = Record<string, unknown>;
 
 ${objectDeclaration('StyleSpecification', spec.$root)}
 
