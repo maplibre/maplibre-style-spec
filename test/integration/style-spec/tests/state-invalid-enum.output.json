@@ -1,0 +1,10 @@
+[{
+  "line": 4,
+  "message": "state.missingDefault: default is required"
+},{
+  "line": 10,
+  "message": "state.notMatchingDefault.default: expected one of the enum values: type1, type2, type3"
+},{
+  "line": 13,
+  "message": "state.emptyEnum.enum: expected at least 1 element"
+}]

@@ -1,0 +1,26 @@
+{
+  "version": 8,
+  "state": {
+    "missingDefault": {
+      "type": "number"
+    },
+    "notANumber": {
+      "type": "number",
+      "default": "notANumber"
+    },
+    "belowMinimum": {
+      "type": "number",
+      "default": -1,
+      "minimum": 0,
+      "maximum": 100
+    },
+    "aboveMaximum": {
+      "type": "number",
+      "default": 101,
+      "minimum": 0,
+      "maximum": 100
+    }
+  },
+  "sources": {},
+  "layers": []
+}

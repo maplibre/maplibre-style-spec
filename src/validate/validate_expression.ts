@@ -8,6 +8,7 @@ import {isFeatureConstant,
     isStateConstant} from '../expression/compound_expression';
 
 import {Expression} from '../expression/expression';
+import {findGlobalStateExpression, validateGlobalStateExpression} from './validate_global_state_expression';
 
 export function validateExpression(options: any): Array<ValidationError> {
     const expression = (options.expressionContext === 'property' ? createPropertyExpression : createExpression)(deepUnbundle(options.value), options.valueSpec);
@@ -40,6 +41,12 @@ export function validateExpression(options: any): Array<ValidationError> {
         if (options.expressionContext === 'cluster-initial' && !isFeatureConstant(expressionObj)) {
             return [new ValidationError(options.key, options.value, 'Feature data expressions are not supported with initial expression part of cluster properties.')];
         }
+    }
+
+    const globalStateExpression = findGlobalStateExpression(expressionObj);
+
+    if (globalStateExpression) {
+        return validateGlobalStateExpression(globalStateExpression, options);
     }
 
     return [];

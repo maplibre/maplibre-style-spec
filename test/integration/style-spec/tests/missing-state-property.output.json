@@ -1,0 +1,6 @@
+[
+  {
+    "message": "layers[0].paint.text-color: required \"global-state\" key \"x\" is not defined in the style state property.",
+    "line": 16
+  }
+]

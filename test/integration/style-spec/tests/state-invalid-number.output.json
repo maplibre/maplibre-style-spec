@@ -1,0 +1,16 @@
+[{
+  "line": 4,
+  "message": "state.missingDefault: default is required"
+},
+{
+  "line": 9,
+  "message": "state.notANumber.default: number expected"
+},
+{
+  "line": 13,
+  "message": "state.belowMinimum.default: must be greater than or equal to 0"
+},
+{
+  "line": 19,
+  "message": "state.aboveMaximum.default: must be less than or equal to 100"
+}]

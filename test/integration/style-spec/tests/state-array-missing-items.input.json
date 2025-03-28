@@ -1,0 +1,11 @@
+{
+  "version": 8,
+  "state": {
+    "chargerType": {
+      "type": "array",
+      "default": ["type1", "type2", "type3"]
+    }
+  },
+  "sources": {},
+  "layers": []
+}
