@@ -1,5 +1,5 @@
 export function isObjectLiteral(
-  anything: unknown
+    anything: unknown
 ): anything is Record<string, unknown> {
-  return Boolean(anything) && anything.constructor === Object;
+    return Boolean(anything) && anything.constructor === Object;
 }
