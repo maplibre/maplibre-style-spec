@@ -98,7 +98,7 @@
       }
     },
     "state": {
-      "type": "state",
+      "type": "*",
       "default": {},
       "doc": "The initial state of the style. This object is a set of key-value pairs. The state key must be a string. The value is a JSON Schema. Supported types are: number, boolean, string, array, enum. Property \"default\" is required. State values can be retrieved with the [`global-state`](https://maplibre.org/maplibre-style-spec/expressions/#global-state) expression.\n\nThis property is required if any layer uses the `global-state` expression.",
       "example": {
