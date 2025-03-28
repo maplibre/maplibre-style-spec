@@ -1,7 +1,7 @@
 import {ValidationError} from '../error/validation_error';
 import {getType} from '../util/get_type';
-import { isObjectLiteral } from '../util/is_object_literal';
-import { validateSchema } from './validate_schema';
+import {isObjectLiteral} from '../util/is_object_literal';
+import {validateSchema} from './validate_schema';
 
 interface ValidateStateOptions {
   key: 'state';
@@ -22,7 +22,10 @@ export function validateState(options: ValidateStateOptions) {
   const errors = [];
   for (const key in options.value) {
     const schema = options.value[key];
-    const propertyErrors = validateSchema(schema, `${options.key}.${key}`);
+    const propertyErrors = validateSchema({
+      key: `${options.key}.${key}`,
+      value: schema,
+    });
     errors.push(...propertyErrors);
   }
   return errors;

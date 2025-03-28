@@ -14,6 +14,7 @@ import {validatePaintProperty} from './validate/validate_paint_property';
 import {validateLayoutProperty} from './validate/validate_layout_property';
 import {validateSprite} from './validate/validate_sprite';
 import {validateGlyphsUrl} from './validate/validate_glyphs_url';
+import {validateSchema} from './validate/validate_schema';
 import {ValidationError} from './error/validation_error';
 import type {StyleSpecification} from './types.g';
 
@@ -72,6 +73,7 @@ validateStyleMin.layer = wrapCleanErrors(injectValidateSpec(validateLayer));
 validateStyleMin.filter = wrapCleanErrors(injectValidateSpec(validateFilter));
 validateStyleMin.paintProperty = wrapCleanErrors(injectValidateSpec(validatePaintProperty));
 validateStyleMin.layoutProperty = wrapCleanErrors(injectValidateSpec(validateLayoutProperty));
+validateStyleMin.schema = wrapCleanErrors(injectValidateSpec(validateSchema));
 
 function injectValidateSpec(validator: (options: object) => any) {
     return function(options) {

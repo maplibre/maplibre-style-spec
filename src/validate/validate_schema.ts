@@ -1,17 +1,17 @@
-import {ValidationError} from '../error/validation_error';
-import {getType} from '../util/get_type';
-import {deepUnbundle, unbundle} from '../util/unbundle_jsonlint';
-import { isObjectLiteral } from '../util/is_object_literal';
+import { ValidationError } from "../error/validation_error";
+import { getType } from "../util/get_type";
+import { deepUnbundle, unbundle } from "../util/unbundle_jsonlint";
+import { isObjectLiteral } from "../util/is_object_literal";
 
-/**
- * Validates a schema object to ensure it adheres to the expected structure and rules.
- *
- * @param value - The schema object to validate. Can be of any type.
- * @param key - The key associated with the schema being validated.
- * @returns An array of `ValidationError` objects if validation fails, or the result of specific type validation functions.
- * @throws ValidationError - If the schema does not meet the required structure or contains invalid properties.
- */
-export function validateSchema(value: unknown, key: string) {
+interface ValidateSchemaOptions {
+  key: string;
+  value: unknown;
+}
+
+export function validateSchema({
+  key,
+  value,
+}: ValidateSchemaOptions): ValidationError[] {
   if (!isObjectLiteral(value)) {
     return [
       new ValidationError(
@@ -31,28 +31,26 @@ export function validateSchema(value: unknown, key: string) {
     ];
   }
   if (value.default === undefined) {
-    return [
-      new ValidationError(`${key}`, value, 'default is required'),
-    ];
+    return [new ValidationError(`${key}`, value, "default is required")];
   }
 
   switch (unbundle(value.type)) {
-    case 'string':
+    case "string":
       return validateString(value, key);
-    case 'number':
+    case "number":
       return validateNumber(value, key);
-    case 'boolean':
+    case "boolean":
       return validateBoolean(value, key);
-    case 'array': {
+    case "array": {
       return validateArray(value, key);
     }
     default: {
       if (value.type !== undefined) {
         return [
           new ValidationError(
-            'type',
+            "type",
             value.type,
-            'expected string, number or boolean'
+            "expected string, number or boolean"
           ),
         ];
       }
@@ -63,9 +61,9 @@ export function validateSchema(value: unknown, key: string) {
 }
 
 function validateString(schema: Record<string, unknown>, key: string) {
-  if (typeof unbundle(schema.default) !== 'string') {
+  if (typeof unbundle(schema.default) !== "string") {
     return [
-      new ValidationError(`${key}.default`, schema.default, 'string expected'),
+      new ValidationError(`${key}.default`, schema.default, "string expected"),
     ];
   }
 
@@ -78,25 +76,25 @@ function validateNumber(schema: Record<string, unknown>, key: string) {
       new ValidationError(
         `${key}.default`,
         schema.default,
-        'default is required'
+        "default is required"
       ),
     ];
   }
 
-  if (typeof defaultValue !== 'number') {
+  if (typeof defaultValue !== "number") {
     return [
-      new ValidationError(`${key}.default`, schema.default, 'number expected'),
+      new ValidationError(`${key}.default`, schema.default, "number expected"),
     ];
   }
 
   if (schema.minimum !== undefined) {
     const minimum = unbundle(schema.minimum);
-    if (typeof minimum !== 'number') {
+    if (typeof minimum !== "number") {
       return [
         new ValidationError(
           `${key}.default`,
           schema.default,
-          'must be a number'
+          "must be a number"
         ),
       ];
     }
@@ -114,12 +112,12 @@ function validateNumber(schema: Record<string, unknown>, key: string) {
 
   if (schema.maximum !== undefined) {
     const maximum = unbundle(schema.maximum);
-    if (typeof maximum !== 'number') {
+    if (typeof maximum !== "number") {
       return [
         new ValidationError(
           `${key}.default`,
           schema.default,
-          'must be a number'
+          "must be a number"
         ),
       ];
     }
@@ -141,7 +139,7 @@ function validateNumber(schema: Record<string, unknown>, key: string) {
 function validateEnum(schema: Record<string, unknown>, key: string) {
   if (!Array.isArray(schema.enum)) {
     return [
-      new ValidationError(`${key}.enum`, schema.enum, 'expected an array'),
+      new ValidationError(`${key}.enum`, schema.enum, "expected an array"),
     ];
   }
 
@@ -150,7 +148,7 @@ function validateEnum(schema: Record<string, unknown>, key: string) {
       new ValidationError(
         `${key}.enum`,
         schema.enum,
-        'expected at least 1 element'
+        "expected at least 1 element"
       ),
     ];
   }
@@ -162,7 +160,7 @@ function validateEnum(schema: Record<string, unknown>, key: string) {
       new ValidationError(
         `${key}.default`,
         schema.default,
-        'expected one of the enum values: ' + schema.enum.join(', ')
+        "expected one of the enum values: " + schema.enum.join(", ")
       ),
     ];
   }
@@ -173,17 +171,17 @@ function validateEnum(schema: Record<string, unknown>, key: string) {
 function validateArray(schema: Record<string, unknown>, key: string) {
   if (!Array.isArray(schema.default)) {
     return [
-      new ValidationError(`${key}.default`, schema.default, 'array expected'),
+      new ValidationError(`${key}.default`, schema.default, "array expected"),
     ];
   }
 
   if (schema.items === undefined) {
-    return [new ValidationError(`${key}.items`, schema.items, 'is required')];
+    return [new ValidationError(`${key}.items`, schema.items, "is required")];
   }
 
   if (!isObjectLiteral(schema.items)) {
     return [
-      new ValidationError(`${key}.items`, schema.items, 'object expected'),
+      new ValidationError(`${key}.items`, schema.items, "object expected"),
     ];
   }
 
@@ -201,13 +199,13 @@ function validateArray(schema: Record<string, unknown>, key: string) {
 
   for (let index = 0; index < schema.default.length; index++) {
     const item = schema.default[index];
-    const itemErrors = validateSchema(
-      {
+    const itemErrors = validateSchema({
+      key: `${key}[${index}]`,
+      value: {
         ...schema.items,
         default: item,
       },
-      `${key}[${index}]`
-    );
+    });
 
     errors.push(...itemErrors);
   }
@@ -216,9 +214,9 @@ function validateArray(schema: Record<string, unknown>, key: string) {
 }
 
 function validateBoolean(schema: Record<string, unknown>, key: string) {
-  if (typeof unbundle(schema.default) != 'boolean') {
+  if (typeof unbundle(schema.default) != "boolean") {
     return [
-      new ValidationError(`${key}.default`, schema.default, 'boolean expected'),
+      new ValidationError(`${key}.default`, schema.default, "boolean expected"),
     ];
   }
 
