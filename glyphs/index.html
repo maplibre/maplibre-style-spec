@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="https://maplibre.org/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.10">
     
     
       
@@ -296,6 +296,7 @@
       <a href=".." class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Introduction
     
@@ -317,6 +318,7 @@
       <a href="../deprecations/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Deprecations
     
@@ -337,6 +339,7 @@
     <li class="md-nav__item">
       <a href="../expressions/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     Expressions
@@ -368,6 +371,7 @@
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
+  
   <span class="md-ellipsis">
     Glyphs
     
@@ -390,6 +394,7 @@
       <a href="../layers/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Layers
     
@@ -410,6 +415,7 @@
     <li class="md-nav__item">
       <a href="../light/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     Light
@@ -432,6 +438,7 @@
       <a href="../projection/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Projection
     
@@ -452,6 +459,7 @@
     <li class="md-nav__item">
       <a href="../root/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     Root
@@ -474,6 +482,7 @@
       <a href="../sky/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Sky
     
@@ -494,6 +503,7 @@
     <li class="md-nav__item">
       <a href="../sources/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     Sources
@@ -516,6 +526,7 @@
       <a href="../sprite/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Sprite
     
@@ -536,6 +547,7 @@
     <li class="md-nav__item">
       <a href="../terrain/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     Terrain
@@ -558,6 +570,7 @@
       <a href="../transition/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Transition
     
@@ -578,6 +591,7 @@
     <li class="md-nav__item">
       <a href="../types/" class="md-nav__link">
         
+  
   
   <span class="md-ellipsis">
     Types
@@ -628,19 +642,45 @@
 
 
 <h1 id="glyphs">Glyphs<a class="headerlink" href="#glyphs" title="Permanent link">&para;</a></h1>
-<p>A URL template for loading signed-distance-field glyph sets in PBF format. </p>
+<p>A URL template for loading signed-distance-field glyph sets in PBF format.</p>
+<p>If this property is set, any text in the <code>text-field</code> layout property is displayed in the font stack named by the <code>text-font</code> layout property based on glyphs located at the URL specified by this property. Otherwise, font faces will be determined by the <code>text-font</code> property based on the local environment.</p>
 <p>The URL must include:</p>
 <ul>
 <li>
-<p><code>{fontstack}</code> - When requesting glyphs, this token is replaced with a comma separated list of fonts from a font stack specified in the text-font property of a symbol layer. </p>
+<p><code>{fontstack}</code> - When requesting glyphs, this token is replaced with a comma separated list of fonts from a font stack specified in the <code>text-font</code> property of a symbol layer. </p>
 </li>
 <li>
 <p><code>{range}</code> - When requesting glyphs, this token is replaced with a range of 256 Unicode code points. For example, to load glyphs for the Unicode Basic Latin and Basic Latin-1 Supplement blocks, the range would be 0-255. The actual ranges that are loaded are determined at runtime based on what text needs to be displayed.</p>
 </li>
 </ul>
-<p>This property is required if any layer uses the <code>text-field</code> layout property. The URL must be absolute, containing the <a href="https://en.wikipedia.org/wiki/URL#Syntax">scheme, authority and path components</a>.</p>
+<p>The URL must be absolute, containing the <a href="https://en.wikipedia.org/wiki/URL#Syntax">scheme, authority and path components</a>.</p>
 <div class="language-json highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="err">glyphs</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf&quot;</span>
 </span></code></pre></div>
+<hr />
+<table>
+<thead>
+<tr>
+<th>SDK Support</th>
+<th>MapLibre GL JS</th>
+<th>MapLibre Native<br>Android</th>
+<th>MapLibre Native<br>iOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>basic functionality</td>
+<td>0.0.16</td>
+<td>0.1.1</td>
+<td>0.1.0</td>
+</tr>
+<tr>
+<td>omit to use local fonts</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-gl-js/issues/3302">#3302</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/165">#165</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/165">#165</a>)</td>
+</tr>
+</tbody>
+</table>
 
 
 
@@ -757,7 +797,9 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "toc.follow", "search.suggest", "navigation.instant", "navigation.sections", "navigation.top"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "toc.follow", "search.suggest", "navigation.instant", "navigation.sections", "navigation.top"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
