@@ -1,6 +1,7 @@
 import v8 from '../src/reference/v8.json' with { type: 'json' };
 import fs from 'fs';
 import jsonStringify from 'json-stringify-pretty-compact';
+import { isFunction } from 'util';
 
 /**
  * This script generates markdown documentation from the JSON schema.
@@ -517,6 +518,11 @@ function createExpressionsContent() {
     fs.writeFileSync(`${BASE_PATH}/expressions.md`, content);
 }
 
+function createSchemaContent() {
+    const content = fs.readFileSync('build/schema.md', 'utf-8');
+    fs.writeFileSync(`${BASE_PATH}/schema.md`, content);
+}
+
 /**
  * Creates the main topics markdown files.
  */
@@ -543,4 +549,5 @@ createRootContent();
 createLayersContent();
 createSourcesContent();
 createExpressionsContent();
+createSchemaContent();
 createMainTopics();
