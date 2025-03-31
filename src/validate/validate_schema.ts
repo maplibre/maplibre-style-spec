@@ -50,7 +50,7 @@ export function validateSchema({
                     new ValidationError(
                         'type',
                         value.type,
-                        'expected string, number or boolean'
+                        'expected string, number, boolean or array'
                     ),
                 ];
             }
@@ -160,7 +160,7 @@ function validateEnum(schema: Record<string, unknown>, key: string) {
             new ValidationError(
                 `${key}.default`,
                 schema.default,
-                'expected one of the enum values: ' + schema.enum.join(', ')
+                `expected one of the enum values: ${schema.enum.join(', ')}`
             ),
         ];
     }

@@ -1,7 +1,6 @@
 import v8 from '../src/reference/v8.json' with { type: 'json' };
 import fs from 'fs';
 import jsonStringify from 'json-stringify-pretty-compact';
-import { isFunction } from 'util';
 
 /**
  * This script generates markdown documentation from the JSON schema.

@@ -100,7 +100,7 @@
     "state": {
       "type": "state",
       "default": {},
-      "doc": "The initial state of the style. This object where keys are property names and value a [`schema`](https://maplibre.org/maplibre-style-spec/schema) definition. State property value can be retrieved with the [`global-state`](https://maplibre.org/maplibre-style-spec/expressions/#global-state) expression.\n\n State is required when `global-state` is used in the style",
+      "doc": "The initial state of the style. This object where keys are property names and value is a [`schema`](https://maplibre.org/maplibre-style-spec/schema) definition. State property value can be retrieved with the [`global-state`](https://maplibre.org/maplibre-style-spec/expressions/#global-state) expression.\n\n State is required when `global-state` is used in the style",
       "example": {
         "chargerType": {
           "type": "array",
