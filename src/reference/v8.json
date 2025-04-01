@@ -100,7 +100,7 @@
     "state": {
       "type": "state",
       "default": {},
-      "doc": "The initial state of the style. This object where keys are property names and value is a [`schema`](https://maplibre.org/maplibre-style-spec/schema) definition. State property value can be retrieved with the [`global-state`](https://maplibre.org/maplibre-style-spec/expressions/#global-state) expression.\n\n State is required when `global-state` is used in the style",
+      "doc": "An object defining global state properties of the map style. Object key is a property names and values is a [`schema`](https://maplibre.org/maplibre-style-spec/schema) definition. State property value can be retrieved with the [`global-state`](https://maplibre.org/maplibre-style-spec/expressions/#global-state) expression.\n\n State is required when `global-state` is used in the style",
       "example": {
         "chargerType": {
           "type": "array",
@@ -3313,7 +3313,7 @@
         }
       },
       "global-state": {
-        "doc": "Retrieves a property value from the [state](https://maplibre.org/maplibre-style-spec/root/#state) property. Default values must be defined in the `state` property.\n\n - [Setting global state](https://maplibre.org/maplibre-gl-js/docs/examples/global-state/)",
+        "doc": "Retrieves a property value from the [state](https://maplibre.org/maplibre-style-spec/root/#state) property.\n\n - [Setting global state](https://maplibre.org/maplibre-gl-js/docs/examples/global-state/)",
         "group": "Lookup",
         "example": {
           "syntax": {

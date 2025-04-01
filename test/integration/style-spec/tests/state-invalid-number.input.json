@@ -1,9 +1,6 @@
 {
   "version": 8,
   "state": {
-    "missingDefault": {
-      "type": "number"
-    },
     "notANumber": {
       "type": "number",
       "default": "notANumber"

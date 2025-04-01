@@ -1,24 +1,20 @@
 [{
-  "line": 4,
-  "message": "state.missingDefault: default is required"
-},
-{
-  "line": 9,
+  "line": 6,
   "message": "state.notANumber.default: number expected"
 },
 {
-  "line": 13,
+  "line": 10,
   "message": "state.belowMinimum.default: must be greater than or equal to 0"
 },
 {
-  "line": 19,
+  "line": 16,
   "message": "state.aboveMaximum.default: must be less than or equal to 100"
 },
 {
-  "line": 25,
+  "line": 22,
   "message": "state.invalidMinimumType.minimum: must be a number"
 },
 {
-  "line": 30,
+  "line": 27,
   "message": "state.invalidMaximumType.maximum: must be a number"
 }]

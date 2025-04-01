@@ -1,10 +1,6 @@
 {
   "version": 8,
   "state": {
-    "missingDefault": {
-      "type": "enum",
-      "values": ["type1", "type2", "type3"]
-    },
     "notMatchingDefault": {
       "enum": ["type1", "type2", "type3"],
       "default": "type4"

@@ -30,9 +30,6 @@ export function validateSchema({
             ),
         ];
     }
-    if (value.default === undefined) {
-        return [new ValidationError(`${key}`, value, 'default is required')];
-    }
 
     switch (unbundle(value.type)) {
         case 'string':
@@ -61,7 +58,8 @@ export function validateSchema({
 }
 
 function validateString(schema: Record<string, unknown>, key: string) {
-    if (typeof unbundle(schema.default) !== 'string') {
+    const defaultValue = unbundle(schema.default) as string;
+    if (defaultValue !== null && typeof defaultValue !== 'string') {
         return [
             new ValidationError(`${key}.default`, schema.default, 'string expected'),
         ];
@@ -70,18 +68,9 @@ function validateString(schema: Record<string, unknown>, key: string) {
     return [];
 }
 function validateNumber(schema: Record<string, unknown>, key: string) {
-    const defaultValue = unbundle(schema.default);
-    if (defaultValue === undefined) {
-        return [
-            new ValidationError(
-                `${key}.default`,
-                schema.default,
-                'default is required'
-            ),
-        ];
-    }
+    const defaultValue = unbundle(schema.default) as number;
 
-    if (typeof defaultValue !== 'number') {
+    if (defaultValue !== null && typeof defaultValue !== 'number') {
         return [
             new ValidationError(`${key}.default`, schema.default, 'number expected'),
         ];
@@ -99,7 +88,7 @@ function validateNumber(schema: Record<string, unknown>, key: string) {
             ];
         }
 
-        if (defaultValue < minimum) {
+        if (defaultValue !== null && defaultValue < minimum) {
             return [
                 new ValidationError(
                     `${key}.default`,
@@ -122,7 +111,7 @@ function validateNumber(schema: Record<string, unknown>, key: string) {
             ];
         }
 
-        if (defaultValue > maximum) {
+        if (defaultValue !== null && defaultValue > maximum) {
             return [
                 new ValidationError(
                     `${key}.default`,
@@ -214,8 +203,9 @@ function validateArray(schema: Record<string, unknown>, key: string) {
 }
 
 function validateBoolean(schema: Record<string, unknown>, key: string) {
-    if (typeof unbundle(schema.default) != 'boolean') {
-        return [
+    const defaultValue = unbundle(schema.default) as boolean;
+    if (defaultValue !== null && typeof defaultValue !== 'boolean') {
+         return [
             new ValidationError(`${key}.default`, schema.default, 'boolean expected'),
         ];
     }

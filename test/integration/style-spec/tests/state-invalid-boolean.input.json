@@ -1,9 +1,6 @@
 {
   "version": 8,
   "state": {
-    "missingDefault": {
-      "type": "boolean"
-    },
     "notABoolean": {
       "type": "boolean",
       "default": 0

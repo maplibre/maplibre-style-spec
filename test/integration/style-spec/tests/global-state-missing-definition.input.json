@@ -13,6 +13,14 @@
       "type": "symbol",
       "source": "vector",
       "source-layer": "layer",
+      "filter": [
+        "all",
+        [
+          "==",
+          ["global-state", "minimum"],
+          "minimum"
+        ]
+      ],
       "paint": {
         "text-color": ["global-state", "x"]
       }

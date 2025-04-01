@@ -3,8 +3,7 @@ import {Expression} from '../expression/expression';
 import {GlobalState} from '../expression/definitions/global_state';
 import {ValidationError} from '../error/validation_error';
 
-export function validateGlobalStateExpression(globalStateExpression: GlobalState, options: any) {
-    const key = globalStateExpression.key;
+export function validateIfDefinedInGlobalState(key: string, options: any) {
     if (options.style.state === undefined || getOwn(options.style.state, key) === undefined) {
         return [new ValidationError(options.key, options.value, `required "global-state" key "${key}" is not defined in the style state property.`)];
     }
@@ -12,15 +11,12 @@ export function validateGlobalStateExpression(globalStateExpression: GlobalState
     return [];
 }
 
-export function findGlobalStateExpression(expression: Expression): GlobalState {
+export function findGlobalStateExpressionKeys(expression: Expression, results:Set<string>) {
     if (expression instanceof GlobalState) {
-        return expression;
+        results.add(expression.key);
     }
 
-    let result = null;
     expression.eachChild((child) => {
-        result = findGlobalStateExpression(child);
-    });
-
-    return result;
-}
+        findGlobalStateExpressionKeys(child, results);
+     });
+ }
