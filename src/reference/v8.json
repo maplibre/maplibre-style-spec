@@ -6438,6 +6438,25 @@
       },
       "property-type": "data-constant"
     },
+    "hillshade-illumination-altitude": {
+      "type": "number",
+      "default": 45,
+      "minimum": 0,
+      "maximum": 90,
+      "doc": "The altitude of the light source used to generate the hillshading with 0 sunset and 90 as noon.",
+      "transition": false,
+      "sdk-support": {
+        "basic functionality": {
+        }
+      },
+      "expression": {
+        "interpolated": true,
+        "parameters": [
+          "zoom"
+        ]
+      },
+      "property-type": "data-constant"
+    },
     "hillshade-illumination-anchor": {
       "type": "enum",
       "values": {
@@ -6561,6 +6580,9 @@
         },
         "multidirectional": {
           "doc": "Hillshade with multiple illumination directions."
+        },
+        "basic": {
+          "doc": "Basic hillshade."
         }
       },
       "default": "standard",
