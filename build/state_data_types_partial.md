@@ -72,4 +72,4 @@ All data types can have optional `default` property. The value of the `default` 
 
 ## Annotations
 
-The `title` and `description` keywords must be strings. A "title" will preferably be short, whereas a "description" will provide a more lengthy explanation of the purpose of state property.
+Properties can be annotated with optional `title` and `description` keywords. A "title" will preferably be short, whereas a "description" will provide a more lengthy explanation of the purpose of state property.

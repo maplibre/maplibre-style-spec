@@ -57,7 +57,8 @@ function topicElement(key: string, value: JsonObject): boolean {
         key !== 'name' &&
         key !== 'sprite' &&
         key !== 'layers' &&
-        key !== 'sources';
+        key !== 'sources' &&
+        key !== 'state';
 
 }
 
@@ -522,7 +523,7 @@ function createStateContent() {
     let content = '# State\n\n';
 
     content += `${v8.$root.state.doc}\n\n`;
-    content += exampleToMarkdown('layers', v8.$root.state.example);
+    content += exampleToMarkdown('layers', v8.$root.state.example) + '\n\n';
 
     content += fs.readFileSync('build/state_data_types_partial.md', 'utf-8');
 

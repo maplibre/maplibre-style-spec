@@ -100,7 +100,7 @@
     "state": {
       "type": "state",
       "default": {},
-      "doc": "An object defining global state properties of the map style. State property value can be retrieved with the [`global-state`](https://maplibre.org/maplibre-style-spec/expressions/#global-state) expression.\n\n State is required when `global-state` is used in the style",
+      "doc": "An object defining global state properties of the map style. State property value can be retrieved with the [`global-state`](https://maplibre.org/maplibre-style-spec/expressions/#global-state) expression.\n\n State is required when `global-state` is used in the style.",
       "example": {
         "chargerType": {
           "type": "array",
