@@ -337,12 +337,12 @@ export type NumberSchemaSpecification = {
 
 export type StringSchemaSpecification = {
     type: 'string',
-    default: string,
+    default: string
 };
 
 export type BooleanSchemaSpecification = {
     type: 'boolean',
-    default: boolean,
+    default: boolean
 };
 
 export type EnumSchemaSpecification = {
@@ -352,7 +352,7 @@ export type EnumSchemaSpecification = {
 
 export type ArraySchemaSpecification = {
     type: 'array',
-    default: (SchemaPrimitiveType | unknown[])[]
+    default: (SchemaPrimitiveType | unknown[])[],
     items:
         | Omit<SchemaBaseDataTypes, 'default'>
         | Omit<ArraySchemaSpecification, 'default'>
@@ -362,7 +362,7 @@ export type ArraySchemaSpecification = {
 export type SchemaSpecification =
     | SchemaBaseDataTypes
     | ArraySchemaSpecification
-    | EnumSchemaSpecification
+    | EnumSchemaSpecification;
 
 // State
 export type StateSpecification = Record<string, SchemaSpecification>;
