@@ -517,9 +517,16 @@ function createExpressionsContent() {
     fs.writeFileSync(`${BASE_PATH}/expressions.md`, content);
 }
 
-function createSchemaContent() {
-    const content = fs.readFileSync('build/schema.md', 'utf-8');
-    fs.writeFileSync(`${BASE_PATH}/schema.md`, content);
+function createStateContent() {
+
+    let content = '# State\n\n';
+
+    content += `${v8.$root.state.doc}\n\n`;
+    content += exampleToMarkdown('layers', v8.$root.state.example);
+
+    content += fs.readFileSync('build/state_data_types_partial.md', 'utf-8');
+
+    fs.writeFileSync(`${BASE_PATH}/state.md`, content);
 }
 
 /**
@@ -548,5 +555,5 @@ createRootContent();
 createLayersContent();
 createSourcesContent();
 createExpressionsContent();
-createSchemaContent();
+createStateContent();
 createMainTopics();
