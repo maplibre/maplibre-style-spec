@@ -317,9 +317,55 @@ export type DataDrivenPropertyValueSpecification<T> =
     | CompositeFunctionSpecification<T>
     | ExpressionSpecification;
 
+//Schema types
+export type SchemaBaseDataTypes =
+    | NumberSchemaSpecification
+    | StringSchemaSpecification
+    | BooleanSchemaSpecification;
 
+export type SchemaPrimitiveType =
+    | boolean
+    | string
+    | number;
+
+export type NumberSchemaSpecification = {
+    type: 'number',
+    default: number,
+    minimum?: number,
+    maximum?: number
+};
+
+export type StringSchemaSpecification = {
+    type: 'string',
+    default: string,
+};
+
+export type BooleanSchemaSpecification = {
+    type: 'boolean',
+    default: boolean,
+};
+
+export type EnumSchemaSpecification = {
+    enum: SchemaPrimitiveType[],
+    default: SchemaPrimitiveType
+};
+
+export type ArraySchemaSpecification = {
+    type: 'array',
+    default: (SchemaPrimitiveType | unknown[])[]
+    items:
+        | Omit<SchemaBaseDataTypes, 'default'>
+        | Omit<ArraySchemaSpecification, 'default'>
+        | Omit<EnumSchemaSpecification, 'default'>
+}
+
+export type SchemaSpecification =
+    | SchemaBaseDataTypes
+    | ArraySchemaSpecification
+    | EnumSchemaSpecification
+
+// State
 export type StateSpecification = Record<string, SchemaSpecification>;
-export type SchemaSpecification = Record<string, unknown>;
 
 ${objectDeclaration('StyleSpecification', spec.$root)}
 
