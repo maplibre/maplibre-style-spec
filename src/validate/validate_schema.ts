@@ -92,7 +92,7 @@ function validateNumber(schema: Record<string, unknown>, key: string) {
         if (typeof minimum !== 'number') {
             return [
                 new ValidationError(
-                    `${key}.default`,
+                    `${key}.minimum`,
                     schema.default,
                     'must be a number'
                 ),
@@ -115,7 +115,7 @@ function validateNumber(schema: Record<string, unknown>, key: string) {
         if (typeof maximum !== 'number') {
             return [
                 new ValidationError(
-                    `${key}.default`,
+                    `${key}.maximum`,
                     schema.default,
                     'must be a number'
                 ),

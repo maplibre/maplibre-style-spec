@@ -13,4 +13,12 @@
 {
   "line": 19,
   "message": "state.aboveMaximum.default: must be less than or equal to 100"
+},
+{
+  "line": 25,
+  "message": "state.invalidMinimumType.minimum: must be a number"
+},
+{
+  "line": 30,
+  "message": "state.invalidMaximumType.maximum: must be a number"
 }]

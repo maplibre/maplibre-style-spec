@@ -265,9 +265,9 @@ describe('diff', () => {
     test('set state', () => {
         expect(diff({
             state: {foo: 1}
-        } as StyleSpecification, {
+        } as any as StyleSpecification, {
             state: {foo: 2}
-        } as StyleSpecification)).toEqual([
+        } as any as StyleSpecification)).toEqual([
             {command: 'setGlobalState', args: [{foo: 2}]}
         ]);
     });

@@ -7,4 +7,8 @@
 },{
   "line": 13,
   "message": "state.emptyEnum.enum: expected at least 1 element"
+},
+{
+  "line": 18,
+  "message": "state.invalidEnumType.enum: expected an array"
 }]

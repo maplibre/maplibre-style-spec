@@ -12,6 +12,10 @@
     "emptyEnum": {
       "enum": [],
       "default": "type1"
+    },
+    "invalidEnumType": {
+      "default": "type1",
+      "enum": "notAnArray"
     }
   },
   "sources": {},

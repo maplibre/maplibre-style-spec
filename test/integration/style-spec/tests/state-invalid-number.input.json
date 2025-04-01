@@ -19,6 +19,16 @@
       "default": 101,
       "minimum": 0,
       "maximum": 100
+    },
+    "invalidMinimumType": {
+      "type": "number",
+      "default": 0,
+      "minimum": "0"
+    },
+    "invalidMaximumType": {
+      "type": "number",
+      "default": 0,
+      "maximum": "100"
     }
   },
   "sources": {},

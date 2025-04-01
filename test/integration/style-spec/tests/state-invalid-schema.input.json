@@ -7,9 +7,13 @@
     }
   },
   "state": {
-    "someProperty": {
+    "nonAnObject": "someValue",
+    "unknownType": {
       "type": "object",
       "default": true
+    },
+    "missingTypeOrEnum": {
+      "default": "someValue"
     }
   },
   "layers": []
