@@ -330,29 +330,29 @@ export type SchemaPrimitiveType =
 
 export type NumberSchemaSpecification = {
     type: 'number',
-    default: number,
+    default?: number,
     minimum?: number,
     maximum?: number
 };
 
 export type StringSchemaSpecification = {
     type: 'string',
-    default: string
+    default?: string
 };
 
 export type BooleanSchemaSpecification = {
     type: 'boolean',
-    default: boolean
+    default?: boolean
 };
 
 export type EnumSchemaSpecification = {
     enum: SchemaPrimitiveType[],
-    default: SchemaPrimitiveType
+    default?: SchemaPrimitiveType
 };
 
 export type ArraySchemaSpecification = {
     type: 'array',
-    default: (SchemaPrimitiveType | unknown[])[],
+    default?: (SchemaPrimitiveType | unknown[])[],
     items:
         | Omit<SchemaBaseDataTypes, 'default'>
         | Omit<ArraySchemaSpecification, 'default'>
