@@ -68,8 +68,3 @@ Arrays are used for multiple elements. Type of items in an array is defined with
 ## Default values
 
 All data types can have optional `default` property. The value of the `default` property will be validated against the data type during style validation.
-
-
-## Annotations
-
-Properties can be annotated with optional `title` and `description` keywords. A "title" will preferably be short, whereas a "description" will provide a more lengthy explanation of the purpose of state property.
