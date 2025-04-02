@@ -15,16 +15,6 @@ It is a good idea to discuss proposed changes before proceeding to an issue tick
 
 MapLibre software relies heavily on automated testing, and the project includes a suite of unit and integration tests. For both new features and bug fixes, contributions should update or add test cases to prevent regressions.
 
-# Building the Docs site
-
-The MapLibre style spec documentation site is based on [SolidStart](https://start.solidjs.com/) in order to get Server Side Rendering for Search Engine Optimization.
-
-```bash
-cd docs
-npm ci
-npm run dev
-```
-
 # Building the Style spec JS package
 
 This package is used by `maplibre-gl` in order to validate the spec and parse it.
