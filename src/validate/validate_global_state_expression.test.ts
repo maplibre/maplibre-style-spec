@@ -1,7 +1,7 @@
 import {createExpression} from '..';
-import {findGlobalStateExpressionKeys} from './validate_global_state_expression';
+import {validateGlobalStateExpression} from './validate_global_state_expression';
 
-test('findGlobalStateExpressionKeys extracts all global state keys', () => {
+describe('validateGlobalStateExpression', () => {
     const expression = [
         'all',
         ['>=', ['get', 'max_power'], ['global-state', 'ev_preferred_power']],
@@ -49,21 +49,55 @@ test('findGlobalStateExpressionKeys extracts all global state keys', () => {
         ]
     ];
 
-    const parsedExpression = createExpression(expression);
+    test('should return no errors if all global state keys are defined', () => {
+        const style = {
+            version: 8,
+            state: {
+                ev_preferred_power: 10,
+                ev_preferred_cpo: ['cpo1', 'cpo2'],
+                ev_preferred_connector_type: ['type1', 'type2'],
+                ev_preferred_emsp: ['emsp1', 'emsp2']
+            },
+            sources: {},
+            layers: []
+        };
 
-    if (parsedExpression.result === 'error') {
-        throw new Error(`Error parsing expression: ${expression}. Details: ${JSON.stringify(parsedExpression.value)}`);
-    }
+        const parsedExpression = createExpression(expression);
 
-    const expectedResults = new Set<string>([
-        'ev_preferred_power',
-        'ev_preferred_cpo',
-        'ev_preferred_connector_type',
-        'ev_preferred_emsp',
-    ]);
+        if (parsedExpression.result === 'error') {
+            fail('Expression parsing failed');
+        }
 
-    const results = new Set<string>();
-    findGlobalStateExpressionKeys(parsedExpression.value.expression, results);
+        const errors = validateGlobalStateExpression(parsedExpression.value.expression, {style});
 
-    expect(results).toEqual(expectedResults);
+        expect(errors).toHaveLength(0);
+    });
+
+    test('should return errors if global state keys are not defined', () => {
+       
+        const parsedExpression = createExpression(expression);
+
+        const style = {
+            version: 8,
+            state: {},
+            sources: {},
+            layers: []
+        };
+
+        if (parsedExpression.result === 'error') {
+            fail('Expression parsing failed');
+        }
+
+        const errors = validateGlobalStateExpression(parsedExpression.value.expression, {style});
+
+        expect(errors).toEqual([{
+            message: 'required "global-state" key "ev_preferred_power" is not defined in the style state property.'
+        }, {
+            message: 'required "global-state" key "ev_preferred_cpo" is not defined in the style state property.'
+        }, {
+            message: 'required "global-state" key "ev_preferred_connector_type" is not defined in the style state property.'
+        }, {
+            message: 'required "global-state" key "ev_preferred_emsp" is not defined in the style state property.'
+        }]);
+    });
 });

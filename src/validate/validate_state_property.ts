@@ -6,11 +6,15 @@ import {isObjectLiteral} from '../util/is_object_literal';
 interface ValidateStatePropertyOptions {
     key: string;
     value: unknown;
+    // Part of the property path representing the value key.
+    // Pass null if "default" key is not appropriate (e.g. for array items and when value is set by the user)
+    valueKey?: string;
 }
 
 export function validateStateProperty({
     key,
     value,
+    valueKey = 'default',
 }: ValidateStatePropertyOptions): ValidationError[] {
     if (!isObjectLiteral(value)) {
         return [
@@ -33,13 +37,13 @@ export function validateStateProperty({
 
     switch (unbundle(value.type)) {
         case 'string':
-            return validateString(value, key);
+            return validateString(value, key, valueKey);
         case 'number':
-            return validateNumber(value, key);
+            return validateNumber(value, key, valueKey);
         case 'boolean':
-            return validateBoolean(value, key);
+            return validateBoolean(value, key, valueKey);
         case 'array': {
-            return validateArray(value, key);
+            return validateArray(value, key, valueKey);
         }
         default: {
             if (value.type !== undefined) {
@@ -54,25 +58,28 @@ export function validateStateProperty({
         }
     }
 
-    return validateEnum(value, key);
+    return validateEnum(value, key, valueKey);
 }
 
-function validateString(schema: Record<string, unknown>, key: string) {
+function validateString(schema: Record<string, unknown>, key: string, valueKey: string = 'default') {
     const defaultValue = unbundle(schema.default) as string;
+    const propertyKey = valueKey ? `${key}.${valueKey}` : key;
+
     if (defaultValue !== null && typeof defaultValue !== 'string') {
         return [
-            new ValidationError(`${key}.default`, schema.default, 'string expected'),
+            new ValidationError(propertyKey, schema.default, 'string expected'),
         ];
     }
 
     return [];
 }
-function validateNumber(schema: Record<string, unknown>, key: string) {
+function validateNumber(schema: Record<string, unknown>, key: string, valueKey: string = 'default') {
     const defaultValue = unbundle(schema.default) as number;
+    const propertyKey = valueKey ? `${key}.${valueKey}` : key;
 
     if (defaultValue !== null && typeof defaultValue !== 'number') {
         return [
-            new ValidationError(`${key}.default`, schema.default, 'number expected'),
+            new ValidationError(propertyKey, schema.default, 'number expected'),
         ];
     }
 
@@ -125,7 +132,21 @@ function validateNumber(schema: Record<string, unknown>, key: string) {
     return [];
 }
 
-function validateEnum(schema: Record<string, unknown>, key: string) {
+function validateBoolean(schema: Record<string, unknown>, key: string, valueKey: string = 'default') {
+    const defaultValue = unbundle(schema.default) as boolean;
+    const propertyKey = valueKey ? `${key}.${valueKey}` : key;
+
+    if (defaultValue !== null && typeof defaultValue !== 'boolean') {
+        return [
+            new ValidationError(propertyKey, schema.default, 'boolean expected'),
+        ];
+    }
+
+    return [];
+}
+
+function validateEnum(schema: Record<string, unknown>, key: string, valueKey: string = 'default') {
+    const propertyKey = valueKey ? `${key}.${valueKey}` : key;
     if (!Array.isArray(schema.enum)) {
         return [
             new ValidationError(`${key}.enum`, schema.enum, 'expected an array'),
@@ -147,7 +168,7 @@ function validateEnum(schema: Record<string, unknown>, key: string) {
     ) {
         return [
             new ValidationError(
-                `${key}.default`,
+                propertyKey,
                 schema.default,
                 `expected one of the enum values: ${schema.enum.join(', ')}`
             ),
@@ -157,10 +178,11 @@ function validateEnum(schema: Record<string, unknown>, key: string) {
     return [];
 }
 
-function validateArray(schema: Record<string, unknown>, key: string) {
+function validateArray(schema: Record<string, unknown>, key: string, valueKey: string = 'default') {
+    const propertyKey = valueKey ? `${key}.${valueKey}` : key;
     if (!Array.isArray(schema.default)) {
         return [
-            new ValidationError(`${key}.default`, schema.default, 'array expected'),
+            new ValidationError(propertyKey, schema.default, 'array expected'),
         ];
     }
 
@@ -189,7 +211,8 @@ function validateArray(schema: Record<string, unknown>, key: string) {
     for (let index = 0; index < schema.default.length; index++) {
         const item = schema.default[index];
         const itemErrors = validateStateProperty({
-            key: `${key}[${index}]`,
+            key: `${key}.default[${index}]`,
+            valueKey: null,
             value: {
                 ...schema.items,
                 default: item,
@@ -200,15 +223,4 @@ function validateArray(schema: Record<string, unknown>, key: string) {
     }
 
     return errors;
-}
-
-function validateBoolean(schema: Record<string, unknown>, key: string) {
-    const defaultValue = unbundle(schema.default) as boolean;
-    if (defaultValue !== null && typeof defaultValue !== 'boolean') {
-        return [
-            new ValidationError(`${key}.default`, schema.default, 'boolean expected'),
-        ];
-    }
-
-    return [];
 }

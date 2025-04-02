@@ -24,7 +24,7 @@ export function validateState(options: ValidateStateOptions) {
         const schema = options.value[key];
         const propertyErrors = validateStateProperty({
             key: `${options.key}.${key}`,
-            value: schema,
+            value: schema
         });
         errors.push(...propertyErrors);
     }

@@ -8,7 +8,7 @@ import {isFeatureConstant,
     isStateConstant} from '../expression/compound_expression';
 
 import {Expression} from '../expression/expression';
-import {findGlobalStateExpressionKeys, validateIfDefinedInGlobalState} from './validate_global_state_expression';
+import {validateGlobalStateExpression} from './validate_global_state_expression';
 
 export function validateExpression(options: any): Array<ValidationError> {
     const expression = (options.expressionContext === 'property' ? createPropertyExpression : createExpression)(deepUnbundle(options.value), options.valueSpec);
@@ -43,11 +43,5 @@ export function validateExpression(options: any): Array<ValidationError> {
         }
     }
 
-    const globalStateExpressionKeys = new Set<string>()
-
-    findGlobalStateExpressionKeys(expressionObj, globalStateExpressionKeys);
-
-    return Array.from(globalStateExpressionKeys).map((globalStateExpressionKey: string) => {
-        return validateIfDefinedInGlobalState(globalStateExpressionKey, options)
-    }).flat();
+    return validateGlobalStateExpression(expressionObj, options);
 }
