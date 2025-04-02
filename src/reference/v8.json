@@ -209,8 +209,20 @@
     },
     "glyphs": {
       "type": "string",
-      "doc": "A URL template for loading signed-distance-field glyph sets in PBF format. \n\nThe URL must include:\n\n - `{fontstack}` - When requesting glyphs, this token is replaced with a comma separated list of fonts from a font stack specified in the text-font property of a symbol layer. \n\n - `{range}` - When requesting glyphs, this token is replaced with a range of 256 Unicode code points. For example, to load glyphs for the Unicode Basic Latin and Basic Latin-1 Supplement blocks, the range would be 0-255. The actual ranges that are loaded are determined at runtime based on what text needs to be displayed.\n\nThis property is required if any layer uses the `text-field` layout property. The URL must be absolute, containing the [scheme, authority and path components](https://en.wikipedia.org/wiki/URL#Syntax).",
-      "example": "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf"
+      "doc": "A URL template for loading signed-distance-field glyph sets in PBF format.\n\nIf this property is set, any text in the `text-field` layout property is displayed in the font stack named by the `text-font` layout property based on glyphs located at the URL specified by this property. Otherwise, font faces will be determined by the `text-font` property based on the local environment.\n\nThe URL must include:\n\n - `{fontstack}` - When requesting glyphs, this token is replaced with a comma separated list of fonts from a font stack specified in the `text-font` property of a symbol layer. \n\n - `{range}` - When requesting glyphs, this token is replaced with a range of 256 Unicode code points. For example, to load glyphs for the Unicode Basic Latin and Basic Latin-1 Supplement blocks, the range would be 0-255. The actual ranges that are loaded are determined at runtime based on what text needs to be displayed.\n\nThe URL must be absolute, containing the [scheme, authority and path components](https://en.wikipedia.org/wiki/URL#Syntax).",
+      "example": "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf",
+      "sdk-support": {
+        "basic functionality": {
+          "js": "0.0.16",
+          "android": "0.1.1",
+          "ios": "0.1.0"
+        },
+        "omit to use local fonts": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/3302",
+          "android": "https://github.com/maplibre/maplibre-native/issues/165",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/165"
+        }
+      }
     },
     "transition": {
       "type": "transition",
@@ -1915,7 +1927,7 @@
         "Open Sans Regular",
         "Arial Unicode MS Regular"
       ],
-      "doc": "Font stack to use for displaying text.",
+      "doc": "Fonts to use for displaying text. If the `glyphs` root property is specified, this array is joined together and interpreted as a font stack name. Otherwise, it is interpreted as a cascading fallback list of local font names.",
       "requires": [
         "text-field"
       ],
@@ -1929,6 +1941,11 @@
           "js": "0.43.0",
           "android": "6.0.0",
           "ios": "4.0.0"
+        },
+        "local fonts": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/3302",
+          "android": "https://github.com/maplibre/maplibre-native/issues/165",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/165"
         }
       },
       "expression": {
@@ -3018,10 +3035,10 @@
         }
       },
       "step": {
-        "doc": "Produces discrete, stepped results by evaluating a piecewise-constant function defined by pairs of input and output values (\"stops\"). The `input` may be any numeric expression (e.g., `[\"get\", \"population\"]`). Stop inputs must be numeric literals in strictly ascending order. Returns the output value of the stop just less than the input, or the first output if the input is less than the first stop.\n\n - [Create and style clusters](https://maplibre.org/maplibre-gl-js/docs/examples/cluster/)",
+        "doc": "Produces discrete, stepped results by evaluating a piecewise-constant function defined by pairs of input and output values (\"stops\"). The `input` may be any numeric expression (e.g., `[\"get\", \"population\"]`). Stop inputs must be numeric literals in strictly ascending order.\n\nReturns the output value of the stop just less than the input, or the first output if the input is less than the first stop.\n\n - [Create and style clusters](https://maplibre.org/maplibre-gl-js/docs/examples/cluster/)",
         "example": {
           "syntax": {
-            "method": ["step", "number", "number", "number", "..."],
+            "method": ["step", "input1", "output1", "input2", "output2", "..."],
             "result": "number"
           },
           "value": [ "step", ["get", "point_count"], 20, 100, 30, 750, 40]
@@ -3039,7 +3056,7 @@
         "doc": "Produces continuous, smooth results by interpolating between pairs of input and output values (\"stops\"). The `input` may be any numeric expression (e.g., `[\"get\", \"population\"]`). Stop inputs must be numeric literals in strictly ascending order. The output type must be `number`, `array<number>`, or `color`.\n\nInterpolation types:\n\n- `[\"linear\"]`, or an expression returning one of those types: Interpolates linearly between the pair of stops just less than and just greater than the input.\n\n- `[\"exponential\", base]`: Interpolates exponentially between the stops just less than and just greater than the input. `base` controls the rate at which the output increases: higher values make the output increase more towards the high end of the range. With values close to 1 the output increases linearly.\n\n- `[\"cubic-bezier\", x1, y1, x2, y2]`: Interpolates using the cubic bezier curve defined by the given control points.\n\n - [Animate map camera around a point](https://maplibre.org/maplibre-gl-js/docs/examples/animate-camera-around-point/)\n\n - [Change building color based on zoom level](https://maplibre.org/maplibre-gl-js/docs/examples/change-building-color-based-on-zoom-level/)\n\n - [Create a heatmap layer](https://maplibre.org/maplibre-gl-js/docs/examples/heatmap-layer/)\n\n - [Visualize population density](https://maplibre.org/maplibre-gl-js/docs/examples/visualize-population-density/)",
         "example": {
           "syntax": {
-            "method": ["[\"linear\"] | [\"exponential\", base] | [\"cubic-bezier\", x1, y1, x2, y2]", "number", "number", "number", "..."],
+            "method": ["[\"linear\"] | [\"exponential\", base] | [\"cubic-bezier\", x1, y1, x2, y2]", "input1", "output1", "input2", "output2", "..."],
             "result": "number | array<number> | color"
           },
           "value": ["interpolate", ["linear"], ["zoom"], 15, 0, 15.05, ["get", "height"]]
@@ -3057,7 +3074,7 @@
         "doc": "Produces continuous, smooth results by interpolating between pairs of input and output values (\"stops\"). Works like `interpolate`, but the output type must be `color`, and the interpolation is performed in the Hue-Chroma-Luminance color space.",
         "example": {
           "syntax": {
-            "method": ["[\"linear\"] | [\"exponential\", base] | [\"cubic-bezier\", x1, y1, x2, y2]", "number", "number", "number", "..."],
+            "method": ["[\"linear\"] | [\"exponential\", base] | [\"cubic-bezier\", x1, y1, x2, y2]", "input1", "output1", "input2", "output2", "..."],
             "result": "color"
           },
           "value": ["interpolate-hcl", ["linear"], ["zoom"], 15, "#f00", 15.05, "#00f"]
@@ -3075,7 +3092,7 @@
         "doc": "Produces continuous, smooth results by interpolating between pairs of input and output values (\"stops\"). Works like `interpolate`, but the output type must be `color`, and the interpolation is performed in the CIELAB color space.",
         "example": {
           "syntax": {
-            "method": ["[\"linear\"] | [\"exponential\", base] | [\"cubic-bezier\", x1, y1, x2, y2]", "number", "number", "number", "..."],
+            "method": ["[\"linear\"] | [\"exponential\", base] | [\"cubic-bezier\", x1, y1, x2, y2]", "input1", "output1", "input2", "output2", "..."],
             "result": "color"
           },
           "value": ["interpolate-lab", ["linear"], ["zoom"], 15, "#f00", 15.05, "#00f"]
