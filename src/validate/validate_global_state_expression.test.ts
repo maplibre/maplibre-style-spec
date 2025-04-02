@@ -3,48 +3,48 @@ import {findGlobalStateExpressionKeys} from './validate_global_state_expression'
 
 test('findGlobalStateExpressionKeys extracts all global state keys', () => {
     const expression = [
-        "all",
-        [">=", ["get", "max_power"], ["global-state", "ev_preferred_power"]],
+        'all',
+        ['>=', ['get', 'max_power'], ['global-state', 'ev_preferred_power']],
         [
-          "case",
+            'case',
             [
-                "in",
+                'in',
                 null,
-                ["global-state", "ev_preferred_cpo"]
+                ['global-state', 'ev_preferred_cpo']
             ],
             true,
             [
-                "in",
-                ["get", "brand"],
-                ["global-state", "ev_preferred_cpo"]
+                'in',
+                ['get', 'brand'],
+                ['global-state', 'ev_preferred_cpo']
             ]
         ],
         [
-            "case",
+            'case',
             [
-                "in",
+                'in',
                 null,
-                ["global-state", "ev_preferred_connector_type"]
+                ['global-state', 'ev_preferred_connector_type']
             ],
             true,
             [
-                "in",
-                ["get", "connector_type"],
-                ["global-state", "ev_preferred_connector_type"]
+                'in',
+                ['get', 'connector_type'],
+                ['global-state', 'ev_preferred_connector_type']
             ]
         ],
         [
-            "case",
+            'case',
             [
-                "in",
+                'in',
                 null,
-                ["global-state", "ev_preferred_emsp"]
+                ['global-state', 'ev_preferred_emsp']
             ],
             true,
             [
-                "in",
-                ["get", "payment_type"],
-                ["global-state", "ev_preferred_emsp"]
+                'in',
+                ['get', 'payment_type'],
+                ['global-state', 'ev_preferred_emsp']
             ]
         ]
     ];

@@ -3,15 +3,15 @@ import {getType} from '../util/get_type';
 import {deepUnbundle, unbundle} from '../util/unbundle_jsonlint';
 import {isObjectLiteral} from '../util/is_object_literal';
 
-interface ValidateSchemaOptions {
+interface ValidateStatePropertyOptions {
     key: string;
     value: unknown;
 }
 
-export function validateSchema({
+export function validateStateProperty({
     key,
     value,
-}: ValidateSchemaOptions): ValidationError[] {
+}: ValidateStatePropertyOptions): ValidationError[] {
     if (!isObjectLiteral(value)) {
         return [
             new ValidationError(
@@ -188,7 +188,7 @@ function validateArray(schema: Record<string, unknown>, key: string) {
 
     for (let index = 0; index < schema.default.length; index++) {
         const item = schema.default[index];
-        const itemErrors = validateSchema({
+        const itemErrors = validateStateProperty({
             key: `${key}[${index}]`,
             value: {
                 ...schema.items,
@@ -205,7 +205,7 @@ function validateArray(schema: Record<string, unknown>, key: string) {
 function validateBoolean(schema: Record<string, unknown>, key: string) {
     const defaultValue = unbundle(schema.default) as boolean;
     if (defaultValue !== null && typeof defaultValue !== 'boolean') {
-         return [
+        return [
             new ValidationError(`${key}.default`, schema.default, 'boolean expected'),
         ];
     }

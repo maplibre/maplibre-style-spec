@@ -18,5 +18,5 @@ export function findGlobalStateExpressionKeys(expression: Expression, results:Se
 
     expression.eachChild((child) => {
         findGlobalStateExpressionKeys(child, results);
-     });
- }
+    });
+}

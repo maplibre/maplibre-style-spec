@@ -43,7 +43,6 @@ export function validateExpression(options: any): Array<ValidationError> {
         }
     }
 
-
     const globalStateExpressionKeys = new Set<string>()
 
     findGlobalStateExpressionKeys(expressionObj, globalStateExpressionKeys);
