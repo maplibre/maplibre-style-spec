@@ -21,7 +21,7 @@ export class GlobalState implements Expression {
         const key = args[1];
 
         if (key === undefined || key === null) {
-            return context.error(`Global state property must be defined.`) as null;
+            return context.error('Global state property must be defined.') as null;
         }
 
         if (typeof key !== 'string') {
