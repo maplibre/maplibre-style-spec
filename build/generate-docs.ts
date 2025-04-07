@@ -20,7 +20,7 @@ type JsonSdkSupport = {
 type JsonObject = {
     required?: boolean;
     units?: string;
-    default?: string | number | boolean;
+    default?: string | number | boolean | {};
     type: string;
     doc: string;
     requires?: any[];
@@ -57,7 +57,8 @@ function topicElement(key: string, value: JsonObject): boolean {
         key !== 'name' &&
         key !== 'sprite' &&
         key !== 'layers' &&
-        key !== 'sources';
+        key !== 'sources' &&
+        key !== 'state';
 
 }
 
@@ -227,7 +228,7 @@ function convertPropertyToMarkdown(key: string, value: JsonObject, keyPrefix = '
         markdown += `Units in ${value.units}. `;
     }
     if (value.default !== undefined) {
-        markdown += `Defaults to \`${value.default}\`. `;
+        markdown += `Defaults to \`${JSON.stringify(value.default)}\`. `;
     }
     if (value.requires) {
         markdown += requiresToMarkdown(value.requires);
@@ -517,6 +518,17 @@ function createExpressionsContent() {
     fs.writeFileSync(`${BASE_PATH}/expressions.md`, content);
 }
 
+function createStateContent() {
+    let content = '# State\n\n';
+
+    content += `${v8.$root.state.doc}\n\n`;
+    content += exampleToMarkdown('layers', v8.$root.state.example);
+    content += '\n\n';
+    content += fs.readFileSync('build/state_data_types_partial.md', 'utf-8');
+
+    fs.writeFileSync(`${BASE_PATH}/state.md`, content);
+}
+
 /**
  * Creates the main topics markdown files.
  */
@@ -548,4 +560,5 @@ createRootContent();
 createLayersContent();
 createSourcesContent();
 createExpressionsContent();
+createStateContent();
 createMainTopics();

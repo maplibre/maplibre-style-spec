@@ -1,0 +1,12 @@
+{
+  "version": 8,
+  "state": {
+    "invalidDefaultType": {
+      "type": "array",
+      "items": "string",
+      "default": "notAnArray"
+    }
+  },
+  "sources": {},
+  "layers": []
+}

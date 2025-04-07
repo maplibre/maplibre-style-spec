@@ -97,6 +97,32 @@
         }
       }
     },
+    "state": {
+      "type": "state",
+      "default": {},
+      "doc": "An object defining global state properties of the map style. State property value can be retrieved with the [`global-state`](https://maplibre.org/maplibre-style-spec/expressions/#global-state) expression.\n\n State is required when `global-state` is used in the style.",
+      "example": {
+        "chargerType": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": ["CCS", "CHAdeMO", "Type2"]
+        },
+        "minPreferredChargingSpeed": {
+          "type": "number",
+          "minimum": 0,
+          "default": 50
+        }
+      },
+      "sdk-support": {
+        "basic functionality": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/4964",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3302",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
+        }
+      }
+    },
     "light": {
       "type": "light",
       "doc": "The global light source.",
@@ -3300,6 +3326,24 @@
             "js": "1.4.0",
             "android": "8.6.0",
             "ios": "5.7.0"
+          }
+        }
+      },
+      "global-state": {
+        "doc": "Retrieves a property value from the [state](https://maplibre.org/maplibre-style-spec/root/#state) property.\n\n - [Setting global state](https://maplibre.org/maplibre-gl-js/docs/examples/global-state/)",
+        "group": "Lookup",
+        "example": {
+          "syntax": {
+            "method": ["string"],
+            "result": "value"
+          },
+          "value": ["global-state", "someProperty"]
+        },
+        "sdk-support": {
+          "basic functionality": {
+            "js": "https://github.com/maplibre/maplibre-gl-js/issues/4964",
+            "android": "https://github.com/maplibre/maplibre-native/issues/3302",
+            "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
           }
         }
       },
