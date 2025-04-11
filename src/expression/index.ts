@@ -56,6 +56,7 @@ export type FeatureState = {[_: string]: any};
 export type GlobalProperties = Readonly<{
     zoom: number;
     heatmapDensity?: number;
+    elevation?: number;
     lineProgress?: number;
     isSupportedScript?: (_: string) => boolean;
     accumulated?: Value;

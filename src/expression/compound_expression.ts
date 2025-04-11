@@ -288,6 +288,11 @@ CompoundExpression.register(expressions, {
         [],
         (ctx) => ctx.globals.heatmapDensity || 0
     ],
+    'elevation': [
+        NumberType,
+        [],
+        (ctx) => ctx.globals.elevation || 0
+    ],
     'line-progress': [
         NumberType,
         [],
@@ -692,7 +697,7 @@ function isExpressionConstant(expression: Expression) {
 
     return isFeatureConstant(expression) &&
            isGlobalPropertyConstant(expression,
-               ['zoom', 'heatmap-density', 'line-progress', 'accumulated', 'is-supported-script']);
+               ['zoom', 'heatmap-density', 'elevation', 'line-progress', 'accumulated', 'is-supported-script']);
 }
 
 function isFeatureConstant(e: Expression) {

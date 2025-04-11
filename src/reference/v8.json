@@ -198,7 +198,7 @@
       "required": true,
       "type": "array",
       "value": "layer",
-      "doc": "A style's `layers` property lists all the layers available in that style. The type of layer is specified by the `type` property, and must be one of `background`, `fill`, `line`, `symbol`, `raster`, `circle`, `fill-extrusion`, `heatmap`, `hillshade`.\n\nExcept for layers of the `background` type, each layer needs to refer to a source. Layers take the data that they get from a source, optionally filter features, and then define how those features are styled.",
+      "doc": "A style's `layers` property lists all the layers available in that style. The type of layer is specified by the `type` property, and must be one of `background`, `fill`, `line`, `symbol`, `raster`, `circle`, `fill-extrusion`, `heatmap`, `hillshade`, `color-relief`.\n\nExcept for layers of the `background` type, each layer needs to refer to a source. Layers take the data that they get from a source, optionally filter features, and then define how those features are styled.",
       "example": [
         {
           "id": "coastline",
@@ -760,6 +760,14 @@
             }
           }
         },
+        "color-relief": {
+          "doc": "Client-side elevation coloring based on DEM data. The implementation supports Mapbox Terrain RGB, Mapzen Terrarium tiles and custom encodings.",
+          "sdk-support": {
+            "basic functionality": {
+              "js": "https://github.com/maplibre/maplibre-gl-js/issues/5666"
+            }
+          }
+        },
         "background": {
           "doc": "The background color or pattern of the map.",
           "sdk-support": {
@@ -823,6 +831,7 @@
     "layout_symbol",
     "layout_raster",
     "layout_hillshade",
+    "layout_color-relief",
     "layout_background"
   ],
   "layout_background": {
@@ -2645,6 +2654,26 @@
       "property-type": "constant"
     }
   },
+  "layout_color-relief": {
+    "visibility": {
+      "type": "enum",
+      "values": {
+        "visible": {
+          "doc": "The layer is shown."
+        },
+        "none": {
+          "doc": "The layer is not shown."
+        }
+      },
+      "default": "visible",
+      "doc": "Whether this layer is displayed.",
+      "sdk-support": {
+        "basic functionality": {
+        }
+      },
+      "property-type": "constant"
+    }
+  },
   "filter": {
     "type": "array",
     "value": "*",
@@ -3589,6 +3618,21 @@
             "js": "0.41.0",
             "android": "6.0.0",
             "ios": "4.0.0"
+          }
+        }
+      },
+      "elevation": {
+        "doc": "Gets the elevation of a pixel (in meters above sea level). Can only be used in the `color-relief` property.",
+        "example": {
+          "syntax": {
+            "method": [],
+            "result": "number"
+          },
+          "value": ["elevation"]
+        },
+        "group": "Hillshade",
+        "sdk-support": {
+          "basic functionality": {
           }
         }
       },
@@ -4603,6 +4647,7 @@
     "paint_symbol",
     "paint_raster",
     "paint_hillshade",
+    "paint_color-relief",
     "paint_background"
   ],
   "paint_fill": {
@@ -6546,6 +6591,45 @@
         ]
       },
       "property-type": "data-constant"
+    }
+  },
+  "paint_color-relief": {
+    "color-relief-opacity": {
+      "type": "number",
+      "default": 1,
+      "minimum": 0,
+      "maximum": 1,
+      "doc": "The opacity at which the color-relief will be drawn.",
+      "transition": true,
+      "sdk-support": {
+        "basic functionality": {
+        }
+      },
+      "expression": {
+        "interpolated": true,
+        "parameters": [
+          "zoom"
+        ]
+      },
+      "property-type": "data-constant"
+    },
+    "color-relief-color": {
+      "type": "color",
+      "default": "#00000000",
+      "doc": "Defines the color of each pixel based on its elevation (in meters above sea level).  Should be an expression that uses `[\"elevation\"]` as input. The default is `#00000000`, which disables this feature.",
+      "transition": false,
+      "sdk-support": {
+        "basic functionality": {
+        },
+        "data-driven styling": {}
+      },
+      "expression": {
+        "interpolated": true,
+        "parameters": [
+          "elevation"
+        ]
+      },
+      "property-type": "color-ramp"
     }
   },
   "paint_background": {
