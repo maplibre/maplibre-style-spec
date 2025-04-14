@@ -6421,7 +6421,7 @@
       "default": 335,
       "minimum": 0,
       "maximum": 359,
-      "doc": "The direction of the light source used to generate the hillshading with 0 as the top of the viewport if `hillshade-illumination-anchor` is set to `viewport` and due north if `hillshade-illumination-anchor` is set to `map`.",
+      "doc": "The direction of the light source(s) used to generate the hillshading with 0 as the top of the viewport if `hillshade-illumination-anchor` is set to `viewport` and due north if `hillshade-illumination-anchor` is set to `map`. Only the `multidirectional` method supports multiple light sources.",
       "transition": false,
       "sdk-support": {
         "basic functionality": {
@@ -6443,7 +6443,7 @@
       "default": 45,
       "minimum": 0,
       "maximum": 90,
-      "doc": "The altitude of the light source used to generate the hillshading with 0 sunset and 90 as noon.",
+      "doc": "The altitude of the light source(s) used to generate the hillshading with 0 as sunset and 90 as noon. Only the `multidirectional` method supports multiple light sources.",
       "transition": false,
       "sdk-support": {
         "basic functionality": {
@@ -6507,9 +6507,9 @@
       "property-type": "data-constant"
     },
     "hillshade-shadow-color": {
-      "type": "color",
+      "type": "color-array",
       "default": "#000000",
-      "doc": "The shading color of areas that face away from the light source.",
+      "doc": "The shading color of areas that face away from the light source(s). Only the `multidirectional` method supports multiple light sources.",
       "transition": true,
       "sdk-support": {
         "basic functionality": {
@@ -6527,9 +6527,9 @@
       "property-type": "data-constant"
     },
     "hillshade-highlight-color": {
-      "type": "color",
+      "type": "color-array",
       "default": "#FFFFFF",
-      "doc": "The shading color of areas that faces towards the light source.",
+      "doc": "The shading color of areas that faces towards the light source(s). Only the `multidirectional` method supports multiple light sources.",
       "transition": true,
       "sdk-support": {
         "basic functionality": {

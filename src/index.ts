@@ -11,6 +11,8 @@ import {featureFilter, isExpressionFilter} from './feature_filter';
 import {convertFilter} from './feature_filter/convert';
 import {Color} from './expression/types/color';
 import {Padding} from './expression/types/padding';
+import {NumberArray} from './expression/types/number_array';
+import {ColorArray} from './expression/types/color_array';
 import {VariableAnchorOffsetCollection} from './expression/types/variable_anchor_offset_collection';
 import {Formatted, FormattedSection} from './expression/types/formatted';
 import {createFunction, isFunction} from './function';
@@ -105,6 +107,18 @@ export type StylePropertySpecification = {
     transition: boolean;
     default?: PaddingSpecification;
 } | {
+    type: 'number-array';
+    'property-type': ExpressionType;
+    expression?: ExpressionSpecificationDefinition;
+    transition: boolean;
+    default?: Array<number>;
+} | {
+    type: 'color-array';
+    'property-type': ExpressionType;
+    expression?: ExpressionSpecificationDefinition;
+    transition: boolean;
+    default?: Array<ColorSpecification>;
+} | {
     type: 'variableAnchorOffsetCollection';
     'property-type': ExpressionType;
     expression?: ExpressionSpecificationDefinition;
@@ -150,6 +164,8 @@ export {
     Step,
     CompoundExpression,
     Padding,
+    NumberArray,
+    ColorArray,
     VariableAnchorOffsetCollection,
     Formatted,
     ResolvedImage,
