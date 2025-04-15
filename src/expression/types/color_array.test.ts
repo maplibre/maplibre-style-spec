@@ -37,6 +37,6 @@ describe('ColorArray', () => {
         const colorArray = ColorArray.parse(['#00A0AA', '#000000']);
         const targetColorArray = ColorArray.parse('#AA0000');
 
-        expect(() => {ColorArray.interpolate(colorArray, targetColorArray, 0.5);}).toThrow("colorArray: Arrays have mismatched length (2 vs. 1), cannot interpolate.");
+        expect(() => {ColorArray.interpolate(colorArray, targetColorArray, 0.5);}).toThrow('colorArray: Arrays have mismatched length (2 vs. 1), cannot interpolate.');
     });
 });

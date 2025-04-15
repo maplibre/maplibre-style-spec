@@ -209,7 +209,7 @@ export class Interpolate implements Expression {
                         return Color.interpolate(outputLower, outputUpper, t, 'lab');
                     case 'colorArray':
                         return ColorArray.interpolate(outputLower, outputUpper, t, 'lab');
-            }
+                }
         }
     }
 
