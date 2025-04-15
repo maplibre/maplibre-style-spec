@@ -6445,6 +6445,11 @@
           "js": "0.43.0",
           "android": "6.0.0",
           "ios": "4.0.0"
+        },
+        "multidirectional": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/5665",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3396",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3396"
         }
       },
       "expression": {
@@ -6464,6 +6469,14 @@
       "transition": false,
       "sdk-support": {
         "basic functionality": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/5665",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3396",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3396"
+        },
+        "multidirectional": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/5665",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3396",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3396"
         }
       },
       "expression": {
@@ -6533,6 +6546,11 @@
           "js": "0.43.0",
           "android": "6.0.0",
           "ios": "4.0.0"
+        },
+        "multidirectional": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/5665",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3396",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3396"
         }
       },
       "expression": {
@@ -6553,6 +6571,11 @@
           "js": "0.43.0",
           "android": "6.0.0",
           "ios": "4.0.0"
+        },
+        "multidirectional": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/5665",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3396",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3396"
         }
       },
       "expression": {
@@ -6607,8 +6630,8 @@
       "sdk-support": {
         "basic functionality": {
           "js": "https://github.com/maplibre/maplibre-gl-js/issues/5665",
-          "android": "https://github.com/maplibre/maplibre-gl-js/issues/5665",
-          "ios": "https://github.com/maplibre/maplibre-gl-js/issues/5665"
+          "android": "https://github.com/maplibre/maplibre-native/issues/3396",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3396"
         }
       },
       "expression": {
