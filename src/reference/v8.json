@@ -6417,7 +6417,7 @@
   },
   "paint_hillshade": {
     "hillshade-illumination-direction": {
-      "type": "number",
+      "type": "number-array",
       "default": 335,
       "minimum": 0,
       "maximum": 359,
@@ -6439,7 +6439,7 @@
       "property-type": "data-constant"
     },
     "hillshade-illumination-altitude": {
-      "type": "number",
+      "type": "number-array",
       "default": 45,
       "minimum": 0,
       "maximum": 90,

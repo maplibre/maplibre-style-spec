@@ -36,7 +36,7 @@ import {typeOf} from './expression/values';
 import {FormatExpression} from './expression/definitions/format';
 import {Literal} from './expression/definitions/literal';
 import {CompoundExpression} from './expression/compound_expression';
-import {ColorSpecification, PaddingSpecification, ProjectionDefinitionSpecification, VariableAnchorOffsetCollectionSpecification} from './types.g';
+import {ColorSpecification, PaddingSpecification, NumberArraySpecification, ColorArraySpecification, ProjectionDefinitionSpecification, VariableAnchorOffsetCollectionSpecification} from './types.g';
 import {format} from './format';
 import {validate} from './validate/validate';
 import {migrate} from './migrate';
@@ -111,13 +111,13 @@ export type StylePropertySpecification = {
     'property-type': ExpressionType;
     expression?: ExpressionSpecificationDefinition;
     transition: boolean;
-    default?: Array<number>;
+    default?: NumberArraySpecification;
 } | {
     type: 'color-array';
     'property-type': ExpressionType;
     expression?: ExpressionSpecificationDefinition;
     transition: boolean;
-    default?: Array<ColorSpecification>;
+    default?: ColorArraySpecification;
 } | {
     type: 'variableAnchorOffsetCollection';
     'property-type': ExpressionType;

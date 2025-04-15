@@ -1,0 +1,33 @@
+import { Color } from './color';
+import {ColorArray} from './color_array';
+
+describe('ColorArray', () => {
+    test('ColorArray.parse', () => {
+        expect(ColorArray.parse()).toBeUndefined();
+        expect(ColorArray.parse(null)).toBeUndefined();
+        expect(ColorArray.parse(undefined)).toBeUndefined();
+        expect(ColorArray.parse('Dennis' as any)).toBeUndefined();
+        expect(ColorArray.parse('3' as any)).toBeUndefined();
+        expect(ColorArray.parse('yellow')).toEqual(new ColorArray([Color.parse('yellow')]));
+        expect(ColorArray.parse([])).toEqual(new ColorArray([]));
+        expect(ColorArray.parse(['yellow'])).toEqual(new ColorArray([Color.parse('yellow')]));
+        expect(ColorArray.parse(['yellow', 'blue'])).toEqual(new ColorArray([Color.parse('yellow'), Color.parse('blue')]));
+
+        const passThru = new ColorArray([Color.parse('yellow'), Color.parse('blue')]);
+        expect(ColorArray.parse(passThru)).toBe(passThru);
+    });
+
+    test('ColorArray#toString', () => {
+        const colorArray = ColorArray.parse(['yellow', 'blue']);
+        expect(colorArray.toString()).toBe('[{"r":1,"g":1,"b":0,"a":1},{"r":0,"g":0,"b":1,"a":1}]');
+    });
+
+    test('interpolate ColorArray', () => {
+        const colorArray = ColorArray.parse(['#00A0AA', '#000000']);
+        const targetColorArray = ColorArray.parse(['#AA0000', '#2468AC']);
+
+        const i11nFn = (t: number) => ColorArray.interpolate(colorArray, targetColorArray, t);
+        expect(i11nFn(0.5)).toBeInstanceOf(ColorArray);
+        expect(i11nFn(0.5)).toEqual(ColorArray.parse(['#555055', '#123456']));
+    });
+});

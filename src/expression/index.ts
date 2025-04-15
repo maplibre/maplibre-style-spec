@@ -26,7 +26,7 @@ import type {Expression} from './expression';
 import {type StylePropertySpecification} from '..';
 import type {Result} from '../util/result';
 import type {InterpolationType} from './definitions/interpolate';
-import type {PaddingSpecification, PropertyValueSpecification, VariableAnchorOffsetCollectionSpecification} from '../types.g';
+import type {PaddingSpecification, NumberArraySpecification, ColorArraySpecification, PropertyValueSpecification, VariableAnchorOffsetCollectionSpecification} from '../types.g';
 import type {FormattedSection} from './types/formatted';
 import type {Point2D} from '../point2d';
 
@@ -34,6 +34,8 @@ import {ICanonicalTileID} from '../tiles_and_coordinates';
 import {isFunction, createFunction} from '../function';
 import {Color} from './types/color';
 import {Padding} from './types/padding';
+import {NumberArray} from './types/number_array';
+import {ColorArray} from './types/color_array';
 import {VariableAnchorOffsetCollection} from './types/variable_anchor_offset_collection';
 import {ProjectionDefinition} from './types/projection_definition';
 
@@ -393,6 +395,10 @@ export function normalizePropertyExpression<T>(
             constant = Color.parse(value);
         } else if (specification.type === 'padding' && (typeof value === 'number' || Array.isArray(value))) {
             constant = Padding.parse(value as PaddingSpecification);
+        } else if (specification.type === 'number-array' && (typeof value === 'number' || Array.isArray(value))) {
+            constant = NumberArray.parse(value as NumberArraySpecification);
+        } else if (specification.type === 'color-array' && (typeof value === 'string' || Array.isArray(value))) {
+            constant = ColorArray.parse(value as ColorArraySpecification);
         } else if (specification.type === 'variableAnchorOffsetCollection' && Array.isArray(value)) {
             constant = VariableAnchorOffsetCollection.parse(value as VariableAnchorOffsetCollectionSpecification);
         } else if (specification.type === 'projectionDefinition' && typeof value === 'string') {
