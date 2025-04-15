@@ -57,6 +57,9 @@ export class ColorArray {
 
     static interpolate(from: ColorArray, to: ColorArray, t: number, spaceKey: InterpolationColorSpace = 'rgb'): ColorArray {
         const  c = [] as Color[];
+        if (from.values.length != to.values.length) {
+            throw new Error(`colorArray: Arrays have mismatched length (${from.values.length} vs. ${to.values.length}), cannot interpolate.`);
+        }
         for(let i = 0; i < from.values.length; i++) {
             c.push(Color.interpolate(from.values[i], to.values[i], t, spaceKey))
         }
