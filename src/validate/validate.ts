@@ -55,8 +55,8 @@ const VALIDATORS = {
     'formatted': validateFormatted,
     'resolvedImage': validateImage,
     'padding': validatePadding,
-    'number-array': validateNumberArray,
-    'color-array': validateColorArray,
+    'numberArray': validateNumberArray,
+    'colorArray': validateColorArray,
     'variableAnchorOffsetCollection': validateVariableAnchorOffsetCollection,
     'sprite': validateSprite,
 };

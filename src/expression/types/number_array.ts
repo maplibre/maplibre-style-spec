@@ -22,7 +22,7 @@ export class NumberArray {
             return input;
         }
 
-        // Backwards compatibility: bare number is treated the same as array with single value.
+        // Backwards compatibility (e.g. hillshade-illumination-direction): bare number is treated the same as array with single value.
         if (typeof input === 'number') {
             return new NumberArray([input]);
         }

@@ -39,9 +39,9 @@ function propertyType(property) {
                 return '{[_: string]: SourceSpecification}';
             case 'projection:':
                 return 'ProjectionSpecification';
-            case 'number-array':
+            case 'numberArray':
                 return 'NumberArraySpecification';
-            case 'color-array':
+            case 'colorArray':
                 return 'ColorArraySpecification';
             case '*':
                 return 'unknown';

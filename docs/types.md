@@ -208,7 +208,7 @@ There are also additional presets that yield commonly used expressions:
 | `globe` | `["interpolate", ["linear"], ["zoom"],`<br>`10, "vertical-perspective", 12, "mercator"]` | Adaptive globe: interpolates from vertical-perspective to mercator projection between zoom levels 10 and 12. |
 
 
-## `number-array`
+## `numberArray`
 
 A single number value, or an array of number values.
 
@@ -219,7 +219,7 @@ A single number value, or an array of number values.
 }
 ```
 
-## `color-array`
+## `colorArray`
 
 A single color value, or an array of color values.
 

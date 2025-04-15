@@ -395,9 +395,9 @@ export function normalizePropertyExpression<T>(
             constant = Color.parse(value);
         } else if (specification.type === 'padding' && (typeof value === 'number' || Array.isArray(value))) {
             constant = Padding.parse(value as PaddingSpecification);
-        } else if (specification.type === 'number-array' && (typeof value === 'number' || Array.isArray(value))) {
+        } else if (specification.type === 'numberArray' && (typeof value === 'number' || Array.isArray(value))) {
             constant = NumberArray.parse(value as NumberArraySpecification);
-        } else if (specification.type === 'color-array' && (typeof value === 'string' || Array.isArray(value))) {
+        } else if (specification.type === 'colorArray' && (typeof value === 'string' || Array.isArray(value))) {
             constant = ColorArray.parse(value as ColorArraySpecification);
         } else if (specification.type === 'variableAnchorOffsetCollection' && Array.isArray(value)) {
             constant = VariableAnchorOffsetCollection.parse(value as VariableAnchorOffsetCollectionSpecification);

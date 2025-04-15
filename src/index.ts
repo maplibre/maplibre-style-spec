@@ -107,13 +107,13 @@ export type StylePropertySpecification = {
     transition: boolean;
     default?: PaddingSpecification;
 } | {
-    type: 'number-array';
+    type: 'numberArray';
     'property-type': ExpressionType;
     expression?: ExpressionSpecificationDefinition;
     transition: boolean;
     default?: NumberArraySpecification;
 } | {
-    type: 'color-array';
+    type: 'colorArray';
     'property-type': ExpressionType;
     expression?: ExpressionSpecificationDefinition;
     transition: boolean;

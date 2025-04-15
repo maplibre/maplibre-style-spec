@@ -34,6 +34,12 @@ export type FormattedTypeT = {
 export type PaddingTypeT = {
     kind: 'padding';
 };
+export type NumberArrayTypeT = {
+    kind: 'numberArray';
+};
+export type ColorArrayTypeT = {
+    kind: 'colorArray';
+};
 export type ResolvedImageTypeT = {
     kind: 'resolvedImage';
 };
@@ -44,7 +50,7 @@ export type VariableAnchorOffsetCollectionTypeT = {
 export type EvaluationKind = 'constant' | 'source' | 'camera' | 'composite';
 
 export type Type = NullTypeT | NumberTypeT | StringTypeT | BooleanTypeT | ColorTypeT | ProjectionDefinitionTypeT | ObjectTypeT | ValueTypeT |
-ArrayType | ErrorTypeT | CollatorTypeT | FormattedTypeT | PaddingTypeT | ResolvedImageTypeT | VariableAnchorOffsetCollectionTypeT;
+ArrayType | ErrorTypeT | CollatorTypeT | FormattedTypeT | PaddingTypeT | NumberArrayTypeT | ColorArrayTypeT | ResolvedImageTypeT | VariableAnchorOffsetCollectionTypeT;
 
 export interface ArrayType<T extends Type = Type> {
     kind: 'array';

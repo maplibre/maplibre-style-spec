@@ -175,8 +175,8 @@ function typeToMarkdownLink(type: string): string {
         case 'formatted':
         case 'resolvedimage':
         case 'padding':
-        case 'number-array':
-        case 'color-array':
+        case 'numberarray':
+        case 'colorarray':
             return ` [${type}](types.md#${type.toLocaleLowerCase()})`;
         case 'filter':
             return ` [${type}](expressions.md)`;

@@ -22,7 +22,7 @@ export class ColorArray {
             return input;
         }
 
-        // Backwards compatibility: bare Color is treated the same as array with single value.
+        // Backwards compatibility (e.g. hillshade-shadow-color): bare Color is treated the same as array with single value.
         if (typeof input === 'string') {
             const parsed_val = Color.parse(input);
             if (!parsed_val) {
@@ -35,7 +35,7 @@ export class ColorArray {
             return undefined;
         }
 
-        const c = [] as Color[];
+        const c: Color[] = [];
 
         for (const val of input) {
             if (typeof val !== 'string') {
