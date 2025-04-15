@@ -536,6 +536,11 @@ function createMainTopics() {
                 content += convertPropertyToMarkdown(subKey, subValue as JsonObject);
             }
         }
+        if (value['sdk-support']) {
+            content += '\n---\n';
+            content += sdkSupportToMarkdown(value['sdk-support']);
+        }
+
         fs.writeFileSync(`${BASE_PATH}/${key}.md`, content);
     }
 }
