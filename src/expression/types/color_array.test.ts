@@ -12,6 +12,8 @@ describe('ColorArray', () => {
         expect(ColorArray.parse([])).toEqual(new ColorArray([]));
         expect(ColorArray.parse(['yellow'])).toEqual(new ColorArray([Color.parse('yellow')]));
         expect(ColorArray.parse(['yellow', 'blue'])).toEqual(new ColorArray([Color.parse('yellow'), Color.parse('blue')]));
+        expect(ColorArray.parse([3, 4] as any)).toBeUndefined();
+        expect(ColorArray.parse(['non-color', 'words'] as any)).toBeUndefined();
 
         const passThru = new ColorArray([Color.parse('yellow'), Color.parse('blue')]);
         expect(ColorArray.parse(passThru)).toBe(passThru);
