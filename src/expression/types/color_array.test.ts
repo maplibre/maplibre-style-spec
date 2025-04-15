@@ -1,4 +1,4 @@
-import { Color } from './color';
+import {Color} from './color';
 import {ColorArray} from './color_array';
 
 describe('ColorArray', () => {

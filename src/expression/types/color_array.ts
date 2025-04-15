@@ -35,7 +35,7 @@ export class ColorArray {
             return undefined;
         }
 
-        let c = [] as Color[];
+        const c = [] as Color[];
 
         for (const val of input) {
             if (typeof val !== 'string') {
@@ -56,9 +56,9 @@ export class ColorArray {
     }
 
     static interpolate(from: ColorArray, to: ColorArray, t: number, spaceKey: InterpolationColorSpace = 'rgb'): ColorArray {
-        let c = [] as Color[];
+        const  c = [] as Color[];
         for(let i = 0; i < from.values.length; i++) {
-            c.push(Color.interpolate(from.values[i], to.values[i], t))
+            c.push(Color.interpolate(from.values[i], to.values[i], t, spaceKey))
         }
         return new ColorArray(c);
     }

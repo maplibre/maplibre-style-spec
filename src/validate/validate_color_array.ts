@@ -7,11 +7,6 @@ export function validateColorArray(options) {
     const type = getType(value);
 
     if (type === 'array') {
-
-        const arrayElementSpec = {
-            type: 'string'
-        };
-
         let errors = [];
         for (let i = 0; i < value.length; i++) {
             errors = errors.concat(validateColor({

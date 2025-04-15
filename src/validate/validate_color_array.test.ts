@@ -40,16 +40,16 @@ describe('Validate ColorArray', () => {
     });
 
     test('Should pass if type is color', () => {
-        let errors = validateColorArray({validateSpec: validate, key: 'color-array', value: "#987654"});
+        let errors = validateColorArray({validateSpec: validate, key: 'color-array', value: '#987654'});
         expect(errors).toHaveLength(0);
 
-        errors = validateColorArray({validateSpec: validate, key: 'color-array', value: "red"});
+        errors = validateColorArray({validateSpec: validate, key: 'color-array', value: 'red'});
         expect(errors).toHaveLength(0);
 
-        errors = validateColorArray({validateSpec: validate, key: 'color-array', value: "#987654ff"});
+        errors = validateColorArray({validateSpec: validate, key: 'color-array', value: '#987654ff'});
         expect(errors).toHaveLength(0);
 
-        errors = validateColorArray({validateSpec: validate, key: 'color-array', value: "#987"});
+        errors = validateColorArray({validateSpec: validate, key: 'color-array', value: '#987'});
         expect(errors).toHaveLength(0);
     });
 
@@ -57,13 +57,13 @@ describe('Validate ColorArray', () => {
         let errors = validateColorArray({validateSpec: validate, key: 'color-array', value: []});
         expect(errors).toHaveLength(0);
 
-        errors = validateColorArray({validateSpec: validate, key: 'color-array', value: ["red"]});
+        errors = validateColorArray({validateSpec: validate, key: 'color-array', value: ['red']});
         expect(errors).toHaveLength(0);
 
-        errors = validateColorArray({validateSpec: validate, key: 'color-array', value: ["red", "blue"]});
+        errors = validateColorArray({validateSpec: validate, key: 'color-array', value: ['red', 'blue']});
         expect(errors).toHaveLength(0);
 
-        errors = validateColorArray({validateSpec: validate, key: 'color-array', value: ["red", "blue", "#012", "#12345678", "#012345"]});
+        errors = validateColorArray({validateSpec: validate, key: 'color-array', value: ['red', 'blue', '#012', '#12345678', '#012345']});
         expect(errors).toHaveLength(0);
     });
 });
