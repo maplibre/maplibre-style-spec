@@ -8,13 +8,13 @@ describe('NumberArray', () => {
         expect(NumberArray.parse('Dennis' as any)).toBeUndefined();
         expect(NumberArray.parse('3' as any)).toBeUndefined();
         expect(NumberArray.parse([3, '4'] as any)).toBeUndefined();
-        expect(NumberArray.parse(5)).toEqual(new NumberArray([5]));
-        expect(NumberArray.parse([])).toEqual(new NumberArray([]));
-        expect(NumberArray.parse([1])).toEqual(new NumberArray([1]));
-        expect(NumberArray.parse([1, 2])).toEqual(new NumberArray([1, 2]));
-        expect(NumberArray.parse([1, 2, 3])).toEqual(new NumberArray([1, 2, 3]));
-        expect(NumberArray.parse([1, 2, 3, 4])).toEqual(new NumberArray([1, 2, 3, 4]));
-        expect(NumberArray.parse([1, 2, 3, 4, 5])).toEqual(new NumberArray([1, 2, 3, 4, 5]));
+        expect(NumberArray.parse(5).values).toEqual([5]);
+        expect(NumberArray.parse([]).values).toEqual([]);
+        expect(NumberArray.parse([1]).values).toEqual([1]);
+        expect(NumberArray.parse([1, 2]).values).toEqual([1, 2]);
+        expect(NumberArray.parse([1, 2, 3]).values).toEqual([1, 2, 3]);
+        expect(NumberArray.parse([1, 2, 3, 4]).values).toEqual([1, 2, 3, 4]);
+        expect(NumberArray.parse([1, 2, 3, 4, 5]).values).toEqual([1, 2, 3, 4, 5]);
 
         const passThru = new NumberArray([1, 2, 3, 4]);
         expect(NumberArray.parse(passThru)).toBe(passThru);
@@ -31,6 +31,6 @@ describe('NumberArray', () => {
 
         const i11nFn = (t: number) => NumberArray.interpolate(numberArray, targetNumberArray, t);
         expect(i11nFn(0.5)).toBeInstanceOf(NumberArray);
-        expect(i11nFn(0.5)).toEqual(new NumberArray([0.5, 1, 3, 2]));
+        expect(i11nFn(0.5).values).toEqual([0.5, 1, 3, 2]);
     });
 });

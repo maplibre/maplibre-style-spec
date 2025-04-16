@@ -8,10 +8,10 @@ describe('ColorArray', () => {
         expect(ColorArray.parse(undefined)).toBeUndefined();
         expect(ColorArray.parse('Dennis' as any)).toBeUndefined();
         expect(ColorArray.parse('3' as any)).toBeUndefined();
-        expect(ColorArray.parse('yellow')).toEqual(new ColorArray([Color.parse('yellow')]));
-        expect(ColorArray.parse([])).toEqual(new ColorArray([]));
-        expect(ColorArray.parse(['yellow'])).toEqual(new ColorArray([Color.parse('yellow')]));
-        expect(ColorArray.parse(['yellow', 'blue'])).toEqual(new ColorArray([Color.parse('yellow'), Color.parse('blue')]));
+        expect(ColorArray.parse('yellow').values).toEqual([Color.parse('yellow')]);
+        expect(ColorArray.parse([]).values).toEqual([]);
+        expect(ColorArray.parse(['yellow']).values).toEqual([Color.parse('yellow')]);
+        expect(ColorArray.parse(['yellow', 'blue']).values).toEqual([Color.parse('yellow'), Color.parse('blue')]);
         expect(ColorArray.parse([3, 4] as any)).toBeUndefined();
         expect(ColorArray.parse(['non-color', 'words'] as any)).toBeUndefined();
 
