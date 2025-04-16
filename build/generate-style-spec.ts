@@ -318,7 +318,7 @@ export type DataDrivenPropertyValueSpecification<T> =
     | ExpressionSpecification;
 
 export type SchemaSpecification = {
-    default?: unknown,
+    default?: unknown
 };
 
 // State
