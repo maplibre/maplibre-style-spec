@@ -3,6 +3,8 @@ import {createFunction} from './index';
 import {Color} from '../expression/types/color';
 import {Formatted} from '../expression/types/formatted';
 import {Padding} from '../expression/types/padding';
+import {NumberArray} from '../expression/types/number_array';
+import {ColorArray} from '../expression/types/color_array';
 
 describe('binary search', () => {
     test('will eventually terminate.', () => {
@@ -280,6 +282,18 @@ describe('exponential function', () => {
         }).toThrow('Unknown color space: "invalid"');
     });
 
+    test('colorArray identity', () => {
+        const f = createFunction({
+            property: 'foo',
+            type: 'identity'
+        }, {
+            type: 'colorArray'
+        }).evaluate;
+
+        expect(f({zoom: 0}, {properties: {foo: 'red'}})).toEqual(new ColorArray([Color.red]));
+        expect(f({zoom: 1}, {properties: {foo: ['black', 'white']}})).toEqual(new ColorArray([Color.black, Color.white]));
+    });
+
     test('numberArray', () => {
         const f = createFunction({
             type: 'exponential',
@@ -293,6 +307,18 @@ describe('exponential function', () => {
         expect(f({zoom: 0}, undefined).values).toEqual([1, 2]);
         expect(f({zoom: 5}, undefined).values).toEqual([2, 3]);
         expect(f({zoom: 10}, undefined).values).toEqual([3, 4]);
+    });
+
+    test('numberArray identity', () => {
+        const f = createFunction({
+            property: 'foo',
+            type: 'identity'
+        }, {
+            type: 'numberArray'
+        }).evaluate;
+
+        expect(f({zoom: 0}, {properties: {foo: 3}})).toEqual(new NumberArray([3]));
+        expect(f({zoom: 1}, {properties: {foo: [3, 4]}})).toEqual(new NumberArray([3, 4]));
     });
 
     test('interpolation mutation avoidance', () => {
