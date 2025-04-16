@@ -100,18 +100,12 @@
     "state": {
       "type": "state",
       "default": {},
-      "doc": "An object defining global state properties of the map style. State property value can be retrieved with the [`global-state`](https://maplibre.org/maplibre-style-spec/expressions/#global-state) expression.\n\n State is required when `global-state` is used in the style.",
+      "doc": "An object defining global state properties of the map style and their default values. State property value can be retrieved with the [`global-state`](https://maplibre.org/maplibre-style-spec/expressions/#global-state) expression.",
       "example": {
         "chargerType": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
           "default": ["CCS", "CHAdeMO", "Type2"]
         },
         "minPreferredChargingSpeed": {
-          "type": "number",
-          "minimum": 0,
           "default": 50
         }
       },
@@ -3330,7 +3324,7 @@
         }
       },
       "global-state": {
-        "doc": "Retrieves a property value from the [state](https://maplibre.org/maplibre-style-spec/root/#state) property.\n\n - [Setting global state](https://maplibre.org/maplibre-gl-js/docs/examples/global-state/)",
+        "doc": "Retrieves a property value from the [state](https://maplibre.org/maplibre-style-spec/root/#state) property. Returns `null` if the property is not defined",
         "group": "Lookup",
         "example": {
           "syntax": {

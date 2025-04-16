@@ -1,7 +1,0 @@
-[{
-  "line": 6,
-  "message": "state.chargerType.items: object expected"
-},{
-  "line": 11,
-  "message": "state.selectedCategory.items: must have a \"type\" or \"enum\" property"
-}]

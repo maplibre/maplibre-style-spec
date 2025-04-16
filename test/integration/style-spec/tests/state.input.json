@@ -2,57 +2,24 @@
   "version": 8,
   "state": {
     "string": {
-      "type": "string",
       "default": "type1"
     },
     "boolean": {
-      "type": "boolean",
       "default": true
     },
     "number": {
-      "type": "number",
       "default": 1
     },
-    "enum": {
-      "enum": ["type1", "type2", "type3"],
-      "default": "type1"
-    },
     "arrayOfStrings": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      },
       "default": ["type1", "type2", "type3"]
     },
     "arrayOfBooleans": {
-      "type": "array",
-      "items": {
-        "type": "boolean"
-      },
       "default": [true, false, true]
     },
     "arrayOfNumbers": {
-      "type": "array",
-      "items": {
-        "type": "number"
-      },
       "default": [1, 2, 3]
     },
-    "arrayOfEnums": {
-      "type": "array",
-      "items": {
-        "enum": ["type1", "type2", "type3"]
-      },
-      "default": ["type1", "type2", "type3"]
-    },
     "arrayOfArrays": {
-      "type": "array",
-      "items": {
-        "type": "array",
-        "items": {
-          "type": "string"
-        }
-      },
       "default": [["type1", "type2"], ["type3", "type4"]]
     }
   },

@@ -8,7 +8,6 @@ import {isFeatureConstant,
     isStateConstant} from '../expression/compound_expression';
 
 import {Expression} from '../expression/expression';
-import {validateGlobalStateExpression} from './validate_global_state_expression';
 
 export function validateExpression(options: any): Array<ValidationError> {
     const expression = (options.expressionContext === 'property' ? createPropertyExpression : createExpression)(deepUnbundle(options.value), options.valueSpec);
@@ -43,5 +42,5 @@ export function validateExpression(options: any): Array<ValidationError> {
         }
     }
 
-    return validateGlobalStateExpression(expressionObj, options);
+    return [];
 }
