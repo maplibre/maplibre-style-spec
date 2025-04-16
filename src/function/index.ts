@@ -9,9 +9,11 @@ import {findStopLessThanOrEqualTo} from '../expression/stops';
 import {Padding} from '../expression/types/padding';
 import {ColorArray} from '../expression/types/color_array';
 import {NumberArray} from '../expression/types/number_array';
+import {typeOf} from '../expression/values';
+import {ObjectType} from '../expression/types';
 
 export function isFunction(value) {
-    return typeof value === 'object' && value !== null && !Array.isArray(value);
+    return typeof value === 'object' && value !== null && !Array.isArray(value) && typeOf(value) === ObjectType;
 }
 
 function identityFunction(x) {
