@@ -1,7 +1,7 @@
 import {createPropertyExpression, Feature, GlobalProperties, StylePropertyExpression} from '../expression';
 import {expressions} from './definitions';
 import v8 from '../reference/v8.json' with {type: 'json'};
-import {createExpression, ICanonicalTileID, StyleExpression, StylePropertySpecification} from '..';
+import {Color, ColorArray, createExpression, ICanonicalTileID, normalizePropertyExpression, Padding, StyleExpression, StylePropertySpecification} from '..';
 import {ExpressionParsingError} from './parsing_error';
 import {getGeometry} from '../../test/lib/geometry';
 import {VariableAnchorOffsetCollection} from './types/variable_anchor_offset_collection';
@@ -666,6 +666,58 @@ describe('projection expression', () => {
         } else {
             throw new Error('Failed to parse Interpolate expression');
         }
+    })
+
+    test('normalizePropertyExpression<ColorArray>', () => {
+        const expression = normalizePropertyExpression<ColorArray>(['#FF0000', 'black'], {
+            type: 'colorArray',
+            'property-type': 'data-constant',
+            expression: {
+                interpolated: false,
+                parameters: []
+            },
+            transition: false
+        });
+        expect(expression.evaluate({zoom: 0}).values).toEqual([Color.red, Color.black]);
+    })
+
+    test('normalizePropertyExpression<ColorArray> single value', () => {
+        const expression = normalizePropertyExpression<ColorArray>('#FF0000', {
+            type: 'colorArray',
+            'property-type': 'data-constant',
+            expression: {
+                interpolated: false,
+                parameters: []
+            },
+            transition: false
+        });
+        expect(expression.evaluate({zoom: 0}).values).toEqual([Color.red]);
+    })
+
+    test('normalizePropertyExpression<NumberArray>', () => {
+        const expression = normalizePropertyExpression<NumberArray>([1, 2], {
+            type: 'numberArray',
+            'property-type': 'data-constant',
+            expression: {
+                interpolated: false,
+                parameters: []
+            },
+            transition: false
+        });
+        expect(expression.evaluate({zoom: 0}).values).toEqual([1, 2]);
+    })
+
+    test('normalizePropertyExpression<Padding>', () => {
+        const expression = normalizePropertyExpression<Padding>([1,2], {
+            type: 'padding',
+            'property-type': 'data-constant',
+            expression: {
+                interpolated: false,
+                parameters: []
+            },
+            transition: false
+        });
+        expect(expression.evaluate({zoom: 0}).values).toEqual([1,2,1,2]);
     })
 
 });
