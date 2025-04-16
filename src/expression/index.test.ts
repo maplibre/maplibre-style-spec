@@ -1,0 +1,53 @@
+
+import {normalizePropertyExpression} from '.'
+import {StylePropertySpecification} from '..';
+import {Color} from './types/color';
+import {ColorArray} from './types/color_array';
+import {NumberArray} from './types/number_array';
+import {Padding} from './types/padding';
+
+function stylePropertySpecification(type): StylePropertySpecification {
+    return {
+        type: type,
+        'property-type': 'data-constant',
+        expression: {
+            interpolated: false,
+            parameters: ['zoom']
+        },
+        transition: false 
+    };
+};
+
+describe('normalizePropertyExpression', () => {
+   
+    test('normalizePropertyExpression<ColorArray>', () => {
+        const expression = normalizePropertyExpression<ColorArray>(['literal', ['#FF0000', 'black']],
+            stylePropertySpecification('colorArray'));
+        expect(expression.evaluate({zoom: 0}).values).toEqual([Color.red, Color.black]);
+    })
+
+    test('normalizePropertyExpression<ColorArray> single value', () => {
+        const expression = normalizePropertyExpression<ColorArray>(['literal', '#FF0000'],
+            stylePropertySpecification('colorArray'));
+        expect(expression.evaluate({zoom: 0}).values).toEqual([Color.red]);
+    })
+
+    test('normalizePropertyExpression<NumberArray>', () => {
+        const expression = normalizePropertyExpression<NumberArray>(['literal', [1, 2]],
+            stylePropertySpecification('numberArray'));
+        expect(expression.evaluate({zoom: 0}).values).toEqual([1, 2]);
+    })
+
+    test('normalizePropertyExpression<NumberArray> single value', () => {
+        const expression = normalizePropertyExpression<NumberArray>(['literal', 1],
+            stylePropertySpecification('numberArray'));
+        expect(expression.evaluate({zoom: 0}).values).toEqual([1]);
+    })
+
+    test('normalizePropertyExpression<Padding>', () => {
+        const expression = normalizePropertyExpression<Padding>(['literal', [1,2]],
+            stylePropertySpecification('padding'));
+        expect(expression.evaluate({zoom: 0}).values).toEqual([1,2,1,2]);
+    })
+
+});
