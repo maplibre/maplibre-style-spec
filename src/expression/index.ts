@@ -20,7 +20,7 @@ import {RuntimeError} from './runtime_error';
 import {success, error} from '../util/result';
 import {supportsPropertyExpression, supportsZoomExpression, supportsInterpolation} from '../util/properties';
 
-import {ColorType, StringType, NumberType, BooleanType, ValueType, FormattedType, PaddingType, ResolvedImageType, VariableAnchorOffsetCollectionType, array, type Type, type EvaluationKind, ProjectionDefinitionType} from './types';
+import {ColorType, StringType, NumberType, BooleanType, ValueType, FormattedType, PaddingType, ResolvedImageType, VariableAnchorOffsetCollectionType, array, type Type, type EvaluationKind, ProjectionDefinitionType, NumberArrayType, ColorArrayType} from './types';
 import type {Value} from './values';
 import type {Expression} from './expression';
 import {type StylePropertySpecification} from '..';
@@ -461,6 +461,8 @@ function getExpectedType(spec: StylePropertySpecification): Type {
         boolean: BooleanType,
         formatted: FormattedType,
         padding: PaddingType,
+        numberArray: NumberArrayType,
+        colorArray: ColorArrayType,
         projectionDefinition: ProjectionDefinitionType,
         resolvedImage: ResolvedImageType,
         variableAnchorOffsetCollection: VariableAnchorOffsetCollectionType
@@ -483,6 +485,10 @@ function getDefaultValue(spec: StylePropertySpecification): Value {
         return Color.parse(spec.default) || null;
     } else if (spec.type === 'padding') {
         return Padding.parse(spec.default) || null;
+    } else if (spec.type === 'numberArray') {
+        return NumberArray.parse(spec.default) || null;
+    } else if (spec.type === 'colorArray') {
+        return ColorArray.parse(spec.default) || null;
     } else if (spec.type === 'variableAnchorOffsetCollection') {
         return VariableAnchorOffsetCollection.parse(spec.default) || null;
     } else if (spec.type === 'projectionDefinition') {

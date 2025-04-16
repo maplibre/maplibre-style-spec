@@ -1,6 +1,6 @@
 import UnitBezier from '@mapbox/unitbezier';
 
-import {array, ArrayType, ColorType, ColorTypeT, NumberType, NumberTypeT, PaddingType, PaddingTypeT, NumberArrayTypeT, ColorArrayTypeT, VariableAnchorOffsetCollectionType, VariableAnchorOffsetCollectionTypeT, typeToString, verifyType, ProjectionDefinitionType} from '../types';
+import {array, ArrayType, ColorType, ColorTypeT, NumberType, NumberTypeT, PaddingType, PaddingTypeT, NumberArrayTypeT, ColorArrayTypeT, VariableAnchorOffsetCollectionType, VariableAnchorOffsetCollectionTypeT, typeToString, verifyType, ProjectionDefinitionType, ColorArrayType, NumberArrayType} from '../types';
 import {findStopLessThanOrEqualTo} from '../stops';
 import {Color} from '../types/color';
 import {interpolateArray, interpolateNumber} from '../../util/interpolate-primitives';
@@ -111,7 +111,7 @@ export class Interpolate implements Expression {
         const stops: Stops = [];
 
         let outputType: Type = null;
-        if (operator === 'interpolate-hcl' || operator === 'interpolate-lab') {
+        if ((operator === 'interpolate-hcl' || operator === 'interpolate-lab') && context.expectedType != ColorArrayType) {
             outputType = ColorType;
         } else if (context.expectedType && context.expectedType.kind !== 'value') {
             outputType = context.expectedType;
@@ -141,6 +141,8 @@ export class Interpolate implements Expression {
             !verifyType(outputType, ProjectionDefinitionType) &&
             !verifyType(outputType, ColorType) &&
             !verifyType(outputType, PaddingType) &&
+            !verifyType(outputType, NumberArrayType) &&
+            !verifyType(outputType, ColorArrayType) &&
             !verifyType(outputType, VariableAnchorOffsetCollectionType) &&
             !verifyType(outputType, array(NumberType))
         ) {

@@ -126,6 +126,10 @@ export class ParsingContext {
                         parsed = annotate(parsed, expected, options.typeAnnotation || 'coerce');
                     } else if (expected.kind === 'padding' && (actual.kind === 'value' || actual.kind === 'number' || actual.kind === 'array')) {
                         parsed = annotate(parsed, expected, options.typeAnnotation || 'coerce');
+                    } else if (expected.kind === 'numberArray' && (actual.kind === 'value' || actual.kind === 'number' || actual.kind === 'array')) {
+                        parsed = annotate(parsed, expected, options.typeAnnotation || 'coerce');
+                    } else if (expected.kind === 'colorArray' && (actual.kind === 'value' || actual.kind === 'string' || actual.kind === 'array')) {
+                        parsed = annotate(parsed, expected, options.typeAnnotation || 'coerce');
                     } else if (expected.kind === 'variableAnchorOffsetCollection' && (actual.kind === 'value' || actual.kind === 'array')) {
                         parsed = annotate(parsed, expected, options.typeAnnotation || 'coerce');
                     } else if (this.checkSubtype(expected, actual)) {

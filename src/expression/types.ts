@@ -72,6 +72,8 @@ export const ErrorType = {kind: 'error'} as ErrorTypeT;
 export const CollatorType = {kind: 'collator'} as CollatorTypeT;
 export const FormattedType = {kind: 'formatted'} as FormattedTypeT;
 export const PaddingType = {kind: 'padding'} as PaddingTypeT;
+export const ColorArrayType = {kind: 'colorArray'} as ColorArrayTypeT;
+export const NumberArrayType = {kind: 'numberArray'} as NumberArrayTypeT;
 export const ResolvedImageType = {kind: 'resolvedImage'} as ResolvedImageTypeT;
 export const VariableAnchorOffsetCollectionType = {kind: 'variableAnchorOffsetCollection'} as VariableAnchorOffsetCollectionTypeT;
 
@@ -105,6 +107,8 @@ const valueMemberTypes = [
     ObjectType,
     array(ValueType),
     PaddingType,
+    NumberArrayType,
+    ColorArrayType,
     ResolvedImageType,
     VariableAnchorOffsetCollectionType
 ];
