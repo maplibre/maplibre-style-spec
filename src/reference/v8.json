@@ -769,6 +769,11 @@
               "js": "0.43.0",
               "android": "6.0.0",
               "ios": "4.0.0"
+            },
+            "additional methods": {
+              "js": "https://github.com/maplibre/maplibre-gl-js/issues/5665",
+              "android": "https://github.com/maplibre/maplibre-native/issues/3396",
+              "ios": "https://github.com/maplibre/maplibre-native/issues/3396"
             }
           }
         },
