@@ -1,7 +1,7 @@
 import {createPropertyExpression, Feature, GlobalProperties, StylePropertyExpression} from '../expression';
 import {expressions} from './definitions';
 import v8 from '../reference/v8.json' with {type: 'json'};
-import {Color, ColorArray, createExpression, ICanonicalTileID, normalizePropertyExpression, NumberArray, Padding, StyleExpression, StylePropertySpecification} from '..';
+import {Color, createExpression, ICanonicalTileID, StyleExpression, StylePropertySpecification} from '..';
 import {ExpressionParsingError} from './parsing_error';
 import {getGeometry} from '../../test/lib/geometry';
 import {VariableAnchorOffsetCollection} from './types/variable_anchor_offset_collection';
