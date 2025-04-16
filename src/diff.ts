@@ -1,5 +1,5 @@
 
-import {GeoJSONSourceSpecification, LayerSpecification, LightSpecification, ProjectionSpecification, SkySpecification, SourceSpecification, SpriteSpecification, StyleSpecification, TerrainSpecification, TransitionSpecification} from './types.g';
+import {GeoJSONSourceSpecification, LayerSpecification, LightSpecification, ProjectionSpecification, SkySpecification, SourceSpecification, SpriteSpecification, StyleSpecification, TerrainSpecification, TransitionSpecification, StateSpecification} from './types.g';
 import {deepEqual} from './util/deep_equal';
 
 /**
@@ -31,6 +31,7 @@ export type DiffOperationsMap = {
     'setTerrain': [TerrainSpecification];
     'setSky': [SkySpecification];
     'setProjection': [ProjectionSpecification];
+    'setGlobalState': [StateSpecification];
 }
 
 export type DiffOperations = keyof DiffOperationsMap;
@@ -279,6 +280,9 @@ export function diff(before: StyleSpecification, after: StyleSpecification): Dif
         }
         if (!deepEqual(before.center, after.center)) {
             commands.push({command: 'setCenter', args: [after.center]});
+        }
+        if (!deepEqual(before.state, after.state)) {
+            commands.push({command: 'setGlobalState', args: [after.state]});
         }
         if (!deepEqual(before.centerAltitude, after.centerAltitude)) {
             commands.push({command: 'setCenterAltitude', args: [after.centerAltitude]});
