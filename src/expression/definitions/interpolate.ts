@@ -277,6 +277,8 @@ export const interpolateFactory = {
     color: Color.interpolate,
     number: interpolateNumber,
     padding: Padding.interpolate,
+    numberArray: NumberArray.interpolate,
+    colorArray: ColorArray.interpolate,
     variableAnchorOffsetCollection: VariableAnchorOffsetCollection.interpolate,
     array: interpolateArray
 }

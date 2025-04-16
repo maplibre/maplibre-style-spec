@@ -7,6 +7,8 @@ import {ResolvedImage} from '../expression/types/resolved_image';
 import {supportsInterpolation} from '../util/properties';
 import {findStopLessThanOrEqualTo} from '../expression/stops';
 import {Padding} from '../expression/types/padding';
+import {ColorArray} from '../expression/types/color_array';
+import {NumberArray} from '../expression/types/number_array';
 
 export function isFunction(value) {
     return typeof value === 'object' && value !== null && !Array.isArray(value);
@@ -23,8 +25,11 @@ export function createFunction(parameters, propertySpec) {
     const zoomDependent = zoomAndFeatureDependent || !featureDependent;
     const type = parameters.type || (supportsInterpolation(propertySpec) ? 'exponential' : 'interval');
 
-    if (isColor || propertySpec.type === 'padding') {
-        const parseFn = isColor ? Color.parse : Padding.parse;
+    if (isColor || propertySpec.type === 'padding' || propertySpec.type === 'numberArray' || propertySpec.type === 'colorArray') {
+        const parseFn = isColor ? Color.parse : 
+            propertySpec.type === 'padding' ? Padding.parse :
+                propertySpec.type === 'numberArray' ? NumberArray.parse :
+                    ColorArray.parse;
 
         parameters = extendBy({}, parameters);
 
@@ -205,6 +210,12 @@ function evaluateIdentityFunction(parameters, propertySpec, input) {
             break;
         case 'padding':
             input = Padding.parse(input);
+            break;
+        case 'colorArray':
+            input = ColorArray.parse(input);
+            break;
+        case 'numberArray':
+            input = NumberArray.parse(input);
             break;
         default:
             if (getType(input) !== propertySpec.type && (propertySpec.type !== 'enum' || !propertySpec.values[input])) {
