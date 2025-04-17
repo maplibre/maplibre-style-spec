@@ -52,7 +52,7 @@ describe('normalizePropertyExpression expressions', () => {
 
 });
 
-describe('normalizePropertyExpression raw values', () => {
+describe('normalizePropertyExpression objects', () => {
    
     test('normalizePropertyExpression<ColorArray>', () => {
         const expression = normalizePropertyExpression<ColorArray>(ColorArray.parse(['#FF0000', 'black']),
@@ -80,6 +80,40 @@ describe('normalizePropertyExpression raw values', () => {
 
     test('normalizePropertyExpression<Padding>', () => {
         const expression = normalizePropertyExpression<Padding>(Padding.parse([1,2]),
+            stylePropertySpecification('padding'));
+        expect(expression.evaluate({zoom: 0}).values).toEqual([1,2,1,2]);
+    })
+
+});
+
+describe('normalizePropertyExpression raw values', () => {
+   
+    test('normalizePropertyExpression<ColorArray>', () => {
+        const expression = normalizePropertyExpression<ColorArray>(['#FF0000', 'black'] as any,
+            stylePropertySpecification('colorArray'));
+        expect(expression.evaluate({zoom: 0}).values).toEqual([Color.red, Color.black]);
+    })
+
+    test('normalizePropertyExpression<ColorArray> single value', () => {
+        const expression = normalizePropertyExpression<ColorArray>('#FF0000' as any,
+            stylePropertySpecification('colorArray'));
+        expect(expression.evaluate({zoom: 0}).values).toEqual([Color.red]);
+    })
+
+    test('normalizePropertyExpression<NumberArray>', () => {
+        const expression = normalizePropertyExpression<NumberArray>([1, 2] as any,
+            stylePropertySpecification('numberArray'));
+        expect(expression.evaluate({zoom: 0}).values).toEqual([1, 2]);
+    })
+
+    test('normalizePropertyExpression<NumberArray> single value', () => {
+        const expression = normalizePropertyExpression<NumberArray>(1 as any,
+            stylePropertySpecification('numberArray'));
+        expect(expression.evaluate({zoom: 0}).values).toEqual([1]);
+    })
+
+    test('normalizePropertyExpression<Padding>', () => {
+        const expression = normalizePropertyExpression<Padding>([1,2] as any,
             stylePropertySpecification('padding'));
         expect(expression.evaluate({zoom: 0}).values).toEqual([1,2,1,2]);
     })
