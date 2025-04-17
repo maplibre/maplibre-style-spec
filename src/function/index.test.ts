@@ -223,7 +223,7 @@ describe('exponential function', () => {
         }).toThrow('Unknown color space: "invalid"');
     });
 
-    test('colorArray', () => {
+    test('exponential interpolation of colorArray', () => {
         const f = createFunction({
             type: 'exponential',
             stops: [[1, ['red', 'blue']], [11, ['blue', 'red']]]
@@ -240,7 +240,7 @@ describe('exponential function', () => {
         expectToMatchColor(f({zoom: 11}, undefined).values[1], 'rgb(100% 0% 0% / 1)');
     });
 
-    test('colorArray hcl colorspace', () => {
+    test('exponential interpolation of colorArray (hcl colorspace)', () => {
         const f = createFunction({
             type: 'exponential',
             colorSpace: 'hcl',
@@ -255,7 +255,7 @@ describe('exponential function', () => {
         expectToMatchColor(f({zoom: 10}, undefined).values[0], 'rgb(8.64% 22.66% 55.36% / 1)', 4);
     });
 
-    test('colorArray lab colorspace', () => {
+    test('exponential interpolation of colorArray (lab colorspace)', () => {
         const f = createFunction({
             type: 'exponential',
             colorSpace: 'lab',
@@ -270,7 +270,7 @@ describe('exponential function', () => {
         expectToMatchColor(f({zoom: 10}, undefined).values[0], 'rgb(0% 100% 100% / 1)');
     });
 
-    test('colorArray invalid colorspace', () => {
+    test('exponential interpolation of colorArray (invalid colorspace)', () => {
         expect(() => {
             createFunction({
                 type: 'exponential',
@@ -282,19 +282,7 @@ describe('exponential function', () => {
         }).toThrow('Unknown color space: "invalid"');
     });
 
-    test('colorArray identity', () => {
-        const f = createFunction({
-            property: 'foo',
-            type: 'identity'
-        }, {
-            type: 'colorArray'
-        }).evaluate;
-
-        expect(f({zoom: 0}, {properties: {foo: 'red'}})).toEqual(new ColorArray([Color.red]));
-        expect(f({zoom: 1}, {properties: {foo: ['black', 'white']}})).toEqual(new ColorArray([Color.black, Color.white]));
-    });
-
-    test('numberArray', () => {
+    test('exponential interpolation of numberArray', () => {
         const f = createFunction({
             type: 'exponential',
             colorSpace: 'lab',
@@ -307,18 +295,6 @@ describe('exponential function', () => {
         expect(f({zoom: 0}, undefined).values).toEqual([1, 2]);
         expect(f({zoom: 5}, undefined).values).toEqual([2, 3]);
         expect(f({zoom: 10}, undefined).values).toEqual([3, 4]);
-    });
-
-    test('numberArray identity', () => {
-        const f = createFunction({
-            property: 'foo',
-            type: 'identity'
-        }, {
-            type: 'numberArray'
-        }).evaluate;
-
-        expect(f({zoom: 0}, {properties: {foo: 3}})).toEqual(new NumberArray([3]));
-        expect(f({zoom: 1}, {properties: {foo: [3, 4]}})).toEqual(new NumberArray([3, 4]));
     });
 
     test('interpolation mutation avoidance', () => {
@@ -334,7 +310,7 @@ describe('exponential function', () => {
         expect(params).toEqual(paramsCopy);
     });
 
-    test('padding', () => {
+    test('exponential interpolation of padding', () => {
         const f = createFunction({
             type: 'exponential',
             stops: [[1, 2], [11, [2, 5, 2, 7]]]
@@ -1099,6 +1075,30 @@ describe('identity function', () => {
         }).evaluate;
 
         expect(f({zoom: 0}, {properties: {foo: 'invalid'}})).toEqual(new Padding([1, 2, 3, 4]));
+    });
+
+    test('colorArray identity', () => {
+        const f = createFunction({
+            property: 'foo',
+            type: 'identity'
+        }, {
+            type: 'colorArray'
+        }).evaluate;
+
+        expect(f({zoom: 0}, {properties: {foo: 'red'}})).toEqual(new ColorArray([Color.red]));
+        expect(f({zoom: 1}, {properties: {foo: ['black', 'white']}})).toEqual(new ColorArray([Color.black, Color.white]));
+    });
+
+    test('numberArray identity', () => {
+        const f = createFunction({
+            property: 'foo',
+            type: 'identity'
+        }, {
+            type: 'numberArray'
+        }).evaluate;
+
+        expect(f({zoom: 0}, {properties: {foo: 3}})).toEqual(new NumberArray([3]));
+        expect(f({zoom: 1}, {properties: {foo: [3, 4]}})).toEqual(new NumberArray([3, 4]));
     });
 
     test('property type mismatch, function default', () => {
