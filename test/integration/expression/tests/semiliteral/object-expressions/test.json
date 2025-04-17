@@ -1,0 +1,31 @@
+{
+  "expression": [
+    "semiliteral",
+    {
+      "x": ["get", "x"]
+    }
+  ],
+  "inputs": [
+    [
+      {},
+      {
+        "properties": {
+          "x": 1
+        }
+      }
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": false,
+      "isZoomConstant": true,
+      "type": "object"
+    },
+    "outputs": [
+      {
+        "x": 1
+      }
+    ]
+  }
+}
