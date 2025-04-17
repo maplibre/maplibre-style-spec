@@ -11,6 +11,7 @@ import {ColorArray} from '../expression/types/color_array';
 import {NumberArray} from '../expression/types/number_array';
 import {typeOf} from '../expression/values';
 import {ObjectType} from '../expression/types';
+import {StylePropertySpecification} from '..';
 
 export function isFunction(value) {
     return typeof value === 'object' && value !== null && !Array.isArray(value) && typeOf(value) === ObjectType;
@@ -20,19 +21,44 @@ function identityFunction(x) {
     return x;
 }
 
+function getParseFunction(propertySpec: StylePropertySpecification) {
+    switch (propertySpec.type) {
+        case 'color':
+            return Color.parse;
+        case 'padding':
+            return Padding.parse;
+        case 'numberArray':
+            return NumberArray.parse;
+        case 'colorArray':
+            return ColorArray.parse;
+        default:
+            return null;
+    }
+}
+
+function getInnerFunction(type: string) {
+    switch (type) {
+        case 'exponential':
+            return evaluateExponentialFunction;
+        case 'interval':
+            return evaluateIntervalFunction;
+        case 'categorical':
+            return evaluateCategoricalFunction;
+        case 'identity':
+            return evaluateIdentityFunction;
+        default:
+            throw new Error(`Unknown function type "${type}"`);
+    }
+}
+
 export function createFunction(parameters, propertySpec) {
-    const isColor = propertySpec.type === 'color';
     const zoomAndFeatureDependent = parameters.stops && typeof parameters.stops[0][0] === 'object';
     const featureDependent = zoomAndFeatureDependent || parameters.property !== undefined;
     const zoomDependent = zoomAndFeatureDependent || !featureDependent;
     const type = parameters.type || (supportsInterpolation(propertySpec) ? 'exponential' : 'interval');
 
-    if (isColor || propertySpec.type === 'padding' || propertySpec.type === 'numberArray' || propertySpec.type === 'colorArray') {
-        const parseFn = isColor ? Color.parse : 
-            propertySpec.type === 'padding' ? Padding.parse :
-                propertySpec.type === 'numberArray' ? NumberArray.parse :
-                    ColorArray.parse;
-
+    const parseFn = getParseFunction(propertySpec);
+    if (parseFn) {
         parameters = extendBy({}, parameters);
 
         if (parameters.stops) {
@@ -52,16 +78,10 @@ export function createFunction(parameters, propertySpec) {
         throw new Error(`Unknown color space: "${parameters.colorSpace}"`);
     }
 
-    let innerFun;
+    const innerFun = getInnerFunction(type);
     let hashedStops;
     let categoricalKeyType;
-    if (type === 'exponential') {
-        innerFun = evaluateExponentialFunction;
-    } else if (type === 'interval') {
-        innerFun = evaluateIntervalFunction;
-    } else if (type === 'categorical') {
-        innerFun = evaluateCategoricalFunction;
-
+    if (type === 'categorical') {
         // For categorical functions, generate an Object as a hashmap of the stops for fast searching
         hashedStops = Object.create(null);
         for (const stop of parameters.stops) {
@@ -70,11 +90,6 @@ export function createFunction(parameters, propertySpec) {
 
         // Infer key type based on first stop key-- used to encforce strict type checking later
         categoricalKeyType = typeof parameters.stops[0][0];
-
-    } else if (type === 'identity') {
-        innerFun = evaluateIdentityFunction;
-    } else {
-        throw new Error(`Unknown function type "${type}"`);
     }
 
     if (zoomAndFeatureDependent) {
