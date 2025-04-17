@@ -6617,21 +6617,21 @@
         "standard": {
           "doc": "The legacy hillshade method."
         },
-        "igor": {
-          "doc": "Hliishade algorithm which tries to minimize effects on other map features beneath."
+        "basic": {
+          "doc": "Basic hillshade. Uses a simple physics model where the reflected light intensity is proportional to the cosine of the angle between the incident light and the surface normal. Similar to GDAL's `gdaldem` default algorithm."
         },
         "combined": {
-          "doc": "Hillshade algorithm whose intensity scales with slope."
+          "doc": "Hillshade algorithm whose intensity scales with slope. Similar to GDAL's `gdaldem` with `-combined` option."
+        },
+        "igor": {
+          "doc": "Hillshade algorithm which tries to minimize effects on other map features beneath. Similar to GDAL's `gdaldem` with `-igor` option."
         },
         "multidirectional": {
-          "doc": "Hillshade with multiple illumination directions."
-        },
-        "basic": {
-          "doc": "Basic hillshade."
+          "doc": "Hillshade with multiple illumination directions. Uses the basic hillshade model with multiple independent light sources."
         }
       },
       "default": "standard",
-      "doc": "The hillshade algorithm to use, one of 'standard', 'igor', 'combined', or 'multidirectional'.",
+      "doc": "The hillshade algorithm to use, one of `standard`, `basic`, `combined`, `igor`, or `multidirectional`.",
       "sdk-support": {
         "basic functionality": {
           "js": "https://github.com/maplibre/maplibre-gl-js/issues/5665",
