@@ -6443,7 +6443,7 @@
       "default": 335,
       "minimum": 0,
       "maximum": 359,
-      "doc": "The direction of the light source(s) used to generate the hillshading with 0 as the top of the viewport if `hillshade-illumination-anchor` is set to `viewport` and due north if `hillshade-illumination-anchor` is set to `map`. Only the `multidirectional` method supports multiple light sources.",
+      "doc": "The direction of the light source(s) used to generate the hillshading with 0 as the top of the viewport if `hillshade-illumination-anchor` is set to `viewport` and due north if `hillshade-illumination-anchor` is set to `map`. Only when `hillshade-method` is set to `multidirectional` can you specify multiple light sources.",
       "transition": false,
       "sdk-support": {
         "basic functionality": {
@@ -6470,7 +6470,7 @@
       "default": 45,
       "minimum": 0,
       "maximum": 90,
-      "doc": "The altitude of the light source(s) used to generate the hillshading with 0 as sunset and 90 as noon. Only the `multidirectional` method supports multiple light sources.",
+      "doc": "The altitude of the light source(s) used to generate the hillshading with 0 as sunset and 90 as noon. Only when `hillshade-method` is set to `multidirectional` can you specify multiple light sources.",
       "transition": false,
       "sdk-support": {
         "basic functionality": {
@@ -6544,7 +6544,7 @@
     "hillshade-shadow-color": {
       "type": "colorArray",
       "default": "#000000",
-      "doc": "The shading color of areas that face away from the light source(s). Only the `multidirectional` method supports multiple light sources.",
+      "doc": "The shading color of areas that face away from the light source(s). Only when `hillshade-method` is set to `multidirectional` can you specify multiple light sources.",
       "transition": true,
       "sdk-support": {
         "basic functionality": {
@@ -6569,7 +6569,7 @@
     "hillshade-highlight-color": {
       "type": "colorArray",
       "default": "#FFFFFF",
-      "doc": "The shading color of areas that faces towards the light source(s). Only the `multidirectional` method supports multiple light sources.",
+      "doc": "The shading color of areas that faces towards the light source(s). Only when `hillshade-method` is set to `multidirectional` can you specify multiple light sources.",
       "transition": true,
       "sdk-support": {
         "basic functionality": {
