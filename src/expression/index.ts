@@ -481,21 +481,21 @@ function getDefaultValue(spec: StylePropertySpecification): Value {
         // default color ramp, but createExpression expects a simple value to fall
         // back to in case of runtime errors
         return new Color(0, 0, 0, 0);
-    } else if (spec.type === 'color') {
-        return Color.parse(spec.default) || null;
-    } else if (spec.type === 'padding') {
-        return Padding.parse(spec.default) || null;
-    } else if (spec.type === 'numberArray') {
-        return NumberArray.parse(spec.default) || null;
-    } else if (spec.type === 'colorArray') {
-        return ColorArray.parse(spec.default) || null;
-    } else if (spec.type === 'variableAnchorOffsetCollection') {
-        return VariableAnchorOffsetCollection.parse(spec.default) || null;
-    } else if (spec.type === 'projectionDefinition') {
-        return ProjectionDefinition.parse(spec.default) || null;
-    } else if (spec.default === undefined) {
-        return null;
-    } else {
-        return spec.default;
+    }
+    switch (spec.type) {
+        case 'color':
+            return Color.parse(spec.default) || null;
+        case 'padding':
+            return Padding.parse(spec.default) || null;
+        case 'numberArray':
+            return NumberArray.parse(spec.default) || null;
+        case 'colorArray':
+            return ColorArray.parse(spec.default) || null;
+        case 'variableAnchorOffsetCollection':
+            return VariableAnchorOffsetCollection.parse(spec.default) || null;
+        case 'projectionDefinition':
+            return ProjectionDefinition.parse(spec.default) || null;
+        default:
+            return (spec.default === undefined ? null : spec.default);
     }
 }
