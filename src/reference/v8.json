@@ -6632,8 +6632,20 @@
     },
     "color-relief-color": {
       "type": "color",
-      "default": "#00000000",
-      "doc": "Defines the color of each pixel based on its elevation (in meters above sea level).  Should be an expression that uses `[\"elevation\"]` as input. The default is `#00000000`, which disables this feature.",
+      "default": [
+        "interpolate",
+        [
+          "linear"
+        ],
+        [
+          "elevation"
+        ],
+        0,
+        "black",
+        8849,
+        "white"
+      ],
+      "doc": "Defines the color of each pixel based on its elevation (in meters above sea level).  Should be an expression that uses `[\"elevation\"]` as input.",
       "transition": false,
       "sdk-support": {
         "basic functionality": {
