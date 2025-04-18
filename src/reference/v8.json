@@ -777,8 +777,8 @@
           "sdk-support": {
             "basic functionality": {
               "js": "https://github.com/maplibre/maplibre-gl-js/issues/5666",
-              "android": "https://github.com/maplibre/maplibre-gl-js/issues/5666",
-              "ios": "https://github.com/maplibre/maplibre-gl-js/issues/5666"
+              "android": "https://github.com/maplibre/maplibre-native/issues/3408",
+              "ios": "https://github.com/maplibre/maplibre-native/issues/3408"
             }
           }
         },
@@ -3653,8 +3653,8 @@
         "sdk-support": {
           "basic functionality": {
             "js": "https://github.com/maplibre/maplibre-gl-js/issues/5666",
-            "android": "https://github.com/maplibre/maplibre-gl-js/issues/5666",
-            "ios": "https://github.com/maplibre/maplibre-gl-js/issues/5666"
+            "android": "https://github.com/maplibre/maplibre-native/issues/3408",
+            "ios": "https://github.com/maplibre/maplibre-native/issues/3408"
           }
         }
       },
@@ -6626,8 +6626,8 @@
       "sdk-support": {
         "basic functionality": {
           "js": "https://github.com/maplibre/maplibre-gl-js/issues/5666",
-          "android": "https://github.com/maplibre/maplibre-gl-js/issues/5666",
-          "ios": "https://github.com/maplibre/maplibre-gl-js/issues/5666"
+          "android": "https://github.com/maplibre/maplibre-native/issues/3408",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3408"
         }
       },
       "expression": {
@@ -6658,8 +6658,8 @@
       "sdk-support": {
         "basic functionality": {
           "js": "https://github.com/maplibre/maplibre-gl-js/issues/5666",
-          "android": "https://github.com/maplibre/maplibre-gl-js/issues/5666",
-          "ios": "https://github.com/maplibre/maplibre-gl-js/issues/5666"
+          "android": "https://github.com/maplibre/maplibre-native/issues/3408",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3408"
         },
         "data-driven styling": {}
       },
