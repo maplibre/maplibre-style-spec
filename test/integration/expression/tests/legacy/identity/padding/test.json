@@ -1,0 +1,96 @@
+{
+  "expression": {
+    "type": "identity",
+    "property": "p"
+  },
+  "inputs": [
+    [
+      {},
+      {
+        "properties": {}
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": 1
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": [1,2]
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": [1,2,3]
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": [1,2,3,4]
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": []
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": "not a padding"
+        }
+      }
+    ]
+  ],
+  "propertySpec": {
+    "type": "padding",
+    "property-type": "data-driven",
+    "expression": {
+      "interpolated": false,
+      "parameters": [
+        "zoom",
+        "feature"
+      ]
+    }
+  },
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": false,
+      "isZoomConstant": true,
+      "type": "padding"
+    },
+    "outputs": [
+      {
+        "error": "Could not parse padding from value 'null'"
+      },
+      {"values":[1,1,1,1]},
+      {"values":[1,2,1,2]},
+      {"values":[1,2,3,2]},
+      {"values":[1,2,3,4]},
+      {
+        "error": "Could not parse padding from value '[]'"
+      },
+      {
+        "error": "Could not parse padding from value 'not a padding'"
+      }
+    ]
+  }
+}

@@ -3,6 +3,8 @@ import {createFunction} from './index';
 import {Color} from '../expression/types/color';
 import {Formatted} from '../expression/types/formatted';
 import {Padding} from '../expression/types/padding';
+import {NumberArray} from '../expression/types/number_array';
+import {ColorArray} from '../expression/types/color_array';
 
 describe('binary search', () => {
     test('will eventually terminate.', () => {
@@ -221,6 +223,80 @@ describe('exponential function', () => {
         }).toThrow('Unknown color space: "invalid"');
     });
 
+    test('exponential interpolation of colorArray', () => {
+        const f = createFunction({
+            type: 'exponential',
+            stops: [[1, ['red', 'blue']], [11, ['blue', 'red']]]
+        }, {
+            type: 'colorArray'
+        }).evaluate;
+
+        expect(f({zoom: 5}, undefined).values).toHaveLength(2);
+        expectToMatchColor(f({zoom: 0}, undefined).values[0], 'rgb(100% 0% 0% / 1)');
+        expectToMatchColor(f({zoom: 0}, undefined).values[1], 'rgb(0% 0% 100% / 1)');
+        expectToMatchColor(f({zoom: 5}, undefined).values[0], 'rgb(60% 0% 40% / 1)');
+        expectToMatchColor(f({zoom: 5}, undefined).values[1], 'rgb(40% 0% 60% / 1)');
+        expectToMatchColor(f({zoom: 11}, undefined).values[0], 'rgb(0% 0% 100% / 1)');
+        expectToMatchColor(f({zoom: 11}, undefined).values[1], 'rgb(100% 0% 0% / 1)');
+    });
+
+    test('exponential interpolation of colorArray (hcl colorspace)', () => {
+        const f = createFunction({
+            type: 'exponential',
+            colorSpace: 'hcl',
+            stops: [[0, 'rgb(36 98 36 / 0.6)'], [10, 'hsl(222,73%,32%)']],
+        }, {
+            type: 'colorArray'
+        }).evaluate;
+
+        expect(f({zoom: 5}, undefined).values).toHaveLength(1);
+        expectToMatchColor(f({zoom: 0}, undefined).values[0], 'rgb(14.12% 38.43% 14.12% / .6)', 4);
+        expectToMatchColor(f({zoom: 5}, undefined).values[0], 'rgb(0.00% 35.13% 43.84% / 0.8)', 4);
+        expectToMatchColor(f({zoom: 10}, undefined).values[0], 'rgb(8.64% 22.66% 55.36% / 1)', 4);
+    });
+
+    test('exponential interpolation of colorArray (lab colorspace)', () => {
+        const f = createFunction({
+            type: 'exponential',
+            colorSpace: 'lab',
+            stops: [[0, '#0009'], [10, 'rgba(0,255,255,1)']],
+        }, {
+            type: 'colorArray'
+        }).evaluate;
+
+        expect(f({zoom: 5}, undefined).values).toHaveLength(1);
+        expectToMatchColor(f({zoom: 0}, undefined).values[0], 'rgb(0% 0% 0% / .6)');
+        expectToMatchColor(f({zoom: 5}, undefined).values[0], 'rgb(14.15% 46.74% 46.63% / 0.8)', 4);
+        expectToMatchColor(f({zoom: 10}, undefined).values[0], 'rgb(0% 100% 100% / 1)');
+    });
+
+    test('exponential interpolation of colorArray (invalid colorspace)', () => {
+        expect(() => {
+            createFunction({
+                type: 'exponential',
+                colorSpace: 'invalid',
+                stops: [[1, [0, 0, 0, 1]], [10, [0, 1, 1, 1]]]
+            }, {
+                type: 'colorArray'
+            });
+        }).toThrow('Unknown color space: "invalid"');
+    });
+
+    test('exponential interpolation of numberArray', () => {
+        const f = createFunction({
+            type: 'exponential',
+            colorSpace: 'lab',
+            stops: [[0, [1, 2]], [10, [3, 4]]],
+        }, {
+            type: 'numberArray'
+        }).evaluate;
+
+        expect(f({zoom: 5}, undefined).values).toHaveLength(2);
+        expect(f({zoom: 0}, undefined).values).toEqual([1, 2]);
+        expect(f({zoom: 5}, undefined).values).toEqual([2, 3]);
+        expect(f({zoom: 10}, undefined).values).toEqual([3, 4]);
+    });
+
     test('interpolation mutation avoidance', () => {
         const params = {
             type: 'exponential',
@@ -234,7 +310,7 @@ describe('exponential function', () => {
         expect(params).toEqual(paramsCopy);
     });
 
-    test('padding', () => {
+    test('exponential interpolation of padding', () => {
         const f = createFunction({
             type: 'exponential',
             stops: [[1, 2], [11, [2, 5, 2, 7]]]
@@ -999,6 +1075,30 @@ describe('identity function', () => {
         }).evaluate;
 
         expect(f({zoom: 0}, {properties: {foo: 'invalid'}})).toEqual(new Padding([1, 2, 3, 4]));
+    });
+
+    test('colorArray identity', () => {
+        const f = createFunction({
+            property: 'foo',
+            type: 'identity'
+        }, {
+            type: 'colorArray'
+        }).evaluate;
+
+        expect(f({zoom: 0}, {properties: {foo: 'red'}})).toEqual(new ColorArray([Color.red]));
+        expect(f({zoom: 1}, {properties: {foo: ['black', 'white']}})).toEqual(new ColorArray([Color.black, Color.white]));
+    });
+
+    test('numberArray identity', () => {
+        const f = createFunction({
+            property: 'foo',
+            type: 'identity'
+        }, {
+            type: 'numberArray'
+        }).evaluate;
+
+        expect(f({zoom: 0}, {properties: {foo: 3}})).toEqual(new NumberArray([3]));
+        expect(f({zoom: 1}, {properties: {foo: [3, 4]}})).toEqual(new NumberArray([3, 4]));
     });
 
     test('property type mismatch, function default', () => {

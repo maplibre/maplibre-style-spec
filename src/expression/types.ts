@@ -34,6 +34,12 @@ export type FormattedTypeT = {
 export type PaddingTypeT = {
     kind: 'padding';
 };
+export type NumberArrayTypeT = {
+    kind: 'numberArray';
+};
+export type ColorArrayTypeT = {
+    kind: 'colorArray';
+};
 export type ResolvedImageTypeT = {
     kind: 'resolvedImage';
 };
@@ -44,7 +50,7 @@ export type VariableAnchorOffsetCollectionTypeT = {
 export type EvaluationKind = 'constant' | 'source' | 'camera' | 'composite';
 
 export type Type = NullTypeT | NumberTypeT | StringTypeT | BooleanTypeT | ColorTypeT | ProjectionDefinitionTypeT | ObjectTypeT | ValueTypeT |
-ArrayType | ErrorTypeT | CollatorTypeT | FormattedTypeT | PaddingTypeT | ResolvedImageTypeT | VariableAnchorOffsetCollectionTypeT;
+ArrayType | ErrorTypeT | CollatorTypeT | FormattedTypeT | PaddingTypeT | NumberArrayTypeT | ColorArrayTypeT | ResolvedImageTypeT | VariableAnchorOffsetCollectionTypeT;
 
 export interface ArrayType<T extends Type = Type> {
     kind: 'array';
@@ -66,6 +72,8 @@ export const ErrorType = {kind: 'error'} as ErrorTypeT;
 export const CollatorType = {kind: 'collator'} as CollatorTypeT;
 export const FormattedType = {kind: 'formatted'} as FormattedTypeT;
 export const PaddingType = {kind: 'padding'} as PaddingTypeT;
+export const ColorArrayType = {kind: 'colorArray'} as ColorArrayTypeT;
+export const NumberArrayType = {kind: 'numberArray'} as NumberArrayTypeT;
 export const ResolvedImageType = {kind: 'resolvedImage'} as ResolvedImageTypeT;
 export const VariableAnchorOffsetCollectionType = {kind: 'variableAnchorOffsetCollection'} as VariableAnchorOffsetCollectionTypeT;
 
@@ -99,6 +107,8 @@ const valueMemberTypes = [
     ObjectType,
     array(ValueType),
     PaddingType,
+    NumberArrayType,
+    ColorArrayType,
     ResolvedImageType,
     VariableAnchorOffsetCollectionType
 ];

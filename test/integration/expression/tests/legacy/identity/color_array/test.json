@@ -1,0 +1,87 @@
+{
+  "expression": {
+    "type": "identity",
+    "property": "p"
+  },
+  "inputs": [
+    [
+      {},
+      {
+        "properties": {}
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": "blue"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": ["blue", "red"]
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": []
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": 0
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "p": "not a color"
+        }
+      }
+    ]
+  ],
+  "propertySpec": {
+    "type": "colorArray",
+    "property-type": "data-driven",
+    "expression": {
+      "interpolated": false,
+      "parameters": [
+        "zoom",
+        "feature"
+      ]
+    }
+  },
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": false,
+      "isZoomConstant": true,
+      "type": "colorArray"
+    },
+    "outputs": [
+      {
+        "error": "Could not parse colorArray from value 'null'"
+      },
+      {"values":[{"r":0,"g":0,"b":1,"a":1}]},
+      {"values":[{"r":0,"g":0,"b":1,"a":1},{"r":1,"g":0,"b":0,"a":1}]},
+      {"values":[]},
+      {
+        "error": "Could not parse colorArray from value '0'"
+      },
+      {
+        "error": "Could not parse colorArray from value 'not a color'"
+      }
+    ]
+  }
+}
