@@ -776,7 +776,9 @@
           "doc": "Client-side elevation coloring based on DEM data. The implementation supports Mapbox Terrain RGB, Mapzen Terrarium tiles and custom encodings.",
           "sdk-support": {
             "basic functionality": {
-              "js": "https://github.com/maplibre/maplibre-gl-js/issues/5666"
+              "js": "https://github.com/maplibre/maplibre-gl-js/issues/5666",
+              "android": "https://github.com/maplibre/maplibre-gl-js/issues/5666",
+              "ios": "https://github.com/maplibre/maplibre-gl-js/issues/5666"
             }
           }
         },
@@ -3647,9 +3649,12 @@
           },
           "value": ["elevation"]
         },
-        "group": "Hillshade",
+        "group": "Color Relief",
         "sdk-support": {
           "basic functionality": {
+            "js": "https://github.com/maplibre/maplibre-gl-js/issues/5666",
+            "android": "https://github.com/maplibre/maplibre-gl-js/issues/5666",
+            "ios": "https://github.com/maplibre/maplibre-gl-js/issues/5666"
           }
         }
       },
@@ -6620,6 +6625,9 @@
       "transition": true,
       "sdk-support": {
         "basic functionality": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/5666",
+          "android": "https://github.com/maplibre/maplibre-gl-js/issues/5666",
+          "ios": "https://github.com/maplibre/maplibre-gl-js/issues/5666"
         }
       },
       "expression": {
@@ -6649,6 +6657,9 @@
       "transition": false,
       "sdk-support": {
         "basic functionality": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/5666",
+          "android": "https://github.com/maplibre/maplibre-gl-js/issues/5666",
+          "ios": "https://github.com/maplibre/maplibre-gl-js/issues/5666"
         },
         "data-driven styling": {}
       },
