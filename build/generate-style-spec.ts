@@ -39,6 +39,10 @@ function propertyType(property) {
                 return '{[_: string]: SourceSpecification}';
             case 'projection:':
                 return 'ProjectionSpecification';
+            case 'numberArray':
+                return 'NumberArraySpecification';
+            case 'colorArray':
+                return 'ColorArraySpecification';
             case '*':
                 return 'unknown';
             default:
@@ -127,6 +131,8 @@ export type ProjectionDefinitionT = [string, string, number];
 export type ProjectionDefinitionSpecification = string | ProjectionDefinitionT | PropertyValueSpecification<ProjectionDefinitionT>
 
 export type PaddingSpecification = number | number[];
+export type NumberArraySpecification = number | number[];
+export type ColorArraySpecification = string | string[];
 
 export type VariableAnchorOffsetCollectionSpecification = Array<string | [number, number]>;
 

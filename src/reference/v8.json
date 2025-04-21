@@ -769,6 +769,11 @@
               "js": "0.43.0",
               "android": "6.0.0",
               "ios": "4.0.0"
+            },
+            "additional methods": {
+              "js": "https://github.com/maplibre/maplibre-gl-js/issues/5665",
+              "android": "https://github.com/maplibre/maplibre-native/issues/3396",
+              "ios": "https://github.com/maplibre/maplibre-native/issues/3396"
             }
           }
         },
@@ -6434,17 +6439,49 @@
   },
   "paint_hillshade": {
     "hillshade-illumination-direction": {
-      "type": "number",
+      "type": "numberArray",
       "default": 335,
       "minimum": 0,
       "maximum": 359,
-      "doc": "The direction of the light source used to generate the hillshading with 0 as the top of the viewport if `hillshade-illumination-anchor` is set to `viewport` and due north if `hillshade-illumination-anchor` is set to `map`.",
+      "doc": "The direction of the light source(s) used to generate the hillshading with 0 as the top of the viewport if `hillshade-illumination-anchor` is set to `viewport` and due north if `hillshade-illumination-anchor` is set to `map`. Only when `hillshade-method` is set to `multidirectional` can you specify multiple light sources.",
       "transition": false,
       "sdk-support": {
         "basic functionality": {
           "js": "0.43.0",
           "android": "6.0.0",
           "ios": "4.0.0"
+        },
+        "multidirectional": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/5665",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3396",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3396"
+        }
+      },
+      "expression": {
+        "interpolated": true,
+        "parameters": [
+          "zoom"
+        ]
+      },
+      "property-type": "data-constant"
+    },
+    "hillshade-illumination-altitude": {
+      "type": "numberArray",
+      "default": 45,
+      "minimum": 0,
+      "maximum": 90,
+      "doc": "The altitude of the light source(s) used to generate the hillshading with 0 as sunset and 90 as noon. Only when `hillshade-method` is set to `multidirectional` can you specify multiple light sources.",
+      "transition": false,
+      "sdk-support": {
+        "basic functionality": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/5665",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3396",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3396"
+        },
+        "multidirectional": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/5665",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3396",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3396"
         }
       },
       "expression": {
@@ -6505,15 +6542,20 @@
       "property-type": "data-constant"
     },
     "hillshade-shadow-color": {
-      "type": "color",
+      "type": "colorArray",
       "default": "#000000",
-      "doc": "The shading color of areas that face away from the light source.",
+      "doc": "The shading color of areas that face away from the light source(s). Only when `hillshade-method` is set to `multidirectional` can you specify multiple light sources.",
       "transition": true,
       "sdk-support": {
         "basic functionality": {
           "js": "0.43.0",
           "android": "6.0.0",
           "ios": "4.0.0"
+        },
+        "multidirectional": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/5665",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3396",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3396"
         }
       },
       "expression": {
@@ -6525,15 +6567,20 @@
       "property-type": "data-constant"
     },
     "hillshade-highlight-color": {
-      "type": "color",
+      "type": "colorArray",
       "default": "#FFFFFF",
-      "doc": "The shading color of areas that faces towards the light source.",
+      "doc": "The shading color of areas that faces towards the light source(s). Only when `hillshade-method` is set to `multidirectional` can you specify multiple light sources.",
       "transition": true,
       "sdk-support": {
         "basic functionality": {
           "js": "0.43.0",
           "android": "6.0.0",
           "ios": "4.0.0"
+        },
+        "multidirectional": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/5665",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3396",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3396"
         }
       },
       "expression": {
@@ -6558,6 +6605,42 @@
       },
       "expression": {
         "interpolated": true,
+        "parameters": [
+          "zoom"
+        ]
+      },
+      "property-type": "data-constant"
+    },
+    "hillshade-method": {
+      "type": "enum",
+      "values": {
+        "standard": {
+          "doc": "The legacy hillshade method."
+        },
+        "basic": {
+          "doc": "Basic hillshade. Uses a simple physics model where the reflected light intensity is proportional to the cosine of the angle between the incident light and the surface normal. Similar to GDAL's `gdaldem` default algorithm."
+        },
+        "combined": {
+          "doc": "Hillshade algorithm whose intensity scales with slope. Similar to GDAL's `gdaldem` with `-combined` option."
+        },
+        "igor": {
+          "doc": "Hillshade algorithm which tries to minimize effects on other map features beneath. Similar to GDAL's `gdaldem` with `-igor` option."
+        },
+        "multidirectional": {
+          "doc": "Hillshade with multiple illumination directions. Uses the basic hillshade model with multiple independent light sources."
+        }
+      },
+      "default": "standard",
+      "doc": "The hillshade algorithm to use, one of `standard`, `basic`, `combined`, `igor`, or `multidirectional`. ![image](assets/hillshade_methods.png)",
+      "sdk-support": {
+        "basic functionality": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/5665",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3396",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3396"
+        }
+      },
+      "expression": {
+        "interpolated": false,
         "parameters": [
           "zoom"
         ]

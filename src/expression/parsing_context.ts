@@ -120,13 +120,11 @@ export class ParsingContext {
                     //
                     if ((expected.kind === 'string' || expected.kind === 'number' || expected.kind === 'boolean' || expected.kind === 'object' || expected.kind === 'array') && actual.kind === 'value') {
                         parsed = annotate(parsed, expected, options.typeAnnotation || 'assert');
-                    } else if ((expected.kind === 'projectionDefinition') && (actual.kind === 'string' || actual.kind === 'array')) {
-                        parsed = annotate(parsed, expected, options.typeAnnotation || 'coerce');
-                    } else if ((expected.kind === 'color' || expected.kind === 'formatted' || expected.kind === 'resolvedImage') && (actual.kind === 'value' || actual.kind === 'string')) {
-                        parsed = annotate(parsed, expected, options.typeAnnotation || 'coerce');
-                    } else if (expected.kind === 'padding' && (actual.kind === 'value' || actual.kind === 'number' || actual.kind === 'array')) {
-                        parsed = annotate(parsed, expected, options.typeAnnotation || 'coerce');
-                    } else if (expected.kind === 'variableAnchorOffsetCollection' && (actual.kind === 'value' || actual.kind === 'array')) {
+                    } else if (('projectionDefinition' === expected.kind && ['string', 'array'].includes(actual.kind)) ||
+                        ((['color', 'formatted','resolvedImage'].includes(expected.kind)) && ['value','string'].includes(actual.kind)) ||
+                        ((['padding','numberArray'].includes(expected.kind)) && ['value', 'number', 'array'].includes(actual.kind)) ||
+                        ('colorArray' === expected.kind && ['value', 'string', 'array'].includes(actual.kind)) ||
+                        ('variableAnchorOffsetCollection' === expected.kind && ['value', 'array'].includes(actual.kind))) {
                         parsed = annotate(parsed, expected, options.typeAnnotation || 'coerce');
                     } else if (this.checkSubtype(expected, actual)) {
                         return null;

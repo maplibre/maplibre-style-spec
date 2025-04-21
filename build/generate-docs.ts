@@ -175,6 +175,8 @@ function typeToMarkdownLink(type: string): string {
         case 'formatted':
         case 'resolvedimage':
         case 'padding':
+        case 'numberarray':
+        case 'colorarray':
             return ` [${type}](types.md#${type.toLocaleLowerCase()})`;
         case 'filter':
             return ` [${type}](expressions.md)`;
@@ -214,7 +216,11 @@ function convertPropertyToMarkdown(key: string, value: JsonObject, keyPrefix = '
     }
 
     if (value.minimum !== undefined || value.maximum !== undefined) {
-        markdown += ` in range ${formatRange(value.minimum, value.maximum)}`;
+        if (value.type === 'numberArray') {
+            markdown += ` with value(s) in range ${formatRange(value.minimum, value.maximum)}`;
+        } else {
+            markdown += ` in range ${formatRange(value.minimum, value.maximum)}`;
+        }
     }
 
     markdown += '. ';

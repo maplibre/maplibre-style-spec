@@ -206,3 +206,26 @@ There are also additional presets that yield commonly used expressions:
 | Preset | Full value | Description |
 |--------|------------|-------------|
 | `globe` | `["interpolate", ["linear"], ["zoom"],`<br>`10, "vertical-perspective", 12, "mercator"]` | Adaptive globe: interpolates from vertical-perspective to mercator projection between zoom levels 10 and 12. |
+
+
+## `numberArray`
+
+A single number value, or an array of number values.
+
+```json
+{
+    "hillshade-illumination-direction": 24,
+    "hillshade-illumination-direction": [45, 57.3]
+}
+```
+
+## `colorArray`
+
+A single color value, or an array of color values.
+
+```json
+{
+    "hillshade-highlight-color": "#ffff00",
+    "hillshade-highlight-color": ["#ffff00", "rgb(255, 255, 0)", "yellow"]
+}
+```
