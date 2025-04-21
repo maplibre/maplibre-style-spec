@@ -3646,7 +3646,7 @@
         }
       },
       "elevation": {
-        "doc": "Gets the elevation of a pixel (in meters above sea level). Can only be used in the `color-relief` property.",
+        "doc": "Gets the elevation of a pixel (in meters above the vertical datum reference of the `raster-dem` tiles) from a `raster-dem` source. Can only be used in the `color-relief` property.",
         "example": {
           "syntax": {
             "method": [],
@@ -6723,20 +6723,7 @@
     },
     "color-relief-color": {
       "type": "color",
-      "default": [
-        "interpolate",
-        [
-          "linear"
-        ],
-        [
-          "elevation"
-        ],
-        0,
-        "black",
-        8849,
-        "white"
-      ],
-      "doc": "Defines the color of each pixel based on its elevation (in meters above sea level).  Should be an expression that uses `[\"elevation\"]` as input.",
+      "doc": "Defines the color of each pixel based on its elevation. Should be an expression that uses `[\"elevation\"]` as input.",
       "transition": false,
       "sdk-support": {
         "basic functionality": {
