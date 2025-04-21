@@ -1,10 +1,12 @@
 import UnitBezier from '@mapbox/unitbezier';
 
-import {array, ArrayType, ColorType, ColorTypeT, NumberType, NumberTypeT, PaddingType, PaddingTypeT, VariableAnchorOffsetCollectionType, VariableAnchorOffsetCollectionTypeT, typeToString, verifyType, ProjectionDefinitionType} from '../types';
+import {array, ArrayType, ColorType, ColorTypeT, NumberType, NumberTypeT, PaddingType, PaddingTypeT, NumberArrayTypeT, ColorArrayTypeT, VariableAnchorOffsetCollectionType, VariableAnchorOffsetCollectionTypeT, typeToString, verifyType, ProjectionDefinitionType, ColorArrayType, NumberArrayType} from '../types';
 import {findStopLessThanOrEqualTo} from '../stops';
 import {Color} from '../types/color';
 import {interpolateArray, interpolateNumber} from '../../util/interpolate-primitives';
 import {Padding} from '../types/padding';
+import {ColorArray} from '../types/color_array';
+import {NumberArray} from '../types/number_array';
 import {VariableAnchorOffsetCollection} from '../types/variable_anchor_offset_collection';
 import {ProjectionDefinition} from '../types/projection_definition';
 
@@ -23,7 +25,7 @@ export type InterpolationType = {
     name: 'cubic-bezier';
     controlPoints: [number, number, number, number];
 };
-type InterpolatedValueType = NumberTypeT | ColorTypeT | ProjectionDefinitionTypeT | PaddingTypeT | VariableAnchorOffsetCollectionTypeT | ArrayType<NumberTypeT>;
+type InterpolatedValueType = NumberTypeT | ColorTypeT | ProjectionDefinitionTypeT | PaddingTypeT | NumberArrayTypeT | ColorArrayTypeT | VariableAnchorOffsetCollectionTypeT | ArrayType<NumberTypeT>;
 export class Interpolate implements Expression {
     type: InterpolatedValueType;
 
@@ -109,7 +111,7 @@ export class Interpolate implements Expression {
         const stops: Stops = [];
 
         let outputType: Type = null;
-        if (operator === 'interpolate-hcl' || operator === 'interpolate-lab') {
+        if ((operator === 'interpolate-hcl' || operator === 'interpolate-lab') && context.expectedType != ColorArrayType) {
             outputType = ColorType;
         } else if (context.expectedType && context.expectedType.kind !== 'value') {
             outputType = context.expectedType;
@@ -139,6 +141,8 @@ export class Interpolate implements Expression {
             !verifyType(outputType, ProjectionDefinitionType) &&
             !verifyType(outputType, ColorType) &&
             !verifyType(outputType, PaddingType) &&
+            !verifyType(outputType, NumberArrayType) &&
+            !verifyType(outputType, ColorArrayType) &&
             !verifyType(outputType, VariableAnchorOffsetCollectionType) &&
             !verifyType(outputType, array(NumberType))
         ) {
@@ -183,6 +187,10 @@ export class Interpolate implements Expression {
                         return Color.interpolate(outputLower, outputUpper, t);
                     case 'padding':
                         return Padding.interpolate(outputLower, outputUpper, t);
+                    case 'colorArray':
+                        return ColorArray.interpolate(outputLower, outputUpper, t);
+                    case 'numberArray':
+                        return NumberArray.interpolate(outputLower, outputUpper, t);
                     case 'variableAnchorOffsetCollection':
                         return VariableAnchorOffsetCollection.interpolate(outputLower, outputUpper, t);
                     case 'array':
@@ -191,9 +199,19 @@ export class Interpolate implements Expression {
                         return ProjectionDefinition.interpolate(outputLower, outputUpper, t);
                 }
             case 'interpolate-hcl':
-                return Color.interpolate(outputLower, outputUpper, t, 'hcl');
+                switch (this.type.kind) {
+                    case 'color':
+                        return Color.interpolate(outputLower, outputUpper, t, 'hcl');
+                    case 'colorArray':
+                        return ColorArray.interpolate(outputLower, outputUpper, t, 'hcl');
+                }
             case 'interpolate-lab':
-                return Color.interpolate(outputLower, outputUpper, t, 'lab');
+                switch (this.type.kind) {
+                    case 'color':
+                        return Color.interpolate(outputLower, outputUpper, t, 'lab');
+                    case 'colorArray':
+                        return ColorArray.interpolate(outputLower, outputUpper, t, 'lab');
+                }
         }
     }
 
@@ -261,6 +279,8 @@ export const interpolateFactory = {
     color: Color.interpolate,
     number: interpolateNumber,
     padding: Padding.interpolate,
+    numberArray: NumberArray.interpolate,
+    colorArray: ColorArray.interpolate,
     variableAnchorOffsetCollection: VariableAnchorOffsetCollection.interpolate,
     array: interpolateArray
 }

@@ -20,13 +20,13 @@ import {RuntimeError} from './runtime_error';
 import {success, error} from '../util/result';
 import {supportsPropertyExpression, supportsZoomExpression, supportsInterpolation} from '../util/properties';
 
-import {ColorType, StringType, NumberType, BooleanType, ValueType, FormattedType, PaddingType, ResolvedImageType, VariableAnchorOffsetCollectionType, array, type Type, type EvaluationKind, ProjectionDefinitionType} from './types';
+import {ColorType, StringType, NumberType, BooleanType, ValueType, FormattedType, PaddingType, ResolvedImageType, VariableAnchorOffsetCollectionType, array, type Type, type EvaluationKind, ProjectionDefinitionType, NumberArrayType, ColorArrayType} from './types';
 import type {Value} from './values';
 import type {Expression} from './expression';
 import {type StylePropertySpecification} from '..';
 import type {Result} from '../util/result';
 import type {InterpolationType} from './definitions/interpolate';
-import type {PaddingSpecification, PropertyValueSpecification, VariableAnchorOffsetCollectionSpecification} from '../types.g';
+import type {PaddingSpecification, NumberArraySpecification, ColorArraySpecification, PropertyValueSpecification, VariableAnchorOffsetCollectionSpecification} from '../types.g';
 import type {FormattedSection} from './types/formatted';
 import type {Point2D} from '../point2d';
 
@@ -34,6 +34,8 @@ import {ICanonicalTileID} from '../tiles_and_coordinates';
 import {isFunction, createFunction} from '../function';
 import {Color} from './types/color';
 import {Padding} from './types/padding';
+import {NumberArray} from './types/number_array';
+import {ColorArray} from './types/color_array';
 import {VariableAnchorOffsetCollection} from './types/variable_anchor_offset_collection';
 import {ProjectionDefinition} from './types/projection_definition';
 
@@ -394,6 +396,10 @@ export function normalizePropertyExpression<T>(
             constant = Color.parse(value);
         } else if (specification.type === 'padding' && (typeof value === 'number' || Array.isArray(value))) {
             constant = Padding.parse(value as PaddingSpecification);
+        } else if (specification.type === 'numberArray' && (typeof value === 'number' || Array.isArray(value))) {
+            constant = NumberArray.parse(value as NumberArraySpecification);
+        } else if (specification.type === 'colorArray' && (typeof value === 'string' || Array.isArray(value))) {
+            constant = ColorArray.parse(value as ColorArraySpecification);
         } else if (specification.type === 'variableAnchorOffsetCollection' && Array.isArray(value)) {
             constant = VariableAnchorOffsetCollection.parse(value as VariableAnchorOffsetCollectionSpecification);
         } else if (specification.type === 'projectionDefinition' && typeof value === 'string') {
@@ -456,6 +462,8 @@ function getExpectedType(spec: StylePropertySpecification): Type {
         boolean: BooleanType,
         formatted: FormattedType,
         padding: PaddingType,
+        numberArray: NumberArrayType,
+        colorArray: ColorArrayType,
         projectionDefinition: ProjectionDefinitionType,
         resolvedImage: ResolvedImageType,
         variableAnchorOffsetCollection: VariableAnchorOffsetCollectionType
@@ -474,17 +482,21 @@ function getDefaultValue(spec: StylePropertySpecification): Value {
         // default color ramp, but createExpression expects a simple value to fall
         // back to in case of runtime errors
         return new Color(0, 0, 0, 0);
-    } else if (spec.type === 'color') {
-        return Color.parse(spec.default) || null;
-    } else if (spec.type === 'padding') {
-        return Padding.parse(spec.default) || null;
-    } else if (spec.type === 'variableAnchorOffsetCollection') {
-        return VariableAnchorOffsetCollection.parse(spec.default) || null;
-    } else if (spec.type === 'projectionDefinition') {
-        return ProjectionDefinition.parse(spec.default) || null;
-    } else if (spec.default === undefined) {
-        return null;
-    } else {
-        return spec.default;
+    }
+    switch (spec.type) {
+        case 'color':
+            return Color.parse(spec.default) || null;
+        case 'padding':
+            return Padding.parse(spec.default) || null;
+        case 'numberArray':
+            return NumberArray.parse(spec.default) || null;
+        case 'colorArray':
+            return ColorArray.parse(spec.default) || null;
+        case 'variableAnchorOffsetCollection':
+            return VariableAnchorOffsetCollection.parse(spec.default) || null;
+        case 'projectionDefinition':
+            return ProjectionDefinition.parse(spec.default) || null;
+        default:
+            return (spec.default === undefined ? null : spec.default);
     }
 }

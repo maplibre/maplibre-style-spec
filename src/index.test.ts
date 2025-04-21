@@ -68,6 +68,8 @@ function validSchema(k, v, obj, ref, version, kind) {
         'resolvedImage',
         'promoteId',
         'padding',
+        'numberArray',
+        'colorArray',
         'variableAnchorOffsetCollection',
         'sprite',
         'projectionDefinition'
