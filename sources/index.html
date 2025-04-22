@@ -1165,6 +1165,28 @@
   
   
     <li class="md-nav__item">
+      <a href="../state/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    State
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../terrain/" class="md-nav__link">
         
   
@@ -1925,10 +1947,10 @@
 <p><em>Optional <a href="../types/#array">array</a>.</em></p>
 <p>An array of one or more tile source URLs, as in the TileJSON spec.</p>
 <h3 id="bounds">bounds<a class="headerlink" href="#bounds" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#array">array</a>. Defaults to <code>-180,-85.051129,180,85.051129</code>.</em></p>
+<p><em>Optional <a href="../types/#array">array</a>. Defaults to <code>[-180,-85.051129,180,85.051129]</code>.</em></p>
 <p>An array containing the longitude and latitude of the southwest and northeast corners of the source's bounding box in the following order: <code>[sw.lng, sw.lat, ne.lng, ne.lat]</code>. When this property is included in a source, no tiles outside of the given bounds are requested by MapLibre.</p>
 <h3 id="scheme">scheme<a class="headerlink" href="#scheme" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#enum">enum</a>. Possible values: <code>xyz</code>, <code>tms</code>. Defaults to <code>xyz</code>.</em></p>
+<p><em>Optional <a href="../types/#enum">enum</a>. Possible values: <code>xyz</code>, <code>tms</code>. Defaults to <code>"xyz"</code>.</em></p>
 <p>Influences the y direction of the tile coordinates. The global-mercator (aka Spherical Mercator) profile is assumed.</p>
 <ul>
 <li><code>xyz</code>: Slippy map tilenames scheme.</li>
@@ -2010,7 +2032,7 @@
 <p><em>Optional <a href="../types/#array">array</a>.</em></p>
 <p>An array of one or more tile source URLs, as in the TileJSON spec.</p>
 <h3 id="bounds_1">bounds<a class="headerlink" href="#bounds_1" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#array">array</a>. Defaults to <code>-180,-85.051129,180,85.051129</code>.</em></p>
+<p><em>Optional <a href="../types/#array">array</a>. Defaults to <code>[-180,-85.051129,180,85.051129]</code>.</em></p>
 <p>An array containing the longitude and latitude of the southwest and northeast corners of the source's bounding box in the following order: <code>[sw.lng, sw.lat, ne.lng, ne.lat]</code>. When this property is included in a source, no tiles outside of the given bounds are requested by MapLibre.</p>
 <h3 id="minzoom_1">minzoom<a class="headerlink" href="#minzoom_1" title="Permanent link">&para;</a></h3>
 <p><em>Optional <a href="../types/#number">number</a>. Defaults to <code>0</code>.</em></p>
@@ -2022,7 +2044,7 @@
 <p><em>Optional <a href="../types/#number">number</a>. Units in pixels. Defaults to <code>512</code>.</em></p>
 <p>The minimum visual size to display tiles for this layer. Only configurable for raster layers.</p>
 <h3 id="scheme_1">scheme<a class="headerlink" href="#scheme_1" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#enum">enum</a>. Possible values: <code>xyz</code>, <code>tms</code>. Defaults to <code>xyz</code>.</em></p>
+<p><em>Optional <a href="../types/#enum">enum</a>. Possible values: <code>xyz</code>, <code>tms</code>. Defaults to <code>"xyz"</code>.</em></p>
 <p>Influences the y direction of the tile coordinates. The global-mercator (aka Spherical Mercator) profile is assumed.</p>
 <ul>
 <li><code>xyz</code>: Slippy map tilenames scheme.</li>
@@ -2095,7 +2117,7 @@
 <p><em>Optional <a href="../types/#array">array</a>.</em></p>
 <p>An array of one or more tile source URLs, as in the TileJSON spec.</p>
 <h3 id="bounds_2">bounds<a class="headerlink" href="#bounds_2" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#array">array</a>. Defaults to <code>-180,-85.051129,180,85.051129</code>.</em></p>
+<p><em>Optional <a href="../types/#array">array</a>. Defaults to <code>[-180,-85.051129,180,85.051129]</code>.</em></p>
 <p>An array containing the longitude and latitude of the southwest and northeast corners of the source's bounding box in the following order: <code>[sw.lng, sw.lat, ne.lng, ne.lat]</code>. When this property is included in a source, no tiles outside of the given bounds are requested by MapLibre.</p>
 <h3 id="minzoom_2">minzoom<a class="headerlink" href="#minzoom_2" title="Permanent link">&para;</a></h3>
 <p><em>Optional <a href="../types/#number">number</a>. Defaults to <code>0</code>.</em></p>
@@ -2110,7 +2132,7 @@
 <p><em>Optional <a href="../types/#string">string</a>.</em></p>
 <p>Contains an attribution to be displayed when the map is shown to a user.</p>
 <h3 id="encoding">encoding<a class="headerlink" href="#encoding" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#enum">enum</a>. Possible values: <code>terrarium</code>, <code>mapbox</code>, <code>custom</code>. Defaults to <code>mapbox</code>.</em></p>
+<p><em>Optional <a href="../types/#enum">enum</a>. Possible values: <code>terrarium</code>, <code>mapbox</code>, <code>custom</code>. Defaults to <code>"mapbox"</code>.</em></p>
 <p>The encoding used by this source. Mapbox Terrain RGB is used by default.</p>
 <ul>
 <li><code>terrarium</code>: Terrarium format PNG tiles. See https://aws.amazon.com/es/public-datasets/terrain/ for more info.</li>

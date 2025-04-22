@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://www.maplibre.org/maplibre-style-spec/transition/">
+        <link rel="canonical" href="https://www.maplibre.org/maplibre-style-spec/state/">
       
       
-        <link rel="prev" href="../terrain/">
+        <link rel="prev" href="../sprite/">
       
       
-        <link rel="next" href="../types/">
+        <link rel="next" href="../terrain/">
       
       
       <link rel="icon" href="https://maplibre.org/favicon.ico">
@@ -24,7 +24,7 @@
     
     
       
-        <title>Transition - MapLibre Style Spec</title>
+        <title>State - MapLibre Style Spec</title>
       
     
     
@@ -61,11 +61,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Transition - MapLibre Style Spec" >
+        <meta  property="og:title"  content="State - MapLibre Style Spec" >
       
         <meta  property="og:description"  content="Documentation for the MapLibre Style Specification" >
       
-        <meta  property="og:image"  content="https://www.maplibre.org/maplibre-style-spec/assets/images/social/transition.png" >
+        <meta  property="og:image"  content="https://www.maplibre.org/maplibre-style-spec/assets/images/social/state.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -73,15 +73,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://www.maplibre.org/maplibre-style-spec/transition/" >
+        <meta  property="og:url"  content="https://www.maplibre.org/maplibre-style-spec/state/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Transition - MapLibre Style Spec" >
+        <meta  name="twitter:title"  content="State - MapLibre Style Spec" >
       
         <meta  name="twitter:description"  content="Documentation for the MapLibre Style Specification" >
       
-        <meta  name="twitter:image"  content="https://www.maplibre.org/maplibre-style-spec/assets/images/social/transition.png" >
+        <meta  name="twitter:image"  content="https://www.maplibre.org/maplibre-style-spec/assets/images/social/state.png" >
       
     
     
@@ -104,7 +104,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#transition" class="md-skip">
+        <a href="#state" class="md-skip">
           Skip to content
         </a>
       
@@ -139,7 +139,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Transition
+              State
             
           </span>
         </div>
@@ -535,10 +535,19 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../state/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -549,6 +558,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -579,32 +589,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Transition
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../transition/" class="md-nav__link">
         
   
   
@@ -615,44 +603,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#duration" class="md-nav__link">
-    <span class="md-ellipsis">
-      duration
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#delay" class="md-nav__link">
-    <span class="md-ellipsis">
-      delay
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -699,32 +649,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#duration" class="md-nav__link">
-    <span class="md-ellipsis">
-      duration
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#delay" class="md-nav__link">
-    <span class="md-ellipsis">
-      delay
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -742,16 +666,32 @@
   
 
 
-<h1 id="transition">Transition<a class="headerlink" href="#transition" title="Permanent link">&para;</a></h1>
-<p>A global transition definition to use as a default across properties, to be used for timing transitions between one value and the next when no property-specific transition is set. Collision-based symbol fading is controlled independently of the style's <code>transition</code> property.</p>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kc">trans</span><span class="err">i</span><span class="kc">t</span><span class="err">io</span><span class="kc">n</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;duration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;delay&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">}</span>
+<h1 id="state">State<a class="headerlink" href="#state" title="Permanent link">&para;</a></h1>
+<p>An object used to define default values when using the <a href="https://maplibre.org/maplibre-style-spec/expressions/#global-state"><code>global-state</code></a> expression.</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="err">s</span><span class="kc">tate</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="nt">&quot;chargerType&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;default&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;CCS&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;CHAdeMO&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Type2&quot;</span><span class="p">]},</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nt">&quot;minPreferredChargingSpeed&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;default&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">}</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">}</span>
 </span></code></pre></div>
-<h2 id="duration">duration<a class="headerlink" href="#duration" title="Permanent link">&para;</a></h2>
-<p><em>Optional <a href="../types/#number">number</a> in range [0, ∞). Units in milliseconds. Defaults to <code>300</code>.</em></p>
-<p>Time allotted for transitions to complete.</p>
-<h2 id="delay">delay<a class="headerlink" href="#delay" title="Permanent link">&para;</a></h2>
-<p><em>Optional <a href="../types/#number">number</a> in range [0, ∞). Units in milliseconds. Defaults to <code>0</code>.</em></p>
-<p>Length of time before a transition begins.</p>
+<hr />
+<table>
+<thead>
+<tr>
+<th>SDK Support</th>
+<th>MapLibre GL JS</th>
+<th>MapLibre Native<br>Android</th>
+<th>MapLibre Native<br>iOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>basic functionality</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-gl-js/issues/4964">#4964</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/3302">#3302</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/3302">#3302</a>)</td>
+</tr>
+</tbody>
+</table>
 
 
 

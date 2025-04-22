@@ -2035,6 +2035,28 @@
   
   
     <li class="md-nav__item">
+      <a href="../state/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    State
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../terrain/" class="md-nav__link">
         
   
@@ -3653,7 +3675,7 @@
 <p>Default paint properties for this layer.</p>
 <h2 id="background">Background<a class="headerlink" href="#background" title="Permanent link">&para;</a></h2>
 <h3 id="visibility">visibility<a class="headerlink" href="#visibility" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>visible</code>, <code>none</code>. Defaults to <code>visible</code>.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>visible</code>, <code>none</code>. Defaults to <code>"visible"</code>.</em></p>
 <p>Whether this layer is displayed.</p>
 <ul>
 <li><code>visible</code>: The layer is shown.</li>
@@ -3678,7 +3700,7 @@
 </tbody>
 </table>
 <h3 id="background-color">background-color<a class="headerlink" href="#background-color" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#color">color</a>. Defaults to <code>#000000</code>. Disabled by <code>background-pattern</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#color">color</a>. Defaults to <code>"#000000"</code>. Disabled by <code>background-pattern</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
 <p>The color with which the background will be drawn.</p>
 <table>
 <thead>
@@ -3775,7 +3797,7 @@
 </tbody>
 </table>
 <h3 id="visibility_1">visibility<a class="headerlink" href="#visibility_1" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>visible</code>, <code>none</code>. Defaults to <code>visible</code>.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>visible</code>, <code>none</code>. Defaults to <code>"visible"</code>.</em></p>
 <p>Whether this layer is displayed.</p>
 <ul>
 <li><code>visible</code>: The layer is shown.</li>
@@ -3848,7 +3870,7 @@
 </tbody>
 </table>
 <h3 id="fill-color">fill-color<a class="headerlink" href="#fill-color" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#color">color</a>. Defaults to <code>#000000</code>. Disabled by <code>fill-pattern</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#color">color</a>. Defaults to <code>"#000000"</code>. Disabled by <code>fill-pattern</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
 <p>The color of the filled part of this layer. This color can be specified as <code>rgba</code> with an alpha component and the color's opacity will not affect the opacity of the 1px stroke, if it is used.</p>
 <table>
 <thead>
@@ -3902,7 +3924,7 @@
 </tbody>
 </table>
 <h3 id="fill-translate">fill-translate<a class="headerlink" href="#fill-translate" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#array">array</a>. Units in pixels. Defaults to <code>0,0</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#array">array</a>. Units in pixels. Defaults to <code>[0,0]</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
 <p>The geometry's offset. Values are [x, y] where negatives indicate left and up, respectively.</p>
 <table>
 <thead>
@@ -3923,7 +3945,7 @@
 </tbody>
 </table>
 <h3 id="fill-translate-anchor">fill-translate-anchor<a class="headerlink" href="#fill-translate-anchor" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>map</code>, <code>viewport</code>. Defaults to <code>map</code>. Requires <code>fill-translate</code>.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>map</code>, <code>viewport</code>. Defaults to <code>"map"</code>. Requires <code>fill-translate</code>.</em></p>
 <p>Controls the frame of reference for <code>fill-translate</code>.</p>
 <ul>
 <li><code>map</code>: The fill is translated relative to the map.</li>
@@ -4003,7 +4025,7 @@
 </tbody>
 </table>
 <h3 id="visibility_2">visibility<a class="headerlink" href="#visibility_2" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>visible</code>, <code>none</code>. Defaults to <code>visible</code>.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>visible</code>, <code>none</code>. Defaults to <code>"visible"</code>.</em></p>
 <p>Whether this layer is displayed.</p>
 <ul>
 <li><code>visible</code>: The layer is shown.</li>
@@ -4055,7 +4077,7 @@
 </tbody>
 </table>
 <h3 id="circle-color">circle-color<a class="headerlink" href="#circle-color" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#color">color</a>. Defaults to <code>#000000</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#color">color</a>. Defaults to <code>"#000000"</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
 <p>The fill color of the circle.</p>
 <table>
 <thead>
@@ -4136,7 +4158,7 @@
 </tbody>
 </table>
 <h3 id="circle-translate">circle-translate<a class="headerlink" href="#circle-translate" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#array">array</a>. Units in pixels. Defaults to <code>0,0</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#array">array</a>. Units in pixels. Defaults to <code>[0,0]</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
 <p>The geometry's offset. Values are [x, y] where negatives indicate left and up, respectively.</p>
 <table>
 <thead>
@@ -4157,7 +4179,7 @@
 </tbody>
 </table>
 <h3 id="circle-translate-anchor">circle-translate-anchor<a class="headerlink" href="#circle-translate-anchor" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>map</code>, <code>viewport</code>. Defaults to <code>map</code>. Requires <code>circle-translate</code>.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>map</code>, <code>viewport</code>. Defaults to <code>"map"</code>. Requires <code>circle-translate</code>.</em></p>
 <p>Controls the frame of reference for <code>circle-translate</code>.</p>
 <ul>
 <li><code>map</code>: The circle is translated relative to the map.</li>
@@ -4182,7 +4204,7 @@
 </tbody>
 </table>
 <h3 id="circle-pitch-scale">circle-pitch-scale<a class="headerlink" href="#circle-pitch-scale" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>map</code>, <code>viewport</code>. Defaults to <code>map</code>.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>map</code>, <code>viewport</code>. Defaults to <code>"map"</code>.</em></p>
 <p>Controls the scaling behavior of the circle when the map is pitched.</p>
 <ul>
 <li><code>map</code>: Circles are scaled according to their apparent distance to the camera.</li>
@@ -4207,7 +4229,7 @@
 </tbody>
 </table>
 <h3 id="circle-pitch-alignment">circle-pitch-alignment<a class="headerlink" href="#circle-pitch-alignment" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>map</code>, <code>viewport</code>. Defaults to <code>viewport</code>.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>map</code>, <code>viewport</code>. Defaults to <code>"viewport"</code>.</em></p>
 <p>Orientation of circle when map is pitched.</p>
 <ul>
 <li><code>map</code>: The circle is aligned to the plane of the map.</li>
@@ -4259,7 +4281,7 @@
 </tbody>
 </table>
 <h3 id="circle-stroke-color">circle-stroke-color<a class="headerlink" href="#circle-stroke-color" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#color">color</a>. Defaults to <code>#000000</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#color">color</a>. Defaults to <code>"#000000"</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
 <p>The stroke color of the circle.</p>
 <table>
 <thead>
@@ -4314,7 +4336,7 @@
 </table>
 <h2 id="heatmap">Heatmap<a class="headerlink" href="#heatmap" title="Permanent link">&para;</a></h2>
 <h3 id="visibility_3">visibility<a class="headerlink" href="#visibility_3" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>visible</code>, <code>none</code>. Defaults to <code>visible</code>.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>visible</code>, <code>none</code>. Defaults to <code>"visible"</code>.</em></p>
 <p>Whether this layer is displayed.</p>
 <ul>
 <li><code>visible</code>: The layer is shown.</li>
@@ -4414,7 +4436,7 @@
 </tbody>
 </table>
 <h3 id="heatmap-color">heatmap-color<a class="headerlink" href="#heatmap-color" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#color">color</a>. Defaults to <code>interpolate,linear,heatmap-density,0,rgba(0, 0, 255, 0),0.1,royalblue,0.3,cyan,0.5,lime,0.7,yellow,1,red</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#color">color</a>. Defaults to <code>["interpolate",["linear"],["heatmap-density"],0,"rgba(0, 0, 255, 0)",0.1,"royalblue",0.3,"cyan",0.5,"lime",0.7,"yellow",1,"red"]</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
 <p>Defines the color of each pixel based on its density value in a heatmap.  Should be an expression that uses <code>["heatmap-density"]</code> as input.</p>
 <table>
 <thead>
@@ -4463,7 +4485,7 @@
 </table>
 <h2 id="fill-extrusion">Fill-extrusion<a class="headerlink" href="#fill-extrusion" title="Permanent link">&para;</a></h2>
 <h3 id="visibility_4">visibility<a class="headerlink" href="#visibility_4" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>visible</code>, <code>none</code>. Defaults to <code>visible</code>.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>visible</code>, <code>none</code>. Defaults to <code>"visible"</code>.</em></p>
 <p>Whether this layer is displayed.</p>
 <ul>
 <li><code>visible</code>: The layer is shown.</li>
@@ -4509,7 +4531,7 @@
 </tbody>
 </table>
 <h3 id="fill-extrusion-color">fill-extrusion-color<a class="headerlink" href="#fill-extrusion-color" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#color">color</a>. Defaults to <code>#000000</code>. Disabled by <code>fill-extrusion-pattern</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#color">color</a>. Defaults to <code>"#000000"</code>. Disabled by <code>fill-extrusion-pattern</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
 <p>The base color of the extruded fill. The extrusion's surfaces will be shaded differently based on this color in combination with the root <code>light</code> settings. If this color is specified as <code>rgba</code> with an alpha component, the alpha component will be ignored; use <code>fill-extrusion-opacity</code> to set layer opacity.</p>
 <table>
 <thead>
@@ -4536,7 +4558,7 @@
 </tbody>
 </table>
 <h3 id="fill-extrusion-translate">fill-extrusion-translate<a class="headerlink" href="#fill-extrusion-translate" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#array">array</a>. Units in pixels. Defaults to <code>0,0</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#array">array</a>. Units in pixels. Defaults to <code>[0,0]</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
 <p>The geometry's offset. Values are [x, y] where negatives indicate left and up (on the flat plane), respectively.</p>
 <table>
 <thead>
@@ -4557,7 +4579,7 @@
 </tbody>
 </table>
 <h3 id="fill-extrusion-translate-anchor">fill-extrusion-translate-anchor<a class="headerlink" href="#fill-extrusion-translate-anchor" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>map</code>, <code>viewport</code>. Defaults to <code>map</code>. Requires <code>fill-extrusion-translate</code>.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>map</code>, <code>viewport</code>. Defaults to <code>"map"</code>. Requires <code>fill-extrusion-translate</code>.</em></p>
 <p>Controls the frame of reference for <code>fill-extrusion-translate</code>.</p>
 <ul>
 <li><code>map</code>: The fill extrusion is translated relative to the map.</li>
@@ -4685,7 +4707,7 @@
 </table>
 <h2 id="line">Line<a class="headerlink" href="#line" title="Permanent link">&para;</a></h2>
 <h3 id="line-cap">line-cap<a class="headerlink" href="#line-cap" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>butt</code>, <code>round</code>, <code>square</code>. Defaults to <code>butt</code>.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>butt</code>, <code>round</code>, <code>square</code>. Defaults to <code>"butt"</code>.</em></p>
 <p>The display of line endings.</p>
 <ul>
 <li><code>butt</code>: A cap with a squared-off end which is drawn to the exact endpoint of the line.</li>
@@ -4711,7 +4733,7 @@
 </tbody>
 </table>
 <h3 id="line-join">line-join<a class="headerlink" href="#line-join" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>bevel</code>, <code>round</code>, <code>miter</code>. Defaults to <code>miter</code>.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>bevel</code>, <code>round</code>, <code>miter</code>. Defaults to <code>"miter"</code>.</em></p>
 <p>The display of lines when joining.</p>
 <ul>
 <li><code>bevel</code>: A join with a squared-off end which is drawn beyond the endpoint of the line at a distance of one-half of the line's width.</li>
@@ -4812,7 +4834,7 @@
 </tbody>
 </table>
 <h3 id="visibility_5">visibility<a class="headerlink" href="#visibility_5" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>visible</code>, <code>none</code>. Defaults to <code>visible</code>.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>visible</code>, <code>none</code>. Defaults to <code>"visible"</code>.</em></p>
 <p>Whether this layer is displayed.</p>
 <ul>
 <li><code>visible</code>: The layer is shown.</li>
@@ -4864,7 +4886,7 @@
 </tbody>
 </table>
 <h3 id="line-color">line-color<a class="headerlink" href="#line-color" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#color">color</a>. Defaults to <code>#000000</code>. Disabled by <code>line-pattern</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#color">color</a>. Defaults to <code>"#000000"</code>. Disabled by <code>line-pattern</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
 <p>The color with which the line will be drawn.</p>
 <table>
 <thead>
@@ -4891,7 +4913,7 @@
 </tbody>
 </table>
 <h3 id="line-translate">line-translate<a class="headerlink" href="#line-translate" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#array">array</a>. Units in pixels. Defaults to <code>0,0</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#array">array</a>. Units in pixels. Defaults to <code>[0,0]</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
 <p>The geometry's offset. Values are [x, y] where negatives indicate left and up, respectively.</p>
 <table>
 <thead>
@@ -4912,7 +4934,7 @@
 </tbody>
 </table>
 <h3 id="line-translate-anchor">line-translate-anchor<a class="headerlink" href="#line-translate-anchor" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>map</code>, <code>viewport</code>. Defaults to <code>map</code>. Requires <code>line-translate</code>.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>map</code>, <code>viewport</code>. Defaults to <code>"map"</code>. Requires <code>line-translate</code>.</em></p>
 <p>Controls the frame of reference for <code>line-translate</code>.</p>
 <ul>
 <li><code>map</code>: The line is translated relative to the map.</li>
@@ -5127,7 +5149,7 @@
 </table>
 <h2 id="symbol">Symbol<a class="headerlink" href="#symbol" title="Permanent link">&para;</a></h2>
 <h3 id="symbol-placement">symbol-placement<a class="headerlink" href="#symbol-placement" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>point</code>, <code>line</code>, <code>line-center</code>. Defaults to <code>point</code>.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>point</code>, <code>line</code>, <code>line-center</code>. Defaults to <code>"point"</code>.</em></p>
 <p>Label placement relative to its geometry.</p>
 <ul>
 <li><code>point</code>: The label is placed at the point where the geometry is located.</li>
@@ -5228,7 +5250,7 @@
 </tbody>
 </table>
 <h3 id="symbol-z-order">symbol-z-order<a class="headerlink" href="#symbol-z-order" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>auto</code>, <code>viewport-y</code>, <code>source</code>. Defaults to <code>auto</code>.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>auto</code>, <code>viewport-y</code>, <code>source</code>. Defaults to <code>"auto"</code>.</em></p>
 <p>Determines whether overlapping symbols in the same layer are rendered in the order that they appear in the data source or by their y-position relative to the viewport. To control the order and prioritization of symbols otherwise, use <code>symbol-sort-key</code>.</p>
 <ul>
 <li><code>auto</code>: Sorts symbols by <code>symbol-sort-key</code> if set. Otherwise, sorts symbols by their y-position relative to the viewport if <code>icon-allow-overlap</code> or <code>text-allow-overlap</code> is set to <code>true</code> or <code>icon-ignore-placement</code> or <code>text-ignore-placement</code> is <code>false</code>.</li>
@@ -5343,7 +5365,7 @@
 </tbody>
 </table>
 <h3 id="icon-rotation-alignment">icon-rotation-alignment<a class="headerlink" href="#icon-rotation-alignment" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>map</code>, <code>viewport</code>, <code>auto</code>. Defaults to <code>auto</code>. Requires <code>icon-image</code>.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>map</code>, <code>viewport</code>, <code>auto</code>. Defaults to <code>"auto"</code>. Requires <code>icon-image</code>.</em></p>
 <p>In combination with <code>symbol-placement</code>, determines the rotation behavior of icons.</p>
 <ul>
 <li><code>map</code>: When <code>symbol-placement</code> is set to <code>point</code>, aligns icons east-west. When <code>symbol-placement</code> is set to <code>line</code> or <code>line-center</code>, aligns icon x-axes with the line.</li>
@@ -5402,7 +5424,7 @@
 </tbody>
 </table>
 <h3 id="icon-text-fit">icon-text-fit<a class="headerlink" href="#icon-text-fit" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>none</code>, <code>width</code>, <code>height</code>, <code>both</code>. Defaults to <code>none</code>. Requires <code>icon-image</code>. Requires <code>text-field</code>.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>none</code>, <code>width</code>, <code>height</code>, <code>both</code>. Defaults to <code>"none"</code>. Requires <code>icon-image</code>. Requires <code>text-field</code>.</em></p>
 <p>Scales the icon to fit around the associated text.</p>
 <ul>
 <li><code>none</code>: The icon is displayed at its intrinsic aspect ratio.</li>
@@ -5435,7 +5457,7 @@
 </tbody>
 </table>
 <h3 id="icon-text-fit-padding">icon-text-fit-padding<a class="headerlink" href="#icon-text-fit-padding" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#array">array</a>. Units in pixels. Defaults to <code>0,0,0,0</code>. Requires <code>icon-image</code>. Requires <code>text-field</code>. Requires <code>icon-text-fit</code> to be one of <code>both</code>, <code>width</code>, <code>height</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#array">array</a>. Units in pixels. Defaults to <code>[0,0,0,0]</code>. Requires <code>icon-image</code>. Requires <code>text-field</code>. Requires <code>icon-text-fit</code> to be one of <code>both</code>, <code>width</code>, <code>height</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
 <p>Size of the additional area added to dimensions determined by <code>icon-text-fit</code>, in clockwise order: top, right, bottom, left.</p>
 <table>
 <thead>
@@ -5510,7 +5532,7 @@
 </tbody>
 </table>
 <h3 id="icon-padding">icon-padding<a class="headerlink" href="#icon-padding" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#padding">padding</a>. Units in pixels. Defaults to <code>2</code>. Requires <code>icon-image</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#padding">padding</a>. Units in pixels. Defaults to <code>[2]</code>. Requires <code>icon-image</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
 <p>Size of additional area round the icon bounding box used for detecting symbol collisions.</p>
 <table>
 <thead>
@@ -5558,7 +5580,7 @@
 </tbody>
 </table>
 <h3 id="icon-offset">icon-offset<a class="headerlink" href="#icon-offset" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#array">array</a>. Defaults to <code>0,0</code>. Requires <code>icon-image</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#array">array</a>. Defaults to <code>[0,0]</code>. Requires <code>icon-image</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
 <p>Offset distance of icon from its anchor. Positive values indicate right and down, while negative values indicate left and up. Each component is multiplied by the value of <code>icon-size</code> to obtain the final offset in pixels. When combined with <code>icon-rotate</code> the offset will be as if the rotated direction was up.</p>
 <table>
 <thead>
@@ -5585,7 +5607,7 @@
 </tbody>
 </table>
 <h3 id="icon-anchor">icon-anchor<a class="headerlink" href="#icon-anchor" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>center</code>, <code>left</code>, <code>right</code>, <code>top</code>, <code>bottom</code>, <code>top-left</code>, <code>top-right</code>, <code>bottom-left</code>, <code>bottom-right</code>. Defaults to <code>center</code>. Requires <code>icon-image</code>.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>center</code>, <code>left</code>, <code>right</code>, <code>top</code>, <code>bottom</code>, <code>top-left</code>, <code>top-right</code>, <code>bottom-left</code>, <code>bottom-right</code>. Defaults to <code>"center"</code>. Requires <code>icon-image</code>.</em></p>
 <p>Part of the icon placed closest to the anchor.</p>
 <ul>
 <li><code>center</code>: The center of the icon is placed closest to the anchor.</li>
@@ -5623,7 +5645,7 @@
 </tbody>
 </table>
 <h3 id="icon-pitch-alignment">icon-pitch-alignment<a class="headerlink" href="#icon-pitch-alignment" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>map</code>, <code>viewport</code>, <code>auto</code>. Defaults to <code>auto</code>. Requires <code>icon-image</code>.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>map</code>, <code>viewport</code>, <code>auto</code>. Defaults to <code>"auto"</code>. Requires <code>icon-image</code>.</em></p>
 <p>Orientation of icon when map is pitched.</p>
 <ul>
 <li><code>map</code>: The icon is aligned to the plane of the map.</li>
@@ -5649,7 +5671,7 @@
 </tbody>
 </table>
 <h3 id="text-pitch-alignment">text-pitch-alignment<a class="headerlink" href="#text-pitch-alignment" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>map</code>, <code>viewport</code>, <code>auto</code>. Defaults to <code>auto</code>. Requires <code>text-field</code>.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>map</code>, <code>viewport</code>, <code>auto</code>. Defaults to <code>"auto"</code>. Requires <code>text-field</code>.</em></p>
 <p>Orientation of text when map is pitched.</p>
 <ul>
 <li><code>map</code>: The text is aligned to the plane of the map.</li>
@@ -5681,7 +5703,7 @@
 </tbody>
 </table>
 <h3 id="text-rotation-alignment">text-rotation-alignment<a class="headerlink" href="#text-rotation-alignment" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>map</code>, <code>viewport</code>, <code>viewport-glyph</code>, <code>auto</code>. Defaults to <code>auto</code>. Requires <code>text-field</code>.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>map</code>, <code>viewport</code>, <code>viewport-glyph</code>, <code>auto</code>. Defaults to <code>"auto"</code>. Requires <code>text-field</code>.</em></p>
 <p>In combination with <code>symbol-placement</code>, determines the rotation behavior of the individual glyphs forming the text.</p>
 <ul>
 <li><code>map</code>: When <code>symbol-placement</code> is set to <code>point</code>, aligns text east-west. When <code>symbol-placement</code> is set to <code>line</code> or <code>line-center</code>, aligns text x-axes with the line.</li>
@@ -5720,7 +5742,7 @@
 </tbody>
 </table>
 <h3 id="text-field">text-field<a class="headerlink" href="#text-field" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#formatted">formatted</a>. Defaults to ``.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#formatted">formatted</a>. Defaults to <code>""</code>.</em></p>
 <p>Value to use for a text label. If a plain <code>string</code> is provided, it will be treated as a <code>formatted</code> with default/inherited formatting options.</p>
 <table>
 <thead>
@@ -5747,7 +5769,7 @@
 </tbody>
 </table>
 <h3 id="text-font">text-font<a class="headerlink" href="#text-font" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#array">array</a>. Defaults to <code>Open Sans Regular,Arial Unicode MS Regular</code>. Requires <code>text-field</code>.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#array">array</a>. Defaults to <code>["Open Sans Regular","Arial Unicode MS Regular"]</code>. Requires <code>text-field</code>.</em></p>
 <p>Fonts to use for displaying text. If the <code>glyphs</code> root property is specified, this array is joined together and interpreted as a font stack name. Otherwise, it is interpreted as a cascading fallback list of local font names.</p>
 <table>
 <thead>
@@ -5882,7 +5904,7 @@
 </tbody>
 </table>
 <h3 id="text-justify">text-justify<a class="headerlink" href="#text-justify" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>auto</code>, <code>left</code>, <code>center</code>, <code>right</code>. Defaults to <code>center</code>. Requires <code>text-field</code>.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>auto</code>, <code>left</code>, <code>center</code>, <code>right</code>. Defaults to <code>"center"</code>. Requires <code>text-field</code>.</em></p>
 <p>Text justification options.</p>
 <ul>
 <li><code>auto</code>: The text is aligned towards the anchor position.</li>
@@ -6002,7 +6024,7 @@
 </tbody>
 </table>
 <h3 id="text-anchor">text-anchor<a class="headerlink" href="#text-anchor" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>center</code>, <code>left</code>, <code>right</code>, <code>top</code>, <code>bottom</code>, <code>top-left</code>, <code>top-right</code>, <code>bottom-left</code>, <code>bottom-right</code>. Defaults to <code>center</code>. Requires <code>text-field</code>. Disabled by <code>text-variable-anchor</code>.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>center</code>, <code>left</code>, <code>right</code>, <code>top</code>, <code>bottom</code>, <code>top-left</code>, <code>top-right</code>, <code>bottom-left</code>, <code>bottom-right</code>. Defaults to <code>"center"</code>. Requires <code>text-field</code>. Disabled by <code>text-variable-anchor</code>.</em></p>
 <p>Part of the text placed closest to the anchor.</p>
 <ul>
 <li><code>center</code>: The center of the text is placed closest to the anchor.</li>
@@ -6151,7 +6173,7 @@
 </tbody>
 </table>
 <h3 id="text-transform">text-transform<a class="headerlink" href="#text-transform" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>none</code>, <code>uppercase</code>, <code>lowercase</code>. Defaults to <code>none</code>. Requires <code>text-field</code>.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>none</code>, <code>uppercase</code>, <code>lowercase</code>. Defaults to <code>"none"</code>. Requires <code>text-field</code>.</em></p>
 <p>Specifies how to capitalize text, similar to the CSS <code>text-transform</code> property.</p>
 <ul>
 <li><code>none</code>: The text is not altered.</li>
@@ -6183,7 +6205,7 @@
 </tbody>
 </table>
 <h3 id="text-offset">text-offset<a class="headerlink" href="#text-offset" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#array">array</a>. Units in ems. Defaults to <code>0,0</code>. Requires <code>text-field</code>. Disabled by <code>text-radial-offset</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#array">array</a>. Units in ems. Defaults to <code>[0,0]</code>. Requires <code>text-field</code>. Disabled by <code>text-radial-offset</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
 <p>Offset distance of text from its anchor. Positive values indicate right and down, while negative values indicate left and up. If used with text-variable-anchor, input values will be taken as absolute values. Offsets along the x- and y-axis will be applied automatically based on the anchor position.</p>
 <table>
 <thead>
@@ -6299,7 +6321,7 @@
 </tbody>
 </table>
 <h3 id="visibility_6">visibility<a class="headerlink" href="#visibility_6" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>visible</code>, <code>none</code>. Defaults to <code>visible</code>.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>visible</code>, <code>none</code>. Defaults to <code>"visible"</code>.</em></p>
 <p>Whether this layer is displayed.</p>
 <ul>
 <li><code>visible</code>: The layer is shown.</li>
@@ -6351,7 +6373,7 @@
 </tbody>
 </table>
 <h3 id="icon-color">icon-color<a class="headerlink" href="#icon-color" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#color">color</a>. Defaults to <code>#000000</code>. Requires <code>icon-image</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#color">color</a>. Defaults to <code>"#000000"</code>. Requires <code>icon-image</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
 <p>The color of the icon. This can only be used with SDF icons.</p>
 <table>
 <thead>
@@ -6378,7 +6400,7 @@
 </tbody>
 </table>
 <h3 id="icon-halo-color">icon-halo-color<a class="headerlink" href="#icon-halo-color" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#color">color</a>. Defaults to <code>rgba(0, 0, 0, 0)</code>. Requires <code>icon-image</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#color">color</a>. Defaults to <code>"rgba(0, 0, 0, 0)"</code>. Requires <code>icon-image</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
 <p>The color of the icon's halo. Icon halos can only be used with SDF icons.</p>
 <table>
 <thead>
@@ -6460,7 +6482,7 @@
 </tbody>
 </table>
 <h3 id="icon-translate">icon-translate<a class="headerlink" href="#icon-translate" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#array">array</a>. Units in pixels. Defaults to <code>0,0</code>. Requires <code>icon-image</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#array">array</a>. Units in pixels. Defaults to <code>[0,0]</code>. Requires <code>icon-image</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
 <p>Distance that the icon's anchor is moved from its original placement. Positive values indicate right and down, while negative values indicate left and up.</p>
 <table>
 <thead>
@@ -6481,7 +6503,7 @@
 </tbody>
 </table>
 <h3 id="icon-translate-anchor">icon-translate-anchor<a class="headerlink" href="#icon-translate-anchor" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>map</code>, <code>viewport</code>. Defaults to <code>map</code>. Requires <code>icon-image</code>. Requires <code>icon-translate</code>.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>map</code>, <code>viewport</code>. Defaults to <code>"map"</code>. Requires <code>icon-image</code>. Requires <code>icon-translate</code>.</em></p>
 <p>Controls the frame of reference for <code>icon-translate</code>.</p>
 <ul>
 <li><code>map</code>: Icons are translated relative to the map.</li>
@@ -6533,7 +6555,7 @@
 </tbody>
 </table>
 <h3 id="text-color">text-color<a class="headerlink" href="#text-color" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#color">color</a>. Defaults to <code>#000000</code>. Requires <code>text-field</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#color">color</a>. Defaults to <code>"#000000"</code>. Requires <code>text-field</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
 <p>The color with which the text will be drawn.</p>
 <table>
 <thead>
@@ -6560,7 +6582,7 @@
 </tbody>
 </table>
 <h3 id="text-halo-color">text-halo-color<a class="headerlink" href="#text-halo-color" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#color">color</a>. Defaults to <code>rgba(0, 0, 0, 0)</code>. Requires <code>text-field</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#color">color</a>. Defaults to <code>"rgba(0, 0, 0, 0)"</code>. Requires <code>text-field</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
 <p>The color of the text's halo, which helps it stand out from backgrounds.</p>
 <table>
 <thead>
@@ -6641,7 +6663,7 @@
 </tbody>
 </table>
 <h3 id="text-translate">text-translate<a class="headerlink" href="#text-translate" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#array">array</a>. Units in pixels. Defaults to <code>0,0</code>. Requires <code>text-field</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#array">array</a>. Units in pixels. Defaults to <code>[0,0]</code>. Requires <code>text-field</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
 <p>Distance that the text's anchor is moved from its original placement. Positive values indicate right and down, while negative values indicate left and up.</p>
 <table>
 <thead>
@@ -6662,7 +6684,7 @@
 </tbody>
 </table>
 <h3 id="text-translate-anchor">text-translate-anchor<a class="headerlink" href="#text-translate-anchor" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>map</code>, <code>viewport</code>. Defaults to <code>map</code>. Requires <code>text-field</code>. Requires <code>text-translate</code>.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>map</code>, <code>viewport</code>. Defaults to <code>"map"</code>. Requires <code>text-field</code>. Requires <code>text-translate</code>.</em></p>
 <p>Controls the frame of reference for <code>text-translate</code>.</p>
 <ul>
 <li><code>map</code>: The text is translated relative to the map.</li>
@@ -6688,7 +6710,7 @@
 </table>
 <h2 id="raster">Raster<a class="headerlink" href="#raster" title="Permanent link">&para;</a></h2>
 <h3 id="visibility_7">visibility<a class="headerlink" href="#visibility_7" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>visible</code>, <code>none</code>. Defaults to <code>visible</code>.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>visible</code>, <code>none</code>. Defaults to <code>"visible"</code>.</em></p>
 <p>Whether this layer is displayed.</p>
 <ul>
 <li><code>visible</code>: The layer is shown.</li>
@@ -6839,7 +6861,7 @@
 </tbody>
 </table>
 <h3 id="raster-resampling">raster-resampling<a class="headerlink" href="#raster-resampling" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>linear</code>, <code>nearest</code>. Defaults to <code>linear</code>.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>linear</code>, <code>nearest</code>. Defaults to <code>"linear"</code>.</em></p>
 <p>The resampling/interpolation method to use for overscaling, also known as texture magnification filter</p>
 <ul>
 <li><code>linear</code>: (Bi)linear filtering interpolates pixel values using the weighted average of the four closest original source pixels creating a smooth but blurry look when overscaled</li>
@@ -6886,7 +6908,7 @@
 </table>
 <h2 id="hillshade">Hillshade<a class="headerlink" href="#hillshade" title="Permanent link">&para;</a></h2>
 <h3 id="visibility_8">visibility<a class="headerlink" href="#visibility_8" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>visible</code>, <code>none</code>. Defaults to <code>visible</code>.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>visible</code>, <code>none</code>. Defaults to <code>"visible"</code>.</em></p>
 <p>Whether this layer is displayed.</p>
 <ul>
 <li><code>visible</code>: The layer is shown.</li>
@@ -6965,7 +6987,7 @@
 </tbody>
 </table>
 <h3 id="hillshade-illumination-anchor">hillshade-illumination-anchor<a class="headerlink" href="#hillshade-illumination-anchor" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>map</code>, <code>viewport</code>. Defaults to <code>viewport</code>.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>map</code>, <code>viewport</code>. Defaults to <code>"viewport"</code>.</em></p>
 <p>Direction of light source when map is rotated.</p>
 <ul>
 <li><code>map</code>: The hillshade illumination is relative to the north direction.</li>
@@ -7011,7 +7033,7 @@
 </tbody>
 </table>
 <h3 id="hillshade-shadow-color">hillshade-shadow-color<a class="headerlink" href="#hillshade-shadow-color" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#colorarray">colorArray</a>. Defaults to <code>#000000</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#colorarray">colorArray</a>. Defaults to <code>"#000000"</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
 <p>The shading color of areas that face away from the light source(s). Only when <code>hillshade-method</code> is set to <code>multidirectional</code> can you specify multiple light sources.</p>
 <table>
 <thead>
@@ -7038,7 +7060,7 @@
 </tbody>
 </table>
 <h3 id="hillshade-highlight-color">hillshade-highlight-color<a class="headerlink" href="#hillshade-highlight-color" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#colorarray">colorArray</a>. Defaults to <code>#FFFFFF</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#colorarray">colorArray</a>. Defaults to <code>"#FFFFFF"</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
 <p>The shading color of areas that faces towards the light source(s). Only when <code>hillshade-method</code> is set to <code>multidirectional</code> can you specify multiple light sources.</p>
 <table>
 <thead>
@@ -7065,7 +7087,7 @@
 </tbody>
 </table>
 <h3 id="hillshade-accent-color">hillshade-accent-color<a class="headerlink" href="#hillshade-accent-color" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#color">color</a>. Defaults to <code>#000000</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#color">color</a>. Defaults to <code>"#000000"</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
 <p>The shading color used to accentuate rugged terrain like sharp cliffs and gorges.</p>
 <table>
 <thead>
@@ -7086,7 +7108,7 @@
 </tbody>
 </table>
 <h3 id="hillshade-method">hillshade-method<a class="headerlink" href="#hillshade-method" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>standard</code>, <code>basic</code>, <code>combined</code>, <code>igor</code>, <code>multidirectional</code>. Defaults to <code>standard</code>.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>standard</code>, <code>basic</code>, <code>combined</code>, <code>igor</code>, <code>multidirectional</code>. Defaults to <code>"standard"</code>.</em></p>
 <p>The hillshade algorithm to use, one of <code>standard</code>, <code>basic</code>, <code>combined</code>, <code>igor</code>, or <code>multidirectional</code>. <img alt="image" src="../assets/hillshade_methods.png" /></p>
 <ul>
 <li><code>standard</code>: The legacy hillshade method.</li>
