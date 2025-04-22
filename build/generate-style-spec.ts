@@ -41,6 +41,10 @@ function propertyType(property) {
                 return 'ProjectionSpecification';
             case 'state':
                 return 'StateSpecification';
+            case 'numberArray':
+                return 'NumberArraySpecification';
+            case 'colorArray':
+                return 'ColorArraySpecification';
             case '*':
                 return 'unknown';
             default:
@@ -129,6 +133,8 @@ export type ProjectionDefinitionT = [string, string, number];
 export type ProjectionDefinitionSpecification = string | ProjectionDefinitionT | PropertyValueSpecification<ProjectionDefinitionT>
 
 export type PaddingSpecification = number | number[];
+export type NumberArraySpecification = number | number[];
+export type ColorArraySpecification = string | string[];
 
 export type VariableAnchorOffsetCollectionSpecification = Array<string | [number, number]>;
 

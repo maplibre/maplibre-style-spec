@@ -5,6 +5,8 @@ import {Formatted} from '../types/formatted';
 import {ResolvedImage} from '../types/resolved_image';
 import {Color} from '../types/color';
 import {Padding} from '../types/padding';
+import {NumberArray} from '../types/number_array';
+import {ColorArray} from '../types/color_array';
 import {VariableAnchorOffsetCollection} from '../types/variable_anchor_offset_collection';
 
 import type {Expression} from '../expression';
@@ -96,6 +98,30 @@ export class Coercion implements Expression {
                     }
                 }
                 throw new RuntimeError(`Could not parse padding from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`);
+            }
+            case 'numberArray': {
+                let input;
+                for (const arg of this.args) {
+                    input = arg.evaluate(ctx);
+
+                    const val = NumberArray.parse(input);
+                    if (val) {
+                        return val;
+                    }
+                }
+                throw new RuntimeError(`Could not parse numberArray from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`);
+            }
+            case 'colorArray': {
+                let input;
+                for (const arg of this.args) {
+                    input = arg.evaluate(ctx);
+
+                    const val = ColorArray.parse(input);
+                    if (val) {
+                        return val;
+                    }
+                }
+                throw new RuntimeError(`Could not parse colorArray from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`);
             }
             case 'variableAnchorOffsetCollection': {
                 let input;

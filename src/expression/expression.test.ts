@@ -1,10 +1,11 @@
 import {createPropertyExpression, Feature, GlobalProperties, StylePropertyExpression} from '../expression';
 import {expressions} from './definitions';
 import v8 from '../reference/v8.json' with {type: 'json'};
-import {createExpression, ICanonicalTileID, StyleExpression, StylePropertySpecification} from '..';
+import {Color, createExpression, ICanonicalTileID, StyleExpression, StylePropertySpecification} from '..';
 import {ExpressionParsingError} from './parsing_error';
 import {getGeometry} from '../../test/lib/geometry';
 import {VariableAnchorOffsetCollection} from './types/variable_anchor_offset_collection';
+import {expectToMatchColor} from '../../test/lib/util';
 
 // filter out internal "error" and "filter-*" expressions from definition list
 const filterExpressionRegex = /filter-/;
@@ -662,6 +663,92 @@ describe('projection expression', () => {
             expect(response.value.evaluate({zoom: 5})).toBe('vertical-perspective');
             expect(response.value.evaluate({zoom: 9})).toEqual({from: 'vertical-perspective', to: 'mercator', transition: 0.5});
             expect(response.value.evaluate({zoom: 11})).toBe('mercator');
+        } else {
+            throw new Error('Failed to parse Interpolate expression');
+        }
+    });
+
+    test('interpolate numberArray', () => {
+        const response = createExpression(['interpolate', ['linear'], ['zoom'], 8, ['literal', [2,3]], 10, ['literal', [4,5]]],  {
+            type: 'numberArray',
+            'property-type': 'data-constant',
+            expression: {
+                interpolated: true,
+                parameters: ['zoom']
+            },
+            transition: false
+        });
+
+        if (response.result === 'success') {
+            expect(response.value.evaluate({zoom: 8}).values).toEqual([2,3]);
+            expect(response.value.evaluate({zoom: 9}).values).toEqual([3,4]);
+            expect(response.value.evaluate({zoom: 10}).values).toEqual([4,5]);
+        } else {
+            throw new Error('Failed to parse Interpolate expression');
+        }
+    })
+
+    test('interpolate ColorArray', () => {
+        const response = createExpression(['interpolate', ['linear'], ['zoom'], 8, ['literal', ['white','black']], 10, ['literal', ['black','white']]],  {
+            type: 'colorArray',
+            'property-type': 'data-constant',
+            expression: {
+                interpolated: true,
+                parameters: ['zoom']
+            },
+            transition: false
+        });
+
+        if (response.result === 'success') {
+            expect(response.value.evaluate({zoom: 8}).values).toEqual([Color.parse('white'), Color.parse('black')]);
+            expect(response.value.evaluate({zoom: 9}).values).toEqual([new Color(0.5, 0.5, 0.5), new Color(0.5, 0.5, 0.5)]);
+            expect(response.value.evaluate({zoom: 10}).values).toEqual([Color.parse('black'), Color.parse('white')]);
+        } else {
+            throw new Error('Failed to parse Interpolate expression');
+        }
+    })
+
+    test('interpolate-hcl ColorArray', () => {
+        const response = createExpression(['interpolate-hcl', ['linear'], ['zoom'], 8, ['literal', ['white','black']], 10, ['literal', ['black','white']]],  {
+            type: 'colorArray',
+            'property-type': 'data-constant',
+            expression: {
+                interpolated: true,
+                parameters: ['zoom']
+            },
+            transition: false
+        });
+
+        if (response.result === 'success') {
+            expect(response.value.evaluate({zoom: 8}).values).toEqual([Color.parse('white'), Color.parse('black')]);
+            expect(response.value.evaluate({zoom: 9}).values).toHaveLength(2);
+            for (let i = 0; i < 2; i++) {
+                expectToMatchColor(response.value.evaluate({zoom: 9}).values[i], 'rgb(46.63266% 46.63266% 46.63266% / 1)');
+            }
+            expect(response.value.evaluate({zoom: 10}).values).toEqual([Color.parse('black'), Color.parse('white')]);
+        } else {
+            throw new Error('Failed to parse Interpolate expression');
+        }
+    })
+
+    test('interpolate-lab ColorArray', () => {
+        const response = createExpression(['interpolate-lab', ['linear'], ['zoom'], 8, ['literal', ['white','black']], 10, ['literal', ['black','white']]],  {
+            type: 'colorArray',
+            'property-type': 'data-constant',
+            expression: {
+                interpolated: true,
+                parameters: ['zoom']
+            },
+            transition: false
+        });
+
+        if (response.result === 'success') {
+            expect(response.value.evaluate({zoom: 8}).values).toEqual([Color.parse('white'), Color.parse('black')]);
+            expect(response.value.evaluate({zoom: 9}).values).toHaveLength(2);
+            for (let i = 0; i < 2; i++) {
+                expectToMatchColor(response.value.evaluate({zoom: 9}).values[i], 'rgb(46.63266% 46.63266% 46.63266% / 1)');
+            }
+            expect(response.value.evaluate({zoom: 10}).values).toEqual([Color.parse('black'), Color.parse('white')]);
         } else {
             throw new Error('Failed to parse Interpolate expression');
         }
