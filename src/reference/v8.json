@@ -100,7 +100,7 @@
     "state": {
       "type": "state",
       "default": {},
-      "doc": "An object used to define default values when using the [`global-state`](/maplibre-style-spec/expressions/#global-state) expression.",
+      "doc": "An object used to define default values when using the [`global-state`](https://maplibre.org/maplibre-style-spec/expressions/#global-state) expression.",
       "example": {
         "chargerType": {
           "default": ["CCS", "CHAdeMO", "Type2"]
@@ -3329,7 +3329,7 @@
         }
       },
       "global-state": {
-        "doc": "Retrieves a property value from global state that can be set with platform-specific APIs. Defaults can be provided using the [`state`](/maplibre-style-spec/root/#state) root property. Returns `null` if no value nor default value is set for the retrieved property.",
+        "doc": "Retrieves a property value from global state that can be set with platform-specific APIs. Defaults can be provided using the [`state`](https://maplibre.org/maplibre-style-spec/root/#state) root property. Returns `null` if no value nor default value is set for the retrieved property.",
         "group": "Lookup",
         "example": {
           "syntax": {
