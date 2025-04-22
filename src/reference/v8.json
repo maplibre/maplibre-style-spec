@@ -3324,7 +3324,7 @@
         }
       },
       "global-state": {
-        "doc": "Retrieves a property value from the [state](https://maplibre.org/maplibre-style-spec/root/#state) property. Returns `null` if the property is not defined",
+        "doc": "Retrieves a property value from global state that can be set with platform-specific APIs. Defaults can be provided using the [`state`](/maplibre-style-spec/root/#state) root property. Returns `null` if no value nor default value is set for the retrieved property.",
         "group": "Lookup",
         "example": {
           "syntax": {
