@@ -1,19 +1,23 @@
 ## main
 
 ### ✨ Features and improvements
+
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
+
 - _...Add new stuff here..._
 
 ## 23.2.0
 
 ### ✨ Features and improvements
+
 - `glyphs` is now optional even if a symbol layer specifies `text-field`; if it is unset, `text-font` is interpreted as a fallback font list ([#1068](https://github.com/maplibre/maplibre-style-spec/pull/1068))
 - `hillshade` layer now supports multiple methods, and the `multidirectional` method supports array values for illumination properties ([#1088](https://github.com/maplibre/maplibre-style-spec/pull/1088))
 - Add `global-state` expression and `state` root property ([#1044](https://github.com/maplibre/maplibre-style-spec/pull/1044)).
 
 ### 🐞 Bug fixes
+
 - Fix RuntimeError class, make it inherited from Error ([#983](https://github.com/maplibre/maplibre-style-spec/issues/983))
 - Validate that `layers` array items are objects instead of throwing an error if not ([#1026](https://github.com/maplibre/maplibre-style-spec/pull/1026))
 - Multiple fixes related to validating and parsing of strings containing object prototype keys
@@ -24,6 +28,7 @@
 ## 23.1.0
 
 ### ✨ Features and improvements
+
 - Add `vertical-align` option to `format` expression ([#832](https://github.com/maplibre/maplibre-style-spec/issues/832))
 
 ## 23.0.0
@@ -41,12 +46,14 @@
 ## 22.0.0
 
 ### ✨ Features and improvements
+
 - Use named imports internally - no package entrypoints changed ([#904](https://github.com/maplibre/maplibre-style-spec/pull/904))
 - Add projection type expression syntax ([#888](https://github.com/maplibre/maplibre-style-spec/pull/888))
 
 ## 21.2.0
 
 ### ✨ Features and improvements
+
 - Add `vertical-perspective` projection ([#890](https://github.com/maplibre/maplibre-style-spec/pull/890))
 
 ## 21.1.0
