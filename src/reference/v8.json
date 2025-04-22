@@ -100,7 +100,7 @@
     "state": {
       "type": "state",
       "default": {},
-      "doc": "An object defining global state properties of the map style and their default values. State property value can be retrieved with the [`global-state`](https://maplibre.org/maplibre-style-spec/expressions/#global-state) expression.",
+      "doc": "An object used to define default values when using the [`global-state`](/maplibre-style-spec/expressions/#global-state) expression.",
       "example": {
         "chargerType": {
           "default": ["CCS", "CHAdeMO", "Type2"]
