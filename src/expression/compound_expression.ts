@@ -21,6 +21,7 @@ import {Assertion} from './definitions/assertion';
 import {Coercion} from './definitions/coercion';
 import {Var} from './definitions/var';
 import {Distance} from './definitions/distance';
+import {GlobalState} from './definitions/global_state';
 
 import type {Expression, ExpressionRegistry} from './expression';
 import type {Value} from './values';
@@ -665,6 +666,8 @@ function isExpressionConstant(expression: Expression) {
     } else if (expression instanceof Within) {
         return false;
     } else if (expression instanceof Distance) {
+        return false;
+    } else if (expression instanceof GlobalState) {
         return false;
     }
 

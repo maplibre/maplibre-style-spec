@@ -632,7 +632,6 @@ describe('slice expression', () => {
 });
 
 describe('projection expression', () => {
-
     test('step', () => {
         const response = createExpression(['step', ['zoom'], 'vertical-perspective', 10, 'mercator']);
 
@@ -643,7 +642,7 @@ describe('projection expression', () => {
         } else {
             throw new Error('Failed to parse Step expression');
         }
-    })
+    });
 
     test('step array', () => {
         const response = createExpression(['step', ['zoom'], ['literal', ['vertical-perspective', 'mercator', 0.5]], 10, 'mercator'], v8.projection.type as StylePropertySpecification);
@@ -655,7 +654,7 @@ describe('projection expression', () => {
         } else {
             throw new Error('Failed to parse Step expression');
         }
-    })
+    });
 
     test('interpolate', () => {
         const response = createExpression(['interpolate', ['linear'], ['zoom'], 8, 'vertical-perspective', 10, 'mercator'], v8.projection.type as StylePropertySpecification);
@@ -667,7 +666,7 @@ describe('projection expression', () => {
         } else {
             throw new Error('Failed to parse Interpolate expression');
         }
-    })
+    });
 
     test('interpolate numberArray', () => {
         const response = createExpression(['interpolate', ['linear'], ['zoom'], 8, ['literal', [2,3]], 10, ['literal', [4,5]]],  {
@@ -753,6 +752,34 @@ describe('projection expression', () => {
         } else {
             throw new Error('Failed to parse Interpolate expression');
         }
-    })
+    });
+});
 
+describe('global-state expression', () => {
+    test('requires a property argument', () => {
+        const response = createExpression(['global-state']);
+        expect(response.result).toBe('error');
+        expect(response.value[0]).toBeInstanceOf(ExpressionParsingError);
+        expect((response.value[0] as ExpressionParsingError).message).toBe('Expected 1 argument, but found 0 instead.');
+    });
+    test('requires a string as the property argument', () => {
+        const response = createExpression(['global-state', true]);
+        expect(response.result).toBe('error');
+        expect(response.value[0]).toBeInstanceOf(ExpressionParsingError);
+        expect((response.value[0] as ExpressionParsingError).message).toBe('Global state property must be string, but found boolean instead.');
+    });
+    test('rejects a second argument', () => {
+        const response = createExpression(['global-state', 'foo', 'bar']);
+        expect(response.result).toBe('error');
+        expect(response.value[0]).toBeInstanceOf(ExpressionParsingError);
+        expect((response.value[0] as ExpressionParsingError).message).toBe('Expected 1 argument, but found 2 instead.');
+    });
+    test('evaluates a global state property', () => {
+        const response = createExpression(['global-state', 'foo']);
+        if (response.result === 'success') {
+            expect(response.value.evaluate({globalState: {foo: 'bar'}, zoom: 0}, {} as Feature)).toBe('bar');
+        } else {
+            throw new Error('Failed to parse GlobalState expression');
+        }
+    });
 });
