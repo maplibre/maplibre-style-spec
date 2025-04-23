@@ -6478,6 +6478,7 @@
   "paint_hillshade": {
     "hillshade-illumination-direction": {
       "type": "numberArray",
+      "min-length": 1,
       "default": 335,
       "minimum": 0,
       "maximum": 359,
@@ -6505,6 +6506,7 @@
     },
     "hillshade-illumination-altitude": {
       "type": "numberArray",
+      "min-length": 1,
       "default": 45,
       "minimum": 0,
       "maximum": 90,
@@ -6581,6 +6583,7 @@
     },
     "hillshade-shadow-color": {
       "type": "colorArray",
+      "min-length": 1,
       "default": "#000000",
       "doc": "The shading color of areas that face away from the light source(s). Only when `hillshade-method` is set to `multidirectional` can you specify multiple light sources.",
       "transition": true,
@@ -6606,6 +6609,7 @@
     },
     "hillshade-highlight-color": {
       "type": "colorArray",
+      "min-length": 1,
       "default": "#FFFFFF",
       "doc": "The shading color of areas that faces towards the light source(s). Only when `hillshade-method` is set to `multidirectional` can you specify multiple light sources.",
       "transition": true,

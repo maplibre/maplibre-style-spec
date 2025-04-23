@@ -66,4 +66,19 @@ describe('Validate ColorArray', () => {
         errors = validateColorArray({validateSpec: validate, key: 'colorArray', value: ['red', 'blue', '#012', '#12345678', '#012345']});
         expect(errors).toHaveLength(0);
     });
+    
+    test('Should enforce min-length property', () => {
+        let errors = validateColorArray({validateSpec: validate, key: 'colorArray', value: [], valueSpec: {'min-length': 1}});
+        expect(errors).toHaveLength(1);
+        expect(errors[0].message).toBe('colorArray: array length at least 1 expected, length 0 found');
+        errors = validateColorArray({validateSpec: validate, key: 'colorArray', value: ['red'], valueSpec: {'min-length': 1}});
+        expect(errors).toHaveLength(0);
+        errors = validateColorArray({validateSpec: validate, key: 'colorArray', value: ['red', 'red', 'red'], valueSpec: {'min-length': 1}});
+        expect(errors).toHaveLength(0);
+        errors = validateColorArray({validateSpec: validate, key: 'colorArray', value: 'red', valueSpec: {'min-length': 1}});
+        expect(errors).toHaveLength(0);
+        errors = validateColorArray({validateSpec: validate, key: 'colorArray', value: 'red', valueSpec: {'min-length': 2}});
+        expect(errors).toHaveLength(1);
+        expect(errors[0].message).toBe('colorArray: array length at least 2 expected, length 1 found');
+    });
 });
