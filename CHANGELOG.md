@@ -1,13 +1,19 @@
 ## main
 
 ### ✨ Features and improvements
-
 - _...Add new stuff here..._
+
+### 🐞 Bug fixes
+- _...Add new stuff here..._
+
+## 23.2.1
+
+### ✨ Features and improvements
+
 
 ### 🐞 Bug fixes
 
 - Validate that `numberArray` and `colorArray` values are non-empty ([#1094](https://github.com/maplibre/maplibre-style-spec/pull/1094))
-- _...Add new stuff here..._
 
 ## 23.2.0
 
