@@ -178,6 +178,18 @@
       "type": "custom",
       "source": "vector",
       "source-layer": "layer"
+    },
+    {
+      "id": "hillshade-empty-numberArray",
+      "type": "hillshade",
+      "source": "raster-dem",
+      "source-layer": "source-layer",
+      "paint": {
+        "hillshade-illumination-direction": [],
+        "hillshade-illumination-altitude": [],
+        "hillshade-highlight-color": [],
+        "hillshade-shadow-color": []
+      }
     }
   ]
 }
