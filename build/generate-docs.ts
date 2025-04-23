@@ -231,6 +231,9 @@ function convertPropertyToMarkdown(key: string, value: JsonObject, keyPrefix = '
     if (value.units) {
         markdown += `Units in ${value.units}. `;
     }
+    if (value['min-length'] !== undefined) {
+        markdown += `Length >= \`${value['min-length']}\`. `;
+    }
     if (value.default !== undefined) {
         markdown += `Defaults to \`${JSON.stringify(value.default)}\`. `;
     }
