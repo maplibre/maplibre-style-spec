@@ -6,6 +6,7 @@
 
 ### 🐞 Bug fixes
 
+- Validate that hillshade illumination parameters are non-empty ([#1094](https://github.com/maplibre/maplibre-style-spec/pull/1094))
 - _...Add new stuff here..._
 
 ## 23.2.0
