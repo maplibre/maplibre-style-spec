@@ -55,7 +55,8 @@ describe('Validate ColorArray', () => {
 
     test('Should pass if type is array of colors', () => {
         let errors = validateColorArray({validateSpec: validate, key: 'colorArray', value: []});
-        expect(errors).toHaveLength(0);
+        expect(errors).toHaveLength(1);
+        expect(errors[0].message).toBe('colorArray: array length at least 1 expected, length 0 found');
 
         errors = validateColorArray({validateSpec: validate, key: 'colorArray', value: ['red']});
         expect(errors).toHaveLength(0);

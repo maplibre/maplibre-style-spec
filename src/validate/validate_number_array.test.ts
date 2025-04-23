@@ -57,7 +57,8 @@ describe('Validate NumberArray', () => {
 
     test('Should pass if type is numeric array', () => {
         let errors = validateNumberArray({validateSpec: validate, key: 'numberArray', value: []});
-        expect(errors).toHaveLength(0);
+        expect(errors).toHaveLength(1);
+        expect(errors[0].message).toBe('numberArray: array length at least 1 expected, length 0 found');
         errors = validateNumberArray({validateSpec: validate, key: 'numberArray', value: [1]});
         expect(errors).toHaveLength(0);
         errors = validateNumberArray({validateSpec: validate, key: 'numberArray', value: [1, 1, 1]});

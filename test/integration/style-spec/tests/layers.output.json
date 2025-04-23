@@ -86,5 +86,21 @@
   {
     "message": "layers[21].type: expected one of [fill, line, symbol, circle, heatmap, fill-extrusion, raster, hillshade, background], \"custom\" found",
     "line": 178
+  },
+  {
+    "message": "layers[22].paint.hillshade-illumination-direction: array length at least 1 expected, length 0 found",
+    "line": 188
+  },
+  {
+    "message": "layers[22].paint.hillshade-illumination-altitude: array length at least 1 expected, length 0 found",
+    "line": 189
+  },
+  {
+    "message": "layers[22].paint.hillshade-highlight-color: array length at least 1 expected, length 0 found",
+    "line": 190
+  },
+  {
+    "message": "layers[22].paint.hillshade-shadow-color: array length at least 1 expected, length 0 found",
+    "line": 191
   }
 ]
