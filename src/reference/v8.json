@@ -5340,10 +5340,11 @@
       "expression": {
         "interpolated": false,
         "parameters": [
-          "zoom"
+          "zoom",
+          "feature"
         ]
       },
-      "property-type": "cross-faded"
+      "property-type": "cross-faded-data-driven"
     },
     "line-pattern": {
       "type": "resolvedImage",
