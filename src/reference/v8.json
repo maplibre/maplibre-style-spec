@@ -230,7 +230,7 @@
       "required": true,
       "type": "array",
       "value": "layer",
-      "doc": "A style's `layers` property lists all the layers available in that style. The type of layer is specified by the `type` property, and must be one of `background`, `fill`, `line`, `symbol`, `raster`, `circle`, `fill-extrusion`, `heatmap`, `hillshade`.\n\nExcept for layers of the `background` type, each layer needs to refer to a source. Layers take the data that they get from a source, optionally filter features, and then define how those features are styled.",
+      "doc": "A style's `layers` property lists all the layers available in that style. The type of layer is specified by the `type` property, and must be one of `background`, `fill`, `line`, `symbol`, `raster`, `circle`, `fill-extrusion`, `heatmap`, `hillshade`, `elevation`.\n\nExcept for layers of the `background` type, each layer needs to refer to a source. Layers take the data that they get from a source, optionally filter features, and then define how those features are styled.",
       "example": [
         {
           "id": "coastline",
@@ -797,6 +797,16 @@
             }
           }
         },
+        "elevation": {
+          "doc": "Client-side elevation coloring based on DEM data. The implementation supports Mapbox Terrain RGB, Mapzen Terrarium tiles and custom encodings.",
+          "sdk-support": {
+            "basic functionality": {
+              "js": "https://github.com/maplibre/maplibre-gl-js/issues/5666",
+              "android": "https://github.com/maplibre/maplibre-native/issues/3408",
+              "ios": "https://github.com/maplibre/maplibre-native/issues/3408"
+            }
+          }
+        },
         "background": {
           "doc": "The background color or pattern of the map.",
           "sdk-support": {
@@ -860,6 +870,7 @@
     "layout_symbol",
     "layout_raster",
     "layout_hillshade",
+    "layout_elevation",
     "layout_background"
   ],
   "layout_background": {
@@ -2687,6 +2698,26 @@
       "property-type": "constant"
     }
   },
+  "layout_elevation": {
+    "visibility": {
+      "type": "enum",
+      "values": {
+        "visible": {
+          "doc": "The layer is shown."
+        },
+        "none": {
+          "doc": "The layer is not shown."
+        }
+      },
+      "default": "visible",
+      "doc": "Whether this layer is displayed.",
+      "sdk-support": {
+        "basic functionality": {
+        }
+      },
+      "property-type": "constant"
+    }
+  },
   "filter": {
     "type": "array",
     "value": "*",
@@ -3649,6 +3680,24 @@
             "js": "0.41.0",
             "android": "6.0.0",
             "ios": "4.0.0"
+          }
+        }
+      },
+      "elevation": {
+        "doc": "Gets the elevation of a pixel (in meters above the vertical datum reference of the `raster-dem` tiles) from a `raster-dem` source. Can only be used in the `elevation` property.",
+        "example": {
+          "syntax": {
+            "method": [],
+            "result": "number"
+          },
+          "value": ["elevation"]
+        },
+        "group": "Color Relief",
+        "sdk-support": {
+          "basic functionality": {
+            "js": "https://github.com/maplibre/maplibre-gl-js/issues/5666",
+            "android": "https://github.com/maplibre/maplibre-native/issues/3408",
+            "ios": "https://github.com/maplibre/maplibre-native/issues/3408"
           }
         }
       },
@@ -4663,6 +4712,7 @@
     "paint_symbol",
     "paint_raster",
     "paint_hillshade",
+    "paint_elevation",
     "paint_background"
   ],
   "paint_fill": {
@@ -6670,6 +6720,74 @@
       },
       "default": "standard",
       "doc": "The hillshade algorithm to use, one of `standard`, `basic`, `combined`, `igor`, or `multidirectional`. ![image](assets/hillshade_methods.png)",
+      "sdk-support": {
+        "basic functionality": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/5665",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3396",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3396"
+        }
+      },
+      "expression": {
+        "interpolated": false,
+        "parameters": [
+          "zoom"
+        ]
+      },
+      "property-type": "data-constant"
+    }
+  },
+  "paint_elevation": {
+    "elevation-opacity": {
+      "type": "number",
+      "default": 1,
+      "minimum": 0,
+      "maximum": 1,
+      "doc": "The opacity at which the elevation will be drawn.",
+      "transition": true,
+      "sdk-support": {
+        "basic functionality": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/5666",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3408",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3408"
+        }
+      },
+      "expression": {
+        "interpolated": true,
+        "parameters": [
+          "zoom"
+        ]
+      },
+      "property-type": "data-constant"
+    },
+    "elevation-color": {
+      "type": "color",
+      "doc": "For use with `color-relief` algorithm. Should be an expression that uses `[\"elevation\"]` as input.",
+      "transition": false,
+      "sdk-support": {
+        "basic functionality": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/5666",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3408",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3408"
+        },
+        "data-driven styling": {}
+      },
+      "expression": {
+        "interpolated": true,
+        "parameters": [
+          "elevation"
+        ]
+      },
+      "property-type": "color-ramp"
+    },
+    "elevation-algorithm": {
+      "type": "enum",
+      "values": {
+        "color-relief": {
+          "doc": "Defines the color of each pixel based on its elevation."
+        }
+      },
+      "default": "color-relief",
+      "doc": "The hillshade algorithm to use, one of `color-relief`",
       "sdk-support": {
         "basic functionality": {
           "js": "https://github.com/maplibre/maplibre-gl-js/issues/5665",
