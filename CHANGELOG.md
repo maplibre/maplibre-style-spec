@@ -1,6 +1,7 @@
 ## main
 
 ### ✨ Features and improvements
+- Add new hillshade method `color-relief`. This method sets the color based on the elevation ([#1067](https://github.com/maplibre/maplibre-style-spec/issues/1067))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes

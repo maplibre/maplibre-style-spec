@@ -3652,6 +3652,24 @@
           }
         }
       },
+      "elevation": {
+        "doc": "Gets the elevation of a pixel (in meters above the vertical datum reference of the `raster-dem` tiles) from a `raster-dem` source. Can only be used in the `color-relief` property.",
+        "example": {
+          "syntax": {
+            "method": [],
+            "result": "number"
+          },
+          "value": ["elevation"]
+        },
+        "group": "Hillshade",
+        "sdk-support": {
+          "basic functionality": {
+            "js": "https://github.com/maplibre/maplibre-gl-js/issues/5666",
+            "android": "https://github.com/maplibre/maplibre-native/issues/3408",
+            "ios": "https://github.com/maplibre/maplibre-native/issues/3408"
+          }
+        }
+      },
       "line-progress": {
         "doc": "Gets the progress along a gradient line. Can only be used in the `line-gradient` property.",
         "example": {
@@ -6666,6 +6684,9 @@
         },
         "multidirectional": {
           "doc": "Hillshade with multiple illumination directions. Uses the basic hillshade model with multiple independent light sources."
+        },
+        "color-relief": {
+          "doc": "Sets the color based on the elevation and the provided color ramp (`hillshade-color-relief-color`)."
         }
       },
       "default": "standard",
@@ -6684,6 +6705,26 @@
         ]
       },
       "property-type": "data-constant"
+    },
+    "hillshade-color-relief-color": {
+      "type": "color",
+      "doc": "Defines the color of each pixel based on its elevation. Should be an expression that uses `[\"elevation\"]` as input.",
+      "transition": false,
+      "sdk-support": {
+        "basic functionality": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/5666",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3408",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3408"
+        },
+        "data-driven styling": {}
+      },
+      "expression": {
+        "interpolated": true,
+        "parameters": [
+          "elevation"
+        ]
+      },
+      "property-type": "color-ramp"
     }
   },
   "paint_background": {
