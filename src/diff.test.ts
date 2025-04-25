@@ -262,6 +262,16 @@ describe('diff', () => {
         } as StyleSpecification)).toEqual([]);
     });
 
+    test('set state', () => {
+        expect(diff({
+            state: {foo: 1}
+        } as any as StyleSpecification, {
+            state: {foo: 2}
+        } as any as StyleSpecification)).toEqual([
+            {command: 'setGlobalState', args: [{foo: 2}]}
+        ]);
+    });
+
     test('set center', () => {
         expect(diff({
             center: [0, 0]

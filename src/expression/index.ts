@@ -62,6 +62,7 @@ export type GlobalProperties = Readonly<{
     lineProgress?: number;
     isSupportedScript?: (_: string) => boolean;
     accumulated?: Value;
+    globalState?: Record<string, any>;
 }>;
 
 export class StyleExpression {

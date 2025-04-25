@@ -20,7 +20,7 @@ type JsonSdkSupport = {
 type JsonObject = {
     required?: boolean;
     units?: string;
-    default?: string | number | boolean;
+    default?: string | number | boolean | {};
     type: string;
     doc: string;
     requires?: any[];
@@ -58,7 +58,6 @@ function topicElement(key: string, value: JsonObject): boolean {
         key !== 'sprite' &&
         key !== 'layers' &&
         key !== 'sources';
-
 }
 
 /**
@@ -233,7 +232,7 @@ function convertPropertyToMarkdown(key: string, value: JsonObject, keyPrefix = '
         markdown += `Units in ${value.units}. `;
     }
     if (value.default !== undefined) {
-        markdown += `Defaults to \`${value.default}\`. `;
+        markdown += `Defaults to \`${JSON.stringify(value.default)}\`. `;
     }
     if (value.requires) {
         markdown += requiresToMarkdown(value.requires);

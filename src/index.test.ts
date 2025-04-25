@@ -72,7 +72,8 @@ function validSchema(k, v, obj, ref, version, kind) {
         'colorArray',
         'variableAnchorOffsetCollection',
         'sprite',
-        'projectionDefinition'
+        'projectionDefinition',
+        'state'
     ]);
     const keys = [
         'default',
