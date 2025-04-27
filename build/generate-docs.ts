@@ -511,9 +511,36 @@ function createExpressionsContent() {
             }
             content += `\n### ${key}\n`;
             content += `${value.doc}\n`;
-            value.example.syntax.method.unshift(`"${key}"`);
-            content += `\nSyntax:\n${codeBlockMarkdown(`[${value.example.syntax.method.join(', ')}]: ${value.example.syntax.result}`, 'js')}\n`;
-            content += `\nExample:\n${codeBlockMarkdown(`"some-property": ${formatJSON(value.example.value)}`)}\n`;
+
+            content += `\nSyntax:\n`;
+            const syntax: {
+                variants: {
+                    parameters: string[];
+                    'output-type': string;
+                }[];
+                parameters?: {
+                    name: string;
+                    type?: string;
+                    description?: string;
+                }[];
+            } = value.syntax;
+            const codeBlockLines = syntax.variants.map((variant) => {
+                return `[${[`"${key}"`, ...variant.parameters].join(', ')}]: ${variant['output-type']}`;
+            });
+            content += `${codeBlockMarkdown(codeBlockLines.join('\n'), 'js')}\n`;
+            const parameterLines = (syntax.parameters ?? []).map((param) => {
+                let line = `- \`${param.name}\``;
+                if (param.type) {
+                    line += `: *${param.type}*`;
+                }
+                if (param.description) {
+                    line += ` — ${param.description}`;
+                }
+                return line;
+            });
+            content += `${parameterLines.join('\n')}\n`;
+
+            content += `\nExample:\n${codeBlockMarkdown(`"some-property": ${formatJSON(value.example)}`)}\n`;
             content += sdkSupportToMarkdown(value['sdk-support'] as any);
             content += '\n';
         }
