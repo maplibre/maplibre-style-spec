@@ -531,7 +531,8 @@ function createExpressionsContent() {
             const parameterLines = (syntax.parameters ?? []).map((param) => {
                 let line = `- \`${param.name}\``;
                 if (param.type) {
-                    line += `: *${param.type}*`;
+                    const type = param.type.replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+                    line += `: *${type}*`;
                 }
                 if (param.description) {
                     line += ` — ${param.description}`;

@@ -2840,8 +2840,29 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["string", "value", "expression"],
-              "output-type": "value"
+              "parameters": ["var_1_name", "var_1_value", "expression"],
+              "output-type": "any"
+            },
+            {
+              "parameters": ["var_1_name", "var_1_value", "...", "var_n_name", "var_n_value", "expression"],
+              "output-type": "any"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "var_i_name",
+              "type": "string literal",
+              "description": "The name of the i-th variable."
+            },
+            {
+              "name": "var_i_value",
+              "type": "any",
+              "description": "The value of the i-th variable."
+            },
+            {
+              "name": "expression",
+              "type": "any",
+              "description": "The expression within which the named variables can be referenced."
             }
           ]
         },
@@ -2860,8 +2881,15 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["string"],
-              "output-type": "value"
+              "parameters": ["var_name"],
+              "output-type": "any"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "var_name",
+              "type": "string literal",
+              "description": "The name of the variable bound using `let`."
             }
           ]
         },
@@ -2880,8 +2908,22 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["JSON object or array"],
-              "output-type": "array | object"
+              "parameters": ["json_object"],
+              "output-type": "object"
+            },
+            {
+              "parameters": ["json_array"],
+              "output-type": "array"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "json_object",
+              "type": "JSON object"
+            },
+            {
+              "name": "json_array",
+              "type": "JSON array"
             }
           ]
         },
@@ -2900,8 +2942,32 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["value", "string?", "number?"],
+              "parameters": ["value"],
               "output-type": "array"
+            },
+            {
+              "parameters": ["type", "value"],
+              "output-type": "array<type>"
+            },
+            {
+              "parameters": ["type", "length", "value"],
+              "output-type": "array<type, length>"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "value",
+              "type": "any"
+            },
+            {
+              "name": "type",
+              "type": "\"string\" | \"number\" | \"boolean\"",
+              "description": "The asserted type of the input array."
+            },
+            {
+              "name": "length",
+              "type": "number literal",
+              "description": "The asserted length of the input array."
             }
           ]
         },
@@ -2920,8 +2986,20 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["number", "value"],
-              "output-type": "value"
+              "parameters": ["index", "array"],
+              "output-type": "T"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "index",
+              "type": "number",
+              "description": "The index into `array`."
+            },
+            {
+              "name": "array",
+              "type": "array<T>",
+              "description": "The array of items to retrieve the specified item from."
             }
           ]
         },
@@ -2940,8 +3018,34 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["value", "value"],
+              "parameters": ["item", "array"],
               "output-type": "boolean"
+            },
+            {
+              "parameters": ["substring", "string"],
+              "output-type": "boolean"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "item",
+              "type": "T",
+              "description": "The needle to search for within `array`."
+            },
+            {
+              "name": "array",
+              "type": "array<T>",
+              "description": "The haystack through which to search for `item`."
+            },
+            {
+              "name": "substring",
+              "type": "string",
+              "description": "The needle to search for within `string`."
+            },
+            {
+              "name": "string",
+              "type": "string",
+              "description": "The haystack through which to search for `substring`."
             }
           ]
         },
@@ -2960,8 +3064,39 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["value", "value", "number?"],
+              "parameters": ["item", "array", "from_index?"],
               "output-type": "number"
+            },
+            {
+              "parameters": ["substring", "string", "from_index?"],
+              "output-type": "number"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "item",
+              "type": "T",
+              "description": "The needle to search for within `array`."
+            },
+            {
+              "name": "array",
+              "type": "array<T>",
+              "description": "The haystack through which to search for `item`."
+            },
+            {
+              "name": "substring",
+              "type": "string",
+              "description": "The needle to search for within `string`."
+            },
+            {
+              "name": "string",
+              "type": "string",
+              "description": "The haystack through which to search for `substring`."
+            },
+            {
+              "name": "from_index",
+              "type": "number",
+              "description": "The index from where to begin the search."
             }
           ]
         },
@@ -2976,12 +3111,38 @@
         }
       },
       "slice": {
-        "doc": "Returns an item from an array or a substring from a string from a specified start index, or between a start index and an end index if set. The return value is inclusive of the start index but not of the end index. In a string, a UTF-16 surrogate pair counts as a single position.",
+        "doc": "Returns a subarray from an array or a substring from a string from a specified start index, or between a start index and an end index if set. The return value is inclusive of the start index but not of the end index. In a string, a UTF-16 surrogate pair counts as a single position.",
         "syntax": {
           "variants": [
             {
-              "parameters": ["value", "number", "number?"],
-              "output-type": "value"
+              "parameters": ["array", "start_index", "end_index?"],
+              "output-type": "array<T>"
+            },
+            {
+              "parameters": ["string", "start_index", "end_index?"],
+              "output-type": "string"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "array",
+              "type": "array<T>",
+              "description": "The original array from which to extract the subarray."
+            },
+            {
+              "name": "string",
+              "type": "string",
+              "description": "The original string from which to extract the substring."
+            },
+            {
+              "name": "start_index",
+              "type": "number",
+              "description": "The inclusive index from which `slice` extracts items or characters from the subarray or substring."
+            },
+            {
+              "name": "end_index",
+              "type": "number",
+              "description": "The non-inclusive index up to which `slice` extracts items or characters from the subarray or substring."
             }
           ]
         },
@@ -3000,8 +3161,27 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["value", "value", "...", "fallback: value"],
-              "output-type": "value"
+              "parameters": ["condition_1", "output_1", "fallback"],
+              "output-type": "any"
+            },
+            {
+              "parameters": ["condition_1", "output_1", "...", "condition_n", "output_n", "fallback"],
+              "output-type": "any"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "condition_i",
+              "type": "boolean"
+            },
+            {
+              "name": "output_i",
+              "type": "any"
+            },
+            {
+              "name": "fallback",
+              "type": "any",
+              "description": "The result when no condition evaluates to true."
             }
           ]
         },
@@ -3020,8 +3200,34 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["value", "value", "...", "fallback: value"],
-              "output-type": "value"
+              "parameters": ["input", "label_1", "output_1", "fallback"],
+              "output-type": "any"
+            },
+            {
+              "parameters": ["input", "label_1", "output_1", "...", "label_n", "output_n", "fallback"],
+              "output-type": "any"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "input",
+              "type": "any",
+              "description": "Any expression."
+            },
+            {
+              "name": "label_i",
+              "type": "string literal | array<string literal> | array<number literal>",
+              "description": "The i-th literal value or array of literal values to match the input against."
+            },
+            {
+              "name": "output_i",
+              "type": "any",
+              "description": "The result when the i-th label is the first label to match the input."
+            },
+            {
+              "name": "fallback",
+              "type": "any",
+              "description": "The result when no label matches ths input."
             }
           ]
         },
@@ -3040,8 +3246,18 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["coalesce", "value", "fallback"],
-              "output-type": "value"
+              "parameters": ["expression_1"],
+              "output-type": "any"
+            },
+            {
+              "parameters": ["expression_1", "...", "expression_n"],
+              "output-type": "any"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "expression_i",
+              "type": "any"
             }
           ]
         },
@@ -3060,8 +3276,34 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["step", "input1", "output1", "input2", "output2", "..."],
-              "output-type": "number"
+              "parameters": ["input", "output_0", "stop_1_input", "stop_1_output"],
+              "output-type": "any"
+            },
+            {
+              "parameters": ["input", "output_0", "stop_1_input", "stop_1_output", "...", "stop_n_input", "stop_n_output"],
+              "output-type": "any"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "input",
+              "type": "number",
+              "description": "Any numeric expression."
+            },
+            {
+              "name": "output_0",
+              "type": "any",
+              "description": "The result when the `input` is less than the first stop."
+            },
+            {
+              "name": "stop_i_input",
+              "type": "number literal",
+              "description": "The value of the i-th stop against which the `input` is compared."
+            },
+            {
+              "name": "stop_i_output",
+              "type": "any",
+              "description": "The result when the i-th stop is the last stop less than the `input`."
             }
           ]
         },
@@ -3080,8 +3322,34 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["[\"linear\"] | [\"exponential\", base] | [\"cubic-bezier\", x1, y1, x2, y2]", "input1", "output1", "input2", "output2", "..."],
-              "output-type": "number | array<number> | color"
+              "parameters": ["interpolation_type", "input", "stop_1_input", "stop_1_output"],
+              "output-type": "any"
+            },
+            {
+              "parameters": ["interpolation_type", "input", "stop_1_input", "stop_1_output", "...", "stop_n_input", "stop_n_output"],
+              "output-type": "any"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "interpolation_type",
+              "type": "[\"linear\"] | [\"exponential\", base] | [\"cubic-bezier\", x1, y1, x2, y2]",
+              "description": "The interpolation type."
+            },
+            {
+              "name": "input",
+              "type": "number",
+              "description": "Any numeric expression."
+            },
+            {
+              "name": "stop_i_input",
+              "type": "number literal",
+              "description": "The value of the i-th stop against which the `input` is compared."
+            },
+            {
+              "name": "stop_i_output",
+              "type": "number | array<number> | color",
+              "description": "The output value corresponding to the i-th stop."
             }
           ]
         },
@@ -3100,8 +3368,30 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["[\"linear\"] | [\"exponential\", base] | [\"cubic-bezier\", x1, y1, x2, y2]", "input1", "output1", "input2", "output2", "..."],
+              "parameters": ["interpolation_type", "input", "stop_1_input", "stop_1_output"],
               "output-type": "color"
+            },
+            {
+              "parameters": ["interpolation_type", "input", "stop_1_input", "stop_1_output", "...", "stop_n_input", "stop_n_output"],
+              "output-type": "color"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "interpolation_type",
+              "type": "[\"linear\"] | [\"exponential\", base] | [\"cubic-bezier\", x1, y1, x2, y2]"
+            },
+            {
+              "name": "input",
+              "type": "number"
+            },
+            {
+              "name": "stop_i_input",
+              "type": "number literal"
+            },
+            {
+              "name": "stop_i_output",
+              "type": "color"
             }
           ]
         },
@@ -3120,8 +3410,30 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["[\"linear\"] | [\"exponential\", base] | [\"cubic-bezier\", x1, y1, x2, y2]", "input1", "output1", "input2", "output2", "..."],
+              "parameters": ["interpolation_type", "input", "stop_1_input", "stop_1_output"],
               "output-type": "color"
+            },
+            {
+              "parameters": ["interpolation_type", "input", "stop_1_input", "stop_1_output", "...", "stop_n_input", "stop_n_output"],
+              "output-type": "color"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "interpolation_type",
+              "type": "[\"linear\"] | [\"exponential\", base] | [\"cubic-bezier\", x1, y1, x2, y2]"
+            },
+            {
+              "name": "input",
+              "type": "number"
+            },
+            {
+              "name": "stop_i_input",
+              "type": "number literal"
+            },
+            {
+              "name": "stop_i_output",
+              "type": "color"
             }
           ]
         },
@@ -3136,7 +3448,7 @@
         }
       },
       "ln2": {
-        "doc": "Returns mathematical constant ln(2).",
+        "doc": "Returns the mathematical constant ln(2).",
         "syntax": {
           "variants": [
             {
@@ -3203,6 +3515,12 @@
               "parameters": ["value"],
               "output-type": "string"
             }
+          ],
+          "parameters": [
+            {
+              "name": "value",
+              "type": "any"
+            }
           ]
         },
         "example": ["typeof", ["get", "name"]],
@@ -3220,8 +3538,22 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["value", "fallback: value", "fallback: value", "..."],
+              "parameters": ["value"],
               "output-type": "string"
+            },
+            {
+              "parameters": ["value", "fallback_1", "...", "fallback_n"],
+              "output-type": "string"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "value",
+              "type": "any"
+            },
+            {
+              "name": "fallback_i",
+              "type": "any"
             }
           ]
         },
@@ -3240,8 +3572,22 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["value", "fallback: value", "fallback: value", "..."],
+              "parameters": ["value"],
               "output-type": "number"
+            },
+            {
+              "parameters": ["value", "fallback_1", "...", "fallback_n"],
+              "output-type": "number"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "value",
+              "type": "any"
+            },
+            {
+              "name": "fallback_i",
+              "type": "any"
             }
           ]
         },
@@ -3260,8 +3606,22 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["value", "fallback: value", "fallback: value", "..."],
+              "parameters": ["value"],
               "output-type": "boolean"
+            },
+            {
+              "parameters": ["value", "fallback_1", "...", "fallback_n"],
+              "output-type": "boolean"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "value",
+              "type": "any"
+            },
+            {
+              "name": "fallback_i",
+              "type": "any"
             }
           ]
         },
@@ -3280,8 +3640,22 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["value", "fallback: value", "fallback: value", "..."],
+              "parameters": ["value"],
               "output-type": "object"
+            },
+            {
+              "parameters": ["value", "fallback_1", "...", "fallback_n"],
+              "output-type": "object"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "value",
+              "type": "any"
+            },
+            {
+              "name": "fallback_i",
+              "type": "any"
             }
           ]
         },
@@ -3300,8 +3674,14 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["collator", "{ \"case-sensitive\": boolean, \"diacritic-sensitive\": boolean, \"locale\": string }"],
+              "parameters": ["options"],
               "output-type": "collator"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "options",
+              "type": "{ \"case-sensitive\"?: boolean, \"diacritic-sensitive\"?: boolean, \"locale\"?: string }"
             }
           ]
         },
@@ -3320,8 +3700,22 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["value", "{ \"text-font\": string, \"text-color\": color, \"font-scale\": number, \"vertical-align\": \"bottom\" | \"center\" | \"top\" }", "..."],
+              "parameters": ["input_1", "options_1?"],
               "output-type": "formatted"
+            },
+            {
+              "parameters": ["input_1", "options_1?", "...", "input_n", "options_n?"],
+              "output-type": "formatted"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "input_i",
+              "type": "string | image"
+            },
+            {
+              "name": "options_i",
+              "type": "{ \"text-font\"?: string, \"text-color\"?: color, \"font-scale\"?: number, \"vertical-align\"?: \"bottom\" | \"center\" | \"top\" }"
             }
           ]
         },
@@ -3365,8 +3759,14 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["value"],
+              "parameters": ["image_name"],
               "output-type": "image"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "image_name",
+              "type": "string"
             }
           ]
         },
@@ -3386,8 +3786,15 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["string"],
-              "output-type": "value"
+              "parameters": ["property_name"],
+              "output-type": "any"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "property_name",
+              "type": "string literal",
+              "description": "The name of the global state property to retrieve."
             }
           ]
         },
@@ -3405,8 +3812,18 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["number", "{ \"locale\": string, \"currency\": string, \"min-fraction-digits\": number, \"max-fraction-digits\": number }"],
+              "parameters": ["number", "options"],
               "output-type": "string"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "number",
+              "type": "number"
+            },
+            {
+              "name": "options",
+              "type": "{ \"locale\"?: string, \"currency\"?: string, \"min-fraction-digits\"?: number, \"max-fraction-digits\"?: number }"
             }
           ]
         },
@@ -3428,6 +3845,12 @@
               "parameters": ["value"],
               "output-type": "string"
             }
+          ],
+          "parameters": [
+            {
+              "name": "value",
+              "type": "any"
+            }
           ]
         },
         "example": ["to-string", ["get", "mag"]],
@@ -3445,8 +3868,22 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["value", "fallback: value", "fallback: value", "..."],
+              "parameters": ["value"],
               "output-type": "number"
+            },
+            {
+              "parameters": ["value", "fallback_1", "...", "fallback_n"],
+              "output-type": "number"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "value",
+              "type": "any"
+            },
+            {
+              "name": "fallback_i",
+              "type": "any"
             }
           ]
         },
@@ -3468,6 +3905,12 @@
               "parameters": ["value"],
               "output-type": "boolean"
             }
+          ],
+          "parameters": [
+            {
+              "name": "value",
+              "type": "any"
+            }
           ]
         },
         "example": ["to-boolean", "someProperty"],
@@ -3488,6 +3931,12 @@
               "parameters": ["color"],
               "output-type": "array"
             }
+          ],
+          "parameters": [
+            {
+              "name": "color",
+              "type": "color"
+            }
           ]
         },
         "example": ["to-rgba", "#ff0000"],
@@ -3505,8 +3954,22 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["value", "fallback: value", "fallback: value", "..."],
+              "parameters": ["value"],
               "output-type": "color"
+            },
+            {
+              "parameters": ["value", "fallback_1", "...", "fallback_n"],
+              "output-type": "color"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "value",
+              "type": "any"
+            },
+            {
+              "name": "fallback_i",
+              "type": "any"
             }
           ]
         },
@@ -3525,8 +3988,22 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["number", "number", "number"],
+              "parameters": ["red", "green", "blue"],
               "output-type": "color"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "red",
+              "type": "number"
+            },
+            {
+              "name": "green",
+              "type": "number"
+            },
+            {
+              "name": "blue",
+              "type": "number"
             }
           ]
         },
@@ -3545,8 +4022,26 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["number", "number", "number", "number"],
+              "parameters": ["red", "green", "blue", "alpha"],
               "output-type": "color"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "red",
+              "type": "number"
+            },
+            {
+              "name": "green",
+              "type": "number"
+            },
+            {
+              "name": "blue",
+              "type": "number"
+            },
+            {
+              "name": "alpha",
+              "type": "number"
             }
           ]
         },
@@ -3565,8 +4060,20 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["string"],
-              "output-type": "value"
+              "parameters": ["property_name", "object?"],
+              "output-type": "any"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "property_name",
+              "type": "string",
+              "description": "The name of the property to retrieve the value of."
+            },
+            {
+              "name": "object",
+              "type": "object",
+              "description": "The object to retrieve the value from."
             }
           ]
         },
@@ -3585,8 +4092,20 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["string"],
+              "parameters": ["property_name", "object?"],
               "output-type": "boolean"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "property_name",
+              "type": "string",
+              "description": "The name of the property to test for the presence of."
+            },
+            {
+              "name": "object",
+              "type": "object",
+              "description": "The object in which to test for the presence of the `property_name` property."
             }
           ]
         },
@@ -3605,8 +4124,14 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["array"],
+              "parameters": ["array_or_string"],
               "output-type": "number"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "array_or_string",
+              "type": "array | string"
             }
           ]
         },
@@ -3626,7 +4151,7 @@
           "variants": [
             {
               "parameters": [],
-              "output-type": "value"
+              "output-type": "object"
             }
           ]
         },
@@ -3645,8 +4170,14 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["string"],
-              "output-type": "value"
+              "parameters": ["property_name"],
+              "output-type": "any"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "property_name",
+              "type": "string"
             }
           ]
         },
@@ -3686,7 +4217,7 @@
           "variants": [
             {
               "parameters": [],
-              "output-type": "value"
+              "output-type": "any"
             }
           ]
         },
@@ -3745,12 +4276,12 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["number"],
+              "parameters": [],
               "output-type": "number"
             }
           ]
         },
-        "example": ["line-progress", 0.5],
+        "example": ["line-progress"],
         "group": "Feature data",
         "sdk-support": {
           "basic functionality": {
@@ -3765,12 +4296,12 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["string"],
-              "output-type": "value"
+              "parameters": [],
+              "output-type": "any"
             }
           ]
         },
-        "example": ["accumulated", "sum"],
+        "example": ["accumulated"],
         "group": "Feature data",
         "sdk-support": {
           "basic functionality": {
@@ -3785,8 +4316,14 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["number", "number", "..."],
+              "parameters": ["input_1", "...", "input_n"],
               "output-type": "number"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "input_i",
+              "type": "number"
             }
           ]
         },
@@ -3805,8 +4342,14 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["number", "number", "..."],
+              "parameters": ["input_1", "...", "input_n"],
               "output-type": "number"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "input_i",
+              "type": "number"
             }
           ]
         },
@@ -3825,8 +4368,29 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["number", "number?"],
+              "parameters": ["input_1", "input_2"],
               "output-type": "number"
+            },
+            {
+              "parameters": ["single_input"],
+              "output-type": "number"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "input_1",
+              "type": "number",
+              "description": "The number from which to subtract `input_2`."
+            },
+            {
+              "name": "input_2",
+              "type": "number",
+              "description": "The number to subtract from `input_1`."
+            },
+            {
+              "name": "single_input",
+              "type": "number",
+              "description": "The number to subtract from 0."
             }
           ]
         },
@@ -3845,8 +4409,20 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["number", "number"],
+              "parameters": ["input_1", "input_2"],
               "output-type": "number"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "input_1",
+              "type": "number",
+              "description": "The dividend."
+            },
+            {
+              "name": "input_2",
+              "type": "number",
+              "description": "The divisor."
             }
           ]
         },
@@ -3865,8 +4441,20 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["number", "number"],
+              "parameters": ["input_1", "input_2"],
               "output-type": "number"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "input_1",
+              "type": "number",
+              "description": "The dividend."
+            },
+            {
+              "name": "input_2",
+              "type": "number",
+              "description": "The divisor."
             }
           ]
         },
@@ -3885,8 +4473,20 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["number", "number"],
+              "parameters": ["input_1", "input_2"],
               "output-type": "number"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "input_1",
+              "type": "number",
+              "description": "The base."
+            },
+            {
+              "name": "input_2",
+              "type": "number",
+              "description": "The exponent."
             }
           ]
         },
@@ -3905,8 +4505,15 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["number"],
+              "parameters": ["input"],
               "output-type": "number"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "input",
+              "type": "number",
+              "description": "The radicand."
             }
           ]
         },
@@ -3925,8 +4532,14 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["number"],
+              "parameters": ["input"],
               "output-type": "number"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "input",
+              "type": "number"
             }
           ]
         },
@@ -3945,8 +4558,14 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["number"],
+              "parameters": ["input"],
               "output-type": "number"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "input",
+              "type": "number"
             }
           ]
         },
@@ -3965,8 +4584,14 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["number"],
+              "parameters": ["input"],
               "output-type": "number"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "input",
+              "type": "number"
             }
           ]
         },
@@ -3985,8 +4610,14 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["number"],
+              "parameters": ["input"],
               "output-type": "number"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "input",
+              "type": "number"
             }
           ]
         },
@@ -4005,8 +4636,14 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["number"],
+              "parameters": ["input"],
               "output-type": "number"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "input",
+              "type": "number"
             }
           ]
         },
@@ -4025,8 +4662,14 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["number"],
+              "parameters": ["input"],
               "output-type": "number"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "input",
+              "type": "number"
             }
           ]
         },
@@ -4045,8 +4688,14 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["number"],
+              "parameters": ["input"],
               "output-type": "number"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "input",
+              "type": "number"
             }
           ]
         },
@@ -4065,8 +4714,14 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["number"],
+              "parameters": ["input"],
               "output-type": "number"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "input",
+              "type": "number"
             }
           ]
         },
@@ -4085,8 +4740,14 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["number"],
+              "parameters": ["input"],
               "output-type": "number"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "input",
+              "type": "number"
             }
           ]
         },
@@ -4105,8 +4766,14 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["number", "number", "..."],
+              "parameters": ["input_1", "...", "input_n"],
               "output-type": "number"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "input_i",
+              "type": "number"
             }
           ]
         },
@@ -4125,8 +4792,14 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["number", "number", "..."],
+              "parameters": ["input_1", "...", "input_n"],
               "output-type": "number"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "input_i",
+              "type": "number"
             }
           ]
         },
@@ -4145,8 +4818,14 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["number"],
+              "parameters": ["input"],
               "output-type": "number"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "input",
+              "type": "number"
             }
           ]
         },
@@ -4165,8 +4844,14 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["number"],
+              "parameters": ["input"],
               "output-type": "number"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "input",
+              "type": "number"
             }
           ]
         },
@@ -4185,8 +4870,14 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["number"],
+              "parameters": ["input"],
               "output-type": "number"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "input",
+              "type": "number"
             }
           ]
         },
@@ -4205,8 +4896,14 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["number"],
+              "parameters": ["input"],
               "output-type": "number"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "input",
+              "type": "number"
             }
           ]
         },
@@ -4225,8 +4922,14 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["GeoJSON geometry"],
+              "parameters": ["geojson"],
               "output-type": "number"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "geojson",
+              "type": "GeoJSON object"
             }
           ]
         },
@@ -4245,8 +4948,23 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["value", "value", "collator?"],
+              "parameters": ["input_1", "input_2", "collator?"],
               "output-type": "boolean"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "input_1",
+              "type": "any"
+            },
+            {
+              "name": "input_2",
+              "type": "any"
+            },
+            {
+              "name": "collator",
+              "type": "collator",
+              "description": "Options for locale-dependent comparison."
             }
           ]
         },
@@ -4270,8 +4988,23 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["value", "value", "collator?"],
+              "parameters": ["input_1", "input_2", "collator?"],
               "output-type": "boolean"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "input_1",
+              "type": "any"
+            },
+            {
+              "name": "input_2",
+              "type": "any"
+            },
+            {
+              "name": "collator",
+              "type": "collator",
+              "description": "Options for locale-dependent comparison."
             }
           ]
         },
@@ -4295,8 +5028,27 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["value", "value", "collator?"],
+              "parameters": ["string_1", "string_2", "collator?"],
               "output-type": "boolean"
+            },
+            {
+              "parameters": ["number_1", "number_2", "collator?"],
+              "output-type": "boolean"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "string_i",
+              "type": "string"
+            },
+            {
+              "name": "number_i",
+              "type": "number"
+            },
+            {
+              "name": "collator",
+              "type": "collator",
+              "description": "Options for locale-dependent comparison."
             }
           ]
         },
@@ -4320,8 +5072,27 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["value", "value", "collator?"],
+              "parameters": ["string_1", "string_2", "collator?"],
               "output-type": "boolean"
+            },
+            {
+              "parameters": ["number_1", "number_2", "collator?"],
+              "output-type": "boolean"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "string_i",
+              "type": "string"
+            },
+            {
+              "name": "number_i",
+              "type": "number"
+            },
+            {
+              "name": "collator",
+              "type": "collator",
+              "description": "Options for locale-dependent comparison."
             }
           ]
         },
@@ -4345,8 +5116,27 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["value", "value", "collator?"],
+              "parameters": ["string_1", "string_2", "collator?"],
               "output-type": "boolean"
+            },
+            {
+              "parameters": ["number_1", "number_2", "collator?"],
+              "output-type": "boolean"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "string_i",
+              "type": "string"
+            },
+            {
+              "name": "number_i",
+              "type": "number"
+            },
+            {
+              "name": "collator",
+              "type": "collator",
+              "description": "Options for locale-dependent comparison."
             }
           ]
         },
@@ -4370,8 +5160,27 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["value", "value", "collator?"],
+              "parameters": ["string_1", "string_2", "collator?"],
               "output-type": "boolean"
+            },
+            {
+              "parameters": ["number_1", "number_2", "collator?"],
+              "output-type": "boolean"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "string_i",
+              "type": "string"
+            },
+            {
+              "name": "number_i",
+              "type": "number"
+            },
+            {
+              "name": "collator",
+              "type": "collator",
+              "description": "Options for locale-dependent comparison."
             }
           ]
         },
@@ -4395,8 +5204,18 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["boolean", "boolean", "..."],
+              "parameters": ["input_1", "input_2"],
               "output-type": "boolean"
+            },
+            {
+              "parameters": ["input_1", "input_2", "...", "input_n"],
+              "output-type": "boolean"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "input_i",
+              "type": "boolean"
             }
           ]
         },
@@ -4415,8 +5234,18 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["boolean", "boolean", "..."],
+              "parameters": ["input_1", "input_2"],
               "output-type": "boolean"
+            },
+            {
+              "parameters": ["input_1", "input_2", "...", "input_n"],
+              "output-type": "boolean"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "input_i",
+              "type": "boolean"
             }
           ]
         },
@@ -4435,8 +5264,14 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["value", "value", "collator?"],
+              "parameters": ["input"],
               "output-type": "boolean"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "input",
+              "type": "boolean"
             }
           ]
         },
@@ -4455,8 +5290,14 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["GeoJSON geometry"],
+              "parameters": ["geojson"],
               "output-type": "boolean"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "geojson",
+              "type": "GeoJSON object"
             }
           ]
         },
@@ -4475,8 +5316,14 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["string"],
+              "parameters": ["input"],
               "output-type": "boolean"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "input",
+              "type": "string"
             }
           ]
         },
@@ -4495,8 +5342,14 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["string"],
+              "parameters": ["input"],
               "output-type": "string"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "input",
+              "type": "string"
             }
           ]
         },
@@ -4515,8 +5368,14 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["string"],
+              "parameters": ["input"],
               "output-type": "string"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "input",
+              "type": "string"
             }
           ]
         },
@@ -4535,8 +5394,14 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["string", "string", "..."],
+              "parameters": ["input_1", "...", "input_n"],
               "output-type": "string"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "input_i",
+              "type": "any"
             }
           ]
         },
@@ -4557,6 +5422,12 @@
             {
               "parameters": ["collator"],
               "output-type": "string"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "collator",
+              "type": "collator"
             }
           ]
         },
