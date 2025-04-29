@@ -17,4 +17,6 @@ export function validateState(options: ValidateStateOptions) {
             ),
         ];
     }
+
+    return [];
 }
