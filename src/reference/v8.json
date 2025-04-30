@@ -2934,7 +2934,7 @@
         }
       },
       "array": {
-        "doc": "Asserts that the input is an array (optionally with a specific item type and length). If, when the input expression is evaluated, it is not of the asserted type, then this assertion will cause the whole expression to be aborted.",
+        "doc": "Asserts that the input is an array (optionally with a specific item type and length). If, when the input expression is evaluated, it is not of the asserted type or length, then this assertion will cause the whole expression to be aborted.",
         "syntax": {
           "variants": [
             {
@@ -3822,7 +3822,7 @@
         }
       },
       "to-boolean": {
-        "doc": "Converts the input value to a boolean. The result is `false` when then input is an empty string, 0, `false`, `null`, or `NaN`; otherwise it is `true`.",
+        "doc": "Converts the input value to a boolean. The result is `false` when the input is an empty string, 0, `false`, `null`, or `NaN`; otherwise it is `true`.",
         "syntax": {
           "variants": [
             {
@@ -4004,7 +4004,7 @@
         }
       },
       "has": {
-        "doc": "Tests for the presence of an property value in the current feature's properties, or from another object if a second argument is provided.\n\n - [Create and style clusters](https://maplibre.org/maplibre-gl-js/docs/examples/cluster/)",
+        "doc": "Tests for the presence of a property value in the current feature's properties, or from another object if a second argument is provided.\n\n - [Create and style clusters](https://maplibre.org/maplibre-gl-js/docs/examples/cluster/)",
         "syntax": {
           "variants": [
             {
