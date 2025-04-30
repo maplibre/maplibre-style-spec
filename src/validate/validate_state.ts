@@ -7,7 +7,7 @@ interface ValidateStateOptions {
     value: unknown;
 }
 
-export function validateState(options: ValidateStateOptions) {
+export function validateState(options: ValidateStateOptions): ValidationError[] {
     if (!isObjectLiteral(options.value)) {
         return [
             new ValidationError(
