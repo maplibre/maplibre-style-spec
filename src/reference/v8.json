@@ -2840,10 +2840,6 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["var_1_name", "var_1_value", "expression"],
-              "output-type": "any"
-            },
-            {
               "parameters": ["var_1_name", "var_1_value", "...", "var_n_name", "var_n_value", "expression"],
               "output-type": "any"
             }
@@ -3161,10 +3157,6 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["condition_1", "output_1", "fallback"],
-              "output-type": "any"
-            },
-            {
               "parameters": ["condition_1", "output_1", "...", "condition_n", "output_n", "fallback"],
               "output-type": "any"
             }
@@ -3200,10 +3192,6 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["input", "label_1", "output_1", "fallback"],
-              "output-type": "any"
-            },
-            {
               "parameters": ["input", "label_1", "output_1", "...", "label_n", "output_n", "fallback"],
               "output-type": "any"
             }
@@ -3227,7 +3215,7 @@
             {
               "name": "fallback",
               "type": "any",
-              "description": "The result when no label matches ths input."
+              "description": "The result when no label matches the input."
             }
           ]
         },
@@ -3245,10 +3233,6 @@
         "doc": "Evaluates each expression in turn until the first non-null value is obtained, and returns that value.\n\n - [Use a fallback image](https://maplibre.org/maplibre-gl-js/docs/examples/fallback-image/)",
         "syntax": {
           "variants": [
-            {
-              "parameters": ["expression_1"],
-              "output-type": "any"
-            },
             {
               "parameters": ["expression_1", "...", "expression_n"],
               "output-type": "any"
@@ -3275,10 +3259,6 @@
         "doc": "Produces discrete, stepped results by evaluating a piecewise-constant function defined by pairs of input and output values (\"stops\"). The `input` may be any numeric expression (e.g., `[\"get\", \"population\"]`). Stop inputs must be numeric literals in strictly ascending order.\n\nReturns the output value of the stop just less than the input, or the first output if the input is less than the first stop.\n\n - [Create and style clusters](https://maplibre.org/maplibre-gl-js/docs/examples/cluster/)",
         "syntax": {
           "variants": [
-            {
-              "parameters": ["input", "output_0", "stop_1_input", "stop_1_output"],
-              "output-type": "any"
-            },
             {
               "parameters": ["input", "output_0", "stop_1_input", "stop_1_output", "...", "stop_n_input", "stop_n_output"],
               "output-type": "any"
@@ -3322,10 +3302,6 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["interpolation_type", "input", "stop_1_input", "stop_1_output"],
-              "output-type": "any"
-            },
-            {
               "parameters": ["interpolation_type", "input", "stop_1_input", "stop_1_output", "...", "stop_n_input", "stop_n_output"],
               "output-type": "any"
             }
@@ -3368,10 +3344,6 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["interpolation_type", "input", "stop_1_input", "stop_1_output"],
-              "output-type": "color"
-            },
-            {
               "parameters": ["interpolation_type", "input", "stop_1_input", "stop_1_output", "...", "stop_n_input", "stop_n_output"],
               "output-type": "color"
             }
@@ -3409,10 +3381,6 @@
         "doc": "Produces continuous, smooth results by interpolating between pairs of input and output values (\"stops\"). Works like `interpolate`, but the output type must be `color`, and the interpolation is performed in the CIELAB color space.",
         "syntax": {
           "variants": [
-            {
-              "parameters": ["interpolation_type", "input", "stop_1_input", "stop_1_output"],
-              "output-type": "color"
-            },
             {
               "parameters": ["interpolation_type", "input", "stop_1_input", "stop_1_output", "...", "stop_n_input", "stop_n_output"],
               "output-type": "color"
@@ -3538,21 +3506,13 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["value"],
-              "output-type": "string"
-            },
-            {
-              "parameters": ["value", "fallback_1", "...", "fallback_n"],
+              "parameters": ["value_1", "...", "value_n"],
               "output-type": "string"
             }
           ],
           "parameters": [
             {
-              "name": "value",
-              "type": "any"
-            },
-            {
-              "name": "fallback_i",
+              "name": "value_i",
               "type": "any"
             }
           ]
@@ -3572,21 +3532,13 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["value"],
-              "output-type": "number"
-            },
-            {
-              "parameters": ["value", "fallback_1", "...", "fallback_n"],
+              "parameters": ["value_1", "...", "value_n"],
               "output-type": "number"
             }
           ],
           "parameters": [
             {
-              "name": "value",
-              "type": "any"
-            },
-            {
-              "name": "fallback_i",
+              "name": "value_i",
               "type": "any"
             }
           ]
@@ -3606,21 +3558,13 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["value"],
-              "output-type": "boolean"
-            },
-            {
-              "parameters": ["value", "fallback_1", "...", "fallback_n"],
+              "parameters": ["value_1", "...", "value_n"],
               "output-type": "boolean"
             }
           ],
           "parameters": [
             {
-              "name": "value",
-              "type": "any"
-            },
-            {
-              "name": "fallback_i",
+              "name": "value_i",
               "type": "any"
             }
           ]
@@ -3640,21 +3584,13 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["value"],
-              "output-type": "object"
-            },
-            {
-              "parameters": ["value", "fallback_1", "...", "fallback_n"],
+              "parameters": ["value_1", "...", "value_n"],
               "output-type": "object"
             }
           ],
           "parameters": [
             {
-              "name": "value",
-              "type": "any"
-            },
-            {
-              "name": "fallback_i",
+              "name": "value_i",
               "type": "any"
             }
           ]
@@ -3700,11 +3636,7 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["input_1", "options_1?"],
-              "output-type": "formatted"
-            },
-            {
-              "parameters": ["input_1", "options_1?", "...", "input_n", "options_n?"],
+              "parameters": ["input_1", "style_overrides_1?", "...", "input_n", "style_overrides_n?"],
               "output-type": "formatted"
             }
           ],
@@ -3714,7 +3646,7 @@
               "type": "string | image"
             },
             {
-              "name": "options_i",
+              "name": "style_overrides_i",
               "type": "{ \"text-font\"?: string, \"text-color\"?: color, \"font-scale\"?: number, \"vertical-align\"?: \"bottom\" | \"center\" | \"top\" }"
             }
           ]
@@ -3812,17 +3744,17 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["number", "options"],
+              "parameters": ["input", "format_options"],
               "output-type": "string"
             }
           ],
           "parameters": [
             {
-              "name": "number",
+              "name": "input",
               "type": "number"
             },
             {
-              "name": "options",
+              "name": "format_options",
               "type": "{ \"locale\"?: string, \"currency\"?: string, \"min-fraction-digits\"?: number, \"max-fraction-digits\"?: number }"
             }
           ]
@@ -3868,21 +3800,13 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["value"],
-              "output-type": "number"
-            },
-            {
-              "parameters": ["value", "fallback_1", "...", "fallback_n"],
+              "parameters": ["value_1", "...", "value_n"],
               "output-type": "number"
             }
           ],
           "parameters": [
             {
-              "name": "value",
-              "type": "any"
-            },
-            {
-              "name": "fallback_i",
+              "name": "value_i",
               "type": "any"
             }
           ]
@@ -3954,21 +3878,13 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["value"],
-              "output-type": "color"
-            },
-            {
-              "parameters": ["value", "fallback_1", "...", "fallback_n"],
+              "parameters": ["value_1", "...", "value_n"],
               "output-type": "color"
             }
           ],
           "parameters": [
             {
-              "name": "value",
-              "type": "any"
-            },
-            {
-              "name": "fallback_i",
+              "name": "value_i",
               "type": "any"
             }
           ]
@@ -5204,11 +5120,7 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["input_1", "input_2"],
-              "output-type": "boolean"
-            },
-            {
-              "parameters": ["input_1", "input_2", "...", "input_n"],
+              "parameters": ["input_1", "...", "input_n"],
               "output-type": "boolean"
             }
           ],
@@ -5234,11 +5146,7 @@
         "syntax": {
           "variants": [
             {
-              "parameters": ["input_1", "input_2"],
-              "output-type": "boolean"
-            },
-            {
-              "parameters": ["input_1", "input_2", "...", "input_n"],
+              "parameters": ["input_1", "...", "input_n"],
               "output-type": "boolean"
             }
           ],
