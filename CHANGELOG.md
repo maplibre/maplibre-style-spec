@@ -8,9 +8,9 @@
 
 ## 23.2.2
 
-### ✨ Features and improvements
-
 ### 🐞 Bug fixes
+
+- Fix state validation - no error case ([#1109](https://github.com/maplibre/maplibre-style-spec/pull/1109))
 
 ## 23.2.1
 
