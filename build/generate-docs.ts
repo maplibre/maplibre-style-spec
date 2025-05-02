@@ -512,7 +512,7 @@ function createExpressionsContent() {
             content += `\n### ${key}\n`;
             content += `${value.doc}\n`;
 
-            content += `\nSyntax:\n`;
+            content += '\nSyntax:\n';
             const syntax: {
                 variants: {
                     parameters: string[];
