@@ -10,7 +10,7 @@ import jsonStringify from 'json-stringify-pretty-compact';
 const BASE_PATH = 'docs';
 
 type JsonExpressionSyntax = {
-    variants: {
+    overloads: {
         parameters: string[];
         'output-type': string;
     }[];
@@ -140,8 +140,8 @@ function sdkSupportToMarkdown(support: JsonSdkSupport): string {
  */
 function expressionSyntaxToMarkdown(key: string, syntax: JsonExpressionSyntax) {
     let markdown = '\nSyntax:\n';
-    const codeBlockLines = syntax.variants.map((variant) => {
-        return `[${[`"${key}"`, ...variant.parameters].join(', ')}]: ${variant['output-type']}`;
+    const codeBlockLines = syntax.overloads.map((overload) => {
+        return `[${[`"${key}"`, ...overload.parameters].join(', ')}]: ${overload['output-type']}`;
     });
     markdown += `${codeBlockMarkdown(codeBlockLines.join('\n'), 'js')}\n`;
     for (const parameter of syntax.parameters ?? []) {
