@@ -70,7 +70,7 @@
     "@types/eslint": "^9.6.1",
     "@types/geojson": "^7946.0.16",
     "@types/jest": "^29.5.14",
-    "@types/node": "^22.15.2",
+    "@types/node": "^22.15.3",
     "@typescript-eslint/eslint-plugin": "^8.31.0",
     "@typescript-eslint/parser": "^8.31.0",
     "dts-bundle-generator": "^9.5.1",
