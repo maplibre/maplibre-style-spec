@@ -162,9 +162,9 @@ export type InterpolationSpecification =
 
 export type ExpressionSpecification =
     // types
-    | ['array', unknown | ExpressionSpecification] // array
-    | ['array', ExpressionInputType | ExpressionSpecification, unknown | ExpressionSpecification] // array
-    | ['array', ExpressionInputType | ExpressionSpecification, number | ExpressionSpecification, unknown | ExpressionSpecification] // array
+    | ['array', ExpressionSpecification] // array
+    | ['array', 'string' | 'number' | 'boolean', ExpressionSpecification] // array
+    | ['array', 'string' | 'number' | 'boolean', number, ExpressionSpecification] // array
     | ['boolean', ...(unknown | ExpressionSpecification)[], unknown | ExpressionSpecification] // boolean
     | CollatorExpressionSpecification
     | ['format', ...(string | ['image', ExpressionSpecification] | ExpressionSpecification | {'font-scale'?: number | ExpressionSpecification, 'text-font'?: string[] | ExpressionSpecification, 'text-color'?: ColorSpecification | ExpressionSpecification})[]] // string
@@ -189,8 +189,8 @@ export type ExpressionSpecification =
     | ['at', number | ExpressionSpecification, ExpressionSpecification]
     | ['get', string | ExpressionSpecification, (Record<string, unknown> | ExpressionSpecification)?]
     | ['has', string | ExpressionSpecification, (Record<string, unknown> | ExpressionSpecification)?]
-    | ['in', ExpressionInputType | ExpressionSpecification, ExpressionInputType | ExpressionSpecification]
-    | ['index-of', ExpressionInputType | ExpressionSpecification, ExpressionInputType | ExpressionSpecification] // number
+    | ['in', null | ExpressionInputType | ExpressionSpecification, string | ExpressionSpecification]
+    | ['index-of', null | ExpressionInputType | ExpressionSpecification, string | ExpressionSpecification, (number | ExpressionSpecification)?] // number
     | ['length', string | ExpressionSpecification]
     | ['slice', string | ExpressionSpecification, number | ExpressionSpecification, (number | ExpressionSpecification)?]
     // Decision
