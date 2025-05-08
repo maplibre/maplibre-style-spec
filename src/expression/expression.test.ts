@@ -39,6 +39,18 @@ describe('createPropertyExpression', () => {
         expect(value[0].message).toBe('"interpolate" expressions cannot be used with this property');
     });
 
+    test('sets globalStateRefs', () => {
+        const {value} = createPropertyExpression(['case', ['>', ['global-state','stateKey'], 0], 100, ['global-state', 'anotherStateKey']], {
+            type: 'number',
+            'property-type': 'data-driven',
+            expression: {
+                'interpolated': false,
+                'parameters': ['zoom', 'feature']
+            }
+        } as any as StylePropertySpecification) as {value: StylePropertyExpression};
+
+        expect(value.globalStateRefs).toEqual(new Set(['stateKey', 'anotherStateKey']));
+    });
 });
 
 describe('evaluate expression', () => {

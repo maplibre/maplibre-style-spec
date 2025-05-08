@@ -38,6 +38,7 @@ import {NumberArray} from './types/number_array';
 import {ColorArray} from './types/color_array';
 import {VariableAnchorOffsetCollection} from './types/variable_anchor_offset_collection';
 import {ProjectionDefinition} from './types/projection_definition';
+import {GlobalState} from './definitions/global_state';
 
 export type Feature = {
     readonly type: 0 | 1 | 2 | 3 | 'Unknown' | 'Point' | 'MultiPoint' | 'LineString' | 'MultiLineString' | 'Polygon' | 'MultiPolygon';
@@ -165,12 +166,14 @@ export function createExpression(expression: unknown, propertySpec?: StyleProper
 export class ZoomConstantExpression<Kind extends EvaluationKind> {
     kind: Kind;
     isStateDependent: boolean;
+    globalStateRefs: Set<string>;
     _styleExpression: StyleExpression;
 
     constructor(kind: Kind, expression: StyleExpression) {
         this.kind = kind;
         this._styleExpression = expression;
         this.isStateDependent = kind !== ('constant' as EvaluationKind) && !isStateConstant(expression.expression);
+        this.globalStateRefs = findGlobalStateRefs(expression.expression);
     }
 
     evaluateWithoutErrorHandling(
@@ -200,7 +203,7 @@ export class ZoomDependentExpression<Kind extends EvaluationKind> {
     kind: Kind;
     zoomStops: Array<number>;
     isStateDependent: boolean;
-
+    globalStateRefs: Set<string>;
     _styleExpression: StyleExpression;
     interpolationType: InterpolationType;
 
@@ -209,6 +212,7 @@ export class ZoomDependentExpression<Kind extends EvaluationKind> {
         this.zoomStops = zoomStops;
         this._styleExpression = expression;
         this.isStateDependent = kind !== ('camera' as EvaluationKind) && !isStateConstant(expression.expression);
+        this.globalStateRefs = findGlobalStateRefs(expression.expression);
         this.interpolationType = interpolationType;
     }
 
@@ -249,6 +253,7 @@ export function isZoomExpression(expression: any): expression is ZoomConstantExp
 
 export type ConstantExpression = {
     kind: 'constant';
+    globalStateRefs: Set<string>;
     readonly evaluate: (
         globals: GlobalProperties,
         feature?: Feature,
@@ -261,6 +266,7 @@ export type ConstantExpression = {
 export type SourceExpression = {
     kind: 'source';
     isStateDependent: boolean;
+    globalStateRefs: Set<string>;
     readonly evaluate: (
         globals: GlobalProperties,
         feature?: Feature,
@@ -273,6 +279,7 @@ export type SourceExpression = {
 
 export type CameraExpression = {
     kind: 'camera';
+    globalStateRefs: Set<string>;
     readonly evaluate: (
         globals: GlobalProperties,
         feature?: Feature,
@@ -288,6 +295,7 @@ export type CameraExpression = {
 export type CompositeExpression = {
     kind: 'composite';
     isStateDependent: boolean;
+    globalStateRefs: Set<string>;
     readonly evaluate: (
         globals: GlobalProperties,
         feature?: Feature,
@@ -406,6 +414,7 @@ export function normalizePropertyExpression<T>(
             constant = ProjectionDefinition.parse(value);
         }
         return {
+            globalStateRefs: new Set<string>(),
             kind: 'constant',
             evaluate: () => constant
         };
@@ -451,6 +460,17 @@ function findZoomCurve(expression: Expression): Step | Interpolate | ExpressionP
     });
 
     return result;
+}
+
+export function findGlobalStateRefs(expression: Expression, results = new Set<string>()): Set<string> {
+    if (expression instanceof GlobalState) {
+        results.add(expression.key);
+    }
+
+    expression.eachChild(childExpression => {
+        findGlobalStateRefs(childExpression, results);
+    });
+    return results;
 }
 
 function getExpectedType(spec: StylePropertySpecification): Type {
