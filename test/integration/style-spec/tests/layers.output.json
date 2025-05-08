@@ -60,7 +60,7 @@
     "line": 89
   },
   {
-    "message": "layers[12]: raster-dem source can only be used with layer type 'hillshade'.",
+    "message": "layers[12]: raster-dem source can only be used with layer type 'hillshade' or 'elevation'.",
     "line": 95
   },
   {
@@ -68,7 +68,7 @@
     "line": 105
   },
   {
-    "message": "layers[15].type: expected one of [fill, line, symbol, circle, heatmap, fill-extrusion, raster, hillshade, background], \"invalid\" found",
+    "message": "layers[15].type: expected one of [fill, line, symbol, circle, heatmap, fill-extrusion, raster, hillshade, elevation, background], \"invalid\" found",
     "line": 112
   },
   {
@@ -84,7 +84,7 @@
     "line": 148
   },
   {
-    "message": "layers[21].type: expected one of [fill, line, symbol, circle, heatmap, fill-extrusion, raster, hillshade, background], \"custom\" found",
+    "message": "layers[21].type: expected one of [fill, line, symbol, circle, heatmap, fill-extrusion, raster, hillshade, elevation, background], \"custom\" found",
     "line": 178
   },
   {

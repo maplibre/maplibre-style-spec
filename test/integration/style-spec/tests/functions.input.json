@@ -986,6 +986,22 @@
           ]
         }
       }
+    }, {
+      "id": "invalid expression - elevation-color must be zoom constant",
+      "type": "elevation",
+      "source": "source",
+      "source-layer": "layer",
+      "paint": {
+        "elevation-color": ["step", ["zoom"], ["step", ["elevation"], "red", 0.5, "blue"], 1, ["step", ["elevation"], "yellow", 0.5, "green"]]
+      }
+    }, {
+      "id": "invalid expression - elevation-color must not be a function",
+      "type": "elevation",
+      "source": "source",
+      "source-layer": "layer",
+      "paint": {
+        "elevation-color": { "stops": [[0, "red"], [1, "blue"]] }
+      }
     }
   ]
 }

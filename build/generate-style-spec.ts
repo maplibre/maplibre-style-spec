@@ -265,6 +265,8 @@ export type ExpressionSpecification =
     | ['zoom'] // number
     // Heatmap
     | ['heatmap-density'] // number
+    // Elevation
+    | ['elevation'] // number
 
 export type ExpressionFilterSpecification = boolean | ExpressionSpecification
 

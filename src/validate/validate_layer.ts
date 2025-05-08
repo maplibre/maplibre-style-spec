@@ -68,12 +68,14 @@ export function validateLayer(options) {
                 errors.push(new ValidationError(key, layer.source, `layer "${layer.id}" requires a raster source`));
             } else if (sourceType !== 'raster-dem' && type === 'hillshade') {
                 errors.push(new ValidationError(key, layer.source, `layer "${layer.id}" requires a raster-dem source`));
+            } else if (sourceType !== 'raster-dem' && type === 'elevation') {
+                errors.push(new ValidationError(key, layer.source, `layer "${layer.id}" requires a raster-dem source`));
             } else if (sourceType === 'raster' && type !== 'raster') {
                 errors.push(new ValidationError(key, layer.source, `layer "${layer.id}" requires a vector source`));
             } else if (sourceType === 'vector' && !layer['source-layer']) {
                 errors.push(new ValidationError(key, layer, `layer "${layer.id}" must specify a "source-layer"`));
-            } else if (sourceType === 'raster-dem' && type !== 'hillshade') {
-                errors.push(new ValidationError(key, layer.source, 'raster-dem source can only be used with layer type \'hillshade\'.'));
+            } else if (sourceType === 'raster-dem' && (type !== 'hillshade' && type !== 'elevation')) {
+                errors.push(new ValidationError(key, layer.source, 'raster-dem source can only be used with layer type \'hillshade\' or \'elevation\'.'));
             } else if (type === 'line' && layer.paint && layer.paint['line-gradient'] &&
                        (sourceType !== 'geojson' || !source.lineMetrics)) {
                 errors.push(new ValidationError(key, layer, `layer "${layer.id}" specifies a line-gradient, which requires a GeoJSON source with \`lineMetrics\` enabled.`));

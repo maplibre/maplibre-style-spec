@@ -2,6 +2,7 @@
 
 ### ✨ Features and improvements
 - Restructure expression syntax documentation ([#1112](https://github.com/maplibre/maplibre-style-spec/pull/1112))
+- Add new layer type: `elevation` ([#1067](https://github.com/maplibre/maplibre-style-spec/issues/1067))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
