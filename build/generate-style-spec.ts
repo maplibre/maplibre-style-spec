@@ -187,8 +187,9 @@ export type ExpressionSpecification =
     | ['properties'] // object
     // lookup
     | ['at', number | ExpressionSpecification, ExpressionSpecification]
-    | ['get', string | ExpressionSpecification, (Record<string, unknown> | ExpressionSpecification)?]
-    | ['has', string | ExpressionSpecification, (Record<string, unknown> | ExpressionSpecification)?]
+    | ['get', string | ExpressionSpecification, ExpressionSpecification?]
+    | ['global-state', string]
+    | ['has', string | ExpressionSpecification, ExpressionSpecification?]
     | ['in', null | ExpressionInputType | ExpressionSpecification, string | ExpressionSpecification]
     | ['index-of', null | ExpressionInputType | ExpressionSpecification, string | ExpressionSpecification, (number | ExpressionSpecification)?] // number
     | ['length', string | ExpressionSpecification]
