@@ -157,8 +157,8 @@ export type CollatorExpressionSpecification =
 
 export type InterpolationSpecification =
     | ['linear']
-    | ['exponential', number | ExpressionSpecification]
-    | ['cubic-bezier', number | ExpressionSpecification, number | ExpressionSpecification, number | ExpressionSpecification, number | ExpressionSpecification]
+    | ['exponential', number]
+    | ['cubic-bezier', number, number, number, number]
 
 export type ExpressionSpecification =
     // types
@@ -215,11 +215,11 @@ export type ExpressionSpecification =
     | ['distance', unknown | ExpressionSpecification]
     // Ramps, scales, curves
     | ['interpolate', InterpolationSpecification, number | ExpressionSpecification,
-        ...(number | number[] | ColorSpecification | ExpressionSpecification | ProjectionDefinitionSpecification )[]] // alternating number and number | number[] | ColorSpecification
+        ...(number | ColorSpecification | ExpressionSpecification | ProjectionDefinitionSpecification)[]] // alternating number and number | ColorSpecification | ExpressionSpecification | ProjectionDefinitionSpecification
     | ['interpolate-hcl', InterpolationSpecification, number | ExpressionSpecification,
-        ...(number | ColorSpecification)[]] // alternating number and ColorSpecificaton
+        ...(number | ColorSpecification | ExpressionSpecification)[]] // alternating number and ColorSpecificaton | ExpressionSpecification
     | ['interpolate-lab', InterpolationSpecification, number | ExpressionSpecification,
-        ...(number | ColorSpecification)[]] // alternating number and ColorSpecification
+        ...(number | ColorSpecification | ExpressionSpecification)[]] // alternating number and ColorSpecification | ExpressionSpecification
     | ['step', number | ExpressionSpecification, ExpressionInputType | ExpressionSpecification,
         ...(number | ExpressionInputType | ExpressionSpecification)[]] // alternating number and ExpressionInputType | ExpressionSpecification
     // Variable binding

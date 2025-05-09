@@ -39,7 +39,7 @@ describe('filter', () => {
         compileTimeCheck(['==', ['get', 'MILITARYAIRPORT'], 1]);
         compileTimeCheck(['interpolate', ['linear'], ['line-progress'], 0, 10, 0.5, 100, 1, 1000]); // number output
         compileTimeCheck(['interpolate', ['linear'], ['line-progress'], 0, 'red', 0.5, 'green', 1, 'blue']); // color output
-        compileTimeCheck(['interpolate', ['linear'], ['line-progress'], 0, [10, 20, 30], 0.5, [20, 30, 40], 1, [30, 40, 80]]); // number array output!
+        compileTimeCheck(['interpolate', ['linear'], ['line-progress'], 0, ['literal', [10, 20, 30]], 0.5, ['literal', [20, 30, 40]], 1, ['literal', [30, 40, 80]]]); // number array output
         compileTimeCheck(['interpolate-hcl', ['linear'], ['line-progress'], 0, 'red', 0.5, 'green', 1, 'blue']);
         compileTimeCheck(['interpolate-lab', ['linear'], ['line-progress'], 0, 'red', 0.5, 'green', 1, 'blue']);
         compileTimeCheck(['slice', 'myString', 0]);
