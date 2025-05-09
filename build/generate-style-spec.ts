@@ -165,10 +165,10 @@ export type ExpressionSpecification =
     | ['array', ExpressionSpecification] // array
     | ['array', 'string' | 'number' | 'boolean', ExpressionSpecification] // array
     | ['array', 'string' | 'number' | 'boolean', number, ExpressionSpecification] // array
-    | ['boolean', ...(unknown | ExpressionSpecification)[], unknown | ExpressionSpecification] // boolean
+    | ['boolean', unknown | ExpressionSpecification, ...(unknown | ExpressionSpecification)[]] // boolean
     | CollatorExpressionSpecification
-    | ['format', ...(string | ['image', ExpressionSpecification] | ExpressionSpecification | {'font-scale'?: number | ExpressionSpecification, 'text-font'?: string[] | ExpressionSpecification, 'text-color'?: ColorSpecification | ExpressionSpecification})[]] // string
-    | ['image', unknown | ExpressionSpecification] // image
+    | ['format', ...(string | ['image', ExpressionSpecification] | ExpressionSpecification | {'font-scale'?: number | ExpressionSpecification, 'text-font'?: ExpressionSpecification, 'text-color'?: ColorSpecification | ExpressionSpecification, 'vertical-align'?: 'bottom' | 'center' | 'top'})[]] // string
+    | ['image', string | ExpressionSpecification] // image
     | ['literal', unknown]
     | ['number', unknown | ExpressionSpecification, ...(unknown | ExpressionSpecification)[]] // number
     | ['number-format', number | ExpressionSpecification, {'locale'?: string | ExpressionSpecification, 'currency'?: string | ExpressionSpecification, 'min-fraction-digits'?: number | ExpressionSpecification, 'max-fraction-digits'?: number | ExpressionSpecification}] // string
@@ -178,6 +178,7 @@ export type ExpressionSpecification =
     | ['to-color', unknown | ExpressionSpecification, ...(unknown | ExpressionSpecification)[]] // color
     | ['to-number', unknown | ExpressionSpecification, ...(unknown | ExpressionSpecification)[]] // number
     | ['to-string', unknown | ExpressionSpecification] // string
+    | ['typeof', unknown | ExpressionSpecification] // string
     // feature data
     | ['accumulated']
     | ['feature-state', string]
