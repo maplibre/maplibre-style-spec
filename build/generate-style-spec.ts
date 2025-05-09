@@ -181,7 +181,7 @@ export type ExpressionSpecification =
     | ['typeof', unknown | ExpressionSpecification] // string
     // feature data
     | ['accumulated']
-    | ['feature-state', string]
+    | ['feature-state', string | ExpressionSpecification]
     | ['geometry-type'] // string
     | ['id']
     | ['line-progress'] // number
