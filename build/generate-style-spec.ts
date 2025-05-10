@@ -197,23 +197,22 @@ export type ExpressionSpecification =
     | ['slice', string | ExpressionSpecification, number | ExpressionSpecification, (number | ExpressionSpecification)?]
     // Decision
     | ['!', boolean | ExpressionSpecification] // boolean
-    | ['!=', ExpressionInputType | ExpressionSpecification, ExpressionInputType | ExpressionSpecification, CollatorExpressionSpecification?] // boolean
-    | ['<', ExpressionInputType | ExpressionSpecification, ExpressionInputType | ExpressionSpecification, CollatorExpressionSpecification?] // boolean
-    | ['<=', ExpressionInputType | ExpressionSpecification, ExpressionInputType | ExpressionSpecification, CollatorExpressionSpecification?] // boolean
-    | ['==', ExpressionInputType | ExpressionSpecification, ExpressionInputType | ExpressionSpecification, CollatorExpressionSpecification?] // boolean
-    | ['>', ExpressionInputType | ExpressionSpecification, ExpressionInputType | ExpressionSpecification, CollatorExpressionSpecification?] // boolean
-    | ['>=', ExpressionInputType | ExpressionSpecification, ExpressionInputType | ExpressionSpecification, CollatorExpressionSpecification?] // boolean
+    | ['!=', null | ExpressionInputType | ExpressionSpecification, null | ExpressionInputType | ExpressionSpecification, CollatorExpressionSpecification?] // boolean
+    | ['<', string | number | ExpressionSpecification, string | number | ExpressionSpecification, CollatorExpressionSpecification?] // boolean
+    | ['<=', string | number | ExpressionSpecification, string | number | ExpressionSpecification, CollatorExpressionSpecification?] // boolean
+    | ['==', null | ExpressionInputType | ExpressionSpecification, null | ExpressionInputType | ExpressionSpecification, CollatorExpressionSpecification?] // boolean
+    | ['>', string | number | ExpressionSpecification, string | number | ExpressionSpecification, CollatorExpressionSpecification?] // boolean
+    | ['>=', string | number | ExpressionSpecification, string | number | ExpressionSpecification, CollatorExpressionSpecification?] // boolean
     | ['all', ...(boolean | ExpressionSpecification)[]] // boolean
     | ['any', ...(boolean | ExpressionSpecification)[]] // boolean
-    | ['case', boolean | ExpressionSpecification, ExpressionInputType | ExpressionSpecification,
-        ...(boolean | ExpressionInputType | ExpressionSpecification)[], ExpressionInputType | ExpressionSpecification]
+    | ['case', boolean | ExpressionSpecification, null | ExpressionInputType | ExpressionSpecification,
+        ...(boolean | null | ExpressionInputType | ExpressionSpecification)[], null | ExpressionInputType | ExpressionSpecification]
     | ['coalesce', ...(ExpressionInputType | ExpressionSpecification)[]] // at least two inputs required
-    | ['match', ExpressionInputType | ExpressionSpecification,
-        ExpressionInputType | ExpressionInputType[], ExpressionInputType | ExpressionSpecification,
-        ...(ExpressionInputType | ExpressionInputType[] | ExpressionSpecification)[], // repeated as above
-        ExpressionInputType | ExpressionSpecification]
-    | ['within', unknown | ExpressionSpecification]
-    | ['distance', unknown | ExpressionSpecification]
+    | ['match', string | number | ExpressionSpecification,
+        string | number | string[] | number[], null | ExpressionInputType | ExpressionSpecification,
+        ...(string | number | string[] | number[] | null | ExpressionInputType | ExpressionSpecification)[], // repeated as above
+        null | ExpressionInputType | ExpressionSpecification]
+    | ['within', GeoJSON.GeoJSON]
     // Ramps, scales, curves
     | ['interpolate', InterpolationSpecification, number | ExpressionSpecification,
         ...(number | ColorSpecification | ExpressionSpecification | ProjectionDefinitionSpecification)[]] // alternating number and number | ColorSpecification | ExpressionSpecification | ProjectionDefinitionSpecification
@@ -249,7 +248,7 @@ export type ExpressionSpecification =
     | ['atan', number | ExpressionSpecification] // number
     | ['ceil', number | ExpressionSpecification] // number
     | ['cos', number | ExpressionSpecification] // number
-    | ['distance', Record<string, unknown> | ExpressionSpecification] // number
+    | ['distance', GeoJSON.GeoJSON] // number
     | ['ExpressionSpecification'] // number
     | ['floor', number | ExpressionSpecification] // number
     | ['ln', number | ExpressionSpecification] // number
