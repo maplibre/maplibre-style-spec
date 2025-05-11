@@ -249,7 +249,7 @@ export type ExpressionSpecification =
     | ['ceil', number | ExpressionSpecification] // number
     | ['cos', number | ExpressionSpecification] // number
     | ['distance', GeoJSON.GeoJSON] // number
-    | ['ExpressionSpecification'] // number
+    | ['e'] // number
     | ['floor', number | ExpressionSpecification] // number
     | ['ln', number | ExpressionSpecification] // number
     | ['ln2'] // number
