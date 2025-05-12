@@ -3199,12 +3199,12 @@
           "parameters": [
             {
               "name": "input",
-              "type": "any",
+              "type": "string | number",
               "description": "Any expression."
             },
             {
               "name": "label_i",
-              "type": "string literal | array<string literal> | array<number literal>",
+              "type": "string literal | number literal | array<string literal> | array<number literal>",
               "description": "The i-th literal value or array of literal values to match the input against."
             },
             {
@@ -3298,12 +3298,12 @@
         }
       },
       "interpolate": {
-        "doc": "Produces continuous, smooth results by interpolating between pairs of input and output values (\"stops\"). The `input` may be any numeric expression (e.g., `[\"get\", \"population\"]`). Stop inputs must be numeric literals in strictly ascending order. The output type must be `number`, `array<number>`, or `color`.\n\nInterpolation types:\n\n- `[\"linear\"]`, or an expression returning one of those types: Interpolates linearly between the pair of stops just less than and just greater than the input.\n\n- `[\"exponential\", base]`: Interpolates exponentially between the stops just less than and just greater than the input. `base` controls the rate at which the output increases: higher values make the output increase more towards the high end of the range. With values close to 1 the output increases linearly.\n\n- `[\"cubic-bezier\", x1, y1, x2, y2]`: Interpolates using the cubic bezier curve defined by the given control points.\n\n - [Animate map camera around a point](https://maplibre.org/maplibre-gl-js/docs/examples/animate-camera-around-point/)\n\n - [Change building color based on zoom level](https://maplibre.org/maplibre-gl-js/docs/examples/change-building-color-based-on-zoom-level/)\n\n - [Create a heatmap layer](https://maplibre.org/maplibre-gl-js/docs/examples/heatmap-layer/)\n\n - [Visualize population density](https://maplibre.org/maplibre-gl-js/docs/examples/visualize-population-density/)",
+        "doc": "Produces continuous, smooth results by interpolating between pairs of input and output values (\"stops\"). The `input` may be any numeric expression (e.g., `[\"get\", \"population\"]`). Stop inputs must be numeric literals in strictly ascending order. The output type must be `number`, `array<number>`, `color`, `array<color>`, or `projection`.\n\nInterpolation types:\n\n- `[\"linear\"]`, or an expression returning one of those types: Interpolates linearly between the pair of stops just less than and just greater than the input.\n\n- `[\"exponential\", base]`: Interpolates exponentially between the stops just less than and just greater than the input. `base` controls the rate at which the output increases: higher values make the output increase more towards the high end of the range. With values close to 1 the output increases linearly.\n\n- `[\"cubic-bezier\", x1, y1, x2, y2]`: Interpolates using the cubic bezier curve defined by the given control points.\n\n - [Animate map camera around a point](https://maplibre.org/maplibre-gl-js/docs/examples/animate-camera-around-point/)\n\n - [Change building color based on zoom level](https://maplibre.org/maplibre-gl-js/docs/examples/change-building-color-based-on-zoom-level/)\n\n - [Create a heatmap layer](https://maplibre.org/maplibre-gl-js/docs/examples/heatmap-layer/)\n\n - [Visualize population density](https://maplibre.org/maplibre-gl-js/docs/examples/visualize-population-density/)",
         "syntax": {
           "overloads": [
             {
               "parameters": ["interpolation_type", "input", "stop_1_input", "stop_1_output", "...", "stop_n_input", "stop_n_output"],
-              "output-type": "any"
+              "output-type": "number | array<number> | color | array<color> | projection"
             }
           ],
           "parameters": [
@@ -3324,7 +3324,7 @@
             },
             {
               "name": "stop_i_output",
-              "type": "number | array<number> | color",
+              "type": "number | array<number> | color | array<color> | projection",
               "description": "The output value corresponding to the i-th stop."
             }
           ]
@@ -3340,12 +3340,12 @@
         }
       },
       "interpolate-hcl": {
-        "doc": "Produces continuous, smooth results by interpolating between pairs of input and output values (\"stops\"). Works like `interpolate`, but the output type must be `color`, and the interpolation is performed in the Hue-Chroma-Luminance color space.",
+        "doc": "Produces continuous, smooth results by interpolating between pairs of input and output values (\"stops\"). Works like `interpolate`, but the output type must be `color` or `array<color>`, and the interpolation is performed in the Hue-Chroma-Luminance color space.",
         "syntax": {
           "overloads": [
             {
               "parameters": ["interpolation_type", "input", "stop_1_input", "stop_1_output", "...", "stop_n_input", "stop_n_output"],
-              "output-type": "color"
+              "output-type": "color | array<color>"
             }
           ],
           "parameters": [
@@ -3363,7 +3363,7 @@
             },
             {
               "name": "stop_i_output",
-              "type": "color"
+              "type": "color | array<color>"
             }
           ]
         },
@@ -3378,12 +3378,12 @@
         }
       },
       "interpolate-lab": {
-        "doc": "Produces continuous, smooth results by interpolating between pairs of input and output values (\"stops\"). Works like `interpolate`, but the output type must be `color`, and the interpolation is performed in the CIELAB color space.",
+        "doc": "Produces continuous, smooth results by interpolating between pairs of input and output values (\"stops\"). Works like `interpolate`, but the output type must be `color` or `array<color>`, and the interpolation is performed in the CIELAB color space.",
         "syntax": {
           "overloads": [
             {
               "parameters": ["interpolation_type", "input", "stop_1_input", "stop_1_output", "...", "stop_n_input", "stop_n_output"],
-              "output-type": "color"
+              "output-type": "color | array<color>"
             }
           ],
           "parameters": [
@@ -3401,7 +3401,7 @@
             },
             {
               "name": "stop_i_output",
-              "type": "color"
+              "type": "color | array<color>"
             }
           ]
         },
