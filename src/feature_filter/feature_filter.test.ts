@@ -175,6 +175,13 @@ describe('filter', () => {
 
 });
 
+describe('getGlobalStateRefs', () => {
+    test('returns global-state keys', () => {
+        const filter = featureFilter(['==', ['global-state', 'x'], ['zoom']]);
+        expect(filter.getGlobalStateRefs()).toEqual(new Set(['x']));
+    });
+});
+
 describe('legacy filter detection', () => {
     test('definitely legacy filters', () => {
         // Expressions with more than two arguments.
