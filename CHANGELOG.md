@@ -10,8 +10,7 @@
 
 ### ✨ Features and improvements
 - Restructure expression syntax documentation ([#1112](https://github.com/maplibre/maplibre-style-spec/pull/1112))
-
-### 🐞 Bug fixes
+- Add global state ref support ([#1120](https://github.com/maplibre/maplibre-style-spec/pull/1120))
 
 ## 23.2.2
 
