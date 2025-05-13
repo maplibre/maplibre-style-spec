@@ -32,7 +32,7 @@
     "compile": "tsc",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "prepare": "npm run generate-style-spec && npm run generate-typings && npm run build"
+    "prepare": "npm run generate-style-spec"
   },
   "repository": {
     "type": "git",
