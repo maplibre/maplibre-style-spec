@@ -1,7 +1,7 @@
 import {parseCssColor} from './parse_css_color';
 import * as colorSpacesModule from './color_spaces';
 import {RGBColor} from './color_spaces';
-
+import {describe, test, expect, afterEach, vi} from 'vitest';
 describe('parseCssColor', () => {
 
     // by changing the parse function, we can verify external css color parsers against our requirements
@@ -225,11 +225,11 @@ describe('parseCssColor', () => {
     describe('HSL functions "hsl()" and "hsla()"', () => {
 
         afterEach(() => {
-            jest.resetAllMocks();
+            vi.resetAllMocks();
         });
 
         test('should parse valid hsl values', () => {
-            jest.spyOn(colorSpacesModule, 'hslToRgb').mockImplementation((hslColor) => hslColor);
+            vi.spyOn(colorSpacesModule, 'hslToRgb').mockImplementation((hslColor) => hslColor);
 
             expect(parseCssColor('hsl(300,100%,25.1%)')).toEqual([300, 100, 25.1, 1]);
             expect(parseCssColor('hsl(300,100%,25.1%)')).toEqual(parseCssColor('hsla(300,100%,25.1%,1)'));

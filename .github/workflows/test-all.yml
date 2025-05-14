@@ -34,14 +34,15 @@ jobs:
         with:
           node-version-file: '.nvmrc'
       - run: npm ci
-      - run: npm run jest-ci -- --coverage --coverageDirectory=coverage-unit --coverageReporters json --selectProjects unit
-      - run: npm run jest-ci -- --coverage --coverageDirectory=coverage-integration --coverageReporters json --selectProjects integration
+      - run: npm run test-unit-ci
+      - run: npm run test-integration-ci
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v5
         with:
-          files: ${{ github.workspace }}/coverage-unit/coverage-final.json, ${{ github.workspace }}/coverage-integration/coverage-final.json
+          files: ${{ github.workspace }}/coverage/vitest/unit/coverage-final.json, ${{ github.workspace }}/coverage/vitest/integration/coverage-final.json
           verbose: true
           token: ${{ secrets.CODECOV_TOKEN }}
+          
   packaging-tests:
     name: Packaging and Build tests
     strategy:
@@ -57,5 +58,10 @@ jobs:
       - run: npm run generate-style-spec
       - run: npm run generate-typings
       - run: npm run build
-      - run: npm run jest-ci -- --selectProjects build
-        if: success() || failure()
+      - run: npm run test-build-ci
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          files: ${{ github.workspace }}/coverage/vitest/build/coverage-final.json
+          verbose: true
+          token: ${{ secrets.CODECOV_TOKEN }}

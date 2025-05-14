@@ -5,6 +5,7 @@ import {Formatted} from '../expression/types/formatted';
 import {Padding} from '../expression/types/padding';
 import {NumberArray} from '../expression/types/number_array';
 import {ColorArray} from '../expression/types/color_array';
+import {describe, test, expect} from 'vitest';
 
 describe('binary search', () => {
     test('will eventually terminate.', () => {
@@ -1192,7 +1193,7 @@ describe('identity function', () => {
 
 });
 
-describe('unknown function', () => {
+test('unknown function', () => {
     expect(() => createFunction({
         type: 'nonesuch', stops: [[]]
     }, {

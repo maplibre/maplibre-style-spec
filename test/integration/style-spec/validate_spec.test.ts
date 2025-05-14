@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import {validateStyle as validate} from '../../../src/validate_style';
 import {latest} from '../../../src/reference/latest';
-
+import {describe, expect, test} from 'vitest';
 const UPDATE = !!process.env.UPDATE;
 
 describe('validate_spec', () => {

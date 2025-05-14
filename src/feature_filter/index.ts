@@ -1,4 +1,4 @@
-import {createExpression} from '../expression';
+import {createExpression, findGlobalStateRefs} from '../expression';
 import type {GlobalProperties, Feature} from '../expression';
 import {ICanonicalTileID} from '../tiles_and_coordinates';
 import {StylePropertySpecification} from '..';
@@ -13,6 +13,7 @@ type FilterExpression = (
 export type FeatureFilter = {
     filter: FilterExpression;
     needGeometry: boolean;
+    getGlobalStateRefs: () => Set<string>;
 };
 
 export function isExpressionFilter(filter: any): filter is ExpressionFilterSpecification {
@@ -79,7 +80,7 @@ const filterSpec = {
  */
 export function featureFilter(filter: any): FeatureFilter {
     if (filter === null || filter === undefined) {
-        return {filter: () => true, needGeometry: false};
+        return {filter: () => true, needGeometry: false, getGlobalStateRefs: () => new Set()};
     }
 
     if (!isExpressionFilter(filter)) {
@@ -91,8 +92,11 @@ export function featureFilter(filter: any): FeatureFilter {
         throw new Error(compiled.value.map(err => `${err.key}: ${err.message}`).join(', '));
     } else {
         const needGeometry = geometryNeeded(filter);
-        return {filter: (globalProperties: GlobalProperties, feature: Feature, canonical?: ICanonicalTileID) => compiled.value.evaluate(globalProperties, feature, {}, canonical),
-            needGeometry};
+        return {
+            filter: (globalProperties: GlobalProperties, feature: Feature, canonical?: ICanonicalTileID) => compiled.value.evaluate(globalProperties, feature, {}, canonical),
+            needGeometry,
+            getGlobalStateRefs: () => findGlobalStateRefs(compiled.value.expression)
+        };
     }
 }
 

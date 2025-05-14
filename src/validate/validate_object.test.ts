@@ -1,6 +1,7 @@
 import {validate} from './validate';
 import {validateObject} from './validate_object';
 import v8 from '../reference/v8.json' with {type: 'json'};
+import {describe, test, expect} from 'vitest';
 
 describe('Validate object', () => {
     test('Should not throw an unexpected error if object prototype keys are used as keys', () => {

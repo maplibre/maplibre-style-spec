@@ -1,4 +1,5 @@
 import {VariableAnchorOffsetCollection} from './variable_anchor_offset_collection';
+import {describe, test, expect} from 'vitest';
 
 describe('VariableAnchorOffsetCollection', () => {
     test('VariableAnchorOffsetCollection.parse', () => {
