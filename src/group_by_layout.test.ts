@@ -1,4 +1,5 @@
 import {groupByLayout} from './group_by_layout';
+import {describe, test, expect} from 'vitest';
 
 describe('group by layout', () => {
     test('group layers whose ref properties are identical', () => {

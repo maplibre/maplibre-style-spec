@@ -1,4 +1,5 @@
 import {migrateColors} from './migrate_colors';
+import {describe, test, expect} from 'vitest';
 
 describe('migrate colors', () => {
 
