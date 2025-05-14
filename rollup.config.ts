@@ -1,15 +1,12 @@
 import replace from '@rollup/plugin-replace';
-import commonjs from '@rollup/plugin-commonjs';
-import {RollupOptions} from 'rollup';
 import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
-import json from '@rollup/plugin-json';
 import minifyStyleSpec from './build/rollup_plugin_minify_style_spec';
 import shebang from 'rollup-plugin-preserve-shebang';
+import {defineConfig} from 'rolldown';
 
 const rollupPlugins = [
     minifyStyleSpec(),
-    json(),
     resolve({
         browser: true
     }),
@@ -22,11 +19,10 @@ const rollupPlugins = [
             '_token_stack:': ''
         }
     }),
-    typescript(),
-    commonjs()
+    typescript()
 ];
 
-const config: RollupOptions[] = [{
+const config = defineConfig([{
     input: './src/index.ts',
     output: [{
         file: 'dist/index.mjs',
@@ -97,5 +93,5 @@ const config: RollupOptions[] = [{
         }
     }],
     plugins: [...rollupPlugins, shebang()]
-}];
+}]);
 export default config;
