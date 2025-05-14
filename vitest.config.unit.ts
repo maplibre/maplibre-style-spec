@@ -3,7 +3,7 @@ import {defineConfig} from 'vitest/config';
 export default defineConfig({
     test: {
         name: 'unit',
-        environment: 'jsdom',
+        environment: 'node',
         environmentOptions: {
             jsdom: {
                 url: 'http://localhost/',
