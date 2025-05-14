@@ -4,14 +4,6 @@ export default defineConfig({
     test: {
         name: 'unit',
         environment: 'node',
-        environmentOptions: {
-            jsdom: {
-                url: 'http://localhost/',
-            }
-        },
-        setupFiles: [
-            'vitest-webgl-canvas-mock'
-        ],
         include: [
             'src/**/*.test.{ts,js}'
         ],
