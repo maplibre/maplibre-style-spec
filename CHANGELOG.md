@@ -4,6 +4,7 @@
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
+- Add missing `global-state` expression typing ([#1130](https://github.com/maplibre/maplibre-style-spec/pull/1130))
 - _...Add new stuff here..._
 
 ## 23.2.3
