@@ -4220,13 +4220,15 @@
       },
       "elevation": {
         "doc": "Gets the elevation of a pixel (in meters above the vertical datum reference of the `raster-dem` tiles) from a `raster-dem` source. Can only be used in the `color-relief` property.",
-        "example": {
-          "syntax": {
-            "method": [],
-            "result": "number"
-          },
-          "value": ["elevation"]
+        "syntax": {
+          "overloads": [
+            {
+              "parameters": [],
+              "output-type": "number"
+            }
+          ]
         },
+        "example": ["elevation"],
         "group": "Color Relief",
         "sdk-support": {
           "basic functionality": {
