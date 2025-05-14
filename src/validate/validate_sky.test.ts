@@ -2,6 +2,7 @@ import {validateSky} from './validate_sky';
 import {validate} from './validate';
 import v8 from '../reference/v8.json' with {type: 'json'};
 import {SkySpecification} from '../types.g';
+import {describe, test, expect, it} from 'vitest';
 
 describe('Validate sky', () => {
     it('Should pass when value is undefined', () => {

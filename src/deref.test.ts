@@ -1,4 +1,5 @@
 import {derefLayers} from './deref';
+import {describe, test, expect} from 'vitest';
 
 describe('deref', () => {
     test('derefs a ref layer which follows its parent', () => {

@@ -5,6 +5,7 @@ import {Color} from './types/color';
 import {ColorArray} from './types/color_array';
 import {NumberArray} from './types/number_array';
 import {Padding} from './types/padding';
+import {describe, test, expect} from 'vitest';
 
 function stylePropertySpecification(type): StylePropertySpecification {
     return {

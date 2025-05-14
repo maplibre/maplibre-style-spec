@@ -1,7 +1,7 @@
 import {readdir} from 'fs/promises';
 import {latest} from '../../src/reference/latest';
 import fs from 'fs';
-
+import {describe, test, expect} from 'vitest';
 const minBundle = fs.readFileSync('dist/index.mjs', 'utf8');
 
 describe('@maplibre/maplibre-gl-style-spec npm package', () => {

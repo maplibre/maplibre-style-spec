@@ -5,6 +5,7 @@ import {ICanonicalTileID} from '../tiles_and_coordinates';
 import {ExpressionFilterSpecification, ExpressionInputType, ExpressionSpecification, FilterSpecification} from '../types.g';
 import {Feature} from '../expression';
 import {getGeometry} from '../../test/lib/geometry';
+import {describe, test, expect, vi, beforeEach} from 'vitest';
 
 describe('filter', () => {
     test('expressions transpilation test', () => {
@@ -93,7 +94,7 @@ describe('filter', () => {
     });
 
     test('expression, compare two properties', () => {
-        jest.spyOn(console, 'warn').mockImplementation(() => { });
+        vi.spyOn(console, 'warn').mockImplementation(() => { });
         const f = featureFilter(['==', ['string', ['get', 'x']], ['string', ['get', 'y']]]).filter;
         expect(f({zoom: 0}, {properties: {x: 1, y: 1}} as any as Feature)).toBe(false);
         expect(f({zoom: 0}, {properties: {x: '1', y: '1'}} as any as Feature)).toBe(true);
@@ -210,7 +211,7 @@ describe('legacy filter detection', () => {
 
 describe('convert legacy filters to expressions', () => {
     beforeEach(() => {
-        jest.spyOn(console, 'warn').mockImplementation(() => { });
+        vi.spyOn(console, 'warn').mockImplementation(() => { });
     });
 
     legacyFilterTests(f => {

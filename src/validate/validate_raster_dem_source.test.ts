@@ -2,7 +2,7 @@ import {validate} from './validate';
 import v8 from '../reference/v8.json' with {type: 'json'};
 import {validateRasterDEMSource} from './validate_raster_dem_source';
 import {RasterDEMSourceSpecification} from '../types.g';
-
+import {describe, test, expect} from 'vitest';
 function checkErrorMessage(message: string, key: string, expectedType: string, foundType: string) {
     expect(message).toContain(key);
     expect(message).toContain(expectedType);

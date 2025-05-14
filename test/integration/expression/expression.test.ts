@@ -13,6 +13,7 @@ import {ExpressionParsingError} from '../../../src/expression/parsing_error';
 import {Result} from '../../../src/util/result';
 import {getGeometry} from '../../lib/geometry';
 import {deepEqual, stripPrecision} from '../../lib/json-diff';
+import {describe, expect, test} from 'vitest';
 
 const DECIMAL_SIGNIFICANT_FIGURES =  6;
 

@@ -1,5 +1,5 @@
 import {format} from './format';
-
+import {describe, test, expect} from 'vitest';
 function roundtrip(style) {
     return JSON.parse(format(style));
 }
