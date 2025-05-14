@@ -1,5 +1,6 @@
 
 import * as spec from '.';
+import {describe, test, expect} from 'vitest';
 
 describe('style-spec', () => {
     ['v8', 'latest'].forEach((version) => {

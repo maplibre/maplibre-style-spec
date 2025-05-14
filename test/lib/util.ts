@@ -1,4 +1,5 @@
 import {Color} from '../../src/expression/types/color';
+import {expect} from 'vitest';
 
 /**
  * @param toTest Color instance to test

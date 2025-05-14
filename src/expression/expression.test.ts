@@ -6,6 +6,7 @@ import {ExpressionParsingError} from './parsing_error';
 import {getGeometry} from '../../test/lib/geometry';
 import {VariableAnchorOffsetCollection} from './types/variable_anchor_offset_collection';
 import {expectToMatchColor} from '../../test/lib/util';
+import {describe, test, expect, vi, beforeEach} from 'vitest';
 
 // filter out internal "error" and "filter-*" expressions from definition list
 const filterExpressionRegex = /filter-/;
@@ -13,7 +14,7 @@ const definitionList = Object.keys(expressions).filter((expression) => {
     return expression !== 'error' && !filterExpressionRegex.exec(expression);
 }).sort();
 
-describe('v8.json includes all definitions from style-spec', () => {
+test('v8.json includes all definitions from style-spec', () => {
     const v8List = Object.keys(v8.expression_name.values);
     const v8SupportedList = v8List.filter((expression) => {
         //filter out expressions that are not supported in GL-JS
@@ -66,7 +67,7 @@ describe('evaluate expression', () => {
             }
         } as any as StylePropertySpecification) as {value: StylePropertyExpression};
 
-        jest.spyOn(console, 'warn').mockImplementation(() => { });
+        vi.spyOn(console, 'warn').mockImplementation(() => { });
 
         expect(value.kind).toBe('source');
 
@@ -86,7 +87,7 @@ describe('evaluate expression', () => {
             }
         }) as {value: StylePropertyExpression};
 
-        const warnMock = jest.spyOn(console, 'warn').mockImplementation(() => {});
+        const warnMock = vi.spyOn(console, 'warn').mockImplementation(() => {});
 
         expect(value.kind).toBe('source');
 

@@ -1,4 +1,5 @@
 import {validateState} from './validate_state';
+import {describe, test, expect} from 'vitest';
 
 describe('Validate state', () => {
     test('Should return no error if type is an object', () => {

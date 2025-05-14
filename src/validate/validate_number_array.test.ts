@@ -1,5 +1,6 @@
 import {validate} from './validate';
 import {validateNumberArray} from './validate_number_array';
+import {describe, test, expect} from 'vitest';
 
 describe('Validate NumberArray', () => {
     test('Should return error if type is not number or array', () => {

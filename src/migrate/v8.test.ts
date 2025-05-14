@@ -1,4 +1,5 @@
 import {migrateV8 as migrate} from './v8';
+import {describe, test, expect} from 'vitest';
 
 describe('migrate v8', () => {
     test('split text-font', () => {

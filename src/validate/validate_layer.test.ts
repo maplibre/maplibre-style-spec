@@ -1,6 +1,7 @@
 import {validate} from './validate';
 import {validateLayer} from './validate_layer';
 import v8 from '../reference/v8.json' with {type: 'json'};
+import {expect, test} from 'vitest';
 
 test.each([
     ['number', 1],

@@ -1,3 +1,5 @@
+import {describe, test, expect, afterEach, vi, beforeAll} from 'vitest';
+
 describe('get_own', () => {
     describe.each([
         [
@@ -5,14 +7,14 @@ describe('get_own', () => {
             function beforeAllFn() {
                 // clear require cache before running tests as the implementation of
                 // hasOwn depends on whether Object.hasOwn is available
-                jest.resetModules();
+                vi.resetModules();
                 expect(Object.hasOwn).toBeInstanceOf(Function);
             },
         ],
         [
             'when Object.hasOwn is not available',
             function beforeAllFn() {
-                jest.resetModules();
+                vi.resetModules();
                 delete Object.hasOwn;
                 expect(Object.hasOwn).toBeUndefined();
             },
@@ -28,7 +30,7 @@ describe('get_own', () => {
         });
 
         afterEach(() => {
-            jest.resetModules();
+            vi.resetModules();
         });
 
         test('returns value for own properties', () => {

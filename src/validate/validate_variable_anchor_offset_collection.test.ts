@@ -1,6 +1,7 @@
 import {validate} from './validate';
 import {validateVariableAnchorOffsetCollection} from './validate_variable_anchor_offset_collection';
 import {latest} from '../reference/latest';
+import {describe, test, expect} from 'vitest';
 
 describe('Validate variableAnchorOffsetCollection', () => {
     const validateOpts = {

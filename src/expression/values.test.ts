@@ -8,6 +8,7 @@ import {Padding} from './types/padding';
 import {ProjectionDefinition} from './types/projection_definition';
 import {VariableAnchorOffsetCollection} from './types/variable_anchor_offset_collection';
 import {typeOf} from './values';
+import {describe, test, expect} from 'vitest';
 
 describe('typeOf', () => {
     test('typeOf', () => {

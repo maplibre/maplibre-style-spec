@@ -1,4 +1,5 @@
 import {findStopLessThanOrEqualTo} from './stops';
+import {describe, test, expect} from 'vitest';
 
 describe('findStopLessThanOrEqualTo', () => {
     test('When the input > all stops it returns the last stop.', () => {
