@@ -16,7 +16,7 @@
     "strict": false,
     "target": "ES2019",
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
-    "types": ["node", "jest", "geojson"]
+    "types": ["node", "vitest/globals", "geojson"]
   },
   "ts-node": {
     "experimentalSpecifierResolution": "node",
