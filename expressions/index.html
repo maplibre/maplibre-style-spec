@@ -1287,6 +1287,30 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#color-relief" class="md-nav__link">
+    <span class="md-ellipsis">
+      Color Relief
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Color Relief">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#elevation" class="md-nav__link">
+    <span class="md-ellipsis">
+      elevation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#string_1" class="md-nav__link">
     <span class="md-ellipsis">
       String
@@ -2531,6 +2555,30 @@
   <a href="#heatmap-density" class="md-nav__link">
     <span class="md-ellipsis">
       heatmap-density
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#color-relief" class="md-nav__link">
+    <span class="md-ellipsis">
+      Color Relief
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Color Relief">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#elevation" class="md-nav__link">
+    <span class="md-ellipsis">
+      elevation
     </span>
   </a>
   
@@ -5372,17 +5420,44 @@
 </tr>
 </tbody>
 </table>
+<h2 id="color-relief">Color Relief<a class="headerlink" href="#color-relief" title="Permanent link">&para;</a></h2>
+<h3 id="elevation">elevation<a class="headerlink" href="#elevation" title="Permanent link">&para;</a></h3>
+<p>Gets the elevation of a pixel (in meters above the vertical datum reference of the <code>raster-dem</code> tiles) from a <code>raster-dem</code> source. Can only be used in the <code>color-relief-color</code> property of a <code>color-relief</code> layer.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-167-1"><a id="__codelineno-167-1" name="__codelineno-167-1" href="#__codelineno-167-1"></a><span class="p">[</span><span class="s2">&quot;elevation&quot;</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-168-1"><a id="__codelineno-168-1" name="__codelineno-168-1" href="#__codelineno-168-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;elevation&quot;</span><span class="p">]</span>
+</span></code></pre></div></p>
+<table>
+<thead>
+<tr>
+<th>SDK Support</th>
+<th>MapLibre GL JS</th>
+<th>MapLibre Native<br>Android</th>
+<th>MapLibre Native<br>iOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>basic functionality</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-gl-js/issues/5666">#5666</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/3408">#3408</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/3408">#3408</a>)</td>
+</tr>
+</tbody>
+</table>
 <h2 id="string_1">String<a class="headerlink" href="#string_1" title="Permanent link">&para;</a></h2>
 <h3 id="is-supported-script">is-supported-script<a class="headerlink" href="#is-supported-script" title="Permanent link">&para;</a></h3>
 <p>Returns <code>true</code> if the input string is expected to render legibly. Returns <code>false</code> if the input string contains sections that cannot be rendered without potential loss of meaning (e.g. Indic scripts that require complex text shaping, or right-to-left scripts if the <code>mapbox-gl-rtl-text</code> plugin is not in use in MapLibre GL JS).</p>
 <p>Syntax:
-<div class="language-js highlight"><pre><span></span><code><span id="__span-167-1"><a id="__codelineno-167-1" name="__codelineno-167-1" href="#__codelineno-167-1"></a><span class="p">[</span><span class="s2">&quot;is-supported-script&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="kr">boolean</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-169-1"><a id="__codelineno-169-1" name="__codelineno-169-1" href="#__codelineno-169-1"></a><span class="p">[</span><span class="s2">&quot;is-supported-script&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="kr">boolean</span>
 </span></code></pre></div></p>
 <ul>
 <li><code>input</code>: <em>string</em></li>
 </ul>
 <p>Example:
-<div class="language-json highlight"><pre><span></span><code><span id="__span-168-1"><a id="__codelineno-168-1" name="__codelineno-168-1" href="#__codelineno-168-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;is-supported-script&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;दिल्ली&quot;</span><span class="p">]</span>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-170-1"><a id="__codelineno-170-1" name="__codelineno-170-1" href="#__codelineno-170-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;is-supported-script&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;दिल्ली&quot;</span><span class="p">]</span>
 </span></code></pre></div></p>
 <table>
 <thead>
@@ -5408,13 +5483,13 @@
 <li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/change-case-of-labels/">Change the case of labels</a></li>
 </ul>
 <p>Syntax:
-<div class="language-js highlight"><pre><span></span><code><span id="__span-169-1"><a id="__codelineno-169-1" name="__codelineno-169-1" href="#__codelineno-169-1"></a><span class="p">[</span><span class="s2">&quot;upcase&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-171-1"><a id="__codelineno-171-1" name="__codelineno-171-1" href="#__codelineno-171-1"></a><span class="p">[</span><span class="s2">&quot;upcase&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span>
 </span></code></pre></div></p>
 <ul>
 <li><code>input</code>: <em>string</em></li>
 </ul>
 <p>Example:
-<div class="language-json highlight"><pre><span></span><code><span id="__span-170-1"><a id="__codelineno-170-1" name="__codelineno-170-1" href="#__codelineno-170-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;upcase&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;name&quot;</span><span class="p">]]</span>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-172-1"><a id="__codelineno-172-1" name="__codelineno-172-1" href="#__codelineno-172-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;upcase&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;name&quot;</span><span class="p">]]</span>
 </span></code></pre></div></p>
 <table>
 <thead>
@@ -5440,13 +5515,13 @@
 <li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/change-case-of-labels/">Change the case of labels</a></li>
 </ul>
 <p>Syntax:
-<div class="language-js highlight"><pre><span></span><code><span id="__span-171-1"><a id="__codelineno-171-1" name="__codelineno-171-1" href="#__codelineno-171-1"></a><span class="p">[</span><span class="s2">&quot;downcase&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-173-1"><a id="__codelineno-173-1" name="__codelineno-173-1" href="#__codelineno-173-1"></a><span class="p">[</span><span class="s2">&quot;downcase&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span>
 </span></code></pre></div></p>
 <ul>
 <li><code>input</code>: <em>string</em></li>
 </ul>
 <p>Example:
-<div class="language-json highlight"><pre><span></span><code><span id="__span-172-1"><a id="__codelineno-172-1" name="__codelineno-172-1" href="#__codelineno-172-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;downcase&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;name&quot;</span><span class="p">]]</span>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-174-1"><a id="__codelineno-174-1" name="__codelineno-174-1" href="#__codelineno-174-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;downcase&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;name&quot;</span><span class="p">]]</span>
 </span></code></pre></div></p>
 <table>
 <thead>
@@ -5483,13 +5558,13 @@
 </li>
 </ul>
 <p>Syntax:
-<div class="language-js highlight"><pre><span></span><code><span id="__span-173-1"><a id="__codelineno-173-1" name="__codelineno-173-1" href="#__codelineno-173-1"></a><span class="p">[</span><span class="s2">&quot;concat&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">input_1</span><span class="p">,</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="nx">input_n</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-175-1"><a id="__codelineno-175-1" name="__codelineno-175-1" href="#__codelineno-175-1"></a><span class="p">[</span><span class="s2">&quot;concat&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">input_1</span><span class="p">,</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="nx">input_n</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span>
 </span></code></pre></div></p>
 <ul>
 <li><code>input_i</code>: <em>any</em></li>
 </ul>
 <p>Example:
-<div class="language-json highlight"><pre><span></span><code><span id="__span-174-1"><a id="__codelineno-174-1" name="__codelineno-174-1" href="#__codelineno-174-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;concat&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;square-rgb-&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;color&quot;</span><span class="p">]]</span>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-176-1"><a id="__codelineno-176-1" name="__codelineno-176-1" href="#__codelineno-176-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;concat&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;square-rgb-&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;color&quot;</span><span class="p">]]</span>
 </span></code></pre></div></p>
 <table>
 <thead>
@@ -5512,23 +5587,23 @@
 <h3 id="resolved-locale">resolved-locale<a class="headerlink" href="#resolved-locale" title="Permanent link">&para;</a></h3>
 <p>Returns the IETF language tag of the locale being used by the provided <code>collator</code>. This can be used to determine the default system locale, or to determine if a requested locale was successfully loaded.</p>
 <p>Syntax:
-<div class="language-js highlight"><pre><span></span><code><span id="__span-175-1"><a id="__codelineno-175-1" name="__codelineno-175-1" href="#__codelineno-175-1"></a><span class="p">[</span><span class="s2">&quot;resolved-locale&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">collator</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-177-1"><a id="__codelineno-177-1" name="__codelineno-177-1" href="#__codelineno-177-1"></a><span class="p">[</span><span class="s2">&quot;resolved-locale&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">collator</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span>
 </span></code></pre></div></p>
 <ul>
 <li><code>collator</code>: <em>collator</em></li>
 </ul>
 <p>Example:
-<div class="language-json highlight"><pre><span></span><code><span id="__span-176-1"><a id="__codelineno-176-1" name="__codelineno-176-1" href="#__codelineno-176-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-176-2"><a id="__codelineno-176-2" name="__codelineno-176-2" href="#__codelineno-176-2"></a><span class="w">    </span><span class="s2">&quot;resolved-locale&quot;</span><span class="p">,</span>
-</span><span id="__span-176-3"><a id="__codelineno-176-3" name="__codelineno-176-3" href="#__codelineno-176-3"></a><span class="w">    </span><span class="p">[</span>
-</span><span id="__span-176-4"><a id="__codelineno-176-4" name="__codelineno-176-4" href="#__codelineno-176-4"></a><span class="w">        </span><span class="s2">&quot;collator&quot;</span><span class="p">,</span>
-</span><span id="__span-176-5"><a id="__codelineno-176-5" name="__codelineno-176-5" href="#__codelineno-176-5"></a><span class="w">        </span><span class="p">{</span>
-</span><span id="__span-176-6"><a id="__codelineno-176-6" name="__codelineno-176-6" href="#__codelineno-176-6"></a><span class="w">            </span><span class="nt">&quot;case-sensitive&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-</span><span id="__span-176-7"><a id="__codelineno-176-7" name="__codelineno-176-7" href="#__codelineno-176-7"></a><span class="w">            </span><span class="nt">&quot;diacritic-sensitive&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-</span><span id="__span-176-8"><a id="__codelineno-176-8" name="__codelineno-176-8" href="#__codelineno-176-8"></a><span class="w">            </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;de&quot;</span>
-</span><span id="__span-176-9"><a id="__codelineno-176-9" name="__codelineno-176-9" href="#__codelineno-176-9"></a><span class="w">        </span><span class="p">}</span>
-</span><span id="__span-176-10"><a id="__codelineno-176-10" name="__codelineno-176-10" href="#__codelineno-176-10"></a><span class="w">    </span><span class="p">]</span>
-</span><span id="__span-176-11"><a id="__codelineno-176-11" name="__codelineno-176-11" href="#__codelineno-176-11"></a><span class="p">]</span>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-178-1"><a id="__codelineno-178-1" name="__codelineno-178-1" href="#__codelineno-178-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-178-2"><a id="__codelineno-178-2" name="__codelineno-178-2" href="#__codelineno-178-2"></a><span class="w">    </span><span class="s2">&quot;resolved-locale&quot;</span><span class="p">,</span>
+</span><span id="__span-178-3"><a id="__codelineno-178-3" name="__codelineno-178-3" href="#__codelineno-178-3"></a><span class="w">    </span><span class="p">[</span>
+</span><span id="__span-178-4"><a id="__codelineno-178-4" name="__codelineno-178-4" href="#__codelineno-178-4"></a><span class="w">        </span><span class="s2">&quot;collator&quot;</span><span class="p">,</span>
+</span><span id="__span-178-5"><a id="__codelineno-178-5" name="__codelineno-178-5" href="#__codelineno-178-5"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-178-6"><a id="__codelineno-178-6" name="__codelineno-178-6" href="#__codelineno-178-6"></a><span class="w">            </span><span class="nt">&quot;case-sensitive&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-178-7"><a id="__codelineno-178-7" name="__codelineno-178-7" href="#__codelineno-178-7"></a><span class="w">            </span><span class="nt">&quot;diacritic-sensitive&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-178-8"><a id="__codelineno-178-8" name="__codelineno-178-8" href="#__codelineno-178-8"></a><span class="w">            </span><span class="nt">&quot;locale&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;de&quot;</span>
+</span><span id="__span-178-9"><a id="__codelineno-178-9" name="__codelineno-178-9" href="#__codelineno-178-9"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-178-10"><a id="__codelineno-178-10" name="__codelineno-178-10" href="#__codelineno-178-10"></a><span class="w">    </span><span class="p">]</span>
+</span><span id="__span-178-11"><a id="__codelineno-178-11" name="__codelineno-178-11" href="#__codelineno-178-11"></a><span class="p">]</span>
 </span></code></pre></div></p>
 <table>
 <thead>

@@ -1888,6 +1888,48 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#color-relief" class="md-nav__link">
+    <span class="md-ellipsis">
+      Color-relief
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Color-relief">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#visibility_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      visibility
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#color-relief-opacity" class="md-nav__link">
+    <span class="md-ellipsis">
+      color-relief-opacity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#color-relief-color" class="md-nav__link">
+    <span class="md-ellipsis">
+      color-relief-color
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3597,6 +3639,48 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#color-relief" class="md-nav__link">
+    <span class="md-ellipsis">
+      Color-relief
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Color-relief">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#visibility_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      visibility
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#color-relief-opacity" class="md-nav__link">
+    <span class="md-ellipsis">
+      color-relief-opacity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#color-relief-color" class="md-nav__link">
+    <span class="md-ellipsis">
+      color-relief-color
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3617,7 +3701,7 @@
 
 
 <h1 id="layers">Layers<a class="headerlink" href="#layers" title="Permanent link">&para;</a></h1>
-<p>A style's <code>layers</code> property lists all the layers available in that style. The type of layer is specified by the <code>type</code> property, and must be one of <code>background</code>, <code>fill</code>, <code>line</code>, <code>symbol</code>, <code>raster</code>, <code>circle</code>, <code>fill-extrusion</code>, <code>heatmap</code>, <code>hillshade</code>.</p>
+<p>A style's <code>layers</code> property lists all the layers available in that style. The type of layer is specified by the <code>type</code> property, and must be one of <code>background</code>, <code>fill</code>, <code>line</code>, <code>symbol</code>, <code>raster</code>, <code>circle</code>, <code>fill-extrusion</code>, <code>heatmap</code>, <code>hillshade</code>, <code>color-relief</code>.</p>
 <p>Except for layers of the <code>background</code> type, each layer needs to refer to a source. Layers take the data that they get from a source, optionally filter features, and then define how those features are styled.</p>
 <div class="language-json highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="err">layers</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="p">{</span>
@@ -3634,7 +3718,7 @@
 <p><em>Required <a href="../types/#string">string</a>.</em></p>
 <p>Unique layer name.</p>
 <h3 id="type">type<a class="headerlink" href="#type" title="Permanent link">&para;</a></h3>
-<p><em>Required <a href="../types/#enum">enum</a>. Possible values: <code>fill</code>, <code>line</code>, <code>symbol</code>, <code>circle</code>, <code>heatmap</code>, <code>fill-extrusion</code>, <code>raster</code>, <code>hillshade</code>, <code>background</code>.</em></p>
+<p><em>Required <a href="../types/#enum">enum</a>. Possible values: <code>fill</code>, <code>line</code>, <code>symbol</code>, <code>circle</code>, <code>heatmap</code>, <code>fill-extrusion</code>, <code>raster</code>, <code>hillshade</code>, <code>color-relief</code>, <code>background</code>.</em></p>
 <p>Rendering type of this layer.</p>
 <ul>
 <li><code>fill</code>: A filled polygon with an optional stroked border.</li>
@@ -3645,6 +3729,7 @@
 <li><code>fill-extrusion</code>: An extruded (3D) polygon.</li>
 <li><code>raster</code>: Raster map textures such as satellite imagery.</li>
 <li><code>hillshade</code>: Client-side hillshading visualization based on DEM data. The implementation supports Mapbox Terrain RGB, Mapzen Terrarium tiles and custom encodings.</li>
+<li><code>color-relief</code>: Client-side elevation coloring based on DEM data. The implementation supports Mapbox Terrain RGB, Mapzen Terrarium tiles and custom encodings.</li>
 <li><code>background</code>: The background color or pattern of the map.</li>
 </ul>
 <h3 id="metadata">metadata<a class="headerlink" href="#metadata" title="Permanent link">&para;</a></h3>
@@ -7132,6 +7217,90 @@
 <td>❌ (<a href="https://github.com/maplibre/maplibre-gl-js/issues/5665">#5665</a>)</td>
 <td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/3396">#3396</a>)</td>
 <td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/3396">#3396</a>)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="color-relief">Color-relief<a class="headerlink" href="#color-relief" title="Permanent link">&para;</a></h2>
+<h3 id="visibility_9">visibility<a class="headerlink" href="#visibility_9" title="Permanent link">&para;</a></h3>
+<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>visible</code>, <code>none</code>. Defaults to <code>"visible"</code>.</em></p>
+<p>Whether this layer is displayed.</p>
+<ul>
+<li><code>visible</code>: The layer is shown.</li>
+<li><code>none</code>: The layer is not shown.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>SDK Support</th>
+<th>MapLibre GL JS</th>
+<th>MapLibre Native<br>Android</th>
+<th>MapLibre Native<br>iOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>basic functionality</td>
+<td>Not supported yet</td>
+<td>Not supported yet</td>
+<td>Not supported yet</td>
+</tr>
+</tbody>
+</table>
+<h3 id="color-relief-opacity">color-relief-opacity<a class="headerlink" href="#color-relief-opacity" title="Permanent link">&para;</a></h3>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range [0, 1]. Defaults to <code>1</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
+<p>The opacity at which the color-relief will be drawn.</p>
+<table>
+<thead>
+<tr>
+<th>SDK Support</th>
+<th>MapLibre GL JS</th>
+<th>MapLibre Native<br>Android</th>
+<th>MapLibre Native<br>iOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>basic functionality</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-gl-js/issues/5666">#5666</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/3408">#3408</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/3408">#3408</a>)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="color-relief-color">color-relief-color<a class="headerlink" href="#color-relief-color" title="Permanent link">&para;</a></h3>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#color">color</a>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
+<p>Defines the color of each pixel based on its elevation. Should be an expression that uses <code>["elevation"]</code> as input.</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="err">color</span><span class="mi">-</span><span class="err">relie</span><span class="kc">f</span><span class="mi">-</span><span class="err">color</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="s2">&quot;interpolate&quot;</span><span class="p">,</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="p">[</span><span class="s2">&quot;linear&quot;</span><span class="p">],</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="p">[</span><span class="s2">&quot;elevation&quot;</span><span class="p">],</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="mi">8849</span><span class="p">,</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="s2">&quot;white&quot;</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="p">]</span>
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>SDK Support</th>
+<th>MapLibre GL JS</th>
+<th>MapLibre Native<br>Android</th>
+<th>MapLibre Native<br>iOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>basic functionality</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-gl-js/issues/5666">#5666</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/3408">#3408</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/3408">#3408</a>)</td>
+</tr>
+<tr>
+<td>data-driven styling</td>
+<td>Not supported yet</td>
+<td>Not supported yet</td>
+<td>Not supported yet</td>
 </tr>
 </tbody>
 </table>
