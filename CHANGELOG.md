@@ -9,9 +9,11 @@
 ## 23.3.0
 
 ### ✨ Features and improvements
+
 - Add new layer type: `color-relief ([#1067](https://github.com/maplibre/maplibre-style-spec/issues/1067))
 
 ### 🐞 Bug fixes
+
 - Add missing `global-state` expression typing ([#1130](https://github.com/maplibre/maplibre-style-spec/pull/1130))
 
 ## 23.2.3
