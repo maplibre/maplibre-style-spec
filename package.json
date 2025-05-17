@@ -1,7 +1,7 @@
 {
   "name": "@maplibre/maplibre-gl-style-spec",
   "description": "a specification for maplibre styles",
-  "version": "23.2.3",
+  "version": "23.3.0",
   "author": "MapLibre",
   "keywords": [
     "mapbox",
@@ -25,7 +25,6 @@
     "mkdocs": "docker run --rm -it -p 8000:8000 -v ${PWD}:/docs squidfunk/mkdocs-material",
     "mkdocs-build": "npm run generate-docs && docker run --rm -v ${PWD}:/docs squidfunk/mkdocs-material build --strict",
     "test": "vitest",
-
     "test-unit": "vitest run --config vitest.config.unit.ts",
     "test-unit-ci": "vitest run --config vitest.config.unit.ts --coverage",
     "test-integration": "vitest run --config vitest.config.integration.ts",
