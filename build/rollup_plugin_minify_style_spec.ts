@@ -1,4 +1,4 @@
-import {Plugin} from 'rollup';
+import {Plugin} from 'rolldown';
 
 function replacer(key: string, value: any) {
     return (key === 'doc' || key === 'example' || key === 'sdk-support') ? undefined : value;
