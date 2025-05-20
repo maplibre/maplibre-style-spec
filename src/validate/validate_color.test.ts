@@ -1,4 +1,5 @@
 import {validateColor} from './validate_color';
+import {describe, test, expect} from 'vitest';
 
 describe('validateColor function', () => {
 

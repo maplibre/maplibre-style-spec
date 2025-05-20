@@ -266,6 +266,10 @@ export type ExpressionSpecification =
     | ['zoom'] // number
     // Heatmap
     | ['heatmap-density'] // number
+    // Elevation
+    | ['elevation'] // number
+    // Global state
+    | ['global-state', string] // unknown
 
 export type ExpressionFilterSpecification = boolean | ExpressionSpecification
 

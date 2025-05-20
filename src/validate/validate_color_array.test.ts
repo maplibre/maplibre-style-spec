@@ -1,5 +1,6 @@
 import {validate} from './validate';
 import {validateColorArray} from './validate_color_array';
+import {describe, test, expect} from 'vitest';
 
 describe('Validate ColorArray', () => {
     test('Should return error if type is not color or array', () => {

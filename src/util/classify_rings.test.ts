@@ -1,5 +1,6 @@
 import {Point2D} from '../point2d';
 import {RingWithArea, classifyRings} from './classify_rings';
+import {describe, test, expect} from 'vitest';
 
 describe('classifyRings', () => {
     test('classified.length', () => {

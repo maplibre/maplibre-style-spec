@@ -7,6 +7,7 @@ import {getGeometry} from '../../test/lib/geometry';
 import {VariableAnchorOffsetCollection} from './types/variable_anchor_offset_collection';
 import {expectToMatchColor} from '../../test/lib/util';
 import {ExpressionSpecification} from '../types.g';
+import {describe, test, expect, vi, beforeEach} from 'vitest';
 
 // createExpression with a type-checked expression parameter
 function createExpression(expression: ExpressionSpecification, propertySpec?: StylePropertySpecification | null) {
@@ -19,7 +20,7 @@ const definitionList = Object.keys(expressions).filter((expression) => {
     return expression !== 'error' && !filterExpressionRegex.exec(expression);
 }).sort();
 
-describe('v8.json includes all definitions from style-spec', () => {
+test('v8.json includes all definitions from style-spec', () => {
     const v8List = Object.keys(v8.expression_name.values);
     const v8SupportedList = v8List.filter((expression) => {
         //filter out expressions that are not supported in GL-JS
@@ -44,6 +45,19 @@ describe('createPropertyExpression', () => {
         expect((value as ExpressionParsingError[])).toHaveLength(1);
         expect(value[0].message).toBe('"interpolate" expressions cannot be used with this property');
     });
+
+    test('sets globalStateRefs', () => {
+        const {value} = createPropertyExpression(['case', ['>', ['global-state','stateKey'], 0], 100, ['global-state', 'anotherStateKey']], {
+            type: 'number',
+            'property-type': 'data-driven',
+            expression: {
+                'interpolated': false,
+                'parameters': ['zoom', 'feature']
+            }
+        } as any as StylePropertySpecification) as {value: StylePropertyExpression};
+
+        expect(value.globalStateRefs).toEqual(new Set(['stateKey', 'anotherStateKey']));
+    });
 });
 
 describe('evaluate expression', () => {
@@ -59,7 +73,7 @@ describe('evaluate expression', () => {
             }
         } as any as StylePropertySpecification) as {value: StylePropertyExpression};
 
-        jest.spyOn(console, 'warn').mockImplementation(() => { });
+        vi.spyOn(console, 'warn').mockImplementation(() => { });
 
         expect(value.kind).toBe('source');
 
@@ -79,7 +93,7 @@ describe('evaluate expression', () => {
             }
         }) as {value: StylePropertyExpression};
 
-        const warnMock = jest.spyOn(console, 'warn').mockImplementation(() => {});
+        const warnMock = vi.spyOn(console, 'warn').mockImplementation(() => {});
 
         expect(value.kind).toBe('source');
 

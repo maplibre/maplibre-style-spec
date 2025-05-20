@@ -1,5 +1,6 @@
 import {diff} from './diff';
 import {StyleSpecification} from './types.g';
+import {describe, test, expect} from 'vitest';
 
 describe('diff', () => {
     test('layers id equal', () => {

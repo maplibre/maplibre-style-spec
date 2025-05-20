@@ -1,7 +1,8 @@
 import {readdir} from 'fs/promises';
 import {latest} from '../../src/reference/latest';
+import {latest as latestInBundle} from '../../dist/index';
 import fs from 'fs';
-
+import {describe, test, expect} from 'vitest';
 const minBundle = fs.readFileSync('dist/index.mjs', 'utf8');
 
 describe('@maplibre/maplibre-gl-style-spec npm package', () => {
@@ -36,5 +37,9 @@ describe('@maplibre/maplibre-gl-style-spec npm package', () => {
     test('trims reference.json fields', () => {
         expect(latest.$root.version.doc).toBeTruthy();
         expect(minBundle.includes(latest.$root.version.doc)).toBeFalsy();
+    });
+
+    test('"latest" entry point should be defined', async () => {        
+        expect(latestInBundle).toBeDefined();
     });
 });

@@ -1,7 +1,7 @@
 import {validate} from './validate';
 import {validateTerrain} from './validate_terrain';
 import v8 from '../reference/v8.json' with {type: 'json'};
-
+import {describe, test, expect} from 'vitest';
 describe('Validate Terrain', () => {
     test('Should return error in case terrain is not an object', () => {
         const errors = validateTerrain({validateSpec: validate, value: 1 as any, styleSpec: v8, style: {} as any});
