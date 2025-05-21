@@ -1229,7 +1229,7 @@ describe('"match" expression', () => {
 });
 
 describe('"within" expression', () => {
-    describe('requires a GeoJSON input', () => {
+    test('requires a GeoJSON input', () => {
         // @ts-expect-error
         const response = createExpression(['within']);
         if (response.result === 'success') {
@@ -1237,7 +1237,7 @@ describe('"within" expression', () => {
         }
         expect(response.value[0].message).toBe('\'within\' expression requires exactly one argument, but found 0 instead.');
     });
-    describe('rejects an expression as input', () => {
+    test('rejects an expression as input', () => {
         // @ts-expect-error
         const response = createExpression(['within', ['literal', {type: 'Polygon', coordinates: []}]]);
         if (response.result === 'success') {
@@ -1245,7 +1245,7 @@ describe('"within" expression', () => {
         }
         expect(response.value[0].message).toBe('\'within\' expression requires valid geojson object that contains polygon geometry type.');
     });
-    describe('rejects a second argument', () => {
+    test('rejects a second argument', () => {
         // @ts-expect-error
         const response = createExpression(['within', {type: 'Polygon', coordinates: []}, 'second arg']);
         if (response.result === 'success') {
@@ -1253,7 +1253,7 @@ describe('"within" expression', () => {
         }
         expect(response.value[0].message).toBe('\'within\' expression requires exactly one argument, but found 2 instead.');
     });
-    describe('returns true if feature fully contained within input GeoJSON geometry', () => {
+    test('returns true if feature fully contained within input GeoJSON geometry', () => {
         const response = createExpression(['within', {
             type: 'Polygon',
             coordinates: [[[0, 0], [0, 5], [5, 5], [5, 0], [0, 0]]],
