@@ -6,7 +6,7 @@ import {ExpressionParsingError} from './parsing_error';
 import {getGeometry} from '../../test/lib/geometry';
 import {VariableAnchorOffsetCollection} from './types/variable_anchor_offset_collection';
 import {expectToMatchColor} from '../../test/lib/util';
-import {ExpressionSpecification} from '../types.g';
+import type {ExpressionInputType, ExpressionSpecification} from '../types.g';
 import {describe, test, expect, expectTypeOf, vi, beforeEach} from 'vitest';
 
 // filter out internal "error" and "filter-*" expressions from definition list
@@ -523,6 +523,23 @@ describe('"format" expression', () => {
     test('type rejects bare string arrays in the "text-font" style override', () => {
         expectTypeOf<['format', 'foo', {'text-font': ['Helvetica', 'Arial']}]>().not.toExtend<ExpressionSpecification>();
     });
+    test('scales text', () => {
+        const response = createExpression(['format', ['get', 'title'], {'font-scale': 0.8}]);
+        if (response.result === 'error') {
+            throw new Error('Failed to parse "format" expression');
+        }
+        expect(response.value.evaluate({zoom: 5}, {type: 'Point', properties: {title: 'foo'}})).toMatchObject({
+            sections: [
+                {
+                    scale: 0.8,
+                    text: 'foo',
+                },
+            ],
+        });
+    });
+    test('type accepts expression which scales text', () => {
+        expectTypeOf<['format', ['get', 'title'], {'font-scale': 0.8}]>().toExtend<ExpressionSpecification>();
+    });
     test('requires either "bottom", "center", or "top" as the vertical alignment', () => {
         const response = createExpression(['format', 'foo', {'vertical-align': 'middle'}]);
         if (response.result === 'success') {
@@ -566,6 +583,24 @@ describe('"format" expression', () => {
     });
     test('type accepts expression which aligns an image vertically', () => {
         expectTypeOf<['format', ['image', 'bar'], {'vertical-align': 'bottom'}]>().toExtend<ExpressionSpecification>();
+    });
+    test('applies multiple style overrides', () => {
+        const response = createExpression(['format', 'foo', {'font-scale': 0.8, 'text-color': '#fff'}]);
+        if (response.result === 'error') {
+            throw new Error('Failed to parse "format" expression');
+        }
+        expect(response.value.evaluate({zoom: 4})).toMatchObject({
+            sections: [
+                {
+                    scale: 0.8,
+                    text: 'foo',
+                    textColor: Color.parse('#fff'),
+                },
+            ],
+        });
+    });
+    test('type accepts expression which applies multiple style overrides', () => {
+        expectTypeOf<['format', 'foo', {'font-scale': 0.8, 'text-color': '#fff'}]>().toExtend<ExpressionSpecification>();
     });
     test('applies default styles with an empty overrides object', () => {
         const response = createExpression(['format', ['downcase', 'BaR'], {}]);
@@ -788,6 +823,19 @@ describe('"has" expression', () => {
     });
     test('type accepts expression which checks whether a property exists in the given object argument', () => {
         expectTypeOf<['has', 'prop', ['literal', {prop: 4}]]>().toExtend<ExpressionSpecification>();
+    });
+});
+
+describe('"at" expression', () => {
+    test('retrieves the item at the specified index in the given array', () => {
+        const response = createExpression(['at', 2, ['literal', [1, 2, 3]]]);
+        if (response.result === 'error') {
+            throw new Error('Failed to parse "at" expression');
+        }
+        expect(response.value.evaluate({zoom: 5})).toBe(3);
+    });
+    test('type accepts expression which retrieves the item at the specified index in the given array', () => {
+        expectTypeOf<['at', 2, ['literal', [1, 2, 3]]]>().toExtend<ExpressionSpecification>();
     });
 });
 
@@ -1247,6 +1295,19 @@ describe('comparison expressions', () => {
         });
     });
     describe('"==" expression', () => {
+        test('compares expression input against literal input', () => {
+            const response = createExpression(['==', ['get', 'MILITARYAIRPORT'], 1]);
+            if (response.result === 'error') {
+                throw new Error('Failed to parse "==" expression');
+            }
+            expect(response.value.evaluate(
+                {zoom: 5},
+                {type: 'Polygon', properties: {MILITARYAIRPORT: 1}},
+            )).toBe(true);
+        });
+        test('type accepts expression which compares expression input against literal input', () => {
+            expectTypeOf<['==', ['get', 'MILITARYAIRPORT'], 1]>().toExtend<ExpressionSpecification>();
+        });
         test('compares against literal null value', () => {
             const response = createExpression(['==', ['get', 'nonexistent-prop'], null]);
             if (response.result === 'error') {
@@ -1308,7 +1369,82 @@ describe('comparison expressions', () => {
     });
 });
 
+describe('"any" expression', () => {
+    test('returns false when given no arguments', () => {
+        const response = createExpression(['any']);
+        if (response.result === 'error') {
+            throw new Error('Failed to parse "any" expression');
+        }
+        expect(response.value.evaluate({zoom: 5})).toBe(false);
+    });
+    test('type accepts expression which has no arguments', () => {
+        expectTypeOf<['any']>().toExtend<ExpressionSpecification>();
+    });
+});
+
 describe('"case" expression', () => {
+    test('returns the string output of the first matching condition', () => {
+        const response = createExpression([
+            'case',
+            ['==', ['get', 'CAPITAL'], 1], 'city-capital',
+            ['>=', ['get', 'POPULATION'], 1000000], 'city-1M',
+            ['>=', ['get', 'POPULATION'], 500000], 'city-500k',
+            ['>=', ['get', 'POPULATION'], 100000], 'city-100k',
+            'city',
+        ]);
+        if (response.result === 'error') {
+            throw new Error('Failed to parse "case" expression');
+        }
+        expect(response.value.evaluate(
+            {zoom: 4},
+            {type: 'Point', properties: {CAPITAL: 0, POPULATION: 750000}},
+        )).toBe('city-500k');
+    });
+    test('type accepts expression which returns the string output of the first matching condition', () => {
+        expectTypeOf<[
+            'case',
+            ['==', ['get', 'CAPITAL'], 1], 'city-capital',
+            ['>=', ['get', 'POPULATION'], 1000000], 'city-1M',
+            ['>=', ['get', 'POPULATION'], 500000], 'city-500k',
+            ['>=', ['get', 'POPULATION'], 100000], 'city-100k',
+            'city',
+        ]>().toExtend<ExpressionSpecification>();
+    });
+    test('returns the evaluated output of the first matching condition', () => {
+        const response = createExpression(
+            [
+                'case',
+                ['has', 'point_count'], ['interpolate', ['linear'], ['get', 'point_count'], 2, '#ccc', 10, '#444'],
+                ['has', 'priorityValue'], ['interpolate', ['linear'], ['get', 'priorityValue'], 0, '#ff9', 1, '#f66'],
+                '#fcaf3e',
+            ],
+            {
+                type: 'color',
+                'property-type': 'data-constant',
+                expression: {
+                    interpolated: true,
+                    parameters: [],
+                },
+                transition: false,
+                overridable: false,
+            },
+        );
+        if (response.result === 'error') {
+            console.error(response.value[0].message);
+            throw new Error('Failed to parse "case" expression');
+        }
+        expect(response.value.evaluate({zoom: 4}, {type: 'Point', properties: {priorityValue: 0}})).toEqual(Color.parse('#ff9'));
+        expect(response.value.evaluate({zoom: 4}, {type: 'Point', properties: {priorityValue: 0.5}})).toEqual(Color.interpolate(Color.parse('#ff9'), Color.parse('#f66'), 0.5));
+        expect(response.value.evaluate({zoom: 4}, {type: 'Point', properties: {priorityValue: 1}})).toEqual(Color.parse('#f66'));
+    });
+    test('type accepts expression which returns the evaluated output of the first matching condition', () => {
+        expectTypeOf<[
+            'case',
+            ['has', 'point_count'], ['interpolate', ['linear'], ['get', 'point_count'], 2, '#ccc', 10, '#444'],
+            ['has', 'priorityValue'], ['interpolate', ['linear'], ['get', 'priorityValue'], 0, '#ff9', 1, '#f66'],
+            '#fcaf3e',
+        ]>().toExtend<ExpressionSpecification>();
+    });
     test('returns null if matching case has literal null output', () => {
         const response = createExpression(['case', false, ['get', 'prop'], true, null, 'fallback']);
         if (response.result === 'error') {
@@ -1417,6 +1553,26 @@ describe('"match" expression', () => {
     });
     test('type accepts expression which matches string input against string array label', () => {
         expectTypeOf<['match', 'c', 'a', 'o1', ['b', 'c', 'd'], 'o2', 'fallback']>().toExtend<ExpressionSpecification>();
+    });
+    test('matches with non-literal input', () => {
+        const response = createExpression(['match', ['get', 'TYPE'], ['ADIZ', 'AMA', 'AWY'], true, false]);
+        if (response.result === 'error') {
+            throw new Error('Failed to parse "match" expression');
+        }
+        expect(response.value.evaluate({zoom: 4}, {type: 'Point', properties: {TYPE: 'AMA'}})).toBe(true);
+    });
+    test('type accepts expression which has a non-literal input', () => {
+        expectTypeOf<['match', ['get', 'TYPE'], ['ADIZ', 'AMA', 'AWY'], true, false]>().toExtend<ExpressionSpecification>();
+    });
+    test('returns the matching expression output\'s evaluated value', () => {
+        const response = createExpression(['match', ['get', 'id'], 'exampleID', ['get', 'iconNameFocused'], ['get', 'iconName']]);
+        if (response.result === 'error') {
+            throw new Error('Failed to parse "match" expression');
+        }
+        expect(response.value.evaluate({zoom: 4}, {type: 'Point', properties: {id: 'exampleID', iconNameFocused: 'exampleIcon'}})).toBe('exampleIcon'); 
+    });
+    test('type accepts expression which has an expression output', () => {
+        expectTypeOf<['match', ['get', 'id'], 'exampleID', ['get', 'iconNameFocused'], ['get', 'iconName']]>().toExtend<ExpressionSpecification>();
     });
     test('returns null if match has literal null output', () => {
         const response = createExpression(['match', 1, 0, ['get', 'prop'], 1, null, 'fallback']);
@@ -1608,6 +1764,16 @@ describe('interpolation expressions', () => {
             expectTypeOf<['interpolate', ['linear'], ['zoom'], 0, false, 2, 1024]>().not.toExtend<ExpressionSpecification>();
             expectTypeOf<['interpolate', ['linear'], ['zoom'], 0, [10, 20, 30], 0.5, [20, 30, 40], 1, [30, 40, 50]]>().not.toExtend<ExpressionSpecification>();
             expectTypeOf<['interpolate', ['linear'], ['zoom'], 0, {prop: 'foo'}, 2, {prop: 'bar'}]>().not.toExtend<ExpressionSpecification>();
+        });
+        test('interpolates with feature property input', () => {
+            const response = createExpression(['interpolate', ['linear'], ['get', 'point_count'], 2, 32, 10, ['*', 16, ['get', 'point_count']]]);
+            if (response.result === 'error') {
+                throw new Error('Failed to parse "interpolate" expression');
+            }
+            expect(response.value.evaluate({zoom: 5}, {type: 'Point', properties: {point_count: 4}})).toBe(40);
+        });
+        test('type accepts expression which interpolates with feature property input', () => {
+            expectTypeOf<['interpolate', ['linear'], ['get', 'point_count'], 2, ['/', 2, ['get', 'point_count']], 10, ['*', 4, ['get', 'point_count']]]>().toExtend<ExpressionSpecification>();
         });
         test('interpolates between number outputs', () => {
             const response = createExpression(['interpolate', ['linear'], ['zoom'], 0, 0, 0.5, ['*', 2, 5], 1, 100]);
@@ -1916,6 +2082,42 @@ describe('interpolation expressions', () => {
 });
 
 describe('"step" expression', () => {
+    test('outputs stepped numbers', () => {
+        const response = createExpression(['step', ['get', 'point_count'], 0.6, 50, 0.7, 200, 0.8]);
+        if (response.result === 'error') {
+            throw new Error('Failed to parse "step" expression');
+        }
+        expect(response.value.evaluate({zoom: 5}, {type: 'Point', properties: {point_count: 49}})).toBe(0.6);
+        expect(response.value.evaluate({zoom: 5}, {type: 'Point', properties: {point_count: 50}})).toBe(0.7);
+        expect(response.value.evaluate({zoom: 5}, {type: 'Point', properties: {point_count: 51}})).toBe(0.7);
+        expect(response.value.evaluate({zoom: 5}, {type: 'Point', properties: {point_count: 199}})).toBe(0.7);
+        expect(response.value.evaluate({zoom: 5}, {type: 'Point', properties: {point_count: 200}})).toBe(0.8);
+    });
+    test('type accepts expression which outputs stepped numbers', () => {
+        expectTypeOf<['step', ['get', 'point_count'], 0.6, 50, 0.7, 200, 0.8]>().toExtend<ExpressionSpecification>();
+    });
+    test('outputs stepped colors', () => {
+        const response = createExpression(
+            ['step', ['get', 'point_count'], '#ddd', 50, '#eee', 200, '#fff'],
+            {
+                type: 'color',
+                'property-type': 'data-constant',
+                transition: false,
+                overridable: false,
+            },
+        );
+        if (response.result === 'error') {
+            throw new Error('Failed to parse "step" expression');
+        }
+        expect(response.value.evaluate({zoom: 5}, {type: 'Point', properties: {point_count: 49}})).toEqual(Color.parse('#ddd'));
+        expect(response.value.evaluate({zoom: 5}, {type: 'Point', properties: {point_count: 50}})).toEqual(Color.parse('#eee'));
+        expect(response.value.evaluate({zoom: 5}, {type: 'Point', properties: {point_count: 51}})).toEqual(Color.parse('#eee'));
+        expect(response.value.evaluate({zoom: 5}, {type: 'Point', properties: {point_count: 199}})).toEqual(Color.parse('#eee'));
+        expect(response.value.evaluate({zoom: 5}, {type: 'Point', properties: {point_count: 200}})).toEqual(Color.parse('#fff'));
+    });
+    test('type accepts expression which outputs stepped colors', () => {
+        expectTypeOf<['step', ['get', 'point_count'], '#ddd', 50, '#eee', 200, '#fff']>().toExtend<ExpressionSpecification>();
+    });
     test('outputs stepped projections', () => {
         const response = createExpression(['step', ['zoom'], 'vertical-perspective', 10, 'mercator']);
         if (response.result === 'error') {
@@ -1977,4 +2179,34 @@ describe('nonexistent operators', () => {
         type ExpressionSpecificationExpression = Extract<ExpressionSpecification, ['ExpressionSpecification', ...any[]]>;
         expectTypeOf<ExpressionSpecificationExpression>().not.toExtend<ExpressionSpecification>();
     });
+});
+
+test('ExpressionSpecification type supports common variable insertion patterns', () => {
+    // Checks the ability for the ExpressionSpecification type to allow arguments to be provided via constants (as opposed to in-line).
+    // As in most cases the styling is read from JSON, these are rather optional tests.
+    const colorStops = [0, 'red', 0.5, 'green', 1, 'blue'];
+    expectTypeOf<[
+        'interpolate',
+        ['linear'],
+        ['line-progress'],
+        ...typeof colorStops
+    ]>().toExtend<ExpressionSpecification>();
+    expectTypeOf<[
+        'interpolate-hcl',
+        ['linear'],
+        ['line-progress'],
+        ...typeof colorStops
+    ]>().toExtend<ExpressionSpecification>();
+    expectTypeOf<[
+        'interpolate-lab',
+        ['linear'],
+        ['line-progress'],
+        ...typeof colorStops
+    ]>().toExtend<ExpressionSpecification>();
+    const [firstOutput, ...steps] = ['#df2d43', 50, '#df2d43', 200, '#df2d43'];
+    expectTypeOf<['step', ['get', 'point_count'], typeof firstOutput, ...typeof steps]>().toExtend<ExpressionSpecification>();
+    const strings = ['first', 'second', 'third'];
+    expectTypeOf<['concat', ...typeof strings]>().toExtend<ExpressionSpecification>();
+    const values: (ExpressionInputType | ExpressionSpecification)[] = [['get', 'name'], ['get', 'code'], 'NONE']; // type is necessary!
+    expectTypeOf<['coalesce', ...typeof values]>().toExtend<ExpressionSpecification>();
 });
