@@ -123,7 +123,7 @@ describe('Distance expression', () => {
             expect(response.result).toBe('error');
         });
         test('expression as geometry typecheck', () => {
-            expectTypeOf<['distance', ['literal', {type: 'MultiPoint', coordinates: [[3, 3], [3, 4]]}]]>().not.toExtend<ExpressionSpecification>();
+            expectTypeOf<['distance', ['literal', {type: 'MultiPoint'; coordinates: [[3, 3], [3, 4]]}]]>().not.toExtend<ExpressionSpecification>();
         });
     });
 
@@ -133,21 +133,21 @@ describe('Distance expression', () => {
             expect(response.result).toBe('success');
         });
         test('multi point geometry typecheck', () => {
-            expectTypeOf<['distance', {type: 'MultiPoint', coordinates: [[3, 3], [3, 4]]}]>().toExtend<ExpressionSpecification>();
+            expectTypeOf<['distance', {type: 'MultiPoint'; coordinates: [[3, 3], [3, 4]]}]>().toExtend<ExpressionSpecification>();
         });
         test('multi line geometry', () => {
             const response = createExpression(['distance', {type: 'MultiLineString', coordinates: [[[3, 3], [3, 4]]]}]);
             expect(response.result).toBe('success');
         });
         test('multi line geometry typecheck', () => {
-            expectTypeOf<['distance', {type: 'MultiLineString', coordinates: [[[3, 3], [3, 4]]]}]>().toExtend<ExpressionSpecification>();
+            expectTypeOf<['distance', {type: 'MultiLineString'; coordinates: [[[3, 3], [3, 4]]]}]>().toExtend<ExpressionSpecification>();
         });
         test('multi polygon geometry', () => {
             const response = createExpression(['distance', {type: 'MultiPolygon', coordinates: [[[[3, 3], [3, 4], [4, 4], [4, 3], [3, 3]]]]}]);
             expect(response.result).toBe('success');
         });
         test('multi polygon geometry typecheck', () => {
-            expectTypeOf<['distance', {type: 'MultiPolygon', coordinates: [[[[3, 3], [3, 4], [4, 4], [4, 3], [3, 3]]]]}]>().toExtend<ExpressionSpecification>();
+            expectTypeOf<['distance', {type: 'MultiPolygon'; coordinates: [[[[3, 3], [3, 4], [4, 4], [4, 3], [3, 3]]]]}]>().toExtend<ExpressionSpecification>();
         });
     });
 
@@ -600,7 +600,7 @@ describe('"format" expression', () => {
         });
     });
     test('type accepts expression which applies multiple style overrides', () => {
-        expectTypeOf<['format', 'foo', {'font-scale': 0.8, 'text-color': '#fff'}]>().toExtend<ExpressionSpecification>();
+        expectTypeOf<['format', 'foo', {'font-scale': 0.8; 'text-color': '#fff'}]>().toExtend<ExpressionSpecification>();
     });
     test('applies default styles with an empty overrides object', () => {
         const response = createExpression(['format', ['downcase', 'BaR'], {}]);
@@ -1609,7 +1609,7 @@ describe('"within" expression', () => {
         expect(response.value[0].message).toBe('\'within\' expression requires valid geojson object that contains polygon geometry type.');
     });
     test('type rejects an expression as input', () => {
-        expectTypeOf<['within', ['literal', {type: 'Polygon', coordinates: []}]]>().not.toExtend<ExpressionSpecification>();
+        expectTypeOf<['within', ['literal', {type: 'Polygon'; coordinates: []}]]>().not.toExtend<ExpressionSpecification>();
     });
     test('rejects a second argument', () => {
         const response = createExpression(['within', {type: 'Polygon', coordinates: []}, 'second arg']);
@@ -1619,7 +1619,7 @@ describe('"within" expression', () => {
         expect(response.value[0].message).toBe('\'within\' expression requires exactly one argument, but found 2 instead.');
     });
     test('type rejects a second argument', () => {
-        expectTypeOf<['within', {type: 'Polygon', coordinates: []}, 'second arg']>().not.toExtend<ExpressionSpecification>();
+        expectTypeOf<['within', {type: 'Polygon'; coordinates: []}, 'second arg']>().not.toExtend<ExpressionSpecification>();
     });
     test('returns true if feature fully contained within input GeoJSON geometry', () => {
         const response = createExpression(['within', {
@@ -1636,8 +1636,8 @@ describe('"within" expression', () => {
     });
     test('type accepts expression which checks if feature fully contained within input GeoJSON geometry', () => {
         expectTypeOf<['within', {
-            type: 'Polygon',
-            coordinates: [[[0, 0], [0, 5], [5, 5], [5, 0], [0, 0]]],
+            type: 'Polygon';
+            coordinates: [[[0, 0], [0, 5], [5, 5], [5, 0], [0, 0]]];
         }]>().toExtend<ExpressionSpecification>();
     });
 });
@@ -1971,6 +1971,7 @@ describe('interpolation expressions', () => {
             expect(response.value.evaluate({zoom: 10}).values).toEqual([Color.parse('black'), Color.parse('white')]);
         });
         test('type accepts expression which interpolates between non-literal color array outputs', () => {
+            // eslint-disable-next-line
             const obj = {'colors-8': ['white', 'black'], 'colors-10': ['black', 'white']};
             expectTypeOf<['interpolate-hcl', ['linear'], ['zoom'], 8, ['get', 'colors-8', ['literal', typeof obj]], 10, ['get', 'colors-10', ['literal', typeof obj]]]>().toExtend<ExpressionSpecification>();
         });
@@ -2075,6 +2076,7 @@ describe('interpolation expressions', () => {
             expect(response.value.evaluate({zoom: 10}).values).toEqual([Color.parse('black'), Color.parse('white')]);
         });
         test('type accepts expression which interpolates between non-literal color array outputs', () => {
+            // eslint-disable-next-line
             const obj = {'colors-8': ['white', 'black'], 'colors-10': ['black', 'white']};
             expectTypeOf<['interpolate-lab', ['linear'], ['zoom'], 8, ['get', 'colors-8', ['literal', typeof obj]], 10, ['get', 'colors-10', ['literal', typeof obj]]]>().toExtend<ExpressionSpecification>();
         });
@@ -2184,6 +2186,7 @@ describe('nonexistent operators', () => {
 test('ExpressionSpecification type supports common variable insertion patterns', () => {
     // Checks the ability for the ExpressionSpecification type to allow arguments to be provided via constants (as opposed to in-line).
     // As in most cases the styling is read from JSON, these are rather optional tests.
+    // eslint-disable-next-line
     const colorStops = [0, 'red', 0.5, 'green', 1, 'blue'];
     expectTypeOf<[
         'interpolate',
@@ -2203,10 +2206,13 @@ test('ExpressionSpecification type supports common variable insertion patterns',
         ['line-progress'],
         ...typeof colorStops
     ]>().toExtend<ExpressionSpecification>();
+    // eslint-disable-next-line
     const [firstOutput, ...steps] = ['#df2d43', 50, '#df2d43', 200, '#df2d43'];
     expectTypeOf<['step', ['get', 'point_count'], typeof firstOutput, ...typeof steps]>().toExtend<ExpressionSpecification>();
+    // eslint-disable-next-line
     const strings = ['first', 'second', 'third'];
     expectTypeOf<['concat', ...typeof strings]>().toExtend<ExpressionSpecification>();
+    // eslint-disable-next-line
     const values: (ExpressionInputType | ExpressionSpecification)[] = [['get', 'name'], ['get', 'code'], 'NONE']; // type is necessary!
     expectTypeOf<['coalesce', ...typeof values]>().toExtend<ExpressionSpecification>();
 });
