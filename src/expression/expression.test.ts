@@ -430,23 +430,14 @@ describe('Distance expression', () => {
 
 describe('"array" expression', () => {
     test('requires an expression as the input value', () => {
-        const invalidResponses = [
-            createExpression(['array', 1, 2, 3]),
-            createExpression(['array', [1, 2, 3]]),
-            createExpression(['array', 'number', [1, 2, 3]]),
-            createExpression(['array', 'number', 3, [1, 2, 3]]),
-        ];
-        for (const response of invalidResponses) {
-            expect(response.result).toBe('error');
-        }
-        const validResponses = [
-            createExpression(['array', ['literal', []]]),
-            createExpression(['array', 'number', ['literal', [1, 2, 3]]]),
-            createExpression(['array', 'number', Number.MAX_SAFE_INTEGER, ['get', 'arr']]),
-        ];
-        for (const response of validResponses) {
-            expect(response.result).toBe('success');
-        }
+        expect(createExpression(['array', 1, 2, 3]).result).toBe('error');
+        expect(createExpression(['array', [1, 2, 3]]).result).toBe('error');
+        expect(createExpression(['array', 'number', [1, 2, 3]]).result).toBe('error');
+        expect(createExpression(['array', 'number', 3, [1, 2, 3]]).result).toBe('error');
+
+        expect(createExpression(['array', ['literal', []]]).result).toBe('success');
+        expect(createExpression(['array', 'number', ['literal', [1, 2, 3]]]).result).toBe('success');
+        expect(createExpression(['array', 'number', Number.MAX_SAFE_INTEGER, ['get', 'arr']]).result).toBe('success');
     });
     test('type requires an expression as the input value', () => {
         expectTypeOf<['array', 1, 2, 3]>().not.toExtend<ExpressionSpecification>();
@@ -459,22 +450,13 @@ describe('"array" expression', () => {
         expectTypeOf<['array', 'number', typeof Number.MAX_SAFE_INTEGER, ['get', 'arr']]>().toExtend<ExpressionSpecification>();
     });
     test('requires either "string", "number", or "boolean" as the asserted type', () => {
-        const invalidResponses = [
-            createExpression(['array', 0, ['literal', []]]),
-            createExpression(['array', '0', ['literal', []]]),
-            createExpression(['array', ['literal', 'number'], ['literal', []]]),
-        ];
-        for (const response of invalidResponses) {
-            expect(response.result).toBe('error');
-        }
-        const validResponses = [
-            createExpression(['array', 'string', ['literal', []]]),
-            createExpression(['array', 'number', ['literal', []]]),
-            createExpression(['array', 'boolean', ['literal', []]]),
-        ];
-        for (const response of validResponses) {
-            expect(response.result).toBe('success');
-        }
+        expect(createExpression(['array', 0, ['literal', []]]).result).toBe('error');
+        expect(createExpression(['array', '0', ['literal', []]]).result).toBe('error');
+        expect(createExpression(['array', ['literal', 'number'], ['literal', []]]).result).toBe('error');
+
+        expect(createExpression(['array', 'string', ['literal', []]]).result).toBe('success');
+        expect(createExpression(['array', 'number', ['literal', []]]).result).toBe('success');
+        expect(createExpression(['array', 'boolean', ['literal', []]]).result).toBe('success');
     });
     test('type requires either "string", "number", or "boolean" as the asserted type', () => {
         expectTypeOf<['array', 0, ['literal', []]]>().not.toExtend<ExpressionSpecification>();
@@ -486,22 +468,13 @@ describe('"array" expression', () => {
         expectTypeOf<['array', 'boolean', ['literal', []]]>().toExtend<ExpressionSpecification>();
     });
     test('requires a non-negative integer literal as the asserted length', () => {
-        const invalidResponses = [
-            createExpression(['array', 'string', '0', ['literal', []]]),
-            createExpression(['array', 'string', ['literal', 0], ['literal', []]]),
-            createExpression(['array', 'string', -1, ['literal', []]]),
-            createExpression(['array', 'string', 0.5, ['literal', []]]),
-        ];
-        for (const response of invalidResponses) {
-            expect(response.result).toBe('error');
-        }
-        const validResponses = [
-            createExpression(['array', 'string', 0, ['literal', []]]),
-            createExpression(['array', 'string', 2, ['literal', ['one', 'two']]]),
-        ];
-        for (const response of validResponses) {
-            expect(response.result).toBe('success');
-        }
+        expect(createExpression(['array', 'string', '0', ['literal', []]]).result).toBe('error');
+        expect(createExpression(['array', 'string', ['literal', 0], ['literal', []]]).result).toBe('error');
+        expect(createExpression(['array', 'string', -1, ['literal', []]]).result).toBe('error');
+        expect(createExpression(['array', 'string', 0.5, ['literal', []]]).result).toBe('error');
+
+        expect(createExpression(['array', 'string', 0, ['literal', []]]).result).toBe('success');
+        expect(createExpression(['array', 'string', 2, ['literal', ['one', 'two']]]).result).toBe('success');
     });
     test('type requires a number literal as the asserted length', () => {
         expectTypeOf<['array', 'string', '0', ['literal', []]]>().not.toExtend<ExpressionSpecification>();
@@ -627,15 +600,10 @@ describe('"format" expression', () => {
 
 describe('"image" expression', () => {
     test('requires a string as the image name argument', () => {
-        const invalidResponses = [
-            createExpression(['image', null]),
-            createExpression(['image', true]),
-            createExpression(['image', 123]),
-            createExpression(['image', ['+', 1, 4]]),
-        ];
-        for (const response of invalidResponses) {
-            expect(response.result).toBe('error');
-        }
+        expect(createExpression(['image', null]).result).toBe('error');
+        expect(createExpression(['image', true]).result).toBe('error');
+        expect(createExpression(['image', 123]).result).toBe('error');
+        expect(createExpression(['image', ['+', 1, 4]]).result).toBe('error');
     });
     test('type requires a string as the image name argument', () => {
         expectTypeOf<['image', true]>().not.toExtend<ExpressionSpecification>();
@@ -1487,15 +1455,10 @@ describe('"match" expression', () => {
         expect(response.value[0].message).toBe('Expected number but found string instead.');
     });
     test('requires label to be string literal, number literal, string literal array, or number literal array', () => {
-        const invalidResponses = [
-            createExpression(['match', 4, true, 'matched', 'fallback']),
-            createExpression(['match', 4, [true], 'matched', 'fallback']),
-            createExpression(['match', 4, [4, '4'], 'matched', 'fallback']),
-            createExpression(['match', 4, ['literal', [4]], 'matched', 'fallback']),
-        ];
-        for (const response of invalidResponses) {
-            expect(response.result).toBe('error');
-        }
+        expect(createExpression(['match', 4, true, 'matched', 'fallback']).result).toBe('error');
+        expect(createExpression(['match', 4, [true], 'matched', 'fallback']).result).toBe('error');
+        expect(createExpression(['match', 4, [4, '4'], 'matched', 'fallback']).result).toBe('error');
+        expect(createExpression(['match', 4, ['literal', [4]], 'matched', 'fallback']).result).toBe('error');
     });
     test('type requires label to be string literal, number literal, string literal array, or number literal array', () => {
         expectTypeOf<['match', 4, true, 'matched', 'fallback']>().not.toExtend<ExpressionSpecification>();
@@ -1504,15 +1467,10 @@ describe('"match" expression', () => {
         expectTypeOf<['match', 4, ['literal', [4]], 'matched', 'fallback']>().not.toExtend<ExpressionSpecification>();
     });
     test('rejects a (string | string[]) label if another label is (number | number[])', () => {
-        const invalidResponses = [
-            createExpression(['match', 4, 4, 'o1', '4', 'o2', 'fallback']),
-            createExpression(['match', 4, 4, 'o1', ['4'], 'o2', 'fallback']),
-            createExpression(['match', 4, [4], 'o1', '4', 'o2', 'fallback']),
-            createExpression(['match', 4, [4], 'o1', ['4'], 'o2', 'fallback']),
-        ];
-        for (const response of invalidResponses) {
-            expect(response.result).toBe('error');
-        }
+        expect(createExpression(['match', 4, 4, 'o1', '4', 'o2', 'fallback']).result).toBe('error');
+        expect(createExpression(['match', 4, 4, 'o1', ['4'], 'o2', 'fallback']).result).toBe('error');
+        expect(createExpression(['match', 4, [4], 'o1', '4', 'o2', 'fallback']).result).toBe('error');
+        expect(createExpression(['match', 4, [4], 'o1', ['4'], 'o2', 'fallback']).result).toBe('error');
     });
     test('matches number input against number label', () => {
         const response = createExpression(['match', 2, [0], 'o1', 1, 'o2', 2, 'o3', 'fallback']);
@@ -1749,16 +1707,11 @@ describe('interpolation expressions', () => {
 
     describe('"interpolate" expression', () => {
         test('requires stop outputs to be a number, color, number array, color array, or projection', () => {
-            const invalidResponses = [
-                createExpression(['interpolate', ['linear'], ['zoom'], 0, 'reddish', 2, 'greenish']),
-                createExpression(['interpolate', ['linear'], ['zoom'], 0, null, 2, 256]),
-                createExpression(['interpolate', ['linear'], ['zoom'], 0, false, 2, 1024]),
-                createExpression(['interpolate', ['linear'], ['zoom'], 0, [10, 20, 30], 0.5, [20, 30, 40], 1, [30, 40, 50]]),
-                createExpression(['interpolate', ['linear'], ['zoom'], 0, {prop: 'foo'}, 2, {prop: 'bar'}]),
-            ];
-            for (const response of invalidResponses) {
-                expect(response.result).toBe('error');
-            }
+            expect(createExpression(['interpolate', ['linear'], ['zoom'], 0, 'reddish', 2, 'greenish']).result).toBe('error');
+            expect(createExpression(['interpolate', ['linear'], ['zoom'], 0, null, 2, 256]).result).toBe('error');
+            expect(createExpression(['interpolate', ['linear'], ['zoom'], 0, false, 2, 1024]).result).toBe('error');
+            expect(createExpression(['interpolate', ['linear'], ['zoom'], 0, [10, 20, 30], 0.5, [20, 30, 40], 1, [30, 40, 50]]).result).toBe('error');
+            expect(createExpression(['interpolate', ['linear'], ['zoom'], 0, {prop: 'foo'}, 2, {prop: 'bar'}]).result).toBe('error');
         });
         test('type requires stop outputs to be a number, color, number array, color array, or projection', () => {
             expectTypeOf<['interpolate', ['linear'], ['zoom'], 0, false, 2, 1024]>().not.toExtend<ExpressionSpecification>();
@@ -1874,17 +1827,12 @@ describe('interpolation expressions', () => {
 
     describe('"interpolate-hcl" expression', () => {
         test('requires stop outputs to be a color', () => {
-            const invalidResponses = [
-                createExpression(['interpolate-hcl', ['linear'], ['zoom'], 0, 'reddish', 2, 'greenish']),
-                createExpression(['interpolate-hcl', ['linear'], ['zoom'], 0, null, 2, 256]),
-                createExpression(['interpolate-hcl', ['linear'], ['zoom'], 0, false, 2, 1024]),
-                createExpression(['interpolate-hcl', ['linear'], ['zoom'], 0, [10, 20, 30], 0.5, [20, 30, 40], 1, [30, 40, 50]]),
-                createExpression(['interpolate-hcl', ['linear'], ['zoom'], 0, {prop: 'foo'}, 2, {prop: 'bar'}]),
-                createExpression(['interpolate-hcl', ['linear'], ['zoom'], 0, 10, 1, 100]),
-            ];
-            for (const response of invalidResponses) {
-                expect(response.result).toBe('error');
-            }
+            expect(createExpression(['interpolate-hcl', ['linear'], ['zoom'], 0, 'reddish', 2, 'greenish']).result).toBe('error');
+            expect(createExpression(['interpolate-hcl', ['linear'], ['zoom'], 0, null, 2, 256]).result).toBe('error');
+            expect(createExpression(['interpolate-hcl', ['linear'], ['zoom'], 0, false, 2, 1024]).result).toBe('error');
+            expect(createExpression(['interpolate-hcl', ['linear'], ['zoom'], 0, [10, 20, 30], 0.5, [20, 30, 40], 1, [30, 40, 50]]).result).toBe('error');
+            expect(createExpression(['interpolate-hcl', ['linear'], ['zoom'], 0, {prop: 'foo'}, 2, {prop: 'bar'}]).result).toBe('error');
+            expect(createExpression(['interpolate-hcl', ['linear'], ['zoom'], 0, 10, 1, 100]).result).toBe('error');
         });
         test('type requires stop outputs to be a color', () => {
             expectTypeOf<['interpolate-hcl', ['linear'], ['zoom'], 0, false, 2, 1024]>().not.toExtend<ExpressionSpecification>();
@@ -1938,9 +1886,8 @@ describe('interpolation expressions', () => {
             }
             expect(response.value.evaluate({zoom: 8}).values).toEqual([Color.parse('white'), Color.parse('black')]);
             expect(response.value.evaluate({zoom: 9}).values).toHaveLength(2);
-            for (let i = 0; i < 2; i++) {
-                expectToMatchColor(response.value.evaluate({zoom: 9}).values[i], 'rgb(46.63266% 46.63266% 46.63266% / 1)');
-            }
+            expectToMatchColor(response.value.evaluate({zoom: 9}).values[0], 'rgb(46.63266% 46.63266% 46.63266% / 1)');
+            expectToMatchColor(response.value.evaluate({zoom: 9}).values[1], 'rgb(46.63266% 46.63266% 46.63266% / 1)');
             expect(response.value.evaluate({zoom: 10}).values).toEqual([Color.parse('black'), Color.parse('white')]);
         });
         test('type accepts expression which interpolates between color array outputs', () => {
@@ -1965,9 +1912,8 @@ describe('interpolation expressions', () => {
             }
             expect(response.value.evaluate({zoom: 8}).values).toEqual([Color.parse('white'), Color.parse('black')]);
             expect(response.value.evaluate({zoom: 9}).values).toHaveLength(2);
-            for (let i = 0; i < 2; i++) {
-                expectToMatchColor(response.value.evaluate({zoom: 9}).values[i], 'rgb(46.63266% 46.63266% 46.63266% / 1)');
-            }
+            expectToMatchColor(response.value.evaluate({zoom: 9}).values[0], 'rgb(46.63266% 46.63266% 46.63266% / 1)');
+            expectToMatchColor(response.value.evaluate({zoom: 9}).values[1], 'rgb(46.63266% 46.63266% 46.63266% / 1)');
             expect(response.value.evaluate({zoom: 10}).values).toEqual([Color.parse('black'), Color.parse('white')]);
         });
         test('type accepts expression which interpolates between non-literal color array outputs', () => {
@@ -1979,17 +1925,12 @@ describe('interpolation expressions', () => {
 
     describe('"interpolate-lab" expression', () => {
         test('requires stop outputs to be a color', () => {
-            const invalidResponses = [
-                createExpression(['interpolate-lab', ['linear'], ['zoom'], 0, 'reddish', 2, 'greenish']),
-                createExpression(['interpolate-lab', ['linear'], ['zoom'], 0, null, 2, 256]),
-                createExpression(['interpolate-lab', ['linear'], ['zoom'], 0, false, 2, 1024]),
-                createExpression(['interpolate-lab', ['linear'], ['zoom'], 0, [10, 20, 30], 0.5, [20, 30, 40], 1, [30, 40, 50]]),
-                createExpression(['interpolate-lab', ['linear'], ['zoom'], 0, {prop: 'foo'}, 2, {prop: 'bar'}]),
-                createExpression(['interpolate-lab', ['linear'], ['zoom'], 0, 10, 1, 100]),
-            ];
-            for (const response of invalidResponses) {
-                expect(response.result).toBe('error');
-            }
+            expect(createExpression(['interpolate-lab', ['linear'], ['zoom'], 0, 'reddish', 2, 'greenish']).result).toBe('error');
+            expect(createExpression(['interpolate-lab', ['linear'], ['zoom'], 0, null, 2, 256]).result).toBe('error');
+            expect(createExpression(['interpolate-lab', ['linear'], ['zoom'], 0, false, 2, 1024]).result).toBe('error');
+            expect(createExpression(['interpolate-lab', ['linear'], ['zoom'], 0, [10, 20, 30], 0.5, [20, 30, 40], 1, [30, 40, 50]]).result).toBe('error');
+            expect(createExpression(['interpolate-lab', ['linear'], ['zoom'], 0, {prop: 'foo'}, 2, {prop: 'bar'}]).result).toBe('error');
+            expect(createExpression(['interpolate-lab', ['linear'], ['zoom'], 0, 10, 1, 100]).result).toBe('error');
         });
         test('type requires stop outputs to be a color', () => {
             expectTypeOf<['interpolate-lab', ['linear'], ['zoom'], 0, false, 2, 1024]>().not.toExtend<ExpressionSpecification>();
@@ -2043,9 +1984,8 @@ describe('interpolation expressions', () => {
             }
             expect(response.value.evaluate({zoom: 8}).values).toEqual([Color.parse('white'), Color.parse('black')]);
             expect(response.value.evaluate({zoom: 9}).values).toHaveLength(2);
-            for (let i = 0; i < 2; i++) {
-                expectToMatchColor(response.value.evaluate({zoom: 9}).values[i], 'rgb(46.63266% 46.63266% 46.63266% / 1)');
-            }
+            expectToMatchColor(response.value.evaluate({zoom: 9}).values[0], 'rgb(46.63266% 46.63266% 46.63266% / 1)');
+            expectToMatchColor(response.value.evaluate({zoom: 9}).values[1], 'rgb(46.63266% 46.63266% 46.63266% / 1)');
             expect(response.value.evaluate({zoom: 10}).values).toEqual([Color.parse('black'), Color.parse('white')]);
         });
         test('type accepts expression which interpolates between color array outputs', () => {
@@ -2070,9 +2010,8 @@ describe('interpolation expressions', () => {
             }
             expect(response.value.evaluate({zoom: 8}).values).toEqual([Color.parse('white'), Color.parse('black')]);
             expect(response.value.evaluate({zoom: 9}).values).toHaveLength(2);
-            for (let i = 0; i < 2; i++) {
-                expectToMatchColor(response.value.evaluate({zoom: 9}).values[i], 'rgb(46.63266% 46.63266% 46.63266% / 1)');
-            }
+            expectToMatchColor(response.value.evaluate({zoom: 9}).values[0], 'rgb(46.63266% 46.63266% 46.63266% / 1)');
+            expectToMatchColor(response.value.evaluate({zoom: 9}).values[1], 'rgb(46.63266% 46.63266% 46.63266% / 1)');
             expect(response.value.evaluate({zoom: 10}).values).toEqual([Color.parse('black'), Color.parse('white')]);
         });
         test('type accepts expression which interpolates between non-literal color array outputs', () => {
