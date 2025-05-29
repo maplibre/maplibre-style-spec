@@ -791,7 +791,7 @@
               "ios": "4.0.0"
             },
             "additional methods": {
-              "js": "https://github.com/maplibre/maplibre-gl-js/issues/5665",
+              "js": "5.5.0",
               "android": "https://github.com/maplibre/maplibre-native/issues/3396",
               "ios": "https://github.com/maplibre/maplibre-native/issues/3396"
             }
@@ -801,7 +801,7 @@
           "doc": "Client-side elevation coloring based on DEM data. The implementation supports Mapbox Terrain RGB, Mapzen Terrarium tiles and custom encodings.",
           "sdk-support": {
             "basic functionality": {
-              "js": "https://github.com/maplibre/maplibre-gl-js/issues/5666",
+              "js": "5.6.0",
               "android": "https://github.com/maplibre/maplibre-native/issues/3408",
               "ios": "https://github.com/maplibre/maplibre-native/issues/3408"
             }
@@ -4232,7 +4232,7 @@
         "group": "Color Relief",
         "sdk-support": {
           "basic functionality": {
-            "js": "https://github.com/maplibre/maplibre-gl-js/issues/5666",
+            "js": "5.6.0",
             "android": "https://github.com/maplibre/maplibre-native/issues/3408",
             "ios": "https://github.com/maplibre/maplibre-native/issues/3408"
           }
@@ -7489,7 +7489,7 @@
           "ios": "4.0.0"
         },
         "multidirectional": {
-          "js": "https://github.com/maplibre/maplibre-gl-js/issues/5665",
+          "js": "5.5.0",
           "android": "https://github.com/maplibre/maplibre-native/issues/3396",
           "ios": "https://github.com/maplibre/maplibre-native/issues/3396"
         }
@@ -7511,12 +7511,12 @@
       "transition": false,
       "sdk-support": {
         "basic functionality": {
-          "js": "https://github.com/maplibre/maplibre-gl-js/issues/5665",
+          "js": "5.5.0",
           "android": "https://github.com/maplibre/maplibre-native/issues/3396",
           "ios": "https://github.com/maplibre/maplibre-native/issues/3396"
         },
         "multidirectional": {
-          "js": "https://github.com/maplibre/maplibre-gl-js/issues/5665",
+          "js": "5.5.0",
           "android": "https://github.com/maplibre/maplibre-native/issues/3396",
           "ios": "https://github.com/maplibre/maplibre-native/issues/3396"
         }
@@ -7590,7 +7590,7 @@
           "ios": "4.0.0"
         },
         "multidirectional": {
-          "js": "https://github.com/maplibre/maplibre-gl-js/issues/5665",
+          "js": "5.5.0",
           "android": "https://github.com/maplibre/maplibre-native/issues/3396",
           "ios": "https://github.com/maplibre/maplibre-native/issues/3396"
         }
@@ -7615,7 +7615,7 @@
           "ios": "4.0.0"
         },
         "multidirectional": {
-          "js": "https://github.com/maplibre/maplibre-gl-js/issues/5665",
+          "js": "5.5.0",
           "android": "https://github.com/maplibre/maplibre-native/issues/3396",
           "ios": "https://github.com/maplibre/maplibre-native/issues/3396"
         }
@@ -7671,7 +7671,7 @@
       "doc": "The hillshade algorithm to use, one of `standard`, `basic`, `combined`, `igor`, or `multidirectional`. ![image](assets/hillshade_methods.png)",
       "sdk-support": {
         "basic functionality": {
-          "js": "https://github.com/maplibre/maplibre-gl-js/issues/5665",
+          "js": "5.5.0",
           "android": "https://github.com/maplibre/maplibre-native/issues/3396",
           "ios": "https://github.com/maplibre/maplibre-native/issues/3396"
         }
@@ -7695,7 +7695,7 @@
       "transition": true,
       "sdk-support": {
         "basic functionality": {
-          "js": "https://github.com/maplibre/maplibre-gl-js/issues/5666",
+          "js": "5.6.0",
           "android": "https://github.com/maplibre/maplibre-native/issues/3408",
           "ios": "https://github.com/maplibre/maplibre-native/issues/3408"
         }
@@ -7721,7 +7721,7 @@
       "transition": false,
       "sdk-support": {
         "basic functionality": {
-          "js": "https://github.com/maplibre/maplibre-gl-js/issues/5666",
+          "js": "5.6.0",
           "android": "https://github.com/maplibre/maplibre-native/issues/3408",
           "ios": "https://github.com/maplibre/maplibre-native/issues/3408"
         },
