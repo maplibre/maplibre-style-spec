@@ -4,6 +4,12 @@ export default defineConfig({
     test: {
         name: 'unit',
         environment: 'node',
+        typecheck: {
+            enabled: true,
+            include: [
+                'src/**/*.test.ts',
+            ],
+        },
         include: [
             'src/**/*.test.{ts,js}'
         ],

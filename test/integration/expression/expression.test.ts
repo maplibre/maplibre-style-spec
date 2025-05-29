@@ -145,6 +145,7 @@ function evaluateExpression(fixture: ExpressionFixture, expression: Result<Style
                 id?: any;
                 type?: any;
             } = {properties: input[1].properties || {}};
+            const featureState = input[1].featureState ?? {};
             availableImages = input[0].availableImages || [];
             if ('canonicalID' in input[0]) {
                 const id = input[0].canonicalID;
@@ -164,7 +165,7 @@ function evaluateExpression(fixture: ExpressionFixture, expression: Result<Style
                 }
             }
 
-            let value = expressionValue.evaluateWithoutErrorHandling(input[0], feature, {}, canonical, availableImages);
+            let value = expressionValue.evaluateWithoutErrorHandling(input[0], feature, featureState, canonical, availableImages);
             
             if (type.kind === 'color') {
                 value = [value.r, value.g, value.b, value.a];
