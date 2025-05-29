@@ -3709,8 +3709,8 @@
 <div class="language-js highlight"><pre><span></span><code><span id="__span-61-1"><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a><span class="p">[</span><span class="s2">&quot;match&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">,</span><span class="w"> </span><span class="nx">label_1</span><span class="p">,</span><span class="w"> </span><span class="nx">output_1</span><span class="p">,</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="nx">label_n</span><span class="p">,</span><span class="w"> </span><span class="nx">output_n</span><span class="p">,</span><span class="w"> </span><span class="nx">fallback</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">any</span>
 </span></code></pre></div></p>
 <ul>
-<li><code>input</code>: <em>any</em> — Any expression.</li>
-<li><code>label_i</code>: <em>string literal | array&lt;string literal&gt; | array&lt;number literal&gt;</em> — The i-th literal value or array of literal values to match the input against.</li>
+<li><code>input</code>: <em>string | number</em> — Any expression.</li>
+<li><code>label_i</code>: <em>string literal | number literal | array&lt;string literal&gt; | array&lt;number literal&gt;</em> — The i-th literal value or array of literal values to match the input against.</li>
 <li><code>output_i</code>: <em>any</em> — The result when the i-th label is the first label to match the input.</li>
 <li><code>fallback</code>: <em>any</em> — The result when no label matches the input.</li>
 </ul>
@@ -4204,7 +4204,7 @@
 </tbody>
 </table>
 <h3 id="interpolate">interpolate<a class="headerlink" href="#interpolate" title="Permanent link">&para;</a></h3>
-<p>Produces continuous, smooth results by interpolating between pairs of input and output values ("stops"). The <code>input</code> may be any numeric expression (e.g., <code>["get", "population"]</code>). Stop inputs must be numeric literals in strictly ascending order. The output type must be <code>number</code>, <code>array&lt;number&gt;</code>, or <code>color</code>.</p>
+<p>Produces continuous, smooth results by interpolating between pairs of input and output values ("stops"). The <code>input</code> may be any numeric expression (e.g., <code>["get", "population"]</code>). Stop inputs must be numeric literals in strictly ascending order. The output type must be <code>number</code>, <code>array&lt;number&gt;</code>, <code>color</code>, <code>array&lt;color&gt;</code>, or <code>projection</code>.</p>
 <p>Interpolation types:</p>
 <ul>
 <li>
@@ -4230,13 +4230,13 @@
 </li>
 </ul>
 <p>Syntax:
-<div class="language-js highlight"><pre><span></span><code><span id="__span-87-1"><a id="__codelineno-87-1" name="__codelineno-87-1" href="#__codelineno-87-1"></a><span class="p">[</span><span class="s2">&quot;interpolate&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">interpolation_type</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">,</span><span class="w"> </span><span class="nx">stop_1_input</span><span class="p">,</span><span class="w"> </span><span class="nx">stop_1_output</span><span class="p">,</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="nx">stop_n_input</span><span class="p">,</span><span class="w"> </span><span class="nx">stop_n_output</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">any</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-87-1"><a id="__codelineno-87-1" name="__codelineno-87-1" href="#__codelineno-87-1"></a><span class="p">[</span><span class="s2">&quot;interpolate&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">interpolation_type</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">,</span><span class="w"> </span><span class="nx">stop_1_input</span><span class="p">,</span><span class="w"> </span><span class="nx">stop_1_output</span><span class="p">,</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="nx">stop_n_input</span><span class="p">,</span><span class="w"> </span><span class="nx">stop_n_output</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">array</span><span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">color</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">array</span><span class="o">&lt;</span><span class="nx">color</span><span class="o">&gt;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">projection</span>
 </span></code></pre></div></p>
 <ul>
 <li><code>interpolation_type</code>: <em>["linear"] | ["exponential", base] | ["cubic-bezier", x1, y1, x2, y2]</em> — The interpolation type.</li>
 <li><code>input</code>: <em>number</em> — Any numeric expression.</li>
 <li><code>stop_i_input</code>: <em>number literal</em> — The value of the i-th stop against which the <code>input</code> is compared.</li>
-<li><code>stop_i_output</code>: <em>number | array&lt;number&gt; | color</em> — The output value corresponding to the i-th stop.</li>
+<li><code>stop_i_output</code>: <em>number | array&lt;number&gt; | color | array&lt;color&gt; | projection</em> — The output value corresponding to the i-th stop.</li>
 </ul>
 <p>Example:
 <div class="language-json highlight"><pre><span></span><code><span id="__span-88-1"><a id="__codelineno-88-1" name="__codelineno-88-1" href="#__codelineno-88-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
@@ -4268,15 +4268,15 @@
 </tbody>
 </table>
 <h3 id="interpolate-hcl">interpolate-hcl<a class="headerlink" href="#interpolate-hcl" title="Permanent link">&para;</a></h3>
-<p>Produces continuous, smooth results by interpolating between pairs of input and output values ("stops"). Works like <code>interpolate</code>, but the output type must be <code>color</code>, and the interpolation is performed in the Hue-Chroma-Luminance color space.</p>
+<p>Produces continuous, smooth results by interpolating between pairs of input and output values ("stops"). Works like <code>interpolate</code>, but the output type must be <code>color</code> or <code>array&lt;color&gt;</code>, and the interpolation is performed in the Hue-Chroma-Luminance color space.</p>
 <p>Syntax:
-<div class="language-js highlight"><pre><span></span><code><span id="__span-89-1"><a id="__codelineno-89-1" name="__codelineno-89-1" href="#__codelineno-89-1"></a><span class="p">[</span><span class="s2">&quot;interpolate-hcl&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">interpolation_type</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">,</span><span class="w"> </span><span class="nx">stop_1_input</span><span class="p">,</span><span class="w"> </span><span class="nx">stop_1_output</span><span class="p">,</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="nx">stop_n_input</span><span class="p">,</span><span class="w"> </span><span class="nx">stop_n_output</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">color</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-89-1"><a id="__codelineno-89-1" name="__codelineno-89-1" href="#__codelineno-89-1"></a><span class="p">[</span><span class="s2">&quot;interpolate-hcl&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">interpolation_type</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">,</span><span class="w"> </span><span class="nx">stop_1_input</span><span class="p">,</span><span class="w"> </span><span class="nx">stop_1_output</span><span class="p">,</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="nx">stop_n_input</span><span class="p">,</span><span class="w"> </span><span class="nx">stop_n_output</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">color</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">array</span><span class="o">&lt;</span><span class="nx">color</span><span class="o">&gt;</span>
 </span></code></pre></div></p>
 <ul>
 <li><code>interpolation_type</code>: <em>["linear"] | ["exponential", base] | ["cubic-bezier", x1, y1, x2, y2]</em></li>
 <li><code>input</code>: <em>number</em></li>
 <li><code>stop_i_input</code>: <em>number literal</em></li>
-<li><code>stop_i_output</code>: <em>color</em></li>
+<li><code>stop_i_output</code>: <em>color | array&lt;color&gt;</em></li>
 </ul>
 <p>Example:
 <div class="language-json highlight"><pre><span></span><code><span id="__span-90-1"><a id="__codelineno-90-1" name="__codelineno-90-1" href="#__codelineno-90-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
@@ -4308,15 +4308,15 @@
 </tbody>
 </table>
 <h3 id="interpolate-lab">interpolate-lab<a class="headerlink" href="#interpolate-lab" title="Permanent link">&para;</a></h3>
-<p>Produces continuous, smooth results by interpolating between pairs of input and output values ("stops"). Works like <code>interpolate</code>, but the output type must be <code>color</code>, and the interpolation is performed in the CIELAB color space.</p>
+<p>Produces continuous, smooth results by interpolating between pairs of input and output values ("stops"). Works like <code>interpolate</code>, but the output type must be <code>color</code> or <code>array&lt;color&gt;</code>, and the interpolation is performed in the CIELAB color space.</p>
 <p>Syntax:
-<div class="language-js highlight"><pre><span></span><code><span id="__span-91-1"><a id="__codelineno-91-1" name="__codelineno-91-1" href="#__codelineno-91-1"></a><span class="p">[</span><span class="s2">&quot;interpolate-lab&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">interpolation_type</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">,</span><span class="w"> </span><span class="nx">stop_1_input</span><span class="p">,</span><span class="w"> </span><span class="nx">stop_1_output</span><span class="p">,</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="nx">stop_n_input</span><span class="p">,</span><span class="w"> </span><span class="nx">stop_n_output</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">color</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-91-1"><a id="__codelineno-91-1" name="__codelineno-91-1" href="#__codelineno-91-1"></a><span class="p">[</span><span class="s2">&quot;interpolate-lab&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">interpolation_type</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">,</span><span class="w"> </span><span class="nx">stop_1_input</span><span class="p">,</span><span class="w"> </span><span class="nx">stop_1_output</span><span class="p">,</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="nx">stop_n_input</span><span class="p">,</span><span class="w"> </span><span class="nx">stop_n_output</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">color</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">array</span><span class="o">&lt;</span><span class="nx">color</span><span class="o">&gt;</span>
 </span></code></pre></div></p>
 <ul>
 <li><code>interpolation_type</code>: <em>["linear"] | ["exponential", base] | ["cubic-bezier", x1, y1, x2, y2]</em></li>
 <li><code>input</code>: <em>number</em></li>
 <li><code>stop_i_input</code>: <em>number literal</em></li>
-<li><code>stop_i_output</code>: <em>color</em></li>
+<li><code>stop_i_output</code>: <em>color | array&lt;color&gt;</em></li>
 </ul>
 <p>Example:
 <div class="language-json highlight"><pre><span></span><code><span id="__span-92-1"><a id="__codelineno-92-1" name="__codelineno-92-1" href="#__codelineno-92-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
