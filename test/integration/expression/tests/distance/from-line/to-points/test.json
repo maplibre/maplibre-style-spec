@@ -1,0 +1,133 @@
+{
+  "expression": [
+    "distance",
+    {
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                3,
+                3
+              ],
+              [
+                3,
+                3.005
+              ],
+              [
+                3,
+                3.01
+              ],
+              [
+                3,
+                3.015
+              ],
+              [
+                3,
+                3.02
+              ],
+              [
+                3,
+                3.025
+              ],
+              [
+                3,
+                3.03
+              ],
+              [
+                3,
+                3.035
+              ],
+              [
+                3,
+                3.04
+              ],
+              [
+                3,
+                3.045
+              ]
+            ]
+          },
+          "properties": {}
+        }
+      ]
+    }
+  ],
+  "inputs": [
+    [
+      {
+        "zoom": 20,
+        "canonicalID": {
+          "z": 20,
+          "x": 3,
+          "y": 3
+        }
+      },
+      {
+        "geometry": {
+          "type": "MultiPoint",
+          "coordinates": [
+            [
+              2.999,
+              3
+            ],
+            [
+              2.999,
+              3.1
+            ],
+            [
+              2.999,
+              3.2
+            ],
+            [
+              2.999,
+              3.3
+            ],
+            [
+              2.999,
+              3.4
+            ],
+            [
+              2.999,
+              3.5
+            ],
+            [
+              2.999,
+              3.6
+            ],
+            [
+              2.999,
+              3.7
+            ],
+            [
+              2.999,
+              3.8
+            ],
+            [
+              2.999,
+              3.9
+            ],
+            [
+              2.999,
+              3.995
+            ]
+          ]
+        }
+      }
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": false,
+      "isZoomConstant": true,
+      "type": "number"
+    },
+    "outputs": [
+      111.169
+    ]
+  }
+}
