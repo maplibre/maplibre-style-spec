@@ -1,0 +1,23 @@
+{
+  "expression": [
+    "format",
+    "a",
+    {
+      "text-font": [
+        "Helvatica",
+        "Arial"
+      ]
+    }
+  ],
+  "expected": {
+    "compiled": {
+      "result": "error",
+      "errors": [
+        {
+          "key": "[1][0]",
+          "error": "Unknown expression \"Helvatica\". If you wanted a literal array, use [\"literal\", [...]]."
+        }
+      ]
+    }
+  }
+}

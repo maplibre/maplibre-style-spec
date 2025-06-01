@@ -24,6 +24,11 @@
     "e",
     {
       "vertical-align": "center"
+    },
+    "f",
+    {
+      "font-scale": 0.8,
+      "text-color": "#fff"
     }
   ],
   "inputs": [
@@ -86,6 +91,19 @@
             "fontStack": null,
             "textColor": null,
             "verticalAlign": "center"
+          },
+          {
+            "text": "f",
+            "image": null,
+            "scale": 0.8,
+            "fontStack": null,
+            "textColor": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 1
+            },
+            "verticalAlign": null
           }
         ]
       }
