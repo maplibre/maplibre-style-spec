@@ -1,7 +1,7 @@
 {
   "expression": [
     "array",
-    "string",
+    "number",
     [
       "get",
       "x"
@@ -35,6 +35,18 @@
       {
         "properties": {
           "x": [
+            true,
+            false
+          ]
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": [
+            true,
             1,
             "b"
           ]
@@ -55,18 +67,21 @@
       "result": "success",
       "isFeatureConstant": false,
       "isZoomConstant": true,
-      "type": "array<string>"
+      "type": "array<number>"
     },
     "outputs": [
+      {
+        "error": "Expected value to be of type array<number>, but found array<string, 2> instead."
+      },
       [
-        "a",
-        "b"
+        1,
+        2
       ],
       {
-        "error": "Expected value to be of type array<string>, but found array<number, 2> instead."
+        "error": "Expected value to be of type array<number>, but found array<boolean, 2> instead."
       },
       {
-        "error": "Expected value to be of type array<string>, but found array<value, 2> instead."
+        "error": "Expected value to be of type array<number>, but found array<value, 3> instead."
       },
       []
     ]
