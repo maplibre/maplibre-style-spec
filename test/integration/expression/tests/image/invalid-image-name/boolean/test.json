@@ -1,0 +1,21 @@
+{
+  "expression": [
+    "image",
+    true
+  ],
+  "expected": {
+    "compiled": {
+      "result": "error",
+      "errors": [
+        {
+          "key": "[1]",
+          "error": "Expected string but found boolean instead."
+        },
+        {
+          "key": "",
+          "error": "No image name provided."
+        }
+      ]
+    }
+  }
+}
