@@ -135,6 +135,36 @@
           "i": 1
         }
       }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "needle": "low",
+          "hay": "helloworldlow",
+          "i": -4
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "needle": "low",
+          "hay": "helloworldlow",
+          "i": 15
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "needle": "low",
+          "hay": "helloworldlow",
+          "i": -15
+        }
+      }
     ]
   ],
   "expected": {
@@ -156,7 +186,10 @@
       },
       4,
       -1,
-      1
+      1,
+      3,
+      -1,
+      3
     ]
   }
 }
