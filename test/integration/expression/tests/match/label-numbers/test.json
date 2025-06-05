@@ -1,34 +1,30 @@
 {
   "expression": [
-    "string",
+    "match",
     [
-      "match",
-      [
-        "string",
-        [
-          "get",
-          "x"
-        ]
-      ],
-      [
-        "a",
-        "A"
-      ],
-      "Apple",
-      [
-        "b",
-        "B"
-      ],
-      "Banana",
-      "Kumquat"
-    ]
+      "get",
+      "x"
+    ],
+    [
+      -2,
+      -1
+    ],
+    "negative",
+    0,
+    "zero",
+    [
+      1,
+      2
+    ],
+    "positive",
+    "otherwise"
   ],
   "inputs": [
     [
       {},
       {
         "properties": {
-          "x": "a"
+          "x": -2
         }
       }
     ],
@@ -36,7 +32,7 @@
       {},
       {
         "properties": {
-          "x": "A"
+          "x": -1
         }
       }
     ],
@@ -44,7 +40,7 @@
       {},
       {
         "properties": {
-          "x": "b"
+          "x": 0
         }
       }
     ],
@@ -52,7 +48,7 @@
       {},
       {
         "properties": {
-          "x": "B"
+          "x": 1
         }
       }
     ],
@@ -60,7 +56,15 @@
       {},
       {
         "properties": {
-          "x": "c"
+          "x": 2
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 99
         }
       }
     ]
@@ -73,11 +77,12 @@
       "type": "string"
     },
     "outputs": [
-      "Apple",
-      "Apple",
-      "Banana",
-      "Banana",
-      "Kumquat"
+      "negative",
+      "negative",
+      "zero",
+      "positive",
+      "positive",
+      "otherwise"
     ]
   }
 }

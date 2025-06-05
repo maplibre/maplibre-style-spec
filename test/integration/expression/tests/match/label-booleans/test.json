@@ -2,14 +2,16 @@
   "expression": [
     "match",
     [
-      "get",
-      "x"
+      "boolean",
+      [
+        "get",
+        "x"
+      ]
     ],
     [
-      "0",
-      0
+      true
     ],
-    "zero",
+    "match",
     "otherwise"
   ],
   "expected": {
@@ -18,7 +20,7 @@
       "errors": [
         {
           "key": "[2]",
-          "error": "Expected string but found number instead."
+          "error": "Branch labels must be numbers or strings."
         }
       ]
     }
