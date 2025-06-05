@@ -24,6 +24,18 @@
         "zoom": 5
       },
       {}
+    ],
+    [
+      {
+        "zoom": 9
+      },
+      {}
+    ],
+    [
+      {
+        "zoom": 10
+      },
+      {}
     ]
   ],
   "expected": {
@@ -34,7 +46,9 @@
       "type": "projectionDefinition"
     },
     "outputs": [
-      "vertical-perspective"
+      "vertical-perspective",
+      "vertical-perspective",
+      "mercator"
     ]
   }
 }
