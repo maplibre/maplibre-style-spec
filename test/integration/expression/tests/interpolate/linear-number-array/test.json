@@ -1,0 +1,153 @@
+{
+  "propertySpec": {
+    "type": "numberArray",
+    "property-type": "data-driven",
+    "expression": {
+      "interpolated": true,
+      "parameters": [
+        "zoom",
+        "feature"
+      ]
+    }
+  },
+  "expression": [
+    "interpolate",
+    [
+      "linear"
+    ],
+    [
+      "get",
+      "x"
+    ],
+    0,
+    [
+      "literal",
+      [
+        0,
+        0
+      ]
+    ],
+    10,
+    [
+      "get",
+      "b"
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {
+        "properties": {
+          "x": 0,
+          "b": [
+            10,
+            20
+          ]
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 5,
+          "b": [
+            10,
+            20
+          ]
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 10,
+          "b": [
+            10,
+            20
+          ]
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": -1234,
+          "b": [
+            10,
+            20
+          ]
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 1234,
+          "b": [
+            10,
+            20
+          ]
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "abcd",
+          "b": [
+            10,
+            20
+          ]
+        }
+      }
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": false,
+      "isZoomConstant": true,
+      "type": "numberArray"
+    },
+    "outputs": [
+      {
+        "values": [
+          0,
+          0
+        ]
+      },
+      {
+        "values": [
+          5,
+          10
+        ]
+      },
+      {
+        "values": [
+          10,
+          20
+        ]
+      },
+      {
+        "values": [
+          0,
+          0
+        ]
+      },
+      {
+        "values": [
+          10,
+          20
+        ]
+      },
+      {
+        "error": "Expected value to be of type number, but found string instead."
+      }
+    ]
+  }
+}
