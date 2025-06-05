@@ -1,7 +1,7 @@
 {
   "expression": [
-    "==",
-    1,
+    "!=",
+    null,
     [
       "get",
       "x"
@@ -11,8 +11,14 @@
     [
       {},
       {
+        "properties": {}
+      }
+    ],
+    [
+      {},
+      {
         "properties": {
-          "x": 1
+          "x": null
         }
       }
     ],
@@ -20,15 +26,7 @@
       {},
       {
         "properties": {
-          "x": "1"
-        }
-      }
-    ],
-    [
-      {},
-      {
-        "properties": {
-          "x": 2
+          "x": false
         }
       }
     ]
@@ -41,9 +39,9 @@
       "type": "boolean"
     },
     "outputs": [
-      true,
       false,
-      false
+      false,
+      true
     ]
   }
 }
