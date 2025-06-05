@@ -1,0 +1,26 @@
+{
+  "expression": [
+    "length",
+    [
+      "literal",
+      []
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": true,
+      "isZoomConstant": true,
+      "type": "number"
+    },
+    "outputs": [
+      0
+    ]
+  }
+}
