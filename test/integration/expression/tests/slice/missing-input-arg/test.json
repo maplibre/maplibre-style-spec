@@ -1,0 +1,16 @@
+{
+  "expression": [
+    "slice"
+  ],
+  "expected": {
+    "compiled": {
+      "result": "error",
+      "errors": [
+        {
+          "key": "",
+          "error": "Expected 3 or 4 arguments, but found 0 instead."
+        }
+      ]
+    }
+  }
+}
