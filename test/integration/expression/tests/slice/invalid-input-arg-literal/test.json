@@ -1,0 +1,18 @@
+{
+  "expression": [
+    "slice",
+    255,
+    1
+  ],
+  "expected": {
+    "compiled": {
+      "result": "error",
+      "errors": [
+        {
+          "key": "",
+          "error": "Expected first argument to be of type array or string, but found number instead"
+        }
+      ]
+    }
+  }
+}
