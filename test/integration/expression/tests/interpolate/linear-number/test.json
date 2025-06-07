@@ -1,0 +1,93 @@
+{
+  "expression": [
+    "interpolate",
+    [
+      "linear"
+    ],
+    [
+      "get",
+      "x"
+    ],
+    0,
+    100,
+    10,
+    [
+      "get",
+      "b"
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {
+        "properties": {
+          "x": 0,
+          "b": 200
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 5,
+          "b": 200
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 10,
+          "b": 200
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": -1234,
+          "b": 200
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 1234,
+          "b": 200
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "abcd",
+          "b": 200
+        }
+      }
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": false,
+      "isZoomConstant": true,
+      "type": "number"
+    },
+    "outputs": [
+      100,
+      150,
+      200,
+      100,
+      200,
+      {
+        "error": "Expected value to be of type number, but found string instead."
+      }
+    ]
+  }
+}

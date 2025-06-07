@@ -1,0 +1,45 @@
+{
+  "expression": [
+    "index-of",
+    [
+      "get",
+      "substr"
+    ],
+    [
+      "get",
+      "str"
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {
+        "properties": {
+          "substr": "镇",
+          "str": "市镇"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "substr": "市镇",
+          "str": "丐𦨭市镇"
+        }
+      }
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": false,
+      "isZoomConstant": true,
+      "type": "number"
+    },
+    "outputs": [
+      1,
+      2
+    ]
+  }
+}

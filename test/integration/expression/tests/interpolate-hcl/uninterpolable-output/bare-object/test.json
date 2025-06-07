@@ -1,0 +1,30 @@
+{
+  "expression": [
+    "interpolate-hcl",
+    [
+      "linear"
+    ],
+    [
+      "zoom"
+    ],
+    0,
+    {
+      "prop": "foo"
+    },
+    1,
+    {
+      "prop": "bar"
+    }
+  ],
+  "expected": {
+    "compiled": {
+      "result": "error",
+      "errors": [
+        {
+          "key": "[4]",
+          "error": "Bare objects invalid. Use [\"literal\", {...}] instead."
+        }
+      ]
+    }
+  }
+}

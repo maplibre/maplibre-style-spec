@@ -1,0 +1,55 @@
+{
+  "expression": [
+    "in",
+    [
+      "get",
+      "substr"
+    ],
+    [
+      "get",
+      "str"
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {
+        "properties": {
+          "substr": "",
+          "str": ""
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "substr": "",
+          "str": "helloworld"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "substr": " ",
+          "str": ""
+        }
+      }
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": false,
+      "isZoomConstant": true,
+      "type": "boolean"
+    },
+    "outputs": [
+      false,
+      true,
+      false
+    ]
+  }
+}

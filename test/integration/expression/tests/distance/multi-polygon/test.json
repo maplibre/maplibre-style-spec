@@ -1,0 +1,66 @@
+{
+  "expression": [
+    "distance",
+    {
+      "type": "MultiPolygon",
+      "coordinates": [
+        [
+          [
+            [
+              3,
+              3
+            ],
+            [
+              3,
+              4
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              4,
+              3
+            ],
+            [
+              3,
+              3
+            ]
+          ]
+        ]
+      ]
+    }
+  ],
+  "inputs": [
+    [
+      {
+        "zoom": 16,
+        "canonicalID": {
+          "z": 16,
+          "x": 3,
+          "y": 3
+        }
+      },
+      {
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            1,
+            1
+          ]
+        }
+      }
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": false,
+      "isZoomConstant": true,
+      "type": "number"
+    },
+    "outputs": [
+      313783
+    ]
+  }
+}

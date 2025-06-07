@@ -1,44 +1,44 @@
 {
-    "propertySpec": {
-      "type": "projectionDefinition",
-      "property-type": "data-constant",
-      "expression": {
-        "interpolated": true,
-        "parameters": [
-          "zoom"
-        ]
-      }
-    },
-    "expression": [
-      "interpolate",
-      [
-        "linear"
-      ],
-      [
+  "propertySpec": {
+    "type": "projectionDefinition",
+    "property-type": "data-constant",
+    "expression": {
+      "interpolated": true,
+      "parameters": [
         "zoom"
-      ],
-      0,
-      "vertical-perspective",
-      4,
-      "mercator"
-    ],
-    "inputs": [
-      [
-        {
-          "zoom": 5
-        },
-        {}
-      ]
-    ],
-    "expected": {
-      "compiled": {
-        "result": "success",
-        "isFeatureConstant": true,
-        "isZoomConstant": false,
-        "type": "projectionDefinition"
-      },
-      "outputs": [
-          "mercator"
       ]
     }
+  },
+  "expression": [
+    "interpolate",
+    [
+      "linear"
+    ],
+    [
+      "zoom"
+    ],
+    0,
+    "vertical-perspective",
+    4,
+    "mercator"
+  ],
+  "inputs": [
+    [
+      {
+        "zoom": 5
+      },
+      {}
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": true,
+      "isZoomConstant": false,
+      "type": "projectionDefinition"
+    },
+    "outputs": [
+      "mercator"
+    ]
   }
+}

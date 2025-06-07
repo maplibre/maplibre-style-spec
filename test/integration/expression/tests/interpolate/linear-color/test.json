@@ -1,23 +1,29 @@
 {
-  "expression": [
-    "to-rgba",
-    [
-      "interpolate",
-      [
-        "exponential",
-        1
-      ],
-      [
-        "get",
-        "x"
-      ],
-      1,
-      "red",
-      11,
-      [
-        "get",
-        "color"
+  "propertySpec": {
+    "type": "color",
+    "property-type": "data-driven",
+    "expression": {
+      "interpolated": true,
+      "parameters": [
+        "feature"
       ]
+    }
+  },
+  "expression": [
+    "interpolate",
+    [
+      "linear"
+    ],
+    [
+      "get",
+      "x"
+    ],
+    1,
+    "red",
+    11,
+    [
+      "get",
+      "color"
     ]
   ],
   "inputs": [
@@ -90,43 +96,43 @@
       "result": "success",
       "isFeatureConstant": false,
       "isZoomConstant": true,
-      "type": "array<number, 4>"
+      "type": "color"
     },
     "outputs": [
       [
-        255,
+        1,
         0,
         0,
         1
       ],
       [
-        153,
+        0.6,
         0,
-        102,
+        0.4,
         1
       ],
       [
-        153,
+        0.36,
         0,
-        102,
+        0.24,
         0.6
       ],
       [
-        153,
+        0.36,
         0,
-        102,
+        0.24,
         0.6
       ],
       [
-        153,
+        0.36,
         0,
-        102,
+        0.24,
         0.6
       ],
       [
         0,
         0,
-        255,
+        1,
         1
       ],
       {

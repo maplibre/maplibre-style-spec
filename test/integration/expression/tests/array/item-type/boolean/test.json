@@ -1,0 +1,89 @@
+{
+  "expression": [
+    "array",
+    "boolean",
+    [
+      "get",
+      "x"
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {
+        "properties": {
+          "x": [
+            "a",
+            "b"
+          ]
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": [
+            1,
+            2
+          ]
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": [
+            true,
+            false
+          ]
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": [
+            true,
+            1,
+            "b"
+          ]
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": []
+        }
+      }
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": false,
+      "isZoomConstant": true,
+      "type": "array<boolean>"
+    },
+    "outputs": [
+      {
+        "error": "Expected value to be of type array<boolean>, but found array<string, 2> instead."
+      },
+      {
+        "error": "Expected value to be of type array<boolean>, but found array<number, 2> instead."
+      },
+      [
+        true,
+        false
+      ],
+      {
+        "error": "Expected value to be of type array<boolean>, but found array<value, 3> instead."
+      },
+      []
+    ]
+  }
+}

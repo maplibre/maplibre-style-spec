@@ -1,0 +1,40 @@
+{
+  "expression": [
+    "within",
+    {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ]
+      ]
+    },
+    "second arg"
+  ],
+  "expected": {
+    "compiled": {
+      "result": "error",
+      "errors": [
+        {
+          "key": "",
+          "error": "'within' expression requires exactly one argument, but found 2 instead."
+        }
+      ]
+    }
+  }
+}

@@ -18,6 +18,14 @@
       {},
       {
         "properties": {
+          "x": null
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
           "x": 1
         }
       }
@@ -31,6 +39,7 @@
       "type": "boolean"
     },
     "outputs": [
+      true,
       true,
       false
     ]

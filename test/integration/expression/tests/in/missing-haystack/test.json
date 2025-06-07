@@ -1,0 +1,17 @@
+{
+  "expression": [
+    "in",
+    "a"
+  ],
+  "expected": {
+    "compiled": {
+      "result": "error",
+      "errors": [
+        {
+          "key": "",
+          "error": "Expected 2 arguments, but found 1 instead."
+        }
+      ]
+    }
+  }
+}

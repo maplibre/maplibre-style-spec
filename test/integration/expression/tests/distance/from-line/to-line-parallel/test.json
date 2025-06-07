@@ -1,0 +1,56 @@
+{
+  "expression": [
+    "distance",
+    {
+      "type": "LineString",
+      "coordinates": [
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ]
+      ]
+    }
+  ],
+  "inputs": [
+    [
+      {
+        "zoom": 20,
+        "canonicalID": {
+          "z": 20,
+          "x": 3,
+          "y": 3
+        }
+      },
+      {
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              3.001,
+              3
+            ],
+            [
+              3.001,
+              4
+            ]
+          ]
+        }
+      }
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": false,
+      "isZoomConstant": true,
+      "type": "number"
+    },
+    "outputs": [
+      111.167
+    ]
+  }
+}

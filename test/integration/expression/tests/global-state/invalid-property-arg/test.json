@@ -1,0 +1,21 @@
+{
+  "expression": [
+    "global-state",
+    [
+      "concat",
+      "pr",
+      "op"
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "error",
+      "errors": [
+        {
+          "key": "",
+          "error": "Global state property must be string, but found object instead."
+        }
+      ]
+    }
+  }
+}

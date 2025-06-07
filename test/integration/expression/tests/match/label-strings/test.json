@@ -1,0 +1,88 @@
+{
+  "expression": [
+    "match",
+    [
+      "get",
+      "x"
+    ],
+    [
+      "a",
+      "A"
+    ],
+    "Apple",
+    "b",
+    "Banana",
+    [
+      "c",
+      "C"
+    ],
+    "Cantaloupe",
+    "Kumquat"
+  ],
+  "inputs": [
+    [
+      {},
+      {
+        "properties": {
+          "x": "a"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "A"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "b"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "c"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "C"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "x"
+        }
+      }
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": false,
+      "isZoomConstant": true,
+      "type": "string"
+    },
+    "outputs": [
+      "Apple",
+      "Apple",
+      "Banana",
+      "Cantaloupe",
+      "Cantaloupe",
+      "Kumquat"
+    ]
+  }
+}

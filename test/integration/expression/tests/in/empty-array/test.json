@@ -1,0 +1,35 @@
+{
+  "expression": [
+    "in",
+    [
+      "get",
+      "item"
+    ],
+    [
+      "get",
+      "arr"
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {
+        "properties": {
+          "item": 1,
+          "arr": []
+        }
+      }
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": false,
+      "isZoomConstant": true,
+      "type": "boolean"
+    },
+    "outputs": [
+      false
+    ]
+  }
+}

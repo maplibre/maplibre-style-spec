@@ -12,54 +12,6 @@
     "match",
     "otherwise"
   ],
-  "inputs": [
-    [
-      {},
-      {
-        "properties": {
-          "x": true
-        }
-      }
-    ],
-    [
-      {},
-      {
-        "properties": {
-          "x": false
-        }
-      }
-    ],
-    [
-      {},
-      {
-        "properties": {
-          "x": "true"
-        }
-      }
-    ],
-    [
-      {},
-      {
-        "properties": {
-          "x": 1
-        }
-      }
-    ],
-    [
-      {},
-      {
-        "properties": {
-          "x": null
-        }
-      }
-    ],
-    [
-      {},
-      {
-        "properties": {}
-      }
-    ]
-  ],
   "expected": {
     "compiled": {
       "result": "error",

@@ -22,7 +22,10 @@
       {},
       {
         "properties": {
-          "p": [2,3]
+          "p": [
+            2,
+            3
+          ]
         }
       }
     ],
@@ -65,9 +68,20 @@
       {
         "error": "Could not parse numberArray from value 'null'"
       },
-      {"values":[1]},
-      {"values":[2,3]},
-      {"values":[]},
+      {
+        "values": [
+          1
+        ]
+      },
+      {
+        "values": [
+          2,
+          3
+        ]
+      },
+      {
+        "values": []
+      },
       {
         "error": "Could not parse numberArray from value 'not a number'"
       }

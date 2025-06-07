@@ -1,0 +1,27 @@
+{
+  "expression": [
+    "feature-state",
+    "x"
+  ],
+  "inputs": [
+    [
+      {},
+      {
+        "featureState": {
+          "x": 1
+        }
+      }
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": false,
+      "isZoomConstant": true,
+      "type": "value"
+    },
+    "outputs": [
+      1
+    ]
+  }
+}

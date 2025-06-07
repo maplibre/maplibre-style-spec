@@ -1,0 +1,55 @@
+{
+  "expression": [
+    "index-of",
+    [
+      "get",
+      "substr"
+    ],
+    [
+      "get",
+      "str"
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {
+        "properties": {
+          "substr": "",
+          "str": ""
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "substr": "",
+          "str": "helloworld"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "substr": " ",
+          "str": ""
+        }
+      }
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": false,
+      "isZoomConstant": true,
+      "type": "number"
+    },
+    "outputs": [
+      0,
+      0,
+      -1
+    ]
+  }
+}

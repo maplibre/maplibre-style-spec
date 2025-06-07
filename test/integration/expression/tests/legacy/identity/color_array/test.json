@@ -22,7 +22,10 @@
       {},
       {
         "properties": {
-          "p": ["blue", "red"]
+          "p": [
+            "blue",
+            "red"
+          ]
         }
       }
     ],
@@ -73,9 +76,35 @@
       {
         "error": "Could not parse colorArray from value 'null'"
       },
-      {"values":[{"r":0,"g":0,"b":1,"a":1}]},
-      {"values":[{"r":0,"g":0,"b":1,"a":1},{"r":1,"g":0,"b":0,"a":1}]},
-      {"values":[]},
+      {
+        "values": [
+          {
+            "r": 0,
+            "g": 0,
+            "b": 1,
+            "a": 1
+          }
+        ]
+      },
+      {
+        "values": [
+          {
+            "r": 0,
+            "g": 0,
+            "b": 1,
+            "a": 1
+          },
+          {
+            "r": 1,
+            "g": 0,
+            "b": 0,
+            "a": 1
+          }
+        ]
+      },
+      {
+        "values": []
+      },
       {
         "error": "Could not parse colorArray from value '0'"
       },

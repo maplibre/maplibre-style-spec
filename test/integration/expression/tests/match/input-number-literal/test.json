@@ -1,0 +1,28 @@
+{
+  "expression": [
+    "match",
+    1,
+    0,
+    "zero",
+    1,
+    "one",
+    "otherwise"
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": true,
+      "isZoomConstant": true,
+      "type": "string"
+    },
+    "outputs": [
+      "one"
+    ]
+  }
+}

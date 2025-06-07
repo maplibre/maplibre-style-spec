@@ -1,0 +1,18 @@
+{
+  "expression": [
+    "typeof",
+    true,
+    42
+  ],
+  "expected": {
+    "compiled": {
+      "result": "error",
+      "errors": [
+        {
+          "key": "",
+          "error": "Expected arguments of type (value), but found (boolean, number) instead."
+        }
+      ]
+    }
+  }
+}

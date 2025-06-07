@@ -1,0 +1,113 @@
+{
+  "propertySpec": {
+    "type": "color",
+    "property-type": "data-driven",
+    "expression": {
+      "parameters": [
+        "feature"
+      ]
+    }
+  },
+  "expression": [
+    "step",
+    [
+      "get",
+      "x"
+    ],
+    "#ddd",
+    50,
+    "#eee",
+    100,
+    [
+      "get",
+      "color"
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {
+        "properties": {
+          "x": 49,
+          "color": "white"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 50,
+          "color": "white"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 51,
+          "color": "white"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 99,
+          "color": "white"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 100,
+          "color": "white"
+        }
+      }
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": false,
+      "isZoomConstant": true,
+      "type": "color"
+    },
+    "outputs": [
+      [
+        0.866666,
+        0.866666,
+        0.866666,
+        1
+      ],
+      [
+        0.933333,
+        0.933333,
+        0.933333,
+        1
+      ],
+      [
+        0.933333,
+        0.933333,
+        0.933333,
+        1
+      ],
+      [
+        0.933333,
+        0.933333,
+        0.933333,
+        1
+      ],
+      [
+        1,
+        1,
+        1,
+        1
+      ]
+    ]
+  }
+}

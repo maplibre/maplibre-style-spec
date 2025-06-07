@@ -1,0 +1,202 @@
+{
+  "propertySpec": {
+    "type": "colorArray",
+    "property-type": "data-driven",
+    "expression": {
+      "interpolated": true,
+      "parameters": [
+        "feature"
+      ]
+    }
+  },
+  "expression": [
+    "interpolate",
+    [
+      "linear"
+    ],
+    [
+      "get",
+      "x"
+    ],
+    0,
+    [
+      "literal",
+      [
+        "white",
+        "black"
+      ]
+    ],
+    10,
+    [
+      "get",
+      "colors"
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {
+        "properties": {
+          "x": 0,
+          "colors": [
+            "black",
+            "white"
+          ]
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 5,
+          "colors": [
+            "black",
+            "white"
+          ]
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 10,
+          "colors": [
+            "black",
+            "white"
+          ]
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": -1234,
+          "colors": [
+            "black",
+            "white"
+          ]
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 1234,
+          "colors": [
+            "black",
+            "white"
+          ]
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "abcd",
+          "colors": [
+            "black",
+            "white"
+          ]
+        }
+      }
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": false,
+      "isZoomConstant": true,
+      "type": "colorArray"
+    },
+    "outputs": [
+      {
+        "values": [
+          {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 1
+          },
+          {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 1
+          }
+        ]
+      },
+      {
+        "values": [
+          {
+            "r": 0.5,
+            "g": 0.5,
+            "b": 0.5,
+            "a": 1
+          },
+          {
+            "r": 0.5,
+            "g": 0.5,
+            "b": 0.5,
+            "a": 1
+          }
+        ]
+      },
+      {
+        "values": [
+          {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 1
+          },
+          {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 1
+          }
+        ]
+      },
+      {
+        "values": [
+          {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 1
+          },
+          {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 1
+          }
+        ]
+      },
+      {
+        "values": [
+          {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 1
+          },
+          {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 1
+          }
+        ]
+      },
+      {
+        "error": "Expected value to be of type number, but found string instead."
+      }
+    ]
+  }
+}

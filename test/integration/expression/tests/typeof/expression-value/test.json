@@ -1,0 +1,30 @@
+{
+  "expression": [
+    "typeof",
+    [
+      "concat",
+      "foo",
+      [
+        "to-string",
+        0
+      ]
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": true,
+      "isZoomConstant": true,
+      "type": "string"
+    },
+    "outputs": [
+      "string"
+    ]
+  }
+}

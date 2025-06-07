@@ -1,0 +1,88 @@
+{
+  "expression": [
+    "slice",
+    "abc",
+    [
+      "get",
+      "i1"
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {
+        "properties": {
+          "i1": false
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "i1": null
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "i1": "one"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "i1": {}
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "i1": [
+            1
+          ]
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {}
+      }
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": false,
+      "isZoomConstant": true,
+      "type": "string"
+    },
+    "outputs": [
+      {
+        "error": "Expected value to be of type number, but found boolean instead."
+      },
+      {
+        "error": "Expected value to be of type number, but found null instead."
+      },
+      {
+        "error": "Expected value to be of type number, but found string instead."
+      },
+      {
+        "error": "Expected value to be of type number, but found object instead."
+      },
+      {
+        "error": "Expected value to be of type number, but found array<number, 1> instead."
+      },
+      {
+        "error": "Expected value to be of type number, but found null instead."
+      }
+    ]
+  }
+}

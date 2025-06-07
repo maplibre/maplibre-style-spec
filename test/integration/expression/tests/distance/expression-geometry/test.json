@@ -1,0 +1,32 @@
+{
+  "expression": [
+    "distance",
+    [
+      "literal",
+      {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            4
+          ]
+        ]
+      }
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "error",
+      "errors": [
+        {
+          "key": "",
+          "error": "'distance' expression requires valid geojson object that contains polygon geometry type."
+        }
+      ]
+    }
+  }
+}
