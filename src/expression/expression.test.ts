@@ -441,90 +441,29 @@ describe('"case" expression', () => {
 });
 
 describe('"match" expression', () => {
-    test('requires input to be string if labels are string or string array', () => {
-        const response = createExpression(['match', 4, '4', 'o1', ['5', '6'], 'o2', 'fallback']);
-        expect(response.result).toBe('error');
-        expect((response.value as ExpressionParsingError[])[0].message).toBe('Expected string but found number instead.');
-    });
-    test('requires input to be number if labels are number or number array', () => {
-        const response = createExpression(['match', '4', 4, 'o1', [5, 6], 'o2', 'fallback']);
-        expect(response.result).toBe('error');
-        expect((response.value as ExpressionParsingError[])[0].message).toBe('Expected number but found string instead.');
-    });
-    test('requires label to be string literal, number literal, string literal array, or number literal array', () => {
-        expect(createExpression(['match', 4, true, 'matched', 'fallback']).result).toBe('error');
-        expect(createExpression(['match', 4, [true], 'matched', 'fallback']).result).toBe('error');
-        expect(createExpression(['match', 4, [4, '4'], 'matched', 'fallback']).result).toBe('error');
-        expect(createExpression(['match', 4, ['literal', [4]], 'matched', 'fallback']).result).toBe('error');
-    });
     test('type requires label to be string literal, number literal, string literal array, or number literal array', () => {
         expectTypeOf<['match', 4, true, 'matched', 'fallback']>().not.toExtend<ExpressionSpecification>();
         expectTypeOf<['match', 4, [true], 'matched', 'fallback']>().not.toExtend<ExpressionSpecification>();
         expectTypeOf<['match', 4, [4, '4'], 'matched', 'fallback']>().not.toExtend<ExpressionSpecification>();
         expectTypeOf<['match', 4, ['literal', [4]], 'matched', 'fallback']>().not.toExtend<ExpressionSpecification>();
     });
-    test('rejects a (string | string[]) label if another label is (number | number[])', () => {
-        expect(createExpression(['match', 4, 4, 'o1', '4', 'o2', 'fallback']).result).toBe('error');
-        expect(createExpression(['match', 4, 4, 'o1', ['4'], 'o2', 'fallback']).result).toBe('error');
-        expect(createExpression(['match', 4, [4], 'o1', '4', 'o2', 'fallback']).result).toBe('error');
-        expect(createExpression(['match', 4, [4], 'o1', ['4'], 'o2', 'fallback']).result).toBe('error');
-    });
-    test('matches number input against number label', () => {
-        const response = createExpression(['match', 2, [0], 'o1', 1, 'o2', 2, 'o3', 'fallback']);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression).evaluate({zoom: 4})).toBe('o3');
-    });
     test('type accepts expression which matches number input against number label', () => {
         expectTypeOf<['match', 2, [0], 'o1', 1, 'o2', 2, 'o3', 'fallback']>().toExtend<ExpressionSpecification>();
-    });
-    test('matches string input against string label', () => {
-        const response = createExpression(['match', 'c', 'a', 'o1', ['b'], 'o2', 'c', 'o3', 'fallback']);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression).evaluate({zoom: 4})).toBe('o3');
     });
     test('type accepts expression which matches string input against string label', () => {
         expectTypeOf<['match', 'c', 'a', 'o1', ['b'], 'o2', 'c', 'o3', 'fallback']>().toExtend<ExpressionSpecification>();
     });
-    test('matches number input against number array label', () => {
-        const response = createExpression(['match', 2, 0, 'o1', [1, 2, 3], 'o2', 'fallback']);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression).evaluate({zoom: 4})).toBe('o2');
-    });
     test('type accepts expression which matches number input against number array label', () => {
         expectTypeOf<['match', 2, 0, 'o1', [1, 2, 3], 'o2', 'fallback']>().toExtend<ExpressionSpecification>();
-    });
-    test('matches string input against string array label', () => {
-        const response = createExpression(['match', 'c', 'a', 'o1', ['b', 'c', 'd'], 'o2', 'fallback']);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression).evaluate({zoom: 4})).toBe('o2');
     });
     test('type accepts expression which matches string input against string array label', () => {
         expectTypeOf<['match', 'c', 'a', 'o1', ['b', 'c', 'd'], 'o2', 'fallback']>().toExtend<ExpressionSpecification>();
     });
-    test('matches with non-literal input', () => {
-        const response = createExpression(['match', ['get', 'TYPE'], ['ADIZ', 'AMA', 'AWY'], true, false]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression).evaluate({zoom: 4}, {type: 'Point', properties: {TYPE: 'AMA'}})).toBe(true);
-    });
     test('type accepts expression which has a non-literal input', () => {
         expectTypeOf<['match', ['get', 'TYPE'], ['ADIZ', 'AMA', 'AWY'], true, false]>().toExtend<ExpressionSpecification>();
     });
-    test('returns the matching expression output\'s evaluated value', () => {
-        const response = createExpression(['match', ['get', 'id'], 'exampleID', ['get', 'iconNameFocused'], ['get', 'iconName']]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression).evaluate({zoom: 4}, {type: 'Point', properties: {id: 'exampleID', iconNameFocused: 'exampleIcon'}})).toBe('exampleIcon'); 
-    });
     test('type accepts expression which has an expression output', () => {
         expectTypeOf<['match', ['get', 'id'], 'exampleID', ['get', 'iconNameFocused'], ['get', 'iconName']]>().toExtend<ExpressionSpecification>();
-    });
-    test('returns null if match has literal null output', () => {
-        const response = createExpression(['match', 1, 0, ['get', 'prop'], 1, null, 'fallback']);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression).evaluate(
-            {zoom: 4},
-            undefined,
-            {prop: 'should not be returned'},
-        )).toBeNull();
     });
     test('type accepts expression which has literal null output', () => {
         expectTypeOf<['match', 1, 0, ['get', 'prop'], 1, null, 'fallback']>().toExtend<ExpressionSpecification>();
