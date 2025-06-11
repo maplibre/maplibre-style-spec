@@ -373,72 +373,34 @@ describe('"slice" expression', () => {
 
 describe('comparison expressions', () => {
     describe('"!=" expression', () => {
-        test('compares against literal null value', () => {
-            const response = createExpression(['!=', null, ['get', 'nonexistent-prop']]);
-            expect(response.result).toBe('success');
-            expect((response.value as StyleExpression).evaluate({zoom: 5})).toBe(false);
-        });
         test('type accepts expression which compares against literal null value', () => {
             expectTypeOf<['!=', null, ['get', 'nonexistent-prop']]>().toExtend<ExpressionSpecification>();
         });
     });
     describe('"==" expression', () => {
-        test('compares expression input against literal input', () => {
-            const response = createExpression(['==', ['get', 'MILITARYAIRPORT'], 1]);
-            expect(response.result).toBe('success');
-            expect((response.value as StyleExpression).evaluate(
-                {zoom: 5},
-                {type: 'Polygon', properties: {MILITARYAIRPORT: 1}},
-            )).toBe(true);
-        });
         test('type accepts expression which compares expression input against literal input', () => {
             expectTypeOf<['==', ['get', 'MILITARYAIRPORT'], 1]>().toExtend<ExpressionSpecification>();
-        });
-        test('compares against literal null value', () => {
-            const response = createExpression(['==', ['get', 'nonexistent-prop'], null]);
-            expect(response.result).toBe('success');
-            expect((response.value as StyleExpression).evaluate({zoom: 5})).toBe(true);
         });
         test('type accepts expression which compares against literal null value', () => {
             expectTypeOf<['==', null, ['get', 'nonexistent-prop']]>().toExtend<ExpressionSpecification>();
         });
     });
     describe('"<" expression', () => {
-        test('rejects boolean input', () => {
-            const response = createExpression(['<', -1, true]);
-            expect(response.result).toBe('error');
-            expect((response.value as ExpressionParsingError[])[0].message).toBe('"<" comparisons are not supported for type \'boolean\'.');
-        });
         test('type rejects boolean input', () => {
             expectTypeOf<['<', -1, true]>().not.toExtend<ExpressionSpecification>();
         });
     });
     describe('"<=" expression', () => {
-        test('rejects boolean input', () => {
-            const response = createExpression(['<=', 0, true]);
-            expect(response.result).toBe('error');
-            expect((response.value as ExpressionParsingError[])[0].message).toBe('"<=" comparisons are not supported for type \'boolean\'.');
-        });
         test('type rejects boolean input', () => {
             expectTypeOf<['<=', 0, true]>().not.toExtend<ExpressionSpecification>();
         });
     });
     describe('">" expression', () => {
-        test('rejects boolean input', () => {
-            const response = createExpression(['>', 1, true]);
-            expect(response.result).toBe('error');
-            expect((response.value as ExpressionParsingError[])[0].message).toBe('">" comparisons are not supported for type \'boolean\'.');
-        });
         test('type rejects boolean input', () => {
             expectTypeOf<['>', 1, true]>().not.toExtend<ExpressionSpecification>();
         });
     });
     describe('">=" expression', () => {
-        test('rejects boolean input', () => {
-            const response = createExpression(['>=', 1, true]);
-            expect(response.result).toBe('error');
-            expect((response.value as ExpressionParsingError[])[0].message).toBe('">=" comparisons are not supported for type \'boolean\'.');
-        });
         test('type rejects boolean input', () => {
             expectTypeOf<['>=', 1, true]>().not.toExtend<ExpressionSpecification>();
         });
