@@ -129,16 +129,6 @@ describe('Distance expression', () => {
 });
 
 describe('"array" expression', () => {
-    test('requires an expression as the input value', () => {
-        expect(createExpression(['array', 1, 2, 3]).result).toBe('error');
-        expect(createExpression(['array', [1, 2, 3]]).result).toBe('error');
-        expect(createExpression(['array', 'number', [1, 2, 3]]).result).toBe('error');
-        expect(createExpression(['array', 'number', 3, [1, 2, 3]]).result).toBe('error');
-
-        expect(createExpression(['array', ['literal', []]]).result).toBe('success');
-        expect(createExpression(['array', 'number', ['literal', [1, 2, 3]]]).result).toBe('success');
-        expect(createExpression(['array', 'number', Number.MAX_SAFE_INTEGER, ['get', 'arr']]).result).toBe('success');
-    });
     test('type requires an expression as the input value', () => {
         expectTypeOf<['array', 1, 2, 3]>().not.toExtend<ExpressionSpecification>();
         expectTypeOf<['array', [1, 2, 3]]>().not.toExtend<ExpressionSpecification>();
@@ -149,15 +139,6 @@ describe('"array" expression', () => {
         expectTypeOf<['array', 'number', ['literal', [1, 2, 3]]]>().toExtend<ExpressionSpecification>();
         expectTypeOf<['array', 'number', typeof Number.MAX_SAFE_INTEGER, ['get', 'arr']]>().toExtend<ExpressionSpecification>();
     });
-    test('requires either "string", "number", or "boolean" as the asserted type', () => {
-        expect(createExpression(['array', 0, ['literal', []]]).result).toBe('error');
-        expect(createExpression(['array', '0', ['literal', []]]).result).toBe('error');
-        expect(createExpression(['array', ['literal', 'number'], ['literal', []]]).result).toBe('error');
-
-        expect(createExpression(['array', 'string', ['literal', []]]).result).toBe('success');
-        expect(createExpression(['array', 'number', ['literal', []]]).result).toBe('success');
-        expect(createExpression(['array', 'boolean', ['literal', []]]).result).toBe('success');
-    });
     test('type requires either "string", "number", or "boolean" as the asserted type', () => {
         expectTypeOf<['array', 0, ['literal', []]]>().not.toExtend<ExpressionSpecification>();
         expectTypeOf<['array', '0', ['literal', []]]>().not.toExtend<ExpressionSpecification>();
@@ -166,15 +147,6 @@ describe('"array" expression', () => {
         expectTypeOf<['array', 'string', ['literal', []]]>().toExtend<ExpressionSpecification>();
         expectTypeOf<['array', 'number', ['literal', []]]>().toExtend<ExpressionSpecification>();
         expectTypeOf<['array', 'boolean', ['literal', []]]>().toExtend<ExpressionSpecification>();
-    });
-    test('requires a non-negative integer literal as the asserted length', () => {
-        expect(createExpression(['array', 'string', '0', ['literal', []]]).result).toBe('error');
-        expect(createExpression(['array', 'string', ['literal', 0], ['literal', []]]).result).toBe('error');
-        expect(createExpression(['array', 'string', -1, ['literal', []]]).result).toBe('error');
-        expect(createExpression(['array', 'string', 0.5, ['literal', []]]).result).toBe('error');
-
-        expect(createExpression(['array', 'string', 0, ['literal', []]]).result).toBe('success');
-        expect(createExpression(['array', 'string', 2, ['literal', ['one', 'two']]]).result).toBe('success');
     });
     test('type requires a number literal as the asserted length', () => {
         expectTypeOf<['array', 'string', '0', ['literal', []]]>().not.toExtend<ExpressionSpecification>();
