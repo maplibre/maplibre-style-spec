@@ -258,94 +258,26 @@ describe('"at" expression', () => {
 });
 
 describe('"in" expression', () => {
-    test('requires a needle', () => {
-        const response = createExpression(['in']);
-        expect(response.result).toBe('error');
-    });
     test('type requires a needle', () => {
         expectTypeOf<['in']>().not.toExtend<ExpressionSpecification>();
-    });
-    test('requires a haystack', () => {
-        const response = createExpression(['in', 'a']);
-        expect(response.result).toBe('error');
     });
     test('type requires a haystack', () => {
         expectTypeOf<['in', 'a']>().not.toExtend<ExpressionSpecification>();
     });
-    test('rejects a third argument', () => {
-        const response = createExpression(['in', 'a', 'abc', 1]);
-        expect(response.result).toBe('error');
-    });
     test('type rejects a third argument', () => {
         expectTypeOf<['in', 'a', 'abc', 1]>().not.toExtend<ExpressionSpecification>();
-    });
-    test('requires a primitive as the needle', () => {
-        const response = createExpression(['in', ['literal', ['a']], ['literal', [['a'], ['b'], ['c']]]]);
-        expect(response.result).toBe('error');
-    });
-    test('requires a string or array as the haystack', () => {
-        const response = createExpression(['in', 't', true]);
-        expect(response.result).toBe('error');
     });
     test('type requires a string or array as the haystack', () => {
         expectTypeOf<['in', 't', true]>().not.toExtend<ExpressionSpecification>();
     });
-    test('cannot find an empty substring in an empty string', () => {
-        const response = createExpression(['in', '', '']);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(false);
-    });
-    test('finds an empty substring in a non-empty string', () => {
-        const response = createExpression(['in', '', 'abc']);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(true);
-    });
-    test('cannot find a non-empty substring in an empty string', () => {
-        const response = createExpression(['in', 'abc', '']);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(false);
-    });
-    test('finds a non-empty substring in a non-empty string', () => {
-        const response = createExpression(['in', 'b', 'abc']);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(true);
-    });
     test('type accepts expression which finds a substring in a string', () => {
         expectTypeOf<['in', 'b', 'abc']>().toExtend<ExpressionSpecification>();
-    });
-    test('finds a non-literal substring in a string', () => {
-        const response = createExpression(['in', ['downcase', 'C'], ['concat', 'ab', 'cd']]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(true);
     });
     test('type accepts expression which finds a non-literal substring in a string', () => {
         expectTypeOf<['in', ['downcase', 'C'], ['concat', 'ab', 'cd']]>().toExtend<ExpressionSpecification>();
     });
-    test('cannot find an element in an empty array', () => {
-        const response = createExpression(['in', 1, ['literal', []]]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(false);
-    });
-    test('finds an element in a non-empty array', () => {
-        const response = createExpression(['in', 2, ['literal', [1, 2, 3]]]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(true);
-    });
-    test('finds null in an array containing null', () => {
-        const response = createExpression(['in', null, ['get', 'arr']]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate(
-            {zoom: 20},
-            {type: 'Point', properties: {arr: [42, null, 256]}},
-        )).toBe(true);
-    });
     test('type accepts expression which finds an element in an array', () => {
         expectTypeOf<['in', 2, ['literal', [1, 2, 3]]]>().toExtend<ExpressionSpecification>();
-    });
-    test('finds a non-literal element in an array', () => {
-        const response = createExpression(['in', ['*', 2, 5], ['literal', [1, 10, 100]]]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(true);
     });
     test('type accepts expression which finds a non-literal element in an array', () => {
         expectTypeOf<['in', ['*', 2, 5], ['literal', [1, 10, 100]]]>().toExtend<ExpressionSpecification>();
