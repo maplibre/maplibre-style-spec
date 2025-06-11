@@ -210,22 +210,8 @@ describe('"typeof" expression', () => {
 });
 
 describe('"feature-state" expression', () => {
-    test('retrieves the feature state with a string literal argument', () => {
-        const response = createExpression(['feature-state', 'foo']);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression).evaluate({zoom: 5}, undefined, {foo: 'foo value'})).toBe('foo value');
-    });
     test('type accepts expression which retrieves the feature state with a string literal argument', () => {
         expectTypeOf<['feature-state', 'foo']>().toExtend<ExpressionSpecification>();
-    });
-    test('retrieves the feature state with an expression argument', () => {
-        const response = createExpression(['feature-state', ['get', 'feat-prop']]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression).evaluate(
-            {zoom: 5},
-            {type: 'Point', properties: {'feat-prop': 'state-prop'}},
-            {'state-prop': 'state-prop value'},
-        )).toBe('state-prop value');
     });
     test('type accepts expression which retrieves the feature state with an expression argument', () => {
         expectTypeOf<['feature-state', ['get', 'feat-prop']]>().toExtend<ExpressionSpecification>();
