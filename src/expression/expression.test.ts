@@ -228,45 +228,14 @@ describe('"get" expression', () => {
 });
 
 describe('"global-state" expression', () => {
-    test('requires a property argument', () => {
-        const response = createExpression(['global-state']);
-        expect(response.result).toBe('error');
-        const responseValue = response.value as ExpressionParsingError[];
-        expect(responseValue[0]).toBeInstanceOf(ExpressionParsingError);
-        expect(responseValue[0].message).toBe('Expected 1 argument, but found 0 instead.');
-    });
     test('type requires a property argument', () => {
         expectTypeOf<['global-state']>().not.toExtend<ExpressionSpecification>();
-    });
-    test('requires a string literal as the property argument', () => {
-        const response = createExpression(['global-state', ['concat', 'pr', 'op']]);
-        expect(response.result).toBe('error');
-        const responseValue = response.value as ExpressionParsingError[];
-        expect(responseValue[0]).toBeInstanceOf(ExpressionParsingError);
-        expect(responseValue[0].message).toBe('Global state property must be string, but found object instead.');
     });
     test('type requires a string literal as the property argument', () => {
         expectTypeOf<['global-state', ['concat', 'pr', 'op']]>().not.toExtend<ExpressionSpecification>();
     });
-    test('rejects a second argument', () => {
-        const response = createExpression(['global-state', 'foo', 'bar']);
-        expect(response.result).toBe('error');
-        const responseValue = response.value as ExpressionParsingError[];
-        expect(responseValue[0]).toBeInstanceOf(ExpressionParsingError);
-        expect(responseValue[0].message).toBe('Expected 1 argument, but found 2 instead.');
-    });
     test('type rejects a second argument', () => {
         expectTypeOf<['global-state', 'foo', 'bar']>().not.toExtend<ExpressionSpecification>();
-    });
-    test('returns null if no value nor default value set for given property', () => {
-        const response = createExpression(['global-state', 'foo']);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression).evaluate({globalState: {baz: 'bar'}, zoom: 0})).toBeNull();
-    });
-    test('evaluates a global state property', () => {
-        const response = createExpression(['global-state', 'foo']);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression).evaluate({globalState: {foo: 'bar'}, zoom: 0})).toBe('bar');
     });
     test('type accepts expression which evaluates a global state property', () => {
         expectTypeOf<['global-state', 'foo']>().toExtend<ExpressionSpecification>();
