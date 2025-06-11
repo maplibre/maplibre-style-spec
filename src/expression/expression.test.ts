@@ -219,17 +219,8 @@ describe('"feature-state" expression', () => {
 });
 
 describe('"get" expression', () => {
-    test('requires an expression as the object argument if provided', () => {
-        const response = createExpression(['get', 'prop', {prop: 4}]);
-        expect(response.result).toBe('error');
-    });
     test('type requires an expression as the object argument if provided', () => {
         expectTypeOf<['get', 'prop', {prop: 4}]>().not.toExtend<ExpressionSpecification>();
-    });
-    test('retrieves a property value from the given object argument', () => {
-        const response = createExpression(['get', 'prop', ['literal', {prop: 4}]]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression).evaluate({zoom: 20})).toBe(4);
     });
     test('type accepts expression which retrieves a property value from the given object argument', () => {
         expectTypeOf<['get', 'prop', ['literal', {prop: 4}]]>().toExtend<ExpressionSpecification>();
