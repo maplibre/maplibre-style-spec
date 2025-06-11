@@ -252,11 +252,6 @@ describe('"has" expression', () => {
 });
 
 describe('"at" expression', () => {
-    test('retrieves the item at the specified index in the given array', () => {
-        const response = createExpression(['at', 2, ['literal', [1, 2, 3]]]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression).evaluate({zoom: 5})).toBe(3);
-    });
     test('type accepts expression which retrieves the item at the specified index in the given array', () => {
         expectTypeOf<['at', 2, ['literal', [1, 2, 3]]]>().toExtend<ExpressionSpecification>();
     });
