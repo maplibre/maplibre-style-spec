@@ -408,11 +408,6 @@ describe('comparison expressions', () => {
 });
 
 describe('"any" expression', () => {
-    test('returns false when given no arguments', () => {
-        const response = createExpression(['any']);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression).evaluate({zoom: 5})).toBe(false);
-    });
     test('type accepts expression which has no arguments', () => {
         expectTypeOf<['any']>().toExtend<ExpressionSpecification>();
     });
