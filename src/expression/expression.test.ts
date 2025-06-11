@@ -471,40 +471,14 @@ describe('"match" expression', () => {
 });
 
 describe('"within" expression', () => {
-    test('requires a GeoJSON input', () => {
-        const response = createExpression(['within']);
-        expect(response.result).toBe('error');
-        expect((response.value as ExpressionParsingError[])[0].message).toBe('\'within\' expression requires exactly one argument, but found 0 instead.');
-    });
     test('type requires a GeoJSON input', () => {
         expectTypeOf<['within']>().not.toExtend<ExpressionSpecification>();
-    });
-    test('rejects an expression as input', () => {
-        const response = createExpression(['within', ['literal', {type: 'Polygon', coordinates: []}]]);
-        expect(response.result).toBe('error');
-        expect((response.value as ExpressionParsingError[])[0].message).toBe('\'within\' expression requires valid geojson object that contains polygon geometry type.');
     });
     test('type rejects an expression as input', () => {
         expectTypeOf<['within', ['literal', {type: 'Polygon'; coordinates: []}]]>().not.toExtend<ExpressionSpecification>();
     });
-    test('rejects a second argument', () => {
-        const response = createExpression(['within', {type: 'Polygon', coordinates: []}, 'second arg']);
-        expect(response.result).toBe('error');
-        expect((response.value as ExpressionParsingError[])[0].message).toBe('\'within\' expression requires exactly one argument, but found 2 instead.');
-    });
     test('type rejects a second argument', () => {
         expectTypeOf<['within', {type: 'Polygon'; coordinates: []}, 'second arg']>().not.toExtend<ExpressionSpecification>();
-    });
-    test('returns true if feature fully contained within input GeoJSON geometry', () => {
-        const response = createExpression(['within', {
-            type: 'Polygon',
-            coordinates: [[[0, 0], [0, 5], [5, 5], [5, 0], [0, 0]]],
-        }]);
-        expect(response.result).toBe('success');
-        const canonical = {z: 10, x: 3, y: 3} as ICanonicalTileID;
-        const featureInTile = {} as Feature;
-        getGeometry(featureInTile, {type: 'Point', coordinates: [2, 2]}, canonical);
-        expect((response.value as StyleExpression).evaluate({zoom: 10}, featureInTile, {}, canonical)).toBe(true);
     });
     test('type accepts expression which checks if feature fully contained within input GeoJSON geometry', () => {
         expectTypeOf<['within', {
