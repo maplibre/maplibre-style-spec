@@ -342,129 +342,29 @@ describe('"length" expression', () => {
 });
 
 describe('"slice" expression', () => {
-    test('requires an input argument', () => {
-        const response = createExpression(['slice']);
-        expect(response.result).toBe('error');
-    });
     test('type requires an input argument', () => {
         expectTypeOf<['slice']>().not.toExtend<ExpressionSpecification>();
-    });
-    test('requires a start index argument', () => {
-        const response = createExpression(['slice', 'abc']);
-        expect(response.result).toBe('error');
     });
     test('type requires a start index argument', () => {
         expectTypeOf<['slice', 'abc']>().not.toExtend<ExpressionSpecification>();
     });
-    test('rejects a fourth argument', () => {
-        const response = createExpression(['slice', 'abc', 0, 1, 8]);
-        expect(response.result).toBe('error');
-    });
     test('type rejects a fourth argument', () => {
         expectTypeOf<['slice', 'abc', 0, 1, 8]>().not.toExtend<ExpressionSpecification>();
-    });
-    test('requires a string or array as the input argument', () => {
-        const response = createExpression(['slice', true, 0]);
-        expect(response.result).toBe('error');
     });
     test('type requires a string or array as the input argument', () => {
         expectTypeOf<['slice', true, 0]>().not.toExtend<ExpressionSpecification>();
     });
-    test('requires a number as the start index argument', () => {
-        const response = createExpression(['slice', 'abc', true]);
-        expect(response.result).toBe('error');
-    });
     test('type requires a number as the start index argument', () => {
         expectTypeOf<['slice', 'abc', true]>().not.toExtend<ExpressionSpecification>();
-    });
-    test('slices an empty string', () => {
-        const response = createExpression(['slice', '', 0]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe('');
-    });
-    test('slices a string starting at the beginning', () => {
-        const response = createExpression(['slice', 'abc', 0]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe('abc');
-    });
-    test('slices a string starting at the middle', () => {
-        const response = createExpression(['slice', 'abc', 1]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe('bc');
-    });
-    test('slices a string starting at the end', () => {
-        const response = createExpression(['slice', 'abc', 3]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe('');
-    });
-    test('slices a string backwards from the end', () => {
-        const response = createExpression(['slice', 'abc', -2]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe('bc');
     });
     test('type accepts expression which slices a string', () => {
         expectTypeOf<['slice', 'abc', 1]>().toExtend<ExpressionSpecification>();
     });
-    test('slices a string by a zero-length range', () => {
-        const response = createExpression(['slice', 'abc', 1, 1]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe('');
-    });
-    test('slices a string by a negative-length range', () => {
-        const response = createExpression(['slice', 'abc', 2, 1]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe('');
-    });
     test('type accepts expression which slices a string by a given range', () => {
         expectTypeOf<['slice', 'abc', 1, 1]>().toExtend<ExpressionSpecification>();
     });
-    test('avoids splitting a non-ASCII character', () => {
-        const response = createExpression(['slice', '市镇', 1]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe('镇');
-    });
-    test('avoids splitting a surrogate pair', () => {
-        const response = createExpression(['slice', '丐𦨭市镇', 2]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe('市镇');
-    });
-    test('slices an empty array', () => {
-        const response = createExpression(['slice', ['literal', []], 0]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toEqual([]);
-    });
-    test('slices an array starting at the beginning', () => {
-        const response = createExpression(['slice', ['literal', [1, 2, 3]], 0]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toEqual([1, 2, 3]);
-    });
-    test('slices an array starting at the middle', () => {
-        const response = createExpression(['slice', ['literal', [1, 2, 3]], 1]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toEqual([2, 3]);
-    });
-    test('slices an array starting at the end', () => {
-        const response = createExpression(['slice', ['literal', [1, 2, 3]], 3]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toEqual([]);
-    });
-    test('slices an array backwards from the end', () => {
-        const response = createExpression(['slice', ['literal', [1, 2, 3]], -2]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toEqual([2, 3]);
-    });
     test('type accepts expression which slices an array', () => {
         expectTypeOf<['slice', ['literal', [1, 2, 3]], 1]>().toExtend<ExpressionSpecification>();
-    });
-    test('slices an array by a zero-length range', () => {
-        const response = createExpression(['slice', ['literal', [1, 2, 3]], 1, 1]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toEqual([]);
-    });
-    test('slices an array by a negative-length range', () => {
-        const response = createExpression(['slice', ['literal', [1, 2, 3]], 2, 1]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toEqual([]);
     });
     test('type accepts expression which slices an array by a given range', () => {
         expectTypeOf<['slice', ['literal', [1, 2, 3]], 1, 1]>().toExtend<ExpressionSpecification>();
