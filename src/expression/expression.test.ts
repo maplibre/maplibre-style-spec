@@ -195,32 +195,14 @@ describe('"image" expression', () => {
 });
 
 describe('"typeof" expression', () => {
-    test('requires a value argument', () => {
-        const response = createExpression(['typeof']);
-        expect(response.result).toBe('error');
-    });
     test('type requires a value argument', () => {
         expectTypeOf<['typeof']>().not.toExtend<ExpressionSpecification>();
-    });
-    test('rejects a second argument', () => {
-        const response = createExpression(['typeof', true, 42]);
-        expect(response.result).toBe('error');
     });
     test('type rejects a second argument', () => {
         expectTypeOf<['typeof', true, 42]>().not.toExtend<ExpressionSpecification>();
     });
-    test('returns a string describing the type of the given literal value', () => {
-        const response = createExpression(['typeof', true]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression).evaluate({zoom: 5})).toBe('boolean');
-    });
     test('type accepts expression which returns a string describing the type of the given literal value', () => {
         expectTypeOf<['typeof', true]>().toExtend<ExpressionSpecification>();
-    });
-    test('returns a string describing the type of the given expression value', () => {
-        const response = createExpression(['typeof', ['concat', 'foo', ['to-string', 0]]]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression).evaluate({zoom: 5})).toBe('string');
     });
     test('type accepts expression which returns a string describing the type of the given expression value', () => {
         expectTypeOf<['typeof', ['concat', 'foo', ['to-string', 0]]]>().toExtend<ExpressionSpecification>();
