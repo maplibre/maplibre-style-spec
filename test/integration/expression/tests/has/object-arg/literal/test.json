@@ -1,0 +1,29 @@
+{
+  "expression": [
+    "has",
+    "prop",
+    [
+      "literal",
+      {
+        "prop": true
+      }
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": true,
+      "isZoomConstant": true,
+      "type": "boolean"
+    },
+    "outputs": [
+      true
+    ]
+  }
+}

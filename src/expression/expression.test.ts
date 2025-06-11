@@ -243,17 +243,8 @@ describe('"global-state" expression', () => {
 });
 
 describe('"has" expression', () => {
-    test('requires an expression as the object argument if provided', () => {
-        const response = createExpression(['has', 'prop', {prop: 4}]);
-        expect(response.result).toBe('error');
-    });
     test('type requires an expression as the object argument if provided', () => {
         expectTypeOf<['has', 'prop', {prop: 4}]>().not.toExtend<ExpressionSpecification>();
-    });
-    test('checks whether a property exists in the given object argument', () => {
-        const response = createExpression(['has', 'prop', ['literal', {prop: 4}]]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression).evaluate({zoom: 20})).toBe(true);
     });
     test('type accepts expression which checks whether a property exists in the given object argument', () => {
         expectTypeOf<['has', 'prop', ['literal', {prop: 4}]]>().toExtend<ExpressionSpecification>();
