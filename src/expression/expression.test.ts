@@ -54,6 +54,22 @@ describe('createPropertyExpression', () => {
 });
 
 describe('evaluate expression', () => {
+    test('silently falls back to default for nullish values', () => {
+        const {value} = createPropertyExpression(['global-state', 'x'], {
+            type: null,
+            default: 42,
+            'property-type': 'data-driven',
+            transition: false,
+        }) as {value: StylePropertyExpression};
+
+        vi.spyOn(console, 'warn').mockImplementation(() => {});
+
+        expect(value.evaluate({globalState: {x: 5}, zoom: 10} as GlobalProperties)).toBe(5);
+        expect(console.warn).not.toHaveBeenCalled();
+
+        expect(value.evaluate({globalState: {}, zoom: 10} as GlobalProperties)).toBe(42);
+        expect(console.warn).not.toHaveBeenCalled();
+    });
     test('warns and falls back to default for invalid enum values', () => {
         const {value} = createPropertyExpression(['get', 'x'], {
             type: 'enum',
