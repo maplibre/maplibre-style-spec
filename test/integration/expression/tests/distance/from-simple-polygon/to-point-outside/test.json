@@ -1,0 +1,68 @@
+{
+  "expression": [
+    "distance",
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              3,
+              3
+            ],
+            [
+              3,
+              4
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              4,
+              3
+            ],
+            [
+              3,
+              3
+            ]
+          ]
+        ]
+      },
+      "properties": {}
+    }
+  ],
+  "inputs": [
+    [
+      {
+        "zoom": 20,
+        "canonicalID": {
+          "z": 20,
+          "x": 3,
+          "y": 3
+        }
+      },
+      {
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            2.999,
+            3
+          ]
+        }
+      }
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": false,
+      "isZoomConstant": true,
+      "type": "number"
+    },
+    "outputs": [
+      111.169
+    ]
+  }
+}
