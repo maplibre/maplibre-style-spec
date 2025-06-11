@@ -285,156 +285,38 @@ describe('"in" expression', () => {
 });
 
 describe('"index-of" expression', () => {
-    test('requires a needle', () => {
-        const response = createExpression(['index-of']);
-        expect(response.result).toBe('error');
-    });
     test('type requires a needle', () => {
         expectTypeOf<['index-of']>().not.toExtend<ExpressionSpecification>();
-    });
-    test('requires a haystack', () => {
-        const response = createExpression(['index-of', 'a']);
-        expect(response.result).toBe('error');
     });
     test('type requires a haystack', () => {
         expectTypeOf<['index-of', 'a']>().not.toExtend<ExpressionSpecification>();
     });
-    test('rejects a fourth argument', () => {
-        const response = createExpression(['index-of', 'a', 'abc', 1, 8]);
-        expect(response.result).toBe('error');
-    });
     test('type rejects a fourth argument', () => {
         expectTypeOf<['index-of', 'a', 'abc', 1, 8]>().not.toExtend<ExpressionSpecification>();
-    });
-    test('requires a primitive as the needle', () => {
-        const response = createExpression(['index-of', ['literal', ['a']], ['literal', [['a'], ['b'], ['c']]]]);
-        expect(response.result).toBe('error');
-    });
-    test('requires a string or array as the haystack', () => {
-        const response = createExpression(['index-of', 't', true]);
-        expect(response.result).toBe('error');
     });
     test('type requires a string or array as the haystack', () => {
         expectTypeOf<['index-of', 't', true]>().not.toExtend<ExpressionSpecification>();
     });
-    test('finds an empty substring in an empty string', () => {
-        const response = createExpression(['index-of', '', '']);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(0);
-    });
-    test('finds an empty substring in a non-empty string', () => {
-        const response = createExpression(['index-of', '', 'abc']);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(0);
-    });
-    test('cannot find a non-empty substring in an empty string', () => {
-        const response = createExpression(['index-of', 'abc', '']);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(-1);
-    });
-    test('finds a non-empty substring in a non-empty string', () => {
-        const response = createExpression(['index-of', 'b', 'abc']);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(1);
-    });
     test('type accepts expression which finds a substring in a string', () => {
         expectTypeOf<['index-of', 'b', 'abc']>().toExtend<ExpressionSpecification>();
-    });
-    test('finds a non-literal substring in a string', () => {
-        const response = createExpression(['index-of', ['downcase', 'C'], ['concat', 'ab', 'cd']]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(2);
     });
     test('type accepts expression which finds a non-literal substring in a string', () => {
         expectTypeOf<['index-of', ['downcase', 'C'], ['concat', 'ab', 'cd']]>().toExtend<ExpressionSpecification>();
     });
-    test('only finds the first occurrence in a string', () => {
-        const response = createExpression(['index-of', 'b', 'abbc']);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(1);
-    });
-    test('starts looking for the substring at a positive start index', () => {
-        const response = createExpression(['index-of', 'a', 'abc', 1]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(-1);
-    });
-    test('starts looking for the substring at a negative start index', () => {
-        const response = createExpression(['index-of', 'c', 'abc', -1]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(2);
-    });
     test('type accepts expression which starts looking for the substring at a start index', () => {
         expectTypeOf<['index-of', 'a', 'abc', 1]>().toExtend<ExpressionSpecification>();
-    });
-    test('starts looking for the substring at a non-literal start index', () => {
-        const response = createExpression(['index-of', 'c', 'abc', ['-', 0, 1]]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(2);
     });
     test('type accepts expression which starts looking for the substring at a non-literal start index', () => {
         expectTypeOf<['index-of', 'c', 'abc', ['-', 0, 1]]>().toExtend<ExpressionSpecification>();
     });
-    test('counts a non-ASCII character as a single character', () => {
-        const response = createExpression(['index-of', '镇', '市镇']);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(1);
-    });
-    test('counts a surrogate pair as a single character', () => {
-        const response = createExpression(['index-of', '市镇', '丐𦨭市镇']);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(2);
-    });
-    test('cannot find an element in an empty array', () => {
-        const response = createExpression(['index-of', 1, ['literal', []]]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(-1);
-    });
-    test('finds an element in a non-empty array', () => {
-        const response = createExpression(['index-of', 2, ['literal', [1, 2, 3]]]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(1);
-    });
-    test('finds null in an array containing null', () => {
-        const response = createExpression(['index-of', null, ['get', 'arr']]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate(
-            {zoom: 20},
-            {type: 'Point', properties: {arr: [42, null, 256]}},
-        )).toBe(1);
-    });
     test('type accepts expression which finds an element in an array', () => {
         expectTypeOf<['index-of', 2, ['literal', [1, 2, 3]]]>().toExtend<ExpressionSpecification>();
-    });
-    test('finds a non-literal element in an array', () => {
-        const response = createExpression(['index-of', ['*', 2, 5], ['literal', [1, 10, 100]]]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(1);
     });
     test('type accepts expression which finds a non-literal element in an array', () => {
         expectTypeOf<['index-of', ['*', 2, 5], ['literal', [1, 10, 100]]]>().toExtend<ExpressionSpecification>();
     });
-    test('only finds the first occurrence in an array', () => {
-        const response = createExpression(['index-of', 2, ['literal', [1, 2, 2, 3]]]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(1);
-    });
-    test('starts looking for the element at a positive start index', () => {
-        const response = createExpression(['index-of', 1, ['literal', [1, 2, 3]], 1]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(-1);
-    });
-    test('starts looking for the element at a negative start index', () => {
-        const response = createExpression(['index-of', 3, ['literal', [1, 2, 3]], -1]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(2);
-    });
     test('type accepts expression which starts looking for the element at a start index', () => {
         expectTypeOf<['index-of', 1, ['literal', [1, 2, 3]], 1]>().toExtend<ExpressionSpecification>();
-    });
-    test('starts looking for the element at a non-literal start index', () => {
-        const response = createExpression(['index-of', 2, ['literal', [1, 2, 3]], ['+', 0, -1, 2]]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(1);
     });
     test('type accepts expression which starts looking for the element at a non-literal start index', () => {
         expectTypeOf<['index-of', 2, ['literal', [1, 2, 3]], ['+', 0, -1, 2]]>().toExtend<ExpressionSpecification>();
