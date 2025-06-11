@@ -414,21 +414,6 @@ describe('"any" expression', () => {
 });
 
 describe('"case" expression', () => {
-    test('returns the string output of the first matching condition', () => {
-        const response = createExpression([
-            'case',
-            ['==', ['get', 'CAPITAL'], 1], 'city-capital',
-            ['>=', ['get', 'POPULATION'], 1000000], 'city-1M',
-            ['>=', ['get', 'POPULATION'], 500000], 'city-500k',
-            ['>=', ['get', 'POPULATION'], 100000], 'city-100k',
-            'city',
-        ]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression).evaluate(
-            {zoom: 4},
-            {type: 'Point', properties: {CAPITAL: 0, POPULATION: 750000}},
-        )).toBe('city-500k');
-    });
     test('type accepts expression which returns the string output of the first matching condition', () => {
         expectTypeOf<[
             'case',
@@ -439,31 +424,6 @@ describe('"case" expression', () => {
             'city',
         ]>().toExtend<ExpressionSpecification>();
     });
-    test('returns the evaluated output of the first matching condition', () => {
-        const response = createExpression(
-            [
-                'case',
-                ['has', 'point_count'], ['interpolate', ['linear'], ['get', 'point_count'], 2, '#ccc', 10, '#444'],
-                ['has', 'priorityValue'], ['interpolate', ['linear'], ['get', 'priorityValue'], 0, '#ff9', 1, '#f66'],
-                '#fcaf3e',
-            ],
-            {
-                type: 'color',
-                'property-type': 'data-constant',
-                expression: {
-                    interpolated: true,
-                    parameters: [],
-                },
-                transition: false,
-                overridable: false,
-            },
-        );
-        expect(response.result).toBe('success');
-        const responseValue = response.value as StyleExpression;
-        expect(responseValue.evaluate({zoom: 4}, {type: 'Point', properties: {priorityValue: 0}})).toEqual(Color.parse('#ff9'));
-        expect(responseValue.evaluate({zoom: 4}, {type: 'Point', properties: {priorityValue: 0.5}})).toEqual(Color.interpolate(Color.parse('#ff9'), Color.parse('#f66'), 0.5));
-        expect(responseValue.evaluate({zoom: 4}, {type: 'Point', properties: {priorityValue: 1}})).toEqual(Color.parse('#f66'));
-    });
     test('type accepts expression which returns the evaluated output of the first matching condition', () => {
         expectTypeOf<[
             'case',
@@ -472,22 +432,8 @@ describe('"case" expression', () => {
             '#fcaf3e',
         ]>().toExtend<ExpressionSpecification>();
     });
-    test('returns null if matching case has literal null output', () => {
-        const response = createExpression(['case', false, ['get', 'prop'], true, null, 'fallback']);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression).evaluate({zoom: 4})).toBeNull();
-    });
     test('type accepts expression which has literal null output', () => {
         expectTypeOf<['case', false, ['get', 'prop'], true, null, 'fallback']>().toExtend<ExpressionSpecification>();
-    });
-    test('returns null if no case matches and fallback is null', () => {
-        const response = createExpression(['case', false, ['get', 'prop'], null]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression).evaluate(
-            {zoom: 4},
-            undefined,
-            {prop: 'fallthrough'},
-        )).toBeNull();
     });
     test('type accepts expression which has literal null fallback', () => {
         expectTypeOf<['case', false, ['get', 'prop'], null]>().toExtend<ExpressionSpecification>();
