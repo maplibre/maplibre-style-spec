@@ -1,0 +1,17 @@
+{
+  "expression": [
+    "e",
+    2
+  ],
+  "expected": {
+    "compiled": {
+      "result": "error",
+      "errors": [
+        {
+          "key": "",
+          "error": "Expected arguments of type (), but found (number) instead."
+        }
+      ]
+    }
+  }
+}

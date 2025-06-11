@@ -597,17 +597,8 @@ describe('"step" expression', () => {
 });
 
 describe('"e" expression', () => {
-    test('rejects any arguments', () => {
-        const response = createExpression(['e', 2]);
-        expect(response.result).toBe('error');
-    });
     test('type rejects any arguments', () => {
         expectTypeOf<['e', 2]>().not.toExtend<ExpressionSpecification>();
-    });
-    test('returns the mathematical constant e', () => {
-        const response = createExpression(['e']);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression).evaluate({zoom: 4})).toBe(Math.E);
     });
     test('type accepts expression which returns the mathematical constant e', () => {
         expectTypeOf<['e']>().toExtend<ExpressionSpecification>();
