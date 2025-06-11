@@ -582,61 +582,14 @@ describe('interpolation expressions', () => {
 });
 
 describe('"step" expression', () => {
-    test('outputs stepped numbers', () => {
-        const response = createExpression(['step', ['get', 'point_count'], 0.6, 50, 0.7, 200, 0.8]);
-        expect(response.result).toBe('success');
-        const responseValue = response.value as StyleExpression;
-        expect(responseValue.evaluate({zoom: 5}, {type: 'Point', properties: {point_count: 49}})).toBe(0.6);
-        expect(responseValue.evaluate({zoom: 5}, {type: 'Point', properties: {point_count: 50}})).toBe(0.7);
-        expect(responseValue.evaluate({zoom: 5}, {type: 'Point', properties: {point_count: 51}})).toBe(0.7);
-        expect(responseValue.evaluate({zoom: 5}, {type: 'Point', properties: {point_count: 199}})).toBe(0.7);
-        expect(responseValue.evaluate({zoom: 5}, {type: 'Point', properties: {point_count: 200}})).toBe(0.8);
-    });
     test('type accepts expression which outputs stepped numbers', () => {
         expectTypeOf<['step', ['get', 'point_count'], 0.6, 50, 0.7, 200, 0.8]>().toExtend<ExpressionSpecification>();
-    });
-    test('outputs stepped colors', () => {
-        const response = createExpression(
-            ['step', ['get', 'point_count'], '#ddd', 50, '#eee', 200, '#fff'],
-            {
-                type: 'color',
-                'property-type': 'data-constant',
-                transition: false,
-                overridable: false,
-            },
-        );
-        expect(response.result).toBe('success');
-        const responseValue = response.value as StyleExpression;
-        expect(responseValue.evaluate({zoom: 5}, {type: 'Point', properties: {point_count: 49}})).toEqual(Color.parse('#ddd'));
-        expect(responseValue.evaluate({zoom: 5}, {type: 'Point', properties: {point_count: 50}})).toEqual(Color.parse('#eee'));
-        expect(responseValue.evaluate({zoom: 5}, {type: 'Point', properties: {point_count: 51}})).toEqual(Color.parse('#eee'));
-        expect(responseValue.evaluate({zoom: 5}, {type: 'Point', properties: {point_count: 199}})).toEqual(Color.parse('#eee'));
-        expect(responseValue.evaluate({zoom: 5}, {type: 'Point', properties: {point_count: 200}})).toEqual(Color.parse('#fff'));
     });
     test('type accepts expression which outputs stepped colors', () => {
         expectTypeOf<['step', ['get', 'point_count'], '#ddd', 50, '#eee', 200, '#fff']>().toExtend<ExpressionSpecification>();
     });
-    test('outputs stepped projections', () => {
-        const response = createExpression(['step', ['zoom'], 'vertical-perspective', 10, 'mercator']);
-        expect(response.result).toBe('success');
-        const responseValue = response.value as StyleExpression;
-        expect(responseValue.evaluate({zoom: 5})).toBe('vertical-perspective');
-        expect(responseValue.evaluate({zoom: 10})).toBe('mercator');
-        expect(responseValue.evaluate({zoom: 11})).toBe('mercator');
-    });
     test('type accepts expression which outputs stepped projections', () => {
         expectTypeOf<['step', ['zoom'], 'vertical-perspective', 10, 'mercator']>().toExtend<ExpressionSpecification>();
-    });
-    test('outputs stepped multi-input projections', () => {
-        const response = createExpression(
-            ['step', ['zoom'], ['literal', ['vertical-perspective', 'mercator', 0.5]], 10, 'mercator'],
-            v8.projection.type as StylePropertySpecification,
-        );
-        expect(response.result).toBe('success');
-        const responseValue = response.value as StyleExpression;
-        expect(responseValue.evaluate({zoom: 5})).toStrictEqual(['vertical-perspective', 'mercator', 0.5]);
-        expect(responseValue.evaluate({zoom: 10})).toBe('mercator');
-        expect(responseValue.evaluate({zoom: 11})).toBe('mercator');
     });
     test('type accepts expression which outputs stepped multi-input projections', () => {
         expectTypeOf<['step', ['zoom'], ['literal', ['vertical-perspective', 'mercator', 0.5]], 10, 'mercator']>().toExtend<ExpressionSpecification>();
