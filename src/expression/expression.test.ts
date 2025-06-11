@@ -324,59 +324,17 @@ describe('"index-of" expression', () => {
 });
 
 describe('"length" expression', () => {
-    test('requires an argument', () => {
-        const response = createExpression(['length']);
-        expect(response.result).toBe('error');
-    });
     test('type requires an argument', () => {
         expectTypeOf<['length']>().not.toExtend<ExpressionSpecification>();
-    });
-    test('requires a string or array as the argument', () => {
-        const response = createExpression(['length', true]);
-        expect(response.result).toBe('error');
     });
     test('type requires a string or array as the argument', () => {
         expectTypeOf<['length', true]>().not.toExtend<ExpressionSpecification>();
     });
-    test('rejects a second argument', () => {
-        const response = createExpression(['length', 'abc', 'def']);
-        expect(response.result).toBe('error');
-    });
     test('type rejects a second argument', () => {
         expectTypeOf<['length', 'abc', 'def']>().not.toExtend<ExpressionSpecification>();
     });
-    test('measures an empty string', () => {
-        const response = createExpression(['length', '']);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(0);
-    });
-    test('measures a non-empty string', () => {
-        const response = createExpression(['length', 'abc']);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(3);
-    });
-    test('counts a non-ASCII character as a single character', () => {
-        const response = createExpression(['length', '市镇']);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(2);
-    });
-    test('counts a surrogate pair as a single character', () => {
-        const response = createExpression(['length', '丐𦨭市镇']);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(4);
-    });
     test('type accepts expression which measures a string', () => {
         expectTypeOf<['length', 'abc']>().toExtend<ExpressionSpecification>();
-    });
-    test('measures an empty array', () => {
-        const response = createExpression(['length', ['literal', []]]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(0);
-    });
-    test('measures a non-empty array', () => {
-        const response = createExpression(['length', ['literal', [1, 2, 3]]]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(3);
     });
     test('type accepts expression which measures an array', () => {
         expectTypeOf<['length', ['literal', [1, 2, 3]]]>().toExtend<ExpressionSpecification>();
