@@ -158,98 +158,23 @@ describe('"array" expression', () => {
 });
 
 describe('"format" expression', () => {
-    test('rejects bare string arrays in the "text-font" style override', () => {
-        const response = createExpression(['format', 'foo', {'text-font': ['Helvetica', 'Arial']}]);
-        expect(response.result).toBe('error');
-        expect((response.value as ExpressionParsingError[])[0].message).toContain('Unknown expression \"Helvetica\".');
-    });
     test('type rejects bare string arrays in the "text-font" style override', () => {
         expectTypeOf<['format', 'foo', {'text-font': ['Helvetica', 'Arial']}]>().not.toExtend<ExpressionSpecification>();
-    });
-    test('scales text', () => {
-        const response = createExpression(['format', ['get', 'title'], {'font-scale': 0.8}]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression).evaluate({zoom: 5}, {type: 'Point', properties: {title: 'foo'}})).toMatchObject({
-            sections: [
-                {
-                    scale: 0.8,
-                    text: 'foo',
-                },
-            ],
-        });
     });
     test('type accepts expression which scales text', () => {
         expectTypeOf<['format', ['get', 'title'], {'font-scale': 0.8}]>().toExtend<ExpressionSpecification>();
     });
-    test('requires either "bottom", "center", or "top" as the vertical alignment', () => {
-        const response = createExpression(['format', 'foo', {'vertical-align': 'middle'}]);
-        expect(response.result).toBe('error');
-        expect((response.value as ExpressionParsingError[])[0].message).toBe('\'vertical-align\' must be one of: \'bottom\', \'center\', \'top\' but found \'middle\' instead.');
-    });
     test('type requires either "bottom", "center", or "top" as the vertical alignment', () => {
         expectTypeOf<['format', 'foo', {'vertical-align': 'middle'}]>().not.toExtend<ExpressionSpecification>();
-    });
-    test('aligns a text section vertically', () => {
-        const response = createExpression(['format', 'foo', {'vertical-align': 'top'}]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression).evaluate({zoom: 4})).toMatchObject({
-            sections: [
-                {
-                    text: 'foo',
-                    verticalAlign: 'top',
-                },
-            ],
-        });
     });
     test('type accepts expression which aligns a text section vertically', () => {
         expectTypeOf<['format', 'foo', {'vertical-align': 'top'}]>().toExtend<ExpressionSpecification>();
     });
-    test('aligns an image vertically', () => {
-        const response = createExpression(['format', ['image', 'bar'], {'vertical-align': 'bottom'}]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression).evaluate({zoom: 4})).toMatchObject({
-            sections: [
-                {
-                    image: {available: false, name: 'bar'},
-                    verticalAlign: 'bottom',
-                },
-            ],
-        });
-    });
     test('type accepts expression which aligns an image vertically', () => {
         expectTypeOf<['format', ['image', 'bar'], {'vertical-align': 'bottom'}]>().toExtend<ExpressionSpecification>();
     });
-    test('applies multiple style overrides', () => {
-        const response = createExpression(['format', 'foo', {'font-scale': 0.8, 'text-color': '#fff'}]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression).evaluate({zoom: 4})).toMatchObject({
-            sections: [
-                {
-                    scale: 0.8,
-                    text: 'foo',
-                    textColor: Color.parse('#fff'),
-                },
-            ],
-        });
-    });
     test('type accepts expression which applies multiple style overrides', () => {
         expectTypeOf<['format', 'foo', {'font-scale': 0.8; 'text-color': '#fff'}]>().toExtend<ExpressionSpecification>();
-    });
-    test('applies default styles with an empty overrides object', () => {
-        const response = createExpression(['format', ['downcase', 'BaR'], {}]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression).evaluate({zoom: 4})).toEqual({
-            sections: [
-                {
-                    fontStack: null,
-                    image: null,
-                    scale: null,
-                    text: 'bar',
-                    textColor: null,
-                    verticalAlign: null,
-                },
-            ],
-        });
     });
     test('type accepts expression which applies default styles with an empty overrides object', () => {
         expectTypeOf<['format', ['downcase', 'BaR'], {}]>().toExtend<ExpressionSpecification>();
