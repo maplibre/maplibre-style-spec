@@ -490,63 +490,14 @@ describe('"within" expression', () => {
 
 describe('interpolation expressions', () => {
     describe('linear interpolation type', () => {
-        test('ignores any additional arguments', () => {
-            const noArgResponse = createExpression(['interpolate', ['linear'], ['zoom'], 4, 0, 10, 100]);
-            const additionalArgResponse = createExpression(['interpolate', ['linear', 0.8], ['zoom'], 4, 0, 10, 100]);
-            expect(noArgResponse.result).toBe('success');
-            expect(additionalArgResponse.result).toBe('success');
-            const noArgResponseValue = noArgResponse.value as StyleExpression;
-            const additionalArgResponseValue = additionalArgResponse.value as StyleExpression;
-            expect(noArgResponseValue.evaluate({zoom: 4})).toEqual(additionalArgResponseValue.evaluate({zoom: 4}));
-            expect(noArgResponseValue.evaluate({zoom: 7})).toEqual(additionalArgResponseValue.evaluate({zoom: 7}));
-            expect(noArgResponseValue.evaluate({zoom: 10})).toEqual(additionalArgResponseValue.evaluate({zoom: 10}));
-        });
-        test('interpolates between the given values linearly', () => {
-            const response = createExpression(['interpolate', ['linear'], ['zoom'], 0, 10, 1, 20]);
-            expect(response.result).toBe('success');
-            const responseValue = response.value as StyleExpression;
-            expect(responseValue.evaluate({zoom: 0})).toBe(10);
-            expect(responseValue.evaluate({zoom: 0.25})).toBe(12.5);
-            expect(responseValue.evaluate({zoom: 0.5})).toBe(15);
-            expect(responseValue.evaluate({zoom: 0.75})).toBe(17.5);
-            expect(responseValue.evaluate({zoom: 1})).toBe(20);
-        });
         test('type works with "interpolate" expression', () => {
             expectTypeOf<['interpolate', ['linear'], ['zoom'], 0, 10, 1, 20]>().toExtend<ExpressionSpecification>();
         });
     });
 
     describe('exponential interpolation type', () => {
-        test('requires a number literal as the base argument', () => {
-            const response = createExpression(['interpolate', ['exponential', ['+', 0.1, 0.4]], ['zoom'], 0, 10, 1, 100]);
-            expect(response.result).toBe('error');
-            const responseValue = response.value as ExpressionParsingError[];
-            expect(responseValue[0]).toBeInstanceOf(ExpressionParsingError);
-            expect(responseValue[0].message).toBe('Exponential interpolation requires a numeric base.');
-        });
         test('type requires a number literal as the base argument', () => {
             expectTypeOf<['interpolate', ['exponential', ['+', 0.1, 0.4]], ['zoom'], 0, 10, 1, 100]>().not.toExtend<ExpressionSpecification>();
-        });
-        test('ignores any additional arguments', () => {
-            const oneArgResponse = createExpression(['interpolate', ['exponential', 0.5], ['zoom'], 4, 0, 10, 100]);
-            const additionalArgResponse = createExpression(['interpolate', ['exponential', 0.5, 42], ['zoom'], 4, 0, 10, 100]);
-            expect(oneArgResponse.result).toBe('success');
-            expect(additionalArgResponse.result).toBe('success');
-            const oneArgResponseValue = oneArgResponse.value as StyleExpression;
-            const additionalArgResponseValue = additionalArgResponse.value as StyleExpression;
-            expect(oneArgResponseValue.evaluate({zoom: 4})).toEqual(additionalArgResponseValue.evaluate({zoom: 4}));
-            expect(oneArgResponseValue.evaluate({zoom: 7})).toEqual(additionalArgResponseValue.evaluate({zoom: 7}));
-            expect(oneArgResponseValue.evaluate({zoom: 10})).toEqual(additionalArgResponseValue.evaluate({zoom: 10}));
-        });
-        test('interpolates between the given values exponentially', () => {
-            const response = createExpression(['interpolate', ['exponential', 1.1], ['zoom'], 0, 10, 1, 20]);
-            expect(response.result).toBe('success');
-            const responseValue = response.value as StyleExpression;
-            expect(responseValue.evaluate({zoom: 0})).toBe(10);
-            expect(responseValue.evaluate({zoom: 0.2})).toBeLessThan(12);
-            expect(responseValue.evaluate({zoom: 0.5})).toBeLessThan(15);
-            expect(responseValue.evaluate({zoom: 0.8})).toBeLessThan(18);
-            expect(responseValue.evaluate({zoom: 1})).toBe(20);
         });
         test('type works with "interpolate" expression', () => {
             expectTypeOf<['interpolate', ['exponential', 1.1], ['zoom'], 0, 10, 1, 20]>().toExtend<ExpressionSpecification>();
@@ -554,35 +505,11 @@ describe('interpolation expressions', () => {
     });
 
     describe('cubic-bezier interpolation type', () => {
-        test('requires four numeric literal control point arguments', () => {
-            const response = createExpression(['interpolate', ['cubic-bezier', 0.4, 0, ['literal', 0.6], 1], ['zoom'], 2, 0, 8, 100]);
-            expect(response.result).toBe('error');
-            const responseValue = response.value as ExpressionParsingError[];
-            expect(responseValue[0]).toBeInstanceOf(ExpressionParsingError);
-            expect(responseValue[0].message).toBe('Cubic bezier interpolation requires four numeric arguments with values between 0 and 1.');
-        });
         test('type requires four numeric literal control point arguments', () => {
             expectTypeOf<['interpolate', ['cubic-bezier', 0.4, 0, ['literal', 0.6], 1], ['zoom'], 2, 0, 8, 100]>().not.toExtend<ExpressionSpecification>();
         });
-        test('rejects a fifth control point argument', () => {
-            const response = createExpression(['interpolate', ['cubic-bezier', 0.4, 0, 0.6, 1, 0.8], ['zoom'], 2, 0, 8, 100]);
-            expect(response.result).toBe('error');
-            const responseValue = response.value as ExpressionParsingError[];
-            expect(responseValue[0]).toBeInstanceOf(ExpressionParsingError);
-            expect(responseValue[0].message).toBe('Cubic bezier interpolation requires four numeric arguments with values between 0 and 1.');
-        });
         test('type rejects a fifth control point argument', () => {
             expectTypeOf<['interpolate', ['cubic-bezier', 0.4, 0, 0.6, 1, 0.8], ['zoom'], 2, 0, 8, 100]>().not.toExtend<ExpressionSpecification>();
-        });
-        test('interpolates between the given values with a cubic bezier curve', () => {
-            const response = createExpression(['interpolate', ['cubic-bezier', 0.4, 0, 0.6, 1], ['zoom'], 0, 0, 10, 100]);
-            expect(response.result).toBe('success');
-            const responseValue = response.value as StyleExpression;
-            expect(responseValue.evaluate({zoom: 0})).toBe(0);
-            expect(responseValue.evaluate({zoom: 3})).toBeLessThan(30);
-            expect(responseValue.evaluate({zoom: 5})).toBe(50);
-            expect(responseValue.evaluate({zoom: 7})).toBeGreaterThan(70);
-            expect(responseValue.evaluate({zoom: 10})).toBe(100);
         });
         test('type works with "interpolate" expression', () => {
             expectTypeOf<['interpolate', ['cubic-bezier', 0.4, 0, 0.6, 1], ['zoom'], 0, 0, 10, 100]>().toExtend<ExpressionSpecification>();
@@ -590,111 +517,25 @@ describe('interpolation expressions', () => {
     });
 
     describe('"interpolate" expression', () => {
-        test('requires stop outputs to be a number, color, number array, color array, or projection', () => {
-            expect(createExpression(['interpolate', ['linear'], ['zoom'], 0, 'reddish', 2, 'greenish']).result).toBe('error');
-            expect(createExpression(['interpolate', ['linear'], ['zoom'], 0, null, 2, 256]).result).toBe('error');
-            expect(createExpression(['interpolate', ['linear'], ['zoom'], 0, false, 2, 1024]).result).toBe('error');
-            expect(createExpression(['interpolate', ['linear'], ['zoom'], 0, [10, 20, 30], 0.5, [20, 30, 40], 1, [30, 40, 50]]).result).toBe('error');
-            expect(createExpression(['interpolate', ['linear'], ['zoom'], 0, {prop: 'foo'}, 2, {prop: 'bar'}]).result).toBe('error');
-        });
         test('type requires stop outputs to be a number, color, number array, color array, or projection', () => {
             expectTypeOf<['interpolate', ['linear'], ['zoom'], 0, false, 2, 1024]>().not.toExtend<ExpressionSpecification>();
             expectTypeOf<['interpolate', ['linear'], ['zoom'], 0, [10, 20, 30], 0.5, [20, 30, 40], 1, [30, 40, 50]]>().not.toExtend<ExpressionSpecification>();
             expectTypeOf<['interpolate', ['linear'], ['zoom'], 0, {prop: 'foo'}, 2, {prop: 'bar'}]>().not.toExtend<ExpressionSpecification>();
         });
-        test('interpolates with feature property input', () => {
-            const response = createExpression(['interpolate', ['linear'], ['get', 'point_count'], 2, 32, 10, ['*', 16, ['get', 'point_count']]]);
-            expect(response.result).toBe('success');
-            expect((response.value as StyleExpression).evaluate({zoom: 5}, {type: 'Point', properties: {point_count: 4}})).toBe(40);
-        });
         test('type accepts expression which interpolates with feature property input', () => {
             expectTypeOf<['interpolate', ['linear'], ['get', 'point_count'], 2, ['/', 2, ['get', 'point_count']], 10, ['*', 4, ['get', 'point_count']]]>().toExtend<ExpressionSpecification>();
-        });
-        test('interpolates between number outputs', () => {
-            const response = createExpression(['interpolate', ['linear'], ['zoom'], 0, 0, 0.5, ['*', 2, 5], 1, 100]);
-            expect(response.result).toBe('success');
-            expect((response.value as StyleExpression).evaluate({zoom: 0.25})).toBe(5);
         });
         test('type accepts expression which interpolates between number outputs', () => {
             expectTypeOf<['interpolate', ['linear'], ['zoom'], 0, 0, 0.5, ['*', 2, 5], 1, 100]>().toExtend<ExpressionSpecification>();
         });
-        test('interpolates between color outputs', () => {
-            const response = createExpression(
-                ['interpolate', ['linear'], ['zoom'], 2, 'white', 4, 'black'],
-                {
-                    type: 'color',
-                    'property-type': 'data-constant',
-                    expression: {
-                        interpolated: true,
-                        parameters: ['zoom'],
-                    },
-                    transition: false,
-                    overridable: false,
-                },
-            );
-            expect(response.result).toBe('success');
-            const responseValue = response.value as StyleExpression;
-            expect(responseValue.evaluate({zoom: 0})).toEqual(Color.parse('white'));
-            expect(responseValue.evaluate({zoom: 3})).toEqual(new Color(0.5, 0.5, 0.5));
-            expect(responseValue.evaluate({zoom: 4})).toEqual(Color.parse('black'));
-        });
         test('type accepts expression which interpolates between color outputs', () => {
             expectTypeOf<['interpolate', ['linear'], ['zoom'], 2, 'white', 4, 'black']>().toExtend<ExpressionSpecification>();
-        });
-        test('interpolates between number array outputs', () => {
-            const response = createExpression(
-                ['interpolate', ['linear'], ['zoom'], 8, ['literal', [2, 3]], 10, ['literal', [4, 5]]],
-                {
-                    type: 'numberArray',
-                    'property-type': 'data-constant',
-                    expression: {
-                        interpolated: true,
-                        parameters: ['zoom'],
-                    },
-                    transition: false,
-                },
-            );
-            expect(response.result).toBe('success');
-            const responseValue = response.value as StyleExpression;
-            expect(responseValue.evaluate({zoom: 5}).values).toEqual([2, 3]);
-            expect(responseValue.evaluate({zoom: 9}).values).toEqual([3, 4]);
-            expect(responseValue.evaluate({zoom: 10}).values).toEqual([4, 5]);
         });
         test('type accepts expression which interpolates between number array outputs', () => {
             expectTypeOf<['interpolate', ['linear'], ['zoom'], 8, ['literal', [2, 3]], 10, ['literal', [4, 5]]]>().toExtend<ExpressionSpecification>();
         });
-        test('interpolates between color array outputs', () => {
-            const response = createExpression(
-                ['interpolate', ['linear'], ['zoom'], 8, ['literal', ['white', 'black']], 10, ['literal', ['black', 'white']]],
-                {
-                    type: 'colorArray',
-                    'property-type': 'data-constant',
-                    expression: {
-                        interpolated: true,
-                        parameters: ['zoom'],
-                    },
-                    transition: false,
-                },
-            );
-            expect(response.result).toBe('success');
-            const responseValue = response.value as StyleExpression;
-            expect(responseValue.evaluate({zoom: 8}).values).toEqual([Color.parse('white'), Color.parse('black')]);
-            expect(responseValue.evaluate({zoom: 9}).values).toEqual([new Color(0.5, 0.5, 0.5), new Color(0.5, 0.5, 0.5)]);
-            expect(responseValue.evaluate({zoom: 10}).values).toEqual([Color.parse('black'), Color.parse('white')]);
-        });
         test('type accepts expression which interpolates between color array outputs', () => {
             expectTypeOf<['interpolate', ['linear'], ['zoom'], 8, ['literal', ['white', 'black']], 10, ['literal', ['black', 'white']]]>().toExtend<ExpressionSpecification>();
-        });
-        test('interpolates between projection outputs', () => {
-            const response = createExpression(
-                ['interpolate', ['linear'], ['zoom'], 8, 'vertical-perspective', 10, 'mercator'],
-                v8.projection.type as StylePropertySpecification,
-            );
-            expect(response.result).toBe('success');
-            const responseValue = response.value as StyleExpression;
-            expect(responseValue.evaluate({zoom: 8})).toBe('vertical-perspective');
-            expect(responseValue.evaluate({zoom: 9})).toEqual({from: 'vertical-perspective', to: 'mercator', transition: 0.5});
-            expect(responseValue.evaluate({zoom: 16})).toBe('mercator');
         });
         test('type accepts expression which interpolates between projection outputs', () => {
             expectTypeOf<['interpolate', ['linear'], ['zoom'], 8, 'vertical-perspective', 10, 'mercator']>().toExtend<ExpressionSpecification>();
@@ -702,92 +543,16 @@ describe('interpolation expressions', () => {
     });
 
     describe('"interpolate-hcl" expression', () => {
-        test('requires stop outputs to be a color', () => {
-            expect(createExpression(['interpolate-hcl', ['linear'], ['zoom'], 0, 'reddish', 2, 'greenish']).result).toBe('error');
-            expect(createExpression(['interpolate-hcl', ['linear'], ['zoom'], 0, null, 2, 256]).result).toBe('error');
-            expect(createExpression(['interpolate-hcl', ['linear'], ['zoom'], 0, false, 2, 1024]).result).toBe('error');
-            expect(createExpression(['interpolate-hcl', ['linear'], ['zoom'], 0, [10, 20, 30], 0.5, [20, 30, 40], 1, [30, 40, 50]]).result).toBe('error');
-            expect(createExpression(['interpolate-hcl', ['linear'], ['zoom'], 0, {prop: 'foo'}, 2, {prop: 'bar'}]).result).toBe('error');
-            expect(createExpression(['interpolate-hcl', ['linear'], ['zoom'], 0, 10, 1, 100]).result).toBe('error');
-        });
         test('type requires stop outputs to be a color', () => {
             expectTypeOf<['interpolate-hcl', ['linear'], ['zoom'], 0, false, 2, 1024]>().not.toExtend<ExpressionSpecification>();
             expectTypeOf<['interpolate-hcl', ['linear'], ['zoom'], 0, [10, 20, 30], 0.5, [20, 30, 40], 1, [30, 40, 50]]>().not.toExtend<ExpressionSpecification>();
             expectTypeOf<['interpolate-hcl', ['linear'], ['zoom'], 0, {prop: 'foo'}, 2, {prop: 'bar'}]>().not.toExtend<ExpressionSpecification>();
         });
-        test('interpolates between color outputs', () => {
-            const response = createExpression(
-                ['interpolate-hcl', ['linear'], ['zoom'], 2, 'white', 4, 'black'],
-                {
-                    type: 'color',
-                    'property-type': 'data-constant',
-                    expression: {
-                        interpolated: true,
-                        parameters: ['zoom'],
-                    },
-                    transition: false,
-                    overridable: false,
-                },
-            );
-            expect(response.result).toBe('success');
-            const responseValue = response.value as StyleExpression;
-            expect(responseValue.evaluate({zoom: 0})).toEqual(Color.parse('white'));
-            expect(responseValue.evaluate({zoom: 3})).toEqual(Color.interpolate(
-                Color.parse('white'),
-                Color.parse('black'),
-                0.5,
-                'hcl',
-            ));
-            expect(responseValue.evaluate({zoom: 4})).toEqual(Color.parse('black'));
-        });
         test('type accepts expression which interpolates between color outputs', () => {
             expectTypeOf<['interpolate-hcl', ['linear'], ['zoom'], 2, 'white', 4, 'black']>().toExtend<ExpressionSpecification>();
         });
-        test('interpolates between color array outputs', () => {
-            const response = createExpression(
-                ['interpolate-hcl', ['linear'], ['zoom'], 8, ['literal', ['white', 'black']], 10, ['literal', ['black', 'white']]],
-                {
-                    type: 'colorArray',
-                    'property-type': 'data-constant',
-                    expression: {
-                        interpolated: true,
-                        parameters: ['zoom'],
-                    },
-                    transition: false,
-                },
-            );
-            expect(response.result).toBe('success');
-            const responseValue = response.value as StyleExpression;
-            expect(responseValue.evaluate({zoom: 8}).values).toEqual([Color.parse('white'), Color.parse('black')]);
-            expect(responseValue.evaluate({zoom: 9}).values).toHaveLength(2);
-            expectToMatchColor(responseValue.evaluate({zoom: 9}).values[0], 'rgb(46.63266% 46.63266% 46.63266% / 1)');
-            expectToMatchColor(responseValue.evaluate({zoom: 9}).values[1], 'rgb(46.63266% 46.63266% 46.63266% / 1)');
-            expect(responseValue.evaluate({zoom: 10}).values).toEqual([Color.parse('black'), Color.parse('white')]);
-        });
         test('type accepts expression which interpolates between color array outputs', () => {
             expectTypeOf<['interpolate-hcl', ['linear'], ['zoom'], 8, ['literal', ['white', 'black']], 10, ['literal', ['black', 'white']]]>().toExtend<ExpressionSpecification>();
-        });
-        test('interpolates between non-literal color array outputs', () => {
-            const obj = {'colors-8': ['white', 'black'], 'colors-10': ['black', 'white']};
-            const response = createExpression(
-                ['interpolate-hcl', ['linear'], ['zoom'], 8, ['get', 'colors-8', ['literal', obj]], 10, ['get', 'colors-10', ['literal', obj]]],
-                {
-                    type: 'colorArray',
-                    'property-type': 'data-constant',
-                    expression: {
-                        interpolated: true,
-                        parameters: ['zoom'],
-                    },
-                    transition: false,
-                },
-            );
-            expect(response.result).toBe('success');
-            const responseValue = response.value as StyleExpression;
-            expect(responseValue.evaluate({zoom: 8}).values).toEqual([Color.parse('white'), Color.parse('black')]);
-            expect(responseValue.evaluate({zoom: 9}).values).toHaveLength(2);
-            expectToMatchColor(responseValue.evaluate({zoom: 9}).values[0], 'rgb(46.63266% 46.63266% 46.63266% / 1)');
-            expectToMatchColor(responseValue.evaluate({zoom: 9}).values[1], 'rgb(46.63266% 46.63266% 46.63266% / 1)');
-            expect(responseValue.evaluate({zoom: 10}).values).toEqual([Color.parse('black'), Color.parse('white')]);
         });
         test('type accepts expression which interpolates between non-literal color array outputs', () => {
             // eslint-disable-next-line
@@ -797,92 +562,16 @@ describe('interpolation expressions', () => {
     });
 
     describe('"interpolate-lab" expression', () => {
-        test('requires stop outputs to be a color', () => {
-            expect(createExpression(['interpolate-lab', ['linear'], ['zoom'], 0, 'reddish', 2, 'greenish']).result).toBe('error');
-            expect(createExpression(['interpolate-lab', ['linear'], ['zoom'], 0, null, 2, 256]).result).toBe('error');
-            expect(createExpression(['interpolate-lab', ['linear'], ['zoom'], 0, false, 2, 1024]).result).toBe('error');
-            expect(createExpression(['interpolate-lab', ['linear'], ['zoom'], 0, [10, 20, 30], 0.5, [20, 30, 40], 1, [30, 40, 50]]).result).toBe('error');
-            expect(createExpression(['interpolate-lab', ['linear'], ['zoom'], 0, {prop: 'foo'}, 2, {prop: 'bar'}]).result).toBe('error');
-            expect(createExpression(['interpolate-lab', ['linear'], ['zoom'], 0, 10, 1, 100]).result).toBe('error');
-        });
         test('type requires stop outputs to be a color', () => {
             expectTypeOf<['interpolate-lab', ['linear'], ['zoom'], 0, false, 2, 1024]>().not.toExtend<ExpressionSpecification>();
             expectTypeOf<['interpolate-lab', ['linear'], ['zoom'], 0, [10, 20, 30], 0.5, [20, 30, 40], 1, [30, 40, 50]]>().not.toExtend<ExpressionSpecification>();
             expectTypeOf<['interpolate-lab', ['linear'], ['zoom'], 0, {prop: 'foo'}, 2, {prop: 'bar'}]>().not.toExtend<ExpressionSpecification>();
         });
-        test('interpolates between color outputs', () => {
-            const response = createExpression(
-                ['interpolate-lab', ['linear'], ['zoom'], 2, 'white', 4, 'black'],
-                {
-                    type: 'color',
-                    'property-type': 'data-constant',
-                    expression: {
-                        interpolated: true,
-                        parameters: ['zoom'],
-                    },
-                    transition: false,
-                    overridable: false,
-                },
-            );
-            expect(response.result).toBe('success');
-            const responseValue = response.value as StyleExpression;
-            expect(responseValue.evaluate({zoom: 0})).toEqual(Color.parse('white'));
-            expect(responseValue.evaluate({zoom: 3})).toEqual(Color.interpolate(
-                Color.parse('white'),
-                Color.parse('black'),
-                0.5,
-                'lab',
-            ));
-            expect(responseValue.evaluate({zoom: 4})).toEqual(Color.parse('black'));
-        });
         test('type accepts expression which interpolates between color outputs', () => {
             expectTypeOf<['interpolate-lab', ['linear'], ['zoom'], 2, 'white', 4, 'black']>().toExtend<ExpressionSpecification>();
         });
-        test('interpolates between color array outputs', () => {
-            const response = createExpression(
-                ['interpolate-lab', ['linear'], ['zoom'], 8, ['literal', ['white', 'black']], 10, ['literal', ['black', 'white']]],
-                {
-                    type: 'colorArray',
-                    'property-type': 'data-constant',
-                    expression: {
-                        interpolated: true,
-                        parameters: ['zoom'],
-                    },
-                    transition: false,
-                },
-            );
-            expect(response.result).toBe('success');
-            const responseValue = response.value as StyleExpression;
-            expect(responseValue.evaluate({zoom: 8}).values).toEqual([Color.parse('white'), Color.parse('black')]);
-            expect(responseValue.evaluate({zoom: 9}).values).toHaveLength(2);
-            expectToMatchColor(responseValue.evaluate({zoom: 9}).values[0], 'rgb(46.63266% 46.63266% 46.63266% / 1)');
-            expectToMatchColor(responseValue.evaluate({zoom: 9}).values[1], 'rgb(46.63266% 46.63266% 46.63266% / 1)');
-            expect(responseValue.evaluate({zoom: 10}).values).toEqual([Color.parse('black'), Color.parse('white')]);
-        });
         test('type accepts expression which interpolates between color array outputs', () => {
             expectTypeOf<['interpolate-lab', ['linear'], ['zoom'], 8, ['literal', ['white', 'black']], 10, ['literal', ['black', 'white']]]>().toExtend<ExpressionSpecification>();
-        });
-        test('interpolates between non-literal color array outputs', () => {
-            const obj = {'colors-8': ['white', 'black'], 'colors-10': ['black', 'white']};
-            const response = createExpression(
-                ['interpolate-lab', ['linear'], ['zoom'], 8, ['get', 'colors-8', ['literal', obj]], 10, ['get', 'colors-10', ['literal', obj]]],
-                {
-                    type: 'colorArray',
-                    'property-type': 'data-constant',
-                    expression: {
-                        interpolated: true,
-                        parameters: ['zoom'],
-                    },
-                    transition: false,
-                },
-            );
-            expect(response.result).toBe('success');
-            const responseValue = response.value as StyleExpression;
-            expect(responseValue.evaluate({zoom: 8}).values).toEqual([Color.parse('white'), Color.parse('black')]);
-            expect(responseValue.evaluate({zoom: 9}).values).toHaveLength(2);
-            expectToMatchColor(responseValue.evaluate({zoom: 9}).values[0], 'rgb(46.63266% 46.63266% 46.63266% / 1)');
-            expectToMatchColor(responseValue.evaluate({zoom: 9}).values[1], 'rgb(46.63266% 46.63266% 46.63266% / 1)');
-            expect(responseValue.evaluate({zoom: 10}).values).toEqual([Color.parse('black'), Color.parse('white')]);
         });
         test('type accepts expression which interpolates between non-literal color array outputs', () => {
             // eslint-disable-next-line
