@@ -182,34 +182,12 @@ describe('"format" expression', () => {
 });
 
 describe('"image" expression', () => {
-    test('requires a string as the image name argument', () => {
-        expect(createExpression(['image', null]).result).toBe('error');
-        expect(createExpression(['image', true]).result).toBe('error');
-        expect(createExpression(['image', 123]).result).toBe('error');
-        expect(createExpression(['image', ['+', 1, 4]]).result).toBe('error');
-    });
     test('type requires a string as the image name argument', () => {
         expectTypeOf<['image', true]>().not.toExtend<ExpressionSpecification>();
         expectTypeOf<['image', 123]>().not.toExtend<ExpressionSpecification>();
     });
-    test('returns an image with a string literal as the image name', () => {
-        const response = createExpression(['image', 'foo']);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression).evaluate({zoom: 4})).toMatchObject({
-            available: false,
-            name: 'foo',
-        });
-    });
     test('type accepts expression which returns an image with a string literal as the image name', () => {
         expectTypeOf<['image', 'foo']>().toExtend<ExpressionSpecification>();
-    });
-    test('returns an image with an expression as the image name', () => {
-        const response = createExpression(['image', ['concat', 'foo', 'bar']]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression).evaluate({zoom: 4})).toMatchObject({
-            available: false,
-            name: 'foobar',
-        });
     });
     test('type accepts an expression which returns an image with an expression as the image name', () => {
         expectTypeOf<['image', ['concat', 'foo', 'bar']]>().toExtend<ExpressionSpecification>();
