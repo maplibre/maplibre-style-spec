@@ -56,7 +56,7 @@ type FixtureErrorResult = {
 };
 type FixtureSuccessResult = {
     compiled: CompilationSuccessResult;
-    outputs: any[];
+    outputs: EvaluationOutput[];
 };
 
 type CompilationErrorResult = {
@@ -72,6 +72,12 @@ type CompilationSuccessResult = {
     isZoomConstant: boolean;
     type: string;
 };
+
+type EvaluationOutput = EvaluationErrorOutput | EvaluationSuccessOutput;
+type EvaluationErrorOutput = {
+    error: string;
+};
+type EvaluationSuccessOutput = any;
 
 const expressionTestFileNames = globSync('**/test.json', {cwd: __dirname});
 describe('expression', () => {
@@ -173,7 +179,7 @@ function getCompilationSuccessResult(expression: StylePropertyExpression): Compi
     };
 }
 
-function evaluateExpression(inputs: FixtureInput[], expression: StylePropertyExpression) {
+function evaluateExpression(inputs: FixtureInput[], expression: StylePropertyExpression): EvaluationOutput[] {
     const type = getStylePropertyExpressionType(expression);
 
     return inputs.map((input) => {
