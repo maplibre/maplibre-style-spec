@@ -181,8 +181,9 @@ function getCompilationSuccessResult(expression: StylePropertyExpression): Compi
 
 function evaluateExpression(inputs: FixtureInput[], expression: StylePropertyExpression): EvaluationOutput[] {
     const type = getStylePropertyExpressionType(expression);
+    const outputs: EvaluationOutput[] = [];
 
-    return inputs.map((input) => {
+    for (const input of inputs) {
         const {availableImages, canonicalID} = input[0];
         const {featureState, geometry, id, properties} = input[1];
 
@@ -212,15 +213,16 @@ function evaluateExpression(inputs: FixtureInput[], expression: StylePropertyExp
             if (type.kind === 'color') {
                 value = [value.r, value.g, value.b, value.a];
             }
-            return value;
+            outputs.push(value);
         } catch (error) {
-            return {
+            outputs.push({
                 error: error.name === 'ExpressionEvaluationError' ?
                     error.toJSON() :
                     error.message,
-            };
+            });
         }
-    });
+    }
+    return outputs;
 }
 
 function getStylePropertyExpressionType(expression: StylePropertyExpression) {
