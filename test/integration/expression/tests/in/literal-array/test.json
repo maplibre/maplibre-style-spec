@@ -1,0 +1,31 @@
+{
+  "expression": [
+    "in",
+    2,
+    [
+      "literal",
+      [
+        1,
+        2,
+        3
+      ]
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": true,
+      "isZoomConstant": true,
+      "type": "boolean"
+    },
+    "outputs": [
+      true
+    ]
+  }
+}

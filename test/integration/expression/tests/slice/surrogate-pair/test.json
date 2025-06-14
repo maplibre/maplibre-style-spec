@@ -1,0 +1,45 @@
+{
+  "expression": [
+    "slice",
+    [
+      "get",
+      "str"
+    ],
+    [
+      "get",
+      "i1"
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {
+        "properties": {
+          "str": "市镇",
+          "i1": 1
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "str": "丐𦨭市镇",
+          "i1": 2
+        }
+      }
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": false,
+      "isZoomConstant": true,
+      "type": "value"
+    },
+    "outputs": [
+      "镇",
+      "市镇"
+    ]
+  }
+}

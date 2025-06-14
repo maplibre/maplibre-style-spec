@@ -7,7 +7,7 @@ export default defineConfig({
         typecheck: {
             enabled: true,
             include: [
-                'src/**/*.test.ts',
+                'src/**/*.test-d.ts',
             ],
         },
         include: [
@@ -16,7 +16,7 @@ export default defineConfig({
         coverage: {
             provider: 'v8',
             reporter: ['json', 'html'],
-            exclude: ['node_modules/', 'dist/', '**/*.test.ts'],
+            exclude: ['node_modules/', 'dist/', '**/*.{test,test-d}.ts'],
             all: true,
             include: ['src'],
             reportsDirectory: './coverage/vitest/unit',

@@ -1,0 +1,31 @@
+{
+  "expression": [
+    "case",
+    [
+      "has",
+      "x"
+    ],
+    [
+      "get",
+      "x"
+    ],
+    null
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": false,
+      "isZoomConstant": true,
+      "type": "value"
+    },
+    "outputs": [
+      null
+    ]
+  }
+}

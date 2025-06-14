@@ -1,0 +1,32 @@
+{
+  "expression": [
+    "slice",
+    [
+      "literal",
+      [
+        1,
+        2,
+        3
+      ]
+    ],
+    2,
+    1
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": true,
+      "isZoomConstant": true,
+      "type": "array<number, 3>"
+    },
+    "outputs": [
+      []
+    ]
+  }
+}

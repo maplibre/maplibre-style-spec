@@ -1,0 +1,68 @@
+{
+  "expression": [
+    "match",
+    [
+      "get",
+      "id"
+    ],
+    "a",
+    [
+      "get",
+      "a"
+    ],
+    "b",
+    [
+      "get",
+      "b"
+    ],
+    [
+      "get",
+      "c"
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {
+        "properties": {
+          "id": "a",
+          "a": "A",
+          "b": "B"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "id": "b",
+          "a": "A",
+          "b": "B"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "id": "z",
+          "a": "A",
+          "b": "B"
+        }
+      }
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": false,
+      "isZoomConstant": true,
+      "type": "value"
+    },
+    "outputs": [
+      "A",
+      "B",
+      null
+    ]
+  }
+}

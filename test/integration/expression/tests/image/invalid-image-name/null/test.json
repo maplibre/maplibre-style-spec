@@ -1,0 +1,21 @@
+{
+  "expression": [
+    "image",
+    null
+  ],
+  "expected": {
+    "compiled": {
+      "result": "error",
+      "errors": [
+        {
+          "key": "[1]",
+          "error": "Expected string but found null instead."
+        },
+        {
+          "key": "",
+          "error": "No image name provided."
+        }
+      ]
+    }
+  }
+}

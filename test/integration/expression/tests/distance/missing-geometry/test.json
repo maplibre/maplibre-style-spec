@@ -1,0 +1,16 @@
+{
+  "expression": [
+    "distance"
+  ],
+  "expected": {
+    "compiled": {
+      "result": "error",
+      "errors": [
+        {
+          "key": "",
+          "error": "'distance' expression requires exactly one argument, but found 0 instead."
+        }
+      ]
+    }
+  }
+}

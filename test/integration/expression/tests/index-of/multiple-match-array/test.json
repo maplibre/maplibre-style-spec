@@ -1,0 +1,44 @@
+{
+  "expression": [
+    "index-of",
+    [
+      "get",
+      "i"
+    ],
+    [
+      "get",
+      "arr"
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {
+        "properties": {
+          "i": 1,
+          "arr": [
+            0,
+            1,
+            2,
+            3,
+            0,
+            1,
+            2,
+            3
+          ]
+        }
+      }
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": false,
+      "isZoomConstant": true,
+      "type": "number"
+    },
+    "outputs": [
+      1
+    ]
+  }
+}
