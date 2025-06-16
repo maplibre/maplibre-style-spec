@@ -6,14 +6,21 @@
       [
         "at",
         1,
-        ["literal", ["e", "x", "e"]]
+        [
+          "literal",
+          [
+            "e",
+            "x",
+            "e"
+          ]
+        ]
       ]
     ]
   ],
   "inputs": [
     [
       {},
-      { 
+      {
         "featureState": {
           "x": 1
         }
