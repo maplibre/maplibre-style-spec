@@ -145,7 +145,6 @@ function validSchema(k, v, obj, ref, version, kind) {
             } else if (typeof obj.value === 'object') {
                 validSchema(`${k}.value`, v, obj.value, ref, undefined, undefined);
             } else {
-                console.log(types);
                 expect(types.indexOf(obj.value) !== -1).toBeTruthy();
             }
         }
