@@ -1,4 +1,5 @@
 import {declassStyle} from './declass';
+import {describe, test, expect} from 'vitest';
 
 describe('declass', () => {
     test('declass a style, one class', () => {

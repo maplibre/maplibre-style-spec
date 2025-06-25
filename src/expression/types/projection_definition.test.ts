@@ -1,4 +1,5 @@
 import {ProjectionDefinition} from './projection_definition';
+import {describe, test, expect} from 'vitest';
 
 describe('Projection class', () => {
     test('should parse projection with multiple inputs', () => {

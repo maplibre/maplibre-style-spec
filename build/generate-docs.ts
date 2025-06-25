@@ -9,6 +9,18 @@ import jsonStringify from 'json-stringify-pretty-compact';
 
 const BASE_PATH = 'docs';
 
+type JsonExpressionSyntax = {
+    overloads: {
+        parameters: string[];
+        'output-type': string;
+    }[];
+    parameters?: {
+        name: string;
+        type?: string;
+        description?: string;
+    }[];
+}
+
 type JsonSdkSupport = {
     [info: string]: {
         js?: string;
@@ -118,7 +130,32 @@ function sdkSupportToMarkdown(support: JsonSdkSupport): string {
         markdown += `|${row}|${supportCell(supportMatrix.js)}|${supportCell(supportMatrix.android)}|${supportCell(supportMatrix.ios)}|\n`;
     }
     return markdown;
+}
 
+/**
+ * Converts the expression syntax object to markdown format.
+ * @param key - the expression name
+ * @param syntax - the expression syntax object in the style spec
+ * @returns the markdown string for the expression's syntax section
+ */
+function expressionSyntaxToMarkdown(key: string, syntax: JsonExpressionSyntax) {
+    let markdown = '\nSyntax:\n';
+    const codeBlockLines = syntax.overloads.map((overload) => {
+        return `[${[`"${key}"`, ...overload.parameters].join(', ')}]: ${overload['output-type']}`;
+    });
+    markdown += `${codeBlockMarkdown(codeBlockLines.join('\n'), 'js')}\n`;
+    for (const parameter of syntax.parameters ?? []) {
+        markdown += `- \`${parameter.name}\``;
+        if (parameter.type) {
+            const type = parameter.type.replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+            markdown += `: *${type}*`;
+        }
+        if (parameter.description) {
+            markdown += ` — ${parameter.description}`;
+        }
+        markdown += '\n';
+    }
+    return markdown;
 }
 
 /**
@@ -511,9 +548,8 @@ function createExpressionsContent() {
             }
             content += `\n### ${key}\n`;
             content += `${value.doc}\n`;
-            value.example.syntax.method.unshift(`"${key}"`);
-            content += `\nSyntax:\n${codeBlockMarkdown(`[${value.example.syntax.method.join(', ')}]: ${value.example.syntax.result}`, 'js')}\n`;
-            content += `\nExample:\n${codeBlockMarkdown(`"some-property": ${formatJSON(value.example.value)}`)}\n`;
+            content += expressionSyntaxToMarkdown(key, value.syntax);
+            content += `\nExample:\n${codeBlockMarkdown(`"some-property": ${formatJSON(value.example)}`)}\n`;
             content += sdkSupportToMarkdown(value['sdk-support'] as any);
             content += '\n';
         }

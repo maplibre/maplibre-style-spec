@@ -1,0 +1,41 @@
+{
+  "expression": [
+    "number",
+    [
+      "feature-state",
+      [
+        "at",
+        1,
+        [
+          "literal",
+          [
+            "e",
+            "x",
+            "e"
+          ]
+        ]
+      ]
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {
+        "featureState": {
+          "x": 1
+        }
+      }
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": false,
+      "isZoomConstant": true,
+      "type": "number"
+    },
+    "outputs": [
+      1
+    ]
+  }
+}

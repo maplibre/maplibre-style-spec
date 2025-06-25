@@ -27,18 +27,18 @@ You can also supply an array of `{ id: ..., url: ... }` pairs to load multiple s
 
 ```json
 "sprite": [
-  {
-    id: 'roadsigns',
-    url: 'https://example.com/myroadsigns'
-  },
-  {
-    id: 'shops',
-    url: 'https://example2.com/someurl'
-  },
-  {
-    id: 'default',
-    url: 'https://example2.com/anotherurl'
-  }
+    {
+        "id": "roadsigns",
+        "url": "https://example.com/myroadsigns"
+    },
+    {
+        "id": "shops",
+        "url": "https://example2.com/someurl"
+    },
+    {
+        "id": "default",
+        "url": "https://example2.com/anotherurl"
+    }
 ]
 ```
 

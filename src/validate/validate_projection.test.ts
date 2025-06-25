@@ -2,6 +2,7 @@ import {validateProjection} from './validate_projection';
 import {validate} from './validate';
 import v8 from '../reference/v8.json' with {type: 'json'};
 import {ProjectionSpecification} from '../types.g';
+import {describe, test, expect, it} from 'vitest';
 
 describe('Validate projection', () => {
     it('Should pass when value is undefined', () => {

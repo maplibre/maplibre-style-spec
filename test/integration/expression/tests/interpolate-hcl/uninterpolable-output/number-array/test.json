@@ -1,0 +1,121 @@
+{
+  "propertySpec": {
+    "type": "numberArray",
+    "property-type": "data-driven",
+    "expression": {
+      "interpolated": true,
+      "parameters": [
+        "zoom",
+        "feature"
+      ]
+    }
+  },
+  "expression": [
+    "interpolate-hcl",
+    [
+      "linear"
+    ],
+    [
+      "get",
+      "x"
+    ],
+    0,
+    [
+      "literal",
+      [
+        0,
+        0
+      ]
+    ],
+    10,
+    [
+      "get",
+      "b"
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {
+        "properties": {
+          "x": 0,
+          "b": [
+            10,
+            20
+          ]
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 5,
+          "b": [
+            10,
+            20
+          ]
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 10,
+          "b": [
+            10,
+            20
+          ]
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": -1234,
+          "b": [
+            10,
+            20
+          ]
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 1234,
+          "b": [
+            10,
+            20
+          ]
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "abcd",
+          "b": [
+            10,
+            20
+          ]
+        }
+      }
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "error",
+      "errors": [
+        {
+          "key": "[4]",
+          "error": "Expected color but found array<number, 2> instead."
+        }
+      ]
+    }
+  }
+}

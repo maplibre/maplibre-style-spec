@@ -1,0 +1,133 @@
+{
+  "expression": [
+    "interpolate-lab",
+    [
+      "linear"
+    ],
+    [
+      "get",
+      "x"
+    ],
+    1,
+    "red",
+    11,
+    [
+      "get",
+      "color"
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {
+        "properties": {
+          "x": 0,
+          "color": "blue"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 5,
+          "color": "blue"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 5,
+          "color": "#0000ff00"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 5,
+          "color": "rgb(0% 0% 100% / 0)"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 5,
+          "color": "hsl(240 100% 50% / 0)"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 11,
+          "color": "blue"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 11,
+          "color": "oops blue"
+        }
+      }
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": false,
+      "isZoomConstant": true,
+      "type": "color"
+    },
+    "outputs": [
+      [
+        1,
+        0,
+        0,
+        1
+      ],
+      [
+        0.814095,
+        0,
+        0.444772,
+        1
+      ],
+      [
+        0.488457,
+        0,
+        0.266863,
+        0.6
+      ],
+      [
+        0.488457,
+        0,
+        0.266863,
+        0.6
+      ],
+      [
+        0.488457,
+        0,
+        0.266863,
+        0.6
+      ],
+      [
+        0,
+        0,
+        1,
+        1
+      ],
+      {
+        "error": "Could not parse color from value 'oops blue'"
+      }
+    ]
+  }
+}

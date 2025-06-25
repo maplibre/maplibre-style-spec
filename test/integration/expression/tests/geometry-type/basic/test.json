@@ -8,8 +8,16 @@
       {
         "geometry": {
           "type": "LineString",
-          "coordinates":
-            [[0, 0], [10, 0]]
+          "coordinates": [
+            [
+              0,
+              0
+            ],
+            [
+              10,
+              0
+            ]
+          ]
         }
       }
     ]

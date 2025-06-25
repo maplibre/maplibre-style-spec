@@ -1,4 +1,5 @@
 import {validateProjectionDefinition} from './validate_projectiondefinition';
+import {describe, test, expect} from 'vitest';
 
 describe('validateProjection function', () => {
 

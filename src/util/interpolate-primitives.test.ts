@@ -1,4 +1,5 @@
 import {interpolateArray, interpolateNumber} from './interpolate-primitives';
+import {describe, test, expect} from 'vitest';
 
 describe('interpolate', () => {
 

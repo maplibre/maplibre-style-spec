@@ -1,0 +1,47 @@
+{
+  "expression": [
+    "!=",
+    null,
+    [
+      "get",
+      "x"
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {
+        "properties": {}
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": null
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": false
+        }
+      }
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": false,
+      "isZoomConstant": true,
+      "type": "boolean"
+    },
+    "outputs": [
+      false,
+      false,
+      true
+    ]
+  }
+}

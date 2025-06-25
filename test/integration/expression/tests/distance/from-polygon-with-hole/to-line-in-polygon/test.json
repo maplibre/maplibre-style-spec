@@ -1,0 +1,96 @@
+{
+  "expression": [
+    "distance",
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              5
+            ],
+            [
+              5,
+              5
+            ],
+            [
+              5,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              2.999,
+              2.999
+            ],
+            [
+              2.999,
+              4.001
+            ],
+            [
+              4.001,
+              4.001
+            ],
+            [
+              4.001,
+              2.999
+            ],
+            [
+              2.999,
+              2.999
+            ]
+          ]
+        ]
+      },
+      "properties": {}
+    }
+  ],
+  "inputs": [
+    [
+      {
+        "zoom": 20,
+        "canonicalID": {
+          "z": 20,
+          "x": 3,
+          "y": 3
+        }
+      },
+      {
+        "geometry": {
+          "type": "LineString",
+          "coordinates": [
+            [
+              2.5,
+              3.5
+            ],
+            [
+              3.5,
+              3.5
+            ]
+          ]
+        }
+      }
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": false,
+      "isZoomConstant": true,
+      "type": "number"
+    },
+    "outputs": [
+      0
+    ]
+  }
+}

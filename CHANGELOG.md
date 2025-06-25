@@ -6,6 +6,29 @@
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
 
+## 23.3.0
+
+### ✨ Features and improvements
+
+- Add new layer type: `color-relief ([#1067](https://github.com/maplibre/maplibre-style-spec/issues/1067))
+
+### 🐞 Bug fixes
+
+- Add missing `global-state` expression typing ([#1130](https://github.com/maplibre/maplibre-style-spec/pull/1130))
+
+## 23.2.3
+
+### ✨ Features and improvements
+
+- Restructure expression syntax documentation ([#1112](https://github.com/maplibre/maplibre-style-spec/pull/1112))
+- Add global state ref support ([#1120](https://github.com/maplibre/maplibre-style-spec/pull/1120))
+
+## 23.2.2
+
+### 🐞 Bug fixes
+
+- Fix state validation - no error case ([#1109](https://github.com/maplibre/maplibre-style-spec/pull/1109))
+
 ## 23.2.1
 
 ### 🐞 Bug fixes

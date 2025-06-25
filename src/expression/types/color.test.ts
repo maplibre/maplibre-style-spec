@@ -1,5 +1,6 @@
 import {expectCloseToArray, expectToMatchColor} from '../../../test/lib/util';
 import {Color, isSupportedInterpolationColorSpace} from './color';
+import {describe, test, expect} from 'vitest';
 
 describe('Color class', () => {
 

@@ -1,5 +1,5 @@
 import {NumberArray} from './number_array';
-
+import {describe, test, expect} from 'vitest';
 describe('NumberArray', () => {
     test('NumberArray.parse', () => {
         expect(NumberArray.parse()).toBeUndefined();

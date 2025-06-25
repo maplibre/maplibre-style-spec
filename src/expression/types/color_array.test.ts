@@ -1,5 +1,6 @@
 import {Color} from './color';
 import {ColorArray} from './color_array';
+import {describe, test, expect} from 'vitest';
 
 describe('ColorArray', () => {
     test('ColorArray.parse', () => {

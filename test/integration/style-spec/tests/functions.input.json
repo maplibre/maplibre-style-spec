@@ -986,6 +986,22 @@
           ]
         }
       }
+    }, {
+      "id": "invalid expression - color-relief-color must be zoom constant",
+      "type": "color-relief",
+      "source": "source",
+      "source-layer": "layer",
+      "paint": {
+        "color-relief-color": ["step", ["zoom"], ["step", ["elevation"], "red", 0.5, "blue"], 1, ["step", ["elevation"], "yellow", 0.5, "green"]]
+      }
+    }, {
+      "id": "invalid expression - color-relief-color must not be a function",
+      "type": "color-relief",
+      "source": "source",
+      "source-layer": "layer",
+      "paint": {
+        "color-relief-color": { "stops": [[0, "red"], [1, "blue"]] }
+      }
     }
   ]
 }

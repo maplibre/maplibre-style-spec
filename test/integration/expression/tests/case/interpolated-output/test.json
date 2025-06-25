@@ -1,0 +1,116 @@
+{
+  "propertySpec": {
+    "type": "color",
+    "property-type": "data-driven",
+    "expression": {
+      "interpolated": true,
+      "parameters": [
+        "feature"
+      ]
+    }
+  },
+  "expression": [
+    "case",
+    [
+      "has",
+      "x"
+    ],
+    [
+      "interpolate",
+      [
+        "linear"
+      ],
+      [
+        "get",
+        "x"
+      ],
+      2,
+      "#ccc",
+      10,
+      "#444"
+    ],
+    [
+      "has",
+      "y"
+    ],
+    [
+      "interpolate",
+      [
+        "linear"
+      ],
+      [
+        "get",
+        "y"
+      ],
+      0,
+      "black",
+      1,
+      "white"
+    ],
+    "#fcaf3e"
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "y": 0
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "y": 0.5
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "y": 1
+        }
+      }
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": false,
+      "isZoomConstant": true,
+      "type": "color"
+    },
+    "outputs": [
+      [
+        0.988235,
+        0.686274,
+        0.243137,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      [
+        1,
+        1,
+        1,
+        1
+      ]
+    ]
+  }
+}

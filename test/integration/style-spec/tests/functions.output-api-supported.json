@@ -202,5 +202,21 @@
   {
     "message": "layers[56].paint.line-width.stops[0][1]: expressions are not allowed in function stops.",
     "line": 981
+  },
+  {
+    "message": "layers[57]: layer \"invalid expression - color-relief-color must be zoom constant\" requires a raster-dem source",
+    "line": 992
+  },
+  {
+    "message": "layers[57].paint.color-relief-color: zoom expressions not supported",
+    "line": 995
+  },
+  {
+    "message": "layers[58]: layer \"invalid expression - color-relief-color must not be a function\" requires a raster-dem source",
+    "line": 1000
+  },
+  {
+    "message": "layers[58].paint.color-relief-color: zoom functions not supported",
+    "line": 1003
   }
 ]

@@ -1,0 +1,24 @@
+{
+  "expression": [
+    "match",
+    "0",
+    0,
+    "match 1",
+    [
+      10
+    ],
+    "match 2",
+    "otherwise"
+  ],
+  "expected": {
+    "compiled": {
+      "result": "error",
+      "errors": [
+        {
+          "key": "[1]",
+          "error": "Expected number but found string instead."
+        }
+      ]
+    }
+  }
+}

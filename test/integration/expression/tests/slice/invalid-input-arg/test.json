@@ -1,0 +1,75 @@
+{
+  "expression": [
+    "slice",
+    [
+      "get",
+      "input"
+    ],
+    1
+  ],
+  "inputs": [
+    [
+      {},
+      {
+        "properties": {
+          "input": false
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "input": null
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "input": 12
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "input": {}
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {}
+      }
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": false,
+      "isZoomConstant": true,
+      "type": "value"
+    },
+    "outputs": [
+      {
+        "error": "Expected first argument to be of type array or string, but found boolean instead."
+      },
+      {
+        "error": "Expected first argument to be of type array or string, but found null instead."
+      },
+      {
+        "error": "Expected first argument to be of type array or string, but found number instead."
+      },
+      {
+        "error": "Expected first argument to be of type array or string, but found object instead."
+      },
+      {
+        "error": "Expected first argument to be of type array or string, but found null instead."
+      }
+    ]
+  }
+}
