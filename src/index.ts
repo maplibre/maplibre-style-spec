@@ -1,7 +1,6 @@
 import v8Spec from './reference/v8.json' with {type: 'json'};
 const v8 = v8Spec as any;
 import latest from './reference/latest';
-import {derefLayers} from './deref';
 import {diff} from './diff';
 import {ValidationError} from './error/validation_error';
 import {ParsingError} from './error/parsing_error';
@@ -28,7 +27,6 @@ import {expressions} from './expression/definitions';
 import {Interpolate} from './expression/definitions/interpolate';
 import {interpolateFactory, type InterpolationType} from './expression/definitions/interpolate';
 
-import {groupByLayout} from './group_by_layout';
 import {emptyStyle} from './empty';
 import {validateStyleMin} from './validate_style.min';
 import {Step} from './expression/definitions/step';
@@ -191,9 +189,7 @@ export {
     latest,
 
     validateStyleMin,
-    groupByLayout,
     emptyStyle,
-    derefLayers,
     normalizePropertyExpression,
     isExpression,
     isZoomExpression,
