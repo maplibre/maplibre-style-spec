@@ -1,6 +1,7 @@
 ## main
 
 ### ✨ Features and improvements
+- Remove `deref` and `groupByLayer` from public interface and move them to maplibre-gl-js ([#1195](https://github.com/maplibre/maplibre-style-spec/issues/1195)))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
