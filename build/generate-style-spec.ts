@@ -335,6 +335,8 @@ export type SchemaSpecification = {
 // State
 export type StateSpecification = Record<string, SchemaSpecification>;
 
+export type ObjectSpecification = Record<string, any>;
+
 ${objectDeclaration('StyleSpecification', spec.$root)}
 
 ${objectDeclaration('LightSpecification', spec.light)}
