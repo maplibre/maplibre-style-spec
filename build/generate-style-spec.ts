@@ -67,6 +67,10 @@ function propertyDeclaration(key, property) {
     return `"${key}"${property.required ? '' : '?'}: ${propertyType(property)}`;
 }
 
+function transitionPropertyDeclaration(key) {
+    return `"${key}-transition"?: TransitionSpecification`;
+}
+
 function objectDeclaration(key, properties) {
     return `export type ${key} = ${objectType(properties, '')};`;
 }
@@ -75,7 +79,14 @@ function objectType(properties, indent) {
     return `{
 ${Object.keys(properties)
     .filter(k => k !== '*')
-    .map(k => `    ${indent}${propertyDeclaration(k, properties[k])}`)
+    .flatMap(k => {
+        const declarations = [propertyDeclaration(k, properties[k])];
+        if (properties[k].transition) {
+            declarations.push(transitionPropertyDeclaration(k));
+        }
+        return declarations;
+    })
+    .map(declaration => `    ${indent}${declaration}`)
     .join(',\n')}
 ${indent}}`;
 }
