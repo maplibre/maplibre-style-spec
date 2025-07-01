@@ -2,7 +2,6 @@
 import {refProperties} from './util/ref_properties';
 import type {LayerSpecification} from './types.g';
 
-
 function stringify(obj: any): string {
     const type = typeof obj;
     if (type === 'number' || type === 'boolean' || type === 'string' || obj === undefined || obj === null)
