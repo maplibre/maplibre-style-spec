@@ -1,4 +1,4 @@
-import {derefLayers} from './deref';
+import {derefLayers, type LayerWithRef} from './deref';
 import {describe, test, expect} from 'vitest';
 
 describe('deref', () => {
@@ -7,11 +7,11 @@ describe('deref', () => {
             {
                 'id': 'parent',
                 'type': 'line'
-            },
+            } as LayerWithRef,
             {
                 'id': 'child',
                 'ref': 'parent'
-            }
+            } as LayerWithRef
         ])).toEqual([
             {
                 'id': 'parent',
@@ -29,11 +29,11 @@ describe('deref', () => {
             {
                 'id': 'child',
                 'ref': 'parent'
-            },
+            } as LayerWithRef,
             {
                 'id': 'parent',
                 'type': 'line'
-            }
+            } as LayerWithRef
         ])).toEqual([
             {
                 'id': 'child',
