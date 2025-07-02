@@ -8,7 +8,7 @@ import type {
     DataDrivenPropertyValueSpecification
 } from './types.g';
 
-function getPropertyReference(propertyName): StylePropertySpecification {
+function getPropertyReference(propertyName): StylePropertySpecification | null {
     for (let i = 0; i < Reference.layout.length; i++) {
         for (const key in Reference[Reference.layout[i]]) {
             if (key === propertyName) return Reference[Reference.layout[i]][key] as any;
@@ -40,7 +40,7 @@ type PropertyCallback = (
         path: [string, 'paint' | 'layout', string]; // [layerid, paint/layout, property key],
         key: string;
         value: PropertyValueSpecification<unknown> | DataDrivenPropertyValueSpecification<unknown>;
-        reference: StylePropertySpecification;
+        reference: StylePropertySpecification | null;
         set: (
             a: PropertyValueSpecification<unknown> | DataDrivenPropertyValueSpecification<unknown>
         ) => void;
