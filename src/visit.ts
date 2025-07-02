@@ -8,15 +8,15 @@ import type {
     DataDrivenPropertyValueSpecification
 } from './types.g';
 
-function getPropertyReference(propertyName): StylePropertySpecification | null {
+function getPropertyReference(propertyName: string): StylePropertySpecification | null {
     for (let i = 0; i < Reference.layout.length; i++) {
         for (const key in Reference[Reference.layout[i]]) {
-            if (key === propertyName) return Reference[Reference.layout[i]][key] as any;
+            if (key === propertyName) return Reference[Reference.layout[i]][key];
         }
     }
     for (let i = 0; i < Reference.paint.length; i++) {
         for (const key in Reference[Reference.paint[i]]) {
-            if (key === propertyName) return Reference[Reference.paint[i]][key] as any;
+            if (key === propertyName) return Reference[Reference.paint[i]][key];
         }
     }
 
@@ -55,8 +55,8 @@ export function eachProperty(
     },
     callback: PropertyCallback
 ) {
-    function inner(layer, propertyType: 'paint' | 'layout') {
-        const properties = (layer[propertyType] as any);
+    function inner(layer: LayerSpecification, propertyType: 'paint' | 'layout') {
+        const properties = layer[propertyType];
         if (!properties) return;
         Object.keys(properties).forEach((key) => {
             callback({

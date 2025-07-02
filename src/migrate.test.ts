@@ -3,7 +3,7 @@ import * as spec from '.';
 import v8 from './reference/v8.json' with {type: 'json'};
 import {validateStyle} from './validate_style';
 import {describe, test, expect} from 'vitest';
-import type { StyleSpecification } from './types.g';
+import type {StyleSpecification} from './types.g';
 
 describe('migrate', () => {
     test('does not migrate from version 5', () => {
