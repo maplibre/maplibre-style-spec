@@ -90,7 +90,7 @@ function formatJSON(obj: any): string {
  * @returns the markdown string
  */
 function exampleToMarkdown(key: string, example: string | object | number): string {
-    return codeBlockMarkdown(`${key}: ${formatJSON(example)}`);
+    return codeBlockMarkdown(`"${key}": ${formatJSON(example)}`);
 }
 
 function codeBlockMarkdown(code: string, language = 'json'): string {
