@@ -21,8 +21,8 @@ export function expressions(style: StyleSpecification) {
         }
     });
 
-    eachProperty(style, {paint: true, layout: true}, ({path, value, reference, set}) => {
-        if (isExpression(value)) return;
+    eachProperty(style, {paint: true, layout: true}, ({path, key, value, reference, set}) => {
+        if (isExpression(value) || key.endsWith('-transition') || reference === null) return;
         if (typeof value === 'object' && !Array.isArray(value)) {
             set(convertFunction(value, reference));
             converted.push(path.join('.'));

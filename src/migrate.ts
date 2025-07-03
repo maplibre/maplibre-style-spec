@@ -30,7 +30,7 @@ export function migrate(style: StyleSpecification): StyleSpecification {
     }
 
     eachProperty(style, {paint: true, layout: true}, ({value, reference, set}) => {
-        if (reference.type === 'color') {
+        if (reference?.type === 'color') {
             set(migrateColors(value));
         }
     });
