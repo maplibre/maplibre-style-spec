@@ -2998,7 +2998,7 @@
             }
           ]
         },
-        "example": ["array", ["literal", ["a", "b", "c"]], "string", 3],
+        "example": ["array", "string", 3, ["literal", ["a", "b", "c"]]],
         "group": "Types",
         "sdk-support": {
           "basic functionality": {
