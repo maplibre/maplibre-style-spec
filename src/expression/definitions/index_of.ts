@@ -31,7 +31,7 @@ export class IndexOf implements Expression {
 
     static parse(args: ReadonlyArray<unknown>, context: ParsingContext): Expression {
         if (args.length <= 2 ||  args.length >= 5) {
-            return context.error(`Expected 3 or 4 arguments, but found ${args.length - 1} instead.`) as null;
+            return context.error(`Expected 2 or 3 arguments, but found ${args.length - 1} instead.`) as null;
         }
 
         const needle = context.parse(args[1], 1, ValueType);
