@@ -1,6 +1,6 @@
 import v8 from '../src/reference/v8.json' with { type: 'json' };
 import fs from 'fs';
-import jsonStringify from 'json-stringify-pretty-compact';
+import {formatJSON} from './util';
 
 /**
  * This script generates markdown documentation from the JSON schema.
@@ -70,17 +70,6 @@ function topicElement(key: string, value: JsonObject): boolean {
         key !== 'sprite' &&
         key !== 'layers' &&
         key !== 'sources';
-}
-
-/**
- * @param obj - object to be formatted
- * @returns formatted JSON
- */
-function formatJSON(obj: any): string {
-    return jsonStringify(obj, {
-        indent: 4,
-        maxLength: 60
-    });
 }
 
 /**
