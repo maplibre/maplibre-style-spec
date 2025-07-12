@@ -1,6 +1,42 @@
 import {writeFileSync} from 'fs';
 import spec from '../src/reference/v8.json' with {type: 'json'};
 import {supportsPropertyExpression, supportsZoomExpression} from '../src/util/properties';
+import {formatJSON} from './util';
+
+function jsDocComment(property) {
+    const lines = [];
+    if (property.doc) {
+        lines.push(...property.doc.split('\n'));
+    }
+    if (property.default) {
+        if (lines.length) {
+            lines.push('');
+        }
+        lines.push(...jsDocBlock('default', property.default).split('\n'));
+    }
+    if (property.example) {
+        if (lines.length) {
+            lines.push('');
+        }
+        lines.push(...jsDocBlock('example', property.example).split('\n'));
+    }
+
+    if (!lines.length) {
+        return undefined;
+    }
+    return [
+        '/**',
+        ...lines.map(line => ` * ${line}`),
+        ' */',
+    ].join('\n');
+}
+
+function jsDocBlock(tag, value) {
+    return `@${tag}
+\`\`\`json
+${formatJSON(value)}
+\`\`\``;
+}
 
 function unionType(values) {
     if (Array.isArray(values)) {
@@ -64,7 +100,9 @@ function propertyType(property) {
 }
 
 function propertyDeclaration(key, property) {
-    return `"${key}"${property.required ? '' : '?'}: ${propertyType(property)}`;
+    const jsDoc = jsDocComment(property);
+    const declaration = `"${key}"${property.required ? '' : '?'}: ${propertyType(property)}`;
+    return jsDoc ? [jsDoc, declaration].join('\n') : declaration;
 }
 
 function transitionPropertyDeclaration(key) {
@@ -86,7 +124,12 @@ ${Object.keys(properties)
         }
         return declarations;
     })
-    .map(declaration => `    ${indent}${declaration}`)
+    .map(declaration => {
+        return declaration
+            .split('\n')
+            .map(line => `    ${indent}${line}`)
+            .join('\n');
+    })
     .join(',\n')}
 ${indent}}`;
 }
