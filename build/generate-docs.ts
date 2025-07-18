@@ -76,17 +76,6 @@ function topicElement(key: string, value: JsonObject): boolean {
 }
 
 /**
- * @param obj - object to be formatted
- * @returns formatted JSON
- */
-function formatJSON(obj: any): string {
-    return jsonStringify(obj, {
-        indent: 4,
-        maxLength: 60
-    });
-}
-
-/**
  * Converts the example value(s) to markdown format.
  * @param key - the name of the json property
  * @param example - the example value of the json property
