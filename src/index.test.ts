@@ -75,7 +75,7 @@ function validSchema(k, v, obj, ref, version, kind) {
         'sprite',
         'projectionDefinition',
         'state',
-        'object'
+        'fontFaces'
     ]);
     const keys = [
         'default',
