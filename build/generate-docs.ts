@@ -79,14 +79,14 @@ function topicElement(key: string, value: JsonObject): boolean {
  * Converts the example value(s) to markdown format.
  * @param key - the name of the json property
  * @param example - the example value of the json property
- *  @param examples - the examples value of the json property
+ * @param examples - the examples value of the json property
  * @returns the markdown string
  */
 function exampleToMarkdown(key: string, example?: Example, examples?: Example[]): string {
     const allExamples = [...(example ? [example] : []), ...(examples ? examples : [])];
     return allExamples
         .map(example => codeBlockMarkdown(`"${key}": ${formatJSON(example)}`))
-        .join("\n");
+        .join('\n');
 }
 
 function codeBlockMarkdown(code: string, language = 'json'): string {
