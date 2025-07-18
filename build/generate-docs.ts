@@ -29,8 +29,6 @@ type JsonSdkSupport = {
     };
 }
 
-type Example = string | object | number;
-
 type JsonObject = {
     required?: boolean;
     units?: string;
@@ -38,8 +36,7 @@ type JsonObject = {
     type: string;
     doc: string;
     requires?: any[];
-    example?: Example;
-    examples?: Example[];
+    example: string | object | number;
     expression?: { interpolated?: boolean; parameters?: string[]};
     transition?: boolean;
     values?: {[key: string]: { doc: string; 'sdk-support'?: JsonSdkSupport }} | number[];
@@ -76,17 +73,13 @@ function topicElement(key: string, value: JsonObject): boolean {
 }
 
 /**
- * Converts the example value(s) to markdown format.
+ * Converts the example value to markdown format.
  * @param key - the name of the json property
  * @param example - the example value of the json property
- * @param examples - the examples value of the json property
  * @returns the markdown string
  */
-function exampleToMarkdown(key: string, example?: Example, examples?: Example[]): string {
-    const allExamples = [...(example ? [example] : []), ...(examples ? examples : [])];
-    return allExamples
-        .map(example => codeBlockMarkdown(`"${key}": ${formatJSON(example)}`))
-        .join('\n');
+function exampleToMarkdown(key: string, example: string | object | number): string {
+    return codeBlockMarkdown(`${key}: ${formatJSON(example)}`);
 }
 
 function codeBlockMarkdown(code: string, language = 'json'): string {
@@ -289,7 +282,9 @@ function convertPropertyToMarkdown(key: string, value: JsonObject, keyPrefix = '
         }
     }
 
-    markdown += exampleToMarkdown(key, value.example, value.examples);
+    if (value.example !== undefined) {
+        markdown += exampleToMarkdown(key, value.example as string);
+    }
 
     if (value['sdk-support']) {
         markdown += sdkSupportToMarkdown(value['sdk-support']);
@@ -332,7 +327,7 @@ function createLayersContent() {
     let content = '# Layers\n\n';
 
     content += `${v8.$root.layers.doc}\n\n`;
-    content += exampleToMarkdown('layers', v8.$root.layers.example, []);
+    content += exampleToMarkdown('layers', v8.$root.layers.example);
 
     content += '## Layer Properties\n\n';
 
@@ -505,13 +500,13 @@ function createSourcesContent() {
     let content = '# Sources\n\n';
 
     content += `${v8.$root.sources.doc}\n\n`;
-    content += exampleToMarkdown('sources', v8.$root.sources.example, []);
+    content += exampleToMarkdown('sources', v8.$root.sources.example);
 
     for (const sourceKey of v8.source) {
         const sourceName = sourceKey.replace('source_', '').replace('_', '-');
         content += `## ${sourceName}\n\n`;
         content += `${sourcesExtraData[sourceName].doc}\n\n`;
-        content += exampleToMarkdown('sources', sourcesExtraData[sourceName].example, sourcesExtraData[sourceName].examples);
+        content += exampleToMarkdown('sources', sourcesExtraData[sourceName].example);
         content += sdkSupportToMarkdown(sourcesExtraData[sourceName]['sdk-support']);
         content += '\n';
         for (const [key, value] of Object.entries(v8[sourceKey])) {
@@ -562,10 +557,7 @@ function createMainTopics() {
         }
         let content = `# ${capitalize(key)}\n\n`;
         content += `${value.doc}\n\n`;
-        content += exampleToMarkdown(
-            key,
-            'example' in value ? value.example : undefined,
-            'examples' in value ? value.examples : undefined);
+        content += exampleToMarkdown(key, value.example);
 
         if (value.type in v8) {
             for (const [subKey, subValue] of Object.entries(v8[value.type])) {
