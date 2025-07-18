@@ -246,7 +246,9 @@
             ]
           }
         ]
-      }], "https://example.com/fonts/Noto%20Sans%20Regular/khmer.ttf"],
+      }], {
+        "Noto Sans Regular": "https://example.com/fonts/Noto%20Sans%20Regular/khmer.ttf"
+      }],
       "sdk-support": {
         "basic functionality": {
           "js": "https://github.com/maplibre/maplibre-gl-js/issues/50",
