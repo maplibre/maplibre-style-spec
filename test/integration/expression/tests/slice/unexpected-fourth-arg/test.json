@@ -12,7 +12,7 @@
       "errors": [
         {
           "key": "",
-          "error": "Expected 3 or 4 arguments, but found 4 instead."
+          "error": "Expected 2 or 3 arguments, but found 4 instead."
         }
       ]
     }
