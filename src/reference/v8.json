@@ -218,6 +218,44 @@
         }
       }
     },
+    "font-faces": {
+      "type": "array",
+      "value": "fontFaces",
+      "doc": "The `font-faces` property can be used to specify what font files to use for rendering text. Font faces contain information needed to render complex texts such as [Devanagari](https://en.wikipedia.org/wiki/Devanagari), [Khmer](https://en.wikipedia.org/wiki/Khmer_script) among many others.<h2>Unicode range</h2>The optional `unicode-range` property can be used to only use a particular font file for characters within the specified unicode range(s). Its value should be an array of strings, each indicating a start and end of a unicode range, similar to the [CSS descriptor with the same name](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/unicode-range). This allows specifying multiple non-consecutive unicode ranges. When not specified, the default value is `U+0-10FFFF`, meaning the font file will be used for all unicode characters.\n\nRefer to the [Unicode Character Code Charts](https://www.unicode.org/charts/) to see ranges for scripts supported by Unicode. To see what unicode code-points are available in a font, use a tool like [FontDrop](https://fontdrop.info/).\n\n<h2>Font Resolution</h2>For every name in a symbol layer’s [`text-font`](./layers.md/#text-font) array, characters are matched if they are covered one of the by the font files in the corresponding entry of the `font-faces` map. Any still-unmatched characters then fall back to the [`glyphs`](./glyphs.md) URL if provided.\n\n<h2>Supported Fonts</h2>What type of fonts are supported is implementation-defined. Unsupported fonts are ignored.",
+      "example": {
+        "Noto Sans Regular": [
+          {
+            "url": "https://example.com/fonts/Noto%20Sans%20Regular/khmer.ttf",
+            "unicode-range": [
+              "U+1780-17FF"
+            ]
+          },
+          {
+            "url": "https://example.com/fonts/Noto%20Sans%20Regular/myanmar.ttf",
+            "unicode-range": [
+              "U+1000-109F",
+              "U+A9E0-A9FF",
+              "U+AA60-AA7F"
+            ]
+          },
+          {
+            "url": "https://example.com/fonts/Noto%20Sans%20Regular/devanagari.ttf",
+            "unicode-range": [
+              "U+0900-097F",
+              "U+A8E0-A8FF"
+            ]
+          }
+        ],
+        "Open Sans": "https://example.com/fonts/Open%20Sans.ttf"
+      },
+      "sdk-support": {
+        "basic functionality": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/50",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3578",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3578"
+        }
+      }
+    },
     "transition": {
       "type": "transition",
       "doc": "A global transition definition to use as a default across properties, to be used for timing transitions between one value and the next when no property-specific transition is set. Collision-based symbol fading is controlled independently of the style's `transition` property.",
