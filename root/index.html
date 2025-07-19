@@ -362,6 +362,28 @@
   
   
     <li class="md-nav__item">
+      <a href="../font-faces/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Font-faces
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../glyphs/" class="md-nav__link">
         
   
@@ -647,6 +669,15 @@
   <a href="#glyphs" class="md-nav__link">
     <span class="md-ellipsis">
       glyphs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#font-faces" class="md-nav__link">
+    <span class="md-ellipsis">
+      font-faces
     </span>
   </a>
   
@@ -1012,6 +1043,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#font-faces" class="md-nav__link">
+    <span class="md-ellipsis">
+      font-faces
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#transition" class="md-nav__link">
     <span class="md-ellipsis">
       transition
@@ -1328,24 +1368,72 @@
 </tr>
 </tbody>
 </table>
+<h2 id="font-faces">font-faces<a class="headerlink" href="#font-faces" title="Permanent link">&para;</a></h2>
+<p><em>Optional <a href="../types/#array">array</a>.</em></p>
+<p>The <code>font-faces</code> property can be used to specify what font files to use for rendering text. Font faces contain information needed to render complex texts such as <a href="https://en.wikipedia.org/wiki/Devanagari">Devanagari</a>, <a href="https://en.wikipedia.org/wiki/Khmer_script">Khmer</a> among many others.<h2>Unicode range</h2>The optional <code>unicode-range</code> property can be used to only use a particular font file for characters within the specified unicode range(s). Its value should be an array of strings, each indicating a start and end of a unicode range, similar to the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/unicode-range">CSS descriptor with the same name</a>. This allows specifying multiple non-consecutive unicode ranges. When not specified, the default value is <code>U+0-10FFFF</code>, meaning the font file will be used for all unicode characters.</p>
+<p>Refer to the <a href="https://www.unicode.org/charts/">Unicode Character Code Charts</a> to see ranges for scripts supported by Unicode. To see what unicode code-points are available in a font, use a tool like <a href="https://fontdrop.info/">FontDrop</a>.</p>
+<h2>Font Resolution</h2>
+<p>For every name in a symbol layer’s <a href="../layers/#text-font"><code>text-font</code></a> array, characters are matched if they are covered one of the by the font files in the corresponding entry of the <code>font-faces</code> map. Any still-unmatched characters then fall back to the <a href="../glyphs/"><code>glyphs</code></a> URL if provided.</p>
+<h2>Supported Fonts</h2>
+<p>What type of fonts are supported is implementation-defined. Unsupported fonts are ignored.</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kc">f</span><span class="err">o</span><span class="kc">nt</span><span class="mi">-</span><span class="kc">fa</span><span class="err">ces</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">    </span><span class="nt">&quot;Noto Sans Regular&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="w">            </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.com/fonts/Noto%20Sans%20Regular/khmer.ttf&quot;</span><span class="p">,</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="w">            </span><span class="nt">&quot;unicode-range&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;U+1780-17FF&quot;</span><span class="p">]</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="w">        </span><span class="p">},</span>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="w">            </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.com/fonts/Noto%20Sans%20Regular/myanmar.ttf&quot;</span><span class="p">,</span>
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="w">            </span><span class="nt">&quot;unicode-range&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="w">                </span><span class="s2">&quot;U+1000-109F&quot;</span><span class="p">,</span>
+</span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a><span class="w">                </span><span class="s2">&quot;U+A9E0-A9FF&quot;</span><span class="p">,</span>
+</span><span id="__span-18-12"><a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a><span class="w">                </span><span class="s2">&quot;U+AA60-AA7F&quot;</span>
+</span><span id="__span-18-13"><a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a><span class="w">            </span><span class="p">]</span>
+</span><span id="__span-18-14"><a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a><span class="w">        </span><span class="p">},</span>
+</span><span id="__span-18-15"><a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-18-16"><a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a><span class="w">            </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.com/fonts/Noto%20Sans%20Regular/devanagari.ttf&quot;</span><span class="p">,</span>
+</span><span id="__span-18-17"><a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a><span class="w">            </span><span class="nt">&quot;unicode-range&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;U+0900-097F&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;U+A8E0-A8FF&quot;</span><span class="p">]</span>
+</span><span id="__span-18-18"><a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-18-19"><a id="__codelineno-18-19" name="__codelineno-18-19" href="#__codelineno-18-19"></a><span class="w">    </span><span class="p">],</span>
+</span><span id="__span-18-20"><a id="__codelineno-18-20" name="__codelineno-18-20" href="#__codelineno-18-20"></a><span class="w">    </span><span class="nt">&quot;Open Sans&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.com/fonts/Open%20Sans.ttf&quot;</span>
+</span><span id="__span-18-21"><a id="__codelineno-18-21" name="__codelineno-18-21" href="#__codelineno-18-21"></a><span class="p">}</span>
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>SDK Support</th>
+<th>MapLibre GL JS</th>
+<th>MapLibre Native<br>Android</th>
+<th>MapLibre Native<br>iOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>basic functionality</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-gl-js/issues/50">#50</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/3578">#3578</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/3578">#3578</a>)</td>
+</tr>
+</tbody>
+</table>
 <h2 id="transition">transition<a class="headerlink" href="#transition" title="Permanent link">&para;</a></h2>
 <p><em>Optional <a href="../transition/">transition</a>.</em></p>
 <p>A global transition definition to use as a default across properties, to be used for timing transitions between one value and the next when no property-specific transition is set. Collision-based symbol fading is controlled independently of the style's <code>transition</code> property.</p>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kc">trans</span><span class="err">i</span><span class="kc">t</span><span class="err">io</span><span class="kc">n</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;duration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;delay&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">}</span>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="kc">trans</span><span class="err">i</span><span class="kc">t</span><span class="err">io</span><span class="kc">n</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;duration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;delay&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">}</span>
 </span></code></pre></div>
 <h2 id="layers">layers<a class="headerlink" href="#layers" title="Permanent link">&para;</a></h2>
 <p><em>Required <a href="../types/#array">array</a>.</em></p>
 <p>A style's <code>layers</code> property lists all the layers available in that style. The type of layer is specified by the <code>type</code> property, and must be one of <code>background</code>, <code>fill</code>, <code>line</code>, <code>symbol</code>, <code>raster</code>, <code>circle</code>, <code>fill-extrusion</code>, <code>heatmap</code>, <code>hillshade</code>, <code>color-relief</code>.</p>
 <p>Except for layers of the <code>background</code> type, each layer needs to refer to a source. Layers take the data that they get from a source, optionally filter features, and then define how those features are styled.</p>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="err">layers</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="w">    </span><span class="p">{</span>
-</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;coastline&quot;</span><span class="p">,</span>
-</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="w">        </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;maplibre&quot;</span><span class="p">,</span>
-</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="w">        </span><span class="nt">&quot;source-layer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;countries&quot;</span><span class="p">,</span>
-</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;line&quot;</span><span class="p">,</span>
-</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="w">        </span><span class="nt">&quot;paint&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;line-color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#198EC8&quot;</span><span class="p">}</span>
-</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="p">]</span>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="err">layers</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;coastline&quot;</span><span class="p">,</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="w">        </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;maplibre&quot;</span><span class="p">,</span>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="w">        </span><span class="nt">&quot;source-layer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;countries&quot;</span><span class="p">,</span>
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;line&quot;</span><span class="p">,</span>
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="w">        </span><span class="nt">&quot;paint&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;line-color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#198EC8&quot;</span><span class="p">}</span>
+</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="p">]</span>
 </span></code></pre></div>
 
 

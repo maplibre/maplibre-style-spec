@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://www.maplibre.org/maplibre-style-spec/sky/">
+        <link rel="canonical" href="https://www.maplibre.org/maplibre-style-spec/font-faces/">
       
       
-        <link rel="prev" href="../root/">
+        <link rel="prev" href="../expressions/">
       
       
-        <link rel="next" href="../sources/">
+        <link rel="next" href="../glyphs/">
       
       
       <link rel="icon" href="https://maplibre.org/favicon.ico">
@@ -24,7 +24,7 @@
     
     
       
-        <title>Sky - MapLibre Style Spec</title>
+        <title>Font-faces - MapLibre Style Spec</title>
       
     
     
@@ -61,11 +61,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Sky - MapLibre Style Spec" >
+        <meta  property="og:title"  content="Font-faces - MapLibre Style Spec" >
       
         <meta  property="og:description"  content="Documentation for the MapLibre Style Specification" >
       
-        <meta  property="og:image"  content="https://www.maplibre.org/maplibre-style-spec/assets/images/social/sky.png" >
+        <meta  property="og:image"  content="https://www.maplibre.org/maplibre-style-spec/assets/images/social/font-faces.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -73,15 +73,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://www.maplibre.org/maplibre-style-spec/sky/" >
+        <meta  property="og:url"  content="https://www.maplibre.org/maplibre-style-spec/font-faces/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Sky - MapLibre Style Spec" >
+        <meta  name="twitter:title"  content="Font-faces - MapLibre Style Spec" >
       
         <meta  name="twitter:description"  content="Documentation for the MapLibre Style Specification" >
       
-        <meta  name="twitter:image"  content="https://www.maplibre.org/maplibre-style-spec/assets/images/social/sky.png" >
+        <meta  name="twitter:image"  content="https://www.maplibre.org/maplibre-style-spec/assets/images/social/font-faces.png" >
       
     
     
@@ -104,7 +104,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#sky" class="md-skip">
+        <a href="#font-faces" class="md-skip">
           Skip to content
         </a>
       
@@ -139,7 +139,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Sky
+              Font-faces
             
           </span>
         </div>
@@ -359,10 +359,19 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../font-faces/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -373,6 +382,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -491,32 +501,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Sky
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../sky/" class="md-nav__link">
         
   
   
@@ -527,89 +515,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#sky-color" class="md-nav__link">
-    <span class="md-ellipsis">
-      sky-color
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#horizon-color" class="md-nav__link">
-    <span class="md-ellipsis">
-      horizon-color
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#fog-color" class="md-nav__link">
-    <span class="md-ellipsis">
-      fog-color
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#fog-ground-blend" class="md-nav__link">
-    <span class="md-ellipsis">
-      fog-ground-blend
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#horizon-fog-blend" class="md-nav__link">
-    <span class="md-ellipsis">
-      horizon-fog-blend
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sky-horizon-blend" class="md-nav__link">
-    <span class="md-ellipsis">
-      sky-horizon-blend
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#atmosphere-blend" class="md-nav__link">
-    <span class="md-ellipsis">
-      atmosphere-blend
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -766,77 +671,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#sky-color" class="md-nav__link">
-    <span class="md-ellipsis">
-      sky-color
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#horizon-color" class="md-nav__link">
-    <span class="md-ellipsis">
-      horizon-color
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#fog-color" class="md-nav__link">
-    <span class="md-ellipsis">
-      fog-color
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#fog-ground-blend" class="md-nav__link">
-    <span class="md-ellipsis">
-      fog-ground-blend
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#horizon-fog-blend" class="md-nav__link">
-    <span class="md-ellipsis">
-      horizon-fog-blend
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sky-horizon-blend" class="md-nav__link">
-    <span class="md-ellipsis">
-      sky-horizon-blend
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#atmosphere-blend" class="md-nav__link">
-    <span class="md-ellipsis">
-      atmosphere-blend
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -854,49 +688,54 @@
   
 
 
-<h1 id="sky">Sky<a class="headerlink" href="#sky" title="Permanent link">&para;</a></h1>
-<p>The map's sky configuration. <strong>Note:</strong> this definition is still experimental and is under development in maplibre-gl-js.</p>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="err">sky</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="nt">&quot;sky-color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#199EF3&quot;</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nt">&quot;sky-horizon-blend&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nt">&quot;horizon-color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#ffffff&quot;</span><span class="p">,</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="nt">&quot;horizon-fog-blend&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="nt">&quot;fog-color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#0000ff&quot;</span><span class="p">,</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="nt">&quot;fog-ground-blend&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="nt">&quot;atmosphere-blend&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">        </span><span class="s2">&quot;interpolate&quot;</span><span class="p">,</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">        </span><span class="p">[</span><span class="s2">&quot;linear&quot;</span><span class="p">],</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">        </span><span class="p">[</span><span class="s2">&quot;zoom&quot;</span><span class="p">],</span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">        </span><span class="mi">0</span><span class="p">,</span>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">        </span><span class="mi">1</span><span class="p">,</span>
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">        </span><span class="mi">10</span><span class="p">,</span>
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">        </span><span class="mi">1</span><span class="p">,</span>
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">        </span><span class="mi">12</span><span class="p">,</span>
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">        </span><span class="mi">0</span>
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="p">]</span>
-</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="p">}</span>
+<h1 id="font-faces">Font-faces<a class="headerlink" href="#font-faces" title="Permanent link">&para;</a></h1>
+<p>The <code>font-faces</code> property can be used to specify what font files to use for rendering text. Font faces contain information needed to render complex texts such as <a href="https://en.wikipedia.org/wiki/Devanagari">Devanagari</a>, <a href="https://en.wikipedia.org/wiki/Khmer_script">Khmer</a> among many others.<h2>Unicode range</h2>The optional <code>unicode-range</code> property can be used to only use a particular font file for characters within the specified unicode range(s). Its value should be an array of strings, each indicating a start and end of a unicode range, similar to the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/unicode-range">CSS descriptor with the same name</a>. This allows specifying multiple non-consecutive unicode ranges. When not specified, the default value is <code>U+0-10FFFF</code>, meaning the font file will be used for all unicode characters.</p>
+<p>Refer to the <a href="https://www.unicode.org/charts/">Unicode Character Code Charts</a> to see ranges for scripts supported by Unicode. To see what unicode code-points are available in a font, use a tool like <a href="https://fontdrop.info/">FontDrop</a>.</p>
+<h2>Font Resolution</h2>
+<p>For every name in a symbol layer’s <a href="../layers/#text-font"><code>text-font</code></a> array, characters are matched if they are covered one of the by the font files in the corresponding entry of the <code>font-faces</code> map. Any still-unmatched characters then fall back to the <a href="../glyphs/"><code>glyphs</code></a> URL if provided.</p>
+<h2>Supported Fonts</h2>
+<p>What type of fonts are supported is implementation-defined. Unsupported fonts are ignored.</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kc">f</span><span class="err">o</span><span class="kc">nt</span><span class="mi">-</span><span class="kc">fa</span><span class="err">ces</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="nt">&quot;Noto Sans Regular&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">            </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.com/fonts/Noto%20Sans%20Regular/khmer.ttf&quot;</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">            </span><span class="nt">&quot;unicode-range&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;U+1780-17FF&quot;</span><span class="p">]</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">        </span><span class="p">},</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">            </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.com/fonts/Noto%20Sans%20Regular/myanmar.ttf&quot;</span><span class="p">,</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">            </span><span class="nt">&quot;unicode-range&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">                </span><span class="s2">&quot;U+1000-109F&quot;</span><span class="p">,</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">                </span><span class="s2">&quot;U+A9E0-A9FF&quot;</span><span class="p">,</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">                </span><span class="s2">&quot;U+AA60-AA7F&quot;</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">            </span><span class="p">]</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">        </span><span class="p">},</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">            </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.com/fonts/Noto%20Sans%20Regular/devanagari.ttf&quot;</span><span class="p">,</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">            </span><span class="nt">&quot;unicode-range&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;U+0900-097F&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;U+A8E0-A8FF&quot;</span><span class="p">]</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">    </span><span class="p">],</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">    </span><span class="nt">&quot;Open Sans&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.com/fonts/Open%20Sans.ttf&quot;</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="p">}</span>
 </span></code></pre></div>
-<h2 id="sky-color">sky-color<a class="headerlink" href="#sky-color" title="Permanent link">&para;</a></h2>
-<p><em>Optional <a href="../types/#color">color</a>. Defaults to <code>"#88C6FC"</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
-<p>The base color for the sky.</p>
-<h2 id="horizon-color">horizon-color<a class="headerlink" href="#horizon-color" title="Permanent link">&para;</a></h2>
-<p><em>Optional <a href="../types/#color">color</a>. Defaults to <code>"#ffffff"</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
-<p>The base color at the horizon.</p>
-<h2 id="fog-color">fog-color<a class="headerlink" href="#fog-color" title="Permanent link">&para;</a></h2>
-<p><em>Optional <a href="../types/#color">color</a>. Defaults to <code>"#ffffff"</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
-<p>The base color for the fog. Requires 3D terrain.</p>
-<h2 id="fog-ground-blend">fog-ground-blend<a class="headerlink" href="#fog-ground-blend" title="Permanent link">&para;</a></h2>
-<p><em>Optional <a href="../types/#number">number</a> in range [0, 1]. Defaults to <code>0.5</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
-<p>How to blend the fog over the 3D terrain. Where 0 is the map center and 1 is the horizon.</p>
-<h2 id="horizon-fog-blend">horizon-fog-blend<a class="headerlink" href="#horizon-fog-blend" title="Permanent link">&para;</a></h2>
-<p><em>Optional <a href="../types/#number">number</a> in range [0, 1]. Defaults to <code>0.8</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
-<p>How to blend the fog color and the horizon color. Where 0 is using the horizon color only and 1 is using the fog color only.</p>
-<h2 id="sky-horizon-blend">sky-horizon-blend<a class="headerlink" href="#sky-horizon-blend" title="Permanent link">&para;</a></h2>
-<p><em>Optional <a href="../types/#number">number</a> in range [0, 1]. Defaults to <code>0.8</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
-<p>How to blend the sky color and the horizon color. Where 1 is blending the color at the middle of the sky and 0 is not blending at all and using the sky color only.</p>
-<h2 id="atmosphere-blend">atmosphere-blend<a class="headerlink" href="#atmosphere-blend" title="Permanent link">&para;</a></h2>
-<p><em>Optional <a href="../types/#number">number</a> in range [0, 1]. Defaults to <code>0.8</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. Transitionable.</em></p>
-<p>How to blend the atmosphere. Where 1 is visible atmosphere and 0 is hidden. It is best to interpolate this expression when using globe projection.</p>
+<hr />
+<table>
+<thead>
+<tr>
+<th>SDK Support</th>
+<th>MapLibre GL JS</th>
+<th>MapLibre Native<br>Android</th>
+<th>MapLibre Native<br>iOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>basic functionality</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-gl-js/issues/50">#50</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/3578">#3578</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/3578">#3578</a>)</td>
+</tr>
+</tbody>
+</table>
 
 
 
