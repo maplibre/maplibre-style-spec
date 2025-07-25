@@ -74,7 +74,8 @@ function validSchema(k, v, obj, ref, version, kind) {
         'variableAnchorOffsetCollection',
         'sprite',
         'projectionDefinition',
-        'state'
+        'state',
+        'fontFaces'
     ]);
     const keys = [
         'default',
