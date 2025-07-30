@@ -251,8 +251,8 @@
       "sdk-support": {
         "basic functionality": {
           "js": "https://github.com/maplibre/maplibre-gl-js/issues/50",
-          "android": "https://github.com/maplibre/maplibre-native/issues/3578",
-          "ios": "https://github.com/maplibre/maplibre-native/issues/3578"
+          "android": "11.13.0",
+          "ios": "6.18.0"
         }
       }
     },
