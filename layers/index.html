@@ -3725,7 +3725,7 @@
 <h1 id="layers">Layers<a class="headerlink" href="#layers" title="Permanent link">&para;</a></h1>
 <p>A style's <code>layers</code> property lists all the layers available in that style. The type of layer is specified by the <code>type</code> property, and must be one of <code>background</code>, <code>fill</code>, <code>line</code>, <code>symbol</code>, <code>raster</code>, <code>circle</code>, <code>fill-extrusion</code>, <code>heatmap</code>, <code>hillshade</code>, <code>color-relief</code>.</p>
 <p>Except for layers of the <code>background</code> type, each layer needs to refer to a source. Layers take the data that they get from a source, optionally filter features, and then define how those features are styled.</p>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="err">layers</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">&quot;layers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="p">{</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;coastline&quot;</span><span class="p">,</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">        </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;maplibre&quot;</span><span class="p">,</span>
@@ -3757,7 +3757,7 @@
 <h3 id="metadata">metadata<a class="headerlink" href="#metadata" title="Permanent link">&para;</a></h3>
 <p><em>Optional.</em></p>
 <p>Arbitrary properties useful to track with the layer, but do not influence rendering. Properties should be prefixed to avoid collisions, like 'maplibre:'.</p>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="err">me</span><span class="kc">ta</span><span class="err">da</span><span class="kc">ta</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;source:comment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Hydrology FCCODE 460 - Narrow wash&quot;</span><span class="p">}</span>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;source:comment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Hydrology FCCODE 460 - Narrow wash&quot;</span><span class="p">}</span>
 </span></code></pre></div>
 <h3 id="source">source<a class="headerlink" href="#source" title="Permanent link">&para;</a></h3>
 <p><em>Optional <a href="../types/#string">string</a>.</em></p>
@@ -7292,7 +7292,7 @@
 <h3 id="color-relief-color">color-relief-color<a class="headerlink" href="#color-relief-color" title="Permanent link">&para;</a></h3>
 <p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#color">color</a>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
 <p>Defines the color of each pixel based on its elevation. Should be an expression that uses <code>["elevation"]</code> as input.</p>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="err">color</span><span class="mi">-</span><span class="err">relie</span><span class="kc">f</span><span class="mi">-</span><span class="err">color</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">&quot;color-relief-color&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="s2">&quot;interpolate&quot;</span><span class="p">,</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="p">[</span><span class="s2">&quot;linear&quot;</span><span class="p">],</span>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="p">[</span><span class="s2">&quot;elevation&quot;</span><span class="p">],</span>
