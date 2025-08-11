@@ -69,7 +69,7 @@
     "@rollup/plugin-strip": "^3.0.4",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^12.1.4",
-    "@stylistic/eslint-plugin": "^5.2.2",
+    "@stylistic/eslint-plugin": "^5.2.3",
     "@types/eslint": "^9.6.1",
     "@types/geojson": "^7946.0.16",
     "@types/node": "^24.2.1",
