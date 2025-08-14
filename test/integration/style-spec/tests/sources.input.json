@@ -69,15 +69,15 @@
       "type": "vector",
       "url": "https://demotiles.maplibre.org/tiles/tiles.json"
     },
-    "source-vector-mapbox": {
+    "source-vector-mvt": {
       "type": "vector",
       "url": "https://demotiles.maplibre.org/tiles/tiles.json",
-      "encoding": "mapbox"
+      "encoding": "mvt"
     },
-    "source-vector-maplibre": {
+    "source-vector-mlt": {
       "type": "vector",
       "url": "https://demotiles.maplibre.org/tiles/tiles.json",
-      "encoding": "maplibre"
+      "encoding": "mlt"
     },
     "source-vector-custom": {
       "type": "vector",
@@ -98,7 +98,7 @@
       "type": "vector",
       "url": "https://demotiles.maplibre.org/tiles/tiles.json",
       "encoding": [
-        "mapbox"
+        "mvt"
       ]
     }
   },

@@ -367,18 +367,18 @@
     "encoding": {
       "type": "enum",
       "values": {
-        "mapbox": {
+        "mvt": {
           "doc": "Mapbox Vector Tiles. See http://github.com/mapbox/vector-tile-spec for more info."
         },
-        "maplibre": {
+        "mlt": {
           "doc": "MapLibre Vector Tiles. See https://github.com/maplibre/maplibre-tile-spec for more info."
         }
       },
-      "default": "mapbox",
+      "default": "mvt",
       "doc": "The encoding used by this source. Mapbox Vector Tiles encoding is used by default.",
       "sdk-support": {
         "doc": "none yet",
-        "mapbox, maplibre": {
+        "mvt, mlt": {
         }
       }
     },
