@@ -54,7 +54,7 @@ describe('Validate source', () => {
             value: {
                 type: 'vector',
                 url: 'https://example.com/source',
-                encoding: ""
+                encoding: ''
             },
             styleSpec: v8,
             style: {} as any,
@@ -68,7 +68,7 @@ describe('Validate source', () => {
             value: {
                 type: 'vector',
                 url: 'https://example.com/source',
-                encoding: "custom"
+                encoding: 'custom'
             },
             styleSpec: v8,
             style: {} as any,
@@ -77,7 +77,6 @@ describe('Validate source', () => {
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('source.encoding: expected one of [mapbox, maplibre], "custom" found');
     });
-
 
     test('Other types are rejected', () => {
         var errors = validateSource({
@@ -99,7 +98,7 @@ describe('Validate source', () => {
             value: {
                 type: 'vector',
                 url: 'https://example.com/source',
-                encoding: ["mapbox"]
+                encoding: ['mapbox']
             },
             styleSpec: v8,
             style: {} as any,
@@ -108,5 +107,4 @@ describe('Validate source', () => {
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('source.encoding: expected one of [mapbox, maplibre], ["mapbox"] found');
     });
-
 });
