@@ -364,6 +364,24 @@
         }
       }
     },
+    "encoding": {
+      "type": "enum",
+      "values": {
+        "mapbox": {
+          "doc": "Mapbox Vector Tiles. See http://github.com/mapbox/vector-tile-spec for more info."
+        },
+        "maplibre": {
+          "doc": "MapLibre Vector Tiles. See https://github.com/maplibre/maplibre-tile-spec for more info."
+        }
+      },
+      "default": "mapbox",
+      "doc": "The encoding used by this source. Mapbox Vector Tiles encoding is used by default.",
+      "sdk-support": {
+        "doc": "none yet",
+        "mapbox, terrarium": {
+        }
+      }
+    },
     "*": {
       "type": "*",
       "doc": "Other keys to configure the data source."
