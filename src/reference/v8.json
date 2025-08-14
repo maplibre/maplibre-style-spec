@@ -378,7 +378,7 @@
       "doc": "The encoding used by this source. Mapbox Vector Tiles encoding is used by default.",
       "sdk-support": {
         "doc": "none yet",
-        "mapbox, terrarium": {
+        "mapbox, maplibre": {
         }
       }
     },
