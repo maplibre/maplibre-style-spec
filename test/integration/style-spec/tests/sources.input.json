@@ -64,6 +64,42 @@
       "tiles": ["http://example.com/{x}/{y}/{z}.png"],
       "valueOf": null,
       "toLocaleString": 6
+    },
+    "source-vector-default": {
+      "type": "vector",
+      "url": "https://demotiles.maplibre.org/tiles/tiles.json"
+    },
+    "source-vector-mapbox": {
+      "type": "vector",
+      "url": "https://demotiles.maplibre.org/tiles/tiles.json",
+      "encoding": "mapbox"
+    },
+    "source-vector-maplibre": {
+      "type": "vector",
+      "url": "https://demotiles.maplibre.org/tiles/tiles.json",
+      "encoding": "maplibre"
+    },
+    "source-vector-custom": {
+      "type": "vector",
+      "url": "https://demotiles.maplibre.org/tiles/tiles.json",
+      "encoding": "custom"
+    },
+    "source-vector-blank": {
+      "type": "vector",
+      "url": "https://demotiles.maplibre.org/tiles/tiles.json",
+      "encoding": ""
+    },
+    "source-vector-numeric": {
+      "type": "vector",
+      "url": "https://demotiles.maplibre.org/tiles/tiles.json",
+      "encoding": 3
+    },
+    "source-vector-array": {
+      "type": "vector",
+      "url": "https://demotiles.maplibre.org/tiles/tiles.json",
+      "encoding": [
+        "mapbox"
+      ]
     }
   },
   "layers": []
