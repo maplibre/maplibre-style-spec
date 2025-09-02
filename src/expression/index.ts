@@ -169,6 +169,7 @@ export class ZoomConstantExpression<Kind extends EvaluationKind> {
     isStateDependent: boolean;
     globalStateRefs: Set<string>;
     _styleExpression: StyleExpression;
+    globalState: Record<string, any>;
 
     constructor(kind: Kind, expression: StyleExpression) {
         this.kind = kind;
@@ -185,6 +186,9 @@ export class ZoomConstantExpression<Kind extends EvaluationKind> {
         availableImages?: Array<string>,
         formattedSection?: FormattedSection
     ): any {
+        if (this.globalState) {
+            globals = {...globals, globalState: this.globalState};
+        }
         return this._styleExpression.evaluateWithoutErrorHandling(globals, feature, featureState, canonical, availableImages, formattedSection);
     }
 
@@ -196,6 +200,9 @@ export class ZoomConstantExpression<Kind extends EvaluationKind> {
         availableImages?: Array<string>,
         formattedSection?: FormattedSection
     ): any {
+        if (this.globalState) {
+            globals = {...globals, globalState: this.globalState};
+        }
         return this._styleExpression.evaluate(globals, feature, featureState, canonical, availableImages, formattedSection);
     }
 }
@@ -207,6 +214,7 @@ export class ZoomDependentExpression<Kind extends EvaluationKind> {
     globalStateRefs: Set<string>;
     _styleExpression: StyleExpression;
     interpolationType: InterpolationType;
+    globalState: Record<string, any>;
 
     constructor(kind: Kind, expression: StyleExpression, zoomStops: Array<number>, interpolationType?: InterpolationType) {
         this.kind = kind;
@@ -225,6 +233,9 @@ export class ZoomDependentExpression<Kind extends EvaluationKind> {
         availableImages?: Array<string>,
         formattedSection?: FormattedSection
     ): any {
+        if (this.globalState) {
+            globals = {...globals, globalState: this.globalState};
+        }
         return this._styleExpression.evaluateWithoutErrorHandling(globals, feature, featureState, canonical, availableImages, formattedSection);
     }
 
@@ -236,6 +247,9 @@ export class ZoomDependentExpression<Kind extends EvaluationKind> {
         availableImages?: Array<string>,
         formattedSection?: FormattedSection
     ): any {
+        if (this.globalState) {
+            globals = {...globals, globalState: this.globalState};
+        }
         return this._styleExpression.evaluate(globals, feature, featureState, canonical, availableImages, formattedSection);
     }
 
@@ -255,6 +269,7 @@ export function isZoomExpression(expression: any): expression is ZoomConstantExp
 export type ConstantExpression = {
     kind: 'constant';
     globalStateRefs: Set<string>;
+    globalState: Record<string, any>;
     readonly evaluate: (
         globals: GlobalProperties,
         feature?: Feature,
@@ -268,6 +283,7 @@ export type SourceExpression = {
     kind: 'source';
     isStateDependent: boolean;
     globalStateRefs: Set<string>;
+    globalState: Record<string, any>;
     readonly evaluate: (
         globals: GlobalProperties,
         feature?: Feature,
@@ -281,6 +297,7 @@ export type SourceExpression = {
 export type CameraExpression = {
     kind: 'camera';
     globalStateRefs: Set<string>;
+    globalState: Record<string, any>;
     readonly evaluate: (
         globals: GlobalProperties,
         feature?: Feature,
@@ -297,6 +314,7 @@ export type CompositeExpression = {
     kind: 'composite';
     isStateDependent: boolean;
     globalStateRefs: Set<string>;
+    globalState: Record<string, any>;
     readonly evaluate: (
         globals: GlobalProperties,
         feature?: Feature,
@@ -416,6 +434,7 @@ export function normalizePropertyExpression<T>(
         }
         return {
             globalStateRefs: new Set<string>(),
+            globalState: null,
             kind: 'constant',
             evaluate: () => constant
         };
