@@ -1,7 +1,7 @@
 import typescriptEslint from "@typescript-eslint/eslint-plugin";
-import stylisticTs from '@stylistic/eslint-plugin-ts'
+import stylistic from "@stylistic/eslint-plugin";
 import jsdoc from "eslint-plugin-jsdoc";
-import vitest from "eslint-plugin-vitest";
+import vitest from "@vitest/eslint-plugin";
 import globals from "globals";
 import tsParser from "@typescript-eslint/parser";
 
@@ -12,7 +12,7 @@ export default [{
     files: ["**/*.ts"],
     plugins: {
         "@typescript-eslint": typescriptEslint,
-        "@stylistic": stylisticTs,
+        "@stylistic": stylistic,
         jsdoc,
         vitest,
     },

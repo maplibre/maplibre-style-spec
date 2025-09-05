@@ -22,6 +22,8 @@ It also has some other tools as can be read in the main README file.
 
 ```bash
 npm install
+npm run generate-style-spec
+npm run generate-typings
 npm run build
 ```
 
@@ -33,7 +35,7 @@ There are a few layers of tests - integration, unit and build tests.
 ```bash
 npm run test-unit
 npm run test-integration
-npm run test-build
+npm run test-build  # follow steps from previous section before
 ```
 
 In intergration tests, if there's a need to update the expected results you'll need to run the tests with the `UPDATE=1` environment flag. 
