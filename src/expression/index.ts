@@ -53,9 +53,9 @@ export type Feature = {
     };
     readonly dashes?: {
         [_: string]: {
-            "min": string;
-            "mid": string;
-            "max": string;
+            'min': string;
+            'mid': string;
+            'max': string;
         };
     };
     readonly geometry?: Array<Array<Point2D>>;
