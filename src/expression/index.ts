@@ -51,6 +51,13 @@ export type Feature = {
             'max': string;
         };
     };
+    readonly dashes?: {
+        [_: string]: {
+            'min': string;
+            'mid': string;
+            'max': string;
+        };
+    };
     readonly geometry?: Array<Array<Point2D>>;
 };
 
