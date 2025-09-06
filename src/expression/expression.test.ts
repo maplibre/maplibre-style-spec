@@ -76,11 +76,10 @@ describe('evaluate expression', () => {
             default: 42,
             'property-type': 'data-driven',
             transition: false
-        }) as {value: StylePropertyExpression};
+        }, {x: 5}) as {value: StylePropertyExpression};
 
         vi.spyOn(console, 'warn').mockImplementation(() => {});
 
-        value.globalState = {x: 5};
         expect(value.evaluate({globalState: {x: 15}, zoom: 10} as GlobalProperties)).toBe(5);
         expect(console.warn).not.toHaveBeenCalled();
     });
@@ -94,11 +93,10 @@ describe('evaluate expression', () => {
                 interpolated: true,
                 parameters: ['zoom']
             }
-        } as StylePropertySpecification) as {value: StylePropertyExpression};
+        } as StylePropertySpecification, {x: 5}) as {value: StylePropertyExpression};
 
         vi.spyOn(console, 'warn').mockImplementation(() => {});
 
-        value.globalState = {x: 5};
         expect(value.evaluate({globalState: {x: 15}, zoom: 10} as GlobalProperties)).toBe(5);
         expect(console.warn).not.toHaveBeenCalled();
     });

@@ -169,13 +169,14 @@ export class ZoomConstantExpression<Kind extends EvaluationKind> {
     isStateDependent: boolean;
     globalStateRefs: Set<string>;
     _styleExpression: StyleExpression;
-    globalState: Record<string, any>;
+    readonly _globalState: Record<string, any>;
 
-    constructor(kind: Kind, expression: StyleExpression) {
+    constructor(kind: Kind, expression: StyleExpression, globalState?: Record<string, any>) {
         this.kind = kind;
         this._styleExpression = expression;
         this.isStateDependent = kind !== ('constant' as EvaluationKind) && !isStateConstant(expression.expression);
         this.globalStateRefs = findGlobalStateRefs(expression.expression);
+        this._globalState = globalState;
     }
 
     evaluateWithoutErrorHandling(
@@ -186,8 +187,8 @@ export class ZoomConstantExpression<Kind extends EvaluationKind> {
         availableImages?: Array<string>,
         formattedSection?: FormattedSection
     ): any {
-        if (this.globalState) {
-            globals = {...globals, globalState: this.globalState};
+        if (this._globalState) {
+            globals = {...globals, globalState: this._globalState};
         }
         return this._styleExpression.evaluateWithoutErrorHandling(globals, feature, featureState, canonical, availableImages, formattedSection);
     }
@@ -200,8 +201,8 @@ export class ZoomConstantExpression<Kind extends EvaluationKind> {
         availableImages?: Array<string>,
         formattedSection?: FormattedSection
     ): any {
-        if (this.globalState) {
-            globals = {...globals, globalState: this.globalState};
+        if (this._globalState) {
+            globals = {...globals, globalState: this._globalState};
         }
         return this._styleExpression.evaluate(globals, feature, featureState, canonical, availableImages, formattedSection);
     }
@@ -214,15 +215,16 @@ export class ZoomDependentExpression<Kind extends EvaluationKind> {
     globalStateRefs: Set<string>;
     _styleExpression: StyleExpression;
     interpolationType: InterpolationType;
-    globalState: Record<string, any>;
+    readonly _globalState: Record<string, any>;
 
-    constructor(kind: Kind, expression: StyleExpression, zoomStops: Array<number>, interpolationType?: InterpolationType) {
+    constructor(kind: Kind, expression: StyleExpression, zoomStops: Array<number>, interpolationType?: InterpolationType, globalState?: Record<string, any>) {
         this.kind = kind;
         this.zoomStops = zoomStops;
         this._styleExpression = expression;
         this.isStateDependent = kind !== ('camera' as EvaluationKind) && !isStateConstant(expression.expression);
         this.globalStateRefs = findGlobalStateRefs(expression.expression);
         this.interpolationType = interpolationType;
+        this._globalState = globalState;
     }
 
     evaluateWithoutErrorHandling(
@@ -233,8 +235,8 @@ export class ZoomDependentExpression<Kind extends EvaluationKind> {
         availableImages?: Array<string>,
         formattedSection?: FormattedSection
     ): any {
-        if (this.globalState) {
-            globals = {...globals, globalState: this.globalState};
+        if (this._globalState) {
+            globals = {...globals, globalState: this._globalState};
         }
         return this._styleExpression.evaluateWithoutErrorHandling(globals, feature, featureState, canonical, availableImages, formattedSection);
     }
@@ -247,8 +249,8 @@ export class ZoomDependentExpression<Kind extends EvaluationKind> {
         availableImages?: Array<string>,
         formattedSection?: FormattedSection
     ): any {
-        if (this.globalState) {
-            globals = {...globals, globalState: this.globalState};
+        if (this._globalState) {
+            globals = {...globals, globalState: this._globalState};
         }
         return this._styleExpression.evaluate(globals, feature, featureState, canonical, availableImages, formattedSection);
     }
@@ -269,7 +271,7 @@ export function isZoomExpression(expression: any): expression is ZoomConstantExp
 export type ConstantExpression = {
     kind: 'constant';
     globalStateRefs: Set<string>;
-    globalState: Record<string, any>;
+    readonly _globalState: Record<string, any>;
     readonly evaluate: (
         globals: GlobalProperties,
         feature?: Feature,
@@ -283,7 +285,7 @@ export type SourceExpression = {
     kind: 'source';
     isStateDependent: boolean;
     globalStateRefs: Set<string>;
-    globalState: Record<string, any>;
+    readonly _globalState: Record<string, any>;
     readonly evaluate: (
         globals: GlobalProperties,
         feature?: Feature,
@@ -297,7 +299,7 @@ export type SourceExpression = {
 export type CameraExpression = {
     kind: 'camera';
     globalStateRefs: Set<string>;
-    globalState: Record<string, any>;
+    readonly _globalState: Record<string, any>;
     readonly evaluate: (
         globals: GlobalProperties,
         feature?: Feature,
@@ -314,7 +316,7 @@ export type CompositeExpression = {
     kind: 'composite';
     isStateDependent: boolean;
     globalStateRefs: Set<string>;
-    globalState: Record<string, any>;
+    readonly _globalState: Record<string, any>;
     readonly evaluate: (
         globals: GlobalProperties,
         feature?: Feature,
@@ -330,7 +332,7 @@ export type CompositeExpression = {
 
 export type StylePropertyExpression = ConstantExpression | SourceExpression | CameraExpression | CompositeExpression;
 
-export function createPropertyExpression(expressionInput: unknown, propertySpec: StylePropertySpecification): Result<StylePropertyExpression, Array<ExpressionParsingError>> {
+export function createPropertyExpression(expressionInput: unknown, propertySpec: StylePropertySpecification, globalState?: Record<string, any>): Result<StylePropertyExpression, Array<ExpressionParsingError>> {
     const expression = createExpression(expressionInput, propertySpec);
     if (expression.result === 'error') {
         return expression;
@@ -359,15 +361,15 @@ export function createPropertyExpression(expressionInput: unknown, propertySpec:
 
     if (!zoomCurve) {
         return success(isFeatureConstantResult ?
-            (new ZoomConstantExpression('constant', expression.value) as ConstantExpression) :
-            (new ZoomConstantExpression('source', expression.value) as SourceExpression));
+            (new ZoomConstantExpression('constant', expression.value, globalState) as ConstantExpression) :
+            (new ZoomConstantExpression('source', expression.value, globalState) as SourceExpression));
     }
 
     const interpolationType = zoomCurve instanceof Interpolate ? zoomCurve.interpolation : undefined;
 
     return success(isFeatureConstantResult ?
-        (new ZoomDependentExpression('camera', expression.value, zoomCurve.labels, interpolationType) as CameraExpression) :
-        (new ZoomDependentExpression('composite', expression.value, zoomCurve.labels, interpolationType) as CompositeExpression));
+        (new ZoomDependentExpression('camera', expression.value, zoomCurve.labels, interpolationType, globalState) as CameraExpression) :
+        (new ZoomDependentExpression('composite', expression.value, zoomCurve.labels, interpolationType, globalState) as CompositeExpression));
 }
 
 // serialization wrapper for old-style stop functions normalized to the
@@ -404,13 +406,14 @@ export class StylePropertyFunction<T> {
 
 export function normalizePropertyExpression<T>(
     value: PropertyValueSpecification<T>,
-    specification: StylePropertySpecification
+    specification: StylePropertySpecification,
+    globalState?: Record<string, any>
 ): StylePropertyExpression {
     if (isFunction(value)) {
         return new StylePropertyFunction(value, specification) as any;
 
     } else if (isExpression(value)) {
-        const expression = createPropertyExpression(value, specification);
+        const expression = createPropertyExpression(value, specification, globalState);
         if (expression.result === 'error') {
             // this should have been caught in validation
             throw new Error(expression.value.map(err => `${err.key}: ${err.message}`).join(', '));
@@ -434,7 +437,7 @@ export function normalizePropertyExpression<T>(
         }
         return {
             globalStateRefs: new Set<string>(),
-            globalState: null,
+            _globalState: null,
             kind: 'constant',
             evaluate: () => constant
         };
