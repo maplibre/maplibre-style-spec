@@ -28,7 +28,7 @@
     "line": 75
   },
   {
-    "message": "layers[6].paint.line-dasharray.stops[0][0]: number expected, string found",
+    "message": "layers[6].paint.line-dasharray.stops[0][0]: number expected, string found\nIf you intended to use a categorical function, specify `\"type\": \"categorical\"`.",
     "line": 89
   },
   {
@@ -184,39 +184,35 @@
     "line": 934
   },
   {
-    "message": "layers[52].paint.line-dasharray: Type array<number> is not interpolatable.",
+    "message": "layers[52].paint.heatmap-color: zoom expressions not supported",
     "line": 943
   },
   {
-    "message": "layers[53].paint.heatmap-color: zoom expressions not supported",
-    "line": 952
+    "message": "layers[53].paint.heatmap-color: zoom functions not supported",
+    "line": 951
   },
   {
-    "message": "layers[54].paint.heatmap-color: zoom functions not supported",
-    "line": 960
+    "message": "layers[54].layout.line-join: \"feature-state\" data expressions are not supported with layout properties.",
+    "line": 959
   },
   {
-    "message": "layers[55].layout.line-join: \"feature-state\" data expressions are not supported with layout properties.",
-    "line": 968
+    "message": "layers[55].paint.line-width.stops[0][1]: expressions are not allowed in function stops.",
+    "line": 972
   },
   {
-    "message": "layers[56].paint.line-width.stops[0][1]: expressions are not allowed in function stops.",
-    "line": 981
+    "message": "layers[56]: layer \"invalid expression - color-relief-color must be zoom constant\" requires a raster-dem source",
+    "line": 983
   },
   {
-    "message": "layers[57]: layer \"invalid expression - color-relief-color must be zoom constant\" requires a raster-dem source",
-    "line": 992
+    "message": "layers[56].paint.color-relief-color: zoom expressions not supported",
+    "line": 986
   },
   {
-    "message": "layers[57].paint.color-relief-color: zoom expressions not supported",
-    "line": 995
+    "message": "layers[57]: layer \"invalid expression - color-relief-color must not be a function\" requires a raster-dem source",
+    "line": 991
   },
   {
-    "message": "layers[58]: layer \"invalid expression - color-relief-color must not be a function\" requires a raster-dem source",
-    "line": 1000
-  },
-  {
-    "message": "layers[58].paint.color-relief-color: zoom functions not supported",
-    "line": 1003
+    "message": "layers[57].paint.color-relief-color: zoom functions not supported",
+    "line": 994
   }
 ]
