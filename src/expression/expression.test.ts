@@ -39,7 +39,7 @@ describe('createPropertyExpression', () => {
     });
 
     test('sets globalStateRefs', () => {
-        const {value} = createPropertyExpression(['case', ['>', ['global-state','stateKey'], 0], 100, ['global-state', 'anotherStateKey']], {
+        const {value} = createPropertyExpression(['case', ['>', ['global-state', 'stateKey'], 0], 100, ['global-state', 'anotherStateKey']], {
             type: 'number',
             'property-type': 'data-driven',
             expression: {
@@ -69,6 +69,38 @@ describe('evaluate expression', () => {
         expect(value.evaluate({globalState: {}, zoom: 10} as GlobalProperties)).toBe(42);
         expect(console.warn).not.toHaveBeenCalled();
     });
+
+    test('global state as expression property', () => {
+        const {value} = createPropertyExpression(['global-state', 'x'], {
+            type: null,
+            default: 42,
+            'property-type': 'data-driven',
+            transition: false
+        }, {x: 5}) as {value: StylePropertyExpression};
+
+        vi.spyOn(console, 'warn').mockImplementation(() => {});
+
+        expect(value.evaluate({globalState: {x: 15}, zoom: 10} as GlobalProperties)).toBe(5);
+        expect(console.warn).not.toHaveBeenCalled();
+    });
+
+    test('global state as expression property of zoom dependent expression', () => {
+        const {value} = createPropertyExpression(['interpolate', ['linear'], ['zoom'], 10, ['global-state', 'x'], 20, 50], {
+            type: 'number',
+            default: 42,
+            'property-type': 'data-driven',
+            expression: {
+                interpolated: true,
+                parameters: ['zoom']
+            }
+        } as StylePropertySpecification, {x: 5}) as {value: StylePropertyExpression};
+
+        vi.spyOn(console, 'warn').mockImplementation(() => {});
+
+        expect(value.evaluate({globalState: {x: 15}, zoom: 10} as GlobalProperties)).toBe(5);
+        expect(console.warn).not.toHaveBeenCalled();
+    });
+
     test('warns and falls back to default for invalid enum values', () => {
         const {value} = createPropertyExpression(['get', 'x'], {
             type: 'enum',
@@ -81,7 +113,7 @@ describe('evaluate expression', () => {
             }
         } as any as StylePropertySpecification) as {value: StylePropertyExpression};
 
-        vi.spyOn(console, 'warn').mockImplementation(() => { });
+        vi.spyOn(console, 'warn').mockImplementation(() => {});
 
         expect(value.kind).toBe('source');
 
