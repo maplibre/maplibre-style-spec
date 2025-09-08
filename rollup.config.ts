@@ -1,5 +1,4 @@
 import replace from '@rollup/plugin-replace';
-import typescript from '@rollup/plugin-typescript';
 import minifyStyleSpec from './build/rollup_plugin_minify_style_spec';
 import shebang from 'rollup-plugin-preserve-shebang';
 import {defineConfig} from 'rolldown';
@@ -14,8 +13,7 @@ const rollupPlugins = [
         values: {
             '_token_stack:': ''
         }
-    }),
-    typescript()
+    })
 ];
 
 const config = defineConfig([{
@@ -39,6 +37,12 @@ const config = defineConfig([{
     resolve: {
         mainFields: ['browser', 'module', 'main']
     },
+    onLog(_level, log) {
+        // Suppress missing export warnings for TypeScript type-only exports
+        if (log.code === 'MISSING_EXPORT' && log.message.includes('This diagnostic might be a false positive')) {
+            return false;
+        }
+    }
 },
 {
     input: './bin/gl-style-format.ts',
@@ -61,6 +65,12 @@ const config = defineConfig([{
     resolve: {
         mainFields: ['browser', 'module', 'main']
     },
+    onLog(_level, log) {
+        // Suppress missing export warnings for TypeScript type-only exports
+        if (log.code === 'MISSING_EXPORT' && log.message.includes('This diagnostic might be a false positive')) {
+            return false;
+        }
+    }
 },
 {
     input: './bin/gl-style-migrate.ts',
@@ -83,6 +93,12 @@ const config = defineConfig([{
     resolve: {
         mainFields: ['browser', 'module', 'main']
     },
+    onLog(_level, log) {
+        // Suppress missing export warnings for TypeScript type-only exports
+        if (log.code === 'MISSING_EXPORT' && log.message.includes('This diagnostic might be a false positive')) {
+            return false;
+        }
+    }
 },
 {
     input: './bin/gl-style-validate.ts',
@@ -105,5 +121,11 @@ const config = defineConfig([{
     resolve: {
         mainFields: ['browser', 'module', 'main']
     },
+    onLog(_level, log) {
+        // Suppress missing export warnings for TypeScript type-only exports
+        if (log.code === 'MISSING_EXPORT' && log.message.includes('This diagnostic might be a false positive')) {
+            return false;
+        }
+    }
 }]);
 export default config;
