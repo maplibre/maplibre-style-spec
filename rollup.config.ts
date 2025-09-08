@@ -1,5 +1,4 @@
 import replace from '@rollup/plugin-replace';
-import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 import minifyStyleSpec from './build/rollup_plugin_minify_style_spec';
 import shebang from 'rollup-plugin-preserve-shebang';
@@ -7,9 +6,6 @@ import {defineConfig} from 'rolldown';
 
 const rollupPlugins = [
     minifyStyleSpec(),
-    resolve({
-        browser: true
-    }),
     // https://github.com/zaach/jison/issues/351
     replace({
         preventAssignment: true,
