@@ -18,7 +18,7 @@
   "types": "./dist/index.d.ts",
   "type": "module",
   "scripts": {
-    "build": "rolldown -c rollup.config.ts && cp ./src/reference/v8.json ./dist/latest.json",
+    "build": "rolldown -c rollup.config.ts && cp ./src/reference/v8.json ./dist/latest.json && npm run generate-typings",
     "generate-style-spec": "node --no-warnings --loader ts-node/esm build/generate-style-spec.ts",
     "generate-typings": "dts-bundle-generator -o ./dist/index.d.ts ./src/index.ts",
     "generate-docs": "node ${WATCH+--watch} --no-warnings --loader ts-node/esm build/generate-docs.ts",
