@@ -18,7 +18,7 @@
   "types": "./dist/index.d.ts",
   "type": "module",
   "scripts": {
-    "build": "rolldown -c rollup.config.ts && cp ./src/reference/v8.json ./dist/latest.json",
+    "build": "rolldown -c rollup.config.ts && cp ./src/reference/v8.json ./dist/latest.json && npm run generate-typings",
     "generate-style-spec": "node --no-warnings --loader ts-node/esm build/generate-style-spec.ts",
     "generate-typings": "dts-bundle-generator -o ./dist/index.d.ts ./src/index.ts",
     "generate-docs": "node ${WATCH+--watch} --no-warnings --loader ts-node/esm build/generate-docs.ts",
@@ -62,11 +62,9 @@
   },
   "sideEffects": false,
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-replace": "^6.0.2",
     "@rollup/plugin-strip": "^3.0.4",
     "@rollup/plugin-terser": "^0.4.4",
-    "@rollup/plugin-typescript": "^12.1.4",
     "@stylistic/eslint-plugin": "^5.2.3",
     "@types/eslint": "^9.6.1",
     "@types/geojson": "^7946.0.16",

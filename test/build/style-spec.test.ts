@@ -26,7 +26,7 @@ describe('@maplibre/maplibre-gl-style-spec npm package', () => {
         expect(dirContents).toContain('index.mjs');
         expect(dirContents).toContain('index.mjs.map');
         expect(dirContents).toContain('latest.json');
-        expect(dirContents).toHaveLength(18);
+        expect(dirContents).toHaveLength(19);
     });
 
     test('exports components directly, not behind `default` - https://github.com/mapbox/mapbox-gl-js/issues/6601', async  () => {
