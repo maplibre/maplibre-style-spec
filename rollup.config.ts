@@ -1,18 +1,10 @@
 import replace from '@rollup/plugin-replace';
-import commonjs from '@rollup/plugin-commonjs';
-import {RollupOptions} from 'rollup';
-import resolve from '@rollup/plugin-node-resolve';
-import typescript from '@rollup/plugin-typescript';
-import json from '@rollup/plugin-json';
 import minifyStyleSpec from './build/rollup_plugin_minify_style_spec';
 import shebang from 'rollup-plugin-preserve-shebang';
+import {defineConfig} from 'rolldown';
 
 const rollupPlugins = [
     minifyStyleSpec(),
-    json(),
-    resolve({
-        browser: true
-    }),
     // https://github.com/zaach/jison/issues/351
     replace({
         preventAssignment: true,
@@ -21,12 +13,10 @@ const rollupPlugins = [
         values: {
             '_token_stack:': ''
         }
-    }),
-    typescript(),
-    commonjs()
+    })
 ];
 
-const config: RollupOptions[] = [{
+const config = defineConfig([{
     input: './src/index.ts',
     output: [{
         file: 'dist/index.mjs',
@@ -42,7 +32,17 @@ const config: RollupOptions[] = [{
             fs: 'fs'
         }
     }],
-    plugins: rollupPlugins
+    plugins: rollupPlugins,
+    external: ['fs'],
+    resolve: {
+        mainFields: ['browser', 'module', 'main']
+    },
+    onLog(_level, log) {
+        // Suppress missing export warnings for TypeScript type-only exports
+        if (log.code === 'MISSING_EXPORT' && log.message.includes('This diagnostic might be a false positive')) {
+            return false;
+        }
+    }
 },
 {
     input: './bin/gl-style-format.ts',
@@ -60,7 +60,17 @@ const config: RollupOptions[] = [{
             fs: 'fs'
         }
     }],
-    plugins: [...rollupPlugins, shebang()]
+    plugins: [...rollupPlugins, shebang()],
+    external: ['fs'],
+    resolve: {
+        mainFields: ['browser', 'module', 'main']
+    },
+    onLog(_level, log) {
+        // Suppress missing export warnings for TypeScript type-only exports
+        if (log.code === 'MISSING_EXPORT' && log.message.includes('This diagnostic might be a false positive')) {
+            return false;
+        }
+    }
 },
 {
     input: './bin/gl-style-migrate.ts',
@@ -78,7 +88,17 @@ const config: RollupOptions[] = [{
             fs: 'fs'
         }
     }],
-    plugins: [...rollupPlugins, shebang()]
+    plugins: [...rollupPlugins, shebang()],
+    external: ['fs'],
+    resolve: {
+        mainFields: ['browser', 'module', 'main']
+    },
+    onLog(_level, log) {
+        // Suppress missing export warnings for TypeScript type-only exports
+        if (log.code === 'MISSING_EXPORT' && log.message.includes('This diagnostic might be a false positive')) {
+            return false;
+        }
+    }
 },
 {
     input: './bin/gl-style-validate.ts',
@@ -96,6 +116,16 @@ const config: RollupOptions[] = [{
             fs: 'fs'
         }
     }],
-    plugins: [...rollupPlugins, shebang()]
-}];
+    plugins: [...rollupPlugins, shebang()],
+    external: ['fs'],
+    resolve: {
+        mainFields: ['browser', 'module', 'main']
+    },
+    onLog(_level, log) {
+        // Suppress missing export warnings for TypeScript type-only exports
+        if (log.code === 'MISSING_EXPORT' && log.message.includes('This diagnostic might be a false positive')) {
+            return false;
+        }
+    }
+}]);
 export default config;
