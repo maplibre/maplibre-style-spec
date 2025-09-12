@@ -1,12 +1,18 @@
 ## main
 
 ### ✨ Features and improvements
-
-- Change passing `global-state` to expression from the `evaluate` function to the constructor ([#1267](https://github.com/maplibre/maplibre-style-spec/pull/1267))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
+
+## 24.0.0
+
+### ✨ Features and improvements
+
+- Change passing `global-state` to expression from the `evaluate` function to the constructor ([#1267](https://github.com/maplibre/maplibre-style-spec/pull/1267))
+
+### 🐞 Bug fixes
 
 ## 23.3.0
 
