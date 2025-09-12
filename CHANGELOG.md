@@ -10,7 +10,7 @@
 
 ### ✨ Features and improvements
 
-- Change passing `global-state` to expression from the `evaluate` function to the constructor ([#1267](https://github.com/maplibre/maplibre-style-spec/pull/1267))
+- ⚠️ Change passing `global-state` to expression from the `evaluate` function to the constructor ([#1267](https://github.com/maplibre/maplibre-style-spec/pull/1267)) - you can add an empty object for global state to overcome this.
 
 ### 🐞 Bug fixes
 
