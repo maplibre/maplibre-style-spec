@@ -30,6 +30,7 @@ type ExpressionFixture = {
     propertySpec?: Partial<StylePropertySpecification>;
     expression: any[];
     inputs?: FixtureInput[];
+    globalState?: Record<string, any>;
     expected?: FixtureResult;
 };
 
@@ -144,8 +145,8 @@ function getCompletePropertySpec(propertySpec: ExpressionFixture['propertySpec']
 
 function evaluateFixture(fixture: ExpressionFixture, spec: StylePropertySpecification): FixtureResult {
     const expression = isFunction(fixture.expression) ?
-        createPropertyExpression(convertFunction(fixture.expression, spec), spec) :
-        createPropertyExpression(fixture.expression, spec);
+        createPropertyExpression(convertFunction(fixture.expression, spec), spec, fixture.globalState) :
+        createPropertyExpression(fixture.expression, spec, fixture.globalState);
 
     if (expression.result === 'error') {
         return {
