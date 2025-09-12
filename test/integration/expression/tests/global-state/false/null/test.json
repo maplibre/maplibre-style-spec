@@ -1,6 +1,6 @@
 {
   "expression": [
-    "number",
+    "to-boolean",
     [
       "global-state",
       "x"
@@ -12,18 +12,15 @@
       {}
     ]
   ],
-  "globalState": {
-    "x": 1
-  },
   "expected": {
     "compiled": {
       "result": "success",
       "isFeatureConstant": true,
       "isZoomConstant": true,
-      "type": "number"
+      "type": "boolean"
     },
     "outputs": [
-      1
+      false
     ]
   }
 }
