@@ -97,6 +97,12 @@ describe('filter', () => {
         expect(withinFilter.filter({zoom: 3}, featureInTile, canonical)).toBe(false);
     });
 
+    test('expression, global-state', () => {
+        const {filter} = featureFilter(['==', ['global-state', 'x'], ['get', 'x']], {x: 1});
+        expect(filter(undefined, {properties: {x: 1}} as any as Feature)).toBe(true);
+        expect(filter(undefined, {properties: {x: 2}} as any as Feature)).toBe(false);
+    });
+
     legacyFilterTests(featureFilter);
 
 });
