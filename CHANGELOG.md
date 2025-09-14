@@ -9,9 +9,8 @@
 ## 24.1.0
 
 ### ✨ Features and improvements
-- Added `global-state` parameter to `featureFilter` function ([#1279](https://github.com/maplibre/maplibre-style-spec/pull/1279))
 
-### 🐞 Bug fixes
+- Added `global-state` parameter to `featureFilter` function ([#1279](https://github.com/maplibre/maplibre-style-spec/pull/1279))
 
 ## 24.0.0
 
