@@ -12,9 +12,6 @@
       {}
     ]
   ],
-  "globalState": {
-    "x": 1
-  },
   "expected": {
     "compiled": {
       "result": "success",
@@ -23,7 +20,9 @@
       "type": "number"
     },
     "outputs": [
-      1
+      {
+        "error": "Expected value to be of type number, but found null instead."
+      }
     ]
   }
 }

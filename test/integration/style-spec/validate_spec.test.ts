@@ -52,7 +52,7 @@ describe('Validate sdk-support in spec', () => {
                 expect(platformSupport[platform]).toBeTruthy();
 
                 const maplibreIssue =
-      /https:\/\/github.com\/maplibre\/[^/]+\/issues\/(\d+)/;
+                    /https:\/\/github.com\/maplibre\/[^/]+\/issues\/(\d+)/;
                 const version = /^\d+\.\d+\.\d+$/;
                 const values = new Set(['supported', 'wontfix']);
 
