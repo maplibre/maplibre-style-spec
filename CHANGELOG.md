@@ -6,6 +6,12 @@
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
 
+## 24.1.1
+
+### ✨ Features and improvements
+
+### 🐞 Bug fixes
+
 ## 24.1.0
 
 ### ✨ Features and improvements
