@@ -1,11 +1,12 @@
 
-import {normalizePropertyExpression} from '.'
+import {normalizePropertyExpression, StyleExpression} from '.'
 import {StylePropertySpecification} from '..';
 import {Color} from './types/color';
 import {ColorArray} from './types/color_array';
 import {NumberArray} from './types/number_array';
 import {Padding} from './types/padding';
-import {describe, test, expect} from 'vitest';
+import type {Expression} from './expression';
+import {describe, test, expect, vi} from 'vitest';
 
 function stylePropertySpecification(type): StylePropertySpecification {
     return {
@@ -118,5 +119,29 @@ describe('normalizePropertyExpression raw values', () => {
             stylePropertySpecification('padding'));
         expect(expression.evaluate({zoom: 0}).values).toEqual([1,2,1,2]);
     })
+
+});
+
+describe('StyleExpressions', () => {
+
+    test('ignore random fields when adding global state ', () => {
+        const expression = {
+            evaluate: vi.fn()
+        } as any as Expression;
+        const styleExpression = new StyleExpression(expression, {
+            type: null,
+            default: 42,
+            'property-type': 'data-driven',
+            transition: false
+        } as StylePropertySpecification, {x: 5} as Record<string, any>);
+
+        styleExpression.evaluate({zoom: 10, a: 20, b: 30} as any);
+        expect(expression.evaluate).toHaveBeenCalled();
+        const params = (expression.evaluate as any).mock.calls[0][0].globals;
+        expect(params).toHaveProperty('zoom', 10);
+        expect(params).toHaveProperty('globalState', {x: 5});
+        expect(params).not.toHaveProperty('a');
+        expect(params).not.toHaveProperty('b');
+    });
 
 });
