@@ -4,7 +4,7 @@
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
-- _...Add new stuff here..._
+- Replace spread operator (`...`) due to esbuild limitations 
 
 ## 24.1.0
 
