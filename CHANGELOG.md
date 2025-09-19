@@ -4,13 +4,13 @@
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
-- Replace spread operator (`...`) due to esbuild limitations 
-
+- _...Add new stuff here..._
+- 
 ## 24.1.1
 
-### ✨ Features and improvements
-
 ### 🐞 Bug fixes
+
+- Replace spread operator (`...`) due to esbuild limitations ([#1286](https://github.com/maplibre/maplibre-style-spec/pull/1286))
 
 ## 24.1.0
 
