@@ -1,6 +1,7 @@
 ## main
 
 ### ✨ Features and improvements
+- Add optional `encoding` property to vector `source` to allow for MapLibre Tile vector sources
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
