@@ -3,6 +3,8 @@
 ### ✨ Features and improvements
 - _...Add new stuff here..._
 
+- Implement data-driven styling support for `line-dasharray` ([#5812](https://github.com/mapbox/mapbox-gl-js/pull/5812))
+
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
 
