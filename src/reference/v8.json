@@ -6362,7 +6362,7 @@
           "ios": "2.0.0"
         },
         "data-driven styling": {
-          "js": "UPDATE ME",
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/1235",
           "ios": "https://github.com/maplibre/maplibre-native/issues/744",
           "android": "https://github.com/maplibre/maplibre-native/issues/744"
         }
