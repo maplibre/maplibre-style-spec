@@ -1,0 +1,58 @@
+{
+  "propertySpec": {
+    "type": "number",
+    "property-type": "data-driven",
+    "expression": {
+      "interpolated": true,
+      "parameters": [
+        "zoom",
+        "feature"
+      ]
+    }
+  },
+  "expression": [
+    "interpolate",
+    [
+      "linear"
+    ],
+    [
+      "zoom"
+    ],
+    10,
+    [
+      "global-state",
+      "x"
+    ],
+    20,
+    50
+  ],
+  "globalState": {},
+  "inputs": [
+    [
+      {
+        "zoom": 10
+      },
+      {}
+    ],
+    [
+      {
+        "zoom": 20
+      },
+      {}
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": true,
+      "isZoomConstant": false,
+      "type": "number"
+    },
+    "outputs": [
+      {
+        "error": "Expected value to be of type number, but found null instead."
+      },
+      50
+    ]
+  }
+}
