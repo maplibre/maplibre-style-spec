@@ -2,10 +2,11 @@
 
 ### ✨ Features and improvements
 - _...Add new stuff here..._
+- Add note regarding visual artifacts that can appear with large width/size/offset values on vector tile layers, highlight remediation options ([#4160](https://github.com/maplibre/maplibre-gl-js/issues/4160))
 
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
-- 
+-
 ## 24.1.1
 
 ### 🐞 Bug fixes
