@@ -355,7 +355,7 @@ function createLayersContent() {
 function createSourcesContent() {
     const sourcesExtraData = {
         vector: {
-            doc: 'A vector tile source. Tiles must be in [Mapbox Vector Tile format](https://github.com/mapbox/vector-tile-spec). All geometric coordinates in vector tiles must be between \`-1 * extent\` and \`(extent * 2) - 1\` inclusive. All layers that use a vector source must specify a [`source-layer`](layers.md#source-layer) value. Note that features are only rendered within their originating tile, which may lead to visual artifacts when large width, radius, size or offset properties are specified. To mitigate rendering issues, either reduce the style value or increase the tile buffer size during generation, if possible (for example, with Tippecanoe use [the `-b` option](https://github.com/felt/tippecanoe?tab=readme-ov-file#controlling-clipping-to-tile-boundaries) to specify a larger buffer).',
+            doc: 'A vector tile source. Tiles must be in [Mapbox Vector Tile format](https://github.com/mapbox/vector-tile-spec). All geometric coordinates in vector tiles must be between \`-1 * extent\` and \`(extent * 2) - 1\` inclusive. All layers that use a vector source must specify a [`source-layer`](layers.md#source-layer) value. Note that features are only rendered within their originating tile, which may lead to visual artifacts when large values for width, radius, size or offset are specified. To mitigate rendering issues, either reduce the value of the property causing the artifact or, if you have control over the tile generation process, increase the buffer size to ensure that features are fully rendered within the tile.',
             example: {
                 'maplibre-streets': {
                     'type': 'vector',
