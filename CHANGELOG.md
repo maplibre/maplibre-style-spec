@@ -6,7 +6,7 @@
 
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
-- Replace additional spread operator (`...`) due to esbuild limitations
+- Replace additional spread operator (`...`) due to esbuild limitations ([#1297](https://github.com/maplibre/maplibre-style-spec/pull/1297))
 
 ## 24.1.1
 
