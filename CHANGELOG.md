@@ -6,7 +6,8 @@
 
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
--
+- Replace additional spread operator (`...`) due to esbuild limitations
+
 ## 24.1.1
 
 ### 🐞 Bug fixes
