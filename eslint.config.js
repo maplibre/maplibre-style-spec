@@ -71,11 +71,6 @@ export default [{
         "no-lonely-if": "off",
         "no-new": "off",
 
-        "no-restricted-properties": [2, {
-            object: "Object",
-            property: "assign",
-        }],
-
         "no-unused-vars": "off",
         "no-warning-comments": "error",
         "object-curly-spacing": ["error", "never"],
