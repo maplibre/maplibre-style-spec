@@ -1,6 +1,7 @@
 ## main
 
 ### ✨ Features and improvements
+- Add optional `encoding` property to vector `source` to allow for MapLibre Tile vector sources
 - _...Add new stuff here..._
 - Add note regarding visual artifacts that can appear with large width/size/offset values on vector tile layers, highlight remediation options ([#4160](https://github.com/maplibre/maplibre-gl-js/issues/4160))
 
