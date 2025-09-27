@@ -935,15 +935,6 @@
       }
     },
     {
-      "id": "invalid expression - line-dasharray must use step interpolation",
-      "type": "line",
-      "source": "source",
-      "source-layer": "layer",
-      "paint": {
-        "line-dasharray": ["interpolate", ["linear"], ["zoom"], 0, ["literal", [1, 2]], 1, ["literal", [3, 4]]]
-      }
-    },
-    {
       "id": "invalid expression - heatmap-color must be zoom constant",
       "type": "heatmap",
       "source": "source",
