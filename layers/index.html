@@ -5175,7 +5175,7 @@
 </table>
 <h3 id="line-dasharray">line-dasharray<a class="headerlink" href="#line-dasharray" title="Permanent link">&para;</a></h3>
 <p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#array">array</a> in range [0, ∞). Units in line widths. Disabled by <code>line-pattern</code>. Transitionable.</em></p>
-<p>Specifies the lengths of the alternating dashes and gaps that form the dash pattern. The lengths are later scaled by the line width. To convert a dash length to pixels, multiply the length by the current line width. Note that GeoJSON sources with <code>lineMetrics: true</code> specified won't render dashed lines to the expected scale. Also note that zoom-dependent expressions will be evaluated only at integer zoom levels.</p>
+<p>Specifies the lengths of the alternating dashes and gaps that form the dash pattern. The lengths are later scaled by the line width. To convert a dash length to pixels, multiply the length by the current line width. GeoJSON sources with <code>lineMetrics: true</code> specified won't render dashed lines to the expected scale. Zoom-dependent expressions will be evaluated only at integer zoom levels. The only way to create an array value is using <code>["literal", [...]]</code>; arrays cannot be read from or derived from feature properties.</p>
 <table>
 <thead>
 <tr>
