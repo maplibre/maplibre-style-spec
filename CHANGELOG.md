@@ -9,11 +9,13 @@
 ## 24.2.0
 
 ### ✨ Features and improvements
+
 - Add note regarding visual artifacts that can appear with large width/size/offset values on vector tile layers, highlight remediation options ([#4160](https://github.com/maplibre/maplibre-gl-js/issues/4160))
 
 - Implement data-driven styling support for `line-dasharray` ([#5812](https://github.com/mapbox/mapbox-gl-js/pull/5812))
 
 ### 🐞 Bug fixes
+
 - Replace additional spread operator (`...`) due to esbuild limitations ([#1297](https://github.com/maplibre/maplibre-style-spec/pull/1297))
 
 ## 24.1.1
