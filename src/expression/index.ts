@@ -51,6 +51,13 @@ export type Feature = {
             'max': string;
         };
     };
+    readonly dashes?: {
+        [_: string]: {
+            'min': string;
+            'mid': string;
+            'max': string;
+        };
+    };
     readonly geometry?: Array<Array<Point2D>>;
 };
 
@@ -93,7 +100,7 @@ export class StyleExpression {
         formattedSection?: FormattedSection
     ): any {
         if (this._globalState) {
-            globals = {...globals, globalState: this._globalState};
+            globals = addGlobalState(globals, this._globalState);
         }
         this._evaluator.globals = globals;
         this._evaluator.feature = feature;
@@ -114,7 +121,7 @@ export class StyleExpression {
         formattedSection?: FormattedSection
     ): any {
         if (this._globalState) {
-            globals = {...globals, globalState: this._globalState};
+            globals = addGlobalState(globals, this._globalState);
         }
         this._evaluator.globals = globals;
         this._evaluator.feature = feature || null;
@@ -196,7 +203,7 @@ export class ZoomConstantExpression<Kind extends EvaluationKind> {
         formattedSection?: FormattedSection
     ): any {
         if (this._globalState) {
-            globals = {...globals, globalState: this._globalState};
+            globals = addGlobalState(globals, this._globalState);
         }
         return this._styleExpression.evaluateWithoutErrorHandling(globals, feature, featureState, canonical, availableImages, formattedSection);
     }
@@ -210,7 +217,7 @@ export class ZoomConstantExpression<Kind extends EvaluationKind> {
         formattedSection?: FormattedSection
     ): any {
         if (this._globalState) {
-            globals = {...globals, globalState: this._globalState};
+            globals = addGlobalState(globals, this._globalState);
         }
         return this._styleExpression.evaluate(globals, feature, featureState, canonical, availableImages, formattedSection);
     }
@@ -244,7 +251,7 @@ export class ZoomDependentExpression<Kind extends EvaluationKind> {
         formattedSection?: FormattedSection
     ): any {
         if (this._globalState) {
-            globals = {...globals, globalState: this._globalState};
+            globals = addGlobalState(globals, this._globalState);
         }
         return this._styleExpression.evaluateWithoutErrorHandling(globals, feature, featureState, canonical, availableImages, formattedSection);
     }
@@ -258,7 +265,7 @@ export class ZoomDependentExpression<Kind extends EvaluationKind> {
         formattedSection?: FormattedSection
     ): any {
         if (this._globalState) {
-            globals = {...globals, globalState: this._globalState};
+            globals = addGlobalState(globals, this._globalState);
         }
         return this._styleExpression.evaluate(globals, feature, featureState, canonical, availableImages, formattedSection);
     }
@@ -550,4 +557,24 @@ function getDefaultValue(spec: StylePropertySpecification): Value {
         default:
             return (spec.default === undefined ? null : spec.default);
     }
+}
+
+function addGlobalState(globals: GlobalProperties, globalState: Record<string, any>): GlobalProperties {
+    const {
+        zoom,
+        heatmapDensity,
+        elevation,
+        lineProgress,
+        isSupportedScript,
+        accumulated
+    } = globals ?? {};
+    return {
+        zoom,
+        heatmapDensity,
+        elevation,
+        lineProgress,
+        isSupportedScript,
+        accumulated,
+        globalState
+    };
 }

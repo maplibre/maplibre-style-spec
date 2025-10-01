@@ -75,10 +75,7 @@ validateStyleMin.layoutProperty = wrapCleanErrors(injectValidateSpec(validateLay
 
 function injectValidateSpec(validator: (options: object) => any) {
     return function(options) {
-        return validator({
-            ...options,
-            validateSpec: validate,
-        });
+        return validator(Object.assign({}, options, {validateSpec: validate}));
     };
 }
 
