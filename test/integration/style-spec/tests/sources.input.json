@@ -74,9 +74,14 @@
       "url": "https://demotiles.maplibre.org/tiles/tiles.json",
       "encoding": "mvt"
     },
-    "source-vector-mlt": {
+    "source-vector-mlt-tilejson": {
       "type": "vector",
       "url": "https://demotiles.maplibre.org/tiles/tiles.json",
+      "encoding": "mlt"
+    },
+    "source-vector-mlt-tiles": {
+      "type": "vector",
+      "url": "https://demotiles.maplibre.org/tiles/tiles/{z}/{x}/{y}.mlt",
       "encoding": "mlt"
     },
     "source-vector-custom": {
