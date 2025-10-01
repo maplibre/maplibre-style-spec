@@ -6387,7 +6387,7 @@
           "ios": "2.0.0"
         },
         "data-driven styling": {
-          "js": "https://github.com/maplibre/maplibre-gl-js/issues/1235",
+          "js": "5.8.0",
           "ios": "https://github.com/maplibre/maplibre-native/issues/744",
           "android": "https://github.com/maplibre/maplibre-native/issues/744"
         }
