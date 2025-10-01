@@ -38,5 +38,21 @@
   {
     "message": "sources.cluster-properties.state.map: \"zoom\" and \"feature-state\" expressions are not supported with cluster properties.",
     "line": 50
+  },
+  {
+    "message": "sources.source-vector-custom.encoding: expected one of [mvt, mlt], \"custom\" found",
+    "line": 90
+  },
+  {
+    "message": "sources.source-vector-blank.encoding: expected one of [mvt, mlt], \"\" found",
+    "line": 95
+  },
+  {
+    "message": "sources.source-vector-numeric.encoding: expected one of [mvt, mlt], 3 found",
+    "line": 100
+  },
+  {
+    "message": "sources.source-vector-array.encoding: expected one of [mvt, mlt], [\"mvt\"] found",
+    "line": 105
   }
 ]

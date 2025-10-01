@@ -64,6 +64,47 @@
       "tiles": ["http://example.com/{x}/{y}/{z}.png"],
       "valueOf": null,
       "toLocaleString": 6
+    },
+    "source-vector-default": {
+      "type": "vector",
+      "url": "https://demotiles.maplibre.org/tiles/tiles.json"
+    },
+    "source-vector-mvt": {
+      "type": "vector",
+      "url": "https://demotiles.maplibre.org/tiles/tiles.json",
+      "encoding": "mvt"
+    },
+    "source-vector-mlt-tilejson": {
+      "type": "vector",
+      "url": "https://demotiles.maplibre.org/tiles/tiles.json",
+      "encoding": "mlt"
+    },
+    "source-vector-mlt-tiles": {
+      "type": "vector",
+      "url": "https://demotiles.maplibre.org/tiles/tiles/{z}/{x}/{y}.mlt",
+      "encoding": "mlt"
+    },
+    "source-vector-custom": {
+      "type": "vector",
+      "url": "https://demotiles.maplibre.org/tiles/tiles.json",
+      "encoding": "custom"
+    },
+    "source-vector-blank": {
+      "type": "vector",
+      "url": "https://demotiles.maplibre.org/tiles/tiles.json",
+      "encoding": ""
+    },
+    "source-vector-numeric": {
+      "type": "vector",
+      "url": "https://demotiles.maplibre.org/tiles/tiles.json",
+      "encoding": 3
+    },
+    "source-vector-array": {
+      "type": "vector",
+      "url": "https://demotiles.maplibre.org/tiles/tiles.json",
+      "encoding": [
+        "mvt"
+      ]
     }
   },
   "layers": []

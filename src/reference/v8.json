@@ -364,6 +364,31 @@
         }
       }
     },
+    "encoding": {
+      "type": "enum",
+      "values": {
+        "mvt": {
+          "doc": "Mapbox Vector Tiles. See http://github.com/mapbox/vector-tile-spec for more info."
+        },
+        "mlt": {
+          "doc": "MapLibre Vector Tiles. See https://github.com/maplibre/maplibre-tile-spec for more info."
+        }
+      },
+      "default": "mvt",
+      "doc": "The encoding used by this source. Mapbox Vector Tiles encoding is used by default.",
+      "sdk-support": {
+        "mvt": {
+          "android": "supported",
+          "ios": "supported",
+          "js": "supported"
+        },
+        "mlt": {
+          "android": "https://github.com/maplibre/maplibre-native/issues/3721",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3721",
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/6258"
+        }
+      }
+    },
     "*": {
       "type": "*",
       "doc": "Other keys to configure the data source."
