@@ -6,17 +6,15 @@ on:
   pull_request:
   workflow_dispatch:
 
-permissions:
-  checks: write
-  pull-requests: write
-  contents: write
-
 jobs:
   code-hygiene:
     name: Code Hygiene
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v5
+        with: { persist-credentials: false }
       - uses: actions/setup-node@v5
         with:
           node-version-file: '.nvmrc'
@@ -28,8 +26,11 @@ jobs:
   unit-and-integration-tests:
     name: Unit and Integration Tests
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v5
+        with: { persist-credentials: false }
       - uses: actions/setup-node@v5
         with:
           node-version-file: '.nvmrc'
@@ -51,6 +52,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v5
+        with: { persist-credentials: false }
       - uses: actions/setup-node@v5
         with:
           node-version-file: '.nvmrc'
