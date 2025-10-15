@@ -9,9 +9,8 @@
 ## 24.3.0
 
 ### ✨ Features and improvements
-- Add optional `encoding` property to vector `source` to allow for MapLibre Tile vector sources
 
-### 🐞 Bug fixes
+- Add optional `encoding` property to vector `source` to allow for MapLibre Tile vector sources
 
 ## 24.2.0
 
