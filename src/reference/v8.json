@@ -4029,6 +4029,11 @@
                   "example": "USD",
                   "doc": "An ISO 4217 code to use for currency-style formatting"
                 },
+                "unit": {
+                  "type": "string",
+                  "example": "meter",
+                  "doc": "A CLDR or ECMA-402 unit to use for quantity-style formatting"
+                },
                 "min-fraction-digits": {
                   "type": "number",
                   "example": 1,
