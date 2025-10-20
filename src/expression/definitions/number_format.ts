@@ -10,6 +10,7 @@ export class NumberFormat implements Expression {
     number: Expression;
     locale: Expression | null; // BCP 47 language tag
     currency: Expression | null; // ISO 4217 currency code, required if style=currency
+    unit: Expression | null; // CLDR or ECMA-402 unit specifier, required if style=unit
     minFractionDigits: Expression | null; // Default 0
     maxFractionDigits: Expression | null; // Default 3
 
@@ -17,6 +18,7 @@ export class NumberFormat implements Expression {
         number: Expression,
         locale: Expression | null,
         currency: Expression | null,
+        unit: Expression | null,
         minFractionDigits: Expression | null,
         maxFractionDigits: Expression | null
     ) {
@@ -24,6 +26,7 @@ export class NumberFormat implements Expression {
         this.number = number;
         this.locale = locale;
         this.currency = currency;
+        this.unit = unit;
         this.minFractionDigits = minFractionDigits;
         this.maxFractionDigits = maxFractionDigits;
     }
@@ -50,6 +53,18 @@ export class NumberFormat implements Expression {
             if (!currency) return null;
         }
 
+        let unit = null;
+        if (options['unit']) {
+            unit = context.parse(options['unit'], 1, StringType);
+            if (!unit) return null;
+        }
+
+        if (currency && unit) {
+            return context.error(
+                'NumberFormat options `currency` and `unit` are mutually exclusive'
+            ) as null;
+        }
+
         let minFractionDigits = null;
         if (options['min-fraction-digits']) {
             minFractionDigits = context.parse(options['min-fraction-digits'], 1, NumberType);
@@ -62,13 +77,21 @@ export class NumberFormat implements Expression {
             if (!maxFractionDigits) return null;
         }
 
-        return new NumberFormat(number, locale, currency, minFractionDigits, maxFractionDigits);
+        return new NumberFormat(
+            number,
+            locale,
+            currency,
+            unit,
+            minFractionDigits,
+            maxFractionDigits
+        );
     }
 
     evaluate(ctx: EvaluationContext) {
         return new Intl.NumberFormat(this.locale ? this.locale.evaluate(ctx) : [], {
-            style: this.currency ? 'currency' : 'decimal',
+            style: this.currency ? 'currency' : this.unit ? 'unit' : 'decimal',
             currency: this.currency ? this.currency.evaluate(ctx) : undefined,
+            unit: this.unit ? this.unit.evaluate(ctx) : undefined,
             minimumFractionDigits: this.minFractionDigits
                 ? this.minFractionDigits.evaluate(ctx)
                 : undefined,
@@ -85,6 +108,9 @@ export class NumberFormat implements Expression {
         }
         if (this.currency) {
             fn(this.currency);
+        }
+        if (this.unit) {
+            fn(this.unit);
         }
         if (this.minFractionDigits) {
             fn(this.minFractionDigits);
