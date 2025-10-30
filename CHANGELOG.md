@@ -4,8 +4,14 @@
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
-- The validator no longer fails if the style lacks a `glyphs` property ([#1347](https://github.com/maplibre/maplibre-style-spec/pull/1347))
 - _...Add new stuff here..._
+
+## 24.3.1
+
+### ✨ Features and improvements
+
+### 🐞 Bug fixes
+- The validator no longer fails if the style lacks a `glyphs` property ([#1347](https://github.com/maplibre/maplibre-style-spec/pull/1347))
 
 ## 24.3.0
 
