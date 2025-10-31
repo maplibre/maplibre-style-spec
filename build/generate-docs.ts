@@ -208,6 +208,8 @@ function typeToMarkdownLink(type: string): string {
         case 'paint':
         case 'layout':
             return ` [${type}](layers.md#${type.toLocaleLowerCase()})`;
+        case 'fontfaces':
+            return ` [${type}](font-faces.md)`;
         default:
             // top level types have their own file
             return ` [${type}](${type}.md)`;
