@@ -93,7 +93,7 @@ describe('Validate FontFaces', () => {
     });
 
     test('Should return error if array contains invalid font face objects', () => {
-        let errors = validateFontFaces({
+        const errors = validateFontFaces({
             validateSpec: validate,
             key: 'font-faces',
             value: {
