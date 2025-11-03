@@ -42,6 +42,7 @@ import {validate} from './validate/validate';
 import {migrate} from './migrate';
 import {classifyRings} from './util/classify_rings';
 import {ProjectionDefinition} from './expression/types/projection_definition';
+import createVisibilityExpression from './expression/visibility';
 
 type ExpressionType = 'data-driven' | 'cross-faded' | 'cross-faded-data-driven' | 'color-ramp' | 'data-constant' | 'constant';
 type ExpressionParameters = Array<'zoom' | 'feature' | 'feature-state' | 'heatmap-density' | 'elevation' | 'line-progress' | 'global-state'>;
@@ -203,6 +204,7 @@ export {
     createExpression,
     isFunction, createFunction,
     createPropertyExpression,
+    createVisibilityExpression,
     convertFilter,
     featureFilter,
     typeOf,
