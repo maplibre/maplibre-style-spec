@@ -193,7 +193,7 @@ function validSchema(k, v, obj, ref, version, kind) {
             if (obj['property-type'] !== 'color-ramp')
                 expect(true).toBe(
                     expression.parameters.every(
-                        (k) => k === 'zoom' || k === 'feature' || k === 'feature-state'
+                        (k) => k === 'zoom' || k === 'feature' || k === 'feature-state' || k === 'global-state'
                     )
                 );
         }
