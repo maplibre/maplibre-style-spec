@@ -72,6 +72,7 @@ import {validate} from './validate/validate';
 import {migrate} from './migrate';
 import {classifyRings} from './util/classify_rings';
 import {ProjectionDefinition} from './expression/types/projection_definition';
+import createVisibilityExpression from './expression/visibility';
 
 type ExpressionType =
     | 'data-driven'
@@ -252,6 +253,7 @@ export {
     isFunction,
     createFunction,
     createPropertyExpression,
+    createVisibilityExpression,
     convertFilter,
     featureFilter,
     typeOf,
