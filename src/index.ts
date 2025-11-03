@@ -81,7 +81,7 @@ type ExpressionType =
     | 'data-constant'
     | 'constant';
 type ExpressionParameters = Array<
-    'zoom' | 'feature' | 'feature-state' | 'heatmap-density' | 'elevation' | 'line-progress'
+    'zoom' | 'feature' | 'feature-state' | 'heatmap-density' | 'elevation' | 'line-progress' | 'global-state'
 >;
 
 type ExpressionSpecificationDefinition = {
