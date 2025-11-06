@@ -389,12 +389,12 @@ export type SchemaSpecification = {
 // State
 export type StateSpecification = Record<string, SchemaSpecification>;
 
-export type FontFace = string | {
+export type MLFontFace = string | {
     url: string,
     "unicode-range"?: string[]
 };
 
-export type FontFacesSpecification = Record<string, FontFace>;
+export type FontFacesSpecification = Record<string, MLFontFace>;
 
 ${objectDeclaration('StyleSpecification', spec.$root)}
 
