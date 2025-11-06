@@ -72,7 +72,7 @@
     "@stylistic/eslint-plugin": "^5.5.0",
     "@types/eslint": "^9.6.1",
     "@types/geojson": "^7946.0.16",
-    "@types/node": "^24.9.1",
+    "@types/node": "^24.10.0",
     "@typescript-eslint/eslint-plugin": "^8.46.2",
     "@typescript-eslint/parser": "^8.46.1",
     "@vitest/coverage-v8": "4.0.6",
