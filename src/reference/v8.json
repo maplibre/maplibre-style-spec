@@ -212,7 +212,7 @@
           "ios": "0.1.0"
         },
         "omit to use local fonts": {
-          "js": "https://github.com/maplibre/maplibre-gl-js/issues/3302",
+          "js": "5.11.0",
           "android": "https://github.com/maplibre/maplibre-native/issues/165",
           "ios": "https://github.com/maplibre/maplibre-native/issues/165"
         }
@@ -243,7 +243,7 @@
       },
       "sdk-support": {
         "basic functionality": {
-          "js": "https://github.com/maplibre/maplibre-gl-js/issues/50",
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/6637",
           "android": "11.13.0",
           "ios": "6.18.0"
         }
