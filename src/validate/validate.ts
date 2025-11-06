@@ -31,6 +31,7 @@ import {ValidationError} from '../error/validation_error';
 import {validateProjection} from './validate_projection';
 import {validateProjectionDefinition} from './validate_projectiondefinition';
 import {validateState} from './validate_state';
+import {validateFontFaces} from './validate_font_faces';
 
 const VALIDATORS = {
     '*'() {
@@ -60,7 +61,8 @@ const VALIDATORS = {
     'colorArray': validateColorArray,
     'variableAnchorOffsetCollection': validateVariableAnchorOffsetCollection,
     'sprite': validateSprite,
-    'state': validateState
+    'state': validateState,
+    'fontFaces': validateFontFaces
 };
 
 /**
