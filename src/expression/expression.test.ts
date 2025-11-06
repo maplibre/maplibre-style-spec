@@ -138,7 +138,7 @@ describe('evaluate expression', () => {
         expect(value.kind).toBe('source');
 
         expect(value.evaluate({} as GlobalProperties, {properties: {x: 'invalid'}} as any as Feature)).toBeNull();
-        expect(console.warn).toHaveBeenCalledTimes(1);
+        expect(console.warn).toHaveBeenCalledTimes(2);
         expect(console.warn).toHaveBeenCalledWith('Could not parse variableAnchorOffsetCollection from value \'invalid\'');
 
         warnMock.mockClear();
