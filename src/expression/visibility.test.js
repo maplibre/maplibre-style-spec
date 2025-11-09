@@ -42,12 +42,36 @@ describe('evaluate visibility expression', () => {
         expect(console.warn).not.toHaveBeenCalled();
     });
 
-    test('warns and falls back to default for invalid expression', () => {
+    test('falls back to default for invalid expression with zoom', () => {
+        const value = createVisibilityExpression(['case', ['==', ['zoom'], 5], 'none', 'visible'], {});
+
+        vi.spyOn(console, 'warn').mockImplementation(() => {});
+
+        expect(value.evaluate({
+            zoom: 5
+        })).toBe('visible');
+        expect(console.warn).not.toHaveBeenCalled();
+    });
+
+    test('warns and falls back to default for invalid expression with feature', () => {
         const value = createVisibilityExpression(['get', 'x'], {});
 
         vi.spyOn(console, 'warn').mockImplementation(() => {});
 
-        expect(value.evaluate()).toBe('visible');
+        expect(value.evaluate({
+            properties: {x: 'none'}
+        })).toBe('visible');
+        expect(console.warn).toHaveBeenCalledWith('Expected value to be of type string, but found null instead.');
+    });
+
+    test('warns and falls back to default for invalid expression with feature state', () => {
+        const value = createVisibilityExpression(['feature-state', 'x'], {});
+
+        vi.spyOn(console, 'warn').mockImplementation(() => {});
+
+        expect(value.evaluate({
+            x: 'none'
+        })).toBe('visible');
         expect(console.warn).toHaveBeenCalledWith('Expected value to be of type string, but found null instead.');
     });
 
