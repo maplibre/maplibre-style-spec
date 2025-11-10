@@ -28,6 +28,7 @@
     "center": {
       "type": "array",
       "value": "number",
+      "length": 2,
       "doc": "Default map center in longitude and latitude.  The style center will be used only if the map has not been positioned by other means (e.g. map options or user interaction).",
       "example": [
         -73.9749,

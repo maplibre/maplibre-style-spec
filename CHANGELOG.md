@@ -4,7 +4,8 @@
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
-- _...Add new stuff here..._
+
+- The optional `center` property is now validated to be a `[lon,lat]` array ([#1372](https://github.com/maplibre/maplibre-gl-js/issues/1372))
 
 ## 24.3.1
 

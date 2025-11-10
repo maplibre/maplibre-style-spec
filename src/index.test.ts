@@ -88,7 +88,6 @@ function validSchema(k, v, obj, ref, version, kind) {
         'expression',
         'property-type',
         'length',
-        'min-length',
         'required',
         'transition',
         'type',
