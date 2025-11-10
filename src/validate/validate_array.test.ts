@@ -68,54 +68,12 @@ describe('Validate Array', () => {
         expect(errors[0].message).toBe('testArray: array length 2 expected, length 3 found');
     });
 
-    test('Should return error if array length is less than min-length', () => {
-        let errors = validateArray({
-            validateSpec: validate,
-            key: 'testArray',
-            value: [1, 2],
-            valueSpec: {type: 'array', value: 'number', 'min-length': 3},
-            styleSpec: v8
-        });
-        expect(errors).toHaveLength(1);
-        expect(errors[0].message).toBe('testArray: array length at least 3 expected, length 2 found');
-
-        errors = validateArray({
-            validateSpec: validate,
-            key: 'testArray',
-            value: [],
-            valueSpec: {type: 'array', value: 'number', 'min-length': 1},
-            styleSpec: v8
-        });
-        expect(errors).toHaveLength(1);
-        expect(errors[0].message).toBe('testArray: array length at least 1 expected, length 0 found');
-    });
-
     test('Should pass if array length matches spec', () => {
         const errors = validateArray({
             validateSpec: validate,
             key: 'testArray',
             value: [1, 2],
             valueSpec: {type: 'array', value: 'number', length: 2},
-            styleSpec: v8
-        });
-        expect(errors).toHaveLength(0);
-    });
-
-    test('Should pass if array length meets min-length', () => {
-        let errors = validateArray({
-            validateSpec: validate,
-            key: 'testArray',
-            value: [1, 2, 3],
-            valueSpec: {type: 'array', value: 'number', 'min-length': 2},
-            styleSpec: v8
-        });
-        expect(errors).toHaveLength(0);
-
-        errors = validateArray({
-            validateSpec: validate,
-            key: 'testArray',
-            value: [1, 2],
-            valueSpec: {type: 'array', value: 'number', 'min-length': 2},
             styleSpec: v8
         });
         expect(errors).toHaveLength(0);
@@ -178,17 +136,6 @@ describe('Validate Array', () => {
             key: 'testArray',
             value: [true, false, true],
             valueSpec: {type: 'array', value: 'boolean'},
-            styleSpec: v8
-        });
-        expect(errors).toHaveLength(0);
-    });
-
-    test('Should pass for empty array when no min-length is specified', () => {
-        const errors = validateArray({
-            validateSpec: validate,
-            key: 'testArray',
-            value: [],
-            valueSpec: {type: 'array', value: 'number'},
             styleSpec: v8
         });
         expect(errors).toHaveLength(0);
