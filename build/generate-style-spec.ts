@@ -46,7 +46,7 @@ function unionType(values) {
     }
 }
 
-function propertyType(property) {
+function propertyType(property, key?) {
     if (typeof property.type === 'function') {
         return property.type();
     }
@@ -93,7 +93,7 @@ function propertyType(property) {
     } else if (supportsZoomExpression(property)) {
         return `PropertyValueSpecification<${baseType}>`;
     } else if (property.expression) {
-        return 'ExpressionSpecification';
+        return key === 'visibility' ? 'VisibilitySpecification' : 'ExpressionSpecification';
     } else {
         return baseType;
     }
@@ -101,7 +101,7 @@ function propertyType(property) {
 
 function propertyDeclaration(key, property) {
     const jsDoc = jsDocComment(property);
-    const declaration = `"${key}"${property.required ? '' : '?'}: ${propertyType(property)}`;
+    const declaration = `"${key}"${property.required ? '' : '?'}: ${propertyType(property, key)}`;
     return jsDoc ? [jsDoc, declaration].join('\n') : declaration;
 }
 
@@ -347,6 +347,8 @@ export type LegacyFilterSpecification =
     | ['none', ...LegacyFilterSpecification[]]
 
 export type FilterSpecification = ExpressionFilterSpecification | LegacyFilterSpecification
+
+export type VisibilitySpecification = 'visible' | 'none' | ExpressionSpecification;
 
 export type TransitionSpecification = {
     duration?: number,

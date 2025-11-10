@@ -175,7 +175,7 @@ function validSchema(k, v, obj, ref, version, kind) {
             expect('boolean').toBe(typeof expression.interpolated);
             expect(true).toBe(Array.isArray(expression.parameters));
             if (obj['property-type'] !== 'color-ramp') expect(true).toBe(
-                expression.parameters.every(k => k === 'zoom' || k === 'feature' || k === 'feature-state')
+                expression.parameters.every(k => k === 'zoom' || k === 'feature' || k === 'feature-state' || k === 'global-state')
             );
         }
 
