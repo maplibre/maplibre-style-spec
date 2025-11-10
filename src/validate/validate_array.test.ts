@@ -188,7 +188,7 @@ describe('Validate Array', () => {
             validateSpec: validate,
             key: 'testArray',
             value: [],
-            valueSpec: {type: 'array', value: 'number'
+            valueSpec: {type: 'array', value: 'number'},
             styleSpec: v8
         });
         expect(errors).toHaveLength(0);
