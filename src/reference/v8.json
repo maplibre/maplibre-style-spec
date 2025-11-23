@@ -2298,7 +2298,7 @@
           "feature"
         ]
       },
-      "example": ["top", [0, 4], "left", [3,0], "bottom", [1, 1]],
+      "example": ["top", [0, 4], "left", [3, 0], "bottom", [1, 1]],
       "property-type": "data-driven"
     },
     "text-anchor": {
