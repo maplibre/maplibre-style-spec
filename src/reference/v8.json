@@ -2937,17 +2937,17 @@
             {
               "name": "var_i_name",
               "type": "string literal",
-              "description": "The name of the i-th variable."
+              "doc": "The name of the i-th variable."
             },
             {
               "name": "var_i_value",
               "type": "any",
-              "description": "The value of the i-th variable."
+              "doc": "The value of the i-th variable."
             },
             {
               "name": "expression",
               "type": "any",
-              "description": "The expression within which the named variables can be referenced."
+              "doc": "The expression within which the named variables can be referenced."
             }
           ]
         },
@@ -2974,7 +2974,7 @@
             {
               "name": "var_name",
               "type": "string literal",
-              "description": "The name of the variable bound using `let`."
+              "doc": "The name of the variable bound using `let`."
             }
           ]
         },
@@ -3047,12 +3047,12 @@
             {
               "name": "type",
               "type": "\"string\" | \"number\" | \"boolean\"",
-              "description": "The asserted type of the input array."
+              "doc": "The asserted type of the input array."
             },
             {
               "name": "length",
               "type": "number literal",
-              "description": "The asserted length of the input array."
+              "doc": "The asserted length of the input array."
             }
           ]
         },
@@ -3079,12 +3079,12 @@
             {
               "name": "index",
               "type": "number",
-              "description": "The index into `array`."
+              "doc": "The index into `array`."
             },
             {
               "name": "array",
               "type": "array<T>",
-              "description": "The array of items to retrieve the specified item from."
+              "doc": "The array of items to retrieve the specified item from."
             }
           ]
         },
@@ -3115,22 +3115,22 @@
             {
               "name": "item",
               "type": "T",
-              "description": "The needle to search for within `array`."
+              "doc": "The needle to search for within `array`."
             },
             {
               "name": "array",
               "type": "array<T>",
-              "description": "The haystack through which to search for `item`."
+              "doc": "The haystack through which to search for `item`."
             },
             {
               "name": "substring",
               "type": "string",
-              "description": "The needle to search for within `string`."
+              "doc": "The needle to search for within `string`."
             },
             {
               "name": "string",
               "type": "string",
-              "description": "The haystack through which to search for `substring`."
+              "doc": "The haystack through which to search for `substring`."
             }
           ]
         },
@@ -3161,27 +3161,27 @@
             {
               "name": "item",
               "type": "T",
-              "description": "The needle to search for within `array`."
+              "doc": "The needle to search for within `array`."
             },
             {
               "name": "array",
               "type": "array<T>",
-              "description": "The haystack through which to search for `item`."
+              "doc": "The haystack through which to search for `item`."
             },
             {
               "name": "substring",
               "type": "string",
-              "description": "The needle to search for within `string`."
+              "doc": "The needle to search for within `string`."
             },
             {
               "name": "string",
               "type": "string",
-              "description": "The haystack through which to search for `substring`."
+              "doc": "The haystack through which to search for `substring`."
             },
             {
               "name": "from_index",
               "type": "number",
-              "description": "The index from where to begin the search."
+              "doc": "The index from where to begin the search."
             }
           ]
         },
@@ -3212,22 +3212,22 @@
             {
               "name": "array",
               "type": "array<T>",
-              "description": "The original array from which to extract the subarray."
+              "doc": "The original array from which to extract the subarray."
             },
             {
               "name": "string",
               "type": "string",
-              "description": "The original string from which to extract the substring."
+              "doc": "The original string from which to extract the substring."
             },
             {
               "name": "start_index",
               "type": "number",
-              "description": "The inclusive index from which `slice` extracts items or characters from the subarray or substring."
+              "doc": "The inclusive index from which `slice` extracts items or characters from the subarray or substring."
             },
             {
               "name": "end_index",
               "type": "number",
-              "description": "The non-inclusive index up to which `slice` extracts items or characters from the subarray or substring."
+              "doc": "The non-inclusive index up to which `slice` extracts items or characters from the subarray or substring."
             }
           ]
         },
@@ -3262,7 +3262,7 @@
             {
               "name": "fallback",
               "type": "any",
-              "description": "The result when no condition evaluates to true."
+              "doc": "The result when no condition evaluates to true."
             }
           ]
         },
@@ -3289,22 +3289,22 @@
             {
               "name": "input",
               "type": "string | number",
-              "description": "Any expression."
+              "doc": "Any expression."
             },
             {
               "name": "label_i",
               "type": "string literal | number literal | array<string literal> | array<number literal>",
-              "description": "The i-th literal value or array of literal values to match the input against."
+              "doc": "The i-th literal value or array of literal values to match the input against."
             },
             {
               "name": "output_i",
               "type": "any",
-              "description": "The result when the i-th label is the first label to match the input."
+              "doc": "The result when the i-th label is the first label to match the input."
             },
             {
               "name": "fallback",
               "type": "any",
-              "description": "The result when no label matches the input."
+              "doc": "The result when no label matches the input."
             }
           ]
         },
@@ -3357,22 +3357,22 @@
             {
               "name": "input",
               "type": "number",
-              "description": "Any numeric expression."
+              "doc": "Any numeric expression."
             },
             {
               "name": "output_0",
               "type": "any",
-              "description": "The result when the `input` is less than the first stop."
+              "doc": "The result when the `input` is less than the first stop."
             },
             {
               "name": "stop_i_input",
               "type": "number literal",
-              "description": "The value of the i-th stop against which the `input` is compared."
+              "doc": "The value of the i-th stop against which the `input` is compared."
             },
             {
               "name": "stop_i_output",
               "type": "any",
-              "description": "The result when the i-th stop is the last stop less than the `input`."
+              "doc": "The result when the i-th stop is the last stop less than the `input`."
             }
           ]
         },
@@ -3399,22 +3399,22 @@
             {
               "name": "interpolation_type",
               "type": "[\"linear\"] | [\"exponential\", base] | [\"cubic-bezier\", x1, y1, x2, y2]",
-              "description": "The interpolation type."
+              "doc": "The interpolation type."
             },
             {
               "name": "input",
               "type": "number",
-              "description": "Any numeric expression."
+              "doc": "Any numeric expression."
             },
             {
               "name": "stop_i_input",
               "type": "number literal",
-              "description": "The value of the i-th stop against which the `input` is compared."
+              "doc": "The value of the i-th stop against which the `input` is compared."
             },
             {
               "name": "stop_i_output",
               "type": "number | array<number> | color | array<color> | projection",
-              "description": "The output value corresponding to the i-th stop."
+              "doc": "The output value corresponding to the i-th stop."
             }
           ]
         },
@@ -3815,7 +3815,7 @@
             {
               "name": "property_name",
               "type": "string literal",
-              "description": "The name of the global state property to retrieve."
+              "doc": "The name of the global state property to retrieve."
             }
           ]
         },
@@ -4073,12 +4073,12 @@
             {
               "name": "property_name",
               "type": "string",
-              "description": "The name of the property to retrieve the value of."
+              "doc": "The name of the property to retrieve the value of."
             },
             {
               "name": "object",
               "type": "object",
-              "description": "The object to retrieve the value from."
+              "doc": "The object to retrieve the value from."
             }
           ]
         },
@@ -4105,12 +4105,12 @@
             {
               "name": "property_name",
               "type": "string",
-              "description": "The name of the property to test for the presence of."
+              "doc": "The name of the property to test for the presence of."
             },
             {
               "name": "object",
               "type": "object",
-              "description": "The object in which to test for the presence of the `property_name` property."
+              "doc": "The object in which to test for the presence of the `property_name` property."
             }
           ]
         },
@@ -4405,17 +4405,17 @@
             {
               "name": "input_1",
               "type": "number",
-              "description": "The number from which to subtract `input_2`."
+              "doc": "The number from which to subtract `input_2`."
             },
             {
               "name": "input_2",
               "type": "number",
-              "description": "The number to subtract from `input_1`."
+              "doc": "The number to subtract from `input_1`."
             },
             {
               "name": "single_input",
               "type": "number",
-              "description": "The number to subtract from 0."
+              "doc": "The number to subtract from 0."
             }
           ]
         },
@@ -4442,12 +4442,12 @@
             {
               "name": "input_1",
               "type": "number",
-              "description": "The dividend."
+              "doc": "The dividend."
             },
             {
               "name": "input_2",
               "type": "number",
-              "description": "The divisor."
+              "doc": "The divisor."
             }
           ]
         },
@@ -4474,12 +4474,12 @@
             {
               "name": "input_1",
               "type": "number",
-              "description": "The dividend."
+              "doc": "The dividend."
             },
             {
               "name": "input_2",
               "type": "number",
-              "description": "The divisor."
+              "doc": "The divisor."
             }
           ]
         },
@@ -4506,12 +4506,12 @@
             {
               "name": "input_1",
               "type": "number",
-              "description": "The base."
+              "doc": "The base."
             },
             {
               "name": "input_2",
               "type": "number",
-              "description": "The exponent."
+              "doc": "The exponent."
             }
           ]
         },
@@ -4538,7 +4538,7 @@
             {
               "name": "input",
               "type": "number",
-              "description": "The radicand."
+              "doc": "The radicand."
             }
           ]
         },
@@ -4989,7 +4989,7 @@
             {
               "name": "collator",
               "type": "collator",
-              "description": "Options for locale-dependent comparison."
+              "doc": "Options for locale-dependent comparison."
             }
           ]
         },
@@ -5029,7 +5029,7 @@
             {
               "name": "collator",
               "type": "collator",
-              "description": "Options for locale-dependent comparison."
+              "doc": "Options for locale-dependent comparison."
             }
           ]
         },
@@ -5073,7 +5073,7 @@
             {
               "name": "collator",
               "type": "collator",
-              "description": "Options for locale-dependent comparison."
+              "doc": "Options for locale-dependent comparison."
             }
           ]
         },
@@ -5117,7 +5117,7 @@
             {
               "name": "collator",
               "type": "collator",
-              "description": "Options for locale-dependent comparison."
+              "doc": "Options for locale-dependent comparison."
             }
           ]
         },
@@ -5161,7 +5161,7 @@
             {
               "name": "collator",
               "type": "collator",
-              "description": "Options for locale-dependent comparison."
+              "doc": "Options for locale-dependent comparison."
             }
           ]
         },
@@ -5205,7 +5205,7 @@
             {
               "name": "collator",
               "type": "collator",
-              "description": "Options for locale-dependent comparison."
+              "doc": "Options for locale-dependent comparison."
             }
           ]
         },

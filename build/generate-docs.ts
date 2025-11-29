@@ -16,8 +16,8 @@ type JsonExpressionSyntax = {
     }[];
     parameters?: {
         name: string;
-        type?: string;
-        description?: string;
+        type: string;
+        doc?: string;
     }[];
 }
 
@@ -139,8 +139,8 @@ function expressionSyntaxToMarkdown(key: string, syntax: JsonExpressionSyntax) {
             const type = parameter.type.replaceAll('<', '&lt;').replaceAll('>', '&gt;');
             markdown += `: *${type}*`;
         }
-        if (parameter.description) {
-            markdown += ` — ${parameter.description}`;
+        if (parameter.doc) {
+            markdown += ` — ${parameter.doc}`;
         }
         markdown += '\n';
     }
