@@ -3053,7 +3053,7 @@
             },
             {
               "name": "type",
-              "type": "\"string\" | \"number\" | \"boolean\"",
+              "type": ["string", "number", "boolean"],
               "doc": "The asserted type of the input array."
             },
             {
@@ -3295,12 +3295,12 @@
           "parameters": [
             {
               "name": "input",
-              "type": "string | number",
+              "type": ["string", "number"],
               "doc": "Any expression."
             },
             {
               "name": "label_i",
-              "type": "string literal | number literal | array<string literal> | array<number literal>",
+              "type": ["string literal", "number literal", "array<string literal>", "array<number literal>"],
               "doc": "The i-th literal value or array of literal values to match the input against."
             },
             {
@@ -3399,13 +3399,13 @@
           "overloads": [
             {
               "parameters": ["interpolation_type", "input", "stop_1_input", "stop_1_output", "...", "stop_n_input", "stop_n_output"],
-              "output-type": "number | array<number> | color | array<color> | projection"
+              "output-type": ["number", "array<number>", "color", "array<color>", "projection"]
             }
           ],
           "parameters": [
             {
               "name": "interpolation_type",
-              "type": "[\"linear\"] | [\"exponential\", base] | [\"cubic-bezier\", x1, y1, x2, y2]",
+              "type": ["[\"linear\"]", "[\"exponential\", base]", "[\"cubic-bezier\", x1, y1, x2, y2]"],
               "doc": "The interpolation type."
             },
             {
@@ -3420,7 +3420,7 @@
             },
             {
               "name": "stop_i_output",
-              "type": "number | array<number> | color | array<color> | projection",
+              "type": ["number", "array<number>", "color", "array<color>", "projection"],
               "doc": "The output value corresponding to the i-th stop."
             }
           ]
@@ -3441,13 +3441,13 @@
           "overloads": [
             {
               "parameters": ["interpolation_type", "input", "stop_1_input", "stop_1_output", "...", "stop_n_input", "stop_n_output"],
-              "output-type": "color | array<color>"
+              "output-type": ["color", "array<color>"]
             }
           ],
           "parameters": [
             {
               "name": "interpolation_type",
-              "type": "[\"linear\"] | [\"exponential\", base] | [\"cubic-bezier\", x1, y1, x2, y2]"
+              "type": ["[\"linear\"]", "[\"exponential\", base]", "[\"cubic-bezier\", x1, y1, x2, y2]"]
             },
             {
               "name": "input",
@@ -3459,7 +3459,7 @@
             },
             {
               "name": "stop_i_output",
-              "type": "color | array<color>"
+              "type": ["color", "array<color>"]
             }
           ]
         },
@@ -3479,13 +3479,13 @@
           "overloads": [
             {
               "parameters": ["interpolation_type", "input", "stop_1_input", "stop_1_output", "...", "stop_n_input", "stop_n_output"],
-              "output-type": "color | array<color>"
+              "output-type": ["color", "array<color>"]
             }
           ],
           "parameters": [
             {
               "name": "interpolation_type",
-              "type": "[\"linear\"] | [\"exponential\", base] | [\"cubic-bezier\", x1, y1, x2, y2]"
+              "type": ["[\"linear\"]", "[\"exponential\", base]", "[\"cubic-bezier\", x1, y1, x2, y2]"]
             },
             {
               "name": "input",
@@ -3497,7 +3497,7 @@
             },
             {
               "name": "stop_i_output",
-              "type": "color | array<color>"
+              "type": ["color", "array<color>"]
             }
           ]
         },
@@ -3702,7 +3702,7 @@
         }
       },
       "collator": {
-        "doc": "Returns a `collator` for use in locale-dependent comparison operations. The `case-sensitive` and `diacritic-sensitive` options default to `false`. The `locale` argument specifies the IETF language tag of the locale to use. If none is provided, the default locale is used. If the requested locale is not available, the `collator` will use a system-defined fallback locale. Use `resolved-locale` to test the results of locale fallback behavior.",
+        "doc": "Returns a `collator` for use in locale-dependent comparison operations. Use `resolved-locale` to test the results of locale fallback behavior.",
         "syntax": {
           "overloads": [
             {
@@ -3713,7 +3713,25 @@
           "parameters": [
             {
               "name": "options",
-              "type": "{ \"case-sensitive\"?: boolean, \"diacritic-sensitive\"?: boolean, \"locale\"?: string }"
+              "type": {
+                "case-sensitive": {
+                  "type": "boolean",
+                  "default": false,
+                  "example": true,
+                  "doc": "If characters of different case-ness are considered different"
+                },
+                "diacritic-sensitive": {
+                  "type": "boolean",
+                  "default": false,
+                  "example": true,
+                  "doc": "If characters with different diacritics are considered different"
+                },
+                "locale": {
+                  "type": "string",
+                  "example": "en",
+                  "doc": "IETF language tag of the locale to use. If none is provided, the default locale is used. If the requested locale is not available, the `collator` will use a system-defined fallback locale."
+                }
+              }
             }
           ]
         },
@@ -3728,7 +3746,7 @@
         }
       },
       "format": {
-        "doc": "Returns a `formatted` string for displaying mixed-format text in the `text-field` property. The input may contain a string literal or expression, including an [`'image'`](#image) expression. Strings may be followed by a style override object that supports the following properties:\n\n- `\"text-font\"`: Overrides the font stack specified by the root layout property.\n\n- `\"text-color\"`: Overrides the color specified by the root paint property.\n\n- `\"font-scale\"`: Applies a scaling factor on `text-size` as specified by the root layout property.\n\n- `\"vertical-align\"`: Aligns vertically text section or image in relation to the row it belongs to. Possible values are: \n\t- `\"bottom\"` *default*: align the bottom of this section with the bottom of other sections.\n<img alt=\"Visual representation of bottom alignment\" src=\"https://github.com/user-attachments/assets/0474a2fd-a4b2-417c-9187-7a13a28695bc\"/>\n\t- `\"center\"`: align the center of this section with the center of other sections.\n<img alt=\"Visual representation of center alignment\" src=\"https://github.com/user-attachments/assets/92237455-be6d-4c5d-b8f6-8127effc1950\"/>\n\t- `\"top\"`: align the top of this section with the top of other sections.\n<img alt=\"Visual representation of top alignment\" src=\"https://github.com/user-attachments/assets/45dccb28-d977-4abb-a006-4ea9792b7c53\"/>\n\t- Refer to [the design proposal](https://github.com/maplibre/maplibre-style-spec/issues/832) for more details.\n\n - [Change the case of labels](https://maplibre.org/maplibre-gl-js/docs/examples/change-case-of-labels/)\n\n - [Display and style rich text labels](https://maplibre.org/maplibre-gl-js/docs/examples/display-and-style-rich-text-labels/)",
+        "doc": "Returns a `formatted` string for displaying mixed-format text in the `text-field` property. The input may contain a string literal or expression, including an [`'image'`](#image) expression. Strings may be followed by a style override object. [Change the case of labels](https://maplibre.org/maplibre-gl-js/docs/examples/change-case-of-labels/)\n\n - [Display and style rich text labels](https://maplibre.org/maplibre-gl-js/docs/examples/display-and-style-rich-text-labels/)",
         "syntax": {
           "overloads": [
             {
@@ -3739,11 +3757,44 @@
           "parameters": [
             {
               "name": "input_i",
-              "type": "string | image"
+              "type": ["string", "image"]
             },
             {
               "name": "style_overrides_i",
-              "type": "{ \"text-font\"?: string, \"text-color\"?: color, \"font-scale\"?: number, \"vertical-align\"?: \"bottom\" | \"center\" | \"top\" }"
+              "type": {
+                "text-font": {
+                  "type": "string",
+                  "doc": "Overrides the font stack specified by the root layout property.",
+                  "example": "Arial Unicode MS Regular"
+                },
+                "text-color": {
+                  "type": "color",
+                  "doc": "Overrides the color specified by the root paint property.",
+                  "example": "#333"
+                },
+                "font-scale": {
+                  "type": "number",
+                  "doc":"Applies a scaling factor on `text-size` as specified by the root layout property.",
+                  "example": 1.2
+                },
+                "vertical-align": {
+                  "type": "enum",
+                  "doc": "Aligns a vertical text section or image in relation to the row it belongs to. Refer to [the design proposal](https://github.com/maplibre/maplibre-style-spec/issues/832) for more details.",
+                  "default": "bottom",
+                  "example": "bottom",
+                  "values": {
+                    "bottom": {
+                      "doc": "align the bottom of this section with the bottom of other sections.\n![Visual representation of bottom alignment](https://github.com/user-attachments/assets/0474a2fd-a4b2-417c-9187-7a13a28695bc)"
+                    },
+                    "center": {
+                      "doc": "align the center of this section with the center of other sections.\n![Visual representation of center alignment](https://github.com/user-attachments/assets/92237455-be6d-4c5d-b8f6-8127effc1950)"
+                    },
+                    "top": {
+                      "doc": "align the top of this section with the top of other sections.\n![Visual representation of top alignment](https://github.com/user-attachments/assets/45dccb28-d977-4abb-a006-4ea9792b7c53)"
+                    }
+                  }
+                }
+              }
             }
           ]
         },
@@ -3836,7 +3887,7 @@
         }
       },
       "number-format": {
-        "doc": "Converts the input number into a string representation using the providing formatting rules. If set, the `locale` argument specifies the locale to use, as a BCP 47 language tag. If set, the `currency` argument specifies an ISO 4217 code to use for currency-style formatting. If set, the `min-fraction-digits` and `max-fraction-digits` arguments specify the minimum and maximum number of fractional digits to include.\n\n - [Display HTML clusters with custom properties](https://maplibre.org/maplibre-gl-js/docs/examples/display-html-clusters-with-custom-properties/)",
+        "doc": "Converts the input number into a string representation using the provided format_options.\n\n - [Display HTML clusters with custom properties](https://maplibre.org/maplibre-gl-js/docs/examples/display-html-clusters-with-custom-properties/)",
         "syntax": {
           "overloads": [
             {
@@ -3847,11 +3898,34 @@
           "parameters": [
             {
               "name": "input",
-              "type": "number"
+              "type": "number",
+              "doc": "number to format"
             },
             {
               "name": "format_options",
-              "type": "{ \"locale\"?: string, \"currency\"?: string, \"min-fraction-digits\"?: number, \"max-fraction-digits\"?: number }"
+              "type": {
+                "locale": {
+                  "type": "string",
+                  "example": "en",
+                  "doc": "Specifies the locale to use, as a BCP 47 language tag"
+                },
+                "currency": {
+                  "type": "string",
+                  "example": "USD",
+                  "doc": "An ISO 4217 code to use for currency-style formatting"
+                },
+                "min-fraction-digits": {
+                  "type": "number",
+                  "example": 1,
+                  "doc": "Minimum number of fractional digits to include"
+                },
+                "max-fraction-digits": {
+                  "type": "number",
+                  "example": 2,
+                  "doc": "Maximum number of fractional digits to include"
+                }
+              },
+              "doc": "Format options for the number"
             }
           ]
         },
@@ -4143,7 +4217,7 @@
           "parameters": [
             {
               "name": "array_or_string",
-              "type": "array | string"
+              "type": ["array", "string"]
             }
           ]
         },
