@@ -2923,12 +2923,12 @@
   },
   "expression": {
     "type": "array",
-    "value": "*",
+    "value": "expression_name",
     "minimum": 1,
-    "doc": "An expression defines a function that can be used for data-driven style properties or feature filters."
+    "doc": "An expression defines a function that can be used for data-driven style properties or feature filters. The first element of an expression array is a string naming the expression operator, e.g. `\"*\"` or `\"case\"`. Elements that follow (if any) are the _arguments_ to the expression. Each argument is either a literal value (a string, number, boolean, or `null`), or another expression array."
   },
   "expression_name": {
-    "doc": "",
+    "doc": "First element in an expression array. May be followed by a number of arguments.",
     "type": "enum",
     "values": {
       "let": {
