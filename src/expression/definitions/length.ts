@@ -20,7 +20,7 @@ export class Length implements Expression {
     static parse(args: ReadonlyArray<unknown>, context: ParsingContext): Expression {
         if (args.length !== 2)
             return context.error(
-                `Expected 1 argument, but found ${args.length - 1} instead.`,
+                `Expected 1 argument, but found ${args.length - 1} instead.`
             ) as null;
 
         const input = context.parse(args[1], 1);
@@ -32,7 +32,7 @@ export class Length implements Expression {
             input.type.kind !== 'value'
         )
             return context.error(
-                `Expected argument of type string or array, but found ${typeToString(input.type)} instead.`,
+                `Expected argument of type string or array, but found ${typeToString(input.type)} instead.`
             ) as null;
 
         return new Length(input);
@@ -47,7 +47,7 @@ export class Length implements Expression {
             return input.length;
         } else {
             throw new RuntimeError(
-                `Expected value to be of type string or array, but found ${typeToString(typeOf(input))} instead.`,
+                `Expected value to be of type string or array, but found ${typeToString(typeOf(input))} instead.`
             );
         }
     }

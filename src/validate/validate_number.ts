@@ -20,7 +20,7 @@ export function validateNumber(options) {
             new ValidationError(
                 key,
                 value,
-                `${value} is less than the minimum value ${valueSpec.minimum}`,
+                `${value} is less than the minimum value ${valueSpec.minimum}`
             ),
         ];
     }
@@ -30,7 +30,7 @@ export function validateNumber(options) {
             new ValidationError(
                 key,
                 value,
-                `${value} is greater than the maximum value ${valueSpec.maximum}`,
+                `${value} is greater than the maximum value ${valueSpec.maximum}`
             ),
         ];
     }

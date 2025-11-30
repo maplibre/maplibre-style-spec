@@ -21,7 +21,7 @@ export function validateColorArray(options) {
                     key: `${key}[${i}]`,
                     value: value[i],
                     valueSpec: {},
-                }),
+                })
             );
         }
         return errors;

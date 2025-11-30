@@ -36,7 +36,7 @@ export function validateTerrain(options: {
                     validateSpec: options.validateSpec,
                     style,
                     styleSpec,
-                }),
+                })
             );
         } else {
             errors = errors.concat([

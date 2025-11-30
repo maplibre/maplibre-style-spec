@@ -31,7 +31,7 @@ export class Slice implements Expression {
     static parse(args: ReadonlyArray<unknown>, context: ParsingContext): Expression {
         if (args.length <= 2 || args.length >= 5) {
             return context.error(
-                `Expected 2 or 3 arguments, but found ${args.length - 1} instead.`,
+                `Expected 2 or 3 arguments, but found ${args.length - 1} instead.`
             ) as null;
         }
 
@@ -42,7 +42,7 @@ export class Slice implements Expression {
 
         if (!isValidType(input.type, [array(ValueType), StringType, ValueType])) {
             return context.error(
-                `Expected first argument to be of type array or string, but found ${typeToString(input.type)} instead`,
+                `Expected first argument to be of type array or string, but found ${typeToString(input.type)} instead`
             ) as null;
         }
 
@@ -71,7 +71,7 @@ export class Slice implements Expression {
             return input.slice(beginIndex, endIndex);
         } else {
             throw new RuntimeError(
-                `Expected first argument to be of type array or string, but found ${typeToString(typeOf(input))} instead.`,
+                `Expected first argument to be of type array or string, but found ${typeToString(typeOf(input))} instead.`
             );
         }
     }

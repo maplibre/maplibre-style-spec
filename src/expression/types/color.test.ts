@@ -10,7 +10,7 @@ describe('Color class', () => {
             expectToMatchColor(Color.parse('rgb(0 0 127.5 / 20%)'), 'rgb(0% 0% 50% / .2)');
             expectToMatchColor(
                 Color.parse('hsl(300deg 100% 25.1% / 0.7)'),
-                'rgb(50.2% 0% 50.2% / .7)',
+                'rgb(50.2% 0% 50.2% / .7)'
             );
         });
 

@@ -12,7 +12,7 @@ export type InterpolationColorSpace = 'rgb' | 'hcl' | 'lab';
  * interpolation color spaces, `false` otherwise
  */
 export function isSupportedInterpolationColorSpace(
-    colorSpace: string,
+    colorSpace: string
 ): colorSpace is InterpolationColorSpace {
     return colorSpace === 'rgb' || colorSpace === 'hcl' || colorSpace === 'lab';
 }
@@ -163,7 +163,7 @@ export class Color {
         from: Color,
         to: Color,
         t: number,
-        spaceKey: InterpolationColorSpace = 'rgb',
+        spaceKey: InterpolationColorSpace = 'rgb'
     ): Color {
         switch (spaceKey) {
             case 'rgb': {

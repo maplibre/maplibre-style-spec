@@ -30,7 +30,7 @@ import type {StyleSpecification} from './types.g';
  */
 export function validateStyleMin(
     style: StyleSpecification,
-    styleSpec = latest,
+    styleSpec = latest
 ): Array<ValidationError> {
     let errors: ValidationError[] = [];
 
@@ -48,7 +48,7 @@ export function validateStyleMin(
                     return [];
                 },
             },
-        }),
+        })
     );
 
     if (style['constants']) {
@@ -59,7 +59,7 @@ export function validateStyleMin(
                 style,
                 styleSpec,
                 validateSpec: validate,
-            }),
+            })
         );
     }
 

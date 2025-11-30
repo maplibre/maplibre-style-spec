@@ -122,7 +122,7 @@ function bboxToBBoxDistance(bbox1: BBox, bbox2: BBox, ruler: CheapRuler): number
 function pointToLineDistance(
     point: [number, number],
     line: [number, number][],
-    ruler: CheapRuler,
+    ruler: CheapRuler
 ): number {
     const nearestPoint = ruler.pointOnLine(line, point);
     return ruler.distance(point, nearestPoint.point);
@@ -133,15 +133,15 @@ function segmentToSegmentDistance(
     p2: [number, number],
     q1: [number, number],
     q2: [number, number],
-    ruler: CheapRuler,
+    ruler: CheapRuler
 ): number {
     const dist1 = Math.min(
         pointToLineDistance(p1, [q1, q2], ruler),
-        pointToLineDistance(p2, [q1, q2], ruler),
+        pointToLineDistance(p2, [q1, q2], ruler)
     );
     const dist2 = Math.min(
         pointToLineDistance(q1, [p1, p2], ruler),
-        pointToLineDistance(q2, [p1, p2], ruler),
+        pointToLineDistance(q2, [p1, p2], ruler)
     );
     return Math.min(dist1, dist2);
 }
@@ -151,7 +151,7 @@ function lineToLineDistance(
     range1: IndexRange,
     line2: [number, number][],
     range2: IndexRange,
-    ruler: CheapRuler,
+    ruler: CheapRuler
 ): number {
     const rangeSafe = isRangeSafe(range1, line1.length) && isRangeSafe(range2, line2.length);
     if (!rangeSafe) {
@@ -179,7 +179,7 @@ function pointsToPointsDistance(
     range1: IndexRange,
     points2: [number, number][],
     range2: IndexRange,
-    ruler: CheapRuler,
+    ruler: CheapRuler
 ): number {
     const rangeSafe = isRangeSafe(range1, points1.length) && isRangeSafe(range2, points2.length);
     if (!rangeSafe) {
@@ -201,7 +201,7 @@ function pointsToPointsDistance(
 function pointToPolygonDistance(
     point: [number, number],
     polygon: [number, number][][],
-    ruler: CheapRuler,
+    ruler: CheapRuler
 ): number {
     if (pointWithinPolygon(point, polygon, true)) {
         return 0.0;
@@ -229,7 +229,7 @@ function lineToPolygonDistance(
     line: [number, number][],
     range: IndexRange,
     polygon: [number, number][][],
-    ruler: CheapRuler,
+    ruler: CheapRuler
 ): number {
     if (!isRangeSafe(range, line.length)) {
         return NaN;
@@ -274,7 +274,7 @@ function polygonToPolygonDistance(
     polygon1: [number, number][][],
     polygon2: [number, number][][],
     ruler,
-    currentMiniDist = Infinity,
+    currentMiniDist = Infinity
 ): number {
     const bbox1 = getPolygonBBox(polygon1);
     const bbox2 = getPolygonBBox(polygon2);
@@ -319,7 +319,7 @@ function updateQueue(
     ruler: CheapRuler,
     points: [number, number][],
     polyBBox: BBox,
-    rangeA?: IndexRange,
+    rangeA?: IndexRange
 ) {
     if (!rangeA) {
         return;
@@ -339,7 +339,7 @@ function updateQueueTwoSets(
     pointSet1: [number, number][],
     pointSet2: [number, number][],
     range1?: IndexRange,
-    range2?: IndexRange,
+    range2?: IndexRange
 ) {
     if (!range1 || !range2) {
         return;
@@ -347,7 +347,7 @@ function updateQueueTwoSets(
     const tempDist = bboxToBBoxDistance(
         getBBox(pointSet1, range1),
         getBBox(pointSet2, range2),
-        ruler,
+        ruler
     );
     // Insert new pair to the queue if the bbox distance is less than
     // miniDist, The pair with biggest distance will be at the top
@@ -363,7 +363,7 @@ function pointsToPolygonDistance(
     isLine: boolean,
     polygon: [number, number][][],
     ruler: CheapRuler,
-    currentMiniDist = Infinity,
+    currentMiniDist = Infinity
 ) {
     let miniDist = Math.min(ruler.distance(points[0], polygon[0][0]), currentMiniDist);
     if (miniDist === 0.0) {
@@ -372,7 +372,7 @@ function pointsToPolygonDistance(
 
     const distQueue = new TinyQueue<DistPair>(
         [[0, [0, points.length - 1], [0, 0]]],
-        compareDistPair,
+        compareDistPair
     );
 
     const polyBBox = getPolygonBBox(polygon);
@@ -421,7 +421,7 @@ function pointSetToPointSetDistance(
     pointSet2: [number, number][],
     isLine2: boolean,
     ruler: CheapRuler,
-    currentMiniDist = Infinity,
+    currentMiniDist = Infinity
 ): number {
     let miniDist = Math.min(currentMiniDist, ruler.distance(pointSet1[0], pointSet2[0]));
     if (miniDist === 0.0) {
@@ -430,7 +430,7 @@ function pointSetToPointSetDistance(
 
     const distQueue = new TinyQueue<DistPair>(
         [[0, [0, pointSet1.length - 1], [0, pointSet2.length - 1]]],
-        compareDistPair,
+        compareDistPair
     );
 
     while (distQueue.length > 0) {
@@ -485,7 +485,7 @@ function pointSetToPointSetDistance(
                 pointSet1,
                 pointSet2,
                 newRangesA[0],
-                newRangesB[0],
+                newRangesB[0]
             );
             updateQueueTwoSets(
                 distQueue,
@@ -494,7 +494,7 @@ function pointSetToPointSetDistance(
                 pointSet1,
                 pointSet2,
                 newRangesA[0],
-                newRangesB[1],
+                newRangesB[1]
             );
             updateQueueTwoSets(
                 distQueue,
@@ -503,7 +503,7 @@ function pointSetToPointSetDistance(
                 pointSet1,
                 pointSet2,
                 newRangesA[1],
-                newRangesB[0],
+                newRangesB[0]
             );
             updateQueueTwoSets(
                 distQueue,
@@ -512,7 +512,7 @@ function pointSetToPointSetDistance(
                 pointSet1,
                 pointSet2,
                 newRangesA[1],
-                newRangesB[1],
+                newRangesB[1]
             );
         }
     }
@@ -540,8 +540,8 @@ function pointToGeometryDistance(ctx: EvaluationContext, geometries: SimpleGeome
                         [geometry.coordinates as [number, number]],
                         false,
                         ruler,
-                        dist,
-                    ),
+                        dist
+                    )
                 );
                 break;
             case 'LineString':
@@ -553,8 +553,8 @@ function pointToGeometryDistance(ctx: EvaluationContext, geometries: SimpleGeome
                         geometry.coordinates as [number, number][],
                         true,
                         ruler,
-                        dist,
-                    ),
+                        dist
+                    )
                 );
                 break;
             case 'Polygon':
@@ -565,8 +565,8 @@ function pointToGeometryDistance(ctx: EvaluationContext, geometries: SimpleGeome
                         false,
                         geometry.coordinates as [number, number][][],
                         ruler,
-                        dist,
-                    ),
+                        dist
+                    )
                 );
                 break;
         }
@@ -598,8 +598,8 @@ function lineStringToGeometryDistance(ctx: EvaluationContext, geometries: Simple
                         [geometry.coordinates as [number, number]],
                         false,
                         ruler,
-                        dist,
-                    ),
+                        dist
+                    )
                 );
                 break;
             case 'LineString':
@@ -611,8 +611,8 @@ function lineStringToGeometryDistance(ctx: EvaluationContext, geometries: Simple
                         geometry.coordinates as [number, number][],
                         true,
                         ruler,
-                        dist,
-                    ),
+                        dist
+                    )
                 );
                 break;
             case 'Polygon':
@@ -623,8 +623,8 @@ function lineStringToGeometryDistance(ctx: EvaluationContext, geometries: Simple
                         true,
                         geometry.coordinates as [number, number][][],
                         ruler,
-                        dist,
-                    ),
+                        dist
+                    )
                 );
                 break;
         }
@@ -643,7 +643,7 @@ function polygonToGeometryDistance(ctx: EvaluationContext, geometries: SimpleGeo
     const polygons = classifyRings(tilePolygon, 0).map((polygon) => {
         return polygon.map((ring) => {
             return ring.map(
-                (p) => getLngLatFromTileCoord([p.x, p.y], ctx.canonical) as [number, number],
+                (p) => getLngLatFromTileCoord([p.x, p.y], ctx.canonical) as [number, number]
             );
         });
     });
@@ -660,8 +660,8 @@ function polygonToGeometryDistance(ctx: EvaluationContext, geometries: SimpleGeo
                             false,
                             polygon,
                             ruler,
-                            dist,
-                        ),
+                            dist
+                        )
                     );
                     break;
                 case 'LineString':
@@ -672,8 +672,8 @@ function polygonToGeometryDistance(ctx: EvaluationContext, geometries: SimpleGeo
                             true,
                             polygon,
                             ruler,
-                            dist,
-                        ),
+                            dist
+                        )
                     );
                     break;
                 case 'Polygon':
@@ -683,8 +683,8 @@ function polygonToGeometryDistance(ctx: EvaluationContext, geometries: SimpleGeo
                             polygon,
                             geometry.coordinates as [number, number][][],
                             ruler,
-                            dist,
-                        ),
+                            dist
+                        )
                     );
                     break;
             }
@@ -697,7 +697,7 @@ function polygonToGeometryDistance(ctx: EvaluationContext, geometries: SimpleGeo
 }
 
 function toSimpleGeometry(
-    geometry: Exclude<GeoJSON.Geometry, GeoJSON.GeometryCollection>,
+    geometry: Exclude<GeoJSON.Geometry, GeoJSON.GeometryCollection>
 ): SimpleGeometry[] {
     if (geometry.type === 'MultiPolygon') {
         return geometry.coordinates.map((polygon) => {
@@ -740,14 +740,14 @@ export class Distance implements Expression {
     static parse(args: ReadonlyArray<unknown>, context: ParsingContext): Expression {
         if (args.length !== 2)
             return context.error(
-                `'distance' expression requires exactly one argument, but found ${args.length - 1} instead.`,
+                `'distance' expression requires exactly one argument, but found ${args.length - 1} instead.`
             ) as null;
         if (isValue(args[1])) {
             const geojson = args[1] as any;
             if (geojson.type === 'FeatureCollection') {
                 return new Distance(
                     geojson,
-                    geojson.features.map((feature) => toSimpleGeometry(feature.geometry)).flat(),
+                    geojson.features.map((feature) => toSimpleGeometry(feature.geometry)).flat()
                 );
             } else if (geojson.type === 'Feature') {
                 return new Distance(geojson, toSimpleGeometry(geojson.geometry));
@@ -756,7 +756,7 @@ export class Distance implements Expression {
             }
         }
         return context.error(
-            "'distance' expression requires valid geojson object that contains polygon geometry type.",
+            "'distance' expression requires valid geojson object that contains polygon geometry type."
         ) as null;
     }
 

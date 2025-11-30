@@ -26,7 +26,7 @@ describe('binary search', () => {
                     interpolated: true,
                     parameters: ['zoom'],
                 },
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 17}, undefined)).toBe(11);
@@ -50,7 +50,7 @@ describe('exponential function', () => {
                     interpolated: true,
                     parameters: ['zoom'],
                 },
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 2}, undefined)).toBeCloseTo(30 / 9);
@@ -68,7 +68,7 @@ describe('exponential function', () => {
             },
             {
                 type: 'number',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, undefined)).toBeCloseTo(2);
@@ -86,7 +86,7 @@ describe('exponential function', () => {
             },
             {
                 type: 'number',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, undefined)).toBe(2);
@@ -105,7 +105,7 @@ describe('exponential function', () => {
             },
             {
                 type: 'number',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, undefined)).toBe(2);
@@ -127,7 +127,7 @@ describe('exponential function', () => {
             },
             {
                 type: 'number',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, undefined)).toBe(2);
@@ -154,7 +154,7 @@ describe('exponential function', () => {
             },
             {
                 type: 'number',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, undefined)).toBe(2);
@@ -196,7 +196,7 @@ describe('exponential function', () => {
             },
             {
                 type: 'number',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 2}, undefined)).toBeCloseTo(100); //, 1e-6);
@@ -221,7 +221,7 @@ describe('exponential function', () => {
             },
             {
                 type: 'color',
-            },
+            }
         ).evaluate;
 
         expectToMatchColor(f({zoom: 0}, undefined), 'rgb(100% 0% 0% / 1)');
@@ -241,7 +241,7 @@ describe('exponential function', () => {
             },
             {
                 type: 'color',
-            },
+            }
         ).evaluate;
 
         expectToMatchColor(f({zoom: 0}, undefined), 'rgb(14.12% 38.43% 14.12% / .6)', 4);
@@ -261,7 +261,7 @@ describe('exponential function', () => {
             },
             {
                 type: 'color',
-            },
+            }
         ).evaluate;
 
         expectToMatchColor(f({zoom: 0}, undefined), 'rgb(0% 0% 0% / .6)');
@@ -282,7 +282,7 @@ describe('exponential function', () => {
                 },
                 {
                     type: 'color',
-                },
+                }
             );
         }).toThrow('Unknown color space: "invalid"');
     });
@@ -298,7 +298,7 @@ describe('exponential function', () => {
             },
             {
                 type: 'colorArray',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 5}, undefined).values).toHaveLength(2);
@@ -322,7 +322,7 @@ describe('exponential function', () => {
             },
             {
                 type: 'colorArray',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 5}, undefined).values).toHaveLength(1);
@@ -343,7 +343,7 @@ describe('exponential function', () => {
             },
             {
                 type: 'colorArray',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 5}, undefined).values).toHaveLength(1);
@@ -365,7 +365,7 @@ describe('exponential function', () => {
                 },
                 {
                     type: 'colorArray',
-                },
+                }
             );
         }).toThrow('Unknown color space: "invalid"');
     });
@@ -382,7 +382,7 @@ describe('exponential function', () => {
             },
             {
                 type: 'numberArray',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 5}, undefined).values).toHaveLength(2);
@@ -418,7 +418,7 @@ describe('exponential function', () => {
             },
             {
                 type: 'padding',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, undefined)).toEqual(new Padding([2, 2, 2, 2]));
@@ -438,7 +438,7 @@ describe('exponential function', () => {
             },
             {
                 type: 'number',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {foo: 1}})).toBe(2);
@@ -457,7 +457,7 @@ describe('exponential function', () => {
             },
             {
                 type: 'number',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {}})).toBe(3);
@@ -476,7 +476,7 @@ describe('exponential function', () => {
             {
                 type: 'number',
                 default: 3,
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {}})).toBe(3);
@@ -495,7 +495,7 @@ describe('exponential function', () => {
             },
             {
                 type: 'string',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {foo: 'string'}})).toBe(3);
@@ -514,7 +514,7 @@ describe('exponential function', () => {
             {
                 type: 'string',
                 default: 3,
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {foo: 'string'}})).toBe(3);
@@ -529,7 +529,7 @@ describe('exponential function', () => {
             },
             {
                 type: 'number',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {prop: 0}})).toBe(2);
@@ -558,7 +558,7 @@ describe('exponential function', () => {
             },
             {
                 type: 'number',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {prop: 1}})).toBe(2);
@@ -590,7 +590,7 @@ describe('exponential function', () => {
             },
             {
                 type: 'number',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {prop: 1}})).toBe(2);
@@ -611,7 +611,7 @@ describe('exponential function', () => {
             },
             {
                 type: 'number',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 1.9}, {properties: {prop: 1}})).toBe(4);
@@ -634,7 +634,7 @@ describe('exponential function', () => {
             },
             {
                 type: 'number',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 1}, {properties: {prop: 0}})).toBe(0);
@@ -658,7 +658,7 @@ describe('exponential function', () => {
             },
             {
                 type: 'color',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {}})).toBeUndefined();
@@ -680,7 +680,7 @@ describe('exponential function', () => {
             },
             {
                 type: 'color',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0.0}, {properties: {prop: 0}})).toEqual(new Color(1, 0, 0, 1));
@@ -702,7 +702,7 @@ describe('exponential function', () => {
             },
             {
                 type: 'padding',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0.0}, {properties: {prop: 0}})).toEqual(new Padding([2, 2, 2, 2]));
@@ -727,7 +727,7 @@ describe('interval function', () => {
                     interpolated: false,
                     parameters: ['zoom'],
                 },
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: -1.5}, undefined)).toBe(11);
@@ -744,7 +744,7 @@ describe('interval function', () => {
             },
             {
                 type: 'number',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: -0.5}, undefined)).toBe(11);
@@ -763,7 +763,7 @@ describe('interval function', () => {
             },
             {
                 type: 'number',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: -1.5}, undefined)).toBe(11);
@@ -784,7 +784,7 @@ describe('interval function', () => {
             },
             {
                 type: 'number',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: -1.5}, undefined)).toBe(11);
@@ -808,7 +808,7 @@ describe('interval function', () => {
             },
             {
                 type: 'number',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: -1.5}, undefined)).toBe(11);
@@ -832,7 +832,7 @@ describe('interval function', () => {
             },
             {
                 type: 'color',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, undefined)).toEqual(new Color(1, 0, 0, 1));
@@ -851,7 +851,7 @@ describe('interval function', () => {
             },
             {
                 type: 'padding',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, undefined)).toEqual(new Padding([2, 2, 2, 2]));
@@ -872,7 +872,7 @@ describe('interval function', () => {
             },
             {
                 type: 'string',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {foo: 1.5}})).toBe('good');
@@ -892,7 +892,7 @@ describe('interval function', () => {
             },
             {
                 type: 'string',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {}})).toBe('default');
@@ -912,7 +912,7 @@ describe('interval function', () => {
             {
                 type: 'string',
                 default: 'default',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {}})).toBe('default');
@@ -932,7 +932,7 @@ describe('interval function', () => {
             },
             {
                 type: 'string',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {foo: 'string'}})).toBe('default');
@@ -952,7 +952,7 @@ describe('interval function', () => {
             {
                 type: 'string',
                 default: 'default',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {foo: 'string'}})).toBe('default');
@@ -973,7 +973,7 @@ describe('categorical function', () => {
             },
             {
                 type: 'string',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {foo: 0}})).toBe('bad');
@@ -995,7 +995,7 @@ describe('categorical function', () => {
             },
             {
                 type: 'string',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {}})).toBe('default');
@@ -1013,7 +1013,7 @@ describe('categorical function', () => {
             {
                 type: 'string',
                 function: 'interval',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {}})).toBe('default');
@@ -1035,7 +1035,7 @@ describe('categorical function', () => {
             },
             {
                 type: 'string',
-            },
+            }
         ).evaluate;
 
         const stringKeys = createFunction(
@@ -1053,7 +1053,7 @@ describe('categorical function', () => {
             },
             {
                 type: 'string',
-            },
+            }
         ).evaluate;
 
         expect(numberKeys(0 as any, {properties: {foo: '0'}})).toBe('default');
@@ -1081,7 +1081,7 @@ describe('categorical function', () => {
             {
                 type: 'string',
                 default: 'default',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {}})).toBe('default');
@@ -1100,7 +1100,7 @@ describe('categorical function', () => {
             },
             {
                 type: 'color',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {foo: 0}})).toEqual(new Color(1, 0, 0, 1));
@@ -1120,7 +1120,7 @@ describe('categorical function', () => {
             },
             {
                 type: 'color',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {}})).toEqual(new Color(0, 1, 0, 1));
@@ -1140,7 +1140,7 @@ describe('categorical function', () => {
             {
                 type: 'color',
                 default: 'lime',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {}})).toEqual(new Color(0, 1, 0, 1));
@@ -1159,7 +1159,7 @@ describe('categorical function', () => {
             },
             {
                 type: 'padding',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {foo: 0}})).toEqual(new Padding([2, 2, 2, 2]));
@@ -1179,7 +1179,7 @@ describe('categorical function', () => {
             },
             {
                 type: 'padding',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {}})).toEqual(new Padding([6, 6, 6, 6]));
@@ -1199,7 +1199,7 @@ describe('categorical function', () => {
             {
                 type: 'padding',
                 default: 6,
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {}})).toEqual(new Padding([6, 6, 6, 6]));
@@ -1218,7 +1218,7 @@ describe('categorical function', () => {
             },
             {
                 type: 'string',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {foo: true}})).toBe('true');
@@ -1235,7 +1235,7 @@ describe('identity function', () => {
             },
             {
                 type: 'number',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {foo: 1}})).toBe(1);
@@ -1250,7 +1250,7 @@ describe('identity function', () => {
             },
             {
                 type: 'string',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {}})).toBe(1);
@@ -1265,7 +1265,7 @@ describe('identity function', () => {
             {
                 type: 'string',
                 default: 1,
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {}})).toBe(1);
@@ -1279,7 +1279,7 @@ describe('identity function', () => {
             },
             {
                 type: 'color',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {foo: 'red'}})).toEqual(new Color(1, 0, 0, 1));
@@ -1295,7 +1295,7 @@ describe('identity function', () => {
             },
             {
                 type: 'color',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {}})).toEqual(new Color(1, 0, 0, 1));
@@ -1310,7 +1310,7 @@ describe('identity function', () => {
             {
                 type: 'color',
                 default: 'red',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {}})).toEqual(new Color(1, 0, 0, 1));
@@ -1325,7 +1325,7 @@ describe('identity function', () => {
             {
                 type: 'color',
                 default: 'red',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {foo: 'invalid'}})).toEqual(new Color(1, 0, 0, 1));
@@ -1339,7 +1339,7 @@ describe('identity function', () => {
             },
             {
                 type: 'padding',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {foo: 3}})).toEqual(new Padding([3, 3, 3, 3]));
@@ -1355,7 +1355,7 @@ describe('identity function', () => {
             },
             {
                 type: 'padding',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {}})).toEqual(new Padding([1, 2, 3, 4]));
@@ -1370,7 +1370,7 @@ describe('identity function', () => {
             {
                 type: 'padding',
                 default: [1, 2, 3, 4],
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {}})).toEqual(new Padding([1, 2, 3, 4]));
@@ -1385,7 +1385,7 @@ describe('identity function', () => {
             {
                 type: 'padding',
                 default: [1, 2, 3, 4],
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {foo: 'invalid'}})).toEqual(new Padding([1, 2, 3, 4]));
@@ -1399,12 +1399,12 @@ describe('identity function', () => {
             },
             {
                 type: 'colorArray',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {foo: 'red'}})).toEqual(new ColorArray([Color.red]));
         expect(f({zoom: 1}, {properties: {foo: ['black', 'white']}})).toEqual(
-            new ColorArray([Color.black, Color.white]),
+            new ColorArray([Color.black, Color.white])
         );
     });
 
@@ -1416,7 +1416,7 @@ describe('identity function', () => {
             },
             {
                 type: 'numberArray',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {foo: 3}})).toEqual(new NumberArray([3]));
@@ -1432,7 +1432,7 @@ describe('identity function', () => {
             },
             {
                 type: 'string',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {foo: 0}})).toBe('default');
@@ -1447,7 +1447,7 @@ describe('identity function', () => {
             {
                 type: 'string',
                 default: 'default',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {foo: 0}})).toBe('default');
@@ -1465,7 +1465,7 @@ describe('identity function', () => {
                     bar: {},
                 },
                 default: 'def',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {foo: 'bar'}})).toBe('bar');
@@ -1483,7 +1483,7 @@ describe('identity function', () => {
                     bar: {},
                 },
                 default: 'def',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {foo: 'baz'}})).toBe('def');
@@ -1501,7 +1501,7 @@ describe('identity function', () => {
                     bar: {},
                 },
                 default: 'def',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {foo: 3}})).toBe('def');
@@ -1515,7 +1515,7 @@ describe('identity function', () => {
             },
             {
                 type: 'formatted',
-            },
+            }
         ).evaluate;
 
         expect(f({zoom: 0}, {properties: {foo: 'foo'}})).toEqual(Formatted.fromString('foo'));
@@ -1534,8 +1534,8 @@ test('unknown function', () => {
             },
             {
                 type: 'string',
-            },
-        ),
+            }
+        )
     ).toThrow(/Unknown function type "nonesuch"/);
 });
 
@@ -1547,7 +1547,7 @@ describe('kind', () => {
             },
             {
                 type: 'number',
-            },
+            }
         );
 
         expect(f.kind).toBe('camera');
@@ -1561,7 +1561,7 @@ describe('kind', () => {
             },
             {
                 type: 'number',
-            },
+            }
         );
 
         expect(f.kind).toBe('source');
@@ -1575,7 +1575,7 @@ describe('kind', () => {
             },
             {
                 type: 'number',
-            },
+            }
         );
 
         expect(f.kind).toBe('composite');

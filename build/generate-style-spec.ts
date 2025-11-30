@@ -61,7 +61,7 @@ function propertyType(property) {
                 const elementType = propertyType(
                     typeof property.value === 'string'
                         ? {type: property.value, values: property.values}
-                        : property.value,
+                        : property.value
                 );
                 if (property.length) {
                     return `[${Array(property.length).fill(elementType).join(', ')}]`;
@@ -432,5 +432,5 @@ ${layerTypes.map((key) => layerType(key)).join('\n\n')}
 export type LayerSpecification =
 ${layerTypes.map((key) => `    | ${layerTypeName(key)}`).join('\n')};
 
-`,
+`
 );

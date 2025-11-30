@@ -19,7 +19,7 @@ export function validateArray(options) {
             new ValidationError(
                 key,
                 array,
-                `array length ${arraySpec.length} expected, length ${array.length} found`,
+                `array length ${arraySpec.length} expected, length ${array.length} found`
             ),
         ];
     }
@@ -49,7 +49,7 @@ export function validateArray(options) {
                 style,
                 styleSpec,
                 key: `${key}[${i}]`,
-            }),
+            })
         );
     }
     return errors;

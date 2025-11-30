@@ -18,7 +18,7 @@ export function validateProjectionDefinition(options) {
             new ValidationError(
                 key,
                 value,
-                `projection expected, invalid array ${JSON.stringify(value)} found`,
+                `projection expected, invalid array ${JSON.stringify(value)} found`
             ),
         ];
     } else if (!['array', 'string'].includes(type)) {
@@ -31,7 +31,7 @@ export function validateProjectionDefinition(options) {
 }
 
 function isPropertyValueSpecification(
-    value: unknown,
+    value: unknown
 ): value is PropertyValueSpecification<ProjectionDefinitionT> {
     if (['interpolate', 'step', 'literal'].includes(value[0])) {
         return true;

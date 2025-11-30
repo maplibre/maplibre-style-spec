@@ -29,7 +29,7 @@ export class VariableAnchorOffsetCollection {
     }
 
     static parse(
-        input?: VariableAnchorOffsetCollectionSpecification | VariableAnchorOffsetCollection,
+        input?: VariableAnchorOffsetCollectionSpecification | VariableAnchorOffsetCollection
     ): VariableAnchorOffsetCollection | undefined {
         if (input instanceof VariableAnchorOffsetCollection) {
             return input;
@@ -68,14 +68,14 @@ export class VariableAnchorOffsetCollection {
     static interpolate(
         from: VariableAnchorOffsetCollection,
         to: VariableAnchorOffsetCollection,
-        t: number,
+        t: number
     ): VariableAnchorOffsetCollection {
         const fromValues = from.values;
         const toValues = to.values;
 
         if (fromValues.length !== toValues.length) {
             throw new RuntimeError(
-                `Cannot interpolate values of different length. from: ${from.toString()}, to: ${to.toString()}`,
+                `Cannot interpolate values of different length. from: ${from.toString()}, to: ${to.toString()}`
             );
         }
 
@@ -85,7 +85,7 @@ export class VariableAnchorOffsetCollection {
             // Anchor entries must match
             if (fromValues[i] !== toValues[i]) {
                 throw new RuntimeError(
-                    `Cannot interpolate values containing mismatched anchors. from[${i}]: ${fromValues[i]}, to[${i}]: ${toValues[i]}`,
+                    `Cannot interpolate values containing mismatched anchors. from[${i}]: ${fromValues[i]}, to[${i}]: ${toValues[i]}`
                 );
             }
             output.push(fromValues[i]);

@@ -15,8 +15,8 @@ describe('format', () => {
                     glyphs: '',
                     sprite: '',
                     version: 6,
-                }),
-            ),
+                })
+            )
         ).toEqual(['version', 'sources', 'sprite', 'glyphs', 'layers', 'other']);
     });
 
@@ -32,8 +32,8 @@ describe('format', () => {
                             type: 'type',
                         },
                     ],
-                }).layers[0],
-            ),
+                }).layers[0]
+            )
         ).toEqual(['id', 'type', 'layout', 'paint']);
     });
 });

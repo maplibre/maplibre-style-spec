@@ -104,7 +104,7 @@ export function validate(options: {
         const valid = validateObject(
             extendBy({}, options, {
                 valueSpec: valueSpec.type ? styleSpec[valueSpec.type] : valueSpec,
-            }),
+            })
         );
         return valid;
     }

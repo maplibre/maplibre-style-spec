@@ -13,7 +13,7 @@ interface ValidateRasterDENSourceOptions {
 }
 
 export function validateRasterDEMSource(
-    options: ValidateRasterDENSourceOptions,
+    options: ValidateRasterDENSourceOptions
 ): ValidationError[] {
     const sourceName = options.sourceName ?? '';
     const rasterDEM = options.value;
@@ -31,8 +31,8 @@ export function validateRasterDEMSource(
             new ValidationError(
                 'source_raster_dem',
                 rasterDEM,
-                `object expected, ${rootType} found`,
-            ),
+                `object expected, ${rootType} found`
+            )
         );
         return errors;
     }
@@ -48,8 +48,8 @@ export function validateRasterDEMSource(
                 new ValidationError(
                     key,
                     rasterDEM[key],
-                    `In "${sourceName}": "${key}" is only valid when "encoding" is set to "custom". ${encodingName} encoding found`,
-                ),
+                    `In "${sourceName}": "${key}" is only valid when "encoding" is set to "custom". ${encodingName} encoding found`
+                )
             );
         } else if (rasterDEMSpec[key]) {
             errors = errors.concat(
@@ -60,7 +60,7 @@ export function validateRasterDEMSource(
                     validateSpec: options.validateSpec,
                     style,
                     styleSpec,
-                }),
+                })
             );
         } else {
             errors.push(new ValidationError(key, rasterDEM[key], `unknown property "${key}"`));

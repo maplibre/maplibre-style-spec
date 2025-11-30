@@ -7,7 +7,7 @@ export const EXTENT = 8192;
 
 export function getTileCoordinates(
     p: GeoJSON.Position,
-    canonical: ICanonicalTileID,
+    canonical: ICanonicalTileID
 ): [number, number] {
     const x = mercatorXfromLng(p[0]);
     const y = mercatorYfromLat(p[1]);
@@ -17,7 +17,7 @@ export function getTileCoordinates(
 
 export function getLngLatFromTileCoord(
     coord: [number, number],
-    canonical: ICanonicalTileID,
+    canonical: ICanonicalTileID
 ): GeoJSON.Position {
     const tilesAtZoom = Math.pow(2, canonical.z);
     const x = (coord[0] / EXTENT + canonical.x) / tilesAtZoom;
@@ -59,7 +59,7 @@ export function boxWithinBox(bbox1: BBox, bbox2: BBox) {
 export function rayIntersect(
     p: [number, number],
     p1: [number, number],
-    p2: [number, number],
+    p2: [number, number]
 ): boolean {
     return (
         p1[1] > p[1] !== p2[1] > p[1] &&
@@ -80,7 +80,7 @@ export function segmentIntersectSegment(
     a: [number, number],
     b: [number, number],
     c: [number, number],
-    d: [number, number],
+    d: [number, number]
 ) {
     // check if two segments are parallel or not
     // precondition is end point a, b is inside polygon, if line a->b is
@@ -112,7 +112,7 @@ export function lineIntersectPolygon(p1, p2, polygon) {
 export function pointWithinPolygon(
     point: [number, number],
     rings: [number, number][][],
-    trueIfOnBoundary = false,
+    trueIfOnBoundary = false
 ) {
     let inside = false;
     for (const ring of rings) {
@@ -150,7 +150,7 @@ export function lineStringWithinPolygon(line: [number, number][], polygon: [numb
 
 export function lineStringWithinPolygons(
     line: [number, number][],
-    polygons: [number, number][][][],
+    polygons: [number, number][][][]
 ) {
     for (const polygon of polygons) {
         if (lineStringWithinPolygon(line, polygon)) return true;
@@ -167,7 +167,7 @@ function twoSided(
     p1: [number, number],
     p2: [number, number],
     q1: [number, number],
-    q2: [number, number],
+    q2: [number, number]
 ) {
     // q1->p1 (x1, y1), q1->p2 (x2, y2), q1->q2 (x3, y3)
     const x1 = p1[0] - q1[0];

@@ -26,7 +26,7 @@ export function validateNumberArray(options) {
                     value: value[i],
                     validateSpec: options.validateSpec,
                     valueSpec: arrayElementSpec,
-                }),
+                })
             );
         }
         return errors;

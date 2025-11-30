@@ -48,7 +48,7 @@ export function validateProperty(options, propertyType) {
                 key,
                 value,
                 `"${propertyKey}" does not support interpolation syntax\n` +
-                    `Use an identity property function instead: \`{ "type": "identity", "property": ${JSON.stringify(tokenMatch[1])} }\`.`,
+                    `Use an identity property function instead: \`{ "type": "identity", "property": ${JSON.stringify(tokenMatch[1])} }\`.`
             ),
         ];
     }
@@ -62,7 +62,7 @@ export function validateProperty(options, propertyType) {
             unbundle(value.type) === 'identity'
         ) {
             errors.push(
-                new ValidationError(key, value, '"text-font" does not support identity functions'),
+                new ValidationError(key, value, '"text-font" does not support identity functions')
             );
         }
     }
@@ -77,6 +77,6 @@ export function validateProperty(options, propertyType) {
             expressionContext: 'property',
             propertyType,
             propertyKey,
-        }),
+        })
     );
 }

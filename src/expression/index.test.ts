@@ -23,7 +23,7 @@ describe('normalizePropertyExpression expressions', () => {
     test('normalizePropertyExpression<ColorArray>', () => {
         const expression = normalizePropertyExpression<ColorArray>(
             ['literal', ['#FF0000', 'black']],
-            stylePropertySpecification('colorArray'),
+            stylePropertySpecification('colorArray')
         );
         expect(expression.evaluate({zoom: 0}).values).toEqual([Color.red, Color.black]);
     });
@@ -31,7 +31,7 @@ describe('normalizePropertyExpression expressions', () => {
     test('normalizePropertyExpression<ColorArray> single value', () => {
         const expression = normalizePropertyExpression<ColorArray>(
             ['literal', '#FF0000'],
-            stylePropertySpecification('colorArray'),
+            stylePropertySpecification('colorArray')
         );
         expect(expression.evaluate({zoom: 0}).values).toEqual([Color.red]);
     });
@@ -39,7 +39,7 @@ describe('normalizePropertyExpression expressions', () => {
     test('normalizePropertyExpression<NumberArray>', () => {
         const expression = normalizePropertyExpression<NumberArray>(
             ['literal', [1, 2]],
-            stylePropertySpecification('numberArray'),
+            stylePropertySpecification('numberArray')
         );
         expect(expression.evaluate({zoom: 0}).values).toEqual([1, 2]);
     });
@@ -47,7 +47,7 @@ describe('normalizePropertyExpression expressions', () => {
     test('normalizePropertyExpression<NumberArray> single value', () => {
         const expression = normalizePropertyExpression<NumberArray>(
             ['literal', 1],
-            stylePropertySpecification('numberArray'),
+            stylePropertySpecification('numberArray')
         );
         expect(expression.evaluate({zoom: 0}).values).toEqual([1]);
     });
@@ -55,7 +55,7 @@ describe('normalizePropertyExpression expressions', () => {
     test('normalizePropertyExpression<Padding>', () => {
         const expression = normalizePropertyExpression<Padding>(
             ['literal', [1, 2]],
-            stylePropertySpecification('padding'),
+            stylePropertySpecification('padding')
         );
         expect(expression.evaluate({zoom: 0}).values).toEqual([1, 2, 1, 2]);
     });
@@ -65,7 +65,7 @@ describe('normalizePropertyExpression objects', () => {
     test('normalizePropertyExpression<ColorArray>', () => {
         const expression = normalizePropertyExpression<ColorArray>(
             ColorArray.parse(['#FF0000', 'black']),
-            stylePropertySpecification('colorArray'),
+            stylePropertySpecification('colorArray')
         );
         expect(expression.evaluate({zoom: 0}).values).toEqual([Color.red, Color.black]);
     });
@@ -73,7 +73,7 @@ describe('normalizePropertyExpression objects', () => {
     test('normalizePropertyExpression<ColorArray> single value', () => {
         const expression = normalizePropertyExpression<ColorArray>(
             ColorArray.parse('#FF0000'),
-            stylePropertySpecification('colorArray'),
+            stylePropertySpecification('colorArray')
         );
         expect(expression.evaluate({zoom: 0}).values).toEqual([Color.red]);
     });
@@ -81,7 +81,7 @@ describe('normalizePropertyExpression objects', () => {
     test('normalizePropertyExpression<NumberArray>', () => {
         const expression = normalizePropertyExpression<NumberArray>(
             NumberArray.parse([1, 2]),
-            stylePropertySpecification('numberArray'),
+            stylePropertySpecification('numberArray')
         );
         expect(expression.evaluate({zoom: 0}).values).toEqual([1, 2]);
     });
@@ -89,7 +89,7 @@ describe('normalizePropertyExpression objects', () => {
     test('normalizePropertyExpression<NumberArray> single value', () => {
         const expression = normalizePropertyExpression<NumberArray>(
             NumberArray.parse(1),
-            stylePropertySpecification('numberArray'),
+            stylePropertySpecification('numberArray')
         );
         expect(expression.evaluate({zoom: 0}).values).toEqual([1]);
     });
@@ -97,7 +97,7 @@ describe('normalizePropertyExpression objects', () => {
     test('normalizePropertyExpression<Padding>', () => {
         const expression = normalizePropertyExpression<Padding>(
             Padding.parse([1, 2]),
-            stylePropertySpecification('padding'),
+            stylePropertySpecification('padding')
         );
         expect(expression.evaluate({zoom: 0}).values).toEqual([1, 2, 1, 2]);
     });
@@ -107,7 +107,7 @@ describe('normalizePropertyExpression raw values', () => {
     test('normalizePropertyExpression<ColorArray>', () => {
         const expression = normalizePropertyExpression<ColorArray>(
             ['#FF0000', 'black'] as any,
-            stylePropertySpecification('colorArray'),
+            stylePropertySpecification('colorArray')
         );
         expect(expression.evaluate({zoom: 0}).values).toEqual([Color.red, Color.black]);
     });
@@ -115,7 +115,7 @@ describe('normalizePropertyExpression raw values', () => {
     test('normalizePropertyExpression<ColorArray> single value', () => {
         const expression = normalizePropertyExpression<ColorArray>(
             '#FF0000' as any,
-            stylePropertySpecification('colorArray'),
+            stylePropertySpecification('colorArray')
         );
         expect(expression.evaluate({zoom: 0}).values).toEqual([Color.red]);
     });
@@ -123,7 +123,7 @@ describe('normalizePropertyExpression raw values', () => {
     test('normalizePropertyExpression<NumberArray>', () => {
         const expression = normalizePropertyExpression<NumberArray>(
             [1, 2] as any,
-            stylePropertySpecification('numberArray'),
+            stylePropertySpecification('numberArray')
         );
         expect(expression.evaluate({zoom: 0}).values).toEqual([1, 2]);
     });
@@ -131,7 +131,7 @@ describe('normalizePropertyExpression raw values', () => {
     test('normalizePropertyExpression<NumberArray> single value', () => {
         const expression = normalizePropertyExpression<NumberArray>(
             1 as any,
-            stylePropertySpecification('numberArray'),
+            stylePropertySpecification('numberArray')
         );
         expect(expression.evaluate({zoom: 0}).values).toEqual([1]);
     });
@@ -139,7 +139,7 @@ describe('normalizePropertyExpression raw values', () => {
     test('normalizePropertyExpression<Padding>', () => {
         const expression = normalizePropertyExpression<Padding>(
             [1, 2] as any,
-            stylePropertySpecification('padding'),
+            stylePropertySpecification('padding')
         );
         expect(expression.evaluate({zoom: 0}).values).toEqual([1, 2, 1, 2]);
     });
@@ -158,7 +158,7 @@ describe('StyleExpressions', () => {
                 'property-type': 'data-driven',
                 transition: false,
             } as StylePropertySpecification,
-            {x: 5} as Record<string, any>,
+            {x: 5} as Record<string, any>
         );
 
         styleExpression.evaluate({zoom: 10, a: 20, b: 30} as any);

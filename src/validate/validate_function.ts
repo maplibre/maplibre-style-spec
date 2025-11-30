@@ -41,13 +41,13 @@ export function validateFunction(options): Array<ValidationError> {
 
     if (functionType === 'identity' && isZoomFunction) {
         errors.push(
-            new ValidationError(options.key, options.value, 'missing required property "property"'),
+            new ValidationError(options.key, options.value, 'missing required property "property"')
         );
     }
 
     if (functionType !== 'identity' && !options.value.stops) {
         errors.push(
-            new ValidationError(options.key, options.value, 'missing required property "stops"'),
+            new ValidationError(options.key, options.value, 'missing required property "stops"')
         );
     }
 
@@ -57,18 +57,18 @@ export function validateFunction(options): Array<ValidationError> {
         !supportsInterpolation(options.valueSpec)
     ) {
         errors.push(
-            new ValidationError(options.key, options.value, 'exponential functions not supported'),
+            new ValidationError(options.key, options.value, 'exponential functions not supported')
         );
     }
 
     if (options.styleSpec.$version >= 8) {
         if (isPropertyFunction && !supportsPropertyExpression(options.valueSpec)) {
             errors.push(
-                new ValidationError(options.key, options.value, 'property functions not supported'),
+                new ValidationError(options.key, options.value, 'property functions not supported')
             );
         } else if (isZoomFunction && !supportsZoomExpression(options.valueSpec)) {
             errors.push(
-                new ValidationError(options.key, options.value, 'zoom functions not supported'),
+                new ValidationError(options.key, options.value, 'zoom functions not supported')
             );
         }
     }
@@ -78,7 +78,7 @@ export function validateFunction(options): Array<ValidationError> {
         options.value.property === undefined
     ) {
         errors.push(
-            new ValidationError(options.key, options.value, '"property" property is required'),
+            new ValidationError(options.key, options.value, '"property" property is required')
         );
     }
 
@@ -90,7 +90,7 @@ export function validateFunction(options): Array<ValidationError> {
                 new ValidationError(
                     options.key,
                     options.value,
-                    'identity function may not have a "stops" property',
+                    'identity function may not have a "stops" property'
                 ),
             ];
         }
@@ -107,12 +107,12 @@ export function validateFunction(options): Array<ValidationError> {
                 style: options.style,
                 styleSpec: options.styleSpec,
                 arrayElementValidator: validateFunctionStop,
-            }),
+            })
         );
 
         if (getType(value) === 'array' && value.length === 0) {
             errors.push(
-                new ValidationError(options.key, value, 'array must have at least one stop'),
+                new ValidationError(options.key, value, 'array must have at least one stop')
             );
         }
 
@@ -133,7 +133,7 @@ export function validateFunction(options): Array<ValidationError> {
                 new ValidationError(
                     key,
                     value,
-                    `array length 2 expected, length ${value.length} found`,
+                    `array length 2 expected, length ${value.length} found`
                 ),
             ];
         }
@@ -155,7 +155,7 @@ export function validateFunction(options): Array<ValidationError> {
                     new ValidationError(
                         key,
                         value[0].zoom,
-                        'stop zoom values must appear in ascending order',
+                        'stop zoom values must appear in ascending order'
                     ),
                 ];
             }
@@ -176,7 +176,7 @@ export function validateFunction(options): Array<ValidationError> {
                         zoom: validateNumber,
                         value: validateStopDomainValue,
                     },
-                }),
+                })
             );
         } else {
             errors = errors.concat(
@@ -189,8 +189,8 @@ export function validateFunction(options): Array<ValidationError> {
                         style: options.style,
                         styleSpec: options.styleSpec,
                     },
-                    value,
-                ),
+                    value
+                )
             );
         }
 
@@ -199,7 +199,7 @@ export function validateFunction(options): Array<ValidationError> {
                 new ValidationError(
                     `${key}[1]`,
                     value[1],
-                    'expressions are not allowed in function stops.',
+                    'expressions are not allowed in function stops.'
                 ),
             ]);
         }
@@ -212,7 +212,7 @@ export function validateFunction(options): Array<ValidationError> {
                 validateSpec: options.validateSpec,
                 style: options.style,
                 styleSpec: options.styleSpec,
-            }),
+            })
         );
     }
 
@@ -229,7 +229,7 @@ export function validateFunction(options): Array<ValidationError> {
                 new ValidationError(
                     options.key,
                     reportValue,
-                    `${type} stop domain type must match previous stop domain type ${stopKeyType}`,
+                    `${type} stop domain type must match previous stop domain type ${stopKeyType}`
                 ),
             ];
         }
@@ -239,7 +239,7 @@ export function validateFunction(options): Array<ValidationError> {
                 new ValidationError(
                     options.key,
                     reportValue,
-                    'stop domain value must be a number, string, or boolean',
+                    'stop domain value must be a number, string, or boolean'
                 ),
             ];
         }
@@ -273,7 +273,7 @@ export function validateFunction(options): Array<ValidationError> {
                 new ValidationError(
                     options.key,
                     reportValue,
-                    'stop domain values must appear in ascending order',
+                    'stop domain values must appear in ascending order'
                 ),
             ];
         } else {

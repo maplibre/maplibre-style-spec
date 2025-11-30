@@ -41,7 +41,7 @@ type PropertyCallback = (a: {
     value: PropertyValueSpecification<unknown> | DataDrivenPropertyValueSpecification<unknown>;
     reference: StylePropertySpecification | null;
     set: (
-        a: PropertyValueSpecification<unknown> | DataDrivenPropertyValueSpecification<unknown>,
+        a: PropertyValueSpecification<unknown> | DataDrivenPropertyValueSpecification<unknown>
     ) => void;
 }) => void;
 
@@ -51,7 +51,7 @@ export function eachProperty(
         paint?: boolean;
         layout?: boolean;
     },
-    callback: PropertyCallback,
+    callback: PropertyCallback
 ) {
     function inner(layer: LayerSpecification, propertyType: 'paint' | 'layout') {
         const properties = layer[propertyType];

@@ -18,7 +18,7 @@ export class NumberFormat implements Expression {
         locale: Expression | null,
         currency: Expression | null,
         minFractionDigits: Expression | null,
-        maxFractionDigits: Expression | null,
+        maxFractionDigits: Expression | null
     ) {
         this.type = StringType;
         this.number = number;

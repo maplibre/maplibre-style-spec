@@ -14,8 +14,8 @@ export function validateEnum(options) {
                 new ValidationError(
                     key,
                     value,
-                    `expected one of [${valueSpec.values.join(', ')}], ${JSON.stringify(value)} found`,
-                ),
+                    `expected one of [${valueSpec.values.join(', ')}], ${JSON.stringify(value)} found`
+                )
             );
         }
     } else {
@@ -25,8 +25,8 @@ export function validateEnum(options) {
                 new ValidationError(
                     key,
                     value,
-                    `expected one of [${Object.keys(valueSpec.values).join(', ')}], ${JSON.stringify(value)} found`,
-                ),
+                    `expected one of [${Object.keys(valueSpec.values).join(', ')}], ${JSON.stringify(value)} found`
+                )
             );
         }
     }

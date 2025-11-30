@@ -35,7 +35,7 @@ export function validateLight(options) {
                     validateSpec: options.validateSpec,
                     style,
                     styleSpec,
-                }),
+                })
             );
         } else if (lightSpec[key]) {
             errors = errors.concat(
@@ -46,7 +46,7 @@ export function validateLight(options) {
                     validateSpec: options.validateSpec,
                     style,
                     styleSpec,
-                }),
+                })
             );
         } else {
             errors = errors.concat([

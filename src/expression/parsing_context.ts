@@ -37,7 +37,7 @@ export class ParsingContext {
         path: Array<number> = [],
         expectedType?: Type | null,
         scope: Scope = new Scope(),
-        errors: Array<ExpressionParsingError> = [],
+        errors: Array<ExpressionParsingError> = []
     ) {
         this.registry = registry;
         this.path = path;
@@ -62,7 +62,7 @@ export class ParsingContext {
         bindings?: Array<[string, Expression]>,
         options: {
             typeAnnotation?: 'assert' | 'coerce' | 'omit';
-        } = {},
+        } = {}
     ): Expression {
         if (index) {
             return this.concat(index, expectedType, bindings)._parse(expr, options);
@@ -74,7 +74,7 @@ export class ParsingContext {
         expr: unknown,
         options: {
             typeAnnotation?: 'assert' | 'coerce' | 'omit';
-        },
+        }
     ): Expression {
         if (
             expr === null ||
@@ -98,7 +98,7 @@ export class ParsingContext {
         if (Array.isArray(expr)) {
             if (expr.length === 0) {
                 return this.error(
-                    'Expected an array with at least one element. If you wanted a literal array, use ["literal", []].',
+                    'Expected an array with at least one element. If you wanted a literal array, use ["literal", []].'
                 ) as null;
             }
 
@@ -106,7 +106,7 @@ export class ParsingContext {
             if (typeof op !== 'string') {
                 this.error(
                     `Expression name must be a string, but found ${typeof op} instead. If you wanted a literal array, use ["literal", [...]].`,
-                    0,
+                    0
                 );
                 return null;
             }
@@ -178,7 +178,7 @@ export class ParsingContext {
 
             return this.error(
                 `Unknown expression "${op}". If you wanted a literal array, use ["literal", [...]].`,
-                0,
+                0
             ) as null;
         } else if (typeof expr === 'undefined') {
             return this.error("'undefined' value invalid. Use null instead.") as null;
@@ -206,7 +206,7 @@ export class ParsingContext {
             path,
             expectedType || null,
             scope,
-            this.errors,
+            this.errors
         );
     }
 

@@ -72,7 +72,7 @@ export function validateSource(options) {
                             value: mapExpr,
                             validateSpec,
                             expressionContext: 'cluster-map',
-                        }),
+                        })
                     );
                     errors.push(
                         ...validateExpression({
@@ -80,7 +80,7 @@ export function validateSource(options) {
                             value: reduceExpr,
                             validateSpec,
                             expressionContext: 'cluster-reduce',
-                        }),
+                        })
                     );
                 }
             }
@@ -112,7 +112,7 @@ export function validateSource(options) {
                     key,
                     null,
                     'Please use runtime APIs to add canvas sources, rather than including them in stylesheets.',
-                    'source.canvas',
+                    'source.canvas'
                 ),
             ];
 

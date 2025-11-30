@@ -18,7 +18,7 @@ export interface Expression {
 
 export type ExpressionParser = (
     args: ReadonlyArray<unknown>,
-    context: ParsingContext,
+    context: ParsingContext
 ) => Expression;
 export type ExpressionRegistration = {
     new (...args: any): Expression;

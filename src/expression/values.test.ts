@@ -29,7 +29,7 @@ describe('typeOf', () => {
         expect(typeOf(NumberArray.parse(1))).toBe(NumberArrayType);
         expect(typeOf(ColorArray.parse('red'))).toBe(ColorArrayType);
         expect(typeOf(VariableAnchorOffsetCollection.parse(['top', [2, 2]]))).toBe(
-            VariableAnchorOffsetCollectionType,
+            VariableAnchorOffsetCollectionType
         );
     });
 });

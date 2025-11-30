@@ -13,31 +13,31 @@ describe('Validate variableAnchorOffsetCollection', () => {
         let errors = validateVariableAnchorOffsetCollection({...validateOpts, value: '3'});
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe(
-            'myProp: variableAnchorOffsetCollection requires a non-empty array of even length',
+            'myProp: variableAnchorOffsetCollection requires a non-empty array of even length'
         );
 
         errors = validateVariableAnchorOffsetCollection({...validateOpts, value: 3});
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe(
-            'myProp: variableAnchorOffsetCollection requires a non-empty array of even length',
+            'myProp: variableAnchorOffsetCollection requires a non-empty array of even length'
         );
 
         errors = validateVariableAnchorOffsetCollection({...validateOpts, value: true});
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe(
-            'myProp: variableAnchorOffsetCollection requires a non-empty array of even length',
+            'myProp: variableAnchorOffsetCollection requires a non-empty array of even length'
         );
 
         errors = validateVariableAnchorOffsetCollection({...validateOpts, value: null});
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe(
-            'myProp: variableAnchorOffsetCollection requires a non-empty array of even length',
+            'myProp: variableAnchorOffsetCollection requires a non-empty array of even length'
         );
 
         errors = validateVariableAnchorOffsetCollection({...validateOpts, value: {x: 1, y: 1}});
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe(
-            'myProp: variableAnchorOffsetCollection requires a non-empty array of even length',
+            'myProp: variableAnchorOffsetCollection requires a non-empty array of even length'
         );
     });
 
@@ -45,13 +45,13 @@ describe('Validate variableAnchorOffsetCollection', () => {
         let errors = validateVariableAnchorOffsetCollection({...validateOpts, value: []});
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe(
-            'myProp: variableAnchorOffsetCollection requires a non-empty array of even length',
+            'myProp: variableAnchorOffsetCollection requires a non-empty array of even length'
         );
 
         errors = validateVariableAnchorOffsetCollection({...validateOpts, value: [3]});
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe(
-            'myProp: variableAnchorOffsetCollection requires a non-empty array of even length',
+            'myProp: variableAnchorOffsetCollection requires a non-empty array of even length'
         );
 
         errors = validateVariableAnchorOffsetCollection({
@@ -60,7 +60,7 @@ describe('Validate variableAnchorOffsetCollection', () => {
         });
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe(
-            'myProp: variableAnchorOffsetCollection requires a non-empty array of even length',
+            'myProp: variableAnchorOffsetCollection requires a non-empty array of even length'
         );
     });
 
@@ -71,7 +71,7 @@ describe('Validate variableAnchorOffsetCollection', () => {
         });
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe(
-            'myProp[0]: expected one of [center, left, right, top, bottom, top-left, top-right, bottom-left, bottom-right], "dennis" found',
+            'myProp[0]: expected one of [center, left, right, top, bottom, top-left, top-right, bottom-left, bottom-right], "dennis" found'
         );
 
         errors = validateVariableAnchorOffsetCollection({
@@ -80,10 +80,10 @@ describe('Validate variableAnchorOffsetCollection', () => {
         });
         expect(errors).toHaveLength(2);
         expect(errors[0].message).toBe(
-            'myProp[2]: expected one of [center, left, right, top, bottom, top-left, top-right, bottom-left, bottom-right], "dennis" found',
+            'myProp[2]: expected one of [center, left, right, top, bottom, top-left, top-right, bottom-left, bottom-right], "dennis" found'
         );
         expect(errors[1].message).toBe(
-            'myProp[4]: expected one of [center, left, right, top, bottom, top-left, top-right, bottom-left, bottom-right], "not-dennis" found',
+            'myProp[4]: expected one of [center, left, right, top, bottom, top-left, top-right, bottom-left, bottom-right], "not-dennis" found'
         );
     });
 

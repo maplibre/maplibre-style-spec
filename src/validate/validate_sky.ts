@@ -34,7 +34,7 @@ export function validateSky(options: ValidateSkyOptions) {
                     valueSpec: skySpec[key],
                     style,
                     styleSpec,
-                }),
+                })
             );
         } else {
             errors = errors.concat([

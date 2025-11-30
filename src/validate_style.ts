@@ -19,7 +19,7 @@ import type {StyleSpecification} from './types.g';
 
 export function validateStyle(
     style: StyleSpecification | string | Buffer,
-    styleSpec = v8,
+    styleSpec = v8
 ): Array<ValidationError> {
     let s = style;
 

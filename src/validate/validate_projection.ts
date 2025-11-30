@@ -36,7 +36,7 @@ export function validateProjection(options: ValidateProjectionOptions) {
                     valueSpec: projectionSpec[key],
                     style,
                     styleSpec,
-                }),
+                })
             );
         } else {
             errors = errors.concat([

@@ -96,7 +96,7 @@ function convertZoomAndPropertyFunction(parameters, propertySpec, stops) {
             const output = convertPropertyFunction(
                 featureFunctionParameters[z],
                 propertySpec,
-                featureFunctionStops[z],
+                featureFunctionStops[z]
             );
             appendStopPair(expression, z, output, false);
         }
@@ -109,7 +109,7 @@ function convertZoomAndPropertyFunction(parameters, propertySpec, stops) {
             const output = convertPropertyFunction(
                 featureFunctionParameters[z],
                 propertySpec,
-                featureFunctionStops[z],
+                featureFunctionStops[z]
             );
             appendStopPair(expression, z, output, true);
         }

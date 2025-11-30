@@ -27,7 +27,7 @@ export class Match implements Expression {
         input: Expression,
         cases: Cases,
         outputs: Array<Expression>,
-        otherwise: Expression,
+        otherwise: Expression
     ) {
         this.inputType = inputType;
         this.type = outputType;
@@ -40,7 +40,7 @@ export class Match implements Expression {
     static parse(args: ReadonlyArray<unknown>, context: ParsingContext): Expression {
         if (args.length < 5)
             return context.error(
-                `Expected at least 4 arguments, but found only ${args.length - 1}.`,
+                `Expected at least 4 arguments, but found only ${args.length - 1}.`
             ) as null;
         if (args.length % 2 !== 1)
             return context.error('Expected an even number of arguments.') as null;
@@ -70,11 +70,11 @@ export class Match implements Expression {
                     return labelContext.error('Branch labels must be numbers or strings.') as null;
                 } else if (typeof label === 'number' && Math.abs(label) > Number.MAX_SAFE_INTEGER) {
                     return labelContext.error(
-                        `Branch labels must be integers no larger than ${Number.MAX_SAFE_INTEGER}.`,
+                        `Branch labels must be integers no larger than ${Number.MAX_SAFE_INTEGER}.`
                     ) as null;
                 } else if (typeof label === 'number' && Math.floor(label) !== label) {
                     return labelContext.error(
-                        'Numeric branch labels must be integer values.',
+                        'Numeric branch labels must be integer values.'
                     ) as null;
                 } else if (!inputType) {
                     inputType = typeOf(label);

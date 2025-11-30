@@ -49,7 +49,7 @@ export function getGeometry(
         | GeoJSON.MultiPoint
         | GeoJSON.Polygon
         | GeoJSON.MultiPolygon,
-    canonical: ICanonicalTileID,
+    canonical: ICanonicalTileID
 ) {
     if (!geometry.coordinates) {
         return;

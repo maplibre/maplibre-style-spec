@@ -15,7 +15,7 @@ export class CollatorExpression implements Expression {
     constructor(
         caseSensitive: Expression,
         diacriticSensitive: Expression,
-        locale: Expression | null,
+        locale: Expression | null
     ) {
         this.type = CollatorType;
         this.locale = locale;
@@ -33,14 +33,14 @@ export class CollatorExpression implements Expression {
         const caseSensitive = context.parse(
             options['case-sensitive'] === undefined ? false : options['case-sensitive'],
             1,
-            BooleanType,
+            BooleanType
         );
         if (!caseSensitive) return null;
 
         const diacriticSensitive = context.parse(
             options['diacritic-sensitive'] === undefined ? false : options['diacritic-sensitive'],
             1,
-            BooleanType,
+            BooleanType
         );
         if (!diacriticSensitive) return null;
 
@@ -57,7 +57,7 @@ export class CollatorExpression implements Expression {
         return new Collator(
             this.caseSensitive.evaluate(ctx),
             this.diacriticSensitive.evaluate(ctx),
-            this.locale ? this.locale.evaluate(ctx) : null,
+            this.locale ? this.locale.evaluate(ctx) : null
         );
     }
 

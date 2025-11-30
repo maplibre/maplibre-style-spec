@@ -17,14 +17,14 @@ export class Var implements Expression {
     static parse(args: ReadonlyArray<unknown>, context: ParsingContext): Expression {
         if (args.length !== 2 || typeof args[1] !== 'string')
             return context.error(
-                "'var' expression requires exactly one string literal argument.",
+                "'var' expression requires exactly one string literal argument."
             ) as null;
 
         const name = args[1];
         if (!context.scope.has(name)) {
             return context.error(
                 `Unknown variable "${name}". Make sure "${name}" has been bound in an enclosing "let" expression before using it.`,
-                1,
+                1
             ) as null;
         }
 

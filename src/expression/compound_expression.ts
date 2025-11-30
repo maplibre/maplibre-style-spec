@@ -78,7 +78,7 @@ export class CompoundExpression implements Expression {
         if (!definition) {
             return context.error(
                 `Unknown expression "${op}". If you wanted a literal array, use ["literal", [...]].`,
-                0,
+                0
             ) as null;
         }
 
@@ -92,7 +92,7 @@ export class CompoundExpression implements Expression {
         const overloads = availableOverloads.filter(
             ([signature]) =>
                 !Array.isArray(signature) || // varags
-                signature.length === args.length - 1, // correct param count
+                signature.length === args.length - 1 // correct param count
         );
 
         let signatureContext: ParsingContext = null;
@@ -105,7 +105,7 @@ export class CompoundExpression implements Expression {
                 isExpressionConstant,
                 context.path,
                 null,
-                context.scope,
+                context.scope
             );
 
             // First parse all the args, potentially coercing to the
@@ -134,7 +134,7 @@ export class CompoundExpression implements Expression {
             if (Array.isArray(params)) {
                 if (params.length !== parsedArgs.length) {
                     signatureContext.error(
-                        `Expected ${params.length} arguments, but found ${parsedArgs.length} instead.`,
+                        `Expected ${params.length} arguments, but found ${parsedArgs.length} instead.`
                     );
                     continue;
                 }
@@ -168,7 +168,7 @@ export class CompoundExpression implements Expression {
                 actualTypes.push(typeToString(parsed.type));
             }
             context.error(
-                `Expected arguments of type ${signatures}, but found (${actualTypes.join(', ')}) instead.`,
+                `Expected arguments of type ${signatures}, but found (${actualTypes.join(', ')}) instead.`
             );
         }
 
@@ -455,7 +455,7 @@ CompoundExpression.register(expressions, {
                 ctx.properties()[(k as any).value],
                 (v as any).value,
                 0,
-                (v as any).value.length - 1,
+                (v as any).value.length - 1
             ),
     ],
     all: {

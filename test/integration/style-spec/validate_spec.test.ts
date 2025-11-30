@@ -20,7 +20,7 @@ describe('validate_spec', () => {
 
     test('errors from validate do not contain line numbers', () => {
         const style = JSON.parse(
-            fs.readFileSync('test/integration/style-spec/tests/bad-color.input.json', 'utf8'),
+            fs.readFileSync('test/integration/style-spec/tests/bad-color.input.json', 'utf8')
         );
 
         const result = validate(style, latest);
@@ -48,7 +48,7 @@ describe('Validate sdk-support in spec', () => {
 
                 if (!platformSupport[platform]) {
                     console.error(
-                        `Missing platform '${platform}' in sdk-support at ${path.join('.')}. Please create a tracking issue and add the link.`,
+                        `Missing platform '${platform}' in sdk-support at ${path.join('.')}. Please create a tracking issue and add the link.`
                     );
                 }
                 expect(platformSupport[platform]).toBeTruthy();
@@ -59,7 +59,7 @@ describe('Validate sdk-support in spec', () => {
 
                 const support = platformSupport[platform];
                 const supportValid = Boolean(
-                    support.match(maplibreIssue) || support.match(version) || values.has(support),
+                    support.match(maplibreIssue) || support.match(version) || values.has(support)
                 );
                 // Only the following values are supported:
                 // - If supported: version number (e.g. 1.0.0) to indicate support since this version (or "supported" to indicate it has always been supported)

@@ -39,12 +39,12 @@ describe('createPropertyExpression', () => {
                     interpolated: false,
                     parameters: ['zoom'],
                 },
-            } as StylePropertySpecification,
+            } as StylePropertySpecification
         );
         expect(result).toBe('error');
         expect(value as ExpressionParsingError[]).toHaveLength(1);
         expect(value[0].message).toBe(
-            '"interpolate" expressions cannot be used with this property',
+            '"interpolate" expressions cannot be used with this property'
         );
     });
 
@@ -63,7 +63,7 @@ describe('createPropertyExpression', () => {
                     interpolated: false,
                     parameters: ['zoom', 'feature'],
                 },
-            } as any as StylePropertySpecification,
+            } as any as StylePropertySpecification
         ) as {value: StylePropertyExpression};
 
         expect(value.globalStateRefs).toEqual(new Set(['stateKey', 'anotherStateKey']));
@@ -97,7 +97,7 @@ describe('evaluate expression', () => {
                 'property-type': 'data-driven',
                 transition: false,
             },
-            {x: 5},
+            {x: 5}
         ) as {value: StylePropertyExpression};
 
         vi.spyOn(console, 'warn').mockImplementation(() => {});
@@ -118,7 +118,7 @@ describe('evaluate expression', () => {
                     parameters: ['zoom'],
                 },
             } as StylePropertySpecification,
-            {x: 5},
+            {x: 5}
         ) as {value: StylePropertyExpression};
 
         vi.spyOn(console, 'warn').mockImplementation(() => {});
@@ -144,13 +144,13 @@ describe('evaluate expression', () => {
         expect(value.kind).toBe('source');
 
         expect(
-            value.evaluate({} as GlobalProperties, {properties: {x: 'b'}} as any as Feature),
+            value.evaluate({} as GlobalProperties, {properties: {x: 'b'}} as any as Feature)
         ).toBe('b');
         expect(
-            value.evaluate({} as GlobalProperties, {properties: {x: 'invalid'}} as any as Feature),
+            value.evaluate({} as GlobalProperties, {properties: {x: 'invalid'}} as any as Feature)
         ).toBe('a');
         expect(console.warn).toHaveBeenCalledWith(
-            'Expected value to be one of "a", "b", "c", but found "invalid" instead.',
+            'Expected value to be one of "a", "b", "c", but found "invalid" instead.'
         );
     });
 
@@ -170,19 +170,19 @@ describe('evaluate expression', () => {
         expect(value.kind).toBe('source');
 
         expect(
-            value.evaluate({} as GlobalProperties, {properties: {x: 'invalid'}} as any as Feature),
+            value.evaluate({} as GlobalProperties, {properties: {x: 'invalid'}} as any as Feature)
         ).toBeNull();
         expect(console.warn).toHaveBeenCalledTimes(2);
         expect(console.warn).toHaveBeenCalledWith(
-            "Could not parse variableAnchorOffsetCollection from value 'invalid'",
+            "Could not parse variableAnchorOffsetCollection from value 'invalid'"
         );
 
         warnMock.mockClear();
         expect(
             value.evaluate(
                 {} as GlobalProperties,
-                {properties: {x: ['top', [2, 2]]}} as any as Feature,
-            ),
+                {properties: {x: ['top', [2, 2]]}} as any as Feature
+            )
         ).toEqual(new VariableAnchorOffsetCollection(['top', [2, 2]]));
         expect(console.warn).not.toHaveBeenCalled();
     });
@@ -193,7 +193,7 @@ describe('nonexistent operators', () => {
         const response = createExpression(['ExpressionSpecification']);
         expect(response.result).toBe('error');
         expect((response.value as ExpressionParsingError[])[0].message).toContain(
-            'Unknown expression \"ExpressionSpecification\".',
+            'Unknown expression \"ExpressionSpecification\".'
         );
     });
 });

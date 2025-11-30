@@ -60,7 +60,7 @@ type ExpectedTypes = {[_: string]: ExpressionInputType};
  */
 export function convertFilter(
     filter: FilterSpecification,
-    expectedTypes: ExpectedTypes = {},
+    expectedTypes: ExpectedTypes = {}
 ): ExpressionFilterSpecification {
     if (isExpressionFilter(filter)) return filter;
     if (!filter) return true;
@@ -140,7 +140,7 @@ function convertComparisonOp(
     property: string,
     value: any,
     op: string,
-    expectedTypes?: ExpectedTypes | null,
+    expectedTypes?: ExpectedTypes | null
 ): ExpressionFilterSpecification {
     let get;
     if (property === '$type') {
@@ -176,7 +176,7 @@ function convertComparisonOp(
 function convertInOp(
     property: string,
     values: Array<any>,
-    negate = false,
+    negate = false
 ): ExpressionFilterSpecification {
     if (values.length === 0) return negate;
 

@@ -236,7 +236,7 @@ function convertPropertyToMarkdown(
     key: string,
     value: JsonObject,
     keyPrefix = '##',
-    paintLayoutText = '',
+    paintLayoutText = ''
 ) {
     let markdown = `${keyPrefix} ${key}\n*`;
     if (paintLayoutText) {

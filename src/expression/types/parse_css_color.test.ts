@@ -225,42 +225,42 @@ describe('parseCssColor', () => {
 
             expect(parseCssColor('hsl(300,100%,25.1%)')).toEqual([300, 100, 25.1, 1]);
             expect(parseCssColor('hsl(300,100%,25.1%)')).toEqual(
-                parseCssColor('hsla(300,100%,25.1%,1)'),
+                parseCssColor('hsla(300,100%,25.1%,1)')
             );
             expect(parseCssColor('hsl(300,100%,25.1%)')).toEqual(
-                parseCssColor('hsla(300,100%,25.1%,100%)'),
+                parseCssColor('hsla(300,100%,25.1%,100%)')
             );
             expect(parseCssColor('hsl(300,100%,25.1%)')).toEqual(
-                parseCssColor('hsl(300 100% 25.1%)'),
+                parseCssColor('hsl(300 100% 25.1%)')
             );
             expect(parseCssColor('hsl(300,100%,25.1%)')).toEqual(
-                parseCssColor('hsl(300 100% 25.1%/1.0)'),
+                parseCssColor('hsl(300 100% 25.1%/1.0)')
             );
             expect(parseCssColor('hsl(300,100%,25.1%)')).toEqual(
-                parseCssColor('hsl(300.0 100% 25.1% / 100%)'),
+                parseCssColor('hsl(300.0 100% 25.1% / 100%)')
             );
             expect(parseCssColor('hsl(300,100%,25.1%)')).toEqual(
-                parseCssColor('hsl(300deg 100% 25.1% / 100%)'),
+                parseCssColor('hsl(300deg 100% 25.1% / 100%)')
             );
 
             expect(parseCssColor('hsl(240,0%,55%,0.2)')).toEqual([240, 0, 55, 0.2]);
             expect(parseCssColor('hsl(240,0%,55%,0.2)')).toEqual(
-                parseCssColor('hsla(240.0,0%,55%,0.2)'),
+                parseCssColor('hsla(240.0,0%,55%,0.2)')
             );
             expect(parseCssColor('hsl(240,0%,55%,0.2)')).toEqual(
-                parseCssColor('hsla( 240 ,.0% ,55.0% ,20% )'),
+                parseCssColor('hsla( 240 ,.0% ,55.0% ,20% )')
             );
             expect(parseCssColor('hsl(240,0%,55%,0.2)')).toEqual(
-                parseCssColor('hsl(240 0% 55% / 0.2)'),
+                parseCssColor('hsl(240 0% 55% / 0.2)')
             );
             expect(parseCssColor('hsl(240,0%,55%,0.2)')).toEqual(
-                parseCssColor('hsl(240 0% 55% / 20%)'),
+                parseCssColor('hsl(240 0% 55% / 20%)')
             );
             expect(parseCssColor('hsl(240,0%,55%,0.2)')).toEqual(
-                parseCssColor('hsl(24e1deg 0e1% 55% / 2e-1)'),
+                parseCssColor('hsl(24e1deg 0e1% 55% / 2e-1)')
             );
             expect(parseCssColor('hsl(240,0%,55%,0.2)')).toEqual(
-                parseCssColor('hsla(240 -1e-7% 55% / 2e1%)'),
+                parseCssColor('hsla(240 -1e-7% 55% / 2e1%)')
             );
 
             expect(parseCssColor('hsl(240,0%,55%,0.9)')).toEqual([240, 0, 55, 0.9]);

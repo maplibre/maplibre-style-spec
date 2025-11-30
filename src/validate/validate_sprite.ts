@@ -29,8 +29,8 @@ export function validateSprite(options: ValidateSpriteOptions) {
                     new ValidationError(
                         key,
                         sprite,
-                        `all the sprites' ids must be unique, but ${sprite[i].id} is duplicated`,
-                    ),
+                        `all the sprites' ids must be unique, but ${sprite[i].id} is duplicated`
+                    )
                 );
             allSpriteIds.push(sprite[i].id);
 
@@ -39,8 +39,8 @@ export function validateSprite(options: ValidateSpriteOptions) {
                     new ValidationError(
                         key,
                         sprite,
-                        `all the sprites' URLs must be unique, but ${sprite[i].url} is duplicated`,
-                    ),
+                        `all the sprites' URLs must be unique, but ${sprite[i].url} is duplicated`
+                    )
                 );
             allSpriteURLs.push(sprite[i].url);
 
@@ -61,7 +61,7 @@ export function validateSprite(options: ValidateSpriteOptions) {
                     value: sprite[i],
                     valueSpec: pairSpec,
                     validateSpec: options.validateSpec,
-                }),
+                })
             );
         }
 

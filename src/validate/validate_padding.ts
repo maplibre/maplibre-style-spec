@@ -13,7 +13,7 @@ export function validatePadding(options) {
                 new ValidationError(
                     key,
                     value,
-                    `padding requires 1 to 4 values; ${value.length} values found`,
+                    `padding requires 1 to 4 values; ${value.length} values found`
                 ),
             ];
         }
@@ -30,7 +30,7 @@ export function validatePadding(options) {
                     value: value[i],
                     validateSpec: options.validateSpec,
                     valueSpec: arrayElementSpec,
-                }),
+                })
             );
         }
         return errors;

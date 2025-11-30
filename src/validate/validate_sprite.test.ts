@@ -89,10 +89,10 @@ describe('Validate Sprite', () => {
         });
         expect(errors).toHaveLength(2);
         expect(errors[0].message).toBe(
-            "sprite: all the sprites' ids must be unique, but id1 is duplicated",
+            "sprite: all the sprites' ids must be unique, but id1 is duplicated"
         );
         expect(errors[1].message).toBe(
-            "sprite: all the sprites' URLs must be unique, but url1 is duplicated",
+            "sprite: all the sprites' URLs must be unique, but url1 is duplicated"
         );
     });
 

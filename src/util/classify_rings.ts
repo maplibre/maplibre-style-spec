@@ -11,7 +11,7 @@ export type RingWithArea<T extends Point2D> = T[] & {area?: number};
  */
 export function classifyRings<T extends Point2D>(
     rings: RingWithArea<T>[],
-    maxRings?: number,
+    maxRings?: number
 ): RingWithArea<T>[][] {
     const len = rings.length;
 

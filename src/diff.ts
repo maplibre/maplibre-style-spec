@@ -59,7 +59,7 @@ export type DiffCommand<T extends DiffOperations> = {
  */
 function addCommand<T extends DiffOperations>(
     commands: DiffCommand<DiffOperations>[],
-    command: DiffCommand<T>,
+    command: DiffCommand<T>
 ) {
     commands.push(command);
 }
@@ -67,7 +67,7 @@ function addCommand<T extends DiffOperations>(
 function addSource(
     sourceId: string,
     after: {[key: string]: SourceSpecification},
-    commands: DiffCommand<DiffOperations>[],
+    commands: DiffCommand<DiffOperations>[]
 ) {
     addCommand(commands, {command: 'addSource', args: [sourceId, after[sourceId]]});
 }
@@ -75,7 +75,7 @@ function addSource(
 function removeSource(
     sourceId: string,
     commands: DiffCommand<DiffOperations>[],
-    sourcesRemoved: {[key: string]: boolean},
+    sourcesRemoved: {[key: string]: boolean}
 ) {
     addCommand(commands, {command: 'removeSource', args: [sourceId]});
     sourcesRemoved[sourceId] = true;
@@ -85,7 +85,7 @@ function updateSource(
     sourceId: string,
     after: {[key: string]: SourceSpecification},
     commands: DiffCommand<DiffOperations>[],
-    sourcesRemoved: {[key: string]: boolean},
+    sourcesRemoved: {[key: string]: boolean}
 ) {
     removeSource(sourceId, commands, sourcesRemoved);
     addSource(sourceId, after, commands);
@@ -94,7 +94,7 @@ function updateSource(
 function canUpdateGeoJSON(
     before: {[key: string]: SourceSpecification},
     after: {[key: string]: SourceSpecification},
-    sourceId: string,
+    sourceId: string
 ) {
     let prop;
     for (prop in before[sourceId]) {
@@ -116,7 +116,7 @@ function diffSources(
     before: {[key: string]: SourceSpecification},
     after: {[key: string]: SourceSpecification},
     commands: DiffCommand<DiffOperations>[],
-    sourcesRemoved: {[key: string]: boolean},
+    sourcesRemoved: {[key: string]: boolean}
 ) {
     before = before || ({} as {[key: string]: SourceSpecification});
     after = after || ({} as {[key: string]: SourceSpecification});
@@ -160,7 +160,7 @@ function diffLayerPropertyChanges(
     commands: DiffCommand<DiffOperations>[],
     layerId: string,
     klass: string | null,
-    command: 'setPaintProperty' | 'setLayoutProperty',
+    command: 'setPaintProperty' | 'setLayoutProperty'
 ) {
     before = before || ({} as LayerSpecification['layout'] | LayerSpecification['paint']);
     after = after || ({} as LayerSpecification['layout'] | LayerSpecification['paint']);
@@ -194,7 +194,7 @@ function indexById(group: {[key: string]: LayerSpecification}, layer: LayerSpeci
 function diffLayers(
     before: LayerSpecification[],
     after: LayerSpecification[],
-    commands: DiffCommand<DiffOperations>[],
+    commands: DiffCommand<DiffOperations>[]
 ) {
     before = before || [];
     after = after || [];
@@ -288,7 +288,7 @@ function diffLayers(
             commands,
             layerId,
             null,
-            'setLayoutProperty',
+            'setLayoutProperty'
         );
         diffLayerPropertyChanges(
             beforeLayer.paint,
@@ -296,7 +296,7 @@ function diffLayers(
             commands,
             layerId,
             null,
-            'setPaintProperty',
+            'setPaintProperty'
         );
         if (!deepEqual(beforeLayer.filter, afterLayer.filter)) {
             addCommand(commands, {command: 'setFilter', args: [layerId, afterLayer.filter]});
@@ -330,7 +330,7 @@ function diffLayers(
                     commands,
                     layerId,
                     prop.slice(6),
-                    'setPaintProperty',
+                    'setPaintProperty'
                 );
             } else if (!deepEqual(beforeLayer[prop], afterLayer[prop])) {
                 addCommand(commands, {
@@ -361,7 +361,7 @@ function diffLayers(
                     commands,
                     layerId,
                     prop.slice(6),
-                    'setPaintProperty',
+                    'setPaintProperty'
                 );
             } else if (!deepEqual(beforeLayer[prop], afterLayer[prop])) {
                 addCommand(commands, {
@@ -393,7 +393,7 @@ function diffLayers(
  */
 export function diff(
     before: StyleSpecification,
-    after: StyleSpecification,
+    after: StyleSpecification
 ): DiffCommand<DiffOperations>[] {
     if (!before) return [{command: 'setStyle', args: [after]}];
 

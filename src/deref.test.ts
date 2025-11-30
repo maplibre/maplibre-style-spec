@@ -13,7 +13,7 @@ describe('deref', () => {
                     id: 'child',
                     ref: 'parent',
                 } as LayerWithRef,
-            ]),
+            ])
         ).toEqual([
             {
                 id: 'parent',
@@ -37,7 +37,7 @@ describe('deref', () => {
                     id: 'parent',
                     type: 'line',
                 } as LayerWithRef,
-            ]),
+            ])
         ).toEqual([
             {
                 id: 'child',

@@ -69,7 +69,7 @@ export class Interpolate implements Expression {
         operator: 'interpolate' | 'interpolate-hcl' | 'interpolate-lab',
         interpolation: InterpolationType,
         input: Expression,
-        stops: Stops,
+        stops: Stops
     ) {
         this.type = type;
         this.operator = operator;
@@ -88,7 +88,7 @@ export class Interpolate implements Expression {
         interpolation: InterpolationType,
         input: number,
         lower: number,
-        upper: number,
+        upper: number
     ) {
         let t = 0;
         if (interpolation.name === 'exponential') {
@@ -118,7 +118,7 @@ export class Interpolate implements Expression {
                 return context.error(
                     'Exponential interpolation requires a numeric base.',
                     1,
-                    1,
+                    1
                 ) as null;
             interpolation = {
                 name: 'exponential',
@@ -132,7 +132,7 @@ export class Interpolate implements Expression {
             ) {
                 return context.error(
                     'Cubic bezier interpolation requires four numeric arguments with values between 0 and 1.',
-                    1,
+                    1
                 ) as null;
             }
 
@@ -144,13 +144,13 @@ export class Interpolate implements Expression {
             return context.error(
                 `Unknown interpolation type ${String(interpolation[0])}`,
                 1,
-                0,
+                0
             ) as null;
         }
 
         if (args.length - 1 < 4) {
             return context.error(
-                `Expected at least 4 arguments, but found only ${args.length - 1}.`,
+                `Expected at least 4 arguments, but found only ${args.length - 1}.`
             ) as null;
         }
 
@@ -183,14 +183,14 @@ export class Interpolate implements Expression {
             if (typeof label !== 'number') {
                 return context.error(
                     'Input/output pairs for "interpolate" expressions must be defined using literal numeric values (not computed expressions) for the input values.',
-                    labelKey,
+                    labelKey
                 ) as null;
             }
 
             if (stops.length && stops[stops.length - 1][0] >= label) {
                 return context.error(
                     'Input/output pairs for "interpolate" expressions must be arranged with input values in strictly ascending order.',
-                    labelKey,
+                    labelKey
                 ) as null;
             }
             const parsed = context.parse(value, valueKey, outputType);
@@ -217,7 +217,7 @@ export class Interpolate implements Expression {
             operator as any,
             interpolation as InterpolationType,
             input as Expression,
-            stops,
+            stops
         );
     }
 
@@ -264,7 +264,7 @@ export class Interpolate implements Expression {
                         return VariableAnchorOffsetCollection.interpolate(
                             outputLower,
                             outputUpper,
-                            t,
+                            t
                         );
                     case 'array':
                         return interpolateArray(outputLower, outputUpper, t);

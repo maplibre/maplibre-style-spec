@@ -36,13 +36,13 @@ describe('filter', () => {
             ['collator', {'case-sensitive': true}],
         ]).filter;
         expect(caseSensitive({zoom: 0}, {properties: {x: 'a', y: 'b'}} as any as Feature)).toBe(
-            false,
+            false
         );
         expect(caseSensitive({zoom: 0}, {properties: {x: 'a', y: 'A'}} as any as Feature)).toBe(
-            false,
+            false
         );
         expect(caseSensitive({zoom: 0}, {properties: {x: 'a', y: 'a'}} as any as Feature)).toBe(
-            true,
+            true
         );
 
         const caseInsensitive = featureFilter([
@@ -52,13 +52,13 @@ describe('filter', () => {
             ['collator', {'case-sensitive': false}],
         ]).filter;
         expect(caseInsensitive({zoom: 0}, {properties: {x: 'a', y: 'b'}} as any as Feature)).toBe(
-            false,
+            false
         );
         expect(caseInsensitive({zoom: 0}, {properties: {x: 'a', y: 'A'}} as any as Feature)).toBe(
-            true,
+            true
         );
         expect(caseInsensitive({zoom: 0}, {properties: {x: 'a', y: 'a'}} as any as Feature)).toBe(
-            true,
+            true
         );
     });
 
@@ -133,7 +133,7 @@ describe('filter', () => {
                     [3, 3],
                 ],
             },
-            canonical,
+            canonical
         );
         expect(withinFilter.filter({zoom: 3}, featureInTile, canonical)).toBe(true);
         getGeometry(
@@ -145,7 +145,7 @@ describe('filter', () => {
                     [2, 2],
                 ],
             },
-            canonical,
+            canonical
         );
         expect(withinFilter.filter({zoom: 3}, featureInTile, canonical)).toBe(false);
         getGeometry(
@@ -157,7 +157,7 @@ describe('filter', () => {
                     [2, 2],
                 ],
             },
-            canonical,
+            canonical
         );
         expect(withinFilter.filter({zoom: 3}, featureInTile, canonical)).toBe(false);
     });
@@ -578,7 +578,7 @@ function legacyFilterTests(createFilterExpr) {
 
     test('!in, large_multiple', () => {
         const f = createFilterExpr(
-            ['!in', 'foo'].concat(Array.from({length: 2000}).map(Number.call, Number)),
+            ['!in', 'foo'].concat(Array.from({length: 2000}).map(Number.call, Number))
         ).filter;
         expect(f({zoom: 0}, {properties: {foo: 0}})).toBe(false);
         expect(f({zoom: 0}, {properties: {foo: 1}})).toBe(false);

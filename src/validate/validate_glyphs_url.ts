@@ -10,7 +10,7 @@ export function validateGlyphsUrl(options) {
 
     if (value.indexOf('{fontstack}') === -1) {
         errors.push(
-            new ValidationError(key, value, '"glyphs" url must include a "{fontstack}" token'),
+            new ValidationError(key, value, '"glyphs" url must include a "{fontstack}" token')
         );
     }
 

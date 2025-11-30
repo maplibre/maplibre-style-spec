@@ -1,6 +1,6 @@
 type HasOwnPropertyFn = <TObject extends object>(
     obj: TObject,
-    key: PropertyKey,
+    key: PropertyKey
 ) => key is keyof TObject;
 
 // polyfill for Object.hasOwn

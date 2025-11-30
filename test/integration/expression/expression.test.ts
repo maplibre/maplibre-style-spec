@@ -116,13 +116,13 @@ describe('expression', () => {
             const compileOk = deepEqual(
                 result.compiled,
                 expected.compiled,
-                DECIMAL_SIGNIFICANT_FIGURES,
+                DECIMAL_SIGNIFICANT_FIGURES
             );
             try {
                 expect(compileOk).toBeTruthy();
             } catch {
                 throw new Error(
-                    `Compilation Failed:\nExpected ${JSON.stringify(expected.compiled)}\nResult   ${JSON.stringify(result.compiled)}`,
+                    `Compilation Failed:\nExpected ${JSON.stringify(expected.compiled)}\nResult   ${JSON.stringify(result.compiled)}`
                 );
             }
 
@@ -134,7 +134,7 @@ describe('expression', () => {
                 expect(evalOk).toBeTruthy();
             } catch {
                 throw new Error(
-                    `Evaluation Failed:\nExpected ${JSON.stringify(expectedOutputs)}\nResult   ${JSON.stringify(resultOutputs)}`,
+                    `Evaluation Failed:\nExpected ${JSON.stringify(expectedOutputs)}\nResult   ${JSON.stringify(resultOutputs)}`
                 );
             }
         });
@@ -157,13 +157,13 @@ function getCompletePropertySpec(propertySpec: ExpressionFixture['propertySpec']
 
 function evaluateFixture(
     fixture: ExpressionFixture,
-    spec: StylePropertySpecification,
+    spec: StylePropertySpecification
 ): FixtureResult {
     const expression = isFunction(fixture.expression)
         ? createPropertyExpression(
               convertFunction(fixture.expression, spec),
               spec,
-              fixture.globalState,
+              fixture.globalState
           )
         : createPropertyExpression(fixture.expression, spec, fixture.globalState);
 
@@ -182,7 +182,7 @@ function evaluateFixture(
 }
 
 function getCompilationErrorResult(
-    parsingErrors: ExpressionParsingError[],
+    parsingErrors: ExpressionParsingError[]
 ): CompilationErrorResult {
     return {
         result: 'error',
@@ -194,7 +194,7 @@ function getCompilationErrorResult(
 }
 
 function getCompilationSuccessResult(
-    expression: StylePropertyExpression,
+    expression: StylePropertyExpression
 ): CompilationSuccessResult {
     const kind = expression.kind;
     const type = getStylePropertyExpressionType(expression);
@@ -208,7 +208,7 @@ function getCompilationSuccessResult(
 
 function evaluateExpression(
     inputs: FixtureInput[],
-    expression: StylePropertyExpression,
+    expression: StylePropertyExpression
 ): EvaluationOutput[] {
     const type = getStylePropertyExpressionType(expression);
     const outputs: EvaluationOutput[] = [];
@@ -240,7 +240,7 @@ function evaluateExpression(
                 feature as Feature,
                 featureState ?? {},
                 canonical as ICanonicalTileID,
-                availableImages ?? [],
+                availableImages ?? []
             );
             if (type.kind === 'color') {
                 value = [value.r, value.g, value.b, value.a];

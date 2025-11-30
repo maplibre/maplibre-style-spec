@@ -34,7 +34,7 @@ export function validateExpression(options: any): Array<ValidationError> {
             new ValidationError(
                 options.key,
                 options.value,
-                `Invalid data expression for "${options.propertyKey}". Output values must be contained as literals within the expression.`,
+                `Invalid data expression for "${options.propertyKey}". Output values must be contained as literals within the expression.`
             ),
         ];
     }
@@ -48,7 +48,7 @@ export function validateExpression(options: any): Array<ValidationError> {
             new ValidationError(
                 options.key,
                 options.value,
-                '"feature-state" data expressions are not supported with layout properties.',
+                '"feature-state" data expressions are not supported with layout properties.'
             ),
         ];
     }
@@ -58,7 +58,7 @@ export function validateExpression(options: any): Array<ValidationError> {
             new ValidationError(
                 options.key,
                 options.value,
-                '"feature-state" data expressions are not supported with filters.',
+                '"feature-state" data expressions are not supported with filters.'
             ),
         ];
     }
@@ -69,7 +69,7 @@ export function validateExpression(options: any): Array<ValidationError> {
                 new ValidationError(
                     options.key,
                     options.value,
-                    '"zoom" and "feature-state" expressions are not supported with cluster properties.',
+                    '"zoom" and "feature-state" expressions are not supported with cluster properties.'
                 ),
             ];
         }
@@ -78,7 +78,7 @@ export function validateExpression(options: any): Array<ValidationError> {
                 new ValidationError(
                     options.key,
                     options.value,
-                    'Feature data expressions are not supported with initial expression part of cluster properties.',
+                    'Feature data expressions are not supported with initial expression part of cluster properties.'
                 ),
             ];
         }

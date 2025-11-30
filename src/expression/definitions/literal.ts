@@ -17,7 +17,7 @@ export class Literal implements Expression {
     static parse(args: ReadonlyArray<unknown>, context: ParsingContext): Expression {
         if (args.length !== 2)
             return context.error(
-                `'literal' expression requires exactly one argument, but found ${args.length - 1} instead.`,
+                `'literal' expression requires exactly one argument, but found ${args.length - 1} instead.`
             ) as null;
 
         if (!isValue(args[1])) return context.error('invalid value') as null;

@@ -12,7 +12,7 @@ export function validateFilter(options) {
             extend({}, options, {
                 expressionContext: 'filter',
                 valueSpec: {value: 'boolean'},
-            }),
+            })
         );
     } else {
         return validateNonExpressionFilter(options);
@@ -43,7 +43,7 @@ function validateNonExpressionFilter(options) {
             valueSpec: styleSpec.filter_operator,
             style: options.style,
             styleSpec: options.styleSpec,
-        }),
+        })
     );
 
     switch (unbundle(value[0])) {
@@ -56,8 +56,8 @@ function validateNonExpressionFilter(options) {
                     new ValidationError(
                         key,
                         value,
-                        `"$type" cannot be use with operator "${value[0]}"`,
-                    ),
+                        `"$type" cannot be use with operator "${value[0]}"`
+                    )
                 );
             }
         /* falls through */
@@ -68,8 +68,8 @@ function validateNonExpressionFilter(options) {
                     new ValidationError(
                         key,
                         value,
-                        `filter array for operator "${value[0]}" must have 3 elements`,
-                    ),
+                        `filter array for operator "${value[0]}" must have 3 elements`
+                    )
                 );
             }
         /* falls through */
@@ -79,11 +79,7 @@ function validateNonExpressionFilter(options) {
                 type = getType(value[1]);
                 if (type !== 'string') {
                     errors.push(
-                        new ValidationError(
-                            `${key}[1]`,
-                            value[1],
-                            `string expected, ${type} found`,
-                        ),
+                        new ValidationError(`${key}[1]`, value[1], `string expected, ${type} found`)
                     );
                 }
             }
@@ -97,15 +93,15 @@ function validateNonExpressionFilter(options) {
                             valueSpec: styleSpec.geometry_type,
                             style: options.style,
                             styleSpec: options.styleSpec,
-                        }),
+                        })
                     );
                 } else if (type !== 'string' && type !== 'number' && type !== 'boolean') {
                     errors.push(
                         new ValidationError(
                             `${key}[${i}]`,
                             value[i],
-                            `string, number, or boolean expected, ${type} found`,
-                        ),
+                            `string, number, or boolean expected, ${type} found`
+                        )
                     );
                 }
             }
@@ -121,7 +117,7 @@ function validateNonExpressionFilter(options) {
                         value: value[i],
                         style: options.style,
                         styleSpec: options.styleSpec,
-                    }),
+                    })
                 );
             }
             break;
@@ -134,12 +130,12 @@ function validateNonExpressionFilter(options) {
                     new ValidationError(
                         key,
                         value,
-                        `filter array for "${value[0]}" operator must have 2 elements`,
-                    ),
+                        `filter array for "${value[0]}" operator must have 2 elements`
+                    )
                 );
             } else if (type !== 'string') {
                 errors.push(
-                    new ValidationError(`${key}[1]`, value[1], `string expected, ${type} found`),
+                    new ValidationError(`${key}[1]`, value[1], `string expected, ${type} found`)
                 );
             }
             break;

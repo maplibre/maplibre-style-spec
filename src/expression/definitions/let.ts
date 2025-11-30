@@ -28,7 +28,7 @@ export class Let implements Expression {
     static parse(args: ReadonlyArray<unknown>, context: ParsingContext): Expression {
         if (args.length < 4)
             return context.error(
-                `Expected at least 3 arguments, but found ${args.length - 1} instead.`,
+                `Expected at least 3 arguments, but found ${args.length - 1} instead.`
             ) as null;
 
         const bindings: Array<[string, Expression]> = [];
@@ -38,14 +38,14 @@ export class Let implements Expression {
             if (typeof name !== 'string') {
                 return context.error(
                     `Expected string, but found ${typeof name} instead.`,
-                    i,
+                    i
                 ) as null;
             }
 
             if (/[^a-zA-Z0-9_]/.test(name)) {
                 return context.error(
                     "Variable names must contain only alphanumeric characters or '_'.",
-                    i,
+                    i
                 ) as null;
             }
 
@@ -59,7 +59,7 @@ export class Let implements Expression {
             args[args.length - 1],
             args.length - 1,
             context.expectedType,
-            bindings,
+            bindings
         );
         if (!result) return null;
 

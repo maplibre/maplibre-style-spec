@@ -111,7 +111,7 @@ function makeComparison(op: ComparisonOperator, compareBasic, compareWithCollato
                 return context
                     .concat(1)
                     .error(
-                        `"${op}" comparisons are not supported for type '${typeToString(lhs.type)}'.`,
+                        `"${op}" comparisons are not supported for type '${typeToString(lhs.type)}'.`
                     ) as null;
             }
             let rhs = context.parse(args[2], 2, ValueType);
@@ -120,7 +120,7 @@ function makeComparison(op: ComparisonOperator, compareBasic, compareWithCollato
                 return context
                     .concat(2)
                     .error(
-                        `"${op}" comparisons are not supported for type '${typeToString(rhs.type)}'.`,
+                        `"${op}" comparisons are not supported for type '${typeToString(rhs.type)}'.`
                     ) as null;
             }
 
@@ -130,7 +130,7 @@ function makeComparison(op: ComparisonOperator, compareBasic, compareWithCollato
                 rhs.type.kind !== 'value'
             ) {
                 return context.error(
-                    `Cannot compare types '${typeToString(lhs.type)}' and '${typeToString(rhs.type)}'.`,
+                    `Cannot compare types '${typeToString(lhs.type)}' and '${typeToString(rhs.type)}'.`
                 ) as null;
             }
 
@@ -154,7 +154,7 @@ function makeComparison(op: ComparisonOperator, compareBasic, compareWithCollato
                     rhs.type.kind !== 'value'
                 ) {
                     return context.error(
-                        'Cannot use collator to compare non-string types.',
+                        'Cannot use collator to compare non-string types.'
                     ) as null;
                 }
                 collator = context.parse(args[3], 3, CollatorType);
@@ -174,7 +174,7 @@ function makeComparison(op: ComparisonOperator, compareBasic, compareWithCollato
                 // check that type is string or number, and equal
                 if (lt.kind !== rt.kind || !(lt.kind === 'string' || lt.kind === 'number')) {
                     throw new RuntimeError(
-                        `Expected arguments for "${op}" to be (string, string) or (number, number), but found (${lt.kind}, ${rt.kind}) instead.`,
+                        `Expected arguments for "${op}" to be (string, string) or (number, number), but found (${lt.kind}, ${rt.kind}) instead.`
                     );
                 }
             }

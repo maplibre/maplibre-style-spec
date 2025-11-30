@@ -84,14 +84,14 @@ export class Coercion implements Expression {
                                 (input[0] as any) / 255,
                                 (input[1] as any) / 255,
                                 (input[2] as any) / 255,
-                                input[3] as any,
+                                input[3] as any
                             );
                         }
                     }
                 }
                 throw new RuntimeError(
                     error ||
-                        `Could not parse color from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`,
+                        `Could not parse color from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`
                 );
             }
             case 'padding': {
@@ -105,7 +105,7 @@ export class Coercion implements Expression {
                     }
                 }
                 throw new RuntimeError(
-                    `Could not parse padding from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`,
+                    `Could not parse padding from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`
                 );
             }
             case 'numberArray': {
@@ -119,7 +119,7 @@ export class Coercion implements Expression {
                     }
                 }
                 throw new RuntimeError(
-                    `Could not parse numberArray from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`,
+                    `Could not parse numberArray from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`
                 );
             }
             case 'colorArray': {
@@ -133,7 +133,7 @@ export class Coercion implements Expression {
                     }
                 }
                 throw new RuntimeError(
-                    `Could not parse colorArray from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`,
+                    `Could not parse colorArray from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`
                 );
             }
             case 'variableAnchorOffsetCollection': {
@@ -147,7 +147,7 @@ export class Coercion implements Expression {
                     }
                 }
                 throw new RuntimeError(
-                    `Could not parse variableAnchorOffsetCollection from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`,
+                    `Could not parse variableAnchorOffsetCollection from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`
                 );
             }
             case 'number': {

@@ -37,7 +37,7 @@ export function validateFontFaces(options: ValidateFontFacesOptions): Validation
                 ...validateString({
                     key: `${key}.${fontName}`,
                     value: fontValue,
-                }),
+                })
             );
         } else if (fontValueType === 'array') {
             // Validate as an array of font face objects
@@ -61,7 +61,7 @@ export function validateFontFaces(options: ValidateFontFacesOptions): Validation
                         styleSpec,
                         style,
                         validateSpec,
-                    }),
+                    })
                 );
             }
         } else {
@@ -69,8 +69,8 @@ export function validateFontFaces(options: ValidateFontFacesOptions): Validation
                 new ValidationError(
                     `${key}.${fontName}`,
                     fontValue,
-                    `string or array expected, ${fontValueType} found`,
-                ),
+                    `string or array expected, ${fontValueType} found`
+                )
             );
         }
     }

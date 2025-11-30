@@ -33,7 +33,7 @@ export function validateObject(options): Array<ValidationError> {
             validateElement = validateSpec;
         } else {
             errors.push(
-                new ValidationError(key, object[objectKey], `unknown property "${objectKey}"`),
+                new ValidationError(key, object[objectKey], `unknown property "${objectKey}"`)
             );
             continue;
         }
@@ -50,8 +50,8 @@ export function validateObject(options): Array<ValidationError> {
                     objectKey,
                     validateSpec,
                 },
-                object,
-            ),
+                object
+            )
         );
     }
 
@@ -67,7 +67,7 @@ export function validateObject(options): Array<ValidationError> {
             object[elementSpecKey] === undefined
         ) {
             errors.push(
-                new ValidationError(key, object, `missing required property "${elementSpecKey}"`),
+                new ValidationError(key, object, `missing required property "${elementSpecKey}"`)
             );
         }
     }

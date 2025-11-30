@@ -30,7 +30,7 @@ export class In implements Expression {
     static parse(args: ReadonlyArray<unknown>, context: ParsingContext): Expression {
         if (args.length !== 3) {
             return context.error(
-                `Expected 2 arguments, but found ${args.length - 1} instead.`,
+                `Expected 2 arguments, but found ${args.length - 1} instead.`
             ) as null;
         }
 
@@ -42,7 +42,7 @@ export class In implements Expression {
 
         if (!isValidType(needle.type, [BooleanType, StringType, NumberType, NullType, ValueType])) {
             return context.error(
-                `Expected first argument to be of type boolean, string, number or null, but found ${typeToString(needle.type)} instead`,
+                `Expected first argument to be of type boolean, string, number or null, but found ${typeToString(needle.type)} instead`
             ) as null;
         }
 
@@ -57,13 +57,13 @@ export class In implements Expression {
 
         if (!isValidNativeType(needle, ['boolean', 'string', 'number', 'null'])) {
             throw new RuntimeError(
-                `Expected first argument to be of type boolean, string, number or null, but found ${typeToString(typeOf(needle))} instead.`,
+                `Expected first argument to be of type boolean, string, number or null, but found ${typeToString(typeOf(needle))} instead.`
             );
         }
 
         if (!isValidNativeType(haystack, ['string', 'array'])) {
             throw new RuntimeError(
-                `Expected second argument to be of type array or string, but found ${typeToString(typeOf(haystack))} instead.`,
+                `Expected second argument to be of type array or string, but found ${typeToString(typeOf(haystack))} instead.`
             );
         }
 

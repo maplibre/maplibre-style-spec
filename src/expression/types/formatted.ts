@@ -18,7 +18,7 @@ export class FormattedSection {
         scale: number | null,
         fontStack: string | null,
         textColor: Color | null,
-        verticalAlign: VerticalAlign | null,
+        verticalAlign: VerticalAlign | null
     ) {
         this.text = text;
         this.image = image;
@@ -44,7 +44,7 @@ export class Formatted {
         if (this.sections.length === 0) return true;
         return !this.sections.some(
             (section) =>
-                section.text.length !== 0 || (section.image && section.image.name.length !== 0),
+                section.text.length !== 0 || (section.image && section.image.name.length !== 0)
         );
     }
 

@@ -18,7 +18,7 @@ describe('migrate colors', () => {
                 'hsla(900,0.85,0.05,0)',
                 10,
                 'hsla(900, .20, .0155, 1)',
-            ]),
+            ])
         ).toEqual([
             'interpolate',
             ['linear'],

@@ -46,7 +46,7 @@ export class Assertion implements Expression {
                 if (typeof type !== 'string' || !(type in types) || type === 'object')
                     return context.error(
                         'The item type argument of "array" must be one of string, number, boolean',
-                        1,
+                        1
                     ) as null;
                 itemType = types[type];
                 i++;
@@ -62,7 +62,7 @@ export class Assertion implements Expression {
                 ) {
                     return context.error(
                         'The length argument to "array" must be a positive integer literal',
-                        2,
+                        2
                     ) as null;
                 }
                 N = args[2];
@@ -93,7 +93,7 @@ export class Assertion implements Expression {
                 return value;
             } else if (i === this.args.length - 1) {
                 throw new RuntimeError(
-                    `Expected value to be of type ${typeToString(this.type)}, but found ${typeToString(typeOf(value))} instead.`,
+                    `Expected value to be of type ${typeToString(this.type)}, but found ${typeToString(typeOf(value))} instead.`
                 );
             }
         }

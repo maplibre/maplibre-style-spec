@@ -3,7 +3,7 @@ import type {LayerSpecification, StyleSpecification} from '../types.g';
 
 function eachLayout(
     layer: LayerSpecification,
-    callback: (_: LayerSpecification['layout'], __: string) => void,
+    callback: (_: LayerSpecification['layout'], __: string) => void
 ) {
     for (const k in layer) {
         if (k.indexOf('layout') === 0) {
@@ -14,7 +14,7 @@ function eachLayout(
 
 function eachPaint(
     layer: LayerSpecification,
-    callback: (_: LayerSpecification['paint'], __: string) => void,
+    callback: (_: LayerSpecification['paint'], __: string) => void
 ) {
     for (const k in layer) {
         if (k.indexOf('paint') === 0) {

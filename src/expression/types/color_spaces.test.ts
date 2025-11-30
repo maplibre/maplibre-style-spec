@@ -58,12 +58,12 @@ describe('color spaces', () => {
             expectCloseToArray(
                 hslToRgb([240, 25, 50, 0.1]),
                 [96 / 255, 96 / 255, 159 / 255, 0.1],
-                2,
+                2
             );
             expectCloseToArray(
                 hslToRgb([240, 50, 50, 0.8]),
                 [64 / 255, 64 / 255, 191 / 255, 0.8],
-                2,
+                2
             );
             expectCloseToArray(hslToRgb([270, 75, 75, 1]), [191 / 255, 143 / 255, 239 / 255, 1], 2);
             expectCloseToArray(hslToRgb([300, 100, 50, 0.5]), [1, 0, 1, 0.5]);

@@ -2,5 +2,6 @@
   "$schema": "./node_modules/oxfmt/configuration_schema.json",
   "tabWidth": 4,
   "singleQuote": true,
-  "bracketSpacing": false
+  "bracketSpacing": false,
+  "trailingComma": "es5"
 }

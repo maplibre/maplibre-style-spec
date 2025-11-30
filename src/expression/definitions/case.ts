@@ -22,7 +22,7 @@ export class Case implements Expression {
     static parse(args: ReadonlyArray<unknown>, context: ParsingContext): Expression {
         if (args.length < 4)
             return context.error(
-                `Expected at least 3 arguments, but found only ${args.length - 1}.`,
+                `Expected at least 3 arguments, but found only ${args.length - 1}.`
             ) as null;
         if (args.length % 2 !== 0)
             return context.error('Expected an odd number of arguments.') as null;

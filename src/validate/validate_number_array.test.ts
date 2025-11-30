@@ -88,7 +88,7 @@ describe('Validate NumberArray', () => {
         let errors = validateNumberArray({validateSpec: validate, key: 'numberArray', value: []});
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe(
-            'numberArray: array length at least 1 expected, length 0 found',
+            'numberArray: array length at least 1 expected, length 0 found'
         );
         errors = validateNumberArray({validateSpec: validate, key: 'numberArray', value: [1]});
         expect(errors).toHaveLength(0);

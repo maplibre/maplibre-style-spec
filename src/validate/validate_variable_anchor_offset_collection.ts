@@ -14,7 +14,7 @@ export function validateVariableAnchorOffsetCollection(options): ValidationError
             new ValidationError(
                 key,
                 value,
-                'variableAnchorOffsetCollection requires a non-empty array of even length',
+                'variableAnchorOffsetCollection requires a non-empty array of even length'
             ),
         ];
     }
@@ -28,7 +28,7 @@ export function validateVariableAnchorOffsetCollection(options): ValidationError
                 key: `${key}[${i}]`,
                 value: value[i],
                 valueSpec: styleSpec['layout_symbol']['text-anchor'],
-            }),
+            })
         );
 
         // Elements in odd positions should be points (2-element numeric arrays)
@@ -43,7 +43,7 @@ export function validateVariableAnchorOffsetCollection(options): ValidationError
                 validateSpec: options.validateSpec,
                 style: options.style,
                 styleSpec,
-            }),
+            })
         );
     }
 

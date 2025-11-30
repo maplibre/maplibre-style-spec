@@ -82,7 +82,7 @@ export class FormatExpression implements Expression {
                         !VERTICAL_ALIGN_OPTIONS.includes(arg['vertical-align'] as VerticalAlign)
                     ) {
                         return context.error(
-                            `'vertical-align' must be one of: 'bottom', 'center', 'top' but found '${arg['vertical-align']}' instead.`,
+                            `'vertical-align' must be one of: 'bottom', 'center', 'top' but found '${arg['vertical-align']}' instead.`
                         ) as null;
                     }
 
@@ -107,7 +107,7 @@ export class FormatExpression implements Expression {
                     kind !== 'resolvedImage'
                 )
                     return context.error(
-                        "Formatted text type must be 'string', 'value', 'image' or 'null'.",
+                        "Formatted text type must be 'string', 'value', 'image' or 'null'."
                     ) as null;
 
                 nextTokenMayBeObject = true;
@@ -134,7 +134,7 @@ export class FormatExpression implements Expression {
                     null,
                     null,
                     null,
-                    section.verticalAlign ? section.verticalAlign.evaluate(ctx) : null,
+                    section.verticalAlign ? section.verticalAlign.evaluate(ctx) : null
                 );
             }
 
@@ -144,7 +144,7 @@ export class FormatExpression implements Expression {
                 section.scale ? section.scale.evaluate(ctx) : null,
                 section.font ? section.font.evaluate(ctx).join(',') : null,
                 section.textColor ? section.textColor.evaluate(ctx) : null,
-                section.verticalAlign ? section.verticalAlign.evaluate(ctx) : null,
+                section.verticalAlign ? section.verticalAlign.evaluate(ctx) : null
             );
         };
 

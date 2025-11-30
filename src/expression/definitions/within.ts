@@ -23,7 +23,7 @@ type GeoJSONPolygons = GeoJSON.Polygon | GeoJSON.MultiPolygon;
 function getTilePolygon(
     coordinates: GeoJSON.Position[][],
     bbox: BBox,
-    canonical: ICanonicalTileID,
+    canonical: ICanonicalTileID
 ) {
     const polygon = [];
     for (let i = 0; i < coordinates.length; i++) {
@@ -41,7 +41,7 @@ function getTilePolygon(
 function getTilePolygons(
     coordinates: GeoJSON.Position[][][],
     bbox: BBox,
-    canonical: ICanonicalTileID,
+    canonical: ICanonicalTileID
 ) {
     const polygons = [];
     for (let i = 0; i < coordinates.length; i++) {
@@ -82,7 +82,7 @@ function getTilePoints(
     geometry: Point2D[][],
     pointBBox: BBox,
     polyBBox: BBox,
-    canonical: ICanonicalTileID,
+    canonical: ICanonicalTileID
 ): [number, number][] {
     const worldSize = Math.pow(2, canonical.z) * EXTENT;
     const shifts = [canonical.x * EXTENT, canonical.y * EXTENT];
@@ -101,7 +101,7 @@ function getTileLines(
     geometry: Point2D[][],
     lineBBox: BBox,
     polyBBox: BBox,
-    canonical: ICanonicalTileID,
+    canonical: ICanonicalTileID
 ): [number, number][][] {
     const worldSize = Math.pow(2, canonical.z) * EXTENT;
     const shifts = [canonical.x * EXTENT, canonical.y * EXTENT];
@@ -195,7 +195,7 @@ export class Within implements Expression {
     static parse(args: ReadonlyArray<unknown>, context: ParsingContext): Expression {
         if (args.length !== 2)
             return context.error(
-                `'within' expression requires exactly one argument, but found ${args.length - 1} instead.`,
+                `'within' expression requires exactly one argument, but found ${args.length - 1} instead.`
             ) as null;
         if (isValue(args[1])) {
             const geojson = args[1] as any;
@@ -227,7 +227,7 @@ export class Within implements Expression {
             }
         }
         return context.error(
-            "'within' expression requires valid geojson object that contains polygon geometry type.",
+            "'within' expression requires valid geojson object that contains polygon geometry type."
         ) as null;
     }
 

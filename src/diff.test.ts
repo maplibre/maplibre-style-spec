@@ -11,8 +11,8 @@ describe('diff', () => {
                 } as StyleSpecification,
                 {
                     layers: [{id: 'a'}],
-                } as StyleSpecification,
-            ),
+                } as StyleSpecification
+            )
         ).toEqual([]);
     });
 
@@ -26,8 +26,8 @@ describe('diff', () => {
                 {
                     version: 8,
                     layers: [{id: 'a'}],
-                } as StyleSpecification,
-            ),
+                } as StyleSpecification
+            )
         ).toEqual([{command: 'setStyle', args: [{version: 8, layers: [{id: 'a'}]}]}]);
     });
 
@@ -39,8 +39,8 @@ describe('diff', () => {
                 } as StyleSpecification,
                 {
                     layers: [{id: 'a'}, {id: 'b'}],
-                } as StyleSpecification,
-            ),
+                } as StyleSpecification
+            )
         ).toEqual([{command: 'addLayer', args: [{id: 'b'}, undefined]}]);
     });
 
@@ -52,8 +52,8 @@ describe('diff', () => {
                 } as StyleSpecification,
                 {
                     layers: [{id: 'a'}, {id: 'b'}],
-                } as StyleSpecification,
-            ),
+                } as StyleSpecification
+            )
         ).toEqual([{command: 'addLayer', args: [{id: 'a'}, 'b']}]);
     });
 
@@ -65,8 +65,8 @@ describe('diff', () => {
                 } as StyleSpecification,
                 {
                     layers: [{id: 'a'}],
-                } as StyleSpecification,
-            ),
+                } as StyleSpecification
+            )
         ).toEqual([{command: 'removeLayer', args: ['b']}]);
     });
 
@@ -78,8 +78,8 @@ describe('diff', () => {
                 } as StyleSpecification,
                 {
                     layers: [{id: 'b'}, {id: 'a'}],
-                } as StyleSpecification,
-            ),
+                } as StyleSpecification
+            )
         ).toEqual([
             {command: 'removeLayer', args: ['a']},
             {command: 'addLayer', args: [{id: 'a'}, undefined]},
@@ -94,8 +94,8 @@ describe('diff', () => {
                 } as any as StyleSpecification,
                 {
                     layers: [{id: 'a', paint: {foo: 2}}],
-                } as any as StyleSpecification,
-            ),
+                } as any as StyleSpecification
+            )
         ).toEqual([{command: 'setPaintProperty', args: ['a', 'foo', 2, null]}]);
     });
 
@@ -107,8 +107,8 @@ describe('diff', () => {
                 } as any as StyleSpecification,
                 {
                     layers: [{id: 'a', 'paint.light': {foo: 2}}],
-                } as any as StyleSpecification,
-            ),
+                } as any as StyleSpecification
+            )
         ).toEqual([{command: 'setPaintProperty', args: ['a', 'foo', 2, 'light']}]);
     });
 
@@ -120,8 +120,8 @@ describe('diff', () => {
                 } as any as StyleSpecification,
                 {
                     layers: [{id: 'a', paint: {foo: {ramp: [1]}}}],
-                } as any as StyleSpecification,
-            ),
+                } as any as StyleSpecification
+            )
         ).toEqual([{command: 'setPaintProperty', args: ['a', 'foo', {ramp: [1]}, null]}]);
     });
 
@@ -133,8 +133,8 @@ describe('diff', () => {
                 } as any as StyleSpecification,
                 {
                     layers: [{id: 'a', layout: {foo: 2}}],
-                } as any as StyleSpecification,
-            ),
+                } as any as StyleSpecification
+            )
         ).toEqual([{command: 'setLayoutProperty', args: ['a', 'foo', 2, null]}]);
     });
 
@@ -146,8 +146,8 @@ describe('diff', () => {
                 } as StyleSpecification,
                 {
                     layers: [{id: 'a', filter: ['==', 'foo', 'baz']}],
-                } as StyleSpecification,
-            ),
+                } as StyleSpecification
+            )
         ).toEqual([{command: 'setFilter', args: ['a', ['==', 'foo', 'baz']]}]);
     });
 
@@ -159,8 +159,8 @@ describe('diff', () => {
                 } as any as StyleSpecification,
                 {
                     sources: {},
-                } as StyleSpecification,
-            ),
+                } as StyleSpecification
+            )
         ).toEqual([{command: 'removeSource', args: ['foo']}]);
     });
 
@@ -172,8 +172,8 @@ describe('diff', () => {
                 } as StyleSpecification,
                 {
                     sources: {foo: 1},
-                } as any as StyleSpecification,
-            ),
+                } as any as StyleSpecification
+            )
         ).toEqual([{command: 'addSource', args: ['foo', 1]}]);
     });
 
@@ -203,8 +203,8 @@ describe('diff', () => {
                             },
                         },
                     },
-                } as any as StyleSpecification,
-            ),
+                } as any as StyleSpecification
+            )
         ).toEqual([
             {
                 command: 'setGeoJSONSourceData',
@@ -243,8 +243,8 @@ describe('diff', () => {
                             cluster: true,
                         },
                     },
-                } as any as StyleSpecification,
-            ),
+                } as any as StyleSpecification
+            )
         ).toEqual([
             {command: 'removeSource', args: ['foo']},
             {
@@ -282,8 +282,8 @@ describe('diff', () => {
                             clusterRadius: 100,
                         },
                     },
-                } as any as StyleSpecification,
-            ),
+                } as any as StyleSpecification
+            )
         ).toEqual([
             {command: 'removeSource', args: ['foo']},
             {
@@ -322,8 +322,8 @@ describe('diff', () => {
                             cluster: true,
                         },
                     },
-                } as any as StyleSpecification,
-            ),
+                } as any as StyleSpecification
+            )
         ).toEqual([
             {command: 'removeSource', args: ['foo']},
             {
@@ -346,8 +346,8 @@ describe('diff', () => {
                 {} as StyleSpecification,
                 {
                     metadata: {'maplibre:author': 'nobody'},
-                } as StyleSpecification,
-            ),
+                } as StyleSpecification
+            )
         ).toEqual([]);
     });
 
@@ -359,8 +359,8 @@ describe('diff', () => {
                 } as StyleSpecification,
                 {
                     layers: [{id: 'a', metadata: {'maplibre:group': 'Another Name'}}],
-                } as StyleSpecification,
-            ),
+                } as StyleSpecification
+            )
         ).toEqual([]);
     });
 
@@ -372,8 +372,8 @@ describe('diff', () => {
                 } as any as StyleSpecification,
                 {
                     state: {foo: 2},
-                } as any as StyleSpecification,
-            ),
+                } as any as StyleSpecification
+            )
         ).toEqual([{command: 'setGlobalState', args: [{foo: 2}]}]);
     });
 
@@ -385,8 +385,8 @@ describe('diff', () => {
                 } as StyleSpecification,
                 {
                     center: [1, 1],
-                } as StyleSpecification,
-            ),
+                } as StyleSpecification
+            )
         ).toEqual([{command: 'setCenter', args: [[1, 1]]}]);
     });
 
@@ -396,8 +396,8 @@ describe('diff', () => {
                 {
                     centerAltitude: 1,
                 } as StyleSpecification,
-                {} as StyleSpecification,
-            ),
+                {} as StyleSpecification
+            )
         ).toEqual([{command: 'setCenterAltitude', args: [undefined]}]);
     });
 
@@ -409,8 +409,8 @@ describe('diff', () => {
                 } as StyleSpecification,
                 {
                     centerAltitude: 1,
-                } as StyleSpecification,
-            ),
+                } as StyleSpecification
+            )
         ).toEqual([{command: 'setCenterAltitude', args: [1]}]);
     });
 
@@ -422,8 +422,8 @@ describe('diff', () => {
                 } as StyleSpecification,
                 {
                     zoom: 15,
-                } as StyleSpecification,
-            ),
+                } as StyleSpecification
+            )
         ).toEqual([{command: 'setZoom', args: [15]}]);
     });
 
@@ -435,8 +435,8 @@ describe('diff', () => {
                 } as StyleSpecification,
                 {
                     bearing: 180,
-                } as StyleSpecification,
-            ),
+                } as StyleSpecification
+            )
         ).toEqual([{command: 'setBearing', args: [180]}]);
     });
 
@@ -448,8 +448,8 @@ describe('diff', () => {
                 } as StyleSpecification,
                 {
                     pitch: 1,
-                } as StyleSpecification,
-            ),
+                } as StyleSpecification
+            )
         ).toEqual([{command: 'setPitch', args: [1]}]);
     });
 
@@ -459,8 +459,8 @@ describe('diff', () => {
                 {
                     roll: 1,
                 } as StyleSpecification,
-                {} as StyleSpecification,
-            ),
+                {} as StyleSpecification
+            )
         ).toEqual([{command: 'setRoll', args: [undefined]}]);
     });
 
@@ -472,8 +472,8 @@ describe('diff', () => {
                 } as StyleSpecification,
                 {
                     roll: 1,
-                } as StyleSpecification,
-            ),
+                } as StyleSpecification
+            )
         ).toEqual([{command: 'setRoll', args: [1]}]);
     });
 
@@ -495,8 +495,8 @@ describe('diff', () => {
                         position: [0, 1, 0],
                         intensity: 1,
                     },
-                } as StyleSpecification,
-            ),
+                } as StyleSpecification
+            )
         ).toEqual([]);
     });
 
@@ -508,8 +508,8 @@ describe('diff', () => {
                 } as StyleSpecification,
                 {
                     light: {anchor: 'viewport'},
-                } as StyleSpecification,
-            ),
+                } as StyleSpecification
+            )
         ).toEqual([{command: 'setLight', args: [{anchor: 'viewport'}]}]);
     });
 
@@ -521,8 +521,8 @@ describe('diff', () => {
                 } as StyleSpecification,
                 {
                     light: {color: 'red'},
-                } as StyleSpecification,
-            ),
+                } as StyleSpecification
+            )
         ).toEqual([{command: 'setLight', args: [{color: 'red'}]}]);
     });
 
@@ -534,8 +534,8 @@ describe('diff', () => {
                 } as StyleSpecification,
                 {
                     light: {position: [1, 0, 0]},
-                } as StyleSpecification,
-            ),
+                } as StyleSpecification
+            )
         ).toEqual([{command: 'setLight', args: [{position: [1, 0, 0]}]}]);
     });
 
@@ -547,8 +547,8 @@ describe('diff', () => {
                 } as StyleSpecification,
                 {
                     light: {intensity: 10},
-                } as StyleSpecification,
-            ),
+                } as StyleSpecification
+            )
         ).toEqual([{command: 'setLight', args: [{intensity: 10}]}]);
     });
 
@@ -570,8 +570,8 @@ describe('diff', () => {
                         position: [1, 40, 30],
                         intensity: 1.0,
                     },
-                } as StyleSpecification,
-            ),
+                } as StyleSpecification
+            )
         ).toEqual([
             {
                 command: 'setLight',
@@ -595,8 +595,8 @@ describe('diff', () => {
                 } as StyleSpecification,
                 {
                     layers: [{id: 'a', source: 'source-two'}],
-                } as StyleSpecification,
-            ),
+                } as StyleSpecification
+            )
         ).toEqual([
             {command: 'removeLayer', args: ['a']},
             {command: 'addLayer', args: [{id: 'a', source: 'source-two'}, undefined]},
@@ -611,8 +611,8 @@ describe('diff', () => {
                 } as StyleSpecification,
                 {
                     layers: [{id: 'a', type: 'line'}],
-                } as StyleSpecification,
-            ),
+                } as StyleSpecification
+            )
         ).toEqual([
             {command: 'removeLayer', args: ['a']},
             {command: 'addLayer', args: [{id: 'a', type: 'line'}, undefined]},
@@ -627,8 +627,8 @@ describe('diff', () => {
                 } as StyleSpecification,
                 {
                     layers: [{id: 'a', source: 'a', 'source-layer': 'layer-two'}],
-                } as StyleSpecification,
-            ),
+                } as StyleSpecification
+            )
         ).toEqual([
             {command: 'removeLayer', args: ['a']},
             {
@@ -646,8 +646,8 @@ describe('diff', () => {
                 } as StyleSpecification,
                 {
                     layers: [{id: 'c'}, {id: 'a', type: 'line'}, {id: 'b'}],
-                } as StyleSpecification,
-            ),
+                } as StyleSpecification
+            )
         ).toEqual([
             {command: 'removeLayer', args: ['b']},
             {command: 'addLayer', args: [{id: 'b'}, undefined]},
@@ -674,8 +674,8 @@ describe('diff', () => {
                         {id: 'b', source: 'foo'},
                         {id: 'c', source: 'bar'},
                     ],
-                } as any as StyleSpecification,
-            ),
+                } as any as StyleSpecification
+            )
         ).toEqual([
             {command: 'removeLayer', args: ['b']},
             {command: 'removeSource', args: ['foo']},
@@ -695,8 +695,8 @@ describe('diff', () => {
                     sources: {foo: {data: 1}, bar: {}},
                     layers: [{id: 'a', source: 'bar'}],
                     transition: 'transition',
-                } as any as StyleSpecification,
-            ),
+                } as any as StyleSpecification
+            )
         ).toEqual([{command: 'setTransition', args: ['transition']}]);
     });
 
@@ -708,8 +708,8 @@ describe('diff', () => {
                 } as StyleSpecification,
                 {
                     sprite: 'a',
-                } as StyleSpecification,
-            ),
+                } as StyleSpecification
+            )
         ).toEqual([]);
     });
 
@@ -721,8 +721,8 @@ describe('diff', () => {
                 } as StyleSpecification,
                 {
                     sprite: 'b',
-                } as StyleSpecification,
-            ),
+                } as StyleSpecification
+            )
         ).toEqual([{command: 'setSprite', args: ['b']}]);
     });
 
@@ -734,8 +734,8 @@ describe('diff', () => {
                 } as StyleSpecification,
                 {
                     sprite: [{id: 'default', url: 'b'}],
-                } as StyleSpecification,
-            ),
+                } as StyleSpecification
+            )
         ).toEqual([{command: 'setSprite', args: [[{id: 'default', url: 'b'}]]}]);
     });
 
@@ -747,8 +747,8 @@ describe('diff', () => {
                 } as StyleSpecification,
                 {
                     glyphs: 'a',
-                } as StyleSpecification,
-            ),
+                } as StyleSpecification
+            )
         ).toEqual([]);
     });
 
@@ -760,8 +760,8 @@ describe('diff', () => {
                 } as StyleSpecification,
                 {
                     glyphs: 'b',
-                } as StyleSpecification,
-            ),
+                } as StyleSpecification
+            )
         ).toEqual([{command: 'setGlyphs', args: ['b']}]);
     });
 
@@ -774,8 +774,8 @@ describe('diff', () => {
                         exaggeration: 1.5,
                     },
                 } as StyleSpecification,
-                {} as StyleSpecification,
-            ),
+                {} as StyleSpecification
+            )
         ).toEqual([{command: 'setTerrain', args: [undefined]}]);
     });
 
@@ -788,8 +788,8 @@ describe('diff', () => {
                         source: 'maplibre-dem',
                         exaggeration: 1.5,
                     },
-                } as StyleSpecification,
-            ),
+                } as StyleSpecification
+            )
         ).toEqual([{command: 'setTerrain', args: [{source: 'maplibre-dem', exaggeration: 1.5}]}]);
     });
 
@@ -802,8 +802,8 @@ describe('diff', () => {
                         'fog-color': 'green',
                         'fog-ground-blend': 0.2,
                     },
-                } as StyleSpecification,
-            ),
+                } as StyleSpecification
+            )
         ).toEqual([{command: 'setSky', args: [{'fog-color': 'green', 'fog-ground-blend': 0.2}]}]);
     });
 
@@ -813,8 +813,8 @@ describe('diff', () => {
                 {} as StyleSpecification,
                 {
                     projection: {type: ['vertical-perspective', 'mercator', 0.5]},
-                } as StyleSpecification,
-            ),
+                } as StyleSpecification
+            )
         ).toEqual([
             {
                 command: 'setProjection',

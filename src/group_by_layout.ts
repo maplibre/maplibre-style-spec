@@ -53,7 +53,7 @@ function getKey(layer: LayerSpecification): string {
  */
 export function groupByLayout(
     layers: LayerSpecification[],
-    cachedKeys?: Record<string, string>,
+    cachedKeys?: Record<string, string>
 ): LayerSpecification[][] {
     const groups: Record<string, LayerSpecification[]> = {};
 

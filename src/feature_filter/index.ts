@@ -7,7 +7,7 @@ import {ExpressionFilterSpecification, type FilterSpecification} from '../types.
 type FilterExpression = (
     globalProperties: GlobalProperties,
     feature: Feature,
-    canonical?: ICanonicalTileID,
+    canonical?: ICanonicalTileID
 ) => boolean;
 
 export type FeatureFilter = {
@@ -83,7 +83,7 @@ const filterSpec = {
  */
 export function featureFilter(
     filter: FilterSpecification | void,
-    globalState?: Record<string, any>,
+    globalState?: Record<string, any>
 ): FeatureFilter {
     if (filter === null || filter === undefined) {
         return {filter: () => true, needGeometry: false, getGlobalStateRefs: () => new Set()};
@@ -96,7 +96,7 @@ export function featureFilter(
     const compiled = createExpression(
         filter,
         filterSpec as StylePropertySpecification,
-        globalState,
+        globalState
     );
     if (compiled.result === 'error') {
         throw new Error(compiled.value.map((err) => `${err.key}: ${err.message}`).join(', '));
@@ -106,7 +106,7 @@ export function featureFilter(
             filter: (
                 globalProperties: GlobalProperties,
                 feature: Feature,
-                canonical?: ICanonicalTileID,
+                canonical?: ICanonicalTileID
             ) => compiled.value.evaluate(globalProperties, feature, {}, canonical),
             needGeometry,
             getGlobalStateRefs: () => findGlobalStateRefs(compiled.value.expression),
@@ -145,7 +145,7 @@ function convertFilter(filter?: Array<any> | null | void): unknown {
                     ? ['all' as unknown].concat(filter.slice(1).map(convertFilter))
                     : op === 'none'
                       ? ['all' as unknown].concat(
-                            filter.slice(1).map(convertFilter).map(convertNegation),
+                            filter.slice(1).map(convertFilter).map(convertNegation)
                         )
                       : op === 'in'
                         ? convertInOp(filter[1], filter.slice(2))

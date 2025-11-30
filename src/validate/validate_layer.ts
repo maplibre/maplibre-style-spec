@@ -34,8 +34,8 @@ export function validateLayer(options) {
                     new ValidationError(
                         key,
                         layer.id,
-                        `duplicate layer id "${layer.id}", previously used at line ${otherLayer.id.__line__}`,
-                    ),
+                        `duplicate layer id "${layer.id}", previously used at line ${otherLayer.id.__line__}`
+                    )
                 );
             }
         }
@@ -45,7 +45,7 @@ export function validateLayer(options) {
         ['type', 'source', 'source-layer', 'filter', 'layout'].forEach((p) => {
             if (p in layer) {
                 errors.push(
-                    new ValidationError(key, layer[p], `"${p}" is prohibited for ref layers`),
+                    new ValidationError(key, layer[p], `"${p}" is prohibited for ref layers`)
                 );
             }
         });
@@ -60,7 +60,7 @@ export function validateLayer(options) {
             errors.push(new ValidationError(key, layer.ref, `ref layer "${ref}" not found`));
         } else if (parent.ref) {
             errors.push(
-                new ValidationError(key, layer.ref, 'ref cannot reference another ref layer'),
+                new ValidationError(key, layer.ref, 'ref cannot reference another ref layer')
             );
         } else {
             type = unbundle(parent.type);
@@ -73,47 +73,47 @@ export function validateLayer(options) {
             const sourceType = source && unbundle(source.type);
             if (!source) {
                 errors.push(
-                    new ValidationError(key, layer.source, `source "${layer.source}" not found`),
+                    new ValidationError(key, layer.source, `source "${layer.source}" not found`)
                 );
             } else if (sourceType === 'vector' && type === 'raster') {
                 errors.push(
                     new ValidationError(
                         key,
                         layer.source,
-                        `layer "${layer.id}" requires a raster source`,
-                    ),
+                        `layer "${layer.id}" requires a raster source`
+                    )
                 );
             } else if (sourceType !== 'raster-dem' && type === 'hillshade') {
                 errors.push(
                     new ValidationError(
                         key,
                         layer.source,
-                        `layer "${layer.id}" requires a raster-dem source`,
-                    ),
+                        `layer "${layer.id}" requires a raster-dem source`
+                    )
                 );
             } else if (sourceType !== 'raster-dem' && type === 'color-relief') {
                 errors.push(
                     new ValidationError(
                         key,
                         layer.source,
-                        `layer "${layer.id}" requires a raster-dem source`,
-                    ),
+                        `layer "${layer.id}" requires a raster-dem source`
+                    )
                 );
             } else if (sourceType === 'raster' && type !== 'raster') {
                 errors.push(
                     new ValidationError(
                         key,
                         layer.source,
-                        `layer "${layer.id}" requires a vector source`,
-                    ),
+                        `layer "${layer.id}" requires a vector source`
+                    )
                 );
             } else if (sourceType === 'vector' && !layer['source-layer']) {
                 errors.push(
                     new ValidationError(
                         key,
                         layer,
-                        `layer "${layer.id}" must specify a "source-layer"`,
-                    ),
+                        `layer "${layer.id}" must specify a "source-layer"`
+                    )
                 );
             } else if (
                 sourceType === 'raster-dem' &&
@@ -124,8 +124,8 @@ export function validateLayer(options) {
                     new ValidationError(
                         key,
                         layer.source,
-                        "raster-dem source can only be used with layer type 'hillshade' or 'color-relief'.",
-                    ),
+                        "raster-dem source can only be used with layer type 'hillshade' or 'color-relief'."
+                    )
                 );
             } else if (
                 type === 'line' &&
@@ -137,8 +137,8 @@ export function validateLayer(options) {
                     new ValidationError(
                         key,
                         layer,
-                        `layer "${layer.id}" specifies a line-gradient, which requires a GeoJSON source with \`lineMetrics\` enabled.`,
-                    ),
+                        `layer "${layer.id}" specifies a line-gradient, which requires a GeoJSON source with \`lineMetrics\` enabled.`
+                    )
                 );
             }
         }
@@ -202,7 +202,7 @@ export function validateLayer(options) {
                     });
                 },
             },
-        }),
+        })
     );
 
     return errors;

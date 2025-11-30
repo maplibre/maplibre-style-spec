@@ -30,7 +30,7 @@ export class Step implements Expression {
     static parse(args: ReadonlyArray<unknown>, context: ParsingContext): Expression {
         if (args.length - 1 < 4) {
             return context.error(
-                `Expected at least 4 arguments, but found only ${args.length - 1}.`,
+                `Expected at least 4 arguments, but found only ${args.length - 1}.`
             ) as null;
         }
 
@@ -58,14 +58,14 @@ export class Step implements Expression {
             if (typeof label !== 'number') {
                 return context.error(
                     'Input/output pairs for "step" expressions must be defined using literal numeric values (not computed expressions) for the input values.',
-                    labelKey,
+                    labelKey
                 ) as null;
             }
 
             if (stops.length && stops[stops.length - 1][0] >= label) {
                 return context.error(
                     'Input/output pairs for "step" expressions must be arranged with input values in strictly ascending order.',
-                    labelKey,
+                    labelKey
                 ) as null;
             }
 

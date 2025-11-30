@@ -132,7 +132,7 @@ function validSchema(k, v, obj, ref, version, kind) {
                 Array.isArray(values) &&
                     values.every((v) => {
                         return scalar.indexOf(typeof v) !== -1;
-                    }),
+                    })
             ).toBeTruthy();
             if (ref.$version >= 8) {
                 for (const v in obj.values) {
@@ -180,7 +180,7 @@ function validSchema(k, v, obj, ref, version, kind) {
             expect(ref.$version < 8).toBeTruthy();
             if (ref.$version >= 7) {
                 expect(true).toBe(
-                    ['interpolated', 'piecewise-constant'].indexOf(obj.function) >= 0,
+                    ['interpolated', 'piecewise-constant'].indexOf(obj.function) >= 0
                 );
             } else {
                 expect('boolean').toBe(typeof obj.function);
@@ -193,8 +193,8 @@ function validSchema(k, v, obj, ref, version, kind) {
             if (obj['property-type'] !== 'color-ramp')
                 expect(true).toBe(
                     expression.parameters.every(
-                        (k) => k === 'zoom' || k === 'feature' || k === 'feature-state',
-                    ),
+                        (k) => k === 'zoom' || k === 'feature' || k === 'feature-state'
+                    )
                 );
         }
 
@@ -221,7 +221,7 @@ function validSchema(k, v, obj, ref, version, kind) {
                 typeof child === 'string' ? ref[child] : child,
                 ref,
                 undefined,
-                undefined,
+                undefined
             );
         });
         // Container object.

@@ -30,8 +30,8 @@ describe('group by layout', () => {
                         type: 'fill',
                     } as LayerSpecification,
                 ],
-                {},
-            ),
+                {}
+            )
         ).toEqual([
             [
                 {
@@ -63,8 +63,8 @@ describe('group by layout', () => {
                         layout: {b: 2, a: 1},
                     } as any as LayerSpecification,
                 ],
-                {},
-            ),
+                {}
+            )
         ).toEqual([
             [
                 {
