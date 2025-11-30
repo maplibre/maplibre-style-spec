@@ -24,11 +24,7 @@ function jsDocComment(property) {
     if (!lines.length) {
         return undefined;
     }
-    return [
-        '/**',
-        ...lines.map(line => ` * ${line}`),
-        ' */',
-    ].join('\n');
+    return ['/**', ...lines.map((line) => ` * ${line}`), ' */'].join('\n');
 }
 
 function jsDocBlock(tag, value) {
@@ -40,9 +36,11 @@ ${formatJSON(value)}
 
 function unionType(values) {
     if (Array.isArray(values)) {
-        return values.map(v => JSON.stringify(v)).join(' | ');
+        return values.map((v) => JSON.stringify(v)).join(' | ');
     } else {
-        return Object.keys(values).map(v => JSON.stringify(v)).join(' | ');
+        return Object.keys(values)
+            .map((v) => JSON.stringify(v))
+            .join(' | ');
     }
 }
 
@@ -60,7 +58,11 @@ function propertyType(property) {
             case 'enum':
                 return unionType(property.values);
             case 'array': {
-                const elementType = propertyType(typeof property.value === 'string' ? {type: property.value, values: property.values} : property.value);
+                const elementType = propertyType(
+                    typeof property.value === 'string'
+                        ? {type: property.value, values: property.values}
+                        : property.value,
+                );
                 if (property.length) {
                     return `[${Array(property.length).fill(elementType).join(', ')}]`;
                 } else {
@@ -116,18 +118,18 @@ function objectDeclaration(key, properties) {
 function objectType(properties, indent) {
     return `{
 ${Object.keys(properties)
-    .filter(k => k !== '*')
-    .flatMap(k => {
+    .filter((k) => k !== '*')
+    .flatMap((k) => {
         const declarations = [propertyDeclaration(k, properties[k])];
         if (properties[k].transition) {
             declarations.push(transitionPropertyDeclaration(k));
         }
         return declarations;
     })
-    .map(declaration => {
+    .map((declaration) => {
         return declaration
             .split('\n')
-            .map(line => `    ${indent}${line}`)
+            .map((line) => `    ${indent}${line}`)
             .join('\n');
     })
     .join(',\n')}
@@ -135,13 +137,18 @@ ${indent}}`;
 }
 
 function sourceTypeName(key) {
-    return key.replace(/source_(.)(.*)/, (_, _1, _2) => `${_1.toUpperCase()}${_2}SourceSpecification`)
+    return key
+        .replace(/source_(.)(.*)/, (_, _1, _2) => `${_1.toUpperCase()}${_2}SourceSpecification`)
         .replace(/_dem/, 'DEM')
         .replace(/Geojson/, 'GeoJSON');
 }
 
 function layerTypeName(key) {
-    return key.split('-').map(k => k.replace(/(.)(.*)/, (_, _1, _2) => `${_1.toUpperCase()}${_2}`)).concat('LayerSpecification').join('');
+    return key
+        .split('-')
+        .map((k) => k.replace(/(.)(.*)/, (_, _1, _2) => `${_1.toUpperCase()}${_2}`))
+        .concat('LayerSpecification')
+        .join('');
 }
 
 function layerType(key) {
@@ -150,7 +157,7 @@ function layerType(key) {
     layer.type = {
         type: 'enum',
         values: [key],
-        required: true
+        required: true,
     };
 
     delete layer.ref;
@@ -177,9 +184,9 @@ function layerType(key) {
 
 const layerTypes = Object.keys(spec.layer.type.values);
 
-writeFileSync('src/types.g.ts',
+writeFileSync(
+    'src/types.g.ts',
     `// Generated code; do not edit. Edit build/generate-style-spec.ts instead.
-/* eslint-disable */
 
 export type ColorSpecification = string;
 
@@ -406,21 +413,24 @@ ${objectDeclaration('ProjectionSpecification', spec.projection)}
 
 ${objectDeclaration('TerrainSpecification', spec.terrain)}
 
-${spec.source.map(key => {
-    let str = objectDeclaration(sourceTypeName(key), spec[key]);
-    if (sourceTypeName(key) === 'GeoJSONSourceSpecification') {
-        // This is done in order to overcome the type system's inability to express this type:
-        str = str.replace(/unknown/, 'GeoJSON.GeoJSON | string');
-    }
-    return str;
-}).join('\n\n')}
+${spec.source
+    .map((key) => {
+        let str = objectDeclaration(sourceTypeName(key), spec[key]);
+        if (sourceTypeName(key) === 'GeoJSONSourceSpecification') {
+            // This is done in order to overcome the type system's inability to express this type:
+            str = str.replace(/unknown/, 'GeoJSON.GeoJSON | string');
+        }
+        return str;
+    })
+    .join('\n\n')}
 
 export type SourceSpecification =
-${spec.source.map(key => `    | ${sourceTypeName(key)}`).join('\n')}
+${spec.source.map((key) => `    | ${sourceTypeName(key)}`).join('\n')}
 
-${layerTypes.map(key => layerType(key)).join('\n\n')}
+${layerTypes.map((key) => layerType(key)).join('\n\n')}
 
 export type LayerSpecification =
-${layerTypes.map(key => `    | ${layerTypeName(key)}`).join('\n')};
+${layerTypes.map((key) => `    | ${layerTypeName(key)}`).join('\n')};
 
-`);
+`,
+);

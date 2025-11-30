@@ -1,4 +1,3 @@
-
 import {ValidationError} from '../error/validation_error';
 import {getOwn} from '../util/get_own';
 import {getType} from '../util/get_type';
@@ -33,20 +32,27 @@ export function validateObject(options): Array<ValidationError> {
         } else if (elementSpecs['*']) {
             validateElement = validateSpec;
         } else {
-            errors.push(new ValidationError(key, object[objectKey], `unknown property "${objectKey}"`));
+            errors.push(
+                new ValidationError(key, object[objectKey], `unknown property "${objectKey}"`),
+            );
             continue;
         }
 
-        errors = errors.concat(validateElement({
-            key: (key ? `${key}.` : key) + objectKey,
-            value: object[objectKey],
-            valueSpec: elementSpec,
-            style,
-            styleSpec,
-            object,
-            objectKey,
-            validateSpec,
-        }, object));
+        errors = errors.concat(
+            validateElement(
+                {
+                    key: (key ? `${key}.` : key) + objectKey,
+                    value: object[objectKey],
+                    valueSpec: elementSpec,
+                    style,
+                    styleSpec,
+                    object,
+                    objectKey,
+                    validateSpec,
+                },
+                object,
+            ),
+        );
     }
 
     for (const elementSpecKey in elementSpecs) {
@@ -55,8 +61,14 @@ export function validateObject(options): Array<ValidationError> {
             continue;
         }
 
-        if (elementSpecs[elementSpecKey].required && elementSpecs[elementSpecKey]['default'] === undefined && object[elementSpecKey] === undefined) {
-            errors.push(new ValidationError(key, object, `missing required property "${elementSpecKey}"`));
+        if (
+            elementSpecs[elementSpecKey].required &&
+            elementSpecs[elementSpecKey]['default'] === undefined &&
+            object[elementSpecKey] === undefined
+        ) {
+            errors.push(
+                new ValidationError(key, object, `missing required property "${elementSpecKey}"`),
+            );
         }
     }
 

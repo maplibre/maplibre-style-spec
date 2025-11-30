@@ -51,9 +51,9 @@ export function parseCssColor(input: string): RGBColor | undefined {
             const step = input.length < 6 ? 1 : 2;
             let i = 1;
             return [
-                parseHex(input.slice(i, i += step)),
-                parseHex(input.slice(i, i += step)),
-                parseHex(input.slice(i, i += step)),
+                parseHex(input.slice(i, (i += step))),
+                parseHex(input.slice(i, (i += step))),
+                parseHex(input.slice(i, (i += step))),
                 parseHex(input.slice(i, i + step) || 'ff'),
             ];
         }
@@ -61,21 +61,22 @@ export function parseCssColor(input: string): RGBColor | undefined {
 
     // rgb(128 0 0), rgb(50% 0% 0%), rgba(255,0,255,0.6), rgb(255 0 255 / 60%), rgb(100% 0% 100% /.6)
     if (input.startsWith('rgb')) {
-        const rgbRegExp = /^rgba?\(\s*([\de.+-]+)(%)?(?:\s+|\s*(,)\s*)([\de.+-]+)(%)?(?:\s+|\s*(,)\s*)([\de.+-]+)(%)?(?:\s*([,\/])\s*([\de.+-]+)(%)?)?\s*\)$/;
+        const rgbRegExp =
+            /^rgba?\(\s*([\de.+-]+)(%)?(?:\s+|\s*(,)\s*)([\de.+-]+)(%)?(?:\s+|\s*(,)\s*)([\de.+-]+)(%)?(?:\s*([,\/])\s*([\de.+-]+)(%)?)?\s*\)$/;
         const rgbMatch = input.match(rgbRegExp);
         if (rgbMatch) {
             const [
-                _,  // eslint-disable-line @typescript-eslint/no-unused-vars
-                r,  // <numeric>
+                _, // eslint-disable-line @typescript-eslint/no-unused-vars
+                r, // <numeric>
                 rp, // %         (optional)
                 f1, // ,         (optional)
-                g,  // <numeric>
+                g, // <numeric>
                 gp, // %         (optional)
                 f2, // ,         (optional)
-                b,  // <numeric>
+                b, // <numeric>
                 bp, // %         (optional)
                 f3, // ,|/       (optional)
-                a,  // <numeric> (optional)
+                a, // <numeric> (optional)
                 ap, // %         (optional)
             ] = rgbMatch;
 
@@ -87,9 +88,7 @@ export function parseCssColor(input: string): RGBColor | undefined {
                 argFormat === ',,,'
             ) {
                 const valFormat = [rp, gp, bp].join('');
-                const maxValue =
-                    (valFormat === '%%%') ? 100 :
-                        (valFormat === '') ? 255 : 0;
+                const maxValue = valFormat === '%%%' ? 100 : valFormat === '' ? 255 : 0;
                 if (maxValue) {
                     const rgba: RGBColor = [
                         clamp(+r / maxValue, 0, 1),
@@ -109,18 +108,19 @@ export function parseCssColor(input: string): RGBColor | undefined {
     }
 
     // hsl(120 50% 80%), hsla(120deg,50%,80%,.9), hsl(12e1 50% 80% / 90%)
-    const hslRegExp = /^hsla?\(\s*([\de.+-]+)(?:deg)?(?:\s+|\s*(,)\s*)([\de.+-]+)%(?:\s+|\s*(,)\s*)([\de.+-]+)%(?:\s*([,\/])\s*([\de.+-]+)(%)?)?\s*\)$/;
+    const hslRegExp =
+        /^hsla?\(\s*([\de.+-]+)(?:deg)?(?:\s+|\s*(,)\s*)([\de.+-]+)%(?:\s+|\s*(,)\s*)([\de.+-]+)%(?:\s*([,\/])\s*([\de.+-]+)(%)?)?\s*\)$/;
     const hslMatch = input.match(hslRegExp);
     if (hslMatch) {
         const [
-            _,  // eslint-disable-line @typescript-eslint/no-unused-vars
-            h,  // <numeric>
+            _, // eslint-disable-line @typescript-eslint/no-unused-vars
+            h, // <numeric>
             f1, // ,         (optional)
-            s,  // <numeric>
+            s, // <numeric>
             f2, // ,         (optional)
-            l,  // <numeric>
+            l, // <numeric>
             f3, // ,|/       (optional)
-            a,  // <numeric> (optional)
+            a, // <numeric> (optional)
             ap, // %         (optional)
         ] = hslMatch;
 
@@ -151,7 +151,7 @@ function parseHex(hex: string): number {
 }
 
 function parseAlpha(a: number, asPercentage: string | undefined): number {
-    return clamp(asPercentage ? (a / 100) : a, 0, 1);
+    return clamp(asPercentage ? a / 100 : a, 0, 1);
 }
 
 function clamp(n: number, min: number, max: number): number {

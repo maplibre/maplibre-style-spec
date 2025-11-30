@@ -1,7 +1,7 @@
 import {Plugin} from 'rollup';
 
 function replacer(key: string, value: any) {
-    return (key === 'doc' || key === 'example' || key === 'sdk-support') ? undefined : value;
+    return key === 'doc' || key === 'example' || key === 'sdk-support' ? undefined : value;
 }
 
 export default function minifyStyleSpec(): Plugin {
@@ -18,8 +18,8 @@ export default function minifyStyleSpec(): Plugin {
 
             return {
                 code: JSON.stringify(spec, replacer, 0),
-                map: {mappings: ''}
+                map: {mappings: ''},
             };
-        }
+        },
     };
 }

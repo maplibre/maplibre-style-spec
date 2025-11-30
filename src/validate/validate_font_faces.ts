@@ -22,13 +22,7 @@ export function validateFontFaces(options: ValidateFontFacesOptions): Validation
     const style = options.style;
 
     if (!isObjectLiteral(value)) {
-        return [
-            new ValidationError(
-                key,
-                value,
-                `object expected, ${getType(value)} found`
-            ),
-        ];
+        return [new ValidationError(key, value, `object expected, ${getType(value)} found`)];
     }
 
     const errors: ValidationError[] = [];
@@ -39,10 +33,12 @@ export function validateFontFaces(options: ValidateFontFacesOptions): Validation
 
         if (fontValueType === 'string') {
             // Validate as a string URL
-            errors.push(...validateString({
-                key: `${key}.${fontName}`,
-                value: fontValue,
-            }));
+            errors.push(
+                ...validateString({
+                    key: `${key}.${fontName}`,
+                    value: fontValue,
+                }),
+            );
         } else if (fontValueType === 'array') {
             // Validate as an array of font face objects
             const fontFaceSpec = {
@@ -53,28 +49,31 @@ export function validateFontFaces(options: ValidateFontFacesOptions): Validation
                 'unicode-range': {
                     type: 'array',
                     value: 'string',
-                }
+                },
             };
 
             for (const [i, fontFace] of (fontValue as any[]).entries()) {
-                errors.push(...validateObject({
-                    key: `${key}.${fontName}[${i}]`,
-                    value: fontFace,
-                    valueSpec: fontFaceSpec,
-                    styleSpec,
-                    style,
-                    validateSpec,
-                }));
+                errors.push(
+                    ...validateObject({
+                        key: `${key}.${fontName}[${i}]`,
+                        value: fontFace,
+                        valueSpec: fontFaceSpec,
+                        styleSpec,
+                        style,
+                        validateSpec,
+                    }),
+                );
             }
         } else {
-            errors.push(new ValidationError(
-                `${key}.${fontName}`,
-                fontValue,
-                `string or array expected, ${fontValueType} found`
-            ));
+            errors.push(
+                new ValidationError(
+                    `${key}.${fontName}`,
+                    fontValue,
+                    `string or array expected, ${fontValueType} found`,
+                ),
+            );
         }
     }
 
     return errors;
 }
-

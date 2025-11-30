@@ -25,11 +25,13 @@ describe('migrate', () => {
     test('converts token strings to expressions', () => {
         const migrated = migrate({
             version: 8,
-            layers: [{
-                id: '1',
-                type: 'symbol',
-                layout: {'text-field': 'a{x}', 'icon-image': '{y}'}
-            }]
+            layers: [
+                {
+                    id: '1',
+                    type: 'symbol',
+                    layout: {'text-field': 'a{x}', 'icon-image': '{y}'},
+                },
+            ],
         } as any);
         expect(migrated.layers[0].layout['text-field']).toEqual(['concat', 'a', ['get', 'x']]);
         expect(migrated.layers[0].layout['icon-image']).toEqual(['to-string', ['get', 'y']]);
@@ -38,25 +40,34 @@ describe('migrate', () => {
     test('converts stop functions to expressions', () => {
         const migrated = migrate({
             version: 8,
-            layers: [{
-                id: '1',
-                type: 'background',
-                paint: {
-                    'background-opacity': {
-                        base: 1.0,
-                        stops: [[0, 1], [10, 0.72]]
-                    }
-                }
-            }, {
-                id: '2',
-                type: 'background',
-                paint: {
-                    'background-opacity': {
-                        base: 1.0,
-                        stops: [[0, [1, 2]], [10, [0.72, 0.98]]]
-                    }
-                }
-            }]
+            layers: [
+                {
+                    id: '1',
+                    type: 'background',
+                    paint: {
+                        'background-opacity': {
+                            base: 1.0,
+                            stops: [
+                                [0, 1],
+                                [10, 0.72],
+                            ],
+                        },
+                    },
+                },
+                {
+                    id: '2',
+                    type: 'background',
+                    paint: {
+                        'background-opacity': {
+                            base: 1.0,
+                            stops: [
+                                [0, [1, 2]],
+                                [10, [0.72, 0.98]],
+                            ],
+                        },
+                    },
+                },
+            ],
         } as any);
         expect(migrated.layers[0].paint['background-opacity']).toEqual([
             'interpolate',
@@ -65,7 +76,7 @@ describe('migrate', () => {
             0,
             1,
             10,
-            0.72
+            0.72,
         ]);
         expect(migrated.layers[1].paint['background-opacity']).toEqual([
             'interpolate',
@@ -74,7 +85,7 @@ describe('migrate', () => {
             0,
             ['literal', [1, 2]],
             10,
-            ['literal', [0.72, 0.98]]
+            ['literal', [0.72, 0.98]],
         ]);
     });
 
@@ -84,30 +95,32 @@ describe('migrate', () => {
             sources: {
                 maplibre: {
                     url: 'https://demotiles.maplibre.org/tiles/tiles.json',
-                    type: 'vector'
-                }
+                    type: 'vector',
+                },
             },
-            layers: [{
-                id: '1',
-                source: 'maplibre',
-                'source-layer': 'labels',
-                type: 'symbol',
-                layout: {
-                    'icon-image': {
-                        base: 1,
-                        type: 'categorical',
-                        property: 'type',
-                        stops: [['park', 'some-icon']]
-                    }
-                }
-            }]
+            layers: [
+                {
+                    id: '1',
+                    source: 'maplibre',
+                    'source-layer': 'labels',
+                    type: 'symbol',
+                    layout: {
+                        'icon-image': {
+                            base: 1,
+                            type: 'categorical',
+                            property: 'type',
+                            stops: [['park', 'some-icon']],
+                        },
+                    },
+                },
+            ],
         } as any);
         expect(migrated.layers[0].layout['icon-image']).toEqual([
             'match',
             ['get', 'type'],
             'park',
             'some-icon',
-            ''
+            '',
         ]);
         expect(validateStyle(migrated, v8)).toEqual([]);
     });
@@ -116,27 +129,37 @@ describe('migrate', () => {
         const migrated = migrate({
             version: 8,
             sources: {},
-            layers: [{
-                id: '1',
-                type: 'fill',
-                source: 'vector',
-                paint: {
-                    'fill-color': 'hsl(100,0.3,.2)',
-                    'fill-outline-color': [
-                        'interpolate', ['linear'], ['zoom'],
-                        0, 'hsl(110, 0.7, 0.055)',
-                        10, 'hsla(330,0.85,50%)',
-                    ],
+            layers: [
+                {
+                    id: '1',
+                    type: 'fill',
+                    source: 'vector',
+                    paint: {
+                        'fill-color': 'hsl(100,0.3,.2)',
+                        'fill-outline-color': [
+                            'interpolate',
+                            ['linear'],
+                            ['zoom'],
+                            0,
+                            'hsl(110, 0.7, 0.055)',
+                            10,
+                            'hsla(330,0.85,50%)',
+                        ],
+                    },
                 },
-            }],
+            ],
         });
 
         expect(migrated.layers[0].paint).toEqual({
             'fill-color': 'hsl(100,30%,20%)',
             'fill-outline-color': [
-                'interpolate', ['linear'], ['zoom'],
-                0, 'hsl(110,70%,5.5%)',
-                10, 'hsl(330,85%,50%)',
+                'interpolate',
+                ['linear'],
+                ['zoom'],
+                0,
+                'hsl(110,70%,5.5%)',
+                10,
+                'hsl(330,85%,50%)',
             ],
         });
     });
@@ -145,15 +168,17 @@ describe('migrate', () => {
         const style: StyleSpecification = {
             version: 8,
             sources: {},
-            layers: [{
-                id: 'layer-with-transition',
-                type: 'symbol',
-                source: 'vector-source',
-                paint: {
-                    'icon-color': 'hsl(100,0.3,.2)',
-                    'icon-opacity-transition': {duration: 0},
+            layers: [
+                {
+                    id: 'layer-with-transition',
+                    type: 'symbol',
+                    source: 'vector-source',
+                    paint: {
+                        'icon-color': 'hsl(100,0.3,.2)',
+                        'icon-opacity-transition': {duration: 0},
+                    },
                 },
-            }],
+            ],
         };
 
         expect(() => migrate(style)).not.toThrow();

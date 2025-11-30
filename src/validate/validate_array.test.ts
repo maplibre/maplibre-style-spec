@@ -10,7 +10,7 @@ describe('Validate Array', () => {
             key: 'testArray',
             value: '3',
             valueSpec: {type: 'array', value: 'number'},
-            styleSpec: v8
+            styleSpec: v8,
         });
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('testArray: array expected, string found');
@@ -20,7 +20,7 @@ describe('Validate Array', () => {
             key: 'testArray',
             value: true,
             valueSpec: {type: 'array', value: 'number'},
-            styleSpec: v8
+            styleSpec: v8,
         });
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('testArray: array expected, boolean found');
@@ -30,7 +30,7 @@ describe('Validate Array', () => {
             key: 'testArray',
             value: null,
             valueSpec: {type: 'array', value: 'number'},
-            styleSpec: v8
+            styleSpec: v8,
         });
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('testArray: array expected, null found');
@@ -40,7 +40,7 @@ describe('Validate Array', () => {
             key: 'testArray',
             value: {x: 1, y: 1},
             valueSpec: {type: 'array', value: 'number'},
-            styleSpec: v8
+            styleSpec: v8,
         });
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('testArray: array expected, object found');
@@ -50,7 +50,7 @@ describe('Validate Array', () => {
             key: 'testArray',
             value: 123,
             valueSpec: {type: 'array', value: 'number'},
-            styleSpec: v8
+            styleSpec: v8,
         });
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('testArray: array expected, number found');
@@ -62,7 +62,7 @@ describe('Validate Array', () => {
             key: 'testArray',
             value: [1, 2, 3],
             valueSpec: {type: 'array', value: 'number', length: 2},
-            styleSpec: v8
+            styleSpec: v8,
         });
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('testArray: array length 2 expected, length 3 found');
@@ -74,7 +74,7 @@ describe('Validate Array', () => {
             key: 'testArray',
             value: [1, 2],
             valueSpec: {type: 'array', value: 'number', length: 2},
-            styleSpec: v8
+            styleSpec: v8,
         });
         expect(errors).toHaveLength(0);
     });
@@ -85,7 +85,7 @@ describe('Validate Array', () => {
             key: 'testArray',
             value: ['1', '2'],
             valueSpec: {type: 'array', value: 'number'},
-            styleSpec: v8
+            styleSpec: v8,
         });
         expect(errors).toHaveLength(2);
         expect(errors[0].message).toBe('testArray[0]: number expected, string found');
@@ -96,7 +96,7 @@ describe('Validate Array', () => {
             key: 'testArray',
             value: [1, true, 3],
             valueSpec: {type: 'array', value: 'number'},
-            styleSpec: v8
+            styleSpec: v8,
         });
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('testArray[1]: number expected, boolean found');
@@ -106,7 +106,7 @@ describe('Validate Array', () => {
             key: 'testArray',
             value: [1, 2, null],
             valueSpec: {type: 'array', value: 'number'},
-            styleSpec: v8
+            styleSpec: v8,
         });
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('testArray[2]: number expected, null found');
@@ -118,7 +118,7 @@ describe('Validate Array', () => {
             key: 'testArray',
             value: [1, 2, 3],
             valueSpec: {type: 'array', value: 'number'},
-            styleSpec: v8
+            styleSpec: v8,
         });
         expect(errors).toHaveLength(0);
 
@@ -127,7 +127,7 @@ describe('Validate Array', () => {
             key: 'testArray',
             value: ['a', 'b', 'c'],
             valueSpec: {type: 'array', value: 'string'},
-            styleSpec: v8
+            styleSpec: v8,
         });
         expect(errors).toHaveLength(0);
 
@@ -136,7 +136,7 @@ describe('Validate Array', () => {
             key: 'testArray',
             value: [true, false, true],
             valueSpec: {type: 'array', value: 'boolean'},
-            styleSpec: v8
+            styleSpec: v8,
         });
         expect(errors).toHaveLength(0);
     });
@@ -149,10 +149,10 @@ describe('Validate Array', () => {
             valueSpec: {
                 type: 'array',
                 value: {
-                    type: 'number'
-                }
+                    type: 'number',
+                },
             },
-            styleSpec: v8
+            styleSpec: v8,
         });
         expect(errors).toHaveLength(0);
     });

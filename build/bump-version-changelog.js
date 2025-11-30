@@ -13,7 +13,8 @@ const changelogPath = 'CHANGELOG.md';
 let changelog = readFileSync(changelogPath, 'utf8');
 changelog = changelog.replace('## main', `## ${process.argv[2]}`);
 changelog = changelog.replaceAll('- _...Add new stuff here..._\n', '');
-changelog = `## main
+changelog =
+    `## main
 
 ### ✨ Features and improvements
 - _...Add new stuff here..._

@@ -2,7 +2,6 @@ import {validateColor} from './validate_color';
 import {describe, test, expect} from 'vitest';
 
 describe('validateColor function', () => {
-
     const key = 'sample_color_key';
 
     test('should return no errors when color is valid color string', () => {
@@ -62,5 +61,4 @@ describe('validateColor function', () => {
             ]);
         }
     });
-
 });

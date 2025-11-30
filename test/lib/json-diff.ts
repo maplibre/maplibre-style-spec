@@ -1,24 +1,20 @@
 export function deepEqual(a, b, decimalSigFigs = 10): boolean {
-    if (typeof a !== typeof b)
-        return false;
+    if (typeof a !== typeof b) return false;
     if (typeof a === 'number') {
         return stripPrecision(a, decimalSigFigs) === stripPrecision(b, decimalSigFigs);
     }
-    if (a === null || typeof a !== 'object')
-        return a === b;
+    if (a === null || typeof a !== 'object') return a === b;
 
     const ka = Object.keys(a);
     const kb = Object.keys(b);
 
-    if (ka.length !== kb.length)
-        return false;
+    if (ka.length !== kb.length) return false;
 
     ka.sort();
     kb.sort();
 
     for (let i = 0; i < ka.length; i++)
-        if (ka[i] !== kb[i] || !deepEqual(a[ka[i]], b[ka[i]], decimalSigFigs))
-            return false;
+        if (ka[i] !== kb[i] || !deepEqual(a[ka[i]], b[ka[i]], decimalSigFigs)) return false;
 
     return true;
 }
@@ -27,11 +23,14 @@ export function stripPrecision(x, decimalSigFigs = 10) {
     // Intended for test output serialization:
     // strips down to 6 decimal sigfigs but stops at decimal point
     if (typeof x === 'number') {
-        if (x === 0) { return x; }
+        if (x === 0) {
+            return x;
+        }
 
-        const multiplier = Math.pow(10,
-            Math.max(0,
-                decimalSigFigs - Math.ceil(Math.log10(Math.abs(x)))));
+        const multiplier = Math.pow(
+            10,
+            Math.max(0, decimalSigFigs - Math.ceil(Math.log10(Math.abs(x)))),
+        );
 
         // We strip precision twice in a row here to avoid cases where
         // stripping an already stripped number will modify its value

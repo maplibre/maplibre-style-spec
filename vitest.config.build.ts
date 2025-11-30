@@ -4,9 +4,7 @@ export default defineConfig({
     test: {
         name: 'build',
         environment: 'node',
-        include: [
-            'test/build/**/*.test.{ts,js}',
-        ],
+        include: ['test/build/**/*.test.{ts,js}'],
         coverage: {
             provider: 'v8',
             reporter: ['json', 'html'],
@@ -15,5 +13,5 @@ export default defineConfig({
             include: ['src'],
             reportsDirectory: './coverage/vitest/build',
         },
-    }
-}); 
+    },
+});

@@ -17,18 +17,31 @@ export function validateSprite(options: ValidateSpriteOptions) {
     if (!Array.isArray(sprite)) {
         return validateString({
             key,
-            value: sprite
+            value: sprite,
         });
-
     } else {
         const allSpriteIds = [];
         const allSpriteURLs = [];
 
         for (const i in sprite) {
-            if (sprite[i].id && allSpriteIds.includes(sprite[i].id)) errors.push(new ValidationError(key, sprite, `all the sprites' ids must be unique, but ${sprite[i].id} is duplicated`));
+            if (sprite[i].id && allSpriteIds.includes(sprite[i].id))
+                errors.push(
+                    new ValidationError(
+                        key,
+                        sprite,
+                        `all the sprites' ids must be unique, but ${sprite[i].id} is duplicated`,
+                    ),
+                );
             allSpriteIds.push(sprite[i].id);
 
-            if (sprite[i].url && allSpriteURLs.includes(sprite[i].url)) errors.push(new ValidationError(key, sprite, `all the sprites' URLs must be unique, but ${sprite[i].url} is duplicated`));
+            if (sprite[i].url && allSpriteURLs.includes(sprite[i].url))
+                errors.push(
+                    new ValidationError(
+                        key,
+                        sprite,
+                        `all the sprites' URLs must be unique, but ${sprite[i].url} is duplicated`,
+                    ),
+                );
             allSpriteURLs.push(sprite[i].url);
 
             const pairSpec = {
@@ -39,15 +52,17 @@ export function validateSprite(options: ValidateSpriteOptions) {
                 url: {
                     type: 'string',
                     required: true,
-                }
+                },
             };
 
-            errors = errors.concat(validateObject({
-                key: `${key}[${i}]`,
-                value: sprite[i],
-                valueSpec: pairSpec,
-                validateSpec: options.validateSpec,
-            }));
+            errors = errors.concat(
+                validateObject({
+                    key: `${key}[${i}]`,
+                    value: sprite[i],
+                    valueSpec: pairSpec,
+                    validateSpec: options.validateSpec,
+                }),
+            );
         }
 
         return errors;

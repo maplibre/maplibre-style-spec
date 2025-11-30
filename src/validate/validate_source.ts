@@ -1,4 +1,3 @@
-
 import {ValidationError} from '../error/validation_error';
 import {unbundle} from '../util/unbundle_jsonlint';
 import {validateObject} from './validate_object';
@@ -9,7 +8,7 @@ import {getType} from '../util/get_type';
 import {validateRasterDEMSource} from './validate_raster_dem_source';
 
 const objectElementValidators = {
-    promoteId: validatePromoteId
+    promoteId: validatePromoteId,
 };
 
 export function validateSource(options) {
@@ -57,25 +56,32 @@ export function validateSource(options) {
                 style,
                 styleSpec,
                 validateSpec,
-                objectElementValidators
+                objectElementValidators,
             });
             if (value.cluster) {
                 for (const prop in value.clusterProperties) {
                     const [operator, mapExpr] = value.clusterProperties[prop];
-                    const reduceExpr = typeof operator === 'string' ? [operator, ['accumulated'], ['get', prop]] : operator;
+                    const reduceExpr =
+                        typeof operator === 'string'
+                            ? [operator, ['accumulated'], ['get', prop]]
+                            : operator;
 
-                    errors.push(...validateExpression({
-                        key: `${key}.${prop}.map`,
-                        value: mapExpr,
-                        validateSpec,
-                        expressionContext: 'cluster-map'
-                    }));
-                    errors.push(...validateExpression({
-                        key: `${key}.${prop}.reduce`,
-                        value: reduceExpr,
-                        validateSpec,
-                        expressionContext: 'cluster-reduce'
-                    }));
+                    errors.push(
+                        ...validateExpression({
+                            key: `${key}.${prop}.map`,
+                            value: mapExpr,
+                            validateSpec,
+                            expressionContext: 'cluster-map',
+                        }),
+                    );
+                    errors.push(
+                        ...validateExpression({
+                            key: `${key}.${prop}.reduce`,
+                            value: reduceExpr,
+                            validateSpec,
+                            expressionContext: 'cluster-reduce',
+                        }),
+                    );
                 }
             }
             return errors;
@@ -87,7 +93,7 @@ export function validateSource(options) {
                 valueSpec: styleSpec.source_video,
                 style,
                 validateSpec,
-                styleSpec
+                styleSpec,
             });
 
         case 'image':
@@ -97,20 +103,29 @@ export function validateSource(options) {
                 valueSpec: styleSpec.source_image,
                 style,
                 validateSpec,
-                styleSpec
+                styleSpec,
             });
 
         case 'canvas':
-            return [new ValidationError(key, null, 'Please use runtime APIs to add canvas sources, rather than including them in stylesheets.', 'source.canvas')];
+            return [
+                new ValidationError(
+                    key,
+                    null,
+                    'Please use runtime APIs to add canvas sources, rather than including them in stylesheets.',
+                    'source.canvas',
+                ),
+            ];
 
         default:
             return validateEnum({
                 key: `${key}.type`,
                 value: value.type,
-                valueSpec: {values: ['vector', 'raster', 'raster-dem', 'geojson', 'video', 'image']},
+                valueSpec: {
+                    values: ['vector', 'raster', 'raster-dem', 'geojson', 'video', 'image'],
+                },
                 style,
                 validateSpec,
-                styleSpec
+                styleSpec,
             });
     }
 }

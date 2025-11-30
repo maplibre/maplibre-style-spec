@@ -13,7 +13,7 @@ export function validateState(options: ValidateStateOptions): ValidationError[] 
             new ValidationError(
                 options.key,
                 options.value,
-                `object expected, ${getType(options.value)} found`
+                `object expected, ${getType(options.value)} found`,
             ),
         ];
     }

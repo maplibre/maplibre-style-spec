@@ -13,8 +13,8 @@ import {
     StyleExpression,
     GlobalProperties,
     Feature,
-    ZoomDependentExpression
-} from '../../../src/index';
+    ZoomDependentExpression,
+} from '../../../src';
 import {ExpressionParsingError} from '../../../src/expression/parsing_error';
 import {getGeometry} from '../../lib/geometry';
 import {deepEqual, stripPrecision} from '../../lib/json-diff';
@@ -47,7 +47,13 @@ type FixtureInput = [
         properties?: Record<string, any>;
         featureState?: Record<string, any>;
         id?: any;
-        geometry?: GeoJSON.Point | GeoJSON.MultiPoint | GeoJSON.LineString | GeoJSON.MultiLineString | GeoJSON.Polygon | GeoJSON.MultiPolygon;
+        geometry?:
+            | GeoJSON.Point
+            | GeoJSON.MultiPoint
+            | GeoJSON.LineString
+            | GeoJSON.MultiLineString
+            | GeoJSON.Polygon
+            | GeoJSON.MultiPolygon;
     },
 ];
 
@@ -82,10 +88,8 @@ type EvaluationSuccessOutput = any;
 
 const expressionTestFileNames = globSync('**/test.json', {cwd: __dirname});
 describe('expression', () => {
-
     for (const expressionTestFileName of expressionTestFileNames) {
         test(expressionTestFileName, () => {
-
             const fixturePath = path.join(__dirname, expressionTestFileName);
             const fixture: ExpressionFixture = JSON.parse(fs.readFileSync(fixturePath, 'utf8'));
 
@@ -93,12 +97,12 @@ describe('expression', () => {
             const result = evaluateFixture(fixture, spec);
 
             if (process.env.UPDATE) {
-                fixture.expected = isFixtureErrorResult(result) ?
-                    result :
-                    {
-                        compiled: result.compiled,
-                        outputs: stripPrecision(result.outputs, DECIMAL_SIGNIFICANT_FIGURES),
-                    };
+                fixture.expected = isFixtureErrorResult(result)
+                    ? result
+                    : {
+                          compiled: result.compiled,
+                          outputs: stripPrecision(result.outputs, DECIMAL_SIGNIFICANT_FIGURES),
+                      };
                 if (fixture.propertySpec) {
                     fixture.propertySpec = spec;
                 }
@@ -109,22 +113,30 @@ describe('expression', () => {
 
             const expected = fixture.expected as FixtureResult;
 
-            const compileOk = deepEqual(result.compiled, expected.compiled, DECIMAL_SIGNIFICANT_FIGURES);
+            const compileOk = deepEqual(
+                result.compiled,
+                expected.compiled,
+                DECIMAL_SIGNIFICANT_FIGURES,
+            );
             try {
                 expect(compileOk).toBeTruthy();
             } catch {
-                throw new Error(`Compilation Failed:\nExpected ${JSON.stringify(expected.compiled)}\nResult   ${JSON.stringify(result.compiled)}`);
+                throw new Error(
+                    `Compilation Failed:\nExpected ${JSON.stringify(expected.compiled)}\nResult   ${JSON.stringify(result.compiled)}`,
+                );
             }
 
             const resultOutputs = (result as any).outputs;
             const expectedOutputs = (expected as any).outputs;
-            const evalOk = compileOk && deepEqual(resultOutputs, expectedOutputs, DECIMAL_SIGNIFICANT_FIGURES);
+            const evalOk =
+                compileOk && deepEqual(resultOutputs, expectedOutputs, DECIMAL_SIGNIFICANT_FIGURES);
             try {
                 expect(evalOk).toBeTruthy();
             } catch {
-                throw new Error(`Evaluation Failed:\nExpected ${JSON.stringify(expectedOutputs)}\nResult   ${JSON.stringify(resultOutputs)}`);
+                throw new Error(
+                    `Evaluation Failed:\nExpected ${JSON.stringify(expectedOutputs)}\nResult   ${JSON.stringify(resultOutputs)}`,
+                );
             }
-
         });
     }
 });
@@ -136,17 +148,24 @@ function getCompletePropertySpec(propertySpec: ExpressionFixture['propertySpec']
     }
     if (!spec['expression']) {
         spec['expression'] = {
-            'interpolated': true,
-            'parameters': ['zoom', 'feature'],
+            interpolated: true,
+            parameters: ['zoom', 'feature'],
         };
     }
     return spec as StylePropertySpecification;
 }
 
-function evaluateFixture(fixture: ExpressionFixture, spec: StylePropertySpecification): FixtureResult {
-    const expression = isFunction(fixture.expression) ?
-        createPropertyExpression(convertFunction(fixture.expression, spec), spec, fixture.globalState) :
-        createPropertyExpression(fixture.expression, spec, fixture.globalState);
+function evaluateFixture(
+    fixture: ExpressionFixture,
+    spec: StylePropertySpecification,
+): FixtureResult {
+    const expression = isFunction(fixture.expression)
+        ? createPropertyExpression(
+              convertFunction(fixture.expression, spec),
+              spec,
+              fixture.globalState,
+          )
+        : createPropertyExpression(fixture.expression, spec, fixture.globalState);
 
     if (expression.result === 'error') {
         return {
@@ -155,11 +174,16 @@ function evaluateFixture(fixture: ExpressionFixture, spec: StylePropertySpecific
     }
     return {
         compiled: getCompilationSuccessResult(expression.value),
-        outputs: fixture.inputs === undefined ? [] : evaluateExpression(fixture.inputs, expression.value),
+        outputs:
+            fixture.inputs === undefined
+                ? []
+                : evaluateExpression(fixture.inputs, expression.value),
     };
 }
 
-function getCompilationErrorResult(parsingErrors: ExpressionParsingError[]): CompilationErrorResult {
+function getCompilationErrorResult(
+    parsingErrors: ExpressionParsingError[],
+): CompilationErrorResult {
     return {
         result: 'error',
         errors: parsingErrors.map((err) => ({
@@ -169,18 +193,23 @@ function getCompilationErrorResult(parsingErrors: ExpressionParsingError[]): Com
     };
 }
 
-function getCompilationSuccessResult(expression: StylePropertyExpression): CompilationSuccessResult {
+function getCompilationSuccessResult(
+    expression: StylePropertyExpression,
+): CompilationSuccessResult {
     const kind = expression.kind;
     const type = getStylePropertyExpressionType(expression);
     return {
         result: 'success',
-        isFeatureConstant: kind === 'constant' || kind ==='camera',
+        isFeatureConstant: kind === 'constant' || kind === 'camera',
         isZoomConstant: kind === 'constant' || kind === 'source',
         type: toString(type),
     };
 }
 
-function evaluateExpression(inputs: FixtureInput[], expression: StylePropertyExpression): EvaluationOutput[] {
+function evaluateExpression(
+    inputs: FixtureInput[],
+    expression: StylePropertyExpression,
+): EvaluationOutput[] {
     const type = getStylePropertyExpressionType(expression);
     const outputs: EvaluationOutput[] = [];
 
@@ -204,7 +233,9 @@ function evaluateExpression(inputs: FixtureInput[], expression: StylePropertyExp
         }
 
         try {
-            let value = (expression as ZoomConstantExpression<any> | ZoomDependentExpression<any>).evaluateWithoutErrorHandling(
+            let value = (
+                expression as ZoomConstantExpression<any> | ZoomDependentExpression<any>
+            ).evaluateWithoutErrorHandling(
                 input[0] as GlobalProperties,
                 feature as Feature,
                 featureState ?? {},
@@ -217,9 +248,7 @@ function evaluateExpression(inputs: FixtureInput[], expression: StylePropertyExp
             outputs.push(value);
         } catch (error) {
             outputs.push({
-                error: error.name === 'ExpressionEvaluationError' ?
-                    error.toJSON() :
-                    error.message,
+                error: error.name === 'ExpressionEvaluationError' ? error.toJSON() : error.message,
             });
         }
     }

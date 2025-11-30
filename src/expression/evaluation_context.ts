@@ -30,7 +30,11 @@ export class EvaluationContext {
     }
 
     geometryType() {
-        return this.feature ? typeof this.feature.type === 'number' ? geometryTypes[this.feature.type] : this.feature.type : null;
+        return this.feature
+            ? typeof this.feature.type === 'number'
+                ? geometryTypes[this.feature.type]
+                : this.feature.type
+            : null;
     }
 
     geometry() {
@@ -42,7 +46,7 @@ export class EvaluationContext {
     }
 
     properties() {
-        return this.feature && this.feature.properties || {};
+        return (this.feature && this.feature.properties) || {};
     }
 
     parseColor(input: string): Color {
@@ -54,4 +58,3 @@ export class EvaluationContext {
         return cached;
     }
 }
-

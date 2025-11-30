@@ -5,7 +5,7 @@ import type {
     SourceSpecification,
     LayerSpecification,
     PropertyValueSpecification,
-    DataDrivenPropertyValueSpecification
+    DataDrivenPropertyValueSpecification,
 } from './types.g';
 
 function getPropertyReference(propertyName: string): StylePropertySpecification | null {
@@ -35,17 +35,15 @@ export function eachLayer(style: StyleSpecification, callback: (_: LayerSpecific
     }
 }
 
-type PropertyCallback = (
-    a: {
-        path: [string, 'paint' | 'layout', string]; // [layerid, paint/layout, property key],
-        key: string;
-        value: PropertyValueSpecification<unknown> | DataDrivenPropertyValueSpecification<unknown>;
-        reference: StylePropertySpecification | null;
-        set: (
-            a: PropertyValueSpecification<unknown> | DataDrivenPropertyValueSpecification<unknown>
-        ) => void;
-    }
-) => void;
+type PropertyCallback = (a: {
+    path: [string, 'paint' | 'layout', string]; // [layerid, paint/layout, property key],
+    key: string;
+    value: PropertyValueSpecification<unknown> | DataDrivenPropertyValueSpecification<unknown>;
+    reference: StylePropertySpecification | null;
+    set: (
+        a: PropertyValueSpecification<unknown> | DataDrivenPropertyValueSpecification<unknown>,
+    ) => void;
+}) => void;
 
 export function eachProperty(
     style: StyleSpecification,
@@ -53,7 +51,7 @@ export function eachProperty(
         paint?: boolean;
         layout?: boolean;
     },
-    callback: PropertyCallback
+    callback: PropertyCallback,
 ) {
     function inner(layer: LayerSpecification, propertyType: 'paint' | 'layout') {
         const properties = layer[propertyType];
@@ -66,7 +64,7 @@ export function eachProperty(
                 reference: getPropertyReference(key),
                 set(x) {
                     properties[key] = x;
-                }
+                },
             });
         });
     }

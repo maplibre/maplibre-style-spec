@@ -15,12 +15,18 @@ export function validateArray(options) {
     }
 
     if (arraySpec.length && array.length !== arraySpec.length) {
-        return [new ValidationError(key, array, `array length ${arraySpec.length} expected, length ${array.length} found`)];
+        return [
+            new ValidationError(
+                key,
+                array,
+                `array length ${arraySpec.length} expected, length ${array.length} found`,
+            ),
+        ];
     }
 
     let arrayElementSpec = {
-        'type': arraySpec.value,
-        'values': arraySpec.values
+        type: arraySpec.value,
+        values: arraySpec.values,
     };
 
     if (styleSpec.$version < 7) {
@@ -33,16 +39,18 @@ export function validateArray(options) {
 
     let errors = [];
     for (let i = 0; i < array.length; i++) {
-        errors = errors.concat(validateArrayElement({
-            array,
-            arrayIndex: i,
-            value: array[i],
-            valueSpec: arrayElementSpec,
-            validateSpec: options.validateSpec,
-            style,
-            styleSpec,
-            key: `${key}[${i}]`
-        }));
+        errors = errors.concat(
+            validateArrayElement({
+                array,
+                arrayIndex: i,
+                value: array[i],
+                valueSpec: arrayElementSpec,
+                validateSpec: options.validateSpec,
+                style,
+                styleSpec,
+                key: `${key}[${i}]`,
+            }),
+        );
     }
     return errors;
 }

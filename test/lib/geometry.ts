@@ -1,4 +1,3 @@
-
 import {ICanonicalTileID} from '../../src';
 import {Point2D} from '../../src/point2d';
 import {EXTENT, getTileCoordinates} from '../../src/util/geometry_util';
@@ -41,9 +40,17 @@ function convertLines(lines: GeoJSON.Position[][], canonical: ICanonicalTileID):
     return l;
 }
 
-export function getGeometry(feature: {type?: any; id?: any; geometry?: Point2D[][]},
-    geometry: GeoJSON.MultiLineString | GeoJSON.LineString | GeoJSON.Point | GeoJSON.MultiPoint | GeoJSON.Polygon | GeoJSON.MultiPolygon,
-    canonical: ICanonicalTileID) {
+export function getGeometry(
+    feature: {type?: any; id?: any; geometry?: Point2D[][]},
+    geometry:
+        | GeoJSON.MultiLineString
+        | GeoJSON.LineString
+        | GeoJSON.Point
+        | GeoJSON.MultiPoint
+        | GeoJSON.Polygon
+        | GeoJSON.MultiPolygon,
+    canonical: ICanonicalTileID,
+) {
     if (!geometry.coordinates) {
         return;
     }
