@@ -35,15 +35,14 @@ export class Coercion implements Expression {
     constructor(type: Type, args: Array<Expression>) {
         this.type = type;
         this.args = args;
-
     }
 
     static parse(args: ReadonlyArray<unknown>, context: ParsingContext): Expression {
-        if (args.length < 2)
-            return context.error('Expected at least one argument.') as null;
+        if (args.length < 2) return context.error('Expected at least one argument.') as null;
 
-        const name: string = (args[0] as any);
-        if (!types[name]) throw new Error(`Can't parse ${name} as it is not part of the known types`);
+        const name: string = args[0] as any;
+        if (!types[name])
+            throw new Error(`Can't parse ${name} as it is not part of the known types`);
         if ((name === 'to-boolean' || name === 'to-string') && args.length !== 2)
             return context.error('Expected one argument.') as null;
 
@@ -81,11 +80,19 @@ export class Coercion implements Expression {
                             error = validateRGBA(input[0], input[1], input[2], input[3]);
                         }
                         if (!error) {
-                            return new Color((input[0] as any) / 255, (input[1] as any) / 255, (input[2] as any) / 255, (input[3] as any));
+                            return new Color(
+                                (input[0] as any) / 255,
+                                (input[1] as any) / 255,
+                                (input[2] as any) / 255,
+                                input[3] as any
+                            );
                         }
                     }
                 }
-                throw new RuntimeError(error || `Could not parse color from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`);
+                throw new RuntimeError(
+                    error ||
+                        `Could not parse color from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`
+                );
             }
             case 'padding': {
                 let input;
@@ -97,7 +104,9 @@ export class Coercion implements Expression {
                         return pad;
                     }
                 }
-                throw new RuntimeError(`Could not parse padding from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`);
+                throw new RuntimeError(
+                    `Could not parse padding from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`
+                );
             }
             case 'numberArray': {
                 let input;
@@ -109,7 +118,9 @@ export class Coercion implements Expression {
                         return val;
                     }
                 }
-                throw new RuntimeError(`Could not parse numberArray from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`);
+                throw new RuntimeError(
+                    `Could not parse numberArray from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`
+                );
             }
             case 'colorArray': {
                 let input;
@@ -121,7 +132,9 @@ export class Coercion implements Expression {
                         return val;
                     }
                 }
-                throw new RuntimeError(`Could not parse colorArray from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`);
+                throw new RuntimeError(
+                    `Could not parse colorArray from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`
+                );
             }
             case 'variableAnchorOffsetCollection': {
                 let input;
@@ -133,7 +146,9 @@ export class Coercion implements Expression {
                         return coll;
                     }
                 }
-                throw new RuntimeError(`Could not parse variableAnchorOffsetCollection from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`);
+                throw new RuntimeError(
+                    `Could not parse variableAnchorOffsetCollection from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`
+                );
             }
             case 'number': {
                 let value = null;
@@ -164,7 +179,6 @@ export class Coercion implements Expression {
     }
 
     outputDefined(): boolean {
-        return this.args.every(arg => arg.outputDefined());
+        return this.args.every((arg) => arg.outputDefined());
     }
 }
-

@@ -1,4 +1,13 @@
-import {CollatorType, ColorArrayType, ColorType, FormattedType, NumberArrayType, PaddingType, ProjectionDefinitionType, VariableAnchorOffsetCollectionType} from './types';
+import {
+    CollatorType,
+    ColorArrayType,
+    ColorType,
+    FormattedType,
+    NumberArrayType,
+    PaddingType,
+    ProjectionDefinitionType,
+    VariableAnchorOffsetCollectionType
+} from './types';
 import {Collator} from './types/collator';
 import {Color} from './types/color';
 import {ColorArray} from './types/color_array';
@@ -19,6 +28,8 @@ describe('typeOf', () => {
         expect(typeOf(Padding.parse(1))).toBe(PaddingType);
         expect(typeOf(NumberArray.parse(1))).toBe(NumberArrayType);
         expect(typeOf(ColorArray.parse('red'))).toBe(ColorArrayType);
-        expect(typeOf(VariableAnchorOffsetCollection.parse(['top', [2, 2]]))).toBe(VariableAnchorOffsetCollectionType);
-    })
+        expect(typeOf(VariableAnchorOffsetCollection.parse(['top', [2, 2]]))).toBe(
+            VariableAnchorOffsetCollectionType
+        );
+    });
 });

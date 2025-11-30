@@ -8,16 +8,18 @@ import type {Type} from '../types';
 export class NumberFormat implements Expression {
     type: Type;
     number: Expression;
-    locale: Expression | null;   // BCP 47 language tag
+    locale: Expression | null; // BCP 47 language tag
     currency: Expression | null; // ISO 4217 currency code, required if style=currency
     minFractionDigits: Expression | null; // Default 0
     maxFractionDigits: Expression | null; // Default 3
 
-    constructor(number: Expression,
+    constructor(
+        number: Expression,
         locale: Expression | null,
         currency: Expression | null,
         minFractionDigits: Expression | null,
-        maxFractionDigits: Expression | null) {
+        maxFractionDigits: Expression | null
+    ) {
         this.type = StringType;
         this.number = number;
         this.locale = locale;
@@ -27,13 +29,12 @@ export class NumberFormat implements Expression {
     }
 
     static parse(args: ReadonlyArray<unknown>, context: ParsingContext): Expression {
-        if (args.length !== 3)
-            return context.error('Expected two arguments.') as null;
+        if (args.length !== 3) return context.error('Expected two arguments.') as null;
 
         const number = context.parse(args[1], 1, NumberType);
         if (!number) return null;
 
-        const options = (args[2] as any);
+        const options = args[2] as any;
         if (typeof options !== 'object' || Array.isArray(options))
             return context.error('NumberFormat options argument must be an object.') as null;
 
@@ -65,13 +66,16 @@ export class NumberFormat implements Expression {
     }
 
     evaluate(ctx: EvaluationContext) {
-        return new Intl.NumberFormat(this.locale ? this.locale.evaluate(ctx) : [],
-            {
-                style: this.currency ? 'currency' : 'decimal',
-                currency: this.currency ? this.currency.evaluate(ctx) : undefined,
-                minimumFractionDigits: this.minFractionDigits ? this.minFractionDigits.evaluate(ctx) : undefined,
-                maximumFractionDigits: this.maxFractionDigits ? this.maxFractionDigits.evaluate(ctx) : undefined,
-            }).format(this.number.evaluate(ctx));
+        return new Intl.NumberFormat(this.locale ? this.locale.evaluate(ctx) : [], {
+            style: this.currency ? 'currency' : 'decimal',
+            currency: this.currency ? this.currency.evaluate(ctx) : undefined,
+            minimumFractionDigits: this.minFractionDigits
+                ? this.minFractionDigits.evaluate(ctx)
+                : undefined,
+            maximumFractionDigits: this.maxFractionDigits
+                ? this.maxFractionDigits.evaluate(ctx)
+                : undefined
+        }).format(this.number.evaluate(ctx));
     }
 
     eachChild(fn: (_: Expression) => void) {

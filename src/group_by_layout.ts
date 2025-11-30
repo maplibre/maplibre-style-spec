@@ -1,10 +1,15 @@
-
 import {refProperties} from './util/ref_properties';
 import type {LayerSpecification} from './types.g';
 
 function stringify(obj: any): string {
     const type = typeof obj;
-    if (type === 'number' || type === 'boolean' || type === 'string' || obj === undefined || obj === null)
+    if (
+        type === 'number' ||
+        type === 'boolean' ||
+        type === 'string' ||
+        obj === undefined ||
+        obj === null
+    )
         return JSON.stringify(obj);
 
     if (Array.isArray(obj)) {
@@ -43,18 +48,19 @@ function getKey(layer: LayerSpecification): string {
  *
  * @param layers - an array of {@link LayerSpecification}.
  * @param cachedKeys - an object to keep already calculated keys.
- * @returns an array of arrays of {@link LayerSpecification} objects, where each inner array 
+ * @returns an array of arrays of {@link LayerSpecification} objects, where each inner array
  * contains layers that share the same layout-affecting properties.
  */
-export function groupByLayout(layers: LayerSpecification[], cachedKeys?: Record<string, string>): LayerSpecification[][] {
+export function groupByLayout(
+    layers: LayerSpecification[],
+    cachedKeys?: Record<string, string>
+): LayerSpecification[][] {
     const groups: Record<string, LayerSpecification[]> = {};
 
     for (let i = 0; i < layers.length; i++) {
-
         const k: string = (cachedKeys && cachedKeys[layers[i].id]) || getKey(layers[i]);
         // update the cache if there is one
-        if (cachedKeys)
-            cachedKeys[layers[i].id] = k;
+        if (cachedKeys) cachedKeys[layers[i].id] = k;
 
         let group = groups[k];
         if (!group) {

@@ -14,7 +14,7 @@ export function validateState(options: ValidateStateOptions): ValidationError[] 
                 options.key,
                 options.value,
                 `object expected, ${getType(options.value)} found`
-            ),
+            )
         ];
     }
 

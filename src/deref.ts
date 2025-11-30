@@ -1,8 +1,7 @@
-
 import {refProperties} from './util/ref_properties';
 import {LayerSpecification} from './types.g';
 
-export type LayerWithRef = LayerSpecification & { ref?: string };
+export type LayerWithRef = LayerSpecification & {ref?: string};
 
 function deref(layer: LayerWithRef, parent: LayerSpecification): LayerSpecification {
     const result: Partial<LayerSpecification> = {};

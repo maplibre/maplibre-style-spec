@@ -35,7 +35,8 @@
     "compile": "tsc",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "prepare": "npm run generate-style-spec"
+    "prepare": "npm run generate-style-spec",
+    "fmt": "oxfmt"
   },
   "repository": {
     "type": "git",
@@ -62,6 +63,7 @@
   },
   "sideEffects": false,
   "devDependencies": {
+    "oxfmt": "^0.15.0",
     "@rollup/plugin-commonjs": "^29.0.0",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
@@ -69,7 +71,6 @@
     "@rollup/plugin-strip": "^3.0.4",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^12.3.0",
-    "@stylistic/eslint-plugin": "^5.6.1",
     "@types/eslint": "^9.6.1",
     "@types/geojson": "^7946.0.16",
     "@types/node": "^24.10.1",

@@ -27,7 +27,9 @@ export class Coalesce implements Expression {
         const parsedArgs = [];
 
         for (const arg of args.slice(1)) {
-            const parsed = context.parse(arg, 1 + parsedArgs.length, outputType, undefined, {typeAnnotation: 'omit'});
+            const parsed = context.parse(arg, 1 + parsedArgs.length, outputType, undefined, {
+                typeAnnotation: 'omit'
+            });
             if (!parsed) return null;
             outputType = outputType || parsed.type;
             parsedArgs.push(parsed);
@@ -39,12 +41,12 @@ export class Coalesce implements Expression {
         // preempt the desired null-coalescing behavior.
         // Thus, if any of our arguments would have needed an annotation, we
         // need to wrap the enclosing coalesce expression with it instead.
-        const needsAnnotation = expectedType &&
-            parsedArgs.some(arg => checkSubtype(expectedType, arg.type));
+        const needsAnnotation =
+            expectedType && parsedArgs.some((arg) => checkSubtype(expectedType, arg.type));
 
-        return needsAnnotation ?
-            new Coalesce(ValueType, parsedArgs) :
-            new Coalesce((outputType as any), parsedArgs);
+        return needsAnnotation
+            ? new Coalesce(ValueType, parsedArgs)
+            : new Coalesce(outputType as any, parsedArgs);
     }
 
     evaluate(ctx: EvaluationContext) {
@@ -76,7 +78,6 @@ export class Coalesce implements Expression {
     }
 
     outputDefined(): boolean {
-        return this.args.every(arg => arg.outputDefined());
+        return this.args.every((arg) => arg.outputDefined());
     }
 }
-

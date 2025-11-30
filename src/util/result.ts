@@ -4,13 +4,15 @@
  * contains an error value.
  * @private
  */
-export type Result<T, E> = {
-    result: 'success';
-    value: T;
-} | {
-    result: 'error';
-    value: E;
-};
+export type Result<T, E> =
+    | {
+          result: 'success';
+          value: T;
+      }
+    | {
+          result: 'error';
+          value: E;
+      };
 
 export function success<T, E>(value: T): Result<T, E> {
     return {result: 'success', value};

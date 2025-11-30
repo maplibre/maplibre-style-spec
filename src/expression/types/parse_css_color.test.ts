@@ -3,12 +3,10 @@ import * as colorSpacesModule from './color_spaces';
 import {RGBColor} from './color_spaces';
 import {describe, test, expect, afterEach, vi} from 'vitest';
 describe('parseCssColor', () => {
-
     // by changing the parse function, we can verify external css color parsers against our requirements
     const parse: (colorToParse: string) => RGBColor | undefined = parseCssColor;
 
     describe('color keywords', () => {
-
         test('should parse valid color names', () => {
             expect(parse('white')).toEqual([1, 1, 1, 1]);
             expect(parse('black')).toEqual([0, 0, 0, 1]);
@@ -34,11 +32,9 @@ describe('parseCssColor', () => {
             expect(parse('__proto__')).toBeUndefined();
             expect(parse('valueOf')).toBeUndefined();
         });
-
     });
 
     describe('RGB hexadecimal notations', () => {
-
         test('should parse valid rgb hex values', () => {
             // hex 3
             expect(parse('#fff')).toEqual([1, 1, 1, 1]);
@@ -80,11 +76,9 @@ describe('parseCssColor', () => {
             expect(parse('fff')).toBeUndefined();
             expect(parse('# fff')).toBeUndefined();
         });
-
     });
 
     describe('RGB functions "rgb()" and "rgba()"', () => {
-
         test('should parse valid rgb values', () => {
             // rgb 0..255
             expect(parse('rgb(0 51 0)')).toEqual([0, 0.2, 0, 1]);
@@ -204,7 +198,7 @@ describe('parseCssColor', () => {
                 '0%, 50%, 100%,',
                 ', 0%, 50%, 100%',
                 ', 0%, 50%, 100%, 100%',
-                '0%, 50%, 100%, 100%,',
+                '0%, 50%, 100%, 100%,'
             ];
 
             for (const args of invalidArgs) {
@@ -219,11 +213,9 @@ describe('parseCssColor', () => {
                 }
             }
         });
-
     });
 
     describe('HSL functions "hsl()" and "hsla()"', () => {
-
         afterEach(() => {
             vi.resetAllMocks();
         });
@@ -232,20 +224,44 @@ describe('parseCssColor', () => {
             vi.spyOn(colorSpacesModule, 'hslToRgb').mockImplementation((hslColor) => hslColor);
 
             expect(parseCssColor('hsl(300,100%,25.1%)')).toEqual([300, 100, 25.1, 1]);
-            expect(parseCssColor('hsl(300,100%,25.1%)')).toEqual(parseCssColor('hsla(300,100%,25.1%,1)'));
-            expect(parseCssColor('hsl(300,100%,25.1%)')).toEqual(parseCssColor('hsla(300,100%,25.1%,100%)'));
-            expect(parseCssColor('hsl(300,100%,25.1%)')).toEqual(parseCssColor('hsl(300 100% 25.1%)'));
-            expect(parseCssColor('hsl(300,100%,25.1%)')).toEqual(parseCssColor('hsl(300 100% 25.1%/1.0)'));
-            expect(parseCssColor('hsl(300,100%,25.1%)')).toEqual(parseCssColor('hsl(300.0 100% 25.1% / 100%)'));
-            expect(parseCssColor('hsl(300,100%,25.1%)')).toEqual(parseCssColor('hsl(300deg 100% 25.1% / 100%)'));
+            expect(parseCssColor('hsl(300,100%,25.1%)')).toEqual(
+                parseCssColor('hsla(300,100%,25.1%,1)')
+            );
+            expect(parseCssColor('hsl(300,100%,25.1%)')).toEqual(
+                parseCssColor('hsla(300,100%,25.1%,100%)')
+            );
+            expect(parseCssColor('hsl(300,100%,25.1%)')).toEqual(
+                parseCssColor('hsl(300 100% 25.1%)')
+            );
+            expect(parseCssColor('hsl(300,100%,25.1%)')).toEqual(
+                parseCssColor('hsl(300 100% 25.1%/1.0)')
+            );
+            expect(parseCssColor('hsl(300,100%,25.1%)')).toEqual(
+                parseCssColor('hsl(300.0 100% 25.1% / 100%)')
+            );
+            expect(parseCssColor('hsl(300,100%,25.1%)')).toEqual(
+                parseCssColor('hsl(300deg 100% 25.1% / 100%)')
+            );
 
             expect(parseCssColor('hsl(240,0%,55%,0.2)')).toEqual([240, 0, 55, 0.2]);
-            expect(parseCssColor('hsl(240,0%,55%,0.2)')).toEqual(parseCssColor('hsla(240.0,0%,55%,0.2)'));
-            expect(parseCssColor('hsl(240,0%,55%,0.2)')).toEqual(parseCssColor('hsla( 240 ,.0% ,55.0% ,20% )'));
-            expect(parseCssColor('hsl(240,0%,55%,0.2)')).toEqual(parseCssColor('hsl(240 0% 55% / 0.2)'));
-            expect(parseCssColor('hsl(240,0%,55%,0.2)')).toEqual(parseCssColor('hsl(240 0% 55% / 20%)'));
-            expect(parseCssColor('hsl(240,0%,55%,0.2)')).toEqual(parseCssColor('hsl(24e1deg 0e1% 55% / 2e-1)'));
-            expect(parseCssColor('hsl(240,0%,55%,0.2)')).toEqual(parseCssColor('hsla(240 -1e-7% 55% / 2e1%)'));
+            expect(parseCssColor('hsl(240,0%,55%,0.2)')).toEqual(
+                parseCssColor('hsla(240.0,0%,55%,0.2)')
+            );
+            expect(parseCssColor('hsl(240,0%,55%,0.2)')).toEqual(
+                parseCssColor('hsla( 240 ,.0% ,55.0% ,20% )')
+            );
+            expect(parseCssColor('hsl(240,0%,55%,0.2)')).toEqual(
+                parseCssColor('hsl(240 0% 55% / 0.2)')
+            );
+            expect(parseCssColor('hsl(240,0%,55%,0.2)')).toEqual(
+                parseCssColor('hsl(240 0% 55% / 20%)')
+            );
+            expect(parseCssColor('hsl(240,0%,55%,0.2)')).toEqual(
+                parseCssColor('hsl(24e1deg 0e1% 55% / 2e-1)')
+            );
+            expect(parseCssColor('hsl(240,0%,55%,0.2)')).toEqual(
+                parseCssColor('hsla(240 -1e-7% 55% / 2e1%)')
+            );
 
             expect(parseCssColor('hsl(240,0%,55%,0.9)')).toEqual([240, 0, 55, 0.9]);
             expect(parseCssColor('hsl(240,0%,55%,.0)')).toEqual([240, 0, 55, 0]);
@@ -257,7 +273,12 @@ describe('parseCssColor', () => {
             expect(parse('hsl(0 100% 50%)')).toEqual([1, 0, 0, 1]);
             expect(parse('hsl(240 100% 50%)')).toEqual([0, 0, 1, 1]);
             expect(parse('hsl(240 100% 25%)')).toEqual([0, 0, 0.5, 1]);
-            expect(parse('hsl(273 75% 60%)')).toEqual([expect.closeTo(0.63), expect.closeTo(0.3), 0.9, 1]);
+            expect(parse('hsl(273 75% 60%)')).toEqual([
+                expect.closeTo(0.63),
+                expect.closeTo(0.3),
+                0.9,
+                1
+            ]);
 
             expect(parse('hsl(0 0% 0%)')).toEqual([0, 0, 0, 1]);
             expect(parse('hsl(0 0% 0% / 0)')).toEqual([0, 0, 0, 0]);
@@ -329,7 +350,7 @@ describe('parseCssColor', () => {
                 '0,0,0%',
                 '0 0% 0% /',
                 '0,0%,0%,',
-                ', 0%,0%,0%',
+                ', 0%,0%,0%'
             ];
 
             for (const args of invalidArgs) {
@@ -344,7 +365,5 @@ describe('parseCssColor', () => {
                 }
             }
         });
-
     });
-
 });

@@ -21,7 +21,8 @@ export function findStopLessThanOrEqualTo(stops: Array<number>, input: number) {
         nextValue = stops[currentIndex + 1];
 
         if (currentValue <= input) {
-            if (currentIndex === lastIndex || input < nextValue) { // Search complete
+            if (currentIndex === lastIndex || input < nextValue) {
+                // Search complete
                 return currentIndex;
             }
 
