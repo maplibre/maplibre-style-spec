@@ -69,20 +69,8 @@ function propertyType(property) {
                     return `Array<${elementType}>`;
                 }
             }
-            case 'light':
-                return 'LightSpecification';
-            case 'sky':
-                return 'SkySpecification';
             case 'sources':
                 return '{[_: string]: SourceSpecification}';
-            case 'projection:':
-                return 'ProjectionSpecification';
-            case 'state':
-                return 'StateSpecification';
-            case 'numberArray':
-                return 'NumberArraySpecification';
-            case 'colorArray':
-                return 'ColorArraySpecification';
             case '*':
                 return 'unknown';
             default:

@@ -4,7 +4,7 @@ import {formatJSON} from './util';
 
 /**
  * This script generates markdown documentation from the JSON schema.
- * It leverages exitsing md files in the docs folder and adds generated files from the v8.json file.
+ * It leverages existing md files in the docs folder and adds generated files from the v8.json file.
  */
 
 const BASE_PATH = 'docs';
@@ -12,14 +12,19 @@ const BASE_PATH = 'docs';
 type JsonExpressionSyntax = {
     overloads: {
         parameters: string[];
-        'output-type': string;
+        'output-type': string | string[];
     }[];
-    parameters?: {
-        name: string;
-        type: string;
-        doc?: string;
-    }[];
+    parameters?: Parameter[];
+}
+
+type Parameter ={
+    name: string;
+    type: ParameterType;
+    doc?: string;
 };
+
+// either a basic type, a union of a few basic types or an object
+type ParameterType = string | string[] | { [key: string]: JsonObject };
 
 type JsonSdkSupport = {
     [info: string]: {
@@ -36,10 +41,13 @@ type JsonObject = {
     type: string;
     doc: string;
     requires?: any[];
-    example: string | object | number;
-    expression?: {interpolated?: boolean; parameters?: string[]};
+    example: string | object | number | boolean;
+    expression?: { interpolated?: boolean; parameters?: string[]};
     transition?: boolean;
-    values?: {[key: string]: {doc: string; 'sdk-support'?: JsonSdkSupport}} | number[];
+    // for enum type: what is the type of the emum elements
+    values?: {[key: string]: { doc: string; 'sdk-support'?: JsonSdkSupport }} | number[];
+    // for array type: what is the type of the array elements?
+    value?: string;
     minimum?: number;
     maximum?: number;
 };
@@ -124,6 +132,52 @@ function sdkSupportToMarkdown(support: JsonSdkSupport): string {
 }
 
 /**
+ * Joins the array of type strings into a single string with `" | "` between them.
+ * @param input the array or string to be joined
+ * @returns the joined string
+ */
+function parameterTypeToType(input: ParameterType):string{
+    if ( typeof input === 'string' )
+        return input
+    if (Array.isArray(input)) {
+        return input.join(' | ')
+    }
+    const parameters = Object.entries(input)
+        .map(([key, val])=> {
+            const requiredSuffix = val.required ? '' : '?';
+            return `${key}${requiredSuffix}: ${jsonObjectToType(val)}`
+        })
+        .join(', ')
+
+    return `{${parameters}}`;
+}
+
+/**
+ * Converts the JSON object to a type string.
+ * @param val - the JSON object
+ * @returns the type string
+ */
+function jsonObjectToType(val: JsonObject):string{
+    switch (val.type) {
+        case 'boolean':
+        case 'string':
+        case 'number':
+        case 'color':
+            // basic types -> no conversion needed
+            return val.type
+        case 'array':
+            return `${val.type}<${parameterTypeToType(val.value)}>`;
+        case 'enum':
+            const values = val.values;
+            if (!values || Array.isArray(values))
+                throw new Error(`Enum ${JSON.stringify(val)} has no "values" describing the contained Options in the form of an Object`)
+            return Object.keys(values).map(s=>`"${s}"`).join(' | ');
+        default:
+            throw new Error(`Unknown "type" ${val.type} for ${JSON.stringify(val)}`)
+    }
+}
+
+/**
  * Converts the expression syntax object to markdown format.
  * @param key - the expression name
  * @param syntax - the expression syntax object in the style spec
@@ -132,17 +186,32 @@ function sdkSupportToMarkdown(support: JsonSdkSupport): string {
 function expressionSyntaxToMarkdown(key: string, syntax: JsonExpressionSyntax) {
     let markdown = '\nSyntax:\n';
     const codeBlockLines = syntax.overloads.map((overload) => {
-        return `[${[`"${key}"`, ...overload.parameters].join(', ')}]: ${overload['output-type']}`;
+        const key_and_parameters = [`"${key}"`, ...overload.parameters].join(', ');
+
+        return `[${key_and_parameters}]: ${parameterTypeToType(overload['output-type'])}`;
     });
     markdown += `${codeBlockMarkdown(codeBlockLines.join('\n'), 'js')}\n`;
     for (const parameter of syntax.parameters ?? []) {
-        markdown += `- \`${parameter.name}\``;
-        if (parameter.type) {
-            const type = parameter.type.replaceAll('<', '&lt;').replaceAll('>', '&gt;');
-            markdown += `: *${type}*`;
-        }
+        const type = parameterTypeToType(parameter.type).replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+        markdown += `- \`${parameter.name}\`: \`${type}\``;
         if (parameter.doc) {
-            markdown += ` — ${parameter.doc}`;
+            markdown += `- ${parameter.doc}`;
+        }
+        if (typeof parameter.type !== 'string' && !Array.isArray(parameter.type)){
+            // the type is an object type => we can attach more documentation about the contained variables
+            markdown += '  \nParameters:'
+            Object.entries(parameter.type).forEach(([key, val])=>{
+                const type = jsonObjectToType(val).replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+                markdown += `\n    - \`${key}\`: \`${type}\` - ${val.doc}`
+                if (val.type==='enum' && val.values){
+                    markdown += '  \n      Possible values are:'
+                    for (const [enumKey, enumValue] of Object.entries(val.values)) {
+                        const defaultIndicator = val.default === enumKey ? ' *default*' : '';
+                        markdown += `\n        - \`"${enumKey}"\`${defaultIndicator} - ${enumValue.doc}`
+                    }
+                }
+
+            })
         }
         markdown += '\n';
     }
