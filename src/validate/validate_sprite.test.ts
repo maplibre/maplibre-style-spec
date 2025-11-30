@@ -39,38 +39,73 @@ describe('Validate Sprite', () => {
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('sprite[0]: object expected, number found');
 
-        errors = validateSprite({validateSpec: validate, key: 'sprite', value: [{id: 'id1', url: 'url1'}, {id: 'id2', url: 'url2'}, false]});
+        errors = validateSprite({
+            validateSpec: validate,
+            key: 'sprite',
+            value: [{id: 'id1', url: 'url1'}, {id: 'id2', url: 'url2'}, false]
+        });
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('sprite[2]: object expected, boolean found');
 
-        errors = validateSprite({validateSpec: validate, key: 'sprite', value: ['string', {id: 'id1', url: 'url1'}, {id: 'id2', url: 'url2'}, false]});
+        errors = validateSprite({
+            validateSpec: validate,
+            key: 'sprite',
+            value: ['string', {id: 'id1', url: 'url1'}, {id: 'id2', url: 'url2'}, false]
+        });
         expect(errors).toHaveLength(2);
         expect(errors[0].message).toBe('sprite[0]: object expected, string found');
         expect(errors[1].message).toBe('sprite[3]: object expected, boolean found');
     });
 
-    test('Should return error if array\'s objects are not of form {id: string, url: string}', () => {
-        let errors = validateSprite({validateSpec: validate, key: 'sprite', value: [{id: 2, url: 2}]});
+    test("Should return error if array's objects are not of form {id: string, url: string}", () => {
+        let errors = validateSprite({
+            validateSpec: validate,
+            key: 'sprite',
+            value: [{id: 2, url: 2}]
+        });
         expect(errors).toHaveLength(2);
         expect(errors[0].message).toBe('sprite[0].id: string expected, number found');
         expect(errors[1].message).toBe('sprite[0].url: string expected, number found');
 
-        errors = validateSprite({validateSpec: validate, key: 'sprite', value: [{test: 'string'}]});
+        errors = validateSprite({
+            validateSpec: validate,
+            key: 'sprite',
+            value: [{test: 'string'}]
+        });
         expect(errors).toHaveLength(3);
         expect(errors[0].message).toBe('sprite[0]: unknown property "test"');
         expect(errors[1].message).toBe('sprite[0]: missing required property "id"');
         expect(errors[2].message).toBe('sprite[0]: missing required property "url"');
     });
 
-    test('Should return error if array\'s objects contain duplicated IDs or URLs', () => {
-        const errors = validateSprite({validateSpec: validate, key: 'sprite', value: [{id: 'id1', url: 'url1'}, {id: 'id1', url: 'url1'}]});
+    test("Should return error if array's objects contain duplicated IDs or URLs", () => {
+        const errors = validateSprite({
+            validateSpec: validate,
+            key: 'sprite',
+            value: [
+                {id: 'id1', url: 'url1'},
+                {id: 'id1', url: 'url1'}
+            ]
+        });
         expect(errors).toHaveLength(2);
-        expect(errors[0].message).toBe('sprite: all the sprites\' ids must be unique, but id1 is duplicated');
-        expect(errors[1].message).toBe('sprite: all the sprites\' URLs must be unique, but url1 is duplicated');
+        expect(errors[0].message).toBe(
+            "sprite: all the sprites' ids must be unique, but id1 is duplicated"
+        );
+        expect(errors[1].message).toBe(
+            "sprite: all the sprites' URLs must be unique, but url1 is duplicated"
+        );
     });
 
     test('Should pass if correct array of objects', () => {
-        const errors = validateSprite({validateSpec: validate, key: 'sprite', value: [{id: 'id1', url: 'url1'}, {id: 'id2', url: 'url2'}, {id: 'id3', url: 'url3'}]});
+        const errors = validateSprite({
+            validateSpec: validate,
+            key: 'sprite',
+            value: [
+                {id: 'id1', url: 'url1'},
+                {id: 'id2', url: 'url2'},
+                {id: 'id3', url: 'url3'}
+            ]
+        });
         expect(errors).toHaveLength(0);
     });
 });

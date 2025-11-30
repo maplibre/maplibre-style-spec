@@ -14,7 +14,12 @@ import {ObjectType} from '../expression/types';
 import {StylePropertySpecification} from '..';
 
 export function isFunction(value) {
-    return typeof value === 'object' && value !== null && !Array.isArray(value) && typeOf(value) === ObjectType;
+    return (
+        typeof value === 'object' &&
+        value !== null &&
+        !Array.isArray(value) &&
+        typeOf(value) === ObjectType
+    );
 }
 
 function identityFunction(x) {
@@ -55,7 +60,8 @@ export function createFunction(parameters, propertySpec) {
     const zoomAndFeatureDependent = parameters.stops && typeof parameters.stops[0][0] === 'object';
     const featureDependent = zoomAndFeatureDependent || parameters.property !== undefined;
     const zoomDependent = zoomAndFeatureDependent || !featureDependent;
-    const type = parameters.type || (supportsInterpolation(propertySpec) ? 'exponential' : 'interval');
+    const type =
+        parameters.type || (supportsInterpolation(propertySpec) ? 'exponential' : 'interval');
 
     const parseFn = getParseFunction(propertySpec);
     if (parseFn) {
@@ -113,7 +119,10 @@ export function createFunction(parameters, propertySpec) {
 
         const featureFunctionStops = [];
         for (const z of zoomStops) {
-            featureFunctionStops.push([featureFunctions[z].zoom, createFunction(featureFunctions[z], propertySpec)]);
+            featureFunctionStops.push([
+                featureFunctions[z].zoom,
+                createFunction(featureFunctions[z], propertySpec)
+            ]);
         }
 
         const interpolationType = {name: 'linear'};
@@ -121,29 +130,39 @@ export function createFunction(parameters, propertySpec) {
             kind: 'composite',
             interpolationType,
             interpolationFactor: Interpolate.interpolationFactor.bind(undefined, interpolationType),
-            zoomStops: featureFunctionStops.map(s => s[0]),
+            zoomStops: featureFunctionStops.map((s) => s[0]),
             evaluate({zoom}, properties) {
-                return evaluateExponentialFunction({
-                    stops: featureFunctionStops,
-                    base: parameters.base
-                }, propertySpec, zoom).evaluate(zoom, properties);
+                return evaluateExponentialFunction(
+                    {
+                        stops: featureFunctionStops,
+                        base: parameters.base
+                    },
+                    propertySpec,
+                    zoom
+                ).evaluate(zoom, properties);
             }
         };
     } else if (zoomDependent) {
-        const interpolationType = type === 'exponential' ?
-            {name: 'exponential', base: parameters.base !== undefined ? parameters.base : 1} : null;
+        const interpolationType =
+            type === 'exponential'
+                ? {name: 'exponential', base: parameters.base !== undefined ? parameters.base : 1}
+                : null;
         return {
             kind: 'camera',
             interpolationType,
             interpolationFactor: Interpolate.interpolationFactor.bind(undefined, interpolationType),
-            zoomStops: parameters.stops.map(s => s[0]),
-            evaluate: ({zoom}) => innerFun(parameters, propertySpec, zoom, hashedStops, categoricalKeyType)
+            zoomStops: parameters.stops.map((s) => s[0]),
+            evaluate: ({zoom}) =>
+                innerFun(parameters, propertySpec, zoom, hashedStops, categoricalKeyType)
         };
     } else {
         return {
             kind: 'source',
             evaluate(_, feature) {
-                const value = feature && feature.properties ? feature.properties[parameters.property] : undefined;
+                const value =
+                    feature && feature.properties
+                        ? feature.properties[parameters.property]
+                        : undefined;
                 if (value === undefined) {
                     return coalesce(parameters.default, propertySpec.default);
                 }
@@ -172,7 +191,10 @@ function evaluateIntervalFunction(parameters, propertySpec, input) {
     if (input <= parameters.stops[0][0]) return parameters.stops[0][1];
     if (input >= parameters.stops[n - 1][0]) return parameters.stops[n - 1][1];
 
-    const index = findStopLessThanOrEqualTo(parameters.stops.map((stop) => stop[0]), input);
+    const index = findStopLessThanOrEqualTo(
+        parameters.stops.map((stop) => stop[0]),
+        input
+    );
 
     return parameters.stops[index][1];
 }
@@ -187,11 +209,16 @@ function evaluateExponentialFunction(parameters, propertySpec, input) {
     if (input <= parameters.stops[0][0]) return parameters.stops[0][1];
     if (input >= parameters.stops[n - 1][0]) return parameters.stops[n - 1][1];
 
-    const index = findStopLessThanOrEqualTo(parameters.stops.map((stop) => stop[0]), input);
+    const index = findStopLessThanOrEqualTo(
+        parameters.stops.map((stop) => stop[0]),
+        input
+    );
     const t = interpolationFactor(
-        input, base,
+        input,
+        base,
         parameters.stops[index][0],
-        parameters.stops[index + 1][0]);
+        parameters.stops[index + 1][0]
+    );
 
     const outputLower = parameters.stops[index][1];
     const outputUpper = parameters.stops[index + 1][1];
@@ -235,7 +262,10 @@ function evaluateIdentityFunction(parameters, propertySpec, input) {
             input = NumberArray.parse(input);
             break;
         default:
-            if (getType(input) !== propertySpec.type && (propertySpec.type !== 'enum' || !propertySpec.values[input])) {
+            if (
+                getType(input) !== propertySpec.type &&
+                (propertySpec.type !== 'enum' || !propertySpec.values[input])
+            ) {
                 input = undefined;
             }
     }

@@ -29,11 +29,11 @@ export class ParsingContext {
     /**
      * Internal delegate to inConstant function to avoid circular dependency to CompoundExpression
      */
-    private _isConstant: (expression: Expression)=> boolean;
+    private _isConstant: (expression: Expression) => boolean;
 
     constructor(
         registry: ExpressionRegistry,
-        isConstantFunc: (expression: Expression)=> boolean,
+        isConstantFunc: (expression: Expression) => boolean,
         path: Array<number> = [],
         expectedType?: Type | null,
         scope: Scope = new Scope(),
@@ -41,7 +41,7 @@ export class ParsingContext {
     ) {
         this.registry = registry;
         this.path = path;
-        this.key = path.map(part => `[${part}]`).join('');
+        this.key = path.map((part) => `[${part}]`).join('');
         this.scope = scope;
         this.errors = errors;
         this.expectedType = expectedType;
@@ -76,7 +76,12 @@ export class ParsingContext {
             typeAnnotation?: 'assert' | 'coerce' | 'omit';
         }
     ): Expression {
-        if (expr === null || typeof expr === 'string' || typeof expr === 'boolean' || typeof expr === 'number') {
+        if (
+            expr === null ||
+            typeof expr === 'string' ||
+            typeof expr === 'boolean' ||
+            typeof expr === 'number'
+        ) {
             expr = ['literal', expr];
         }
 
@@ -92,12 +97,17 @@ export class ParsingContext {
 
         if (Array.isArray(expr)) {
             if (expr.length === 0) {
-                return this.error('Expected an array with at least one element. If you wanted a literal array, use ["literal", []].') as null;
+                return this.error(
+                    'Expected an array with at least one element. If you wanted a literal array, use ["literal", []].'
+                ) as null;
             }
 
             const op = expr[0];
             if (typeof op !== 'string') {
-                this.error(`Expression name must be a string, but found ${typeof op} instead. If you wanted a literal array, use ["literal", [...]].`, 0);
+                this.error(
+                    `Expression name must be a string, but found ${typeof op} instead. If you wanted a literal array, use ["literal", [...]].`,
+                    0
+                );
                 return null;
             }
 
@@ -118,13 +128,27 @@ export class ParsingContext {
                     //   * The "coalesce" operator, which needs to omit type annotations.
                     //   * String-valued properties (e.g. `text-field`), where coercion is more convenient than assertion.
                     //
-                    if ((expected.kind === 'string' || expected.kind === 'number' || expected.kind === 'boolean' || expected.kind === 'object' || expected.kind === 'array') && actual.kind === 'value') {
+                    if (
+                        (expected.kind === 'string' ||
+                            expected.kind === 'number' ||
+                            expected.kind === 'boolean' ||
+                            expected.kind === 'object' ||
+                            expected.kind === 'array') &&
+                        actual.kind === 'value'
+                    ) {
                         parsed = annotate(parsed, expected, options.typeAnnotation || 'assert');
-                    } else if (('projectionDefinition' === expected.kind && ['string', 'array'].includes(actual.kind)) ||
-                        ((['color', 'formatted','resolvedImage'].includes(expected.kind)) && ['value','string'].includes(actual.kind)) ||
-                        ((['padding','numberArray'].includes(expected.kind)) && ['value', 'number', 'array'].includes(actual.kind)) ||
-                        ('colorArray' === expected.kind && ['value', 'string', 'array'].includes(actual.kind)) ||
-                        ('variableAnchorOffsetCollection' === expected.kind && ['value', 'array'].includes(actual.kind))) {
+                    } else if (
+                        ('projectionDefinition' === expected.kind &&
+                            ['string', 'array'].includes(actual.kind)) ||
+                        (['color', 'formatted', 'resolvedImage'].includes(expected.kind) &&
+                            ['value', 'string'].includes(actual.kind)) ||
+                        (['padding', 'numberArray'].includes(expected.kind) &&
+                            ['value', 'number', 'array'].includes(actual.kind)) ||
+                        ('colorArray' === expected.kind &&
+                            ['value', 'string', 'array'].includes(actual.kind)) ||
+                        ('variableAnchorOffsetCollection' === expected.kind &&
+                            ['value', 'array'].includes(actual.kind))
+                    ) {
                         parsed = annotate(parsed, expected, options.typeAnnotation || 'coerce');
                     } else if (this.checkSubtype(expected, actual)) {
                         return null;
@@ -135,7 +159,11 @@ export class ParsingContext {
                 // it immediately and replace it with a literal value in the
                 // parsed/compiled result. Expressions that expect an image should
                 // not be resolved here so we can later get the available images.
-                if (!(parsed instanceof Literal) && (parsed.type.kind !== 'resolvedImage') && this._isConstant(parsed)) {
+                if (
+                    !(parsed instanceof Literal) &&
+                    parsed.type.kind !== 'resolvedImage' &&
+                    this._isConstant(parsed)
+                ) {
                     const ec = new EvaluationContext();
                     try {
                         parsed = new Literal(parsed.type, parsed.evaluate(ec));
@@ -148,9 +176,12 @@ export class ParsingContext {
                 return parsed;
             }
 
-            return this.error(`Unknown expression "${op}". If you wanted a literal array, use ["literal", [...]].`, 0) as null;
+            return this.error(
+                `Unknown expression "${op}". If you wanted a literal array, use ["literal", [...]].`,
+                0
+            ) as null;
         } else if (typeof expr === 'undefined') {
-            return this.error('\'undefined\' value invalid. Use null instead.') as null;
+            return this.error("'undefined' value invalid. Use null instead.") as null;
         } else if (typeof expr === 'object') {
             return this.error('Bare objects invalid. Use ["literal", {...}] instead.') as null;
         } else {
@@ -187,7 +218,7 @@ export class ParsingContext {
      * @private
      */
     error(error: string, ...keys: Array<number>) {
-        const key = `${this.key}${keys.map(k => `[${k}]`).join('')}`;
+        const key = `${this.key}${keys.map((k) => `[${k}]`).join('')}`;
         this.errors.push(new ExpressionParsingError(key, error));
     }
 
@@ -204,4 +235,3 @@ export class ParsingContext {
         return error;
     }
 }
-

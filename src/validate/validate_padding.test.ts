@@ -35,11 +35,19 @@ describe('Validate Padding', () => {
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('padding: padding requires 1 to 4 values; 0 values found');
 
-        errors = validatePadding({validateSpec: validate, key: 'padding', value: [1, 1, 1, 1, 1]});
+        errors = validatePadding({
+            validateSpec: validate,
+            key: 'padding',
+            value: [1, 1, 1, 1, 1]
+        });
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('padding: padding requires 1 to 4 values; 5 values found');
 
-        errors = validatePadding({validateSpec: validate, key: 'padding', value: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]});
+        errors = validatePadding({
+            validateSpec: validate,
+            key: 'padding',
+            value: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+        });
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('padding: padding requires 1 to 4 values; 12 values found');
     });
@@ -65,7 +73,11 @@ describe('Validate Padding', () => {
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('padding[2]: number expected, boolean found');
 
-        errors = validatePadding({validateSpec: validate, key: 'padding', value: ['1', 3, false]});
+        errors = validatePadding({
+            validateSpec: validate,
+            key: 'padding',
+            value: ['1', 3, false]
+        });
         expect(errors).toHaveLength(2);
         expect(errors[0].message).toBe('padding[0]: number expected, string found');
         expect(errors[1].message).toBe('padding[2]: number expected, boolean found');

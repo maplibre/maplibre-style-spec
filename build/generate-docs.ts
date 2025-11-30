@@ -1,10 +1,10 @@
-import v8 from '../src/reference/v8.json' with { type: 'json' };
+import v8 from '../src/reference/v8.json' with {type: 'json'};
 import fs from 'fs';
 import {formatJSON} from './util';
 
 /**
  * This script generates markdown documentation from the JSON schema.
- * It leverages exitsing md files in the docs folder and adds generated files from the v8.json file.
+ * It leverages existing md files in the docs folder and adds generated files from the v8.json file.
  */
 
 const BASE_PATH = 'docs';
@@ -12,14 +12,19 @@ const BASE_PATH = 'docs';
 type JsonExpressionSyntax = {
     overloads: {
         parameters: string[];
-        'output-type': string;
+        'output-type': string | string[];
     }[];
-    parameters?: {
-        name: string;
-        type?: string;
-        description?: string;
-    }[];
-}
+    parameters?: Parameter[];
+};
+
+type Parameter = {
+    name: string;
+    type: ParameterType;
+    doc?: string;
+};
+
+// either a basic type, a union of a few basic types or an object
+type ParameterType = string | string[] | {[key: string]: JsonObject};
 
 type JsonSdkSupport = {
     [info: string]: {
@@ -27,7 +32,7 @@ type JsonSdkSupport = {
         android?: string;
         ios?: string;
     };
-}
+};
 
 type JsonObject = {
     required?: boolean;
@@ -36,13 +41,16 @@ type JsonObject = {
     type: string;
     doc: string;
     requires?: any[];
-    example: string | object | number;
-    expression?: { interpolated?: boolean; parameters?: string[]};
+    example: string | object | number | boolean;
+    expression?: {interpolated?: boolean; parameters?: string[]};
     transition?: boolean;
-    values?: {[key: string]: { doc: string; 'sdk-support'?: JsonSdkSupport }} | number[];
+    // for enum type: what is the type of the emum elements
+    values?: {[key: string]: {doc: string; 'sdk-support'?: JsonSdkSupport}} | number[];
+    // for array type: what is the type of the array elements?
+    value?: string;
     minimum?: number;
     maximum?: number;
-}
+};
 
 /**
  * Capitalizes the first letter of the word.
@@ -61,7 +69,8 @@ function capitalize(word: string) {
  * @returns true if the element should be a topic, false otherwise
  */
 function topicElement(key: string, value: JsonObject): boolean {
-    return value.type !== 'number' &&
+    return (
+        value.type !== 'number' &&
         value.type !== 'boolean' &&
         key !== 'center' &&
         value.type !== '*' &&
@@ -69,7 +78,8 @@ function topicElement(key: string, value: JsonObject): boolean {
         key !== 'name' &&
         key !== 'sprite' &&
         key !== 'layers' &&
-        key !== 'sources';
+        key !== 'sources'
+    );
 }
 
 /**
@@ -99,7 +109,7 @@ function supportCell(support?: string): string {
     // if the string is an issue link, generate a link to it
     // there is no support yet but there is a tracking issue
     const maplibreIssue = /https:\/\/github.com\/maplibre\/[^/]+\/issues\/(\d+)/;
-    const match  = support.match(maplibreIssue);
+    const match = support.match(maplibreIssue);
     if (match) return `❌ ([#${match[1]}](${support}))`;
     return support;
 }
@@ -122,6 +132,55 @@ function sdkSupportToMarkdown(support: JsonSdkSupport): string {
 }
 
 /**
+ * Joins the array of type strings into a single string with `" | "` between them.
+ * @param input the array or string to be joined
+ * @returns the joined string
+ */
+function parameterTypeToType(input: ParameterType): string {
+    if (typeof input === 'string') return input;
+    if (Array.isArray(input)) {
+        return input.join(' | ');
+    }
+    const parameters = Object.entries(input)
+        .map(([key, val]) => {
+            const requiredSuffix = val.required ? '' : '?';
+            return `${key}${requiredSuffix}: ${jsonObjectToType(val)}`;
+        })
+        .join(', ');
+
+    return `{${parameters}}`;
+}
+
+/**
+ * Converts the JSON object to a type string.
+ * @param val - the JSON object
+ * @returns the type string
+ */
+function jsonObjectToType(val: JsonObject): string {
+    switch (val.type) {
+        case 'boolean':
+        case 'string':
+        case 'number':
+        case 'color':
+            // basic types -> no conversion needed
+            return val.type;
+        case 'array':
+            return `${val.type}<${parameterTypeToType(val.value)}>`;
+        case 'enum':
+            const values = val.values;
+            if (!values || Array.isArray(values))
+                throw new Error(
+                    `Enum ${JSON.stringify(val)} has no "values" describing the contained Options in the form of an Object`
+                );
+            return Object.keys(values)
+                .map((s) => `"${s}"`)
+                .join(' | ');
+        default:
+            throw new Error(`Unknown "type" ${val.type} for ${JSON.stringify(val)}`);
+    }
+}
+
+/**
  * Converts the expression syntax object to markdown format.
  * @param key - the expression name
  * @param syntax - the expression syntax object in the style spec
@@ -130,17 +189,33 @@ function sdkSupportToMarkdown(support: JsonSdkSupport): string {
 function expressionSyntaxToMarkdown(key: string, syntax: JsonExpressionSyntax) {
     let markdown = '\nSyntax:\n';
     const codeBlockLines = syntax.overloads.map((overload) => {
-        return `[${[`"${key}"`, ...overload.parameters].join(', ')}]: ${overload['output-type']}`;
+        const key_and_parameters = [`"${key}"`, ...overload.parameters].join(', ');
+
+        return `[${key_and_parameters}]: ${parameterTypeToType(overload['output-type'])}`;
     });
     markdown += `${codeBlockMarkdown(codeBlockLines.join('\n'), 'js')}\n`;
     for (const parameter of syntax.parameters ?? []) {
-        markdown += `- \`${parameter.name}\``;
-        if (parameter.type) {
-            const type = parameter.type.replaceAll('<', '&lt;').replaceAll('>', '&gt;');
-            markdown += `: *${type}*`;
+        const type = parameterTypeToType(parameter.type)
+            .replaceAll('<', '&lt;')
+            .replaceAll('>', '&gt;');
+        markdown += `- \`${parameter.name}\`: \`${type}\``;
+        if (parameter.doc) {
+            markdown += `- ${parameter.doc}`;
         }
-        if (parameter.description) {
-            markdown += ` — ${parameter.description}`;
+        if (typeof parameter.type !== 'string' && !Array.isArray(parameter.type)) {
+            // the type is an object type => we can attach more documentation about the contained variables
+            markdown += '  \nParameters:';
+            Object.entries(parameter.type).forEach(([key, val]) => {
+                const type = jsonObjectToType(val).replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+                markdown += `\n    - \`${key}\`: \`${type}\` - ${val.doc}`;
+                if (val.type === 'enum' && val.values) {
+                    markdown += '  \n      Possible values are:';
+                    for (const [enumKey, enumValue] of Object.entries(val.values)) {
+                        const defaultIndicator = val.default === enumKey ? ' *default*' : '';
+                        markdown += `\n        - \`"${enumKey}"\`${defaultIndicator} - ${enumValue.doc}`;
+                    }
+                }
+            });
         }
         markdown += '\n';
     }
@@ -230,7 +305,12 @@ function formatRange(minimum?: number, maximum?: number) {
  * @param paintLayoutText - the text to be used for the paint/layout property
  * @returns the markdown string
  */
-function convertPropertyToMarkdown(key: string, value: JsonObject, keyPrefix = '##', paintLayoutText = '') {
+function convertPropertyToMarkdown(
+    key: string,
+    value: JsonObject,
+    keyPrefix = '##',
+    paintLayoutText = ''
+) {
     let markdown = `${keyPrefix} ${key}\n*`;
     if (paintLayoutText) {
         markdown += `[${paintLayoutText}](#${paintLayoutText.toLowerCase()}) property. `;
@@ -267,8 +347,9 @@ function convertPropertyToMarkdown(key: string, value: JsonObject, keyPrefix = '
     }
     if (value.expression?.interpolated) {
         if (value.expression.parameters.includes('feature-state')) {
-            markdown += 'Supports [feature-state](expressions.md#feature-state) and [interpolate](expressions.md#interpolate) expressions. ';
-        }  else {
+            markdown +=
+                'Supports [feature-state](expressions.md#feature-state) and [interpolate](expressions.md#interpolate) expressions. ';
+        } else {
             markdown += 'Supports [interpolate](expressions.md#interpolate) expressions. ';
         }
     }
@@ -337,7 +418,7 @@ function createLayersContent() {
         content += convertPropertyToMarkdown(key, value as JsonObject, '###');
     }
 
-    for (const layoutKey of Object.keys(v8).filter(key => key.startsWith('layout_'))) {
+    for (const layoutKey of Object.keys(v8).filter((key) => key.startsWith('layout_'))) {
         const layerName = layoutKey.replace('layout_', '');
         content += `## ${capitalize(layerName)}\n\n`;
         for (const [key, value] of Object.entries(v8[layoutKey])) {
@@ -360,10 +441,8 @@ function createSourcesContent() {
             doc: 'A vector tile source. Tiles must be in [Mapbox Vector Tile format](https://github.com/mapbox/vector-tile-spec). All geometric coordinates in vector tiles must be between \`-1 * extent\` and \`(extent * 2) - 1\` inclusive. All layers that use a vector source must specify a [`source-layer`](layers.md#source-layer) value. Note that features are only rendered within their originating tile, which may lead to visual artifacts when large values for width, radius, size or offset are specified. To mitigate rendering issues, either reduce the value of the property causing the artifact or, if you have control over the tile generation process, increase the buffer size to ensure that features are fully rendered within the tile.',
             example: {
                 'maplibre-streets': {
-                    'type': 'vector',
-                    'tiles': [
-                        'http://a.example.com/tiles/{z}/{x}/{y}.pbf'
-                    ],
+                    type: 'vector',
+                    tiles: ['http://a.example.com/tiles/{z}/{x}/{y}.pbf']
                 }
             },
             'sdk-support': {
@@ -378,11 +457,9 @@ function createSourcesContent() {
             doc: 'A raster tile source.',
             example: {
                 'maplibre-satellite': {
-                    'type': 'raster',
-                    'tiles': [
-                        'http://a.example.com/tiles/{z}/{x}/{y}.png'
-                    ],
-                    'tileSize': 256
+                    type: 'raster',
+                    tiles: ['http://a.example.com/tiles/{z}/{x}/{y}.png'],
+                    tileSize: 256
                 }
             },
             'sdk-support': {
@@ -397,11 +474,9 @@ function createSourcesContent() {
             doc: 'A raster DEM source. Only supports [Mapbox Terrain RGB](https://blog.mapbox.com/global-elevation-data-6689f1d0ba65) and Mapzen Terrarium tiles.',
             example: {
                 'maplibre-terrain-rgb': {
-                    'type': 'raster-dem',
-                    'encoding': 'mapbox',
-                    'tiles': [
-                        'http://a.example.com/dem-tiles/{z}/{x}/{y}.png'
-                    ],
+                    type: 'raster-dem',
+                    encoding: 'mapbox',
+                    tiles: ['http://a.example.com/dem-tiles/{z}/{x}/{y}.png']
                 }
             },
             'sdk-support': {
@@ -416,22 +491,22 @@ function createSourcesContent() {
             doc: 'A [GeoJSON](http://geojson.org/) source. Data must be provided via a \`"data"\` property, whose value can be a URL or inline GeoJSON. When using in a browser, the GeoJSON data must be on the same domain as the map or served with [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) headers.',
             example: {
                 'geojson-marker': {
-                    'type': 'geojson',
-                    'data': {
-                        'type': 'Feature',
-                        'geometry': {
-                            'type': 'Point',
-                            'coordinates': [12.550343, 55.665957]
+                    type: 'geojson',
+                    data: {
+                        type: 'Feature',
+                        geometry: {
+                            type: 'Point',
+                            coordinates: [12.550343, 55.665957]
                         },
-                        'properties': {
-                            'title': 'Somewhere',
+                        properties: {
+                            title: 'Somewhere',
                             'marker-symbol': 'monument'
                         }
                     }
                 },
                 'geojson-lines': {
-                    'type': 'geojson',
-                    'data': './lines.geojson'
+                    type: 'geojson',
+                    data: './lines.geojson'
                 }
             },
             'sdk-support': {
@@ -455,10 +530,10 @@ function createSourcesContent() {
         image: {
             doc: 'An image source. The `url` value contains the image location. The `coordinates` array contains `[longitude, latitude]` pairs for the image corners listed in clockwise order: top left, top right, bottom right, bottom left.',
             example: {
-                'image': {
-                    'type': 'image',
-                    'url': 'https://maplibre.org/maplibre-gl-js/docs/assets/radar.gif',
-                    'coordinates': [
+                image: {
+                    type: 'image',
+                    url: 'https://maplibre.org/maplibre-gl-js/docs/assets/radar.gif',
+                    coordinates: [
                         [-80.425, 46.437],
                         [-71.516, 46.437],
                         [-71.516, 37.936],
@@ -475,15 +550,15 @@ function createSourcesContent() {
             }
         },
         video: {
-            doc: 'A video source. The `urls` value is an array. For each URL in the array, a video element [source](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source) will be created. To support the video across browsers, supply URLs in multiple formats.\n\nThe `coordinates` array contains `[longitude, latitude]` pairs for the video corners listed in clockwise order: top left, top right, bottom right, bottom left.\n\nWhen rendered as a [raster layer](layers.md#raster), the layer\'s [`raster-fade-duration`](layers.md#raster-fade-duration) property will cause the video to fade in. This happens when playback is started, paused and resumed, or when the video\'s coordinates are updated. To avoid this behavior, set the layer\'s [`raster-fade-duration`](layers.md#raster-fade-duration) property to `0`.',
+            doc: "A video source. The `urls` value is an array. For each URL in the array, a video element [source](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source) will be created. To support the video across browsers, supply URLs in multiple formats.\n\nThe `coordinates` array contains `[longitude, latitude]` pairs for the video corners listed in clockwise order: top left, top right, bottom right, bottom left.\n\nWhen rendered as a [raster layer](layers.md#raster), the layer's [`raster-fade-duration`](layers.md#raster-fade-duration) property will cause the video to fade in. This happens when playback is started, paused and resumed, or when the video's coordinates are updated. To avoid this behavior, set the layer's [`raster-fade-duration`](layers.md#raster-fade-duration) property to `0`.",
             example: {
-                'video': {
-                    'type': 'video',
-                    'urls': [
+                video: {
+                    type: 'video',
+                    urls: [
                         'https://static-assets.mapbox.com/mapbox-gl-js/drone.mp4',
                         'https://static-assets.mapbox.com/mapbox-gl-js/drone.webm'
                     ],
-                    'coordinates': [
+                    coordinates: [
                         [-122.51596391201019, 37.56238816766053],
                         [-122.51467645168304, 37.56410183312965],
                         [-122.51309394836426, 37.563391708549425],

@@ -26,76 +26,86 @@ const rollupPlugins = [
     commonjs()
 ];
 
-const config: RollupOptions[] = [{
-    input: './src/index.ts',
-    output: [{
-        file: 'dist/index.mjs',
-        format: 'es',
-        sourcemap: true
+const config: RollupOptions[] = [
+    {
+        input: './src/index.ts',
+        output: [
+            {
+                file: 'dist/index.mjs',
+                format: 'es',
+                sourcemap: true
+            },
+            {
+                name: 'maplibreGlStyleSpecification',
+                file: 'dist/index.cjs',
+                format: 'umd',
+                sourcemap: true,
+                globals: {
+                    fs: 'fs'
+                }
+            }
+        ],
+        plugins: rollupPlugins
     },
     {
-        name: 'maplibreGlStyleSpecification',
-        file: 'dist/index.cjs',
-        format: 'umd',
-        sourcemap: true,
-        globals: {
-            fs: 'fs'
-        }
-    }],
-    plugins: rollupPlugins
-},
-{
-    input: './bin/gl-style-format.ts',
-    output: [{
-        file: 'dist/gl-style-format.mjs',
-        format: 'es',
-        sourcemap: true
+        input: './bin/gl-style-format.ts',
+        output: [
+            {
+                file: 'dist/gl-style-format.mjs',
+                format: 'es',
+                sourcemap: true
+            },
+            {
+                name: 'maplibreGlStyleSpecification',
+                file: 'dist/gl-style-format.cjs',
+                format: 'umd',
+                sourcemap: true,
+                globals: {
+                    fs: 'fs'
+                }
+            }
+        ],
+        plugins: [...rollupPlugins, shebang()]
     },
     {
-        name: 'maplibreGlStyleSpecification',
-        file: 'dist/gl-style-format.cjs',
-        format: 'umd',
-        sourcemap: true,
-        globals: {
-            fs: 'fs'
-        }
-    }],
-    plugins: [...rollupPlugins, shebang()]
-},
-{
-    input: './bin/gl-style-migrate.ts',
-    output: [{
-        file: 'dist/gl-style-migrate.mjs',
-        format: 'es',
-        sourcemap: true
+        input: './bin/gl-style-migrate.ts',
+        output: [
+            {
+                file: 'dist/gl-style-migrate.mjs',
+                format: 'es',
+                sourcemap: true
+            },
+            {
+                name: 'maplibreGlStyleSpecification',
+                file: 'dist/gl-style-migrate.cjs',
+                format: 'umd',
+                sourcemap: true,
+                globals: {
+                    fs: 'fs'
+                }
+            }
+        ],
+        plugins: [...rollupPlugins, shebang()]
     },
     {
-        name: 'maplibreGlStyleSpecification',
-        file: 'dist/gl-style-migrate.cjs',
-        format: 'umd',
-        sourcemap: true,
-        globals: {
-            fs: 'fs'
-        }
-    }],
-    plugins: [...rollupPlugins, shebang()]
-},
-{
-    input: './bin/gl-style-validate.ts',
-    output: [{
-        file: 'dist/gl-style-validate.mjs',
-        format: 'es',
-        sourcemap: true
-    },
-    {
-        name: 'maplibreGlStyleSpecification',
-        file: 'dist/gl-style-validate.cjs',
-        format: 'umd',
-        sourcemap: true,
-        globals: {
-            fs: 'fs'
-        }
-    }],
-    plugins: [...rollupPlugins, shebang()]
-}];
+        input: './bin/gl-style-validate.ts',
+        output: [
+            {
+                file: 'dist/gl-style-validate.mjs',
+                format: 'es',
+                sourcemap: true
+            },
+            {
+                name: 'maplibreGlStyleSpecification',
+                file: 'dist/gl-style-validate.cjs',
+                format: 'umd',
+                sourcemap: true,
+                globals: {
+                    fs: 'fs'
+                }
+            }
+        ],
+        plugins: [...rollupPlugins, shebang()]
+    }
+];
 export default config;

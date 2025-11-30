@@ -1,7 +1,7 @@
 import quickselect from 'quickselect';
 import {Point2D} from '../point2d';
 
-export type RingWithArea<T extends Point2D> = T[] & { area?: number };
+export type RingWithArea<T extends Point2D> = T[] & {area?: number};
 
 /**
  * Classifies an array of rings into polygons with outer rings and holes
@@ -9,7 +9,10 @@ export type RingWithArea<T extends Point2D> = T[] & { area?: number };
  * @param maxRings - the maximum number of rings to include in a polygon, use 0 to include all rings
  * @returns an array of polygons with internal rings as holes
  */
-export function classifyRings<T extends Point2D>(rings: RingWithArea<T>[], maxRings?: number): RingWithArea<T>[][] {
+export function classifyRings<T extends Point2D>(
+    rings: RingWithArea<T>[],
+    maxRings?: number
+): RingWithArea<T>[][] {
     const len = rings.length;
 
     if (len <= 1) return [rings];

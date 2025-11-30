@@ -1,4 +1,3 @@
-
 import {Color} from './types/color';
 import {Collator} from './types/collator';
 import {Formatted} from './types/formatted';
@@ -8,35 +7,74 @@ import {ColorArray} from './types/color_array';
 import {VariableAnchorOffsetCollection} from './types/variable_anchor_offset_collection';
 import {ResolvedImage} from './types/resolved_image';
 import {ProjectionDefinition} from './types/projection_definition';
-import {NullType, NumberType, StringType, BooleanType, ColorType, ObjectType, ValueType, CollatorType, FormattedType, ResolvedImageType, array, PaddingType, NumberArrayType, ColorArrayType, VariableAnchorOffsetCollectionType, ProjectionDefinitionType} from './types';
+import {
+    NullType,
+    NumberType,
+    StringType,
+    BooleanType,
+    ColorType,
+    ObjectType,
+    ValueType,
+    CollatorType,
+    FormattedType,
+    ResolvedImageType,
+    array,
+    PaddingType,
+    NumberArrayType,
+    ColorArrayType,
+    VariableAnchorOffsetCollectionType,
+    ProjectionDefinitionType
+} from './types';
 
 import type {Type} from './types';
 
 export function validateRGBA(r: unknown, g: unknown, b: unknown, a?: unknown): string | null {
-    if (!(
-        typeof r === 'number' && r >= 0 && r <= 255 &&
-        typeof g === 'number' && g >= 0 && g <= 255 &&
-        typeof b === 'number' && b >= 0 && b <= 255
-    )) {
+    if (
+        !(
+            typeof r === 'number' &&
+            r >= 0 &&
+            r <= 255 &&
+            typeof g === 'number' &&
+            g >= 0 &&
+            g <= 255 &&
+            typeof b === 'number' &&
+            b >= 0 &&
+            b <= 255
+        )
+    ) {
         const value = typeof a === 'number' ? [r, g, b, a] : [r, g, b];
         return `Invalid rgba value [${value.join(', ')}]: 'r', 'g', and 'b' must be between 0 and 255.`;
     }
 
-    if (!(
-        typeof a === 'undefined' || (typeof a === 'number' && a >= 0 && a <= 1)
-    )) {
+    if (!(typeof a === 'undefined' || (typeof a === 'number' && a >= 0 && a <= 1))) {
         return `Invalid rgba value [${[r, g, b, a].join(', ')}]: 'a' must be between 0 and 1.`;
     }
 
     return null;
 }
 
-export type Value = null | string | boolean | number | Color | ProjectionDefinition | Collator | Formatted | Padding | NumberArray | ColorArray | ResolvedImage | VariableAnchorOffsetCollection | ReadonlyArray<Value> | {
-    readonly [x: string]: Value;
-};
+export type Value =
+    | null
+    | string
+    | boolean
+    | number
+    | Color
+    | ProjectionDefinition
+    | Collator
+    | Formatted
+    | Padding
+    | NumberArray
+    | ColorArray
+    | ResolvedImage
+    | VariableAnchorOffsetCollection
+    | ReadonlyArray<Value>
+    | {
+          readonly [x: string]: Value;
+      };
 
 export function isValue(mixed: unknown): boolean {
-    if (mixed === null ||
+    if (
+        mixed === null ||
         typeof mixed === 'string' ||
         typeof mixed === 'boolean' ||
         typeof mixed === 'number' ||
@@ -48,7 +86,8 @@ export function isValue(mixed: unknown): boolean {
         mixed instanceof NumberArray ||
         mixed instanceof ColorArray ||
         mixed instanceof VariableAnchorOffsetCollection ||
-        mixed instanceof ResolvedImage) {
+        mixed instanceof ResolvedImage
+    ) {
         return true;
     } else if (Array.isArray(mixed)) {
         for (const item of mixed) {
@@ -124,7 +163,16 @@ export function valueToString(value: Value) {
         return '';
     } else if (type === 'string' || type === 'number' || type === 'boolean') {
         return String(value);
-    } else if (value instanceof Color || value instanceof ProjectionDefinition || value instanceof Formatted || value instanceof Padding || value instanceof NumberArray || value instanceof ColorArray || value instanceof VariableAnchorOffsetCollection || value instanceof ResolvedImage) {
+    } else if (
+        value instanceof Color ||
+        value instanceof ProjectionDefinition ||
+        value instanceof Formatted ||
+        value instanceof Padding ||
+        value instanceof NumberArray ||
+        value instanceof ColorArray ||
+        value instanceof VariableAnchorOffsetCollection ||
+        value instanceof ResolvedImage
+    ) {
         return value.toString();
     } else {
         return JSON.stringify(value);

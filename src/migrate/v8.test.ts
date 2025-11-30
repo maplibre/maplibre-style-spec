@@ -4,19 +4,20 @@ import {describe, test, expect} from 'vitest';
 describe('migrate v8', () => {
     test('split text-font', () => {
         const input = {
-            'version': 7,
-            'sources': {
-                'vector': {
-                    'type': 'vector', 'url': 'http://www.example.com/example.json'
+            version: 7,
+            sources: {
+                vector: {
+                    type: 'vector',
+                    url: 'http://www.example.com/example.json'
                 }
             },
-            'layers': [
+            layers: [
                 {
-                    'id': 'minimum',
-                    'type': 'symbol',
-                    'source': 'vector',
+                    id: 'minimum',
+                    type: 'symbol',
+                    source: 'vector',
                     'source-layer': 'layer',
-                    'layout': {
+                    layout: {
                         'text-font': 'Helvetica, Arial',
                         'text-field': '{foo}'
                     }
@@ -25,19 +26,20 @@ describe('migrate v8', () => {
         } as any;
 
         const output = {
-            'version': 8,
-            'sources': {
-                'vector': {
-                    'type': 'vector', 'url': 'http://www.example.com/example.json'
+            version: 8,
+            sources: {
+                vector: {
+                    type: 'vector',
+                    url: 'http://www.example.com/example.json'
                 }
             },
-            'layers': [
+            layers: [
                 {
-                    'id': 'minimum',
-                    'type': 'symbol',
-                    'source': 'vector',
+                    id: 'minimum',
+                    type: 'symbol',
+                    source: 'vector',
                     'source-layer': 'layer',
-                    'layout': {
+                    layout: {
                         'text-font': ['Helvetica', 'Arial'],
                         'text-field': '{foo}'
                     }
@@ -50,19 +52,20 @@ describe('migrate v8', () => {
 
     test('rename symbol-min-distance', () => {
         const input = {
-            'version': 7,
-            'sources': {
-                'vector': {
-                    'type': 'vector', 'url': 'http://www.example.com/example.json'
+            version: 7,
+            sources: {
+                vector: {
+                    type: 'vector',
+                    url: 'http://www.example.com/example.json'
                 }
             },
-            'layers': [
+            layers: [
                 {
-                    'id': 'minimum',
-                    'type': 'symbol',
-                    'source': 'vector',
+                    id: 'minimum',
+                    type: 'symbol',
+                    source: 'vector',
                     'source-layer': 'layer',
-                    'layout': {
+                    layout: {
                         'symbol-min-distance': 2
                     }
                 }
@@ -70,19 +73,20 @@ describe('migrate v8', () => {
         } as any;
 
         const output = {
-            'version': 8,
-            'sources': {
-                'vector': {
-                    'type': 'vector', 'url': 'http://www.example.com/example.json'
+            version: 8,
+            sources: {
+                vector: {
+                    type: 'vector',
+                    url: 'http://www.example.com/example.json'
                 }
             },
-            'layers': [
+            layers: [
                 {
-                    'id': 'minimum',
-                    'type': 'symbol',
-                    'source': 'vector',
+                    id: 'minimum',
+                    type: 'symbol',
+                    source: 'vector',
                     'source-layer': 'layer',
-                    'layout': {
+                    layout: {
                         'symbol-spacing': 2
                     }
                 }
@@ -94,25 +98,37 @@ describe('migrate v8', () => {
 
     test('renames urls', () => {
         const input = {
-            'version': 7,
-            'sources': {
-                'vector': {
-                    'type': 'video', 'url': ['foo'],
-                    coordinates: [[1, 0], [1, 0], [1, 0], [1, 0]]
+            version: 7,
+            sources: {
+                vector: {
+                    type: 'video',
+                    url: ['foo'],
+                    coordinates: [
+                        [1, 0],
+                        [1, 0],
+                        [1, 0],
+                        [1, 0]
+                    ]
                 }
             },
-            'layers': []
+            layers: []
         } as any;
 
         const output = {
-            'version': 8,
-            'sources': {
-                'vector': {
-                    'type': 'video', 'urls': ['foo'],
-                    coordinates: [[0, 1], [0, 1], [0, 1], [0, 1]]
+            version: 8,
+            sources: {
+                vector: {
+                    type: 'video',
+                    urls: ['foo'],
+                    coordinates: [
+                        [0, 1],
+                        [0, 1],
+                        [0, 1],
+                        [0, 1]
+                    ]
                 }
             },
-            'layers': []
+            layers: []
         };
 
         expect(migrate(input)).toEqual(output);
@@ -120,47 +136,57 @@ describe('migrate v8', () => {
 
     test('not migrate interpolated functions', () => {
         const input = {
-            'version': 7,
-            'sources': {
-                'vector': {
-                    'type': 'vector',
-                    'url': 'http://www.example.com/example.json'
+            version: 7,
+            sources: {
+                vector: {
+                    type: 'vector',
+                    url: 'http://www.example.com/example.json'
                 }
             },
-            'layers': [{
-                'id': 'functions',
-                'type': 'symbol',
-                'source': 'vector',
-                'source-layer': 'layer',
-                'layout': {
-                    'line-width': {
-                        base: 2,
-                        stops: [[1, 2], [3, 6]]
+            layers: [
+                {
+                    id: 'functions',
+                    type: 'symbol',
+                    source: 'vector',
+                    'source-layer': 'layer',
+                    layout: {
+                        'line-width': {
+                            base: 2,
+                            stops: [
+                                [1, 2],
+                                [3, 6]
+                            ]
+                        }
                     }
                 }
-            }]
+            ]
         } as any;
 
         const output = {
-            'version': 8,
-            'sources': {
-                'vector': {
-                    'type': 'vector',
-                    'url': 'http://www.example.com/example.json'
+            version: 8,
+            sources: {
+                vector: {
+                    type: 'vector',
+                    url: 'http://www.example.com/example.json'
                 }
             },
-            'layers': [{
-                'id': 'functions',
-                'type': 'symbol',
-                'source': 'vector',
-                'source-layer': 'layer',
-                'layout': {
-                    'line-width': {
-                        base: 2,
-                        stops: [[1, 2], [3, 6]]
+            layers: [
+                {
+                    id: 'functions',
+                    type: 'symbol',
+                    source: 'vector',
+                    'source-layer': 'layer',
+                    layout: {
+                        'line-width': {
+                            base: 2,
+                            stops: [
+                                [1, 2],
+                                [3, 6]
+                            ]
+                        }
                     }
                 }
-            }]
+            ]
         };
 
         expect(migrate(input)).toEqual(output);
@@ -168,45 +194,55 @@ describe('migrate v8', () => {
 
     test('not migrate piecewise-constant functions', () => {
         const input = {
-            'version': 7,
-            'sources': {
-                'vector': {
-                    'type': 'vector',
-                    'url': 'http://www.example.com/example.json'
+            version: 7,
+            sources: {
+                vector: {
+                    type: 'vector',
+                    url: 'http://www.example.com/example.json'
                 }
             },
-            'layers': [{
-                'id': 'functions',
-                'type': 'symbol',
-                'source': 'vector',
-                'source-layer': 'layer',
-                'layout': {
-                    'text-transform': {
-                        stops: [[1, 'uppercase'], [3, 'lowercase']],
+            layers: [
+                {
+                    id: 'functions',
+                    type: 'symbol',
+                    source: 'vector',
+                    'source-layer': 'layer',
+                    layout: {
+                        'text-transform': {
+                            stops: [
+                                [1, 'uppercase'],
+                                [3, 'lowercase']
+                            ]
+                        }
                     }
                 }
-            }]
+            ]
         } as any;
 
         const output = {
-            'version': 8,
-            'sources': {
-                'vector': {
-                    'type': 'vector',
-                    'url': 'http://www.example.com/example.json'
+            version: 8,
+            sources: {
+                vector: {
+                    type: 'vector',
+                    url: 'http://www.example.com/example.json'
                 }
             },
-            'layers': [{
-                'id': 'functions',
-                'type': 'symbol',
-                'source': 'vector',
-                'source-layer': 'layer',
-                'layout': {
-                    'text-transform': {
-                        stops: [[1, 'uppercase'], [3, 'lowercase']],
+            layers: [
+                {
+                    id: 'functions',
+                    type: 'symbol',
+                    source: 'vector',
+                    'source-layer': 'layer',
+                    layout: {
+                        'text-transform': {
+                            stops: [
+                                [1, 'uppercase'],
+                                [3, 'lowercase']
+                            ]
+                        }
                     }
                 }
-            }]
+            ]
         };
 
         expect(migrate(input)).toEqual(output);
@@ -214,20 +250,20 @@ describe('migrate v8', () => {
 
     test('inline constants', () => {
         const input = {
-            'version': 7,
-            'constants': {
+            version: 7,
+            constants: {
                 '@foo': 0.5
             },
-            'sources': {
-                'vector': {'type': 'vector', 'url': 'http://www.example.com/example.json'}
+            sources: {
+                vector: {type: 'vector', url: 'http://www.example.com/example.json'}
             },
-            'layers': [
+            layers: [
                 {
-                    'id': 'minimum',
-                    'type': 'fill',
-                    'source': 'vector',
+                    id: 'minimum',
+                    type: 'fill',
+                    source: 'vector',
                     'source-layer': 'layer',
-                    'layout': {
+                    layout: {
                         'fill-opacity': '@foo'
                     }
                 }
@@ -235,17 +271,17 @@ describe('migrate v8', () => {
         } as any;
 
         const output = {
-            'version': 8,
-            'sources': {
-                'vector': {'type': 'vector', 'url': 'http://www.example.com/example.json'}
+            version: 8,
+            sources: {
+                vector: {type: 'vector', url: 'http://www.example.com/example.json'}
             },
-            'layers': [
+            layers: [
                 {
-                    'id': 'minimum',
-                    'type': 'fill',
-                    'source': 'vector',
+                    id: 'minimum',
+                    type: 'fill',
+                    source: 'vector',
                     'source-layer': 'layer',
-                    'layout': {
+                    layout: {
                         'fill-opacity': 0.5
                     }
                 }
@@ -257,20 +293,20 @@ describe('migrate v8', () => {
 
     test('migrate and inline fontstack constants', () => {
         const input = {
-            'version': 7,
-            'constants': {
+            version: 7,
+            constants: {
                 '@foo': 'Arial Unicode,Foo Bar'
             },
-            'sources': {
-                'vector': {'type': 'vector', 'url': 'http://www.example.com/example.json'}
+            sources: {
+                vector: {type: 'vector', url: 'http://www.example.com/example.json'}
             },
-            'layers': [
+            layers: [
                 {
-                    'id': 'minimum',
-                    'type': 'symbol',
-                    'source': 'vector',
+                    id: 'minimum',
+                    type: 'symbol',
+                    source: 'vector',
                     'source-layer': 'layer',
-                    'layout': {
+                    layout: {
                         'text-font': '@foo'
                     }
                 }
@@ -278,17 +314,17 @@ describe('migrate v8', () => {
         } as any;
 
         const output = {
-            'version': 8,
-            'sources': {
-                'vector': {'type': 'vector', 'url': 'http://www.example.com/example.json'}
+            version: 8,
+            sources: {
+                vector: {type: 'vector', url: 'http://www.example.com/example.json'}
             },
-            'layers': [
+            layers: [
                 {
-                    'id': 'minimum',
-                    'type': 'symbol',
-                    'source': 'vector',
+                    id: 'minimum',
+                    type: 'symbol',
+                    source: 'vector',
                     'source-layer': 'layer',
-                    'layout': {
+                    layout: {
                         'text-font': ['Arial Unicode', 'Foo Bar']
                     }
                 }
@@ -300,28 +336,22 @@ describe('migrate v8', () => {
 
     test('update fontstack function', () => {
         const input = {
-            'version': 7,
-            'sources': {
-                'vector': {'type': 'vector', 'url': 'http://www.example.com/example.json'}
+            version: 7,
+            sources: {
+                vector: {type: 'vector', url: 'http://www.example.com/example.json'}
             },
-            'layers': [
+            layers: [
                 {
-                    'id': 'minimum',
-                    'type': 'symbol',
-                    'source': 'vector',
+                    id: 'minimum',
+                    type: 'symbol',
+                    source: 'vector',
                     'source-layer': 'layer',
-                    'layout': {
+                    layout: {
                         'text-font': {
-                            'base': 1,
-                            'stops': [
-                                [
-                                    0,
-                                    'Open Sans Regular, Arial Unicode MS Regular'
-                                ],
-                                [
-                                    6,
-                                    'Open Sans Semibold, Arial Unicode MS Regular'
-                                ]
+                            base: 1,
+                            stops: [
+                                [0, 'Open Sans Regular, Arial Unicode MS Regular'],
+                                [6, 'Open Sans Semibold, Arial Unicode MS Regular']
                             ]
                         }
                     }
@@ -330,20 +360,20 @@ describe('migrate v8', () => {
         } as any;
 
         const output = {
-            'version': 8,
-            'sources': {
-                'vector': {'type': 'vector', 'url': 'http://www.example.com/example.json'}
+            version: 8,
+            sources: {
+                vector: {type: 'vector', url: 'http://www.example.com/example.json'}
             },
-            'layers': [
+            layers: [
                 {
-                    'id': 'minimum',
-                    'type': 'symbol',
-                    'source': 'vector',
+                    id: 'minimum',
+                    type: 'symbol',
+                    source: 'vector',
                     'source-layer': 'layer',
-                    'layout': {
+                    layout: {
                         'text-font': {
-                            'base': 1,
-                            'stops': [
+                            base: 1,
+                            stops: [
                                 [0, ['Open Sans Regular', 'Arial Unicode MS Regular']],
                                 [6, ['Open Sans Semibold', 'Arial Unicode MS Regular']]
                             ]
@@ -358,32 +388,26 @@ describe('migrate v8', () => {
 
     test('inline and migrate fontstack constant function', () => {
         const input = {
-            'version': 7,
-            'constants': {
+            version: 7,
+            constants: {
                 '@function': {
-                    'base': 1,
-                    'stops': [
-                        [
-                            0,
-                            'Open Sans Regular, Arial Unicode MS Regular'
-                        ],
-                        [
-                            6,
-                            'Open Sans Semibold, Arial Unicode MS Regular'
-                        ]
+                    base: 1,
+                    stops: [
+                        [0, 'Open Sans Regular, Arial Unicode MS Regular'],
+                        [6, 'Open Sans Semibold, Arial Unicode MS Regular']
                     ]
                 }
             },
-            'sources': {
-                'vector': {'type': 'vector', 'url': 'http://www.example.com/example.json'}
+            sources: {
+                vector: {type: 'vector', url: 'http://www.example.com/example.json'}
             },
-            'layers': [
+            layers: [
                 {
-                    'id': 'minimum',
-                    'type': 'symbol',
-                    'source': 'vector',
+                    id: 'minimum',
+                    type: 'symbol',
+                    source: 'vector',
                     'source-layer': 'layer',
-                    'layout': {
+                    layout: {
                         'text-font': '@function'
                     }
                 }
@@ -391,20 +415,20 @@ describe('migrate v8', () => {
         } as any;
 
         const output = {
-            'version': 8,
-            'sources': {
-                'vector': {'type': 'vector', 'url': 'http://www.example.com/example.json'}
+            version: 8,
+            sources: {
+                vector: {type: 'vector', url: 'http://www.example.com/example.json'}
             },
-            'layers': [
+            layers: [
                 {
-                    'id': 'minimum',
-                    'type': 'symbol',
-                    'source': 'vector',
+                    id: 'minimum',
+                    type: 'symbol',
+                    source: 'vector',
                     'source-layer': 'layer',
-                    'layout': {
+                    layout: {
                         'text-font': {
-                            'base': 1,
-                            'stops': [
+                            base: 1,
+                            stops: [
                                 [0, ['Open Sans Regular', 'Arial Unicode MS Regular']],
                                 [6, ['Open Sans Semibold', 'Arial Unicode MS Regular']]
                             ]
@@ -419,24 +443,24 @@ describe('migrate v8', () => {
 
     test('update fontstack function constant', () => {
         const input = {
-            'version': 7,
-            'constants': {
+            version: 7,
+            constants: {
                 '@font-stack-a': 'Open Sans Regular, Arial Unicode MS Regular',
                 '@font-stack-b': 'Open Sans Semibold, Arial Unicode MS Regular'
             },
-            'sources': {
-                'vector': {'type': 'vector', 'url': 'http://www.example.com/example.json'}
+            sources: {
+                vector: {type: 'vector', url: 'http://www.example.com/example.json'}
             },
-            'layers': [
+            layers: [
                 {
-                    'id': 'minimum',
-                    'type': 'symbol',
-                    'source': 'vector',
+                    id: 'minimum',
+                    type: 'symbol',
+                    source: 'vector',
                     'source-layer': 'layer',
-                    'layout': {
+                    layout: {
                         'text-font': {
-                            'base': 1,
-                            'stops': [
+                            base: 1,
+                            stops: [
                                 [0, '@font-stack-a'],
                                 [6, '@font-stack-b']
                             ]
@@ -447,20 +471,20 @@ describe('migrate v8', () => {
         } as any;
 
         const output = {
-            'version': 8,
-            'sources': {
-                'vector': {'type': 'vector', 'url': 'http://www.example.com/example.json'}
+            version: 8,
+            sources: {
+                vector: {type: 'vector', url: 'http://www.example.com/example.json'}
             },
-            'layers': [
+            layers: [
                 {
-                    'id': 'minimum',
-                    'type': 'symbol',
-                    'source': 'vector',
+                    id: 'minimum',
+                    type: 'symbol',
+                    source: 'vector',
                     'source-layer': 'layer',
-                    'layout': {
+                    layout: {
                         'text-font': {
-                            'base': 1,
-                            'stops': [
+                            base: 1,
+                            stops: [
                                 [0, ['Open Sans Regular', 'Arial Unicode MS Regular']],
                                 [6, ['Open Sans Semibold', 'Arial Unicode MS Regular']]
                             ]
@@ -472,5 +496,4 @@ describe('migrate v8', () => {
 
         expect(migrate(input)).toEqual(output);
     });
-
 });

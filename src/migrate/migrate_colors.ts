@@ -27,7 +27,7 @@ function migrateHslColors(colorToMigrate: string): string {
         const argsMatch = hslArgs.match(/^(.+?)\s*,\s*(.+?)\s*,\s*(.+?)(?:\s*,\s*(.+))?$/i);
         if (argsMatch) {
             let [h, s, l, a] = argsMatch.slice(1);
-            [s, l] = [s, l].map(v => v.endsWith('%') ? v : `${parseFloat(v) * 100}%`);
+            [s, l] = [s, l].map((v) => (v.endsWith('%') ? v : `${parseFloat(v) * 100}%`));
             return `"hsl${typeof a === 'string' ? 'a' : ''}(${[h, s, l, a].filter(Boolean).join(',')})"`;
         }
         return match;

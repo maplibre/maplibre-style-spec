@@ -35,7 +35,8 @@
     "compile": "tsc",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "prepare": "npm run generate-style-spec"
+    "prepare": "npm run generate-style-spec",
+    "fmt": "oxfmt"
   },
   "repository": {
     "type": "git",
@@ -62,6 +63,7 @@
   },
   "sideEffects": false,
   "devDependencies": {
+    "oxfmt": "^0.15.0",
     "@rollup/plugin-commonjs": "^29.0.0",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
@@ -69,26 +71,25 @@
     "@rollup/plugin-strip": "^3.0.4",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^12.3.0",
-    "@stylistic/eslint-plugin": "^5.5.0",
     "@types/eslint": "^9.6.1",
     "@types/geojson": "^7946.0.16",
-    "@types/node": "^24.10.0",
-    "@typescript-eslint/eslint-plugin": "^8.46.3",
-    "@typescript-eslint/parser": "^8.46.1",
-    "@vitest/coverage-v8": "4.0.8",
-    "@vitest/eslint-plugin": "^1.4.2",
-    "@vitest/ui": "4.0.8",
+    "@types/node": "^24.10.1",
+    "@typescript-eslint/eslint-plugin": "^8.47.0",
+    "@typescript-eslint/parser": "^8.47.0",
+    "@vitest/coverage-v8": "4.0.13",
+    "@vitest/eslint-plugin": "^1.4.3",
+    "@vitest/ui": "4.0.13",
     "dts-bundle-generator": "^9.5.1",
     "eslint": "^9.39.1",
-    "eslint-plugin-jsdoc": "^61.1.12",
-    "glob": "^11.1.0",
+    "eslint-plugin-jsdoc": "^61.4.1",
+    "glob": "^13.0.0",
     "globals": "^16.5.0",
-    "rollup": "^4.53.1",
+    "rollup": "^4.53.3",
     "rollup-plugin-preserve-shebang": "^1.0.1",
     "semver": "^7.7.3",
     "ts-node": "^10.9.2",
     "tslib": "^2.8.1",
     "typescript": "^5.9.3",
-    "vitest": "4.0.8"
+    "vitest": "4.0.13"
   }
 }

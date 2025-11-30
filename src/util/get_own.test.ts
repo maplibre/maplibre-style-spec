@@ -9,7 +9,7 @@ describe('get_own', () => {
                 // hasOwn depends on whether Object.hasOwn is available
                 vi.resetModules();
                 expect(Object.hasOwn).toBeInstanceOf(Function);
-            },
+            }
         ],
         [
             'when Object.hasOwn is not available',
@@ -17,8 +17,8 @@ describe('get_own', () => {
                 vi.resetModules();
                 delete Object.hasOwn;
                 expect(Object.hasOwn).toBeUndefined();
-            },
-        ],
+            }
+        ]
     ])('unit tests %s', (_, beforeAllFn) => {
         let getOwn: typeof import('./get_own').getOwn;
 
