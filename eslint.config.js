@@ -56,24 +56,18 @@ export default [
             '@typescript-eslint/no-useless-constructor': ['error'],
             'no-undef': 'off',
             'no-use-before-define': 'off',
-            'implicit-arrow-linebreak': 'off',
-            'arrow-parens': 'off',
             'arrow-body-style': 'off',
-            'no-confusing-arrow': 'off',
             'no-control-regex': 'off',
             'no-invalid-this': 'off',
             'no-buffer-constructor': 'off',
-            'array-bracket-spacing': 'error',
             'consistent-return': 'off',
             'global-require': 'off',
-            'key-spacing': 'error',
             'no-eq-null': 'off',
             'no-lonely-if': 'off',
             'no-new': 'off',
 
             'no-unused-vars': 'off',
             'no-warning-comments': 'error',
-            'object-curly-spacing': ['error', 'never'],
             'prefer-arrow-callback': 'error',
 
             'prefer-const': [
@@ -84,20 +78,9 @@ export default [
             ],
 
             'prefer-template': 'error',
-            quotes: 'off',
             'no-redeclare': 'off',
             '@typescript-eslint/no-redeclare': ['error'],
-            'space-before-function-paren': 'off',
-            'template-curly-spacing': 'error',
             'no-useless-escape': 'off',
-            indent: 'off',
-
-            'no-multiple-empty-lines': [
-                'error',
-                {
-                    max: 1
-                }
-            ],
 
             'jsdoc/check-param-names': 'warn',
             'jsdoc/require-param': 'warn',
