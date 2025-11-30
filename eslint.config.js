@@ -42,7 +42,6 @@ export default [
         },
 
         rules: {
-            'flowtype/require-valid-file-annotation': [0],
             'no-dupe-class-members': 'off',
             '@typescript-eslint/no-dupe-class-members': ['error'],
 
