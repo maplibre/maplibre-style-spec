@@ -383,9 +383,9 @@
           "js": "supported"
         },
         "mlt": {
-          "android": "https://github.com/maplibre/maplibre-native/issues/3721",
-          "ios": "https://github.com/maplibre/maplibre-native/issues/3721",
-          "js": "https://github.com/maplibre/maplibre-gl-js/issues/6258"
+          "android": "12.1.0",
+          "ios": "6.20.0",
+          "js": "5.12.0"
         }
       }
     },
