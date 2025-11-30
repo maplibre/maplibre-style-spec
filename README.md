@@ -16,27 +16,31 @@ The style specification is used in MapLibre GL JS and in MapLibre Native. Our lo
 
 If you want to contribute to the style specification, please open an issue with a design proposal. Once your design proposal has been accepted, you can open a pull request and implement your changes.
 
-We aim to avoid breaking changes in the MapLibre style specification, because it makes life easier for our users.
+We aim to avoid breaking changes in the MapLibre style specification because it makes life easier for our users.
 
 ## Documentation
 
-The [documentation](https://maplibre.org/maplibre-style-spec) of the style specification also lives in this repository. We use [Zensical](https://www.zensical.org/). 
+The [documentation](https://maplibre.org/maplibre-style-spec) of the style specification also lives in this repository.
+We use [Zensical](https://www.zensical.org/). 
 
-To work on the documentation locally, you need to have Docker installed and running. Start Zensical with
+To work on the documentation locally, you need to have [UV](https://docs.astral.sh/uv/getting-started/installation/) and [python](https://www.python.org/downloads/) installed.
+Start Zensical with
 
-```
+```bash
 npm run docs
 ```
 
-Most of the documentation is generated (from e.g. `v8.json`). In another terminal, run:
+Most of the documentation is generated (from e.g. `v8.json`).
+In another terminal, run:
 
-```
+```bash
 WATCH=1 npm run generate-docs
 ```
 
 This will re-run the generation script when needed.
 
-Note that generated files should not be checked in and they are excluded in `.gitignore`. Make sure to keep this file up-to-date and ignore generated files while making sure static Markdown files are not ignored.
+Note that generated files should not be checked in, and they are excluded in `.gitignore`.
+Make sure to keep this file up to date and ignore generated files while making sure static Markdown files are not ignored.
 
 ## NPM Package
 
@@ -44,18 +48,23 @@ Note that generated files should not be checked in and they are excluded in `.gi
 The MapLibre style specification and utilities are published as a separate npm
 package so that they can be installed without the bulk of GL JS.
 
-    npm install @maplibre/maplibre-gl-style-spec
+```bash
+npm install @maplibre/maplibre-gl-style-spec
+```
 
 ## CLI Tools
 
 If you install this package globally, you will have access to several CLI tools.
 
-    npm install @maplibre/maplibre-gl-style-spec --global
+```bash
+npm install @maplibre/maplibre-gl-style-spec --global
+```
 
 ### `gl-style-migrate`
 
 This repo contains scripts for migrating GL styles of any version to the latest version
-(currently v8). Migrate a style like this:
+(currently v8).
+You can migrate a style like this:
 
 ```bash
 $ gl-style-migrate bright-v7.json > bright-v8.json
@@ -82,5 +91,5 @@ Will format the given style JSON to use standard indentation and sorted object k
 $ gl-style-validate style.json
 ```
 
-Will validate the given style JSON and print errors to stdout. Provide a
-`--json` flag to get JSON output.
+Will validate the given style JSON and print errors to stdout.
+Provide a `--json` flag to get JSON output.
