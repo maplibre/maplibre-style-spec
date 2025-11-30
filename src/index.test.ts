@@ -85,7 +85,7 @@ function validSchema(k, v, obj, ref, version, kind) {
         'sprite',
         'projectionDefinition',
         'state',
-        'fontFaces',
+        'fontFaces'
     ]);
     const keys = [
         'default',
@@ -110,7 +110,7 @@ function validSchema(k, v, obj, ref, version, kind) {
         'period',
         'requires',
         'sdk-support',
-        'overridable',
+        'overridable'
     ];
 
     // Schema object.

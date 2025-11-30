@@ -44,7 +44,7 @@ function convertIdentityFunction(parameters, propertySpec): Array<unknown> {
         const expression = [
             propertySpec.type === 'color' ? 'to-color' : propertySpec.type,
             get,
-            convertLiteral(parameters.default),
+            convertLiteral(parameters.default)
         ];
         if (propertySpec.type === 'array') {
             expression.splice(1, 0, propertySpec.value, propertySpec.length || null);
@@ -76,7 +76,7 @@ function convertZoomAndPropertyFunction(parameters, propertySpec, stops) {
                 zoom,
                 type: parameters.type,
                 property: parameters.property,
-                default: parameters.default,
+                default: parameters.default
             };
             featureFunctionStops[zoom] = [];
             zoomStops.push(zoom);
@@ -170,14 +170,14 @@ function convertPropertyFunction(parameters, propertySpec, stops) {
                   'case',
                   ['==', ['typeof', get], 'number'],
                   expression,
-                  convertLiteral(parameters.default),
+                  convertLiteral(parameters.default)
               ];
     } else if (type === 'exponential') {
         const base = parameters.base !== undefined ? parameters.base : 1;
         const expression = [
             getInterpolateOperator(parameters),
             base === 1 ? ['linear'] : ['exponential', base],
-            ['number', get],
+            ['number', get]
         ];
 
         for (const stop of stops) {
@@ -189,7 +189,7 @@ function convertPropertyFunction(parameters, propertySpec, stops) {
                   'case',
                   ['==', ['typeof', get], 'number'],
                   expression,
-                  convertLiteral(parameters.default),
+                  convertLiteral(parameters.default)
               ];
     } else {
         throw new Error(`Unknown property function type ${type}`);
@@ -208,7 +208,7 @@ function convertZoomFunction(parameters, propertySpec, stops, input = ['zoom']) 
         expression = [
             getInterpolateOperator(parameters),
             base === 1 ? ['linear'] : ['exponential', base],
-            input,
+            input
         ];
     } else {
         throw new Error(`Unknown zoom function type "${type}"`);

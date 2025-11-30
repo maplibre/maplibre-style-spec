@@ -10,7 +10,7 @@ describe('Validate projection', () => {
             validateSpec: validate,
             value: undefined,
             styleSpec: v8,
-            style: {} as any,
+            style: {} as any
         });
         expect(errors).toHaveLength(0);
     });
@@ -20,7 +20,7 @@ describe('Validate projection', () => {
             validateSpec: validate,
             value: '' as unknown as ProjectionSpecification,
             styleSpec: v8,
-            style: {} as any,
+            style: {} as any
         });
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toContain('object');
@@ -32,7 +32,7 @@ describe('Validate projection', () => {
             validateSpec: validate,
             value: {a: 1} as any,
             styleSpec: v8,
-            style: {} as any,
+            style: {} as any
         });
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toContain('a: unknown property \"a\"');
@@ -43,7 +43,7 @@ describe('Validate projection', () => {
             validateSpec: validate,
             value: {type: 1 as any},
             styleSpec: v8,
-            style: {} as any,
+            style: {} as any
         });
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('type: projection expected, invalid type \"number\" found');
@@ -54,7 +54,7 @@ describe('Validate projection', () => {
             validateSpec: validate,
             value: null as any,
             styleSpec: v8,
-            style: {} as any,
+            style: {} as any
         });
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toContain('projection: object expected, null found');
@@ -65,7 +65,7 @@ describe('Validate projection', () => {
             validateSpec: validate,
             value: {type: ['step', ['zoom'], 'vertical-perspective', 10, 'mercator']},
             styleSpec: v8,
-            style: {} as any,
+            style: {} as any
         });
         expect(errors).toHaveLength(0);
     });
@@ -75,7 +75,7 @@ describe('Validate projection', () => {
             validateSpec: validate,
             value: {type: 'mercator'},
             styleSpec: v8,
-            style: {} as any,
+            style: {} as any
         });
         expect(errors).toHaveLength(0);
     });
@@ -85,7 +85,7 @@ describe('Validate projection', () => {
             validateSpec: validate,
             value: {type: ['mercator', 'mercator', 0.3]},
             styleSpec: v8,
-            style: {} as any,
+            style: {} as any
         });
         expect(errors).toHaveLength(0);
     });
@@ -101,11 +101,11 @@ describe('Validate projection', () => {
                     0,
                     'mercator',
                     5,
-                    'vertical-perspective',
-                ],
+                    'vertical-perspective'
+                ]
             },
             styleSpec: v8,
-            style: {} as any,
+            style: {} as any
         });
         expect(errors).toHaveLength(0);
     });

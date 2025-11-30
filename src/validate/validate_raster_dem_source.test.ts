@@ -15,7 +15,7 @@ describe('Validate source_raster_dem', () => {
             validateSpec: validate,
             value: undefined,
             styleSpec: v8,
-            style: {} as any,
+            style: {} as any
         });
         expect(errors).toHaveLength(0);
     });
@@ -25,7 +25,7 @@ describe('Validate source_raster_dem', () => {
             validateSpec: validate,
             value: '' as unknown as RasterDEMSourceSpecification,
             styleSpec: v8,
-            style: {} as any,
+            style: {} as any
         });
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toContain('object');
@@ -37,7 +37,7 @@ describe('Validate source_raster_dem', () => {
             validateSpec: validate,
             value: {a: 1} as any,
             styleSpec: v8,
-            style: {} as any,
+            style: {} as any
         });
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toContain('a');
@@ -49,7 +49,7 @@ describe('Validate source_raster_dem', () => {
             validateSpec: validate,
             value: {type: 'raster-dem', url: {} as any, tiles: {} as any, encoding: 'foo' as any},
             styleSpec: v8,
-            style: {} as any,
+            style: {} as any
         });
         expect(errors).toHaveLength(3);
         checkErrorMessage(errors[0].message, 'url', 'string', 'object');
@@ -66,10 +66,10 @@ describe('Validate source_raster_dem', () => {
                 redFactor: 1.0,
                 greenFactor: 1.0,
                 blueFactor: 1.0,
-                baseShift: 1.0,
+                baseShift: 1.0
             },
             styleSpec: v8,
-            style: {} as any,
+            style: {} as any
         });
         expect(errors).toHaveLength(4);
         checkErrorMessage(errors[0].message, 'redFactor', 'custom', 'mapbox');
@@ -87,10 +87,10 @@ describe('Validate source_raster_dem', () => {
                 redFactor: 1.0,
                 greenFactor: 1.0,
                 blueFactor: 1.0,
-                baseShift: 1.0,
+                baseShift: 1.0
             },
             styleSpec: v8,
-            style: {} as any,
+            style: {} as any
         });
         expect(errors).toHaveLength(4);
         checkErrorMessage(errors[0].message, 'redFactor', 'custom', 'terrarium');
@@ -108,10 +108,10 @@ describe('Validate source_raster_dem', () => {
                 redFactor: 1.0,
                 greenFactor: 1.0,
                 blueFactor: 1.0,
-                baseShift: 1.0,
+                baseShift: 1.0
             },
             styleSpec: v8,
-            style: {} as any,
+            style: {} as any
         });
         expect(errors).toHaveLength(0);
     });
@@ -121,7 +121,7 @@ describe('Validate source_raster_dem', () => {
             validateSpec: validate,
             value: {type: 'raster-dem'},
             styleSpec: v8,
-            style: {} as any,
+            style: {} as any
         });
         expect(errors).toHaveLength(0);
     });

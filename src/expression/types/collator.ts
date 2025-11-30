@@ -10,7 +10,7 @@ export class Collator {
         this.locale = locale;
         this.collator = new Intl.Collator(this.locale ? this.locale : [], {
             sensitivity: this.sensitivity,
-            usage: 'search',
+            usage: 'search'
         });
     }
 

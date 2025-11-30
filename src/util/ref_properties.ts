@@ -5,5 +5,5 @@ export const refProperties = [
     'minzoom',
     'maxzoom',
     'filter',
-    'layout',
+    'layout'
 ];

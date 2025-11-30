@@ -20,13 +20,13 @@ export function validateArray(options) {
                 key,
                 array,
                 `array length ${arraySpec.length} expected, length ${array.length} found`
-            ),
+            )
         ];
     }
 
     let arrayElementSpec = {
         type: arraySpec.value,
-        values: arraySpec.values,
+        values: arraySpec.values
     };
 
     if (styleSpec.$version < 7) {
@@ -48,7 +48,7 @@ export function validateArray(options) {
                 validateSpec: options.validateSpec,
                 style,
                 styleSpec,
-                key: `${key}[${i}]`,
+                key: `${key}[${i}]`
             })
         );
     }

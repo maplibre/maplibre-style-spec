@@ -15,17 +15,17 @@ describe('binary search', () => {
                     [9, 10],
                     [17, 11],
                     [17, 11],
-                    [18, 13],
+                    [18, 13]
                 ],
-                base: 2,
+                base: 2
             },
             {
                 type: 'number',
                 'property-type': 'data-constant',
                 expression: {
                     interpolated: true,
-                    parameters: ['zoom'],
-                },
+                    parameters: ['zoom']
+                }
             }
         ).evaluate;
 
@@ -39,17 +39,17 @@ describe('exponential function', () => {
             {
                 stops: [
                     [1, 2],
-                    [3, 6],
+                    [3, 6]
                 ],
-                base: 2,
+                base: 2
             },
             {
                 type: 'number',
                 'property-type': 'data-constant',
                 expression: {
                     interpolated: true,
-                    parameters: ['zoom'],
-                },
+                    parameters: ['zoom']
+                }
             }
         ).evaluate;
 
@@ -62,12 +62,12 @@ describe('exponential function', () => {
                 type: 'exponential',
                 stops: [
                     [1, 2],
-                    [3, 6],
+                    [3, 6]
                 ],
-                base: 2,
+                base: 2
             },
             {
-                type: 'number',
+                type: 'number'
             }
         ).evaluate;
 
@@ -82,10 +82,10 @@ describe('exponential function', () => {
         const f = createFunction(
             {
                 type: 'exponential',
-                stops: [[1, 2]],
+                stops: [[1, 2]]
             },
             {
-                type: 'number',
+                type: 'number'
             }
         ).evaluate;
 
@@ -100,11 +100,11 @@ describe('exponential function', () => {
                 type: 'exponential',
                 stops: [
                     [1, 2],
-                    [3, 6],
-                ],
+                    [3, 6]
+                ]
             },
             {
-                type: 'number',
+                type: 'number'
             }
         ).evaluate;
 
@@ -122,11 +122,11 @@ describe('exponential function', () => {
                 stops: [
                     [1, 2],
                     [3, 6],
-                    [5, 10],
-                ],
+                    [5, 10]
+                ]
             },
             {
-                type: 'number',
+                type: 'number'
             }
         ).evaluate;
 
@@ -149,11 +149,11 @@ describe('exponential function', () => {
                     [1, 2],
                     [3, 6],
                     [5, 10],
-                    [7, 14],
-                ],
+                    [7, 14]
+                ]
             },
             {
-                type: 'number',
+                type: 'number'
             }
         ).evaluate;
 
@@ -187,15 +187,15 @@ describe('exponential function', () => {
             [7147, 10000], // 10
             [10028, 100000], // 11
             [12889, 1000000],
-            [40000, 10000000],
+            [40000, 10000000]
         ];
         const f = createFunction(
             {
                 type: 'exponential',
-                stops,
+                stops
             },
             {
-                type: 'number',
+                type: 'number'
             }
         ).evaluate;
 
@@ -216,11 +216,11 @@ describe('exponential function', () => {
                 type: 'exponential',
                 stops: [
                     [1, 'red'],
-                    [11, 'blue'],
-                ],
+                    [11, 'blue']
+                ]
             },
             {
-                type: 'color',
+                type: 'color'
             }
         ).evaluate;
 
@@ -236,11 +236,11 @@ describe('exponential function', () => {
                 colorSpace: 'hcl',
                 stops: [
                     [0, 'rgb(36 98 36 / 0.6)'],
-                    [10, 'hsl(222,73%,32%)'],
-                ],
+                    [10, 'hsl(222,73%,32%)']
+                ]
             },
             {
-                type: 'color',
+                type: 'color'
             }
         ).evaluate;
 
@@ -256,11 +256,11 @@ describe('exponential function', () => {
                 colorSpace: 'lab',
                 stops: [
                     [0, '#0009'],
-                    [10, 'rgba(0,255,255,1)'],
-                ],
+                    [10, 'rgba(0,255,255,1)']
+                ]
             },
             {
-                type: 'color',
+                type: 'color'
             }
         ).evaluate;
 
@@ -277,11 +277,11 @@ describe('exponential function', () => {
                     colorSpace: 'invalid',
                     stops: [
                         [1, [0, 0, 0, 1]],
-                        [10, [0, 1, 1, 1]],
-                    ],
+                        [10, [0, 1, 1, 1]]
+                    ]
                 },
                 {
-                    type: 'color',
+                    type: 'color'
                 }
             );
         }).toThrow('Unknown color space: "invalid"');
@@ -293,11 +293,11 @@ describe('exponential function', () => {
                 type: 'exponential',
                 stops: [
                     [1, ['red', 'blue']],
-                    [11, ['blue', 'red']],
-                ],
+                    [11, ['blue', 'red']]
+                ]
             },
             {
-                type: 'colorArray',
+                type: 'colorArray'
             }
         ).evaluate;
 
@@ -317,11 +317,11 @@ describe('exponential function', () => {
                 colorSpace: 'hcl',
                 stops: [
                     [0, 'rgb(36 98 36 / 0.6)'],
-                    [10, 'hsl(222,73%,32%)'],
-                ],
+                    [10, 'hsl(222,73%,32%)']
+                ]
             },
             {
-                type: 'colorArray',
+                type: 'colorArray'
             }
         ).evaluate;
 
@@ -338,11 +338,11 @@ describe('exponential function', () => {
                 colorSpace: 'lab',
                 stops: [
                     [0, '#0009'],
-                    [10, 'rgba(0,255,255,1)'],
-                ],
+                    [10, 'rgba(0,255,255,1)']
+                ]
             },
             {
-                type: 'colorArray',
+                type: 'colorArray'
             }
         ).evaluate;
 
@@ -360,11 +360,11 @@ describe('exponential function', () => {
                     colorSpace: 'invalid',
                     stops: [
                         [1, [0, 0, 0, 1]],
-                        [10, [0, 1, 1, 1]],
-                    ],
+                        [10, [0, 1, 1, 1]]
+                    ]
                 },
                 {
-                    type: 'colorArray',
+                    type: 'colorArray'
                 }
             );
         }).toThrow('Unknown color space: "invalid"');
@@ -377,11 +377,11 @@ describe('exponential function', () => {
                 colorSpace: 'lab',
                 stops: [
                     [0, [1, 2]],
-                    [10, [3, 4]],
-                ],
+                    [10, [3, 4]]
+                ]
             },
             {
-                type: 'numberArray',
+                type: 'numberArray'
             }
         ).evaluate;
 
@@ -397,12 +397,12 @@ describe('exponential function', () => {
             colorSpace: 'lab',
             stops: [
                 [1, [0, 0, 0, 1]],
-                [10, [0, 1, 1, 1]],
-            ],
+                [10, [0, 1, 1, 1]]
+            ]
         };
         const paramsCopy = JSON.parse(JSON.stringify(params));
         createFunction(params, {
-            type: 'color',
+            type: 'color'
         });
         expect(params).toEqual(paramsCopy);
     });
@@ -413,11 +413,11 @@ describe('exponential function', () => {
                 type: 'exponential',
                 stops: [
                     [1, 2],
-                    [11, [2, 5, 2, 7]],
-                ],
+                    [11, [2, 5, 2, 7]]
+                ]
             },
             {
-                type: 'padding',
+                type: 'padding'
             }
         ).evaluate;
 
@@ -433,11 +433,11 @@ describe('exponential function', () => {
                 type: 'exponential',
                 stops: [
                     [0, 0],
-                    [1, 2],
-                ],
+                    [1, 2]
+                ]
             },
             {
-                type: 'number',
+                type: 'number'
             }
         ).evaluate;
 
@@ -451,12 +451,12 @@ describe('exponential function', () => {
                 type: 'exponential',
                 stops: [
                     [0, 0],
-                    [1, 2],
+                    [1, 2]
                 ],
-                default: 3,
+                default: 3
             },
             {
-                type: 'number',
+                type: 'number'
             }
         ).evaluate;
 
@@ -470,12 +470,12 @@ describe('exponential function', () => {
                 type: 'exponential',
                 stops: [
                     [0, 0],
-                    [1, 2],
-                ],
+                    [1, 2]
+                ]
             },
             {
                 type: 'number',
-                default: 3,
+                default: 3
             }
         ).evaluate;
 
@@ -489,12 +489,12 @@ describe('exponential function', () => {
                 type: 'exponential',
                 stops: [
                     [0, 0],
-                    [1, 2],
+                    [1, 2]
                 ],
-                default: 3,
+                default: 3
             },
             {
-                type: 'string',
+                type: 'string'
             }
         ).evaluate;
 
@@ -508,12 +508,12 @@ describe('exponential function', () => {
                 type: 'exponential',
                 stops: [
                     [0, 0],
-                    [1, 2],
-                ],
+                    [1, 2]
+                ]
             },
             {
                 type: 'string',
-                default: 3,
+                default: 3
             }
         ).evaluate;
 
@@ -525,10 +525,10 @@ describe('exponential function', () => {
             {
                 type: 'exponential',
                 property: 'prop',
-                stops: [[{zoom: 1, value: 1}, 2]],
+                stops: [[{zoom: 1, value: 1}, 2]]
             },
             {
-                type: 'number',
+                type: 'number'
             }
         ).evaluate;
 
@@ -553,11 +553,11 @@ describe('exponential function', () => {
                     [{zoom: 1, value: 0}, 0],
                     [{zoom: 1, value: 2}, 4],
                     [{zoom: 3, value: 0}, 0],
-                    [{zoom: 3, value: 2}, 12],
-                ],
+                    [{zoom: 3, value: 2}, 12]
+                ]
             },
             {
-                type: 'number',
+                type: 'number'
             }
         ).evaluate;
 
@@ -585,11 +585,11 @@ describe('exponential function', () => {
                     [{zoom: 3, value: 0}, 0],
                     [{zoom: 3, value: 2}, 12],
                     [{zoom: 5, value: 0}, 0],
-                    [{zoom: 5, value: 2}, 20],
-                ],
+                    [{zoom: 5, value: 2}, 20]
+                ]
             },
             {
-                type: 'number',
+                type: 'number'
             }
         ).evaluate;
 
@@ -606,11 +606,11 @@ describe('exponential function', () => {
                 base: 1,
                 stops: [
                     [{zoom: 1.9, value: 0}, 4],
-                    [{zoom: 2.1, value: 0}, 8],
-                ],
+                    [{zoom: 2.1, value: 0}, 8]
+                ]
             },
             {
-                type: 'number',
+                type: 'number'
             }
         ).evaluate;
 
@@ -629,11 +629,11 @@ describe('exponential function', () => {
                     [{zoom: 1, value: 0}, 0],
                     [{zoom: 1.5, value: 0}, 1],
                     [{zoom: 2, value: 0}, 10],
-                    [{zoom: 2.5, value: 0}, 20],
-                ],
+                    [{zoom: 2.5, value: 0}, 20]
+                ]
             },
             {
-                type: 'number',
+                type: 'number'
             }
         ).evaluate;
 
@@ -653,11 +653,11 @@ describe('exponential function', () => {
                 base: 1,
                 stops: [
                     [{zoom: 0, value: 1}, 'red'],
-                    [{zoom: 1, value: 1}, 'red'],
-                ],
+                    [{zoom: 1, value: 1}, 'red']
+                ]
             },
             {
-                type: 'color',
+                type: 'color'
             }
         ).evaluate;
 
@@ -675,11 +675,11 @@ describe('exponential function', () => {
                     [{zoom: 0, value: 0}, 'red'],
                     [{zoom: 1, value: 0}, 'blue'],
                     [{zoom: 0, value: 1}, 'lime'],
-                    [{zoom: 1, value: 1}, 'magenta'],
-                ],
+                    [{zoom: 1, value: 1}, 'magenta']
+                ]
             },
             {
-                type: 'color',
+                type: 'color'
             }
         ).evaluate;
 
@@ -697,11 +697,11 @@ describe('exponential function', () => {
                     [{zoom: 0, value: 0}, [2]],
                     [{zoom: 1, value: 0}, [4]],
                     [{zoom: 0, value: 1}, [6]],
-                    [{zoom: 1, value: 1}, [8]],
-                ],
+                    [{zoom: 1, value: 1}, [8]]
+                ]
             },
             {
-                type: 'padding',
+                type: 'padding'
             }
         ).evaluate;
 
@@ -717,16 +717,16 @@ describe('interval function', () => {
             {
                 stops: [
                     [-1, 11],
-                    [0, 111],
-                ],
+                    [0, 111]
+                ]
             },
             {
                 type: 'number',
                 'property-type': 'data-constant',
                 expression: {
                     interpolated: false,
-                    parameters: ['zoom'],
-                },
+                    parameters: ['zoom']
+                }
             }
         ).evaluate;
 
@@ -740,10 +740,10 @@ describe('interval function', () => {
         const f = createFunction(
             {
                 type: 'interval',
-                stops: [[0, 11]],
+                stops: [[0, 11]]
             },
             {
-                type: 'number',
+                type: 'number'
             }
         ).evaluate;
 
@@ -758,11 +758,11 @@ describe('interval function', () => {
                 type: 'interval',
                 stops: [
                     [-1, 11],
-                    [0, 111],
-                ],
+                    [0, 111]
+                ]
             },
             {
-                type: 'number',
+                type: 'number'
             }
         ).evaluate;
 
@@ -779,11 +779,11 @@ describe('interval function', () => {
                 stops: [
                     [-1, 11],
                     [0, 111],
-                    [1, 1111],
-                ],
+                    [1, 1111]
+                ]
             },
             {
-                type: 'number',
+                type: 'number'
             }
         ).evaluate;
 
@@ -803,11 +803,11 @@ describe('interval function', () => {
                     [-1, 11],
                     [0, 111],
                     [1, 1111],
-                    [2, 11111],
-                ],
+                    [2, 11111]
+                ]
             },
             {
-                type: 'number',
+                type: 'number'
             }
         ).evaluate;
 
@@ -827,11 +827,11 @@ describe('interval function', () => {
                 type: 'interval',
                 stops: [
                     [1, 'red'],
-                    [11, 'blue'],
-                ],
+                    [11, 'blue']
+                ]
             },
             {
-                type: 'color',
+                type: 'color'
             }
         ).evaluate;
 
@@ -846,11 +846,11 @@ describe('interval function', () => {
                 type: 'interval',
                 stops: [
                     [1, 2],
-                    [11, 4],
-                ],
+                    [11, 4]
+                ]
             },
             {
-                type: 'padding',
+                type: 'padding'
             }
         ).evaluate;
 
@@ -867,11 +867,11 @@ describe('interval function', () => {
                 stops: [
                     [0, 'bad'],
                     [1, 'good'],
-                    [2, 'bad'],
-                ],
+                    [2, 'bad']
+                ]
             },
             {
-                type: 'string',
+                type: 'string'
             }
         ).evaluate;
 
@@ -886,12 +886,12 @@ describe('interval function', () => {
                 stops: [
                     [0, 'zero'],
                     [1, 'one'],
-                    [2, 'two'],
+                    [2, 'two']
                 ],
-                default: 'default',
+                default: 'default'
             },
             {
-                type: 'string',
+                type: 'string'
             }
         ).evaluate;
 
@@ -906,12 +906,12 @@ describe('interval function', () => {
                 stops: [
                     [0, 'zero'],
                     [1, 'one'],
-                    [2, 'two'],
-                ],
+                    [2, 'two']
+                ]
             },
             {
                 type: 'string',
-                default: 'default',
+                default: 'default'
             }
         ).evaluate;
 
@@ -926,12 +926,12 @@ describe('interval function', () => {
                 stops: [
                     [0, 'zero'],
                     [1, 'one'],
-                    [2, 'two'],
+                    [2, 'two']
                 ],
-                default: 'default',
+                default: 'default'
             },
             {
-                type: 'string',
+                type: 'string'
             }
         ).evaluate;
 
@@ -946,12 +946,12 @@ describe('interval function', () => {
                 stops: [
                     [0, 'zero'],
                     [1, 'one'],
-                    [2, 'two'],
-                ],
+                    [2, 'two']
+                ]
             },
             {
                 type: 'string',
-                default: 'default',
+                default: 'default'
             }
         ).evaluate;
 
@@ -968,11 +968,11 @@ describe('categorical function', () => {
                 stops: [
                     [0, 'bad'],
                     [1, 'good'],
-                    [2, 'bad'],
-                ],
+                    [2, 'bad']
+                ]
             },
             {
-                type: 'string',
+                type: 'string'
             }
         ).evaluate;
 
@@ -989,12 +989,12 @@ describe('categorical function', () => {
                 stops: [
                     [0, 'zero'],
                     [1, 'one'],
-                    [2, 'two'],
+                    [2, 'two']
                 ],
-                default: 'default',
+                default: 'default'
             },
             {
-                type: 'string',
+                type: 'string'
             }
         ).evaluate;
 
@@ -1008,11 +1008,11 @@ describe('categorical function', () => {
                 property: 'foo',
                 type: 'categorical',
                 stops: [[{zoom: 0, value: 'bar'}, 'zero']],
-                default: 'default',
+                default: 'default'
             },
             {
                 type: 'string',
-                function: 'interval',
+                function: 'interval'
             }
         ).evaluate;
 
@@ -1029,12 +1029,12 @@ describe('categorical function', () => {
                 stops: [
                     [0, 'zero'],
                     [1, 'one'],
-                    [2, 'two'],
+                    [2, 'two']
                 ],
-                default: 'default',
+                default: 'default'
             },
             {
-                type: 'string',
+                type: 'string'
             }
         ).evaluate;
 
@@ -1047,12 +1047,12 @@ describe('categorical function', () => {
                     ['1', 'one'],
                     ['2', 'two'],
                     ['true', 'yes'],
-                    ['false', 'no'],
+                    ['false', 'no']
                 ],
-                default: 'default',
+                default: 'default'
             },
             {
-                type: 'string',
+                type: 'string'
             }
         ).evaluate;
 
@@ -1075,12 +1075,12 @@ describe('categorical function', () => {
                 stops: [
                     [0, 'zero'],
                     [1, 'one'],
-                    [2, 'two'],
-                ],
+                    [2, 'two']
+                ]
             },
             {
                 type: 'string',
-                default: 'default',
+                default: 'default'
             }
         ).evaluate;
 
@@ -1095,11 +1095,11 @@ describe('categorical function', () => {
                 type: 'categorical',
                 stops: [
                     [0, 'red'],
-                    [1, 'blue'],
-                ],
+                    [1, 'blue']
+                ]
             },
             {
-                type: 'color',
+                type: 'color'
             }
         ).evaluate;
 
@@ -1114,12 +1114,12 @@ describe('categorical function', () => {
                 type: 'categorical',
                 stops: [
                     [0, 'red'],
-                    [1, 'blue'],
+                    [1, 'blue']
                 ],
-                default: 'lime',
+                default: 'lime'
             },
             {
-                type: 'color',
+                type: 'color'
             }
         ).evaluate;
 
@@ -1134,12 +1134,12 @@ describe('categorical function', () => {
                 type: 'categorical',
                 stops: [
                     [0, 'red'],
-                    [1, 'blue'],
-                ],
+                    [1, 'blue']
+                ]
             },
             {
                 type: 'color',
-                default: 'lime',
+                default: 'lime'
             }
         ).evaluate;
 
@@ -1154,11 +1154,11 @@ describe('categorical function', () => {
                 type: 'categorical',
                 stops: [
                     [0, 2],
-                    [1, 4],
-                ],
+                    [1, 4]
+                ]
             },
             {
-                type: 'padding',
+                type: 'padding'
             }
         ).evaluate;
 
@@ -1173,12 +1173,12 @@ describe('categorical function', () => {
                 type: 'categorical',
                 stops: [
                     [0, 2],
-                    [1, 4],
+                    [1, 4]
                 ],
-                default: 6,
+                default: 6
             },
             {
-                type: 'padding',
+                type: 'padding'
             }
         ).evaluate;
 
@@ -1193,12 +1193,12 @@ describe('categorical function', () => {
                 type: 'categorical',
                 stops: [
                     [0, 2],
-                    [1, 4],
-                ],
+                    [1, 4]
+                ]
             },
             {
                 type: 'padding',
-                default: 6,
+                default: 6
             }
         ).evaluate;
 
@@ -1213,11 +1213,11 @@ describe('categorical function', () => {
                 type: 'categorical',
                 stops: [
                     [true, 'true'],
-                    [false, 'false'],
-                ],
+                    [false, 'false']
+                ]
             },
             {
-                type: 'string',
+                type: 'string'
             }
         ).evaluate;
 
@@ -1231,10 +1231,10 @@ describe('identity function', () => {
         const f = createFunction(
             {
                 property: 'foo',
-                type: 'identity',
+                type: 'identity'
             },
             {
-                type: 'number',
+                type: 'number'
             }
         ).evaluate;
 
@@ -1246,10 +1246,10 @@ describe('identity function', () => {
             {
                 property: 'foo',
                 type: 'identity',
-                default: 1,
+                default: 1
             },
             {
-                type: 'string',
+                type: 'string'
             }
         ).evaluate;
 
@@ -1260,11 +1260,11 @@ describe('identity function', () => {
         const f = createFunction(
             {
                 property: 'foo',
-                type: 'identity',
+                type: 'identity'
             },
             {
                 type: 'string',
-                default: 1,
+                default: 1
             }
         ).evaluate;
 
@@ -1275,10 +1275,10 @@ describe('identity function', () => {
         const f = createFunction(
             {
                 property: 'foo',
-                type: 'identity',
+                type: 'identity'
             },
             {
-                type: 'color',
+                type: 'color'
             }
         ).evaluate;
 
@@ -1291,10 +1291,10 @@ describe('identity function', () => {
             {
                 property: 'foo',
                 type: 'identity',
-                default: 'red',
+                default: 'red'
             },
             {
-                type: 'color',
+                type: 'color'
             }
         ).evaluate;
 
@@ -1305,11 +1305,11 @@ describe('identity function', () => {
         const f = createFunction(
             {
                 property: 'foo',
-                type: 'identity',
+                type: 'identity'
             },
             {
                 type: 'color',
-                default: 'red',
+                default: 'red'
             }
         ).evaluate;
 
@@ -1320,11 +1320,11 @@ describe('identity function', () => {
         const f = createFunction(
             {
                 property: 'foo',
-                type: 'identity',
+                type: 'identity'
             },
             {
                 type: 'color',
-                default: 'red',
+                default: 'red'
             }
         ).evaluate;
 
@@ -1335,10 +1335,10 @@ describe('identity function', () => {
         const f = createFunction(
             {
                 property: 'foo',
-                type: 'identity',
+                type: 'identity'
             },
             {
-                type: 'padding',
+                type: 'padding'
             }
         ).evaluate;
 
@@ -1351,10 +1351,10 @@ describe('identity function', () => {
             {
                 property: 'foo',
                 type: 'identity',
-                default: [1, 2, 3, 4],
+                default: [1, 2, 3, 4]
             },
             {
-                type: 'padding',
+                type: 'padding'
             }
         ).evaluate;
 
@@ -1365,11 +1365,11 @@ describe('identity function', () => {
         const f = createFunction(
             {
                 property: 'foo',
-                type: 'identity',
+                type: 'identity'
             },
             {
                 type: 'padding',
-                default: [1, 2, 3, 4],
+                default: [1, 2, 3, 4]
             }
         ).evaluate;
 
@@ -1380,11 +1380,11 @@ describe('identity function', () => {
         const f = createFunction(
             {
                 property: 'foo',
-                type: 'identity',
+                type: 'identity'
             },
             {
                 type: 'padding',
-                default: [1, 2, 3, 4],
+                default: [1, 2, 3, 4]
             }
         ).evaluate;
 
@@ -1395,10 +1395,10 @@ describe('identity function', () => {
         const f = createFunction(
             {
                 property: 'foo',
-                type: 'identity',
+                type: 'identity'
             },
             {
-                type: 'colorArray',
+                type: 'colorArray'
             }
         ).evaluate;
 
@@ -1412,10 +1412,10 @@ describe('identity function', () => {
         const f = createFunction(
             {
                 property: 'foo',
-                type: 'identity',
+                type: 'identity'
             },
             {
-                type: 'numberArray',
+                type: 'numberArray'
             }
         ).evaluate;
 
@@ -1428,10 +1428,10 @@ describe('identity function', () => {
             {
                 property: 'foo',
                 type: 'identity',
-                default: 'default',
+                default: 'default'
             },
             {
-                type: 'string',
+                type: 'string'
             }
         ).evaluate;
 
@@ -1442,11 +1442,11 @@ describe('identity function', () => {
         const f = createFunction(
             {
                 property: 'foo',
-                type: 'identity',
+                type: 'identity'
             },
             {
                 type: 'string',
-                default: 'default',
+                default: 'default'
             }
         ).evaluate;
 
@@ -1457,14 +1457,14 @@ describe('identity function', () => {
         const f = createFunction(
             {
                 property: 'foo',
-                type: 'identity',
+                type: 'identity'
             },
             {
                 type: 'enum',
                 values: {
-                    bar: {},
+                    bar: {}
                 },
-                default: 'def',
+                default: 'def'
             }
         ).evaluate;
 
@@ -1475,14 +1475,14 @@ describe('identity function', () => {
         const f = createFunction(
             {
                 property: 'foo',
-                type: 'identity',
+                type: 'identity'
             },
             {
                 type: 'enum',
                 values: {
-                    bar: {},
+                    bar: {}
                 },
-                default: 'def',
+                default: 'def'
             }
         ).evaluate;
 
@@ -1493,14 +1493,14 @@ describe('identity function', () => {
         const f = createFunction(
             {
                 property: 'foo',
-                type: 'identity',
+                type: 'identity'
             },
             {
                 type: 'enum',
                 values: {
-                    bar: {},
+                    bar: {}
                 },
-                default: 'def',
+                default: 'def'
             }
         ).evaluate;
 
@@ -1511,10 +1511,10 @@ describe('identity function', () => {
         const f = createFunction(
             {
                 property: 'foo',
-                type: 'identity',
+                type: 'identity'
             },
             {
-                type: 'formatted',
+                type: 'formatted'
             }
         ).evaluate;
 
@@ -1530,10 +1530,10 @@ test('unknown function', () => {
         createFunction(
             {
                 type: 'nonesuch',
-                stops: [[]],
+                stops: [[]]
             },
             {
-                type: 'string',
+                type: 'string'
             }
         )
     ).toThrow(/Unknown function type "nonesuch"/);
@@ -1543,10 +1543,10 @@ describe('kind', () => {
     test('camera', () => {
         const f = createFunction(
             {
-                stops: [[1, 1]],
+                stops: [[1, 1]]
             },
             {
-                type: 'number',
+                type: 'number'
             }
         );
 
@@ -1557,10 +1557,10 @@ describe('kind', () => {
         const f = createFunction(
             {
                 stops: [[1, 1]],
-                property: 'mapbox',
+                property: 'mapbox'
             },
             {
-                type: 'number',
+                type: 'number'
             }
         );
 
@@ -1571,10 +1571,10 @@ describe('kind', () => {
         const f = createFunction(
             {
                 stops: [[{zoom: 1, value: 1}, 1]],
-                property: 'mapbox',
+                property: 'mapbox'
             },
             {
-                type: 'number',
+                type: 'number'
             }
         );
 

@@ -21,7 +21,7 @@ export function validateTerrain(options: {
         return errors;
     } else if (rootType !== 'object') {
         errors = errors.concat([
-            new ValidationError('terrain', terrain, `object expected, ${rootType} found`),
+            new ValidationError('terrain', terrain, `object expected, ${rootType} found`)
         ]);
         return errors;
     }
@@ -35,12 +35,12 @@ export function validateTerrain(options: {
                     valueSpec: terrainSpec[key],
                     validateSpec: options.validateSpec,
                     style,
-                    styleSpec,
+                    styleSpec
                 })
             );
         } else {
             errors = errors.concat([
-                new ValidationError(key, terrain[key], `unknown property "${key}"`),
+                new ValidationError(key, terrain[key], `unknown property "${key}"`)
             ]);
         }
     }

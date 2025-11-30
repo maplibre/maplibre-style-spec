@@ -32,7 +32,7 @@ describe('Validate sdk-support in spec', () => {
     const issueTrackers = {
         js: 'https://github.com/maplibre/maplibre-gl-js/issues',
         android: 'https://github.com/maplibre/maplibre-native/issues',
-        ios: 'https://github.com/maplibre/maplibre-native/issues',
+        ios: 'https://github.com/maplibre/maplibre-native/issues'
     };
     const platforms = Object.keys(issueTrackers);
 

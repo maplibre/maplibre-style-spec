@@ -14,12 +14,12 @@ export function validatePadding(options) {
                     key,
                     value,
                     `padding requires 1 to 4 values; ${value.length} values found`
-                ),
+                )
             ];
         }
 
         const arrayElementSpec = {
-            type: 'number',
+            type: 'number'
         };
 
         let errors = [];
@@ -29,7 +29,7 @@ export function validatePadding(options) {
                     key: `${key}[${i}]`,
                     value: value[i],
                     validateSpec: options.validateSpec,
-                    valueSpec: arrayElementSpec,
+                    valueSpec: arrayElementSpec
                 })
             );
         }
@@ -38,7 +38,7 @@ export function validatePadding(options) {
         return validateNumber({
             key,
             value,
-            valueSpec: {},
+            valueSpec: {}
         });
     }
 }

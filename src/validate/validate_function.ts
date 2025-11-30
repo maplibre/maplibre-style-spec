@@ -8,7 +8,7 @@ import {unbundle, deepUnbundle} from '../util/unbundle_jsonlint';
 import {
     supportsPropertyExpression,
     supportsZoomExpression,
-    supportsInterpolation,
+    supportsInterpolation
 } from '../util/properties';
 
 export function validateFunction(options): Array<ValidationError> {
@@ -35,8 +35,8 @@ export function validateFunction(options): Array<ValidationError> {
         styleSpec: options.styleSpec,
         objectElementValidators: {
             stops: validateFunctionStops,
-            default: validateFunctionDefault,
-        },
+            default: validateFunctionDefault
+        }
     });
 
     if (functionType === 'identity' && isZoomFunction) {
@@ -91,7 +91,7 @@ export function validateFunction(options): Array<ValidationError> {
                     options.key,
                     options.value,
                     'identity function may not have a "stops" property'
-                ),
+                )
             ];
         }
 
@@ -106,7 +106,7 @@ export function validateFunction(options): Array<ValidationError> {
                 validateSpec: options.validateSpec,
                 style: options.style,
                 styleSpec: options.styleSpec,
-                arrayElementValidator: validateFunctionStop,
+                arrayElementValidator: validateFunctionStop
             })
         );
 
@@ -134,14 +134,14 @@ export function validateFunction(options): Array<ValidationError> {
                     key,
                     value,
                     `array length 2 expected, length ${value.length} found`
-                ),
+                )
             ];
         }
 
         if (isZoomAndPropertyFunction) {
             if (getType(value[0]) !== 'object') {
                 return [
-                    new ValidationError(key, value, `object expected, ${getType(value[0])} found`),
+                    new ValidationError(key, value, `object expected, ${getType(value[0])} found`)
                 ];
             }
             if (value[0].zoom === undefined) {
@@ -156,7 +156,7 @@ export function validateFunction(options): Array<ValidationError> {
                         key,
                         value[0].zoom,
                         'stop zoom values must appear in ascending order'
-                    ),
+                    )
                 ];
             }
             if (unbundle(value[0].zoom) !== previousStopDomainZoom) {
@@ -174,8 +174,8 @@ export function validateFunction(options): Array<ValidationError> {
                     styleSpec: options.styleSpec,
                     objectElementValidators: {
                         zoom: validateNumber,
-                        value: validateStopDomainValue,
-                    },
+                        value: validateStopDomainValue
+                    }
                 })
             );
         } else {
@@ -187,7 +187,7 @@ export function validateFunction(options): Array<ValidationError> {
                         valueSpec: {},
                         validateSpec: options.validateSpec,
                         style: options.style,
-                        styleSpec: options.styleSpec,
+                        styleSpec: options.styleSpec
                     },
                     value
                 )
@@ -200,7 +200,7 @@ export function validateFunction(options): Array<ValidationError> {
                     `${key}[1]`,
                     value[1],
                     'expressions are not allowed in function stops.'
-                ),
+                )
             ]);
         }
 
@@ -211,7 +211,7 @@ export function validateFunction(options): Array<ValidationError> {
                 valueSpec: functionValueSpec,
                 validateSpec: options.validateSpec,
                 style: options.style,
-                styleSpec: options.styleSpec,
+                styleSpec: options.styleSpec
             })
         );
     }
@@ -230,7 +230,7 @@ export function validateFunction(options): Array<ValidationError> {
                     options.key,
                     reportValue,
                     `${type} stop domain type must match previous stop domain type ${stopKeyType}`
-                ),
+                )
             ];
         }
 
@@ -240,7 +240,7 @@ export function validateFunction(options): Array<ValidationError> {
                     options.key,
                     reportValue,
                     'stop domain value must be a number, string, or boolean'
-                ),
+                )
             ];
         }
 
@@ -259,7 +259,7 @@ export function validateFunction(options): Array<ValidationError> {
             (!isFinite(value as number) || Math.floor(value as number) !== value)
         ) {
             return [
-                new ValidationError(options.key, reportValue, `integer expected, found ${value}`),
+                new ValidationError(options.key, reportValue, `integer expected, found ${value}`)
             ];
         }
 
@@ -274,7 +274,7 @@ export function validateFunction(options): Array<ValidationError> {
                     options.key,
                     reportValue,
                     'stop domain values must appear in ascending order'
-                ),
+                )
             ];
         } else {
             previousStopDomainValue = value;
@@ -282,7 +282,7 @@ export function validateFunction(options): Array<ValidationError> {
 
         if (functionType === 'categorical' && (value as any) in stopDomainValues) {
             return [
-                new ValidationError(options.key, reportValue, 'stop domain values must be unique'),
+                new ValidationError(options.key, reportValue, 'stop domain values must be unique')
             ];
         } else {
             stopDomainValues[value as any] = true;
@@ -298,7 +298,7 @@ export function validateFunction(options): Array<ValidationError> {
             valueSpec: functionValueSpec,
             validateSpec: options.validateSpec,
             style: options.style,
-            styleSpec: options.styleSpec,
+            styleSpec: options.styleSpec
         });
     }
 }

@@ -9,6 +9,6 @@ import jsonStringify from 'json-stringify-pretty-compact';
 export function formatJSON(obj: any) {
     return jsonStringify(obj, {
         indent: 4,
-        maxLength: 60,
+        maxLength: 60
     });
 }

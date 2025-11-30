@@ -8,26 +8,26 @@ describe('validateProjection function', () => {
         expect(validateProjectionDefinition({key, value: ''})).toHaveLength(0);
 
         expect(validateProjectionDefinition({key, value: 0})).toMatchObject([
-            {message: `${key}: projection expected, invalid type "number" found`},
+            {message: `${key}: projection expected, invalid type "number" found`}
         ]);
         expect(validateProjectionDefinition({key, value: {}})).toMatchObject([
-            {message: `${key}: projection expected, invalid type "object" found`},
+            {message: `${key}: projection expected, invalid type "object" found`}
         ]);
         expect(validateProjectionDefinition({key, value: false})).toMatchObject([
-            {message: `${key}: projection expected, invalid type "boolean" found`},
+            {message: `${key}: projection expected, invalid type "boolean" found`}
         ]);
         expect(validateProjectionDefinition({key, value: null})).toMatchObject([
-            {message: `${key}: projection expected, invalid type "null" found`},
+            {message: `${key}: projection expected, invalid type "null" found`}
         ]);
         expect(validateProjectionDefinition({key, value: undefined})).toMatchObject([
-            {message: `${key}: projection expected, invalid type "undefined" found`},
+            {message: `${key}: projection expected, invalid type "undefined" found`}
         ]);
     });
 
     test('Should error when projection is an invalid projection transition', () => {
         const errors = validateProjectionDefinition({value: [3, 'mercator', 0.3], key});
         expect(errors).toMatchObject([
-            {message: `${key}: projection expected, invalid array [3,\"mercator\",0.3] found`},
+            {message: `${key}: projection expected, invalid array [3,\"mercator\",0.3] found`}
         ]);
     });
 
@@ -44,7 +44,7 @@ describe('validateProjection function', () => {
     test('Should return no errors when projection is valid interpolation-projection expression', () => {
         const errors = validateProjectionDefinition({
             value: ['interpolate', ['linear'], ['zoom'], 0, 'mercator', 5, 'vertical-perspective'],
-            key,
+            key
         });
         expect(errors).toHaveLength(0);
     });
@@ -52,7 +52,7 @@ describe('validateProjection function', () => {
     test('Should return no errors when projection is valid step expression', () => {
         const errors = validateProjectionDefinition({
             value: ['step', ['zoom'], 'vertical-perspective', 10, 'mercator'],
-            key,
+            key
         });
         expect(errors).toHaveLength(0);
     });
@@ -60,7 +60,7 @@ describe('validateProjection function', () => {
     test('Should return no errors when projection is valid step expression with a transition', () => {
         const errors = validateProjectionDefinition({
             value: ['step', ['zoom'], ['vertical-perspective', 'mercator', 0.5], 10, 'mercator'],
-            key,
+            key
         });
         expect(errors).toHaveLength(0);
     });

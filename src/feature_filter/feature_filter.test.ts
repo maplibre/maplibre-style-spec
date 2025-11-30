@@ -33,7 +33,7 @@ describe('filter', () => {
             '==',
             ['string', ['get', 'x']],
             ['string', ['get', 'y']],
-            ['collator', {'case-sensitive': true}],
+            ['collator', {'case-sensitive': true}]
         ]).filter;
         expect(caseSensitive({zoom: 0}, {properties: {x: 'a', y: 'b'}} as any as Feature)).toBe(
             false
@@ -49,7 +49,7 @@ describe('filter', () => {
             '==',
             ['string', ['get', 'x']],
             ['string', ['get', 'y']],
-            ['collator', {'case-sensitive': false}],
+            ['collator', {'case-sensitive': false}]
         ]).filter;
         expect(caseInsensitive({zoom: 0}, {properties: {x: 'a', y: 'b'}} as any as Feature)).toBe(
             false
@@ -110,10 +110,10 @@ describe('filter', () => {
                         [5, 0],
                         [5, 5],
                         [0, 5],
-                        [0, 0],
-                    ],
-                ],
-            },
+                        [0, 0]
+                    ]
+                ]
+            }
         ]);
         expect(withinFilter.needGeometry).toBe(true);
         const canonical = {z: 3, x: 3, y: 3} as ICanonicalTileID;
@@ -130,8 +130,8 @@ describe('filter', () => {
                 type: 'LineString',
                 coordinates: [
                     [2, 2],
-                    [3, 3],
-                ],
+                    [3, 3]
+                ]
             },
             canonical
         );
@@ -142,8 +142,8 @@ describe('filter', () => {
                 type: 'LineString',
                 coordinates: [
                     [6, 6],
-                    [2, 2],
-                ],
+                    [2, 2]
+                ]
             },
             canonical
         );
@@ -154,8 +154,8 @@ describe('filter', () => {
                 type: 'LineString',
                 coordinates: [
                     [5, 5],
-                    [2, 2],
-                ],
+                    [2, 2]
+                ]
             },
             canonical
         );
@@ -217,7 +217,7 @@ describe('convert legacy filters to expressions', () => {
         const filter = [
             'any',
             ['all', ['>', 'y', 0], ['>', 'y', 0]],
-            ['>', 'x', 0],
+            ['>', 'x', 0]
         ] as FilterSpecification;
 
         const converted = convertFilter(filter);
@@ -235,13 +235,13 @@ describe('convert legacy filters to expressions', () => {
         const filter: FilterSpecification = [
             'all',
             ['in', '$type', 'Polygon', 'LineString', 'Point'],
-            ['all', ['in', 'type', 'island']],
+            ['all', ['in', 'type', 'island']]
         ];
 
         const expected: FilterSpecification = [
             'all',
             ['match', ['geometry-type'], ['LineString', 'Point', 'Polygon'], true, false],
-            ['match', ['get', 'type'], ['island'], true, false],
+            ['match', ['get', 'type'], ['island'], true, false]
         ];
 
         const converted = convertFilter(filter);

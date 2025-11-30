@@ -14,7 +14,7 @@ describe('ColorArray', () => {
         expect(ColorArray.parse(['yellow']).values).toEqual([Color.parse('yellow')]);
         expect(ColorArray.parse(['yellow', 'blue']).values).toEqual([
             Color.parse('yellow'),
-            Color.parse('blue'),
+            Color.parse('blue')
         ]);
         expect(ColorArray.parse([3, 4] as any)).toBeUndefined();
         expect(ColorArray.parse(['non-color', 'words'] as any)).toBeUndefined();

@@ -7,7 +7,7 @@ describe('Validate NumberArray', () => {
         let errors = validateNumberArray({
             validateSpec: validate,
             key: 'numberArray',
-            value: '3',
+            value: '3'
         });
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('numberArray: number expected, string found');
@@ -23,7 +23,7 @@ describe('Validate NumberArray', () => {
         errors = validateNumberArray({
             validateSpec: validate,
             key: 'numberArray',
-            value: {x: 1, y: 1},
+            value: {x: 1, y: 1}
         });
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('numberArray: number expected, object found');
@@ -37,7 +37,7 @@ describe('Validate NumberArray', () => {
         const errors = validateNumberArray({
             validateSpec: validate,
             key: 'numberArray',
-            value: 1,
+            value: 1
         });
         expect(errors).toHaveLength(0);
     });
@@ -45,7 +45,7 @@ describe('Validate NumberArray', () => {
         let errors = validateNumberArray({
             validateSpec: validate,
             key: 'numberArray',
-            value: ['1'],
+            value: ['1']
         });
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('numberArray[0]: number expected, string found');
@@ -61,7 +61,7 @@ describe('Validate NumberArray', () => {
         errors = validateNumberArray({
             validateSpec: validate,
             key: 'numberArray',
-            value: [{x: 1}],
+            value: [{x: 1}]
         });
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('numberArray[0]: number expected, object found');
@@ -69,7 +69,7 @@ describe('Validate NumberArray', () => {
         errors = validateNumberArray({
             validateSpec: validate,
             key: 'numberArray',
-            value: [1, 3, false],
+            value: [1, 3, false]
         });
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('numberArray[2]: number expected, boolean found');
@@ -77,7 +77,7 @@ describe('Validate NumberArray', () => {
         errors = validateNumberArray({
             validateSpec: validate,
             key: 'numberArray',
-            value: ['1', 3, false],
+            value: ['1', 3, false]
         });
         expect(errors).toHaveLength(2);
         expect(errors[0].message).toBe('numberArray[0]: number expected, string found');
@@ -95,13 +95,13 @@ describe('Validate NumberArray', () => {
         errors = validateNumberArray({
             validateSpec: validate,
             key: 'numberArray',
-            value: [1, 1, 1],
+            value: [1, 1, 1]
         });
         expect(errors).toHaveLength(0);
         errors = validateNumberArray({
             validateSpec: validate,
             key: 'numberArray',
-            value: [1, 1, 1, 1, 1, 1, 1, 1],
+            value: [1, 1, 1, 1, 1, 1, 1, 1]
         });
         expect(errors).toHaveLength(0);
     });

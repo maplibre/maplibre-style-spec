@@ -82,7 +82,7 @@ export const StringType = {kind: 'string'} as StringTypeT;
 export const BooleanType = {kind: 'boolean'} as BooleanTypeT;
 export const ColorType = {kind: 'color'} as ColorTypeT;
 export const ProjectionDefinitionType = {
-    kind: 'projectionDefinition',
+    kind: 'projectionDefinition'
 } as ProjectionDefinitionTypeT;
 export const ObjectType = {kind: 'object'} as ObjectTypeT;
 export const ValueType = {kind: 'value'} as ValueTypeT;
@@ -94,14 +94,14 @@ export const ColorArrayType = {kind: 'colorArray'} as ColorArrayTypeT;
 export const NumberArrayType = {kind: 'numberArray'} as NumberArrayTypeT;
 export const ResolvedImageType = {kind: 'resolvedImage'} as ResolvedImageTypeT;
 export const VariableAnchorOffsetCollectionType = {
-    kind: 'variableAnchorOffsetCollection',
+    kind: 'variableAnchorOffsetCollection'
 } as VariableAnchorOffsetCollectionTypeT;
 
 export function array<T extends Type>(itemType: T, N?: number | null): ArrayType<T> {
     return {
         kind: 'array',
         itemType,
-        N,
+        N
     };
 }
 
@@ -132,7 +132,7 @@ const valueMemberTypes = [
     NumberArrayType,
     ColorArrayType,
     ResolvedImageType,
-    VariableAnchorOffsetCollectionType,
+    VariableAnchorOffsetCollectionType
 ];
 
 /**

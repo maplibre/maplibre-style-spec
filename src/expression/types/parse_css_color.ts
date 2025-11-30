@@ -54,7 +54,7 @@ export function parseCssColor(input: string): RGBColor | undefined {
                 parseHex(input.slice(i, (i += step))),
                 parseHex(input.slice(i, (i += step))),
                 parseHex(input.slice(i, (i += step))),
-                parseHex(input.slice(i, i + step) || 'ff'),
+                parseHex(input.slice(i, i + step) || 'ff')
             ];
         }
     }
@@ -77,7 +77,7 @@ export function parseCssColor(input: string): RGBColor | undefined {
                 bp, // %         (optional)
                 f3, // ,|/       (optional)
                 a, // <numeric> (optional)
-                ap, // %         (optional)
+                ap // %         (optional)
             ] = rgbMatch;
 
             const argFormat = [f1 || ' ', f2 || ' ', f3].join('');
@@ -94,7 +94,7 @@ export function parseCssColor(input: string): RGBColor | undefined {
                         clamp(+r / maxValue, 0, 1),
                         clamp(+g / maxValue, 0, 1),
                         clamp(+b / maxValue, 0, 1),
-                        a ? parseAlpha(+a, ap) : 1,
+                        a ? parseAlpha(+a, ap) : 1
                     ];
                     if (validateNumbers(rgba)) {
                         return rgba;
@@ -121,7 +121,7 @@ export function parseCssColor(input: string): RGBColor | undefined {
             l, // <numeric>
             f3, // ,|/       (optional)
             a, // <numeric> (optional)
-            ap, // %         (optional)
+            ap // %         (optional)
         ] = hslMatch;
 
         const argFormat = [f1 || ' ', f2 || ' ', f3].join('');
@@ -135,7 +135,7 @@ export function parseCssColor(input: string): RGBColor | undefined {
                 +h,
                 clamp(+s, 0, 100),
                 clamp(+l, 0, 100),
-                a ? parseAlpha(+a, ap) : 1,
+                a ? parseAlpha(+a, ap) : 1
             ];
             if (validateNumbers(hsla)) {
                 return hslToRgb(hsla);
@@ -325,5 +325,5 @@ const namedColors: Record<string, [number, number, number]> = {
     white: [255, 255, 255],
     whitesmoke: [245, 245, 245],
     yellow: [255, 255, 0],
-    yellowgreen: [154, 205, 50],
+    yellowgreen: [154, 205, 50]
 };

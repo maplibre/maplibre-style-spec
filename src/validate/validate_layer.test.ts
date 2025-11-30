@@ -8,13 +8,13 @@ test.each([
     ['string', '__proto__'],
     ['boolean', true],
     ['array', [{}]],
-    ['null', null],
+    ['null', null]
 ])('Should return error if layer value is %s instead of an object', (valueType, value) => {
     const errors = validateLayer({
         validateSpec: validate,
         value: value,
         styleSpec: v8,
-        style: {} as any,
+        style: {} as any
     });
     expect(errors).toHaveLength(1);
     expect(errors[0].message).toBe(`object expected, ${valueType} found`);

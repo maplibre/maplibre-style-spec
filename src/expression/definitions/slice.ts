@@ -5,7 +5,7 @@ import {
     array,
     typeToString,
     isValidType,
-    isValidNativeType,
+    isValidNativeType
 } from '../types';
 import {RuntimeError} from '../runtime_error';
 import {typeOf} from '../values';

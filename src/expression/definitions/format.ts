@@ -5,13 +5,13 @@ import {
     array,
     StringType,
     ColorType,
-    ResolvedImageType,
+    ResolvedImageType
 } from '../types';
 import {
     Formatted,
     FormattedSection,
     VERTICAL_ALIGN_OPTIONS,
-    VerticalAlign,
+    VerticalAlign
 } from '../types/formatted';
 import {valueToString, typeOf} from '../values';
 
@@ -116,7 +116,7 @@ export class FormatExpression implements Expression {
                     scale: null,
                     font: null,
                     textColor: null,
-                    verticalAlign: null,
+                    verticalAlign: null
                 });
             }
         }

@@ -2,7 +2,7 @@ import {
     createPropertyExpression,
     Feature,
     GlobalProperties,
-    StylePropertyExpression,
+    StylePropertyExpression
 } from '../expression';
 import {expressions} from './definitions';
 import v8 from '../reference/v8.json' with {type: 'json'};
@@ -37,8 +37,8 @@ describe('createPropertyExpression', () => {
                 'property-type': 'data-constant',
                 expression: {
                     interpolated: false,
-                    parameters: ['zoom'],
-                },
+                    parameters: ['zoom']
+                }
             } as StylePropertySpecification
         );
         expect(result).toBe('error');
@@ -54,15 +54,15 @@ describe('createPropertyExpression', () => {
                 'case',
                 ['>', ['global-state', 'stateKey'], 0],
                 100,
-                ['global-state', 'anotherStateKey'],
+                ['global-state', 'anotherStateKey']
             ],
             {
                 type: 'number',
                 'property-type': 'data-driven',
                 expression: {
                     interpolated: false,
-                    parameters: ['zoom', 'feature'],
-                },
+                    parameters: ['zoom', 'feature']
+                }
             } as any as StylePropertySpecification
         ) as {value: StylePropertyExpression};
 
@@ -76,7 +76,7 @@ describe('evaluate expression', () => {
             type: null,
             default: 42,
             'property-type': 'data-driven',
-            transition: false,
+            transition: false
         }) as {value: StylePropertyExpression};
 
         vi.spyOn(console, 'warn').mockImplementation(() => {});
@@ -95,7 +95,7 @@ describe('evaluate expression', () => {
                 type: null,
                 default: 42,
                 'property-type': 'data-driven',
-                transition: false,
+                transition: false
             },
             {x: 5}
         ) as {value: StylePropertyExpression};
@@ -115,8 +115,8 @@ describe('evaluate expression', () => {
                 'property-type': 'data-driven',
                 expression: {
                     interpolated: true,
-                    parameters: ['zoom'],
-                },
+                    parameters: ['zoom']
+                }
             } as StylePropertySpecification,
             {x: 5}
         ) as {value: StylePropertyExpression};
@@ -135,8 +135,8 @@ describe('evaluate expression', () => {
             'property-type': 'data-driven',
             expression: {
                 interpolated: false,
-                parameters: ['zoom', 'feature'],
-            },
+                parameters: ['zoom', 'feature']
+            }
         } as any as StylePropertySpecification) as {value: StylePropertyExpression};
 
         vi.spyOn(console, 'warn').mockImplementation(() => {});
@@ -161,8 +161,8 @@ describe('evaluate expression', () => {
             transition: false,
             expression: {
                 interpolated: false,
-                parameters: ['zoom', 'feature'],
-            },
+                parameters: ['zoom', 'feature']
+            }
         }) as {value: StylePropertyExpression};
 
         const warnMock = vi.spyOn(console, 'warn').mockImplementation(() => {});

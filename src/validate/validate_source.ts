@@ -8,7 +8,7 @@ import {getType} from '../util/get_type';
 import {validateRasterDEMSource} from './validate_raster_dem_source';
 
 const objectElementValidators = {
-    promoteId: validatePromoteId,
+    promoteId: validatePromoteId
 };
 
 export function validateSource(options) {
@@ -35,7 +35,7 @@ export function validateSource(options) {
                 style: options.style,
                 styleSpec,
                 objectElementValidators,
-                validateSpec,
+                validateSpec
             });
             return errors;
         case 'raster-dem':
@@ -44,7 +44,7 @@ export function validateSource(options) {
                 value,
                 style: options.style,
                 styleSpec,
-                validateSpec,
+                validateSpec
             });
             return errors;
 
@@ -56,7 +56,7 @@ export function validateSource(options) {
                 style,
                 styleSpec,
                 validateSpec,
-                objectElementValidators,
+                objectElementValidators
             });
             if (value.cluster) {
                 for (const prop in value.clusterProperties) {
@@ -71,7 +71,7 @@ export function validateSource(options) {
                             key: `${key}.${prop}.map`,
                             value: mapExpr,
                             validateSpec,
-                            expressionContext: 'cluster-map',
+                            expressionContext: 'cluster-map'
                         })
                     );
                     errors.push(
@@ -79,7 +79,7 @@ export function validateSource(options) {
                             key: `${key}.${prop}.reduce`,
                             value: reduceExpr,
                             validateSpec,
-                            expressionContext: 'cluster-reduce',
+                            expressionContext: 'cluster-reduce'
                         })
                     );
                 }
@@ -93,7 +93,7 @@ export function validateSource(options) {
                 valueSpec: styleSpec.source_video,
                 style,
                 validateSpec,
-                styleSpec,
+                styleSpec
             });
 
         case 'image':
@@ -103,7 +103,7 @@ export function validateSource(options) {
                 valueSpec: styleSpec.source_image,
                 style,
                 validateSpec,
-                styleSpec,
+                styleSpec
             });
 
         case 'canvas':
@@ -113,7 +113,7 @@ export function validateSource(options) {
                     null,
                     'Please use runtime APIs to add canvas sources, rather than including them in stylesheets.',
                     'source.canvas'
-                ),
+                )
             ];
 
         default:
@@ -121,11 +121,11 @@ export function validateSource(options) {
                 key: `${key}.type`,
                 value: value.type,
                 valueSpec: {
-                    values: ['vector', 'raster', 'raster-dem', 'geojson', 'video', 'image'],
+                    values: ['vector', 'raster', 'raster-dem', 'geojson', 'video', 'image']
                 },
                 style,
                 validateSpec,
-                styleSpec,
+                styleSpec
             });
     }
 }

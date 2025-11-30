@@ -28,7 +28,7 @@ export class Coalesce implements Expression {
 
         for (const arg of args.slice(1)) {
             const parsed = context.parse(arg, 1 + parsedArgs.length, outputType, undefined, {
-                typeAnnotation: 'omit',
+                typeAnnotation: 'omit'
             });
             if (!parsed) return null;
             outputType = outputType || parsed.type;

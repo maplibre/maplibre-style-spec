@@ -33,12 +33,12 @@ export function validateSky(options: ValidateSkyOptions) {
                     value: sky[key],
                     valueSpec: skySpec[key],
                     style,
-                    styleSpec,
+                    styleSpec
                 })
             );
         } else {
             errors = errors.concat([
-                new ValidationError(key, sky[key], `unknown property "${key}"`),
+                new ValidationError(key, sky[key], `unknown property "${key}"`)
             ]);
         }
     }

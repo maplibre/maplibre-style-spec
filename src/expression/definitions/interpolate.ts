@@ -17,7 +17,7 @@ import {
     verifyType,
     ProjectionDefinitionType,
     ColorArrayType,
-    NumberArrayType,
+    NumberArrayType
 } from '../types';
 import {findStopLessThanOrEqualTo} from '../stops';
 import {Color} from '../types/color';
@@ -122,7 +122,7 @@ export class Interpolate implements Expression {
                 ) as null;
             interpolation = {
                 name: 'exponential',
-                base,
+                base
             };
         } else if (interpolation[0] === 'cubic-bezier') {
             const controlPoints = interpolation.slice(1);
@@ -138,7 +138,7 @@ export class Interpolate implements Expression {
 
             interpolation = {
                 name: 'cubic-bezier',
-                controlPoints: controlPoints as any,
+                controlPoints: controlPoints as any
             };
         } else {
             return context.error(
@@ -355,5 +355,5 @@ export const interpolateFactory = {
     numberArray: NumberArray.interpolate,
     colorArray: ColorArray.interpolate,
     variableAnchorOffsetCollection: VariableAnchorOffsetCollection.interpolate,
-    array: interpolateArray,
+    array: interpolateArray
 };

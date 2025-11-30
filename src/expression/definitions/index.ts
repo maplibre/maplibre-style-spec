@@ -18,7 +18,7 @@ import {
     LessThan,
     GreaterThan,
     LessThanOrEqual,
-    GreaterThanOrEqual,
+    GreaterThanOrEqual
 } from './comparison';
 import {CollatorExpression} from './collator';
 import {NumberFormat} from './number_format';
@@ -69,5 +69,5 @@ export const expressions: ExpressionRegistry = {
     var: Var,
     within: Within,
     distance: Distance,
-    'global-state': GlobalState,
+    'global-state': GlobalState
 };

@@ -10,7 +10,7 @@ describe('Validate sky', () => {
             validateSpec: validate,
             value: undefined,
             styleSpec: v8,
-            style: {} as any,
+            style: {} as any
         });
         expect(errors).toHaveLength(0);
     });
@@ -20,7 +20,7 @@ describe('Validate sky', () => {
             validateSpec: validate,
             value: '' as unknown as SkySpecification,
             styleSpec: v8,
-            style: {} as any,
+            style: {} as any
         });
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toContain('object');
@@ -32,7 +32,7 @@ describe('Validate sky', () => {
             validateSpec: validate,
             value: {a: 1} as any,
             styleSpec: v8,
-            style: {} as any,
+            style: {} as any
         });
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toContain('a');
@@ -46,10 +46,10 @@ describe('Validate sky', () => {
                 'sky-color': 1 as any,
                 'fog-color': 2 as any,
                 'horizon-fog-blend': {} as any,
-                'fog-ground-blend': 'foo' as any,
+                'fog-ground-blend': 'foo' as any
             },
             styleSpec: v8,
-            style: {} as any,
+            style: {} as any
         });
         expect(errors).toHaveLength(4);
         expect(errors[0].message).toBe('sky-color: color expected, number found');
@@ -65,10 +65,10 @@ describe('Validate sky', () => {
                 'sky-color': 'red',
                 'fog-color': '#123456',
                 'horizon-fog-blend': 1,
-                'fog-ground-blend': 0,
+                'fog-ground-blend': 0
             },
             styleSpec: v8,
-            style: {} as any,
+            style: {} as any
         });
         expect(errors).toHaveLength(0);
     });

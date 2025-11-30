@@ -6,24 +6,24 @@ import tsParser from '@typescript-eslint/parser';
 
 export default [
     {
-        ignores: ['build/*.js', '**/dist/*'],
+        ignores: ['build/*.js', '**/dist/*']
     },
     {
         files: ['**/*.ts'],
         plugins: {
             '@typescript-eslint': typescriptEslint,
             jsdoc,
-            vitest,
+            vitest
         },
 
         linterOptions: {
-            reportUnusedDisableDirectives: true,
+            reportUnusedDisableDirectives: true
         },
 
         languageOptions: {
             globals: {
                 ...Object.fromEntries(Object.entries(globals.browser).map(([key]) => [key, 'off'])),
-                performance: true,
+                performance: true
             },
 
             parser: tsParser,
@@ -31,14 +31,14 @@ export default [
             sourceType: 'module',
 
             parserOptions: {
-                createDefaultProgram: true,
-            },
+                createDefaultProgram: true
+            }
         },
 
         settings: {
             jsdoc: {
-                ignorePrivate: true,
-            },
+                ignorePrivate: true
+            }
         },
 
         rules: {
@@ -49,8 +49,8 @@ export default [
             '@typescript-eslint/no-unused-vars': [
                 'warn',
                 {
-                    argsIgnorePattern: '^_',
-                },
+                    argsIgnorePattern: '^_'
+                }
             ],
 
             'no-useless-constructor': 'off',
@@ -80,8 +80,8 @@ export default [
             'prefer-const': [
                 'error',
                 {
-                    destructuring: 'all',
-                },
+                    destructuring: 'all'
+                }
             ],
 
             'prefer-template': 'error',
@@ -96,8 +96,8 @@ export default [
             'no-multiple-empty-lines': [
                 'error',
                 {
-                    max: 1,
-                },
+                    max: 1
+                }
             ],
 
             'jsdoc/check-param-names': 'warn',
@@ -122,10 +122,10 @@ export default [
                 'warn',
                 {
                     maxSize: 50,
-                    inlineMaxSize: 20,
-                },
-            ],
-        },
+                    inlineMaxSize: 20
+                }
+            ]
+        }
     },
     {
         files: ['test/**'],
@@ -136,7 +136,7 @@ export default [
             'jsdoc/require-param-description': 'off',
             'jsdoc/require-param-name': 'off',
             'jsdoc/require-returns': 'off',
-            'jsdoc/require-returns-description': 'off',
-        },
-    },
+            'jsdoc/require-returns-description': 'off'
+        }
+    }
 ];

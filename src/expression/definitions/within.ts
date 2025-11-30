@@ -14,7 +14,7 @@ import {
     lineStringWithinPolygons,
     pointWithinPolygon,
     pointWithinPolygons,
-    updateBBox,
+    updateBBox
 } from '../../util/geometry_util';
 import {Point2D} from '../../point2d';
 
@@ -213,7 +213,7 @@ export class Within implements Expression {
                 if (polygonsCoords.length) {
                     const multipolygonWrapper: GeoJSON.MultiPolygon = {
                         type: 'MultiPolygon',
-                        coordinates: polygonsCoords,
+                        coordinates: polygonsCoords
                     };
                     return new Within(geojson, multipolygonWrapper);
                 }

@@ -46,8 +46,8 @@ export function validateStyleMin(
                 glyphs: validateGlyphsUrl,
                 '*'() {
                     return [];
-                },
-            },
+                }
+            }
         })
     );
 
@@ -58,7 +58,7 @@ export function validateStyleMin(
                 value: style['constants'],
                 style,
                 styleSpec,
-                validateSpec: validate,
+                validateSpec: validate
             })
         );
     }

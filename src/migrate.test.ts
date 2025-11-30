@@ -29,9 +29,9 @@ describe('migrate', () => {
                 {
                     id: '1',
                     type: 'symbol',
-                    layout: {'text-field': 'a{x}', 'icon-image': '{y}'},
-                },
-            ],
+                    layout: {'text-field': 'a{x}', 'icon-image': '{y}'}
+                }
+            ]
         } as any);
         expect(migrated.layers[0].layout['text-field']).toEqual(['concat', 'a', ['get', 'x']]);
         expect(migrated.layers[0].layout['icon-image']).toEqual(['to-string', ['get', 'y']]);
@@ -49,10 +49,10 @@ describe('migrate', () => {
                             base: 1.0,
                             stops: [
                                 [0, 1],
-                                [10, 0.72],
-                            ],
-                        },
-                    },
+                                [10, 0.72]
+                            ]
+                        }
+                    }
                 },
                 {
                     id: '2',
@@ -62,12 +62,12 @@ describe('migrate', () => {
                             base: 1.0,
                             stops: [
                                 [0, [1, 2]],
-                                [10, [0.72, 0.98]],
-                            ],
-                        },
-                    },
-                },
-            ],
+                                [10, [0.72, 0.98]]
+                            ]
+                        }
+                    }
+                }
+            ]
         } as any);
         expect(migrated.layers[0].paint['background-opacity']).toEqual([
             'interpolate',
@@ -76,7 +76,7 @@ describe('migrate', () => {
             0,
             1,
             10,
-            0.72,
+            0.72
         ]);
         expect(migrated.layers[1].paint['background-opacity']).toEqual([
             'interpolate',
@@ -85,7 +85,7 @@ describe('migrate', () => {
             0,
             ['literal', [1, 2]],
             10,
-            ['literal', [0.72, 0.98]],
+            ['literal', [0.72, 0.98]]
         ]);
     });
 
@@ -95,8 +95,8 @@ describe('migrate', () => {
             sources: {
                 maplibre: {
                     url: 'https://demotiles.maplibre.org/tiles/tiles.json',
-                    type: 'vector',
-                },
+                    type: 'vector'
+                }
             },
             layers: [
                 {
@@ -109,18 +109,18 @@ describe('migrate', () => {
                             base: 1,
                             type: 'categorical',
                             property: 'type',
-                            stops: [['park', 'some-icon']],
-                        },
-                    },
-                },
-            ],
+                            stops: [['park', 'some-icon']]
+                        }
+                    }
+                }
+            ]
         } as any);
         expect(migrated.layers[0].layout['icon-image']).toEqual([
             'match',
             ['get', 'type'],
             'park',
             'some-icon',
-            '',
+            ''
         ]);
         expect(validateStyle(migrated, v8)).toEqual([]);
     });
@@ -143,11 +143,11 @@ describe('migrate', () => {
                             0,
                             'hsl(110, 0.7, 0.055)',
                             10,
-                            'hsla(330,0.85,50%)',
-                        ],
-                    },
-                },
-            ],
+                            'hsla(330,0.85,50%)'
+                        ]
+                    }
+                }
+            ]
         });
 
         expect(migrated.layers[0].paint).toEqual({
@@ -159,8 +159,8 @@ describe('migrate', () => {
                 0,
                 'hsl(110,70%,5.5%)',
                 10,
-                'hsl(330,85%,50%)',
-            ],
+                'hsl(330,85%,50%)'
+            ]
         });
     });
 
@@ -175,16 +175,16 @@ describe('migrate', () => {
                     source: 'vector-source',
                     paint: {
                         'icon-color': 'hsl(100,0.3,.2)',
-                        'icon-opacity-transition': {duration: 0},
-                    },
-                },
-            ],
+                        'icon-opacity-transition': {duration: 0}
+                    }
+                }
+            ]
         };
 
         expect(() => migrate(style)).not.toThrow();
         expect(style.layers[0].paint).toEqual({
             'icon-color': 'hsl(100,30%,20%)',
-            'icon-opacity-transition': {duration: 0},
+            'icon-opacity-transition': {duration: 0}
         });
     });
 });

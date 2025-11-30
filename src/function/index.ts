@@ -110,7 +110,7 @@ export function createFunction(parameters, propertySpec) {
                     type: parameters.type,
                     property: parameters.property,
                     default: parameters.default,
-                    stops: [],
+                    stops: []
                 };
                 zoomStops.push(zoom);
             }
@@ -121,7 +121,7 @@ export function createFunction(parameters, propertySpec) {
         for (const z of zoomStops) {
             featureFunctionStops.push([
                 featureFunctions[z].zoom,
-                createFunction(featureFunctions[z], propertySpec),
+                createFunction(featureFunctions[z], propertySpec)
             ]);
         }
 
@@ -135,12 +135,12 @@ export function createFunction(parameters, propertySpec) {
                 return evaluateExponentialFunction(
                     {
                         stops: featureFunctionStops,
-                        base: parameters.base,
+                        base: parameters.base
                     },
                     propertySpec,
                     zoom
                 ).evaluate(zoom, properties);
-            },
+            }
         };
     } else if (zoomDependent) {
         const interpolationType =
@@ -153,7 +153,7 @@ export function createFunction(parameters, propertySpec) {
             interpolationFactor: Interpolate.interpolationFactor.bind(undefined, interpolationType),
             zoomStops: parameters.stops.map((s) => s[0]),
             evaluate: ({zoom}) =>
-                innerFun(parameters, propertySpec, zoom, hashedStops, categoricalKeyType),
+                innerFun(parameters, propertySpec, zoom, hashedStops, categoricalKeyType)
         };
     } else {
         return {
@@ -167,7 +167,7 @@ export function createFunction(parameters, propertySpec) {
                     return coalesce(parameters.default, propertySpec.default);
                 }
                 return innerFun(parameters, propertySpec, value, hashedStops, categoricalKeyType);
-            },
+            }
         };
     }
 }
@@ -234,7 +234,7 @@ function evaluateExponentialFunction(parameters, propertySpec, input) {
                     return undefined;
                 }
                 return interp(evaluatedLower, evaluatedUpper, t, parameters.colorSpace);
-            },
+            }
         };
     }
 

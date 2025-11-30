@@ -9,12 +9,12 @@ export function validateNumberArray(options) {
 
     if (type === 'array') {
         const arrayElementSpec = {
-            type: 'number',
+            type: 'number'
         };
 
         if (value.length < 1) {
             return [
-                new ValidationError(key, value, 'array length at least 1 expected, length 0 found'),
+                new ValidationError(key, value, 'array length at least 1 expected, length 0 found')
             ];
         }
 
@@ -25,7 +25,7 @@ export function validateNumberArray(options) {
                     key: `${key}[${i}]`,
                     value: value[i],
                     validateSpec: options.validateSpec,
-                    valueSpec: arrayElementSpec,
+                    valueSpec: arrayElementSpec
                 })
             );
         }
@@ -34,7 +34,7 @@ export function validateNumberArray(options) {
         return validateNumber({
             key,
             value,
-            valueSpec: {},
+            valueSpec: {}
         });
     }
 }

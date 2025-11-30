@@ -16,7 +16,7 @@ export function expectToMatchColor(toTest: Color, expectedSerialized: string, nu
         r: expect.closeTo((r / 100) * (a !== 0 ? a : 1), numDigits),
         g: expect.closeTo((g / 100) * (a !== 0 ? a : 1), numDigits),
         b: expect.closeTo((b / 100) * (a !== 0 ? a : 1), numDigits),
-        a: expect.closeTo(a, 4),
+        a: expect.closeTo(a, 4)
     });
 }
 

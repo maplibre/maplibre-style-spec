@@ -7,22 +7,22 @@ describe('deref', () => {
             derefLayers([
                 {
                     id: 'parent',
-                    type: 'line',
+                    type: 'line'
                 } as LayerWithRef,
                 {
                     id: 'child',
-                    ref: 'parent',
-                } as LayerWithRef,
+                    ref: 'parent'
+                } as LayerWithRef
             ])
         ).toEqual([
             {
                 id: 'parent',
-                type: 'line',
+                type: 'line'
             },
             {
                 id: 'child',
-                type: 'line',
-            },
+                type: 'line'
+            }
         ]);
     });
 
@@ -31,22 +31,22 @@ describe('deref', () => {
             derefLayers([
                 {
                     id: 'child',
-                    ref: 'parent',
+                    ref: 'parent'
                 } as LayerWithRef,
                 {
                     id: 'parent',
-                    type: 'line',
-                } as LayerWithRef,
+                    type: 'line'
+                } as LayerWithRef
             ])
         ).toEqual([
             {
                 id: 'child',
-                type: 'line',
+                type: 'line'
             },
             {
                 id: 'parent',
-                type: 'line',
-            },
+                type: 'line'
+            }
         ]);
     });
 });

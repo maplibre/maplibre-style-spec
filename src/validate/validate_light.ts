@@ -14,7 +14,7 @@ export function validateLight(options) {
         return errors;
     } else if (rootType !== 'object') {
         errors = errors.concat([
-            new ValidationError('light', light, `object expected, ${rootType} found`),
+            new ValidationError('light', light, `object expected, ${rootType} found`)
         ]);
         return errors;
     }
@@ -34,7 +34,7 @@ export function validateLight(options) {
                     valueSpec: styleSpec.transition,
                     validateSpec: options.validateSpec,
                     style,
-                    styleSpec,
+                    styleSpec
                 })
             );
         } else if (lightSpec[key]) {
@@ -45,12 +45,12 @@ export function validateLight(options) {
                     valueSpec: lightSpec[key],
                     validateSpec: options.validateSpec,
                     style,
-                    styleSpec,
+                    styleSpec
                 })
             );
         } else {
             errors = errors.concat([
-                new ValidationError(key, light[key], `unknown property "${key}"`),
+                new ValidationError(key, light[key], `unknown property "${key}"`)
             ]);
         }
     }

@@ -18,7 +18,7 @@ const types = {
     'to-boolean': BooleanType,
     'to-color': ColorType,
     'to-number': NumberType,
-    'to-string': StringType,
+    'to-string': StringType
 };
 
 /**

@@ -38,7 +38,7 @@ describe('Validate Padding', () => {
         errors = validatePadding({
             validateSpec: validate,
             key: 'padding',
-            value: [1, 1, 1, 1, 1],
+            value: [1, 1, 1, 1, 1]
         });
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('padding: padding requires 1 to 4 values; 5 values found');
@@ -46,7 +46,7 @@ describe('Validate Padding', () => {
         errors = validatePadding({
             validateSpec: validate,
             key: 'padding',
-            value: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            value: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
         });
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('padding: padding requires 1 to 4 values; 12 values found');
@@ -76,7 +76,7 @@ describe('Validate Padding', () => {
         errors = validatePadding({
             validateSpec: validate,
             key: 'padding',
-            value: ['1', 3, false],
+            value: ['1', 3, false]
         });
         expect(errors).toHaveLength(2);
         expect(errors[0].message).toBe('padding[0]: number expected, string found');

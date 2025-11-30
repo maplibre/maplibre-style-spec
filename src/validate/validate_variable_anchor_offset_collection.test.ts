@@ -7,7 +7,7 @@ describe('Validate variableAnchorOffsetCollection', () => {
     const validateOpts = {
         validateSpec: validate,
         styleSpec: latest,
-        key: 'myProp',
+        key: 'myProp'
     };
     test('Should return error if type is not array', () => {
         let errors = validateVariableAnchorOffsetCollection({...validateOpts, value: '3'});
@@ -56,7 +56,7 @@ describe('Validate variableAnchorOffsetCollection', () => {
 
         errors = validateVariableAnchorOffsetCollection({
             ...validateOpts,
-            value: ['top', [0, 0], 'bottom'],
+            value: ['top', [0, 0], 'bottom']
         });
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe(
@@ -67,7 +67,7 @@ describe('Validate variableAnchorOffsetCollection', () => {
     test('Should return error if array contains invalid anchor', () => {
         let errors = validateVariableAnchorOffsetCollection({
             ...validateOpts,
-            value: ['dennis', [0, 0]],
+            value: ['dennis', [0, 0]]
         });
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe(
@@ -76,7 +76,7 @@ describe('Validate variableAnchorOffsetCollection', () => {
 
         errors = validateVariableAnchorOffsetCollection({
             ...validateOpts,
-            value: ['top', [0, 0], 'dennis', [1, 1], 'not-dennis', [2, 2]],
+            value: ['top', [0, 0], 'dennis', [1, 1], 'not-dennis', [2, 2]]
         });
         expect(errors).toHaveLength(2);
         expect(errors[0].message).toBe(
@@ -90,7 +90,7 @@ describe('Validate variableAnchorOffsetCollection', () => {
     test('Should return error if array contains invalid offset', () => {
         let errors = validateVariableAnchorOffsetCollection({
             ...validateOpts,
-            value: ['top', 'bottom'],
+            value: ['top', 'bottom']
         });
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('myProp[1]: array expected, string found');
@@ -109,7 +109,7 @@ describe('Validate variableAnchorOffsetCollection', () => {
 
         errors = validateVariableAnchorOffsetCollection({
             ...validateOpts,
-            value: ['top', ['a', 'b']],
+            value: ['top', ['a', 'b']]
         });
         expect(errors).toHaveLength(2);
         expect(errors[0].message).toBe('myProp[1][0]: number expected, string found');
@@ -117,7 +117,7 @@ describe('Validate variableAnchorOffsetCollection', () => {
 
         errors = validateVariableAnchorOffsetCollection({
             ...validateOpts,
-            value: ['top', [0, NaN]],
+            value: ['top', [0, NaN]]
         });
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('myProp[1][1]: number expected, NaN found');
@@ -126,19 +126,19 @@ describe('Validate variableAnchorOffsetCollection', () => {
     test('Should pass if array alternates enum and point valies', () => {
         let errors = validateVariableAnchorOffsetCollection({
             ...validateOpts,
-            value: ['top', [0, 0]],
+            value: ['top', [0, 0]]
         });
         expect(errors).toHaveLength(0);
 
         errors = validateVariableAnchorOffsetCollection({
             ...validateOpts,
-            value: ['top', [0, 0], 'bottom', [1, 1]],
+            value: ['top', [0, 0], 'bottom', [1, 1]]
         });
         expect(errors).toHaveLength(0);
 
         errors = validateVariableAnchorOffsetCollection({
             ...validateOpts,
-            value: ['top', [0, 0], 'bottom', [1, 1], 'top-left', [2, 2], 'bottom', [3, 3]],
+            value: ['top', [0, 0], 'bottom', [1, 1], 'top-left', [2, 2], 'bottom', [3, 3]]
         });
         expect(errors).toHaveLength(0);
     });

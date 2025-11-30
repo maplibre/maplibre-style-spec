@@ -20,7 +20,7 @@ import {
     GlobalProperties,
     SourceExpression,
     CompositeExpression,
-    StylePropertyExpression,
+    StylePropertyExpression
 } from './expression';
 import {featureFilter, isExpressionFilter} from './feature_filter';
 
@@ -44,7 +44,7 @@ import {
     Type,
     typeToString,
     ColorType,
-    ProjectionDefinitionType,
+    ProjectionDefinitionType
 } from './expression/types';
 
 import {expressions} from './expression/definitions';
@@ -65,7 +65,7 @@ import {
     NumberArraySpecification,
     ColorArraySpecification,
     ProjectionDefinitionSpecification,
-    VariableAnchorOffsetCollectionSpecification,
+    VariableAnchorOffsetCollectionSpecification
 } from './types.g';
 import {format} from './format';
 import {validate} from './validate/validate';
@@ -192,13 +192,13 @@ const expression = {
     isExpression,
     isExpressionFilter,
     isZoomExpression,
-    normalizePropertyExpression,
+    normalizePropertyExpression
 };
 
 const styleFunction = {
     convertFunction,
     createFunction,
-    isFunction,
+    isFunction
 };
 
 const visit = {eachLayer, eachProperty, eachSource};
@@ -269,5 +269,5 @@ export {
     visit,
     expressions,
     expression,
-    FormattedType,
+    FormattedType
 };

@@ -17,7 +17,7 @@ export function validateSprite(options: ValidateSpriteOptions) {
     if (!Array.isArray(sprite)) {
         return validateString({
             key,
-            value: sprite,
+            value: sprite
         });
     } else {
         const allSpriteIds = [];
@@ -47,12 +47,12 @@ export function validateSprite(options: ValidateSpriteOptions) {
             const pairSpec = {
                 id: {
                     type: 'string',
-                    required: true,
+                    required: true
                 },
                 url: {
                     type: 'string',
-                    required: true,
-                },
+                    required: true
+                }
             };
 
             errors = errors.concat(
@@ -60,7 +60,7 @@ export function validateSprite(options: ValidateSpriteOptions) {
                     key: `${key}[${i}]`,
                     value: sprite[i],
                     valueSpec: pairSpec,
-                    validateSpec: options.validateSpec,
+                    validateSpec: options.validateSpec
                 })
             );
         }

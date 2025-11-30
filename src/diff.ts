@@ -9,7 +9,7 @@ import {
     StyleSpecification,
     TerrainSpecification,
     TransitionSpecification,
-    StateSpecification,
+    StateSpecification
 } from './types.g';
 import {deepEqual} from './util/deep_equal';
 
@@ -144,7 +144,7 @@ function diffSources(
             ) {
                 addCommand(commands, {
                     command: 'setGeoJSONSourceData',
-                    args: [sourceId, (after[sourceId] as GeoJSONSourceSpecification).data],
+                    args: [sourceId, (after[sourceId] as GeoJSONSourceSpecification).data]
                 });
             } else {
                 // no update command, must remove then add
@@ -251,7 +251,7 @@ function diffLayers(
         insertBeforeLayerId = tracker[tracker.length - i];
         addCommand(commands, {
             command: 'addLayer',
-            args: [afterIndex[layerId], insertBeforeLayerId],
+            args: [afterIndex[layerId], insertBeforeLayerId]
         });
         tracker.splice(tracker.length - i, 0, layerId);
         clean[layerId] = true;
@@ -307,7 +307,7 @@ function diffLayers(
         ) {
             addCommand(commands, {
                 command: 'setLayerZoomRange',
-                args: [layerId, afterLayer.minzoom, afterLayer.maxzoom],
+                args: [layerId, afterLayer.minzoom, afterLayer.maxzoom]
             });
         }
 
@@ -335,7 +335,7 @@ function diffLayers(
             } else if (!deepEqual(beforeLayer[prop], afterLayer[prop])) {
                 addCommand(commands, {
                     command: 'setLayerProperty',
-                    args: [layerId, prop, afterLayer[prop]],
+                    args: [layerId, prop, afterLayer[prop]]
                 });
             }
         }
@@ -366,7 +366,7 @@ function diffLayers(
             } else if (!deepEqual(beforeLayer[prop], afterLayer[prop])) {
                 addCommand(commands, {
                     command: 'setLayerProperty',
-                    args: [layerId, prop, afterLayer[prop]],
+                    args: [layerId, prop, afterLayer[prop]]
                 });
             }
         }

@@ -11,7 +11,7 @@ const rollupPlugins = [
     minifyStyleSpec(),
     json(),
     resolve({
-        browser: true,
+        browser: true
     }),
     // https://github.com/zaach/jison/issues/351
     replace({
@@ -19,11 +19,11 @@ const rollupPlugins = [
         include: /\/jsonlint-lines-primitives\/lib\/jsonlint.js/,
         delimiters: ['', ''],
         values: {
-            '_token_stack:': '',
-        },
+            '_token_stack:': ''
+        }
     }),
     typescript(),
-    commonjs(),
+    commonjs()
 ];
 
 const config: RollupOptions[] = [
@@ -33,7 +33,7 @@ const config: RollupOptions[] = [
             {
                 file: 'dist/index.mjs',
                 format: 'es',
-                sourcemap: true,
+                sourcemap: true
             },
             {
                 name: 'maplibreGlStyleSpecification',
@@ -41,11 +41,11 @@ const config: RollupOptions[] = [
                 format: 'umd',
                 sourcemap: true,
                 globals: {
-                    fs: 'fs',
-                },
-            },
+                    fs: 'fs'
+                }
+            }
         ],
-        plugins: rollupPlugins,
+        plugins: rollupPlugins
     },
     {
         input: './bin/gl-style-format.ts',
@@ -53,7 +53,7 @@ const config: RollupOptions[] = [
             {
                 file: 'dist/gl-style-format.mjs',
                 format: 'es',
-                sourcemap: true,
+                sourcemap: true
             },
             {
                 name: 'maplibreGlStyleSpecification',
@@ -61,11 +61,11 @@ const config: RollupOptions[] = [
                 format: 'umd',
                 sourcemap: true,
                 globals: {
-                    fs: 'fs',
-                },
-            },
+                    fs: 'fs'
+                }
+            }
         ],
-        plugins: [...rollupPlugins, shebang()],
+        plugins: [...rollupPlugins, shebang()]
     },
     {
         input: './bin/gl-style-migrate.ts',
@@ -73,7 +73,7 @@ const config: RollupOptions[] = [
             {
                 file: 'dist/gl-style-migrate.mjs',
                 format: 'es',
-                sourcemap: true,
+                sourcemap: true
             },
             {
                 name: 'maplibreGlStyleSpecification',
@@ -81,11 +81,11 @@ const config: RollupOptions[] = [
                 format: 'umd',
                 sourcemap: true,
                 globals: {
-                    fs: 'fs',
-                },
-            },
+                    fs: 'fs'
+                }
+            }
         ],
-        plugins: [...rollupPlugins, shebang()],
+        plugins: [...rollupPlugins, shebang()]
     },
     {
         input: './bin/gl-style-validate.ts',
@@ -93,7 +93,7 @@ const config: RollupOptions[] = [
             {
                 file: 'dist/gl-style-validate.mjs',
                 format: 'es',
-                sourcemap: true,
+                sourcemap: true
             },
             {
                 name: 'maplibreGlStyleSpecification',
@@ -101,11 +101,11 @@ const config: RollupOptions[] = [
                 format: 'umd',
                 sourcemap: true,
                 globals: {
-                    fs: 'fs',
-                },
-            },
+                    fs: 'fs'
+                }
+            }
         ],
-        plugins: [...rollupPlugins, shebang()],
-    },
+        plugins: [...rollupPlugins, shebang()]
+    }
 ];
 export default config;

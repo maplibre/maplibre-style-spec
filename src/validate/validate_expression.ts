@@ -6,7 +6,7 @@ import {deepUnbundle} from '../util/unbundle_jsonlint';
 import {
     isFeatureConstant,
     isGlobalPropertyConstant,
-    isStateConstant,
+    isStateConstant
 } from '../expression/compound_expression';
 
 import {Expression} from '../expression/expression';
@@ -35,7 +35,7 @@ export function validateExpression(options: any): Array<ValidationError> {
                 options.key,
                 options.value,
                 `Invalid data expression for "${options.propertyKey}". Output values must be contained as literals within the expression.`
-            ),
+            )
         ];
     }
 
@@ -49,7 +49,7 @@ export function validateExpression(options: any): Array<ValidationError> {
                 options.key,
                 options.value,
                 '"feature-state" data expressions are not supported with layout properties.'
-            ),
+            )
         ];
     }
 
@@ -59,7 +59,7 @@ export function validateExpression(options: any): Array<ValidationError> {
                 options.key,
                 options.value,
                 '"feature-state" data expressions are not supported with filters.'
-            ),
+            )
         ];
     }
 
@@ -70,7 +70,7 @@ export function validateExpression(options: any): Array<ValidationError> {
                     options.key,
                     options.value,
                     '"zoom" and "feature-state" expressions are not supported with cluster properties.'
-                ),
+                )
             ];
         }
         if (options.expressionContext === 'cluster-initial' && !isFeatureConstant(expressionObj)) {
@@ -79,7 +79,7 @@ export function validateExpression(options: any): Array<ValidationError> {
                     options.key,
                     options.value,
                     'Feature data expressions are not supported with initial expression part of cluster properties.'
-                ),
+                )
             ];
         }
     }

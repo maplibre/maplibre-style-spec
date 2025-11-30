@@ -14,7 +14,7 @@ describe('format', () => {
                     sources: {},
                     glyphs: '',
                     sprite: '',
-                    version: 6,
+                    version: 6
                 })
             )
         ).toEqual(['version', 'sources', 'sprite', 'glyphs', 'layers', 'other']);
@@ -29,9 +29,9 @@ describe('format', () => {
                             paint: {},
                             layout: {},
                             id: 'id',
-                            type: 'type',
-                        },
-                    ],
+                            type: 'type'
+                        }
+                    ]
                 }).layers[0]
             )
         ).toEqual(['id', 'type', 'layout', 'paint']);

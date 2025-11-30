@@ -6,7 +6,7 @@ import {
     NumberArrayType,
     PaddingType,
     ProjectionDefinitionType,
-    VariableAnchorOffsetCollectionType,
+    VariableAnchorOffsetCollectionType
 } from './types';
 import {Collator} from './types/collator';
 import {Color} from './types/color';

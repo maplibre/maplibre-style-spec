@@ -61,7 +61,7 @@ const VALIDATORS = {
     variableAnchorOffsetCollection: validateVariableAnchorOffsetCollection,
     sprite: validateSprite,
     state: validateState,
-    fontFaces: validateFontFaces,
+    fontFaces: validateFontFaces
 };
 
 /**
@@ -103,7 +103,7 @@ export function validate(options: {
     } else {
         const valid = validateObject(
             extendBy({}, options, {
-                valueSpec: valueSpec.type ? styleSpec[valueSpec.type] : valueSpec,
+                valueSpec: valueSpec.type ? styleSpec[valueSpec.type] : valueSpec
             })
         );
         return valid;

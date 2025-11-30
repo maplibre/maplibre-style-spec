@@ -24,7 +24,7 @@ let match;
 while ((match = regex.exec(changelog))) {
     releaseNotes.push({
         version: match[1],
-        changelog: match[2].trim(),
+        changelog: match[2].trim()
     });
 }
 

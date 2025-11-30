@@ -13,7 +13,7 @@ import {
     StyleExpression,
     GlobalProperties,
     Feature,
-    ZoomDependentExpression,
+    ZoomDependentExpression
 } from '../../../src';
 import {ExpressionParsingError} from '../../../src/expression/parsing_error';
 import {getGeometry} from '../../lib/geometry';
@@ -54,7 +54,7 @@ type FixtureInput = [
             | GeoJSON.MultiLineString
             | GeoJSON.Polygon
             | GeoJSON.MultiPolygon;
-    },
+    }
 ];
 
 type FixtureResult = FixtureErrorResult | FixtureSuccessResult;
@@ -101,7 +101,7 @@ describe('expression', () => {
                     ? result
                     : {
                           compiled: result.compiled,
-                          outputs: stripPrecision(result.outputs, DECIMAL_SIGNIFICANT_FIGURES),
+                          outputs: stripPrecision(result.outputs, DECIMAL_SIGNIFICANT_FIGURES)
                       };
                 if (fixture.propertySpec) {
                     fixture.propertySpec = spec;
@@ -149,7 +149,7 @@ function getCompletePropertySpec(propertySpec: ExpressionFixture['propertySpec']
     if (!spec['expression']) {
         spec['expression'] = {
             interpolated: true,
-            parameters: ['zoom', 'feature'],
+            parameters: ['zoom', 'feature']
         };
     }
     return spec as StylePropertySpecification;
@@ -169,15 +169,13 @@ function evaluateFixture(
 
     if (expression.result === 'error') {
         return {
-            compiled: getCompilationErrorResult(expression.value),
+            compiled: getCompilationErrorResult(expression.value)
         };
     }
     return {
         compiled: getCompilationSuccessResult(expression.value),
         outputs:
-            fixture.inputs === undefined
-                ? []
-                : evaluateExpression(fixture.inputs, expression.value),
+            fixture.inputs === undefined ? [] : evaluateExpression(fixture.inputs, expression.value)
     };
 }
 
@@ -188,8 +186,8 @@ function getCompilationErrorResult(
         result: 'error',
         errors: parsingErrors.map((err) => ({
             key: err.key,
-            error: err.message,
-        })),
+            error: err.message
+        }))
     };
 }
 
@@ -202,7 +200,7 @@ function getCompilationSuccessResult(
         result: 'success',
         isFeatureConstant: kind === 'constant' || kind === 'camera',
         isZoomConstant: kind === 'constant' || kind === 'source',
-        type: toString(type),
+        type: toString(type)
     };
 }
 
@@ -219,7 +217,7 @@ function evaluateExpression(
 
         const canonical = (canonicalID ?? null) as ICanonicalTileID | null;
         const feature: Partial<Mutable<Feature>> = {
-            properties: properties ?? {},
+            properties: properties ?? {}
         };
         if (id !== undefined) {
             feature.id = id;
@@ -248,7 +246,7 @@ function evaluateExpression(
             outputs.push(value);
         } catch (error) {
             outputs.push({
-                error: error.name === 'ExpressionEvaluationError' ? error.toJSON() : error.message,
+                error: error.name === 'ExpressionEvaluationError' ? error.toJSON() : error.message
             });
         }
     }

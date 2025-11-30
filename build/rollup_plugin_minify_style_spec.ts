@@ -18,8 +18,8 @@ export default function minifyStyleSpec(): Plugin {
 
             return {
                 code: JSON.stringify(spec, replacer, 0),
-                map: {mappings: ''},
+                map: {mappings: ''}
             };
-        },
+        }
     };
 }

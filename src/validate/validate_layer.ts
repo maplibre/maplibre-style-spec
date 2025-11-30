@@ -167,7 +167,7 @@ export function validateLayer(options) {
                         styleSpec: options.styleSpec,
                         validateSpec: options.validateSpec,
                         object: layer,
-                        objectKey: 'type',
+                        objectKey: 'type'
                     });
                 },
                 filter: validateFilter,
@@ -182,8 +182,8 @@ export function validateLayer(options) {
                         objectElementValidators: {
                             '*'(options) {
                                 return validateLayoutProperty(extend({layerType: type}, options));
-                            },
-                        },
+                            }
+                        }
                     });
                 },
                 paint(options) {
@@ -197,11 +197,11 @@ export function validateLayer(options) {
                         objectElementValidators: {
                             '*'(options) {
                                 return validatePaintProperty(extend({layerType: type}, options));
-                            },
-                        },
+                            }
+                        }
                     });
-                },
-            },
+                }
+            }
         })
     );
 

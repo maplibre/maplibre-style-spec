@@ -67,8 +67,8 @@ const filterSpec = {
     'property-type': 'data-driven',
     expression: {
         interpolated: false,
-        parameters: ['zoom', 'feature'],
-    },
+        parameters: ['zoom', 'feature']
+    }
 };
 
 /**
@@ -109,7 +109,7 @@ export function featureFilter(
                 canonical?: ICanonicalTileID
             ) => compiled.value.evaluate(globalProperties, feature, {}, canonical),
             needGeometry,
-            getGlobalStateRefs: () => findGlobalStateRefs(compiled.value.expression),
+            getGlobalStateRefs: () => findGlobalStateRefs(compiled.value.expression)
         };
     }
 }

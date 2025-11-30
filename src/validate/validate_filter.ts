@@ -11,7 +11,7 @@ export function validateFilter(options) {
         return validateExpression(
             extend({}, options, {
                 expressionContext: 'filter',
-                valueSpec: {value: 'boolean'},
+                valueSpec: {value: 'boolean'}
             })
         );
     } else {
@@ -42,7 +42,7 @@ function validateNonExpressionFilter(options) {
             value: value[0],
             valueSpec: styleSpec.filter_operator,
             style: options.style,
-            styleSpec: options.styleSpec,
+            styleSpec: options.styleSpec
         })
     );
 
@@ -92,7 +92,7 @@ function validateNonExpressionFilter(options) {
                             value: value[i],
                             valueSpec: styleSpec.geometry_type,
                             style: options.style,
-                            styleSpec: options.styleSpec,
+                            styleSpec: options.styleSpec
                         })
                     );
                 } else if (type !== 'string' && type !== 'number' && type !== 'boolean') {
@@ -116,7 +116,7 @@ function validateNonExpressionFilter(options) {
                         key: `${key}[${i}]`,
                         value: value[i],
                         style: options.style,
-                        styleSpec: options.styleSpec,
+                        styleSpec: options.styleSpec
                     })
                 );
             }

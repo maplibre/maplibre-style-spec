@@ -48,7 +48,7 @@ export function validateObject(options): Array<ValidationError> {
                     styleSpec,
                     object,
                     objectKey,
-                    validateSpec,
+                    validateSpec
                 },
                 object
             )

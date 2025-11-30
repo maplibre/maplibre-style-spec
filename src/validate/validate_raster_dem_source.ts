@@ -59,7 +59,7 @@ export function validateRasterDEMSource(
                     valueSpec: rasterDEMSpec[key],
                     validateSpec: options.validateSpec,
                     style,
-                    styleSpec,
+                    styleSpec
                 })
             );
         } else {

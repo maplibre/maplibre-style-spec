@@ -199,7 +199,7 @@ export class Color {
                     hue,
                     chroma ?? interpolateNumber(chroma0, chroma1, t),
                     interpolateNumber(light0, light1, t),
-                    interpolateNumber(alphaF, alphaT, t),
+                    interpolateNumber(alphaF, alphaT, t)
                 ]);
                 return new Color(r, g, b, alpha, false);
             }

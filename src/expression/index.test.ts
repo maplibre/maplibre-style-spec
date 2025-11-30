@@ -13,9 +13,9 @@ function stylePropertySpecification(type): StylePropertySpecification {
         'property-type': 'constant',
         expression: {
             interpolated: false,
-            parameters: [],
+            parameters: []
         },
-        transition: false,
+        transition: false
     };
 }
 
@@ -148,7 +148,7 @@ describe('normalizePropertyExpression raw values', () => {
 describe('StyleExpressions', () => {
     test('ignore random fields when adding global state ', () => {
         const expression = {
-            evaluate: vi.fn(),
+            evaluate: vi.fn()
         } as any as Expression;
         const styleExpression = new StyleExpression(
             expression,
@@ -156,7 +156,7 @@ describe('StyleExpressions', () => {
                 type: null,
                 default: 42,
                 'property-type': 'data-driven',
-                transition: false,
+                transition: false
             } as StylePropertySpecification,
             {x: 5} as Record<string, any>
         );

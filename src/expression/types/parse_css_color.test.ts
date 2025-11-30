@@ -198,7 +198,7 @@ describe('parseCssColor', () => {
                 '0%, 50%, 100%,',
                 ', 0%, 50%, 100%',
                 ', 0%, 50%, 100%, 100%',
-                '0%, 50%, 100%, 100%,',
+                '0%, 50%, 100%, 100%,'
             ];
 
             for (const args of invalidArgs) {
@@ -277,7 +277,7 @@ describe('parseCssColor', () => {
                 expect.closeTo(0.63),
                 expect.closeTo(0.3),
                 0.9,
-                1,
+                1
             ]);
 
             expect(parse('hsl(0 0% 0%)')).toEqual([0, 0, 0, 1]);
@@ -350,7 +350,7 @@ describe('parseCssColor', () => {
                 '0,0,0%',
                 '0 0% 0% /',
                 '0,0%,0%,',
-                ', 0%,0%,0%',
+                ', 0%,0%,0%'
             ];
 
             for (const args of invalidArgs) {

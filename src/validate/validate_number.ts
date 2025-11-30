@@ -21,7 +21,7 @@ export function validateNumber(options) {
                 key,
                 value,
                 `${value} is less than the minimum value ${valueSpec.minimum}`
-            ),
+            )
         ];
     }
 
@@ -31,7 +31,7 @@ export function validateNumber(options) {
                 key,
                 value,
                 `${value} is greater than the maximum value ${valueSpec.maximum}`
-            ),
+            )
         ];
     }
 

@@ -34,7 +34,7 @@ describe('Distance expression', () => {
                     {
                         type: 'MultiPolygon';
                         coordinates: [[[[3, 3], [3, 4], [4, 4], [4, 3], [3, 3]]]];
-                    },
+                    }
                 ]
             >().toExtend<ExpressionSpecification>();
         });
@@ -385,7 +385,7 @@ describe('"case" expression', () => {
                 'city-500k',
                 ['>=', ['get', 'POPULATION'], 100000],
                 'city-100k',
-                'city',
+                'city'
             ]
         >().toExtend<ExpressionSpecification>();
     });
@@ -397,7 +397,7 @@ describe('"case" expression', () => {
                 ['interpolate', ['linear'], ['get', 'point_count'], 2, '#ccc', 10, '#444'],
                 ['has', 'priorityValue'],
                 ['interpolate', ['linear'], ['get', 'priorityValue'], 0, '#ff9', 1, '#f66'],
-                '#fcaf3e',
+                '#fcaf3e'
             ]
         >().toExtend<ExpressionSpecification>();
     });
@@ -484,7 +484,7 @@ describe('"within" expression', () => {
                 {
                     type: 'Polygon';
                     coordinates: [[[0, 0], [0, 5], [5, 5], [5, 0], [0, 0]]];
-                },
+                }
             ]
         >().toExtend<ExpressionSpecification>();
     });
@@ -522,7 +522,7 @@ describe('interpolation expressions', () => {
                     2,
                     0,
                     8,
-                    100,
+                    100
                 ]
             >().not.toExtend<ExpressionSpecification>();
         });
@@ -553,7 +553,7 @@ describe('interpolation expressions', () => {
                     0.5,
                     [20, 30, 40],
                     1,
-                    [30, 40, 50],
+                    [30, 40, 50]
                 ]
             >().not.toExtend<ExpressionSpecification>();
             expectTypeOf<
@@ -569,7 +569,7 @@ describe('interpolation expressions', () => {
                     2,
                     ['/', 2, ['get', 'point_count']],
                     10,
-                    ['*', 4, ['get', 'point_count']],
+                    ['*', 4, ['get', 'point_count']]
                 ]
             >().toExtend<ExpressionSpecification>();
         });
@@ -592,7 +592,7 @@ describe('interpolation expressions', () => {
                     8,
                     ['literal', [2, 3]],
                     10,
-                    ['literal', [4, 5]],
+                    ['literal', [4, 5]]
                 ]
             >().toExtend<ExpressionSpecification>();
         });
@@ -605,7 +605,7 @@ describe('interpolation expressions', () => {
                     8,
                     ['literal', ['white', 'black']],
                     10,
-                    ['literal', ['black', 'white']],
+                    ['literal', ['black', 'white']]
                 ]
             >().toExtend<ExpressionSpecification>();
         });
@@ -631,7 +631,7 @@ describe('interpolation expressions', () => {
                     0.5,
                     [20, 30, 40],
                     1,
-                    [30, 40, 50],
+                    [30, 40, 50]
                 ]
             >().not.toExtend<ExpressionSpecification>();
             expectTypeOf<
@@ -652,7 +652,7 @@ describe('interpolation expressions', () => {
                     8,
                     ['literal', ['white', 'black']],
                     10,
-                    ['literal', ['black', 'white']],
+                    ['literal', ['black', 'white']]
                 ]
             >().toExtend<ExpressionSpecification>();
         });
@@ -667,7 +667,7 @@ describe('interpolation expressions', () => {
                     8,
                     ['get', 'colors-8', ['literal', typeof obj]],
                     10,
-                    ['get', 'colors-10', ['literal', typeof obj]],
+                    ['get', 'colors-10', ['literal', typeof obj]]
                 ]
             >().toExtend<ExpressionSpecification>();
         });
@@ -688,7 +688,7 @@ describe('interpolation expressions', () => {
                     0.5,
                     [20, 30, 40],
                     1,
-                    [30, 40, 50],
+                    [30, 40, 50]
                 ]
             >().not.toExtend<ExpressionSpecification>();
             expectTypeOf<
@@ -709,7 +709,7 @@ describe('interpolation expressions', () => {
                     8,
                     ['literal', ['white', 'black']],
                     10,
-                    ['literal', ['black', 'white']],
+                    ['literal', ['black', 'white']]
                 ]
             >().toExtend<ExpressionSpecification>();
         });
@@ -724,7 +724,7 @@ describe('interpolation expressions', () => {
                     8,
                     ['get', 'colors-8', ['literal', typeof obj]],
                     10,
-                    ['get', 'colors-10', ['literal', typeof obj]],
+                    ['get', 'colors-10', ['literal', typeof obj]]
                 ]
             >().toExtend<ExpressionSpecification>();
         });
@@ -754,7 +754,7 @@ describe('"step" expression', () => {
                 ['zoom'],
                 ['literal', ['vertical-perspective', 'mercator', 0.5]],
                 10,
-                'mercator',
+                'mercator'
             ]
         >().toExtend<ExpressionSpecification>();
     });
@@ -805,7 +805,7 @@ test('ExpressionSpecification type supports common variable insertion patterns',
     const values: (ExpressionInputType | ExpressionSpecification)[] = [
         ['get', 'name'],
         ['get', 'code'],
-        'NONE',
+        'NONE'
     ]; // type is necessary!
     expectTypeOf<['coalesce', ...typeof values]>().toExtend<ExpressionSpecification>();
 });

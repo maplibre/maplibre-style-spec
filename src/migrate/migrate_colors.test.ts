@@ -17,7 +17,7 @@ describe('migrate colors', () => {
                 0,
                 'hsla(900,0.85,0.05,0)',
                 10,
-                'hsla(900, .20, .0155, 1)',
+                'hsla(900, .20, .0155, 1)'
             ])
         ).toEqual([
             'interpolate',
@@ -26,7 +26,7 @@ describe('migrate colors', () => {
             0,
             'hsla(900,85%,5%,0)',
             10,
-            'hsla(900,20%,1.55%,1)',
+            'hsla(900,20%,1.55%,1)'
         ]);
         expect(migrateColors('hsl(9001590)')).toBe('hsl(9001590)'); // invalid - no changes
     });

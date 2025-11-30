@@ -10,7 +10,7 @@ import {
     getLngLatFromTileCoord,
     pointWithinPolygon,
     segmentIntersectSegment,
-    updateBBox,
+    updateBBox
 } from '../../util/geometry_util';
 import {classifyRings} from '../../util/classify_rings';
 import {CheapRuler} from '../../util/cheap_ruler';
@@ -47,7 +47,7 @@ function splitRange(range: IndexRange, isLine: boolean): [IndexRange, IndexRange
         const size1 = Math.floor(size / 2);
         return [
             [range[0], range[0] + size1],
-            [range[0] + size1, range[1]],
+            [range[0] + size1, range[1]]
         ];
     }
     if (size === 1) {
@@ -56,7 +56,7 @@ function splitRange(range: IndexRange, isLine: boolean): [IndexRange, IndexRange
     const size1 = Math.floor(size / 2) - 1;
     return [
         [range[0], range[0] + size1],
-        [range[0] + size1 + 1, range[1]],
+        [range[0] + size1 + 1, range[1]]
     ];
 }
 
@@ -703,7 +703,7 @@ function toSimpleGeometry(
         return geometry.coordinates.map((polygon) => {
             return {
                 type: 'Polygon',
-                coordinates: polygon,
+                coordinates: polygon
             };
         });
     }
@@ -711,7 +711,7 @@ function toSimpleGeometry(
         return geometry.coordinates.map((lineString) => {
             return {
                 type: 'LineString',
-                coordinates: lineString,
+                coordinates: lineString
             };
         });
     }
@@ -719,7 +719,7 @@ function toSimpleGeometry(
         return geometry.coordinates.map((point) => {
             return {
                 type: 'Point',
-                coordinates: point,
+                coordinates: point
             };
         });
     }

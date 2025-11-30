@@ -19,11 +19,11 @@ export function validateProjectionDefinition(options) {
                 key,
                 value,
                 `projection expected, invalid array ${JSON.stringify(value)} found`
-            ),
+            )
         ];
     } else if (!['array', 'string'].includes(type)) {
         return [
-            new ValidationError(key, value, `projection expected, invalid type "${type}" found`),
+            new ValidationError(key, value, `projection expected, invalid type "${type}" found`)
         ];
     }
 

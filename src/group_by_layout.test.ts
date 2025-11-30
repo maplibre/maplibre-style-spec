@@ -6,11 +6,11 @@ describe('group by layout', () => {
     test('group layers whose ref properties are identical', () => {
         const a = {
             id: 'parent',
-            type: 'line',
+            type: 'line'
         } as LayerSpecification;
         const b = {
             id: 'child',
-            type: 'line',
+            type: 'line'
         } as LayerSpecification;
         expect(groupByLayout([a, b], {})).toEqual([[a, b]]);
         expect(groupByLayout([a, b], {})[0][0]).toBe(a);
@@ -23,12 +23,12 @@ describe('group by layout', () => {
                 [
                     {
                         id: 'parent',
-                        type: 'line',
+                        type: 'line'
                     } as LayerSpecification,
                     {
                         id: 'child',
-                        type: 'fill',
-                    } as LayerSpecification,
+                        type: 'fill'
+                    } as LayerSpecification
                 ],
                 {}
             )
@@ -36,15 +36,15 @@ describe('group by layout', () => {
             [
                 {
                     id: 'parent',
-                    type: 'line',
-                },
+                    type: 'line'
+                }
             ],
             [
                 {
                     id: 'child',
-                    type: 'fill',
-                },
-            ],
+                    type: 'fill'
+                }
+            ]
         ]);
     });
 
@@ -55,13 +55,13 @@ describe('group by layout', () => {
                     {
                         id: 'parent',
                         type: 'line',
-                        layout: {a: 1, b: 2},
+                        layout: {a: 1, b: 2}
                     } as any as LayerSpecification,
                     {
                         id: 'child',
                         type: 'line',
-                        layout: {b: 2, a: 1},
-                    } as any as LayerSpecification,
+                        layout: {b: 2, a: 1}
+                    } as any as LayerSpecification
                 ],
                 {}
             )
@@ -70,14 +70,14 @@ describe('group by layout', () => {
                 {
                     id: 'parent',
                     type: 'line',
-                    layout: {a: 1, b: 2},
+                    layout: {a: 1, b: 2}
                 },
                 {
                     id: 'child',
                     type: 'line',
-                    layout: {b: 2, a: 1},
-                },
-            ],
+                    layout: {b: 2, a: 1}
+                }
+            ]
         ]);
     });
 });

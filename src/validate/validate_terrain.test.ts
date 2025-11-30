@@ -8,7 +8,7 @@ describe('Validate Terrain', () => {
             validateSpec: validate,
             value: 1 as any,
             styleSpec: v8,
-            style: {} as any,
+            style: {} as any
         });
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toContain('number');
@@ -21,7 +21,7 @@ describe('Validate Terrain', () => {
             validateSpec: validate,
             value: {source: 1 as any},
             styleSpec: v8,
-            style: {} as any,
+            style: {} as any
         });
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toContain('number');
@@ -34,7 +34,7 @@ describe('Validate Terrain', () => {
             validateSpec: validate,
             value: {a: 1} as any,
             styleSpec: v8,
-            style: {} as any,
+            style: {} as any
         });
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toContain('a');
@@ -46,7 +46,7 @@ describe('Validate Terrain', () => {
             validateSpec: validate,
             value: {source: 1 as any, exaggeration: {} as any},
             styleSpec: v8,
-            style: {} as any,
+            style: {} as any
         });
         expect(errors).toHaveLength(2);
         expect(errors[0].message).toContain('number');
@@ -62,7 +62,7 @@ describe('Validate Terrain', () => {
             validateSpec: validate,
             value: {source: 'source-id', exaggeration: 0.2},
             styleSpec: v8,
-            style: {} as any,
+            style: {} as any
         });
         expect(errors).toHaveLength(0);
     });

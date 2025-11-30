@@ -11,7 +11,7 @@ export default defineConfig({
             exclude: ['node_modules/', 'dist/', '**/*.{test,test-d}.ts'],
             all: true,
             include: ['src'],
-            reportsDirectory: './coverage/vitest/build',
-        },
-    },
+            reportsDirectory: './coverage/vitest/build'
+        }
+    }
 });

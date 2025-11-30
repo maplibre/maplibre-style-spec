@@ -8,7 +8,7 @@ import {
     isFeatureConstant,
     isGlobalPropertyConstant,
     isStateConstant,
-    isExpressionConstant,
+    isExpressionConstant
 } from './compound_expression';
 
 import {Step} from './definitions/step';
@@ -22,7 +22,7 @@ import {success, error} from '../util/result';
 import {
     supportsPropertyExpression,
     supportsZoomExpression,
-    supportsInterpolation,
+    supportsInterpolation
 } from '../util/properties';
 
 import {
@@ -40,7 +40,7 @@ import {
     type EvaluationKind,
     ProjectionDefinitionType,
     NumberArrayType,
-    ColorArrayType,
+    ColorArrayType
 } from './types';
 import type {Value} from './values';
 import type {Expression} from './expression';
@@ -52,7 +52,7 @@ import type {
     NumberArraySpecification,
     ColorArraySpecification,
     PropertyValueSpecification,
-    VariableAnchorOffsetCollectionSpecification,
+    VariableAnchorOffsetCollectionSpecification
 } from '../types.g';
 import type {FormattedSection} from './types/formatted';
 import type {Point2D} from '../point2d';
@@ -482,7 +482,7 @@ export function createPropertyExpression(
             new ExpressionParsingError(
                 '',
                 '"zoom" expression may only be used as input to a top-level "step" or "interpolate" expression.'
-            ),
+            )
         ]);
     } else if (zoomCurve instanceof ExpressionParsingError) {
         return error([zoomCurve]);
@@ -491,7 +491,7 @@ export function createPropertyExpression(
             new ExpressionParsingError(
                 '',
                 '"interpolate" expressions cannot be used with this property'
-            ),
+            )
         ]);
     }
 
@@ -566,7 +566,7 @@ export class StylePropertyFunction<T> {
     static serialize<T>(input: StylePropertyFunction<T>) {
         return {
             _parameters: input._parameters,
-            _specification: input._specification,
+            _specification: input._specification
         };
     }
 }
@@ -618,7 +618,7 @@ export function normalizePropertyExpression<T>(
             globalStateRefs: new Set<string>(),
             _globalState: null,
             kind: 'constant',
-            evaluate: () => constant,
+            evaluate: () => constant
         };
     }
 }
@@ -696,7 +696,7 @@ function getExpectedType(spec: StylePropertySpecification): Type {
         colorArray: ColorArrayType,
         projectionDefinition: ProjectionDefinitionType,
         resolvedImage: ResolvedImageType,
-        variableAnchorOffsetCollection: VariableAnchorOffsetCollectionType,
+        variableAnchorOffsetCollection: VariableAnchorOffsetCollectionType
     };
 
     if (spec.type === 'array') {
@@ -744,6 +744,6 @@ function addGlobalState(
         lineProgress,
         isSupportedScript,
         accumulated,
-        globalState,
+        globalState
     };
 }

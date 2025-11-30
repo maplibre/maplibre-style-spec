@@ -42,7 +42,7 @@ describe('Validate Sprite', () => {
         errors = validateSprite({
             validateSpec: validate,
             key: 'sprite',
-            value: [{id: 'id1', url: 'url1'}, {id: 'id2', url: 'url2'}, false],
+            value: [{id: 'id1', url: 'url1'}, {id: 'id2', url: 'url2'}, false]
         });
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('sprite[2]: object expected, boolean found');
@@ -50,7 +50,7 @@ describe('Validate Sprite', () => {
         errors = validateSprite({
             validateSpec: validate,
             key: 'sprite',
-            value: ['string', {id: 'id1', url: 'url1'}, {id: 'id2', url: 'url2'}, false],
+            value: ['string', {id: 'id1', url: 'url1'}, {id: 'id2', url: 'url2'}, false]
         });
         expect(errors).toHaveLength(2);
         expect(errors[0].message).toBe('sprite[0]: object expected, string found');
@@ -61,7 +61,7 @@ describe('Validate Sprite', () => {
         let errors = validateSprite({
             validateSpec: validate,
             key: 'sprite',
-            value: [{id: 2, url: 2}],
+            value: [{id: 2, url: 2}]
         });
         expect(errors).toHaveLength(2);
         expect(errors[0].message).toBe('sprite[0].id: string expected, number found');
@@ -70,7 +70,7 @@ describe('Validate Sprite', () => {
         errors = validateSprite({
             validateSpec: validate,
             key: 'sprite',
-            value: [{test: 'string'}],
+            value: [{test: 'string'}]
         });
         expect(errors).toHaveLength(3);
         expect(errors[0].message).toBe('sprite[0]: unknown property "test"');
@@ -84,8 +84,8 @@ describe('Validate Sprite', () => {
             key: 'sprite',
             value: [
                 {id: 'id1', url: 'url1'},
-                {id: 'id1', url: 'url1'},
-            ],
+                {id: 'id1', url: 'url1'}
+            ]
         });
         expect(errors).toHaveLength(2);
         expect(errors[0].message).toBe(
@@ -103,8 +103,8 @@ describe('Validate Sprite', () => {
             value: [
                 {id: 'id1', url: 'url1'},
                 {id: 'id2', url: 'url2'},
-                {id: 'id3', url: 'url3'},
-            ],
+                {id: 'id3', url: 'url3'}
+            ]
         });
         expect(errors).toHaveLength(0);
     });

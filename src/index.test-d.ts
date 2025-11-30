@@ -11,7 +11,7 @@ import type {
     LineLayerSpecification,
     RasterLayerSpecification,
     SkySpecification,
-    SymbolLayerSpecification,
+    SymbolLayerSpecification
 } from './types.g';
 
 describe('style-spec', () => {

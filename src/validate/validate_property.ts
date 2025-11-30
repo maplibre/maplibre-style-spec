@@ -27,7 +27,7 @@ export function validateProperty(options, propertyType) {
             value,
             valueSpec: styleSpec.transition,
             style,
-            styleSpec,
+            styleSpec
         });
     }
 
@@ -49,7 +49,7 @@ export function validateProperty(options, propertyType) {
                 value,
                 `"${propertyKey}" does not support interpolation syntax\n` +
                     `Use an identity property function instead: \`{ "type": "identity", "property": ${JSON.stringify(tokenMatch[1])} }\`.`
-            ),
+            )
         ];
     }
 
@@ -76,7 +76,7 @@ export function validateProperty(options, propertyType) {
             styleSpec,
             expressionContext: 'property',
             propertyType,
-            propertyKey,
+            propertyKey
         })
     );
 }

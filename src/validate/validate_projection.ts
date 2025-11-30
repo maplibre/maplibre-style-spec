@@ -22,7 +22,7 @@ export function validateProjection(options: ValidateProjectionOptions) {
         return [];
     } else if (rootType !== 'object') {
         return [
-            new ValidationError('projection', projection, `object expected, ${rootType} found`),
+            new ValidationError('projection', projection, `object expected, ${rootType} found`)
         ];
     }
 
@@ -35,12 +35,12 @@ export function validateProjection(options: ValidateProjectionOptions) {
                     value: projection[key],
                     valueSpec: projectionSpec[key],
                     style,
-                    styleSpec,
+                    styleSpec
                 })
             );
         } else {
             errors = errors.concat([
-                new ValidationError(key, projection[key], `unknown property "${key}"`),
+                new ValidationError(key, projection[key], `unknown property "${key}"`)
             ]);
         }
     }

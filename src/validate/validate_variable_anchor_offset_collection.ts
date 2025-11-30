@@ -15,7 +15,7 @@ export function validateVariableAnchorOffsetCollection(options): ValidationError
                 key,
                 value,
                 'variableAnchorOffsetCollection requires a non-empty array of even length'
-            ),
+            )
         ];
     }
 
@@ -27,7 +27,7 @@ export function validateVariableAnchorOffsetCollection(options): ValidationError
             validateEnum({
                 key: `${key}[${i}]`,
                 value: value[i],
-                valueSpec: styleSpec['layout_symbol']['text-anchor'],
+                valueSpec: styleSpec['layout_symbol']['text-anchor']
             })
         );
 
@@ -38,11 +38,11 @@ export function validateVariableAnchorOffsetCollection(options): ValidationError
                 value: value[i + 1],
                 valueSpec: {
                     length: 2,
-                    value: 'number',
+                    value: 'number'
                 },
                 validateSpec: options.validateSpec,
                 style: options.style,
-                styleSpec,
+                styleSpec
             })
         );
     }

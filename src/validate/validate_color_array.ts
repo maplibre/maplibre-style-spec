@@ -10,7 +10,7 @@ export function validateColorArray(options) {
     if (type === 'array') {
         if (value.length < 1) {
             return [
-                new ValidationError(key, value, 'array length at least 1 expected, length 0 found'),
+                new ValidationError(key, value, 'array length at least 1 expected, length 0 found')
             ];
         }
 
@@ -20,7 +20,7 @@ export function validateColorArray(options) {
                 validateColor({
                     key: `${key}[${i}]`,
                     value: value[i],
-                    valueSpec: {},
+                    valueSpec: {}
                 })
             );
         }
@@ -29,7 +29,7 @@ export function validateColorArray(options) {
         return validateColor({
             key,
             value,
-            valueSpec: {},
+            valueSpec: {}
         });
     }
 }

@@ -5,7 +5,7 @@ import type {
     SourceSpecification,
     LayerSpecification,
     PropertyValueSpecification,
-    DataDrivenPropertyValueSpecification,
+    DataDrivenPropertyValueSpecification
 } from './types.g';
 
 function getPropertyReference(propertyName: string): StylePropertySpecification | null {
@@ -64,7 +64,7 @@ export function eachProperty(
                 reference: getPropertyReference(key),
                 set(x) {
                     properties[key] = x;
-                },
+                }
             });
         });
     }

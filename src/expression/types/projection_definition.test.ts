@@ -46,7 +46,7 @@ describe('Projection class', () => {
         const projection = ProjectionDefinition.parse({
             from: 'mercator',
             to: 'vertical-perspective',
-            transition: 0.5,
+            transition: 0.5
         });
         expect(projection.from).toBe('mercator');
         expect(projection.to).toBe('vertical-perspective');

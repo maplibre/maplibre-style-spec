@@ -74,7 +74,7 @@ export class NumberFormat implements Expression {
                 : undefined,
             maximumFractionDigits: this.maxFractionDigits
                 ? this.maxFractionDigits.evaluate(ctx)
-                : undefined,
+                : undefined
         }).format(this.number.evaluate(ctx));
     }
 

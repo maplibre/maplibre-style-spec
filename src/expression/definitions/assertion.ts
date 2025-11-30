@@ -6,7 +6,7 @@ import {
     BooleanType,
     checkSubtype,
     typeToString,
-    array,
+    array
 } from '../types';
 import {RuntimeError} from '../runtime_error';
 import {typeOf} from '../values';
@@ -20,7 +20,7 @@ const types = {
     string: StringType,
     number: NumberType,
     boolean: BooleanType,
-    object: ObjectType,
+    object: ObjectType
 };
 
 export class Assertion implements Expression {

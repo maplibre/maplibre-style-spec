@@ -157,7 +157,7 @@ function layerType(key) {
     layer.type = {
         type: 'enum',
         values: [key],
-        required: true,
+        required: true
     };
 
     delete layer.ref;

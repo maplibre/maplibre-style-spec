@@ -92,7 +92,7 @@ export class CheapRuler {
         return {
             point: [minX, minY] as [number, number],
             index: minI,
-            t: Math.max(0, Math.min(1, minT)),
+            t: Math.max(0, Math.min(1, minT))
         };
     }
 

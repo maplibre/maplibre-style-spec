@@ -8,8 +8,8 @@ describe('migrate v8', () => {
             sources: {
                 vector: {
                     type: 'vector',
-                    url: 'http://www.example.com/example.json',
-                },
+                    url: 'http://www.example.com/example.json'
+                }
             },
             layers: [
                 {
@@ -19,10 +19,10 @@ describe('migrate v8', () => {
                     'source-layer': 'layer',
                     layout: {
                         'text-font': 'Helvetica, Arial',
-                        'text-field': '{foo}',
-                    },
-                },
-            ],
+                        'text-field': '{foo}'
+                    }
+                }
+            ]
         } as any;
 
         const output = {
@@ -30,8 +30,8 @@ describe('migrate v8', () => {
             sources: {
                 vector: {
                     type: 'vector',
-                    url: 'http://www.example.com/example.json',
-                },
+                    url: 'http://www.example.com/example.json'
+                }
             },
             layers: [
                 {
@@ -41,10 +41,10 @@ describe('migrate v8', () => {
                     'source-layer': 'layer',
                     layout: {
                         'text-font': ['Helvetica', 'Arial'],
-                        'text-field': '{foo}',
-                    },
-                },
-            ],
+                        'text-field': '{foo}'
+                    }
+                }
+            ]
         };
 
         expect(migrate(input)).toEqual(output);
@@ -56,8 +56,8 @@ describe('migrate v8', () => {
             sources: {
                 vector: {
                     type: 'vector',
-                    url: 'http://www.example.com/example.json',
-                },
+                    url: 'http://www.example.com/example.json'
+                }
             },
             layers: [
                 {
@@ -66,10 +66,10 @@ describe('migrate v8', () => {
                     source: 'vector',
                     'source-layer': 'layer',
                     layout: {
-                        'symbol-min-distance': 2,
-                    },
-                },
-            ],
+                        'symbol-min-distance': 2
+                    }
+                }
+            ]
         } as any;
 
         const output = {
@@ -77,8 +77,8 @@ describe('migrate v8', () => {
             sources: {
                 vector: {
                     type: 'vector',
-                    url: 'http://www.example.com/example.json',
-                },
+                    url: 'http://www.example.com/example.json'
+                }
             },
             layers: [
                 {
@@ -87,10 +87,10 @@ describe('migrate v8', () => {
                     source: 'vector',
                     'source-layer': 'layer',
                     layout: {
-                        'symbol-spacing': 2,
-                    },
-                },
-            ],
+                        'symbol-spacing': 2
+                    }
+                }
+            ]
         };
 
         expect(migrate(input)).toEqual(output);
@@ -107,11 +107,11 @@ describe('migrate v8', () => {
                         [1, 0],
                         [1, 0],
                         [1, 0],
-                        [1, 0],
-                    ],
-                },
+                        [1, 0]
+                    ]
+                }
             },
-            layers: [],
+            layers: []
         } as any;
 
         const output = {
@@ -124,11 +124,11 @@ describe('migrate v8', () => {
                         [0, 1],
                         [0, 1],
                         [0, 1],
-                        [0, 1],
-                    ],
-                },
+                        [0, 1]
+                    ]
+                }
             },
-            layers: [],
+            layers: []
         };
 
         expect(migrate(input)).toEqual(output);
@@ -140,8 +140,8 @@ describe('migrate v8', () => {
             sources: {
                 vector: {
                     type: 'vector',
-                    url: 'http://www.example.com/example.json',
-                },
+                    url: 'http://www.example.com/example.json'
+                }
             },
             layers: [
                 {
@@ -154,12 +154,12 @@ describe('migrate v8', () => {
                             base: 2,
                             stops: [
                                 [1, 2],
-                                [3, 6],
-                            ],
-                        },
-                    },
-                },
-            ],
+                                [3, 6]
+                            ]
+                        }
+                    }
+                }
+            ]
         } as any;
 
         const output = {
@@ -167,8 +167,8 @@ describe('migrate v8', () => {
             sources: {
                 vector: {
                     type: 'vector',
-                    url: 'http://www.example.com/example.json',
-                },
+                    url: 'http://www.example.com/example.json'
+                }
             },
             layers: [
                 {
@@ -181,12 +181,12 @@ describe('migrate v8', () => {
                             base: 2,
                             stops: [
                                 [1, 2],
-                                [3, 6],
-                            ],
-                        },
-                    },
-                },
-            ],
+                                [3, 6]
+                            ]
+                        }
+                    }
+                }
+            ]
         };
 
         expect(migrate(input)).toEqual(output);
@@ -198,8 +198,8 @@ describe('migrate v8', () => {
             sources: {
                 vector: {
                     type: 'vector',
-                    url: 'http://www.example.com/example.json',
-                },
+                    url: 'http://www.example.com/example.json'
+                }
             },
             layers: [
                 {
@@ -211,12 +211,12 @@ describe('migrate v8', () => {
                         'text-transform': {
                             stops: [
                                 [1, 'uppercase'],
-                                [3, 'lowercase'],
-                            ],
-                        },
-                    },
-                },
-            ],
+                                [3, 'lowercase']
+                            ]
+                        }
+                    }
+                }
+            ]
         } as any;
 
         const output = {
@@ -224,8 +224,8 @@ describe('migrate v8', () => {
             sources: {
                 vector: {
                     type: 'vector',
-                    url: 'http://www.example.com/example.json',
-                },
+                    url: 'http://www.example.com/example.json'
+                }
             },
             layers: [
                 {
@@ -237,12 +237,12 @@ describe('migrate v8', () => {
                         'text-transform': {
                             stops: [
                                 [1, 'uppercase'],
-                                [3, 'lowercase'],
-                            ],
-                        },
-                    },
-                },
-            ],
+                                [3, 'lowercase']
+                            ]
+                        }
+                    }
+                }
+            ]
         };
 
         expect(migrate(input)).toEqual(output);
@@ -252,10 +252,10 @@ describe('migrate v8', () => {
         const input = {
             version: 7,
             constants: {
-                '@foo': 0.5,
+                '@foo': 0.5
             },
             sources: {
-                vector: {type: 'vector', url: 'http://www.example.com/example.json'},
+                vector: {type: 'vector', url: 'http://www.example.com/example.json'}
             },
             layers: [
                 {
@@ -264,16 +264,16 @@ describe('migrate v8', () => {
                     source: 'vector',
                     'source-layer': 'layer',
                     layout: {
-                        'fill-opacity': '@foo',
-                    },
-                },
-            ],
+                        'fill-opacity': '@foo'
+                    }
+                }
+            ]
         } as any;
 
         const output = {
             version: 8,
             sources: {
-                vector: {type: 'vector', url: 'http://www.example.com/example.json'},
+                vector: {type: 'vector', url: 'http://www.example.com/example.json'}
             },
             layers: [
                 {
@@ -282,10 +282,10 @@ describe('migrate v8', () => {
                     source: 'vector',
                     'source-layer': 'layer',
                     layout: {
-                        'fill-opacity': 0.5,
-                    },
-                },
-            ],
+                        'fill-opacity': 0.5
+                    }
+                }
+            ]
         };
 
         expect(migrate(input)).toEqual(output);
@@ -295,10 +295,10 @@ describe('migrate v8', () => {
         const input = {
             version: 7,
             constants: {
-                '@foo': 'Arial Unicode,Foo Bar',
+                '@foo': 'Arial Unicode,Foo Bar'
             },
             sources: {
-                vector: {type: 'vector', url: 'http://www.example.com/example.json'},
+                vector: {type: 'vector', url: 'http://www.example.com/example.json'}
             },
             layers: [
                 {
@@ -307,16 +307,16 @@ describe('migrate v8', () => {
                     source: 'vector',
                     'source-layer': 'layer',
                     layout: {
-                        'text-font': '@foo',
-                    },
-                },
-            ],
+                        'text-font': '@foo'
+                    }
+                }
+            ]
         } as any;
 
         const output = {
             version: 8,
             sources: {
-                vector: {type: 'vector', url: 'http://www.example.com/example.json'},
+                vector: {type: 'vector', url: 'http://www.example.com/example.json'}
             },
             layers: [
                 {
@@ -325,10 +325,10 @@ describe('migrate v8', () => {
                     source: 'vector',
                     'source-layer': 'layer',
                     layout: {
-                        'text-font': ['Arial Unicode', 'Foo Bar'],
-                    },
-                },
-            ],
+                        'text-font': ['Arial Unicode', 'Foo Bar']
+                    }
+                }
+            ]
         };
 
         expect(migrate(input)).toEqual(output);
@@ -338,7 +338,7 @@ describe('migrate v8', () => {
         const input = {
             version: 7,
             sources: {
-                vector: {type: 'vector', url: 'http://www.example.com/example.json'},
+                vector: {type: 'vector', url: 'http://www.example.com/example.json'}
             },
             layers: [
                 {
@@ -351,18 +351,18 @@ describe('migrate v8', () => {
                             base: 1,
                             stops: [
                                 [0, 'Open Sans Regular, Arial Unicode MS Regular'],
-                                [6, 'Open Sans Semibold, Arial Unicode MS Regular'],
-                            ],
-                        },
-                    },
-                },
-            ],
+                                [6, 'Open Sans Semibold, Arial Unicode MS Regular']
+                            ]
+                        }
+                    }
+                }
+            ]
         } as any;
 
         const output = {
             version: 8,
             sources: {
-                vector: {type: 'vector', url: 'http://www.example.com/example.json'},
+                vector: {type: 'vector', url: 'http://www.example.com/example.json'}
             },
             layers: [
                 {
@@ -375,12 +375,12 @@ describe('migrate v8', () => {
                             base: 1,
                             stops: [
                                 [0, ['Open Sans Regular', 'Arial Unicode MS Regular']],
-                                [6, ['Open Sans Semibold', 'Arial Unicode MS Regular']],
-                            ],
-                        },
-                    },
-                },
-            ],
+                                [6, ['Open Sans Semibold', 'Arial Unicode MS Regular']]
+                            ]
+                        }
+                    }
+                }
+            ]
         };
 
         expect(migrate(input)).toEqual(output);
@@ -394,12 +394,12 @@ describe('migrate v8', () => {
                     base: 1,
                     stops: [
                         [0, 'Open Sans Regular, Arial Unicode MS Regular'],
-                        [6, 'Open Sans Semibold, Arial Unicode MS Regular'],
-                    ],
-                },
+                        [6, 'Open Sans Semibold, Arial Unicode MS Regular']
+                    ]
+                }
             },
             sources: {
-                vector: {type: 'vector', url: 'http://www.example.com/example.json'},
+                vector: {type: 'vector', url: 'http://www.example.com/example.json'}
             },
             layers: [
                 {
@@ -408,16 +408,16 @@ describe('migrate v8', () => {
                     source: 'vector',
                     'source-layer': 'layer',
                     layout: {
-                        'text-font': '@function',
-                    },
-                },
-            ],
+                        'text-font': '@function'
+                    }
+                }
+            ]
         } as any;
 
         const output = {
             version: 8,
             sources: {
-                vector: {type: 'vector', url: 'http://www.example.com/example.json'},
+                vector: {type: 'vector', url: 'http://www.example.com/example.json'}
             },
             layers: [
                 {
@@ -430,12 +430,12 @@ describe('migrate v8', () => {
                             base: 1,
                             stops: [
                                 [0, ['Open Sans Regular', 'Arial Unicode MS Regular']],
-                                [6, ['Open Sans Semibold', 'Arial Unicode MS Regular']],
-                            ],
-                        },
-                    },
-                },
-            ],
+                                [6, ['Open Sans Semibold', 'Arial Unicode MS Regular']]
+                            ]
+                        }
+                    }
+                }
+            ]
         };
 
         expect(migrate(input)).toEqual(output);
@@ -446,10 +446,10 @@ describe('migrate v8', () => {
             version: 7,
             constants: {
                 '@font-stack-a': 'Open Sans Regular, Arial Unicode MS Regular',
-                '@font-stack-b': 'Open Sans Semibold, Arial Unicode MS Regular',
+                '@font-stack-b': 'Open Sans Semibold, Arial Unicode MS Regular'
             },
             sources: {
-                vector: {type: 'vector', url: 'http://www.example.com/example.json'},
+                vector: {type: 'vector', url: 'http://www.example.com/example.json'}
             },
             layers: [
                 {
@@ -462,18 +462,18 @@ describe('migrate v8', () => {
                             base: 1,
                             stops: [
                                 [0, '@font-stack-a'],
-                                [6, '@font-stack-b'],
-                            ],
-                        },
-                    },
-                },
-            ],
+                                [6, '@font-stack-b']
+                            ]
+                        }
+                    }
+                }
+            ]
         } as any;
 
         const output = {
             version: 8,
             sources: {
-                vector: {type: 'vector', url: 'http://www.example.com/example.json'},
+                vector: {type: 'vector', url: 'http://www.example.com/example.json'}
             },
             layers: [
                 {
@@ -486,12 +486,12 @@ describe('migrate v8', () => {
                             base: 1,
                             stops: [
                                 [0, ['Open Sans Regular', 'Arial Unicode MS Regular']],
-                                [6, ['Open Sans Semibold', 'Arial Unicode MS Regular']],
-                            ],
-                        },
-                    },
-                },
-            ],
+                                [6, ['Open Sans Semibold', 'Arial Unicode MS Regular']]
+                            ]
+                        }
+                    }
+                }
+            ]
         };
 
         expect(migrate(input)).toEqual(output);

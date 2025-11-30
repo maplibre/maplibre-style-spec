@@ -5,7 +5,7 @@ import type {
     ExpressionInputType,
     ExpressionSpecification,
     FilterSpecification,
-    LegacyFilterSpecification,
+    LegacyFilterSpecification
 } from '../types.g';
 
 type ExpectedTypes = {[_: string]: ExpressionInputType};
@@ -160,13 +160,13 @@ function convertComparisonOp(
         return [
             'all',
             ['has', property], // missing property != null for legacy filters
-            ['==', get, null],
+            ['==', get, null]
         ];
     } else if (op === '!=' && property !== '$id' && value === null) {
         return [
             'any',
             ['!', ['has', property]], // missing property != null for legacy filters
-            ['!=', get, null],
+            ['!=', get, null]
         ];
     }
 

@@ -36,7 +36,7 @@ export function validateFontFaces(options: ValidateFontFacesOptions): Validation
             errors.push(
                 ...validateString({
                     key: `${key}.${fontName}`,
-                    value: fontValue,
+                    value: fontValue
                 })
             );
         } else if (fontValueType === 'array') {
@@ -44,12 +44,12 @@ export function validateFontFaces(options: ValidateFontFacesOptions): Validation
             const fontFaceSpec = {
                 url: {
                     type: 'string',
-                    required: true,
+                    required: true
                 },
                 'unicode-range': {
                     type: 'array',
-                    value: 'string',
-                },
+                    value: 'string'
+                }
             };
 
             for (const [i, fontFace] of (fontValue as any[]).entries()) {
@@ -60,7 +60,7 @@ export function validateFontFaces(options: ValidateFontFacesOptions): Validation
                         valueSpec: fontFaceSpec,
                         styleSpec,
                         style,
-                        validateSpec,
+                        validateSpec
                     })
                 );
             }

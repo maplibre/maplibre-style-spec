@@ -19,7 +19,7 @@ describe('Validate ColorArray', () => {
         errors = validateColorArray({
             validateSpec: validate,
             key: 'colorArray',
-            value: {x: 1, y: 1},
+            value: {x: 1, y: 1}
         });
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('colorArray: color expected, object found');
@@ -37,7 +37,7 @@ describe('Validate ColorArray', () => {
         errors = validateColorArray({
             validateSpec: validate,
             key: 'colorArray',
-            value: ['3', 'words'],
+            value: ['3', 'words']
         });
         expect(errors).toHaveLength(2);
         expect(errors[0].message).toBe('colorArray[0]: color expected, "3" found');
@@ -46,7 +46,7 @@ describe('Validate ColorArray', () => {
         errors = validateColorArray({
             validateSpec: validate,
             key: 'colorArray',
-            value: ['#012', 'words'],
+            value: ['#012', 'words']
         });
         expect(errors).toHaveLength(1);
         expect(errors[0].message).toBe('colorArray[1]: color expected, "words" found');
@@ -56,7 +56,7 @@ describe('Validate ColorArray', () => {
         let errors = validateColorArray({
             validateSpec: validate,
             key: 'colorArray',
-            value: '#987654',
+            value: '#987654'
         });
         expect(errors).toHaveLength(0);
 
@@ -66,7 +66,7 @@ describe('Validate ColorArray', () => {
         errors = validateColorArray({
             validateSpec: validate,
             key: 'colorArray',
-            value: '#987654ff',
+            value: '#987654ff'
         });
         expect(errors).toHaveLength(0);
 
@@ -87,14 +87,14 @@ describe('Validate ColorArray', () => {
         errors = validateColorArray({
             validateSpec: validate,
             key: 'colorArray',
-            value: ['red', 'blue'],
+            value: ['red', 'blue']
         });
         expect(errors).toHaveLength(0);
 
         errors = validateColorArray({
             validateSpec: validate,
             key: 'colorArray',
-            value: ['red', 'blue', '#012', '#12345678', '#012345'],
+            value: ['red', 'blue', '#012', '#12345678', '#012345']
         });
         expect(errors).toHaveLength(0);
     });

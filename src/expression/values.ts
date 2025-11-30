@@ -23,7 +23,7 @@ import {
     NumberArrayType,
     ColorArrayType,
     VariableAnchorOffsetCollectionType,
-    ProjectionDefinitionType,
+    ProjectionDefinitionType
 } from './types';
 
 import type {Type} from './types';
