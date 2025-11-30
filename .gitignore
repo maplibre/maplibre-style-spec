@@ -14,3 +14,5 @@ docs/*
 !docs/types.md
 !docs/sprite.md
 !docs/deprecations.md
+!docs/Dockerfile
+!docs/docker-compose.yml
