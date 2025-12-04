@@ -9,13 +9,13 @@ describe('migrate', () => {
     test('does not migrate from version 5', () => {
         expect(() => {
             migrate({version: 5, layers: []} as any);
-        }).toThrow(new Error('Cannot migrate from 5'));
+        }).toThrow('Cannot migrate from 5');
     });
 
     test('does not migrate from version 6', () => {
         expect(() => {
             migrate({version: 6, layers: []} as any);
-        }).toThrow(new Error('Cannot migrate from 6'));
+        }).toThrow('Cannot migrate from 6');
     });
 
     test('migrates to latest version from version 7', () => {
