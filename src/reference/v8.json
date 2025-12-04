@@ -8050,7 +8050,7 @@
             {
               "name": "base",
               "type": "number literal",
-              "doc": "controls the rate at which the output increases: higher values make the output increase more towards the high end of the range. With values close to 1 the output increases linearly"
+              "doc": "rate at which the output increases in `f(x) = x^r`. Values higher than 1 increase, close to one behave linearly and below one decrease."
             }
           ]
         },
