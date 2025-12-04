@@ -4106,7 +4106,7 @@
         }
       },
       "rgba": {
-        "doc": "Creates a color value from red, green, blue components, which must range between 0 and 255, and an alpha component which must range between 0 and 1. If any component is out of range, the expression is an error.",
+        "doc": "Creates a color value from red, green, blue components, which must range between 0 and 255, and an alpha component which must range between zero and one. If any component is out of range, the expression is an error.",
         "syntax": {
           "overloads": [
             {
@@ -7999,7 +7999,7 @@
     "type": "array",
     "value": "interpolation_name",
     "minimum": 1,
-    "doc": "An interpolation defines how to transition between items. The first element of an interpolation array is a string naming the interpolation operator, e.g. `\\\"linear\\\"` or `\\\"exponential\\\"`. Elements that follow (if any) are the _arguments_ to the interpolation."
+    "doc": "An interpolation defines how to transition between items. The first element of an interpolation array is a string naming the interpolation operator, e.g. `\"linear\"` or `\"exponential\"`. Elements that follow (if any) are the _arguments_ to the interpolation."
   },
   "interpolation_name": {
     "doc": "First element in an interpolation array. May be followed by a number of arguments.",
@@ -8050,7 +8050,7 @@
             {
               "name": "base",
               "type": "number literal",
-              "doc": "rate at which the output increases in `f(x) = x^r`. Values higher than 1 increase, close to one behave linearly and below one decrease."
+              "doc": "rate at which the output increases in `f(x) = x^r`. Values higher than 1 increase, close to one behaves linearly, and below one decrease."
             }
           ]
         },
@@ -8077,7 +8077,7 @@
         }
       },
       "cubic-bezier": {
-        "doc": "Interpolates using the cubic bezier curve defined by the given control points.",
+        "doc": "Interpolates using the cubic bézier curve defined by the given control points.",
         "syntax": {
           "overloads": [
             {
@@ -8094,22 +8094,22 @@
             {
               "name": "x1",
               "type": "number literal",
-              "doc": "X-coordinate of the first control point. Must be between 0 and 1 for a valid monotonic easing curve. Controls how quickly the curve accelerates at the beginning."
+              "doc": "X-coordinate of the first control point. Must be between zero and one for a valid monotonic easing curve. Controls how quickly the curve speeds up at the beginning."
             },
             {
               "name": "y1",
               "type": "number literal",
-              "doc": "Y-coordinate of the first control point. Typically between 0 and 1, but may exceed this range for overshoot effects. Influences the starting slope of the curve."
+              "doc": "Y-coordinate of the first control point. Typically between zero and one, but may exceed this range for overshoot effects. Influences the starting slope of the curve."
             },
             {
               "name": "x2",
               "type": "number literal",
-              "doc": "X-coordinate of the second control point. Must be between 0 and 1 for a valid monotonic easing curve. Controls when the curve begins to decelerate toward the end."
+              "doc": "X-coordinate of the second control point. Must be between zero and one for a valid monotonic easing curve. Controls when the curve begins to decelerate toward the end."
             },
             {
               "name": "y2",
               "type": "number literal",
-              "doc": "Y-coordinate of the second control point. Typically between 0 and 1, but may exceed this range for overshoot effects. Influences the ending slope of the curve."
+              "doc": "Y-coordinate of the second control point. Typically between zero and one, but may exceed this range for overshoot effects. Influences the ending slope of the curve."
             }
           ]
         },
