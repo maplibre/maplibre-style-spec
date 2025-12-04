@@ -217,6 +217,26 @@ function expressionSyntaxToMarkdown(key: string, syntax: JsonExpressionSyntax) {
                 }
             });
         }
+        if (parameter.type === 'interpolation') {
+            // the type is a non-basic type => we can attach further docs from v8
+            const interpolation = v8.interpolation;
+            markdown += `  \n    ${interpolation.doc}`;
+            const interpolation_name=v8.interpolation_name;
+            markdown += `  \n    Possible values are:`;
+            for (const [key,val] of Object.entries(interpolation_name.values)) {
+                markdown += `  \n    - \`["${key}"`
+                for (const param of val.syntax.overloads[0].parameters) {
+                    markdown += `, ${param}`
+                }
+                markdown += `]\`: ${val.doc}`;
+                if (val.syntax.parameters) {
+                    markdown += `  \n        Possible parameters are:`
+                    for (const param of val.syntax.parameters) {
+                        markdown += `\n        - \`${param.name}\`: ${param.doc}`
+                    }
+                }
+            }
+        }
         markdown += '\n';
     }
     return markdown;
