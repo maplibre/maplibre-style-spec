@@ -195,9 +195,7 @@ function expressionSyntaxToMarkdown(key: string, syntax: JsonExpressionSyntax) {
     });
     markdown += `${codeBlockMarkdown(codeBlockLines.join('\n'), 'js')}\n`;
     for (const parameter of syntax.parameters ?? []) {
-        const type = parameterTypeToType(parameter.type)
-            .replaceAll('<', '&lt;')
-            .replaceAll('>', '&gt;');
+        const type = parameterTypeToType(parameter.type);
         markdown += `- \`${parameter.name}\`: \`${type}\``;
         if (parameter.doc) {
             markdown += `- ${parameter.doc}`;
@@ -205,41 +203,67 @@ function expressionSyntaxToMarkdown(key: string, syntax: JsonExpressionSyntax) {
         if (typeof parameter.type !== 'string' && !Array.isArray(parameter.type)) {
             // the type is an object type => we can attach more documentation about the contained variables
             markdown += '  \nParameters:';
-            Object.entries(parameter.type).forEach(([key, val]) => {
-                const type = jsonObjectToType(val).replaceAll('<', '&lt;').replaceAll('>', '&gt;');
-                markdown += `\n    - \`${key}\`: \`${type}\` - ${val.doc}`;
-                if (val.type === 'enum' && val.values) {
-                    markdown += '  \n      Possible values are:';
-                    for (const [enumKey, enumValue] of Object.entries(val.values)) {
-                        const defaultIndicator = val.default === enumKey ? ' *default*' : '';
-                        markdown += `\n        - \`"${enumKey}"\`${defaultIndicator} - ${enumValue.doc}`;
-                    }
-                }
-            });
+            const containedVariables = containedVariablesToMarkdown(parameter.type);
+            for (const line of containedVariables.split('\n')) {
+                markdown += `\n    ${line}`;
+            }
         }
         if (parameter.type === 'interpolation') {
-            // the type is a non-basic type => we can attach further docs from v8
-            const interpolation = v8.interpolation;
-            markdown += `  \n    ${interpolation.doc}`;
-            const interpolation_name=v8.interpolation_name;
-            markdown += `  \n    Possible values are:`;
-            for (const [key,val] of Object.entries(interpolation_name.values)) {
-                markdown += `  \n    - \`["${key}"`
-                for (const param of val.syntax.overloads[0].parameters) {
-                    markdown += `, ${param}`
-                }
-                markdown += `]\`: ${val.doc}`;
-                if (val.syntax.parameters.length) {
-                    markdown += `  \n        Parameters are:`
-                    for (const param of val.syntax.parameters) {
-                        markdown += `\n        - \`${param.name}\`: ${param.doc}`
-                    }
-                }
+            markdown += "  ";
+            const interpolationSyntax = interpolationSyntaxToMarkdown();
+            for (const line of interpolationSyntax.split('\n')) {
+                markdown += `\n    ${line}`;
             }
         }
         markdown += '\n';
     }
     return markdown;
+}
+
+/**
+ * Converts the contained variables object to markdown format.
+ * @param type - the contained variables object
+ * @returns the markdown string for the interpolation's syntax section
+ */
+function containedVariablesToMarkdown(type: {[key: string]: JsonObject}) {
+    let markdown = "";
+    Object.entries(type).forEach(([key, val]) => {
+        const type = jsonObjectToType(val);
+        markdown += `\n- \`${key}\`: \`${type}\` - ${val.doc}`;
+        if (val.type === 'enum' && val.values) {
+            markdown += '  \n    Possible values are:';
+            for (const [enumKey, enumValue] of Object.entries(val.values)) {
+                const defaultIndicator = val.default === enumKey ? ' *default*' : '';
+                markdown += `\n    - \`"${enumKey}"\`${defaultIndicator} - ${enumValue.doc}`;
+            }
+        }
+    });
+    return markdown
+}
+
+/**
+ * Converts the interpolation syntax object to markdown format.
+ * @returns the markdown string for the interpolation's syntax section
+ */
+function interpolationSyntaxToMarkdown() {
+    const interpolation = v8.interpolation;
+    let markdown = interpolation.doc;
+    const interpolation_name=v8.interpolation_name;
+    markdown += `  \nPossible values are:`;
+    for (const [key,val] of Object.entries(interpolation_name.values)) {
+        markdown += `  \n    - \`["${key}"`
+        for (const param of val.syntax.overloads[0].parameters) {
+            markdown += `, ${param}`
+        }
+        markdown += `]\`: ${val.doc}`;
+        if (val.syntax.parameters.length) {
+            markdown += `  \n        Parameters are:`
+            for (const param of val.syntax.parameters) {
+                markdown += `  \n        \`${param.name}\`: ${param.doc}`
+            }
+        }
+    }
+    return markdown
 }
 
 /**
