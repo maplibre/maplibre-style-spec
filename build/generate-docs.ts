@@ -229,8 +229,8 @@ function expressionSyntaxToMarkdown(key: string, syntax: JsonExpressionSyntax) {
                     markdown += `, ${param}`
                 }
                 markdown += `]\`: ${val.doc}`;
-                if (val.syntax.parameters) {
-                    markdown += `  \n        Possible parameters are:`
+                if (val.syntax.parameters.length) {
+                    markdown += `  \n        Parameters are:`
                     for (const param of val.syntax.parameters) {
                         markdown += `\n        - \`${param.name}\`: ${param.doc}`
                     }
