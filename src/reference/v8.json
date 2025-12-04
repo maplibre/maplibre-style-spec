@@ -8094,22 +8094,22 @@
             {
               "name": "x1",
               "type": "number literal",
-              "doc": "X-coordinate of the first control point (P1). Must be between 0 and 1 for a valid monotonic easing curve. Controls how quickly the curve accelerates at the beginning."
+              "doc": "X-coordinate of the first control point. Must be between 0 and 1 for a valid monotonic easing curve. Controls how quickly the curve accelerates at the beginning."
             },
             {
               "name": "y1",
               "type": "number literal",
-              "doc": "Y-coordinate of the first control point (P1). Typically between 0 and 1, but may exceed this range for overshoot effects. Influences the starting slope of the curve."
+              "doc": "Y-coordinate of the first control point. Typically between 0 and 1, but may exceed this range for overshoot effects. Influences the starting slope of the curve."
             },
             {
               "name": "x2",
               "type": "number literal",
-              "doc": "X-coordinate of the second control point (P2). Must be between 0 and 1 for a valid monotonic easing curve. Controls when the curve begins to decelerate toward the end."
+              "doc": "X-coordinate of the second control point. Must be between 0 and 1 for a valid monotonic easing curve. Controls when the curve begins to decelerate toward the end."
             },
             {
               "name": "y2",
               "type": "number literal",
-              "doc": "Y-coordinate of the second control point (P2). Typically between 0 and 1, but may exceed this range for overshoot effects. Influences the ending slope of the curve."
+              "doc": "Y-coordinate of the second control point. Typically between 0 and 1, but may exceed this range for overshoot effects. Influences the ending slope of the curve."
             }
           ]
         },
