@@ -7999,7 +7999,7 @@
     "type": "array",
     "value": "interpolation_name",
     "minimum": 1,
-    "doc": "An interpolation defines a function that can be used for transitioning between style properties or feature filters. The first element of an interpolation array is a string naming the interpolation operator, e.g. `\\\"linear\\\"` or `\\\"exponential\\\"`. Elements that follow (if any) are the _arguments_ to the interpolation."
+    "doc": "An interpolation defines how to transition between items. The first element of an interpolation array is a string naming the interpolation operator, e.g. `\\\"linear\\\"` or `\\\"exponential\\\"`. Elements that follow (if any) are the _arguments_ to the interpolation."
   },
   "interpolation_name": {
     "doc": "First element in an interpolation array. May be followed by a number of arguments.",
