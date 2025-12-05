@@ -28,7 +28,7 @@ jobs:
 
     - name: Build docs
       run: npm run mkdocs-build
-      
+
 
     - name: Deploy
       if: github.ref == 'refs/heads/main'

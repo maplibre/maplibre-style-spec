@@ -6,7 +6,7 @@ The images contained in the sprite can be referenced in other style properties (
 
 ## Usage
 
-You need to pass an URL where the sprite can be loaded from. 
+You need to pass an URL where the sprite can be loaded from.
 
 ```json
 "sprite": "https://demotiles.maplibre.org/styles/osm-bright-gl-style/sprite"
@@ -106,18 +106,18 @@ The red highlighted part is where the stretch will occur over the Y axis and the
 
 The properties `textFitWidth` and `textFitHeight` alter how a sprite's content rectangle maps to its contents when scaling a sprite.  These properties are defined with the enum TextFit which may have the following values:
 * `stretchOrShrink` (or omitted)
-* `stretchOnly` 
+* `stretchOnly`
 * `proportional`
 
 The primary use cases of interest are:
 1. Both properties are undefined or stretchOrShrink
-   
+
    The content rectangle scales precisely to contain its contents.
-   
+
 2. textFitWidth = stretchOnly and textFitHeight = proportional
 
    The content rectangle scales to precisely contain the height of its contents but the width will not shrink smaller than the aspect ratio of the original content rectangle. This is primarily useful for shields that shouldn't become too narrow if their contents are narrow (like the number "1").
-   
+
 3. textFitWidth = proportional and textFitHeight = stretchOnly
 
    The content rectangle scales to precisely contain the width of its contents but the height will not shrink smaller than the aspect ratio of the original content rectangle. This may be useful scenarios like no. 2 except with vertically written scripts (using `"text-writing-mode": ["vertical"]`).

@@ -38,7 +38,7 @@ npm run test-integration
 npm run test-build  # follow steps from previous section before
 ```
 
-In intergration tests, if there's a need to update the expected results you'll need to run the tests with the `UPDATE=1` environment flag. 
+In intergration tests, if there's a need to update the expected results you'll need to run the tests with the `UPDATE=1` environment flag.
 For example `UPDATE=1 npm run test-integration`, or if you would like to update only a specific type of integration test use `UPDATE=1 npx jest ./test/integration/style-spec/validate_spec.test.ts`
 
 # Publish style-spec NPM package

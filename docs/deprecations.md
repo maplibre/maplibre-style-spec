@@ -3,7 +3,7 @@
 Some style properties are no longer the preferred method of accomplishing a particular styling goal. While they are still supported, it is not recommended to use them in new styles as they may not function as intended when using both deprecated and non-deprecated style properties. The following is provided as reference for users who need to continue maintaining legacy styles while transitioning to preferred style properties.
 The [`gl-style-migrate`](https://github.com/maplibre/maplibre-style-spec/blob/main/README.md#gl-style-migrate) tool can be used to migrate style files to the latest version and replace deprecated expressions with their supported equivalents.
 
-In most cases of deprecated filters you should add a `get` and `literal` to convert from old to new syntax, for example `[">=", "count", 5]` should be converted to `[">=", ["get", "count"], 5]` and `["in", "nature", "road", "highway"]` to `["in", ["get", "nature"], ["literal", ["road", "highway"]]]`. 
+In most cases of deprecated filters you should add a `get` and `literal` to convert from old to new syntax, for example `[">=", "count", 5]` should be converted to `[">=", ["get", "count"], 5]` and `["in", "nature", "road", "highway"]` to `["in", ["get", "nature"], ["literal", ["road", "highway"]]]`.
 
 ## Function
 
@@ -64,7 +64,7 @@ The color space in which colors interpolated. Interpolating colors in perceptual
 `lab`: Use the LAB color space to interpolate color values.
 
 `hcl`: Use the HCL color space to interpolate color values, interpolating the Hue, Chroma, and Luminance channels individually.
-            
+
 
 |SDK Support|MapLibre GL JS|MapLibre Native<br>Android|MapLibre Native<br>iOS|
 |-----------|--------------|-----------|-------|
