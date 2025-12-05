@@ -192,7 +192,7 @@ output at zoom 12.1: "mercator"
 ```
 
 
-#### Provide a `projection` 
+#### Provide a `projection`
 
 ```ts
 type: ["vertical-perspective", "mercator", 0.7]
