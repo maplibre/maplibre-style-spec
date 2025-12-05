@@ -2771,6 +2771,9 @@
       "doc": "Whether this layer is displayed.",
       "sdk-support": {
         "basic functionality": {
+          "js": "5.6.0",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3408",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3408"
         }
       },
       "property-type": "constant"
