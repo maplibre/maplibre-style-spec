@@ -3566,8 +3566,10 @@
 <div class="language-js highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="p">[</span><span class="s2">&quot;collator&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">options</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">collator</span>
 </span></code></pre></div></p>
 <ul>
-<li><code>options</code>: <code>{case-sensitive?: boolean, diacritic-sensitive?: boolean, locale?: string}</code><br />
-Parameters:<ul>
+<li>
+<p><code>options</code>: <code>{case-sensitive?: boolean, diacritic-sensitive?: boolean, locale?: string}</code><br />
+Parameters:</p>
+<ul>
 <li><code>case-sensitive</code>: <code>boolean</code> - If characters of different case-ness are considered different</li>
 <li><code>diacritic-sensitive</code>: <code>boolean</code> - If characters with different diacritics are considered different</li>
 <li><code>locale</code>: <code>string</code> - IETF language tag of the locale to use. If none is provided, the default locale is used. If the requested locale is not available, the <code>collator</code> will use a system-defined fallback locale.</li>
@@ -3617,13 +3619,15 @@ Parameters:<ul>
 </span></code></pre></div></p>
 <ul>
 <li><code>input_i</code>: <code>string | image</code></li>
-<li><code>style_overrides_i</code>: <code>{text-font?: string, text-color?: color, font-scale?: number, vertical-align?: "bottom" | "center" | "top"}</code><br />
-Parameters:<ul>
+<li>
+<p><code>style_overrides_i</code>: <code>{text-font?: string, text-color?: color, font-scale?: number, vertical-align?: "bottom" | "center" | "top"}</code><br />
+Parameters:</p>
+<ul>
 <li><code>text-font</code>: <code>string</code> - Overrides the font stack specified by the root layout property.</li>
 <li><code>text-color</code>: <code>color</code> - Overrides the color specified by the root paint property.</li>
 <li><code>font-scale</code>: <code>number</code> - Applies a scaling factor on <code>text-size</code> as specified by the root layout property.</li>
 <li><code>vertical-align</code>: <code>"bottom" | "center" | "top"</code> - Aligns a vertical text section or image in relation to the row it belongs to. Refer to <a href="https://github.com/maplibre/maplibre-style-spec/issues/832">the design proposal</a> for more details.<br />
-  Possible values are:<ul>
+    Possible values are:<ul>
 <li><code>"bottom"</code> <em>default</em> - align the bottom of this section with the bottom of other sections.
 <img alt="Visual representation of bottom alignment" src="https://github.com/user-attachments/assets/0474a2fd-a4b2-417c-9187-7a13a28695bc" /></li>
 <li><code>"center"</code> - align the center of this section with the center of other sections.
@@ -3736,8 +3740,10 @@ Parameters:<ul>
 </span></code></pre></div></p>
 <ul>
 <li><code>input</code>: <code>number</code>- number to format</li>
-<li><code>format_options</code>: <code>{locale?: string, currency?: string, min-fraction-digits?: number, max-fraction-digits?: number}</code>- Format options for the number<br />
-Parameters:<ul>
+<li>
+<p><code>format_options</code>: <code>{locale?: string, currency?: string, min-fraction-digits?: number, max-fraction-digits?: number}</code>- Format options for the number<br />
+Parameters:</p>
+<ul>
 <li><code>locale</code>: <code>string</code> - Specifies the locale to use, as a BCP 47 language tag</li>
 <li><code>currency</code>: <code>string</code> - An ISO 4217 code to use for currency-style formatting</li>
 <li><code>min-fraction-digits</code>: <code>number</code> - Minimum number of fractional digits to include</li>
@@ -3900,7 +3906,7 @@ Parameters:<ul>
 </span></code></pre></div></p>
 <ul>
 <li><code>index</code>: <code>number</code>- The index into <code>array</code>.</li>
-<li><code>array</code>: <code>array&amp;lt;T&amp;gt;</code>- The array of items to retrieve the specified item from.</li>
+<li><code>array</code>: <code>array&lt;T&gt;</code>- The array of items to retrieve the specified item from.</li>
 </ul>
 <p>Example:
 <div class="language-json highlight"><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;at&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;literal&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;c&quot;</span><span class="p">]]]</span>
@@ -3934,7 +3940,7 @@ Parameters:<ul>
 </span></code></pre></div></p>
 <ul>
 <li><code>item</code>: <code>T</code>- The needle to search for within <code>array</code>.</li>
-<li><code>array</code>: <code>array&amp;lt;T&amp;gt;</code>- The haystack through which to search for <code>item</code>.</li>
+<li><code>array</code>: <code>array&lt;T&gt;</code>- The haystack through which to search for <code>item</code>.</li>
 <li><code>substring</code>: <code>string</code>- The needle to search for within <code>string</code>.</li>
 <li><code>string</code>: <code>string</code>- The haystack through which to search for <code>substring</code>.</li>
 </ul>
@@ -3967,7 +3973,7 @@ Parameters:<ul>
 </span></code></pre></div></p>
 <ul>
 <li><code>item</code>: <code>T</code>- The needle to search for within <code>array</code>.</li>
-<li><code>array</code>: <code>array&amp;lt;T&amp;gt;</code>- The haystack through which to search for <code>item</code>.</li>
+<li><code>array</code>: <code>array&lt;T&gt;</code>- The haystack through which to search for <code>item</code>.</li>
 <li><code>substring</code>: <code>string</code>- The needle to search for within <code>string</code>.</li>
 <li><code>string</code>: <code>string</code>- The haystack through which to search for <code>substring</code>.</li>
 <li><code>from_index</code>: <code>number</code>- The index from where to begin the search.</li>
@@ -4000,7 +4006,7 @@ Parameters:<ul>
 </span><span id="__span-49-2"><a id="__codelineno-49-2" name="__codelineno-49-2" href="#__codelineno-49-2"></a><span class="p">[</span><span class="s2">&quot;slice&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w"> </span><span class="nx">start_index</span><span class="p">,</span><span class="w"> </span><span class="nx">end_index</span><span class="o">?</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span>
 </span></code></pre></div></p>
 <ul>
-<li><code>array</code>: <code>array&amp;lt;T&amp;gt;</code>- The original array from which to extract the subarray.</li>
+<li><code>array</code>: <code>array&lt;T&gt;</code>- The original array from which to extract the subarray.</li>
 <li><code>string</code>: <code>string</code>- The original string from which to extract the substring.</li>
 <li><code>start_index</code>: <code>number</code>- The inclusive index from which <code>slice</code> extracts items or characters from the subarray or substring.</li>
 <li><code>end_index</code>: <code>number</code>- The non-inclusive index up to which <code>slice</code> extracts items or characters from the subarray or substring.</li>
@@ -4219,7 +4225,7 @@ Parameters:<ul>
 </span></code></pre></div></p>
 <ul>
 <li><code>input</code>: <code>string | number</code>- Any expression.</li>
-<li><code>label_i</code>: <code>string literal | number literal | array&amp;lt;string literal&amp;gt; | array&amp;lt;number literal&amp;gt;</code>- The i-th literal value or array of literal values to match the input against.</li>
+<li><code>label_i</code>: <code>string literal | number literal | array&lt;string literal&gt; | array&lt;number literal&gt;</code>- The i-th literal value or array of literal values to match the input against.</li>
 <li><code>output_i</code>: <code>any</code>- The result when the i-th label is the first label to match the input.</li>
 <li><code>fallback</code>: <code>any</code>- The result when no label matches the input.</li>
 </ul>
@@ -4714,17 +4720,7 @@ Parameters:<ul>
 </table>
 <h3 id="interpolate">interpolate<a class="headerlink" href="#interpolate" title="Permanent link">&para;</a></h3>
 <p>Produces continuous, smooth results by interpolating between pairs of input and output values ("stops"). The <code>input</code> may be any numeric expression (e.g., <code>["get", "population"]</code>). Stop inputs must be numeric literals in strictly ascending order. The output type must be <code>number</code>, <code>array&lt;number&gt;</code>, <code>color</code>, <code>array&lt;color&gt;</code>, or <code>projection</code>.</p>
-<p>Interpolation types:</p>
 <ul>
-<li>
-<p><code>["linear"]</code>, or an expression returning one of those types: Interpolates linearly between the pair of stops just less than and just greater than the input.</p>
-</li>
-<li>
-<p><code>["exponential", base]</code>: Interpolates exponentially between the stops just less than and just greater than the input. <code>base</code> controls the rate at which the output increases: higher values make the output increase more towards the high end of the range. With values close to 1 the output increases linearly.</p>
-</li>
-<li>
-<p><code>["cubic-bezier", x1, y1, x2, y2]</code>: Interpolates using the cubic bezier curve defined by the given control points.</p>
-</li>
 <li>
 <p><a href="https://maplibre.org/maplibre-gl-js/docs/examples/animate-camera-around-point/">Animate map camera around a point</a></p>
 </li>
@@ -4742,10 +4738,22 @@ Parameters:<ul>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-87-1"><a id="__codelineno-87-1" name="__codelineno-87-1" href="#__codelineno-87-1"></a><span class="p">[</span><span class="s2">&quot;interpolate&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">interpolation_type</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">,</span><span class="w"> </span><span class="nx">stop_1_input</span><span class="p">,</span><span class="w"> </span><span class="nx">stop_1_output</span><span class="p">,</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="nx">stop_n_input</span><span class="p">,</span><span class="w"> </span><span class="nx">stop_n_output</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">array</span><span class="o">&lt;</span><span class="nx">number</span><span class="o">&gt;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">color</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">array</span><span class="o">&lt;</span><span class="nx">color</span><span class="o">&gt;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">projection</span>
 </span></code></pre></div></p>
 <ul>
-<li><code>interpolation_type</code>: <code>["linear"] | ["exponential", base] | ["cubic-bezier", x1, y1, x2, y2]</code>- The interpolation type.</li>
+<li><code>interpolation_type</code>: <code>interpolation</code>- The interpolation type.<br />
+    An interpolation defines how to transition between items. The first element of an interpolation array is a string naming the interpolation operator, e.g. <code>"linear"</code> or <code>"exponential"</code>. Elements that follow (if any) are the <em>arguments</em> to the interpolation.<br />
+    Possible values are:<br />
+        - <code>["linear"]</code>: Interpolates linearly between the pair of stops just less than and just greater than the input<br />
+        - <code>["exponential", base]</code>: Interpolates exponentially between the stops just less than and just greater than the input.<br />
+            Parameters are:<br />
+<code>base</code>: rate at which the output increases in <code>f(x) = x^r</code>. Values higher than 1 increase, close to one behaves linearly, and below one decrease.<br />
+        - <code>["cubic-bezier", x1, y1, x2, y2]</code>: Interpolates using the cubic bézier curve defined by the given control points.<br />
+            Parameters are:<br />
+<code>x1</code>: X-coordinate of the first control point. Must be between zero and one for a valid monotonic easing curve. Controls how quickly the curve speeds up at the beginning.<br />
+<code>y1</code>: Y-coordinate of the first control point. Typically between zero and one, but may exceed this range for overshoot effects. Influences the starting slope of the curve.<br />
+<code>x2</code>: X-coordinate of the second control point. Must be between zero and one for a valid monotonic easing curve. Controls when the curve begins to decelerate toward the end.<br />
+<code>y2</code>: Y-coordinate of the second control point. Typically between zero and one, but may exceed this range for overshoot effects. Influences the ending slope of the curve.</li>
 <li><code>input</code>: <code>number</code>- Any numeric expression.</li>
 <li><code>stop_i_input</code>: <code>number literal</code>- The value of the i-th stop against which the <code>input</code> is compared.</li>
-<li><code>stop_i_output</code>: <code>number | array&amp;lt;number&amp;gt; | color | array&amp;lt;color&amp;gt; | projection</code>- The output value corresponding to the i-th stop.</li>
+<li><code>stop_i_output</code>: <code>number | array&lt;number&gt; | color | array&lt;color&gt; | projection</code>- The output value corresponding to the i-th stop.</li>
 </ul>
 <p>Example:
 <div class="language-json highlight"><pre><span></span><code><span id="__span-88-1"><a id="__codelineno-88-1" name="__codelineno-88-1" href="#__codelineno-88-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
@@ -4782,10 +4790,22 @@ Parameters:<ul>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-89-1"><a id="__codelineno-89-1" name="__codelineno-89-1" href="#__codelineno-89-1"></a><span class="p">[</span><span class="s2">&quot;interpolate-hcl&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">interpolation_type</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">,</span><span class="w"> </span><span class="nx">stop_1_input</span><span class="p">,</span><span class="w"> </span><span class="nx">stop_1_output</span><span class="p">,</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="nx">stop_n_input</span><span class="p">,</span><span class="w"> </span><span class="nx">stop_n_output</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">color</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">array</span><span class="o">&lt;</span><span class="nx">color</span><span class="o">&gt;</span>
 </span></code></pre></div></p>
 <ul>
-<li><code>interpolation_type</code>: <code>["linear"] | ["exponential", base] | ["cubic-bezier", x1, y1, x2, y2]</code></li>
+<li><code>interpolation_type</code>: <code>interpolation</code>- The interpolation type.<br />
+    An interpolation defines how to transition between items. The first element of an interpolation array is a string naming the interpolation operator, e.g. <code>"linear"</code> or <code>"exponential"</code>. Elements that follow (if any) are the <em>arguments</em> to the interpolation.<br />
+    Possible values are:<br />
+        - <code>["linear"]</code>: Interpolates linearly between the pair of stops just less than and just greater than the input<br />
+        - <code>["exponential", base]</code>: Interpolates exponentially between the stops just less than and just greater than the input.<br />
+            Parameters are:<br />
+<code>base</code>: rate at which the output increases in <code>f(x) = x^r</code>. Values higher than 1 increase, close to one behaves linearly, and below one decrease.<br />
+        - <code>["cubic-bezier", x1, y1, x2, y2]</code>: Interpolates using the cubic bézier curve defined by the given control points.<br />
+            Parameters are:<br />
+<code>x1</code>: X-coordinate of the first control point. Must be between zero and one for a valid monotonic easing curve. Controls how quickly the curve speeds up at the beginning.<br />
+<code>y1</code>: Y-coordinate of the first control point. Typically between zero and one, but may exceed this range for overshoot effects. Influences the starting slope of the curve.<br />
+<code>x2</code>: X-coordinate of the second control point. Must be between zero and one for a valid monotonic easing curve. Controls when the curve begins to decelerate toward the end.<br />
+<code>y2</code>: Y-coordinate of the second control point. Typically between zero and one, but may exceed this range for overshoot effects. Influences the ending slope of the curve.</li>
 <li><code>input</code>: <code>number</code></li>
 <li><code>stop_i_input</code>: <code>number literal</code></li>
-<li><code>stop_i_output</code>: <code>color | array&amp;lt;color&amp;gt;</code></li>
+<li><code>stop_i_output</code>: <code>color | array&lt;color&gt;</code></li>
 </ul>
 <p>Example:
 <div class="language-json highlight"><pre><span></span><code><span id="__span-90-1"><a id="__codelineno-90-1" name="__codelineno-90-1" href="#__codelineno-90-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
@@ -4822,10 +4842,22 @@ Parameters:<ul>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-91-1"><a id="__codelineno-91-1" name="__codelineno-91-1" href="#__codelineno-91-1"></a><span class="p">[</span><span class="s2">&quot;interpolate-lab&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">interpolation_type</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">,</span><span class="w"> </span><span class="nx">stop_1_input</span><span class="p">,</span><span class="w"> </span><span class="nx">stop_1_output</span><span class="p">,</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="nx">stop_n_input</span><span class="p">,</span><span class="w"> </span><span class="nx">stop_n_output</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">color</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">array</span><span class="o">&lt;</span><span class="nx">color</span><span class="o">&gt;</span>
 </span></code></pre></div></p>
 <ul>
-<li><code>interpolation_type</code>: <code>["linear"] | ["exponential", base] | ["cubic-bezier", x1, y1, x2, y2]</code></li>
+<li><code>interpolation_type</code>: <code>interpolation</code>- The interpolation type.<br />
+    An interpolation defines how to transition between items. The first element of an interpolation array is a string naming the interpolation operator, e.g. <code>"linear"</code> or <code>"exponential"</code>. Elements that follow (if any) are the <em>arguments</em> to the interpolation.<br />
+    Possible values are:<br />
+        - <code>["linear"]</code>: Interpolates linearly between the pair of stops just less than and just greater than the input<br />
+        - <code>["exponential", base]</code>: Interpolates exponentially between the stops just less than and just greater than the input.<br />
+            Parameters are:<br />
+<code>base</code>: rate at which the output increases in <code>f(x) = x^r</code>. Values higher than 1 increase, close to one behaves linearly, and below one decrease.<br />
+        - <code>["cubic-bezier", x1, y1, x2, y2]</code>: Interpolates using the cubic bézier curve defined by the given control points.<br />
+            Parameters are:<br />
+<code>x1</code>: X-coordinate of the first control point. Must be between zero and one for a valid monotonic easing curve. Controls how quickly the curve speeds up at the beginning.<br />
+<code>y1</code>: Y-coordinate of the first control point. Typically between zero and one, but may exceed this range for overshoot effects. Influences the starting slope of the curve.<br />
+<code>x2</code>: X-coordinate of the second control point. Must be between zero and one for a valid monotonic easing curve. Controls when the curve begins to decelerate toward the end.<br />
+<code>y2</code>: Y-coordinate of the second control point. Typically between zero and one, but may exceed this range for overshoot effects. Influences the ending slope of the curve.</li>
 <li><code>input</code>: <code>number</code></li>
 <li><code>stop_i_input</code>: <code>number literal</code></li>
-<li><code>stop_i_output</code>: <code>color | array&amp;lt;color&amp;gt;</code></li>
+<li><code>stop_i_output</code>: <code>color | array&lt;color&gt;</code></li>
 </ul>
 <p>Example:
 <div class="language-json highlight"><pre><span></span><code><span id="__span-92-1"><a id="__codelineno-92-1" name="__codelineno-92-1" href="#__codelineno-92-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
@@ -5673,7 +5705,7 @@ Parameters:<ul>
 </tbody>
 </table>
 <h3 id="rgba">rgba<a class="headerlink" href="#rgba" title="Permanent link">&para;</a></h3>
-<p>Creates a color value from red, green, blue components, which must range between 0 and 255, and an alpha component which must range between 0 and 1. If any component is out of range, the expression is an error.</p>
+<p>Creates a color value from red, green, blue components, which must range between 0 and 255, and an alpha component which must range between zero and one. If any component is out of range, the expression is an error.</p>
 <p>Syntax:
 <div class="language-js highlight"><pre><span></span><code><span id="__span-149-1"><a id="__codelineno-149-1" name="__codelineno-149-1" href="#__codelineno-149-1"></a><span class="p">[</span><span class="s2">&quot;rgba&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">red</span><span class="p">,</span><span class="w"> </span><span class="nx">green</span><span class="p">,</span><span class="w"> </span><span class="nx">blue</span><span class="p">,</span><span class="w"> </span><span class="nx">alpha</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">color</span>
 </span></code></pre></div></p>
