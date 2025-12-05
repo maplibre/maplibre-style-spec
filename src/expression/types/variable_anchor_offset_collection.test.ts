@@ -39,12 +39,12 @@ describe('VariableAnchorOffsetCollection', () => {
         test('should throw with mismatched endpoints', () => {
             expect(() =>
                 i11nFn(parseFn(['top', [0, 0]]), parseFn(['bottom', [1, 1]]), 0.5)
-            ).toThrow(
+            ).toThrowError(
                 'Cannot interpolate values containing mismatched anchors. from[0]: top, to[0]: bottom'
             );
             expect(() =>
                 i11nFn(parseFn(['top', [0, 0]]), parseFn(['top', [1, 1], 'bottom', [2, 2]]), 0.5)
-            ).toThrow(
+            ).toThrowError(
                 'Cannot interpolate values of different length. from: ["top",[0,0]], to: ["top",[1,1],"bottom",[2,2]]'
             );
         });
