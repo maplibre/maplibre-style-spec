@@ -7,13 +7,16 @@ import {expect} from 'vitest';
  * @param numDigits `expect.closeTo` numDigits parameter
  */
 export function expectToMatchColor(toTest: Color, expectedSerialized: string, numDigits = 5) {
-    const [r, g, b, a] = expectedSerialized.match(/^rgb\(([\d.]+)% ([\d.]+)% ([\d.]+)% \/ ([\d.]+)\)$/).slice(1).map(Number);
+    const [r, g, b, a] = expectedSerialized
+        .match(/^rgb\(([\d.]+)% ([\d.]+)% ([\d.]+)% \/ ([\d.]+)\)$/)
+        .slice(1)
+        .map(Number);
     expect(toTest).toBeInstanceOf(Color);
     expect(toTest).toMatchObject({
-        r: expect.closeTo(r / 100 * (a !== 0 ? a : 1), numDigits),
-        g: expect.closeTo(g / 100 * (a !== 0 ? a : 1), numDigits),
-        b: expect.closeTo(b / 100 * (a !== 0 ? a : 1), numDigits),
-        a: expect.closeTo(a, 4),
+        r: expect.closeTo((r / 100) * (a !== 0 ? a : 1), numDigits),
+        g: expect.closeTo((g / 100) * (a !== 0 ? a : 1), numDigits),
+        b: expect.closeTo((b / 100) * (a !== 0 ? a : 1), numDigits),
+        a: expect.closeTo(a, 4)
     });
 }
 
@@ -25,5 +28,5 @@ export function expectToMatchColor(toTest: Color, expectedSerialized: string, nu
  * @param numDigits `expect.closeTo` numDigits parameter
  */
 export function expectCloseToArray(toTest: number[], expected: number[], numDigits = 5) {
-    expect(toTest).toEqual(expected.map(n => isNaN(n) ? n : expect.closeTo(n, numDigits)));
+    expect(toTest).toEqual(expected.map((n) => (isNaN(n) ? n : expect.closeTo(n, numDigits))));
 }

@@ -1,4 +1,3 @@
-
 import {ValidationError} from '../error/validation_error';
 
 export function validateConstants(options) {

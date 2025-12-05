@@ -3,14 +3,15 @@ import {Color, isSupportedInterpolationColorSpace} from './color';
 import {describe, test, expect} from 'vitest';
 
 describe('Color class', () => {
-
     describe('parsing', () => {
-
         test('should parse valid css color strings', () => {
             expectToMatchColor(Color.parse('RED'), 'rgb(100% 0% 0% / 1)');
             expectToMatchColor(Color.parse('#f00C'), 'rgb(100% 0% 0% / .8)');
             expectToMatchColor(Color.parse('rgb(0 0 127.5 / 20%)'), 'rgb(0% 0% 50% / .2)');
-            expectToMatchColor(Color.parse('hsl(300deg 100% 25.1% / 0.7)'), 'rgb(50.2% 0% 50.2% / .7)');
+            expectToMatchColor(
+                Color.parse('hsl(300deg 100% 25.1% / 0.7)'),
+                'rgb(50.2% 0% 50.2% / .7)'
+            );
         });
 
         test('should return undefined when provided with invalid CSS color string', () => {
@@ -28,7 +29,6 @@ describe('Color class', () => {
             const color = new Color(0, 0, 0, 0);
             expect(Color.parse(color)).toBe(color);
         });
-
     });
 
     test('should keep a reference to the original color when alpha=0', () => {
@@ -60,7 +60,6 @@ describe('Color class', () => {
     });
 
     describe('interpolation color space', () => {
-
         test('should recognize supported interpolation color spaces', () => {
             expect(isSupportedInterpolationColorSpace('rgb')).toBe(true);
             expect(isSupportedInterpolationColorSpace('hcl')).toBe(true);
@@ -76,21 +75,19 @@ describe('Color class', () => {
             expect(isSupportedInterpolationColorSpace('interpolate-hcl')).toBe(false);
             expect(isSupportedInterpolationColorSpace('interpolate-lab')).toBe(false);
         });
-
     });
 
     describe('interpolate color', () => {
-
         test('should interpolate colors in "rgb" color space', () => {
             const color = Color.parse('rgba(0,0,255,1)');
             const targetColor = Color.parse('rgba(0,255,0,.6)');
 
             const i11nFn = (t: number) => Color.interpolate(color, targetColor, t, 'rgb');
-            expectToMatchColor(i11nFn(0.00), 'rgb(0% 0% 100% / 1)');
+            expectToMatchColor(i11nFn(0.0), 'rgb(0% 0% 100% / 1)');
             expectToMatchColor(i11nFn(0.25), 'rgb(0% 25% 75% / 0.9)');
-            expectToMatchColor(i11nFn(0.50), 'rgb(0% 50% 50% / 0.8)');
+            expectToMatchColor(i11nFn(0.5), 'rgb(0% 50% 50% / 0.8)');
             expectToMatchColor(i11nFn(0.75), 'rgb(0% 75% 25% / 0.7)');
-            expectToMatchColor(i11nFn(1.00), 'rgb(0% 100% 0% / 0.6)');
+            expectToMatchColor(i11nFn(1.0), 'rgb(0% 100% 0% / 0.6)');
         });
 
         test('should interpolate colors in "hcl" color space', () => {
@@ -98,11 +95,11 @@ describe('Color class', () => {
             const targetColor = Color.parse('rgba(0,255,0,.6)');
 
             const i11nFn = (t: number) => Color.interpolate(color, targetColor, t, 'hcl');
-            expectToMatchColor(i11nFn(0.00), 'rgb(0% 0% 100% / 1)');
+            expectToMatchColor(i11nFn(0.0), 'rgb(0% 0% 100% / 1)');
             expectToMatchColor(i11nFn(0.25), 'rgb(0% 49.37% 100% / 0.9)', 4);
-            expectToMatchColor(i11nFn(0.50), 'rgb(0% 70.44% 100% / 0.8)', 4);
+            expectToMatchColor(i11nFn(0.5), 'rgb(0% 70.44% 100% / 0.8)', 4);
             expectToMatchColor(i11nFn(0.75), 'rgb(0% 87.54% 63.18% / 0.7)', 4);
-            expectToMatchColor(i11nFn(1.00), 'rgb(0% 100% 0% / 0.6)');
+            expectToMatchColor(i11nFn(1.0), 'rgb(0% 100% 0% / 0.6)');
         });
 
         test('should interpolate colors in "lab" color space', () => {
@@ -110,11 +107,11 @@ describe('Color class', () => {
             const targetColor = Color.parse('rgba(0,255,0,.6)');
 
             const i11nFn = (t: number) => Color.interpolate(color, targetColor, t, 'lab');
-            expectToMatchColor(i11nFn(0.00), 'rgb(0% 0% 100% / 1)');
+            expectToMatchColor(i11nFn(0.0), 'rgb(0% 0% 100% / 1)');
             expectToMatchColor(i11nFn(0.25), 'rgb(39.64% 34.55% 83.36% / 0.9)', 4);
-            expectToMatchColor(i11nFn(0.50), 'rgb(46.42% 56.82% 65.91% / 0.8)', 4);
+            expectToMatchColor(i11nFn(0.5), 'rgb(46.42% 56.82% 65.91% / 0.8)', 4);
             expectToMatchColor(i11nFn(0.75), 'rgb(41.45% 78.34% 45.62% / 0.7)', 4);
-            expectToMatchColor(i11nFn(1.00), 'rgb(0% 100% 0% / 0.6)');
+            expectToMatchColor(i11nFn(1.0), 'rgb(0% 100% 0% / 0.6)');
         });
 
         test('should correctly interpolate colors with alpha=0', () => {
@@ -122,11 +119,11 @@ describe('Color class', () => {
             const targetColor = Color.parse('rgba(0,255,0,1)');
 
             const i11nFn = (t: number) => Color.interpolate(color, targetColor, t, 'rgb');
-            expectToMatchColor(i11nFn(0.00), 'rgb(0% 0% 0% / 0)');
+            expectToMatchColor(i11nFn(0.0), 'rgb(0% 0% 0% / 0)');
             expectToMatchColor(i11nFn(0.25), 'rgb(0% 25% 75% / 0.25)');
-            expectToMatchColor(i11nFn(0.50), 'rgb(0% 50% 50% / 0.5)');
+            expectToMatchColor(i11nFn(0.5), 'rgb(0% 50% 50% / 0.5)');
             expectToMatchColor(i11nFn(0.75), 'rgb(0% 75% 25% / 0.75)');
-            expectToMatchColor(i11nFn(1.00), 'rgb(0% 100% 0% / 1)');
+            expectToMatchColor(i11nFn(1.0), 'rgb(0% 100% 0% / 1)');
         });
 
         test('should limit interpolation results to sRGB gamut', () => {
@@ -137,12 +134,10 @@ describe('Color class', () => {
                 const i11nFn = (t: number) => Color.interpolate(color, targetColor, t, space);
                 const colorInBetween = i11nFn(0.5);
                 for (const key of ['r', 'g', 'b', 'a'] as const) {
-                    expect(colorInBetween[ key ]).toBeGreaterThanOrEqual(0);
-                    expect(colorInBetween[ key ]).toBeLessThanOrEqual(1);
+                    expect(colorInBetween[key]).toBeGreaterThanOrEqual(0);
+                    expect(colorInBetween[key]).toBeLessThanOrEqual(1);
                 }
             }
         });
-
     });
-
 });

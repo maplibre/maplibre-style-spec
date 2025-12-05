@@ -42,7 +42,7 @@ export class ColorArray {
                 return undefined;
             }
             const parsed_val = Color.parse(val);
-            if(!parsed_val) {
+            if (!parsed_val) {
                 return undefined;
             }
             colors.push(parsed_val);
@@ -55,13 +55,20 @@ export class ColorArray {
         return JSON.stringify(this.values);
     }
 
-    static interpolate(from: ColorArray, to: ColorArray, t: number, spaceKey: InterpolationColorSpace = 'rgb'): ColorArray {
-        const  colors = [] as Color[];
+    static interpolate(
+        from: ColorArray,
+        to: ColorArray,
+        t: number,
+        spaceKey: InterpolationColorSpace = 'rgb'
+    ): ColorArray {
+        const colors = [] as Color[];
         if (from.values.length != to.values.length) {
-            throw new Error(`colorArray: Arrays have mismatched length (${from.values.length} vs. ${to.values.length}), cannot interpolate.`);
+            throw new Error(
+                `colorArray: Arrays have mismatched length (${from.values.length} vs. ${to.values.length}), cannot interpolate.`
+            );
         }
-        for(let i = 0; i < from.values.length; i++) {
-            colors.push(Color.interpolate(from.values[i], to.values[i], t, spaceKey))
+        for (let i = 0; i < from.values.length; i++) {
+            colors.push(Color.interpolate(from.values[i], to.values[i], t, spaceKey));
         }
         return new ColorArray(colors);
     }

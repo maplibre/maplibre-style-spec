@@ -383,9 +383,9 @@
           "js": "supported"
         },
         "mlt": {
-          "android": "https://github.com/maplibre/maplibre-native/issues/3721",
-          "ios": "https://github.com/maplibre/maplibre-native/issues/3721",
-          "js": "https://github.com/maplibre/maplibre-gl-js/issues/6258"
+          "android": "12.1.0",
+          "ios": "6.20.0",
+          "js": "5.12.0"
         }
       }
     },
@@ -3394,7 +3394,7 @@
         }
       },
       "interpolate": {
-        "doc": "Produces continuous, smooth results by interpolating between pairs of input and output values (\"stops\"). The `input` may be any numeric expression (e.g., `[\"get\", \"population\"]`). Stop inputs must be numeric literals in strictly ascending order. The output type must be `number`, `array<number>`, `color`, `array<color>`, or `projection`.\n\nInterpolation types:\n\n- `[\"linear\"]`, or an expression returning one of those types: Interpolates linearly between the pair of stops just less than and just greater than the input.\n\n- `[\"exponential\", base]`: Interpolates exponentially between the stops just less than and just greater than the input. `base` controls the rate at which the output increases: higher values make the output increase more towards the high end of the range. With values close to 1 the output increases linearly.\n\n- `[\"cubic-bezier\", x1, y1, x2, y2]`: Interpolates using the cubic bezier curve defined by the given control points.\n\n - [Animate map camera around a point](https://maplibre.org/maplibre-gl-js/docs/examples/animate-camera-around-point/)\n\n - [Change building color based on zoom level](https://maplibre.org/maplibre-gl-js/docs/examples/change-building-color-based-on-zoom-level/)\n\n - [Create a heatmap layer](https://maplibre.org/maplibre-gl-js/docs/examples/heatmap-layer/)\n\n - [Visualize population density](https://maplibre.org/maplibre-gl-js/docs/examples/visualize-population-density/)",
+        "doc": "Produces continuous, smooth results by interpolating between pairs of input and output values (\"stops\"). The `input` may be any numeric expression (e.g., `[\"get\", \"population\"]`). Stop inputs must be numeric literals in strictly ascending order. The output type must be `number`, `array<number>`, `color`, `array<color>`, or `projection`.\n\n - [Animate map camera around a point](https://maplibre.org/maplibre-gl-js/docs/examples/animate-camera-around-point/)\n\n - [Change building color based on zoom level](https://maplibre.org/maplibre-gl-js/docs/examples/change-building-color-based-on-zoom-level/)\n\n - [Create a heatmap layer](https://maplibre.org/maplibre-gl-js/docs/examples/heatmap-layer/)\n\n - [Visualize population density](https://maplibre.org/maplibre-gl-js/docs/examples/visualize-population-density/)",
         "syntax": {
           "overloads": [
             {
@@ -3405,7 +3405,7 @@
           "parameters": [
             {
               "name": "interpolation_type",
-              "type": ["[\"linear\"]", "[\"exponential\", base]", "[\"cubic-bezier\", x1, y1, x2, y2]"],
+              "type": "interpolation",
               "doc": "The interpolation type."
             },
             {
@@ -3447,7 +3447,8 @@
           "parameters": [
             {
               "name": "interpolation_type",
-              "type": ["[\"linear\"]", "[\"exponential\", base]", "[\"cubic-bezier\", x1, y1, x2, y2]"]
+              "type": "interpolation",
+              "doc": "The interpolation type."
             },
             {
               "name": "input",
@@ -3485,7 +3486,8 @@
           "parameters": [
             {
               "name": "interpolation_type",
-              "type": ["[\"linear\"]", "[\"exponential\", base]", "[\"cubic-bezier\", x1, y1, x2, y2]"]
+              "type": "interpolation",
+              "doc": "The interpolation type."
             },
             {
               "name": "input",
@@ -4104,7 +4106,7 @@
         }
       },
       "rgba": {
-        "doc": "Creates a color value from red, green, blue components, which must range between 0 and 255, and an alpha component which must range between 0 and 1. If any component is out of range, the expression is an error.",
+        "doc": "Creates a color value from red, green, blue components, which must range between 0 and 255, and an alpha component which must range between zero and one. If any component is out of range, the expression is an error.",
         "syntax": {
           "overloads": [
             {
@@ -7991,6 +7993,151 @@
     "*": {
       "type": "string",
       "doc": "A name of a feature property to use as ID for feature state."
+    }
+  },
+  "interpolation": {
+    "type": "array",
+    "value": "interpolation_name",
+    "minimum": 1,
+    "doc": "An interpolation defines how to transition between items. The first element of an interpolation array is a string naming the interpolation operator, e.g. `\"linear\"` or `\"exponential\"`. Elements that follow (if any) are the _arguments_ to the interpolation."
+  },
+  "interpolation_name": {
+    "doc": "First element in an interpolation array. May be followed by a number of arguments.",
+    "type": "enum",
+    "values": {
+      "linear": {
+        "doc": "Interpolates linearly between the pair of stops just less than and just greater than the input",
+        "syntax": {
+          "overloads": [
+            {
+              "parameters": [],
+              "output-type": "interpolation"
+            }
+          ],
+          "parameters": []
+        },
+        "example": ["linear"],
+        "sdk-support": {
+          "interpolate": {
+            "js": "0.42.0",
+            "android": "6.0.0",
+            "ios": "4.0.0"
+          },
+          "interpolate-hcl": {
+            "js": "0.49.0",
+            "ios": "https://github.com/maplibre/maplibre-native/issues/2784",
+            "android": "https://github.com/maplibre/maplibre-native/issues/2784"
+          },
+          "interpolate-lab":{
+            "js": "0.49.0",
+            "ios": "https://github.com/maplibre/maplibre-native/issues/2784",
+            "android": "https://github.com/maplibre/maplibre-native/issues/2784"
+          }
+        }
+      },
+      "exponential": {
+        "doc": "Interpolates exponentially between the stops just less than and just greater than the input.",
+        "syntax": {
+          "overloads": [
+            {
+              "parameters": [
+                "base"
+              ],
+              "output-type": "interpolation"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "base",
+              "type": "number literal",
+              "doc": "rate at which the output increases in `f(x) = x^r`. Values higher than 1 increase, close to one behaves linearly, and below one decrease."
+            }
+          ]
+        },
+        "example": [
+          "exponential",
+          2
+        ],
+        "sdk-support": {
+          "interpolate": {
+            "js": "0.42.0",
+            "android": "6.0.0",
+            "ios": "4.0.0"
+          },
+          "interpolate-hcl": {
+            "js": "0.49.0",
+            "ios": "https://github.com/maplibre/maplibre-native/issues/2784",
+            "android": "https://github.com/maplibre/maplibre-native/issues/2784"
+          },
+          "interpolate-lab":{
+            "js": "0.49.0",
+            "ios": "https://github.com/maplibre/maplibre-native/issues/2784",
+            "android": "https://github.com/maplibre/maplibre-native/issues/2784"
+          }
+        }
+      },
+      "cubic-bezier": {
+        "doc": "Interpolates using the cubic bézier curve defined by the given control points.",
+        "syntax": {
+          "overloads": [
+            {
+              "parameters": [
+                "x1",
+                "y1",
+                "x2",
+                "y2"
+              ],
+              "output-type": "interpolation"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "x1",
+              "type": "number literal",
+              "doc": "X-coordinate of the first control point. Must be between zero and one for a valid monotonic easing curve. Controls how quickly the curve speeds up at the beginning."
+            },
+            {
+              "name": "y1",
+              "type": "number literal",
+              "doc": "Y-coordinate of the first control point. Typically between zero and one, but may exceed this range for overshoot effects. Influences the starting slope of the curve."
+            },
+            {
+              "name": "x2",
+              "type": "number literal",
+              "doc": "X-coordinate of the second control point. Must be between zero and one for a valid monotonic easing curve. Controls when the curve begins to decelerate toward the end."
+            },
+            {
+              "name": "y2",
+              "type": "number literal",
+              "doc": "Y-coordinate of the second control point. Typically between zero and one, but may exceed this range for overshoot effects. Influences the ending slope of the curve."
+            }
+          ]
+        },
+        "example": [
+          "cubic-bezier",
+          2,
+          3,
+          2,
+          3
+        ],
+        "sdk-support": {
+          "interpolate": {
+            "js": "0.42.0",
+            "android": "6.0.0",
+            "ios": "4.0.0"
+          },
+          "interpolate-hcl": {
+            "js": "0.49.0",
+            "ios": "https://github.com/maplibre/maplibre-native/issues/2784",
+            "android": "https://github.com/maplibre/maplibre-native/issues/2784"
+          },
+          "interpolate-lab":{
+            "js": "0.49.0",
+            "ios": "https://github.com/maplibre/maplibre-native/issues/2784",
+            "android": "https://github.com/maplibre/maplibre-native/issues/2784"
+          }
+        }
+      }
     }
   }
 }

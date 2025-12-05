@@ -6,7 +6,7 @@ import {
     typeToString,
     NumberType,
     isValidType,
-    isValidNativeType,
+    isValidNativeType
 } from '../types';
 import {RuntimeError} from '../runtime_error';
 import {typeOf} from '../values';
@@ -30,8 +30,10 @@ export class IndexOf implements Expression {
     }
 
     static parse(args: ReadonlyArray<unknown>, context: ParsingContext): Expression {
-        if (args.length <= 2 ||  args.length >= 5) {
-            return context.error(`Expected 2 or 3 arguments, but found ${args.length - 1} instead.`) as null;
+        if (args.length <= 2 || args.length >= 5) {
+            return context.error(
+                `Expected 2 or 3 arguments, but found ${args.length - 1} instead.`
+            ) as null;
         }
 
         const needle = context.parse(args[1], 1, ValueType);
@@ -40,7 +42,9 @@ export class IndexOf implements Expression {
 
         if (!needle || !haystack) return null;
         if (!isValidType(needle.type, [BooleanType, StringType, NumberType, NullType, ValueType])) {
-            return context.error(`Expected first argument to be of type boolean, string, number or null, but found ${typeToString(needle.type)} instead`) as null;
+            return context.error(
+                `Expected first argument to be of type boolean, string, number or null, but found ${typeToString(needle.type)} instead`
+            ) as null;
         }
 
         if (args.length === 4) {
@@ -53,16 +57,18 @@ export class IndexOf implements Expression {
     }
 
     evaluate(ctx: EvaluationContext) {
-        const needle = (this.needle.evaluate(ctx) as any);
-        const haystack = (this.haystack.evaluate(ctx) as any);
+        const needle = this.needle.evaluate(ctx) as any;
+        const haystack = this.haystack.evaluate(ctx) as any;
 
         if (!isValidNativeType(needle, ['boolean', 'string', 'number', 'null'])) {
-            throw new RuntimeError(`Expected first argument to be of type boolean, string, number or null, but found ${typeToString(typeOf(needle))} instead.`);
+            throw new RuntimeError(
+                `Expected first argument to be of type boolean, string, number or null, but found ${typeToString(typeOf(needle))} instead.`
+            );
         }
 
         let fromIndex;
         if (this.fromIndex) {
-            fromIndex = (this.fromIndex.evaluate(ctx) as number);
+            fromIndex = this.fromIndex.evaluate(ctx) as number;
         }
 
         if (isValidNativeType(haystack, ['string'])) {
@@ -76,7 +82,9 @@ export class IndexOf implements Expression {
         } else if (isValidNativeType(haystack, ['array'])) {
             return haystack.indexOf(needle, fromIndex);
         } else {
-            throw new RuntimeError(`Expected second argument to be of type array or string, but found ${typeToString(typeOf(haystack))} instead.`);
+            throw new RuntimeError(
+                `Expected second argument to be of type array or string, but found ${typeToString(typeOf(haystack))} instead.`
+            );
         }
     }
 
@@ -92,4 +100,3 @@ export class IndexOf implements Expression {
         return false;
     }
 }
-

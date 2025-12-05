@@ -11,17 +11,17 @@ describe('Validate object', () => {
                 __defineProperty__: 123,
                 hasOwnProperty: 123,
                 toLocaleString: 123,
-                valueOf: 123,
+                valueOf: 123
             },
             style: {},
             styleSpec: v8,
-            validateSpec: validate,
+            validateSpec: validate
         });
         expect(errors).toEqual([
             {message: 'test: unknown property "__defineProperty__"'},
             {message: 'test: unknown property "hasOwnProperty"'},
             {message: 'test: unknown property "toLocaleString"'},
-            {message: 'test: unknown property "valueOf"'},
+            {message: 'test: unknown property "valueOf"'}
         ]);
     });
 
@@ -33,18 +33,18 @@ describe('Validate object', () => {
                 '__defineProperty__.__defineProperty__': 123,
                 'hasOwnProperty.hasOwnProperty': 123,
                 'toLocaleString.toLocaleString': 123,
-                'valueOf.valueOf': 123,
+                'valueOf.valueOf': 123
             },
             style: {},
             styleSpec: v8,
-            validateSpec: validate,
+            validateSpec: validate
         });
         expect(errors).toEqual([
             {message: 'test: unknown property "__proto__.__proto__"'},
             {message: 'test: unknown property "__defineProperty__.__defineProperty__"'},
             {message: 'test: unknown property "hasOwnProperty.hasOwnProperty"'},
             {message: 'test: unknown property "toLocaleString.toLocaleString"'},
-            {message: 'test: unknown property "valueOf.valueOf"'},
+            {message: 'test: unknown property "valueOf.valueOf"'}
         ]);
     });
 });

@@ -20,17 +20,16 @@ const regex = /^## (\d+\.\d+\.\d+.*?)\n(.+?)(?=\n^## \d+\.\d+\.\d+.*?\n)/gms;
 
 let releaseNotes = [];
 let match;
- 
-while (match = regex.exec(changelog)) {
+
+while ((match = regex.exec(changelog))) {
     releaseNotes.push({
-        'version': match[1],
-        'changelog': match[2].trim(),
+        version: match[1],
+        changelog: match[2].trim()
     });
 }
 
 const latest = releaseNotes[0];
 const previous = releaseNotes[1];
-
 
 //  Print the release notes template.
 
@@ -41,5 +40,4 @@ ${latest.changelog}
 
 ${semver.prerelease(latest.version) ? 'Pre-release version' : ''}`;
 
- 
 process.stdout.write(templatedReleaseNotes.trimEnd());
