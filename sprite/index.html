@@ -963,7 +963,7 @@
 <p>Loading a <a href="https://en.wikipedia.org/wiki/Sprite_(computer_graphics)">sprite</a> can be done using the optional <code>sprite</code> property at the root level of a MapLibre style sheet.</p>
 <p>The images contained in the sprite can be referenced in other style properties (<code>background-pattern</code>, <code>fill-pattern</code>, <code>line-pattern</code>,<code>fill-extrusion-pattern</code> and <code>icon-image</code>).</p>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<p>You need to pass an URL where the sprite can be loaded from. </p>
+<p>You need to pass an URL where the sprite can be loaded from.</p>
 <div class="language-json highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">&quot;sprite&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://demotiles.maplibre.org/styles/osm-bright-gl-style/sprite&quot;</span>
 </span></code></pre></div>
 <p>This will load both an image by appending <code>.png</code> and the metadata about the sprite needed for loading by appending <code>.json</code>. See for yourself:</p>
@@ -1065,7 +1065,7 @@ The red highlighted part is where the stretch will occur over the Y axis and the
 <h4 id="text-fit-properties">Text Fit Properties<a class="headerlink" href="#text-fit-properties" title="Permanent link">&para;</a></h4>
 <p>The properties <code>textFitWidth</code> and <code>textFitHeight</code> alter how a sprite's content rectangle maps to its contents when scaling a sprite.  These properties are defined with the enum TextFit which may have the following values:
 * <code>stretchOrShrink</code> (or omitted)
-* <code>stretchOnly</code> 
+* <code>stretchOnly</code>
 * <code>proportional</code></p>
 <p>The primary use cases of interest are:
 1. Both properties are undefined or stretchOrShrink</p>
