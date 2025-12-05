@@ -9,13 +9,13 @@ describe('migrate', () => {
     test('does not migrate from version 5', () => {
         expect(() => {
             migrate({version: 5, layers: []} as any);
-        }).toThrow('Cannot migrate from 5');
+        }).toThrowError('Cannot migrate from 5');
     });
 
     test('does not migrate from version 6', () => {
         expect(() => {
             migrate({version: 6, layers: []} as any);
-        }).toThrow('Cannot migrate from 6');
+        }).toThrowError('Cannot migrate from 6');
     });
 
     test('migrates to latest version from version 7', () => {
@@ -181,7 +181,7 @@ describe('migrate', () => {
             ]
         };
 
-        expect(() => migrate(style)).not.toThrow();
+        expect(() => migrate(style)).not.toThrowError();
         expect(style.layers[0].paint).toEqual({
             'icon-color': 'hsl(100,30%,20%)',
             'icon-opacity-transition': {duration: 0}
