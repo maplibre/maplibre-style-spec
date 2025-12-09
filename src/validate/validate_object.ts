@@ -30,7 +30,7 @@ export function validateObject(options): Array<ValidationError> {
                 // property is possible, set but set to undefined
                 // we only check it if it is required and not defaulted in the next loop
                 // without skipping here, we would alert to properties being set to undefined
-                continue
+                continue;
             }
             validateElement = validateSpec;
         } else if (elementValidators['*']) {

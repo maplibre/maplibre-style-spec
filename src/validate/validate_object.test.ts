@@ -11,21 +11,21 @@ describe('Validate object', () => {
                 regular: undefined,
                 withRequired: undefined,
                 withDefault: undefined,
-                unspecifiedField: undefined,
+                unspecifiedField: undefined
             },
             style: {},
             valueSpec: {
-                type:'object',
-                regular: {type:'number' },
-                withRequired: {type:'number', required:true},
-                withDefault: {type:'number', required:true, default: 2}
+                type: 'object',
+                regular: {type: 'number'},
+                withRequired: {type: 'number', required: true},
+                withDefault: {type: 'number', required: true, default: 2}
             },
             styleSpec: v8,
             validateSpec: validate
         });
         expect(errors).toEqual([
             {message: 'test: unknown property "unspecifiedField"'},
-            {message: 'test: missing required property "withRequired"'},
+            {message: 'test: missing required property "withRequired"'}
         ]);
     });
     test('Should not throw an unexpected error if object prototype keys are used as keys', () => {
@@ -37,8 +37,7 @@ describe('Validate object', () => {
                 toLocaleString: 123,
                 valueOf: 123
             },
-            style: {
-            },
+            style: {},
             styleSpec: v8,
             validateSpec: validate
         });
