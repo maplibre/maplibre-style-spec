@@ -4,6 +4,30 @@ import v8 from '../reference/v8.json' with {type: 'json'};
 import {describe, test, expect} from 'vitest';
 
 describe('Validate object', () => {
+    test('Should alert to an unknown or required properties being undefined', () => {
+        const errors = validateObject({
+            key: 'test',
+            value: {
+                regular: undefined,
+                withRequired: undefined,
+                withDefault: undefined,
+                unspecifiedField: undefined,
+            },
+            style: {},
+            valueSpec: {
+                type:'object',
+                regular: {type:'number' },
+                withRequired: {type:'number', required:true},
+                withDefault: {type:'number', required:true, default: 2}
+            },
+            styleSpec: v8,
+            validateSpec: validate
+        });
+        expect(errors).toEqual([
+            {message: 'test: unknown property "unspecifiedField"'},
+            {message: 'test: missing required property "withRequired"'},
+        ]);
+    });
     test('Should not throw an unexpected error if object prototype keys are used as keys', () => {
         const errors = validateObject({
             key: 'test',
@@ -13,7 +37,8 @@ describe('Validate object', () => {
                 toLocaleString: 123,
                 valueOf: 123
             },
-            style: {},
+            style: {
+            },
             styleSpec: v8,
             validateSpec: validate
         });

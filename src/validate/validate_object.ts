@@ -26,6 +26,11 @@ export function validateObject(options): Array<ValidationError> {
         if (getOwn(elementValidators, elementSpecKey)) {
             validateElement = elementValidators[elementSpecKey];
         } else if (getOwn(elementSpecs, elementSpecKey)) {
+            if (object[objectKey] === undefined) {
+                // property is possible, set but might not be intended
+                // => only check it if it is required and not defaulted in the next loop
+                continue
+            }
             validateElement = validateSpec;
         } else if (elementValidators['*']) {
             validateElement = elementValidators['*'];
