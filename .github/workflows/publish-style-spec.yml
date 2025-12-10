@@ -1,7 +1,7 @@
 name: publish-style-spec
 
 permissions:
-  id-token: write  # Required for OIDC
+  id-token: write  # Required for trusted publishing
 
 on:
   push:
