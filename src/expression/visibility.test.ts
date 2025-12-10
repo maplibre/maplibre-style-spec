@@ -3,7 +3,9 @@ import {describe, test, expect, vi} from 'vitest';
 
 describe('create visibility expression', () => {
     test('throws Error for invalid function', () => {
-        expect(() => createVisibilityExpression(['bla'] as any, {})).toThrowError('Unknown expression "bla". If you wanted a literal array, use ["literal", [...]].');
+        expect(() => createVisibilityExpression(['bla'] as any, {})).toThrowError(
+            'Unknown expression "bla". If you wanted a literal array, use ["literal", [...]].'
+        );
     });
 });
 
@@ -16,7 +18,7 @@ describe('evaluate visibility expression', () => {
         expect(value.getGlobalStateRefs().size).toBe(0);
         expect(console.warn).not.toHaveBeenCalled();
     });
-    
+
     test('literal value visible', () => {
         vi.spyOn(console, 'warn').mockImplementation(() => {});
 
@@ -52,7 +54,10 @@ describe('evaluate visibility expression', () => {
 
     test('global state flag set to false', () => {
         const globalState: Record<string, any> = {};
-        const value = createVisibilityExpression(['case', ['global-state', 'x'], 'visible', 'none'], globalState);
+        const value = createVisibilityExpression(
+            ['case', ['global-state', 'x'], 'visible', 'none'],
+            globalState
+        );
 
         vi.spyOn(console, 'warn').mockImplementation(() => {});
 
@@ -64,7 +69,10 @@ describe('evaluate visibility expression', () => {
 
     test('global state flag set to true', () => {
         const globalState: Record<string, any> = {};
-        const value = createVisibilityExpression(['case', ['global-state', 'x'], 'visible', 'none'], globalState);
+        const value = createVisibilityExpression(
+            ['case', ['global-state', 'x'], 'visible', 'none'],
+            globalState
+        );
 
         vi.spyOn(console, 'warn').mockImplementation(() => {});
 
@@ -75,7 +83,10 @@ describe('evaluate visibility expression', () => {
     });
 
     test('falls back to default for invalid expression with zoom', () => {
-        const value = createVisibilityExpression(['case', ['==', ['zoom'], 5], 'none', 'visible'], {});
+        const value = createVisibilityExpression(
+            ['case', ['==', ['zoom'], 5], 'none', 'visible'],
+            {}
+        );
 
         vi.spyOn(console, 'warn').mockImplementation(() => {});
 
@@ -89,7 +100,9 @@ describe('evaluate visibility expression', () => {
         vi.spyOn(console, 'warn').mockImplementation(() => {});
 
         expect(value.evaluate()).toBe('visible');
-        expect(console.warn).toHaveBeenCalledWith('Expected value to be of type string, but found null instead.');
+        expect(console.warn).toHaveBeenCalledWith(
+            'Expected value to be of type string, but found null instead.'
+        );
     });
 
     test('warns and falls back to default for invalid expression with feature state', () => {
@@ -98,7 +111,9 @@ describe('evaluate visibility expression', () => {
         vi.spyOn(console, 'warn').mockImplementation(() => {});
 
         expect(value.evaluate()).toBe('visible');
-        expect(console.warn).toHaveBeenCalledWith('Expected value to be of type string, but found null instead.');
+        expect(console.warn).toHaveBeenCalledWith(
+            'Expected value to be of type string, but found null instead.'
+        );
     });
 
     test('warns and falls back to default for missing global property', () => {
@@ -107,7 +122,9 @@ describe('evaluate visibility expression', () => {
         vi.spyOn(console, 'warn').mockImplementation(() => {});
 
         expect(value.evaluate()).toBe('visible');
-        expect(console.warn).toHaveBeenCalledWith('Expected value to be of type string, but found null instead.');
+        expect(console.warn).toHaveBeenCalledWith(
+            'Expected value to be of type string, but found null instead.'
+        );
     });
 
     test('warns and falls back to default for invalid global property', () => {
@@ -116,6 +133,8 @@ describe('evaluate visibility expression', () => {
         vi.spyOn(console, 'warn').mockImplementation(() => {});
 
         expect(value.evaluate()).toBe('visible');
-        expect(console.warn).toHaveBeenCalledWith('Expected value to be one of "visible", "none", but found "invalid" instead.');
+        expect(console.warn).toHaveBeenCalledWith(
+            'Expected value to be one of "visible", "none", but found "invalid" instead.'
+        );
     });
 });

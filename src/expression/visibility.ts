@@ -27,7 +27,7 @@ export interface VisibilityExpression {
      * Returns the set of global state properties referenced by the expression.
      */
     getGlobalStateRefs: () => Set<string>;
-};
+}
 
 class VisibilityExpressionClass implements VisibilityExpression {
     private _globalState: Record<string, any>;
@@ -45,7 +45,12 @@ class VisibilityExpressionClass implements VisibilityExpression {
     }
 
     setValue(visibility: VisibilitySpecification) {
-        if (visibility === null || visibility === undefined || visibility === 'visible' || visibility === 'none') {
+        if (
+            visibility === null ||
+            visibility === undefined ||
+            visibility === 'visible' ||
+            visibility === 'none'
+        ) {
             this._literalValue = visibility === 'none' ? 'none' : 'visible';
             this._compiledValue = undefined;
             this._globalStateRefs = new Set<string>();
@@ -55,7 +60,7 @@ class VisibilityExpressionClass implements VisibilityExpression {
         if (compiled.result === 'error') {
             this._literalValue = 'visible';
             this._compiledValue = undefined;
-            throw new Error(compiled.value.map(err => `${err.key}: ${err.message}`).join(', '));
+            throw new Error(compiled.value.map((err) => `${err.key}: ${err.message}`).join(', '));
         }
         this._literalValue = undefined;
         this._compiledValue = compiled.value;
@@ -73,6 +78,9 @@ class VisibilityExpressionClass implements VisibilityExpression {
  * @param globalState - the global state object
  * @returns visibility expression object
  */
-export default function createVisibility(visibility: VisibilitySpecification, globalState: Record<string, any>): VisibilityExpression {
+export default function createVisibility(
+    visibility: VisibilitySpecification,
+    globalState: Record<string, any>
+): VisibilityExpression {
     return new VisibilityExpressionClass(visibility, globalState);
 }
