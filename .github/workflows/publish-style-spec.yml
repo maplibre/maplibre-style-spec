@@ -2,6 +2,7 @@ name: publish-style-spec
 
 permissions:
   id-token: write  # Required for trusted publishing
+  contents: write
 
 on:
   push:
@@ -98,8 +99,6 @@ jobs:
       - name: Publish NPM package
         run: |
           npm publish --access=public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_ORG_TOKEN }}
 
       - name: Create GitHub Release
         id: create_regular_release
