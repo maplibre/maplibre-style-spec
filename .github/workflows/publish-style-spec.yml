@@ -1,5 +1,8 @@
 name: publish-style-spec
 
+permissions:
+  id-token: write  # Required for OIDC
+
 on:
   push:
     branches: [main]
