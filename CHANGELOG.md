@@ -1,7 +1,8 @@
 ## main
 
 ### ✨ Features and improvements
-- _...Add new stuff here..._
+
+- Allow global state expressions in layer visibility ([#1364](https://github.com/maplibre/maplibre-style-spec/issues/1364))
 
 ### 🐞 Bug fixes
 
