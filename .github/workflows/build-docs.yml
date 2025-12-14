@@ -27,7 +27,7 @@ jobs:
         npm run generate-typings
 
     - name: Build docs
-      run: npm run mkdocs-build
+      run: npm run docs
 
 
     - name: Deploy
