@@ -1,10 +1,17 @@
 ## main
-
 ### ✨ Features and improvements
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
+
+- Consolidate release flow ([#1423](https://github.com/maplibre/maplibre-style-spec/pull/1423)) (by [HarelM](https://github.com/HarelM))
+- Consolidates bump version PR workflow ([#1422](https://github.com/maplibre/maplibre-style-spec/pull/1422)) (by [HarelM](https://github.com/HarelM))
+## 24.4.1
+
+### ✨ Features and improvements
+
+### 🐞 Bug fixes
 
 ## 24.4.0
 
