@@ -6,10 +6,17 @@
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
 
+## 24.4.1
+
+### ✨ Features and improvements
+
+- Consolidate workflows ([#1423](https://github.com/maplibre/maplibre-style-spec/pull/1423)) (by [HarelM](https://github.com/HarelM))
+
 ## 24.4.0
 
 ### ✨ Features and improvements
 
+- Update Node.js to 24.11 ([#1418](https://github.com/maplibre/maplibre-style-spec/issues/1418))
 - Allow global state expressions in layer visibility ([#1364](https://github.com/maplibre/maplibre-style-spec/issues/1364))
 - Only alert to an unknown or required object-properties being undefined instead of any object-property being undefined ([#1415](https://github.com/maplibre/maplibre-style-spec/issues/1415))
 
