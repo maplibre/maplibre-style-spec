@@ -63,7 +63,7 @@
   },
   "sideEffects": false,
   "devDependencies": {
-    "oxfmt": "^0.16.0",
+    "oxfmt": "^0.17.0",
     "@rollup/plugin-commonjs": "^29.0.0",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
