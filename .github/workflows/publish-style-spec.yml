@@ -15,3 +15,4 @@ jobs:
     uses: maplibre/reusable-workflows/.github/workflows/npm-publish.yml@main
     with:
       build-command: npm ci && npm run generate-style-spec && npm run generate-typings && npm run build
+      docs-output-dir: site
