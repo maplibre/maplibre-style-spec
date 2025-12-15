@@ -38,7 +38,7 @@ jobs:
       - run: npm run test-unit-ci
       - run: npm run test-integration-ci
       - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@5a1091511ad55cbe89839c7260b706298ca349f7 # v5.5.1
+        uses: codecov/codecov-action@671740ac38dd9b0130fbe1cec585b89eea48d3de # v5.5.2
         with:
           files: ${{ github.workspace }}/coverage/vitest/unit/coverage-final.json, ${{ github.workspace }}/coverage/vitest/integration/coverage-final.json
           verbose: true
@@ -64,7 +64,7 @@ jobs:
       - run: npm run build
       - run: npm run test-build-ci
       - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@5a1091511ad55cbe89839c7260b706298ca349f7 # v5.5.1
+        uses: codecov/codecov-action@671740ac38dd9b0130fbe1cec585b89eea48d3de # v5.5.2
         with:
           files: ${{ github.workspace }}/coverage/vitest/build/coverage-final.json
           verbose: true
