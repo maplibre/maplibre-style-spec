@@ -21,7 +21,7 @@ We aim to avoid breaking changes in the MapLibre style specification because it 
 ## Documentation
 
 The [documentation](https://maplibre.org/maplibre-style-spec) of the style specification also lives in this repository.
-We use [Zensical](https://www.zensical.org/). 
+We use [Zensical](https://www.zensical.org/).
 
 To work on the documentation locally, you need to have [UV](https://docs.astral.sh/uv/getting-started/installation/) and [python](https://www.python.org/downloads/) installed.
 Start Zensical with
