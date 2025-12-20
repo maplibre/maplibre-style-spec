@@ -27,7 +27,7 @@ To work on the documentation locally, you need to have [UV](https://docs.astral.
 Start Zensical with
 
 ```bash
-npm run docs
+npm run start-docs
 ```
 
 Most of the documentation is generated (from e.g. `v8.json`).

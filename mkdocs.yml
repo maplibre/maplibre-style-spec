@@ -26,7 +26,7 @@ theme:
         icon: material/brightness-4
         name: Switch to system preference
     - media: "(prefers-color-scheme: light)"
-      scheme: default 
+      scheme: default
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode

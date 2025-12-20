@@ -209,7 +209,7 @@ function expressionSyntaxToMarkdown(key: string, syntax: JsonExpressionSyntax) {
             }
         }
         if (parameter.type === 'interpolation') {
-            markdown += "  ";
+            markdown += '  ';
             const interpolationSyntax = interpolationSyntaxToMarkdown();
             for (const line of interpolationSyntax.split('\n')) {
                 markdown += `\n    ${line}`;
@@ -226,7 +226,7 @@ function expressionSyntaxToMarkdown(key: string, syntax: JsonExpressionSyntax) {
  * @returns the markdown string for the interpolation's syntax section
  */
 function containedVariablesToMarkdown(type: {[key: string]: JsonObject}) {
-    let markdown = "";
+    let markdown = '';
     Object.entries(type).forEach(([key, val]) => {
         const type = jsonObjectToType(val);
         markdown += `\n- \`${key}\`: \`${type}\` - ${val.doc}`;
@@ -238,7 +238,7 @@ function containedVariablesToMarkdown(type: {[key: string]: JsonObject}) {
             }
         }
     });
-    return markdown
+    return markdown;
 }
 
 /**
@@ -248,22 +248,22 @@ function containedVariablesToMarkdown(type: {[key: string]: JsonObject}) {
 function interpolationSyntaxToMarkdown() {
     const interpolation = v8.interpolation;
     let markdown = interpolation.doc;
-    const interpolation_name=v8.interpolation_name;
+    const interpolation_name = v8.interpolation_name;
     markdown += `  \nPossible values are:`;
-    for (const [key,val] of Object.entries(interpolation_name.values)) {
-        markdown += `  \n    - \`["${key}"`
+    for (const [key, val] of Object.entries(interpolation_name.values)) {
+        markdown += `  \n    - \`["${key}"`;
         for (const param of val.syntax.overloads[0].parameters) {
-            markdown += `, ${param}`
+            markdown += `, ${param}`;
         }
         markdown += `]\`: ${val.doc}`;
         if (val.syntax.parameters.length) {
-            markdown += `  \n        Parameters are:`
+            markdown += `  \n        Parameters are:`;
             for (const param of val.syntax.parameters) {
-                markdown += `  \n        \`${param.name}\`: ${param.doc}`
+                markdown += `  \n        \`${param.name}\`: ${param.doc}`;
             }
         }
     }
-    return markdown
+    return markdown;
 }
 
 /**

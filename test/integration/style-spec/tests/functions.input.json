@@ -993,6 +993,24 @@
       "paint": {
         "color-relief-color": { "stops": [[0, "red"], [1, "blue"]] }
       }
+    },
+    {
+      "id": "valid expression in visibility",
+      "type": "fill",
+      "source": "source",
+      "source-layer": "layer",
+      "layout": {
+        "visibility": ["global-state", "vis-prop"]
+      }
+    },
+    {
+      "id": "invalid expression - feature property not allowed in visibility",
+      "type": "fill",
+      "source": "source",
+      "source-layer": "layer",
+      "layout": {
+        "visibility": ["get", "vis-prop"]
+      }
     }
   ]
 }

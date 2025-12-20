@@ -947,9 +947,20 @@
           "js": "0.10.0",
           "android": "2.0.1",
           "ios": "2.0.0"
+        },
+        "`global state` expression": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/6495",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3302",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
         }
       },
-      "property-type": "constant"
+      "expression": {
+        "interpolated": false,
+        "parameters": [
+          "global-state"
+        ]
+      },
+      "property-type": "data-constant"
     }
   },
   "layout_fill": {
@@ -994,9 +1005,20 @@
           "js": "0.10.0",
           "android": "2.0.1",
           "ios": "2.0.0"
+        },
+        "`global state` expression": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/6495",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3302",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
         }
       },
-      "property-type": "constant"
+      "expression": {
+        "interpolated": false,
+        "parameters": [
+          "global-state"
+        ]
+      },
+      "property-type": "data-constant"
     }
   },
   "layout_circle": {
@@ -1041,9 +1063,20 @@
           "js": "0.10.0",
           "android": "2.0.1",
           "ios": "2.0.0"
+        },
+        "`global state` expression": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/6495",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3302",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
         }
       },
-      "property-type": "constant"
+      "expression": {
+        "interpolated": false,
+        "parameters": [
+          "global-state"
+        ]
+      },
+      "property-type": "data-constant"
     }
   },
   "layout_heatmap": {
@@ -1064,9 +1097,20 @@
           "js": "0.41.0",
           "android": "6.0.0",
           "ios": "4.0.0"
+        },
+        "`global state` expression": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/6495",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3302",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
         }
       },
-      "property-type": "constant"
+      "expression": {
+        "interpolated": false,
+        "parameters": [
+          "global-state"
+        ]
+      },
+      "property-type": "data-constant"
     }
   },
   "layout_fill-extrusion": {
@@ -1087,9 +1131,20 @@
           "js": "0.27.0",
           "android": "5.1.0",
           "ios": "3.6.0"
+        },
+        "`global state` expression": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/6495",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3302",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
         }
       },
-      "property-type": "constant"
+      "expression": {
+        "interpolated": false,
+        "parameters": [
+          "global-state"
+        ]
+      },
+      "property-type": "data-constant"
     }
   },
   "layout_line": {
@@ -1248,9 +1303,20 @@
           "js": "0.10.0",
           "android": "2.0.1",
           "ios": "2.0.0"
+        },
+        "`global state` expression": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/6495",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3302",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
         }
       },
-      "property-type": "constant"
+      "expression": {
+        "interpolated": false,
+        "parameters": [
+          "global-state"
+        ]
+      },
+      "property-type": "data-constant"
     }
   },
   "layout_symbol": {
@@ -2705,9 +2771,20 @@
           "js": "0.10.0",
           "android": "2.0.1",
           "ios": "2.0.0"
+        },
+        "`global state` expression": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/6495",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3302",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
         }
       },
-      "property-type": "constant"
+      "expression": {
+        "interpolated": false,
+        "parameters": [
+          "global-state"
+        ]
+      },
+      "property-type": "data-constant"
     }
   },
   "layout_raster": {
@@ -2728,9 +2805,20 @@
           "js": "0.10.0",
           "android": "2.0.1",
           "ios": "2.0.0"
+        },
+        "`global state` expression": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/6495",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3302",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
         }
       },
-      "property-type": "constant"
+      "expression": {
+        "interpolated": false,
+        "parameters": [
+          "global-state"
+        ]
+      },
+      "property-type": "data-constant"
     }
   },
   "layout_hillshade": {
@@ -2751,9 +2839,20 @@
           "js": "0.43.0",
           "android": "6.0.0",
           "ios": "4.0.0"
+        },
+        "`global state` expression": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/6495",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3302",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
         }
       },
-      "property-type": "constant"
+      "expression": {
+        "interpolated": false,
+        "parameters": [
+          "global-state"
+        ]
+      },
+      "property-type": "data-constant"
     }
   },
   "layout_color-relief": {
@@ -2771,9 +2870,23 @@
       "doc": "Whether this layer is displayed.",
       "sdk-support": {
         "basic functionality": {
+          "js": "5.6.0",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3408",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3408"
+        },
+        "`global state` expression": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/6495",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3302",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
         }
       },
-      "property-type": "constant"
+      "expression": {
+        "interpolated": false,
+        "parameters": [
+          "global-state"
+        ]
+      },
+      "property-type": "data-constant"
     }
   },
   "filter": {
@@ -2936,18 +3049,18 @@
         "syntax": {
           "overloads": [
             {
-              "parameters": ["var_1_name", "var_1_value", "...", "var_n_name", "var_n_value", "expression"],
+              "parameters": ["var_name_1", "var_value_1", "...", "var_name_n", "var_value_n", "expression"],
               "output-type": "any"
             }
           ],
           "parameters": [
             {
-              "name": "var_i_name",
+              "name": "var_name_i",
               "type": "string literal",
               "doc": "The name of the i-th variable."
             },
             {
-              "name": "var_i_value",
+              "name": "var_value_i",
               "type": "any",
               "doc": "The value of the i-th variable."
             },
@@ -3356,7 +3469,7 @@
         "syntax": {
           "overloads": [
             {
-              "parameters": ["input", "output_0", "stop_1_input", "stop_1_output", "...", "stop_n_input", "stop_n_output"],
+              "parameters": ["input", "output_0", "stop_input_1", "stop_output_1", "...", "stop_input_n", "stop_output_n"],
               "output-type": "any"
             }
           ],
@@ -3372,12 +3485,12 @@
               "doc": "The result when the `input` is less than the first stop."
             },
             {
-              "name": "stop_i_input",
+              "name": "stop_input_i",
               "type": "number literal",
               "doc": "The value of the i-th stop against which the `input` is compared."
             },
             {
-              "name": "stop_i_output",
+              "name": "stop_output_i",
               "type": "any",
               "doc": "The result when the i-th stop is the last stop less than the `input`."
             }
@@ -3398,7 +3511,7 @@
         "syntax": {
           "overloads": [
             {
-              "parameters": ["interpolation_type", "input", "stop_1_input", "stop_1_output", "...", "stop_n_input", "stop_n_output"],
+              "parameters": ["interpolation_type", "input", "stop_input_1", "stop_output_1", "...", "stop_input_n", "stop_output_n"],
               "output-type": ["number", "array<number>", "color", "array<color>", "projection"]
             }
           ],
@@ -3414,12 +3527,12 @@
               "doc": "Any numeric expression."
             },
             {
-              "name": "stop_i_input",
+              "name": "stop_input_i",
               "type": "number literal",
               "doc": "The value of the i-th stop against which the `input` is compared."
             },
             {
-              "name": "stop_i_output",
+              "name": "stop_output_i",
               "type": ["number", "array<number>", "color", "array<color>", "projection"],
               "doc": "The output value corresponding to the i-th stop."
             }
@@ -3440,7 +3553,7 @@
         "syntax": {
           "overloads": [
             {
-              "parameters": ["interpolation_type", "input", "stop_1_input", "stop_1_output", "...", "stop_n_input", "stop_n_output"],
+              "parameters": ["interpolation_type", "input", "stop_input_1", "stop_output_1", "...", "stop_input_n", "stop_output_n"],
               "output-type": ["color", "array<color>"]
             }
           ],
@@ -3455,11 +3568,11 @@
               "type": "number"
             },
             {
-              "name": "stop_i_input",
+              "name": "stop_input_i",
               "type": "number literal"
             },
             {
-              "name": "stop_i_output",
+              "name": "stop_output_i",
               "type": ["color", "array<color>"]
             }
           ]
@@ -3479,7 +3592,7 @@
         "syntax": {
           "overloads": [
             {
-              "parameters": ["interpolation_type", "input", "stop_1_input", "stop_1_output", "...", "stop_n_input", "stop_n_output"],
+              "parameters": ["interpolation_type", "input", "stop_input_1", "stop_output_1", "...", "stop_input_n", "stop_output_n"],
               "output-type": ["color", "array<color>"]
             }
           ],
@@ -3494,11 +3607,11 @@
               "type": "number"
             },
             {
-              "name": "stop_i_input",
+              "name": "stop_input_i",
               "type": "number literal"
             },
             {
-              "name": "stop_i_output",
+              "name": "stop_output_i",
               "type": ["color", "array<color>"]
             }
           ]
