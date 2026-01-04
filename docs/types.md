@@ -4,8 +4,7 @@ MapLibre style contains values of various types, most commonly as values for the
 
 ## Color
 
-The `color` type is a color in the [sRGB color space](https://en.wikipedia.org/wiki/SRGB). Colors are JSON strings in a variety of permitted formats: HTML-style hex values, RGB, RGBA, HSL, and HSLA. Predefined HTML colors names, like `yellow` and `blue`, are also permitted.
-
+The `color` type is a color in the [sRGB color space](https://en.wikipedia.org/wiki/SRGB). Colors are JSON strings in a variety of permitted formats: HTML-style hex values, RGB, RGBA, HSL, and HSLA. Predefined HTML color names, such as `yellow`, `blue`, and `transparent`, are also permitted.
 ```json
 {
     "line-color": "#ff0",
