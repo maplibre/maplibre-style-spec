@@ -24,7 +24,6 @@ The [documentation](https://maplibre.org/maplibre-style-spec) of the style speci
 We use [Zensical](https://www.zensical.org/).
 
 To work on the documentation locally, you need to have Docker installed and running.
-Start MkDocs with
 Start Zensical with
 
 ```bash
