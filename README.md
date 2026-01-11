@@ -21,10 +21,10 @@ We aim to avoid breaking changes in the MapLibre style specification because it 
 ## Documentation
 
 The [documentation](https://maplibre.org/maplibre-style-spec) of the style specification also lives in this repository.
-We use [MkDocs](https://www.mkdocs.org/) with the [Material for MkDocs](https://squidfunk.github.io/mkdocs-material) theme.
+We use [Zensical](https://www.zensical.org/).
 
 To work on the documentation locally, you need to have Docker installed and running.
-Start MkDocs with
+Start Zensical with
 
 ```bash
 npm run start-docs
