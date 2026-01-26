@@ -83,7 +83,7 @@
     "eslint": "^9.39.2",
     "eslint-plugin-jsdoc": "^62.4.1",
     "glob": "^13.0.0",
-    "globals": "^17.0.0",
+    "globals": "^17.1.0",
     "rollup": "^4.56.0",
     "rollup-plugin-preserve-shebang": "^1.0.1",
     "semver": "^7.7.3",
