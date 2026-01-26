@@ -4056,6 +4056,11 @@
             "js": "0.54.0",
             "android": "8.4.0",
             "ios": "supported"
+          },
+          "`unit` property": {
+            "js": "24.5.0",
+            "android": "https://github.com/maplibre/maplibre-native/issues/4071",
+            "ios": "https://github.com/maplibre/maplibre-native/issues/4071"
           }
         }
       },
