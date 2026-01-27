@@ -4058,7 +4058,7 @@
             "ios": "supported"
           },
           "`unit` property": {
-            "js": "24.5.0",
+            "js": "https://github.com/maplibre/maplibre-gl-js/issues/7024",
             "android": "https://github.com/maplibre/maplibre-native/issues/4071",
             "ios": "https://github.com/maplibre/maplibre-native/issues/4071"
           }
