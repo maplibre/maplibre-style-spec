@@ -8,11 +8,26 @@ import type {Type} from '../types';
 export class NumberFormat implements Expression {
     type: Type;
     number: Expression;
-    locale: Expression | null; // BCP 47 language tag
-    currency: Expression | null; // ISO 4217 currency code, required if style=currency
-    unit: Expression | null; // CLDR or ECMA-402 unit specifier, required if style=unit
-    minFractionDigits: Expression | null; // Default 0
-    maxFractionDigits: Expression | null; // Default 3
+    /**
+     * BCP 47 language tag
+     */
+    locale: Expression | null;
+    /**
+     * ISO 4217 currency code, required if style=currency
+     */
+    currency: Expression | null;
+    /**
+     * CLDR or ECMA-402 unit specifier, required if style=unit
+     */
+    unit: Expression | null;
+    /**
+     * @default 0
+     */
+    minFractionDigits: Expression | null;
+    /**
+     * @default 3
+     */
+    maxFractionDigits: Expression | null;
 
     constructor(
         number: Expression,
