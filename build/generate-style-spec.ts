@@ -221,6 +221,7 @@ export type ExpressionSpecification =
     | ['literal', unknown]
     | ['number', unknown | ExpressionSpecification, ...(unknown | ExpressionSpecification)[]] // number
     | ['number-format', number | ExpressionSpecification, {'locale'?: string | ExpressionSpecification, 'currency'?: string | ExpressionSpecification, 'min-fraction-digits'?: number | ExpressionSpecification, 'max-fraction-digits'?: number | ExpressionSpecification}] // string
+    | ['number-format', number | ExpressionSpecification, {'locale'?: string | ExpressionSpecification, 'unit'?: string | ExpressionSpecification, 'min-fraction-digits'?: number | ExpressionSpecification, 'max-fraction-digits'?: number | ExpressionSpecification}] // string
     | ['object', unknown | ExpressionSpecification, ...(unknown | ExpressionSpecification)[]] // object
     | ['string', unknown | ExpressionSpecification, ...(unknown | ExpressionSpecification)[]] // string
     | ['to-boolean', unknown | ExpressionSpecification] // boolean
