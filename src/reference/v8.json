@@ -4029,6 +4029,11 @@
                   "example": "USD",
                   "doc": "An ISO 4217 code to use for currency-style formatting"
                 },
+                "unit": {
+                  "type": "string",
+                  "example": "meter",
+                  "doc": "A CLDR or ECMA-402 unit to use for quantity-style formatting"
+                },
                 "min-fraction-digits": {
                   "type": "number",
                   "example": 1,
@@ -4051,6 +4056,11 @@
             "js": "0.54.0",
             "android": "8.4.0",
             "ios": "supported"
+          },
+          "`unit` property": {
+            "js": "https://github.com/maplibre/maplibre-gl-js/issues/7024",
+            "android": "https://github.com/maplibre/maplibre-native/issues/4071",
+            "ios": "https://github.com/maplibre/maplibre-native/issues/4071"
           }
         }
       },

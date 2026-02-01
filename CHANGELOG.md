@@ -1,6 +1,7 @@
 ## main
 
 ### ✨ Features and improvements
+- Add `unit` option to `number-format` expression to allow formatting quantities depending on the locale.
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
