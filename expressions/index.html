@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="https://maplibre.org/favicon.ico">
-      <meta name="generator" content="zensical-0.0.17">
+      <meta name="generator" content="zensical-0.0.20">
     
     
       
@@ -3704,11 +3704,12 @@ Parameters:</p>
 <ul>
 <li><code>input</code>: <code>number</code>- number to format</li>
 <li>
-<p><code>format_options</code>: <code>{locale?: string, currency?: string, min-fraction-digits?: number, max-fraction-digits?: number}</code>- Format options for the number<br />
+<p><code>format_options</code>: <code>{locale?: string, currency?: string, unit?: string, min-fraction-digits?: number, max-fraction-digits?: number}</code>- Format options for the number<br />
 Parameters:</p>
 <ul>
 <li><code>locale</code>: <code>string</code> - Specifies the locale to use, as a BCP 47 language tag</li>
 <li><code>currency</code>: <code>string</code> - An ISO 4217 code to use for currency-style formatting</li>
+<li><code>unit</code>: <code>string</code> - A CLDR or ECMA-402 unit to use for quantity-style formatting</li>
 <li><code>min-fraction-digits</code>: <code>number</code> - Minimum number of fractional digits to include</li>
 <li><code>max-fraction-digits</code>: <code>number</code> - Maximum number of fractional digits to include</li>
 </ul>
@@ -3736,6 +3737,12 @@ Parameters:</p>
 <td>0.54.0</td>
 <td>8.4.0</td>
 <td>✅</td>
+</tr>
+<tr>
+<td><code>unit</code> property</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-gl-js/issues/7024">#7024</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/4071">#4071</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/4071">#4071</a>)</td>
 </tr>
 </tbody>
 </table>
