@@ -88,19 +88,19 @@
     "line": 178
   },
   {
-    "message": "layers[22].paint.hillshade-illumination-direction: array length at least 1 expected, length 0 found",
-    "line": 188
+    "message": "layers[23].paint.hillshade-illumination-direction: array length at least 1 expected, length 0 found",
+    "line": 204
   },
   {
-    "message": "layers[22].paint.hillshade-illumination-altitude: array length at least 1 expected, length 0 found",
-    "line": 189
+    "message": "layers[23].paint.hillshade-illumination-altitude: array length at least 1 expected, length 0 found",
+    "line": 205
   },
   {
-    "message": "layers[22].paint.hillshade-highlight-color: array length at least 1 expected, length 0 found",
-    "line": 190
+    "message": "layers[23].paint.hillshade-highlight-color: array length at least 1 expected, length 0 found",
+    "line": 206
   },
   {
-    "message": "layers[22].paint.hillshade-shadow-color: array length at least 1 expected, length 0 found",
-    "line": 191
+    "message": "layers[23].paint.hillshade-shadow-color: array length at least 1 expected, length 0 found",
+    "line": 207
   }
 ]
