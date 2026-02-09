@@ -105,6 +105,7 @@ export type GlobalProperties = Readonly<{
     zoom: number;
     heatmapDensity?: number;
     elevation?: number;
+    slope?: number;
     lineProgress?: number;
     isSupportedScript?: (_: string) => boolean;
     accumulated?: Value;
