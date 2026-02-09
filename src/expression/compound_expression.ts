@@ -266,6 +266,7 @@ CompoundExpression.register(expressions, {
     zoom: [NumberType, [], (ctx) => ctx.globals.zoom],
     'heatmap-density': [NumberType, [], (ctx) => ctx.globals.heatmapDensity || 0],
     elevation: [NumberType, [], (ctx) => ctx.globals.elevation || 0],
+    slope: [NumberType, [], (ctx) => ctx.globals.slope || 0],
     'line-progress': [NumberType, [], (ctx) => ctx.globals.lineProgress || 0],
     accumulated: [
         ValueType,
@@ -568,6 +569,7 @@ function isExpressionConstant(expression: Expression) {
             'zoom',
             'heatmap-density',
             'elevation',
+            'slope',
             'line-progress',
             'accumulated',
             'is-supported-script'
