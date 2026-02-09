@@ -82,7 +82,7 @@
     "dts-bundle-generator": "^9.5.1",
     "eslint": "^9.39.2",
     "eslint-plugin-jsdoc": "^62.5.4",
-    "glob": "^13.0.0",
+    "glob": "^13.0.1",
     "globals": "^17.3.0",
     "rollup": "^4.57.1",
     "rollup-plugin-preserve-shebang": "^1.0.1",
