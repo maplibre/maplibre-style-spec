@@ -80,7 +80,7 @@
     "@vitest/eslint-plugin": "^1.6.9",
     "@vitest/ui": "4.0.18",
     "dts-bundle-generator": "^9.5.1",
-    "eslint": "^9.39.2",
+    "eslint": "^10.0.0",
     "eslint-plugin-jsdoc": "^62.5.5",
     "glob": "^13.0.3",
     "globals": "^17.3.0",
