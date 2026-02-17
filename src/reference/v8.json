@@ -863,8 +863,8 @@
             }
           }
         },
-        "slope": {
-          "doc": "Client-side slope visualization based on DEM data. Computes terrain slope angle in degrees and maps it to colors. The implementation supports Mapbox Terrain RGB, Mapzen Terrarium tiles and custom encodings.",
+        "terrain-analysis": {
+          "doc": "Client-side terrain analysis visualization based on DEM data. Computes a scalar attribute (elevation, slope, aspect) from the DEM and maps it to colors via a color ramp. The implementation supports Mapbox Terrain RGB, Mapzen Terrarium tiles and custom encodings.",
           "sdk-support": {
             "basic functionality": {
               "js": "5.17.0",
@@ -937,7 +937,7 @@
     "layout_raster",
     "layout_hillshade",
     "layout_color-relief",
-    "layout_slope",
+    "layout_terrain-analysis",
     "layout_background"
   ],
   "layout_background": {
@@ -2900,7 +2900,7 @@
       "property-type": "data-constant"
     }
   },
-  "layout_slope": {
+  "layout_terrain-analysis": {
     "visibility": {
       "type": "enum",
       "values": {
@@ -4548,7 +4548,7 @@
         }
       },
       "slope": {
-        "doc": "Gets the slope angle of a pixel in degrees (0-90) computed from a `raster-dem` source. Can only be used in the `slope-color` property of a `slope` layer.",
+        "doc": "Gets the slope angle of a pixel in degrees (0-90) computed from a `raster-dem` source. Can be used in the `terrain-analysis-color` property of a `terrain-analysis` layer.",
         "syntax": {
           "overloads": [
             {
@@ -4558,7 +4558,27 @@
           ]
         },
         "example": ["slope"],
-        "group": "Slope",
+        "group": "Terrain Analysis",
+        "sdk-support": {
+          "basic functionality": {
+            "js": "5.17.0",
+            "android": "https://github.com/maplibre/maplibre-native/issues/3408",
+            "ios": "https://github.com/maplibre/maplibre-native/issues/3408"
+          }
+        }
+      },
+      "aspect": {
+        "doc": "Gets the aspect (compass direction the slope faces) of a pixel in degrees (0-360, 0=north) computed from a `raster-dem` source. Can be used in the `terrain-analysis-color` property of a `terrain-analysis` layer.",
+        "syntax": {
+          "overloads": [
+            {
+              "parameters": [],
+              "output-type": "number"
+            }
+          ]
+        },
+        "example": ["aspect"],
+        "group": "Terrain Analysis",
         "sdk-support": {
           "basic functionality": {
             "js": "5.17.0",
@@ -6051,7 +6071,7 @@
     "paint_raster",
     "paint_hillshade",
     "paint_color-relief",
-    "paint_slope",
+    "paint_terrain-analysis",
     "paint_background"
   ],
   "paint_fill": {
@@ -8208,13 +8228,43 @@
       "property-type": "data-constant"
     }
   },
-  "paint_slope": {
-    "slope-opacity": {
+  "paint_terrain-analysis": {
+    "terrain-analysis-attribute": {
+      "type": "enum",
+      "values": {
+        "elevation": {
+          "doc": "Color by elevation (meters above datum)."
+        },
+        "slope": {
+          "doc": "Color by slope angle (0-90 degrees)."
+        },
+        "aspect": {
+          "doc": "Color by aspect / compass direction the slope faces (0-360 degrees, 0=north)."
+        }
+      },
+      "default": "slope",
+      "doc": "The DEM-derived scalar attribute to visualize.",
+      "sdk-support": {
+        "basic functionality": {
+          "js": "5.17.0",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3408",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3408"
+        }
+      },
+      "expression": {
+        "interpolated": false,
+        "parameters": [
+          "zoom"
+        ]
+      },
+      "property-type": "data-constant"
+    },
+    "terrain-analysis-opacity": {
       "type": "number",
       "default": 1,
       "minimum": 0,
       "maximum": 1,
-      "doc": "The opacity at which the slope layer will be drawn.",
+      "doc": "The opacity at which the terrain-analysis layer will be drawn.",
       "transition": true,
       "sdk-support": {
         "basic functionality": {
@@ -8231,9 +8281,9 @@
       },
       "property-type": "data-constant"
     },
-    "slope-color": {
+    "terrain-analysis-color": {
       "type": "color",
-      "doc": "Defines the color of each pixel based on its slope angle in degrees (0-90). Should be an expression that uses `[\"slope\"]` as input.",
+      "doc": "Defines the color of each pixel based on the selected attribute. Use `[\"elevation\"]` for elevation, `[\"slope\"]` for slope, or `[\"aspect\"]` for aspect as the interpolation input.",
       "example": [
         "interpolate",
         ["linear"],
@@ -8257,7 +8307,9 @@
       "expression": {
         "interpolated": true,
         "parameters": [
-          "slope"
+          "elevation",
+          "slope",
+          "aspect"
         ]
       },
       "property-type": "color-ramp"

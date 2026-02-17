@@ -119,13 +119,13 @@ export function validateLayer(options) {
                 sourceType === 'raster-dem' &&
                 type !== 'hillshade' &&
                 type !== 'color-relief' &&
-                type !== 'slope'
+                type !== 'terrain-analysis'
             ) {
                 errors.push(
                     new ValidationError(
                         key,
                         layer.source,
-                        "raster-dem source can only be used with layer type 'hillshade', 'color-relief', or 'slope'."
+                        "raster-dem source can only be used with layer type 'hillshade', 'color-relief', or 'terrain-analysis'."
                     )
                 );
             } else if (
