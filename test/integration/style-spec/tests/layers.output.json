@@ -60,7 +60,7 @@
     "line": 89
   },
   {
-    "message": "layers[12]: raster-dem source can only be used with layer type 'hillshade', 'color-relief', or 'slope'.",
+    "message": "layers[12]: raster-dem source can only be used with layer type 'hillshade', 'color-relief', or 'terrain-analysis'.",
     "line": 95
   },
   {
@@ -68,7 +68,7 @@
     "line": 105
   },
   {
-    "message": "layers[15].type: expected one of [fill, line, symbol, circle, heatmap, fill-extrusion, raster, hillshade, color-relief, slope, background], \"invalid\" found",
+    "message": "layers[15].type: expected one of [fill, line, symbol, circle, heatmap, fill-extrusion, raster, hillshade, color-relief, terrain-analysis, background], \"invalid\" found",
     "line": 112
   },
   {
@@ -84,8 +84,16 @@
     "line": 148
   },
   {
-    "message": "layers[21].type: expected one of [fill, line, symbol, circle, heatmap, fill-extrusion, raster, hillshade, color-relief, slope, background], \"custom\" found",
+    "message": "layers[21].type: expected one of [fill, line, symbol, circle, heatmap, fill-extrusion, raster, hillshade, color-relief, terrain-analysis, background], \"custom\" found",
     "line": 178
+  },
+  {
+    "message": "layers[22].type: expected one of [fill, line, symbol, circle, heatmap, fill-extrusion, raster, hillshade, color-relief, terrain-analysis, background], \"slope\" found",
+    "line": 184
+  },
+  {
+    "message": "layers[22]: raster-dem source can only be used with layer type 'hillshade', 'color-relief', or 'terrain-analysis'.",
+    "line": 185
   },
   {
     "message": "layers[23].paint.hillshade-illumination-direction: array length at least 1 expected, length 0 found",
