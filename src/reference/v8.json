@@ -7691,7 +7691,7 @@
     },
     "resampling": {
       "type": "enum",
-      "doc": "The resampling/interpolation method to use for overscaling, also known as texture magnification filter",
+      "doc": "The resampling/interpolation method to use for overscaling, also known as texture magnification filter. ![image](assets/resampling.png)",
       "values": {
         "linear": {
           "doc": "(Bi)linear filtering interpolates pixel values using the weighted average of the four closest original source pixels creating a smooth but blurry look when overscaled"
@@ -7978,7 +7978,7 @@
     },
     "resampling": {
       "type": "enum",
-      "doc": "The resampling/interpolation method to use for overscaling, also known as texture magnification filter",
+      "doc": "The resampling/interpolation method to use for overscaling, also known as texture magnification filter. ![image](assets/resampling.png)",
       "values": {
         "linear": {
           "doc": "(Bi)linear filtering interpolates pixel values using the weighted average of the four closest original source pixels creating a smooth but blurry look when overscaled"
@@ -8056,7 +8056,7 @@
     },
     "resampling": {
       "type": "enum",
-      "doc": "The resampling/interpolation method to use for overscaling, also known as texture magnification filter",
+      "doc": "The resampling/interpolation method to use for overscaling, also known as texture magnification filter. ![image](assets/resampling.png)",
       "values": {
         "linear": {
           "doc": "(Bi)linear filtering interpolates pixel values using the weighted average of the four closest original source pixels creating a smooth but blurry look when overscaled"
