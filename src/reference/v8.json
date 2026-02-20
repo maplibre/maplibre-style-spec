@@ -7718,7 +7718,7 @@
     },
     "raster-resampling": {
       "type": "enum",
-      "doc": "The resampling/interpolation method to use for overscaling, also known as texture magnification filter",
+      "doc": "The resampling/interpolation method to use for overscaling, also known as texture magnification filter. Advised to use the generic `resampling` paint property instead.",
       "values": {
         "linear": {
           "doc": "(Bi)linear filtering interpolates pixel values using the weighted average of the four closest original source pixels creating a smooth but blurry look when overscaled"
