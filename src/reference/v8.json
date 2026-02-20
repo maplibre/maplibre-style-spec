@@ -7960,7 +7960,7 @@
         }
       },
       "default": "standard",
-      "doc": "The hillshade algorithm to use, one of `standard`, `basic`, `combined`, `igor`, or `multidirectional`. ![image](assets/hillshade_methods.png)",
+      "doc": "The hillshade algorithm to use, one of `standard`, `basic`, `combined`, `igor`, or `multidirectional`.\n![Visual comparison of standard, basic, igor, combined, and multidirectional hillshade-method](assets/hillshade_methods.png)",
       "sdk-support": {
         "basic functionality": {
           "js": "5.5.0",
