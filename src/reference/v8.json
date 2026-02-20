@@ -7689,6 +7689,33 @@
       },
       "property-type": "data-constant"
     },
+    "resampling": {
+      "type": "enum",
+      "doc": "The resampling/interpolation method to use for overscaling, also known as texture magnification filter",
+      "values": {
+        "linear": {
+          "doc": "(Bi)linear filtering interpolates pixel values using the weighted average of the four closest original source pixels creating a smooth but blurry look when overscaled"
+        },
+        "nearest": {
+          "doc": "Nearest neighbor filtering interpolates pixel values using the nearest original source pixel creating a sharp but pixelated look when overscaled"
+        }
+      },
+      "default": "linear",
+      "sdk-support": {
+        "basic functionality": {
+          "js": null,
+          "android": null,
+          "ios": null
+        }
+      },
+      "expression": {
+        "interpolated": false,
+        "parameters": [
+          "zoom"
+        ]
+      },
+      "property-type": "data-constant"
+    },
     "raster-resampling": {
       "type": "enum",
       "doc": "The resampling/interpolation method to use for overscaling, also known as texture magnification filter",
@@ -7948,6 +7975,33 @@
         ]
       },
       "property-type": "data-constant"
+    },
+    "resampling": {
+      "type": "enum",
+      "doc": "The resampling/interpolation method to use for overscaling, also known as texture magnification filter",
+      "values": {
+        "linear": {
+          "doc": "(Bi)linear filtering interpolates pixel values using the weighted average of the four closest original source pixels creating a smooth but blurry look when overscaled"
+        },
+        "nearest": {
+          "doc": "Nearest neighbor filtering interpolates pixel values using the nearest original source pixel creating a sharp but pixelated look when overscaled"
+        }
+      },
+      "default": "linear",
+      "sdk-support": {
+        "basic functionality": {
+          "js": null,
+          "android": null,
+          "ios": null
+        }
+      },
+      "expression": {
+        "interpolated": false,
+        "parameters": [
+          "zoom"
+        ]
+      },
+      "property-type": "data-constant"
     }
   },
   "paint_color-relief": {
@@ -7999,6 +8053,33 @@
         ]
       },
       "property-type": "color-ramp"
+    },
+    "resampling": {
+      "type": "enum",
+      "doc": "The resampling/interpolation method to use for overscaling, also known as texture magnification filter",
+      "values": {
+        "linear": {
+          "doc": "(Bi)linear filtering interpolates pixel values using the weighted average of the four closest original source pixels creating a smooth but blurry look when overscaled"
+        },
+        "nearest": {
+          "doc": "Nearest neighbor filtering interpolates pixel values using the nearest original source pixel creating a sharp but pixelated look when overscaled"
+        }
+      },
+      "default": "linear",
+      "sdk-support": {
+        "basic functionality": {
+          "js": null,
+          "android": null,
+          "ios": null
+        }
+      },
+      "expression": {
+        "interpolated": false,
+        "parameters": [
+          "zoom"
+        ]
+      },
+      "property-type": "data-constant"
     }
   },
   "paint_background": {
