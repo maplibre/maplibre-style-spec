@@ -2,6 +2,7 @@
 
 ### ✨ Features and improvements
 - Add `unit` option to `number-format` expression to allow formatting quantities depending on the locale.
+- Add `resampling` paint property to raster, hillshade, and color relief layers ([#1447](https://github.com/maplibre/maplibre-style-spec/issues/1447)) (by [larsmaxfield](https://github.com/larsmaxfield))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
