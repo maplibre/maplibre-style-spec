@@ -2,6 +2,7 @@
 
 ### ✨ Features and improvements
 - Add `unit` option to `number-format` expression to allow formatting quantities depending on the locale.
+- Add `symbol-elevation` property to `symbol` layers to allow icons and text to be placed in 3D space independently of the map's terrain.
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
