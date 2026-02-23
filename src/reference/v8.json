@@ -2754,6 +2754,39 @@
       },
       "property-type": "data-constant"
     },
+    "symbol-elevation": {
+      "type": "number",
+      "default": 0,
+      "units": "meters",
+      "doc": "Places the symbol at the specified elevation. Overrides the map's terrain elevation.",
+      "requires": [
+        {
+          "symbol-placement": [
+            "point"
+          ]
+        }
+      ],
+      "sdk-support": {
+        "basic functionality": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/644",
+          "android": "https://github.com/maplibre/maplibre-native/issues/1929",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/1929"
+        },
+        "data-driven styling": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/644",
+          "android": "https://github.com/maplibre/maplibre-native/issues/1929",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/1929"
+        }
+      },
+      "expression": {
+        "interpolated": true,
+        "parameters": [
+          "zoom",
+          "feature"
+        ]
+      },
+      "property-type": "data-driven"
+    },
     "visibility": {
       "type": "enum",
       "values": {
