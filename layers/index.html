@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="https://maplibre.org/favicon.ico">
-      <meta name="generator" content="zensical-0.0.20">
+      <meta name="generator" content="zensical-0.0.23">
     
     
       
@@ -34,7 +34,7 @@
       
         
       
-      <link rel="stylesheet" href="../assets/stylesheets/modern/main.d4922b3c.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/modern/main.1e989742.min.css">
       
         
           
@@ -101,7 +101,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="MapLibre Style Spec" class="md-header__button md-logo" aria-label="MapLibre Style Spec" data-md-component="logo">
+    <a href="./.." title="MapLibre Style Spec" class="md-header__button md-logo" aria-label="MapLibre Style Spec" data-md-component="logo">
       
   <img src="../assets/logo.svg" alt="logo">
 
@@ -219,7 +219,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="MapLibre Style Spec" class="md-nav__button md-logo" aria-label="MapLibre Style Spec" data-md-component="logo">
+    <a href="./.." title="MapLibre Style Spec" class="md-nav__button md-logo" aria-label="MapLibre Style Spec" data-md-component="logo">
       
   <img src="../assets/logo.svg" alt="logo">
 
@@ -248,7 +248,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="./.." class="md-nav__link">
         
   
   
@@ -410,7 +410,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="./" class="md-nav__link md-nav__link--active">
+      <a href="././" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2066,6 +2066,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#resampling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        resampling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#raster-resampling" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2203,6 +2214,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#resampling_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        resampling
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2247,6 +2269,17 @@
     <span class="md-ellipsis">
       
         color-relief-color
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resampling_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        resampling
       
     </span>
   </a>
@@ -4186,6 +4219,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#resampling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        resampling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#raster-resampling" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4323,6 +4367,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#resampling_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        resampling
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4367,6 +4422,17 @@
     <span class="md-ellipsis">
       
         color-relief-color
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resampling_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        resampling
       
     </span>
   </a>
@@ -7693,9 +7759,35 @@
 </tr>
 </tbody>
 </table>
+<h3 id="resampling">resampling<a class="headerlink" href="#resampling" title="Permanent link">&para;</a></h3>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>linear</code>, <code>nearest</code>. Defaults to <code>"linear"</code>.</em></p>
+<p>The resampling/interpolation method to use for overscaling, also known as texture magnification filter.
+<img alt="Visual comparison of linear resampling versus nearest resampling" src="../assets/resampling.png" /></p>
+<ul>
+<li><code>linear</code>: (Bi)linear filtering interpolates pixel values using the weighted average of the four closest original source pixels creating a smooth but blurry look when overscaled</li>
+<li><code>nearest</code>: Nearest neighbor filtering interpolates pixel values using the nearest original source pixel creating a sharp but pixelated look when overscaled</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>SDK Support</th>
+<th>MapLibre GL JS</th>
+<th>MapLibre Native<br>Android</th>
+<th>MapLibre Native<br>iOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>basic functionality</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-gl-js/issues/7154">#7154</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/4117">#4117</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/4117">#4117</a>)</td>
+</tr>
+</tbody>
+</table>
 <h3 id="raster-resampling">raster-resampling<a class="headerlink" href="#raster-resampling" title="Permanent link">&para;</a></h3>
 <p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>linear</code>, <code>nearest</code>. Defaults to <code>"linear"</code>.</em></p>
-<p>The resampling/interpolation method to use for overscaling, also known as texture magnification filter</p>
+<p>The resampling/interpolation method to use for overscaling, also known as texture magnification filter. It is advised to use the generic <code>resampling</code> paint property instead.</p>
 <ul>
 <li><code>linear</code>: (Bi)linear filtering interpolates pixel values using the weighted average of the four closest original source pixels creating a smooth but blurry look when overscaled</li>
 <li><code>nearest</code>: Nearest neighbor filtering interpolates pixel values using the nearest original source pixel creating a sharp but pixelated look when overscaled</li>
@@ -7948,7 +8040,8 @@
 </table>
 <h3 id="hillshade-method">hillshade-method<a class="headerlink" href="#hillshade-method" title="Permanent link">&para;</a></h3>
 <p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>standard</code>, <code>basic</code>, <code>combined</code>, <code>igor</code>, <code>multidirectional</code>. Defaults to <code>"standard"</code>.</em></p>
-<p>The hillshade algorithm to use, one of <code>standard</code>, <code>basic</code>, <code>combined</code>, <code>igor</code>, or <code>multidirectional</code>. <img alt="image" src="../assets/hillshade_methods.png" /></p>
+<p>The hillshade algorithm to use, one of <code>standard</code>, <code>basic</code>, <code>combined</code>, <code>igor</code>, or <code>multidirectional</code>.
+<img alt="Visual comparison of standard, basic, igor, combined, and multidirectional hillshade-method" src="../assets/hillshade_methods.png" /></p>
 <ul>
 <li><code>standard</code>: The legacy hillshade method.</li>
 <li><code>basic</code>: Basic hillshade. Uses a simple physics model where the reflected light intensity is proportional to the cosine of the angle between the incident light and the surface normal. Similar to GDAL's <code>gdaldem</code> default algorithm.</li>
@@ -7971,6 +8064,32 @@
 <td>5.5.0</td>
 <td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/3396">#3396</a>)</td>
 <td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/3396">#3396</a>)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="resampling_1">resampling<a class="headerlink" href="#resampling_1" title="Permanent link">&para;</a></h3>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>linear</code>, <code>nearest</code>. Defaults to <code>"linear"</code>.</em></p>
+<p>The resampling/interpolation method to use for overscaling, also known as texture magnification filter.
+<img alt="Visual comparison of linear resampling versus nearest resampling" src="../assets/resampling.png" /></p>
+<ul>
+<li><code>linear</code>: (Bi)linear filtering interpolates pixel values using the weighted average of the four closest original source pixels creating a smooth but blurry look when overscaled</li>
+<li><code>nearest</code>: Nearest neighbor filtering interpolates pixel values using the nearest original source pixel creating a sharp but pixelated look when overscaled</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>SDK Support</th>
+<th>MapLibre GL JS</th>
+<th>MapLibre Native<br>Android</th>
+<th>MapLibre Native<br>iOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>basic functionality</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-gl-js/issues/7154">#7154</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/4117">#4117</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/4117">#4117</a>)</td>
 </tr>
 </tbody>
 </table>
@@ -8061,6 +8180,32 @@
 <td>Not supported yet</td>
 <td>Not supported yet</td>
 <td>Not supported yet</td>
+</tr>
+</tbody>
+</table>
+<h3 id="resampling_2">resampling<a class="headerlink" href="#resampling_2" title="Permanent link">&para;</a></h3>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>linear</code>, <code>nearest</code>. Defaults to <code>"linear"</code>.</em></p>
+<p>The resampling/interpolation method to use for overscaling, also known as texture magnification filter.
+<img alt="Visual comparison of linear resampling versus nearest resampling" src="../assets/resampling.png" /></p>
+<ul>
+<li><code>linear</code>: (Bi)linear filtering interpolates pixel values using the weighted average of the four closest original source pixels creating a smooth but blurry look when overscaled</li>
+<li><code>nearest</code>: Nearest neighbor filtering interpolates pixel values using the nearest original source pixel creating a sharp but pixelated look when overscaled</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>SDK Support</th>
+<th>MapLibre GL JS</th>
+<th>MapLibre Native<br>Android</th>
+<th>MapLibre Native<br>iOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>basic functionality</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-gl-js/issues/7154">#7154</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/4117">#4117</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/4117">#4117</a>)</td>
 </tr>
 </tbody>
 </table>
@@ -8187,7 +8332,7 @@
       <script id="__config" type="application/json">{"annotate":null,"base":"..","features":["content.code.copy","toc.follow","search.suggest","navigation.instant","navigation.sections","navigation.top"],"search":"../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
     
     
-      <script src="../assets/javascripts/bundle.8ffeb9c9.min.js"></script>
+      <script src="../assets/javascripts/bundle.5fcf0de6.min.js"></script>
       
     
   </body>
