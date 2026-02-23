@@ -5,19 +5,14 @@
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
 
-- Add `resampling` paint property to raster, hillshade, color relief layers ([#1507](https://github.com/maplibre/maplibre-style-spec/pull/1507)) (by [larsmaxfield](https://github.com/larsmaxfield))
-- Add "unit" option to "number-format" ([#1335](https://github.com/maplibre/maplibre-style-spec/pull/1335)) (by [ginnyTheCat](https://github.com/ginnyTheCat))
-- chore(deps): autoupdate pre-commit ([#1473](https://github.com/maplibre/maplibre-style-spec/pull/1473)) (by [app/pre-commit-ci](https://github.com/app/pre-commit-ci))
-- docs: zensical based docs ([#1394](https://github.com/maplibre/maplibre-style-spec/pull/1394)) (by [CommanderStorm](https://github.com/CommanderStorm))
-- Include 'transparent' as a permitted color name ([#1442](https://github.com/maplibre/maplibre-style-spec/pull/1442)) (by [zstadler](https://github.com/zstadler))
-- Fix docs publishing on release, add manual publish of docs. ([#1434](https://github.com/maplibre/maplibre-style-spec/pull/1434)) (by [HarelM](https://github.com/HarelM))
 ## 24.5.0
 
 ### ✨ Features and improvements
-- Add `unit` option to `number-format` expression to allow formatting quantities depending on the locale.
-- Add `resampling` paint property to raster, hillshade, and color relief layers ([#1447](https://github.com/maplibre/maplibre-style-spec/issues/1447)) (by [larsmaxfield](https://github.com/larsmaxfield))
 
-### 🐞 Bug fixes
+- Add "unit" option to "number-format" ([#1335](https://github.com/maplibre/maplibre-style-spec/pull/1335)) (by [ginnyTheCat](https://github.com/ginnyTheCat))
+- Add `resampling` paint property to raster, hillshade, and color relief layers ([#1447](https://github.com/maplibre/maplibre-style-spec/issues/1447)) (by [larsmaxfield](https://github.com/larsmaxfield))
+- Include 'transparent' as a permitted color name ([#1442](https://github.com/maplibre/maplibre-style-spec/pull/1442)) (by [zstadler](https://github.com/zstadler))
+- Migrate docs to zensical ([#1394](https://github.com/maplibre/maplibre-style-spec/pull/1394)) (by [CommanderStorm](https://github.com/CommanderStorm))
 
 ## 24.4.1
 
