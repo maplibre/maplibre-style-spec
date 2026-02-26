@@ -5666,6 +5666,66 @@
             "ios": "4.2.0"
           }
         }
+      },
+      "split": {
+        "doc": "Returns an array of substrings formed by splitting an input string by a separator string.",
+        "group": "String",
+        "syntax": {
+          "overloads": [
+            {
+              "parameters": ["input", "separator"],
+              "output-type": "array<string>"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "input",
+              "type": "string"
+            },
+            {
+              "name": "separator",
+              "type": "string"
+            }
+          ]
+        },
+        "example": ["split", ["get", "name"], ";"],
+        "sdk-support": {
+          "basic functionality": {
+            "js": "5.20.0",
+            "android": "https://github.com/maplibre/maplibre-style-spec/issues/1119",
+            "ios": "https://github.com/maplibre/maplibre-style-spec/issues/1119"
+          }
+        }
+      },
+      "join": {
+        "doc": "Returns a string formed by concatenating the elements of the input array, inserting a separator between each element.",
+        "group": "String",
+        "syntax": {
+          "overloads": [
+            {
+              "parameters": ["input", "separator"],
+              "output-type": "string"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "input",
+              "type": "array"
+            },
+            {
+              "name": "separator",
+              "type": "string"
+            }
+          ]
+        },
+        "example": ["join", ["split", ["get", "name"], ";"], "\n"],
+        "sdk-support": {
+          "basic functionality": {
+            "js": "5.20.0",
+            "android": "https://github.com/maplibre/maplibre-style-spec/issues/1119",
+            "ios": "https://github.com/maplibre/maplibre-style-spec/issues/1119"
+          }
+        }
       }
     }
   },

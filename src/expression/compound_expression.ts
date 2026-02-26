@@ -508,6 +508,16 @@ CompoundExpression.register(expressions, {
         varargs(ValueType),
         (ctx, args) => args.map((arg) => valueToString(arg.evaluate(ctx))).join('')
     ],
+    split: [
+        array(StringType),
+        [StringType, StringType],
+        (ctx, [s, delim]) => s.evaluate(ctx).split(delim.evaluate(ctx))
+    ],
+    join: [
+        StringType,
+        [array(StringType), StringType],
+        (ctx, [arr, delim]) => (arr as any).value.join(delim.evaluate(ctx))
+    ],
     'resolved-locale': [
         StringType,
         [CollatorType],

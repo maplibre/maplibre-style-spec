@@ -1,5 +1,6 @@
 ## main
 ### ✨ Features and improvements
+- Add `split` and `join` expressions ([#1518](https://github.com/maplibre/maplibre-style-spec/pull/1518)) (by [1ec5](https://github.com/1ec5))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
