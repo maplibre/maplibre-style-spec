@@ -5692,8 +5692,8 @@
         "sdk-support": {
           "basic functionality": {
             "js": "5.20.0",
-            "android": "https://github.com/maplibre/maplibre-style-spec/issues/1119",
-            "ios": "https://github.com/maplibre/maplibre-style-spec/issues/1119"
+            "android": "https://github.com/maplibre/maplibre-native/issues/4133",
+            "ios": "https://github.com/maplibre/maplibre-native/issues/4133"
           }
         }
       },
@@ -5722,8 +5722,8 @@
         "sdk-support": {
           "basic functionality": {
             "js": "5.20.0",
-            "android": "https://github.com/maplibre/maplibre-style-spec/issues/1119",
-            "ios": "https://github.com/maplibre/maplibre-style-spec/issues/1119"
+            "android": "https://github.com/maplibre/maplibre-native/issues/4133",
+            "ios": "https://github.com/maplibre/maplibre-native/issues/4133"
           }
         }
       }
