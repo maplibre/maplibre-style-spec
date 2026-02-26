@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="https://maplibre.org/favicon.ico">
-      <meta name="generator" content="zensical-0.0.23">
+      <meta name="generator" content="zensical-0.0.24">
     
     
       
@@ -34,7 +34,7 @@
       
         
       
-      <link rel="stylesheet" href="../assets/stylesheets/modern/main.1e989742.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/modern/main.28978c9b.min.css">
       
         
           
@@ -1534,6 +1534,28 @@
     <span class="md-ellipsis">
       
         resolved-locale
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#split" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        split
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#join" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        join
       
     </span>
   </a>
@@ -3103,6 +3125,28 @@
     <span class="md-ellipsis">
       
         resolved-locale
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#split" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        split
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#join" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        join
       
     </span>
   </a>
@@ -6134,6 +6178,66 @@ Parameters:</p>
 </tr>
 </tbody>
 </table>
+<h3 id="split">split<a class="headerlink" href="#split" title="Permanent link">&para;</a></h3>
+<p>Returns an array of substrings formed by splitting an input string by a separator string.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-179-1"><a id="__codelineno-179-1" name="__codelineno-179-1" href="#__codelineno-179-1"></a><span class="p">[</span><span class="s2">&quot;split&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">,</span><span class="w"> </span><span class="nx">separator</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">array</span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span>
+</span></code></pre></div></p>
+<ul>
+<li><code>input</code>: <code>string</code></li>
+<li><code>separator</code>: <code>string</code></li>
+</ul>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-180-1"><a id="__codelineno-180-1" name="__codelineno-180-1" href="#__codelineno-180-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;split&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;name&quot;</span><span class="p">],</span><span class="w"> </span><span class="s2">&quot;;&quot;</span><span class="p">]</span>
+</span></code></pre></div></p>
+<table>
+<thead>
+<tr>
+<th>SDK Support</th>
+<th>MapLibre GL JS</th>
+<th>MapLibre Native<br>Android</th>
+<th>MapLibre Native<br>iOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>basic functionality</td>
+<td>5.20.0</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-style-spec/issues/1119">#1119</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-style-spec/issues/1119">#1119</a>)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="join">join<a class="headerlink" href="#join" title="Permanent link">&para;</a></h3>
+<p>Returns a string formed by concatenating the elements of the input array, inserting a separator between each element.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-181-1"><a id="__codelineno-181-1" name="__codelineno-181-1" href="#__codelineno-181-1"></a><span class="p">[</span><span class="s2">&quot;join&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">,</span><span class="w"> </span><span class="nx">separator</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span>
+</span></code></pre></div></p>
+<ul>
+<li><code>input</code>: <code>array</code></li>
+<li><code>separator</code>: <code>string</code></li>
+</ul>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-182-1"><a id="__codelineno-182-1" name="__codelineno-182-1" href="#__codelineno-182-1"></a><span class="nt">&quot;some-property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;join&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;split&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;name&quot;</span><span class="p">],</span><span class="w"> </span><span class="s2">&quot;;&quot;</span><span class="p">],</span><span class="w"> </span><span class="s2">&quot;\n&quot;</span><span class="p">]</span>
+</span></code></pre></div></p>
+<table>
+<thead>
+<tr>
+<th>SDK Support</th>
+<th>MapLibre GL JS</th>
+<th>MapLibre Native<br>Android</th>
+<th>MapLibre Native<br>iOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>basic functionality</td>
+<td>5.20.0</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-style-spec/issues/1119">#1119</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-style-spec/issues/1119">#1119</a>)</td>
+</tr>
+</tbody>
+</table>
 
 
 
@@ -6257,7 +6361,7 @@ Parameters:</p>
       <script id="__config" type="application/json">{"annotate":null,"base":"..","features":["content.code.copy","toc.follow","search.suggest","navigation.instant","navigation.sections","navigation.top"],"search":"../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
     
     
-      <script src="../assets/javascripts/bundle.5fcf0de6.min.js"></script>
+      <script src="../assets/javascripts/bundle.16f8adc2.min.js"></script>
       
     
   </body>
