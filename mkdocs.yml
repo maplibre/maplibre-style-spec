@@ -6,7 +6,6 @@ extra_css:
   - assets/extra.css
 theme:
   name: 'material'
-  variant: classic
   favicon: https://maplibre.org/favicon.ico
   logo: assets/logo.svg
   features:
