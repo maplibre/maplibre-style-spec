@@ -47,3 +47,35 @@ In order to publish the package to NPM:
 2. Run the create bump version PR action to create a PR with the version bump
 3. Approve and merge this PR after you have reviewed the Changelog file
 4. Squash and merge the PR, an automatic action will pick up the change and publish the package to npm
+
+# Using a local style-spec downstream.
+
+When developing style-spec changes that aren't yet published, you can point the downstream project (e.g. `maplibre-gl-js` or `maplibre-native`) at a local copy:
+
+1. **Build the local style-spec** (as above)
+
+2. **Switch the dependency** downstream e.g. in `maplibre-gl-js/package.json`:
+
+   This assumes the local copy is in a subfolder of the main project:
+   ```diff
+   -"@maplibre/maplibre-gl-style-spec": "^X.Y.Z",
+   +"@maplibre/maplibre-gl-style-spec": "file:./maplibre-style-spec",
+   ```
+   To prevent accidental commits of this dependency change:
+   ```sh
+   git update-index --assume-unchanged package.json package-lock.json
+   ```
+   Undo with `--no-assume-unchanged` if needed later.
+
+3. **Install and regenerate**
+
+   From the `maplibre-gl-js` root
+   ```bash
+   npm install
+   npm run generate-style-code
+   ```
+   Or from the `maplibre-native` root
+   ```bash
+   npm install
+   npm run copy-style-spec
+   ```
