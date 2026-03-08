@@ -144,11 +144,7 @@ export function validateLayer(options) {
         }
     }
 
-    if (
-        type === 'raster' &&
-        layer.paint?.resampling &&
-        layer.paint?.['raster-resampling']
-    ) {
+    if (type === 'raster' && layer.paint?.resampling && layer.paint?.['raster-resampling']) {
         errors.push(
             new ValidationError(
                 key,
