@@ -144,6 +144,20 @@ export function validateLayer(options) {
         }
     }
 
+    if (
+        type === 'raster' &&
+        layer.paint?.resampling &&
+        layer.paint?.['raster-resampling']
+    ) {
+        errors.push(
+            new ValidationError(
+                key,
+                layer.paint,
+                `layer "${layer.id}" redundantly specifies "resampling" and "raster-resampling" paint properties, but only one is allowed. It is advised to use "resampling".`
+            )
+        );
+    }
+
     errors = errors.concat(
         validateObject({
             key,
