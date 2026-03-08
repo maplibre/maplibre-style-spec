@@ -55,7 +55,10 @@ describe('Validate sdk-support in spec', () => {
                 }
 
                 const support = platformSupport[platform]!;
-                expect(support, `Missing platform '${platform}' in sdk-support at ${path.join('.')}. Please create a tracking issue and add the link.`).toBeTruthy();
+                expect(
+                    support,
+                    `Missing platform '${platform}' in sdk-support at ${path.join('.')}. Please create a tracking issue and add the link.`
+                ).toBeTruthy();
 
                 const maplibreIssue = /https:\/\/github.com\/maplibre\/[^/]+\/issues\/(\d+)/;
                 const version = /^\d+\.\d+\.\d+$/;
