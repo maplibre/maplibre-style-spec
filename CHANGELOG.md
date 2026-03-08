@@ -1,6 +1,6 @@
 ## main
 ### ✨ Features and improvements
-- Validate that `raster` layers do not specify both `resampling` and `raster-resampling` paint properties ([#1532](https://github.com/maplibre/maplibre-style-spec/pull/1507)) (by [larsmaxfield](https://github.com/larsmaxfield))
+- Validate that `raster` layers do not specify both `resampling` and `raster-resampling` paint properties ([#1532](https://github.com/maplibre/maplibre-style-spec/pull/1532)) (by [larsmaxfield](https://github.com/larsmaxfield))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
