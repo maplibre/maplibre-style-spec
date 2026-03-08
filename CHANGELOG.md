@@ -1,10 +1,19 @@
 ## main
 ### ✨ Features and improvements
-- Validate that `raster` layers do not specify both `resampling` and `raster-resampling` paint properties ([#1532](https://github.com/maplibre/maplibre-style-spec/pull/1532)) (by [larsmaxfield](https://github.com/larsmaxfield))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
+
+- Restore classic theme variant for Zensical migration ([#1529](https://github.com/maplibre/maplibre-style-spec/pull/1529)) (by [mizmay](https://github.com/mizmay))
+- Revert "Restore classic theme variant for Zensical migration" ([#1530](https://github.com/maplibre/maplibre-style-spec/pull/1530)) (by [CommanderStorm](https://github.com/CommanderStorm))
+- Restore classic theme variant for Zensical migration ([#1529](https://github.com/maplibre/maplibre-style-spec/pull/1529)) (by [mizmay](https://github.com/mizmay))
+- Update links to native split/join issue ([#1520](https://github.com/maplibre/maplibre-style-spec/pull/1520)) (by [1ec5](https://github.com/1ec5))
+## 24.7.0
+### ✨ Features and improvements
+- Validate that `raster` layers do not specify both `resampling` and `raster-resampling` paint properties ([#1532](https://github.com/maplibre/maplibre-style-spec/pull/1532)) (by [larsmaxfield](https://github.com/larsmaxfield))
+
+### 🐞 Bug fixes
 
 ## 24.6.0
 
