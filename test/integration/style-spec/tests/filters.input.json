@@ -152,6 +152,34 @@
       "filter": ["all", [">=", "Constructi", 1930], [">=", ["zoom"], 10]]
     },
     {
+      "id": "mixing old filters and expressions with $type",
+      "type": "line",
+      "source": "source",
+      "source-layer": "source-layer",
+      "filter": ["all", ["==", "$type", "Point"], ["case", [">=", ["zoom"], 10], true, false]]
+    },
+    {
+      "id": "mixing old filters and expressions with none",
+      "type": "line",
+      "source": "source",
+      "source-layer": "source-layer",
+      "filter": ["none", ["==", "class", "primary"], ["case", [">=", ["zoom"], 10], true, false]]
+    },
+    {
+      "id": "mixing old filters and expressions with $type in",
+      "type": "line",
+      "source": "source",
+      "source-layer": "source-layer",
+      "filter": ["all", ["in", "$type", "Point", "LineString"], ["case", [">=", ["zoom"], 10], true, false]]
+    },
+    {
+      "id": "mixing old filters and expressions nested in case condition",
+      "type": "line",
+      "source": "source",
+      "source-layer": "source-layer",
+      "filter": ["case", ["all", [">=", ["zoom"], 10], ["==", "$type", "Point"]], true, false]
+    },
+    {
       "id": "filter expressions with feature-state",
       "type": "line",
       "source": "source",

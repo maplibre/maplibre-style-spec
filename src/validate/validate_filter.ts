@@ -4,10 +4,30 @@ import {validateEnum} from './validate_enum';
 import {getType} from '../util/get_type';
 import {unbundle, deepUnbundle} from '../util/unbundle_jsonlint';
 import {extendBy as extend} from '../util/extend';
-import {isExpressionFilter} from '../feature_filter';
+import {findMixedLegacyFilter, getMixedFilterErrorMessage, isExpressionFilter} from '../feature_filter';
+
+function getValueAtPath(value, path) {
+    let current = value;
+    for (const index of path) {
+        current = current[index];
+    }
+    return current;
+}
 
 export function validateFilter(options) {
-    if (isExpressionFilter(deepUnbundle(options.value))) {
+    const value = deepUnbundle(options.value);
+    if (isExpressionFilter(value)) {
+        const mixedLegacyDiagnostic = findMixedLegacyFilter(value);
+        if (mixedLegacyDiagnostic) {
+            const errorKey = `${options.key}${mixedLegacyDiagnostic.path.map((index) => `[${index}]`).join('')}`;
+            return [
+                new ValidationError(
+                    errorKey,
+                    getValueAtPath(options.value, mixedLegacyDiagnostic.path),
+                    getMixedFilterErrorMessage(mixedLegacyDiagnostic.legacyFilter)
+                )
+            ];
+        }
         return validateExpression(
             extend({}, options, {
                 expressionContext: 'filter',
