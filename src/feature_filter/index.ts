@@ -101,7 +101,10 @@ function getLegacyFilterExpressionSuggestion(filter: Array<any>): unknown {
         case '>=':
             if (filter.length !== 3 || typeof filter[1] !== 'string') return null;
             if (
-                (filter[0] === '<' || filter[0] === '<=' || filter[0] === '>' || filter[0] === '>=') &&
+                (filter[0] === '<' ||
+                    filter[0] === '<=' ||
+                    filter[0] === '>' ||
+                    filter[0] === '>=') &&
                 filter[1] === '$type'
             ) {
                 return null;
@@ -111,7 +114,11 @@ function getLegacyFilterExpressionSuggestion(filter: Array<any>): unknown {
         case 'in':
         case '!in': {
             if (filter.length < 2 || typeof filter[1] !== 'string') return null;
-            const expression = ['in', getFilterPropertyExpression(filter[1]), ['literal', filter.slice(2)]];
+            const expression = [
+                'in',
+                getFilterPropertyExpression(filter[1]),
+                ['literal', filter.slice(2)]
+            ];
             return filter[0] === '!in' ? ['!', expression] : expression;
         }
 
@@ -144,7 +151,10 @@ export function getMixedFilterErrorMessage(filter: Array<any>): string {
     return `Mixing deprecated filter syntax with expression syntax is not supported. Convert ${JSON.stringify(filter)} to expression syntax.`;
 }
 
-export function findMixedLegacyFilter(filter: unknown, path: Array<number> = []): MixedFilterDiagnostic | null {
+export function findMixedLegacyFilter(
+    filter: unknown,
+    path: Array<number> = []
+): MixedFilterDiagnostic | null {
     if (!Array.isArray(filter) || filter.length < 1) {
         return null;
     }

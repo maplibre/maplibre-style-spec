@@ -712,15 +712,29 @@ describe('global-state in filter', () => {
         const f = ff.filter;
 
         // Active track: all roles pass
-        expect(f({zoom: 0}, {properties: {id: 'track1', role: 'mid'}} as any as Feature)).toBe(true);
-        expect(f({zoom: 0}, {properties: {id: 'track1', role: 'insert'}} as any as Feature)).toBe(true);
-        expect(f({zoom: 0}, {properties: {id: 'track1', role: 'start'}} as any as Feature)).toBe(true);
+        expect(f({zoom: 0}, {properties: {id: 'track1', role: 'mid'}} as any as Feature)).toBe(
+            true
+        );
+        expect(f({zoom: 0}, {properties: {id: 'track1', role: 'insert'}} as any as Feature)).toBe(
+            true
+        );
+        expect(f({zoom: 0}, {properties: {id: 'track1', role: 'start'}} as any as Feature)).toBe(
+            true
+        );
 
         // Inactive track: only start/end pass
-        expect(f({zoom: 0}, {properties: {id: 'track2', role: 'mid'}} as any as Feature)).toBe(false);
-        expect(f({zoom: 0}, {properties: {id: 'track2', role: 'insert'}} as any as Feature)).toBe(false);
-        expect(f({zoom: 0}, {properties: {id: 'track2', role: 'start'}} as any as Feature)).toBe(true);
-        expect(f({zoom: 0}, {properties: {id: 'track2', role: 'end'}} as any as Feature)).toBe(true);
+        expect(f({zoom: 0}, {properties: {id: 'track2', role: 'mid'}} as any as Feature)).toBe(
+            false
+        );
+        expect(f({zoom: 0}, {properties: {id: 'track2', role: 'insert'}} as any as Feature)).toBe(
+            false
+        );
+        expect(f({zoom: 0}, {properties: {id: 'track2', role: 'start'}} as any as Feature)).toBe(
+            true
+        );
+        expect(f({zoom: 0}, {properties: {id: 'track2', role: 'end'}} as any as Feature)).toBe(
+            true
+        );
     });
 
     test('isExpressionFilter recognizes filters mixing $type with expression operators', () => {
@@ -734,7 +748,10 @@ describe('global-state in filter', () => {
         const filter = [
             'all',
             ['==', '$type', 'Point'],
-            ['case', isActive, true,
+            [
+                'case',
+                isActive,
+                true,
                 ['any', ['==', ['get', 'role'], 'start'], ['==', ['get', 'role'], 'end']]
             ]
         ] as ExpressionFilterSpecification;

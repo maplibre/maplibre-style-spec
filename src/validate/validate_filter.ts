@@ -4,7 +4,11 @@ import {validateEnum} from './validate_enum';
 import {getType} from '../util/get_type';
 import {unbundle, deepUnbundle} from '../util/unbundle_jsonlint';
 import {extendBy as extend} from '../util/extend';
-import {findMixedLegacyFilter, getMixedFilterErrorMessage, isExpressionFilter} from '../feature_filter';
+import {
+    findMixedLegacyFilter,
+    getMixedFilterErrorMessage,
+    isExpressionFilter
+} from '../feature_filter';
 
 function getValueAtPath(value, path) {
     let current = value;
