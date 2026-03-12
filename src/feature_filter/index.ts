@@ -16,6 +16,11 @@ export type FeatureFilter = {
     getGlobalStateRefs: () => Set<string>;
 };
 
+type MixedFilterDiagnostic = {
+    path: Array<number>;
+    legacyFilter: Array<any>;
+};
+
 export function isExpressionFilter(filter: any): filter is ExpressionFilterSpecification {
     if (filter === true || filter === false) {
         return true;
@@ -35,7 +40,6 @@ export function isExpressionFilter(filter: any): filter is ExpressionFilterSpeci
 
         case '!in':
         case '!has':
-        case 'none':
             return false;
 
         case '==':
@@ -46,17 +50,157 @@ export function isExpressionFilter(filter: any): filter is ExpressionFilterSpeci
         case '<=':
             return filter.length !== 3 || Array.isArray(filter[1]) || Array.isArray(filter[2]);
 
-        case 'any':
-        case 'all':
+        case 'none': {
             for (const f of filter.slice(1)) {
-                if (!isExpressionFilter(f) && typeof f !== 'boolean') {
-                    return false;
+                if (typeof f === 'boolean') continue;
+                if (isExpressionFilter(f)) {
+                    return true;
                 }
             }
-            return true;
+            return false;
+        }
+
+        case 'any':
+        case 'all': {
+            let hasLegacy = false;
+            for (const f of filter.slice(1)) {
+                if (typeof f === 'boolean') continue;
+                if (isExpressionFilter(f)) {
+                    // If any child is definitely an expression, treat the whole filter as an expression
+                    // that will go through extensive validation to surface mixed syntax issues.
+                    return true;
+                }
+                hasLegacy = true;
+            }
+            return !hasLegacy;
+        }
 
         default:
             return true;
+    }
+}
+
+function getFilterPropertyExpression(property: string): unknown {
+    switch (property) {
+        case '$type':
+            return ['geometry-type'];
+        case '$id':
+            return ['id'];
+        default:
+            return ['get', property];
+    }
+}
+
+function getLegacyFilterExpressionSuggestion(filter: Array<any>): unknown {
+    switch (filter[0]) {
+        case '==':
+        case '!=':
+        case '<':
+        case '<=':
+        case '>':
+        case '>=':
+            if (filter.length !== 3 || typeof filter[1] !== 'string') return null;
+            if (
+                (filter[0] === '<' ||
+                    filter[0] === '<=' ||
+                    filter[0] === '>' ||
+                    filter[0] === '>=') &&
+                filter[1] === '$type'
+            ) {
+                return null;
+            }
+            return [filter[0], getFilterPropertyExpression(filter[1]), filter[2]];
+
+        case 'in':
+        case '!in': {
+            if (filter.length < 2 || typeof filter[1] !== 'string') return null;
+            const expression = [
+                'in',
+                getFilterPropertyExpression(filter[1]),
+                ['literal', filter.slice(2)]
+            ];
+            return filter[0] === '!in' ? ['!', expression] : expression;
+        }
+
+        case 'has':
+        case '!has': {
+            if (filter.length !== 2 || typeof filter[1] !== 'string') return null;
+            if (filter[1] === '$type' || filter[1] === '$id') return null;
+            const expression = ['has', filter[1]];
+            return filter[0] === '!has' ? ['!', expression] : expression;
+        }
+
+        default:
+            return null;
+    }
+}
+
+export function getMixedFilterErrorMessage(filter: Array<any>): string {
+    if (
+        (filter[0] === '<' || filter[0] === '<=' || filter[0] === '>' || filter[0] === '>=') &&
+        filter[1] === '$type'
+    ) {
+        return `"$type" cannot be use with operator "${filter[0]}"`;
+    }
+
+    const suggestion = getLegacyFilterExpressionSuggestion(filter);
+    if (suggestion) {
+        return `Mixing deprecated filter syntax with expression syntax is not supported. Replace ${JSON.stringify(filter)} with ${JSON.stringify(suggestion)}.`;
+    }
+
+    return `Mixing deprecated filter syntax with expression syntax is not supported. Convert ${JSON.stringify(filter)} to expression syntax.`;
+}
+
+export function findMixedLegacyFilter(
+    filter: unknown,
+    path: Array<number> = []
+): MixedFilterDiagnostic | null {
+    if (!Array.isArray(filter) || filter.length < 1) {
+        return null;
+    }
+
+    const checkChild = (index: number) => {
+        const child = filter[index];
+        if (!Array.isArray(child)) {
+            return null;
+        }
+        if (!isExpressionFilter(child)) {
+            return {path: path.concat(index), legacyFilter: child};
+        }
+        return findMixedLegacyFilter(child, path.concat(index));
+    };
+
+    switch (filter[0]) {
+        case 'all':
+        case 'any':
+        case 'none':
+            for (let i = 1; i < filter.length; i++) {
+                const diagnostic = checkChild(i);
+                if (diagnostic) return diagnostic;
+            }
+            break;
+
+        case '!': {
+            const diagnostic = checkChild(1);
+            if (diagnostic) return diagnostic;
+            break;
+        }
+
+        case 'case':
+            for (let i = 1; i < filter.length - 1; i += 2) {
+                const diagnostic = checkChild(i);
+                if (diagnostic) return diagnostic;
+            }
+            break;
+    }
+
+    return null;
+}
+
+export function validateNoMixedExpressionFilter(filter: unknown) {
+    const diagnostic = findMixedLegacyFilter(filter);
+    if (diagnostic) {
+        throw new Error(getMixedFilterErrorMessage(diagnostic.legacyFilter));
     }
 }
 
@@ -89,8 +233,13 @@ export function featureFilter(
         return {filter: () => true, needGeometry: false, getGlobalStateRefs: () => new Set()};
     }
 
-    if (!isExpressionFilter(filter)) {
+    if (Array.isArray(filter) && filter[0] === 'none' && isExpressionFilter(filter)) {
+        validateNoMixedExpressionFilter(filter);
+        filter = convertFilter(filter as Array<any>) as ExpressionFilterSpecification;
+    } else if (!isExpressionFilter(filter)) {
         filter = convertFilter(filter) as ExpressionFilterSpecification;
+    } else {
+        validateNoMixedExpressionFilter(filter);
     }
 
     const compiled = createExpression(

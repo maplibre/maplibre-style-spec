@@ -52,11 +52,27 @@
     "line": 142
   },
   {
-    "message": "layers[14].filter[2][1]: string expected, array found",
+    "message": "layers[14].filter[1]: Mixing deprecated filter syntax with expression syntax is not supported. Replace [\">=\",\"Constructi\",1930] with [\">=\",[\"get\",\"Constructi\"],1930].",
     "line": 152
   },
   {
-    "message": "layers[15].filter: \"feature-state\" data expressions are not supported with filters.",
+    "message": "layers[15].filter[1]: Mixing deprecated filter syntax with expression syntax is not supported. Replace [\"==\",\"$type\",\"Point\"] with [\"==\",[\"geometry-type\"],\"Point\"].",
     "line": 159
+  },
+  {
+    "message": "layers[16].filter[1]: Mixing deprecated filter syntax with expression syntax is not supported. Replace [\"==\",\"class\",\"primary\"] with [\"==\",[\"get\",\"class\"],\"primary\"].",
+    "line": 166
+  },
+  {
+    "message": "layers[17].filter[1]: Mixing deprecated filter syntax with expression syntax is not supported. Replace [\"in\",\"$type\",\"Point\",\"LineString\"] with [\"in\",[\"geometry-type\"],[\"literal\",[\"Point\",\"LineString\"]]].",
+    "line": 173
+  },
+  {
+    "message": "layers[18].filter[1][2]: Mixing deprecated filter syntax with expression syntax is not supported. Replace [\"==\",\"$type\",\"Point\"] with [\"==\",[\"geometry-type\"],\"Point\"].",
+    "line": 180
+  },
+  {
+    "message": "layers[19].filter: \"feature-state\" data expressions are not supported with filters.",
+    "line": 187
   }
 ]
