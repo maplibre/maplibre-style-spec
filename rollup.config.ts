@@ -1,18 +1,10 @@
 import replace from '@rollup/plugin-replace';
-import commonjs from '@rollup/plugin-commonjs';
-import {RollupOptions} from 'rollup';
-import resolve from '@rollup/plugin-node-resolve';
-import typescript from '@rollup/plugin-typescript';
-import json from '@rollup/plugin-json';
 import minifyStyleSpec from './build/rollup_plugin_minify_style_spec';
 import shebang from 'rollup-plugin-preserve-shebang';
+import {defineConfig} from 'rolldown';
 
 const rollupPlugins = [
     minifyStyleSpec(),
-    json(),
-    resolve({
-        browser: true
-    }),
     // https://github.com/zaach/jison/issues/351
     replace({
         preventAssignment: true,
@@ -21,13 +13,15 @@ const rollupPlugins = [
         values: {
             '_token_stack:': ''
         }
-    }),
-    typescript(),
-    commonjs()
+    })
 ];
 
-const config: RollupOptions[] = [
+const config = defineConfig([
     {
+        resolve: {
+            mainFields: ['browser', 'module', 'main']
+        },
+        external: ['fs'],
         input: './src/index.ts',
         output: [
             {
@@ -48,6 +42,10 @@ const config: RollupOptions[] = [
         plugins: rollupPlugins
     },
     {
+        resolve: {
+            mainFields: ['browser', 'module', 'main']
+        },
+        external: ['fs'],
         input: './bin/gl-style-format.ts',
         output: [
             {
@@ -68,6 +66,10 @@ const config: RollupOptions[] = [
         plugins: [...rollupPlugins, shebang()]
     },
     {
+        resolve: {
+            mainFields: ['browser', 'module', 'main']
+        },
+        external: ['fs'],
         input: './bin/gl-style-migrate.ts',
         output: [
             {
@@ -88,6 +90,11 @@ const config: RollupOptions[] = [
         plugins: [...rollupPlugins, shebang()]
     },
     {
+        resolve: {
+            mainFields: ['browser', 'module', 'main']
+        },
+        external: ['fs'],
+
         input: './bin/gl-style-validate.ts',
         output: [
             {
@@ -107,5 +114,5 @@ const config: RollupOptions[] = [
         ],
         plugins: [...rollupPlugins, shebang()]
     }
-];
+]);
 export default config;
