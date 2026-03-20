@@ -36,7 +36,12 @@ import {convertFunction} from './function/convert';
 import {eachSource, eachLayer, eachProperty} from './visit';
 import {ResolvedImage} from './expression/types/resolved_image';
 import {supportsPropertyExpression} from './util/properties';
-import type {IMercatorCoordinate, ICanonicalTileID, ILngLat, ILngLatLike} from './tiles_and_coordinates';
+import type {
+    IMercatorCoordinate,
+    ICanonicalTileID,
+    ILngLat,
+    ILngLatLike
+} from './tiles_and_coordinates';
 import {EvaluationContext} from './expression/evaluation_context';
 import {
     FormattedType,
@@ -223,7 +228,7 @@ export type {
     ILngLatLike,
     Type,
     InterpolationType,
-    FormattedSection,
+    FormattedSection
 };
 
 export {

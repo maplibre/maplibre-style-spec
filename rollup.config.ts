@@ -4,7 +4,7 @@ import shebang from 'rollup-plugin-preserve-shebang';
 import {defineConfig} from 'rolldown';
 
 const rollupPlugins = [
-		minifyStyleSpec(),
+    minifyStyleSpec(),
     // https://github.com/zaach/jison/issues/351
     replace({
         preventAssignment: true,
@@ -18,10 +18,10 @@ const rollupPlugins = [
 
 const config = defineConfig([
     {
-				resolve: {
-						mainFields: ['browser', 'module', 'main']
-				},
-				external: ['fs'],
+        resolve: {
+            mainFields: ['browser', 'module', 'main']
+        },
+        external: ['fs'],
         input: './src/index.ts',
         output: [
             {
@@ -42,10 +42,10 @@ const config = defineConfig([
         plugins: rollupPlugins
     },
     {
-				resolve: {
-						mainFields: ['browser', 'module', 'main']
-				},
-				external: ['fs'],
+        resolve: {
+            mainFields: ['browser', 'module', 'main']
+        },
+        external: ['fs'],
         input: './bin/gl-style-format.ts',
         output: [
             {
@@ -66,10 +66,10 @@ const config = defineConfig([
         plugins: [...rollupPlugins, shebang()]
     },
     {
-				resolve: {
-						mainFields: ['browser', 'module', 'main']
-				},
-				external: ['fs'],
+        resolve: {
+            mainFields: ['browser', 'module', 'main']
+        },
+        external: ['fs'],
         input: './bin/gl-style-migrate.ts',
         output: [
             {
@@ -90,10 +90,10 @@ const config = defineConfig([
         plugins: [...rollupPlugins, shebang()]
     },
     {
-				resolve: {
-						mainFields: ['browser', 'module', 'main']
-				},
-				external: ['fs'],
+        resolve: {
+            mainFields: ['browser', 'module', 'main']
+        },
+        external: ['fs'],
 
         input: './bin/gl-style-validate.ts',
         output: [
