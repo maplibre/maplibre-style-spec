@@ -1171,8 +1171,8 @@
         },
         "data-driven styling": {
           "js": "5.22.0",
-          "android": "TODO",
-          "ios": "TODO"
+          "android": "https://github.com/maplibre/maplibre-native/issues/4194",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/4194"
         }
       },
       "expression": {
@@ -1237,8 +1237,8 @@
         },
         "data-driven styling": {
           "js": "5.22.0",
-          "android": "TODO",
-          "ios": "TODO"
+          "android": "https://github.com/maplibre/maplibre-native/issues/4194",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/4194"
         }
       },
       "expression": {
@@ -1267,8 +1267,8 @@
         },
         "data-driven styling": {
           "js": "5.22.0",
-          "android": "TODO",
-          "ios": "TODO"
+          "android": "https://github.com/maplibre/maplibre-native/issues/4194",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/4194"
         }
       },
       "expression": {
