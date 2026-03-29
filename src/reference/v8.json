@@ -1168,15 +1168,21 @@
           "js": "0.10.0",
           "android": "2.0.1",
           "ios": "2.0.0"
+        },
+        "data-driven styling": {
+          "js": "5.22.0",
+          "android": "TODO",
+          "ios": "TODO"
         }
       },
       "expression": {
         "interpolated": false,
         "parameters": [
-          "zoom"
+          "zoom",
+          "feature"
         ]
       },
-      "property-type": "data-constant"
+      "property-type": "data-driven"
     },
     "line-join": {
       "type": "enum",
@@ -1228,15 +1234,21 @@
           "js": "0.10.0",
           "android": "2.0.1",
           "ios": "2.0.0"
+        },
+        "data-driven styling": {
+          "js": "5.22.0",
+          "android": "TODO",
+          "ios": "TODO"
         }
       },
       "expression": {
         "interpolated": true,
         "parameters": [
-          "zoom"
+          "zoom",
+          "feature"
         ]
       },
-      "property-type": "data-constant"
+      "property-type": "data-driven"
     },
     "line-round-limit": {
       "type": "number",
@@ -1252,15 +1264,21 @@
           "js": "0.10.0",
           "android": "2.0.1",
           "ios": "2.0.0"
+        },
+        "data-driven styling": {
+          "js": "5.22.0",
+          "android": "TODO",
+          "ios": "TODO"
         }
       },
       "expression": {
         "interpolated": true,
         "parameters": [
-          "zoom"
+          "zoom",
+          "feature"
         ]
       },
-      "property-type": "data-constant"
+      "property-type": "data-driven"
     },
     "line-sort-key": {
       "type": "number",
