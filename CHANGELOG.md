@@ -5,6 +5,14 @@
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
 
+- feat: enable data driven stylng for  `line-{cap,round-limit,miter-limit}` ([#1566](https://github.com/maplibre/maplibre-style-spec/pull/1566)) (by [@CommanderStorm](https://github.com/CommanderStorm))
+- Update js version in v8.json for unit sdk support ([#1547](https://github.com/maplibre/maplibre-style-spec/pull/1547)) (by [@HarelM](https://github.com/HarelM))
+- Remove unneeded files, improve typings. ([#1533](https://github.com/maplibre/maplibre-style-spec/pull/1533)) (by [@HarelM](https://github.com/HarelM))
+## 24.8.0
+### ✨ Features and improvements
+
+### 🐞 Bug fixes
+
 ## 24.7.0
 
 ### ✨ Features and improvements
