@@ -5,6 +5,12 @@
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
 
+## 24.8.0
+
+### ✨ Features and improvements
+
+- Enable data driven stylng for  `line-{cap,round-limit,miter-limit}` ([#1566](https://github.com/maplibre/maplibre-style-spec/pull/1566)) (by [@CommanderStorm](https://github.com/CommanderStorm))
+
 ## 24.7.0
 
 ### ✨ Features and improvements
