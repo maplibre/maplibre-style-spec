@@ -197,6 +197,8 @@ export type PromoteIdSpecification = {[_: string]: string} | string;
 
 export type ExpressionInputType = string | number | boolean;
 
+export type VariableExpressionSpecification = ['var', string];
+
 export type CollatorExpressionSpecification =
     ['collator', {
         'case-sensitive'?: boolean | ExpressionSpecification,
@@ -247,12 +249,12 @@ export type ExpressionSpecification =
     | ['slice', string | ExpressionSpecification, number | ExpressionSpecification, (number | ExpressionSpecification)?]
     // Decision
     | ['!', boolean | ExpressionSpecification] // boolean
-    | ['!=', null | ExpressionInputType | ExpressionSpecification, null | ExpressionInputType | ExpressionSpecification, CollatorExpressionSpecification?] // boolean
-    | ['<', string | number | ExpressionSpecification, string | number | ExpressionSpecification, CollatorExpressionSpecification?] // boolean
-    | ['<=', string | number | ExpressionSpecification, string | number | ExpressionSpecification, CollatorExpressionSpecification?] // boolean
-    | ['==', null | ExpressionInputType | ExpressionSpecification, null | ExpressionInputType | ExpressionSpecification, CollatorExpressionSpecification?] // boolean
-    | ['>', string | number | ExpressionSpecification, string | number | ExpressionSpecification, CollatorExpressionSpecification?] // boolean
-    | ['>=', string | number | ExpressionSpecification, string | number | ExpressionSpecification, CollatorExpressionSpecification?] // boolean
+    | ['!=', null | ExpressionInputType | ExpressionSpecification, null | ExpressionInputType | ExpressionSpecification, (CollatorExpressionSpecification | VariableExpressionSpecification)?] // boolean
+    | ['<', string | number | ExpressionSpecification, string | number | ExpressionSpecification, (CollatorExpressionSpecification | VariableExpressionSpecification)?] // boolean
+    | ['<=', string | number | ExpressionSpecification, string | number | ExpressionSpecification, (CollatorExpressionSpecification | VariableExpressionSpecification)?] // boolean
+    | ['==', null | ExpressionInputType | ExpressionSpecification, null | ExpressionInputType | ExpressionSpecification, (CollatorExpressionSpecification | VariableExpressionSpecification)?] // boolean
+    | ['>', string | number | ExpressionSpecification, string | number | ExpressionSpecification, (CollatorExpressionSpecification | VariableExpressionSpecification)?] // boolean
+    | ['>=', string | number | ExpressionSpecification, string | number | ExpressionSpecification, (CollatorExpressionSpecification | VariableExpressionSpecification)?] // boolean
     | ['all', ...(boolean | ExpressionSpecification)[]] // boolean
     | ['any', ...(boolean | ExpressionSpecification)[]] // boolean
     | ['case', boolean | ExpressionSpecification, null | ExpressionInputType | ExpressionSpecification,
@@ -274,7 +276,7 @@ export type ExpressionSpecification =
         ...(number | ExpressionInputType | ExpressionSpecification)[]] // alternating number and ExpressionInputType | ExpressionSpecification
     // Variable binding
     | ['let', string, ExpressionInputType | ExpressionSpecification, ...(string | ExpressionInputType | ExpressionSpecification)[]]
-    | ['var', string]
+    | VariableExpressionSpecification
     // String
     | ['concat', ...(ExpressionInputType | ExpressionSpecification)[]] // at least two inputs required -> string
     | ['downcase', string | ExpressionSpecification] // string
@@ -425,5 +427,13 @@ ${layerTypes.map((key) => layerType(key)).join('\n\n')}
 export type LayerSpecification =
 ${layerTypes.map((key) => `    | ${layerTypeName(key)}`).join('\n')};
 
+/**
+ * Union of all paint properties across all layer types.
+ */
+export type AllPaintProperties = ${objectType(Object.assign({}, ...layerTypes.map((key) => spec[`paint_${key}`])), '')};
+/**
+ * Union of all layout properties across all layer types.
+ */
+export type AllLayoutProperties = ${objectType(Object.assign({}, ...layerTypes.map((key) => spec[`layout_${key}`])), '')};
 `
 );
