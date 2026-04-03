@@ -3,6 +3,7 @@
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
+- Fix `get` expression inside `join` expression ([#1583](https://github.com/maplibre/maplibre-style-spec/pull/1583))
 - _...Add new stuff here..._
 
 ## 24.8.0
