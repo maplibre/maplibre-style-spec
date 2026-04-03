@@ -1,12 +1,20 @@
 ## main
 ### ✨ Features and improvements
-
-- Update TS definitions to allow `var` as the 3rd arg of comparator functions ([#1564](https://github.com/maplibre/maplibre-style-spec/pull/1564)) (by [k-yle](https://github.com/k-yle))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
-- Fix `get` expression inside `join` expression ([#1583](https://github.com/maplibre/maplibre-style-spec/pull/1583))
 - _...Add new stuff here..._
+
+## 24.8.1
+
+### ✨ Features and improvements
+
+- Add `AllPaintProperties` and `AllLayoutProperties` typescript definitions ([#1579](https://github.com/maplibre/maplibre-style-spec/pull/1579)) (by [@CommanderStorm](https://github.com/CommanderStorm))
+- Update TS definitions to allow `var` as the 3rd arg of comparator functions ([#1564](https://github.com/maplibre/maplibre-style-spec/pull/1564)) (by [k-yle](https://github.com/k-yle))
+
+### 🐞 Bug fixes
+
+- Fix `get` expression inside `join` expression ([#1583](https://github.com/maplibre/maplibre-style-spec/pull/1583)) (by [1ec5](https://github.com/1ec5))
 
 ## 24.8.0
 
