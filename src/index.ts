@@ -36,7 +36,7 @@ import {typeOf} from './expression/values';
 import {FormatExpression} from './expression/definitions/format';
 import {Literal} from './expression/definitions/literal';
 import {CompoundExpression} from './expression/compound_expression';
-import {ColorSpecification, PaddingSpecification, NumberArraySpecification, ColorArraySpecification, ProjectionDefinitionSpecification, VariableAnchorOffsetCollectionSpecification} from './types.g';
+import {ColorSpecification, PaddingSpecification, NumberArraySpecification, ColorArraySpecification, ProjectionDefinitionSpecification, VariableAnchorOffsetCollectionSpecification, AllPaintProperties, AllLayoutProperties} from './types.g';
 import {format} from './format';
 import {validate} from './validate/validate';
 import {migrate} from './migrate';
@@ -187,6 +187,8 @@ export {
     StylePropertyExpression,
     ZoomDependentExpression,
     FormatExpression,
+    AllPaintProperties,
+    AllLayoutProperties,
 
     latest,
 
