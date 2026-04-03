@@ -5,7 +5,6 @@
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
 
-(https://github.com/CommanderStorm))
 ## 24.8.1
 
 ### ✨ Features and improvements
