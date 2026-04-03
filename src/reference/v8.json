@@ -251,7 +251,7 @@
     },
     "transition": {
       "type": "transition",
-      "doc": "A global transition definition to use as a default across properties, to be used for timing transitions between one value and the next when no property-specific transition is set. Collision-based symbol fading is controlled independently of the style's `transition` property. Any style property that is marked as `Transitionable` supports an optional transition configuration with `duration` and `delay` values to control how the property animates between old and new values.\n\nFor example, [`fill-color`](layers.md#fill-color) is marked as `Transitionable`. How this transition works can either be\n\n- on a per-property basis, in this example `fill-color-transition`, or\n\n- defined globally via the style's `transition` property:",
+      "doc": "A global transition definition to use as a default across properties, to be used for timing transitions between one value and the next when no property-specific transition is set. Collision-based symbol fading is controlled independently of the style's `transition` property.\n\nIn addition to this global definition via `transition`, if any individual paint or layout property are marked as `Transitionable`, a corresponding `*-transition` property is avaliable to fine-tune the property’s animation between old and new values based on similar `duration` and `delay` values.\n\nFor example, [`fill-color`](layers/#fill-color) is marked as `Transitionable`, so it can transition either independently via `fill-color-transition` or globally via the style's `transition` property:",
       "example": {
         "duration": 300,
         "delay": 0
