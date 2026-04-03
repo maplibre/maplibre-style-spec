@@ -949,7 +949,7 @@
           "ios": "2.0.0"
         },
         "`global state` expression": {
-          "js": "https://github.com/maplibre/maplibre-gl-js/issues/6495",
+          "js": "5.16.0",
           "android": "https://github.com/maplibre/maplibre-native/issues/3302",
           "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
         }
@@ -1007,7 +1007,7 @@
           "ios": "2.0.0"
         },
         "`global state` expression": {
-          "js": "https://github.com/maplibre/maplibre-gl-js/issues/6495",
+          "js": "5.16.0",
           "android": "https://github.com/maplibre/maplibre-native/issues/3302",
           "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
         }
@@ -1065,7 +1065,7 @@
           "ios": "2.0.0"
         },
         "`global state` expression": {
-          "js": "https://github.com/maplibre/maplibre-gl-js/issues/6495",
+          "js": "5.16.0",
           "android": "https://github.com/maplibre/maplibre-native/issues/3302",
           "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
         }
@@ -1099,7 +1099,7 @@
           "ios": "4.0.0"
         },
         "`global state` expression": {
-          "js": "https://github.com/maplibre/maplibre-gl-js/issues/6495",
+          "js": "5.16.0",
           "android": "https://github.com/maplibre/maplibre-native/issues/3302",
           "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
         }
@@ -1133,7 +1133,7 @@
           "ios": "3.6.0"
         },
         "`global state` expression": {
-          "js": "https://github.com/maplibre/maplibre-gl-js/issues/6495",
+          "js": "5.16.0",
           "android": "https://github.com/maplibre/maplibre-native/issues/3302",
           "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
         }
@@ -1323,7 +1323,7 @@
           "ios": "2.0.0"
         },
         "`global state` expression": {
-          "js": "https://github.com/maplibre/maplibre-gl-js/issues/6495",
+          "js": "5.16.0",
           "android": "https://github.com/maplibre/maplibre-native/issues/3302",
           "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
         }
@@ -2791,7 +2791,7 @@
           "ios": "2.0.0"
         },
         "`global state` expression": {
-          "js": "https://github.com/maplibre/maplibre-gl-js/issues/6495",
+          "js": "5.16.0",
           "android": "https://github.com/maplibre/maplibre-native/issues/3302",
           "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
         }
@@ -2825,7 +2825,7 @@
           "ios": "2.0.0"
         },
         "`global state` expression": {
-          "js": "https://github.com/maplibre/maplibre-gl-js/issues/6495",
+          "js": "5.16.0",
           "android": "https://github.com/maplibre/maplibre-native/issues/3302",
           "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
         }
@@ -2859,7 +2859,7 @@
           "ios": "4.0.0"
         },
         "`global state` expression": {
-          "js": "https://github.com/maplibre/maplibre-gl-js/issues/6495",
+          "js": "5.16.0",
           "android": "https://github.com/maplibre/maplibre-native/issues/3302",
           "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
         }
@@ -2893,7 +2893,7 @@
           "ios": "https://github.com/maplibre/maplibre-native/issues/3408"
         },
         "`global state` expression": {
-          "js": "https://github.com/maplibre/maplibre-gl-js/issues/6495",
+          "js": "5.16.0",
           "android": "https://github.com/maplibre/maplibre-native/issues/3302",
           "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
         }
