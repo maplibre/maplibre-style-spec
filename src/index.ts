@@ -248,7 +248,6 @@ export {
     FormatExpression,
     AllPaintProperties,
     AllLayoutProperties,
-
     latest,
     validateStyleMin,
     groupByLayout,
