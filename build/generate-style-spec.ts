@@ -432,5 +432,5 @@ export type AllPaintProperties = ${objectType(Object.assign({}, ...layerTypes.ma
 /**
  * Union of all layout properties across all layer types.
  */
-export type AllLayoutProperties = ${objectType(Object.assign({}, ...layerTypes.map(key => spec[`layout_${key}`]))), '')};
+export type AllLayoutProperties = ${objectType(Object.assign({}, ...layerTypes.map(key => spec[`layout_${key}`])), '')};
 `);
