@@ -425,7 +425,6 @@ ${layerTypes.map((key) => layerType(key)).join('\n\n')}
 export type LayerSpecification =
 ${layerTypes.map((key) => `    | ${layerTypeName(key)}`).join('\n')};
 
-<<<<<<< HEAD
 /**
  * Union of all paint properties across all layer types.
  */
@@ -434,9 +433,4 @@ export type AllPaintProperties = ${objectType(Object.assign({}, ...layerTypes.ma
  * Union of all layout properties across all layer types.
  */
 export type AllLayoutProperties = ${objectType(Object.assign({}, ...layerTypes.map(key => spec[`layout_${key}`]))), '')};
-
 `);
-=======
-`
-);
->>>>>>> main
