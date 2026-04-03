@@ -1,4 +1,3 @@
-
 import {migrateV8} from './migrate/v8';
 import {expressions} from './migrate/expressions';
 import {migrateColors} from './migrate/migrate_colors';
@@ -19,7 +18,7 @@ import type {StyleSpecification} from './types.g';
 export function migrate(style: StyleSpecification): StyleSpecification {
     let migrated = false;
 
-    if (style.version as any === 7) {
+    if ((style.version as any) === 7) {
         style = migrateV8(style);
         migrated = true;
     }

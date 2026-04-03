@@ -5,12 +5,26 @@ import type {Expression} from '../expression';
 import type {ParsingContext} from '../parsing_context';
 import type {EvaluationContext} from '../evaluation_context';
 import {ICanonicalTileID} from '../../tiles_and_coordinates';
-import {BBox, EXTENT, boxWithinBox, getTileCoordinates, lineStringWithinPolygon, lineStringWithinPolygons, pointWithinPolygon, pointWithinPolygons, updateBBox} from '../../util/geometry_util';
+import {
+    BBox,
+    EXTENT,
+    boxWithinBox,
+    getTileCoordinates,
+    lineStringWithinPolygon,
+    lineStringWithinPolygons,
+    pointWithinPolygon,
+    pointWithinPolygons,
+    updateBBox
+} from '../../util/geometry_util';
 import {Point2D} from '../../point2d';
 
 type GeoJSONPolygons = GeoJSON.Polygon | GeoJSON.MultiPolygon;
 
-function getTilePolygon(coordinates: GeoJSON.Position[][], bbox: BBox, canonical: ICanonicalTileID) {
+function getTilePolygon(
+    coordinates: GeoJSON.Position[][],
+    bbox: BBox,
+    canonical: ICanonicalTileID
+) {
     const polygon = [];
     for (let i = 0; i < coordinates.length; i++) {
         const ring = [];
@@ -24,7 +38,11 @@ function getTilePolygon(coordinates: GeoJSON.Position[][], bbox: BBox, canonical
     return polygon;
 }
 
-function getTilePolygons(coordinates: GeoJSON.Position[][][], bbox: BBox, canonical: ICanonicalTileID) {
+function getTilePolygons(
+    coordinates: GeoJSON.Position[][][],
+    bbox: BBox,
+    canonical: ICanonicalTileID
+) {
     const polygons = [];
     for (let i = 0; i < coordinates.length; i++) {
         const polygon = getTilePolygon(coordinates[i], bbox, canonical);
@@ -36,9 +54,19 @@ function getTilePolygons(coordinates: GeoJSON.Position[][][], bbox: BBox, canoni
 function updatePoint(p: GeoJSON.Position, bbox: BBox, polyBBox: BBox, worldSize: number) {
     if (p[0] < polyBBox[0] || p[0] > polyBBox[2]) {
         const halfWorldSize = worldSize * 0.5;
-        let shift = (p[0] - polyBBox[0] > halfWorldSize) ? -worldSize : (polyBBox[0] - p[0] > halfWorldSize) ? worldSize : 0;
+        let shift =
+            p[0] - polyBBox[0] > halfWorldSize
+                ? -worldSize
+                : polyBBox[0] - p[0] > halfWorldSize
+                  ? worldSize
+                  : 0;
         if (shift === 0) {
-            shift = (p[0] - polyBBox[2] > halfWorldSize) ? -worldSize : (polyBBox[2] - p[0] > halfWorldSize) ? worldSize : 0;
+            shift =
+                p[0] - polyBBox[2] > halfWorldSize
+                    ? -worldSize
+                    : polyBBox[2] - p[0] > halfWorldSize
+                      ? worldSize
+                      : 0;
         }
         p[0] += shift;
     }
@@ -50,7 +78,12 @@ function resetBBox(bbox: BBox) {
     bbox[2] = bbox[3] = -Infinity;
 }
 
-function getTilePoints(geometry: Point2D[][], pointBBox: BBox, polyBBox: BBox, canonical: ICanonicalTileID): [number, number][] {
+function getTilePoints(
+    geometry: Point2D[][],
+    pointBBox: BBox,
+    polyBBox: BBox,
+    canonical: ICanonicalTileID
+): [number, number][] {
     const worldSize = Math.pow(2, canonical.z) * EXTENT;
     const shifts = [canonical.x * EXTENT, canonical.y * EXTENT];
     const tilePoints: [number, number][] = [];
@@ -64,12 +97,17 @@ function getTilePoints(geometry: Point2D[][], pointBBox: BBox, polyBBox: BBox, c
     return tilePoints;
 }
 
-function getTileLines(geometry: Point2D[][], lineBBox: BBox, polyBBox: BBox, canonical: ICanonicalTileID): [number, number][][] {
+function getTileLines(
+    geometry: Point2D[][],
+    lineBBox: BBox,
+    polyBBox: BBox,
+    canonical: ICanonicalTileID
+): [number, number][][] {
     const worldSize = Math.pow(2, canonical.z) * EXTENT;
     const shifts = [canonical.x * EXTENT, canonical.y * EXTENT];
     const tileLines: [number, number][][] = [];
     for (const line of geometry) {
-        const tileLine:[number, number][] = [];
+        const tileLine: [number, number][] = [];
         for (const point of line) {
             const p: [number, number] = [point.x + shifts[0], point.y + shifts[1]];
             updateBBox(lineBBox, p);
@@ -156,9 +194,11 @@ export class Within implements Expression {
 
     static parse(args: ReadonlyArray<unknown>, context: ParsingContext): Expression {
         if (args.length !== 2)
-            return context.error(`'within' expression requires exactly one argument, but found ${args.length - 1} instead.`) as null;
+            return context.error(
+                `'within' expression requires exactly one argument, but found ${args.length - 1} instead.`
+            ) as null;
         if (isValue(args[1])) {
-            const geojson = (args[1] as any);
+            const geojson = args[1] as any;
             if (geojson.type === 'FeatureCollection') {
                 const polygonsCoords: GeoJSON.Position[][][] = [];
                 for (const polygon of geojson.features) {
@@ -177,17 +217,18 @@ export class Within implements Expression {
                     };
                     return new Within(geojson, multipolygonWrapper);
                 }
-
             } else if (geojson.type === 'Feature') {
                 const type = geojson.geometry.type;
                 if (type === 'Polygon' || type === 'MultiPolygon') {
                     return new Within(geojson, geojson.geometry);
                 }
-            } else if (geojson.type  === 'Polygon' || geojson.type === 'MultiPolygon') {
+            } else if (geojson.type === 'Polygon' || geojson.type === 'MultiPolygon') {
                 return new Within(geojson, geojson);
             }
         }
-        return context.error('\'within\' expression requires valid geojson object that contains polygon geometry type.') as null;
+        return context.error(
+            "'within' expression requires valid geojson object that contains polygon geometry type."
+        ) as null;
     }
 
     evaluate(ctx: EvaluationContext) {

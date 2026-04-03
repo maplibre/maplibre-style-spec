@@ -20,8 +20,12 @@ export class Scope {
     }
 
     get(name: string): Expression {
-        if (this.bindings[name]) { return this.bindings[name]; }
-        if (this.parent) { return this.parent.get(name); }
+        if (this.bindings[name]) {
+            return this.bindings[name];
+        }
+        if (this.parent) {
+            return this.parent.get(name);
+        }
         throw new Error(`${name} not found in scope.`);
     }
 

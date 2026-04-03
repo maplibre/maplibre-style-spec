@@ -12,7 +12,6 @@ export class CheapRuler {
     private ky: number;
 
     constructor(lat: number) {
-
         // Curvature formulas from https://en.wikipedia.org/wiki/Earth_radius#Meridional
         const m = RAD * RE * 1000;
         const coslat = Math.cos(lat * RAD);
@@ -20,7 +19,7 @@ export class CheapRuler {
         const w = Math.sqrt(w2);
 
         // multipliers for converting longitude and latitude degrees into distance
-        this.kx = m * w * coslat;        // based on normal radius of curvature
+        this.kx = m * w * coslat; // based on normal radius of curvature
         this.ky = m * w * w2 * (1 - E2); // based on meridional radius of curvature
     }
 
@@ -57,7 +56,6 @@ export class CheapRuler {
         let minX: number, minY: number, minI: number, minT: number;
 
         for (let i = 0; i < line.length - 1; i++) {
-
             let x = line[i][0];
             let y = line[i][1];
             let dx = this.wrap(line[i + 1][0] - x) * this.kx;
@@ -65,12 +63,13 @@ export class CheapRuler {
             let t = 0;
 
             if (dx !== 0 || dy !== 0) {
-                t = (this.wrap(p[0] - x) * this.kx * dx + (p[1] - y) * this.ky * dy) / (dx * dx + dy * dy);
+                t =
+                    (this.wrap(p[0] - x) * this.kx * dx + (p[1] - y) * this.ky * dy) /
+                    (dx * dx + dy * dy);
 
                 if (t > 1) {
                     x = line[i + 1][0];
                     y = line[i + 1][1];
-
                 } else if (t > 0) {
                     x += (dx / this.kx) * t;
                     y += (dy / this.ky) * t;

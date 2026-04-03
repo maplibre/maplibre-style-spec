@@ -1,4 +1,3 @@
-
 import {latest} from './reference/latest';
 import stringifyPretty from 'json-stringify-pretty-compact';
 
@@ -47,4 +46,3 @@ export function format(style, space = 2) {
 
     return stringifyPretty(style, {indent: space});
 }
-

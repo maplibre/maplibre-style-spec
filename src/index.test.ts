@@ -1,4 +1,3 @@
-
 import * as spec from '.';
 import {describe, test, expect} from 'vitest';
 
@@ -51,10 +50,21 @@ describe('style-spec', () => {
 
 function validSchema(k, v, obj, ref, version, kind) {
     const scalar = ['boolean', 'string', 'number'];
-    const types = Object.keys(ref).concat(['boolean', 'string', 'number',
-        'array', 'enum', 'color', '*',
+    const types = Object.keys(ref).concat([
+        'boolean',
+        'string',
+        'number',
+        'array',
+        'enum',
+        'color',
+        '*',
         // new in v8
-        'opacity', 'translate-array', 'dash-array', 'offset-array', 'font-array', 'field-template',
+        'opacity',
+        'translate-array',
+        'dash-array',
+        'offset-array',
+        'font-array',
+        'field-template',
         // new enums in v8
         'line-cap-enum',
         'line-join-enum',
@@ -88,7 +98,6 @@ function validSchema(k, v, obj, ref, version, kind) {
         'expression',
         'property-type',
         'length',
-        'min-length',
         'required',
         'transition',
         'type',
@@ -118,13 +127,17 @@ function validSchema(k, v, obj, ref, version, kind) {
         // objects (>=v8) or scalars (<=v7). If objects, check that doc key
         // (if present) is a string.
         if (obj.type === 'enum') {
-            const values = (ref.$version >= 8 ? Object.keys(obj.values) : obj.values);
-            expect(Array.isArray(values) && values.every((v) => {
-                return scalar.indexOf(typeof v) !== -1;
-            })).toBeTruthy();
+            const values = ref.$version >= 8 ? Object.keys(obj.values) : obj.values;
+            expect(
+                Array.isArray(values) &&
+                    values.every((v) => {
+                        return scalar.indexOf(typeof v) !== -1;
+                    })
+            ).toBeTruthy();
             if (ref.$version >= 8) {
                 for (const v in obj.values) {
-                    if (Array.isArray(obj.values) === false) { // skips $root.version
+                    if (Array.isArray(obj.values) === false) {
+                        // skips $root.version
                         if (obj.values[v].doc !== undefined) {
                             expect('string').toBe(typeof obj.values[v].doc);
                             expect(kind).not.toBe('min');
@@ -166,7 +179,9 @@ function validSchema(k, v, obj, ref, version, kind) {
         if (obj.function !== undefined) {
             expect(ref.$version < 8).toBeTruthy();
             if (ref.$version >= 7) {
-                expect(true).toBe(['interpolated', 'piecewise-constant'].indexOf(obj.function) >= 0);
+                expect(true).toBe(
+                    ['interpolated', 'piecewise-constant'].indexOf(obj.function) >= 0
+                );
             } else {
                 expect('boolean').toBe(typeof obj.function);
             }
@@ -175,9 +190,16 @@ function validSchema(k, v, obj, ref, version, kind) {
             expect(ref['property-type'][obj['property-type']]).toBeTruthy();
             expect('boolean').toBe(typeof expression.interpolated);
             expect(true).toBe(Array.isArray(expression.parameters));
-            if (obj['property-type'] !== 'color-ramp') expect(true).toBe(
-                expression.parameters.every(k => k === 'zoom' || k === 'feature' || k === 'feature-state')
-            );
+            if (obj['property-type'] !== 'color-ramp')
+                expect(true).toBe(
+                    expression.parameters.every(
+                        (k) =>
+                            k === 'zoom' ||
+                            k === 'feature' ||
+                            k === 'feature-state' ||
+                            k === 'global-state'
+                    )
+                );
         }
 
         // schema key required checks
@@ -197,7 +219,14 @@ function validSchema(k, v, obj, ref, version, kind) {
     } else if (Array.isArray(obj)) {
         obj.forEach((child, j) => {
             if (typeof child === 'string' && scalar.indexOf(child) !== -1) return;
-            validSchema(`${k}[${j}]`, v, typeof child === 'string' ? ref[child] : child, ref, undefined, undefined);
+            validSchema(
+                `${k}[${j}]`,
+                v,
+                typeof child === 'string' ? ref[child] : child,
+                ref,
+                undefined,
+                undefined
+            );
         });
         // Container object.
     } else if (typeof obj === 'object') {

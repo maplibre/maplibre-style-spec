@@ -1,4 +1,3 @@
-
 import {extendBy} from '../util/extend';
 import {unbundle, deepUnbundle} from '../util/unbundle_jsonlint';
 import {isExpression} from '../expression';
@@ -31,36 +30,38 @@ import {ValidationError} from '../error/validation_error';
 import {validateProjection} from './validate_projection';
 import {validateProjectionDefinition} from './validate_projectiondefinition';
 import {validateState} from './validate_state';
+import {validateFontFaces} from './validate_font_faces';
 
 const VALIDATORS = {
     '*'() {
         return [];
     },
-    'array': validateArray,
-    'boolean': validateBoolean,
-    'number': validateNumber,
-    'color': validateColor,
-    'constants': validateConstants,
-    'enum': validateEnum,
-    'filter': validateFilter,
-    'function': validateFunction,
-    'layer': validateLayer,
-    'object': validateObject,
-    'source': validateSource,
-    'light': validateLight,
-    'sky': validateSky,
-    'terrain': validateTerrain,
-    'projection': validateProjection,
-    'projectionDefinition': validateProjectionDefinition,
-    'string': validateString,
-    'formatted': validateFormatted,
-    'resolvedImage': validateImage,
-    'padding': validatePadding,
-    'numberArray': validateNumberArray,
-    'colorArray': validateColorArray,
-    'variableAnchorOffsetCollection': validateVariableAnchorOffsetCollection,
-    'sprite': validateSprite,
-    'state': validateState
+    array: validateArray,
+    boolean: validateBoolean,
+    number: validateNumber,
+    color: validateColor,
+    constants: validateConstants,
+    enum: validateEnum,
+    filter: validateFilter,
+    function: validateFunction,
+    layer: validateLayer,
+    object: validateObject,
+    source: validateSource,
+    light: validateLight,
+    sky: validateSky,
+    terrain: validateTerrain,
+    projection: validateProjection,
+    projectionDefinition: validateProjectionDefinition,
+    string: validateString,
+    formatted: validateFormatted,
+    resolvedImage: validateImage,
+    padding: validatePadding,
+    numberArray: validateNumberArray,
+    colorArray: validateColorArray,
+    variableAnchorOffsetCollection: validateVariableAnchorOffsetCollection,
+    sprite: validateSprite,
+    state: validateState,
+    fontFaces: validateFontFaces
 };
 
 /**
@@ -86,7 +87,8 @@ export function validate(options: {
     styleSpec: any;
     validateSpec?: any;
     style: any;
-    objectElementValidators?: any;}): ValidationError[] {
+    objectElementValidators?: any;
+}): ValidationError[] {
     const value = options.value;
     const valueSpec = options.valueSpec;
     const styleSpec = options.styleSpec;
@@ -94,17 +96,16 @@ export function validate(options: {
 
     if (valueSpec.expression && isFunction(unbundle(value))) {
         return validateFunction(options);
-
     } else if (valueSpec.expression && isExpression(deepUnbundle(value))) {
         return validateExpression(options);
-
     } else if (valueSpec.type && VALIDATORS[valueSpec.type]) {
         return VALIDATORS[valueSpec.type](options);
-
     } else {
-        const valid = validateObject(extendBy({}, options, {
-            valueSpec: valueSpec.type ? styleSpec[valueSpec.type] : valueSpec
-        }));
+        const valid = validateObject(
+            extendBy({}, options, {
+                valueSpec: valueSpec.type ? styleSpec[valueSpec.type] : valueSpec
+            })
+        );
         return valid;
     }
 }

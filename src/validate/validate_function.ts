@@ -1,4 +1,3 @@
-
 import {ValidationError} from '../error/validation_error';
 import {getType} from '../util/get_type';
 import {validateObject} from './validate_object';
@@ -41,51 +40,80 @@ export function validateFunction(options): Array<ValidationError> {
     });
 
     if (functionType === 'identity' && isZoomFunction) {
-        errors.push(new ValidationError(options.key, options.value, 'missing required property "property"'));
+        errors.push(
+            new ValidationError(options.key, options.value, 'missing required property "property"')
+        );
     }
 
     if (functionType !== 'identity' && !options.value.stops) {
-        errors.push(new ValidationError(options.key, options.value, 'missing required property "stops"'));
+        errors.push(
+            new ValidationError(options.key, options.value, 'missing required property "stops"')
+        );
     }
 
-    if (functionType === 'exponential' && options.valueSpec.expression && !supportsInterpolation(options.valueSpec)) {
-        errors.push(new ValidationError(options.key, options.value, 'exponential functions not supported'));
+    if (
+        functionType === 'exponential' &&
+        options.valueSpec.expression &&
+        !supportsInterpolation(options.valueSpec)
+    ) {
+        errors.push(
+            new ValidationError(options.key, options.value, 'exponential functions not supported')
+        );
     }
 
     if (options.styleSpec.$version >= 8) {
         if (isPropertyFunction && !supportsPropertyExpression(options.valueSpec)) {
-            errors.push(new ValidationError(options.key, options.value, 'property functions not supported'));
+            errors.push(
+                new ValidationError(options.key, options.value, 'property functions not supported')
+            );
         } else if (isZoomFunction && !supportsZoomExpression(options.valueSpec)) {
-            errors.push(new ValidationError(options.key, options.value, 'zoom functions not supported'));
+            errors.push(
+                new ValidationError(options.key, options.value, 'zoom functions not supported')
+            );
         }
     }
 
-    if ((functionType === 'categorical' || isZoomAndPropertyFunction) && options.value.property === undefined) {
-        errors.push(new ValidationError(options.key, options.value, '"property" property is required'));
+    if (
+        (functionType === 'categorical' || isZoomAndPropertyFunction) &&
+        options.value.property === undefined
+    ) {
+        errors.push(
+            new ValidationError(options.key, options.value, '"property" property is required')
+        );
     }
 
     return errors;
 
     function validateFunctionStops(options) {
         if (functionType === 'identity') {
-            return [new ValidationError(options.key, options.value, 'identity function may not have a "stops" property')];
+            return [
+                new ValidationError(
+                    options.key,
+                    options.value,
+                    'identity function may not have a "stops" property'
+                )
+            ];
         }
 
         let errors = [];
         const value = options.value;
 
-        errors = errors.concat(validateArray({
-            key: options.key,
-            value,
-            valueSpec: options.valueSpec,
-            validateSpec: options.validateSpec,
-            style: options.style,
-            styleSpec: options.styleSpec,
-            arrayElementValidator: validateFunctionStop
-        }));
+        errors = errors.concat(
+            validateArray({
+                key: options.key,
+                value,
+                valueSpec: options.valueSpec,
+                validateSpec: options.validateSpec,
+                style: options.style,
+                styleSpec: options.styleSpec,
+                arrayElementValidator: validateFunctionStop
+            })
+        );
 
         if (getType(value) === 'array' && value.length === 0) {
-            errors.push(new ValidationError(options.key, value, 'array must have at least one stop'));
+            errors.push(
+                new ValidationError(options.key, value, 'array must have at least one stop')
+            );
         }
 
         return errors;
@@ -101,12 +129,20 @@ export function validateFunction(options): Array<ValidationError> {
         }
 
         if (value.length !== 2) {
-            return [new ValidationError(key, value, `array length 2 expected, length ${value.length} found`)];
+            return [
+                new ValidationError(
+                    key,
+                    value,
+                    `array length 2 expected, length ${value.length} found`
+                )
+            ];
         }
 
         if (isZoomAndPropertyFunction) {
             if (getType(value[0]) !== 'object') {
-                return [new ValidationError(key, value, `object expected, ${getType(value[0])} found`)];
+                return [
+                    new ValidationError(key, value, `object expected, ${getType(value[0])} found`)
+                ];
             }
             if (value[0].zoom === undefined) {
                 return [new ValidationError(key, value, 'object stop key must have zoom')];
@@ -115,45 +151,69 @@ export function validateFunction(options): Array<ValidationError> {
                 return [new ValidationError(key, value, 'object stop key must have value')];
             }
             if (previousStopDomainZoom && previousStopDomainZoom > unbundle(value[0].zoom)) {
-                return [new ValidationError(key, value[0].zoom, 'stop zoom values must appear in ascending order')];
+                return [
+                    new ValidationError(
+                        key,
+                        value[0].zoom,
+                        'stop zoom values must appear in ascending order'
+                    )
+                ];
             }
             if (unbundle(value[0].zoom) !== previousStopDomainZoom) {
                 previousStopDomainZoom = unbundle(value[0].zoom);
                 previousStopDomainValue = undefined;
                 stopDomainValues = {};
             }
-            errors = errors.concat(validateObject({
-                key: `${key}[0]`,
-                value: value[0],
-                valueSpec: {zoom: {}},
-                validateSpec: options.validateSpec,
-                style: options.style,
-                styleSpec: options.styleSpec,
-                objectElementValidators: {zoom: validateNumber, value: validateStopDomainValue}
-            }));
+            errors = errors.concat(
+                validateObject({
+                    key: `${key}[0]`,
+                    value: value[0],
+                    valueSpec: {zoom: {}},
+                    validateSpec: options.validateSpec,
+                    style: options.style,
+                    styleSpec: options.styleSpec,
+                    objectElementValidators: {
+                        zoom: validateNumber,
+                        value: validateStopDomainValue
+                    }
+                })
+            );
         } else {
-            errors = errors.concat(validateStopDomainValue({
-                key: `${key}[0]`,
-                value: value[0],
-                valueSpec: {},
-                validateSpec: options.validateSpec,
-                style: options.style,
-                styleSpec: options.styleSpec
-            }, value));
+            errors = errors.concat(
+                validateStopDomainValue(
+                    {
+                        key: `${key}[0]`,
+                        value: value[0],
+                        valueSpec: {},
+                        validateSpec: options.validateSpec,
+                        style: options.style,
+                        styleSpec: options.styleSpec
+                    },
+                    value
+                )
+            );
         }
 
         if (isExpression(deepUnbundle(value[1]))) {
-            return errors.concat([new ValidationError(`${key}[1]`, value[1], 'expressions are not allowed in function stops.')]);
+            return errors.concat([
+                new ValidationError(
+                    `${key}[1]`,
+                    value[1],
+                    'expressions are not allowed in function stops.'
+                )
+            ]);
         }
 
-        return errors.concat(options.validateSpec({
-            key: `${key}[1]`,
-            value: value[1],
-            valueSpec: functionValueSpec,
-            validateSpec: options.validateSpec,
-            style: options.style,
-            styleSpec: options.styleSpec
-        }));
+        return errors.concat(
+            options.validateSpec({
+                key: `${key}[1]`,
+                value: value[1],
+                valueSpec: functionValueSpec,
+                validateSpec: options.validateSpec,
+                style: options.style,
+                styleSpec: options.styleSpec
+            })
+        );
     }
 
     function validateStopDomainValue(options, stop) {
@@ -165,33 +225,65 @@ export function validateFunction(options): Array<ValidationError> {
         if (!stopKeyType) {
             stopKeyType = type;
         } else if (type !== stopKeyType) {
-            return [new ValidationError(options.key, reportValue, `${type} stop domain type must match previous stop domain type ${stopKeyType}`)];
+            return [
+                new ValidationError(
+                    options.key,
+                    reportValue,
+                    `${type} stop domain type must match previous stop domain type ${stopKeyType}`
+                )
+            ];
         }
 
         if (type !== 'number' && type !== 'string' && type !== 'boolean') {
-            return [new ValidationError(options.key, reportValue, 'stop domain value must be a number, string, or boolean')];
+            return [
+                new ValidationError(
+                    options.key,
+                    reportValue,
+                    'stop domain value must be a number, string, or boolean'
+                )
+            ];
         }
 
         if (type !== 'number' && functionType !== 'categorical') {
             let message = `number expected, ${type} found`;
             if (supportsPropertyExpression(functionValueSpec) && functionType === undefined) {
-                message += '\nIf you intended to use a categorical function, specify `"type": "categorical"`.';
+                message +=
+                    '\nIf you intended to use a categorical function, specify `"type": "categorical"`.';
             }
             return [new ValidationError(options.key, reportValue, message)];
         }
 
-        if (functionType === 'categorical' && type === 'number' && (!isFinite(value as number) || Math.floor(value as number) !== value)) {
-            return [new ValidationError(options.key, reportValue, `integer expected, found ${value}`)];
+        if (
+            functionType === 'categorical' &&
+            type === 'number' &&
+            (!isFinite(value as number) || Math.floor(value as number) !== value)
+        ) {
+            return [
+                new ValidationError(options.key, reportValue, `integer expected, found ${value}`)
+            ];
         }
 
-        if (functionType !== 'categorical' && type === 'number' && previousStopDomainValue !== undefined && value < previousStopDomainValue) {
-            return [new ValidationError(options.key, reportValue, 'stop domain values must appear in ascending order')];
+        if (
+            functionType !== 'categorical' &&
+            type === 'number' &&
+            previousStopDomainValue !== undefined &&
+            value < previousStopDomainValue
+        ) {
+            return [
+                new ValidationError(
+                    options.key,
+                    reportValue,
+                    'stop domain values must appear in ascending order'
+                )
+            ];
         } else {
             previousStopDomainValue = value;
         }
 
         if (functionType === 'categorical' && (value as any) in stopDomainValues) {
-            return [new ValidationError(options.key, reportValue, 'stop domain values must be unique')];
+            return [
+                new ValidationError(options.key, reportValue, 'stop domain values must be unique')
+            ];
         } else {
             stopDomainValues[value as any] = true;
         }

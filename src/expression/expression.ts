@@ -16,7 +16,10 @@ export interface Expression {
     outputDefined(): boolean;
 }
 
-export type ExpressionParser = (args: ReadonlyArray<unknown>, context: ParsingContext) => Expression;
+export type ExpressionParser = (
+    args: ReadonlyArray<unknown>,
+    context: ParsingContext
+) => Expression;
 export type ExpressionRegistration = {
     new (...args: any): Expression;
 } & {

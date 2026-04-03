@@ -1,7 +1,7 @@
 import {Plugin} from 'rollup';
 
 function replacer(key: string, value: any) {
-    return (key === 'doc' || key === 'example' || key === 'sdk-support') ? undefined : value;
+    return key === 'doc' || key === 'example' || key === 'sdk-support' ? undefined : value;
 }
 
 export default function minifyStyleSpec(): Plugin {

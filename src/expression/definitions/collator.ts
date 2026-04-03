@@ -12,7 +12,11 @@ export class CollatorExpression implements Expression {
     diacriticSensitive: Expression;
     locale: Expression | null;
 
-    constructor(caseSensitive: Expression, diacriticSensitive: Expression, locale: Expression | null) {
+    constructor(
+        caseSensitive: Expression,
+        diacriticSensitive: Expression,
+        locale: Expression | null
+    ) {
         this.type = CollatorType;
         this.locale = locale;
         this.caseSensitive = caseSensitive;
@@ -20,19 +24,24 @@ export class CollatorExpression implements Expression {
     }
 
     static parse(args: ReadonlyArray<unknown>, context: ParsingContext): Expression {
-        if (args.length !== 2)
-            return context.error('Expected one argument.') as null;
+        if (args.length !== 2) return context.error('Expected one argument.') as null;
 
-        const options = (args[1] as any);
+        const options = args[1] as any;
         if (typeof options !== 'object' || Array.isArray(options))
             return context.error('Collator options argument must be an object.') as null;
 
         const caseSensitive = context.parse(
-            options['case-sensitive'] === undefined ? false : options['case-sensitive'], 1, BooleanType);
+            options['case-sensitive'] === undefined ? false : options['case-sensitive'],
+            1,
+            BooleanType
+        );
         if (!caseSensitive) return null;
 
         const diacriticSensitive = context.parse(
-            options['diacritic-sensitive'] === undefined ? false : options['diacritic-sensitive'], 1, BooleanType);
+            options['diacritic-sensitive'] === undefined ? false : options['diacritic-sensitive'],
+            1,
+            BooleanType
+        );
         if (!diacriticSensitive) return null;
 
         let locale = null;
@@ -45,7 +54,11 @@ export class CollatorExpression implements Expression {
     }
 
     evaluate(ctx: EvaluationContext) {
-        return new Collator(this.caseSensitive.evaluate(ctx), this.diacriticSensitive.evaluate(ctx), this.locale ? this.locale.evaluate(ctx) : null);
+        return new Collator(
+            this.caseSensitive.evaluate(ctx),
+            this.diacriticSensitive.evaluate(ctx),
+            this.locale ? this.locale.evaluate(ctx) : null
+        );
     }
 
     eachChild(fn: (_: Expression) => void) {

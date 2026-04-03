@@ -18,7 +18,5 @@ describe('findStopLessThanOrEqualTo', () => {
 
         index = findStopLessThanOrEqualTo([0.4, 0.5, 0.5, 0.6, 0.7], 0.5);
         expect(index).toBe(2);
-
     });
-
 });

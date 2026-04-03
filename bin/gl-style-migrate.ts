@@ -16,4 +16,3 @@ function help() {
     console.log('usage:');
     console.log('  gl-style-migrate style-v7.json > style-v8.json');
 }
-

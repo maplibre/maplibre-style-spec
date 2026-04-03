@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "allowJs": true,
+    "outDir": "dist",
     "allowSyntheticDefaultImports": true,
     "checkJs": true,
     "isolatedModules": false,

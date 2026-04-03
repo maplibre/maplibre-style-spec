@@ -1,11 +1,66 @@
 ## main
-
 ### ✨ Features and improvements
-- Add optional `encoding` property to vector `source` to allow for MapLibre Tile vector sources
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
+
+## 24.8.0
+
+### ✨ Features and improvements
+
+- Enable data driven stylng for  `line-{cap,round-limit,miter-limit}` ([#1566](https://github.com/maplibre/maplibre-style-spec/pull/1566)) (by [@CommanderStorm](https://github.com/CommanderStorm))
+
+## 24.7.0
+
+### ✨ Features and improvements
+
+- Validate that `raster` layers do not specify both `resampling` and `raster-resampling` paint properties ([#1532](https://github.com/maplibre/maplibre-style-spec/pull/1532)) (by [larsmaxfield](https://github.com/larsmaxfield))
+
+## 24.6.0
+
+### ✨ Features and improvements
+
+- Add `split` and `join` expressions ([#1518](https://github.com/maplibre/maplibre-style-spec/pull/1518)) (by [1ec5](https://github.com/1ec5))
+
+## 24.5.0
+
+### ✨ Features and improvements
+
+- Add "unit" option to "number-format" ([#1335](https://github.com/maplibre/maplibre-style-spec/pull/1335)) (by [ginnyTheCat](https://github.com/ginnyTheCat))
+- Add `resampling` paint property to raster, hillshade, and color relief layers ([#1447](https://github.com/maplibre/maplibre-style-spec/issues/1447)) (by [larsmaxfield](https://github.com/larsmaxfield))
+- Include 'transparent' as a permitted color name ([#1442](https://github.com/maplibre/maplibre-style-spec/pull/1442)) (by [zstadler](https://github.com/zstadler))
+- Migrate docs to zensical ([#1394](https://github.com/maplibre/maplibre-style-spec/pull/1394)) (by [CommanderStorm](https://github.com/CommanderStorm))
+
+## 24.4.1
+
+### ✨ Features and improvements
+
+- Consolidate workflows ([#1423](https://github.com/maplibre/maplibre-style-spec/pull/1423)) (by [HarelM](https://github.com/HarelM))
+
+## 24.4.0
+
+### ✨ Features and improvements
+
+- Update Node.js to 24.11 ([#1418](https://github.com/maplibre/maplibre-style-spec/issues/1418))
+- Allow global state expressions in layer visibility ([#1364](https://github.com/maplibre/maplibre-style-spec/issues/1364))
+- Only alert to an unknown or required object-properties being undefined instead of any object-property being undefined ([#1415](https://github.com/maplibre/maplibre-style-spec/issues/1415))
+
+### 🐞 Bug fixes
+
+- The optional `center` property is now validated to be a `[lon,lat]` array ([#1372](https://github.com/maplibre/maplibre-gl-js/issues/1372))
+
+## 24.3.1
+
+### 🐞 Bug fixes
+
+- The validator no longer fails if the style lacks a `glyphs` property ([#1347](https://github.com/maplibre/maplibre-style-spec/pull/1347))
+
+## 24.3.0
+
+### ✨ Features and improvements
+
+- Add optional `encoding` property to vector `source` to allow for MapLibre Tile vector sources
 
 ## 24.2.0
 

@@ -8,18 +8,21 @@ export function validateColorArray(options) {
     const type = getType(value);
 
     if (type === 'array') {
-
         if (value.length < 1) {
-            return [new ValidationError(key, value, 'array length at least 1 expected, length 0 found')];
+            return [
+                new ValidationError(key, value, 'array length at least 1 expected, length 0 found')
+            ];
         }
 
         let errors = [];
         for (let i = 0; i < value.length; i++) {
-            errors = errors.concat(validateColor({
-                key: `${key}[${i}]`,
-                value: value[i],
-                valueSpec: {}
-            }));
+            errors = errors.concat(
+                validateColor({
+                    key: `${key}[${i}]`,
+                    value: value[i],
+                    valueSpec: {}
+                })
+            );
         }
         return errors;
     } else {

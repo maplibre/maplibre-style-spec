@@ -63,15 +63,15 @@ export function rgbToLab([r, g, b, alpha]: RGBColor): LABColor {
     }
 
     const l = 116 * y - 16;
-    return [(l < 0) ? 0 : l, 500 * (x - y), 200 * (y - z), alpha];
+    return [l < 0 ? 0 : l, 500 * (x - y), 200 * (y - z), alpha];
 }
 
 function rgb2xyz(x: number): number {
-    return (x <= 0.04045) ? x / 12.92 : Math.pow((x + 0.055) / 1.055, 2.4);
+    return x <= 0.04045 ? x / 12.92 : Math.pow((x + 0.055) / 1.055, 2.4);
 }
 
 function xyz2lab(t: number): number {
-    return (t > t3) ? Math.pow(t, 1 / 3) : t / t2 + t0;
+    return t > t3 ? Math.pow(t, 1 / 3) : t / t2 + t0;
 }
 
 export function labToRgb([l, a, b, alpha]: LABColor): RGBColor {
@@ -85,19 +85,19 @@ export function labToRgb([l, a, b, alpha]: LABColor): RGBColor {
 
     return [
         xyz2rgb(3.1338561 * x - 1.6168667 * y - 0.4906146 * z), // D50 -> sRGB
-        xyz2rgb(-0.9787684 * x + 1.9161415 * y + 0.0334540 * z),
+        xyz2rgb(-0.9787684 * x + 1.9161415 * y + 0.033454 * z),
         xyz2rgb(0.0719453 * x - 0.2289914 * y + 1.4052427 * z),
-        alpha,
+        alpha
     ];
 }
 
 function xyz2rgb(x: number): number {
-    x = (x <= 0.00304) ? 12.92 * x : 1.055 * Math.pow(x, 1 / 2.4) - 0.055;
-    return (x < 0) ? 0 : (x > 1) ? 1 : x; // clip to 0..1 range
+    x = x <= 0.00304 ? 12.92 * x : 1.055 * Math.pow(x, 1 / 2.4) - 0.055;
+    return x < 0 ? 0 : x > 1 ? 1 : x; // clip to 0..1 range
 }
 
 function lab2xyz(t: number): number {
-    return (t > t1) ? t * t * t : t2 * (t - t0);
+    return t > t1 ? t * t * t : t2 * (t - t0);
 }
 
 export function rgbToHcl(rgbColor: RGBColor): HCLColor {

@@ -30,7 +30,8 @@ export class ImageExpression implements Expression {
         const evaluatedImageName = this.input.evaluate(ctx);
 
         const value = ResolvedImage.fromString(evaluatedImageName);
-        if (value && ctx.availableImages) value.available = ctx.availableImages.indexOf(evaluatedImageName) > -1;
+        if (value && ctx.availableImages)
+            value.available = ctx.availableImages.indexOf(evaluatedImageName) > -1;
 
         return value;
     }

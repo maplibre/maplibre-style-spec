@@ -2,7 +2,7 @@ import type {Color} from '../../expression/types/color';
 import type {ResolvedImage} from '../types/resolved_image';
 
 export const VERTICAL_ALIGN_OPTIONS = ['bottom', 'center', 'top'] as const;
-export type VerticalAlign = typeof VERTICAL_ALIGN_OPTIONS[number];
+export type VerticalAlign = (typeof VERTICAL_ALIGN_OPTIONS)[number];
 
 export class FormattedSection {
     text: string;
@@ -12,7 +12,14 @@ export class FormattedSection {
     textColor: Color | null;
     verticalAlign: VerticalAlign | null;
 
-    constructor(text: string, image: ResolvedImage | null, scale: number | null, fontStack: string | null, textColor: Color | null, verticalAlign: VerticalAlign | null) {
+    constructor(
+        text: string,
+        image: ResolvedImage | null,
+        scale: number | null,
+        fontStack: string | null,
+        textColor: Color | null,
+        verticalAlign: VerticalAlign | null
+    ) {
         this.text = text;
         this.image = image;
         this.scale = scale;
@@ -35,8 +42,10 @@ export class Formatted {
 
     isEmpty(): boolean {
         if (this.sections.length === 0) return true;
-        return !this.sections.some(section => section.text.length !== 0 ||
-                                             (section.image && section.image.name.length !== 0));
+        return !this.sections.some(
+            (section) =>
+                section.text.length !== 0 || (section.image && section.image.name.length !== 0)
+        );
     }
 
     static factory(text: Formatted | string): Formatted {
@@ -49,6 +58,6 @@ export class Formatted {
 
     toString(): string {
         if (this.sections.length === 0) return '';
-        return this.sections.map(section => section.text).join('');
+        return this.sections.map((section) => section.text).join('');
     }
 }

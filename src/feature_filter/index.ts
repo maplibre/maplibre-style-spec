@@ -29,7 +29,9 @@ export function isExpressionFilter(filter: any): filter is ExpressionFilterSpeci
             return filter.length >= 2 && filter[1] !== '$id' && filter[1] !== '$type';
 
         case 'in':
-            return filter.length >= 3 && (typeof filter[1] !== 'string' || Array.isArray(filter[2]));
+            return (
+                filter.length >= 3 && (typeof filter[1] !== 'string' || Array.isArray(filter[2]))
+            );
 
         case '!in':
         case '!has':
@@ -42,7 +44,7 @@ export function isExpressionFilter(filter: any): filter is ExpressionFilterSpeci
         case '>=':
         case '<':
         case '<=':
-            return filter.length !== 3 || (Array.isArray(filter[1]) || Array.isArray(filter[2]));
+            return filter.length !== 3 || Array.isArray(filter[1]) || Array.isArray(filter[2]);
 
         case 'any':
         case 'all':
@@ -59,13 +61,13 @@ export function isExpressionFilter(filter: any): filter is ExpressionFilterSpeci
 }
 
 const filterSpec = {
-    'type': 'boolean',
-    'default': false,
-    'transition': false,
+    type: 'boolean',
+    default: false,
+    transition: false,
     'property-type': 'data-driven',
-    'expression': {
-        'interpolated': false,
-        'parameters': ['zoom', 'feature']
+    expression: {
+        interpolated: false,
+        parameters: ['zoom', 'feature']
     }
 };
 
@@ -79,7 +81,10 @@ const filterSpec = {
  * @param [globalState] Global state object to be used for evaluating 'global-state' expressions
  * @returns filter-evaluating function
  */
-export function featureFilter(filter: FilterSpecification | void, globalState?: Record<string, any>): FeatureFilter {
+export function featureFilter(
+    filter: FilterSpecification | void,
+    globalState?: Record<string, any>
+): FeatureFilter {
     if (filter === null || filter === undefined) {
         return {filter: () => true, needGeometry: false, getGlobalStateRefs: () => new Set()};
     }
@@ -88,13 +93,21 @@ export function featureFilter(filter: FilterSpecification | void, globalState?: 
         filter = convertFilter(filter) as ExpressionFilterSpecification;
     }
 
-    const compiled = createExpression(filter, filterSpec as StylePropertySpecification, globalState);
+    const compiled = createExpression(
+        filter,
+        filterSpec as StylePropertySpecification,
+        globalState
+    );
     if (compiled.result === 'error') {
-        throw new Error(compiled.value.map(err => `${err.key}: ${err.message}`).join(', '));
+        throw new Error(compiled.value.map((err) => `${err.key}: ${err.message}`).join(', '));
     } else {
         const needGeometry = geometryNeeded(filter);
         return {
-            filter: (globalProperties: GlobalProperties, feature: Feature, canonical?: ICanonicalTileID) => compiled.value.evaluate(globalProperties, feature, {}, canonical),
+            filter: (
+                globalProperties: GlobalProperties,
+                feature: Feature,
+                canonical?: ICanonicalTileID
+            ) => compiled.value.evaluate(globalProperties, feature, {}, canonical),
             needGeometry,
             getGlobalStateRefs: () => findGlobalStateRefs(compiled.value.expression)
         };
@@ -118,22 +131,31 @@ function geometryNeeded(filter) {
 function convertFilter(filter?: Array<any> | null | void): unknown {
     if (!filter) return true;
     const op = filter[0];
-    if (filter.length <= 1) return (op !== 'any');
+    if (filter.length <= 1) return op !== 'any';
     const converted =
-        op === '==' ? convertComparisonOp(filter[1], filter[2], '==') :
-            op === '!=' ? convertNegation(convertComparisonOp(filter[1], filter[2], '==')) :
-                op === '<' ||
-        op === '>' ||
-        op === '<=' ||
-        op === '>=' ? convertComparisonOp(filter[1], filter[2], op) :
-                    op === 'any' ? convertDisjunctionOp(filter.slice(1)) :
-                        op === 'all' ? ['all' as unknown].concat(filter.slice(1).map(convertFilter)) :
-                            op === 'none' ? ['all' as unknown].concat(filter.slice(1).map(convertFilter).map(convertNegation)) :
-                                op === 'in' ? convertInOp(filter[1], filter.slice(2)) :
-                                    op === '!in' ? convertNegation(convertInOp(filter[1], filter.slice(2))) :
-                                        op === 'has' ? convertHasOp(filter[1]) :
-                                            op === '!has' ? convertNegation(convertHasOp(filter[1])) :
-                                                true;
+        op === '=='
+            ? convertComparisonOp(filter[1], filter[2], '==')
+            : op === '!='
+              ? convertNegation(convertComparisonOp(filter[1], filter[2], '=='))
+              : op === '<' || op === '>' || op === '<=' || op === '>='
+                ? convertComparisonOp(filter[1], filter[2], op)
+                : op === 'any'
+                  ? convertDisjunctionOp(filter.slice(1))
+                  : op === 'all'
+                    ? ['all' as unknown].concat(filter.slice(1).map(convertFilter))
+                    : op === 'none'
+                      ? ['all' as unknown].concat(
+                            filter.slice(1).map(convertFilter).map(convertNegation)
+                        )
+                      : op === 'in'
+                        ? convertInOp(filter[1], filter.slice(2))
+                        : op === '!in'
+                          ? convertNegation(convertInOp(filter[1], filter.slice(2)))
+                          : op === 'has'
+                            ? convertHasOp(filter[1])
+                            : op === '!has'
+                              ? convertNegation(convertHasOp(filter[1]))
+                              : true;
     return converted;
 }
 
@@ -153,14 +175,16 @@ function convertDisjunctionOp(filters: Array<Array<any>>) {
 }
 
 function convertInOp(property: string, values: Array<any>) {
-    if (values.length === 0) { return false; }
+    if (values.length === 0) {
+        return false;
+    }
     switch (property) {
         case '$type':
             return ['filter-type-in', ['literal', values]];
         case '$id':
             return ['filter-id-in', ['literal', values]];
         default:
-            if (values.length > 200 && !values.some(v => typeof v !== typeof values[0])) {
+            if (values.length > 200 && !values.some((v) => typeof v !== typeof values[0])) {
                 return ['filter-in-large', property, ['literal', values.sort(compare)]];
             } else {
                 return ['filter-in-small', property, ['literal', values]];

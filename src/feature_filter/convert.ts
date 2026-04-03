@@ -1,6 +1,12 @@
 import {isExpressionFilter} from './index';
 
-import type {ExpressionFilterSpecification, ExpressionInputType, ExpressionSpecification, FilterSpecification, LegacyFilterSpecification} from '../types.g';
+import type {
+    ExpressionFilterSpecification,
+    ExpressionInputType,
+    ExpressionSpecification,
+    FilterSpecification,
+    LegacyFilterSpecification
+} from '../types.g';
 
 type ExpectedTypes = {[_: string]: ExpressionInputType};
 
@@ -52,13 +58,16 @@ type ExpectedTypes = {[_: string]: ExpressionInputType};
  * false (legacy filter semantics) are equivalent: they cause the filter to
  * produce a `false` result.
  */
-export function convertFilter(filter: FilterSpecification, expectedTypes: ExpectedTypes = {}): ExpressionFilterSpecification {
+export function convertFilter(
+    filter: FilterSpecification,
+    expectedTypes: ExpectedTypes = {}
+): ExpressionFilterSpecification {
     if (isExpressionFilter(filter)) return filter;
     if (!filter) return true;
 
     const legacyFilter = filter as LegacyFilterSpecification;
     const legacyOp = legacyFilter[0];
-    if (filter.length <= 1) return (legacyOp !== 'any');
+    if (filter.length <= 1) return legacyOp !== 'any';
 
     switch (legacyOp) {
         case '==':
@@ -76,13 +85,15 @@ export function convertFilter(filter: FilterSpecification, expectedTypes: Expect
                 const types = {};
                 const child = convertFilter(f, types);
                 const typechecks = runtimeTypeChecks(types);
-                return typechecks === true ? child : ['case', typechecks, child, false] as ExpressionSpecification;
+                return typechecks === true
+                    ? child
+                    : (['case', typechecks, child, false] as ExpressionSpecification);
             });
             return ['any', ...children];
         }
         case 'all': {
             const [, ...conditions] = legacyFilter;
-            const children = conditions.map(f => convertFilter(f, expectedTypes));
+            const children = conditions.map((f) => convertFilter(f, expectedTypes));
             return children.length > 1 ? ['all', ...children] : children[0];
         }
         case 'none': {
@@ -125,7 +136,12 @@ function runtimeTypeChecks(expectedTypes: ExpectedTypes): ExpressionFilterSpecif
     return ['all', ...conditions];
 }
 
-function convertComparisonOp(property: string, value: any, op: string, expectedTypes?: ExpectedTypes | null): ExpressionFilterSpecification {
+function convertComparisonOp(
+    property: string,
+    value: any,
+    op: string,
+    expectedTypes?: ExpectedTypes | null
+): ExpressionFilterSpecification {
     let get;
     if (property === '$type') {
         return [op, ['geometry-type'], value] as ExpressionFilterSpecification;
@@ -136,7 +152,7 @@ function convertComparisonOp(property: string, value: any, op: string, expectedT
     }
 
     if (expectedTypes && value !== null) {
-        const type = (typeof value as any);
+        const type = typeof value as any;
         expectedTypes[property] = type;
     }
 
@@ -157,7 +173,11 @@ function convertComparisonOp(property: string, value: any, op: string, expectedT
     return [op, get, value] as ExpressionFilterSpecification;
 }
 
-function convertInOp(property: string, values: Array<any>, negate = false): ExpressionFilterSpecification {
+function convertInOp(
+    property: string,
+    values: Array<any>,
+    negate = false
+): ExpressionFilterSpecification {
     if (values.length === 0) return negate;
 
     let get: ExpressionSpecification;
@@ -189,9 +209,9 @@ function convertInOp(property: string, values: Array<any>, negate = false): Expr
     }
 
     if (negate) {
-        return ['all', ...values.map(v => ['!=', get, v] as ExpressionSpecification)];
+        return ['all', ...values.map((v) => ['!=', get, v] as ExpressionSpecification)];
     } else {
-        return ['any', ...values.map(v => ['==', get, v] as ExpressionSpecification)];
+        return ['any', ...values.map((v) => ['==', get, v] as ExpressionSpecification)];
     }
 }
 

@@ -5,7 +5,23 @@ import {derefLayers} from './deref';
 import {diff} from './diff';
 import {ValidationError} from './error/validation_error';
 import {ParsingError} from './error/parsing_error';
-import {FeatureState, StyleExpression, isExpression, isZoomExpression, createExpression, createPropertyExpression, normalizePropertyExpression, ZoomConstantExpression, ZoomDependentExpression, StylePropertyFunction, Feature, GlobalProperties, SourceExpression, CompositeExpression, StylePropertyExpression} from './expression';
+import {
+    FeatureState,
+    StyleExpression,
+    isExpression,
+    isZoomExpression,
+    createExpression,
+    createPropertyExpression,
+    normalizePropertyExpression,
+    ZoomConstantExpression,
+    ZoomDependentExpression,
+    StylePropertyFunction,
+    Feature,
+    GlobalProperties,
+    SourceExpression,
+    CompositeExpression,
+    StylePropertyExpression
+} from './expression';
 import {featureFilter, isExpressionFilter} from './feature_filter';
 
 import {convertFilter} from './feature_filter/convert';
@@ -22,7 +38,14 @@ import {ResolvedImage} from './expression/types/resolved_image';
 import {supportsPropertyExpression} from './util/properties';
 import {IMercatorCoordinate, ICanonicalTileID, ILngLat, ILngLatLike} from './tiles_and_coordinates';
 import {EvaluationContext} from './expression/evaluation_context';
-import {FormattedType, NullType, Type, typeToString, ColorType, ProjectionDefinitionType} from './expression/types';
+import {
+    FormattedType,
+    NullType,
+    Type,
+    typeToString,
+    ColorType,
+    ProjectionDefinitionType
+} from './expression/types';
 
 import {expressions} from './expression/definitions';
 import {Interpolate} from './expression/definitions/interpolate';
@@ -36,101 +59,137 @@ import {typeOf} from './expression/values';
 import {FormatExpression} from './expression/definitions/format';
 import {Literal} from './expression/definitions/literal';
 import {CompoundExpression} from './expression/compound_expression';
-import {ColorSpecification, PaddingSpecification, NumberArraySpecification, ColorArraySpecification, ProjectionDefinitionSpecification, VariableAnchorOffsetCollectionSpecification, AllPaintProperties, AllLayoutProperties} from './types.g';
+import {
+    ColorSpecification,
+    PaddingSpecification,
+    NumberArraySpecification,
+    ColorArraySpecification,
+    ProjectionDefinitionSpecification,
+    VariableAnchorOffsetCollectionSpecification,
+    AllPaintProperties,
+    AllLayoutProperties
+} from './types.g';
 import {format} from './format';
 import {validate} from './validate/validate';
 import {migrate} from './migrate';
 import {classifyRings} from './util/classify_rings';
 import {ProjectionDefinition} from './expression/types/projection_definition';
+import createVisibilityExpression from './expression/visibility';
 
-type ExpressionType = 'data-driven' | 'cross-faded' | 'cross-faded-data-driven' | 'color-ramp' | 'data-constant' | 'constant';
-type ExpressionParameters = Array<'zoom' | 'feature' | 'feature-state' | 'heatmap-density' | 'elevation' | 'line-progress'>;
+type ExpressionType =
+    | 'data-driven'
+    | 'cross-faded'
+    | 'cross-faded-data-driven'
+    | 'color-ramp'
+    | 'data-constant'
+    | 'constant';
+type ExpressionParameters = Array<
+    | 'zoom'
+    | 'feature'
+    | 'feature-state'
+    | 'heatmap-density'
+    | 'elevation'
+    | 'line-progress'
+    | 'global-state'
+>;
 
 type ExpressionSpecificationDefinition = {
     interpolated: boolean;
     parameters: ExpressionParameters;
 };
 
-export type StylePropertySpecification = {
-    type: 'number';
-    'property-type': ExpressionType;
-    expression?: ExpressionSpecificationDefinition;
-    transition: boolean;
-    default?: number;
-} | {
-    type: 'string';
-    'property-type': ExpressionType;
-    expression?: ExpressionSpecificationDefinition;
-    transition: boolean;
-    default?: string;
-    tokens?: boolean;
-} | {
-    type: 'boolean';
-    'property-type': ExpressionType;
-    expression?: ExpressionSpecificationDefinition;
-    transition: boolean;
-    default?: boolean;
-} | {
-    type: 'enum';
-    'property-type': ExpressionType;
-    expression?: ExpressionSpecificationDefinition;
-    values: {[_: string]: {}};
-    transition: boolean;
-    default?: string;
-} | {
-    type: 'color';
-    'property-type': ExpressionType;
-    expression?: ExpressionSpecificationDefinition;
-    transition: boolean;
-    default?: ColorSpecification;
-    overridable: boolean;
-} | {
-    type: 'array';
-    value: 'number';
-    'property-type': ExpressionType;
-    expression?: ExpressionSpecificationDefinition;
-    length?: number;
-    transition: boolean;
-    default?: Array<number>;
-} | {
-    type: 'array';
-    value: 'string';
-    'property-type': ExpressionType;
-    expression?: ExpressionSpecificationDefinition;
-    length?: number;
-    transition: boolean;
-    default?: Array<string>;
-} | {
-    type: 'padding';
-    'property-type': ExpressionType;
-    expression?: ExpressionSpecificationDefinition;
-    transition: boolean;
-    default?: PaddingSpecification;
-} | {
-    type: 'numberArray';
-    'property-type': ExpressionType;
-    expression?: ExpressionSpecificationDefinition;
-    transition: boolean;
-    default?: NumberArraySpecification;
-} | {
-    type: 'colorArray';
-    'property-type': ExpressionType;
-    expression?: ExpressionSpecificationDefinition;
-    transition: boolean;
-    default?: ColorArraySpecification;
-} | {
-    type: 'variableAnchorOffsetCollection';
-    'property-type': ExpressionType;
-    expression?: ExpressionSpecificationDefinition;
-    transition: boolean;
-    default?: VariableAnchorOffsetCollectionSpecification;
-} | {
-    type: 'projectionDefinition';
-    'property-type': ExpressionType;
-    expression?: ExpressionSpecificationDefinition;
-    transition: boolean;
-    default?: ProjectionDefinitionSpecification;
-};
+export type StylePropertySpecification =
+    | {
+          type: 'number';
+          'property-type': ExpressionType;
+          expression?: ExpressionSpecificationDefinition;
+          transition: boolean;
+          default?: number;
+      }
+    | {
+          type: 'string';
+          'property-type': ExpressionType;
+          expression?: ExpressionSpecificationDefinition;
+          transition: boolean;
+          default?: string;
+          tokens?: boolean;
+      }
+    | {
+          type: 'boolean';
+          'property-type': ExpressionType;
+          expression?: ExpressionSpecificationDefinition;
+          transition: boolean;
+          default?: boolean;
+      }
+    | {
+          type: 'enum';
+          'property-type': ExpressionType;
+          expression?: ExpressionSpecificationDefinition;
+          values: {[_: string]: {}};
+          transition: boolean;
+          default?: string;
+      }
+    | {
+          type: 'color';
+          'property-type': ExpressionType;
+          expression?: ExpressionSpecificationDefinition;
+          transition: boolean;
+          default?: ColorSpecification;
+          overridable: boolean;
+      }
+    | {
+          type: 'array';
+          value: 'number';
+          'property-type': ExpressionType;
+          expression?: ExpressionSpecificationDefinition;
+          length?: number;
+          transition: boolean;
+          default?: Array<number>;
+      }
+    | {
+          type: 'array';
+          value: 'string';
+          'property-type': ExpressionType;
+          expression?: ExpressionSpecificationDefinition;
+          length?: number;
+          transition: boolean;
+          default?: Array<string>;
+      }
+    | {
+          type: 'padding';
+          'property-type': ExpressionType;
+          expression?: ExpressionSpecificationDefinition;
+          transition: boolean;
+          default?: PaddingSpecification;
+      }
+    | {
+          type: 'numberArray';
+          'property-type': ExpressionType;
+          expression?: ExpressionSpecificationDefinition;
+          transition: boolean;
+          default?: NumberArraySpecification;
+      }
+    | {
+          type: 'colorArray';
+          'property-type': ExpressionType;
+          expression?: ExpressionSpecificationDefinition;
+          transition: boolean;
+          default?: ColorArraySpecification;
+      }
+    | {
+          type: 'variableAnchorOffsetCollection';
+          'property-type': ExpressionType;
+          expression?: ExpressionSpecificationDefinition;
+          transition: boolean;
+          default?: VariableAnchorOffsetCollectionSpecification;
+      }
+    | {
+          type: 'projectionDefinition';
+          'property-type': ExpressionType;
+          expression?: ExpressionSpecificationDefinition;
+          transition: boolean;
+          default?: ProjectionDefinitionSpecification;
+      };
 
 const expression = {
     StyleExpression,
@@ -142,7 +201,7 @@ const expression = {
     isExpression,
     isExpressionFilter,
     isZoomExpression,
-    normalizePropertyExpression,
+    normalizePropertyExpression
 };
 
 const styleFunction = {
@@ -191,7 +250,6 @@ export {
     AllLayoutProperties,
 
     latest,
-
     validateStyleMin,
     groupByLayout,
     emptyStyle,
@@ -203,8 +261,10 @@ export {
     supportsPropertyExpression,
     convertFunction,
     createExpression,
-    isFunction, createFunction,
+    isFunction,
+    createFunction,
     createPropertyExpression,
+    createVisibilityExpression,
     convertFilter,
     featureFilter,
     typeOf,
@@ -213,7 +273,6 @@ export {
     validate,
     migrate,
     classifyRings,
-
     ProjectionDefinitionType,
     ColorType,
     interpolateFactory as interpolates,
@@ -223,5 +282,5 @@ export {
     visit,
     expressions,
     expression,
-    FormattedType,
+    FormattedType
 };

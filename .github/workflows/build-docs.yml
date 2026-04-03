@@ -7,13 +7,15 @@ on:
   pull_request:
     branches:
     - main
+  workflow_dispatch:
 
 jobs:
   build-test-deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v5
-    - uses: actions/setup-node@v5
+    - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      with: { persist-credentials: false }
+    - uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
       with:
         node-version-file: '.nvmrc'
 
@@ -26,12 +28,12 @@ jobs:
         npm run generate-typings
 
     - name: Build docs
-      run: npm run mkdocs-build
-      
+      run: npm run docs
+
 
     - name: Deploy
       if: github.ref == 'refs/heads/main'
-      uses: JamesIves/github-pages-deploy-action@v4
+      uses: JamesIves/github-pages-deploy-action@d92aa235d04922e8f08b40ce78cc5442fcfbfa2f # v4.8.0
       with:
         branch: gh-pages
         folder: site

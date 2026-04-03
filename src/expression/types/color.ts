@@ -11,7 +11,9 @@ export type InterpolationColorSpace = 'rgb' | 'hcl' | 'lab';
  * @returns `true` if the specified color space is one of the supported
  * interpolation color spaces, `false` otherwise
  */
-export function isSupportedInterpolationColorSpace(colorSpace: string): colorSpace is InterpolationColorSpace {
+export function isSupportedInterpolationColorSpace(
+    colorSpace: string
+): colorSpace is InterpolationColorSpace {
     return colorSpace === 'rgb' || colorSpace === 'hcl' || colorSpace === 'lab';
 }
 
@@ -21,7 +23,6 @@ export function isSupportedInterpolationColorSpace(colorSpace: string): colorSpa
  * @private
  */
 export class Color {
-
     readonly r: number;
     readonly g: number;
     readonly b: number;
@@ -155,10 +156,15 @@ export class Color {
      */
     toString(): string {
         const [r, g, b, a] = this.rgb;
-        return `rgba(${[r, g, b].map(n => Math.round(n * 255)).join(',')},${a})`;
+        return `rgba(${[r, g, b].map((n) => Math.round(n * 255)).join(',')},${a})`;
     }
 
-    static interpolate(from: Color, to: Color, t: number, spaceKey: InterpolationColorSpace = 'rgb'): Color {
+    static interpolate(
+        from: Color,
+        to: Color,
+        t: number,
+        spaceKey: InterpolationColorSpace = 'rgb'
+    ): Color {
         switch (spaceKey) {
             case 'rgb': {
                 const [r, g, b, alpha] = interpolateArray(from.rgb, to.rgb, t);
@@ -167,10 +173,10 @@ export class Color {
             case 'hcl': {
                 const [hue0, chroma0, light0, alphaF] = from.hcl;
                 const [hue1, chroma1, light1, alphaT] = to.hcl;
-    
+
                 // https://github.com/gka/chroma.js/blob/cd1b3c0926c7a85cbdc3b1453b3a94006de91a92/src/interpolator/_hsx.js
                 let hue, chroma;
-    
+
                 if (!isNaN(hue0) && !isNaN(hue1)) {
                     let dh = hue1 - hue0;
                     if (hue1 > hue0 && dh > 180) {
@@ -188,12 +194,12 @@ export class Color {
                 } else {
                     hue = NaN;
                 }
-    
+
                 const [r, g, b, alpha] = hclToRgb([
                     hue,
                     chroma ?? interpolateNumber(chroma0, chroma1, t),
                     interpolateNumber(light0, light1, t),
-                    interpolateNumber(alphaF, alphaT, t),
+                    interpolateNumber(alphaF, alphaT, t)
                 ]);
                 return new Color(r, g, b, alpha, false);
             }
@@ -203,5 +209,4 @@ export class Color {
             }
         }
     }
-
 }

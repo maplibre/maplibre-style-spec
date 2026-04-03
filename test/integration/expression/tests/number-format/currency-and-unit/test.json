@@ -1,0 +1,34 @@
+{
+  "expression": [
+    "number-format",
+    1234.567,
+    {
+      "locale": ["get", "locale"],
+      "currency": ["get", "currency"],
+      "unit": ["get", "unit"]
+    }
+  ],
+  "inputs": [
+    [
+      {},
+      {
+        "properties": {
+          "locale": "en-US",
+          "currency": "EUR",
+          "unit": "meter"
+        }
+      }
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "error",
+      "errors": [
+        {
+          "key": "",
+          "error": "NumberFormat options `currency` and `unit` are mutually exclusive"
+        }
+      ]
+    }
+  }
+}

@@ -1,4 +1,7 @@
-type HasOwnPropertyFn = <TObject extends object>(obj: TObject, key: PropertyKey) => key is keyof TObject;
+type HasOwnPropertyFn = <TObject extends object>(
+    obj: TObject,
+    key: PropertyKey
+) => key is keyof TObject;
 
 // polyfill for Object.hasOwn
 const hasOwnProperty: HasOwnPropertyFn =

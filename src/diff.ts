@@ -1,5 +1,16 @@
-
-import {GeoJSONSourceSpecification, LayerSpecification, LightSpecification, ProjectionSpecification, SkySpecification, SourceSpecification, SpriteSpecification, StyleSpecification, TerrainSpecification, TransitionSpecification, StateSpecification} from './types.g';
+import {
+    GeoJSONSourceSpecification,
+    LayerSpecification,
+    LightSpecification,
+    ProjectionSpecification,
+    SkySpecification,
+    SourceSpecification,
+    SpriteSpecification,
+    StyleSpecification,
+    TerrainSpecification,
+    TransitionSpecification,
+    StateSpecification
+} from './types.g';
 import {deepEqual} from './util/deep_equal';
 
 /**
@@ -7,32 +18,32 @@ import {deepEqual} from './util/deep_equal';
  * Below are the operations and their arguments, the arguments should be aligned with the style methods in maplibre-gl-js.
  */
 export type DiffOperationsMap = {
-    'setStyle': [StyleSpecification];
-    'addLayer': [LayerSpecification, string | null];
-    'removeLayer': [string];
-    'setPaintProperty': [string, string, unknown, string | null];
-    'setLayoutProperty': [string, string, unknown, string | null];
-    'setFilter': [string, unknown];
-    'addSource': [string, SourceSpecification];
-    'removeSource': [string];
-    'setGeoJSONSourceData': [string, unknown];
-    'setLayerZoomRange': [string, number, number];
-    'setLayerProperty': [string, string, unknown];
-    'setCenter': [number[]];
-    'setCenterAltitude': [number];
-    'setZoom': [number];
-    'setBearing': [number];
-    'setPitch': [number];
-    'setRoll': [number];
-    'setSprite': [SpriteSpecification];
-    'setGlyphs': [string];
-    'setTransition': [TransitionSpecification];
-    'setLight': [LightSpecification];
-    'setTerrain': [TerrainSpecification];
-    'setSky': [SkySpecification];
-    'setProjection': [ProjectionSpecification];
-    'setGlobalState': [StateSpecification];
-}
+    setStyle: [StyleSpecification];
+    addLayer: [LayerSpecification, string | null];
+    removeLayer: [string];
+    setPaintProperty: [string, string, unknown, string | null];
+    setLayoutProperty: [string, string, unknown, string | null];
+    setFilter: [string, unknown];
+    addSource: [string, SourceSpecification];
+    removeSource: [string];
+    setGeoJSONSourceData: [string, unknown];
+    setLayerZoomRange: [string, number, number];
+    setLayerProperty: [string, string, unknown];
+    setCenter: [number[]];
+    setCenterAltitude: [number];
+    setZoom: [number];
+    setBearing: [number];
+    setPitch: [number];
+    setRoll: [number];
+    setSprite: [SpriteSpecification];
+    setGlyphs: [string];
+    setTransition: [TransitionSpecification];
+    setLight: [LightSpecification];
+    setTerrain: [TerrainSpecification];
+    setSky: [SkySpecification];
+    setProjection: [ProjectionSpecification];
+    setGlobalState: [StateSpecification];
+};
 
 export type DiffOperations = keyof DiffOperationsMap;
 
@@ -46,25 +57,45 @@ export type DiffCommand<T extends DiffOperations> = {
  * @param commands - The commands array to add to
  * @param command - The command to add
  */
-function addCommand<T extends DiffOperations>(commands: DiffCommand<DiffOperations>[], command: DiffCommand<T>) {
+function addCommand<T extends DiffOperations>(
+    commands: DiffCommand<DiffOperations>[],
+    command: DiffCommand<T>
+) {
     commands.push(command);
 }
 
-function addSource(sourceId: string, after: {[key: string]: SourceSpecification}, commands: DiffCommand<DiffOperations>[]) {
+function addSource(
+    sourceId: string,
+    after: {[key: string]: SourceSpecification},
+    commands: DiffCommand<DiffOperations>[]
+) {
     addCommand(commands, {command: 'addSource', args: [sourceId, after[sourceId]]});
 }
 
-function removeSource(sourceId: string, commands: DiffCommand<DiffOperations>[], sourcesRemoved: {[key: string]: boolean}) {
+function removeSource(
+    sourceId: string,
+    commands: DiffCommand<DiffOperations>[],
+    sourcesRemoved: {[key: string]: boolean}
+) {
     addCommand(commands, {command: 'removeSource', args: [sourceId]});
     sourcesRemoved[sourceId] = true;
 }
 
-function updateSource(sourceId: string, after: {[key: string]: SourceSpecification}, commands: DiffCommand<DiffOperations>[], sourcesRemoved: {[key: string]: boolean}) {
+function updateSource(
+    sourceId: string,
+    after: {[key: string]: SourceSpecification},
+    commands: DiffCommand<DiffOperations>[],
+    sourcesRemoved: {[key: string]: boolean}
+) {
     removeSource(sourceId, commands, sourcesRemoved);
     addSource(sourceId, after, commands);
 }
 
-function canUpdateGeoJSON(before: {[key: string]: SourceSpecification}, after: {[key: string]: SourceSpecification}, sourceId: string) {
+function canUpdateGeoJSON(
+    before: {[key: string]: SourceSpecification},
+    after: {[key: string]: SourceSpecification},
+    sourceId: string
+) {
     let prop;
     for (prop in before[sourceId]) {
         if (!Object.prototype.hasOwnProperty.call(before[sourceId], prop)) continue;
@@ -81,9 +112,14 @@ function canUpdateGeoJSON(before: {[key: string]: SourceSpecification}, after: {
     return true;
 }
 
-function diffSources(before: {[key: string]: SourceSpecification}, after: {[key: string]: SourceSpecification}, commands: DiffCommand<DiffOperations>[], sourcesRemoved: {[key: string]: boolean}) {
-    before = before || {} as {[key: string]: SourceSpecification};
-    after = after || {} as {[key: string]: SourceSpecification};
+function diffSources(
+    before: {[key: string]: SourceSpecification},
+    after: {[key: string]: SourceSpecification},
+    commands: DiffCommand<DiffOperations>[],
+    sourcesRemoved: {[key: string]: boolean}
+) {
+    before = before || ({} as {[key: string]: SourceSpecification});
+    after = after || ({} as {[key: string]: SourceSpecification});
 
     let sourceId: string;
 
@@ -101,8 +137,15 @@ function diffSources(before: {[key: string]: SourceSpecification}, after: {[key:
         if (!Object.prototype.hasOwnProperty.call(before, sourceId)) {
             addSource(sourceId, after, commands);
         } else if (!deepEqual(before[sourceId], after[sourceId])) {
-            if (before[sourceId].type === 'geojson' && after[sourceId].type === 'geojson' && canUpdateGeoJSON(before, after, sourceId)) {
-                addCommand(commands, {command: 'setGeoJSONSourceData', args: [sourceId, (after[sourceId] as GeoJSONSourceSpecification).data]});
+            if (
+                before[sourceId].type === 'geojson' &&
+                after[sourceId].type === 'geojson' &&
+                canUpdateGeoJSON(before, after, sourceId)
+            ) {
+                addCommand(commands, {
+                    command: 'setGeoJSONSourceData',
+                    args: [sourceId, (after[sourceId] as GeoJSONSourceSpecification).data]
+                });
             } else {
                 // no update command, must remove then add
                 updateSource(sourceId, after, commands, sourcesRemoved);
@@ -111,9 +154,16 @@ function diffSources(before: {[key: string]: SourceSpecification}, after: {[key:
     }
 }
 
-function diffLayerPropertyChanges(before: LayerSpecification['layout'] | LayerSpecification['paint'], after:LayerSpecification['layout'] | LayerSpecification['paint'], commands: DiffCommand<DiffOperations>[], layerId: string, klass: string | null, command: 'setPaintProperty' | 'setLayoutProperty') {
-    before = before || {} as LayerSpecification['layout'] | LayerSpecification['paint'];
-    after = after || {} as LayerSpecification['layout'] | LayerSpecification['paint'];
+function diffLayerPropertyChanges(
+    before: LayerSpecification['layout'] | LayerSpecification['paint'],
+    after: LayerSpecification['layout'] | LayerSpecification['paint'],
+    commands: DiffCommand<DiffOperations>[],
+    layerId: string,
+    klass: string | null,
+    command: 'setPaintProperty' | 'setLayoutProperty'
+) {
+    before = before || ({} as LayerSpecification['layout'] | LayerSpecification['paint']);
+    after = after || ({} as LayerSpecification['layout'] | LayerSpecification['paint']);
 
     for (const prop in before) {
         if (!Object.prototype.hasOwnProperty.call(before, prop)) continue;
@@ -122,7 +172,11 @@ function diffLayerPropertyChanges(before: LayerSpecification['layout'] | LayerSp
         }
     }
     for (const prop in after) {
-        if (!Object.prototype.hasOwnProperty.call(after, prop) || Object.prototype.hasOwnProperty.call(before, prop)) continue;
+        if (
+            !Object.prototype.hasOwnProperty.call(after, prop) ||
+            Object.prototype.hasOwnProperty.call(before, prop)
+        )
+            continue;
         if (!deepEqual(before[prop], after[prop])) {
             commands.push({command, args: [layerId, prop, after[prop], klass]});
         }
@@ -137,7 +191,11 @@ function indexById(group: {[key: string]: LayerSpecification}, layer: LayerSpeci
     return group;
 }
 
-function diffLayers(before: LayerSpecification[], after: LayerSpecification[], commands: DiffCommand<DiffOperations>[]) {
+function diffLayers(
+    before: LayerSpecification[],
+    after: LayerSpecification[],
+    commands: DiffCommand<DiffOperations>[]
+) {
     before = before || [];
     after = after || [];
 
@@ -156,8 +214,8 @@ function diffLayers(before: LayerSpecification[], after: LayerSpecification[], c
     const clean = Object.create(null);
 
     let layerId: string;
-    let beforeLayer: LayerSpecification & { source?: string; filter?: unknown};
-    let afterLayer: LayerSpecification & { source?: string; filter?: unknown};
+    let beforeLayer: LayerSpecification & {source?: string; filter?: unknown};
+    let afterLayer: LayerSpecification & {source?: string; filter?: unknown};
     let insertBeforeLayerId: string;
     let prop: string;
 
@@ -191,7 +249,10 @@ function diffLayers(before: LayerSpecification[], after: LayerSpecification[], c
 
         // add layer at correct position
         insertBeforeLayerId = tracker[tracker.length - i];
-        addCommand(commands, {command: 'addLayer', args: [afterIndex[layerId], insertBeforeLayerId]});
+        addCommand(commands, {
+            command: 'addLayer',
+            args: [afterIndex[layerId], insertBeforeLayerId]
+        });
         tracker.splice(tracker.length - i, 0, layerId);
         clean[layerId] = true;
     }
@@ -207,7 +268,11 @@ function diffLayers(before: LayerSpecification[], after: LayerSpecification[], c
 
         // If source, source-layer, or type have changes, then remove the layer
         // and add it back 'from scratch'.
-        if (!deepEqual(beforeLayer.source, afterLayer.source) || !deepEqual(beforeLayer['source-layer'], afterLayer['source-layer']) || !deepEqual(beforeLayer.type, afterLayer.type)) {
+        if (
+            !deepEqual(beforeLayer.source, afterLayer.source) ||
+            !deepEqual(beforeLayer['source-layer'], afterLayer['source-layer']) ||
+            !deepEqual(beforeLayer.type, afterLayer.type)
+        ) {
             addCommand(commands, {command: 'removeLayer', args: [layerId]});
             // we add the layer back at the same position it was already in, so
             // there's no need to update the `tracker`
@@ -217,34 +282,92 @@ function diffLayers(before: LayerSpecification[], after: LayerSpecification[], c
         }
 
         // layout, paint, filter, minzoom, maxzoom
-        diffLayerPropertyChanges(beforeLayer.layout, afterLayer.layout, commands, layerId, null, 'setLayoutProperty');
-        diffLayerPropertyChanges(beforeLayer.paint, afterLayer.paint, commands, layerId, null, 'setPaintProperty');
+        diffLayerPropertyChanges(
+            beforeLayer.layout,
+            afterLayer.layout,
+            commands,
+            layerId,
+            null,
+            'setLayoutProperty'
+        );
+        diffLayerPropertyChanges(
+            beforeLayer.paint,
+            afterLayer.paint,
+            commands,
+            layerId,
+            null,
+            'setPaintProperty'
+        );
         if (!deepEqual(beforeLayer.filter, afterLayer.filter)) {
             addCommand(commands, {command: 'setFilter', args: [layerId, afterLayer.filter]});
         }
-        if (!deepEqual(beforeLayer.minzoom, afterLayer.minzoom) || !deepEqual(beforeLayer.maxzoom, afterLayer.maxzoom)) {
-            addCommand(commands, {command: 'setLayerZoomRange', args: [layerId, afterLayer.minzoom, afterLayer.maxzoom]});
+        if (
+            !deepEqual(beforeLayer.minzoom, afterLayer.minzoom) ||
+            !deepEqual(beforeLayer.maxzoom, afterLayer.maxzoom)
+        ) {
+            addCommand(commands, {
+                command: 'setLayerZoomRange',
+                args: [layerId, afterLayer.minzoom, afterLayer.maxzoom]
+            });
         }
 
         // handle all other layer props, including paint.*
         for (prop in beforeLayer) {
             if (!Object.prototype.hasOwnProperty.call(beforeLayer, prop)) continue;
-            if (prop === 'layout' || prop === 'paint' || prop === 'filter' ||
-                prop === 'metadata' || prop === 'minzoom' || prop === 'maxzoom') continue;
+            if (
+                prop === 'layout' ||
+                prop === 'paint' ||
+                prop === 'filter' ||
+                prop === 'metadata' ||
+                prop === 'minzoom' ||
+                prop === 'maxzoom'
+            )
+                continue;
             if (prop.indexOf('paint.') === 0) {
-                diffLayerPropertyChanges(beforeLayer[prop], afterLayer[prop], commands, layerId, prop.slice(6), 'setPaintProperty');
+                diffLayerPropertyChanges(
+                    beforeLayer[prop],
+                    afterLayer[prop],
+                    commands,
+                    layerId,
+                    prop.slice(6),
+                    'setPaintProperty'
+                );
             } else if (!deepEqual(beforeLayer[prop], afterLayer[prop])) {
-                addCommand(commands, {command: 'setLayerProperty', args: [layerId, prop, afterLayer[prop]]});
+                addCommand(commands, {
+                    command: 'setLayerProperty',
+                    args: [layerId, prop, afterLayer[prop]]
+                });
             }
         }
         for (prop in afterLayer) {
-            if (!Object.prototype.hasOwnProperty.call(afterLayer, prop) || Object.prototype.hasOwnProperty.call(beforeLayer, prop)) continue;
-            if (prop === 'layout' || prop === 'paint' || prop === 'filter' ||
-                prop === 'metadata' || prop === 'minzoom' || prop === 'maxzoom') continue;
+            if (
+                !Object.prototype.hasOwnProperty.call(afterLayer, prop) ||
+                Object.prototype.hasOwnProperty.call(beforeLayer, prop)
+            )
+                continue;
+            if (
+                prop === 'layout' ||
+                prop === 'paint' ||
+                prop === 'filter' ||
+                prop === 'metadata' ||
+                prop === 'minzoom' ||
+                prop === 'maxzoom'
+            )
+                continue;
             if (prop.indexOf('paint.') === 0) {
-                diffLayerPropertyChanges(beforeLayer[prop], afterLayer[prop], commands, layerId, prop.slice(6), 'setPaintProperty');
+                diffLayerPropertyChanges(
+                    beforeLayer[prop],
+                    afterLayer[prop],
+                    commands,
+                    layerId,
+                    prop.slice(6),
+                    'setPaintProperty'
+                );
             } else if (!deepEqual(beforeLayer[prop], afterLayer[prop])) {
-                addCommand(commands, {command: 'setLayerProperty', args: [layerId, prop, afterLayer[prop]]});
+                addCommand(commands, {
+                    command: 'setLayerProperty',
+                    args: [layerId, prop, afterLayer[prop]]
+                });
             }
         }
     }
@@ -268,7 +391,10 @@ function diffLayers(before: LayerSpecification[], after: LayerSpecification[], c
  * @param {*} after stylesheet to compare to
  * @returns Array list of changes
  */
-export function diff(before: StyleSpecification, after: StyleSpecification): DiffCommand<DiffOperations>[] {
+export function diff(
+    before: StyleSpecification,
+    after: StyleSpecification
+): DiffCommand<DiffOperations>[] {
     if (!before) return [{command: 'setStyle', args: [after]}];
 
     let commands: DiffCommand<DiffOperations>[] = [];
@@ -349,7 +475,6 @@ export function diff(before: StyleSpecification, after: StyleSpecification): Dif
 
         // Handle changes to `layers`
         diffLayers(beforeLayers, after.layers, commands);
-
     } catch (e) {
         // fall back to setStyle
         console.warn('Unable to compute style diff:', e);

@@ -27,15 +27,19 @@ export function validateSky(options: ValidateSkyOptions) {
     let errors = [];
     for (const key in sky) {
         if (skySpec[key]) {
-            errors = errors.concat(options.validateSpec({
-                key,
-                value: sky[key],
-                valueSpec: skySpec[key],
-                style,
-                styleSpec
-            }));
+            errors = errors.concat(
+                options.validateSpec({
+                    key,
+                    value: sky[key],
+                    valueSpec: skySpec[key],
+                    style,
+                    styleSpec
+                })
+            );
         } else {
-            errors = errors.concat([new ValidationError(key, sky[key], `unknown property "${key}"`)]);
+            errors = errors.concat([
+                new ValidationError(key, sky[key], `unknown property "${key}"`)
+            ]);
         }
     }
 
