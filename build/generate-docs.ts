@@ -275,11 +275,11 @@ function requiresToMarkdown(requires: any[]): string {
     let markdown = '';
     for (const require of requires) {
         if (require['!']) {
-            markdown += `Disabled by \`${require['!']}\`. `;
+            markdown += `Disabled by [\`${require['!']}\`](#${require['!']}). `;
         } else if (require['source']) {
-            markdown += `Requires source to be \`${require.source}\`. `;
+            markdown += `Requires source to be [\`${require.source}\`](sources.md#${require.source}). `;
         } else if (typeof require === 'string') {
-            markdown += `Requires \`${require}\`. `;
+            markdown += `Requires [\`${require}\`](#${require}). `;
         } else if (typeof require === 'object') {
             for (const [key, value] of Object.entries(require)) {
                 markdown += `Requires \`${key}\` to be `;
@@ -398,7 +398,7 @@ function convertPropertyToMarkdown(
         }
     }
     if (value.transition) {
-        markdown += 'Transitionable. ';
+        markdown += '[Transitionable](transition.md). ';
     }
 
     markdown = `${markdown.trim()}*\n\n${value.doc}\n\n`;
