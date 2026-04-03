@@ -516,7 +516,7 @@ CompoundExpression.register(expressions, {
     join: [
         StringType,
         [array(StringType), StringType],
-        (ctx, [arr, delim]) => (arr as any).value.join(delim.evaluate(ctx))
+        (ctx, [arr, delim]) => arr.evaluate(ctx).join(delim.evaluate(ctx))
     ],
     'resolved-locale': [
         StringType,
