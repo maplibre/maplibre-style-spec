@@ -65,7 +65,9 @@ import {
     NumberArraySpecification,
     ColorArraySpecification,
     ProjectionDefinitionSpecification,
-    VariableAnchorOffsetCollectionSpecification
+    VariableAnchorOffsetCollectionSpecification,
+    AllPaintProperties,
+    AllLayoutProperties
 } from './types.g';
 import {format} from './format';
 import {validate} from './validate/validate';
@@ -244,6 +246,8 @@ export {
     StylePropertyExpression,
     ZoomDependentExpression,
     FormatExpression,
+    AllPaintProperties,
+    AllLayoutProperties,
     latest,
     validateStyleMin,
     groupByLayout,
