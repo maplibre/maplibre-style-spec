@@ -398,7 +398,7 @@ function convertPropertyToMarkdown(
         }
     }
     if (value.transition) {
-        markdown += '[Transitionable](/transition/). ';
+        markdown += '[Transitionable](transition.md). ';
     }
 
     markdown = `${markdown.trim()}*\n\n${value.doc}\n\n`;
