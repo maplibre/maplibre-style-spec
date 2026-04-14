@@ -105,22 +105,24 @@ The red highlighted part is where the stretch will occur over the Y axis and the
 #### Text Fit Properties
 
 The properties `textFitWidth` and `textFitHeight` alter how a sprite's content rectangle maps to its contents when scaling a sprite.  These properties are defined with the enum TextFit which may have the following values:
-* `stretchOrShrink` (or omitted)
-* `stretchOnly`
-* `proportional`
+
+- `stretchOrShrink` (or omitted)
+- `stretchOnly`
+- `proportional`
 
 The primary use cases of interest are:
+
 1. Both properties are undefined or stretchOrShrink
 
-   The content rectangle scales precisely to contain its contents.
+    The content rectangle scales precisely to contain its contents.
 
 2. textFitWidth = stretchOnly and textFitHeight = proportional
 
-   The content rectangle scales to precisely contain the height of its contents but the width will not shrink smaller than the aspect ratio of the original content rectangle. This is primarily useful for shields that shouldn't become too narrow if their contents are narrow (like the number "1").
+    The content rectangle scales to precisely contain the height of its contents but the width will not shrink smaller than the aspect ratio of the original content rectangle. This is primarily useful for shields that shouldn't become too narrow if their contents are narrow (like the number "1").
 
 3. textFitWidth = proportional and textFitHeight = stretchOnly
 
-   The content rectangle scales to precisely contain the width of its contents but the height will not shrink smaller than the aspect ratio of the original content rectangle. This may be useful scenarios like no. 2 except with vertically written scripts (using `"text-writing-mode": ["vertical"]`).
+    The content rectangle scales to precisely contain the width of its contents but the height will not shrink smaller than the aspect ratio of the original content rectangle. This may be useful scenarios like no. 2 except with vertically written scripts (using `"text-writing-mode": ["vertical"]`).
 
 ![image](https://github.com/DavidBuerer/maplibre-style-spec/assets/29717748/5fc7134e-28dc-4c3c-b89e-d89b50b8dbfa)
 
