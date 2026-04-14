@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="https://maplibre.org/favicon.ico">
-      <meta name="generator" content="zensical-0.0.32">
+      <meta name="generator" content="zensical-0.0.33">
     
     
       
@@ -53,7 +53,7 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
       
     
@@ -1039,21 +1039,27 @@
 The red highlighted part is where the stretch will occur over the Y axis and the blue highlight is for the X axis.
 <img alt="popup-stretch" src="https://maplibre.org/maplibre-gl-js/docs/assets/popup_debug.png" /></p>
 <h4 id="text-fit-properties">Text Fit Properties<a class="headerlink" href="#text-fit-properties" title="Permanent link">&para;</a></h4>
-<p>The properties <code>textFitWidth</code> and <code>textFitHeight</code> alter how a sprite's content rectangle maps to its contents when scaling a sprite.  These properties are defined with the enum TextFit which may have the following values:
-* <code>stretchOrShrink</code> (or omitted)
-* <code>stretchOnly</code>
-* <code>proportional</code></p>
-<p>The primary use cases of interest are:
-1. Both properties are undefined or stretchOrShrink</p>
+<p>The properties <code>textFitWidth</code> and <code>textFitHeight</code> alter how a sprite's content rectangle maps to its contents when scaling a sprite.  These properties are defined with the enum TextFit which may have the following values:</p>
+<ul>
+<li><code>stretchOrShrink</code> (or omitted)</li>
+<li><code>stretchOnly</code></li>
+<li><code>proportional</code></li>
+</ul>
+<p>The primary use cases of interest are:</p>
+<ol>
+<li>
+<p>Both properties are undefined or stretchOrShrink</p>
 <p>The content rectangle scales precisely to contain its contents.</p>
-<ol>
-<li>textFitWidth = stretchOnly and textFitHeight = proportional</li>
-</ol>
+</li>
+<li>
+<p>textFitWidth = stretchOnly and textFitHeight = proportional</p>
 <p>The content rectangle scales to precisely contain the height of its contents but the width will not shrink smaller than the aspect ratio of the original content rectangle. This is primarily useful for shields that shouldn't become too narrow if their contents are narrow (like the number "1").</p>
-<ol>
-<li>textFitWidth = proportional and textFitHeight = stretchOnly</li>
-</ol>
+</li>
+<li>
+<p>textFitWidth = proportional and textFitHeight = stretchOnly</p>
 <p>The content rectangle scales to precisely contain the width of its contents but the height will not shrink smaller than the aspect ratio of the original content rectangle. This may be useful scenarios like no. 2 except with vertically written scripts (using <code>"text-writing-mode": ["vertical"]</code>).</p>
+</li>
+</ol>
 <p><img alt="image" src="https://github.com/DavidBuerer/maplibre-style-spec/assets/29717748/5fc7134e-28dc-4c3c-b89e-d89b50b8dbfa" /></p>
 <h2 id="high-dpi-devices">High-DPI Devices<a class="headerlink" href="#high-dpi-devices" title="Permanent link">&para;</a></h2>
 <p>On high-DPI devices, <code>@2x</code> is appended to  the URLs described above. For example, if you specified <code>"sprite": "https://example.com/sprite"</code>, renderers would load <code>https://example.com/sprite.json</code> and <code>https://example.com/sprite.png</code>, or <code>https://example.com/sprite@2x.json</code> and <code>https://example.com/sprite@2x.png</code>.</p>
@@ -1181,7 +1187,7 @@ The red highlighted part is where the stretch will occur over the Y axis and the
       <script id="__config" type="application/json">{"annotate":null,"base":"..","features":["content.code.copy","toc.follow","search.suggest","navigation.instant","navigation.sections","navigation.top"],"search":"../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
     
     
-      <script src="../assets/javascripts/bundle.91a19a9e.min.js"></script>
+      <script src="../assets/javascripts/bundle.63456bd9.min.js"></script>
       
     
   </body>
