@@ -23,7 +23,7 @@ We aim to avoid breaking changes in the MapLibre style specification because it 
 The [documentation](https://maplibre.org/maplibre-style-spec) of the style specification also lives in this repository.
 We use [Zensical](https://www.zensical.org/).
 
-For local development of the documentation, start Zensical. When you have Docker installed and running, you can use:
+To work on the documentation locally you need to start Zensical. When you have Docker installed and running, you can use:
 
 ```bash
 npm run start-docs
