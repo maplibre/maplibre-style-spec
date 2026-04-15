@@ -23,17 +23,23 @@ We aim to avoid breaking changes in the MapLibre style specification because it 
 The [documentation](https://maplibre.org/maplibre-style-spec) of the style specification also lives in this repository.
 We use [Zensical](https://www.zensical.org/).
 
-To work on the documentation locally, you need to have Docker installed and running.
-Start Zensical with
+For local development of the documentation, start Zensical. When you have Docker installed and running, you can use:
 
-```bash
+```
 npm run start-docs
+```
+
+Alternatively, if you have [uv](https://docs.astral.sh/uv/) installed, you can use:
+
+```
+uvx zensical serve --open
 ```
 
 Most of the documentation is generated (from e.g. `v8.json`).
 In another terminal, run:
 
 ```bash
+npm install
 WATCH=1 npm run generate-docs
 ```
 
