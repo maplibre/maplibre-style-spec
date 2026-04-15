@@ -25,13 +25,13 @@ We use [Zensical](https://www.zensical.org/).
 
 For local development of the documentation, start Zensical. When you have Docker installed and running, you can use:
 
-```
+```bash
 npm run start-docs
 ```
 
 Alternatively, if you have [uv](https://docs.astral.sh/uv/) installed, you can use:
 
-```
+```bash
 uvx zensical serve --open
 ```
 
@@ -72,20 +72,20 @@ This repo contains scripts for migrating GL styles of any version to the latest 
 You can migrate a style like this:
 
 ```bash
-$ gl-style-migrate bright-v7.json > bright-v8.json
+gl-style-migrate bright-v7.json > bright-v8.json
 ```
 
 To migrate a file in place, you can use the `sponge` utility from the `moreutils` package:
 
 ```bash
-$ brew install moreutils
-$ gl-style-migrate bright.json | sponge bright.json
+brew install moreutils
+gl-style-migrate bright.json | sponge bright.json
 ```
 
 ### `gl-style-format`
 
 ```bash
-$ gl-style-format style.json
+gl-style-format style.json
 ```
 
 Will format the given style JSON to use standard indentation and sorted object keys.
@@ -93,7 +93,7 @@ Will format the given style JSON to use standard indentation and sorted object k
 ### `gl-style-validate`
 
 ```bash
-$ gl-style-validate style.json
+gl-style-validate style.json
 ```
 
 Will validate the given style JSON and print errors to stdout.
