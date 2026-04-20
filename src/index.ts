@@ -89,6 +89,7 @@ type ExpressionParameters = Array<
     | 'feature-state'
     | 'heatmap-density'
     | 'elevation'
+    | 'slope'
     | 'line-progress'
     | 'global-state'
 >;
