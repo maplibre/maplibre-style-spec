@@ -1,10 +1,15 @@
 ## main
 ### ✨ Features and improvements
-- Move from rollup->rolldown and ts6->ts7 for builds/typecheck. ([#1132](https://github.com/maplibre/maplibre-style-spec/pull/1132)) (by [birkskyum](https://github.com/birkskyum))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
+
+## 24.8.2
+
+### ✨ Features and improvements
+
+- Move from rollup->rolldown and ts6->ts7 for builds/typecheck. ([#1132](https://github.com/maplibre/maplibre-style-spec/pull/1132)) (by [birkskyum](https://github.com/birkskyum))
 
 ## 24.8.1
 
