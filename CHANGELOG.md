@@ -5,16 +5,11 @@
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
 
-- Update vector source docs to include MapLibre Tile format ([#1607](https://github.com/maplibre/maplibre-style-spec/pull/1607)) (by [@app/copilot-swe-agent](https://github.com/app/copilot-swe-agent))
-- Mention uv as an option to serve docs locally ([#1603](https://github.com/maplibre/maplibre-style-spec/pull/1603)) (by [@louwers](https://github.com/louwers))
-- add missing color-relief support for MapLibre Native ([#1604](https://github.com/maplibre/maplibre-style-spec/pull/1604)) (by [@louwers](https://github.com/louwers))
-- docs: Fix Text Fit Properties lists format ([#1602](https://github.com/maplibre/maplibre-style-spec/pull/1602)) (by [@kudlav](https://github.com/kudlav))
-- Update v8.json for new hillshade algorithm support in MapLibre Native ([#1595](https://github.com/maplibre/maplibre-style-spec/pull/1595)) (by [@louwers](https://github.com/louwers))
 ## 24.8.2
-### ✨ Features and improvements
-- Move from rollup->rolldown and ts6->ts7 for builds/typecheck. ([#1132](https://github.com/maplibre/maplibre-style-spec/pull/1132)) (by [birkskyum](https://github.com/birkskyum))
 
-### 🐞 Bug fixes
+### ✨ Features and improvements
+
+- Move from rollup->rolldown and ts6->ts7 for builds/typecheck. ([#1132](https://github.com/maplibre/maplibre-style-spec/pull/1132)) (by [birkskyum](https://github.com/birkskyum))
 
 ## 24.8.1
 
