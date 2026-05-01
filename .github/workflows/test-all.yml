@@ -21,8 +21,6 @@ jobs:
       - run: npm ci
       - run: npm run lint
         if: success() || failure()
-      - run: npm run generate-typings
-        if: success() || failure()
       - run: npm run typecheck
         if: success() || failure()
   unit-and-integration-tests:
@@ -61,8 +59,6 @@ jobs:
         with:
           node-version-file: '.nvmrc'
       - run: npm ci
-      - run: npm run generate-style-spec
-      - run: npm run generate-typings
       - run: npm run build
       - run: npm run test-build-ci
       - name: Upload coverage reports to Codecov
