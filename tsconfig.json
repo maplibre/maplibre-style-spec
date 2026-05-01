@@ -23,6 +23,6 @@
     "experimentalSpecifierResolution": "node",
     "esm": true
   },
-  "include": ["rollup.config.*", "src/**/*", "build/**/*"],
+  "include": ["rolldown.config.*", "src/**/*", "build/**/*"],
   "exclude": ["node_modules", "dist"]
 }

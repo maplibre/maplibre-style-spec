@@ -64,7 +64,7 @@ import {typeOf} from './expression/values';
 import {FormatExpression} from './expression/definitions/format';
 import {Literal} from './expression/definitions/literal';
 import {CompoundExpression} from './expression/compound_expression';
-import {
+import type {
     ColorSpecification,
     PaddingSpecification,
     NumberArraySpecification,

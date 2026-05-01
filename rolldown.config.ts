@@ -1,7 +1,11 @@
 import replace from '@rollup/plugin-replace';
 import minifyStyleSpec from './build/rollup_plugin_minify_style_spec';
 import shebang from 'rollup-plugin-preserve-shebang';
-import {defineConfig} from 'rolldown';
+import {defineConfig, type RolldownOptions} from 'rolldown';
+import {dts} from 'rolldown-plugin-dts';
+import packageJSON from './package.json' with {type: 'json'};
+
+const typesOnly = process.env.BUILD === 'types';
 
 const rollupPlugins = [
     minifyStyleSpec(),
@@ -16,7 +20,17 @@ const rollupPlugins = [
     })
 ];
 
-const config = defineConfig([
+const dtsBundle: RolldownOptions = {
+    input: {index: 'src/index.ts'},
+    output: {
+        dir: 'dist',
+        format: 'es',
+    },
+    external: Object.keys(packageJSON.dependencies),
+    plugins: [dts({emitDtsOnly: true})],
+};
+
+const bundles: RolldownOptions[] = [
     {
         resolve: {
             mainFields: ['browser', 'module', 'main']
@@ -114,5 +128,6 @@ const config = defineConfig([
         ],
         plugins: [...rollupPlugins, shebang()]
     }
-]);
-export default config;
+];
+
+export default defineConfig(typesOnly ? [dtsBundle] : bundles);
