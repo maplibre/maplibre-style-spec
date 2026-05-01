@@ -275,11 +275,11 @@ function requiresToMarkdown(requires: any[]): string {
     let markdown = '';
     for (const require of requires) {
         if (require['!']) {
-            markdown += `Disabled by \`${require['!']}\`. `;
+            markdown += `Disabled by [\`${require['!']}\`](#${require['!']}). `;
         } else if (require['source']) {
-            markdown += `Requires source to be \`${require.source}\`. `;
+            markdown += `Requires source to be [\`${require.source}\`](sources.md#${require.source}). `;
         } else if (typeof require === 'string') {
-            markdown += `Requires \`${require}\`. `;
+            markdown += `Requires [\`${require}\`](#${require}). `;
         } else if (typeof require === 'object') {
             for (const [key, value] of Object.entries(require)) {
                 markdown += `Requires \`${key}\` to be `;
@@ -398,7 +398,7 @@ function convertPropertyToMarkdown(
         }
     }
     if (value.transition) {
-        markdown += 'Transitionable. ';
+        markdown += '[Transitionable](transition.md). ';
     }
 
     markdown = `${markdown.trim()}*\n\n${value.doc}\n\n`;
@@ -482,7 +482,7 @@ function createLayersContent() {
 function createSourcesContent() {
     const sourcesExtraData = {
         vector: {
-            doc: 'A vector tile source. Tiles must be in [Mapbox Vector Tile format](https://github.com/mapbox/vector-tile-spec). All geometric coordinates in vector tiles must be between \`-1 * extent\` and \`(extent * 2) - 1\` inclusive. All layers that use a vector source must specify a [`source-layer`](layers.md#source-layer) value. Note that features are only rendered within their originating tile, which may lead to visual artifacts when large values for width, radius, size or offset are specified. To mitigate rendering issues, either reduce the value of the property causing the artifact or, if you have control over the tile generation process, increase the buffer size to ensure that features are fully rendered within the tile.',
+            doc: 'A vector tile source. Tiles must be in [MapLibre Tile format](https://maplibre.org/maplibre-tile-spec/) or [Mapbox Vector Tile format](https://docs.mapbox.com/data/tilesets/guides/vector-tiles-standards/). All geometric coordinates in vector tiles must be between \`-1 * extent\` and \`(extent * 2) - 1\` inclusive. All layers that use a vector source must specify a [`source-layer`](layers.md#source-layer) value. Note that features are only rendered within their originating tile, which may lead to visual artifacts when large values for width, radius, size or offset are specified. To mitigate rendering issues, either reduce the value of the property causing the artifact or, if you have control over the tile generation process, increase the buffer size to ensure that features are fully rendered within the tile.',
             example: {
                 'maplibre-streets': {
                     type: 'vector',
