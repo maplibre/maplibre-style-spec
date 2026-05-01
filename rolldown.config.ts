@@ -5,6 +5,8 @@ import {defineConfig, type RolldownOptions} from 'rolldown';
 import {dts} from 'rolldown-plugin-dts';
 import packageJSON from './package.json' with {type: 'json'};
 
+const typesOnly = process.env.BUILD === 'types';
+
 const rollupPlugins = [
     minifyStyleSpec(),
     // https://github.com/zaach/jison/issues/351
@@ -128,4 +130,4 @@ const bundles: RolldownOptions[] = [
     }
 ];
 
-export default defineConfig([...bundles, dtsBundle]);
+export default defineConfig(typesOnly ? [dtsBundle] : [...bundles, dtsBundle]);
