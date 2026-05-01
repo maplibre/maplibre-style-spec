@@ -36,7 +36,12 @@ import {convertFunction} from './function/convert';
 import {eachSource, eachLayer, eachProperty} from './visit';
 import {ResolvedImage} from './expression/types/resolved_image';
 import {supportsPropertyExpression} from './util/properties';
-import {IMercatorCoordinate, ICanonicalTileID, ILngLat, ILngLatLike} from './tiles_and_coordinates';
+import type {
+    IMercatorCoordinate,
+    ICanonicalTileID,
+    ILngLat,
+    ILngLatLike
+} from './tiles_and_coordinates';
 import {EvaluationContext} from './expression/evaluation_context';
 import {
     FormattedType,
@@ -59,7 +64,7 @@ import {typeOf} from './expression/values';
 import {FormatExpression} from './expression/definitions/format';
 import {Literal} from './expression/definitions/literal';
 import {CompoundExpression} from './expression/compound_expression';
-import {
+import type {
     ColorSpecification,
     PaddingSpecification,
     NumberArraySpecification,
@@ -212,12 +217,26 @@ const styleFunction = {
 
 const visit = {eachLayer, eachProperty, eachSource};
 
+export type {
+    FeatureState,
+    Feature,
+    GlobalProperties,
+    SourceExpression,
+    CompositeExpression,
+    StylePropertyExpression,
+    IMercatorCoordinate,
+    ICanonicalTileID,
+    ILngLat,
+    ILngLatLike,
+    Type,
+    InterpolationType,
+    FormattedSection
+};
+
 export {
     Interpolate,
-    InterpolationType,
     ValidationError,
     ParsingError,
-    FeatureState,
     ProjectionDefinition,
     Color,
     Step,
@@ -228,22 +247,11 @@ export {
     VariableAnchorOffsetCollection,
     Formatted,
     ResolvedImage,
-    Feature,
     EvaluationContext,
-    GlobalProperties,
-    SourceExpression,
-    CompositeExpression,
-    FormattedSection,
-    IMercatorCoordinate,
-    ICanonicalTileID,
-    ILngLat,
-    ILngLatLike,
     StyleExpression,
     ZoomConstantExpression,
     Literal,
-    Type,
     StylePropertyFunction,
-    StylePropertyExpression,
     ZoomDependentExpression,
     FormatExpression,
     AllPaintProperties,
