@@ -18,9 +18,8 @@
   "types": "./dist/index.d.ts",
   "type": "module",
   "scripts": {
-    "build": "npm run generate-style-spec && rolldown -c rolldown.config.ts && cp ./src/reference/v8.json ./dist/latest.json && npm run generate-typings",
+    "build": "npm run generate-style-spec && rolldown -c rolldown.config.ts && cp ./src/reference/v8.json ./dist/latest.json",
     "generate-style-spec": "node --no-warnings --loader ts-node/esm build/generate-style-spec.ts",
-    "generate-typings": "cross-env BUILD=types rolldown -c rolldown.config.ts",
     "generate-docs": "node ${WATCH+--watch} --no-warnings --loader ts-node/esm build/generate-docs.ts",
     "start-docs": "docker run --rm -v ${PWD}:/docs zensical/zensical serve --open",
     "docs": "npm run generate-docs && docker run --rm -v ${PWD}:/docs zensical/zensical build",
@@ -34,7 +33,7 @@
     "test-watch-roots": "vitest --config vitest.config.unit.ts --watch",
     "compile": "tsc",
     "lint": "eslint",
-    "typecheck": "npm run generate-style-spec && tsgo --noEmit && npm run generate-typings && tsgo --project tsconfig.dist.json",
+    "typecheck": "npm run build && tsgo --noEmit && tsgo --project tsconfig.dist.json",
     "prepare": "npm run generate-style-spec",
     "fmt": "oxfmt"
   },
@@ -76,7 +75,6 @@
     "@vitest/coverage-v8": "4.1.5",
     "@vitest/eslint-plugin": "^1.6.16",
     "@vitest/ui": "4.1.5",
-    "cross-env": "^10.1.0",
     "eslint": "^10.2.1",
     "eslint-plugin-jsdoc": "^62.9.0",
     "glob": "^13.0.6",
