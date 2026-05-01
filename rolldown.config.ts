@@ -24,10 +24,10 @@ const dtsBundle: RolldownOptions = {
     input: {index: 'src/index.ts'},
     output: {
         dir: 'dist',
-        format: 'es',
+        format: 'es'
     },
     external: Object.keys(packageJSON.dependencies),
-    plugins: [dts({emitDtsOnly: true})],
+    plugins: [dts({emitDtsOnly: true})]
 };
 
 const bundles: RolldownOptions[] = [
