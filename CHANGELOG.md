@@ -3,7 +3,7 @@
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
-- Fix type export regression
+- Restore Specification type exports dropped in v24.8.2
 - _...Add new stuff here..._
 
 ## 24.8.2
