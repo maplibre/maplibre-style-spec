@@ -3,6 +3,7 @@
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
+- Fix type export regression
 - _...Add new stuff here..._
 
 ## 24.8.2

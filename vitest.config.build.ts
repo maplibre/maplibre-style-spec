@@ -5,6 +5,10 @@ export default defineConfig({
         name: 'build',
         environment: 'node',
         include: ['test/build/**/*.test.{ts,js}'],
+        typecheck: {
+            enabled: true,
+            include: ['test/build/**/*.test-d.ts']
+        },
         coverage: {
             provider: 'v8',
             reporter: ['json', 'html'],

@@ -74,6 +74,7 @@ import type {
     AllPaintProperties,
     AllLayoutProperties
 } from './types.g';
+export type * from './types.g';
 import {format} from './format';
 import {validate} from './validate/validate';
 import {migrate} from './migrate';
