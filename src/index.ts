@@ -70,9 +70,7 @@ import type {
     NumberArraySpecification,
     ColorArraySpecification,
     ProjectionDefinitionSpecification,
-    VariableAnchorOffsetCollectionSpecification,
-    AllPaintProperties,
-    AllLayoutProperties
+    VariableAnchorOffsetCollectionSpecification
 } from './types.g';
 import {format} from './format';
 import {validate} from './validate/validate';
@@ -254,8 +252,6 @@ export {
     StylePropertyFunction,
     ZoomDependentExpression,
     FormatExpression,
-    AllPaintProperties,
-    AllLayoutProperties,
     latest,
     validateStyleMin,
     groupByLayout,
@@ -291,3 +287,5 @@ export {
     expression,
     FormattedType
 };
+
+export type * from './types.g';
