@@ -5,12 +5,11 @@
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
 
-- Restore Specification type exports dropped in v24.8.2 ([#1627](https://github.com/maplibre/maplibre-style-spec/pull/1627)) (by [@birkskyum](https://github.com/birkskyum))
 ## 24.8.3
-### ✨ Features and improvements
 
 ### 🐞 Bug fixes
-- Restore Specification type exports dropped in v24.8.2
+
+- Restore Specification type exports dropped in v24.8.2 ([#1627](https://github.com/maplibre/maplibre-style-spec/pull/1627)) (by [@birkskyum](https://github.com/birkskyum))
 
 ## 24.8.2
 
