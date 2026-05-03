@@ -70,11 +70,8 @@ import type {
     NumberArraySpecification,
     ColorArraySpecification,
     ProjectionDefinitionSpecification,
-    VariableAnchorOffsetCollectionSpecification,
-    AllPaintProperties,
-    AllLayoutProperties
+    VariableAnchorOffsetCollectionSpecification
 } from './types.g';
-export type * from './types.g';
 import {format} from './format';
 import {validate} from './validate/validate';
 import {migrate} from './migrate';
@@ -233,6 +230,7 @@ export type {
     InterpolationType,
     FormattedSection
 };
+export type * from './types.g';
 
 export {
     Interpolate,
@@ -255,8 +253,6 @@ export {
     StylePropertyFunction,
     ZoomDependentExpression,
     FormatExpression,
-    AllPaintProperties,
-    AllLayoutProperties,
     latest,
     validateStyleMin,
     groupByLayout,
