@@ -230,7 +230,6 @@ export type {
     InterpolationType,
     FormattedSection
 };
-export type * from './types.g';
 
 export {
     Interpolate,
@@ -288,3 +287,5 @@ export {
     expression,
     FormattedType
 };
+
+export type * from './types.g';
