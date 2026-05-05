@@ -6,15 +6,15 @@
 - _...Add new stuff here..._
 
 ## 24.8.5
-### ✨ Features and improvements
 
 ### 🐞 Bug fixes
+
 - Added missing exported types ([#1638](https://github.com/maplibre/maplibre-style-spec/pull/1638)) (by [@scottg521](https://github.com/scottg521))
 
 ## 24.8.4
-### ✨ Features and improvements
 
 ### 🐞 Bug fixes
+
 - Replace rw with node:fs. Resolves #1625 ([#1635](https://github.com/maplibre/maplibre-style-spec/pull/1635)) (by [@birkskyum](https://github.com/birkskyum))
 
 ## 24.8.3
