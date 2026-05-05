@@ -2,7 +2,7 @@ import v8Spec from './reference/v8.json' with {type: 'json'};
 const v8 = v8Spec as any;
 import latest from './reference/latest';
 import {derefLayers} from './deref';
-import {diff} from './diff';
+import {diff, type DiffCommand, type DiffOperations} from './diff';
 import {ValidationError} from './error/validation_error';
 import {ParsingError} from './error/parsing_error';
 import {
@@ -22,7 +22,7 @@ import {
     CompositeExpression,
     StylePropertyExpression
 } from './expression';
-import {featureFilter, isExpressionFilter} from './feature_filter';
+import {type FeatureFilter, featureFilter, isExpressionFilter} from './feature_filter';
 
 import {convertFilter} from './feature_filter/convert';
 import {Color} from './expression/types/color';
@@ -30,7 +30,7 @@ import {Padding} from './expression/types/padding';
 import {NumberArray} from './expression/types/number_array';
 import {ColorArray} from './expression/types/color_array';
 import {VariableAnchorOffsetCollection} from './expression/types/variable_anchor_offset_collection';
-import {Formatted, FormattedSection} from './expression/types/formatted';
+import {Formatted, FormattedSection, VerticalAlign} from './expression/types/formatted';
 import {createFunction, isFunction} from './function';
 import {convertFunction} from './function/convert';
 import {eachSource, eachLayer, eachProperty} from './visit';
@@ -42,6 +42,7 @@ import type {
     ILngLat,
     ILngLatLike
 } from './tiles_and_coordinates';
+import {Point2D} from './point2d';
 import {EvaluationContext} from './expression/evaluation_context';
 import {
     FormattedType,
@@ -51,7 +52,7 @@ import {
     ColorType,
     ProjectionDefinitionType
 } from './expression/types';
-
+import {Expression} from './expression/expression';
 import {expressions} from './expression/definitions';
 import {Interpolate} from './expression/definitions/interpolate';
 import {interpolateFactory, type InterpolationType} from './expression/definitions/interpolate';
@@ -77,7 +78,7 @@ import {validate} from './validate/validate';
 import {migrate} from './migrate';
 import {classifyRings} from './util/classify_rings';
 import {ProjectionDefinition} from './expression/types/projection_definition';
-import createVisibilityExpression from './expression/visibility';
+import createVisibilityExpression, {type VisibilityExpression} from './expression/visibility';
 
 type ExpressionType =
     | 'data-driven'
@@ -222,13 +223,18 @@ export type {
     SourceExpression,
     CompositeExpression,
     StylePropertyExpression,
+    DiffCommand,
+    DiffOperations,
+    FeatureFilter,
     IMercatorCoordinate,
     ICanonicalTileID,
     ILngLat,
     ILngLatLike,
     Type,
     InterpolationType,
-    FormattedSection
+    VerticalAlign,
+    Point2D,
+    Expression
 };
 
 export {
@@ -252,6 +258,8 @@ export {
     StylePropertyFunction,
     ZoomDependentExpression,
     FormatExpression,
+    VisibilityExpression,
+    FormattedSection,
     latest,
     validateStyleMin,
     groupByLayout,
