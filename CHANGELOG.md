@@ -3,7 +3,7 @@
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
-- _...Add new stuff here..._
+- _Added exports for DffCommand, DiffOperations, FeatureFilter, and VisibilityExpression_
 
 ## 24.8.4
 ### ✨ Features and improvements
