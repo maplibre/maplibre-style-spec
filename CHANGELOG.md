@@ -3,6 +3,7 @@
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
+- Replace rw with node:fs. Fix #1625 
 - _...Add new stuff here..._
 
 ## 24.8.3
