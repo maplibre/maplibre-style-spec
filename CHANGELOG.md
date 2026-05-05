@@ -9,7 +9,7 @@
 ### ✨ Features and improvements
 
 ### 🐞 Bug fixes
-- Replace rw with node:fs. Fix #1625 ([#1635](https://github.com/maplibre/maplibre-style-spec/pull/1635)) (by [@birkskyum](https://github.com/birkskyum))
+- Replace rw with node:fs. Resolves #1625 ([#1635](https://github.com/maplibre/maplibre-style-spec/pull/1635)) (by [@birkskyum](https://github.com/birkskyum))
 
 ## 24.8.3
 
