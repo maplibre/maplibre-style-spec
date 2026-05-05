@@ -47,15 +47,19 @@ describe('@maplibre/maplibre-gl-style-spec npm package', () => {
     });
 });
 
-describe('CLI binaries (.mjs)', () => {
-    test.each(['gl-style-validate', 'gl-style-format', 'gl-style-migrate'])(
-        '%s.mjs starts without throwing',
-        (cli) => {
-            const result = spawnSync('node', [`dist/${cli}.mjs`, '--help'], {encoding: 'utf8'});
-            expect(result.status).toBe(0);
-            expect(result.stderr).toBe('');
-        }
-    );
+describe('CLI binaries', () => {
+    test.each([
+        ['gl-style-validate', 'mjs'],
+        ['gl-style-validate', 'cjs'],
+        ['gl-style-format', 'mjs'],
+        ['gl-style-format', 'cjs'],
+        ['gl-style-migrate', 'mjs'],
+        ['gl-style-migrate', 'cjs']
+    ])('%s.%s starts without throwing', (cli, ext) => {
+        const result = spawnSync('node', [`dist/${cli}.${ext}`, '--help'], {encoding: 'utf8'});
+        expect(result.status).toBe(0);
+        expect(result.stderr).toBe('');
+    });
 
     test('gl-style-validate accepts a file path', () => {
         const path = join(tmpdir(), 'maplibre-style-spec-valid.json');
