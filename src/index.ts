@@ -2,7 +2,7 @@ import v8Spec from './reference/v8.json' with {type: 'json'};
 const v8 = v8Spec as any;
 import latest from './reference/latest';
 import {derefLayers} from './deref';
-import {diff} from './diff';
+import {diff, type DiffCommand, type DiffOperations} from './diff';
 import {ValidationError} from './error/validation_error';
 import {ParsingError} from './error/parsing_error';
 import {
@@ -22,7 +22,7 @@ import {
     CompositeExpression,
     StylePropertyExpression
 } from './expression';
-import {featureFilter, isExpressionFilter} from './feature_filter';
+import {type FeatureFilter, featureFilter, isExpressionFilter} from './feature_filter';
 
 import {convertFilter} from './feature_filter/convert';
 import {Color} from './expression/types/color';
@@ -77,7 +77,7 @@ import {validate} from './validate/validate';
 import {migrate} from './migrate';
 import {classifyRings} from './util/classify_rings';
 import {ProjectionDefinition} from './expression/types/projection_definition';
-import createVisibilityExpression from './expression/visibility';
+import createVisibilityExpression, {type VisibilityExpression} from './expression/visibility';
 
 type ExpressionType =
     | 'data-driven'
@@ -222,6 +222,9 @@ export type {
     SourceExpression,
     CompositeExpression,
     StylePropertyExpression,
+    DiffCommand,
+    DiffOperations,
+    FeatureFilter,
     IMercatorCoordinate,
     ICanonicalTileID,
     ILngLat,
@@ -252,6 +255,7 @@ export {
     StylePropertyFunction,
     ZoomDependentExpression,
     FormatExpression,
+    VisibilityExpression,
     latest,
     validateStyleMin,
     groupByLayout,
