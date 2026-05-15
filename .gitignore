@@ -8,8 +8,14 @@ dist
 coverage/
 site/
 docs/*
+!docs/assets
+docs/assets/*
 !docs/assets/extra.css
 !docs/assets/logo.svg
+!docs/assets/hillshade_methods.png
+!docs/assets/resampling.png
+!docs/assets/layer-opacity-fill.svg
+!docs/assets/layer-opacity-line.svg
 !docs/README.md
 !docs/types.md
 !docs/sprite.md

@@ -1,0 +1,42 @@
+{
+  "version": 8,
+  "sources": {
+    "v": {
+      "type": "vector",
+      "url": "https://demotiles.maplibre.org/tiles/tiles.json"
+    },
+    "r": {
+      "type": "raster",
+      "tiles": ["https://example.com/{z}/{x}/{y}.png"],
+      "tileSize": 256
+    }
+  },
+  "layers": [
+    {
+      "id": "circle-rejects",
+      "type": "circle",
+      "source": "v",
+      "source-layer": "layer",
+      "paint": {
+        "layer-opacity": 0.5
+      }
+    },
+    {
+      "id": "symbol-rejects",
+      "type": "symbol",
+      "source": "v",
+      "source-layer": "layer",
+      "paint": {
+        "layer-opacity": 0.5
+      }
+    },
+    {
+      "id": "raster-rejects",
+      "type": "raster",
+      "source": "r",
+      "paint": {
+        "layer-opacity": 0.5
+      }
+    }
+  ]
+}

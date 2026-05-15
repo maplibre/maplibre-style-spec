@@ -683,7 +683,7 @@
     },
     "clusterProperties": {
       "type": "*",
-      "doc": "An object defining custom properties on the generated clusters if clustering is enabled, aggregating values from clustered points. Has the form `{\"property_name\": [operator, map_expression]}`. `operator` is any expression function that accepts at least 2 operands (e.g. `\"+\"` or `\"max\"`) — it accumulates the property value from clusters/points the cluster contains; `map_expression` produces the value of a single point.\n\nExample: `{\"sum\": [\"+\", [\"get\", \"scalerank\"]]}`.\n\nFor more advanced use cases, in place of `operator`, you can use a custom reduce expression that references a special `[\"accumulated\"]` value, e.g.:\n\n`{\"sum\": [[\"+\", [\"accumulated\"], [\"get\", \"sum\"]], [\"get\", \"scalerank\"]]}`"
+      "doc": "An object defining custom properties on the generated clusters if clustering is enabled, aggregating values from clustered points. Has the form `{\"property_name\": [operator, map_expression]}`. `operator` is any expression function that accepts at least 2 operands (e.g. `\"+\"` or `\"max\"`) - it accumulates the property value from clusters/points the cluster contains; `map_expression` produces the value of a single point.\n\nExample: `{\"sum\": [\"+\", [\"get\", \"scalerank\"]]}`.\n\nFor more advanced use cases, in place of `operator`, you can use a custom reduce expression that references a special `[\"accumulated\"]` value, e.g.:\n\n`{\"sum\": [[\"+\", [\"accumulated\"], [\"get\", \"sum\"]], [\"get\", \"scalerank\"]]}`"
     },
     "lineMetrics": {
       "type": "boolean",
@@ -6055,6 +6055,28 @@
       },
       "property-type": "data-driven"
     },
+    "layer-opacity": {
+      "type": "number",
+      "default": 1,
+      "minimum": 0,
+      "maximum": 1,
+      "doc": "Opacity applied to the whole fill layer as a single composite. Unlike `fill-opacity` or `fill-color`, which applies per feature and makes overlapping features look more opaque where they cross, `layer-opacity` is applied to the layer as a whole.\n\n![fill-opacity vs. layer-opacity](assets/layer-opacity-fill.svg)\n\nIf both are set, the effective opacity is `fill-opacity * layer-opacity`. Prefer `fill-opacity` when possible - `layer-opacity` is significantly slower and uses more memory.",
+      "transition": true,
+      "sdk-support": {
+        "basic functionality": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/9999",
+          "android": "https://github.com/maplibre/maplibre-native/issues/9999",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/9999"
+        }
+      },
+      "expression": {
+        "interpolated": true,
+        "parameters": [
+          "zoom"
+        ]
+      },
+      "property-type": "data-constant"
+    },
     "fill-color": {
       "type": "color",
       "default": "#000000",
@@ -6450,6 +6472,28 @@
         ]
       },
       "property-type": "data-driven"
+    },
+    "layer-opacity": {
+      "type": "number",
+      "default": 1,
+      "minimum": 0,
+      "maximum": 1,
+      "doc": "Opacity applied to the whole line layer as a single composite. Unlike `line-opacity` or `line-color`, which applies per feature and makes overlapping features look more opaque where they cross, `layer-opacity` is applied to the layer as a whole.\n\n![line-opacity vs. layer-opacity](assets/layer-opacity-line.svg)\n\nIf both are set, the effective opacity is `line-opacity * layer-opacity`. Prefer `line-opacity` when possible - `layer-opacity` is significantly slower and uses more memory.",
+      "transition": true,
+      "sdk-support": {
+        "basic functionality": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/9999",
+          "android": "https://github.com/maplibre/maplibre-native/issues/9999",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/9999"
+        }
+      },
+      "expression": {
+        "interpolated": true,
+        "parameters": [
+          "zoom"
+        ]
+      },
+      "property-type": "data-constant"
     },
     "line-color": {
       "type": "color",

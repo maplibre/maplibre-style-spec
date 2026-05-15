@@ -1,0 +1,10 @@
+[
+  {
+    "message": "layers[0].paint.layer-opacity: data expressions not supported",
+    "line": 16
+  },
+  {
+    "message": "layers[1].paint.layer-opacity: data expressions not supported",
+    "line": 25
+  }
+]

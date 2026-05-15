@@ -1,0 +1,14 @@
+[
+  {
+    "message": "layers[0].paint.layer-opacity: unknown property \"layer-opacity\"",
+    "line": 21
+  },
+  {
+    "message": "layers[1].paint.layer-opacity: unknown property \"layer-opacity\"",
+    "line": 30
+  },
+  {
+    "message": "layers[2].paint.layer-opacity: unknown property \"layer-opacity\"",
+    "line": 38
+  }
+]

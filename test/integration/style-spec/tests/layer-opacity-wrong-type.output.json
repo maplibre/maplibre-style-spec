@@ -1,0 +1,10 @@
+[
+  {
+    "message": "layers[0].paint.layer-opacity: number expected, string found",
+    "line": 16
+  },
+  {
+    "message": "layers[1].paint.layer-opacity: number expected, boolean found",
+    "line": 25
+  }
+]
