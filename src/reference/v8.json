@@ -6060,7 +6060,7 @@
       "default": 1,
       "minimum": 0,
       "maximum": 1,
-      "doc": "Opacity applied to the whole fill layer as a single composite. Unlike `fill-opacity` or `fill-color`, which applies per feature and makes overlapping features look more opaque where they cross, `layer-opacity` is applied to the layer as a whole.\n\n![fill-opacity vs. layer-opacity](assets/layer-opacity-fill.svg)\n\nIf both are set, the effective opacity is `fill-opacity * layer-opacity`. Prefer `fill-opacity` when possible - `layer-opacity` is significantly slower and uses more memory.",
+      "doc": "Opacity applied to the whole fill layer as a single composite. Unlike `fill-opacity` or `fill-color`, both of which apply per feature and make overlapping features look more opaque where they cross, `layer-opacity` is applied to the layer as a whole.\n\n![fill-opacity vs. layer-opacity](assets/layer-opacity-fill.svg)\n\nIf both are set, the effective opacity is `fill-opacity * layer-opacity`. Prefer `fill-opacity` when possible - `layer-opacity` is significantly slower and uses more memory.",
       "transition": true,
       "sdk-support": {
         "basic functionality": {
