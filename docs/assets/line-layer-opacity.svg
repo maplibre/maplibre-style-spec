@@ -1,6 +1,33 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 240" font-size="14">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 240" font-size="14">
+  <!-- no opacity -->
+  <g transform="translate(0, 0)">
+    <rect x="0" y="0" width="250" height="240" fill="#fff"/>
+
+    <text x="125" y="20" text-anchor="middle" font-weight="600">
+      default/full opacity
+    </text>
+
+    <line
+      x1="30" y1="60" x2="230" y2="60"
+      stroke="#d62728"
+      stroke-width="25"
+      stroke-linecap="round"
+    />
+
+    <g
+      stroke="#1f77b4"
+      stroke-width="25"
+      stroke-linecap="round"
+      fill="none"
+    >
+      <line x1="30" y1="60" x2="230" y2="220"/>
+      <line x1="230" y1="220" x2="30" y2="220"/>
+      <line x1="30" y1="220" x2="230" y2="60"/>
+    </g>
+  </g>
+
   <!-- line-opacity -->
-  <g transform="translate(10, 0)">
+  <g transform="translate(270, 0)">
     <rect x="0" y="0" width="250" height="240" fill="#fff"/>
 
     <text x="125" y="20" text-anchor="middle" font-weight="600">
@@ -28,37 +55,8 @@
     </g>
   </g>
 
-  <!-- line-layer-opacity -->
-  <g transform="translate(280, 0)">
-    <rect x="0" y="0" width="250" height="240" fill="#fff"/>
-
-    <text x="125" y="20" text-anchor="middle" font-weight="600">
-      line-layer-opacity: 0.5
-    </text>
-
-    <g opacity="0.5">
-      <line
-        x1="30" y1="60" x2="230" y2="60"
-        stroke="#d62728"
-        stroke-width="25"
-        stroke-linecap="round"
-      />
-
-      <g
-        stroke="#1f77b4"
-        stroke-width="25"
-        stroke-linecap="round"
-        fill="none"
-      >
-        <line x1="30" y1="60" x2="230" y2="220"/>
-        <line x1="230" y1="220" x2="30" y2="220"/>
-        <line x1="30" y1="220" x2="230" y2="60"/>
-      </g>
-    </g>
-  </g>
-
   <!-- combined -->
-  <g transform="translate(550, 0)">
+  <g transform="translate(540, 0)">
     <rect x="0" y="0" width="250" height="240" fill="#fff"/>
 
     <text x="125" y="20" text-anchor="middle" font-weight="600">
@@ -78,6 +76,35 @@
         stroke="#1f77b4"
         stroke-width="25"
         stroke-opacity="0.5"
+        stroke-linecap="round"
+        fill="none"
+      >
+        <line x1="30" y1="60" x2="230" y2="220"/>
+        <line x1="230" y1="220" x2="30" y2="220"/>
+        <line x1="30" y1="220" x2="230" y2="60"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- line-layer-opacity -->
+  <g transform="translate(810, 0)">
+    <rect x="0" y="0" width="250" height="240" fill="#fff"/>
+
+    <text x="125" y="20" text-anchor="middle" font-weight="600">
+      line-layer-opacity: 0.5
+    </text>
+
+    <g opacity="0.5">
+      <line
+        x1="30" y1="60" x2="230" y2="60"
+        stroke="#d62728"
+        stroke-width="25"
+        stroke-linecap="round"
+      />
+
+      <g
+        stroke="#1f77b4"
+        stroke-width="25"
         stroke-linecap="round"
         fill="none"
       >
