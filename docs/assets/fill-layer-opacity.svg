@@ -1,27 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 240" font-size="14">
-  <!-- fill-opacity -->
-  <g transform="translate(10, 0)">
+```svg id="v3k8dp"
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 270" font-size="14">
+  <!-- 1: no opacity -->
+  <g transform="translate(0, 0)">
     <rect x="0" y="0" width="250" height="240" fill="#fff"/>
-    <text x="125" y="17" text-anchor="middle" font-weight="600">
-      fill-opacity: 0.5
+
+    <text x="125" y="20" text-anchor="middle" font-weight="600">
+      default/full opacity
     </text>
 
     <polygon
       points="20,210 100,30 180,210"
       fill="#1f77b4"
-      fill-opacity="0.5"
     />
     <polygon
       points="70,210 150,30 230,210"
       fill="#d62728"
-      fill-opacity="0.5"
     />
   </g>
 
-  <!-- fill-layer-opacity -->
-  <g transform="translate(280, 0)">
+  <!-- 2: fill-layer-opacity -->
+  <g transform="translate(270, 0)">
     <rect x="0" y="0" width="250" height="240" fill="#fff"/>
-    <text x="125" y="17" text-anchor="middle" font-weight="600">
+
+    <text x="125" y="20" text-anchor="middle" font-weight="600">
       fill-layer-opacity: 0.5
     </text>
 
@@ -37,10 +38,11 @@
     </g>
   </g>
 
-  <!-- combined -->
-  <g transform="translate(550, 0)">
+  <!-- 3: combined -->
+  <g transform="translate(540, 0)">
     <rect x="0" y="0" width="250" height="240" fill="#fff"/>
-    <text x="125" y="17" text-anchor="middle" font-weight="600">
+
+    <text x="125" y="20" text-anchor="middle" font-weight="600">
       fill-opacity: 0.5 + fill-layer-opacity: 0.5
     </text>
 
@@ -57,4 +59,25 @@
       />
     </g>
   </g>
+
+  <!-- 4: fill-opacity -->
+  <g transform="translate(810, 0)">
+    <rect x="0" y="0" width="250" height="240" fill="#fff"/>
+
+    <text x="125" y="20" text-anchor="middle" font-weight="600">
+      fill-opacity: 0.5
+    </text>
+
+    <polygon
+      points="20,210 100,30 180,210"
+      fill="#1f77b4"
+      fill-opacity="0.5"
+    />
+    <polygon
+      points="70,210 150,30 230,210"
+      fill="#d62728"
+      fill-opacity="0.5"
+    />
+  </g>
 </svg>
+```
