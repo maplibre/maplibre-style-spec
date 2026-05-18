@@ -4,7 +4,7 @@
     <rect x="0" y="0" width="250" height="240" fill="#fff"/>
 
     <text x="125" y="20" text-anchor="middle" font-weight="600">
-      no opacity
+      default/full opacity
     </text>
 
     <line
