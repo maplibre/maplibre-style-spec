@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 240" font-size="14">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 240" font-size="16" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="1080" height="240" fill="#fff"/>
   <!-- 1: no opacity -->
   <g transform="translate(0, 0)">
-    <rect x="0" y="0" width="250" height="240" fill="#fff"/>
 
-    <text x="125" y="20" text-anchor="middle" font-weight="600">
+    <text x="125" y="20" text-anchor="middle">
       default/full opacity
     </text>
 
@@ -19,9 +19,8 @@
 
   <!-- 2: fill-layer-opacity -->
   <g transform="translate(270, 0)">
-    <rect x="0" y="0" width="250" height="240" fill="#fff"/>
 
-    <text x="125" y="20" text-anchor="middle" font-weight="600">
+    <text x="125" y="20" text-anchor="middle">
       fill-layer-opacity: 0.5
     </text>
 
@@ -39,9 +38,8 @@
 
   <!-- 3: combined -->
   <g transform="translate(540, 0)">
-    <rect x="0" y="0" width="250" height="240" fill="#fff"/>
 
-    <text x="125" y="20" text-anchor="middle" font-weight="600">
+    <text x="125" y="20" text-anchor="middle">
       fill-opacity: 0.5 + fill-layer-opacity: 0.5
     </text>
 
@@ -61,9 +59,8 @@
 
   <!-- 4: fill-opacity -->
   <g transform="translate(810, 0)">
-    <rect x="0" y="0" width="250" height="240" fill="#fff"/>
 
-    <text x="125" y="20" text-anchor="middle" font-weight="600">
+    <text x="125" y="20" text-anchor="middle">
       fill-opacity: 0.5
     </text>
 
