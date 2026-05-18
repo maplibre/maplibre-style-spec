@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 270" font-family="system-ui, -apple-system, sans-serif" font-size="14">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 270" font-size="14">
   <g transform="translate(10, 30)">
-    <rect x="0" y="0" width="250" height="240" fill="#ffffff" stroke="#888"/>
+    <rect x="0" y="0" width="250" height="240" fill="#fff"/>
     <text x="125" y="20" text-anchor="middle" font-weight="600">line-opacity: 0.5</text>
     <line x1="30" y1="60" x2="230" y2="60" stroke="#d62728" stroke-width="25" stroke-opacity="0.5" stroke-linecap="round"/>
     <g stroke="#1f77b4" stroke-width="25" stroke-opacity="0.5" stroke-linecap="round" fill="none">
@@ -10,8 +10,8 @@
     </g>
   </g>
   <g transform="translate(280, 30)">
-    <rect x="0" y="0" width="250" height="240" fill="#ffffff" stroke="#888"/>
-    <text x="125" y="20" text-anchor="middle" font-weight="600">layer-opacity: 0.5</text>
+    <rect x="0" y="0" width="250" height="240" fill="#fff"/>
+    <text x="125" y="20" text-anchor="middle" font-weight="600">line-layer-opacity: 0.5</text>
     <g opacity="0.5">
       <line x1="30" y1="60" x2="230" y2="60" stroke="#d62728" stroke-width="25" stroke-linecap="round"/>
       <g stroke="#1f77b4" stroke-width="25" stroke-linecap="round" fill="none">

@@ -6055,12 +6055,12 @@
       },
       "property-type": "data-driven"
     },
-    "layer-opacity": {
+    "fill-layer-opacity": {
       "type": "number",
       "default": 1,
       "minimum": 0,
       "maximum": 1,
-      "doc": "Opacity applied to the entire fill layer after compositing. Unlike `fill-opacity` and alpha values in `fill-color`, which are evaluated per feature and therefore accumulate where fills overlap, `layer-opacity` is applied once to the final rendered output of the layer.\n\n![fill-opacity vs. layer-opacity](assets/layer-opacity-fill.svg)\n\nIf both are set, the effective opacity is `fill-opacity * layer-opacity`. Prefer `fill-opacity` when possible - `layer-opacity` is significantly slower and uses more memory.",
+      "doc": "Opacity applied to the entire fill layer after compositing. Unlike `fill-opacity` and alpha values in `fill-color`, which are evaluated per feature and therefore accumulate where fills overlap, `fill-layer-opacity` is applied once to the final rendered output of the layer.\n\n![fill-opacity vs. fill-layer-opacity](assets/fill-layer-opacity.svg)\n\nIf both are set, the effective opacity is `fill-opacity * fill-layer-opacity`. Prefer `fill-opacity` when possible - `fill-layer-opacity` is significantly slower and uses more memory.",
       "transition": true,
       "sdk-support": {
         "basic functionality": {
@@ -6473,12 +6473,12 @@
       },
       "property-type": "data-driven"
     },
-    "layer-opacity": {
+    "line-layer-opacity": {
       "type": "number",
       "default": 1,
       "minimum": 0,
       "maximum": 1,
-      "doc": "Opacity applied to the entire line layer after compositing. Unlike `line-opacity` and alpha values in `line-color`, which are evaluated per feature and therefore accumulate where lines overlap, `layer-opacity` is applied once to the final rendered output of the layer.\n\n![line-opacity vs. layer-opacity](assets/layer-opacity-line.svg)\n\nIf both are set, the effective opacity is `line-opacity * layer-opacity`. Prefer `line-opacity` when possible - `layer-opacity` is significantly slower and uses more memory.",
+      "doc": "Opacity applied to the entire line layer after compositing. Unlike `line-opacity` and alpha values in `line-color`, which are evaluated per feature and therefore accumulate where lines overlap, `line-layer-opacity` is applied once to the final rendered output of the layer.\n\n![line-opacity vs. line-layer-opacity](assets/line-layer-opacity-line.svg)\n\nIf both are set, the effective opacity is `line-opacity * line-layer-opacity`. Prefer `line-opacity` when possible - `line-layer-opacity` is significantly slower and uses more memory.",
       "transition": true,
       "sdk-support": {
         "basic functionality": {
