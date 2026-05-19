@@ -6058,7 +6058,7 @@
     "fill-color": {
       "type": "color",
       "default": "#000000",
-      "doc": "The color of the filled part of this layer. This color can be specified as `rgba` with an alpha component and the color's opacity will not affect the opacity of the 1px stroke, if it is used. When used with an SDF fill pattern, this serves as the foreground color of the pattern.",
+      "doc": "The color of the filled part of this layer. This color can be specified as `rgba` with an alpha component and the color's opacity will not affect the opacity of the 1px stroke, if it is used. When used with an SDF fill pattern, this serves as the background color behind the pattern.",
       "transition": true,
       "sdk-support": {
         "basic functionality": {
@@ -6197,10 +6197,10 @@
       },
       "property-type": "cross-faded-data-driven"
     },
-    "fill-pattern-background-color": {
+    "fill-pattern-color": {
       "type": "color",
-      "default": "rgba(0, 0, 0, 0)",
-      "doc": "The background color used when rendering SDF fill patterns. When a fill pattern image has `sdf: true`, this color is used for areas outside the pattern shape. Has no effect on non-SDF patterns.",
+      "default": "#000000",
+      "doc": "The color used to render the pattern shape when using an SDF fill pattern. When a fill pattern image has `sdf: true`, this color controls the color of the pattern itself. Has no effect on non-SDF patterns.",
       "transition": true,
       "requires": [
         "fill-pattern"

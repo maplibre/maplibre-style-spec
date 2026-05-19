@@ -10,7 +10,7 @@
       "source": "geojson",
       "paint": {
         "fill-pattern": "my-pattern",
-        "fill-pattern-background-color": "#ff0000"
+        "fill-pattern-color": "#ff0000"
       }
     },
     {
@@ -19,7 +19,7 @@
       "source": "geojson",
       "paint": {
         "fill-pattern": "my-pattern",
-        "fill-pattern-background-color": ["get", "bg_color"]
+        "fill-pattern-color": ["get", "bg_color"]
       }
     },
     {

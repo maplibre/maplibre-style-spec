@@ -1,6 +1,6 @@
 ## main
 ### ✨ Features and improvements
-- Add `fill-pattern-background-color` paint property for SDF fill patterns ([#1641](https://github.com/maplibre/maplibre-style-spec/pull/1641))
+- Add `fill-pattern-color` paint property for SDF fill patterns ([#1641](https://github.com/maplibre/maplibre-style-spec/pull/1641))
 
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
