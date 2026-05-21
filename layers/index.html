@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="https://maplibre.org/favicon.ico">
-      <meta name="generator" content="zensical-0.0.40">
+      <meta name="generator" content="zensical-0.0.43">
     
     
       
@@ -4502,10 +4502,10 @@
 <p><em>Optional <a href="../types/#string">string</a>.</em></p>
 <p>Layer to use from a vector tile source. Required for vector tile sources; prohibited for all other source types, including GeoJSON sources.</p>
 <h3 id="minzoom">minzoom<a class="headerlink" href="#minzoom" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#number">number</a> in range [0, 24].</em></p>
+<p><em>Optional <a href="../types/#number">number</a> in range <code>[0, 24]</code>.</em></p>
 <p>The minimum zoom level for the layer. At zoom levels less than the minzoom, the layer will be hidden.</p>
 <h3 id="maxzoom">maxzoom<a class="headerlink" href="#maxzoom" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#number">number</a> in range [0, 24].</em></p>
+<p><em>Optional <a href="../types/#number">number</a> in range <code>[0, 24]</code>.</em></p>
 <p>The maximum zoom level for the layer. At zoom levels equal to or greater than the maxzoom, the layer will be hidden.</p>
 <h3 id="filter">filter<a class="headerlink" href="#filter" title="Permanent link">&para;</a></h3>
 <p><em>Optional <a href="../expressions/">filter</a>.</em></p>
@@ -4597,7 +4597,7 @@
 </tbody>
 </table>
 <h3 id="background-opacity">background-opacity<a class="headerlink" href="#background-opacity" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range [0, 1]. Defaults to <code>1</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range <code>[0, 1]</code>. Defaults to <code>1</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
 <p>The opacity at which the background will be drawn.</p>
 <table>
 <thead>
@@ -4698,7 +4698,7 @@
 </tbody>
 </table>
 <h3 id="fill-opacity">fill-opacity<a class="headerlink" href="#fill-opacity" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range [0, 1]. Defaults to <code>1</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range <code>[0, 1]</code>. Defaults to <code>1</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
 <p>The opacity of the entire fill layer. In contrast to the <code>fill-color</code>, this value will also affect the 1px stroke around the fill, if the stroke is used.</p>
 <table>
 <thead>
@@ -4780,7 +4780,7 @@
 </table>
 <h3 id="fill-translate">fill-translate<a class="headerlink" href="#fill-translate" title="Permanent link">&para;</a></h3>
 <p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#array">array</a>. Units in pixels. Defaults to <code>[0,0]</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
-<p>The geometry's offset. Values are [x, y] where negatives indicate left and up, respectively.</p>
+<p>The geometry's offset. Values are <code>[x, y]</code> where negatives indicate left and up, respectively.</p>
 <table>
 <thead>
 <tr>
@@ -4911,7 +4911,7 @@
 </tbody>
 </table>
 <h3 id="circle-radius">circle-radius<a class="headerlink" href="#circle-radius" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range [0, ∞). Units in pixels. Defaults to <code>5</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range <code>[0, ∞)</code>. Units in pixels. Defaults to <code>5</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
 <p>Circle radius.</p>
 <table>
 <thead>
@@ -4992,7 +4992,7 @@
 </tbody>
 </table>
 <h3 id="circle-opacity">circle-opacity<a class="headerlink" href="#circle-opacity" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range [0, 1]. Defaults to <code>1</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range <code>[0, 1]</code>. Defaults to <code>1</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
 <p>The opacity at which the circle will be drawn.</p>
 <table>
 <thead>
@@ -5020,7 +5020,7 @@
 </table>
 <h3 id="circle-translate">circle-translate<a class="headerlink" href="#circle-translate" title="Permanent link">&para;</a></h3>
 <p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#array">array</a>. Units in pixels. Defaults to <code>[0,0]</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
-<p>The geometry's offset. Values are [x, y] where negatives indicate left and up, respectively.</p>
+<p>The geometry's offset. Values are <code>[x, y]</code> where negatives indicate left and up, respectively.</p>
 <table>
 <thead>
 <tr>
@@ -5115,7 +5115,7 @@
 </tbody>
 </table>
 <h3 id="circle-stroke-width">circle-stroke-width<a class="headerlink" href="#circle-stroke-width" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range [0, ∞). Units in pixels. Defaults to <code>0</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range <code>[0, ∞)</code>. Units in pixels. Defaults to <code>0</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
 <p>The width of the circle's stroke. Strokes are placed outside of the <code>circle-radius</code>.</p>
 <table>
 <thead>
@@ -5169,7 +5169,7 @@
 </tbody>
 </table>
 <h3 id="circle-stroke-opacity">circle-stroke-opacity<a class="headerlink" href="#circle-stroke-opacity" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range [0, 1]. Defaults to <code>1</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range <code>[0, 1]</code>. Defaults to <code>1</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
 <p>The opacity of the circle's stroke.</p>
 <table>
 <thead>
@@ -5228,7 +5228,7 @@
 </tbody>
 </table>
 <h3 id="heatmap-radius">heatmap-radius<a class="headerlink" href="#heatmap-radius" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range [1, ∞). Units in pixels. Defaults to <code>30</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range <code>[1, ∞)</code>. Units in pixels. Defaults to <code>30</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
 <p>Radius of influence of one heatmap point in pixels. Increasing the value makes the heatmap smoother, but less detailed.</p>
 <table>
 <thead>
@@ -5255,7 +5255,7 @@
 </tbody>
 </table>
 <h3 id="heatmap-weight">heatmap-weight<a class="headerlink" href="#heatmap-weight" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range [0, ∞). Defaults to <code>1</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range <code>[0, ∞)</code>. Defaults to <code>1</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
 <p>A measure of how much an individual point contributes to the heatmap. A value of 10 would be equivalent to having 10 points of weight 1 in the same spot. Especially useful when combined with clustering.</p>
 <table>
 <thead>
@@ -5282,7 +5282,7 @@
 </tbody>
 </table>
 <h3 id="heatmap-intensity">heatmap-intensity<a class="headerlink" href="#heatmap-intensity" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range [0, ∞). Defaults to <code>1</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range <code>[0, ∞)</code>. Defaults to <code>1</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
 <p>Similar to <code>heatmap-weight</code> but controls the intensity of the heatmap globally. Primarily used for adjusting the heatmap based on zoom level.</p>
 <table>
 <thead>
@@ -5330,7 +5330,7 @@
 </tbody>
 </table>
 <h3 id="heatmap-opacity">heatmap-opacity<a class="headerlink" href="#heatmap-opacity" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range [0, 1]. Defaults to <code>1</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range <code>[0, 1]</code>. Defaults to <code>1</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
 <p>The global opacity at which the heatmap layer will be drawn.</p>
 <table>
 <thead>
@@ -5383,7 +5383,7 @@
 </tbody>
 </table>
 <h3 id="fill-extrusion-opacity">fill-extrusion-opacity<a class="headerlink" href="#fill-extrusion-opacity" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range [0, 1]. Defaults to <code>1</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range <code>[0, 1]</code>. Defaults to <code>1</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
 <p>The opacity of the entire fill extrusion layer. This is rendered on a per-layer, not per-feature, basis, and data-driven styling is not available.</p>
 <table>
 <thead>
@@ -5432,7 +5432,7 @@
 </table>
 <h3 id="fill-extrusion-translate">fill-extrusion-translate<a class="headerlink" href="#fill-extrusion-translate" title="Permanent link">&para;</a></h3>
 <p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#array">array</a>. Units in pixels. Defaults to <code>[0,0]</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
-<p>The geometry's offset. Values are [x, y] where negatives indicate left and up (on the flat plane), respectively.</p>
+<p>The geometry's offset. Values are <code>[x, y]</code> where negatives indicate left and up (on the flat plane), respectively.</p>
 <table>
 <thead>
 <tr>
@@ -5504,7 +5504,7 @@
 </tbody>
 </table>
 <h3 id="fill-extrusion-height">fill-extrusion-height<a class="headerlink" href="#fill-extrusion-height" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range [0, ∞). Units in meters. Defaults to <code>0</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range <code>[0, ∞)</code>. Units in meters. Defaults to <code>0</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
 <p>The height with which to extrude this layer.</p>
 <table>
 <thead>
@@ -5531,7 +5531,7 @@
 </tbody>
 </table>
 <h3 id="fill-extrusion-base">fill-extrusion-base<a class="headerlink" href="#fill-extrusion-base" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range [0, ∞). Units in meters. Defaults to <code>0</code>. Requires <a href="#fill-extrusion-height"><code>fill-extrusion-height</code></a>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range <code>[0, ∞)</code>. Units in meters. Defaults to <code>0</code>. Requires <a href="#fill-extrusion-height"><code>fill-extrusion-height</code></a>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
 <p>The height with which to extrude the base of this layer. Must be less than or equal to <code>fill-extrusion-height</code>.</p>
 <table>
 <thead>
@@ -5756,7 +5756,7 @@
 </tbody>
 </table>
 <h3 id="line-opacity">line-opacity<a class="headerlink" href="#line-opacity" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range [0, 1]. Defaults to <code>1</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range <code>[0, 1]</code>. Defaults to <code>1</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
 <p>The opacity at which the line will be drawn.</p>
 <table>
 <thead>
@@ -5811,7 +5811,7 @@
 </table>
 <h3 id="line-translate">line-translate<a class="headerlink" href="#line-translate" title="Permanent link">&para;</a></h3>
 <p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#array">array</a>. Units in pixels. Defaults to <code>[0,0]</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
-<p>The geometry's offset. Values are [x, y] where negatives indicate left and up, respectively.</p>
+<p>The geometry's offset. Values are <code>[x, y]</code> where negatives indicate left and up, respectively.</p>
 <table>
 <thead>
 <tr>
@@ -5856,7 +5856,7 @@
 </tbody>
 </table>
 <h3 id="line-width">line-width<a class="headerlink" href="#line-width" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range [0, ∞). Units in pixels. Defaults to <code>1</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range <code>[0, ∞)</code>. Units in pixels. Defaults to <code>1</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
 <p>Stroke thickness.</p>
 <table>
 <thead>
@@ -5883,7 +5883,7 @@
 </tbody>
 </table>
 <h3 id="line-gap-width">line-gap-width<a class="headerlink" href="#line-gap-width" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range [0, ∞). Units in pixels. Defaults to <code>0</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range <code>[0, ∞)</code>. Units in pixels. Defaults to <code>0</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
 <p>Draws a line casing outside of a line's actual path. Value indicates the width of the inner gap.</p>
 <table>
 <thead>
@@ -5937,7 +5937,7 @@
 </tbody>
 </table>
 <h3 id="line-blur">line-blur<a class="headerlink" href="#line-blur" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range [0, ∞). Units in pixels. Defaults to <code>0</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range <code>[0, ∞)</code>. Units in pixels. Defaults to <code>0</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
 <p>Blur applied to the line, in pixels.</p>
 <table>
 <thead>
@@ -5964,7 +5964,7 @@
 </tbody>
 </table>
 <h3 id="line-dasharray">line-dasharray<a class="headerlink" href="#line-dasharray" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#array">array</a> in range [0, ∞). Units in line widths. Disabled by <a href="#line-pattern"><code>line-pattern</code></a>. <a href="../transition/">Transitionable</a>.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#array">array</a> in range <code>[0, ∞)</code>. Units in line widths. Disabled by <a href="#line-pattern"><code>line-pattern</code></a>. <a href="../transition/">Transitionable</a>.</em></p>
 <p>Specifies the lengths of the alternating dashes and gaps that form the dash pattern. The lengths are later scaled by the line width. To convert a dash length to pixels, multiply the length by the current line width. GeoJSON sources with <code>lineMetrics: true</code> specified won't render dashed lines to the expected scale. Zoom-dependent expressions will be evaluated only at integer zoom levels. The only way to create an array value is using <code>["literal", [...]]</code>; arrays cannot be read from or derived from feature properties.</p>
 <table>
 <thead>
@@ -6078,7 +6078,7 @@
 </tbody>
 </table>
 <h3 id="symbol-spacing">symbol-spacing<a class="headerlink" href="#symbol-spacing" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#number">number</a> in range [1, ∞). Units in pixels. Defaults to <code>250</code>. Requires <code>symbol-placement</code> to be <code>line</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#number">number</a> in range <code>[1, ∞)</code>. Units in pixels. Defaults to <code>250</code>. Requires <code>symbol-placement</code> to be <code>line</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
 <p>Distance between two symbol anchors.</p>
 <table>
 <thead>
@@ -6294,7 +6294,7 @@
 </tbody>
 </table>
 <h3 id="icon-size">icon-size<a class="headerlink" href="#icon-size" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#number">number</a> in range [0, ∞). Units in factor of the original icon size. Defaults to <code>1</code>. Requires <a href="#icon-image"><code>icon-image</code></a>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#number">number</a> in range <code>[0, ∞)</code>. Units in factor of the original icon size. Defaults to <code>1</code>. Requires <a href="#icon-image"><code>icon-image</code></a>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
 <p>Scales the original size of the icon by the provided factor. The new pixel size of the image will be the original pixel size multiplied by <code>icon-size</code>. 1 is the original size; 3 triples the size of the image.</p>
 <table>
 <thead>
@@ -6699,7 +6699,7 @@
 </tbody>
 </table>
 <h3 id="text-size">text-size<a class="headerlink" href="#text-size" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#number">number</a> in range [0, ∞). Units in pixels. Defaults to <code>16</code>. Requires <a href="#text-field"><code>text-field</code></a>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#number">number</a> in range <code>[0, ∞)</code>. Units in pixels. Defaults to <code>16</code>. Requires <a href="#text-field"><code>text-field</code></a>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
 <p>Font size.</p>
 <table>
 <thead>
@@ -6726,7 +6726,7 @@
 </tbody>
 </table>
 <h3 id="text-max-width">text-max-width<a class="headerlink" href="#text-max-width" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#number">number</a> in range [0, ∞). Units in ems. Defaults to <code>10</code>. Requires <a href="#text-field"><code>text-field</code></a>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#number">number</a> in range <code>[0, ∞)</code>. Units in ems. Defaults to <code>10</code>. Requires <a href="#text-field"><code>text-field</code></a>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
 <p>The maximum line width for text wrapping.</p>
 <table>
 <thead>
@@ -7032,7 +7032,7 @@
 </tbody>
 </table>
 <h3 id="text-padding">text-padding<a class="headerlink" href="#text-padding" title="Permanent link">&para;</a></h3>
-<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#number">number</a> in range [0, ∞). Units in pixels. Defaults to <code>2</code>. Requires <a href="#text-field"><code>text-field</code></a>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
+<p><em><a href="#layout">Layout</a> property. Optional <a href="../types/#number">number</a> in range <code>[0, ∞)</code>. Units in pixels. Defaults to <code>2</code>. Requires <a href="#text-field"><code>text-field</code></a>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
 <p>Size of the additional area around the text bounding box used for detecting symbol collisions.</p>
 <table>
 <thead>
@@ -7253,7 +7253,7 @@
 </tbody>
 </table>
 <h3 id="icon-opacity">icon-opacity<a class="headerlink" href="#icon-opacity" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range [0, 1]. Defaults to <code>1</code>. Requires <a href="#icon-image"><code>icon-image</code></a>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range <code>[0, 1]</code>. Defaults to <code>1</code>. Requires <a href="#icon-image"><code>icon-image</code></a>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
 <p>The opacity at which the icon will be drawn.</p>
 <table>
 <thead>
@@ -7334,7 +7334,7 @@
 </tbody>
 </table>
 <h3 id="icon-halo-width">icon-halo-width<a class="headerlink" href="#icon-halo-width" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range [0, ∞). Units in pixels. Defaults to <code>0</code>. Requires <a href="#icon-image"><code>icon-image</code></a>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range <code>[0, ∞)</code>. Units in pixels. Defaults to <code>0</code>. Requires <a href="#icon-image"><code>icon-image</code></a>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
 <p>Distance of halo to the icon outline. </p>
 <p>The unit is in pixels only for SDF sprites that were created with a blur radius of 8, multiplied by the display density. I.e., the radius needs to be 16 for <code>@2x</code> sprites, etc.</p>
 <table>
@@ -7362,7 +7362,7 @@
 </tbody>
 </table>
 <h3 id="icon-halo-blur">icon-halo-blur<a class="headerlink" href="#icon-halo-blur" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range [0, ∞). Units in pixels. Defaults to <code>0</code>. Requires <a href="#icon-image"><code>icon-image</code></a>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range <code>[0, ∞)</code>. Units in pixels. Defaults to <code>0</code>. Requires <a href="#icon-image"><code>icon-image</code></a>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
 <p>Fade out the halo towards the outside.</p>
 <table>
 <thead>
@@ -7435,7 +7435,7 @@
 </tbody>
 </table>
 <h3 id="text-opacity">text-opacity<a class="headerlink" href="#text-opacity" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range [0, 1]. Defaults to <code>1</code>. Requires <a href="#text-field"><code>text-field</code></a>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range <code>[0, 1]</code>. Defaults to <code>1</code>. Requires <a href="#text-field"><code>text-field</code></a>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
 <p>The opacity at which the text will be drawn.</p>
 <table>
 <thead>
@@ -7516,7 +7516,7 @@
 </tbody>
 </table>
 <h3 id="text-halo-width">text-halo-width<a class="headerlink" href="#text-halo-width" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range [0, ∞). Units in pixels. Defaults to <code>0</code>. Requires <a href="#text-field"><code>text-field</code></a>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range <code>[0, ∞)</code>. Units in pixels. Defaults to <code>0</code>. Requires <a href="#text-field"><code>text-field</code></a>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
 <p>Distance of halo to the font outline. Max text halo width is 1/4 of the font-size.</p>
 <table>
 <thead>
@@ -7543,7 +7543,7 @@
 </tbody>
 </table>
 <h3 id="text-halo-blur">text-halo-blur<a class="headerlink" href="#text-halo-blur" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range [0, ∞). Units in pixels. Defaults to <code>0</code>. Requires <a href="#text-field"><code>text-field</code></a>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range <code>[0, ∞)</code>. Units in pixels. Defaults to <code>0</code>. Requires <a href="#text-field"><code>text-field</code></a>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
 <p>The halo's fadeout distance towards the outside.</p>
 <table>
 <thead>
@@ -7648,7 +7648,7 @@
 </tbody>
 </table>
 <h3 id="raster-opacity">raster-opacity<a class="headerlink" href="#raster-opacity" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range [0, 1]. Defaults to <code>1</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range <code>[0, 1]</code>. Defaults to <code>1</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
 <p>The opacity at which the image will be drawn.</p>
 <table>
 <thead>
@@ -7690,7 +7690,7 @@
 </tbody>
 </table>
 <h3 id="raster-brightness-min">raster-brightness-min<a class="headerlink" href="#raster-brightness-min" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range [0, 1]. Defaults to <code>0</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range <code>[0, 1]</code>. Defaults to <code>0</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
 <p>Increase or reduce the brightness of the image. The value is the minimum brightness.</p>
 <table>
 <thead>
@@ -7711,7 +7711,7 @@
 </tbody>
 </table>
 <h3 id="raster-brightness-max">raster-brightness-max<a class="headerlink" href="#raster-brightness-max" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range [0, 1]. Defaults to <code>1</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range <code>[0, 1]</code>. Defaults to <code>1</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
 <p>Increase or reduce the brightness of the image. The value is the maximum brightness.</p>
 <table>
 <thead>
@@ -7732,7 +7732,7 @@
 </tbody>
 </table>
 <h3 id="raster-saturation">raster-saturation<a class="headerlink" href="#raster-saturation" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range [-1, 1]. Defaults to <code>0</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range <code>[-1, 1]</code>. Defaults to <code>0</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
 <p>Increase or reduce the saturation of the image.</p>
 <table>
 <thead>
@@ -7753,7 +7753,7 @@
 </tbody>
 </table>
 <h3 id="raster-contrast">raster-contrast<a class="headerlink" href="#raster-contrast" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range [-1, 1]. Defaults to <code>0</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range <code>[-1, 1]</code>. Defaults to <code>0</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
 <p>Increase or reduce the contrast of the image.</p>
 <table>
 <thead>
@@ -7825,7 +7825,7 @@
 </tbody>
 </table>
 <h3 id="raster-fade-duration">raster-fade-duration<a class="headerlink" href="#raster-fade-duration" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range [0, ∞). Units in milliseconds. Defaults to <code>300</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range <code>[0, ∞)</code>. Units in milliseconds. Defaults to <code>300</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
 <p>Fade duration when a new tile is added, or when a video is started or its coordinates are updated.</p>
 <table>
 <thead>
@@ -7878,7 +7878,7 @@
 </tbody>
 </table>
 <h3 id="hillshade-illumination-direction">hillshade-illumination-direction<a class="headerlink" href="#hillshade-illumination-direction" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#numberarray">numberArray</a> with value(s) in range [0, 359]. Defaults to <code>335</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#numberarray">numberArray</a> with value(s) in range <code>[0, 359]</code>. Defaults to <code>335</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
 <p>The direction of the light source(s) used to generate the hillshading with 0 as the top of the viewport if <code>hillshade-illumination-anchor</code> is set to <code>viewport</code> and due north if <code>hillshade-illumination-anchor</code> is set to <code>map</code>. Only when <code>hillshade-method</code> is set to <code>multidirectional</code> can you specify multiple light sources.</p>
 <table>
 <thead>
@@ -7905,7 +7905,7 @@
 </tbody>
 </table>
 <h3 id="hillshade-illumination-altitude">hillshade-illumination-altitude<a class="headerlink" href="#hillshade-illumination-altitude" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#numberarray">numberArray</a> with value(s) in range [0, 90]. Defaults to <code>45</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#numberarray">numberArray</a> with value(s) in range <code>[0, 90]</code>. Defaults to <code>45</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions.</em></p>
 <p>The altitude of the light source(s) used to generate the hillshading with 0 as sunset and 90 as noon. Only when <code>hillshade-method</code> is set to <code>multidirectional</code> can you specify multiple light sources.</p>
 <table>
 <thead>
@@ -7957,7 +7957,7 @@
 </tbody>
 </table>
 <h3 id="hillshade-exaggeration">hillshade-exaggeration<a class="headerlink" href="#hillshade-exaggeration" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range [0, 1]. Defaults to <code>0.5</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range <code>[0, 1]</code>. Defaults to <code>0.5</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
 <p>Intensity of the hillshade</p>
 <table>
 <thead>
@@ -8140,7 +8140,7 @@
 </tbody>
 </table>
 <h3 id="color-relief-opacity">color-relief-opacity<a class="headerlink" href="#color-relief-opacity" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range [0, 1]. Defaults to <code>1</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range <code>[0, 1]</code>. Defaults to <code>1</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
 <p>The opacity at which the color-relief will be drawn.</p>
 <table>
 <thead>
@@ -8345,7 +8345,7 @@
       <script id="__config" type="application/json">{"annotate":null,"base":"..","features":["content.code.copy","toc.follow","search.suggest","navigation.instant","navigation.sections","navigation.top"],"search":"../assets/javascripts/workers/search.e2d2d235.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
     
     
-      <script src="../assets/javascripts/bundle.dbc0afdc.min.js"></script>
+      <script src="../assets/javascripts/bundle.6e5f0216.min.js"></script>
       
     
   </body>
