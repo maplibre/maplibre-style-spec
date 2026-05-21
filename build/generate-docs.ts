@@ -338,7 +338,7 @@ function typeToMarkdownLink(type: string): string {
 function formatRange(minimum?: number, maximum?: number) {
     const from = minimum === undefined ? '(-∞' : `[${minimum}`;
     const to = maximum === undefined ? '∞)' : `${maximum}]`;
-    return `${from}, ${to}`;
+    return `\`${from}, ${to}\``;
 }
 
 /**
