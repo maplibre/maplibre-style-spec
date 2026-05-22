@@ -93,12 +93,13 @@ The following image gives a bit more infomation regarding the stretch properties
         "height": 30,
         "x": 0,
         "y": 0,
-        "stretchX": [[5, 10], [15, 20]]
-        "stretchY": [[5, 20]]
+        "stretchX": [[5, 10], [15, 20]],
+        "stretchY": [[5, 20]],
         "pixelRatio": 1
     }
 }
 ```
+
 The red highlighted part is where the stretch will occur over the Y axis and the blue highlight is for the X axis.
 ![popup-stretch](https://maplibre.org/maplibre-gl-js/docs/assets/popup_debug.png)
 
