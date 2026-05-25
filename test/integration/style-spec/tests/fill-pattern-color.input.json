@@ -1,0 +1,34 @@
+{
+  "version": 8,
+  "sources": {
+    "geojson": {"type": "geojson", "data": {"type": "FeatureCollection", "features": []}}
+  },
+  "layers": [
+    {
+      "id": "valid-with-pattern",
+      "type": "fill",
+      "source": "geojson",
+      "paint": {
+        "fill-pattern": "my-pattern",
+        "fill-pattern-color": "#ff0000"
+      }
+    },
+    {
+      "id": "valid-data-driven",
+      "type": "fill",
+      "source": "geojson",
+      "paint": {
+        "fill-pattern": "my-pattern",
+        "fill-pattern-color": ["get", "bg_color"]
+      }
+    },
+    {
+      "id": "valid-default-transparent",
+      "type": "fill",
+      "source": "geojson",
+      "paint": {
+        "fill-pattern": "my-pattern"
+      }
+    }
+  ]
+}
