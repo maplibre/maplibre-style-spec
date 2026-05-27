@@ -1,5 +1,6 @@
 ## main
 ### ✨ Features and improvements
+- Added `{line,fill}-layer-opacity` paint property. It applies opacity to the whole layer as a whole layer so overlapping features change in an uniform way. ([#1650](https://github.com/maplibre/maplibre-style-spec/pull/1650)) (by [@CommanderStorm](https://github.com/CommanderStorm))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
