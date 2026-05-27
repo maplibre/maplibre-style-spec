@@ -120,7 +120,7 @@ An array of numbers with syntax similar to [CSS](https://developer.mozilla.org/e
 
 - A single value applies to all four sides, e.g. `[2]`;
 - two values apply to `[top/bottom, left/right]`, e.g. `[2, 3]`;
-- three values apply to `[top, left/right, bottom]` e.g. `[2, 3, 1]`;
+- three values apply to `[top, left/right, bottom]`, e.g. `[2, 3, 1]`;
 - four values apply to `[top, right, bottom, left]`, e.g. `[2, 3, 1, 0]`.
 
 A single number is accepted for backwards-compatibility, and treated the same as a one-element array — padding applied to all sides.
