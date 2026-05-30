@@ -2,7 +2,7 @@ import {featureFilter, isExpressionFilter} from '.';
 
 import {convertFilter} from './convert';
 import {ICanonicalTileID} from '../tiles_and_coordinates';
-import {FilterSpecification} from '../types.g';
+import {ExpressionFilterSpecification, FilterSpecification} from '../types.g';
 import {Feature} from '../expression';
 import {getGeometry} from '../../test/lib/geometry';
 import {describe, test, expect, vi, beforeEach} from 'vitest';
@@ -659,3 +659,137 @@ function legacyFilterTests(createFilterExpr) {
         expect(f({zoom: 0}, {properties: {}})).toBe(true);
     });
 }
+
+describe('global-state in filter', () => {
+    test('basic global-state equality filter', () => {
+        const globalState = {activeId: 'track1'};
+        const ff = featureFilter(
+            ['==', ['get', 'id'], ['global-state', 'activeId']] as ExpressionFilterSpecification,
+            globalState
+        );
+        const f = ff.filter;
+
+        expect(ff.getGlobalStateRefs()).toEqual(new Set(['activeId']));
+        expect(f({zoom: 0}, {properties: {id: 'track1'}} as any as Feature)).toBe(true);
+        expect(f({zoom: 0}, {properties: {id: 'track2'}} as any as Feature)).toBe(false);
+    });
+
+    test('global-state filter updates reactively when state is mutated', () => {
+        const globalState: Record<string, any> = {activeId: 'none'};
+        const ff = featureFilter(
+            ['==', ['get', 'id'], ['global-state', 'activeId']] as ExpressionFilterSpecification,
+            globalState
+        );
+        const f = ff.filter;
+
+        // Initially no match
+        expect(f({zoom: 0}, {properties: {id: 'track1'}} as any as Feature)).toBe(false);
+
+        // Mutate global state (simulates setGlobalStateProperty)
+        globalState.activeId = 'track1';
+
+        // Filter should now match
+        expect(f({zoom: 0}, {properties: {id: 'track1'}} as any as Feature)).toBe(true);
+        expect(f({zoom: 0}, {properties: {id: 'track2'}} as any as Feature)).toBe(false);
+    });
+
+    test('global-state in case filter expression', () => {
+        const globalState = {activeId: 'track1'};
+        const isActive = [
+            '==',
+            ['get', 'id'],
+            ['global-state', 'activeId']
+        ] as ExpressionFilterSpecification;
+        const ff = featureFilter(
+            [
+                'case',
+                isActive,
+                true,
+                ['any', ['==', ['get', 'role'], 'start'], ['==', ['get', 'role'], 'end']]
+            ] as ExpressionFilterSpecification,
+            globalState
+        );
+        const f = ff.filter;
+
+        // Active track: all roles pass
+        expect(f({zoom: 0}, {properties: {id: 'track1', role: 'mid'}} as any as Feature)).toBe(
+            true
+        );
+        expect(f({zoom: 0}, {properties: {id: 'track1', role: 'insert'}} as any as Feature)).toBe(
+            true
+        );
+        expect(f({zoom: 0}, {properties: {id: 'track1', role: 'start'}} as any as Feature)).toBe(
+            true
+        );
+
+        // Inactive track: only start/end pass
+        expect(f({zoom: 0}, {properties: {id: 'track2', role: 'mid'}} as any as Feature)).toBe(
+            false
+        );
+        expect(f({zoom: 0}, {properties: {id: 'track2', role: 'insert'}} as any as Feature)).toBe(
+            false
+        );
+        expect(f({zoom: 0}, {properties: {id: 'track2', role: 'start'}} as any as Feature)).toBe(
+            true
+        );
+        expect(f({zoom: 0}, {properties: {id: 'track2', role: 'end'}} as any as Feature)).toBe(
+            true
+        );
+    });
+
+    test('isExpressionFilter recognizes filters mixing $type with expression operators', () => {
+        // This is the exact pattern from issue #1544:
+        // ['all', ['==', '$type', 'Point'], ['case', isActive, true, fallback]]
+        const isActive = [
+            '==',
+            ['get', 'id'],
+            ['global-state', 'activeTrackId']
+        ] as ExpressionFilterSpecification;
+        const filter = [
+            'all',
+            ['==', '$type', 'Point'],
+            [
+                'case',
+                isActive,
+                true,
+                ['any', ['==', ['get', 'role'], 'start'], ['==', ['get', 'role'], 'end']]
+            ]
+        ] as ExpressionFilterSpecification;
+
+        // isExpressionFilter used to return false because ['==', '$type', 'Point']
+        // looks like a legacy filter (3 args, no arrays), causing the whole filter
+        // to be sent through convertFilter which silently mangles expression
+        // operators before the explicit mixed-syntax diagnostic can run.
+        expect(isExpressionFilter(filter)).toBe(true);
+    });
+
+    test('mixed filter still fails cleanly for unsupported legacy special-key operators', () => {
+        const filter = [
+            'all',
+            ['>', '$type', 'Point'],
+            ['==', ['global-state', 'active'], true]
+        ] as ExpressionFilterSpecification;
+
+        expect(() => featureFilter(filter, {active: true})).toThrowError(
+            '"$type" cannot be use with operator ">"'
+        );
+    });
+
+    test('featureFilter throws explicit replacement guidance for mixed none filter', () => {
+        const globalState = {activeTrackId: 'track1'};
+        const isActive = [
+            '==',
+            ['get', 'id'],
+            ['global-state', 'activeTrackId']
+        ] as ExpressionFilterSpecification;
+        const filter = [
+            'none',
+            ['==', '$type', 'Polygon'],
+            ['case', isActive, true, false]
+        ] as unknown as ExpressionFilterSpecification;
+
+        expect(() => featureFilter(filter, globalState)).toThrowError(
+            'Mixing deprecated filter syntax with expression syntax is not supported. Replace ["==","$type","Polygon"] with ["==",["geometry-type"],"Polygon"].'
+        );
+    });
+});
