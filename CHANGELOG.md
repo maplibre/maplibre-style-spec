@@ -1,6 +1,7 @@
 ## main
 ### ✨ Features and improvements
 - _...Add new stuff here..._
+- Add a `premultiply` raster source option for preserving raw RGBA tile values when alpha carries data.
 
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
