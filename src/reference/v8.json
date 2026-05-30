@@ -261,7 +261,7 @@
       "required": true,
       "type": "array",
       "value": "layer",
-      "doc": "A style's `layers` property lists all the layers available in that style. The type of layer is specified by the `type` property, and must be one of `background`, `fill`, `line`, `symbol`, `raster`, `circle`, `fill-extrusion`, `heatmap`, `hillshade`, `color-relief`.\n\nExcept for layers of the `background` type, each layer needs to refer to a source. Layers take the data that they get from a source, optionally filter features, and then define how those features are styled.",
+      "doc": "A style's `layers` property lists all the layers available in that style. The type of layer is specified by the `type` property, and must be one of `background`, `fill`, `line`, `symbol`, `raster`, `circle`, `fill-extrusion`, `heatmap`, `hillshade`, `color-relief`, `slope`.\n\nExcept for layers of the `background` type, each layer needs to refer to a source. Layers take the data that they get from a source, optionally filter features, and then define how those features are styled.",
       "example": [
         {
           "id": "coastline",
@@ -863,6 +863,16 @@
             }
           }
         },
+        "terrain-analysis": {
+          "doc": "Client-side terrain analysis visualization based on DEM data. Computes a scalar attribute (elevation, slope, aspect) from the DEM and maps it to colors via a color ramp. The implementation supports Mapbox Terrain RGB, Mapzen Terrarium tiles and custom encodings.",
+          "sdk-support": {
+            "basic functionality": {
+              "js": "5.17.0",
+              "android": "https://github.com/maplibre/maplibre-native/issues/3408",
+              "ios": "https://github.com/maplibre/maplibre-native/issues/3408"
+            }
+          }
+        },
         "background": {
           "doc": "The background color or pattern of the map.",
           "sdk-support": {
@@ -927,6 +937,7 @@
     "layout_raster",
     "layout_hillshade",
     "layout_color-relief",
+    "layout_terrain-analysis",
     "layout_background"
   ],
   "layout_background": {
@@ -2907,6 +2918,40 @@
       "property-type": "data-constant"
     }
   },
+  "layout_terrain-analysis": {
+    "visibility": {
+      "type": "enum",
+      "values": {
+        "visible": {
+          "doc": "The layer is shown."
+        },
+        "none": {
+          "doc": "The layer is not shown."
+        }
+      },
+      "default": "visible",
+      "doc": "Whether this layer is displayed.",
+      "sdk-support": {
+        "basic functionality": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/6711",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3408",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3408"
+        },
+        "`global state` expression": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/6495",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3302",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
+        }
+      },
+      "expression": {
+        "interpolated": false,
+        "parameters": [
+          "global-state"
+        ]
+      },
+      "property-type": "data-constant"
+    }
+  },
   "filter": {
     "type": "boolean",
     "doc": "A filter selects specific features from a layer.",
@@ -4520,6 +4565,46 @@
           }
         }
       },
+      "slope": {
+        "doc": "Gets the slope angle of a pixel in degrees (0-90) computed from a `raster-dem` source. Can be used in the `terrain-analysis-color` property of a `terrain-analysis` layer.",
+        "syntax": {
+          "overloads": [
+            {
+              "parameters": [],
+              "output-type": "number"
+            }
+          ]
+        },
+        "example": ["slope"],
+        "group": "Terrain Analysis",
+        "sdk-support": {
+          "basic functionality": {
+            "js": "5.17.0",
+            "android": "https://github.com/maplibre/maplibre-native/issues/3408",
+            "ios": "https://github.com/maplibre/maplibre-native/issues/3408"
+          }
+        }
+      },
+      "aspect": {
+        "doc": "Gets the aspect (compass direction the slope faces) of a pixel in degrees (0-360, 0=north) computed from a `raster-dem` source. Can be used in the `terrain-analysis-color` property of a `terrain-analysis` layer.",
+        "syntax": {
+          "overloads": [
+            {
+              "parameters": [],
+              "output-type": "number"
+            }
+          ]
+        },
+        "example": ["aspect"],
+        "group": "Terrain Analysis",
+        "sdk-support": {
+          "basic functionality": {
+            "js": "5.17.0",
+            "android": "https://github.com/maplibre/maplibre-native/issues/3408",
+            "ios": "https://github.com/maplibre/maplibre-native/issues/3408"
+          }
+        }
+      },
       "line-progress": {
         "doc": "Gets the progress along a gradient line. Can only be used in the `line-gradient` property.",
         "syntax": {
@@ -6004,6 +6089,7 @@
     "paint_raster",
     "paint_hillshade",
     "paint_color-relief",
+    "paint_terrain-analysis",
     "paint_background"
   ],
   "paint_fill": {
@@ -8158,6 +8244,93 @@
         ]
       },
       "property-type": "data-constant"
+    }
+  },
+  "paint_terrain-analysis": {
+    "terrain-analysis-attribute": {
+      "type": "enum",
+      "values": {
+        "elevation": {
+          "doc": "Color by elevation (meters above datum)."
+        },
+        "slope": {
+          "doc": "Color by slope angle (0-90 degrees)."
+        },
+        "aspect": {
+          "doc": "Color by aspect / compass direction the slope faces (0-360 degrees, 0=north)."
+        }
+      },
+      "default": "slope",
+      "doc": "The DEM-derived scalar attribute to visualize.",
+      "sdk-support": {
+        "basic functionality": {
+          "js": "5.17.0",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3408",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3408"
+        }
+      },
+      "expression": {
+        "interpolated": false,
+        "parameters": [
+          "zoom"
+        ]
+      },
+      "property-type": "data-constant"
+    },
+    "terrain-analysis-opacity": {
+      "type": "number",
+      "default": 1,
+      "minimum": 0,
+      "maximum": 1,
+      "doc": "The opacity at which the terrain-analysis layer will be drawn.",
+      "transition": true,
+      "sdk-support": {
+        "basic functionality": {
+          "js": "5.17.0",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3408",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3408"
+        }
+      },
+      "expression": {
+        "interpolated": true,
+        "parameters": [
+          "zoom"
+        ]
+      },
+      "property-type": "data-constant"
+    },
+    "terrain-analysis-color": {
+      "type": "color",
+      "doc": "Defines the color of each pixel based on the selected attribute. Use `[\"elevation\"]` for elevation, `[\"slope\"]` for slope, or `[\"aspect\"]` for aspect as the interpolation input.",
+      "example": [
+        "interpolate",
+        ["linear"],
+        ["slope"],
+        0, "green",
+        30, "yellow",
+        35, "orange",
+        40, "red",
+        45, "purple",
+        90, "black"
+      ],
+      "transition": false,
+      "sdk-support": {
+        "basic functionality": {
+          "js": "5.17.0",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3408",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3408"
+        },
+        "data-driven styling": {}
+      },
+      "expression": {
+        "interpolated": true,
+        "parameters": [
+          "elevation",
+          "slope",
+          "aspect"
+        ]
+      },
+      "property-type": "color-ramp"
     }
   },
   "paint_background": {
