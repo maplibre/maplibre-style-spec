@@ -81,7 +81,7 @@
     "glob": "^13.0.6",
     "globals": "^17.6.0",
     "rolldown": "^1.0.3",
-    "rolldown-plugin-dts": "^0.25.1",
+    "rolldown-plugin-dts": "^0.25.2",
     "rollup": "^4.60.4",
     "rollup-plugin-preserve-shebang": "^1.0.1",
     "semver": "^7.8.1",
