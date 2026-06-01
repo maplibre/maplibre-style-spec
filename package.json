@@ -54,7 +54,7 @@
   ],
   "dependencies": {
     "@mapbox/jsonlint-lines-primitives": "~2.0.2",
-    "@mapbox/unitbezier": "^0.0.1",
+    "@mapbox/unitbezier": "^1.0.0",
     "json-stringify-pretty-compact": "^4.0.0",
     "minimist": "^1.2.8",
     "quickselect": "^3.0.0",
