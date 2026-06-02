@@ -6058,13 +6058,8 @@
     "fill-color": {
       "type": "color",
       "default": "#000000",
-      "doc": "The color of the filled part of this layer. This color can be specified as `rgba` with an alpha component and the color's opacity will not affect the opacity of the 1px stroke, if it is used.",
+      "doc": "The color of the filled part of this layer. This color can be specified as `rgba` with an alpha component and the color's opacity will not affect the opacity of the 1px stroke, if it is used. When used with an SDF fill pattern, this serves as the background color behind the pattern.",
       "transition": true,
-      "requires": [
-        {
-          "!": "fill-pattern"
-        }
-      ],
       "sdk-support": {
         "basic functionality": {
           "js": "0.10.0",
@@ -6201,6 +6196,36 @@
         ]
       },
       "property-type": "cross-faded-data-driven"
+    },
+    "fill-pattern-color": {
+      "type": "color",
+      "default": "#000000",
+      "doc": "The color used to render the pattern shape when using an SDF fill pattern. When a fill pattern image has `sdf: true`, this color controls the color of the pattern itself. Has no effect on non-SDF patterns.",
+      "transition": true,
+      "requires": [
+        "fill-pattern"
+      ],
+      "sdk-support": {
+        "basic functionality": {
+          "js": "https://github.com/maplibre/maplibre-style-spec/issues/1642",
+          "android": "https://github.com/maplibre/maplibre-style-spec/issues/1642",
+          "ios": "https://github.com/maplibre/maplibre-style-spec/issues/1642"
+        },
+        "data-driven styling": {
+          "js": "https://github.com/maplibre/maplibre-style-spec/issues/1642",
+          "android": "https://github.com/maplibre/maplibre-style-spec/issues/1642",
+          "ios": "https://github.com/maplibre/maplibre-style-spec/issues/1642"
+        }
+      },
+      "expression": {
+        "interpolated": true,
+        "parameters": [
+          "zoom",
+          "feature",
+          "feature-state"
+        ]
+      },
+      "property-type": "data-driven"
     }
   },
   "paint_fill-extrusion": {
