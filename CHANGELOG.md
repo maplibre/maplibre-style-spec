@@ -1,6 +1,6 @@
 ## main
 ### ✨ Features and improvements
-- _...Add new stuff here..._
+- Allow `fill-color` when `fill-pattern` is set, for SDF fill pattern colorization
 
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
