@@ -4,6 +4,7 @@
 
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
+- Resolve `["global-state", key]` to `null` instead of `undefined` when the key is unset but other global state keys are set ([#1531](https://github.com/maplibre/maplibre-style-spec/issues/1531))
 
 ## 24.8.5
 
