@@ -40,7 +40,7 @@ export class GlobalState implements Expression {
 
         if (!globalState || Object.keys(globalState).length === 0) return null;
 
-        return getOwn(globalState, this.key);
+        return getOwn(globalState, this.key) ?? null;
     }
 
     eachChild() {}
