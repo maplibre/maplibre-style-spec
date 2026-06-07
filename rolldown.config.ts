@@ -47,7 +47,7 @@ const bundles: RolldownOptions[] = [
                 file: 'dist/index.cjs',
                 format: 'umd',
                 sourcemap: true,
-                globals: { 'node:fs': 'fs' }
+                globals: {'node:fs': 'fs'}
             }
         ],
         plugins: rollupPlugins
