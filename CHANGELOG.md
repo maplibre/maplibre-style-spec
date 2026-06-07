@@ -1,10 +1,19 @@
 ## main
 ### ✨ Features and improvements
-- Allow `fill-color` when `fill-pattern` is set, for SDF fill pattern colorization
+- _...Add new stuff here..._
 
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
-- Resolve `["global-state", key]` to `null` instead of `undefined` when the key is unset but other global state keys are set ([#1531](https://github.com/maplibre/maplibre-style-spec/issues/1531))
+
+## 24.9.0
+
+### ✨ Features and improvements
+
+- Allow `fill-color` when `fill-pattern` is set, for SDF fill pattern colorization ([#1683](https://github.com/maplibre/maplibre-style-spec/pull/1683)) (by [@bradymadden97](https://github.com/bradymadden97))
+
+### 🐞 Bug fixes
+
+- Resolve `["global-state", key]` to `null` instead of `undefined` when the key is unset but other global state keys are set ([#1531](https://github.com/maplibre/maplibre-style-spec/issues/1531)) (by [@SAY-5](https://github.com/SAY-5))
 
 ## 24.8.5
 
