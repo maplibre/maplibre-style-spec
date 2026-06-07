@@ -5,17 +5,15 @@
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
 
-- fix: resolve global-state to null for unset key when other keys are set ([#1684](https://github.com/maplibre/maplibre-style-spec/pull/1684)) (by [@SAY-5](https://github.com/SAY-5))
-- Allow fill-color with fill-pattern for SDF fill pattern colorization ([#1683](https://github.com/maplibre/maplibre-style-spec/pull/1683)) (by [@bradymadden97](https://github.com/bradymadden97))
-- docs: Fix Stretch Properties JSON example ([#1663](https://github.com/maplibre/maplibre-style-spec/pull/1663)) (by [@kudlav](https://github.com/kudlav))
-- chore: fix warnings during docs build ([#1662](https://github.com/maplibre/maplibre-style-spec/pull/1662)) (by [@CommanderStorm](https://github.com/CommanderStorm))
-- Bump rolldown to v1 stable ([#1640](https://github.com/maplibre/maplibre-style-spec/pull/1640)) (by [@birkskyum](https://github.com/birkskyum))
 ## 24.9.0
+
 ### ✨ Features and improvements
-- Allow `fill-color` when `fill-pattern` is set, for SDF fill pattern colorization
+
+- Allow `fill-color` when `fill-pattern` is set, for SDF fill pattern colorization ([#1683](https://github.com/maplibre/maplibre-style-spec/pull/1683)) (by [@bradymadden97](https://github.com/bradymadden97))
 
 ### 🐞 Bug fixes
-- Resolve `["global-state", key]` to `null` instead of `undefined` when the key is unset but other global state keys are set ([#1531](https://github.com/maplibre/maplibre-style-spec/issues/1531))
+
+- Resolve `["global-state", key]` to `null` instead of `undefined` when the key is unset but other global state keys are set ([#1531](https://github.com/maplibre/maplibre-style-spec/issues/1531)) (by [@SAY-5](https://github.com/SAY-5))
 
 ## 24.8.5
 
