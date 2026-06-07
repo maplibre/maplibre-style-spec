@@ -35,7 +35,6 @@ const bundles: RolldownOptions[] = [
         resolve: {
             mainFields: ['browser', 'module', 'main']
         },
-        external: ['fs'],
         input: './src/index.ts',
         output: [
             {
@@ -48,9 +47,7 @@ const bundles: RolldownOptions[] = [
                 file: 'dist/index.cjs',
                 format: 'umd',
                 sourcemap: true,
-                globals: {
-                    fs: 'fs'
-                }
+                globals: { 'node:fs': 'fs' }
             }
         ],
         plugins: rollupPlugins
@@ -59,7 +56,7 @@ const bundles: RolldownOptions[] = [
         resolve: {
             mainFields: ['browser', 'module', 'main']
         },
-        external: ['fs'],
+        platform: 'node',
         input: './bin/gl-style-format.ts',
         output: [
             {
@@ -68,13 +65,9 @@ const bundles: RolldownOptions[] = [
                 sourcemap: true
             },
             {
-                name: 'maplibreGlStyleSpecification',
                 file: 'dist/gl-style-format.cjs',
-                format: 'umd',
-                sourcemap: true,
-                globals: {
-                    fs: 'fs'
-                }
+                format: 'cjs',
+                sourcemap: true
             }
         ],
         plugins: [...rollupPlugins, shebang()]
@@ -83,7 +76,7 @@ const bundles: RolldownOptions[] = [
         resolve: {
             mainFields: ['browser', 'module', 'main']
         },
-        external: ['fs'],
+        platform: 'node',
         input: './bin/gl-style-migrate.ts',
         output: [
             {
@@ -92,13 +85,9 @@ const bundles: RolldownOptions[] = [
                 sourcemap: true
             },
             {
-                name: 'maplibreGlStyleSpecification',
                 file: 'dist/gl-style-migrate.cjs',
-                format: 'umd',
-                sourcemap: true,
-                globals: {
-                    fs: 'fs'
-                }
+                format: 'cjs',
+                sourcemap: true
             }
         ],
         plugins: [...rollupPlugins, shebang()]
@@ -107,8 +96,7 @@ const bundles: RolldownOptions[] = [
         resolve: {
             mainFields: ['browser', 'module', 'main']
         },
-        external: ['fs'],
-
+        platform: 'node',
         input: './bin/gl-style-validate.ts',
         output: [
             {
@@ -117,13 +105,9 @@ const bundles: RolldownOptions[] = [
                 sourcemap: true
             },
             {
-                name: 'maplibreGlStyleSpecification',
                 file: 'dist/gl-style-validate.cjs',
-                format: 'umd',
-                sourcemap: true,
-                globals: {
-                    fs: 'fs'
-                }
+                format: 'cjs',
+                sourcemap: true
             }
         ],
         plugins: [...rollupPlugins, shebang()]
