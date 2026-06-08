@@ -68,7 +68,7 @@
     "@rollup/plugin-terser": "^1.0.0",
     "@types/eslint": "^9.6.1",
     "@types/geojson": "^7946.0.16",
-    "@types/node": "^25.9.1",
+    "@types/node": "^25.9.2",
     "@typescript-eslint/eslint-plugin": "^8.60.1",
     "@typescript-eslint/parser": "^8.60.0",
     "@typescript/native-preview": "beta",
