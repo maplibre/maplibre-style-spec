@@ -681,6 +681,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#fill-layer-opacity" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        fill-layer-opacity
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#fill-color" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -1182,6 +1193,17 @@
     <span class="md-ellipsis">
       <span class="md-typeset">
         line-opacity
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#line-layer-opacity" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        line-layer-opacity
       </span>
     </span>
   </a>
@@ -2837,6 +2859,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#fill-layer-opacity" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        fill-layer-opacity
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#fill-color" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -3338,6 +3371,17 @@
     <span class="md-ellipsis">
       <span class="md-typeset">
         line-opacity
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#line-layer-opacity" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        line-layer-opacity
       </span>
     </span>
   </a>
@@ -4724,6 +4768,28 @@
 </tr>
 </tbody>
 </table>
+<h3 id="fill-layer-opacity">fill-layer-opacity<a class="headerlink" href="#fill-layer-opacity" title="Permanent link">&para;</a></h3>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range <code>[0, 1]</code>. Defaults to <code>1</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
+<p>Opacity applied to the layer as a whole. Unlike <code>fill-opacity</code> and alpha values in <code>fill-color</code>, which are applied per feature and accumulate where fills overlap, <code>fill-layer-opacity</code> is applied once so overlapping fills appear as a single surface at the given opacity. When both <code>fill-opacity</code> and <code>fill-layer-opacity</code> are set, the per-feature, overlap accumulation is preserved, then <code>fill-layer-opacity</code> composites the result. This property affects only the layer it is set on and cannot be used to composite multiple layers together or control how this layer blends with layers above or below it.</p>
+<p><img alt="fill-opacity vs. fill-layer-opacity" src="../assets/fill-layer-opacity.svg" /></p>
+<table>
+<thead>
+<tr>
+<th>SDK Support</th>
+<th>MapLibre GL JS</th>
+<th>MapLibre Native<br>Android</th>
+<th>MapLibre Native<br>iOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>basic functionality</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-gl-js/issues/3062">#3062</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/4298">#4298</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/4298">#4298</a>)</td>
+</tr>
+</tbody>
+</table>
 <h3 id="fill-color">fill-color<a class="headerlink" href="#fill-color" title="Permanent link">&para;</a></h3>
 <p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#color">color</a>. Defaults to <code>"#000000"</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
 <p>The color of the filled part of this layer. This color can be specified as <code>rgba</code> with an alpha component and the color's opacity will not affect the opacity of the 1px stroke, if it is used. When used with an SDF fill pattern, this serves as the foreground color of the pattern.</p>
@@ -5779,6 +5845,28 @@
 <td>0.29.0</td>
 <td>5.0.0</td>
 <td>3.5.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="line-layer-opacity">line-layer-opacity<a class="headerlink" href="#line-layer-opacity" title="Permanent link">&para;</a></h3>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range <code>[0, 1]</code>. Defaults to <code>1</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
+<p>Opacity applied to the layer as a whole. Unlike <code>line-opacity</code> and alpha values in <code>line-color</code>, which are applied per feature and accumulate where lines overlap, <code>line-layer-opacity</code> is applied once so overlapping lines appear as a single surface at the given opacity. When both <code>line-opacity</code> and <code>line-layer-opacity</code> are set, the per-feature, overlap accumulation is preserved, then layer-opacity composites the result. This property affects only the layer it is set on and cannot be used to composite multiple layers together or control how this layer blends with layers above or below it.</p>
+<p><img alt="line-opacity vs. line-layer-opacity" src="../assets/line-layer-opacity.svg" /></p>
+<table>
+<thead>
+<tr>
+<th>SDK Support</th>
+<th>MapLibre GL JS</th>
+<th>MapLibre Native<br>Android</th>
+<th>MapLibre Native<br>iOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>basic functionality</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-gl-js/issues/3062">#3062</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/4298">#4298</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/4298">#4298</a>)</td>
 </tr>
 </tbody>
 </table>

@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 240"  font-size="16" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="1080" height="240" fill="#fff"/>
+  <!-- 1: full opacity -->
+  <g transform="translate(0, 0)">
+
+    <text x="125" y="20" text-anchor="middle">
+      default/full opacity
+    </text>
+
+    <line
+      x1="30" y1="60" x2="230" y2="60"
+      stroke="#d62728"
+      stroke-width="25"
+      stroke-linecap="round"
+    />
+
+    <g
+      stroke="#1f77b4"
+      stroke-width="25"
+      stroke-linecap="round"
+      fill="none"
+    >
+      <line x1="30" y1="60" x2="230" y2="220"/>
+      <line x1="230" y1="220" x2="30" y2="220"/>
+      <line x1="30" y1="220" x2="230" y2="60"/>
+    </g>
+  </g>
+
+  <!-- 2: line-layer-opacity -->
+  <g transform="translate(270, 0)">
+    <text x="125" y="20" text-anchor="middle">
+      line-layer-opacity: 0.5
+    </text>
+
+    <g opacity="0.5">
+      <line
+        x1="30" y1="60" x2="230" y2="60"
+        stroke="#d62728"
+        stroke-width="25"
+        stroke-linecap="round"
+      />
+
+      <g
+        stroke="#1f77b4"
+        stroke-width="25"
+        stroke-linecap="round"
+        fill="none"
+      >
+        <line x1="30" y1="60" x2="230" y2="220"/>
+        <line x1="230" y1="220" x2="30" y2="220"/>
+        <line x1="30" y1="220" x2="230" y2="60"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- 3: combined -->
+  <g transform="translate(540, 0)">
+
+    <text x="125" y="20" text-anchor="middle">
+      line-opacity: 0.5 + line-layer-opacity: 0.5
+    </text>
+
+    <g opacity="0.5">
+      <line
+        x1="30" y1="60" x2="230" y2="60"
+        stroke="#d62728"
+        stroke-width="25"
+        stroke-opacity="0.5"
+        stroke-linecap="round"
+      />
+
+      <g
+        stroke="#1f77b4"
+        stroke-width="25"
+        stroke-opacity="0.5"
+        stroke-linecap="round"
+        fill="none"
+      >
+        <line x1="30" y1="60" x2="230" y2="220"/>
+        <line x1="230" y1="220" x2="30" y2="220"/>
+        <line x1="30" y1="220" x2="230" y2="60"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- 4: line-opacity -->
+  <g transform="translate(810, 0)">
+
+    <text x="125" y="20" text-anchor="middle">line-opacity: 0.5</text>
+
+    <line
+      x1="30" y1="60" x2="230" y2="60"
+      stroke="#d62728"
+      stroke-width="25"
+      stroke-opacity="0.5"
+      stroke-linecap="round"
+    />
+
+    <g
+      stroke="#1f77b4"
+      stroke-width="25"
+      stroke-opacity="0.5"
+      stroke-linecap="round"
+      fill="none"
+    >
+      <line x1="30" y1="60" x2="230" y2="220"/>
+      <line x1="230" y1="220" x2="30" y2="220"/>
+      <line x1="30" y1="220" x2="230" y2="60"/>
+    </g>
+  </g>
+</svg>
