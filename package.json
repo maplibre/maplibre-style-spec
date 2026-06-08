@@ -82,7 +82,7 @@
     "globals": "^17.6.0",
     "rolldown": "^1.0.3",
     "rolldown-plugin-dts": "^0.25.2",
-    "rollup": "^4.60.4",
+    "rollup": "^4.61.1",
     "rollup-plugin-preserve-shebang": "^1.0.1",
     "semver": "^7.8.2",
     "ts-node": "^10.9.2",
