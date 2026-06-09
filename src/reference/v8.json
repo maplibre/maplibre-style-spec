@@ -6064,15 +6064,21 @@
       "transition": true,
       "sdk-support": {
         "basic functionality": {
-          "js": "https://github.com/maplibre/maplibre-gl-js/issues/3062",
+          "js": "6.0.0",
           "android": "https://github.com/maplibre/maplibre-native/issues/4298",
           "ios": "https://github.com/maplibre/maplibre-native/issues/4298"
+        },
+        "`global state` expression": {
+          "js": "6.0.0",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3302",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
         }
       },
       "expression": {
         "interpolated": true,
         "parameters": [
-          "zoom"
+          "zoom",
+          "global-state"
         ]
       },
       "property-type": "data-constant"
@@ -6477,15 +6483,21 @@
       "transition": true,
       "sdk-support": {
         "basic functionality": {
-          "js": "https://github.com/maplibre/maplibre-gl-js/issues/3062",
+          "js": "6.0.0",
           "android": "https://github.com/maplibre/maplibre-native/issues/4298",
           "ios": "https://github.com/maplibre/maplibre-native/issues/4298"
+        },
+        "`global state` expression": {
+          "js": "6.0.0",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3302",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
         }
       },
       "expression": {
         "interpolated": true,
         "parameters": [
-          "zoom"
+          "zoom",
+          "global-state"
         ]
       },
       "property-type": "data-constant"

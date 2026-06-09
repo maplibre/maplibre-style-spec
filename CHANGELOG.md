@@ -1,5 +1,6 @@
 ## main
 ### ✨ Features and improvements
+- Allow global state expressions in `fill-layer-opacity` and `line-layer-opacity`
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
