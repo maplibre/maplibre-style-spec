@@ -1,6 +1,6 @@
 ## main
 ### ✨ Features and improvements
-- Allow global state expressions in `fill-layer-opacity` and `line-layer-opacity`
+- Allow global state expressions in `fill-layer-opacity` and `line-layer-opacity`. ([#1650](https://github.com/maplibre/maplibre-style-spec/pull/1699)) (by [@CommanderStorm](https://github.com/CommanderStorm))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
