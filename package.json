@@ -62,7 +62,7 @@
   },
   "sideEffects": false,
   "devDependencies": {
-    "oxfmt": "^0.53.0",
+    "oxfmt": "^0.54.0",
     "@rollup/plugin-replace": "^6.0.3",
     "@rollup/plugin-strip": "^3.0.4",
     "@rollup/plugin-terser": "^1.0.0",
