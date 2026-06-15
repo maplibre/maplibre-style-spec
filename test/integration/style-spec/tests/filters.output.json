@@ -82,5 +82,9 @@
   {
     "message": "layers[21].filter[1]: Mixing deprecated filter syntax with expression syntax is not supported. Replace [\"!has\",\"somthing\"] with [\"!\",[\"has\",\"somthing\"]].",
     "line": 201
+  },
+  {
+    "message": "layers[22].filter[1]: Mixing deprecated filter syntax with expression syntax is not supported. Convert [\"!has\",2] to expression syntax.",
+    "line": 208
   }
 ]

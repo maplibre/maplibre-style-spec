@@ -199,6 +199,13 @@
       "source": "source",
       "source-layer": "source-layer",
       "filter": ["!", ["!has", "somthing"]]
+    },
+    {
+      "id": "filter expressions with !, !has and number value",
+      "type": "line",
+      "source": "source",
+      "source-layer": "source-layer",
+      "filter": ["!", ["!has", 2]]
     }
   ]
 }
