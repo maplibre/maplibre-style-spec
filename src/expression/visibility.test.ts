@@ -3,7 +3,7 @@ import {describe, test, expect, vi} from 'vitest';
 
 describe('create visibility expression', () => {
     test('throws Error for invalid function', () => {
-        expect(() => createVisibilityExpression(['bla'] as any, {})).toThrowError(
+        expect(() => createVisibilityExpression(['bla'] as any, {})).toThrow(
             'Unknown expression "bla". If you wanted a literal array, use ["literal", [...]].'
         );
     });

@@ -284,7 +284,7 @@ describe('exponential function', () => {
                     type: 'color'
                 }
             );
-        }).toThrowError('Unknown color space: "invalid"');
+        }).toThrow('Unknown color space: "invalid"');
     });
 
     test('exponential interpolation of colorArray', () => {
@@ -367,7 +367,7 @@ describe('exponential function', () => {
                     type: 'colorArray'
                 }
             );
-        }).toThrowError('Unknown color space: "invalid"');
+        }).toThrow('Unknown color space: "invalid"');
     });
 
     test('exponential interpolation of numberArray', () => {
@@ -1536,7 +1536,7 @@ test('unknown function', () => {
                 type: 'string'
             }
         )
-    ).toThrowError(/Unknown function type "nonesuch"/);
+    ).toThrow(/Unknown function type "nonesuch"/);
 });
 
 describe('kind', () => {
