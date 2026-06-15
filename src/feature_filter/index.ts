@@ -151,7 +151,11 @@ export function getMixedFilterErrorMessage(filter: Array<any>): string {
     return `Mixing deprecated filter syntax with expression syntax is not supported. Convert ${JSON.stringify(filter)} to expression syntax.`;
 }
 
-function checkChild(index: number, path: Array<number>, filter: unknown): MixedFilterDiagnostic | null {
+function checkChild(
+    index: number,
+    path: Array<number>,
+    filter: unknown
+): MixedFilterDiagnostic | null {
     const child = filter[index];
     if (!Array.isArray(child)) {
         return null;
