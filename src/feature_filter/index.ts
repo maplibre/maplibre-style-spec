@@ -81,12 +81,8 @@ export function isExpressionFilter(filter: any): filter is ExpressionFilterSpeci
 }
 
 function getFilterPropertyExpression(property: string): unknown {
-    switch (property) {
-        case '$id':
-            return ['id'];
-        default:
-            return ['get', property];
-    }
+    if (property === '$id') return ['id'];
+    return ['get', property];
 }
 
 function getLegacyFilterExpressionSuggestion(filter: Array<any>): unknown {
