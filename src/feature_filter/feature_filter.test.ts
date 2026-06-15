@@ -252,7 +252,10 @@ describe('convert legacy filters to expressions', () => {
 });
 
 describe('legacy filter tests', () => {
-    for (const createFilterExpr of [featureFilter, (f?: FilterSpecification) => featureFilter(convertFilter(f))]) {
+    for (const createFilterExpr of [
+        featureFilter,
+        (f?: FilterSpecification) => featureFilter(convertFilter(f))
+    ]) {
         test('degenerate', () => {
             expect((createFilterExpr() as any).filter()).toBe(true);
             expect((createFilterExpr(undefined) as any).filter()).toBe(true);
@@ -501,7 +504,9 @@ describe('legacy filter tests', () => {
         test('in, large_multiple', () => {
             const values = Array.from({length: 2000}).map(Number.call, Number);
             values.reverse();
-            const f = createFilterExpr(['in', 'foo'].concat(values) as any as FilterSpecification).filter;
+            const f = createFilterExpr(
+                ['in', 'foo'].concat(values) as any as FilterSpecification
+            ).filter;
             expect(f({zoom: 0}, {properties: {foo: 0}} as any as Feature)).toBe(true);
             expect(f({zoom: 0}, {properties: {foo: 1}} as any as Feature)).toBe(true);
             expect(f({zoom: 0}, {properties: {foo: 1999}} as any as Feature)).toBe(true);
@@ -512,7 +517,9 @@ describe('legacy filter tests', () => {
             const values = Array.from({length: 2000}).map(Number.call, Number);
             values.push('a');
             values.unshift('b');
-            const f = createFilterExpr(['in', 'foo'].concat(values) as any as FilterSpecification).filter;
+            const f = createFilterExpr(
+                ['in', 'foo'].concat(values) as any as FilterSpecification
+            ).filter;
             expect(f({zoom: 0}, {properties: {foo: 'b'}} as any as Feature)).toBe(true);
             expect(f({zoom: 0}, {properties: {foo: 'a'}} as any as Feature)).toBe(true);
             expect(f({zoom: 0}, {properties: {foo: 0}} as any as Feature)).toBe(true);
@@ -572,7 +579,9 @@ describe('legacy filter tests', () => {
 
         test('!in, large_multiple', () => {
             const f = createFilterExpr(
-                ['!in', 'foo'].concat(Array.from({length: 2000}).map(Number.call, Number)) as any as FilterSpecification
+                ['!in', 'foo'].concat(
+                    Array.from({length: 2000}).map(Number.call, Number)
+                ) as any as FilterSpecification
             ).filter;
             expect(f({zoom: 0}, {properties: {foo: 0}} as any as Feature)).toBe(false);
             expect(f({zoom: 0}, {properties: {foo: 1}} as any as Feature)).toBe(false);
