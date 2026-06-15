@@ -1,6 +1,7 @@
 ## main
 ### ✨ Features and improvements
 - Allow global state expressions in `fill-layer-opacity` and `line-layer-opacity`. ([#1650](https://github.com/maplibre/maplibre-style-spec/pull/1699)) (by [@CommanderStorm](https://github.com/CommanderStorm))
+- ⚠️ Change legacy filter expression conversion to raise validation errors ([#1709](https://github.com/maplibre/maplibre-style-spec/pull/1709)) (by [HarelM](https://github.com/HarelM))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
