@@ -74,5 +74,13 @@
   {
     "message": "layers[19].filter: \"feature-state\" data expressions are not supported with filters.",
     "line": 187
+  },
+  {
+    "message": "layers[20].filter: \"$type\" cannot be use with operator \"<=\"",
+    "line": 194
+  },
+  {
+    "message": "layers[21].filter: filter array for \"has\" operator must have 2 elements",
+    "line": 201
   }
 ]

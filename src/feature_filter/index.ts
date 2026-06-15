@@ -94,15 +94,6 @@ function getLegacyFilterExpressionSuggestion(filter: Array<any>): unknown {
         case '>':
         case '>=':
             if (filter.length !== 3 || typeof filter[1] !== 'string') return null;
-            if (
-                (filter[0] === '<' ||
-                    filter[0] === '<=' ||
-                    filter[0] === '>' ||
-                    filter[0] === '>=') &&
-                filter[1] === '$type'
-            ) {
-                return null;
-            }
             if (filter[1] === '$type') {
                 return [
                     filter[0],

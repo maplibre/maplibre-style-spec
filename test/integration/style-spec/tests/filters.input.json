@@ -185,6 +185,20 @@
       "source": "source",
       "source-layer": "source-layer",
       "filter": ["<=" , ["feature-state", "height"], 10]
+    },
+    {
+      "id": "filter expressions with $type and comparison operator",
+      "type": "line",
+      "source": "source",
+      "source-layer": "source-layer",
+      "filter": ["<=" , "$type", "Point"]
+    },
+    {
+      "id": "filter expressions with bas has operator",
+      "type": "line",
+      "source": "source",
+      "source-layer": "source-layer",
+      "filter": ["has"]
     }
   ]
 }
