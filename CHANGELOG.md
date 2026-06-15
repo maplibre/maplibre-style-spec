@@ -1,11 +1,18 @@
 ## main
 ### ✨ Features and improvements
-- Allow global state expressions in `fill-layer-opacity` and `line-layer-opacity`. ([#1650](https://github.com/maplibre/maplibre-style-spec/pull/1699)) (by [@CommanderStorm](https://github.com/CommanderStorm))
-- ⚠️ Change legacy filter expression validation to add suggestions on invalid expressions ([#1709](https://github.com/maplibre/maplibre-style-spec/pull/1709)) (by [HarelM](https://github.com/HarelM))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
+
+- chore: fix lint warnings ([#1710](https://github.com/maplibre/maplibre-style-spec/pull/1710)) (by [@HarelM](https://github.com/HarelM))
+- chore: enable `global-state` for `{line,fill}-layer-opactiy` ([#1699](https://github.com/maplibre/maplibre-style-spec/pull/1699)) (by [@CommanderStorm](https://github.com/CommanderStorm))
+## 25.0.0
+### ✨ Features and improvements
+- Allow global state expressions in `fill-layer-opacity` and `line-layer-opacity`. ([#1650](https://github.com/maplibre/maplibre-style-spec/pull/1699)) (by [@CommanderStorm](https://github.com/CommanderStorm))
+- ⚠️ Change legacy filter expression validation to add suggestions on invalid expressions ([#1709](https://github.com/maplibre/maplibre-style-spec/pull/1709)) (by [HarelM](https://github.com/HarelM))
+
+### 🐞 Bug fixes
 
 ## 24.10.0
 
