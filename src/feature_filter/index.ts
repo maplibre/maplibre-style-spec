@@ -110,10 +110,10 @@ function getLegacyFilterExpressionSuggestion(filter: Array<any>): unknown {
             if (filter[1] === '$type') {
                 return [
                     filter[0],
-                    ['in', ['geometry-type'], ['literal', [filter[2], 'Multi' + filter[2]]]]
+                    ['in', ['geometry-type'], ['literal', [filter[2], `Multi${filter[2]}`]]]
                 ];
             }
-            return [filter[0], getFilterPropertyExpression(filter[1], filter[2]), filter[2]];
+            return [filter[0], getFilterPropertyExpression(filter[1]), filter[2]];
 
         case 'in':
         case '!in': {
@@ -131,7 +131,7 @@ function getLegacyFilterExpressionSuggestion(filter: Array<any>): unknown {
                         'literal',
                         filter
                             .slice(2)
-                            .map((g) => [g, 'Multi' + g])
+                            .map((g) => [g, `Multi${g}`])
                             .flat()
                     ]
                 ];
