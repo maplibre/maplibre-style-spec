@@ -80,7 +80,7 @@
     "line": 194
   },
   {
-    "message": "layers[21].filter: filter array for \"has\" operator must have 2 elements",
+    "message": "layers[21].filter[1]: Mixing deprecated filter syntax with expression syntax is not supported. Replace [\"!has\",\"somthing\"] with [\"!\",[\"has\",\"somthing\"]].",
     "line": 201
   }
 ]

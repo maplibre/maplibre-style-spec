@@ -194,11 +194,11 @@
       "filter": ["<=" , "$type", "Point"]
     },
     {
-      "id": "filter expressions with bas has operator",
+      "id": "filter expressions with bas has operator and ",
       "type": "line",
       "source": "source",
       "source-layer": "source-layer",
-      "filter": ["has"]
+      "filter": ["!", ["!has", "somthing"]]
     }
   ]
 }
