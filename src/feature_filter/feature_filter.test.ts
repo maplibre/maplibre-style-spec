@@ -88,15 +88,15 @@ describe('filter', () => {
     test('expression, type error', () => {
         expect(() => {
             featureFilter(['==', ['number', ['get', 'x']], ['string', ['get', 'y']]]);
-        }).toThrowError(": Cannot compare types 'number' and 'string'.");
+        }).toThrow(": Cannot compare types 'number' and 'string'.");
 
         expect(() => {
             featureFilter(['number', ['get', 'x']]);
-        }).toThrowError(': Expected boolean but found number instead.');
+        }).toThrow(': Expected boolean but found number instead.');
 
         expect(() => {
             featureFilter(['boolean', ['get', 'x']]);
-        }).not.toThrowError();
+        }).not.toThrow();
     });
 
     test('expression, within', () => {
