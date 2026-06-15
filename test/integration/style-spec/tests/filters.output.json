@@ -56,7 +56,7 @@
     "line": 152
   },
   {
-    "message": "layers[15].filter[1]: Mixing deprecated filter syntax with expression syntax is not supported. Replace [\"==\",\"$type\",\"Point\"] with [\"==\",[\"geometry-type\"],\"Point\"].",
+    "message": "layers[15].filter[1]: Mixing deprecated filter syntax with expression syntax is not supported. Replace [\"==\",\"$type\",\"Point\"] with [\"==\",[\"in\",[\"geometry-type\"],[\"literal\",[\"Point\",\"MultiPoint\"]]]].",
     "line": 159
   },
   {
@@ -64,11 +64,11 @@
     "line": 166
   },
   {
-    "message": "layers[17].filter[1]: Mixing deprecated filter syntax with expression syntax is not supported. Replace [\"in\",\"$type\",\"Point\",\"LineString\"] with [\"in\",[\"geometry-type\"],[\"literal\",[\"Point\",\"LineString\"]]].",
+    "message": "layers[17].filter[1]: Mixing deprecated filter syntax with expression syntax is not supported. Replace [\"in\",\"$type\",\"Point\",\"LineString\"] with [\"in\",[\"geometry-type\"],[\"literal\",[\"Point\",\"MultiPoint\",\"LineString\",\"MultiLineString\"]]].",
     "line": 173
   },
   {
-    "message": "layers[18].filter[1][2]: Mixing deprecated filter syntax with expression syntax is not supported. Replace [\"==\",\"$type\",\"Point\"] with [\"==\",[\"geometry-type\"],\"Point\"].",
+    "message": "layers[18].filter[1][2]: Mixing deprecated filter syntax with expression syntax is not supported. Replace [\"==\",\"$type\",\"Point\"] with [\"==\",[\"in\",[\"geometry-type\"],[\"literal\",[\"Point\",\"MultiPoint\"]]]].",
     "line": 180
   },
   {

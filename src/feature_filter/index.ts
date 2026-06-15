@@ -82,8 +82,6 @@ export function isExpressionFilter(filter: any): filter is ExpressionFilterSpeci
 
 function getFilterPropertyExpression(property: string): unknown {
     switch (property) {
-        case '$type':
-            return ['geometry-type'];
         case '$id':
             return ['id'];
         default:
@@ -109,16 +107,27 @@ function getLegacyFilterExpressionSuggestion(filter: Array<any>): unknown {
             ) {
                 return null;
             }
-            return [filter[0], getFilterPropertyExpression(filter[1]), filter[2]];
+            if (filter[1] === '$type') {
+                return [filter[0], ['in', ['geometry-type'], ['literal', [filter[2], 'Multi' + filter[2]]]]];
+            }
+            return [filter[0], getFilterPropertyExpression(filter[1], filter[2]), filter[2]];
 
         case 'in':
         case '!in': {
             if (filter.length < 2 || typeof filter[1] !== 'string') return null;
-            const expression = [
+            let expression = [
                 'in',
                 getFilterPropertyExpression(filter[1]),
                 ['literal', filter.slice(2)]
             ];
+            if (filter[1] === '$type') {
+                expression = [
+                    'in',
+                    ['geometry-type'],
+                    ['literal', filter.slice(2).map(g => [g, 'Multi' + g]).flat()]
+                ];
+            }
+            
             return filter[0] === '!in' ? ['!', expression] : expression;
         }
 
