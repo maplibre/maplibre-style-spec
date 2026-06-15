@@ -88,15 +88,15 @@ describe('filter', () => {
     test('expression, type error', () => {
         expect(() => {
             featureFilter(['==', ['number', ['get', 'x']], ['string', ['get', 'y']]]);
-        }).toThrowError(": Cannot compare types 'number' and 'string'.");
+        }).toThrow(": Cannot compare types 'number' and 'string'.");
 
         expect(() => {
             featureFilter(['number', ['get', 'x']]);
-        }).toThrowError(': Expected boolean but found number instead.');
+        }).toThrow(': Expected boolean but found number instead.');
 
         expect(() => {
             featureFilter(['boolean', ['get', 'x']]);
-        }).not.toThrowError();
+        }).not.toThrow();
     });
 
     test('expression, within', () => {
@@ -770,7 +770,7 @@ describe('global-state in filter', () => {
             ['==', ['global-state', 'active'], true]
         ] as ExpressionFilterSpecification;
 
-        expect(() => featureFilter(filter, {active: true})).toThrowError(
+        expect(() => featureFilter(filter, {active: true})).toThrow(
             '"$type" cannot be use with operator ">"'
         );
     });
@@ -788,7 +788,7 @@ describe('global-state in filter', () => {
             ['case', isActive, true, false]
         ] as unknown as ExpressionFilterSpecification;
 
-        expect(() => featureFilter(filter, globalState)).toThrowError(
+        expect(() => featureFilter(filter, globalState)).toThrow(
             'Mixing deprecated filter syntax with expression syntax is not supported. Replace ["==","$type","Polygon"] with ["==",["geometry-type"],"Polygon"].'
         );
     });
