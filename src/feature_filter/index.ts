@@ -151,6 +151,17 @@ export function getMixedFilterErrorMessage(filter: Array<any>): string {
     return `Mixing deprecated filter syntax with expression syntax is not supported. Convert ${JSON.stringify(filter)} to expression syntax.`;
 }
 
+function checkChild(index: number, path: Array<number>, filter: unknown): MixedFilterDiagnostic | null {
+    const child = filter[index];
+    if (!Array.isArray(child)) {
+        return null;
+    }
+    if (!isExpressionFilter(child)) {
+        return {path: path.concat(index), legacyFilter: child};
+    }
+    return findMixedLegacyFilter(child, path.concat(index));
+}
+
 export function findMixedLegacyFilter(
     filter: unknown,
     path: Array<number> = []
@@ -159,36 +170,25 @@ export function findMixedLegacyFilter(
         return null;
     }
 
-    const checkChild = (index: number) => {
-        const child = filter[index];
-        if (!Array.isArray(child)) {
-            return null;
-        }
-        if (!isExpressionFilter(child)) {
-            return {path: path.concat(index), legacyFilter: child};
-        }
-        return findMixedLegacyFilter(child, path.concat(index));
-    };
-
     switch (filter[0]) {
         case 'all':
         case 'any':
         case 'none':
             for (let i = 1; i < filter.length; i++) {
-                const diagnostic = checkChild(i);
+                const diagnostic = checkChild(i, path, filter);
                 if (diagnostic) return diagnostic;
             }
             break;
 
         case '!': {
-            const diagnostic = checkChild(1);
+            const diagnostic = checkChild(1, path, filter);
             if (diagnostic) return diagnostic;
             break;
         }
 
         case 'case':
             for (let i = 1; i < filter.length - 1; i += 2) {
-                const diagnostic = checkChild(i);
+                const diagnostic = checkChild(i, path, filter);
                 if (diagnostic) return diagnostic;
             }
             break;
@@ -197,7 +197,7 @@ export function findMixedLegacyFilter(
     return null;
 }
 
-export function validateNoMixedExpressionFilter(filter: unknown) {
+export function validateNoMixedExpressionFilter(filter: FilterSpecification) {
     const diagnostic = findMixedLegacyFilter(filter);
     if (diagnostic) {
         throw new Error(getMixedFilterErrorMessage(diagnostic.legacyFilter));

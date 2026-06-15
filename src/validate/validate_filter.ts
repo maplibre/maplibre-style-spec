@@ -10,7 +10,7 @@ import {
     isExpressionFilter
 } from '../feature_filter';
 
-function getValueAtPath(value, path) {
+function getValueAtPath(value: any, path: number[]) {
     let current = value;
     for (const index of path) {
         current = current[index];
@@ -18,32 +18,31 @@ function getValueAtPath(value, path) {
     return current;
 }
 
-export function validateFilter(options) {
+export function validateFilter(options: any): ValidationError[] {
     const value = deepUnbundle(options.value);
-    if (isExpressionFilter(value)) {
-        const mixedLegacyDiagnostic = findMixedLegacyFilter(value);
-        if (mixedLegacyDiagnostic) {
-            const errorKey = `${options.key}${mixedLegacyDiagnostic.path.map((index) => `[${index}]`).join('')}`;
-            return [
-                new ValidationError(
-                    errorKey,
-                    getValueAtPath(options.value, mixedLegacyDiagnostic.path),
-                    getMixedFilterErrorMessage(mixedLegacyDiagnostic.legacyFilter)
-                )
-            ];
-        }
-        return validateExpression(
-            extend({}, options, {
-                expressionContext: 'filter',
-                valueSpec: {value: 'boolean'}
-            })
-        );
-    } else {
+    if (!isExpressionFilter(value)) {
         return validateNonExpressionFilter(options);
     }
+    const mixedLegacyDiagnostic = findMixedLegacyFilter(value);
+    if (mixedLegacyDiagnostic) {
+        const errorKey = `${options.key}${mixedLegacyDiagnostic.path.map((index) => `[${index}]`).join('')}`;
+        return [
+            new ValidationError(
+                errorKey,
+                getValueAtPath(options.value, mixedLegacyDiagnostic.path),
+                getMixedFilterErrorMessage(mixedLegacyDiagnostic.legacyFilter)
+            )
+        ];
+    }
+    return validateExpression(
+        extend({}, options, {
+            expressionContext: 'filter',
+            valueSpec: {value: 'boolean'}
+        })
+    );
 }
 
-function validateNonExpressionFilter(options) {
+function validateNonExpressionFilter(options: any): ValidationError[] {
     const value = options.value;
     const key = options.key;
 
@@ -54,7 +53,7 @@ function validateNonExpressionFilter(options) {
     const styleSpec = options.styleSpec;
     let type;
 
-    let errors = [];
+    let errors: ValidationError[] = [];
 
     if (value.length < 1) {
         return [new ValidationError(key, value, 'filter array must have at least 1 element')];
