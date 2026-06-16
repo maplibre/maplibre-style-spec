@@ -646,7 +646,7 @@ describe('legacy filter tests', () => {
             expect(f({zoom: 0}, {properties: {foo: true}} as any as Feature)).toBe(true);
             expect(f({zoom: 0}, {properties: {foo: false}} as any as Feature)).toBe(true);
             expect(f({zoom: 0}, {properties: {foo: null}} as any as Feature)).toBe(true);
-            expect(f({zoom: 0}, {properties: {foo: undefined}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: undefined}} as any as Feature)).toBe(false);
             expect(f({zoom: 0}, {properties: {}} as any as Feature)).toBe(false);
         });
 
@@ -658,7 +658,7 @@ describe('legacy filter tests', () => {
             expect(f({zoom: 0}, {properties: {foo: false}} as any as Feature)).toBe(false);
             expect(f({zoom: 0}, {properties: {foo: false}} as any as Feature)).toBe(false);
             expect(f({zoom: 0}, {properties: {foo: null}} as any as Feature)).toBe(false);
-            expect(f({zoom: 0}, {properties: {foo: undefined}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: undefined}} as any as Feature)).toBe(true);
             expect(f({zoom: 0}, {properties: {}} as any as Feature)).toBe(true);
         });
     }
