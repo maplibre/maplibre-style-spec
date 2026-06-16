@@ -428,7 +428,15 @@ CompoundExpression.register(expressions, {
             return typeof a === typeof b && a >= b;
         }
     ],
-    'filter-has': [BooleanType, [ValueType], (ctx, [k]) => { const key = (k as any).value; const props = ctx.properties(); return key in props && props[key] !== undefined; }],
+    'filter-has': [
+        BooleanType,
+        [ValueType],
+        (ctx, [k]) => {
+            const key = (k as any).value;
+            const props = ctx.properties();
+            return key in props && props[key] !== undefined;
+        }
+    ],
     'filter-has-id': [BooleanType, [], (ctx) => ctx.id() !== null && ctx.id() !== undefined],
     'filter-type-in': [
         BooleanType,
