@@ -3,6 +3,7 @@
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
+- `has` filter now returns `false` when a property exists but is set to `undefined` ([#1712](https://github.com/maplibre/maplibre-style-spec/pull/1712)) (by [@xavierjs](https://github.com/xavierjs))
 - _...Add new stuff here..._
 
 ## 25.0.0
