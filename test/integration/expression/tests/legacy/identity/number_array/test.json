@@ -66,7 +66,7 @@
     },
     "outputs": [
       {
-        "error": "Could not parse numberArray from value 'null'"
+        "error": "expression: Could not parse numberArray from value 'null'"
       },
       {
         "values": [
@@ -83,7 +83,7 @@
         "values": []
       },
       {
-        "error": "Could not parse numberArray from value 'not a number'"
+        "error": "expression: Could not parse numberArray from value 'not a number'"
       }
     ]
   }

@@ -31,10 +31,12 @@ const types = {
 export class Coercion implements Expression {
     type: Type;
     args: Array<Expression>;
+    readonly key: string;
 
-    constructor(type: Type, args: Array<Expression>) {
+    constructor(type: Type, args: Array<Expression>, key: string) {
         this.type = type;
         this.args = args;
+        this.key = key;
     }
 
     static parse(args: ReadonlyArray<unknown>, context: ParsingContext): Expression {
@@ -55,7 +57,7 @@ export class Coercion implements Expression {
             parsed.push(input);
         }
 
-        return new Coercion(type, parsed);
+        return new Coercion(type, parsed, context.key);
     }
 
     evaluate(ctx: EvaluationContext) {
@@ -91,7 +93,8 @@ export class Coercion implements Expression {
                 }
                 throw new RuntimeError(
                     error ||
-                        `Could not parse color from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`
+                        `Could not parse color from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`,
+                    this.key
                 );
             }
             case 'padding': {
@@ -105,7 +108,8 @@ export class Coercion implements Expression {
                     }
                 }
                 throw new RuntimeError(
-                    `Could not parse padding from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`
+                    `Could not parse padding from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`,
+                    this.key
                 );
             }
             case 'numberArray': {
@@ -119,7 +123,8 @@ export class Coercion implements Expression {
                     }
                 }
                 throw new RuntimeError(
-                    `Could not parse numberArray from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`
+                    `Could not parse numberArray from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`,
+                    this.key
                 );
             }
             case 'colorArray': {
@@ -133,7 +138,8 @@ export class Coercion implements Expression {
                     }
                 }
                 throw new RuntimeError(
-                    `Could not parse colorArray from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`
+                    `Could not parse colorArray from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`,
+                    this.key
                 );
             }
             case 'variableAnchorOffsetCollection': {
@@ -147,7 +153,8 @@ export class Coercion implements Expression {
                     }
                 }
                 throw new RuntimeError(
-                    `Could not parse variableAnchorOffsetCollection from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`
+                    `Could not parse variableAnchorOffsetCollection from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`,
+                    this.key
                 );
             }
             case 'number': {
@@ -159,7 +166,10 @@ export class Coercion implements Expression {
                     if (isNaN(num)) continue;
                     return num;
                 }
-                throw new RuntimeError(`Could not convert ${JSON.stringify(value)} to number.`);
+                throw new RuntimeError(
+                    `Could not convert ${JSON.stringify(value)} to number.`,
+                    this.key
+                );
             }
             case 'formatted':
                 // There is no explicit 'to-formatted' but this coercion can be implicitly

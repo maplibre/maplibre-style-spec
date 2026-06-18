@@ -91,10 +91,10 @@
         1
       ],
       {
-        "error": "Could not parse color from value 'invalid'"
+        "error": "expression: Could not parse color from value 'invalid'"
       },
       {
-        "error": "Could not parse color from value '__proto__'"
+        "error": "expression: Could not parse color from value '__proto__'"
       },
       [
         0,
@@ -115,7 +115,7 @@
         1
       ],
       {
-        "error": "Invalid rgba value [0,255]: expected an array containing either three or four numeric values."
+        "error": "expression: Invalid rgba value [0,255]: expected an array containing either three or four numeric values."
       }
     ]
   }

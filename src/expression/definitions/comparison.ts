@@ -90,13 +90,20 @@ function makeComparison(op: ComparisonOperator, compareBasic, compareWithCollato
         rhs: Expression;
         collator: Expression;
         hasUntypedArgument: boolean;
+        readonly key: string;
 
-        constructor(lhs: Expression, rhs: Expression, collator?: Expression | null) {
+        constructor(
+            lhs: Expression,
+            rhs: Expression,
+            key: string,
+            collator?: Expression | null
+        ) {
             this.type = BooleanType;
             this.lhs = lhs;
             this.rhs = rhs;
             this.collator = collator;
             this.hasUntypedArgument = lhs.type.kind === 'value' || rhs.type.kind === 'value';
+            this.key = key;
         }
 
         static parse(args: ReadonlyArray<unknown>, context: ParsingContext): Expression {
@@ -138,10 +145,10 @@ function makeComparison(op: ComparisonOperator, compareBasic, compareWithCollato
                 // typing rules specific to less/greater than operators
                 if (lhs.type.kind === 'value' && rhs.type.kind !== 'value') {
                     // (value, T)
-                    lhs = new Assertion(rhs.type, [lhs]);
+                    lhs = new Assertion(rhs.type, [lhs], context.key);
                 } else if (lhs.type.kind !== 'value' && rhs.type.kind === 'value') {
                     // (T, value)
-                    rhs = new Assertion(lhs.type, [rhs]);
+                    rhs = new Assertion(lhs.type, [rhs], context.key);
                 }
             }
 
@@ -161,7 +168,7 @@ function makeComparison(op: ComparisonOperator, compareBasic, compareWithCollato
                 if (!collator) return null;
             }
 
-            return new Comparison(lhs, rhs, collator);
+            return new Comparison(lhs, rhs, context.key, collator);
         }
 
         evaluate(ctx: EvaluationContext) {
@@ -174,7 +181,8 @@ function makeComparison(op: ComparisonOperator, compareBasic, compareWithCollato
                 // check that type is string or number, and equal
                 if (lt.kind !== rt.kind || !(lt.kind === 'string' || lt.kind === 'number')) {
                     throw new RuntimeError(
-                        `Expected arguments for "${op}" to be (string, string) or (number, number), but found (${lt.kind}, ${rt.kind}) instead.`
+                        `Expected arguments for "${op}" to be (string, string) or (number, number), but found (${lt.kind}, ${rt.kind}) instead.`,
+                        this.key
                     );
                 }
             }

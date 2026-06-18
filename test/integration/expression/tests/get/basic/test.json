@@ -29,7 +29,7 @@
     },
     "outputs": [
       {
-        "error": "Expected value to be of type number, but found null instead."
+        "error": "expression: Expected value to be of type number, but found null instead."
       },
       1
     ]

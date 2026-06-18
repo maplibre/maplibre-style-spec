@@ -74,13 +74,13 @@
       1,
       1,
       {
-        "error": "Expected value to be of type number, but found null instead."
+        "error": "expression[1]: Expected value to be of type number, but found null instead."
       },
       {
-        "error": "Expected value to be of type number, but found null instead."
+        "error": "expression[1]: Expected value to be of type number, but found null instead."
       },
       {
-        "error": "Expected value to be of type number, but found null instead."
+        "error": "expression[1]: Expected value to be of type number, but found null instead."
       }
     ]
   }

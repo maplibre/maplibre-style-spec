@@ -16,7 +16,7 @@ import type {Type} from './types';
 export class ParsingContext {
     registry: ExpressionRegistry;
     path: Array<number>;
-    key: string;
+    readonly key: string;
     scope: Scope;
     errors: Array<ExpressionParsingError>;
 
@@ -85,11 +85,12 @@ export class ParsingContext {
             expr = ['literal', expr];
         }
 
+        const key = this.key;
         function annotate(parsed, type, typeAnnotation: 'assert' | 'coerce' | 'omit') {
             if (typeAnnotation === 'assert') {
-                return new Assertion(type, [parsed]);
+                return new Assertion(type, [parsed], key);
             } else if (typeAnnotation === 'coerce') {
-                return new Coercion(type, [parsed]);
+                return new Coercion(type, [parsed], key);
             } else {
                 return parsed;
             }

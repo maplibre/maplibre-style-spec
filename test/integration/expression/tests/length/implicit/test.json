@@ -43,7 +43,7 @@
       8,
       0,
       {
-        "error": "Expected value to be of type string or array, but found number instead."
+        "error": "expression: Expected value to be of type string or array, but found number instead."
       }
     ]
   }

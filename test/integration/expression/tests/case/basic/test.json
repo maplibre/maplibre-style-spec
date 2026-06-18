@@ -83,7 +83,7 @@
       "y",
       "otherwise",
       {
-        "error": "Expected value to be of type boolean, but found string instead."
+        "error": "expression[1]: Expected value to be of type boolean, but found string instead."
       }
     ]
   }

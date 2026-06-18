@@ -56,10 +56,10 @@
         0
       ],
       {
-        "error": "Expected value to be of type array<number, 2>, but found array<number, 1> instead."
+        "error": "expression: Expected value to be of type array<number, 2>, but found array<number, 1> instead."
       },
       {
-        "error": "Expected value to be of type array<number, 2>, but found array<number, 3> instead."
+        "error": "expression: Expected value to be of type array<number, 2>, but found array<number, 3> instead."
       }
     ]
   }

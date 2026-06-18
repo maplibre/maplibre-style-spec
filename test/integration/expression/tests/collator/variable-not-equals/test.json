@@ -2,12 +2,42 @@
   "expression": [
     "let",
     "myVariable",
-    ["collator", { "diacritic-sensitive": ["get", "diacritic-sensitive"] }],
-    ["!=", "tēnā", "tena", ["var", "myVariable"]]
+    [
+      "collator",
+      {
+        "diacritic-sensitive": [
+          "get",
+          "diacritic-sensitive"
+        ]
+      }
+    ],
+    [
+      "!=",
+      "tēnā",
+      "tena",
+      [
+        "var",
+        "myVariable"
+      ]
+    ]
   ],
   "inputs": [
-    [{}, { "properties": { "diacritic-sensitive": true } }],
-    [{}, { "properties": { "diacritic-sensitive": false } }]
+    [
+      {},
+      {
+        "properties": {
+          "diacritic-sensitive": true
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "diacritic-sensitive": false
+        }
+      }
+    ]
   ],
   "expected": {
     "compiled": {
@@ -16,6 +46,9 @@
       "isZoomConstant": true,
       "type": "boolean"
     },
-    "outputs": [true, false]
+    "outputs": [
+      true,
+      false
+    ]
   }
 }

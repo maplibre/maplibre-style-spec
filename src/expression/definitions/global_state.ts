@@ -6,7 +6,7 @@ import {getOwn} from '../../util/get_own';
 
 export class GlobalState implements Expression {
     type: Type;
-    key: string;
+    readonly key: string;
 
     constructor(key: string) {
         this.type = ValueType;

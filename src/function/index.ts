@@ -193,7 +193,8 @@ function evaluateIntervalFunction(parameters, propertySpec, input) {
 
     const index = findStopLessThanOrEqualTo(
         parameters.stops.map((stop) => stop[0]),
-        input
+        input,
+        ''
     );
 
     return parameters.stops[index][1];
@@ -211,7 +212,8 @@ function evaluateExponentialFunction(parameters, propertySpec, input) {
 
     const index = findStopLessThanOrEqualTo(
         parameters.stops.map((stop) => stop[0]),
-        input
+        input,
+        ''
     );
     const t = interpolationFactor(
         input,

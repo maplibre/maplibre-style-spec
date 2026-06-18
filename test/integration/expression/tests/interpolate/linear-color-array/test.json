@@ -195,7 +195,7 @@
         ]
       },
       {
-        "error": "Expected value to be of type number, but found string instead."
+        "error": "expression[2]: Expected value to be of type number, but found string instead."
       }
     ]
   }
