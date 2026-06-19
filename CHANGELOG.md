@@ -3,7 +3,72 @@
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
+- `has` filter now returns `false` when a property exists but is set to `undefined` ([#1712](https://github.com/maplibre/maplibre-style-spec/pull/1712)) (by [@xavierjs](https://github.com/xavierjs))
 - _...Add new stuff here..._
+
+## 25.0.0
+
+### ✨ Features and improvements
+
+- ⚠️ Change legacy filter expression validation to add suggestions on invalid expressions ([#1709](https://github.com/maplibre/maplibre-style-spec/pull/1709)) (by [HarelM](https://github.com/HarelM))
+- Allow global state expressions in `fill-layer-opacity` and `line-layer-opacity`. ([#1699](https://github.com/maplibre/maplibre-style-spec/pull/1699)) (by [@CommanderStorm](https://github.com/CommanderStorm))
+
+## 24.10.0
+
+### ✨ Features and improvements
+
+- Added `{line,fill}-layer-opacity` paint property. It applies opacity to the whole layer as a whole layer so overlapping features change in an uniform way. ([#1650](https://github.com/maplibre/maplibre-style-spec/pull/1650)) (by [@CommanderStorm](https://github.com/CommanderStorm))
+
+## 24.9.0
+
+### ✨ Features and improvements
+
+- Allow `fill-color` when `fill-pattern` is set, for SDF fill pattern colorization ([#1683](https://github.com/maplibre/maplibre-style-spec/pull/1683)) (by [@bradymadden97](https://github.com/bradymadden97))
+
+### 🐞 Bug fixes
+
+- Resolve `["global-state", key]` to `null` instead of `undefined` when the key is unset but other global state keys are set ([#1531](https://github.com/maplibre/maplibre-style-spec/issues/1531)) (by [@SAY-5](https://github.com/SAY-5))
+
+## 24.8.5
+
+### 🐞 Bug fixes
+
+- Added missing exported types ([#1638](https://github.com/maplibre/maplibre-style-spec/pull/1638)) (by [@scottg521](https://github.com/scottg521))
+
+## 24.8.4
+
+### 🐞 Bug fixes
+
+- Replace rw with node:fs. Resolves #1625 ([#1635](https://github.com/maplibre/maplibre-style-spec/pull/1635)) (by [@birkskyum](https://github.com/birkskyum))
+
+## 24.8.3
+
+### 🐞 Bug fixes
+
+- Restore Specification type exports dropped in v24.8.2 ([#1627](https://github.com/maplibre/maplibre-style-spec/pull/1627)) (by [@birkskyum](https://github.com/birkskyum))
+
+## 24.8.2
+
+### ✨ Features and improvements
+
+- Move from rollup->rolldown and ts6->ts7 for builds/typecheck. ([#1132](https://github.com/maplibre/maplibre-style-spec/pull/1132)) (by [birkskyum](https://github.com/birkskyum))
+
+## 24.8.1
+
+### ✨ Features and improvements
+
+- Add `AllPaintProperties` and `AllLayoutProperties` typescript definitions ([#1579](https://github.com/maplibre/maplibre-style-spec/pull/1579)) (by [@CommanderStorm](https://github.com/CommanderStorm))
+- Update TS definitions to allow `var` as the 3rd arg of comparator functions ([#1564](https://github.com/maplibre/maplibre-style-spec/pull/1564)) (by [k-yle](https://github.com/k-yle))
+
+### 🐞 Bug fixes
+
+- Fix `get` expression inside `join` expression ([#1583](https://github.com/maplibre/maplibre-style-spec/pull/1583)) (by [1ec5](https://github.com/1ec5))
+
+## 24.8.0
+
+### ✨ Features and improvements
+
+- Enable data driven stylng for  `line-{cap,round-limit,miter-limit}` ([#1566](https://github.com/maplibre/maplibre-style-spec/pull/1566)) (by [@CommanderStorm](https://github.com/CommanderStorm))
 
 ## 24.7.0
 

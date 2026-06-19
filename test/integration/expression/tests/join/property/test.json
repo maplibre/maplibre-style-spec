@@ -1,0 +1,35 @@
+{
+  "expression": [
+    "join",
+    [
+      "get",
+      "haystack"
+    ],
+    "+"
+  ],
+  "inputs": [
+    [
+      {},
+      {
+        "properties": {
+          "haystack": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      }
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": false,
+      "isZoomConstant": true,
+      "type": "string"
+    },
+    "outputs": [
+      "1+2+3"
+    ]
+  }
+}
