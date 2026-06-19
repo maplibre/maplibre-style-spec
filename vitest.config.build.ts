@@ -4,8 +4,6 @@ export default defineConfig({
     test: {
         name: 'build',
         environment: 'node',
-        // Restore spies to their originals and clear call history before each test,
-        // so mock state never leaks across tests in a file.
         restoreMocks: true,
         include: ['test/build/**/*.test.{ts,js}'],
         coverage: {
