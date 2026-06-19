@@ -106,7 +106,7 @@
       3,
       6,
       {
-        "error": "Expected second argument to be of type array or string, but found null instead."
+        "error": "expression: Expected second argument to be of type array or string, but found null instead."
       }
     ]
   }

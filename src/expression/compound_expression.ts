@@ -36,7 +36,8 @@ export type Varargs = {
     type: Type;
 };
 type Signature = Array<Type> | Varargs;
-type Evaluate = (b: EvaluationContext, a: Array<Expression>) => Value;
+// `key` is the index path of the expression, attached to any RuntimeError it throws.
+type Evaluate = (b: EvaluationContext, a: Array<Expression>, key: string) => Value;
 
 type Definition =
     | [Type, Signature, Evaluate]
@@ -50,18 +51,26 @@ export class CompoundExpression implements Expression {
     type: Type;
     _evaluate: Evaluate;
     args: Array<Expression>;
+    readonly key: string;
 
     static definitions: {[_: string]: Definition};
 
-    constructor(name: string, type: Type, evaluate: Evaluate, args: Array<Expression>) {
+    constructor(
+        name: string,
+        type: Type,
+        evaluate: Evaluate,
+        args: Array<Expression>,
+        key: string
+    ) {
         this.name = name;
         this.type = type;
         this._evaluate = evaluate;
         this.args = args;
+        this.key = key;
     }
 
     evaluate(ctx: EvaluationContext) {
-        return this._evaluate(ctx, this.args);
+        return this._evaluate(ctx, this.args, this.key);
     }
 
     eachChild(fn: (_: Expression) => void) {
@@ -147,7 +156,13 @@ export class CompoundExpression implements Expression {
             }
 
             if (signatureContext.errors.length === 0) {
-                return new CompoundExpression(op, type, evaluate as Evaluate, parsedArgs);
+                return new CompoundExpression(
+                    op,
+                    type,
+                    evaluate as Evaluate,
+                    parsedArgs,
+                    context.key
+                );
             }
         }
 
@@ -183,13 +198,13 @@ export class CompoundExpression implements Expression {
     }
 }
 
-function rgba(ctx, [r, g, b, a]) {
+function rgba(ctx, [r, g, b, a], key) {
     r = r.evaluate(ctx);
     g = g.evaluate(ctx);
     b = b.evaluate(ctx);
     const alpha = a ? a.evaluate(ctx) : 1;
     const error = validateRGBA(r, g, b, alpha);
-    if (error) throw new RuntimeError(error);
+    if (error) throw new RuntimeError(error, key);
     return new Color(r / 255, g / 255, b / 255, alpha, false);
 }
 
@@ -220,8 +235,8 @@ CompoundExpression.register(expressions, {
     error: [
         ErrorType,
         [StringType],
-        (ctx, [v]) => {
-            throw new RuntimeError(v.evaluate(ctx));
+        (ctx, [v], key) => {
+            throw new RuntimeError(v.evaluate(ctx), key);
         }
     ],
     typeof: [StringType, [ValueType], (ctx, [v]) => typeToString(typeOf(v.evaluate(ctx)))],

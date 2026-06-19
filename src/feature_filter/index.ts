@@ -231,11 +231,14 @@ const filterSpec = {
  *
  * @private
  * @param filter MapLibre filter
+ * @param rootKey Location of the filter in the style JSON (e.g. `layers[3].filter`),
+ * used to prefix runtime warnings
  * @param [globalState] Global state object to be used for evaluating 'global-state' expressions
  * @returns filter-evaluating function
  */
 export function featureFilter(
     filter: FilterSpecification | void,
+    rootKey: string,
     globalState?: Record<string, any>
 ): FeatureFilter {
     if (filter === null || filter === undefined) {
@@ -253,6 +256,7 @@ export function featureFilter(
 
     const compiled = createExpression(
         filter,
+        rootKey,
         filterSpec as StylePropertySpecification,
         globalState
     );

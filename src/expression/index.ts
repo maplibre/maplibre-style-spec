@@ -119,9 +119,11 @@ export class StyleExpression {
     _warningHistory: {[key: string]: boolean};
     _enumValues: {[_: string]: any};
     readonly _globalState: Record<string, any>;
+    readonly _rootKey: string;
 
     constructor(
         expression: Expression,
+        rootKey: string,
         propertySpec?: StylePropertySpecification | null,
         globalState?: Record<string, any>
     ) {
@@ -132,6 +134,7 @@ export class StyleExpression {
         this._enumValues =
             propertySpec && propertySpec.type === 'enum' ? propertySpec.values : null;
         this._globalState = globalState;
+        this._rootKey = rootKey;
     }
 
     evaluateWithoutErrorHandling(
@@ -182,19 +185,42 @@ export class StyleExpression {
                 throw new RuntimeError(
                     `Expected value to be one of ${Object.keys(this._enumValues)
                         .map((v) => JSON.stringify(v))
-                        .join(', ')}, but found ${JSON.stringify(val)} instead.`
+                        .join(', ')}, but found ${JSON.stringify(val)} instead.`,
+                    ''
                 );
             }
             return val;
         } catch (e) {
-            if (!this._warningHistory[e.message]) {
-                this._warningHistory[e.message] = true;
+            const path = e instanceof RuntimeError ? e.path : '';
+            const dedupKey = `${path}|${e.message}`;
+            if (!this._warningHistory[dedupKey]) {
+                this._warningHistory[dedupKey] = true;
                 if (typeof console !== 'undefined') {
-                    console.warn(e.message);
+                    console.warn(
+                        formatRuntimeWarning(this._rootKey, path, e.message, this._defaultValue)
+                    );
                 }
             }
             return this._defaultValue;
         }
+    }
+}
+
+function formatRuntimeWarning(
+    rootKey: string,
+    path: string,
+    message: string,
+    defaultValue: Value
+): string {
+    const fallback = defaultValue == null ? '' : ` Falling back to ${String(defaultValue)}.`;
+    return `${rootKey}${path}: ${message}${fallback}`;
+}
+
+function assertRootKey(rootKey: string): void {
+    if (!rootKey) {
+        throw new Error(
+            'rootKey must identify the location of the expression in the style JSON, e.g. "layers[3].paint.line-width".'
+        );
     }
 }
 
@@ -218,9 +244,11 @@ export function isExpression(expression: unknown) {
  */
 export function createExpression(
     expression: unknown,
+    rootKey: string,
     propertySpec?: StylePropertySpecification | null,
     globalState?: Record<string, any>
 ): Result<StyleExpression, Array<ExpressionParsingError>> {
+    assertRootKey(rootKey);
     const parser = new ParsingContext(
         expressions,
         isExpressionConstant,
@@ -241,7 +269,7 @@ export function createExpression(
         return error(parser.errors);
     }
 
-    return success(new StyleExpression(parsed, propertySpec, globalState));
+    return success(new StyleExpression(parsed, rootKey, propertySpec, globalState));
 }
 
 export class ZoomConstantExpression<Kind extends EvaluationKind> {
@@ -456,10 +484,11 @@ export type StylePropertyExpression =
 
 export function createPropertyExpression(
     expressionInput: unknown,
+    rootKey: string,
     propertySpec: StylePropertySpecification,
     globalState?: Record<string, any>
 ): Result<StylePropertyExpression, Array<ExpressionParsingError>> {
-    const expression = createExpression(expressionInput, propertySpec, globalState);
+    const expression = createExpression(expressionInput, rootKey, propertySpec, globalState);
     if (expression.result === 'error') {
         return expression;
     }
@@ -538,27 +567,61 @@ export function createPropertyExpression(
 export class StylePropertyFunction<T> {
     _parameters: PropertyValueSpecification<T>;
     _specification: StylePropertySpecification;
+    readonly _rootKey: string;
+    readonly _defaultValue: Value;
+    _warningHistory: {[key: string]: boolean};
+    _innerEvaluate: (globals: GlobalProperties, feature?: Feature) => any;
 
     kind: EvaluationKind;
-    evaluate: (globals: GlobalProperties, feature?: Feature) => any;
     interpolationFactor: (input: number, lower: number, upper: number) => number;
     zoomStops: Array<number>;
 
     constructor(
         parameters: PropertyValueSpecification<T>,
+        rootKey: string,
         specification: StylePropertySpecification
     ) {
+        assertRootKey(rootKey);
         this._parameters = parameters;
         this._specification = specification;
-        extendBy(this, createFunction(this._parameters, this._specification));
+        this._rootKey = rootKey;
+        this._defaultValue = getDefaultValue(specification);
+        this._warningHistory = {};
+        // Keep the raw evaluate off the instance so it doesn't shadow the prototype method below.
+        const {evaluate, ...functionProperties} = createFunction(
+            this._parameters,
+            this._specification
+        );
+        extendBy(this, functionProperties);
+        this._innerEvaluate = evaluate;
+    }
+
+    evaluate(globals: GlobalProperties, feature?: Feature): any {
+        try {
+            return this._innerEvaluate(globals, feature);
+        } catch (e) {
+            const message = e instanceof Error ? e.message : String(e);
+            const dedupKey = `|${message}`;
+            if (!this._warningHistory[dedupKey]) {
+                this._warningHistory[dedupKey] = true;
+                if (typeof console !== 'undefined') {
+                    console.warn(
+                        formatRuntimeWarning(this._rootKey, '', message, this._defaultValue)
+                    );
+                }
+            }
+            return this._defaultValue;
+        }
     }
 
     static deserialize<T>(serialized: {
         _parameters: PropertyValueSpecification<T>;
         _specification: StylePropertySpecification;
+        _rootKey: string;
     }) {
         return new StylePropertyFunction(
             serialized._parameters,
+            serialized._rootKey,
             serialized._specification
         ) as StylePropertyFunction<T>;
     }
@@ -566,20 +629,22 @@ export class StylePropertyFunction<T> {
     static serialize<T>(input: StylePropertyFunction<T>) {
         return {
             _parameters: input._parameters,
-            _specification: input._specification
+            _specification: input._specification,
+            _rootKey: input._rootKey
         };
     }
 }
 
 export function normalizePropertyExpression<T>(
     value: PropertyValueSpecification<T>,
+    rootKey: string,
     specification: StylePropertySpecification,
     globalState?: Record<string, any>
 ): StylePropertyExpression {
     if (isFunction(value)) {
-        return new StylePropertyFunction(value, specification) as any;
+        return new StylePropertyFunction(value, rootKey, specification) as any;
     } else if (isExpression(value)) {
-        const expression = createPropertyExpression(value, specification, globalState);
+        const expression = createPropertyExpression(value, rootKey, specification, globalState);
         if (expression.result === 'error') {
             // this should have been caught in validation
             throw new Error(expression.value.map((err) => `${err.key}: ${err.message}`).join(', '));

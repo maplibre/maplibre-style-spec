@@ -14,7 +14,7 @@ import {Expression} from '../expression/expression';
 export function validateExpression(options: any): Array<ValidationError> {
     const expression = (
         options.expressionContext === 'property' ? createPropertyExpression : createExpression
-    )(deepUnbundle(options.value), options.valueSpec);
+    )(deepUnbundle(options.value), options.key, options.valueSpec);
     if (expression.result === 'error') {
         return expression.value.map((error) => {
             return new ValidationError(`${options.key}${error.key}`, options.value, error.message);

@@ -11,10 +11,12 @@ import type {Type} from '../types';
 export class Length implements Expression {
     type: Type;
     input: Expression;
+    readonly key: string;
 
-    constructor(input: Expression) {
+    constructor(input: Expression, key: string) {
         this.type = NumberType;
         this.input = input;
+        this.key = key;
     }
 
     static parse(args: ReadonlyArray<unknown>, context: ParsingContext): Expression {
@@ -35,7 +37,7 @@ export class Length implements Expression {
                 `Expected argument of type string or array, but found ${typeToString(input.type)} instead.`
             ) as null;
 
-        return new Length(input);
+        return new Length(input, context.key);
     }
 
     evaluate(ctx: EvaluationContext) {
@@ -47,7 +49,8 @@ export class Length implements Expression {
             return input.length;
         } else {
             throw new RuntimeError(
-                `Expected value to be of type string or array, but found ${typeToString(typeOf(input))} instead.`
+                `Expected value to be of type string or array, but found ${typeToString(typeOf(input))} instead.`,
+                this.key
             );
         }
     }

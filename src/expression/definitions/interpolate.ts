@@ -63,18 +63,21 @@ export class Interpolate implements Expression {
     input: Expression;
     labels: Array<number>;
     outputs: Array<Expression>;
+    readonly key: string;
 
     constructor(
         type: InterpolatedValueType,
         operator: 'interpolate' | 'interpolate-hcl' | 'interpolate-lab',
         interpolation: InterpolationType,
         input: Expression,
-        stops: Stops
+        stops: Stops,
+        key: string
     ) {
         this.type = type;
         this.operator = operator;
         this.interpolation = interpolation;
         this.input = input;
+        this.key = key;
 
         this.labels = [];
         this.outputs = [];
@@ -217,7 +220,8 @@ export class Interpolate implements Expression {
             operator as any,
             interpolation as InterpolationType,
             input as Expression,
-            stops
+            stops,
+            context.key
         );
     }
 
@@ -239,7 +243,7 @@ export class Interpolate implements Expression {
             return outputs[stopCount - 1].evaluate(ctx);
         }
 
-        const index = findStopLessThanOrEqualTo(labels, value);
+        const index = findStopLessThanOrEqualTo(labels, value, this.key);
         const lower = labels[index];
         const upper = labels[index + 1];
         const t = Interpolate.interpolationFactor(this.interpolation, value, lower, upper);
@@ -264,7 +268,8 @@ export class Interpolate implements Expression {
                         return VariableAnchorOffsetCollection.interpolate(
                             outputLower,
                             outputUpper,
-                            t
+                            t,
+                            this.key
                         );
                     case 'array':
                         return interpolateArray(outputLower, outputUpper, t);

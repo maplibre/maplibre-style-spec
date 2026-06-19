@@ -135,7 +135,7 @@
         1
       ],
       {
-        "error": "Could not parse color from value 'invalid'"
+        "error": "expression: Could not parse color from value 'invalid'"
       }
     ]
   }

@@ -126,7 +126,7 @@
         1
       ],
       {
-        "error": "Could not parse color from value 'oops blue'"
+        "error": "expression[6]: Could not parse color from value 'oops blue'"
       }
     ]
   }

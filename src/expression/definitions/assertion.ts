@@ -26,10 +26,12 @@ const types = {
 export class Assertion implements Expression {
     type: Type;
     args: Array<Expression>;
+    readonly key: string;
 
-    constructor(type: Type, args: Array<Expression>) {
+    constructor(type: Type, args: Array<Expression>, key: string) {
         this.type = type;
         this.args = args;
+        this.key = key;
     }
 
     static parse(args: ReadonlyArray<unknown>, context: ParsingContext): Expression {
@@ -82,7 +84,7 @@ export class Assertion implements Expression {
             parsed.push(input);
         }
 
-        return new Assertion(type, parsed);
+        return new Assertion(type, parsed, context.key);
     }
 
     evaluate(ctx: EvaluationContext) {
@@ -93,7 +95,8 @@ export class Assertion implements Expression {
                 return value;
             } else if (i === this.args.length - 1) {
                 throw new RuntimeError(
-                    `Expected value to be of type ${typeToString(this.type)}, but found ${typeToString(typeOf(value))} instead.`
+                    `Expected value to be of type ${typeToString(this.type)}, but found ${typeToString(typeOf(value))} instead.`,
+                    this.key
                 );
             }
         }

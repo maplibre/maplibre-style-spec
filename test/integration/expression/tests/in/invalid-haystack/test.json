@@ -51,10 +51,10 @@
     },
     "outputs": [
       {
-        "error": "Expected second argument to be of type array or string, but found number instead."
+        "error": "expression[1]: Expected second argument to be of type array or string, but found number instead."
       },
       {
-        "error": "Expected second argument to be of type array or string, but found object instead."
+        "error": "expression[1]: Expected second argument to be of type array or string, but found object instead."
       },
       false
     ]

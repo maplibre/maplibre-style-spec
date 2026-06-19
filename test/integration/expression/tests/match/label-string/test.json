@@ -71,16 +71,16 @@
       "match",
       "otherwise",
       {
-        "error": "Expected value to be of type string, but found number instead."
+        "error": "expression[1]: Expected value to be of type string, but found number instead."
       },
       {
-        "error": "Expected value to be of type string, but found boolean instead."
+        "error": "expression[1]: Expected value to be of type string, but found boolean instead."
       },
       {
-        "error": "Expected value to be of type string, but found null instead."
+        "error": "expression[1]: Expected value to be of type string, but found null instead."
       },
       {
-        "error": "Expected value to be of type string, but found null instead."
+        "error": "expression[1]: Expected value to be of type string, but found null instead."
       }
     ]
   }
