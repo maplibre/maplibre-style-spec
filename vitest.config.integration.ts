@@ -4,6 +4,7 @@ export default defineConfig({
     test: {
         name: 'integration',
         environment: 'node',
+        restoreMocks: true,
         include: ['test/integration/**/*.test.{ts,js}'],
         coverage: {
             provider: 'v8',

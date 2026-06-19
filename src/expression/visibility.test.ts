@@ -1,5 +1,13 @@
 import createVisibilityExpression from './visibility';
-import {describe, test, expect, vi} from 'vitest';
+import {describe, test, expect, vi, beforeEach, afterEach, type MockInstance} from 'vitest';
+
+let warnSpy: MockInstance;
+beforeEach(() => {
+    warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+});
+afterEach(() => {
+    warnSpy.mockRestore();
+});
 
 describe('create visibility expression', () => {
     test('throws Error for invalid function', () => {
@@ -11,8 +19,6 @@ describe('create visibility expression', () => {
 
 describe('evaluate visibility expression', () => {
     test('literal value none', () => {
-        vi.spyOn(console, 'warn').mockImplementation(() => {});
-
         const value = createVisibilityExpression('none', {});
         expect(value.evaluate()).toBe('none');
         expect(value.getGlobalStateRefs().size).toBe(0);
@@ -20,8 +26,6 @@ describe('evaluate visibility expression', () => {
     });
 
     test('literal value visible', () => {
-        vi.spyOn(console, 'warn').mockImplementation(() => {});
-
         const value = createVisibilityExpression('visible', {});
         expect(value.evaluate()).toBe('visible');
         expect(value.getGlobalStateRefs().size).toBe(0);
@@ -32,8 +36,6 @@ describe('evaluate visibility expression', () => {
         const globalState: Record<string, any> = {};
         const value = createVisibilityExpression(['global-state', 'x'], globalState);
 
-        vi.spyOn(console, 'warn').mockImplementation(() => {});
-
         globalState.x = 'none';
         expect(value.evaluate()).toBe('none');
         expect(value.getGlobalStateRefs().has('x')).toBe(true);
@@ -43,8 +45,6 @@ describe('evaluate visibility expression', () => {
     test('global state property set to visible', () => {
         const globalState: Record<string, any> = {};
         const value = createVisibilityExpression(['global-state', 'x'], globalState);
-
-        vi.spyOn(console, 'warn').mockImplementation(() => {});
 
         globalState.x = 'visible';
         expect(value.evaluate()).toBe('visible');
@@ -59,8 +59,6 @@ describe('evaluate visibility expression', () => {
             globalState
         );
 
-        vi.spyOn(console, 'warn').mockImplementation(() => {});
-
         globalState.x = false;
         expect(value.evaluate()).toBe('none');
         expect(value.getGlobalStateRefs().has('x')).toBe(true);
@@ -74,8 +72,6 @@ describe('evaluate visibility expression', () => {
             globalState
         );
 
-        vi.spyOn(console, 'warn').mockImplementation(() => {});
-
         globalState.x = true;
         expect(value.evaluate()).toBe('visible');
         expect(value.getGlobalStateRefs().has('x')).toBe(true);
@@ -88,16 +84,12 @@ describe('evaluate visibility expression', () => {
             {}
         );
 
-        vi.spyOn(console, 'warn').mockImplementation(() => {});
-
         expect(value.evaluate()).toBe('visible');
         expect(console.warn).not.toHaveBeenCalled();
     });
 
     test('warns and falls back to default for invalid expression with feature', () => {
         const value = createVisibilityExpression(['get', 'x'], {});
-
-        vi.spyOn(console, 'warn').mockImplementation(() => {});
 
         expect(value.evaluate()).toBe('visible');
         expect(console.warn).toHaveBeenCalledWith(
@@ -108,8 +100,6 @@ describe('evaluate visibility expression', () => {
     test('warns and falls back to default for invalid expression with feature state', () => {
         const value = createVisibilityExpression(['feature-state', 'x'], {});
 
-        vi.spyOn(console, 'warn').mockImplementation(() => {});
-
         expect(value.evaluate()).toBe('visible');
         expect(console.warn).toHaveBeenCalledWith(
             'Expected value to be of type string, but found null instead.'
@@ -119,8 +109,6 @@ describe('evaluate visibility expression', () => {
     test('warns and falls back to default for missing global property', () => {
         const value = createVisibilityExpression(['global-state', 'x'], {});
 
-        vi.spyOn(console, 'warn').mockImplementation(() => {});
-
         expect(value.evaluate()).toBe('visible');
         expect(console.warn).toHaveBeenCalledWith(
             'Expected value to be of type string, but found null instead.'
@@ -129,8 +117,6 @@ describe('evaluate visibility expression', () => {
 
     test('warns and falls back to default for invalid global property', () => {
         const value = createVisibilityExpression(['global-state', 'x'], {x: 'invalid'});
-
-        vi.spyOn(console, 'warn').mockImplementation(() => {});
 
         expect(value.evaluate()).toBe('visible');
         expect(console.warn).toHaveBeenCalledWith(

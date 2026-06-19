@@ -5,7 +5,17 @@ import {ColorArray} from './types/color_array';
 import {NumberArray} from './types/number_array';
 import {Padding} from './types/padding';
 import type {Expression} from './expression';
-import {describe, test, expect, vi} from 'vitest';
+import {describe, test, expect, vi, beforeEach, afterEach, type MockInstance} from 'vitest';
+
+// Every test in this file is a happy path: none may emit a runtime warning.
+let warnSpy: MockInstance;
+beforeEach(() => {
+    warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+});
+afterEach(() => {
+    expect(warnSpy).not.toHaveBeenCalled();
+    warnSpy.mockRestore();
+});
 
 function stylePropertySpecification(type): StylePropertySpecification {
     return {
