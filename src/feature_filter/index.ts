@@ -95,10 +95,13 @@ function getLegacyFilterExpressionSuggestion(filter: Array<any>): unknown {
         case '>=':
             if (filter.length !== 3 || typeof filter[1] !== 'string') return null;
             if (filter[1] === '$type') {
-                return [
-                    filter[0],
-                    ['in', ['geometry-type'], ['literal', [filter[2], `Multi${filter[2]}`]]]
+                if (filter[0] !== '==' && filter[0] !== '!=') return null;
+                const expression = [
+                    'in',
+                    ['geometry-type'],
+                    ['literal', [filter[2], `Multi${filter[2]}`]]
                 ];
+                return filter[0] === '!=' ? ['!', expression] : expression;
             }
             return [filter[0], getFilterPropertyExpression(filter[1]), filter[2]];
 
