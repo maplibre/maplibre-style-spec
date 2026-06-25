@@ -2776,7 +2776,7 @@
       "type": "number",
       "default": 0,
       "units": "meters",
-      "doc": "Places the symbol at the specified elevation. Overrides the map's terrain elevation.",
+      "doc": "The elevation in which to elevate the symbol.",
       "requires": [
         {
           "symbol-placement": [
