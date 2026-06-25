@@ -2,7 +2,7 @@ import v8Spec from './reference/v8.json' with {type: 'json'};
 const v8 = v8Spec as any;
 import latest from './reference/latest';
 import {derefLayers} from './deref';
-import {diff} from './diff';
+import {diff, type DiffCommand, type DiffOperations} from './diff';
 import {ValidationError} from './error/validation_error';
 import {ParsingError} from './error/parsing_error';
 import {
@@ -22,7 +22,7 @@ import {
     CompositeExpression,
     StylePropertyExpression
 } from './expression';
-import {featureFilter, isExpressionFilter} from './feature_filter';
+import {type FeatureFilter, featureFilter, isExpressionFilter} from './feature_filter';
 
 import {convertFilter} from './feature_filter/convert';
 import {Color} from './expression/types/color';
@@ -30,13 +30,19 @@ import {Padding} from './expression/types/padding';
 import {NumberArray} from './expression/types/number_array';
 import {ColorArray} from './expression/types/color_array';
 import {VariableAnchorOffsetCollection} from './expression/types/variable_anchor_offset_collection';
-import {Formatted, FormattedSection} from './expression/types/formatted';
+import {Formatted, FormattedSection, VerticalAlign} from './expression/types/formatted';
 import {createFunction, isFunction} from './function';
 import {convertFunction} from './function/convert';
 import {eachSource, eachLayer, eachProperty} from './visit';
 import {ResolvedImage} from './expression/types/resolved_image';
 import {supportsPropertyExpression} from './util/properties';
-import {IMercatorCoordinate, ICanonicalTileID, ILngLat, ILngLatLike} from './tiles_and_coordinates';
+import type {
+    IMercatorCoordinate,
+    ICanonicalTileID,
+    ILngLat,
+    ILngLatLike
+} from './tiles_and_coordinates';
+import {Point2D} from './point2d';
 import {EvaluationContext} from './expression/evaluation_context';
 import {
     FormattedType,
@@ -46,7 +52,7 @@ import {
     ColorType,
     ProjectionDefinitionType
 } from './expression/types';
-
+import {Expression} from './expression/expression';
 import {expressions} from './expression/definitions';
 import {Interpolate} from './expression/definitions/interpolate';
 import {interpolateFactory, type InterpolationType} from './expression/definitions/interpolate';
@@ -59,7 +65,7 @@ import {typeOf} from './expression/values';
 import {FormatExpression} from './expression/definitions/format';
 import {Literal} from './expression/definitions/literal';
 import {CompoundExpression} from './expression/compound_expression';
-import {
+import type {
     ColorSpecification,
     PaddingSpecification,
     NumberArraySpecification,
@@ -72,7 +78,7 @@ import {validate} from './validate/validate';
 import {migrate} from './migrate';
 import {classifyRings} from './util/classify_rings';
 import {ProjectionDefinition} from './expression/types/projection_definition';
-import createVisibilityExpression from './expression/visibility';
+import createVisibilityExpression, {type VisibilityExpression} from './expression/visibility';
 
 type ExpressionType =
     | 'data-driven'
@@ -210,12 +216,31 @@ const styleFunction = {
 
 const visit = {eachLayer, eachProperty, eachSource};
 
+export type {
+    FeatureState,
+    Feature,
+    GlobalProperties,
+    SourceExpression,
+    CompositeExpression,
+    StylePropertyExpression,
+    DiffCommand,
+    DiffOperations,
+    FeatureFilter,
+    IMercatorCoordinate,
+    ICanonicalTileID,
+    ILngLat,
+    ILngLatLike,
+    Type,
+    InterpolationType,
+    VerticalAlign,
+    Point2D,
+    Expression
+};
+
 export {
     Interpolate,
-    InterpolationType,
     ValidationError,
     ParsingError,
-    FeatureState,
     ProjectionDefinition,
     Color,
     Step,
@@ -226,24 +251,15 @@ export {
     VariableAnchorOffsetCollection,
     Formatted,
     ResolvedImage,
-    Feature,
     EvaluationContext,
-    GlobalProperties,
-    SourceExpression,
-    CompositeExpression,
-    FormattedSection,
-    IMercatorCoordinate,
-    ICanonicalTileID,
-    ILngLat,
-    ILngLatLike,
     StyleExpression,
     ZoomConstantExpression,
     Literal,
-    Type,
     StylePropertyFunction,
-    StylePropertyExpression,
     ZoomDependentExpression,
     FormatExpression,
+    VisibilityExpression,
+    FormattedSection,
     latest,
     validateStyleMin,
     groupByLayout,
@@ -279,3 +295,5 @@ export {
     expression,
     FormattedType
 };
+
+export type * from './types.g';

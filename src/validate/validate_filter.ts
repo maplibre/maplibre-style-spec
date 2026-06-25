@@ -4,22 +4,45 @@ import {validateEnum} from './validate_enum';
 import {getType} from '../util/get_type';
 import {unbundle, deepUnbundle} from '../util/unbundle_jsonlint';
 import {extendBy as extend} from '../util/extend';
-import {isExpressionFilter} from '../feature_filter';
+import {
+    findMixedLegacyFilter,
+    getMixedFilterErrorMessage,
+    isExpressionFilter
+} from '../feature_filter';
 
-export function validateFilter(options) {
-    if (isExpressionFilter(deepUnbundle(options.value))) {
-        return validateExpression(
-            extend({}, options, {
-                expressionContext: 'filter',
-                valueSpec: {value: 'boolean'}
-            })
-        );
-    } else {
-        return validateNonExpressionFilter(options);
+function getValueAtPath(value: any, path: number[]) {
+    let current = value;
+    for (const index of path) {
+        current = current[index];
     }
+    return current;
 }
 
-function validateNonExpressionFilter(options) {
+export function validateFilter(options: any): ValidationError[] {
+    const value = deepUnbundle(options.value);
+    if (!isExpressionFilter(value)) {
+        return validateNonExpressionFilter(options);
+    }
+    const mixedLegacyDiagnostic = findMixedLegacyFilter(value);
+    if (mixedLegacyDiagnostic) {
+        const errorKey = `${options.key}${mixedLegacyDiagnostic.path.map((index) => `[${index}]`).join('')}`;
+        return [
+            new ValidationError(
+                errorKey,
+                getValueAtPath(options.value, mixedLegacyDiagnostic.path),
+                getMixedFilterErrorMessage(mixedLegacyDiagnostic.legacyFilter)
+            )
+        ];
+    }
+    return validateExpression(
+        extend({}, options, {
+            expressionContext: 'filter',
+            valueSpec: {value: 'boolean'}
+        })
+    );
+}
+
+function validateNonExpressionFilter(options: any): ValidationError[] {
     const value = options.value;
     const key = options.key;
 
@@ -30,7 +53,7 @@ function validateNonExpressionFilter(options) {
     const styleSpec = options.styleSpec;
     let type;
 
-    let errors = [];
+    let errors: ValidationError[] = [];
 
     if (value.length < 1) {
         return [new ValidationError(key, value, 'filter array must have at least 1 element')];

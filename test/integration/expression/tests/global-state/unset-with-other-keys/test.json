@@ -1,0 +1,30 @@
+{
+  "expression": [
+    "==",
+    [
+      "global-state",
+      "x"
+    ],
+    null
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
+  "globalState": {
+    "y": true
+  },
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": true,
+      "isZoomConstant": true,
+      "type": "boolean"
+    },
+    "outputs": [
+      true
+    ]
+  }
+}

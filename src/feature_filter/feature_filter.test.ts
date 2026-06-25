@@ -2,7 +2,7 @@ import {featureFilter, isExpressionFilter} from '.';
 
 import {convertFilter} from './convert';
 import {ICanonicalTileID} from '../tiles_and_coordinates';
-import {FilterSpecification} from '../types.g';
+import {ExpressionFilterSpecification, FilterSpecification} from '../types.g';
 import {Feature} from '../expression';
 import {getGeometry} from '../../test/lib/geometry';
 import {describe, test, expect, vi, beforeEach} from 'vitest';
@@ -88,15 +88,15 @@ describe('filter', () => {
     test('expression, type error', () => {
         expect(() => {
             featureFilter(['==', ['number', ['get', 'x']], ['string', ['get', 'y']]]);
-        }).toThrowError(": Cannot compare types 'number' and 'string'.");
+        }).toThrow(": Cannot compare types 'number' and 'string'.");
 
         expect(() => {
             featureFilter(['number', ['get', 'x']]);
-        }).toThrowError(': Expected boolean but found number instead.');
+        }).toThrow(': Expected boolean but found number instead.');
 
         expect(() => {
             featureFilter(['boolean', ['get', 'x']]);
-        }).not.toThrowError();
+        }).not.toThrow();
     });
 
     test('expression, within', () => {
@@ -167,8 +167,6 @@ describe('filter', () => {
         expect(filter(undefined, {properties: {x: 1}} as any as Feature)).toBe(true);
         expect(filter(undefined, {properties: {x: 2}} as any as Feature)).toBe(false);
     });
-
-    legacyFilterTests(featureFilter);
 });
 
 describe('getGlobalStateRefs', () => {
@@ -206,11 +204,6 @@ describe('legacy filter detection', () => {
 describe('convert legacy filters to expressions', () => {
     beforeEach(() => {
         vi.spyOn(console, 'warn').mockImplementation(() => {});
-    });
-
-    legacyFilterTests((f) => {
-        const converted = convertFilter(f);
-        return featureFilter(converted);
     });
 
     test('mimic legacy type mismatch semantics', () => {
@@ -258,404 +251,565 @@ describe('convert legacy filters to expressions', () => {
     });
 });
 
-function legacyFilterTests(createFilterExpr) {
-    test('degenerate', () => {
-        expect(createFilterExpr().filter()).toBe(true);
-        expect(createFilterExpr(undefined).filter()).toBe(true);
-        expect(createFilterExpr(null).filter()).toBe(true);
+describe('legacy filter tests', () => {
+    for (const createFilterExpr of [
+        featureFilter,
+        (f?: FilterSpecification) => featureFilter(convertFilter(f))
+    ]) {
+        test('degenerate', () => {
+            expect((createFilterExpr() as any).filter()).toBe(true);
+            expect((createFilterExpr(undefined) as any).filter()).toBe(true);
+            expect((createFilterExpr(null) as any).filter()).toBe(true);
+        });
+
+        test('==, string', () => {
+            const f = createFilterExpr(['==', 'foo', 'bar']).filter;
+            expect(f({zoom: 0}, {properties: {foo: 'bar'}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: 'baz'}} as any as Feature)).toBe(false);
+        });
+
+        test('==, number', () => {
+            const f = createFilterExpr(['==', 'foo', 0]).filter;
+            expect(f({zoom: 0}, {properties: {foo: 0}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: 1}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: '0'}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: true}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: false}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: null}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: undefined}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {}} as any as Feature)).toBe(false);
+        });
+
+        test('==, null', () => {
+            const f = createFilterExpr(['==', 'foo', null]).filter;
+            expect(f({zoom: 0}, {properties: {foo: 0}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: 1}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: '0'}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: true}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: false}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: null}} as any as Feature)).toBe(true);
+            // t.equal(f({zoom: 0}, {properties: {foo: undefined}}), false);
+            expect(f({zoom: 0}, {properties: {}} as any as Feature)).toBe(false);
+        });
+
+        test('==, $type', () => {
+            const f = createFilterExpr(['==', '$type', 'LineString']).filter;
+            expect(f({zoom: 0}, {type: 1} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {type: 2} as any as Feature)).toBe(true);
+        });
+
+        test('==, $id', () => {
+            const f = createFilterExpr(['==', '$id', 1234]).filter;
+
+            expect(f({zoom: 0}, {id: 1234} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {id: '1234'} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {id: 1234}} as any as Feature)).toBe(false);
+        });
+
+        test('!=, string', () => {
+            const f = createFilterExpr(['!=', 'foo', 'bar']).filter;
+            expect(f({zoom: 0}, {properties: {foo: 'bar'}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: 'baz'}} as any as Feature)).toBe(true);
+        });
+
+        test('!=, number', () => {
+            const f = createFilterExpr(['!=', 'foo', 0]).filter;
+            expect(f({zoom: 0}, {properties: {foo: 0}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: 1}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: '0'}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: true}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: false}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: null}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: undefined}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {}} as any as Feature)).toBe(true);
+        });
+
+        test('!=, null', () => {
+            const f = createFilterExpr(['!=', 'foo', null]).filter;
+            expect(f({zoom: 0}, {properties: {foo: 0}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: 1}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: '0'}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: true}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: false}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: null}} as any as Feature)).toBe(false);
+            // t.equal(f({zoom: 0}, {properties: {foo: undefined}}), true);
+            expect(f({zoom: 0}, {properties: {}} as any as Feature)).toBe(true);
+        });
+
+        test('!=, $type', () => {
+            const f = createFilterExpr(['!=', '$type', 'LineString']).filter;
+            expect(f({zoom: 0}, {type: 1} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {type: 2} as any as Feature)).toBe(false);
+        });
+
+        test('<, number', () => {
+            const f = createFilterExpr(['<', 'foo', 0]).filter;
+            expect(f({zoom: 0}, {properties: {foo: 1}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: 0}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: -1}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: '1'}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: '0'}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: '-1'}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: true}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: false}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: null}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: undefined}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {}} as any as Feature)).toBe(false);
+        });
+
+        test('<, string', () => {
+            const f = createFilterExpr(['<', 'foo', '0']).filter;
+            expect(f({zoom: 0}, {properties: {foo: -1}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: 0}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: 1}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: '1'}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: '0'}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: '-1'}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: true}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: false}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: null}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: undefined}} as any as Feature)).toBe(false);
+        });
+
+        test('<=, number', () => {
+            const f = createFilterExpr(['<=', 'foo', 0]).filter;
+            expect(f({zoom: 0}, {properties: {foo: 1}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: 0}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: -1}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: '1'}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: '0'}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: '-1'}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: true}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: false}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: null}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: undefined}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {}} as any as Feature)).toBe(false);
+        });
+
+        test('<=, string', () => {
+            const f = createFilterExpr(['<=', 'foo', '0']).filter;
+            expect(f({zoom: 0}, {properties: {foo: -1}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: 0}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: 1}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: '1'}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: '0'}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: '-1'}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: true}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: false}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: null}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: undefined}} as any as Feature)).toBe(false);
+        });
+
+        test('>, number', () => {
+            const f = createFilterExpr(['>', 'foo', 0]).filter;
+            expect(f({zoom: 0}, {properties: {foo: 1}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: 0}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: -1}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: '1'}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: '0'}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: '-1'}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: true}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: false}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: null}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: undefined}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {}} as any as Feature)).toBe(false);
+        });
+
+        test('>, string', () => {
+            const f = createFilterExpr(['>', 'foo', '0']).filter;
+            expect(f({zoom: 0}, {properties: {foo: -1}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: 0}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: 1}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: '1'}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: '0'}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: '-1'}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: true}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: false}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: null}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: undefined}} as any as Feature)).toBe(false);
+        });
+
+        test('>=, number', () => {
+            const f = createFilterExpr(['>=', 'foo', 0]).filter;
+            expect(f({zoom: 0}, {properties: {foo: 1}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: 0}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: -1}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: '1'}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: '0'}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: '-1'}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: true}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: false}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: null}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: undefined}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {}} as any as Feature)).toBe(false);
+        });
+
+        test('>=, string', () => {
+            const f = createFilterExpr(['>=', 'foo', '0']).filter;
+            expect(f({zoom: 0}, {properties: {foo: -1}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: 0}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: 1}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: '1'}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: '0'}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: '-1'}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: true}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: false}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: null}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: undefined}} as any as Feature)).toBe(false);
+        });
+
+        test('in, degenerate', () => {
+            const f = createFilterExpr(['in', 'foo']).filter;
+            expect(f({zoom: 0}, {properties: {foo: 1}} as any as Feature)).toBe(false);
+        });
+
+        test('in, string', () => {
+            const f = createFilterExpr(['in', 'foo', '0']).filter;
+            expect(f({zoom: 0}, {properties: {foo: 0}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: '0'}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: true}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: false}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: null}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: undefined}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {}} as any as Feature)).toBe(false);
+        });
+
+        test('in, number', () => {
+            const f = createFilterExpr(['in', 'foo', 0]).filter;
+            expect(f({zoom: 0}, {properties: {foo: 0}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: '0'}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: true}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: false}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: null}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: undefined}} as any as Feature)).toBe(false);
+        });
+
+        test('in, null', () => {
+            const f = createFilterExpr(['in', 'foo', null]).filter;
+            expect(f({zoom: 0}, {properties: {foo: 0}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: '0'}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: true}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: false}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: null}} as any as Feature)).toBe(true);
+            // t.equal(f({zoom: 0}, {properties: {foo: undefined}}), false);
+        });
+
+        test('in, multiple', () => {
+            const f = createFilterExpr(['in', 'foo', 0, 1]).filter;
+            expect(f({zoom: 0}, {properties: {foo: 0}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: 1}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: 3}} as any as Feature)).toBe(false);
+        });
+
+        test('in, large_multiple', () => {
+            const values = Array.from({length: 2000}).map(Number.call, Number);
+            values.reverse();
+            const f = createFilterExpr(
+                ['in', 'foo'].concat(values) as any as FilterSpecification
+            ).filter;
+            expect(f({zoom: 0}, {properties: {foo: 0}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: 1}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: 1999}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: 2000}} as any as Feature)).toBe(false);
+        });
+
+        test('in, large_multiple, heterogeneous', () => {
+            const values = Array.from({length: 2000}).map(Number.call, Number);
+            values.push('a');
+            values.unshift('b');
+            const f = createFilterExpr(
+                ['in', 'foo'].concat(values) as any as FilterSpecification
+            ).filter;
+            expect(f({zoom: 0}, {properties: {foo: 'b'}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: 'a'}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: 0}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: 1}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: 1999}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: 2000}} as any as Feature)).toBe(false);
+        });
+
+        test('in, $type', () => {
+            const f = createFilterExpr(['in', '$type', 'LineString', 'Polygon']).filter;
+            expect(f({zoom: 0}, {type: 1} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {type: 2} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {type: 3} as any as Feature)).toBe(true);
+
+            const f1 = createFilterExpr(['in', '$type', 'Polygon', 'LineString', 'Point']).filter;
+            expect(f1({zoom: 0}, {type: 1} as any as Feature)).toBe(true);
+            expect(f1({zoom: 0}, {type: 2} as any as Feature)).toBe(true);
+            expect(f1({zoom: 0}, {type: 3} as any as Feature)).toBe(true);
+        });
+
+        test('!in, degenerate', () => {
+            const f = createFilterExpr(['!in', 'foo']).filter;
+            expect(f({zoom: 0}, {properties: {foo: 1}} as any as Feature)).toBe(true);
+        });
+
+        test('!in, string', () => {
+            const f = createFilterExpr(['!in', 'foo', '0']).filter;
+            expect(f({zoom: 0}, {properties: {foo: 0}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: '0'}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: null}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: undefined}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {}} as any as Feature)).toBe(true);
+        });
+
+        test('!in, number', () => {
+            const f = createFilterExpr(['!in', 'foo', 0]).filter;
+            expect(f({zoom: 0}, {properties: {foo: 0}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: '0'}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: null}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: undefined}} as any as Feature)).toBe(true);
+        });
+
+        test('!in, null', () => {
+            const f = createFilterExpr(['!in', 'foo', null]).filter;
+            expect(f({zoom: 0}, {properties: {foo: 0}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: '0'}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: null}} as any as Feature)).toBe(false);
+            // t.equal(f({zoom: 0}, {properties: {foo: undefined}}), true);
+        });
+
+        test('!in, multiple', () => {
+            const f = createFilterExpr(['!in', 'foo', 0, 1]).filter;
+            expect(f({zoom: 0}, {properties: {foo: 0}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: 1}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: 3}} as any as Feature)).toBe(true);
+        });
+
+        test('!in, large_multiple', () => {
+            const f = createFilterExpr(
+                ['!in', 'foo'].concat(
+                    Array.from({length: 2000}).map(Number.call, Number)
+                ) as any as FilterSpecification
+            ).filter;
+            expect(f({zoom: 0}, {properties: {foo: 0}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: 1}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: 1999}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: 2000}} as any as Feature)).toBe(true);
+        });
+
+        test('!in, $type', () => {
+            const f = createFilterExpr(['!in', '$type', 'LineString', 'Polygon']).filter;
+            expect(f({zoom: 0}, {type: 1} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {type: 2} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {type: 3} as any as Feature)).toBe(false);
+        });
+
+        test('any', () => {
+            const f1 = createFilterExpr(['any']).filter;
+            expect(f1({zoom: 0}, {properties: {foo: 1}} as any as Feature)).toBe(false);
+
+            const f2 = createFilterExpr(['any', ['==', 'foo', 1]]).filter;
+            expect(f2({zoom: 0}, {properties: {foo: 1}} as any as Feature)).toBe(true);
+
+            const f3 = createFilterExpr(['any', ['==', 'foo', 0]]).filter;
+            expect(f3({zoom: 0}, {properties: {foo: 1}} as any as Feature)).toBe(false);
+
+            const f4 = createFilterExpr(['any', ['==', 'foo', 0], ['==', 'foo', 1]]).filter;
+            expect(f4({zoom: 0}, {properties: {foo: 1}} as any as Feature)).toBe(true);
+        });
+
+        test('all', () => {
+            const f1 = createFilterExpr(['all']).filter;
+            expect(f1({zoom: 0}, {properties: {foo: 1}} as any as Feature)).toBe(true);
+
+            const f2 = createFilterExpr(['all', ['==', 'foo', 1]]).filter;
+            expect(f2({zoom: 0}, {properties: {foo: 1}} as any as Feature)).toBe(true);
+
+            const f3 = createFilterExpr(['all', ['==', 'foo', 0]]).filter;
+            expect(f3({zoom: 0}, {properties: {foo: 1}} as any as Feature)).toBe(false);
+
+            const f4 = createFilterExpr(['all', ['==', 'foo', 0], ['==', 'foo', 1]]).filter;
+            expect(f4({zoom: 0}, {properties: {foo: 1}} as any as Feature)).toBe(false);
+        });
+
+        test('none', () => {
+            const f1 = createFilterExpr(['none']).filter;
+            expect(f1({zoom: 0}, {properties: {foo: 1}} as any as Feature)).toBe(true);
+
+            const f2 = createFilterExpr(['none', ['==', 'foo', 1]]).filter;
+            expect(f2({zoom: 0}, {properties: {foo: 1}} as any as Feature)).toBe(false);
+
+            const f3 = createFilterExpr(['none', ['==', 'foo', 0]]).filter;
+            expect(f3({zoom: 0}, {properties: {foo: 1}} as any as Feature)).toBe(true);
+
+            const f4 = createFilterExpr(['none', ['==', 'foo', 0], ['==', 'foo', 1]]).filter;
+            expect(f4({zoom: 0}, {properties: {foo: 1}} as any as Feature)).toBe(false);
+        });
+
+        test('has', () => {
+            const f = createFilterExpr(['has', 'foo']).filter;
+            expect(f({zoom: 0}, {properties: {foo: 0}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: 1}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: '0'}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: true}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {foo: false}} as any as Feature)).toBe(true);
+            // null is a valid JSON value, property exists
+            expect(f({zoom: 0}, {properties: {foo: null}} as any as Feature)).toBe(true);
+            // undefined means the property was never set, treated as absent
+            expect(f({zoom: 0}, {properties: {foo: undefined}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {}} as any as Feature)).toBe(false);
+        });
+
+        test('!has', () => {
+            const f = createFilterExpr(['!has', 'foo']).filter;
+            expect(f({zoom: 0}, {properties: {foo: 0}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: 1}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: '0'}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: false}} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {properties: {foo: false}} as any as Feature)).toBe(false);
+            // null is a valid JSON value, property exists
+            expect(f({zoom: 0}, {properties: {foo: null}} as any as Feature)).toBe(false);
+            // undefined means the property was never set, treated as absent
+            expect(f({zoom: 0}, {properties: {foo: undefined}} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {properties: {}} as any as Feature)).toBe(true);
+        });
+    }
+});
+
+describe('global-state in filter', () => {
+    test('basic global-state equality filter', () => {
+        const globalState = {activeId: 'track1'};
+        const ff = featureFilter(
+            ['==', ['get', 'id'], ['global-state', 'activeId']] as ExpressionFilterSpecification,
+            globalState
+        );
+        const f = ff.filter;
+
+        expect(ff.getGlobalStateRefs()).toEqual(new Set(['activeId']));
+        expect(f({zoom: 0}, {properties: {id: 'track1'}} as any as Feature)).toBe(true);
+        expect(f({zoom: 0}, {properties: {id: 'track2'}} as any as Feature)).toBe(false);
     });
 
-    test('==, string', () => {
-        const f = createFilterExpr(['==', 'foo', 'bar']).filter;
-        expect(f({zoom: 0}, {properties: {foo: 'bar'}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: 'baz'}})).toBe(false);
+    test('global-state filter updates reactively when state is mutated', () => {
+        const globalState: Record<string, any> = {activeId: 'none'};
+        const ff = featureFilter(
+            ['==', ['get', 'id'], ['global-state', 'activeId']] as ExpressionFilterSpecification,
+            globalState
+        );
+        const f = ff.filter;
+
+        // Initially no match
+        expect(f({zoom: 0}, {properties: {id: 'track1'}} as any as Feature)).toBe(false);
+
+        // Mutate global state (simulates setGlobalStateProperty)
+        globalState.activeId = 'track1';
+
+        // Filter should now match
+        expect(f({zoom: 0}, {properties: {id: 'track1'}} as any as Feature)).toBe(true);
+        expect(f({zoom: 0}, {properties: {id: 'track2'}} as any as Feature)).toBe(false);
     });
 
-    test('==, number', () => {
-        const f = createFilterExpr(['==', 'foo', 0]).filter;
-        expect(f({zoom: 0}, {properties: {foo: 0}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: 1}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: '0'}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: true}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: false}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: null}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: undefined}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {}})).toBe(false);
+    test('global-state in case filter expression', () => {
+        const globalState = {activeId: 'track1'};
+        const isActive = [
+            '==',
+            ['get', 'id'],
+            ['global-state', 'activeId']
+        ] as ExpressionFilterSpecification;
+        const ff = featureFilter(
+            [
+                'case',
+                isActive,
+                true,
+                ['any', ['==', ['get', 'role'], 'start'], ['==', ['get', 'role'], 'end']]
+            ] as ExpressionFilterSpecification,
+            globalState
+        );
+        const f = ff.filter;
+
+        // Active track: all roles pass
+        expect(f({zoom: 0}, {properties: {id: 'track1', role: 'mid'}} as any as Feature)).toBe(
+            true
+        );
+        expect(f({zoom: 0}, {properties: {id: 'track1', role: 'insert'}} as any as Feature)).toBe(
+            true
+        );
+        expect(f({zoom: 0}, {properties: {id: 'track1', role: 'start'}} as any as Feature)).toBe(
+            true
+        );
+
+        // Inactive track: only start/end pass
+        expect(f({zoom: 0}, {properties: {id: 'track2', role: 'mid'}} as any as Feature)).toBe(
+            false
+        );
+        expect(f({zoom: 0}, {properties: {id: 'track2', role: 'insert'}} as any as Feature)).toBe(
+            false
+        );
+        expect(f({zoom: 0}, {properties: {id: 'track2', role: 'start'}} as any as Feature)).toBe(
+            true
+        );
+        expect(f({zoom: 0}, {properties: {id: 'track2', role: 'end'}} as any as Feature)).toBe(
+            true
+        );
     });
 
-    test('==, null', () => {
-        const f = createFilterExpr(['==', 'foo', null]).filter;
-        expect(f({zoom: 0}, {properties: {foo: 0}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: 1}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: '0'}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: true}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: false}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: null}})).toBe(true);
-        // t.equal(f({zoom: 0}, {properties: {foo: undefined}}), false);
-        expect(f({zoom: 0}, {properties: {}})).toBe(false);
+    test('isExpressionFilter recognizes filters mixing $type with expression operators', () => {
+        // This is the exact pattern from issue #1544:
+        // ['all', ['==', '$type', 'Point'], ['case', isActive, true, fallback]]
+        const isActive = [
+            '==',
+            ['get', 'id'],
+            ['global-state', 'activeTrackId']
+        ] as ExpressionFilterSpecification;
+        const filter = [
+            'all',
+            ['==', '$type', 'Point'],
+            [
+                'case',
+                isActive,
+                true,
+                ['any', ['==', ['get', 'role'], 'start'], ['==', ['get', 'role'], 'end']]
+            ]
+        ] as ExpressionFilterSpecification;
+
+        // isExpressionFilter used to return false because ['==', '$type', 'Point']
+        // looks like a legacy filter (3 args, no arrays), causing the whole filter
+        // to be sent through convertFilter which silently mangles expression
+        // operators before the explicit mixed-syntax diagnostic can run.
+        expect(isExpressionFilter(filter)).toBe(true);
     });
 
-    test('==, $type', () => {
-        const f = createFilterExpr(['==', '$type', 'LineString']).filter;
-        expect(f({zoom: 0}, {type: 1})).toBe(false);
-        expect(f({zoom: 0}, {type: 2})).toBe(true);
+    test('mixed filter still fails cleanly for unsupported legacy special-key operators', () => {
+        const filter = [
+            'all',
+            ['>', '$type', 'Point'],
+            ['==', ['global-state', 'active'], true]
+        ] as ExpressionFilterSpecification;
+
+        expect(() => featureFilter(filter, {active: true})).toThrow(
+            '"$type" cannot be use with operator ">"'
+        );
     });
 
-    test('==, $id', () => {
-        const f = createFilterExpr(['==', '$id', 1234]).filter;
+    test('featureFilter throws explicit replacement guidance for mixed none filter', () => {
+        const globalState = {activeTrackId: 'track1'};
+        const isActive = [
+            '==',
+            ['get', 'id'],
+            ['global-state', 'activeTrackId']
+        ] as ExpressionFilterSpecification;
+        const filter = [
+            'none',
+            ['==', '$type', 'Polygon'],
+            ['case', isActive, true, false]
+        ] as unknown as ExpressionFilterSpecification;
 
-        expect(f({zoom: 0}, {id: 1234})).toBe(true);
-        expect(f({zoom: 0}, {id: '1234'})).toBe(false);
-        expect(f({zoom: 0}, {properties: {id: 1234}})).toBe(false);
+        expect(() => featureFilter(filter, globalState)).toThrow(
+            'Mixing deprecated filter syntax with expression syntax is not supported. Replace ["==","$type","Polygon"] with ["in",["geometry-type"],["literal",["Polygon","MultiPolygon"]]].'
+        );
     });
 
-    test('!=, string', () => {
-        const f = createFilterExpr(['!=', 'foo', 'bar']).filter;
-        expect(f({zoom: 0}, {properties: {foo: 'bar'}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: 'baz'}})).toBe(true);
+    test('suggests a valid expression for mixed "$type" != filter', () => {
+        const filter = [
+            'all',
+            ['!=', '$type', 'LineString'],
+            ['==', ['global-state', 'active'], true]
+        ] as unknown as ExpressionFilterSpecification;
+
+        expect(() => featureFilter(filter, {active: true})).toThrow(
+            'Mixing deprecated filter syntax with expression syntax is not supported. Replace ["!=","$type","LineString"] with ["!",["in",["geometry-type"],["literal",["LineString","MultiLineString"]]]].'
+        );
     });
-
-    test('!=, number', () => {
-        const f = createFilterExpr(['!=', 'foo', 0]).filter;
-        expect(f({zoom: 0}, {properties: {foo: 0}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: 1}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: '0'}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: true}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: false}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: null}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: undefined}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {}})).toBe(true);
-    });
-
-    test('!=, null', () => {
-        const f = createFilterExpr(['!=', 'foo', null]).filter;
-        expect(f({zoom: 0}, {properties: {foo: 0}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: 1}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: '0'}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: true}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: false}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: null}})).toBe(false);
-        // t.equal(f({zoom: 0}, {properties: {foo: undefined}}), true);
-        expect(f({zoom: 0}, {properties: {}})).toBe(true);
-    });
-
-    test('!=, $type', () => {
-        const f = createFilterExpr(['!=', '$type', 'LineString']).filter;
-        expect(f({zoom: 0}, {type: 1})).toBe(true);
-        expect(f({zoom: 0}, {type: 2})).toBe(false);
-    });
-
-    test('<, number', () => {
-        const f = createFilterExpr(['<', 'foo', 0]).filter;
-        expect(f({zoom: 0}, {properties: {foo: 1}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: 0}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: -1}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: '1'}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: '0'}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: '-1'}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: true}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: false}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: null}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: undefined}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {}})).toBe(false);
-    });
-
-    test('<, string', () => {
-        const f = createFilterExpr(['<', 'foo', '0']).filter;
-        expect(f({zoom: 0}, {properties: {foo: -1}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: 0}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: 1}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: '1'}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: '0'}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: '-1'}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: true}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: false}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: null}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: undefined}})).toBe(false);
-    });
-
-    test('<=, number', () => {
-        const f = createFilterExpr(['<=', 'foo', 0]).filter;
-        expect(f({zoom: 0}, {properties: {foo: 1}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: 0}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: -1}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: '1'}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: '0'}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: '-1'}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: true}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: false}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: null}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: undefined}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {}})).toBe(false);
-    });
-
-    test('<=, string', () => {
-        const f = createFilterExpr(['<=', 'foo', '0']).filter;
-        expect(f({zoom: 0}, {properties: {foo: -1}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: 0}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: 1}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: '1'}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: '0'}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: '-1'}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: true}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: false}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: null}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: undefined}})).toBe(false);
-    });
-
-    test('>, number', () => {
-        const f = createFilterExpr(['>', 'foo', 0]).filter;
-        expect(f({zoom: 0}, {properties: {foo: 1}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: 0}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: -1}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: '1'}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: '0'}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: '-1'}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: true}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: false}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: null}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: undefined}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {}})).toBe(false);
-    });
-
-    test('>, string', () => {
-        const f = createFilterExpr(['>', 'foo', '0']).filter;
-        expect(f({zoom: 0}, {properties: {foo: -1}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: 0}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: 1}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: '1'}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: '0'}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: '-1'}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: true}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: false}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: null}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: undefined}})).toBe(false);
-    });
-
-    test('>=, number', () => {
-        const f = createFilterExpr(['>=', 'foo', 0]).filter;
-        expect(f({zoom: 0}, {properties: {foo: 1}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: 0}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: -1}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: '1'}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: '0'}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: '-1'}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: true}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: false}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: null}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: undefined}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {}})).toBe(false);
-    });
-
-    test('>=, string', () => {
-        const f = createFilterExpr(['>=', 'foo', '0']).filter;
-        expect(f({zoom: 0}, {properties: {foo: -1}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: 0}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: 1}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: '1'}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: '0'}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: '-1'}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: true}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: false}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: null}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: undefined}})).toBe(false);
-    });
-
-    test('in, degenerate', () => {
-        const f = createFilterExpr(['in', 'foo']).filter;
-        expect(f({zoom: 0}, {properties: {foo: 1}})).toBe(false);
-    });
-
-    test('in, string', () => {
-        const f = createFilterExpr(['in', 'foo', '0']).filter;
-        expect(f({zoom: 0}, {properties: {foo: 0}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: '0'}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: true}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: false}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: null}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: undefined}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {}})).toBe(false);
-    });
-
-    test('in, number', () => {
-        const f = createFilterExpr(['in', 'foo', 0]).filter;
-        expect(f({zoom: 0}, {properties: {foo: 0}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: '0'}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: true}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: false}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: null}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: undefined}})).toBe(false);
-    });
-
-    test('in, null', () => {
-        const f = createFilterExpr(['in', 'foo', null]).filter;
-        expect(f({zoom: 0}, {properties: {foo: 0}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: '0'}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: true}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: false}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: null}})).toBe(true);
-        // t.equal(f({zoom: 0}, {properties: {foo: undefined}}), false);
-    });
-
-    test('in, multiple', () => {
-        const f = createFilterExpr(['in', 'foo', 0, 1]).filter;
-        expect(f({zoom: 0}, {properties: {foo: 0}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: 1}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: 3}})).toBe(false);
-    });
-
-    test('in, large_multiple', () => {
-        const values = Array.from({length: 2000}).map(Number.call, Number);
-        values.reverse();
-        const f = createFilterExpr(['in', 'foo'].concat(values)).filter;
-        expect(f({zoom: 0}, {properties: {foo: 0}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: 1}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: 1999}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: 2000}})).toBe(false);
-    });
-
-    test('in, large_multiple, heterogeneous', () => {
-        const values = Array.from({length: 2000}).map(Number.call, Number);
-        values.push('a');
-        values.unshift('b');
-        const f = createFilterExpr(['in', 'foo'].concat(values)).filter;
-        expect(f({zoom: 0}, {properties: {foo: 'b'}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: 'a'}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: 0}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: 1}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: 1999}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: 2000}})).toBe(false);
-    });
-
-    test('in, $type', () => {
-        const f = createFilterExpr(['in', '$type', 'LineString', 'Polygon']).filter;
-        expect(f({zoom: 0}, {type: 1})).toBe(false);
-        expect(f({zoom: 0}, {type: 2})).toBe(true);
-        expect(f({zoom: 0}, {type: 3})).toBe(true);
-
-        const f1 = createFilterExpr(['in', '$type', 'Polygon', 'LineString', 'Point']).filter;
-        expect(f1({zoom: 0}, {type: 1})).toBe(true);
-        expect(f1({zoom: 0}, {type: 2})).toBe(true);
-        expect(f1({zoom: 0}, {type: 3})).toBe(true);
-    });
-
-    test('!in, degenerate', () => {
-        const f = createFilterExpr(['!in', 'foo']).filter;
-        expect(f({zoom: 0}, {properties: {foo: 1}})).toBe(true);
-    });
-
-    test('!in, string', () => {
-        const f = createFilterExpr(['!in', 'foo', '0']).filter;
-        expect(f({zoom: 0}, {properties: {foo: 0}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: '0'}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: null}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: undefined}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {}})).toBe(true);
-    });
-
-    test('!in, number', () => {
-        const f = createFilterExpr(['!in', 'foo', 0]).filter;
-        expect(f({zoom: 0}, {properties: {foo: 0}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: '0'}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: null}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: undefined}})).toBe(true);
-    });
-
-    test('!in, null', () => {
-        const f = createFilterExpr(['!in', 'foo', null]).filter;
-        expect(f({zoom: 0}, {properties: {foo: 0}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: '0'}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: null}})).toBe(false);
-        // t.equal(f({zoom: 0}, {properties: {foo: undefined}}), true);
-    });
-
-    test('!in, multiple', () => {
-        const f = createFilterExpr(['!in', 'foo', 0, 1]).filter;
-        expect(f({zoom: 0}, {properties: {foo: 0}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: 1}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: 3}})).toBe(true);
-    });
-
-    test('!in, large_multiple', () => {
-        const f = createFilterExpr(
-            ['!in', 'foo'].concat(Array.from({length: 2000}).map(Number.call, Number))
-        ).filter;
-        expect(f({zoom: 0}, {properties: {foo: 0}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: 1}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: 1999}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: 2000}})).toBe(true);
-    });
-
-    test('!in, $type', () => {
-        const f = createFilterExpr(['!in', '$type', 'LineString', 'Polygon']).filter;
-        expect(f({zoom: 0}, {type: 1})).toBe(true);
-        expect(f({zoom: 0}, {type: 2})).toBe(false);
-        expect(f({zoom: 0}, {type: 3})).toBe(false);
-    });
-
-    test('any', () => {
-        const f1 = createFilterExpr(['any']).filter;
-        expect(f1({zoom: 0}, {properties: {foo: 1}})).toBe(false);
-
-        const f2 = createFilterExpr(['any', ['==', 'foo', 1]]).filter;
-        expect(f2({zoom: 0}, {properties: {foo: 1}})).toBe(true);
-
-        const f3 = createFilterExpr(['any', ['==', 'foo', 0]]).filter;
-        expect(f3({zoom: 0}, {properties: {foo: 1}})).toBe(false);
-
-        const f4 = createFilterExpr(['any', ['==', 'foo', 0], ['==', 'foo', 1]]).filter;
-        expect(f4({zoom: 0}, {properties: {foo: 1}})).toBe(true);
-    });
-
-    test('all', () => {
-        const f1 = createFilterExpr(['all']).filter;
-        expect(f1({zoom: 0}, {properties: {foo: 1}})).toBe(true);
-
-        const f2 = createFilterExpr(['all', ['==', 'foo', 1]]).filter;
-        expect(f2({zoom: 0}, {properties: {foo: 1}})).toBe(true);
-
-        const f3 = createFilterExpr(['all', ['==', 'foo', 0]]).filter;
-        expect(f3({zoom: 0}, {properties: {foo: 1}})).toBe(false);
-
-        const f4 = createFilterExpr(['all', ['==', 'foo', 0], ['==', 'foo', 1]]).filter;
-        expect(f4({zoom: 0}, {properties: {foo: 1}})).toBe(false);
-    });
-
-    test('none', () => {
-        const f1 = createFilterExpr(['none']).filter;
-        expect(f1({zoom: 0}, {properties: {foo: 1}})).toBe(true);
-
-        const f2 = createFilterExpr(['none', ['==', 'foo', 1]]).filter;
-        expect(f2({zoom: 0}, {properties: {foo: 1}})).toBe(false);
-
-        const f3 = createFilterExpr(['none', ['==', 'foo', 0]]).filter;
-        expect(f3({zoom: 0}, {properties: {foo: 1}})).toBe(true);
-
-        const f4 = createFilterExpr(['none', ['==', 'foo', 0], ['==', 'foo', 1]]).filter;
-        expect(f4({zoom: 0}, {properties: {foo: 1}})).toBe(false);
-    });
-
-    test('has', () => {
-        const f = createFilterExpr(['has', 'foo']).filter;
-        expect(f({zoom: 0}, {properties: {foo: 0}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: 1}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: '0'}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: true}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: false}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: null}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {foo: undefined}})).toBe(true);
-        expect(f({zoom: 0}, {properties: {}})).toBe(false);
-    });
-
-    test('!has', () => {
-        const f = createFilterExpr(['!has', 'foo']).filter;
-        expect(f({zoom: 0}, {properties: {foo: 0}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: 1}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: '0'}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: false}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: false}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: null}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {foo: undefined}})).toBe(false);
-        expect(f({zoom: 0}, {properties: {}})).toBe(true);
-    });
-}
+});

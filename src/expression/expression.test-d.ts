@@ -324,12 +324,71 @@ describe('"slice" expression', () => {
     });
 });
 
+describe('"split" expression', () => {
+    test('type requires an input argument', () => {
+        expectTypeOf<['split']>().not.toExtend<ExpressionSpecification>();
+    });
+    test('type requires a separator argument', () => {
+        expectTypeOf<['split', '1+2+3']>().not.toExtend<ExpressionSpecification>();
+    });
+    test('type requires a string as the input argument', () => {
+        expectTypeOf<['split', true, '+']>().not.toExtend<ExpressionSpecification>();
+    });
+    test('type requires a string as the separator argument', () => {
+        expectTypeOf<['split', '1+2+3', true]>().not.toExtend<ExpressionSpecification>();
+    });
+    test('type accepts expression which splits a string', () => {
+        expectTypeOf<['split', '1+2+3', '+']>().toExtend<ExpressionSpecification>();
+    });
+});
+
+describe('"join" expression', () => {
+    test('type requires an input argument', () => {
+        expectTypeOf<['join']>().not.toExtend<ExpressionSpecification>();
+    });
+    test('type requires a separator argument', () => {
+        expectTypeOf<
+            ['join', ['literal', ['1', '2', '3']]]
+        >().not.toExtend<ExpressionSpecification>();
+    });
+    test('type requires a string as the separator argument', () => {
+        expectTypeOf<
+            ['join', ['literal', ['1', '2', '3']], true]
+        >().not.toExtend<ExpressionSpecification>();
+    });
+    test('type accepts expression which joins an array', () => {
+        expectTypeOf<
+            ['join', ['literal', ['1', '2', '3']], '+']
+        >().toExtend<ExpressionSpecification>();
+    });
+});
+
 describe('comparison expressions', () => {
     describe('"!=" expression', () => {
         test('type accepts expression which compares against literal null value', () => {
             expectTypeOf<
                 ['!=', null, ['get', 'nonexistent-prop']]
             >().toExtend<ExpressionSpecification>();
+        });
+        test('allows the third argument to be a collator', () => {
+            expectTypeOf<
+                ['!=', null, ['get', 'nonexistent-prop'], ['collator', {locale: 'mi-NZ'}]]
+            >().toExtend<ExpressionSpecification>();
+        });
+        test('allows the third argument to be a var', () => {
+            expectTypeOf<
+                [
+                    'let',
+                    'myVariable',
+                    ['collator', {'diacritic-sensitive': true}],
+                    ['!=', 'münchen', 'munchen', ['var', 'myVariable']]
+                ]
+            >().toExtend<ExpressionSpecification>();
+        });
+        test('does not allow the third argument to be any other expression type', () => {
+            expectTypeOf<
+                ['!=', 'münchen', 'munchen', ['!', true]]
+            >().not.toExtend<ExpressionSpecification>();
         });
     });
     describe('"==" expression', () => {
@@ -343,10 +402,50 @@ describe('comparison expressions', () => {
                 ['==', null, ['get', 'nonexistent-prop']]
             >().toExtend<ExpressionSpecification>();
         });
+        test('allows the third argument to be a collator', () => {
+            expectTypeOf<
+                ['==', null, ['get', 'nonexistent-prop'], ['collator', {locale: 'mi-NZ'}]]
+            >().toExtend<ExpressionSpecification>();
+        });
+        test('allows the third argument to be a var', () => {
+            expectTypeOf<
+                [
+                    'let',
+                    'myVariable',
+                    ['collator', {'diacritic-sensitive': true}],
+                    ['==', 'münchen', 'munchen', ['var', 'myVariable']]
+                ]
+            >().toExtend<ExpressionSpecification>();
+        });
+        test('does not allow the third argument to be any other expression type', () => {
+            expectTypeOf<
+                ['==', 'münchen', 'munchen', ['!', true]]
+            >().not.toExtend<ExpressionSpecification>();
+        });
     });
     describe('"<" expression', () => {
         test('type rejects boolean input', () => {
             expectTypeOf<['<', -1, true]>().not.toExtend<ExpressionSpecification>();
+        });
+        test('allows the third argument to be a collator', () => {
+            expectTypeOf<
+                ['<', 'ä', 'a', ['collator', {locale: 'sv'}]]
+            >().toExtend<ExpressionSpecification>();
+        });
+        test('allows the third argument to be a var', () => {
+            expectTypeOf<
+                [
+                    'let',
+                    'myVariable',
+                    ['collator', {locale: 'sv'}],
+                    ['<', 'ä', 'a', ['var', 'myVariable']]
+                ]
+            >().toExtend<ExpressionSpecification>();
+        });
+        test('does not allow the third argument to be any other expression type', () => {
+            expectTypeOf<
+                ['<', 'ä', 'a', ['get', 'prop']]
+            >().not.toExtend<ExpressionSpecification>();
         });
     });
     describe('"<=" expression', () => {

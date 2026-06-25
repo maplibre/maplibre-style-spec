@@ -43,6 +43,6 @@ describe('ColorArray', () => {
 
         expect(() => {
             ColorArray.interpolate(colorArray, targetColorArray, 0.5);
-        }).toThrowError('colorArray: Arrays have mismatched length (2 vs. 1), cannot interpolate.');
+        }).toThrow('colorArray: Arrays have mismatched length (2 vs. 1), cannot interpolate.');
     });
 });

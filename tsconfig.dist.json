@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "strict": true,
+    "types": [
+      "geojson"
+    ]
+  },
+  "include": [
+    "dist/index.d.ts"
+  ],
+  "exclude": []
+}

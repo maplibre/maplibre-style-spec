@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import minimist from 'minimist';
-import rw from 'rw';
+import {readFileSync} from 'node:fs';
 import {validateStyle as validate} from '../src/validate_style';
 
 const argv = minimist(process.argv.slice(2), {
@@ -18,7 +18,7 @@ if (argv.help || argv.h || (!argv._.length && process.stdin.isTTY)) {
     }
 
     argv._.forEach((file) => {
-        const errors = validate(rw.readFileSync(file, 'utf8'));
+        const errors = validate(readFileSync(file === '/dev/stdin' ? 0 : file, 'utf8'));
         if (errors.length) {
             if (argv.json) {
                 process.stdout.write(JSON.stringify(errors, null, 2));

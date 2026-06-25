@@ -8,8 +8,11 @@ dist
 coverage/
 site/
 docs/*
+!docs/assets
+docs/assets/*
 !docs/assets/extra.css
-!docs/assets/logo.svg
+!docs/assets/*.png
+!docs/assets/*.svg
 !docs/README.md
 !docs/types.md
 !docs/sprite.md

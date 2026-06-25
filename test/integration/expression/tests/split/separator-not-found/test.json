@@ -1,0 +1,26 @@
+{
+  "expression": [
+    "split",
+    "needle",
+    "haystack"
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": true,
+      "isZoomConstant": true,
+      "type": "array<string>"
+    },
+    "outputs": [
+      [
+        "needle"
+      ]
+    ]
+  }
+}

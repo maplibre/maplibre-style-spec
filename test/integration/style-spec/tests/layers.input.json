@@ -190,6 +190,16 @@
         "hillshade-highlight-color": [],
         "hillshade-shadow-color": []
       }
+    },
+    {
+      "id": "redundant-resampling",
+      "type": "raster",
+      "source": "raster",
+      "source-layer": "source-layer",
+      "paint": {
+        "resampling": "nearest",
+        "raster-resampling": "linear"
+      }
     }
   ]
 }

@@ -1,0 +1,23 @@
+{
+  "expression": [
+    "let",
+    "myVariable",
+    ["collator", { "locale": ["get", "locale"] }],
+    [">", "ä", "a", ["var", "myVariable"]]
+  ],
+  "inputs": [
+    [{}, { "properties": { "locale": "de" } }],
+    [{}, { "properties": { "locale": "sv" } }],
+    [{}, { "properties": { "locale": "dk" } }],
+    [{}, { "properties": { "locale": "fr" } }]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": false,
+      "isZoomConstant": true,
+      "type": "boolean"
+    },
+    "outputs": [true, true, false, false]
+  }
+}

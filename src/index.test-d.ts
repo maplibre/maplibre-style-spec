@@ -107,6 +107,9 @@ describe('style-spec', () => {
         expectTypeOf<{'color-relief-color-transition': {duration: 100}}>().not.toExtend<
             ColorReliefLayerSpecification['paint']
         >();
+        expectTypeOf<{'resampling-transition': {duration: 100}}>().not.toExtend<
+            ColorReliefLayerSpecification['paint']
+        >();
     });
 
     test('FillLayerSpecification contains *-transition keys for transitionable paint properties', () => {
@@ -211,6 +214,9 @@ describe('style-spec', () => {
         expectTypeOf<{'hillshade-method-transition': {duration: 100}}>().not.toExtend<
             HillshadeLayerSpecification['paint']
         >();
+        expectTypeOf<{'resampling-transition': {duration: 100}}>().not.toExtend<
+            HillshadeLayerSpecification['paint']
+        >();
     });
 
     test('LineLayerSpecification contains *-transition keys for transitionable paint properties', () => {
@@ -272,6 +278,9 @@ describe('style-spec', () => {
         >();
     });
     test('RasterLayerSpecification does not contain *-transition keys for untransitionable paint properties', () => {
+        expectTypeOf<{'resampling-transition': {duration: 100}}>().not.toExtend<
+            RasterLayerSpecification['paint']
+        >();
         expectTypeOf<{'raster-resampling-transition': {duration: 100}}>().not.toExtend<
             RasterLayerSpecification['paint']
         >();
