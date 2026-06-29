@@ -53,7 +53,7 @@
     "bin"
   ],
   "dependencies": {
-    "@mapbox/jsonlint-lines-primitives": "~2.0.2",
+    "@mapbox/jsonlint-lines-primitives": "~2.0.3",
     "@mapbox/unitbezier": "^1.0.0",
     "json-stringify-pretty-compact": "^4.0.0",
     "minimist": "^1.2.8",
