@@ -5,12 +5,10 @@
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
 
-- Add AI usage note to CONTRIBUTING.md ([#1729](https://github.com/maplibre/maplibre-style-spec/pull/1729)) (by [@mizmay](https://github.com/mizmay))
-- test: enable restoreMocks and isolate console.warn spies in expression tests ([#1713](https://github.com/maplibre/maplibre-style-spec/pull/1713)) (by [@CommanderStorm](https://github.com/CommanderStorm))
 ## 25.0.1
-### ✨ Features and improvements
 
 ### 🐞 Bug fixes
+
 - `has` filter now returns `false` when a property exists but is set to `undefined` ([#1712](https://github.com/maplibre/maplibre-style-spec/pull/1712)) (by [@xavierjs](https://github.com/xavierjs))
 - Fix incorrect replacement suggestion in error messages for mixed legacy+expression `$type` filters ([#1727](https://github.com/maplibre/maplibre-style-spec/pull/1727), [#1728](https://github.com/maplibre/maplibre-style-spec/pull/1728)) (by [@ciscorn](https://github.com/ciscorn))
 
