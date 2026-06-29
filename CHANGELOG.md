@@ -4,7 +4,7 @@
 
 ### 🐞 Bug fixes
 - `has` filter now returns `false` when a property exists but is set to `undefined` ([#1712](https://github.com/maplibre/maplibre-style-spec/pull/1712)) (by [@xavierjs](https://github.com/xavierjs))
-- Fix incorrect replacement suggestion in error messages for mixed legacy+expression `$type` filters ([#1727](https://github.com/maplibre/maplibre-style-spec/pull/1727)) (by [@ciscorn](https://github.com/ciscorn))
+- Fix incorrect replacement suggestion in error messages for mixed legacy+expression `$type` filters ([#1727](https://github.com/maplibre/maplibre-style-spec/pull/1727), [#1728](https://github.com/maplibre/maplibre-style-spec/pull/1728)) (by [@ciscorn](https://github.com/ciscorn))
 - _...Add new stuff here..._
 
 ## 25.0.0

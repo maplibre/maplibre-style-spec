@@ -797,7 +797,7 @@ describe('global-state in filter', () => {
         ] as unknown as ExpressionFilterSpecification;
 
         expect(() => featureFilter(filter, globalState)).toThrow(
-            'Mixing deprecated filter syntax with expression syntax is not supported. Replace ["==","$type","Polygon"] with ["in",["geometry-type"],["literal",["Polygon","MultiPolygon"]]].'
+            'Mixing deprecated filter syntax with expression syntax is not supported. Replace ["==","$type","Polygon"] with ["==",["geometry-type"],"Polygon"].'
         );
     });
 
@@ -809,7 +809,7 @@ describe('global-state in filter', () => {
         ] as unknown as ExpressionFilterSpecification;
 
         expect(() => featureFilter(filter, {active: true})).toThrow(
-            'Mixing deprecated filter syntax with expression syntax is not supported. Replace ["!=","$type","LineString"] with ["!",["in",["geometry-type"],["literal",["LineString","MultiLineString"]]]].'
+            'Mixing deprecated filter syntax with expression syntax is not supported. Replace ["!=","$type","LineString"] with ["!=",["geometry-type"],"LineString"].'
         );
     });
 });
