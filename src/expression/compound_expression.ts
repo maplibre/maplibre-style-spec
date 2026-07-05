@@ -54,7 +54,13 @@ export class CompoundExpression implements Expression {
 
     static definitions: {[_: string]: Definition};
 
-    constructor(name: string, type: Type, evaluate: Evaluate, args: Array<Expression>, key: string) {
+    constructor(
+        name: string,
+        type: Type,
+        evaluate: Evaluate,
+        args: Array<Expression>,
+        key: string
+    ) {
         this.name = name;
         this.type = type;
         this._evaluate = evaluate;
@@ -149,7 +155,13 @@ export class CompoundExpression implements Expression {
             }
 
             if (signatureContext.errors.length === 0) {
-                return new CompoundExpression(op, type, evaluate as Evaluate, parsedArgs, context.key);
+                return new CompoundExpression(
+                    op,
+                    type,
+                    evaluate as Evaluate,
+                    parsedArgs,
+                    context.key
+                );
             }
         }
 

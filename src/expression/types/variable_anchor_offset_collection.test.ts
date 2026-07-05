@@ -45,7 +45,12 @@ describe('VariableAnchorOffsetCollection', () => {
                 'Cannot interpolate values containing mismatched anchors. from[0]: top, to[0]: bottom'
             );
             expect(() =>
-                i11nFn(parseFn(['top', [0, 0]]), parseFn(['top', [1, 1], 'bottom', [2, 2]]), 0.5, key)
+                i11nFn(
+                    parseFn(['top', [0, 0]]),
+                    parseFn(['top', [1, 1], 'bottom', [2, 2]]),
+                    0.5,
+                    key
+                )
             ).toThrow(
                 'Cannot interpolate values of different length. from: ["top",[0,0]], to: ["top",[1,1],"bottom",[2,2]]'
             );

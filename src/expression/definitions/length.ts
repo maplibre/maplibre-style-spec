@@ -11,7 +11,10 @@ import type {Type} from '../types';
 export class Length implements Expression {
     type: Type = NumberType;
 
-    constructor(public input: Expression, public readonly key: string) {}
+    constructor(
+        public input: Expression,
+        public readonly key: string
+    ) {}
 
     static parse(args: ReadonlyArray<unknown>, context: ParsingContext): Expression {
         if (args.length !== 2)
