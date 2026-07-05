@@ -74,13 +74,13 @@
       1,
       1,
       {
-        "error": "expression[1]: Expected value to be of type number, but found null instead."
+        "error": "layers[0].paint.some-property[1]: Expected value to be of type number, but found null instead."
       },
       {
-        "error": "expression[1]: Expected value to be of type number, but found null instead."
+        "error": "layers[0].paint.some-property[1]: Expected value to be of type number, but found null instead."
       },
       {
-        "error": "expression[1]: Expected value to be of type number, but found null instead."
+        "error": "layers[0].paint.some-property[1]: Expected value to be of type number, but found null instead."
       }
     ]
   }

@@ -23,11 +23,13 @@ import {describe, expect, test} from 'vitest';
 
 const DECIMAL_SIGNIFICANT_FIGURES = 6;
 
-// Stand-in for the location of the expression in the style JSON. Real callers
-// pass something like `layers[3].paint.line-width`; here it just anchors the
-// `rootKey + index path` prefix that the runtime warning mechanism produces, so
-// these fixtures exercise the same location reporting gl-js shows at render time.
-const ROOT_KEY = 'expression';
+// The location of the expression within the style JSON, exactly as a real
+// caller (e.g. gl-js) would pass it. Every runtime error a fixture asserts is
+// prefixed with this `rootKey` plus the throwing sub-expression's index path
+// (e.g. `layers[0].paint.some-property[1]: ...`), mirroring the location
+// reporting gl-js shows at render time. `some-property` stands in for whatever
+// property the expression happens to drive.
+const ROOT_KEY = 'layers[0].paint.some-property';
 
 type Mutable<T> = {
     -readonly [K in keyof T]: T[K];
@@ -255,8 +257,8 @@ function evaluateExpression(
         } catch (error) {
             // Prefix with the `rootKey + index path` location the runtime warning
             // mechanism reports, so the fixtures pin down where in the expression a
-            // throw originates (e.g. `expression[3]: ...`). A non-RuntimeError throw
-            // has no index path, so it anchors at the root ('').
+            // throw originates (e.g. `layers[0].paint.some-property[3]: ...`). A
+            // non-RuntimeError throw has no index path, so it anchors at the root ('').
             const path = error instanceof RuntimeError ? error.path : '';
             const message =
                 error.name === 'ExpressionEvaluationError' ? error.toJSON() : error.message;

@@ -39,7 +39,7 @@
     "outputs": [
       0,
       {
-        "error": "expression[2]: Expected value to be of type array, but found string instead."
+        "error": "layers[0].paint.some-property[2]: Expected value to be of type array, but found string instead."
       }
     ]
   }

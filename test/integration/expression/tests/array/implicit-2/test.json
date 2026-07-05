@@ -59,10 +59,10 @@
         "b"
       ],
       {
-        "error": "expression: Expected value to be of type array<string>, but found array<number, 2> instead."
+        "error": "layers[0].paint.some-property: Expected value to be of type array<string>, but found array<number, 2> instead."
       },
       {
-        "error": "expression: Expected value to be of type array<string>, but found string instead."
+        "error": "layers[0].paint.some-property: Expected value to be of type array<string>, but found string instead."
       }
     ]
   }

@@ -9,15 +9,9 @@ import type {EvaluationContext} from '../evaluation_context';
 import type {Type} from '../types';
 
 export class Length implements Expression {
-    type: Type;
-    input: Expression;
-    readonly key: string;
+    type: Type = NumberType;
 
-    constructor(input: Expression, key: string) {
-        this.type = NumberType;
-        this.input = input;
-        this.key = key;
-    }
+    constructor(public input: Expression, public readonly key: string) {}
 
     static parse(args: ReadonlyArray<unknown>, context: ParsingContext): Expression {
         if (args.length !== 2)

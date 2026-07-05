@@ -24,15 +24,11 @@ const types = {
 };
 
 export class Assertion implements Expression {
-    type: Type;
-    args: Array<Expression>;
-    readonly key: string;
-
-    constructor(type: Type, args: Array<Expression>, key: string) {
-        this.type = type;
-        this.args = args;
-        this.key = key;
-    }
+    constructor(
+        public type: Type,
+        public args: Array<Expression>,
+        public readonly key: string
+    ) {}
 
     static parse(args: ReadonlyArray<unknown>, context: ParsingContext): Expression {
         if (args.length < 2) return context.error('Expected at least one argument.') as null;

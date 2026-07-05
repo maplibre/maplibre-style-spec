@@ -60,7 +60,7 @@
     },
     "outputs": [
       {
-        "error": "expression: Expected value to be of type array<number>, but found null instead."
+        "error": "layers[0].paint.some-property: Expected value to be of type array<number>, but found null instead."
       },
       [
         0
@@ -69,7 +69,7 @@
         1
       ],
       {
-        "error": "expression: Expected value to be of type array<number>, but found string instead."
+        "error": "layers[0].paint.some-property: Expected value to be of type array<number>, but found string instead."
       }
     ]
   }

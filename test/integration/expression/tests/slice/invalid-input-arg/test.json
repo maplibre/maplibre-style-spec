@@ -56,19 +56,19 @@
     },
     "outputs": [
       {
-        "error": "expression: Expected first argument to be of type array or string, but found boolean instead."
+        "error": "layers[0].paint.some-property: Expected first argument to be of type array or string, but found boolean instead."
       },
       {
-        "error": "expression: Expected first argument to be of type array or string, but found null instead."
+        "error": "layers[0].paint.some-property: Expected first argument to be of type array or string, but found null instead."
       },
       {
-        "error": "expression: Expected first argument to be of type array or string, but found number instead."
+        "error": "layers[0].paint.some-property: Expected first argument to be of type array or string, but found number instead."
       },
       {
-        "error": "expression: Expected first argument to be of type array or string, but found object instead."
+        "error": "layers[0].paint.some-property: Expected first argument to be of type array or string, but found object instead."
       },
       {
-        "error": "expression: Expected first argument to be of type array or string, but found null instead."
+        "error": "layers[0].paint.some-property: Expected first argument to be of type array or string, but found null instead."
       }
     ]
   }

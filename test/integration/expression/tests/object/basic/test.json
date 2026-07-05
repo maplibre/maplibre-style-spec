@@ -62,16 +62,16 @@
         "inner": "object"
       },
       {
-        "error": "expression: Expected value to be of type object, but found number instead."
+        "error": "layers[0].paint.some-property: Expected value to be of type object, but found number instead."
       },
       {
-        "error": "expression: Expected value to be of type object, but found string instead."
+        "error": "layers[0].paint.some-property: Expected value to be of type object, but found string instead."
       },
       {
-        "error": "expression: Expected value to be of type object, but found boolean instead."
+        "error": "layers[0].paint.some-property: Expected value to be of type object, but found boolean instead."
       },
       {
-        "error": "expression: Expected value to be of type object, but found null instead."
+        "error": "layers[0].paint.some-property: Expected value to be of type object, but found null instead."
       }
     ]
   }

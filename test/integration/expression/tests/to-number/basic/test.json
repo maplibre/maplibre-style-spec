@@ -81,14 +81,14 @@
       1,
       6.02e-23,
       {
-        "error": "expression: Could not convert \"Not a number\" to number."
+        "error": "layers[0].paint.some-property: Could not convert \"Not a number\" to number."
       },
       0,
       {
-        "error": "expression: Could not convert [1,2] to number."
+        "error": "layers[0].paint.some-property: Could not convert [1,2] to number."
       },
       {
-        "error": "expression: Could not convert {\"y\":1} to number."
+        "error": "layers[0].paint.some-property: Could not convert {\"y\":1} to number."
       }
     ]
   }

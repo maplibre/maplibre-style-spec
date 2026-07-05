@@ -17,17 +17,13 @@ import type {EvaluationContext} from '../evaluation_context';
 import type {Type} from '../types';
 
 export class In implements Expression {
-    type: Type;
-    needle: Expression;
-    haystack: Expression;
-    readonly key: string;
+    type: Type = BooleanType;
 
-    constructor(needle: Expression, haystack: Expression, key: string) {
-        this.type = BooleanType;
-        this.needle = needle;
-        this.haystack = haystack;
-        this.key = key;
-    }
+    constructor(
+        public needle: Expression,
+        public haystack: Expression,
+        public readonly key: string
+    ) {}
 
     static parse(args: ReadonlyArray<unknown>, context: ParsingContext): Expression {
         if (args.length !== 3) {

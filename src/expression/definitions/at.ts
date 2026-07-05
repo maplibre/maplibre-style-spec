@@ -9,17 +9,12 @@ import type {Type, ArrayType} from '../types';
 import type {Value} from '../values';
 
 export class At implements Expression {
-    type: Type;
-    index: Expression;
-    input: Expression;
-    readonly key: string;
-
-    constructor(type: Type, index: Expression, input: Expression, key: string) {
-        this.type = type;
-        this.index = index;
-        this.input = input;
-        this.key = key;
-    }
+    constructor(
+        public type: Type,
+        public index: Expression,
+        public input: Expression,
+        public readonly key: string
+    ) {}
 
     static parse(args: ReadonlyArray<unknown>, context: ParsingContext): Expression {
         if (args.length !== 3)

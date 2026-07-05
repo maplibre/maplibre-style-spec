@@ -5,13 +5,9 @@ import {EvaluationContext} from '../evaluation_context';
 import {getOwn} from '../../util/get_own';
 
 export class GlobalState implements Expression {
-    type: Type;
-    readonly key: string;
+    type: Type = ValueType;
 
-    constructor(key: string) {
-        this.type = ValueType;
-        this.key = key;
-    }
+    constructor(public readonly key: string) {}
 
     static parse(args: ReadonlyArray<unknown>, context: ParsingContext): Expression {
         if (args.length !== 2) {

@@ -17,24 +17,14 @@ import type {EvaluationContext} from '../evaluation_context';
 import type {Type} from '../types';
 
 export class IndexOf implements Expression {
-    type: Type;
-    needle: Expression;
-    haystack: Expression;
-    fromIndex: Expression;
-    readonly key: string;
+    type: Type = NumberType;
 
     constructor(
-        needle: Expression,
-        haystack: Expression,
-        key: string,
-        fromIndex?: Expression
-    ) {
-        this.type = NumberType;
-        this.needle = needle;
-        this.haystack = haystack;
-        this.fromIndex = fromIndex;
-        this.key = key;
-    }
+        public needle: Expression,
+        public haystack: Expression,
+        public readonly key: string,
+        public fromIndex?: Expression
+    ) {}
 
     static parse(args: ReadonlyArray<unknown>, context: ParsingContext): Expression {
         if (args.length <= 2 || args.length >= 5) {

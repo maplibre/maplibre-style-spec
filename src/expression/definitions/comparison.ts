@@ -85,25 +85,16 @@ function makeComparison(op: ComparisonOperator, compareBasic, compareWithCollato
     const isOrderComparison = op !== '==' && op !== '!=';
 
     return class Comparison implements Expression {
-        type: Type;
-        lhs: Expression;
-        rhs: Expression;
-        collator: Expression;
+        type: Type = BooleanType;
         hasUntypedArgument: boolean;
-        readonly key: string;
 
         constructor(
-            lhs: Expression,
-            rhs: Expression,
-            key: string,
-            collator?: Expression | null
+            public lhs: Expression,
+            public rhs: Expression,
+            public readonly key: string,
+            public collator?: Expression | null
         ) {
-            this.type = BooleanType;
-            this.lhs = lhs;
-            this.rhs = rhs;
-            this.collator = collator;
             this.hasUntypedArgument = lhs.type.kind === 'value' || rhs.type.kind === 'value';
-            this.key = key;
         }
 
         static parse(args: ReadonlyArray<unknown>, context: ParsingContext): Expression {

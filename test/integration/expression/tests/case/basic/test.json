@@ -83,7 +83,7 @@
       "y",
       "otherwise",
       {
-        "error": "expression[1]: Expected value to be of type boolean, but found string instead."
+        "error": "layers[0].paint.some-property[1]: Expected value to be of type boolean, but found string instead."
       }
     ]
   }

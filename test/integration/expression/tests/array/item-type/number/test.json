@@ -71,17 +71,17 @@
     },
     "outputs": [
       {
-        "error": "expression: Expected value to be of type array<number>, but found array<string, 2> instead."
+        "error": "layers[0].paint.some-property: Expected value to be of type array<number>, but found array<string, 2> instead."
       },
       [
         1,
         2
       ],
       {
-        "error": "expression: Expected value to be of type array<number>, but found array<boolean, 2> instead."
+        "error": "layers[0].paint.some-property: Expected value to be of type array<number>, but found array<boolean, 2> instead."
       },
       {
-        "error": "expression: Expected value to be of type array<number>, but found array<value, 3> instead."
+        "error": "layers[0].paint.some-property: Expected value to be of type array<number>, but found array<value, 3> instead."
       },
       []
     ]

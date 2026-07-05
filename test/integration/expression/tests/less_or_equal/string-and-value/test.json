@@ -52,10 +52,10 @@
     "outputs": [
       false,
       {
-        "error": "expression: Expected value to be of type string, but found number instead."
+        "error": "layers[0].paint.some-property: Expected value to be of type string, but found number instead."
       },
       {
-        "error": "expression[1]: Expected value to be of type string, but found number instead."
+        "error": "layers[0].paint.some-property[1]: Expected value to be of type string, but found number instead."
       }
     ]
   }

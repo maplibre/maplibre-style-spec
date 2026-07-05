@@ -16,25 +16,13 @@ import type {EvaluationContext} from '../evaluation_context';
 import type {Type} from '../types';
 
 export class Slice implements Expression {
-    type: Type;
-    input: Expression;
-    beginIndex: Expression;
-    endIndex: Expression;
-    readonly key: string;
-
     constructor(
-        type: Type,
-        input: Expression,
-        beginIndex: Expression,
-        key: string,
-        endIndex?: Expression
-    ) {
-        this.type = type;
-        this.input = input;
-        this.beginIndex = beginIndex;
-        this.endIndex = endIndex;
-        this.key = key;
-    }
+        public type: Type,
+        public input: Expression,
+        public beginIndex: Expression,
+        public readonly key: string,
+        public endIndex?: Expression
+    ) {}
 
     static parse(args: ReadonlyArray<unknown>, context: ParsingContext): Expression {
         if (args.length <= 2 || args.length >= 5) {

@@ -71,16 +71,16 @@
       "match",
       "otherwise",
       {
-        "error": "expression[1]: Expected value to be of type string, but found number instead."
+        "error": "layers[0].paint.some-property[1]: Expected value to be of type string, but found number instead."
       },
       {
-        "error": "expression[1]: Expected value to be of type string, but found boolean instead."
+        "error": "layers[0].paint.some-property[1]: Expected value to be of type string, but found boolean instead."
       },
       {
-        "error": "expression[1]: Expected value to be of type string, but found null instead."
+        "error": "layers[0].paint.some-property[1]: Expected value to be of type string, but found null instead."
       },
       {
-        "error": "expression[1]: Expected value to be of type string, but found null instead."
+        "error": "layers[0].paint.some-property[1]: Expected value to be of type string, but found null instead."
       }
     ]
   }

@@ -56,31 +56,17 @@ type InterpolatedValueType =
     | VariableAnchorOffsetCollectionTypeT
     | ArrayType<NumberTypeT>;
 export class Interpolate implements Expression {
-    type: InterpolatedValueType;
-
-    operator: 'interpolate' | 'interpolate-hcl' | 'interpolate-lab';
-    interpolation: InterpolationType;
-    input: Expression;
-    labels: Array<number>;
-    outputs: Array<Expression>;
-    readonly key: string;
+    labels: Array<number> = [];
+    outputs: Array<Expression> = [];
 
     constructor(
-        type: InterpolatedValueType,
-        operator: 'interpolate' | 'interpolate-hcl' | 'interpolate-lab',
-        interpolation: InterpolationType,
-        input: Expression,
+        public type: InterpolatedValueType,
+        public operator: 'interpolate' | 'interpolate-hcl' | 'interpolate-lab',
+        public interpolation: InterpolationType,
+        public input: Expression,
         stops: Stops,
-        key: string
+        public readonly key: string
     ) {
-        this.type = type;
-        this.operator = operator;
-        this.interpolation = interpolation;
-        this.input = input;
-        this.key = key;
-
-        this.labels = [];
-        this.outputs = [];
         for (const [label, expression] of stops) {
             this.labels.push(label);
             this.outputs.push(expression);

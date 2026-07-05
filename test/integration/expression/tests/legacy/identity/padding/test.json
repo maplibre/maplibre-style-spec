@@ -91,7 +91,7 @@
     },
     "outputs": [
       {
-        "error": "expression: Could not parse padding from value 'null'"
+        "error": "layers[0].paint.some-property: Could not parse padding from value 'null'"
       },
       {
         "values": [
@@ -126,10 +126,10 @@
         ]
       },
       {
-        "error": "expression: Could not parse padding from value '[]'"
+        "error": "layers[0].paint.some-property: Could not parse padding from value '[]'"
       },
       {
-        "error": "expression: Could not parse padding from value 'not a padding'"
+        "error": "layers[0].paint.some-property: Could not parse padding from value 'not a padding'"
       }
     ]
   }

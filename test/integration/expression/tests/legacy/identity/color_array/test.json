@@ -74,7 +74,7 @@
     },
     "outputs": [
       {
-        "error": "expression: Could not parse colorArray from value 'null'"
+        "error": "layers[0].paint.some-property: Could not parse colorArray from value 'null'"
       },
       {
         "values": [
@@ -106,10 +106,10 @@
         "values": []
       },
       {
-        "error": "expression: Could not parse colorArray from value '0'"
+        "error": "layers[0].paint.some-property: Could not parse colorArray from value '0'"
       },
       {
-        "error": "expression: Could not parse colorArray from value 'not a color'"
+        "error": "layers[0].paint.some-property: Could not parse colorArray from value 'not a color'"
       }
     ]
   }

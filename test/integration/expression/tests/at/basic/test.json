@@ -83,13 +83,13 @@
     "outputs": [
       8,
       {
-        "error": "expression[1]: Array index out of bounds: -1 < 0."
+        "error": "layers[0].paint.some-property[1]: Array index out of bounds: -1 < 0."
       },
       {
-        "error": "expression[1]: Array index out of bounds: 4 > 2."
+        "error": "layers[0].paint.some-property[1]: Array index out of bounds: 4 > 2."
       },
       {
-        "error": "expression[1]: Array index must be an integer, but found 1.5 instead."
+        "error": "layers[0].paint.some-property[1]: Array index must be an integer, but found 1.5 instead."
       }
     ]
   }

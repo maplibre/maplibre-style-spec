@@ -9,20 +9,15 @@ import type {EvaluationContext} from '../evaluation_context';
 import type {Type} from '../types';
 
 export class Step implements Expression {
-    type: Type;
+    labels: Array<number> = [];
+    outputs: Array<Expression> = [];
 
-    input: Expression;
-    labels: Array<number>;
-    outputs: Array<Expression>;
-    readonly key: string;
-
-    constructor(type: Type, input: Expression, stops: Stops, key: string) {
-        this.type = type;
-        this.input = input;
-        this.key = key;
-
-        this.labels = [];
-        this.outputs = [];
+    constructor(
+        public type: Type,
+        public input: Expression,
+        stops: Stops,
+        public readonly key: string
+    ) {
         for (const [label, expression] of stops) {
             this.labels.push(label);
             this.outputs.push(expression);
