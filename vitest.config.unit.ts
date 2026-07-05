@@ -4,6 +4,7 @@ export default defineConfig({
     test: {
         name: 'unit',
         environment: 'node',
+        restoreMocks: true,
         typecheck: {
             enabled: true,
             include: ['src/**/*.test-d.ts']
