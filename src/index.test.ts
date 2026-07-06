@@ -91,6 +91,7 @@ function validSchema(k, v, obj, ref, version, kind) {
         'default',
         'doc',
         'example',
+        'experimental',
         'function',
         'zoom-function',
         'property-function',

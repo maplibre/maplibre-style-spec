@@ -1145,6 +1145,23 @@
         ]
       },
       "property-type": "data-constant"
+    },
+    "fill-extrusion-edge-radius": {
+      "type": "number",
+      "experimental": true,
+      "default": 0,
+      "minimum": 0,
+      "doc": "Radius of a fill extrusion edge in meters. If not zero, rounds extrusion edges for a smoother appearance.",
+      "sdk-support": {
+        "basic functionality": {}
+      },
+      "expression": {
+        "interpolated": false,
+        "parameters": [
+          "zoom"
+        ]
+      },
+      "property-type": "constant"
     }
   },
   "layout_line": {
