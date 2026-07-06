@@ -36,9 +36,7 @@ describe('fill-extrusion-edge-radius validation', () => {
     });
 
     test('accepts a non-interpolated zoom camera expression', () => {
-        const errors = validateStyleMin(
-            styleWithEdgeRadius(['step', ['zoom'], 0, 14, 4])
-        );
+        const errors = validateStyleMin(styleWithEdgeRadius(['step', ['zoom'], 0, 14, 4]));
         expect(errors).toHaveLength(0);
     });
 
