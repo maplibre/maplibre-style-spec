@@ -5,6 +5,12 @@
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
 
+- chore: remove rollup dependencies and a stale replace for jsonlint ([#1749](https://github.com/maplibre/maplibre-style-spec/pull/1749)) (by [@HarelM](https://github.com/HarelM))
+## 25.0.2
+### ✨ Features and improvements
+
+### 🐞 Bug fixes
+
 ## 25.0.1
 
 ### 🐞 Bug fixes
