@@ -1,24 +1,9 @@
-import replace from '@rollup/plugin-replace';
 import minifyStyleSpec from './build/rollup_plugin_minify_style_spec';
-import shebang from 'rollup-plugin-preserve-shebang';
 import {defineConfig, type RolldownOptions} from 'rolldown';
 import {dts} from 'rolldown-plugin-dts';
 import packageJSON from './package.json' with {type: 'json'};
 
 const typesOnly = process.env.BUILD === 'types';
-
-const rollupPlugins = [
-    minifyStyleSpec(),
-    // https://github.com/zaach/jison/issues/351
-    replace({
-        preventAssignment: true,
-        include: /\/jsonlint-lines-primitives\/lib\/jsonlint.js/,
-        delimiters: ['', ''],
-        values: {
-            '_token_stack:': ''
-        }
-    })
-];
 
 const dtsBundle: RolldownOptions = {
     input: {index: 'src/index.ts'},
@@ -50,7 +35,7 @@ const bundles: RolldownOptions[] = [
                 globals: {'node:fs': 'fs'}
             }
         ],
-        plugins: rollupPlugins
+        plugins: [minifyStyleSpec()]
     },
     {
         resolve: {
@@ -62,15 +47,17 @@ const bundles: RolldownOptions[] = [
             {
                 file: 'dist/gl-style-format.mjs',
                 format: 'es',
-                sourcemap: true
+                sourcemap: true,
+                banner: '#!/usr/bin/env node\n'
             },
             {
                 file: 'dist/gl-style-format.cjs',
                 format: 'cjs',
-                sourcemap: true
+                sourcemap: true,
+                banner: '#!/usr/bin/env node\n'
             }
         ],
-        plugins: [...rollupPlugins, shebang()]
+        plugins: [minifyStyleSpec()]
     },
     {
         resolve: {
@@ -82,15 +69,17 @@ const bundles: RolldownOptions[] = [
             {
                 file: 'dist/gl-style-migrate.mjs',
                 format: 'es',
-                sourcemap: true
+                sourcemap: true,
+                banner: '#!/usr/bin/env node\n'
             },
             {
                 file: 'dist/gl-style-migrate.cjs',
                 format: 'cjs',
-                sourcemap: true
+                sourcemap: true,
+                banner: '#!/usr/bin/env node\n'
             }
         ],
-        plugins: [...rollupPlugins, shebang()]
+        plugins: [minifyStyleSpec()]
     },
     {
         resolve: {
@@ -102,15 +91,17 @@ const bundles: RolldownOptions[] = [
             {
                 file: 'dist/gl-style-validate.mjs',
                 format: 'es',
-                sourcemap: true
+                sourcemap: true,
+                banner: '#!/usr/bin/env node\n'
             },
             {
                 file: 'dist/gl-style-validate.cjs',
                 format: 'cjs',
-                sourcemap: true
+                sourcemap: true,
+                banner: '#!/usr/bin/env node\n'
             }
         ],
-        plugins: [...rollupPlugins, shebang()]
+        plugins: [minifyStyleSpec()]
     }
 ];
 
