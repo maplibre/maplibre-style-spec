@@ -5,7 +5,6 @@ import packageJSON from './package.json' with {type: 'json'};
 
 const typesOnly = process.env.BUILD === 'types';
 
-
 const dtsBundle: RolldownOptions = {
     input: {index: 'src/index.ts'},
     output: {
@@ -71,13 +70,13 @@ const bundles: RolldownOptions[] = [
                 file: 'dist/gl-style-migrate.mjs',
                 format: 'es',
                 sourcemap: true,
-                banner: '#!/usr/bin/env node\n',
+                banner: '#!/usr/bin/env node\n'
             },
             {
                 file: 'dist/gl-style-migrate.cjs',
                 format: 'cjs',
                 sourcemap: true,
-                banner: '#!/usr/bin/env node\n',
+                banner: '#!/usr/bin/env node\n'
             }
         ],
         plugins: [minifyStyleSpec()]
