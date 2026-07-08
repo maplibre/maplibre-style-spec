@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 import minimist from 'minimist';
 import {readFileSync} from 'node:fs';
 import {validateStyle as validate} from '../src/validate_style';
