@@ -3,18 +3,9 @@
     "number-format",
     1234.567,
     {
-      "locale": [
-        "get",
-        "locale"
-      ],
-      "currency": [
-        "get",
-        "currency"
-      ],
-      "unit": [
-        "get",
-        "unit"
-      ]
+      "locale": ["get", "locale"],
+      "currency": ["get", "currency"],
+      "unit": ["get", "unit"]
     }
   ],
   "inputs": [
