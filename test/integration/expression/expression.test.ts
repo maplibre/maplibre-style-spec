@@ -23,12 +23,6 @@ import {describe, expect, test} from 'vitest';
 
 const DECIMAL_SIGNIFICANT_FIGURES = 6;
 
-// The location of the expression within the style JSON, exactly as a real
-// caller (e.g. gl-js) would pass it. Every runtime error a fixture asserts is
-// prefixed with this `rootKey` plus the throwing sub-expression's index path
-// (e.g. `layers[0].paint.some-property[1]: ...`), mirroring the location
-// reporting gl-js shows at render time. `some-property` stands in for whatever
-// property the expression happens to drive.
 const ROOT_KEY = 'layers[0].paint.some-property';
 
 type Mutable<T> = {
