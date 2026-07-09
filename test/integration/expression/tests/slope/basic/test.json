@@ -1,0 +1,61 @@
+{
+  "propertySpec": {
+    "type": "color",
+    "default": {
+      "stops": [
+        [
+          0,
+          "black"
+        ],
+        [
+          90,
+          "white"
+        ]
+      ]
+    },
+    "property-type": "data-driven",
+    "expression": {
+      "parameters": [
+        "zoom",
+        "feature"
+      ]
+    }
+  },
+  "expression": [
+    "interpolate",
+    [
+      "linear"
+    ],
+    [
+      "slope"
+    ],
+    0,
+    "#000000",
+    90,
+    "#ff0000"
+  ],
+  "inputs": [
+    [
+      {
+        "slope": 45
+      },
+      {}
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": true,
+      "isZoomConstant": true,
+      "type": "color"
+    },
+    "outputs": [
+      [
+        0.5,
+        0,
+        0,
+        1
+      ]
+    ]
+  }
+}

@@ -180,6 +180,22 @@
       "source-layer": "layer"
     },
     {
+      "id": "slope-valid",
+      "type": "slope",
+      "source": "raster-dem",
+      "paint": {
+        "slope-opacity": 0.7,
+        "slope-color": [
+          "interpolate",
+          ["linear"],
+          ["slope"],
+          0, "#00ff00",
+          45, "#ff0000",
+          90, "#000000"
+        ]
+      }
+    },
+    {
       "id": "hillshade-empty-numberArray",
       "type": "hillshade",
       "source": "raster-dem",
