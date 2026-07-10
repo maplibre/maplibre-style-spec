@@ -1,4 +1,3 @@
-import {extendBy} from '../util/extend';
 import {ExpressionParsingError} from './parsing_error';
 import {ParsingContext} from './parsing_context';
 import {EvaluationContext} from './evaluation_context';
@@ -605,20 +604,22 @@ export class StylePropertyFunction<T> {
         this._rootKey = rootKey;
         this._defaultValue = getDefaultValue(specification);
         this._warningHistory = {};
-        // The raw evaluate must not land on the instance, where it would shadow
-        // the error-handling `evaluate` method on the prototype.
-        const {evaluate, ...functionProperties} = createFunction(
-            this._parameters,
-            this._specification
-        );
-        extendBy(this, functionProperties);
-        this._innerEvaluate = evaluate;
+
+        const fn = createFunction(this._parameters, this._specification);
+        this.kind = fn.kind;
+        this.interpolationFactor = fn.interpolationFactor;
+        this.zoomStops = fn.zoomStops;
+        // Kept off the instance so it doesn't shadow the error-handling `evaluate` method
+        this._innerEvaluate = fn.evaluate;
     }
 
     /**
      * Evaluates the legacy function, handling a runtime throw (e.g. interpolating
      * mismatched value types) by warning with the property location and falling
      * back to the spec default, mirroring {@link StyleExpression.evaluate}.
+     * @param globals Global evaluation properties (e.g. zoom)
+     * @param feature The feature being evaluated, if any
+     * @returns The function result, or the spec default if evaluation throws
      */
     evaluate(globals: GlobalProperties, feature?: Feature): any {
         try {

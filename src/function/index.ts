@@ -12,6 +12,16 @@ import {NumberArray} from '../expression/types/number_array';
 import {typeOf} from '../expression/values';
 import {ObjectType} from '../expression/types';
 import {StylePropertySpecification} from '..';
+import type {InterpolationType} from '../expression/definitions/interpolate';
+import type {Feature, GlobalProperties} from '../expression/index';
+
+export type StyleFunction = {
+    kind: 'source' | 'camera' | 'composite';
+    interpolationType?: InterpolationType | null;
+    interpolationFactor?: (input: number, lower: number, upper: number) => number;
+    zoomStops?: Array<number>;
+    evaluate: (globals: GlobalProperties, feature?: Partial<Feature>) => any;
+};
 
 export function isFunction(value) {
     return (
@@ -56,7 +66,7 @@ function getInnerFunction(type: string) {
     }
 }
 
-export function createFunction(parameters, propertySpec) {
+export function createFunction(parameters, propertySpec): StyleFunction {
     const zoomAndFeatureDependent = parameters.stops && typeof parameters.stops[0][0] === 'object';
     const featureDependent = zoomAndFeatureDependent || parameters.property !== undefined;
     const zoomDependent = zoomAndFeatureDependent || !featureDependent;
@@ -125,7 +135,7 @@ export function createFunction(parameters, propertySpec) {
             ]);
         }
 
-        const interpolationType = {name: 'linear'};
+        const interpolationType: InterpolationType = {name: 'linear'};
         return {
             kind: 'composite',
             interpolationType,
@@ -143,7 +153,7 @@ export function createFunction(parameters, propertySpec) {
             }
         };
     } else if (zoomDependent) {
-        const interpolationType =
+        const interpolationType: InterpolationType | null =
             type === 'exponential'
                 ? {name: 'exponential', base: parameters.base !== undefined ? parameters.base : 1}
                 : null;
