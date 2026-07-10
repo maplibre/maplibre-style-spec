@@ -159,9 +159,7 @@ describe('evaluate expression', () => {
         );
     });
 
-    test('an empty rootKey throws at construction', () => {
-        // There is no opt-out: a warning without a location is not actionable,
-        // so a missing rootKey is a programmer error surfaced at style load.
+    test('an empty rootKey throws at construction, because not actionable', () => {
         expect(() =>
             createPropertyExpression(['number', ['get', 'x']], '', {
                 type: 'number',
