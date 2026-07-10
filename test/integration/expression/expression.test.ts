@@ -249,10 +249,6 @@ function evaluateExpression(
             }
             outputs.push(value);
         } catch (error) {
-            // Prefix with the `rootKey + index path` location the runtime warning
-            // mechanism reports, so the fixtures pin down where in the expression a
-            // throw originates (e.g. `layers[0].paint.some-property[3]: ...`). A
-            // non-RuntimeError throw has no index path, so it anchors at the root ('').
             const path = error instanceof RuntimeError ? error.path : '';
             const message = error instanceof RuntimeError ? error.toJSON() : error.message;
             outputs.push({
