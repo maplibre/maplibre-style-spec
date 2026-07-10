@@ -254,8 +254,7 @@ function evaluateExpression(
             // throw originates (e.g. `layers[0].paint.some-property[3]: ...`). A
             // non-RuntimeError throw has no index path, so it anchors at the root ('').
             const path = error instanceof RuntimeError ? error.path : '';
-            const message =
-                error.name === 'ExpressionEvaluationError' ? error.toJSON() : error.message;
+            const message = error instanceof RuntimeError ? error.toJSON() : error.message;
             outputs.push({
                 error: `${ROOT_KEY}${path}: ${message}`
             });
