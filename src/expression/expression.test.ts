@@ -318,11 +318,11 @@ describe('evaluate expression', () => {
 });
 
 describe('actionable warnings: runtime throw sites carry their index path', () => {
-    function warnFor(expression: unknown, feature: any): string {
+    function warnFor(expression: unknown, properties: Feature['properties']): string {
         const expr = createExpression(expression, 'rk', null);
         assert(expr.result === 'success');
         const warnMock = vi.spyOn(console, 'warn').mockImplementation(() => {});
-        expr.value.evaluate({} as GlobalProperties, {properties: feature} as any as Feature);
+        expr.value.evaluate({zoom: 0}, {type: 'Point', properties});
         expect(warnMock).toHaveBeenCalledTimes(1);
         const message = warnMock.mock.calls[0][0] as string;
         warnMock.mockRestore();
