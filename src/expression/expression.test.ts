@@ -318,10 +318,6 @@ describe('evaluate expression', () => {
 });
 
 describe('actionable warnings: runtime throw sites carry their index path', () => {
-    // Each throwing expression is nested at index [1] of `typeof`, which takes any
-    // value type (no coercion) and propagates throws. No propertySpec → null default
-    // → no fallback suffix, isolating the prefix. `get` keeps the inner expression
-    // non-constant so it isn't constant-folded into a parse error.
     function warnFor(expression: unknown, feature: any): string {
         const expr = createExpression(expression, 'rk', null);
         assert(expr.result === 'success');
