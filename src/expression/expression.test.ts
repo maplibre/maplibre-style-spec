@@ -229,9 +229,7 @@ describe('evaluate expression', () => {
         );
     });
 
-    test('an auto-wrapped assertion carries its nested index path', () => {
-        // Bare `["get"]` arms get implicitly wrapped in an assertion (the production
-        // case that emitted the original warning); the wrapper must carry its path.
+    test('an auto-wrapped assertion carries its nested index path, because bare `["get"]` arms get implicitly wrapped in an assertion', () => {
         const {value} = createPropertyExpression(
             ['case', false, ['get', 'a'], ['get', 'b']],
             'layers[0].paint.line-width',
