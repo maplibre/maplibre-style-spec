@@ -843,10 +843,6 @@ describe('global-state in filter', () => {
             ['case', isActive, true, false]
         ] as unknown as ExpressionFilterSpecification;
 
-        // There is no `none` expression, so even a `none` holding expression children takes the
-        // legacy conversion path. That conversion cannot represent the expression children, which
-        // is why validation reports this filter as an error rather than a warning -- see
-        // `mixing old filters and expressions with none` in filters.input.json.
         expect(isExpressionFilter(filter)).toBe(false);
         expect(() => featureFilter(filter, 'layers[0].filter', globalState)).not.toThrow();
     });
