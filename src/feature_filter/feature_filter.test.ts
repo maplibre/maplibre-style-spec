@@ -864,22 +864,10 @@ describe('global-state in filter', () => {
     });
 });
 
+// Which filters are classified as mixed, and what they report, is covered by the validation
+// fixture in test/integration/style-spec/tests/filters.input.json. These tests cover what the
+// fixture cannot: what a filter actually evaluates to for a given feature.
 describe('legacy filters containing an ambiguous operator (#1751)', () => {
-    // `["has", key]` is valid in both syntaxes and means the same thing in each, so it is no
-    // evidence that its siblings were meant as expressions. Treating it as proof of an
-    // expression tree made these pure-legacy filters report bogus mixed-syntax errors.
-    test('`has` does not promote a legacy all/any/none to an expression', () => {
-        expect(isExpressionFilter(['all', ['==', 'class', 'rail'], ['has', 'service']])).toBe(
-            false
-        );
-        expect(isExpressionFilter(['any', ['==', 'class', 'rail'], ['has', 'service']])).toBe(
-            false
-        );
-        expect(isExpressionFilter(['none', ['==', 'class', 'rail'], ['has', 'service']])).toBe(
-            false
-        );
-    });
-
     test('pure legacy filter using `has` evaluates correctly and does not warn', () => {
         vi.spyOn(console, 'warn').mockImplementation(() => {});
         // The filter from the issue report; pure legacy syntax, nothing mixed about it.

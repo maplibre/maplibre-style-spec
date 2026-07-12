@@ -108,5 +108,10 @@
   {
     "message": "layers[22].filter[1][0]: Unknown expression \"!has\". If you wanted a literal array, use [\"literal\", [...]].",
     "line": 208
+  },
+  {
+    "message": "layers[27].filter[2][1]: Mixing deprecated filter syntax with expression syntax is not supported. Replace [\"in\",\"name\",\"\"] with [\"in\",[\"get\",\"name\"],[\"literal\",[\"\"]]].",
+    "severity": "warning",
+    "line": 251
   }
 ]
