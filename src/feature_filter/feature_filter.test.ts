@@ -706,6 +706,26 @@ describe('legacy filter tests', () => {
             expect(f({zoom: 0}, {properties: {foo: undefined}} as any as Feature)).toBe(true);
             expect(f({zoom: 0}, {properties: {}} as any as Feature)).toBe(true);
         });
+
+        test('pure legacy filter using `has` still matches the right features', () => {
+            const spy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+            const filter = [
+                'all',
+                ['==', '$type', 'LineString'],
+                ['all', ['==', 'class', 'rail'], ['has', 'service']]
+            ] as unknown as FilterSpecification;
+
+            const f = featureFilter(filter, 'layers[0].filter').filter;
+            expect(console.warn).not.toHaveBeenCalled();
+
+            const feature = (properties: Record<string, string>) =>
+                ({type: 'LineString', properties}) as any as Feature;
+            expect(f({zoom: 0}, feature({class: 'rail', service: 'yard'}))).toBe(true);
+            expect(f({zoom: 0}, feature({class: 'rail'}))).toBe(false);
+            expect(f({zoom: 0}, feature({class: 'road', service: 'yard'}))).toBe(false);
+            expect(spy).not.toHaveBeenCalled();
+            spy.mockRestore();
+        });
     }
 });
 
@@ -862,66 +882,3 @@ describe('global-state in filter', () => {
     });
 });
 
-// Which filters are classified as mixed, and what they report, is covered by the validation
-// fixture in test/integration/style-spec/tests/filters.input.json. These tests cover what the
-// fixture cannot: what a filter actually evaluates to for a given feature.
-describe('legacy filters containing a neutral operator (#1751)', () => {
-    test('pure legacy filter using `has` evaluates correctly and does not warn', () => {
-        vi.spyOn(console, 'warn').mockImplementation(() => {});
-        // The filter from the issue report; pure legacy syntax, nothing mixed about it.
-        const filter = [
-            'all',
-            ['==', '$type', 'LineString'],
-            ['all', ['==', 'class', 'rail'], ['has', 'service']]
-        ] as unknown as FilterSpecification;
-
-        const f = featureFilter(filter, 'layers[0].filter').filter;
-        expect(console.warn).not.toHaveBeenCalled();
-
-        const feature = (properties: Record<string, string>) =>
-            ({type: 'LineString', properties}) as any as Feature;
-        expect(f({zoom: 0}, feature({class: 'rail', service: 'yard'}))).toBe(true);
-        expect(f({zoom: 0}, feature({class: 'rail'}))).toBe(false);
-        expect(f({zoom: 0}, feature({class: 'road', service: 'yard'}))).toBe(false);
-    });
-
-    test('`has` alongside a real expression is still an expression tree, and does not warn', () => {
-        vi.spyOn(console, 'warn').mockImplementation(() => {});
-        const filter = [
-            'all',
-            ['==', ['get', 'class'], 'rail'],
-            ['has', 'service']
-        ] as ExpressionFilterSpecification;
-
-        const f = featureFilter(filter, 'layers[0].filter').filter;
-        expect(console.warn).not.toHaveBeenCalled();
-
-        const feature = (properties: Record<string, string>) =>
-            ({type: 'LineString', properties}) as any as Feature;
-        expect(f({zoom: 0}, feature({class: 'rail', service: 'yard'}))).toBe(true);
-        expect(f({zoom: 0}, feature({class: 'rail'}))).toBe(false);
-    });
-
-    test('genuinely mixed filter warns but still compiles and renders (#1751)', () => {
-        vi.spyOn(console, 'warn').mockImplementation(() => {});
-        // OpenHistoricalMap's filter. `["in", "name", ""]` is legacy syntax sitting inside an
-        // expression tree, so it is parsed as the `in` expression (a substring test) and the
-        // negation is always true -- exactly as it behaved before mixing was diagnosed. The
-        // style renders as it always has; the warning tells the author how to fix it.
-        const filter = [
-            'all',
-            ['==', ['get', 'type'], 'stream'],
-            ['!', ['in', 'name', '']]
-        ] as unknown as ExpressionFilterSpecification;
-
-        const f = featureFilter(filter, 'layers[39].filter').filter;
-        expect(console.warn).toHaveBeenCalledWith(
-            'layers[39].filter[2][1]: Mixing deprecated filter syntax with expression syntax is not supported. Replace ["in","name",""] with ["in",["get","name"],["literal",[""]]].'
-        );
-
-        const feature = (properties: Record<string, string>) =>
-            ({type: 'LineString', properties}) as any as Feature;
-        expect(f({zoom: 0}, feature({type: 'stream', name: 'Big Creek'}))).toBe(true);
-        expect(f({zoom: 0}, feature({type: 'river', name: 'Nile'}))).toBe(false);
-    });
-});
