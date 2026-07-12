@@ -1,10 +1,12 @@
 [
   {
     "message": "source: string expected, number found",
+    "severity": "error",
     "line": 13
   },
   {
     "message": "exaggeration: number expected, string found",
+    "severity": "error",
     "line": 14
   }
 ]

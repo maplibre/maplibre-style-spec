@@ -7,9 +7,6 @@
  * - `warning`: the style renders, but almost certainly not as its author intended -- for
  *   example a filter that mixes deprecated syntax into an expression tree. Consumers should
  *   surface these (a style editor lists them; a map logs them) but must keep rendering.
- *
- * The field is only set for warnings, so that an absent `severity` keeps meaning `error` for
- * everything that already consumes validation output.
  */
 export type ValidationSeverity = 'error' | 'warning';
 
@@ -17,7 +14,7 @@ export class ValidationError {
     message: string;
     identifier: string;
     line: number;
-    severity?: ValidationSeverity;
+    severity: ValidationSeverity;
 
     constructor(
         key: string,
@@ -26,11 +23,11 @@ export class ValidationError {
         },
         message: string,
         identifier?: string | null,
-        severity?: ValidationSeverity
+        severity: ValidationSeverity = 'error'
     ) {
         this.message = (key ? `${key}: ` : '') + message;
         if (identifier) this.identifier = identifier;
-        if (severity && severity !== 'error') this.severity = severity;
+        this.severity = severity;
 
         if (value !== null && value !== undefined && value.__line__) {
             this.line = value.__line__;
