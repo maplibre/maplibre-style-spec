@@ -24,7 +24,7 @@
     "generate-docs": "node ${WATCH+--watch} --no-warnings --loader ts-node/esm build/generate-docs.ts",
     "start-docs": "docker run --rm -v ${PWD}:/docs zensical/zensical serve --open",
     "docs": "npm run generate-docs && docker run --rm -v ${PWD}:/docs zensical/zensical build",
-    "test": "vitest",
+    "test": "npm run test-unit && npm run test-integration && npm run test-build",
     "test-unit": "vitest run --config vitest.config.unit.ts",
     "test-unit-ci": "vitest run --config vitest.config.unit.ts --coverage",
     "test-integration": "vitest run --config vitest.config.integration.ts",

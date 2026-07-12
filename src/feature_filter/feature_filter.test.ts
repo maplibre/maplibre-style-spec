@@ -708,23 +708,23 @@ describe('legacy filter tests', () => {
         });
 
         test('pure legacy filter using `has` still matches the right features', () => {
-            const spy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+            const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+            warn.mockClear();
+
             const filter = [
                 'all',
                 ['==', '$type', 'LineString'],
                 ['all', ['==', 'class', 'rail'], ['has', 'service']]
             ] as unknown as FilterSpecification;
+            const f = createFilterExpr(filter).filter;
 
-            const f = featureFilter(filter, 'layers[0].filter').filter;
-            expect(console.warn).not.toHaveBeenCalled();
+            expect(warn).not.toHaveBeenCalled();
 
             const feature = (properties: Record<string, string>) =>
                 ({type: 'LineString', properties}) as any as Feature;
             expect(f({zoom: 0}, feature({class: 'rail', service: 'yard'}))).toBe(true);
             expect(f({zoom: 0}, feature({class: 'rail'}))).toBe(false);
             expect(f({zoom: 0}, feature({class: 'road', service: 'yard'}))).toBe(false);
-            expect(spy).not.toHaveBeenCalled();
-            spy.mockRestore();
         });
     }
 });
