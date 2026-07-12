@@ -16,10 +16,6 @@ function getValueAtPath(value: any, path: number[]) {
 
 /**
  * Reports a filter that mixes deprecated syntax into an expression tree as a *warning*.
- *
- * Such a filter still compiles, and evaluates exactly as it did before mixing was diagnosed:
- * the legacy sub-filter is parsed as an expression, which rarely means what the author
- * intended. That deserves to be surfaced, but not as an error.
  * @param options The validation options, used for the key and the un-unbundled value
  * @param value The unbundled filter to inspect
  * @returns A single warning, or an empty array when nothing is mixed
