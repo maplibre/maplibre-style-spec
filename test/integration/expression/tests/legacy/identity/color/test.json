@@ -47,7 +47,7 @@
     },
     "outputs": [
       {
-        "error": "Could not parse color from value 'null'"
+        "error": "layers[0].paint.some-property: Could not parse color from value 'null'"
       },
       [
         0,
@@ -56,7 +56,7 @@
         1
       ],
       {
-        "error": "Could not parse color from value '0'"
+        "error": "layers[0].paint.some-property: Could not parse color from value '0'"
       }
     ]
   }

@@ -9,18 +9,15 @@ import type {EvaluationContext} from '../evaluation_context';
 import type {Type} from '../types';
 
 export class Step implements Expression {
-    type: Type;
+    labels: Array<number> = [];
+    outputs: Array<Expression> = [];
 
-    input: Expression;
-    labels: Array<number>;
-    outputs: Array<Expression>;
-
-    constructor(type: Type, input: Expression, stops: Stops) {
-        this.type = type;
-        this.input = input;
-
-        this.labels = [];
-        this.outputs = [];
+    constructor(
+        public type: Type,
+        public input: Expression,
+        stops: Stops,
+        public readonly key: string
+    ) {
         for (const [label, expression] of stops) {
             this.labels.push(label);
             this.outputs.push(expression);
@@ -75,7 +72,7 @@ export class Step implements Expression {
             stops.push([label, parsed]);
         }
 
-        return new Step(outputType, input, stops);
+        return new Step(outputType, input, stops, context.key);
     }
 
     evaluate(ctx: EvaluationContext) {
@@ -96,7 +93,7 @@ export class Step implements Expression {
             return outputs[stopCount - 1].evaluate(ctx);
         }
 
-        const index = findStopLessThanOrEqualTo(labels, value);
+        const index = findStopLessThanOrEqualTo(labels, value, this.key);
         return outputs[index].evaluate(ctx);
     }
 

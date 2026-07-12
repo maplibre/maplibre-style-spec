@@ -56,28 +56,17 @@ type InterpolatedValueType =
     | VariableAnchorOffsetCollectionTypeT
     | ArrayType<NumberTypeT>;
 export class Interpolate implements Expression {
-    type: InterpolatedValueType;
-
-    operator: 'interpolate' | 'interpolate-hcl' | 'interpolate-lab';
-    interpolation: InterpolationType;
-    input: Expression;
-    labels: Array<number>;
-    outputs: Array<Expression>;
+    labels: Array<number> = [];
+    outputs: Array<Expression> = [];
 
     constructor(
-        type: InterpolatedValueType,
-        operator: 'interpolate' | 'interpolate-hcl' | 'interpolate-lab',
-        interpolation: InterpolationType,
-        input: Expression,
-        stops: Stops
+        public type: InterpolatedValueType,
+        public operator: 'interpolate' | 'interpolate-hcl' | 'interpolate-lab',
+        public interpolation: InterpolationType,
+        public input: Expression,
+        stops: Stops,
+        public readonly key: string
     ) {
-        this.type = type;
-        this.operator = operator;
-        this.interpolation = interpolation;
-        this.input = input;
-
-        this.labels = [];
-        this.outputs = [];
         for (const [label, expression] of stops) {
             this.labels.push(label);
             this.outputs.push(expression);
@@ -217,7 +206,8 @@ export class Interpolate implements Expression {
             operator as any,
             interpolation as InterpolationType,
             input as Expression,
-            stops
+            stops,
+            context.key
         );
     }
 
@@ -239,7 +229,7 @@ export class Interpolate implements Expression {
             return outputs[stopCount - 1].evaluate(ctx);
         }
 
-        const index = findStopLessThanOrEqualTo(labels, value);
+        const index = findStopLessThanOrEqualTo(labels, value, this.key);
         const lower = labels[index];
         const upper = labels[index + 1];
         const t = Interpolate.interpolationFactor(this.interpolation, value, lower, upper);
@@ -264,7 +254,8 @@ export class Interpolate implements Expression {
                         return VariableAnchorOffsetCollection.interpolate(
                             outputLower,
                             outputUpper,
-                            t
+                            t,
+                            this.key
                         );
                     case 'array':
                         return interpolateArray(outputLower, outputUpper, t);

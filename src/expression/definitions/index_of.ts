@@ -17,17 +17,14 @@ import type {EvaluationContext} from '../evaluation_context';
 import type {Type} from '../types';
 
 export class IndexOf implements Expression {
-    type: Type;
-    needle: Expression;
-    haystack: Expression;
-    fromIndex: Expression;
+    type: Type = NumberType;
 
-    constructor(needle: Expression, haystack: Expression, fromIndex?: Expression) {
-        this.type = NumberType;
-        this.needle = needle;
-        this.haystack = haystack;
-        this.fromIndex = fromIndex;
-    }
+    constructor(
+        public needle: Expression,
+        public haystack: Expression,
+        public readonly key: string,
+        public fromIndex?: Expression
+    ) {}
 
     static parse(args: ReadonlyArray<unknown>, context: ParsingContext): Expression {
         if (args.length <= 2 || args.length >= 5) {
@@ -50,9 +47,9 @@ export class IndexOf implements Expression {
         if (args.length === 4) {
             const fromIndex = context.parse(args[3], 3, NumberType);
             if (!fromIndex) return null;
-            return new IndexOf(needle, haystack, fromIndex);
+            return new IndexOf(needle, haystack, context.key, fromIndex);
         } else {
-            return new IndexOf(needle, haystack);
+            return new IndexOf(needle, haystack, context.key);
         }
     }
 
@@ -62,7 +59,8 @@ export class IndexOf implements Expression {
 
         if (!isValidNativeType(needle, ['boolean', 'string', 'number', 'null'])) {
             throw new RuntimeError(
-                `Expected first argument to be of type boolean, string, number or null, but found ${typeToString(typeOf(needle))} instead.`
+                `Expected first argument to be of type boolean, string, number or null, but found ${typeToString(typeOf(needle))} instead.`,
+                this.key
             );
         }
 
@@ -83,7 +81,8 @@ export class IndexOf implements Expression {
             return haystack.indexOf(needle, fromIndex);
         } else {
             throw new RuntimeError(
-                `Expected second argument to be of type array or string, but found ${typeToString(typeOf(haystack))} instead.`
+                `Expected second argument to be of type array or string, but found ${typeToString(typeOf(haystack))} instead.`,
+                this.key
             );
         }
     }

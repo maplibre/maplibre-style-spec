@@ -50,7 +50,7 @@
     },
     "outputs": [
       {
-        "error": "Expected value to be of type number, but found null instead."
+        "error": "layers[0].paint.some-property[4]: Expected value to be of type number, but found null instead."
       },
       50
     ]

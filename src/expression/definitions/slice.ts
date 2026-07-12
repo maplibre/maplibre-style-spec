@@ -16,17 +16,13 @@ import type {EvaluationContext} from '../evaluation_context';
 import type {Type} from '../types';
 
 export class Slice implements Expression {
-    type: Type;
-    input: Expression;
-    beginIndex: Expression;
-    endIndex: Expression;
-
-    constructor(type: Type, input: Expression, beginIndex: Expression, endIndex?: Expression) {
-        this.type = type;
-        this.input = input;
-        this.beginIndex = beginIndex;
-        this.endIndex = endIndex;
-    }
+    constructor(
+        public type: Type,
+        public input: Expression,
+        public beginIndex: Expression,
+        public readonly key: string,
+        public endIndex?: Expression
+    ) {}
 
     static parse(args: ReadonlyArray<unknown>, context: ParsingContext): Expression {
         if (args.length <= 2 || args.length >= 5) {
@@ -49,9 +45,9 @@ export class Slice implements Expression {
         if (args.length === 4) {
             const endIndex = context.parse(args[3], 3, NumberType);
             if (!endIndex) return null;
-            return new Slice(input.type, input, beginIndex, endIndex);
+            return new Slice(input.type, input, beginIndex, context.key, endIndex);
         } else {
-            return new Slice(input.type, input, beginIndex);
+            return new Slice(input.type, input, beginIndex, context.key);
         }
     }
 
@@ -71,7 +67,8 @@ export class Slice implements Expression {
             return input.slice(beginIndex, endIndex);
         } else {
             throw new RuntimeError(
-                `Expected first argument to be of type array or string, but found ${typeToString(typeOf(input))} instead.`
+                `Expected first argument to be of type array or string, but found ${typeToString(typeOf(input))} instead.`,
+                this.key
             );
         }
     }

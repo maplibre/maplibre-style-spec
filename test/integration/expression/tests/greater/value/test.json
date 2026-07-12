@@ -59,10 +59,10 @@
       true,
       true,
       {
-        "error": "Expected arguments for \">\" to be (string, string) or (number, number), but found (string, number) instead."
+        "error": "layers[0].paint.some-property: Expected arguments for \">\" to be (string, string) or (number, number), but found (string, number) instead."
       },
       {
-        "error": "Expected arguments for \">\" to be (string, string) or (number, number), but found (number, string) instead."
+        "error": "layers[0].paint.some-property: Expected arguments for \">\" to be (string, string) or (number, number), but found (number, string) instead."
       }
     ]
   }

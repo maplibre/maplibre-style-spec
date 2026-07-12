@@ -1,4 +1,5 @@
 import {VariableAnchorOffsetCollection} from './variable_anchor_offset_collection';
+import {RuntimeError} from '../runtime_error';
 import {describe, test, expect} from 'vitest';
 
 describe('VariableAnchorOffsetCollection', () => {
@@ -35,18 +36,35 @@ describe('VariableAnchorOffsetCollection', () => {
     describe('interpolate variableAnchorOffsetCollection', () => {
         const i11nFn = VariableAnchorOffsetCollection.interpolate;
         const parseFn = VariableAnchorOffsetCollection.parse;
+        const key = 'layers[0].layout.text-variable-anchor-offset';
 
         test('should throw with mismatched endpoints', () => {
             expect(() =>
-                i11nFn(parseFn(['top', [0, 0]]), parseFn(['bottom', [1, 1]]), 0.5)
+                i11nFn(parseFn(['top', [0, 0]]), parseFn(['bottom', [1, 1]]), 0.5, key)
             ).toThrow(
                 'Cannot interpolate values containing mismatched anchors. from[0]: top, to[0]: bottom'
             );
             expect(() =>
-                i11nFn(parseFn(['top', [0, 0]]), parseFn(['top', [1, 1], 'bottom', [2, 2]]), 0.5)
+                i11nFn(
+                    parseFn(['top', [0, 0]]),
+                    parseFn(['top', [1, 1], 'bottom', [2, 2]]),
+                    0.5,
+                    key
+                )
             ).toThrow(
                 'Cannot interpolate values of different length. from: ["top",[0,0]], to: ["top",[1,1],"bottom",[2,2]]'
             );
+        });
+
+        test('should attach the key to the thrown error', () => {
+            let thrown: RuntimeError;
+            try {
+                i11nFn(parseFn(['top', [0, 0]]), parseFn(['bottom', [1, 1]]), 0.5, key);
+            } catch (e) {
+                thrown = e;
+            }
+            expect(thrown).toBeInstanceOf(RuntimeError);
+            expect(thrown.path).toBe(key);
         });
 
         test('should interpolate offsets', () => {
@@ -54,7 +72,8 @@ describe('VariableAnchorOffsetCollection', () => {
                 i11nFn(
                     parseFn(['top', [0, 0], 'bottom', [2, 2]]),
                     parseFn(['top', [1, 1], 'bottom', [4, 4]]),
-                    0.5
+                    0.5,
+                    key
                 ).values
             ).toEqual(['top', [0.5, 0.5], 'bottom', [3, 3]]);
         });

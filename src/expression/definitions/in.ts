@@ -17,15 +17,13 @@ import type {EvaluationContext} from '../evaluation_context';
 import type {Type} from '../types';
 
 export class In implements Expression {
-    type: Type;
-    needle: Expression;
-    haystack: Expression;
+    type: Type = BooleanType;
 
-    constructor(needle: Expression, haystack: Expression) {
-        this.type = BooleanType;
-        this.needle = needle;
-        this.haystack = haystack;
-    }
+    constructor(
+        public needle: Expression,
+        public haystack: Expression,
+        public readonly key: string
+    ) {}
 
     static parse(args: ReadonlyArray<unknown>, context: ParsingContext): Expression {
         if (args.length !== 3) {
@@ -46,7 +44,7 @@ export class In implements Expression {
             ) as null;
         }
 
-        return new In(needle, haystack);
+        return new In(needle, haystack, context.key);
     }
 
     evaluate(ctx: EvaluationContext) {
@@ -57,13 +55,15 @@ export class In implements Expression {
 
         if (!isValidNativeType(needle, ['boolean', 'string', 'number', 'null'])) {
             throw new RuntimeError(
-                `Expected first argument to be of type boolean, string, number or null, but found ${typeToString(typeOf(needle))} instead.`
+                `Expected first argument to be of type boolean, string, number or null, but found ${typeToString(typeOf(needle))} instead.`,
+                this.key
             );
         }
 
         if (!isValidNativeType(haystack, ['string', 'array'])) {
             throw new RuntimeError(
-                `Expected second argument to be of type array or string, but found ${typeToString(typeOf(haystack))} instead.`
+                `Expected second argument to be of type array or string, but found ${typeToString(typeOf(haystack))} instead.`,
+                this.key
             );
         }
 
