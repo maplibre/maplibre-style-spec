@@ -53,22 +53,34 @@
   },
   {
     "message": "layers[14].filter[1]: Mixing deprecated filter syntax with expression syntax is not supported. Replace [\">=\",\"Constructi\",1930] with [\">=\",[\"get\",\"Constructi\"],1930].",
+    "severity": "warning",
+    "line": 152
+  },
+  {
+    "message": "layers[14].filter[1]: Cannot compare types 'string' and 'number'.",
     "line": 152
   },
   {
     "message": "layers[15].filter[1]: Mixing deprecated filter syntax with expression syntax is not supported. Replace [\"==\",\"$type\",\"Point\"] with [\"==\",[\"geometry-type\"],\"Point\"].",
+    "severity": "warning",
     "line": 159
   },
   {
-    "message": "layers[16].filter[1]: Mixing deprecated filter syntax with expression syntax is not supported. Replace [\"==\",\"class\",\"primary\"] with [\"==\",[\"get\",\"class\"],\"primary\"].",
+    "message": "layers[16].filter[2][0]: expected one of [==, !=, >, >=, <, <=, in, !in, all, any, none, has, !has], \"case\" found",
     "line": 166
   },
   {
     "message": "layers[17].filter[1]: Mixing deprecated filter syntax with expression syntax is not supported. Replace [\"in\",\"$type\",\"Point\",\"LineString\"] with [\"in\",[\"geometry-type\"],[\"literal\",[\"Point\",\"LineString\"]]].",
+    "severity": "warning",
+    "line": 173
+  },
+  {
+    "message": "layers[17].filter[1]: Expected 2 arguments, but found 3 instead.",
     "line": 173
   },
   {
     "message": "layers[18].filter[1][2]: Mixing deprecated filter syntax with expression syntax is not supported. Replace [\"==\",\"$type\",\"Point\"] with [\"==\",[\"geometry-type\"],\"Point\"].",
+    "severity": "warning",
     "line": 180
   },
   {
@@ -81,10 +93,20 @@
   },
   {
     "message": "layers[21].filter[1]: Mixing deprecated filter syntax with expression syntax is not supported. Replace [\"!has\",\"somthing\"] with [\"!\",[\"has\",\"somthing\"]].",
+    "severity": "warning",
+    "line": 201
+  },
+  {
+    "message": "layers[21].filter[1][0]: Unknown expression \"!has\". If you wanted a literal array, use [\"literal\", [...]].",
     "line": 201
   },
   {
     "message": "layers[22].filter[1]: Mixing deprecated filter syntax with expression syntax is not supported. Convert [\"!has\",2] to expression syntax.",
+    "severity": "warning",
+    "line": 208
+  },
+  {
+    "message": "layers[22].filter[1][0]: Unknown expression \"!has\". If you wanted a literal array, use [\"literal\", [...]].",
     "line": 208
   }
 ]

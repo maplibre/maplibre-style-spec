@@ -21,26 +21,61 @@ type MixedFilterDiagnostic = {
     legacyFilter: Array<any>;
 };
 
-export function isExpressionFilter(filter: any): filter is ExpressionFilterSpecification {
-    if (filter === true || filter === false) {
-        return true;
+/**
+ * Which of the two filter syntaxes a filter node belongs to.
+ *
+ * - `expression`: only valid as an expression, e.g. `["==", ["get", "x"], 1]`.
+ * - `legacy`: only valid as a deprecated filter, e.g. `["!in", "x", 1]`.
+ * - `ambiguous`: valid as both *and* means the same thing in each, e.g.
+ *   `["has", "x"]` or a bare boolean.
+ *
+ * The `ambiguous` case is what keeps `["all", ["==", "class", "rail"], ["has", "service"]]`
+ * working: `["has", key]` is no evidence that its siblings were meant as expressions, so
+ * it must never decide the syntax of the tree it sits in.
+ */
+type FilterClassification = 'expression' | 'legacy' | 'ambiguous';
+
+function classifyChildren(children: Array<any>): FilterClassification {
+    let sawLegacy = false;
+    for (const child of children) {
+        const classification = classifyFilter(child);
+        // A single expression-only child settles it for the whole tree.
+        if (classification === 'expression') return 'expression';
+        if (classification === 'legacy') sawLegacy = true;
+    }
+    return sawLegacy ? 'legacy' : 'ambiguous';
+}
+
+function classifyFilter(filter: any): FilterClassification {
+    if (typeof filter === 'boolean') {
+        return 'ambiguous';
     }
 
     if (!Array.isArray(filter) || filter.length === 0) {
-        return false;
+        return 'legacy';
     }
+
     switch (filter[0]) {
         case 'has':
-            return filter.length >= 2 && filter[1] !== '$id' && filter[1] !== '$type';
+            if (filter.length < 2 || filter[1] === '$id' || filter[1] === '$type') {
+                return 'legacy';
+            }
+            // The two-element form is the one both syntaxes share; the expression-only
+            // form takes a third argument.
+            return filter.length === 2 ? 'ambiguous' : 'expression';
 
         case 'in':
-            return (
-                filter.length >= 3 && (typeof filter[1] !== 'string' || Array.isArray(filter[2]))
-            );
+            // `["in", "name", ""]` parses as both, but the two readings disagree (legacy
+            // tests a property against a set; the expression tests for a substring), so
+            // this is a genuine conflict rather than an ambiguity. Keep calling it legacy
+            // so that findMixedLegacyFilter reports it.
+            return filter.length >= 3 && (typeof filter[1] !== 'string' || Array.isArray(filter[2]))
+                ? 'expression'
+                : 'legacy';
 
         case '!in':
         case '!has':
-            return false;
+            return 'legacy';
 
         case '==':
         case '!=':
@@ -48,36 +83,22 @@ export function isExpressionFilter(filter: any): filter is ExpressionFilterSpeci
         case '>=':
         case '<':
         case '<=':
-            return filter.length !== 3 || Array.isArray(filter[1]) || Array.isArray(filter[2]);
+            return filter.length !== 3 || Array.isArray(filter[1]) || Array.isArray(filter[2])
+                ? 'expression'
+                : 'legacy';
 
-        case 'none': {
-            for (const f of filter.slice(1)) {
-                if (typeof f === 'boolean') continue;
-                if (isExpressionFilter(f)) {
-                    return true;
-                }
-            }
-            return false;
-        }
-
+        case 'none':
         case 'any':
-        case 'all': {
-            let hasLegacy = false;
-            for (const f of filter.slice(1)) {
-                if (typeof f === 'boolean') continue;
-                if (isExpressionFilter(f)) {
-                    // If any child is definitely an expression, treat the whole filter as an expression
-                    // that will go through extensive validation to surface mixed syntax issues.
-                    return true;
-                }
-                hasLegacy = true;
-            }
-            return !hasLegacy;
-        }
+        case 'all':
+            return classifyChildren(filter.slice(1));
 
         default:
-            return true;
+            return 'expression';
     }
+}
+
+export function isExpressionFilter(filter: any): filter is ExpressionFilterSpecification {
+    return classifyFilter(filter) !== 'legacy';
 }
 
 function getFilterPropertyExpression(property: string): unknown {
@@ -121,7 +142,7 @@ function getLegacyFilterExpressionSuggestion(filter: Array<any>): unknown {
     }
 }
 
-export function getMixedFilterErrorMessage(filter: Array<any>): string {
+export function getMixedFilterMessage(filter: Array<any>): string {
     if (
         (filter[0] === '<' || filter[0] === '<=' || filter[0] === '>' || filter[0] === '>=') &&
         filter[1] === '$type'
@@ -187,11 +208,25 @@ export function findMixedLegacyFilter(
     return null;
 }
 
-export function validateNoMixedExpressionFilter(filter: FilterSpecification) {
+/**
+ * Warns about a filter that mixes deprecated filter syntax into an expression tree.
+ *
+ * These filters still compile, and are evaluated exactly as they were before mixing was
+ * diagnosed: the legacy sub-filter is parsed as an expression, which rarely means what the
+ * author intended. That is worth a loud, located warning — but not a throw. Styles in the
+ * wild have rendered this way for years, and because maplibre-gl-js aborts the entire style
+ * load on a validation error, failing here would take down the whole map rather than the one
+ * filter at fault.
+ * @param filter The filter to check
+ * @param rootKey Location of the filter in the style JSON, e.g. `layers[3].filter`
+ */
+export function warnAboutMixedLegacyFilter(filter: FilterSpecification, rootKey: string) {
     const diagnostic = findMixedLegacyFilter(filter);
-    if (diagnostic) {
-        throw new Error(getMixedFilterErrorMessage(diagnostic.legacyFilter));
+    if (!diagnostic || typeof console === 'undefined') {
+        return;
     }
+    const path = diagnostic.path.map((index) => `[${index}]`).join('');
+    console.warn(`${rootKey}${path}: ${getMixedFilterMessage(diagnostic.legacyFilter)}`);
 }
 
 const filterSpec = {
@@ -227,12 +262,12 @@ export function featureFilter(
     }
 
     if (Array.isArray(filter) && filter[0] === 'none' && isExpressionFilter(filter)) {
-        validateNoMixedExpressionFilter(filter);
+        warnAboutMixedLegacyFilter(filter, rootKey);
         filter = convertFilter(filter as Array<any>) as ExpressionFilterSpecification;
     } else if (!isExpressionFilter(filter)) {
         filter = convertFilter(filter) as ExpressionFilterSpecification;
     } else {
-        validateNoMixedExpressionFilter(filter);
+        warnAboutMixedLegacyFilter(filter, rootKey);
     }
 
     const compiled = createExpression(

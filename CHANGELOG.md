@@ -1,8 +1,11 @@
 ## main
 ### ✨ Features and improvements
+- Add a `severity` field to `ValidationError`. It is only set on non-fatal findings (`"warning"`); an absent `severity` still means `"error"`, so existing consumers are unaffected. Style editors can now list warnings alongside errors instead of relying on the console ([#1751](https://github.com/maplibre/maplibre-style-spec/issues/1751)) (by [@HarelM](https://github.com/HarelM))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
+- Stop reporting pure legacy filters as mixed legacy/expression syntax. `["has", key]` means the same thing in both syntaxes, so it no longer promotes an `all`/`any`/`none` tree to an expression — a filter such as `["all", ["==", "class", "rail"], ["has", "service"]]` is valid legacy syntax and validates cleanly again ([#1751](https://github.com/maplibre/maplibre-style-spec/issues/1751)) (by [@HarelM](https://github.com/HarelM))
+- Report filters that genuinely mix deprecated syntax into an expression tree as a warning rather than an error, and evaluate them as they were evaluated before mixing was diagnosed. maplibre-gl-js aborts the whole style load on any validation error, so erroring here blanked the entire map for styles that had rendered for years ([#1751](https://github.com/maplibre/maplibre-style-spec/issues/1751)) (by [@HarelM](https://github.com/HarelM))
 - _...Add new stuff here..._
 
 

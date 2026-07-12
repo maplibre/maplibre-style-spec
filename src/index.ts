@@ -3,7 +3,7 @@ const v8 = v8Spec as any;
 import latest from './reference/latest';
 import {derefLayers} from './deref';
 import {diff, type DiffCommand, type DiffOperations} from './diff';
-import {ValidationError} from './error/validation_error';
+import {ValidationError, type ValidationSeverity} from './error/validation_error';
 import {ParsingError} from './error/parsing_error';
 import {
     FeatureState,
@@ -234,7 +234,8 @@ export type {
     InterpolationType,
     VerticalAlign,
     Point2D,
-    Expression
+    Expression,
+    ValidationSeverity
 };
 
 export {
