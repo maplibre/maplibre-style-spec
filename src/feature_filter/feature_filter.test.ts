@@ -829,7 +829,7 @@ describe('global-state in filter', () => {
         );
     });
 
-    test('mixed none filter warns with explicit replacement guidance', () => {
+    test('none is never an expression, so it is always converted from legacy syntax', () => {
         vi.spyOn(console, 'warn').mockImplementation(() => {});
         const globalState = {activeTrackId: 'track1'};
         const isActive = [
@@ -843,10 +843,12 @@ describe('global-state in filter', () => {
             ['case', isActive, true, false]
         ] as unknown as ExpressionFilterSpecification;
 
+        // There is no `none` expression, so even a `none` holding expression children takes the
+        // legacy conversion path. That conversion cannot represent the expression children, which
+        // is why validation reports this filter as an error rather than a warning -- see
+        // `mixing old filters and expressions with none` in filters.input.json.
+        expect(isExpressionFilter(filter)).toBe(false);
         expect(() => featureFilter(filter, 'layers[0].filter', globalState)).not.toThrow();
-        expect(console.warn).toHaveBeenCalledWith(
-            'layers[0].filter[1]: Mixing deprecated filter syntax with expression syntax is not supported. Replace ["==","$type","Polygon"] with ["==",["geometry-type"],"Polygon"].'
-        );
     });
 
     test('suggests a valid expression for mixed "$type" != filter', () => {

@@ -88,6 +88,7 @@ function classifyFilter(filter: any): FilterClassification {
                 : 'legacy';
 
         case 'none':
+            return 'legacy';
         case 'any':
         case 'all':
             return classifyChildren(filter.slice(1));
@@ -261,10 +262,7 @@ export function featureFilter(
         return {filter: () => true, needGeometry: false, getGlobalStateRefs: () => new Set()};
     }
 
-    if (Array.isArray(filter) && filter[0] === 'none' && isExpressionFilter(filter)) {
-        warnAboutMixedLegacyFilter(filter, rootKey);
-        filter = convertFilter(filter as Array<any>) as ExpressionFilterSpecification;
-    } else if (!isExpressionFilter(filter)) {
+    if (!isExpressionFilter(filter)) {
         filter = convertFilter(filter) as ExpressionFilterSpecification;
     } else {
         warnAboutMixedLegacyFilter(filter, rootKey);
