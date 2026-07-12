@@ -1,11 +1,18 @@
 ## main
 ### ✨ Features and improvements
-- Add a `severity` field to `ValidationError`. It is only set on non-fatal findings (`"warning"`); an absent `severity` still means `"error"`, so existing consumers are unaffected ([#1751](https://github.com/maplibre/maplibre-style-spec/issues/1751)) (by [@HarelM](https://github.com/HarelM))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
-- Stop reporting pure legacy filters as mixed legacy/expression syntax. `["has", key]` means the same thing in both syntaxes for example ([#1751](https://github.com/maplibre/maplibre-style-spec/issues/1751)) (by [@HarelM](https://github.com/HarelM))
 - _...Add new stuff here..._
+
+## 26.0.0
+### ✨ Features and improvements
+- Add a `severity` field to `ValidationError`. It is only set on non-fatal findings (`"warning"`); an absent `severity` still means `"error"`, so existing consumers are unaffected ([#1751](https://github.com/maplibre/maplibre-style-spec/issues/1751)) (by [@HarelM](https://github.com/HarelM))
+- ⚠️ Allow debugging runtime warnings by attaching location of an warning and what will happen ([#1740](https://github.com/maplibre/maplibre-style-spec/pull/1740)) (by [@CommanderStorm](https://github.com/CommanderStorm))
+
+### 🐞 Bug fixes
+- Stop reporting pure legacy filters as mixed legacy/expression syntax. `["has", key]` means the same thing in both syntaxes for example ([#1751](https://github.com/maplibre/maplibre-style-spec/issues/1751)) (by [@HarelM](https://github.com/HarelM))
+- Stop mixed-filter diagnostics from blanking the whole map (#1751) ([#1752](https://github.com/maplibre/maplibre-style-spec/pull/1752)) (by [@HarelM](https://github.com/HarelM))
 
 
 ## 25.0.2
