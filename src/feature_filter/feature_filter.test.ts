@@ -881,4 +881,3 @@ describe('global-state in filter', () => {
         );
     });
 });
-
