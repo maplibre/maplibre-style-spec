@@ -6,7 +6,9 @@
 - _...Add new stuff here..._
 
 ## 26.0.0
+
 ### ✨ Features and improvements
+
 - Add a `severity` field to `ValidationError` and imporve legacy filter recognition ([#1752](https://github.com/maplibre/maplibre-style-spec/issues/1752)) (by [@HarelM](https://github.com/HarelM))
 - ⚠️ Allow debugging runtime warnings by attaching location of an warning and what will happen ([#1740](https://github.com/maplibre/maplibre-style-spec/pull/1740)) (by [@CommanderStorm](https://github.com/CommanderStorm))
 
