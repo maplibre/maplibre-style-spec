@@ -1,90 +1,137 @@
 [
   {
     "message": "layers[0].filter: array expected, object found",
+    "severity": "error",
     "line": 15
   },
   {
     "message": "layers[1].filter: filter array must have at least 1 element",
+    "severity": "error",
     "line": 22
   },
   {
     "message": "layers[2].filter[0]: Unknown expression \"=\". If you wanted a literal array, use [\"literal\", [...]].",
+    "severity": "error",
     "line": 29
   },
   {
     "message": "layers[3].filter: Expected two or three arguments.",
+    "severity": "error",
     "line": 40
   },
   {
     "message": "layers[4].filter: Expected two or three arguments.",
+    "severity": "error",
     "line": 47
   },
   {
     "message": "layers[5].filter[1]: string expected, number found",
+    "severity": "error",
     "line": 59
   },
   {
     "message": "layers[6].filter[2]: Expected an array with at least one element. If you wanted a literal array, use [\"literal\", []].",
+    "severity": "error",
     "line": 68
   },
   {
     "message": "layers[7].filter[2]: expected one of [Point, LineString, Polygon], \"value\" found",
+    "severity": "error",
     "line": 82
   },
   {
     "message": "layers[8].filter: \"$type\" cannot be use with operator \">\"",
+    "severity": "error",
     "line": 90
   },
   {
     "message": "layers[8].filter[2]: expected one of [Point, LineString, Polygon], \"value\" found",
+    "severity": "error",
     "line": 93
   },
   {
     "message": "layers[9].filter[1]: filter array must have at least 1 element",
+    "severity": "error",
     "line": 103
   },
   {
     "message": "layers[12].filter[2]: Expected object but found string instead.",
+    "severity": "error",
     "line": 131
   },
   {
     "message": "layers[13].filter[1]: Bare objects invalid. Use [\"literal\", {...}] instead.",
+    "severity": "error",
     "line": 142
   },
   {
     "message": "layers[14].filter[1]: Mixing deprecated filter syntax with expression syntax is not supported. Replace [\">=\",\"Constructi\",1930] with [\">=\",[\"get\",\"Constructi\"],1930].",
+    "severity": "warning",
+    "line": 152
+  },
+  {
+    "message": "layers[14].filter[1]: Cannot compare types 'string' and 'number'.",
+    "severity": "error",
     "line": 152
   },
   {
     "message": "layers[15].filter[1]: Mixing deprecated filter syntax with expression syntax is not supported. Replace [\"==\",\"$type\",\"Point\"] with [\"==\",[\"geometry-type\"],\"Point\"].",
+    "severity": "warning",
     "line": 159
   },
   {
-    "message": "layers[16].filter[1]: Mixing deprecated filter syntax with expression syntax is not supported. Replace [\"==\",\"class\",\"primary\"] with [\"==\",[\"get\",\"class\"],\"primary\"].",
+    "message": "layers[16].filter[2][0]: expected one of [==, !=, >, >=, <, <=, in, !in, all, any, none, has, !has], \"case\" found",
+    "severity": "error",
     "line": 166
   },
   {
     "message": "layers[17].filter[1]: Mixing deprecated filter syntax with expression syntax is not supported. Replace [\"in\",\"$type\",\"Point\",\"LineString\"] with [\"in\",[\"geometry-type\"],[\"literal\",[\"Point\",\"LineString\"]]].",
+    "severity": "warning",
+    "line": 173
+  },
+  {
+    "message": "layers[17].filter[1]: Expected 2 arguments, but found 3 instead.",
+    "severity": "error",
     "line": 173
   },
   {
     "message": "layers[18].filter[1][2]: Mixing deprecated filter syntax with expression syntax is not supported. Replace [\"==\",\"$type\",\"Point\"] with [\"==\",[\"geometry-type\"],\"Point\"].",
+    "severity": "warning",
     "line": 180
   },
   {
     "message": "layers[19].filter: \"feature-state\" data expressions are not supported with filters.",
+    "severity": "error",
     "line": 187
   },
   {
     "message": "layers[20].filter: \"$type\" cannot be use with operator \"<=\"",
+    "severity": "error",
     "line": 194
   },
   {
     "message": "layers[21].filter[1]: Mixing deprecated filter syntax with expression syntax is not supported. Replace [\"!has\",\"somthing\"] with [\"!\",[\"has\",\"somthing\"]].",
+    "severity": "warning",
+    "line": 201
+  },
+  {
+    "message": "layers[21].filter[1][0]: Unknown expression \"!has\". If you wanted a literal array, use [\"literal\", [...]].",
+    "severity": "error",
     "line": 201
   },
   {
     "message": "layers[22].filter[1]: Mixing deprecated filter syntax with expression syntax is not supported. Convert [\"!has\",2] to expression syntax.",
+    "severity": "warning",
     "line": 208
+  },
+  {
+    "message": "layers[22].filter[1][0]: Unknown expression \"!has\". If you wanted a literal array, use [\"literal\", [...]].",
+    "severity": "error",
+    "line": 208
+  },
+  {
+    "message": "layers[27].filter[2][1]: Mixing deprecated filter syntax with expression syntax is not supported. Replace [\"in\",\"name\",\"\"] with [\"in\",[\"get\",\"name\"],[\"literal\",[\"\"]]].",
+    "severity": "warning",
+    "line": 251
   }
 ]

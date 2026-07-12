@@ -1,6 +1,7 @@
 [
   {
     "message": "center: array length 2 expected, length 3 found",
+    "severity": "error",
     "line": 3
   }
 ]

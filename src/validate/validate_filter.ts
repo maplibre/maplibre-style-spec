@@ -4,11 +4,7 @@ import {validateEnum} from './validate_enum';
 import {getType} from '../util/get_type';
 import {unbundle, deepUnbundle} from '../util/unbundle_jsonlint';
 import {extendBy as extend} from '../util/extend';
-import {
-    findMixedLegacyFilter,
-    getMixedFilterErrorMessage,
-    isExpressionFilter
-} from '../feature_filter';
+import {findMixedLegacyFilter, getMixedFilterMessage, isExpressionFilter} from '../feature_filter';
 
 function getValueAtPath(value: any, path: number[]) {
     let current = value;
@@ -18,28 +14,43 @@ function getValueAtPath(value: any, path: number[]) {
     return current;
 }
 
+/**
+ * Reports a filter that mixes deprecated syntax into an expression tree as a *warning*.
+ * @param options The validation options, used for the key and the un-unbundled value
+ * @param value The unbundled filter to inspect
+ * @returns A single warning, or an empty array when nothing is mixed
+ */
+function validateNoMixedLegacyFilter(options: any, value: any): ValidationError[] {
+    const diagnostic = findMixedLegacyFilter(value);
+    if (!diagnostic) {
+        return [];
+    }
+    const key = `${options.key}${diagnostic.path.map((index) => `[${index}]`).join('')}`;
+    return [
+        new ValidationError(
+            key,
+            getValueAtPath(options.value, diagnostic.path),
+            getMixedFilterMessage(diagnostic.legacyFilter),
+            null,
+            'warning'
+        )
+    ];
+}
+
 export function validateFilter(options: any): ValidationError[] {
     const value = deepUnbundle(options.value);
     if (!isExpressionFilter(value)) {
         return validateNonExpressionFilter(options);
     }
-    const mixedLegacyDiagnostic = findMixedLegacyFilter(value);
-    if (mixedLegacyDiagnostic) {
-        const errorKey = `${options.key}${mixedLegacyDiagnostic.path.map((index) => `[${index}]`).join('')}`;
-        return [
-            new ValidationError(
-                errorKey,
-                getValueAtPath(options.value, mixedLegacyDiagnostic.path),
-                getMixedFilterErrorMessage(mixedLegacyDiagnostic.legacyFilter)
-            )
-        ];
-    }
-    return validateExpression(
-        extend({}, options, {
-            expressionContext: 'filter',
-            valueSpec: {value: 'boolean'}
-        })
-    );
+    return [
+        ...validateNoMixedLegacyFilter(options, value),
+        ...validateExpression(
+            extend({}, options, {
+                expressionContext: 'filter',
+                valueSpec: {value: 'boolean'}
+            })
+        )
+    ];
 }
 
 function validateNonExpressionFilter(options: any): ValidationError[] {

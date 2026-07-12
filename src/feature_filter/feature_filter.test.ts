@@ -706,6 +706,26 @@ describe('legacy filter tests', () => {
             expect(f({zoom: 0}, {properties: {foo: undefined}} as any as Feature)).toBe(true);
             expect(f({zoom: 0}, {properties: {}} as any as Feature)).toBe(true);
         });
+
+        test('pure legacy filter using `has` still matches the right features', () => {
+            const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+            warn.mockClear();
+
+            const filter = [
+                'all',
+                ['==', '$type', 'LineString'],
+                ['all', ['==', 'class', 'rail'], ['has', 'service']]
+            ] as unknown as FilterSpecification;
+            const f = createFilterExpr(filter).filter;
+
+            expect(warn).not.toHaveBeenCalled();
+
+            const feature = (properties: Record<string, string>) =>
+                ({type: 'LineString', properties}) as any as Feature;
+            expect(f({zoom: 0}, feature({class: 'rail', service: 'yard'}))).toBe(true);
+            expect(f({zoom: 0}, feature({class: 'rail'}))).toBe(false);
+            expect(f({zoom: 0}, feature({class: 'road', service: 'yard'}))).toBe(false);
+        });
     }
 });
 
@@ -815,19 +835,22 @@ describe('global-state in filter', () => {
         expect(isExpressionFilter(filter)).toBe(true);
     });
 
-    test('mixed filter still fails cleanly for unsupported legacy special-key operators', () => {
+    test('mixed filter warns about unsupported legacy special-key operators', () => {
+        vi.spyOn(console, 'warn').mockImplementation(() => {});
         const filter = [
             'all',
             ['>', '$type', 'Point'],
             ['==', ['global-state', 'active'], true]
         ] as ExpressionFilterSpecification;
 
-        expect(() => featureFilter(filter, 'layers[0].filter', {active: true})).toThrow(
-            '"$type" cannot be use with operator ">"'
+        expect(() => featureFilter(filter, 'layers[0].filter', {active: true})).not.toThrow();
+        expect(console.warn).toHaveBeenCalledWith(
+            'layers[0].filter[1]: "$type" cannot be use with operator ">"'
         );
     });
 
-    test('featureFilter throws explicit replacement guidance for mixed none filter', () => {
+    test('none is never an expression, so it is always converted from legacy syntax', () => {
+        vi.spyOn(console, 'warn').mockImplementation(() => {});
         const globalState = {activeTrackId: 'track1'};
         const isActive = [
             '==',
@@ -840,20 +863,21 @@ describe('global-state in filter', () => {
             ['case', isActive, true, false]
         ] as unknown as ExpressionFilterSpecification;
 
-        expect(() => featureFilter(filter, 'layers[0].filter', globalState)).toThrow(
-            'Mixing deprecated filter syntax with expression syntax is not supported. Replace ["==","$type","Polygon"] with ["==",["geometry-type"],"Polygon"].'
-        );
+        expect(isExpressionFilter(filter)).toBe(false);
+        expect(() => featureFilter(filter, 'layers[0].filter', globalState)).not.toThrow();
     });
 
     test('suggests a valid expression for mixed "$type" != filter', () => {
+        vi.spyOn(console, 'warn').mockImplementation(() => {});
         const filter = [
             'all',
             ['!=', '$type', 'LineString'],
             ['==', ['global-state', 'active'], true]
         ] as unknown as ExpressionFilterSpecification;
 
-        expect(() => featureFilter(filter, 'layers[0].filter', {active: true})).toThrow(
-            'Mixing deprecated filter syntax with expression syntax is not supported. Replace ["!=","$type","LineString"] with ["!=",["geometry-type"],"LineString"].'
+        expect(() => featureFilter(filter, 'layers[0].filter', {active: true})).not.toThrow();
+        expect(console.warn).toHaveBeenCalledWith(
+            'layers[0].filter[1]: Mixing deprecated filter syntax with expression syntax is not supported. Replace ["!=","$type","LineString"] with ["!=",["geometry-type"],"LineString"].'
         );
     });
 });

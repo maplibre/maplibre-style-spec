@@ -24,8 +24,8 @@ describe('Validate object', () => {
             validateSpec: validate
         });
         expect(errors).toEqual([
-            {message: 'test: unknown property "unspecifiedField"'},
-            {message: 'test: missing required property "withRequired"'}
+            {message: 'test: unknown property "unspecifiedField"', severity: 'error'},
+            {message: 'test: missing required property "withRequired"', severity: 'error'}
         ]);
     });
     test('Should not throw an unexpected error if object prototype keys are used as keys', () => {
@@ -42,10 +42,10 @@ describe('Validate object', () => {
             validateSpec: validate
         });
         expect(errors).toEqual([
-            {message: 'test: unknown property "__defineProperty__"'},
-            {message: 'test: unknown property "hasOwnProperty"'},
-            {message: 'test: unknown property "toLocaleString"'},
-            {message: 'test: unknown property "valueOf"'}
+            {message: 'test: unknown property "__defineProperty__"', severity: 'error'},
+            {message: 'test: unknown property "hasOwnProperty"', severity: 'error'},
+            {message: 'test: unknown property "toLocaleString"', severity: 'error'},
+            {message: 'test: unknown property "valueOf"', severity: 'error'}
         ]);
     });
 
@@ -64,11 +64,14 @@ describe('Validate object', () => {
             validateSpec: validate
         });
         expect(errors).toEqual([
-            {message: 'test: unknown property "__proto__.__proto__"'},
-            {message: 'test: unknown property "__defineProperty__.__defineProperty__"'},
-            {message: 'test: unknown property "hasOwnProperty.hasOwnProperty"'},
-            {message: 'test: unknown property "toLocaleString.toLocaleString"'},
-            {message: 'test: unknown property "valueOf.valueOf"'}
+            {message: 'test: unknown property "__proto__.__proto__"', severity: 'error'},
+            {
+                message: 'test: unknown property "__defineProperty__.__defineProperty__"',
+                severity: 'error'
+            },
+            {message: 'test: unknown property "hasOwnProperty.hasOwnProperty"', severity: 'error'},
+            {message: 'test: unknown property "toLocaleString.toLocaleString"', severity: 'error'},
+            {message: 'test: unknown property "valueOf.valueOf"', severity: 'error'}
         ]);
     });
 });

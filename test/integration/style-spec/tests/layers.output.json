@@ -1,110 +1,137 @@
 [
   {
     "message": "layers[0]: either \"type\" or \"ref\" is required",
+    "severity": "error",
     "line": 27
   },
   {
     "message": "layers[1]: missing required property \"id\"",
+    "severity": "error",
     "line": 32
   },
   {
     "message": "layers[3]: \"type\" is prohibited for ref layers",
+    "severity": "error",
     "line": 46
   },
   {
     "message": "layers[3]: \"source\" is prohibited for ref layers",
+    "severity": "error",
     "line": 47
   },
   {
     "message": "layers[3]: \"source-layer\" is prohibited for ref layers",
+    "severity": "error",
     "line": 48
   },
   {
     "message": "layers[3]: \"filter\" is prohibited for ref layers",
+    "severity": "error",
     "line": 49
   },
   {
     "message": "layers[3]: \"layout\" is prohibited for ref layers",
+    "severity": "error",
     "line": 50
   },
   {
     "message": "layers[4]: ref layer \"not-found\" not found",
+    "severity": "error",
     "line": 54
   },
   {
     "message": "layers[5]: ref cannot reference another ref layer",
+    "severity": "error",
     "line": 58
   },
   {
     "message": "layers[6]: missing required property \"source\"",
+    "severity": "error",
     "line": 60
   },
   {
     "message": "layers[7]: source \"not-found\" not found",
+    "severity": "error",
     "line": 67
   },
   {
     "message": "layers[8]: layer \"vector-raster-mismatch\" requires a vector source",
+    "severity": "error",
     "line": 72
   },
   {
     "message": "layers[9]: layer \"raster-vector-mismatch\" requires a raster source",
+    "severity": "error",
     "line": 77
   },
   {
     "message": "layers[10]: layer \"raster-hillshade-mismatch\" requires a raster-dem source",
+    "severity": "error",
     "line": 83
   },
   {
     "message": "layers[11]: layer \"vector-hillshade-mismatch\" requires a raster-dem source",
+    "severity": "error",
     "line": 89
   },
   {
     "message": "layers[12]: raster-dem source can only be used with layer type 'hillshade' or 'color-relief'.",
+    "severity": "error",
     "line": 95
   },
   {
     "message": "layers[14]: duplicate layer id \"duplicate\", previously used at line 99",
+    "severity": "error",
     "line": 105
   },
   {
     "message": "layers[15].type: expected one of [fill, line, symbol, circle, heatmap, fill-extrusion, raster, hillshade, color-relief, background], \"invalid\" found",
+    "severity": "error",
     "line": 112
   },
   {
     "message": "layers[16]: layer \"missing-source-layer\" must specify a \"source-layer\"",
+    "severity": "error",
     "line": 122
   },
   {
     "message": "layers[18]: layer \"line-gradient-bad\" specifies a line-gradient, which requires a GeoJSON source with `lineMetrics` enabled.",
+    "severity": "error",
     "line": 134
   },
   {
     "message": "layers[19]: layer \"line-gradient-missing-lineMetrics\" specifies a line-gradient, which requires a GeoJSON source with `lineMetrics` enabled.",
+    "severity": "error",
     "line": 148
   },
   {
     "message": "layers[21].type: expected one of [fill, line, symbol, circle, heatmap, fill-extrusion, raster, hillshade, color-relief, background], \"custom\" found",
+    "severity": "error",
     "line": 178
   },
   {
     "message": "layers[22].paint.hillshade-illumination-direction: array length at least 1 expected, length 0 found",
+    "severity": "error",
     "line": 188
   },
   {
     "message": "layers[22].paint.hillshade-illumination-altitude: array length at least 1 expected, length 0 found",
+    "severity": "error",
     "line": 189
   },
   {
     "message": "layers[22].paint.hillshade-highlight-color: array length at least 1 expected, length 0 found",
+    "severity": "error",
     "line": 190
   },
   {
     "message": "layers[22].paint.hillshade-shadow-color: array length at least 1 expected, length 0 found",
+    "severity": "error",
     "line": 191
   },
   {
     "message": "layers[23]: layer \"redundant-resampling\" redundantly specifies \"resampling\" and \"raster-resampling\" paint properties, but only one is allowed. It is advised to use \"resampling\".",
+    "severity": "error",
     "line": 199
   }
 ]
