@@ -209,18 +209,6 @@ export function findMixedLegacyFilter(
     return null;
 }
 
-/**
- * Warns about a filter that mixes deprecated filter syntax into an expression tree.
- *
- * These filters still compile, and are evaluated exactly as they were before mixing was
- * diagnosed: the legacy sub-filter is parsed as an expression, which rarely means what the
- * author intended. That is worth a loud, located warning — but not a throw. Styles in the
- * wild have rendered this way for years, and because maplibre-gl-js aborts the entire style
- * load on a validation error, failing here would take down the whole map rather than the one
- * filter at fault.
- * @param filter The filter to check
- * @param rootKey Location of the filter in the style JSON, e.g. `layers[3].filter`
- */
 export function warnAboutMixedLegacyFilter(filter: FilterSpecification, rootKey: string) {
     const diagnostic = findMixedLegacyFilter(filter);
     if (!diagnostic || typeof console === 'undefined') {
