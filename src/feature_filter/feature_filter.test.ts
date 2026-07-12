@@ -865,7 +865,7 @@ describe('global-state in filter', () => {
 // Which filters are classified as mixed, and what they report, is covered by the validation
 // fixture in test/integration/style-spec/tests/filters.input.json. These tests cover what the
 // fixture cannot: what a filter actually evaluates to for a given feature.
-describe('legacy filters containing an ambiguous operator (#1751)', () => {
+describe('legacy filters containing a neutral operator (#1751)', () => {
     test('pure legacy filter using `has` evaluates correctly and does not warn', () => {
         vi.spyOn(console, 'warn').mockImplementation(() => {});
         // The filter from the issue report; pure legacy syntax, nothing mixed about it.

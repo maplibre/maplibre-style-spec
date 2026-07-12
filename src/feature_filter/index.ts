@@ -26,14 +26,15 @@ type MixedFilterDiagnostic = {
  *
  * - `expression`: only valid as an expression, e.g. `["==", ["get", "x"], 1]`.
  * - `legacy`: only valid as a deprecated filter, e.g. `["!in", "x", 1]`.
- * - `ambiguous`: valid as both *and* means the same thing in each, e.g.
- *   `["has", "x"]` or a bare boolean.
+ * - `neutral`: valid as both *and* means the same thing in each, e.g. `["has", "x"]` or a
+ *   bare boolean. Reading it either way gives the same result, so it is no evidence of which
+ *   syntax the author was writing, and it must never decide the syntax of the tree it sits in.
  *
- * The `ambiguous` case is what keeps `["all", ["==", "class", "rail"], ["has", "service"]]`
- * working: `["has", key]` is no evidence that its siblings were meant as expressions, so
- * it must never decide the syntax of the tree it sits in.
+ * Note that "parses as both" is not enough to be `neutral`: `["in", "name", ""]` parses as
+ * both, but legacy reads it as a property test and an expression reads it as a substring
+ * test, so the two disagree. A node whose readings disagree stays `legacy` -- see `in` below.
  */
-type FilterClassification = 'expression' | 'legacy' | 'ambiguous';
+type FilterClassification = 'expression' | 'legacy' | 'neutral';
 
 function classifyChildren(children: Array<any>): FilterClassification {
     let sawLegacy = false;
@@ -43,12 +44,12 @@ function classifyChildren(children: Array<any>): FilterClassification {
         if (classification === 'expression') return 'expression';
         if (classification === 'legacy') sawLegacy = true;
     }
-    return sawLegacy ? 'legacy' : 'ambiguous';
+    return sawLegacy ? 'legacy' : 'neutral';
 }
 
 function classifyFilter(filter: any): FilterClassification {
     if (typeof filter === 'boolean') {
-        return 'ambiguous';
+        return 'neutral';
     }
 
     if (!Array.isArray(filter) || filter.length === 0) {
@@ -60,15 +61,15 @@ function classifyFilter(filter: any): FilterClassification {
             if (filter.length < 2 || filter[1] === '$id' || filter[1] === '$type') {
                 return 'legacy';
             }
-            // The two-element form is the one both syntaxes share; the expression-only
-            // form takes a third argument.
-            return filter.length === 2 ? 'ambiguous' : 'expression';
+            // Both syntaxes read the two-element form as "this property is present"; only the
+            // expression takes a third argument.
+            return filter.length === 2 ? 'neutral' : 'expression';
 
         case 'in':
-            // `["in", "name", ""]` parses as both, but the two readings disagree (legacy
-            // tests a property against a set; the expression tests for a substring), so
-            // this is a genuine conflict rather than an ambiguity. Keep calling it legacy
-            // so that findMixedLegacyFilter reports it.
+            // Legacy `["in", key, ...values]` tests a property against a set, while the `in`
+            // expression tests for a substring, so the scalar form is a conflict rather than a
+            // neutral node. Keeping it legacy is what makes plain legacy `in` filters keep
+            // matching, and what lets findMixedLegacyFilter report one inside an expression.
             return filter.length >= 3 && (typeof filter[1] !== 'string' || Array.isArray(filter[2]))
                 ? 'expression'
                 : 'legacy';
