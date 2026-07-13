@@ -315,6 +315,7 @@ describe('evaluate expression', () => {
         ).toEqual(new VariableAnchorOffsetCollection(['top', [2, 2]]));
         expect(console.warn).not.toHaveBeenCalled();
     });
+
 });
 
 describe('actionable warnings: runtime throw sites carry their index path', () => {
@@ -421,6 +422,16 @@ describe('actionable warnings: fallback rendering', () => {
                 {n: 'notarray'}
             )
         ).toBe("rk: Could not parse numberArray from value 'notarray' Falling back to [1,2,3].");
+    });
+
+    test('projectionDefinition default renders as a string', () => {
+        expect(
+            warnFor(
+                ['at', ['get', 'i'], ['literal', []]],
+                {type: 'projectionDefinition', default: 'mercator'} as any as StylePropertySpecification,
+                {i: 5}
+            )
+        ).toBe('rk: Array index out of bounds: 5 > -1. Falling back to mercator.');
     });
 
     test('null default omits the fallback suffix entirely', () => {
