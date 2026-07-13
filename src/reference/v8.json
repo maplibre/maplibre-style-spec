@@ -3162,13 +3162,29 @@
       },
       "semiliteral": {
         "doc": "Provides an array or object value, evaluating expressions in the elements of the array or values of the object.",
-        "example": {
-          "syntax": {
-            "method": ["JSON object or array"],
-            "result": "array | object"
-          },
-          "value": ["semiliteral",[["get", "label_x"], ["get", "label_y"]]]
+        "syntax": {
+          "overloads": [
+            {
+              "parameters": ["json_object"],
+              "output-type": "object"
+            },
+            {
+              "parameters": ["json_array"],
+              "output-type": "array"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "json_object",
+              "type": "JSON object"
+            },
+            {
+              "name": "json_array",
+              "type": "JSON array"
+            }
+          ]
         },
+        "example": ["semiliteral", [["get", "label_x"], ["get", "label_y"]]],
         "group": "Types",
         "sdk-support": {
           "basic functionality": {
