@@ -1,0 +1,37 @@
+{
+  "propertySpec": {
+    "type": "null",
+    "property-type": "data-driven",
+    "expression": {
+      "interpolated": true,
+      "parameters": [
+        "zoom",
+        "feature"
+      ]
+    }
+  },
+  "expression": [
+    "interpolate-hcl",
+    [
+      "linear"
+    ],
+    [
+      "zoom"
+    ],
+    0,
+    null,
+    1,
+    null
+  ],
+  "expected": {
+    "compiled": {
+      "result": "error",
+      "errors": [
+        {
+          "key": "[4]",
+          "error": "Expected color but found null instead."
+        }
+      ]
+    }
+  }
+}

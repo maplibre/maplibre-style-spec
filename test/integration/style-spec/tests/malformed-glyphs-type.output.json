@@ -1,6 +1,7 @@
 [
   {
     "message": "glyphs: string expected, boolean found",
+    "severity": "error",
     "line": 3
   }
 ]

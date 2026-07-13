@@ -7,178 +7,262 @@ import {
     convertFunction,
     toString,
     ICanonicalTileID,
-    StylePropertyExpression
-} from '../../../src/index';
+    StylePropertyExpression,
+    StylePropertySpecification,
+    ZoomConstantExpression,
+    StyleExpression,
+    GlobalProperties,
+    Feature,
+    ZoomDependentExpression
+} from '../../../src';
 import {ExpressionParsingError} from '../../../src/expression/parsing_error';
-import {Result} from '../../../src/util/result';
+import {RuntimeError} from '../../../src/expression/runtime_error';
 import {getGeometry} from '../../lib/geometry';
 import {deepEqual, stripPrecision} from '../../lib/json-diff';
+import {describe, expect, test} from 'vitest';
 
-const DECIMAL_SIGNIFICANT_FIGURES =  6;
+const DECIMAL_SIGNIFICANT_FIGURES = 6;
+
+const ROOT_KEY = 'layers[0].paint.some-property';
+
+type Mutable<T> = {
+    -readonly [K in keyof T]: T[K];
+};
 
 type ExpressionFixture = {
-    propertySpec: any;
+    propertySpec?: Partial<StylePropertySpecification>;
     expression: any[];
-    inputs:any[];
-    expected: {
-        compiled?: {
-            result?: any;
-            isFeatureConstant?: any;
-            isZoomConstant?: any;
-            type?: any;
+    inputs?: FixtureInput[];
+    globalState?: Record<string, any>;
+    expected?: FixtureResult;
+};
+
+type FixtureInput = [
+    Partial<GlobalProperties> & {
+        availableImages?: string[];
+        canonicalID?: {
+            z: number;
+            x: number;
+            y: number;
         };
-        outputs? : any;
-        serialized?: any;
-    };
-}
+    },
+    {
+        properties?: Record<string, any>;
+        featureState?: Record<string, any>;
+        id?: any;
+        geometry?:
+            | GeoJSON.Point
+            | GeoJSON.MultiPoint
+            | GeoJSON.LineString
+            | GeoJSON.MultiLineString
+            | GeoJSON.Polygon
+            | GeoJSON.MultiPolygon;
+    }
+];
+
+type FixtureResult = FixtureErrorResult | FixtureSuccessResult;
+type FixtureErrorResult = {
+    compiled: CompilationErrorResult;
+};
+type FixtureSuccessResult = {
+    compiled: CompilationSuccessResult;
+    outputs: EvaluationOutput[];
+};
+
+type CompilationErrorResult = {
+    result: 'error';
+    errors: {
+        key: string;
+        error: string;
+    }[];
+};
+type CompilationSuccessResult = {
+    result: 'success';
+    isFeatureConstant: boolean;
+    isZoomConstant: boolean;
+    type: string;
+};
+
+type EvaluationOutput = EvaluationErrorOutput | EvaluationSuccessOutput;
+type EvaluationErrorOutput = {
+    error: string;
+};
+type EvaluationSuccessOutput = any;
 
 const expressionTestFileNames = globSync('**/test.json', {cwd: __dirname});
 describe('expression', () => {
-
     for (const expressionTestFileName of expressionTestFileNames) {
         test(expressionTestFileName, () => {
+            const fixturePath = path.join(__dirname, expressionTestFileName);
+            const fixture: ExpressionFixture = JSON.parse(fs.readFileSync(fixturePath, 'utf8'));
 
-            const fixture = JSON.parse(fs.readFileSync(path.join(__dirname, expressionTestFileName), 'utf8'));
-
-            const result = evaluateFixture(fixture);
+            const spec = getCompletePropertySpec(fixture.propertySpec);
+            const result = evaluateFixture(fixture, spec);
 
             if (process.env.UPDATE) {
-                fixture.expected = {
-                    compiled: result.compiled,
-                    outputs: stripPrecision(result.outputs, DECIMAL_SIGNIFICANT_FIGURES),
-                };
+                fixture.expected = isFixtureErrorResult(result)
+                    ? result
+                    : {
+                          compiled: result.compiled,
+                          outputs: stripPrecision(result.outputs, DECIMAL_SIGNIFICANT_FIGURES)
+                      };
+                if (fixture.propertySpec) {
+                    fixture.propertySpec = spec;
+                }
 
-                delete fixture.metadata;
-
-                const fname = path.join(__dirname, expressionTestFileName);
-                fs.writeFileSync(fname, JSON.stringify(fixture, null, 2));
+                fs.writeFileSync(fixturePath, `${JSON.stringify(fixture, null, 2)}\n`);
                 return;
             }
 
-            const expected = fixture.expected;
-            const compileOk = deepEqual(result.compiled, expected.compiled, DECIMAL_SIGNIFICANT_FIGURES);
-            
-            const evalOk = compileOk && deepEqual(result.outputs, expected.outputs, DECIMAL_SIGNIFICANT_FIGURES);
-            
+            const expected = fixture.expected as FixtureResult;
+
+            const compileOk = deepEqual(
+                result.compiled,
+                expected.compiled,
+                DECIMAL_SIGNIFICANT_FIGURES
+            );
             try {
                 expect(compileOk).toBeTruthy();
             } catch {
-                throw new Error(`Compilation Failed:\nExpected ${JSON.stringify(expected.compiled)}\nResult   ${JSON.stringify(result.compiled)}`);
+                throw new Error(
+                    `Compilation Failed:\nExpected ${JSON.stringify(expected.compiled)}\nResult   ${JSON.stringify(result.compiled)}`
+                );
             }
-            
+
+            const resultOutputs = (result as any).outputs;
+            const expectedOutputs = (expected as any).outputs;
+            const evalOk =
+                compileOk && deepEqual(resultOutputs, expectedOutputs, DECIMAL_SIGNIFICANT_FIGURES);
             try {
                 expect(evalOk).toBeTruthy();
             } catch {
-                throw new Error(`Evaluation Failed:\nExpected ${JSON.stringify(expected.outputs)}\nResult   ${JSON.stringify(result.outputs)}`);
+                throw new Error(
+                    `Evaluation Failed:\nExpected ${JSON.stringify(expectedOutputs)}\nResult   ${JSON.stringify(resultOutputs)}`
+                );
             }
-
         });
     }
 });
 
-function evaluateFixture(fixture: ExpressionFixture) {
-    const spec = fixture.propertySpec || {};
-
+function getCompletePropertySpec(propertySpec: ExpressionFixture['propertySpec']) {
+    const spec = propertySpec === undefined ? {} : {...propertySpec};
     if (!spec['property-type']) {
         spec['property-type'] = 'data-driven';
     }
-
     if (!spec['expression']) {
         spec['expression'] = {
-            'interpolated': true,
-            'parameters': ['zoom', 'feature']
+            interpolated: true,
+            parameters: ['zoom', 'feature']
         };
     }
-
-    const expression = isFunction(fixture.expression) ?
-        createPropertyExpression(convertFunction(fixture.expression, spec), spec) :
-        createPropertyExpression(fixture.expression, spec);
-
-    const result: { compiled: any; outputs?: any } = {
-        compiled: getCompilationResult(expression)
-    };
-
-    if (result.compiled.result !== 'error') {
-        result.outputs = evaluateExpression(fixture, expression);
-    }
-
-    return result;
+    return spec as StylePropertySpecification;
 }
 
-function getCompilationResult(expression: Result<StylePropertyExpression, ExpressionParsingError[]>) {
-    const compilationResult = {} as any;
+function evaluateFixture(
+    fixture: ExpressionFixture,
+    spec: StylePropertySpecification
+): FixtureResult {
+    const expression = isFunction(fixture.expression)
+        ? createPropertyExpression(
+              convertFunction(fixture.expression, spec),
+              ROOT_KEY,
+              spec,
+              fixture.globalState
+          )
+        : createPropertyExpression(fixture.expression, ROOT_KEY, spec, fixture.globalState);
+
     if (expression.result === 'error') {
-        compilationResult.result = 'error';
-        compilationResult.errors = expression.value.map((err) => ({
+        return {
+            compiled: getCompilationErrorResult(expression.value)
+        };
+    }
+    return {
+        compiled: getCompilationSuccessResult(expression.value),
+        outputs:
+            fixture.inputs === undefined ? [] : evaluateExpression(fixture.inputs, expression.value)
+    };
+}
+
+function getCompilationErrorResult(
+    parsingErrors: ExpressionParsingError[]
+): CompilationErrorResult {
+    return {
+        result: 'error',
+        errors: parsingErrors.map((err) => ({
             key: err.key,
             error: err.message
-        }));
-        return compilationResult;
-    }
-
-    const expressionValue = expression.value;
-    const type = (expressionValue as any)._styleExpression.expression.type; // :scream:
-
-    compilationResult.result = 'success';
-    compilationResult.isFeatureConstant = expressionValue.kind === 'constant' || expressionValue.kind === 'camera';
-    compilationResult.isZoomConstant = expressionValue.kind === 'constant' || expressionValue.kind === 'source';
-    compilationResult.type = toString(type);
-
-    return compilationResult;
+        }))
+    };
 }
 
-function evaluateExpression(fixture: ExpressionFixture, expression: Result<StylePropertyExpression, ExpressionParsingError[]>) {
+function getCompilationSuccessResult(
+    expression: StylePropertyExpression
+): CompilationSuccessResult {
+    const kind = expression.kind;
+    const type = getStylePropertyExpressionType(expression);
+    return {
+        result: 'success',
+        isFeatureConstant: kind === 'constant' || kind === 'camera',
+        isZoomConstant: kind === 'constant' || kind === 'source',
+        type: toString(type)
+    };
+}
 
-    let availableImages: any[];
-    let canonical: ICanonicalTileID | null;
+function evaluateExpression(
+    inputs: FixtureInput[],
+    expression: StylePropertyExpression
+): EvaluationOutput[] {
+    const type = getStylePropertyExpressionType(expression);
+    const outputs: EvaluationOutput[] = [];
 
-    const evaluationResult: any[] = [];
+    for (const input of inputs) {
+        const {availableImages, canonicalID} = input[0];
+        const {featureState, geometry, id, properties} = input[1];
 
-    const expressionValue = expression.value;
-    const type = (expressionValue as any)._styleExpression.expression.type; // :scream:
-
-    for (const input of fixture.inputs || []) {
-        try {
-            const feature: {
-                properties: any;
-                id?: any;
-                type?: any;
-            } = {properties: input[1].properties || {}};
-            availableImages = input[0].availableImages || [];
-            if ('canonicalID' in input[0]) {
-                const id = input[0].canonicalID;
-                canonical = {z: id.z, x: id.x, y: id.y} as any;
+        const canonical = (canonicalID ?? null) as ICanonicalTileID | null;
+        const feature: Partial<Mutable<Feature>> = {
+            properties: properties ?? {}
+        };
+        if (id !== undefined) {
+            feature.id = id;
+        }
+        if (geometry !== undefined) {
+            if (canonical !== null) {
+                getGeometry(feature, geometry, canonical);
             } else {
-                canonical = null;
+                feature.type = geometry.type;
             }
+        }
 
-            if ('id' in input[1]) {
-                feature.id = input[1].id;
-            }
-            if ('geometry' in input[1]) {
-                if (canonical !== null) {
-                    getGeometry(feature, input[1].geometry, canonical);
-                } else {
-                    feature.type = input[1].geometry.type;
-                }
-            }
-
-            let value = expressionValue.evaluateWithoutErrorHandling(input[0], feature, {}, canonical, availableImages);
-            
+        try {
+            let value = (
+                expression as ZoomConstantExpression<any> | ZoomDependentExpression<any>
+            ).evaluateWithoutErrorHandling(
+                input[0] as GlobalProperties,
+                feature as Feature,
+                featureState ?? {},
+                canonical as ICanonicalTileID,
+                availableImages ?? []
+            );
             if (type.kind === 'color') {
                 value = [value.r, value.g, value.b, value.a];
             }
-            evaluationResult.push(value);
+            outputs.push(value);
         } catch (error) {
-            if (error.name === 'ExpressionEvaluationError') {
-                evaluationResult.push({error: error.toJSON()});
-            } else {
-                evaluationResult.push({error: error.message});
-            }
+            const path = error instanceof RuntimeError ? error.path : '';
+            const message = error instanceof RuntimeError ? error.toJSON() : error.message;
+            outputs.push({
+                error: `${ROOT_KEY}${path}: ${message}`
+            });
         }
     }
+    return outputs;
+}
 
-    if (fixture.inputs) {
-        return evaluationResult;
-    }
+function getStylePropertyExpressionType(expression: StylePropertyExpression) {
+    return ((expression as any)._styleExpression as StyleExpression).expression.type;
+}
+
+function isFixtureErrorResult(fixtureResult: FixtureResult): fixtureResult is FixtureErrorResult {
+    return fixtureResult.compiled.result === 'error';
 }

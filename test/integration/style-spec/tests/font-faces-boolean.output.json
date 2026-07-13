@@ -1,0 +1,7 @@
+[
+  {
+    "message": "font-faces: object expected, boolean found",
+    "severity": "error",
+    "line": 5
+  }
+]

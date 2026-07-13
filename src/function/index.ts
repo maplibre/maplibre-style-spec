@@ -7,25 +7,74 @@ import {ResolvedImage} from '../expression/types/resolved_image';
 import {supportsInterpolation} from '../util/properties';
 import {findStopLessThanOrEqualTo} from '../expression/stops';
 import {Padding} from '../expression/types/padding';
+import {ColorArray} from '../expression/types/color_array';
+import {NumberArray} from '../expression/types/number_array';
+import {typeOf} from '../expression/values';
+import {ObjectType} from '../expression/types';
+import {StylePropertySpecification} from '..';
+import type {InterpolationType} from '../expression/definitions/interpolate';
+import type {Feature, GlobalProperties} from '../expression/index';
+
+export type StyleFunction = {
+    kind: 'source' | 'camera' | 'composite';
+    interpolationType?: InterpolationType | null;
+    interpolationFactor?: (input: number, lower: number, upper: number) => number;
+    zoomStops?: Array<number>;
+    evaluate: (globals: GlobalProperties, feature?: Partial<Feature>) => any;
+};
 
 export function isFunction(value) {
-    return typeof value === 'object' && value !== null && !Array.isArray(value);
+    return (
+        typeof value === 'object' &&
+        value !== null &&
+        !Array.isArray(value) &&
+        typeOf(value) === ObjectType
+    );
 }
 
 function identityFunction(x) {
     return x;
 }
 
-export function createFunction(parameters, propertySpec) {
-    const isColor = propertySpec.type === 'color';
+function getParseFunction(propertySpec: StylePropertySpecification) {
+    switch (propertySpec.type) {
+        case 'color':
+            return Color.parse;
+        case 'padding':
+            return Padding.parse;
+        case 'numberArray':
+            return NumberArray.parse;
+        case 'colorArray':
+            return ColorArray.parse;
+        default:
+            return null;
+    }
+}
+
+function getInnerFunction(type: string) {
+    switch (type) {
+        case 'exponential':
+            return evaluateExponentialFunction;
+        case 'interval':
+            return evaluateIntervalFunction;
+        case 'categorical':
+            return evaluateCategoricalFunction;
+        case 'identity':
+            return evaluateIdentityFunction;
+        default:
+            throw new Error(`Unknown function type "${type}"`);
+    }
+}
+
+export function createFunction(parameters, propertySpec): StyleFunction {
     const zoomAndFeatureDependent = parameters.stops && typeof parameters.stops[0][0] === 'object';
     const featureDependent = zoomAndFeatureDependent || parameters.property !== undefined;
     const zoomDependent = zoomAndFeatureDependent || !featureDependent;
-    const type = parameters.type || (supportsInterpolation(propertySpec) ? 'exponential' : 'interval');
+    const type =
+        parameters.type || (supportsInterpolation(propertySpec) ? 'exponential' : 'interval');
 
-    if (isColor || propertySpec.type === 'padding') {
-        const parseFn = isColor ? Color.parse : Padding.parse;
-
+    const parseFn = getParseFunction(propertySpec);
+    if (parseFn) {
         parameters = extendBy({}, parameters);
 
         if (parameters.stops) {
@@ -45,16 +94,10 @@ export function createFunction(parameters, propertySpec) {
         throw new Error(`Unknown color space: "${parameters.colorSpace}"`);
     }
 
-    let innerFun;
+    const innerFun = getInnerFunction(type);
     let hashedStops;
     let categoricalKeyType;
-    if (type === 'exponential') {
-        innerFun = evaluateExponentialFunction;
-    } else if (type === 'interval') {
-        innerFun = evaluateIntervalFunction;
-    } else if (type === 'categorical') {
-        innerFun = evaluateCategoricalFunction;
-
+    if (type === 'categorical') {
         // For categorical functions, generate an Object as a hashmap of the stops for fast searching
         hashedStops = Object.create(null);
         for (const stop of parameters.stops) {
@@ -63,11 +106,6 @@ export function createFunction(parameters, propertySpec) {
 
         // Infer key type based on first stop key-- used to encforce strict type checking later
         categoricalKeyType = typeof parameters.stops[0][0];
-
-    } else if (type === 'identity') {
-        innerFun = evaluateIdentityFunction;
-    } else {
-        throw new Error(`Unknown function type "${type}"`);
     }
 
     if (zoomAndFeatureDependent) {
@@ -91,37 +129,50 @@ export function createFunction(parameters, propertySpec) {
 
         const featureFunctionStops = [];
         for (const z of zoomStops) {
-            featureFunctionStops.push([featureFunctions[z].zoom, createFunction(featureFunctions[z], propertySpec)]);
+            featureFunctionStops.push([
+                featureFunctions[z].zoom,
+                createFunction(featureFunctions[z], propertySpec)
+            ]);
         }
 
-        const interpolationType = {name: 'linear'};
+        const interpolationType: InterpolationType = {name: 'linear'};
         return {
             kind: 'composite',
             interpolationType,
             interpolationFactor: Interpolate.interpolationFactor.bind(undefined, interpolationType),
-            zoomStops: featureFunctionStops.map(s => s[0]),
+            zoomStops: featureFunctionStops.map((s) => s[0]),
             evaluate({zoom}, properties) {
-                return evaluateExponentialFunction({
-                    stops: featureFunctionStops,
-                    base: parameters.base
-                }, propertySpec, zoom).evaluate(zoom, properties);
+                return evaluateExponentialFunction(
+                    {
+                        stops: featureFunctionStops,
+                        base: parameters.base
+                    },
+                    propertySpec,
+                    zoom
+                ).evaluate(zoom, properties);
             }
         };
     } else if (zoomDependent) {
-        const interpolationType = type === 'exponential' ?
-            {name: 'exponential', base: parameters.base !== undefined ? parameters.base : 1} : null;
+        const interpolationType: InterpolationType | null =
+            type === 'exponential'
+                ? {name: 'exponential', base: parameters.base !== undefined ? parameters.base : 1}
+                : null;
         return {
             kind: 'camera',
             interpolationType,
             interpolationFactor: Interpolate.interpolationFactor.bind(undefined, interpolationType),
-            zoomStops: parameters.stops.map(s => s[0]),
-            evaluate: ({zoom}) => innerFun(parameters, propertySpec, zoom, hashedStops, categoricalKeyType)
+            zoomStops: parameters.stops.map((s) => s[0]),
+            evaluate: ({zoom}) =>
+                innerFun(parameters, propertySpec, zoom, hashedStops, categoricalKeyType)
         };
     } else {
         return {
             kind: 'source',
             evaluate(_, feature) {
-                const value = feature && feature.properties ? feature.properties[parameters.property] : undefined;
+                const value =
+                    feature && feature.properties
+                        ? feature.properties[parameters.property]
+                        : undefined;
                 if (value === undefined) {
                     return coalesce(parameters.default, propertySpec.default);
                 }
@@ -150,7 +201,11 @@ function evaluateIntervalFunction(parameters, propertySpec, input) {
     if (input <= parameters.stops[0][0]) return parameters.stops[0][1];
     if (input >= parameters.stops[n - 1][0]) return parameters.stops[n - 1][1];
 
-    const index = findStopLessThanOrEqualTo(parameters.stops.map((stop) => stop[0]), input);
+    const index = findStopLessThanOrEqualTo(
+        parameters.stops.map((stop) => stop[0]),
+        input,
+        ''
+    );
 
     return parameters.stops[index][1];
 }
@@ -165,11 +220,17 @@ function evaluateExponentialFunction(parameters, propertySpec, input) {
     if (input <= parameters.stops[0][0]) return parameters.stops[0][1];
     if (input >= parameters.stops[n - 1][0]) return parameters.stops[n - 1][1];
 
-    const index = findStopLessThanOrEqualTo(parameters.stops.map((stop) => stop[0]), input);
+    const index = findStopLessThanOrEqualTo(
+        parameters.stops.map((stop) => stop[0]),
+        input,
+        ''
+    );
     const t = interpolationFactor(
-        input, base,
+        input,
+        base,
         parameters.stops[index][0],
-        parameters.stops[index + 1][0]);
+        parameters.stops[index + 1][0]
+    );
 
     const outputLower = parameters.stops[index][1];
     const outputUpper = parameters.stops[index + 1][1];
@@ -206,8 +267,17 @@ function evaluateIdentityFunction(parameters, propertySpec, input) {
         case 'padding':
             input = Padding.parse(input);
             break;
+        case 'colorArray':
+            input = ColorArray.parse(input);
+            break;
+        case 'numberArray':
+            input = NumberArray.parse(input);
+            break;
         default:
-            if (getType(input) !== propertySpec.type && (propertySpec.type !== 'enum' || !propertySpec.values[input])) {
+            if (
+                getType(input) !== propertySpec.type &&
+                (propertySpec.type !== 'enum' || !propertySpec.values[input])
+            ) {
                 input = undefined;
             }
     }

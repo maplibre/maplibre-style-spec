@@ -1,0 +1,29 @@
+{
+  "expression": [
+    "array",
+    "number",
+    3,
+    [
+      1,
+      2,
+      3
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "error",
+      "errors": [
+        {
+          "key": "[3][0]",
+          "error": "Expression name must be a string, but found number instead. If you wanted a literal array, use [\"literal\", [...]]."
+        }
+      ]
+    }
+  }
+}

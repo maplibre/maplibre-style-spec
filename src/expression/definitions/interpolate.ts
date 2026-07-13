@@ -1,10 +1,30 @@
-import UnitBezier from '@mapbox/unitbezier';
+import unitBezier from '@mapbox/unitbezier';
 
-import {array, ArrayType, ColorType, ColorTypeT, NumberType, NumberTypeT, PaddingType, PaddingTypeT, VariableAnchorOffsetCollectionType, VariableAnchorOffsetCollectionTypeT, typeToString, verifyType, ProjectionDefinitionType} from '../types';
+import {
+    array,
+    ArrayType,
+    ColorType,
+    ColorTypeT,
+    NumberType,
+    NumberTypeT,
+    PaddingType,
+    PaddingTypeT,
+    NumberArrayTypeT,
+    ColorArrayTypeT,
+    VariableAnchorOffsetCollectionType,
+    VariableAnchorOffsetCollectionTypeT,
+    typeToString,
+    verifyType,
+    ProjectionDefinitionType,
+    ColorArrayType,
+    NumberArrayType
+} from '../types';
 import {findStopLessThanOrEqualTo} from '../stops';
 import {Color} from '../types/color';
 import {interpolateArray, interpolateNumber} from '../../util/interpolate-primitives';
 import {Padding} from '../types/padding';
+import {ColorArray} from '../types/color_array';
+import {NumberArray} from '../types/number_array';
 import {VariableAnchorOffsetCollection} from '../types/variable_anchor_offset_collection';
 import {ProjectionDefinition} from '../types/projection_definition';
 
@@ -14,40 +34,51 @@ import type {ParsingContext} from '../parsing_context';
 import type {EvaluationContext} from '../evaluation_context';
 import type {ProjectionDefinitionTypeT, Type} from '../types';
 
-export type InterpolationType = {
-    name: 'linear';
-} | {
-    name: 'exponential';
-    base: number;
-} | {
-    name: 'cubic-bezier';
-    controlPoints: [number, number, number, number];
-};
-type InterpolatedValueType = NumberTypeT | ColorTypeT | ProjectionDefinitionTypeT | PaddingTypeT | VariableAnchorOffsetCollectionTypeT | ArrayType<NumberTypeT>;
+export type InterpolationType =
+    | {
+          name: 'linear';
+      }
+    | {
+          name: 'exponential';
+          base: number;
+      }
+    | {
+          name: 'cubic-bezier';
+          controlPoints: [number, number, number, number];
+      };
+type InterpolatedValueType =
+    | NumberTypeT
+    | ColorTypeT
+    | ProjectionDefinitionTypeT
+    | PaddingTypeT
+    | NumberArrayTypeT
+    | ColorArrayTypeT
+    | VariableAnchorOffsetCollectionTypeT
+    | ArrayType<NumberTypeT>;
 export class Interpolate implements Expression {
-    type: InterpolatedValueType;
+    labels: Array<number> = [];
+    outputs: Array<Expression> = [];
 
-    operator: 'interpolate' | 'interpolate-hcl' | 'interpolate-lab';
-    interpolation: InterpolationType;
-    input: Expression;
-    labels: Array<number>;
-    outputs: Array<Expression>;
-
-    constructor(type: InterpolatedValueType, operator: 'interpolate' | 'interpolate-hcl' | 'interpolate-lab', interpolation: InterpolationType, input: Expression, stops: Stops) {
-        this.type = type;
-        this.operator = operator;
-        this.interpolation = interpolation;
-        this.input = input;
-
-        this.labels = [];
-        this.outputs = [];
+    constructor(
+        public type: InterpolatedValueType,
+        public operator: 'interpolate' | 'interpolate-hcl' | 'interpolate-lab',
+        public interpolation: InterpolationType,
+        public input: Expression,
+        stops: Stops,
+        public readonly key: string
+    ) {
         for (const [label, expression] of stops) {
             this.labels.push(label);
             this.outputs.push(expression);
         }
     }
 
-    static interpolationFactor(interpolation: InterpolationType, input: number, lower: number, upper: number) {
+    static interpolationFactor(
+        interpolation: InterpolationType,
+        input: number,
+        lower: number,
+        upper: number
+    ) {
         let t = 0;
         if (interpolation.name === 'exponential') {
             t = exponentialInterpolation(input, interpolation.base, lower, upper);
@@ -55,8 +86,8 @@ export class Interpolate implements Expression {
             t = exponentialInterpolation(input, 1, lower, upper);
         } else if (interpolation.name === 'cubic-bezier') {
             const c = interpolation.controlPoints;
-            const ub = new UnitBezier(c[0], c[1], c[2], c[3]);
-            t = ub.solve(exponentialInterpolation(input, 1, lower, upper));
+            const ub = unitBezier(c[0], c[1], c[2], c[3]);
+            t = ub(exponentialInterpolation(input, 1, lower, upper));
         }
         return t;
     }
@@ -73,7 +104,11 @@ export class Interpolate implements Expression {
         } else if (interpolation[0] === 'exponential') {
             const base = interpolation[1];
             if (typeof base !== 'number')
-                return context.error('Exponential interpolation requires a numeric base.', 1, 1) as null;
+                return context.error(
+                    'Exponential interpolation requires a numeric base.',
+                    1,
+                    1
+                ) as null;
             interpolation = {
                 name: 'exponential',
                 base
@@ -82,21 +117,30 @@ export class Interpolate implements Expression {
             const controlPoints = interpolation.slice(1);
             if (
                 controlPoints.length !== 4 ||
-                controlPoints.some(t => typeof t !== 'number' || t < 0 || t > 1)
+                controlPoints.some((t) => typeof t !== 'number' || t < 0 || t > 1)
             ) {
-                return context.error('Cubic bezier interpolation requires four numeric arguments with values between 0 and 1.', 1) as null;
+                return context.error(
+                    'Cubic bezier interpolation requires four numeric arguments with values between 0 and 1.',
+                    1
+                ) as null;
             }
 
             interpolation = {
                 name: 'cubic-bezier',
-                controlPoints: (controlPoints as any)
+                controlPoints: controlPoints as any
             };
         } else {
-            return context.error(`Unknown interpolation type ${String(interpolation[0])}`, 1, 0) as null;
+            return context.error(
+                `Unknown interpolation type ${String(interpolation[0])}`,
+                1,
+                0
+            ) as null;
         }
 
         if (args.length - 1 < 4) {
-            return context.error(`Expected at least 4 arguments, but found only ${args.length - 1}.`) as null;
+            return context.error(
+                `Expected at least 4 arguments, but found only ${args.length - 1}.`
+            ) as null;
         }
 
         if ((args.length - 1) % 2 !== 0) {
@@ -109,7 +153,10 @@ export class Interpolate implements Expression {
         const stops: Stops = [];
 
         let outputType: Type = null;
-        if (operator === 'interpolate-hcl' || operator === 'interpolate-lab') {
+        if (
+            (operator === 'interpolate-hcl' || operator === 'interpolate-lab') &&
+            context.expectedType != ColorArrayType
+        ) {
             outputType = ColorType;
         } else if (context.expectedType && context.expectedType.kind !== 'value') {
             outputType = context.expectedType;
@@ -123,11 +170,17 @@ export class Interpolate implements Expression {
             const valueKey = i + 4;
 
             if (typeof label !== 'number') {
-                return context.error('Input/output pairs for "interpolate" expressions must be defined using literal numeric values (not computed expressions) for the input values.', labelKey) as null;
+                return context.error(
+                    'Input/output pairs for "interpolate" expressions must be defined using literal numeric values (not computed expressions) for the input values.',
+                    labelKey
+                ) as null;
             }
 
             if (stops.length && stops[stops.length - 1][0] >= label) {
-                return context.error('Input/output pairs for "interpolate" expressions must be arranged with input values in strictly ascending order.', labelKey) as null;
+                return context.error(
+                    'Input/output pairs for "interpolate" expressions must be arranged with input values in strictly ascending order.',
+                    labelKey
+                ) as null;
             }
             const parsed = context.parse(value, valueKey, outputType);
             if (!parsed) return null;
@@ -135,17 +188,27 @@ export class Interpolate implements Expression {
             stops.push([label, parsed]);
         }
 
-        if (!verifyType(outputType, NumberType) &&
+        if (
+            !verifyType(outputType, NumberType) &&
             !verifyType(outputType, ProjectionDefinitionType) &&
             !verifyType(outputType, ColorType) &&
             !verifyType(outputType, PaddingType) &&
+            !verifyType(outputType, NumberArrayType) &&
+            !verifyType(outputType, ColorArrayType) &&
             !verifyType(outputType, VariableAnchorOffsetCollectionType) &&
             !verifyType(outputType, array(NumberType))
         ) {
             return context.error(`Type ${typeToString(outputType)} is not interpolatable.`) as null;
         }
 
-        return new Interpolate(outputType, (operator as any), interpolation as InterpolationType, input as Expression, stops);
+        return new Interpolate(
+            outputType,
+            operator as any,
+            interpolation as InterpolationType,
+            input as Expression,
+            stops,
+            context.key
+        );
     }
 
     evaluate(ctx: EvaluationContext) {
@@ -166,7 +229,7 @@ export class Interpolate implements Expression {
             return outputs[stopCount - 1].evaluate(ctx);
         }
 
-        const index = findStopLessThanOrEqualTo(labels, value);
+        const index = findStopLessThanOrEqualTo(labels, value, this.key);
         const lower = labels[index];
         const upper = labels[index + 1];
         const t = Interpolate.interpolationFactor(this.interpolation, value, lower, upper);
@@ -178,22 +241,41 @@ export class Interpolate implements Expression {
             case 'interpolate':
                 switch (this.type.kind) {
                     case 'number':
-                        return interpolateNumber(outputLower, outputUpper, t)
+                        return interpolateNumber(outputLower, outputUpper, t);
                     case 'color':
                         return Color.interpolate(outputLower, outputUpper, t);
                     case 'padding':
                         return Padding.interpolate(outputLower, outputUpper, t);
+                    case 'colorArray':
+                        return ColorArray.interpolate(outputLower, outputUpper, t);
+                    case 'numberArray':
+                        return NumberArray.interpolate(outputLower, outputUpper, t);
                     case 'variableAnchorOffsetCollection':
-                        return VariableAnchorOffsetCollection.interpolate(outputLower, outputUpper, t);
+                        return VariableAnchorOffsetCollection.interpolate(
+                            outputLower,
+                            outputUpper,
+                            t,
+                            this.key
+                        );
                     case 'array':
                         return interpolateArray(outputLower, outputUpper, t);
                     case 'projectionDefinition':
                         return ProjectionDefinition.interpolate(outputLower, outputUpper, t);
                 }
             case 'interpolate-hcl':
-                return Color.interpolate(outputLower, outputUpper, t, 'hcl');
+                switch (this.type.kind) {
+                    case 'color':
+                        return Color.interpolate(outputLower, outputUpper, t, 'hcl');
+                    case 'colorArray':
+                        return ColorArray.interpolate(outputLower, outputUpper, t, 'hcl');
+                }
             case 'interpolate-lab':
-                return Color.interpolate(outputLower, outputUpper, t, 'lab');
+                switch (this.type.kind) {
+                    case 'color':
+                        return Color.interpolate(outputLower, outputUpper, t, 'lab');
+                    case 'colorArray':
+                        return ColorArray.interpolate(outputLower, outputUpper, t, 'lab');
+                }
         }
     }
 
@@ -205,7 +287,7 @@ export class Interpolate implements Expression {
     }
 
     outputDefined(): boolean {
-        return this.outputs.every(out => out.outputDefined());
+        return this.outputs.every((out) => out.outputDefined());
     }
 }
 
@@ -243,7 +325,7 @@ export class Interpolate implements Expression {
  * expensive `Math.pow()` operations.)
  *
  * @private
-*/
+ */
 function exponentialInterpolation(input, base, lowerValue, upperValue) {
     const difference = upperValue - lowerValue;
     const progress = input - lowerValue;
@@ -261,6 +343,8 @@ export const interpolateFactory = {
     color: Color.interpolate,
     number: interpolateNumber,
     padding: Padding.interpolate,
+    numberArray: NumberArray.interpolate,
+    colorArray: ColorArray.interpolate,
     variableAnchorOffsetCollection: VariableAnchorOffsetCollection.interpolate,
     array: interpolateArray
-}
+};

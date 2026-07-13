@@ -1,0 +1,52 @@
+{
+  "expression": [
+    "within",
+    [
+      "get",
+      "geojson"
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {
+        "properties": {
+          "geojson": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  1
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ]
+              ]
+            ]
+          }
+        }
+      }
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "error",
+      "errors": [
+        {
+          "key": "",
+          "error": "'within' expression requires valid geojson object that contains polygon geometry type."
+        }
+      ]
+    }
+  }
+}

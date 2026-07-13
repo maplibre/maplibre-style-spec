@@ -935,15 +935,6 @@
       }
     },
     {
-      "id": "invalid expression - line-dasharray must use step interpolation",
-      "type": "line",
-      "source": "source",
-      "source-layer": "layer",
-      "paint": {
-        "line-dasharray": ["interpolate", ["linear"], ["zoom"], 0, ["literal", [1, 2]], 1, ["literal", [3, 4]]]
-      }
-    },
-    {
       "id": "invalid expression - heatmap-color must be zoom constant",
       "type": "heatmap",
       "source": "source",
@@ -985,6 +976,40 @@
             ]
           ]
         }
+      }
+    }, {
+      "id": "invalid expression - color-relief-color must be zoom constant",
+      "type": "color-relief",
+      "source": "source",
+      "source-layer": "layer",
+      "paint": {
+        "color-relief-color": ["step", ["zoom"], ["step", ["elevation"], "red", 0.5, "blue"], 1, ["step", ["elevation"], "yellow", 0.5, "green"]]
+      }
+    }, {
+      "id": "invalid expression - color-relief-color must not be a function",
+      "type": "color-relief",
+      "source": "source",
+      "source-layer": "layer",
+      "paint": {
+        "color-relief-color": { "stops": [[0, "red"], [1, "blue"]] }
+      }
+    },
+    {
+      "id": "valid expression in visibility",
+      "type": "fill",
+      "source": "source",
+      "source-layer": "layer",
+      "layout": {
+        "visibility": ["global-state", "vis-prop"]
+      }
+    },
+    {
+      "id": "invalid expression - feature property not allowed in visibility",
+      "type": "fill",
+      "source": "source",
+      "source-layer": "layer",
+      "layout": {
+        "visibility": ["get", "vis-prop"]
       }
     }
   ]

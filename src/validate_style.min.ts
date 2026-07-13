@@ -1,4 +1,3 @@
-
 import {validateConstants} from './validate/validate_constants';
 import {validate} from './validate/validate';
 import {latest} from './reference/latest';
@@ -7,6 +6,7 @@ import {validateSource} from './validate/validate_source';
 import {validateLight} from './validate/validate_light';
 import {validateSky} from './validate/validate_sky';
 import {validateTerrain} from './validate/validate_terrain';
+import {validateState} from './validate/validate_state';
 import {validateLayer} from './validate/validate_layer';
 import {validateFilter} from './validate/validate_filter';
 import {validatePaintProperty} from './validate/validate_paint_property';
@@ -28,33 +28,39 @@ import type {StyleSpecification} from './types.g';
  *   const validate = require('@maplibre/maplibre-gl-style-spec/').validateStyleMin;
  *   const errors = validate(style);
  */
-export function validateStyleMin(style: StyleSpecification, styleSpec = latest): Array<ValidationError> {
-
+export function validateStyleMin(
+    style: StyleSpecification,
+    styleSpec = latest
+): Array<ValidationError> {
     let errors: ValidationError[] = [];
 
-    errors = errors.concat(validate({
-        key: '',
-        value: style,
-        valueSpec: styleSpec.$root,
-        styleSpec,
-        style,
-        validateSpec: validate,
-        objectElementValidators: {
-            glyphs: validateGlyphsUrl,
-            '*'() {
-                return [];
+    errors = errors.concat(
+        validate({
+            key: '',
+            value: style,
+            valueSpec: styleSpec.$root,
+            styleSpec,
+            style,
+            validateSpec: validate,
+            objectElementValidators: {
+                glyphs: validateGlyphsUrl,
+                '*'() {
+                    return [];
+                }
             }
-        }
-    }));
+        })
+    );
 
     if (style['constants']) {
-        errors = errors.concat(validateConstants({
-            key: 'constants',
-            value: style['constants'],
-            style,
-            styleSpec,
-            validateSpec: validate,
-        }));
+        errors = errors.concat(
+            validateConstants({
+                key: 'constants',
+                value: style['constants'],
+                style,
+                styleSpec,
+                validateSpec: validate
+            })
+        );
     }
 
     return sortErrors(errors);
@@ -66,17 +72,15 @@ validateStyleMin.glyphs = wrapCleanErrors(injectValidateSpec(validateGlyphsUrl))
 validateStyleMin.light = wrapCleanErrors(injectValidateSpec(validateLight));
 validateStyleMin.sky = wrapCleanErrors(injectValidateSpec(validateSky));
 validateStyleMin.terrain = wrapCleanErrors(injectValidateSpec(validateTerrain));
+validateStyleMin.state = wrapCleanErrors(injectValidateSpec(validateState));
 validateStyleMin.layer = wrapCleanErrors(injectValidateSpec(validateLayer));
 validateStyleMin.filter = wrapCleanErrors(injectValidateSpec(validateFilter));
 validateStyleMin.paintProperty = wrapCleanErrors(injectValidateSpec(validatePaintProperty));
 validateStyleMin.layoutProperty = wrapCleanErrors(injectValidateSpec(validateLayoutProperty));
 
 function injectValidateSpec(validator: (options: object) => any) {
-    return function(options) {
-        return validator({
-            ...options,
-            validateSpec: validate,
-        });
+    return function (options) {
+        return validator(Object.assign({}, options, {validateSpec: validate}));
     };
 }
 
@@ -87,7 +91,7 @@ function sortErrors(errors) {
 }
 
 function wrapCleanErrors(inner) {
-    return function(...args) {
+    return function (...args) {
         return sortErrors(inner.apply(this, args));
     };
 }

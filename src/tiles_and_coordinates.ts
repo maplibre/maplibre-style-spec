@@ -32,10 +32,14 @@ export interface ILngLat {
     toString(): string;
 }
 
-export type ILngLatLike = ILngLat | {
-    lng: number;
-    lat: number;
-} | {
-    lon: number;
-    lat: number;
-} | [number, number];
+export type ILngLatLike =
+    | ILngLat
+    | {
+          lng: number;
+          lat: number;
+      }
+    | {
+          lon: number;
+          lat: number;
+      }
+    | [number, number];

@@ -13,32 +13,56 @@ type ComparisonOperator = '==' | '!=' | '<' | '>' | '<=' | '>=';
 function isComparableType(op: ComparisonOperator, type: Type) {
     if (op === '==' || op === '!=') {
         // equality operator
-        return type.kind === 'boolean' ||
+        return (
+            type.kind === 'boolean' ||
             type.kind === 'string' ||
             type.kind === 'number' ||
             type.kind === 'null' ||
-            type.kind === 'value';
+            type.kind === 'value'
+        );
     } else {
         // ordering operator
-        return type.kind === 'string' ||
-            type.kind === 'number' ||
-            type.kind === 'value';
+        return type.kind === 'string' || type.kind === 'number' || type.kind === 'value';
     }
 }
 
-function eq(ctx, a, b) { return a === b; }
-function neq(ctx, a, b) { return a !== b; }
-function lt(ctx, a, b) { return a < b; }
-function gt(ctx, a, b) { return a > b; }
-function lteq(ctx, a, b) { return a <= b; }
-function gteq(ctx, a, b) { return a >= b; }
+function eq(ctx, a, b) {
+    return a === b;
+}
+function neq(ctx, a, b) {
+    return a !== b;
+}
+function lt(ctx, a, b) {
+    return a < b;
+}
+function gt(ctx, a, b) {
+    return a > b;
+}
+function lteq(ctx, a, b) {
+    return a <= b;
+}
+function gteq(ctx, a, b) {
+    return a >= b;
+}
 
-function eqCollate(ctx, a, b, c) { return c.compare(a, b) === 0; }
-function neqCollate(ctx, a, b, c) { return !eqCollate(ctx, a, b, c); }
-function ltCollate(ctx, a, b, c) { return c.compare(a, b) < 0; }
-function gtCollate(ctx, a, b, c) { return c.compare(a, b) > 0; }
-function lteqCollate(ctx, a, b, c) { return c.compare(a, b) <= 0; }
-function gteqCollate(ctx, a, b, c) { return c.compare(a, b) >= 0; }
+function eqCollate(ctx, a, b, c) {
+    return c.compare(a, b) === 0;
+}
+function neqCollate(ctx, a, b, c) {
+    return !eqCollate(ctx, a, b, c);
+}
+function ltCollate(ctx, a, b, c) {
+    return c.compare(a, b) < 0;
+}
+function gtCollate(ctx, a, b, c) {
+    return c.compare(a, b) > 0;
+}
+function lteqCollate(ctx, a, b, c) {
+    return c.compare(a, b) <= 0;
+}
+function gteqCollate(ctx, a, b, c) {
+    return c.compare(a, b) >= 0;
+}
 
 /**
  * Special form for comparison operators, implementing the signatures:
@@ -61,17 +85,15 @@ function makeComparison(op: ComparisonOperator, compareBasic, compareWithCollato
     const isOrderComparison = op !== '==' && op !== '!=';
 
     return class Comparison implements Expression {
-        type: Type;
-        lhs: Expression;
-        rhs: Expression;
-        collator: Expression;
+        type: Type = BooleanType;
         hasUntypedArgument: boolean;
 
-        constructor(lhs: Expression, rhs: Expression, collator?: Expression | null) {
-            this.type = BooleanType;
-            this.lhs = lhs;
-            this.rhs = rhs;
-            this.collator = collator;
+        constructor(
+            public lhs: Expression,
+            public rhs: Expression,
+            public readonly key: string,
+            public collator?: Expression | null
+        ) {
             this.hasUntypedArgument = lhs.type.kind === 'value' || rhs.type.kind === 'value';
         }
 
@@ -79,17 +101,25 @@ function makeComparison(op: ComparisonOperator, compareBasic, compareWithCollato
             if (args.length !== 3 && args.length !== 4)
                 return context.error('Expected two or three arguments.') as null;
 
-            const op: ComparisonOperator = (args[0] as any);
+            const op: ComparisonOperator = args[0] as any;
 
             let lhs = context.parse(args[1], 1, ValueType);
             if (!lhs) return null;
             if (!isComparableType(op, lhs.type)) {
-                return context.concat(1).error(`"${op}" comparisons are not supported for type '${typeToString(lhs.type)}'.`) as null;
+                return context
+                    .concat(1)
+                    .error(
+                        `"${op}" comparisons are not supported for type '${typeToString(lhs.type)}'.`
+                    ) as null;
             }
             let rhs = context.parse(args[2], 2, ValueType);
             if (!rhs) return null;
             if (!isComparableType(op, rhs.type)) {
-                return context.concat(2).error(`"${op}" comparisons are not supported for type '${typeToString(rhs.type)}'.`) as null;
+                return context
+                    .concat(2)
+                    .error(
+                        `"${op}" comparisons are not supported for type '${typeToString(rhs.type)}'.`
+                    ) as null;
             }
 
             if (
@@ -97,17 +127,19 @@ function makeComparison(op: ComparisonOperator, compareBasic, compareWithCollato
                 lhs.type.kind !== 'value' &&
                 rhs.type.kind !== 'value'
             ) {
-                return context.error(`Cannot compare types '${typeToString(lhs.type)}' and '${typeToString(rhs.type)}'.`) as null;
+                return context.error(
+                    `Cannot compare types '${typeToString(lhs.type)}' and '${typeToString(rhs.type)}'.`
+                ) as null;
             }
 
             if (isOrderComparison) {
                 // typing rules specific to less/greater than operators
                 if (lhs.type.kind === 'value' && rhs.type.kind !== 'value') {
                     // (value, T)
-                    lhs = new Assertion(rhs.type, [lhs]);
+                    lhs = new Assertion(rhs.type, [lhs], context.key);
                 } else if (lhs.type.kind !== 'value' && rhs.type.kind === 'value') {
                     // (T, value)
-                    rhs = new Assertion(lhs.type, [rhs]);
+                    rhs = new Assertion(lhs.type, [rhs], context.key);
                 }
             }
 
@@ -119,13 +151,15 @@ function makeComparison(op: ComparisonOperator, compareBasic, compareWithCollato
                     lhs.type.kind !== 'value' &&
                     rhs.type.kind !== 'value'
                 ) {
-                    return context.error('Cannot use collator to compare non-string types.') as null;
+                    return context.error(
+                        'Cannot use collator to compare non-string types.'
+                    ) as null;
                 }
                 collator = context.parse(args[3], 3, CollatorType);
                 if (!collator) return null;
             }
 
-            return new Comparison(lhs, rhs, collator);
+            return new Comparison(lhs, rhs, context.key, collator);
         }
 
         evaluate(ctx: EvaluationContext) {
@@ -137,7 +171,10 @@ function makeComparison(op: ComparisonOperator, compareBasic, compareWithCollato
                 const rt = typeOf(rhs);
                 // check that type is string or number, and equal
                 if (lt.kind !== rt.kind || !(lt.kind === 'string' || lt.kind === 'number')) {
-                    throw new RuntimeError(`Expected arguments for "${op}" to be (string, string) or (number, number), but found (${lt.kind}, ${rt.kind}) instead.`);
+                    throw new RuntimeError(
+                        `Expected arguments for "${op}" to be (string, string) or (number, number), but found (${lt.kind}, ${rt.kind}) instead.`,
+                        this.key
+                    );
                 }
             }
 
@@ -149,9 +186,9 @@ function makeComparison(op: ComparisonOperator, compareBasic, compareWithCollato
                 }
             }
 
-            return this.collator ?
-                compareWithCollator(ctx, lhs, rhs, this.collator.evaluate(ctx)) :
-                compareBasic(ctx, lhs, rhs);
+            return this.collator
+                ? compareWithCollator(ctx, lhs, rhs, this.collator.evaluate(ctx))
+                : compareBasic(ctx, lhs, rhs);
         }
 
         eachChild(fn: (_: Expression) => void) {

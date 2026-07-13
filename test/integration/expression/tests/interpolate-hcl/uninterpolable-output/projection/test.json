@@ -1,0 +1,44 @@
+{
+  "propertySpec": {
+    "type": "projectionDefinition",
+    "property-type": "data-constant",
+    "expression": {
+      "interpolated": true,
+      "parameters": [
+        "zoom"
+      ]
+    }
+  },
+  "expression": [
+    "interpolate-hcl",
+    [
+      "linear"
+    ],
+    [
+      "zoom"
+    ],
+    0,
+    "vertical-perspective",
+    10,
+    "mercator"
+  ],
+  "inputs": [
+    [
+      {
+        "zoom": 5
+      },
+      {}
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "error",
+      "errors": [
+        {
+          "key": "[4]",
+          "error": "Could not parse color from value 'vertical-perspective'"
+        }
+      ]
+    }
+  }
+}

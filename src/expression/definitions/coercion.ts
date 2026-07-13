@@ -5,6 +5,8 @@ import {Formatted} from '../types/formatted';
 import {ResolvedImage} from '../types/resolved_image';
 import {Color} from '../types/color';
 import {Padding} from '../types/padding';
+import {NumberArray} from '../types/number_array';
+import {ColorArray} from '../types/color_array';
 import {VariableAnchorOffsetCollection} from '../types/variable_anchor_offset_collection';
 
 import type {Expression} from '../expression';
@@ -27,21 +29,18 @@ const types = {
  * @private
  */
 export class Coercion implements Expression {
-    type: Type;
-    args: Array<Expression>;
-
-    constructor(type: Type, args: Array<Expression>) {
-        this.type = type;
-        this.args = args;
-
-    }
+    constructor(
+        public type: Type,
+        public args: Array<Expression>,
+        public readonly key: string
+    ) {}
 
     static parse(args: ReadonlyArray<unknown>, context: ParsingContext): Expression {
-        if (args.length < 2)
-            return context.error('Expected at least one argument.') as null;
+        if (args.length < 2) return context.error('Expected at least one argument.') as null;
 
-        const name: string = (args[0] as any);
-        if (!types[name]) throw new Error(`Can't parse ${name} as it is not part of the known types`);
+        const name: string = args[0] as any;
+        if (!types[name])
+            throw new Error(`Can't parse ${name} as it is not part of the known types`);
         if ((name === 'to-boolean' || name === 'to-string') && args.length !== 2)
             return context.error('Expected one argument.') as null;
 
@@ -54,7 +53,7 @@ export class Coercion implements Expression {
             parsed.push(input);
         }
 
-        return new Coercion(type, parsed);
+        return new Coercion(type, parsed, context.key);
     }
 
     evaluate(ctx: EvaluationContext) {
@@ -79,11 +78,20 @@ export class Coercion implements Expression {
                             error = validateRGBA(input[0], input[1], input[2], input[3]);
                         }
                         if (!error) {
-                            return new Color((input[0] as any) / 255, (input[1] as any) / 255, (input[2] as any) / 255, (input[3] as any));
+                            return new Color(
+                                (input[0] as any) / 255,
+                                (input[1] as any) / 255,
+                                (input[2] as any) / 255,
+                                input[3] as any
+                            );
                         }
                     }
                 }
-                throw new RuntimeError(error || `Could not parse color from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`);
+                throw new RuntimeError(
+                    error ||
+                        `Could not parse color from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`,
+                    this.key
+                );
             }
             case 'padding': {
                 let input;
@@ -95,7 +103,40 @@ export class Coercion implements Expression {
                         return pad;
                     }
                 }
-                throw new RuntimeError(`Could not parse padding from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`);
+                throw new RuntimeError(
+                    `Could not parse padding from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`,
+                    this.key
+                );
+            }
+            case 'numberArray': {
+                let input;
+                for (const arg of this.args) {
+                    input = arg.evaluate(ctx);
+
+                    const val = NumberArray.parse(input);
+                    if (val) {
+                        return val;
+                    }
+                }
+                throw new RuntimeError(
+                    `Could not parse numberArray from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`,
+                    this.key
+                );
+            }
+            case 'colorArray': {
+                let input;
+                for (const arg of this.args) {
+                    input = arg.evaluate(ctx);
+
+                    const val = ColorArray.parse(input);
+                    if (val) {
+                        return val;
+                    }
+                }
+                throw new RuntimeError(
+                    `Could not parse colorArray from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`,
+                    this.key
+                );
             }
             case 'variableAnchorOffsetCollection': {
                 let input;
@@ -107,7 +148,10 @@ export class Coercion implements Expression {
                         return coll;
                     }
                 }
-                throw new RuntimeError(`Could not parse variableAnchorOffsetCollection from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`);
+                throw new RuntimeError(
+                    `Could not parse variableAnchorOffsetCollection from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`,
+                    this.key
+                );
             }
             case 'number': {
                 let value = null;
@@ -118,7 +162,10 @@ export class Coercion implements Expression {
                     if (isNaN(num)) continue;
                     return num;
                 }
-                throw new RuntimeError(`Could not convert ${JSON.stringify(value)} to number.`);
+                throw new RuntimeError(
+                    `Could not convert ${JSON.stringify(value)} to number.`,
+                    this.key
+                );
             }
             case 'formatted':
                 // There is no explicit 'to-formatted' but this coercion can be implicitly
@@ -138,7 +185,6 @@ export class Coercion implements Expression {
     }
 
     outputDefined(): boolean {
-        return this.args.every(arg => arg.outputDefined());
+        return this.args.every((arg) => arg.outputDefined());
     }
 }
-

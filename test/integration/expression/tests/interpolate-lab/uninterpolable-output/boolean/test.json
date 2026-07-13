@@ -1,0 +1,37 @@
+{
+  "propertySpec": {
+    "type": "boolean",
+    "property-type": "data-driven",
+    "expression": {
+      "interpolated": true,
+      "parameters": [
+        "zoom",
+        "feature"
+      ]
+    }
+  },
+  "expression": [
+    "interpolate-lab",
+    [
+      "linear"
+    ],
+    [
+      "zoom"
+    ],
+    0,
+    false,
+    1,
+    true
+  ],
+  "expected": {
+    "compiled": {
+      "result": "error",
+      "errors": [
+        {
+          "key": "[4]",
+          "error": "Expected color but found boolean instead."
+        }
+      ]
+    }
+  }
+}

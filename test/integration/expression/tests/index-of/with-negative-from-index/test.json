@@ -1,0 +1,58 @@
+{
+  "expression": [
+    "index-of",
+    [
+      "get",
+      "needle"
+    ],
+    [
+      "get",
+      "hay"
+    ],
+    [
+      "get",
+      "i"
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {
+        "properties": {
+          "needle": "c",
+          "hay": "abcabc",
+          "i": -1
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "needle": 2,
+          "hay": [
+            0,
+            1,
+            2,
+            0,
+            1,
+            2
+          ],
+          "i": -1
+        }
+      }
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": false,
+      "isZoomConstant": true,
+      "type": "number"
+    },
+    "outputs": [
+      2,
+      5
+    ]
+  }
+}

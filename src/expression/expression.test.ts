@@ -1,18 +1,26 @@
-import {createPropertyExpression, Feature, GlobalProperties, StylePropertyExpression} from '../expression';
+import {
+    createPropertyExpression,
+    normalizePropertyExpression,
+    Feature,
+    GlobalProperties,
+    StylePropertyExpression
+} from '../expression';
 import {expressions} from './definitions';
 import v8 from '../reference/v8.json' with {type: 'json'};
-import {createExpression, ICanonicalTileID, StyleExpression, StylePropertySpecification} from '..';
+import {createExpression, StylePropertySpecification} from '..';
 import {ExpressionParsingError} from './parsing_error';
-import {getGeometry} from '../../test/lib/geometry';
 import {VariableAnchorOffsetCollection} from './types/variable_anchor_offset_collection';
+import {assert, describe, test, expect, vi} from 'vitest';
 
 // filter out internal "error" and "filter-*" expressions from definition list
 const filterExpressionRegex = /filter-/;
-const definitionList = Object.keys(expressions).filter((expression) => {
-    return expression !== 'error' && !filterExpressionRegex.exec(expression);
-}).sort();
+const definitionList = Object.keys(expressions)
+    .filter((expression) => {
+        return expression !== 'error' && !filterExpressionRegex.exec(expression);
+    })
+    .sort();
 
-describe('v8.json includes all definitions from style-spec', () => {
+test('v8.json includes all definitions from style-spec', () => {
     const v8List = Object.keys(v8.expression_name.values);
     const v8SupportedList = v8List.filter((expression) => {
         //filter out expressions that are not supported in GL-JS
@@ -23,649 +31,485 @@ describe('v8.json includes all definitions from style-spec', () => {
 
 describe('createPropertyExpression', () => {
     test('prohibits non-interpolable properties from using an "interpolate" expression', () => {
-        const {result, value} = createPropertyExpression([
-            'interpolate', ['linear'], ['zoom'], 0, 0, 10, 10
-        ], {
-            type: 'number',
-            'property-type': 'data-constant',
-            expression: {
-                'interpolated': false,
-                'parameters': ['zoom']
-            }
-        } as StylePropertySpecification);
+        const {result, value} = createPropertyExpression(
+            ['interpolate', ['linear'], ['zoom'], 0, 0, 10, 10],
+            'layers[0].paint.line-width',
+            {
+                type: 'number',
+                'property-type': 'data-constant',
+                expression: {
+                    interpolated: false,
+                    parameters: ['zoom']
+                }
+            } as StylePropertySpecification
+        );
         expect(result).toBe('error');
-        expect((value as ExpressionParsingError[])).toHaveLength(1);
-        expect(value[0].message).toBe('"interpolate" expressions cannot be used with this property');
+        expect(value as ExpressionParsingError[]).toHaveLength(1);
+        expect(value[0].message).toBe(
+            '"interpolate" expressions cannot be used with this property'
+        );
     });
 
+    test('sets globalStateRefs', () => {
+        const {value} = createPropertyExpression(
+            [
+                'case',
+                ['>', ['global-state', 'stateKey'], 0],
+                100,
+                ['global-state', 'anotherStateKey']
+            ],
+            'layers[0].paint.line-width',
+            {
+                type: 'number',
+                'property-type': 'data-driven',
+                expression: {
+                    interpolated: false,
+                    parameters: ['zoom', 'feature']
+                }
+            } as any as StylePropertySpecification
+        ) as {value: StylePropertyExpression};
+
+        expect(value.globalStateRefs).toEqual(new Set(['stateKey', 'anotherStateKey']));
+    });
 });
 
 describe('evaluate expression', () => {
+    test('silently falls back to default for nullish values', () => {
+        const {value} = createPropertyExpression(
+            ['global-state', 'x'],
+            'layers[0].paint.line-width',
+            {
+                type: null,
+                default: 42,
+                'property-type': 'data-driven',
+                transition: false
+            }
+        ) as {value: StylePropertyExpression};
+
+        vi.spyOn(console, 'warn').mockImplementation(() => {});
+
+        expect(value.evaluate({globalState: {x: 5}, zoom: 10} as GlobalProperties)).toBe(5);
+        expect(console.warn).not.toHaveBeenCalled();
+
+        expect(value.evaluate({globalState: {}, zoom: 10} as GlobalProperties)).toBe(42);
+        expect(console.warn).not.toHaveBeenCalled();
+    });
+
+    test('global state as expression property', () => {
+        const {value} = createPropertyExpression(
+            ['global-state', 'x'],
+            'layers[0].paint.line-width',
+            {
+                type: null,
+                default: 42,
+                'property-type': 'data-driven',
+                transition: false
+            },
+            {x: 5}
+        ) as {value: StylePropertyExpression};
+
+        vi.spyOn(console, 'warn').mockImplementation(() => {});
+
+        expect(value.evaluate({globalState: {x: 15}, zoom: 10} as GlobalProperties)).toBe(5);
+        expect(console.warn).not.toHaveBeenCalled();
+    });
+
+    test('global state as expression property of zoom dependent expression', () => {
+        const {value} = createPropertyExpression(
+            ['interpolate', ['linear'], ['zoom'], 10, ['global-state', 'x'], 20, 50],
+            'layers[0].paint.line-width',
+            {
+                type: 'number',
+                default: 42,
+                'property-type': 'data-driven',
+                expression: {
+                    interpolated: true,
+                    parameters: ['zoom']
+                }
+            } as StylePropertySpecification,
+            {x: 5}
+        ) as {value: StylePropertyExpression};
+
+        vi.spyOn(console, 'warn').mockImplementation(() => {});
+
+        expect(value.evaluate({globalState: {x: 15}, zoom: 10} as GlobalProperties)).toBe(5);
+        expect(console.warn).not.toHaveBeenCalled();
+    });
+
+    test('a failing assertion warns with its property location and the fallback value', () => {
+        const {value} = createPropertyExpression(
+            ['number', ['get', 'x']],
+            'layers[0].paint.line-width',
+            {
+                type: 'number',
+                default: 42,
+                'property-type': 'data-driven',
+                expression: {
+                    interpolated: false,
+                    parameters: ['zoom', 'feature']
+                }
+            } as StylePropertySpecification
+        ) as {value: StylePropertyExpression};
+
+        vi.spyOn(console, 'warn').mockImplementation(() => {});
+
+        expect(value.evaluate({} as GlobalProperties, {properties: {}} as any as Feature)).toBe(42);
+        expect(console.warn).toHaveBeenCalledWith(
+            'layers[0].paint.line-width: Expected value to be of type number, but found null instead. Falling back to 42.'
+        );
+    });
+
+    test('an empty rootKey throws at construction, because not actionable', () => {
+        expect(() =>
+            createPropertyExpression(['number', ['get', 'x']], '', {
+                type: 'number',
+                default: 42,
+                'property-type': 'data-driven',
+                expression: {
+                    interpolated: false,
+                    parameters: ['zoom', 'feature']
+                }
+            } as StylePropertySpecification)
+        ).toThrow('rootKey must identify the location of the expression in the style JSON');
+    });
+
+    test('a nested failure appends its parser index path after the rootKey', () => {
+        const {value} = createPropertyExpression(
+            ['case', false, ['number', ['get', 'a']], ['number', ['get', 'b']]],
+            'layers[0].paint.line-width',
+            {
+                type: 'number',
+                default: 42,
+                'property-type': 'data-driven',
+                expression: {
+                    interpolated: false,
+                    parameters: ['zoom', 'feature']
+                }
+            } as StylePropertySpecification
+        ) as {value: StylePropertyExpression};
+
+        vi.spyOn(console, 'warn').mockImplementation(() => {});
+
+        expect(value.evaluate({} as GlobalProperties, {properties: {}} as any as Feature)).toBe(42);
+        expect(console.warn).toHaveBeenCalledWith(
+            'layers[0].paint.line-width[3]: Expected value to be of type number, but found null instead. Falling back to 42.'
+        );
+    });
+
+    test('sibling throw sites each warn once, deduped by path and message', () => {
+        const {value} = createPropertyExpression(
+            ['case', ['==', ['get', 't'], 1], ['number', ['get', 'a']], ['number', ['get', 'b']]],
+            'layers[0].paint.line-width',
+            {
+                type: 'number',
+                default: 42,
+                'property-type': 'data-driven',
+                expression: {
+                    interpolated: false,
+                    parameters: ['zoom', 'feature']
+                }
+            } as StylePropertySpecification
+        ) as {value: StylePropertyExpression};
+
+        vi.spyOn(console, 'warn').mockImplementation(() => {});
+
+        // Trigger the first arm (index 2), then the default arm (index 3).
+        expect(value.evaluate({} as GlobalProperties, {properties: {t: 1}} as any as Feature)).toBe(
+            42
+        );
+        expect(value.evaluate({} as GlobalProperties, {properties: {t: 2}} as any as Feature)).toBe(
+            42
+        );
+        expect(console.warn).toHaveBeenCalledTimes(2);
+        expect(console.warn).toHaveBeenCalledWith(
+            'layers[0].paint.line-width[2]: Expected value to be of type number, but found null instead. Falling back to 42.'
+        );
+        expect(console.warn).toHaveBeenCalledWith(
+            'layers[0].paint.line-width[3]: Expected value to be of type number, but found null instead. Falling back to 42.'
+        );
+    });
+
+    test('an auto-wrapped assertion carries its nested index path, because bare `["get"]` arms get implicitly wrapped in an assertion', () => {
+        const {value} = createPropertyExpression(
+            ['case', false, ['get', 'a'], ['get', 'b']],
+            'layers[0].paint.line-width',
+            {
+                type: 'number',
+                default: 42,
+                'property-type': 'data-driven',
+                expression: {
+                    interpolated: false,
+                    parameters: ['zoom', 'feature']
+                }
+            } as StylePropertySpecification
+        ) as {value: StylePropertyExpression};
+
+        vi.spyOn(console, 'warn').mockImplementation(() => {});
+
+        expect(value.evaluate({} as GlobalProperties, {properties: {}} as any as Feature)).toBe(42);
+        expect(console.warn).toHaveBeenCalledWith(
+            'layers[0].paint.line-width[3]: Expected value to be of type number, but found null instead. Falling back to 42.'
+        );
+    });
+
     test('warns and falls back to default for invalid enum values', () => {
-        const {value} = createPropertyExpression(['get', 'x'], {
+        const {value} = createPropertyExpression(['get', 'x'], 'layers[0].layout.text-justify', {
             type: 'enum',
             values: {a: {}, b: {}, c: {}},
             default: 'a',
             'property-type': 'data-driven',
             expression: {
-                'interpolated': false,
-                'parameters': ['zoom', 'feature']
+                interpolated: false,
+                parameters: ['zoom', 'feature']
             }
         } as any as StylePropertySpecification) as {value: StylePropertyExpression};
 
-        jest.spyOn(console, 'warn').mockImplementation(() => { });
+        vi.spyOn(console, 'warn').mockImplementation(() => {});
 
         expect(value.kind).toBe('source');
 
-        expect(value.evaluate({} as GlobalProperties, {properties: {x: 'b'}} as any as Feature)).toBe('b');
-        expect(value.evaluate({} as GlobalProperties, {properties: {x: 'invalid'}} as any as Feature)).toBe('a');
-        expect(console.warn).toHaveBeenCalledWith('Expected value to be one of "a", "b", "c", but found "invalid" instead.');
+        expect(
+            value.evaluate({} as GlobalProperties, {properties: {x: 'b'}} as any as Feature)
+        ).toBe('b');
+        expect(
+            value.evaluate({} as GlobalProperties, {properties: {x: 'invalid'}} as any as Feature)
+        ).toBe('a');
+        expect(console.warn).toHaveBeenCalledWith(
+            'layers[0].layout.text-justify: Expected value to be one of "a", "b", "c", but found "invalid" instead. Falling back to a.'
+        );
     });
 
     test('warns for invalid variableAnchorOffsetCollection values', () => {
-        const {value} = createPropertyExpression(['get', 'x'], {
-            type: 'variableAnchorOffsetCollection',
-            'property-type': 'data-driven',
-            transition: false,
-            expression: {
-                'interpolated': false,
-                'parameters': ['zoom', 'feature']
+        const {value} = createPropertyExpression(
+            ['get', 'x'],
+            'layers[0].layout.text-variable-anchor-offset',
+            {
+                type: 'variableAnchorOffsetCollection',
+                'property-type': 'data-driven',
+                transition: false,
+                expression: {
+                    interpolated: false,
+                    parameters: ['zoom', 'feature']
+                }
             }
-        }) as {value: StylePropertyExpression};
+        ) as {value: StylePropertyExpression};
 
-        const warnMock = jest.spyOn(console, 'warn').mockImplementation(() => {});
+        const warnMock = vi.spyOn(console, 'warn').mockImplementation(() => {});
 
         expect(value.kind).toBe('source');
 
-        expect(value.evaluate({} as GlobalProperties, {properties: {x: 'invalid'}} as any as Feature)).toBeNull();
+        expect(
+            value.evaluate({} as GlobalProperties, {properties: {x: 'invalid'}} as any as Feature)
+        ).toBeNull();
         expect(console.warn).toHaveBeenCalledTimes(1);
-        expect(console.warn).toHaveBeenCalledWith('Could not parse variableAnchorOffsetCollection from value \'invalid\'');
+        expect(console.warn).toHaveBeenCalledWith(
+            "layers[0].layout.text-variable-anchor-offset: Could not parse variableAnchorOffsetCollection from value 'invalid'"
+        );
 
         warnMock.mockClear();
-        expect(value.evaluate({} as GlobalProperties, {properties: {x: ['top', [2, 2]]}} as any as Feature)).toEqual(new VariableAnchorOffsetCollection(['top', [2, 2]]));
+        expect(
+            value.evaluate(
+                {} as GlobalProperties,
+                {properties: {x: ['top', [2, 2]]}} as any as Feature
+            )
+        ).toEqual(new VariableAnchorOffsetCollection(['top', [2, 2]]));
         expect(console.warn).not.toHaveBeenCalled();
     });
 });
 
-describe('Distance expression', () => {
-    describe('Invalid expression', () => {
-        test('missing geometry', () => {
-            const response = createExpression(['distance']);
-            expect(response.result).toBe('error');
-        });
-        test('invalid geometry', () => {
-            const response = createExpression(['distance', {type: 'Nope!'}]);
-            expect(response.result).toBe('error');
-        });
+describe('actionable warnings: runtime throw sites carry their index path', () => {
+    function warnFor(expression: unknown, properties: Feature['properties']): string {
+        const expr = createExpression(expression, 'rk', null);
+        assert(expr.result === 'success');
+        const warnMock = vi.spyOn(console, 'warn').mockImplementation(() => {});
+        expr.value.evaluate({zoom: 0}, {type: 'Point', properties});
+        expect(warnMock).toHaveBeenCalledTimes(1);
+        const message = warnMock.mock.calls[0][0] as string;
+        warnMock.mockRestore();
+        return message;
+    }
+
+    test('["at"] with an out-of-bounds index', () => {
+        expect(warnFor(['typeof', ['at', ['get', 'i'], ['literal', [1, 2, 3]]]], {i: 5})).toBe(
+            'rk[1]: Array index out of bounds: 5 > 2.'
+        );
     });
 
-    describe('valid expression', () => {
-        test('multi point geometry', () => {
-            const response = createExpression(['distance', {type: 'MultiPoint', coordinates: [[3, 3], [3, 4]]}]);
-            expect(response.result).toBe('success');
-        });
-        test('multi line geometry', () => {
-            const response = createExpression(['distance', {type: 'MultiLineString', coordinates: [[[3, 3], [3, 4]]]}]);
-            expect(response.result).toBe('success');
-        });
-        test('multi polygon geometry', () => {
-            const response = createExpression(['distance', {type: 'MultiPolygon', coordinates: [[[[3, 3], [3, 4], [4, 4], [4, 3], [3, 3]]]]}]);
-            expect(response.result).toBe('success');
-        });
+    test('["length"] of a non-array/string value', () => {
+        expect(warnFor(['typeof', ['length', ['get', 'x']]], {x: 5})).toBe(
+            'rk[1]: Expected value to be of type string or array, but found number instead.'
+        );
     });
 
-    describe('Distance from point', () => {
-        const featureInTile = {} as Feature;
-        const canonical = {z: 20, x: 3, y: 3} as ICanonicalTileID;
-        let value: StyleExpression;
-
-        beforeEach(() => {
-            const response = createExpression(
-                ['distance', {type: 'Point', coordinates: [3, 3]}],
-                {
-                    type: 'number',
-                    'property-type': 'data-constant',
-                    expression: {
-                        interpolated: false,
-                        parameters: ['zoom']
-                    }
-                } as StylePropertySpecification);
-            value = response.value as StyleExpression;
-        });
-        test('point to point in the same location', () => {
-            getGeometry(featureInTile, {type: 'Point', coordinates: [3, 3]}, canonical);
-            expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(0, 2);
-        });
-        test('point to point in different location', () => {
-            getGeometry(featureInTile, {type: 'Point', coordinates: [3, 3.001]}, canonical);
-            expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(110.5, 0);
-        });
-        test('point to line', () => {
-            getGeometry(featureInTile, {type: 'Point', coordinates: [3.001, 3]}, canonical);
-            expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(111.1, 0);
-        });
-        test('point to line that passes through the point', () => {
-            getGeometry(featureInTile, {type: 'LineString', coordinates: [[2, 3], [4, 3]]}, canonical);
-            expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(0, 2);
-        });
-        test('point to line that pass through the point vertically', () => {
-            getGeometry(featureInTile, {type: 'LineString', coordinates: [[3, 2], [3, 4]]}, canonical);
-            expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(0, 2);
-        });
-        test('point to containing polygon', () => {
-            getGeometry(featureInTile, {type: 'Polygon', coordinates: [[[0, 0], [0, 5], [5, 5], [5, 0], [0, 0]]]}, canonical);
-            expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBe(0);
-        });
-        test('point to near by polygon', () => {
-            getGeometry(featureInTile, {type: 'Polygon', coordinates: [[[0, 0], [0, 2.999], [3, 2.999], [3, 0], [0, 0]]]}, canonical);
-            expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(110.5, 0);
-        });
-        test('point to polygon with hole around the point', () => {
-            // polygon inner ring direction is important!
-            getGeometry(featureInTile, {type: 'Polygon', coordinates: [[[0, 0], [0, 5], [5, 5], [5, 0], [0, 0]], [[2.999, 2.999], [3.001, 2.999], [3.001, 3.001], [2.999, 3.001], [2.999, 2.999]]]}, canonical);
-            expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(110.5, 0);
-        });
-    });
-    describe('Distance from line', () => {
-        const canonical = {z: 20, x: 3, y: 3} as ICanonicalTileID;
-        const featureInTile = {} as Feature;
-        let value: StyleExpression;
-
-        beforeEach(() => {
-            const response = createExpression(
-                ['distance', {type: 'LineString', coordinates: [[3, 3], [3, 4]]}],
-                {
-                    type: 'number',
-                    'property-type': 'data-constant',
-                    expression: {
-                        interpolated: false,
-                        parameters: ['zoom']
-                    }
-                } as StylePropertySpecification);
-
-            value = response.value as StyleExpression;
-        });
-        test('line to point that is on the line', () => {
-            getGeometry(featureInTile, {type: 'Point', coordinates: [3, 3]}, canonical);
-            expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(0, 2);
-        });
-        test('line to point that is on the middle of the line', () => {
-            getGeometry(featureInTile, {type: 'Point', coordinates: [3, 3.5]}, canonical);
-            expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(0, 2);
-        });
-        test('line to point that is close by horizontally', () => {
-            getGeometry(featureInTile, {type: 'Point', coordinates: [3, 2.999]}, canonical);
-            expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(110.5, 0);
-        });
-        test('line to point that is close by vertically', () => {
-            getGeometry(featureInTile, {type: 'Point', coordinates: [3.001, 3]}, canonical);
-            expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(111.1, 0);
-        });
-        test('line to line that are parallel', () => {
-            getGeometry(featureInTile, {type: 'LineString', coordinates: [[3.001, 3], [3.001, 4]]}, canonical);
-            expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(111.1, 0);
-        });
-        test('line to line that are perpendicular', () => {
-            getGeometry(featureInTile, {type: 'LineString', coordinates: [[2.5, 3.5], [3.5, 3.5]]}, canonical);
-            expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBe(0);
-        });
-        test('line to polygon that contains the line', () => {
-            getGeometry(featureInTile, {type: 'Polygon', coordinates: [[[0, 0], [0, 5], [5, 5], [5, 0], [0, 0]]]}, canonical);
-            expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBe(0);
-        });
-        test('line to polygon that is close by', () => {
-            getGeometry(featureInTile, {type: 'Polygon', coordinates: [[[0, 0], [0, 2.999], [3, 2.999], [3, 0], [0, 0]]]}, canonical);
-            expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(110.5, 0);
-        });
-        test('line to polygon with hole around the line', () => {
-            // polygon inner ring direction is important!
-            getGeometry(featureInTile, {type: 'Polygon', coordinates: [[[0, 0], [0, 5], [5, 5], [5, 0], [0, 0]], [[2.999, 2.999], [3.001, 2.999], [3.001, 4.001], [2.999, 4.001], [2.999, 2.999]]]}, canonical);
-            expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(110.5, 0);
-        });
-    });
-    describe('Distance from long line', () => {
-        const canonical = {z: 20, x: 3, y: 3} as ICanonicalTileID;
-        const featureInTile = {} as Feature;
-        let value: StyleExpression;
-
-        beforeEach(() => {
-            const coordinates = [];
-            for (let i = 0; i < 200; i++) {
-                coordinates.push([3, 3 + i / 200.0]);
-            }
-            const response = createExpression(
-                ['distance', {
-                    type: 'FeatureCollection',
-                    features: [{
-                        type: 'Feature',
-                        geometry: {
-                            type: 'LineString', coordinates
-                        }
-                    }]
-                }],
-                {
-                    type: 'number',
-                    'property-type': 'data-constant',
-                    expression: {
-                        interpolated: false,
-                        parameters: ['zoom']
-                    }
-                } as StylePropertySpecification);
-
-            value = response.value as StyleExpression;
-        });
-        test('long line to multiple points close by', () => {
-            const coordinates = [];
-            for (let i = 0; i < 200; i++) {
-                coordinates.push([2.999, 3 + i / 200.0]);
-            }
-            getGeometry(featureInTile, {type: 'MultiPoint', coordinates}, canonical);
-            expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(111.1, 0);
-        });
+    test('["index-of"] in a non-array/string haystack', () => {
+        expect(warnFor(['typeof', ['index-of', ['get', 'n'], ['get', 'h']]], {n: 'a', h: 5})).toBe(
+            'rk[1]: Expected second argument to be of type array or string, but found number instead.'
+        );
     });
 
-    describe('Distance from simple polygon', () => {
-        const canonical = {z: 20, x: 3, y: 3} as ICanonicalTileID;
-        const featureInTile = {} as Feature;
-        let value: StyleExpression;
-        let response: any;
-
-        beforeEach(() => {
-            response = createExpression(
-                ['distance', {
-                    type: 'Feature',
-                    geometry: {
-                        type: 'Polygon',
-                        coordinates: [[[3, 3], [3, 4], [4, 4], [4, 3], [3, 3]]]
-                    },
-                }],
-                {
-                    type: 'number',
-                    'property-type': 'data-constant',
-                    expression: {
-                        interpolated: false,
-                        parameters: ['zoom']
-                    }
-                } as StylePropertySpecification);
-            value = response.value as StyleExpression;
-        });
-
-        test('polygon to point that is on the edge of the the polygon', () => {
-            getGeometry(featureInTile, {type: 'Point', coordinates: [3, 3]}, canonical);
-            expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(0, 2);
-        });
-        test('polygon to point that is inside the polygon', () => {
-            getGeometry(featureInTile, {type: 'Point', coordinates: [3.001, 3.001]}, canonical);
-            expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBe(0);
-        });
-        test('polygon to point that is outside the polygon', () => {
-            getGeometry(featureInTile, {type: 'Point', coordinates: [2.999, 3]}, canonical);
-            expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(111.1, 0);
-        });
-        test('polygon to multiple points outside the polygon that require a better algorithm', () => {
-            const coordinates = [];
-            for (let i = 0; i < 200; i++) {
-                coordinates.push([2.999, 3 - i / 1000.0]);
-            }
-            getGeometry(featureInTile, {type: 'MultiPoint', coordinates}, canonical);
-            expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(111.1, 0);
-        });
-
-        test('polygon to multiple points outside and inside the polygon that require a better algorithm', () => {
-            const coordinates = [];
-            for (let i = 0; i < 200; i++) {
-                coordinates.push([2.999, 3 - i / 1000.0]);
-            }
-            coordinates.push([3.001, 3.001]);
-            getGeometry(featureInTile, {type: 'MultiPoint', coordinates}, canonical);
-            expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBe(0);
-        });
-
-        test('polygon to line that is outside the polygon', () => {
-            getGeometry(featureInTile, {type: 'LineString', coordinates: [[2.999, 3], [2.999, 4]]}, canonical);
-            expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(111.1, 0);
-        });
-        test('polygon to line that is passes through the polygon', () => {
-            getGeometry(featureInTile, {type: 'LineString', coordinates: [[2.5, 3.5], [3.5, 3.5]]}, canonical);
-            expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBe(0);
-        });
-        test('polygon to polygon that is inside the polygon', () => {
-            getGeometry(featureInTile, {type: 'Polygon', coordinates: [[[0, 0], [0, 5], [5, 5], [5, 0], [0, 0]]]}, canonical);
-            expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBe(0);
-        });
-        test('polygon to polygon that is outside the polygon', () => {
-            getGeometry(featureInTile, {type: 'Polygon', coordinates: [[[0, 0], [0, 2.999], [3, 2.999], [3, 0], [0, 0]]]}, canonical);
-            expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(110.5, 0);
-        });
-        test('polygon to polygon that contains the polygon', () => {
-            getGeometry(featureInTile, {type: 'Polygon', coordinates: [[[3.5, 3.5], [3.5, 3.6], [3.6, 3.6], [3.6, 3.5], [3.5, 3.5]]]}, canonical);
-            expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBe(0);
-        });
-        test('polygon to polygon with hole around the polygon', () => {
-            // polygon with hole - direction is important!
-            getGeometry(featureInTile, {type: 'Polygon', coordinates: [[[0, 0], [0, 5], [5, 5], [5, 0], [0, 0]], [[2.999, 2.999], [4.001, 2.999,], [4.001, 4.001], [2.999, 4.001], [2.999, 2.999]]]}, canonical);
-            expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(110.5, 0);
-        });
+    test('["slice"] of a non-array/string value', () => {
+        expect(warnFor(['typeof', ['slice', ['get', 'x'], 0]], {x: 5})).toBe(
+            'rk[1]: Expected first argument to be of type array or string, but found number instead.'
+        );
     });
-    describe('Distance from polygon with hole', () => {
-        const canonical = {z: 20, x: 3, y: 3} as ICanonicalTileID;
-        const featureInTile = {} as Feature;
-        let value: StyleExpression;
 
-        beforeEach(() => {
-            const response = createExpression(
-                ['distance', {type: 'Polygon', coordinates: [[[0, 0], [0, 5], [5, 5], [5, 0], [0, 0]], [[2.999, 2.999], [2.999, 4.001], [4.001, 4.001], [4.001, 2.999], [2.999, 2.999]]]}],
-                {
-                    type: 'number',
-                    'property-type': 'data-constant',
-                    expression: {
-                        interpolated: false,
-                        parameters: ['zoom']
-                    }
-                } as StylePropertySpecification);
-            value = response.value as StyleExpression;
-        });
+    test('["in"] with a non-array/string haystack', () => {
+        expect(warnFor(['typeof', ['in', ['get', 'n'], ['get', 'h']]], {n: 'a', h: 5})).toBe(
+            'rk[1]: Expected second argument to be of type array or string, but found number instead.'
+        );
+    });
 
-        test('polygon to point inside the hole', () => {
-            getGeometry(featureInTile, {type: 'Point', coordinates: [3, 3]}, canonical);
-            expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(110.5, 0);
-        });
-        test('polygon to point inside the polygon', () => {
-            getGeometry(featureInTile, {type: 'Point', coordinates: [2.999, 2.999]}, canonical);
-            expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(0);
-        });
-        test('polygon to line inside the hole', () => {
-            getGeometry(featureInTile, {type: 'LineString', coordinates: [[3, 3], [3, 4]]}, canonical);
-            expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBeCloseTo(110.5, 0);
-        });
-        test('polygon to line inside the polygon', () => {
-            getGeometry(featureInTile, {type: 'LineString', coordinates: [[2.5, 3.5], [3.5, 3.5]]}, canonical);
-            expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBe(0);
-        });
-        test('polygon to polygon containing the polygon with the hole', () => {
-            getGeometry(featureInTile, {type: 'Polygon', coordinates: [[[0, 0], [0, 5], [5, 5], [5, 0], [0, 0]]]}, canonical);
-            expect(value.evaluate({zoom: 20}, featureInTile, {}, canonical)).toBe(0);
-        });
+    test('["to-color"] of an unparseable value', () => {
+        expect(warnFor(['typeof', ['to-color', ['get', 'c']]], {c: 'notacolor'})).toBe(
+            "rk[1]: Could not parse color from value 'notacolor'"
+        );
+    });
+
+    test('ordering comparison of mismatched types', () => {
+        expect(warnFor(['typeof', ['>', ['get', 'a'], ['get', 'b']]], {a: 'x', b: 5})).toBe(
+            'rk[1]: Expected arguments for ">" to be (string, string) or (number, number), but found (string, number) instead.'
+        );
+    });
+
+    test('user-emitted ["error"] is prefixed with the rootKey (no compound sub-path)', () => {
+        // Compound expressions don't carry a parser sub-path, so the message is
+        // anchored at the property root only.
+        expect(warnFor(['error', 'boom'], {})).toBe('rk: boom');
     });
 });
 
-describe('index-of expression', () => {
-    test('requires a needle', () => {
-        const response = createExpression(['index-of']);
-        expect(response.result).toBe('error');
+describe('actionable warnings: fallback rendering', () => {
+    function warnFor(
+        expression: unknown,
+        propertySpec: StylePropertySpecification,
+        feature: any
+    ): string {
+        const expr = createExpression(expression, 'rk', propertySpec);
+        assert(expr.result === 'success');
+        const warnMock = vi.spyOn(console, 'warn').mockImplementation(() => {});
+        expr.value.evaluate({} as GlobalProperties, {properties: feature} as any as Feature);
+        const message = warnMock.mock.calls[0]?.[0] as string;
+        warnMock.mockRestore();
+        return message;
+    }
+
+    test('color default renders as rgba(...)', () => {
+        expect(
+            warnFor(
+                ['to-color', ['get', 'c']],
+                {type: 'color', default: 'red'} as any as StylePropertySpecification,
+                {c: 'notacolor'}
+            )
+        ).toBe("rk: Could not parse color from value 'notacolor' Falling back to rgba(255,0,0,1).");
     });
-    test('requires a haystack', () => {
-        const response = createExpression(['index-of', 'a']);
-        expect(response.result).toBe('error');
+
+    test('padding default renders as a JSON array', () => {
+        expect(
+            warnFor(
+                ['get', 'p'],
+                {type: 'padding', default: [5, 5, 5, 5]} as any as StylePropertySpecification,
+                {p: 'notpadding'}
+            )
+        ).toBe("rk: Could not parse padding from value 'notpadding' Falling back to [5,5,5,5].");
     });
-    test('rejects a fourth argument', () => {
-        const response = createExpression(['index-of', 'a', 'abc', 1, 8]);
-        expect(response.result).toBe('error');
+
+    test('numberArray default renders as a JSON array', () => {
+        expect(
+            warnFor(
+                ['get', 'n'],
+                {type: 'numberArray', default: [1, 2, 3]} as any as StylePropertySpecification,
+                {n: 'notarray'}
+            )
+        ).toBe("rk: Could not parse numberArray from value 'notarray' Falling back to [1,2,3].");
     });
-    test('requires a primitive as the needle', () => {
-        const response = createExpression(['index-of', ['literal', ['a']], ['a', 'b', 'c']]);
-        expect(response.result).toBe('error');
-    });
-    test('requires a string or array as the haystack', () => {
-        const response = createExpression(['index-of', 't', true]);
-        expect(response.result).toBe('error');
-    });
-    test('finds an empty substring in an empty string', () => {
-        const response = createExpression(['index-of', '', '']);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(0);
-    });
-    test('finds an empty substring in a non-empty string', () => {
-        const response = createExpression(['index-of', '', 'abc']);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(0);
-    });
-    test('cannot find a non-empty substring in an empty string', () => {
-        const response = createExpression(['index-of', 'abc', '']);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(-1);
-    });
-    test('finds a non-empty substring in a non-empty string', () => {
-        const response = createExpression(['index-of', 'b', 'abc']);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(1);
-    });
-    test('only finds the first occurrence in a string', () => {
-        const response = createExpression(['index-of', 'b', 'abbc']);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(1);
-    });
-    test('starts looking for the substring at a positive start index', () => {
-        const response = createExpression(['index-of', 'a', 'abc', 1]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(-1);
-    });
-    test('starts looking for the substring at a negative start index', () => {
-        const response = createExpression(['index-of', 'c', 'abc', -1]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(2);
-    });
-    test('counts a non-ASCII character as a single character', () => {
-        const response = createExpression(['index-of', '镇', '市镇']);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(1);
-    });
-    test('counts a surrogate pair as a single character', () => {
-        const response = createExpression(['index-of', '市镇', '丐𦨭市镇']);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(2);
-    });
-    test('cannot find an element in an empty array', () => {
-        const response = createExpression(['index-of', 1, ['literal', []]]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(-1);
-    });
-    test('finds an element in a non-empty array', () => {
-        const response = createExpression(['index-of', 2, ['literal', [1, 2, 3]]]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(1);
-    });
-    test('only finds the first occurrence in an array', () => {
-        const response = createExpression(['index-of', 2, ['literal', [1, 2, 2, 3]]]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(1);
-    });
-    test('starts looking for the element at a positive start index', () => {
-        const response = createExpression(['index-of', 1, ['literal', [1, 2, 3]], 1]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(-1);
-    });
-    test('starts looking for the element at a negative start index', () => {
-        const response = createExpression(['index-of', 3, ['literal', [1, 2, 3]], -1]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(2);
+
+    test('null default omits the fallback suffix entirely', () => {
+        expect(
+            warnFor(
+                ['number', ['get', 'x']],
+                {type: 'number'} as any as StylePropertySpecification,
+                {}
+            )
+        ).toBe('rk: Expected value to be of type number, but found null instead.');
     });
 });
 
-describe('length expression', () => {
-    test('requires an argument', () => {
-        const response = createExpression(['length']);
-        expect(response.result).toBe('error');
+describe('actionable warnings: interpolation and legacy functions', () => {
+    const vaocSpec = {
+        type: 'variableAnchorOffsetCollection',
+        'property-type': 'data-driven',
+        transition: false,
+        expression: {interpolated: true, parameters: ['zoom', 'feature']}
+    } as any as StylePropertySpecification;
+
+    test('a nested ["interpolate"] throw carries its index path (mismatched value lengths)', () => {
+        // Nested so the interpolate's parser key is non-empty; a top-level
+        // interpolate would have path '' and wouldn't prove the instrumentation.
+        const expr = createPropertyExpression(
+            [
+                'case',
+                false,
+                ['literal', ['top', [0, 0]]],
+                [
+                    'interpolate',
+                    ['linear'],
+                    ['get', 't'],
+                    0,
+                    ['literal', ['top', [0, 0]]],
+                    10,
+                    ['literal', ['top', [0, 0], 'bottom', [1, 1]]]
+                ]
+            ],
+            'rk',
+            vaocSpec
+        );
+        assert(expr.result === 'success');
+
+        vi.spyOn(console, 'warn').mockImplementation(() => {});
+        expr.value.evaluate({zoom: 0} as GlobalProperties, {properties: {t: 5}} as any as Feature);
+
+        expect(console.warn).toHaveBeenCalledTimes(1);
+        expect(console.warn).toHaveBeenCalledWith(
+            'rk[3]: Cannot interpolate values of different length. from: ["top",[0,0]], to: ["top",[0,0],"bottom",[1,1]]'
+        );
     });
-    test('requires a string or array as the argument', () => {
-        const response = createExpression(['length', true]);
-        expect(response.result).toBe('error');
-    });
-    test('rejects a second argument', () => {
-        const response = createExpression(['length', 'abc', 'def']);
-        expect(response.result).toBe('error');
-    });
-    test('measures an empty string', () => {
-        const response = createExpression(['length', '']);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(0);
-    });
-    test('measures a non-empty string', () => {
-        const response = createExpression(['length', 'abc']);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(3);
-    });
-    test('counts a non-ASCII character as a single character', () => {
-        const response = createExpression(['length', '市镇']);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(2);
-    });
-    test('counts a surrogate pair as a single character', () => {
-        const response = createExpression(['length', '丐𦨭市镇']);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(4);
-    });
-    test('measures an empty array', () => {
-        const response = createExpression(['length', ['literal', []]]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(0);
-    });
-    test('measures a non-empty array', () => {
-        const response = createExpression(['length', ['literal', [1, 2, 3]]]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe(3);
+
+    test('a legacy stop function throw warns with the property location and falls back', () => {
+        // A stop that parses to null makes the interpolation dereference null at
+        // evaluation; the wrapper must warn with the location and fall back rather
+        // than propagate the throw to the caller.
+        const value = normalizePropertyExpression(
+            {
+                type: 'exponential',
+                stops: [
+                    [0, [1, 2]],
+                    [10, 'notanarray']
+                ]
+            } as any,
+            'rk',
+            {
+                type: 'numberArray',
+                'property-type': 'data-driven',
+                transition: false,
+                expression: {interpolated: true, parameters: ['zoom']}
+            } as any as StylePropertySpecification
+        );
+
+        vi.spyOn(console, 'warn').mockImplementation(() => {});
+        expect(() => value.evaluate({zoom: 5} as GlobalProperties)).not.toThrow();
+        expect(console.warn).toHaveBeenCalledTimes(1);
+        // The error body is an engine-owned TypeError string; assert only the
+        // location prefix that this code is responsible for.
+        expect(console.warn).toHaveBeenCalledWith(expect.stringMatching(/^rk: /));
     });
 });
 
-describe('slice expression', () => {
-    test('requires an input argument', () => {
-        const response = createExpression(['slice']);
+describe('nonexistent operators', () => {
+    test('"ExpressionSpecification" operator does not exist', () => {
+        const response = createExpression(['ExpressionSpecification'], 'layers[0].filter');
         expect(response.result).toBe('error');
+        expect((response.value as ExpressionParsingError[])[0].message).toContain(
+            'Unknown expression \"ExpressionSpecification\".'
+        );
     });
-    test('requires a start index argument', () => {
-        const response = createExpression(['slice', 'abc']);
-        expect(response.result).toBe('error');
-    });
-    test('rejects a fourth argument', () => {
-        const response = createExpression(['slice', 'abc', 0, 1, 8]);
-        expect(response.result).toBe('error');
-    });
-    test('requires a string or array as the input argument', () => {
-        const response = createExpression(['slice', true, 0]);
-        expect(response.result).toBe('error');
-    });
-    test('requires a number as the start index argument', () => {
-        const response = createExpression(['slice', 'abc', true]);
-        expect(response.result).toBe('error');
-    });
-    test('slices an empty string', () => {
-        const response = createExpression(['slice', '', 0]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe('');
-    });
-    test('slices a string starting at the beginning', () => {
-        const response = createExpression(['slice', 'abc', 0]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe('abc');
-    });
-    test('slices a string starting at the middle', () => {
-        const response = createExpression(['slice', 'abc', 1]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe('bc');
-    });
-    test('slices a string starting at the end', () => {
-        const response = createExpression(['slice', 'abc', 3]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe('');
-    });
-    test('slices a string backwards from the end', () => {
-        const response = createExpression(['slice', 'abc', -2]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe('bc');
-    });
-    test('slices a string by a zero-length range', () => {
-        const response = createExpression(['slice', 'abc', 1, 1]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe('');
-    });
-    test('slices a string by a negative-length range', () => {
-        const response = createExpression(['slice', 'abc', 2, 1]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe('');
-    });
-    test('avoids splitting a non-ASCII character', () => {
-        const response = createExpression(['slice', '市镇', 1]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe('镇');
-    });
-    test('avoids splitting a surrogate pair', () => {
-        const response = createExpression(['slice', '丐𦨭市镇', 2]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toBe('市镇');
-    });
-    test('slices an empty array', () => {
-        const response = createExpression(['slice', ['literal', []], 0]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toEqual([]);
-    });
-    test('slices an array starting at the beginning', () => {
-        const response = createExpression(['slice', ['literal', [1, 2, 3]], 0]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toEqual([1, 2, 3]);
-    });
-    test('slices an array starting at the middle', () => {
-        const response = createExpression(['slice', ['literal', [1, 2, 3]], 1]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toEqual([2, 3]);
-    });
-    test('slices an array starting at the end', () => {
-        const response = createExpression(['slice', ['literal', [1, 2, 3]], 3]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toEqual([]);
-    });
-    test('slices an array backwards from the end', () => {
-        const response = createExpression(['slice', ['literal', [1, 2, 3]], -2]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toEqual([2, 3]);
-    });
-    test('slices an array by a zero-length range', () => {
-        const response = createExpression(['slice', ['literal', [1, 2, 3]], 1, 1]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toEqual([]);
-    });
-    test('slices an array by a negative-length range', () => {
-        const response = createExpression(['slice', ['literal', [1, 2, 3]], 2, 1]);
-        expect(response.result).toBe('success');
-        expect((response.value as StyleExpression)?.evaluate({zoom: 20})).toEqual([]);
-    });
-});
-
-describe('projection expression', () => {
-
-    test('step', () => {
-        const response = createExpression(['step', ['zoom'], 'vertical-perspective', 10, 'mercator']);
-
-        if (response.result === 'success') {
-            expect(response.value.evaluate({zoom: 5})).toBe('vertical-perspective');
-            expect(response.value.evaluate({zoom: 10})).toBe('mercator');
-            expect(response.value.evaluate({zoom: 11})).toBe('mercator');
-        } else {
-            throw new Error('Failed to parse Step expression');
-        }
-    })
-
-    test('step array', () => {
-        const response = createExpression(['step', ['zoom'], ['literal', ['vertical-perspective', 'mercator', 0.5]], 10, 'mercator'], v8.projection.type as StylePropertySpecification);
-
-        if (response.result === 'success') {
-            expect(response.value.evaluate({zoom: 5})).toStrictEqual(['vertical-perspective', 'mercator', 0.5]);
-            expect(response.value.evaluate({zoom: 10})).toBe('mercator');
-            expect(response.value.evaluate({zoom: 11})).toBe('mercator');
-        } else {
-            throw new Error('Failed to parse Step expression');
-        }
-    })
-
-    test('interpolate', () => {
-        const response = createExpression(['interpolate', ['linear'], ['zoom'], 8, 'vertical-perspective', 10, 'mercator'], v8.projection.type as StylePropertySpecification);
-
-        if (response.result === 'success') {
-            expect(response.value.evaluate({zoom: 5})).toBe('vertical-perspective');
-            expect(response.value.evaluate({zoom: 9})).toEqual({from: 'vertical-perspective', to: 'mercator', transition: 0.5});
-            expect(response.value.evaluate({zoom: 11})).toBe('mercator');
-        } else {
-            throw new Error('Failed to parse Interpolate expression');
-        }
-    })
-
 });

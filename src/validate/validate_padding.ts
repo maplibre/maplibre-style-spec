@@ -9,7 +9,13 @@ export function validatePadding(options) {
 
     if (type === 'array') {
         if (value.length < 1 || value.length > 4) {
-            return [new ValidationError(key, value, `padding requires 1 to 4 values; ${value.length} values found`)];
+            return [
+                new ValidationError(
+                    key,
+                    value,
+                    `padding requires 1 to 4 values; ${value.length} values found`
+                )
+            ];
         }
 
         const arrayElementSpec = {
@@ -18,12 +24,14 @@ export function validatePadding(options) {
 
         let errors = [];
         for (let i = 0; i < value.length; i++) {
-            errors = errors.concat(options.validateSpec({
-                key: `${key}[${i}]`,
-                value: value[i],
-                validateSpec: options.validateSpec,
-                valueSpec: arrayElementSpec
-            }));
+            errors = errors.concat(
+                options.validateSpec({
+                    key: `${key}[${i}]`,
+                    value: value[i],
+                    validateSpec: options.validateSpec,
+                    valueSpec: arrayElementSpec
+                })
+            );
         }
         return errors;
     } else {

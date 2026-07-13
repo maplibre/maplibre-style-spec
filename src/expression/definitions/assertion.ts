@@ -1,4 +1,3 @@
-
 import {
     ObjectType,
     ValueType,
@@ -25,28 +24,28 @@ const types = {
 };
 
 export class Assertion implements Expression {
-    type: Type;
-    args: Array<Expression>;
-
-    constructor(type: Type, args: Array<Expression>) {
-        this.type = type;
-        this.args = args;
-    }
+    constructor(
+        public type: Type,
+        public args: Array<Expression>,
+        public readonly key: string
+    ) {}
 
     static parse(args: ReadonlyArray<unknown>, context: ParsingContext): Expression {
-        if (args.length < 2)
-            return context.error('Expected at least one argument.') as null;
+        if (args.length < 2) return context.error('Expected at least one argument.') as null;
 
         let i = 1;
         let type;
 
-        const name: string = (args[0] as any);
+        const name: string = args[0] as any;
         if (name === 'array') {
             let itemType;
             if (args.length > 2) {
                 const type = args[1];
                 if (typeof type !== 'string' || !(type in types) || type === 'object')
-                    return context.error('The item type argument of "array" must be one of string, number, boolean', 1) as null;
+                    return context.error(
+                        'The item type argument of "array" must be one of string, number, boolean',
+                        1
+                    ) as null;
                 itemType = types[type];
                 i++;
             } else {
@@ -55,12 +54,14 @@ export class Assertion implements Expression {
 
             let N;
             if (args.length > 3) {
-                if (args[2] !== null &&
-                    (typeof args[2] !== 'number' ||
-                        args[2] < 0 ||
-                        args[2] !== Math.floor(args[2]))
+                if (
+                    args[2] !== null &&
+                    (typeof args[2] !== 'number' || args[2] < 0 || args[2] !== Math.floor(args[2]))
                 ) {
-                    return context.error('The length argument to "array" must be a positive integer literal', 2) as null;
+                    return context.error(
+                        'The length argument to "array" must be a positive integer literal',
+                        2
+                    ) as null;
                 }
                 N = args[2];
                 i++;
@@ -79,7 +80,7 @@ export class Assertion implements Expression {
             parsed.push(input);
         }
 
-        return new Assertion(type, parsed);
+        return new Assertion(type, parsed, context.key);
     }
 
     evaluate(ctx: EvaluationContext) {
@@ -89,7 +90,10 @@ export class Assertion implements Expression {
             if (!error) {
                 return value;
             } else if (i === this.args.length - 1) {
-                throw new RuntimeError(`Expected value to be of type ${typeToString(this.type)}, but found ${typeToString(typeOf(value))} instead.`);
+                throw new RuntimeError(
+                    `Expected value to be of type ${typeToString(this.type)}, but found ${typeToString(typeOf(value))} instead.`,
+                    this.key
+                );
             }
         }
 
@@ -101,6 +105,6 @@ export class Assertion implements Expression {
     }
 
     outputDefined(): boolean {
-        return this.args.every(arg => arg.outputDefined());
+        return this.args.every((arg) => arg.outputDefined());
     }
 }

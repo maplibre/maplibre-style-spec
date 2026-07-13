@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 import fs from 'fs';
 import minimist from 'minimist';
 import {format} from '../src/format';
@@ -16,4 +14,3 @@ function help() {
     console.log('usage:');
     console.log('  gl-style-migrate style-v7.json > style-v8.json');
 }
-

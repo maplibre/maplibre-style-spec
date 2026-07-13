@@ -1,0 +1,28 @@
+{
+  "expression": [
+    "number",
+    [
+      "global-state",
+      "x"
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": true,
+      "isZoomConstant": true,
+      "type": "number"
+    },
+    "outputs": [
+      {
+        "error": "layers[0].paint.some-property: Expected value to be of type number, but found null instead."
+      }
+    ]
+  }
+}

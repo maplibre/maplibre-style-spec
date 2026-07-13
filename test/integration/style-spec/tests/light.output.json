@@ -1,18 +1,22 @@
 [
   {
     "message": "anchor: expected one of [map, viewport], true found",
+    "severity": "error",
     "line": 10
   },
   {
     "message": "position: array length 3 expected, length 2 found",
+    "severity": "error",
     "line": 11
   },
   {
     "message": "color: color expected, array found",
+    "severity": "error",
     "line": 12
   },
   {
     "message": "intensity: 1.5 is greater than the maximum value 1",
+    "severity": "error",
     "line": 13
   }
 ]

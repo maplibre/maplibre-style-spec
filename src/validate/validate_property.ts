@@ -1,4 +1,3 @@
-
 import {ValidationError} from '../error/validation_error';
 import {getType} from '../util/get_type';
 import {isFunction} from '../function';
@@ -17,7 +16,12 @@ export function validateProperty(options, propertyType) {
     if (!layerSpec) return [];
 
     const transitionMatch = propertyKey.match(/^(.*)-transition$/);
-    if (propertyType === 'paint' && transitionMatch && layerSpec[transitionMatch[1]] && layerSpec[transitionMatch[1]].transition) {
+    if (
+        propertyType === 'paint' &&
+        transitionMatch &&
+        layerSpec[transitionMatch[1]] &&
+        layerSpec[transitionMatch[1]].transition
+    ) {
         return validateSpec({
             key,
             value,
@@ -33,32 +37,46 @@ export function validateProperty(options, propertyType) {
     }
 
     let tokenMatch;
-    if (getType(value) === 'string' && supportsPropertyExpression(valueSpec) && !valueSpec.tokens && (tokenMatch = /^{([^}]+)}$/.exec(value))) {
-        return [new ValidationError(
-            key, value,
-            `"${propertyKey}" does not support interpolation syntax\n` +
-                `Use an identity property function instead: \`{ "type": "identity", "property": ${JSON.stringify(tokenMatch[1])} }\`.`)];
+    if (
+        getType(value) === 'string' &&
+        supportsPropertyExpression(valueSpec) &&
+        !valueSpec.tokens &&
+        (tokenMatch = /^{([^}]+)}$/.exec(value))
+    ) {
+        return [
+            new ValidationError(
+                key,
+                value,
+                `"${propertyKey}" does not support interpolation syntax\n` +
+                    `Use an identity property function instead: \`{ "type": "identity", "property": ${JSON.stringify(tokenMatch[1])} }\`.`
+            )
+        ];
     }
 
     const errors = [];
 
     if (options.layerType === 'symbol') {
-        if (propertyKey === 'text-field' && style && !style.glyphs) {
-            errors.push(new ValidationError(key, value, 'use of "text-field" requires a style "glyphs" property'));
-        }
-        if (propertyKey === 'text-font' && isFunction(deepUnbundle(value)) && unbundle(value.type) === 'identity') {
-            errors.push(new ValidationError(key, value, '"text-font" does not support identity functions'));
+        if (
+            propertyKey === 'text-font' &&
+            isFunction(deepUnbundle(value)) &&
+            unbundle(value.type) === 'identity'
+        ) {
+            errors.push(
+                new ValidationError(key, value, '"text-font" does not support identity functions')
+            );
         }
     }
 
-    return errors.concat(validateSpec({
-        key: options.key,
-        value,
-        valueSpec,
-        style,
-        styleSpec,
-        expressionContext: 'property',
-        propertyType,
-        propertyKey
-    }));
+    return errors.concat(
+        validateSpec({
+            key: options.key,
+            value,
+            valueSpec,
+            style,
+            styleSpec,
+            expressionContext: 'property',
+            propertyType,
+            propertyKey
+        })
+    );
 }

@@ -1,0 +1,39 @@
+{
+  "expression": [
+    "length",
+    [
+      "get",
+      "str"
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {
+        "properties": {
+          "str": "市镇"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "str": "丐𦨭市镇"
+        }
+      }
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": false,
+      "isZoomConstant": true,
+      "type": "number"
+    },
+    "outputs": [
+      2,
+      4
+    ]
+  }
+}

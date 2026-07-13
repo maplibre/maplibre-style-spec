@@ -1,4 +1,3 @@
-
 import {BooleanType} from '../types';
 
 import type {Expression} from '../expression';
@@ -22,7 +21,9 @@ export class Case implements Expression {
 
     static parse(args: ReadonlyArray<unknown>, context: ParsingContext): Expression {
         if (args.length < 4)
-            return context.error(`Expected at least 3 arguments, but found only ${args.length - 1}.`) as null;
+            return context.error(
+                `Expected at least 3 arguments, but found only ${args.length - 1}.`
+            ) as null;
         if (args.length % 2 !== 0)
             return context.error('Expected an odd number of arguments.') as null;
 
@@ -47,8 +48,8 @@ export class Case implements Expression {
         const otherwise = context.parse(args[args.length - 1], args.length - 1, outputType);
         if (!otherwise) return null;
 
-        if (!outputType) throw new Error('Can\'t infer output type');
-        return new Case((outputType as any), branches, otherwise);
+        if (!outputType) throw new Error("Can't infer output type");
+        return new Case(outputType as any, branches, otherwise);
     }
 
     evaluate(ctx: EvaluationContext) {
@@ -69,7 +70,8 @@ export class Case implements Expression {
     }
 
     outputDefined(): boolean {
-        return this.branches.every(([_, out]) => out.outputDefined()) && this.otherwise.outputDefined();
+        return (
+            this.branches.every(([_, out]) => out.outputDefined()) && this.otherwise.outputDefined()
+        );
     }
 }
-

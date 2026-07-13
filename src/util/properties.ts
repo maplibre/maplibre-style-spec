@@ -1,7 +1,10 @@
 import type {StylePropertySpecification} from '..';
 
 export function supportsPropertyExpression(spec: StylePropertySpecification): boolean {
-    return spec['property-type'] === 'data-driven' || spec['property-type'] === 'cross-faded-data-driven';
+    return (
+        spec['property-type'] === 'data-driven' ||
+        spec['property-type'] === 'cross-faded-data-driven'
+    );
 }
 
 export function supportsZoomExpression(spec: StylePropertySpecification): boolean {

@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "allowJs": true,
+    "outDir": "dist",
     "allowSyntheticDefaultImports": true,
     "checkJs": true,
     "isolatedModules": false,
@@ -10,18 +11,18 @@
     "importHelpers": false,
     "jsx": "react",
     "module": "ESNext",
-    "moduleResolution": "Node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "skipLibCheck": false,
     "strict": false,
     "target": "ES2019",
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
-    "types": ["node", "jest", "geojson"]
+    "types": ["node", "geojson"]
   },
   "ts-node": {
     "experimentalSpecifierResolution": "node",
     "esm": true
   },
-  "include": ["rollup.config.*", "src/**/*", "build/**/*"],
+  "include": ["rolldown.config.*", "src/**/*", "build/**/*"],
   "exclude": ["node_modules", "dist"]
 }

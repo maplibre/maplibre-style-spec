@@ -1,0 +1,64 @@
+{
+  "expression": [
+    "format",
+    "a",
+    {
+      "vertical-align": [
+        "get",
+        "vertical-align"
+      ]
+    }
+  ],
+  "inputs": [
+    [
+      {},
+      {
+        "properties": {
+          "vertical-align": "center"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "vertical-align": "top"
+        }
+      }
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": false,
+      "isZoomConstant": true,
+      "type": "formatted"
+    },
+    "outputs": [
+      {
+        "sections": [
+          {
+            "text": "a",
+            "image": null,
+            "scale": null,
+            "fontStack": null,
+            "textColor": null,
+            "verticalAlign": "center"
+          }
+        ]
+      },
+      {
+        "sections": [
+          {
+            "text": "a",
+            "image": null,
+            "scale": null,
+            "fontStack": null,
+            "textColor": null,
+            "verticalAlign": "top"
+          }
+        ]
+      }
+    ]
+  }
+}

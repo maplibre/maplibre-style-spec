@@ -1,0 +1,27 @@
+{
+  "expression": [
+    "array",
+    "0",
+    [
+      "literal",
+      []
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "error",
+      "errors": [
+        {
+          "key": "[1]",
+          "error": "The item type argument of \"array\" must be one of string, number, boolean"
+        }
+      ]
+    }
+  }
+}

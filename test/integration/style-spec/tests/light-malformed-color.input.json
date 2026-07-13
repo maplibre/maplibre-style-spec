@@ -1,0 +1,16 @@
+{
+  "version": 8,
+  "sources": {
+    "vector": {
+      "type": "vector",
+      "url": "https://demotiles.maplibre.org/tiles/tiles.json"
+    }
+  },
+  "light": {
+    "anchor": "map",
+    "position": [1, 90, 90],
+    "color": "__proto__",
+    "intensity": 0.75
+  },
+  "layers": []
+}

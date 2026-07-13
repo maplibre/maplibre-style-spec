@@ -9,18 +9,15 @@ import type {EvaluationContext} from '../evaluation_context';
 import type {Type} from '../types';
 
 export class Step implements Expression {
-    type: Type;
+    labels: Array<number> = [];
+    outputs: Array<Expression> = [];
 
-    input: Expression;
-    labels: Array<number>;
-    outputs: Array<Expression>;
-
-    constructor(type: Type, input: Expression, stops: Stops) {
-        this.type = type;
-        this.input = input;
-
-        this.labels = [];
-        this.outputs = [];
+    constructor(
+        public type: Type,
+        public input: Expression,
+        stops: Stops,
+        public readonly key: string
+    ) {
         for (const [label, expression] of stops) {
             this.labels.push(label);
             this.outputs.push(expression);
@@ -29,7 +26,9 @@ export class Step implements Expression {
 
     static parse(args: ReadonlyArray<unknown>, context: ParsingContext): Expression {
         if (args.length - 1 < 4) {
-            return context.error(`Expected at least 4 arguments, but found only ${args.length - 1}.`) as null;
+            return context.error(
+                `Expected at least 4 arguments, but found only ${args.length - 1}.`
+            ) as null;
         }
 
         if ((args.length - 1) % 2 !== 0) {
@@ -54,11 +53,17 @@ export class Step implements Expression {
             const valueKey = i + 1;
 
             if (typeof label !== 'number') {
-                return context.error('Input/output pairs for "step" expressions must be defined using literal numeric values (not computed expressions) for the input values.', labelKey) as null;
+                return context.error(
+                    'Input/output pairs for "step" expressions must be defined using literal numeric values (not computed expressions) for the input values.',
+                    labelKey
+                ) as null;
             }
 
             if (stops.length && stops[stops.length - 1][0] >= label) {
-                return context.error('Input/output pairs for "step" expressions must be arranged with input values in strictly ascending order.', labelKey) as null;
+                return context.error(
+                    'Input/output pairs for "step" expressions must be arranged with input values in strictly ascending order.',
+                    labelKey
+                ) as null;
             }
 
             const parsed = context.parse(value, valueKey, outputType);
@@ -67,7 +72,7 @@ export class Step implements Expression {
             stops.push([label, parsed]);
         }
 
-        return new Step(outputType, input, stops);
+        return new Step(outputType, input, stops, context.key);
     }
 
     evaluate(ctx: EvaluationContext) {
@@ -78,7 +83,7 @@ export class Step implements Expression {
             return outputs[0].evaluate(ctx);
         }
 
-        const value = (this.input.evaluate(ctx) as any as number);
+        const value = this.input.evaluate(ctx) as any as number;
         if (value <= labels[0]) {
             return outputs[0].evaluate(ctx);
         }
@@ -88,7 +93,7 @@ export class Step implements Expression {
             return outputs[stopCount - 1].evaluate(ctx);
         }
 
-        const index = findStopLessThanOrEqualTo(labels, value);
+        const index = findStopLessThanOrEqualTo(labels, value, this.key);
         return outputs[index].evaluate(ctx);
     }
 
@@ -100,7 +105,6 @@ export class Step implements Expression {
     }
 
     outputDefined(): boolean {
-        return this.outputs.every(out => out.outputDefined());
+        return this.outputs.every((out) => out.outputDefined());
     }
 }
-

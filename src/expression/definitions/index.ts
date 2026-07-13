@@ -1,4 +1,3 @@
-
 import {Let} from './let';
 import {Var} from './var';
 import {Literal} from './literal';
@@ -29,6 +28,7 @@ import {Length} from './length';
 import {Within} from './within';
 import {Distance} from './distance';
 import {Semiliteral} from './semiliteral';
+import {GlobalState} from './global_state';
 
 import type {ExpressionRegistry} from '../expression';
 
@@ -40,35 +40,36 @@ export const expressions: ExpressionRegistry = {
     '<': LessThan,
     '>=': GreaterThanOrEqual,
     '<=': LessThanOrEqual,
-    'array': Assertion,
-    'at': At,
-    'boolean': Assertion,
-    'case': Case,
-    'coalesce': Coalesce,
-    'collator': CollatorExpression,
-    'format': FormatExpression,
-    'image': ImageExpression,
-    'in': In,
+    array: Assertion,
+    at: At,
+    boolean: Assertion,
+    case: Case,
+    coalesce: Coalesce,
+    collator: CollatorExpression,
+    format: FormatExpression,
+    image: ImageExpression,
+    in: In,
     'index-of': IndexOf,
-    'interpolate': Interpolate,
+    interpolate: Interpolate,
     'interpolate-hcl': Interpolate,
     'interpolate-lab': Interpolate,
-    'length': Length,
-    'let': Let,
-    'literal': Literal,
-    'match': Match,
-    'number': Assertion,
+    length: Length,
+    let: Let,
+    literal: Literal,
+    match: Match,
+    number: Assertion,
     'number-format': NumberFormat,
-    'object': Assertion,
-    'semiliteral': Semiliteral,
-    'slice': Slice,
-    'step': Step,
-    'string': Assertion,
+    object: Assertion,
+    semiliteral: Semiliteral,
+    slice: Slice,
+    step: Step,
+    string: Assertion,
     'to-boolean': Coercion,
     'to-color': Coercion,
     'to-number': Coercion,
     'to-string': Coercion,
-    'var': Var,
-    'within': Within,
-    'distance': Distance
+    var: Var,
+    within: Within,
+    distance: Distance,
+    'global-state': GlobalState
 };

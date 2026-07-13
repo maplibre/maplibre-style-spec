@@ -5,9 +5,14 @@ import {
     array,
     StringType,
     ColorType,
-    ResolvedImageType,
+    ResolvedImageType
 } from '../types';
-import {Formatted, FormattedSection} from '../types/formatted';
+import {
+    Formatted,
+    FormattedSection,
+    VERTICAL_ALIGN_OPTIONS,
+    VerticalAlign
+} from '../types/formatted';
 import {valueToString, typeOf} from '../values';
 
 import type {Expression} from '../expression';
@@ -22,6 +27,7 @@ type FormattedSectionExpression = {
     scale: Expression | null;
     font: Expression | null;
     textColor: Expression | null;
+    verticalAlign: Expression | null;
 };
 
 export class FormatExpression implements Expression {
@@ -39,14 +45,14 @@ export class FormatExpression implements Expression {
         }
 
         const firstArg = args[1];
-        if (!Array.isArray(firstArg) && typeof firstArg === 'object')  {
+        if (!Array.isArray(firstArg) && typeof firstArg === 'object') {
             return context.error('First argument must be an image or text section.') as null;
         }
 
         const sections: Array<FormattedSectionExpression> = [];
         let nextTokenMayBeObject = false;
         for (let i = 1; i <= args.length - 1; ++i) {
-            const arg = (args[i] as any);
+            const arg = args[i] as any;
 
             if (nextTokenMayBeObject && typeof arg === 'object' && !Array.isArray(arg)) {
                 nextTokenMayBeObject = false;
@@ -69,20 +75,49 @@ export class FormatExpression implements Expression {
                     if (!textColor) return null;
                 }
 
+                let verticalAlign = null;
+                if (arg['vertical-align']) {
+                    if (
+                        typeof arg['vertical-align'] === 'string' &&
+                        !VERTICAL_ALIGN_OPTIONS.includes(arg['vertical-align'] as VerticalAlign)
+                    ) {
+                        return context.error(
+                            `'vertical-align' must be one of: 'bottom', 'center', 'top' but found '${arg['vertical-align']}' instead.`
+                        ) as null;
+                    }
+
+                    verticalAlign = context.parse(arg['vertical-align'], 1, StringType);
+                    if (!verticalAlign) return null;
+                }
+
                 const lastExpression = sections[sections.length - 1];
                 lastExpression.scale = scale;
                 lastExpression.font = font;
                 lastExpression.textColor = textColor;
+                lastExpression.verticalAlign = verticalAlign;
             } else {
                 const content = context.parse(args[i], 1, ValueType);
                 if (!content) return null;
 
                 const kind = content.type.kind;
-                if (kind !== 'string' && kind !== 'value' && kind !== 'null' && kind !== 'resolvedImage')
-                    return context.error('Formatted text type must be \'string\', \'value\', \'image\' or \'null\'.') as null;
+                if (
+                    kind !== 'string' &&
+                    kind !== 'value' &&
+                    kind !== 'null' &&
+                    kind !== 'resolvedImage'
+                )
+                    return context.error(
+                        "Formatted text type must be 'string', 'value', 'image' or 'null'."
+                    ) as null;
 
                 nextTokenMayBeObject = true;
-                sections.push({content, scale: null, font: null, textColor: null});
+                sections.push({
+                    content,
+                    scale: null,
+                    font: null,
+                    textColor: null,
+                    verticalAlign: null
+                });
             }
         }
 
@@ -90,10 +125,17 @@ export class FormatExpression implements Expression {
     }
 
     evaluate(ctx: EvaluationContext) {
-        const evaluateSection = section => {
+        const evaluateSection = (section) => {
             const evaluatedContent = section.content.evaluate(ctx);
             if (typeOf(evaluatedContent) === ResolvedImageType) {
-                return new FormattedSection('', evaluatedContent, null, null, null);
+                return new FormattedSection(
+                    '',
+                    evaluatedContent,
+                    null,
+                    null,
+                    null,
+                    section.verticalAlign ? section.verticalAlign.evaluate(ctx) : null
+                );
             }
 
             return new FormattedSection(
@@ -101,7 +143,8 @@ export class FormatExpression implements Expression {
                 null,
                 section.scale ? section.scale.evaluate(ctx) : null,
                 section.font ? section.font.evaluate(ctx).join(',') : null,
-                section.textColor ? section.textColor.evaluate(ctx) : null
+                section.textColor ? section.textColor.evaluate(ctx) : null,
+                section.verticalAlign ? section.verticalAlign.evaluate(ctx) : null
             );
         };
 
@@ -119,6 +162,9 @@ export class FormatExpression implements Expression {
             }
             if (section.textColor) {
                 fn(section.textColor);
+            }
+            if (section.verticalAlign) {
+                fn(section.verticalAlign);
             }
         }
     }

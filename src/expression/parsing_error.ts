@@ -1,5 +1,5 @@
 export class ExpressionParsingError extends Error {
-    key: string;
+    readonly key: string;
     message: string;
     constructor(key: string, message: string) {
         super(message);

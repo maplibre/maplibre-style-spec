@@ -1,0 +1,29 @@
+{
+  "expression": [
+    "number",
+    [
+      "global-state",
+      "x"
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
+  "globalState": {
+    "x": 1
+  },
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": true,
+      "isZoomConstant": true,
+      "type": "number"
+    },
+    "outputs": [
+      1
+    ]
+  }
+}

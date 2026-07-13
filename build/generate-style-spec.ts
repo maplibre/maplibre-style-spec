@@ -1,16 +1,50 @@
 import {writeFileSync} from 'fs';
 import spec from '../src/reference/v8.json' with {type: 'json'};
 import {supportsPropertyExpression, supportsZoomExpression} from '../src/util/properties';
+import {formatJSON} from './util';
+
+function jsDocComment(property) {
+    const lines = [];
+    if (property.doc) {
+        lines.push(...property.doc.split('\n'));
+    }
+    if (property.default) {
+        if (lines.length) {
+            lines.push('');
+        }
+        lines.push(...jsDocBlock('default', property.default).split('\n'));
+    }
+    if (property.example) {
+        if (lines.length) {
+            lines.push('');
+        }
+        lines.push(...jsDocBlock('example', property.example).split('\n'));
+    }
+
+    if (!lines.length) {
+        return undefined;
+    }
+    return ['/**', ...lines.map((line) => ` * ${line}`), ' */'].join('\n');
+}
+
+function jsDocBlock(tag, value) {
+    return `@${tag}
+\`\`\`json
+${formatJSON(value)}
+\`\`\``;
+}
 
 function unionType(values) {
     if (Array.isArray(values)) {
-        return values.map(v => JSON.stringify(v)).join(' | ');
+        return values.map((v) => JSON.stringify(v)).join(' | ');
     } else {
-        return Object.keys(values).map(v => JSON.stringify(v)).join(' | ');
+        return Object.keys(values)
+            .map((v) => JSON.stringify(v))
+            .join(' | ');
     }
 }
 
-function propertyType(property) {
+function propertyType(property, key?) {
     if (typeof property.type === 'function') {
         return property.type();
     }
@@ -24,21 +58,19 @@ function propertyType(property) {
             case 'enum':
                 return unionType(property.values);
             case 'array': {
-                const elementType = propertyType(typeof property.value === 'string' ? {type: property.value, values: property.values} : property.value);
+                const elementType = propertyType(
+                    typeof property.value === 'string'
+                        ? {type: property.value, values: property.values}
+                        : property.value
+                );
                 if (property.length) {
                     return `[${Array(property.length).fill(elementType).join(', ')}]`;
                 } else {
                     return `Array<${elementType}>`;
                 }
             }
-            case 'light':
-                return 'LightSpecification';
-            case 'sky':
-                return 'SkySpecification';
             case 'sources':
                 return '{[_: string]: SourceSpecification}';
-            case 'projection:':
-                return 'ProjectionSpecification';
             case '*':
                 return 'unknown';
             default:
@@ -51,14 +83,20 @@ function propertyType(property) {
     } else if (supportsZoomExpression(property)) {
         return `PropertyValueSpecification<${baseType}>`;
     } else if (property.expression) {
-        return 'ExpressionSpecification';
+        return key === 'visibility' ? 'VisibilitySpecification' : 'ExpressionSpecification';
     } else {
         return baseType;
     }
 }
 
 function propertyDeclaration(key, property) {
-    return `"${key}"${property.required ? '' : '?'}: ${propertyType(property)}`;
+    const jsDoc = jsDocComment(property);
+    const declaration = `"${key}"${property.required ? '' : '?'}: ${propertyType(property, key)}`;
+    return jsDoc ? [jsDoc, declaration].join('\n') : declaration;
+}
+
+function transitionPropertyDeclaration(key) {
+    return `"${key}-transition"?: TransitionSpecification`;
 }
 
 function objectDeclaration(key, properties) {
@@ -68,20 +106,37 @@ function objectDeclaration(key, properties) {
 function objectType(properties, indent) {
     return `{
 ${Object.keys(properties)
-    .filter(k => k !== '*')
-    .map(k => `    ${indent}${propertyDeclaration(k, properties[k])}`)
+    .filter((k) => k !== '*')
+    .flatMap((k) => {
+        const declarations = [propertyDeclaration(k, properties[k])];
+        if (properties[k].transition) {
+            declarations.push(transitionPropertyDeclaration(k));
+        }
+        return declarations;
+    })
+    .map((declaration) => {
+        return declaration
+            .split('\n')
+            .map((line) => `    ${indent}${line}`)
+            .join('\n');
+    })
     .join(',\n')}
 ${indent}}`;
 }
 
 function sourceTypeName(key) {
-    return key.replace(/source_(.)(.*)/, (_, _1, _2) => `${_1.toUpperCase()}${_2}SourceSpecification`)
+    return key
+        .replace(/source_(.)(.*)/, (_, _1, _2) => `${_1.toUpperCase()}${_2}SourceSpecification`)
         .replace(/_dem/, 'DEM')
         .replace(/Geojson/, 'GeoJSON');
 }
 
 function layerTypeName(key) {
-    return key.split('-').map(k => k.replace(/(.)(.*)/, (_, _1, _2) => `${_1.toUpperCase()}${_2}`)).concat('LayerSpecification').join('');
+    return key
+        .split('-')
+        .map((k) => k.replace(/(.)(.*)/, (_, _1, _2) => `${_1.toUpperCase()}${_2}`))
+        .concat('LayerSpecification')
+        .join('');
 }
 
 function layerType(key) {
@@ -117,9 +172,9 @@ function layerType(key) {
 
 const layerTypes = Object.keys(spec.layer.type.values);
 
-writeFileSync('src/types.g.ts',
+writeFileSync(
+    'src/types.g.ts',
     `// Generated code; do not edit. Edit build/generate-style-spec.ts instead.
-/* eslint-disable */
 
 export type ColorSpecification = string;
 
@@ -127,6 +182,8 @@ export type ProjectionDefinitionT = [string, string, number];
 export type ProjectionDefinitionSpecification = string | ProjectionDefinitionT | PropertyValueSpecification<ProjectionDefinitionT>
 
 export type PaddingSpecification = number | number[];
+export type NumberArraySpecification = number | number[];
+export type ColorArraySpecification = string | string[];
 
 export type VariableAnchorOffsetCollectionSpecification = Array<string | [number, number]>;
 
@@ -140,6 +197,8 @@ export type PromoteIdSpecification = {[_: string]: string} | string;
 
 export type ExpressionInputType = string | number | boolean;
 
+export type VariableExpressionSpecification = ['var', string];
+
 export type CollatorExpressionSpecification =
     ['collator', {
         'case-sensitive'?: boolean | ExpressionSpecification,
@@ -149,79 +208,83 @@ export type CollatorExpressionSpecification =
 
 export type InterpolationSpecification =
     | ['linear']
-    | ['exponential', number | ExpressionSpecification]
-    | ['cubic-bezier', number | ExpressionSpecification, number | ExpressionSpecification, number | ExpressionSpecification, number | ExpressionSpecification]
+    | ['exponential', number]
+    | ['cubic-bezier', number, number, number, number]
 
 export type ExpressionSpecification =
     // types
-    | ['array', unknown | ExpressionSpecification] // array
-    | ['array', ExpressionInputType | ExpressionSpecification, unknown | ExpressionSpecification] // array
-    | ['array', ExpressionInputType | ExpressionSpecification, number | ExpressionSpecification, unknown | ExpressionSpecification] // array
-    | ['boolean', ...(unknown | ExpressionSpecification)[], unknown | ExpressionSpecification] // boolean
+    | ['array', ExpressionSpecification] // array
+    | ['array', 'string' | 'number' | 'boolean', ExpressionSpecification] // array
+    | ['array', 'string' | 'number' | 'boolean', number, ExpressionSpecification] // array
+    | ['boolean', unknown | ExpressionSpecification, ...(unknown | ExpressionSpecification)[]] // boolean
     | CollatorExpressionSpecification
-    | ['format', ...(string | ['image', ExpressionSpecification] | ExpressionSpecification | {'font-scale'?: number | ExpressionSpecification, 'text-font'?: string[] | ExpressionSpecification, 'text-color'?: ColorSpecification | ExpressionSpecification})[]] // string
-    | ['image', unknown | ExpressionSpecification] // image
+    | ['format', ...(string | ['image', ExpressionSpecification] | ExpressionSpecification | {'font-scale'?: number | ExpressionSpecification, 'text-font'?: ExpressionSpecification, 'text-color'?: ColorSpecification | ExpressionSpecification, 'vertical-align'?: 'bottom' | 'center' | 'top'})[]] // string
+    | ['image', string | ExpressionSpecification] // image
     | ['literal', unknown]
     | ['semiliteral', unknown]
     | ['number', unknown | ExpressionSpecification, ...(unknown | ExpressionSpecification)[]] // number
     | ['number-format', number | ExpressionSpecification, {'locale'?: string | ExpressionSpecification, 'currency'?: string | ExpressionSpecification, 'min-fraction-digits'?: number | ExpressionSpecification, 'max-fraction-digits'?: number | ExpressionSpecification}] // string
+    | ['number-format', number | ExpressionSpecification, {'locale'?: string | ExpressionSpecification, 'unit'?: string | ExpressionSpecification, 'min-fraction-digits'?: number | ExpressionSpecification, 'max-fraction-digits'?: number | ExpressionSpecification}] // string
     | ['object', unknown | ExpressionSpecification, ...(unknown | ExpressionSpecification)[]] // object
     | ['string', unknown | ExpressionSpecification, ...(unknown | ExpressionSpecification)[]] // string
     | ['to-boolean', unknown | ExpressionSpecification] // boolean
     | ['to-color', unknown | ExpressionSpecification, ...(unknown | ExpressionSpecification)[]] // color
     | ['to-number', unknown | ExpressionSpecification, ...(unknown | ExpressionSpecification)[]] // number
     | ['to-string', unknown | ExpressionSpecification] // string
+    | ['typeof', unknown | ExpressionSpecification] // string
     // feature data
     | ['accumulated']
-    | ['feature-state', string]
+    | ['feature-state', string | ExpressionSpecification]
     | ['geometry-type'] // string
     | ['id']
     | ['line-progress'] // number
     | ['properties'] // object
     // lookup
     | ['at', number | ExpressionSpecification, ExpressionSpecification]
-    | ['get', string | ExpressionSpecification, (Record<string, unknown> | ExpressionSpecification)?]
-    | ['has', string | ExpressionSpecification, (Record<string, unknown> | ExpressionSpecification)?]
-    | ['in', ExpressionInputType | ExpressionSpecification, ExpressionInputType | ExpressionSpecification]
-    | ['index-of', ExpressionInputType | ExpressionSpecification, ExpressionInputType | ExpressionSpecification] // number
+    | ['get', string | ExpressionSpecification, ExpressionSpecification?]
+    | ['global-state', string]
+    | ['has', string | ExpressionSpecification, ExpressionSpecification?]
+    | ['in', null | ExpressionInputType | ExpressionSpecification, string | ExpressionSpecification]
+    | ['index-of', null | ExpressionInputType | ExpressionSpecification, string | ExpressionSpecification, (number | ExpressionSpecification)?] // number
     | ['length', string | ExpressionSpecification]
     | ['slice', string | ExpressionSpecification, number | ExpressionSpecification, (number | ExpressionSpecification)?]
     // Decision
     | ['!', boolean | ExpressionSpecification] // boolean
-    | ['!=', ExpressionInputType | ExpressionSpecification, ExpressionInputType | ExpressionSpecification, CollatorExpressionSpecification?] // boolean
-    | ['<', ExpressionInputType | ExpressionSpecification, ExpressionInputType | ExpressionSpecification, CollatorExpressionSpecification?] // boolean
-    | ['<=', ExpressionInputType | ExpressionSpecification, ExpressionInputType | ExpressionSpecification, CollatorExpressionSpecification?] // boolean
-    | ['==', ExpressionInputType | ExpressionSpecification, ExpressionInputType | ExpressionSpecification, CollatorExpressionSpecification?] // boolean
-    | ['>', ExpressionInputType | ExpressionSpecification, ExpressionInputType | ExpressionSpecification, CollatorExpressionSpecification?] // boolean
-    | ['>=', ExpressionInputType | ExpressionSpecification, ExpressionInputType | ExpressionSpecification, CollatorExpressionSpecification?] // boolean
+    | ['!=', null | ExpressionInputType | ExpressionSpecification, null | ExpressionInputType | ExpressionSpecification, (CollatorExpressionSpecification | VariableExpressionSpecification)?] // boolean
+    | ['<', string | number | ExpressionSpecification, string | number | ExpressionSpecification, (CollatorExpressionSpecification | VariableExpressionSpecification)?] // boolean
+    | ['<=', string | number | ExpressionSpecification, string | number | ExpressionSpecification, (CollatorExpressionSpecification | VariableExpressionSpecification)?] // boolean
+    | ['==', null | ExpressionInputType | ExpressionSpecification, null | ExpressionInputType | ExpressionSpecification, (CollatorExpressionSpecification | VariableExpressionSpecification)?] // boolean
+    | ['>', string | number | ExpressionSpecification, string | number | ExpressionSpecification, (CollatorExpressionSpecification | VariableExpressionSpecification)?] // boolean
+    | ['>=', string | number | ExpressionSpecification, string | number | ExpressionSpecification, (CollatorExpressionSpecification | VariableExpressionSpecification)?] // boolean
     | ['all', ...(boolean | ExpressionSpecification)[]] // boolean
     | ['any', ...(boolean | ExpressionSpecification)[]] // boolean
-    | ['case', boolean | ExpressionSpecification, ExpressionInputType | ExpressionSpecification,
-        ...(boolean | ExpressionInputType | ExpressionSpecification)[], ExpressionInputType | ExpressionSpecification]
+    | ['case', boolean | ExpressionSpecification, null | ExpressionInputType | ExpressionSpecification,
+        ...(boolean | null | ExpressionInputType | ExpressionSpecification)[], null | ExpressionInputType | ExpressionSpecification]
     | ['coalesce', ...(ExpressionInputType | ExpressionSpecification)[]] // at least two inputs required
-    | ['match', ExpressionInputType | ExpressionSpecification,
-        ExpressionInputType | ExpressionInputType[], ExpressionInputType | ExpressionSpecification,
-        ...(ExpressionInputType | ExpressionInputType[] | ExpressionSpecification)[], // repeated as above
-        ExpressionInputType | ExpressionSpecification]
-    | ['within', unknown | ExpressionSpecification]
-    | ['distance', unknown | ExpressionSpecification]
+    | ['match', string | number | ExpressionSpecification,
+        string | number | string[] | number[], null | ExpressionInputType | ExpressionSpecification,
+        ...(string | number | string[] | number[] | null | ExpressionInputType | ExpressionSpecification)[], // repeated as above
+        null | ExpressionInputType | ExpressionSpecification]
+    | ['within', GeoJSON.GeoJSON]
     // Ramps, scales, curves
     | ['interpolate', InterpolationSpecification, number | ExpressionSpecification,
-        ...(number | number[] | ColorSpecification | ExpressionSpecification | ProjectionDefinitionSpecification )[]] // alternating number and number | number[] | ColorSpecification
+        ...(number | ColorSpecification | ExpressionSpecification | ProjectionDefinitionSpecification)[]] // alternating number and number | ColorSpecification | ExpressionSpecification | ProjectionDefinitionSpecification
     | ['interpolate-hcl', InterpolationSpecification, number | ExpressionSpecification,
-        ...(number | ColorSpecification)[]] // alternating number and ColorSpecificaton
+        ...(number | ColorSpecification | ExpressionSpecification)[]] // alternating number and ColorSpecificaton | ExpressionSpecification
     | ['interpolate-lab', InterpolationSpecification, number | ExpressionSpecification,
-        ...(number | ColorSpecification)[]] // alternating number and ColorSpecification
+        ...(number | ColorSpecification | ExpressionSpecification)[]] // alternating number and ColorSpecification | ExpressionSpecification
     | ['step', number | ExpressionSpecification, ExpressionInputType | ExpressionSpecification,
         ...(number | ExpressionInputType | ExpressionSpecification)[]] // alternating number and ExpressionInputType | ExpressionSpecification
     // Variable binding
     | ['let', string, ExpressionInputType | ExpressionSpecification, ...(string | ExpressionInputType | ExpressionSpecification)[]]
-    | ['var', string]
+    | VariableExpressionSpecification
     // String
     | ['concat', ...(ExpressionInputType | ExpressionSpecification)[]] // at least two inputs required -> string
     | ['downcase', string | ExpressionSpecification] // string
     | ['is-supported-script', string | ExpressionSpecification] // boolean
+    | ['join', string[] | ExpressionSpecification, string | ExpressionSpecification] // string
     | ['resolved-locale', CollatorExpressionSpecification] // string
+    | ['split', string | ExpressionSpecification, string | ExpressionSpecification] // Array<string>
     | ['upcase', string | ExpressionSpecification] // string
     // Color
     | ['rgb', number | ExpressionSpecification, number | ExpressionSpecification, number | ExpressionSpecification] // color
@@ -240,8 +303,8 @@ export type ExpressionSpecification =
     | ['atan', number | ExpressionSpecification] // number
     | ['ceil', number | ExpressionSpecification] // number
     | ['cos', number | ExpressionSpecification] // number
-    | ['distance', Record<string, unknown> | ExpressionSpecification] // number
-    | ['ExpressionSpecification'] // number
+    | ['distance', GeoJSON.GeoJSON] // number
+    | ['e'] // number
     | ['floor', number | ExpressionSpecification] // number
     | ['ln', number | ExpressionSpecification] // number
     | ['ln2'] // number
@@ -258,6 +321,10 @@ export type ExpressionSpecification =
     | ['zoom'] // number
     // Heatmap
     | ['heatmap-density'] // number
+    // Elevation
+    | ['elevation'] // number
+    // Global state
+    | ['global-state', string] // unknown
 
 export type ExpressionFilterSpecification = boolean | ExpressionSpecification
 
@@ -281,6 +348,8 @@ export type LegacyFilterSpecification =
     | ['none', ...LegacyFilterSpecification[]]
 
 export type FilterSpecification = ExpressionFilterSpecification | LegacyFilterSpecification
+
+export type VisibilitySpecification = 'visible' | 'none' | ExpressionSpecification;
 
 export type TransitionSpecification = {
     duration?: number,
@@ -316,6 +385,20 @@ export type DataDrivenPropertyValueSpecification<T> =
     | CompositeFunctionSpecification<T>
     | ExpressionSpecification;
 
+export type SchemaSpecification = {
+    default?: unknown
+};
+
+// State
+export type StateSpecification = Record<string, SchemaSpecification>;
+
+export type MLFontFace = string | {
+    url: string,
+    "unicode-range"?: string[]
+};
+
+export type FontFacesSpecification = Record<string, MLFontFace>;
+
 ${objectDeclaration('StyleSpecification', spec.$root)}
 
 ${objectDeclaration('LightSpecification', spec.light)}
@@ -326,21 +409,32 @@ ${objectDeclaration('ProjectionSpecification', spec.projection)}
 
 ${objectDeclaration('TerrainSpecification', spec.terrain)}
 
-${spec.source.map(key => {
-    let str = objectDeclaration(sourceTypeName(key), spec[key]);
-    if (sourceTypeName(key) === 'GeoJSONSourceSpecification') {
-        // This is done in order to overcome the type system's inability to express this type:
-        str = str.replace(/unknown/, 'GeoJSON.GeoJSON | string');
-    }
-    return str;
-}).join('\n\n')}
+${spec.source
+    .map((key) => {
+        let str = objectDeclaration(sourceTypeName(key), spec[key]);
+        if (sourceTypeName(key) === 'GeoJSONSourceSpecification') {
+            // This is done in order to overcome the type system's inability to express this type:
+            str = str.replace(/unknown/, 'GeoJSON.GeoJSON | string');
+        }
+        return str;
+    })
+    .join('\n\n')}
 
 export type SourceSpecification =
-${spec.source.map(key => `    | ${sourceTypeName(key)}`).join('\n')}
+${spec.source.map((key) => `    | ${sourceTypeName(key)}`).join('\n')}
 
-${layerTypes.map(key => layerType(key)).join('\n\n')}
+${layerTypes.map((key) => layerType(key)).join('\n\n')}
 
 export type LayerSpecification =
-${layerTypes.map(key => `    | ${layerTypeName(key)}`).join('\n')};
+${layerTypes.map((key) => `    | ${layerTypeName(key)}`).join('\n')};
 
-`);
+/**
+ * Union of all paint properties across all layer types.
+ */
+export type AllPaintProperties = ${objectType(Object.assign({}, ...layerTypes.map((key) => spec[`paint_${key}`])), '')};
+/**
+ * Union of all layout properties across all layer types.
+ */
+export type AllLayoutProperties = ${objectType(Object.assign({}, ...layerTypes.map((key) => spec[`layout_${key}`])), '')};
+`
+);

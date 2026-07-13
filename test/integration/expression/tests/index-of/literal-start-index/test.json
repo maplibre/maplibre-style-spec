@@ -1,0 +1,37 @@
+{
+  "expression": [
+    "index-of",
+    2,
+    [
+      "literal",
+      [
+        0,
+        1,
+        2,
+        3,
+        0,
+        1,
+        2,
+        3
+      ]
+    ],
+    3
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": true,
+      "isZoomConstant": true,
+      "type": "number"
+    },
+    "outputs": [
+      6
+    ]
+  }
+}

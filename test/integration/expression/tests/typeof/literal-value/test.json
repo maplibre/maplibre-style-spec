@@ -1,0 +1,23 @@
+{
+  "expression": [
+    "typeof",
+    true
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": true,
+      "isZoomConstant": true,
+      "type": "string"
+    },
+    "outputs": [
+      "boolean"
+    ]
+  }
+}

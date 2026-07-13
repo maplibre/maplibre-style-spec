@@ -1,19 +1,9 @@
 import type {FormattedSection} from './types/formatted';
 import type {GlobalProperties, Feature, FeatureState} from './index';
 import {ICanonicalTileID} from '../tiles_and_coordinates';
-import {hasMultipleOuterRings} from '../util/classify_rings';
 import {Color} from './types/color';
 
 const geometryTypes = ['Unknown', 'Point', 'LineString', 'Polygon'];
-const simpleGeometryType = {
-    'Unknown': 'Unknown',
-    'Point': 'Point',
-    'MultiPoint': 'Point',
-    'LineString': 'LineString',
-    'MultiLineString': 'LineString',
-    'Polygon': 'Polygon',
-    'MultiPolygon': 'Polygon'
-};
 
 export class EvaluationContext {
     globals: GlobalProperties;
@@ -23,15 +13,14 @@ export class EvaluationContext {
     availableImages: Array<string>;
     canonical: ICanonicalTileID;
 
-    _parseColorCache: {[_: string]: Color};
-    _geometryType: string;
+    _parseColorCache: Map<string, Color>;
 
     constructor() {
         this.globals = null;
         this.feature = null;
         this.featureState = null;
         this.formattedSection = null;
-        this._parseColorCache = {};
+        this._parseColorCache = new Map<string, Color>();
         this.availableImages = null;
         this.canonical = null;
     }
@@ -40,33 +29,12 @@ export class EvaluationContext {
         return this.feature && 'id' in this.feature ? this.feature.id : null;
     }
 
-    geometryDollarType() {
-        return this.feature ?
-            typeof this.feature.type === 'number' ? geometryTypes[this.feature.type] : simpleGeometryType[this.feature.type] :
-            null;
-    }
-
     geometryType() {
-        let geometryType = this.feature.type;
-        if (typeof geometryType !== 'number') {
-            return geometryType;
-        }
-        geometryType = geometryTypes[this.feature.type];
-        if (geometryType === 'Unknown') {
-            return geometryType;
-        }
-        const geom = this.geometry();
-        const len = geom.length;
-        if (len === 1) {
-            return geometryType;
-        }
-        if (geometryType !== 'Polygon') {
-            return `Multi${geometryType}`;
-        }
-        if (hasMultipleOuterRings(geom)) {
-            return 'MultiPolygon';
-        }
-        return 'Polygon';
+        return this.feature
+            ? typeof this.feature.type === 'number'
+                ? geometryTypes[this.feature.type]
+                : this.feature.type
+            : null;
     }
 
     geometry() {
@@ -78,13 +46,14 @@ export class EvaluationContext {
     }
 
     properties() {
-        return this.feature && this.feature.properties || {};
+        return (this.feature && this.feature.properties) || {};
     }
 
     parseColor(input: string): Color {
-        let cached = this._parseColorCache[input];
+        let cached = this._parseColorCache.get(input);
         if (!cached) {
-            cached = this._parseColorCache[input] = Color.parse(input);
+            cached = Color.parse(input);
+            this._parseColorCache.set(input, cached);
         }
         return cached;
     }

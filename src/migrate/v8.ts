@@ -1,8 +1,10 @@
-
 import {eachSource, eachLayer, eachProperty} from '../visit';
 import type {LayerSpecification, StyleSpecification} from '../types.g';
 
-function eachLayout(layer: LayerSpecification, callback: (_: LayerSpecification['layout'], __: string) => void) {
+function eachLayout(
+    layer: LayerSpecification,
+    callback: (_: LayerSpecification['layout'], __: string) => void
+) {
     for (const k in layer) {
         if (k.indexOf('layout') === 0) {
             callback(layer[k], k);
@@ -10,7 +12,10 @@ function eachLayout(layer: LayerSpecification, callback: (_: LayerSpecification[
     }
 }
 
-function eachPaint(layer: LayerSpecification, callback: (_: LayerSpecification['paint'], __: string) => void) {
+function eachPaint(
+    layer: LayerSpecification,
+    callback: (_: LayerSpecification['paint'], __: string) => void
+) {
     for (const k in layer) {
         if (k.indexOf('paint') === 0) {
             callback(layer[k], k);
@@ -31,7 +36,8 @@ function isFunction(value) {
 }
 
 function renameProperty(obj: Object, from: string, to: string) {
-    obj[to] = obj[from]; delete obj[from];
+    obj[to] = obj[from];
+    delete obj[from];
 }
 
 export function migrateV8(style: StyleSpecification) {
@@ -118,16 +124,13 @@ export function migrateV8(style: StyleSpecification) {
         if (Array.isArray(font)) {
             // Assume it's a previously migrated font-array.
             return font;
-
         } else if (typeof font === 'string') {
             return splitAndTrim(font);
-
         } else if (typeof font === 'object') {
             font.stops.forEach((stop) => {
                 stop[1] = splitAndTrim(stop[1]);
             });
             return font;
-
         } else {
             throw new Error('unexpected font value');
         }

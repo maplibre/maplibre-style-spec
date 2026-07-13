@@ -1,5 +1,6 @@
 import {Point2D} from '../point2d';
 import {RingWithArea, classifyRings} from './classify_rings';
+import {describe, test, expect} from 'vitest';
 
 describe('classifyRings', () => {
     test('classified.length', () => {
@@ -62,15 +63,30 @@ describe('classifyRings', () => {
 });
 
 describe('classifyRings + maxRings', () => {
-
     function createGeometry(options?) {
         const geometry = [
             // Outer ring, area = 3200
-            [{x: 0, y: 0}, {x: 0, y: 40}, {x: 40, y: 40}, {x: 40, y: 0}, {x: 0, y: 0}],
+            [
+                {x: 0, y: 0},
+                {x: 0, y: 40},
+                {x: 40, y: 40},
+                {x: 40, y: 0},
+                {x: 0, y: 0}
+            ],
             // Inner ring, area = 100
-            [{x: 30, y: 30}, {x: 32, y: 30}, {x: 32, y: 32}, {x: 30, y: 30}],
+            [
+                {x: 30, y: 30},
+                {x: 32, y: 30},
+                {x: 32, y: 32},
+                {x: 30, y: 30}
+            ],
             // Inner ring, area = 4
-            [{x: 10, y: 10}, {x: 20, y: 10}, {x: 20, y: 20}, {x: 10, y: 10}]
+            [
+                {x: 10, y: 10},
+                {x: 20, y: 10},
+                {x: 20, y: 20},
+                {x: 10, y: 10}
+            ]
         ] as Point2D[][];
         if (options && options.reverse) {
             geometry[0].reverse();
@@ -95,7 +111,6 @@ describe('classifyRings + maxRings', () => {
         expect(geometry[0]).toHaveLength(2);
         expect(geometry[0][0].area).toBe(3200);
         expect(geometry[0][1].area).toBe(100);
-
     });
 
     test('maxRings=2, reversed geometry', () => {

@@ -1,5 +1,6 @@
 import {emptyStyle} from './empty';
 import {validateStyleMin} from './validate_style.min';
+import {describe, test, expect} from 'vitest';
 
 describe('empty', () => {
     test('it generates something', () => {

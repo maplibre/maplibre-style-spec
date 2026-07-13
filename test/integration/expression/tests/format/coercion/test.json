@@ -44,21 +44,24 @@
             "image": null,
             "scale": null,
             "fontStack": null,
-            "textColor": null
+            "textColor": null,
+            "verticalAlign": null
           },
           {
             "text": "1",
             "image": null,
             "scale": null,
             "fontStack": null,
-            "textColor": null
+            "textColor": null,
+            "verticalAlign": null
           },
           {
             "text": "true",
             "image": null,
             "scale": null,
             "fontStack": null,
-            "textColor": null
+            "textColor": null,
+            "verticalAlign": null
           }
         ]
       }

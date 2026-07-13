@@ -1,4 +1,5 @@
 import {ProjectionDefinition} from './projection_definition';
+import {describe, test, expect} from 'vitest';
 
 describe('Projection class', () => {
     test('should parse projection with multiple inputs', () => {
@@ -31,14 +32,22 @@ describe('Projection class', () => {
     });
 
     test('should interpolate projections', () => {
-        const projection = ProjectionDefinition.interpolate('mercator', 'vertical-perspective', 0.5);
+        const projection = ProjectionDefinition.interpolate(
+            'mercator',
+            'vertical-perspective',
+            0.5
+        );
         expect(projection.from).toBe('mercator');
         expect(projection.to).toBe('vertical-perspective');
         expect(projection.transition).toBe(0.5);
     });
 
     test('should parse projection object', () => {
-        const projection = ProjectionDefinition.parse({from: 'mercator', to: 'vertical-perspective', transition: 0.5});
+        const projection = ProjectionDefinition.parse({
+            from: 'mercator',
+            to: 'vertical-perspective',
+            transition: 0.5
+        });
         expect(projection.from).toBe('mercator');
         expect(projection.to).toBe('vertical-perspective');
         expect(projection.transition).toBe(0.5);
@@ -46,6 +55,8 @@ describe('Projection class', () => {
 
     test('should serialize projection', () => {
         const projection = ProjectionDefinition.parse(['mercator', 'vertical-perspective', 0.5]);
-        expect(JSON.stringify(projection)).toBe('{\"from\":\"mercator\",\"to\":\"vertical-perspective\",\"transition\":0.5}');
+        expect(JSON.stringify(projection)).toBe(
+            '{\"from\":\"mercator\",\"to\":\"vertical-perspective\",\"transition\":0.5}'
+        );
     });
 });

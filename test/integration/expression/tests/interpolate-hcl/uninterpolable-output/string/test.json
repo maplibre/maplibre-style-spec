@@ -1,0 +1,37 @@
+{
+  "propertySpec": {
+    "type": "string",
+    "property-type": "data-driven",
+    "expression": {
+      "interpolated": true,
+      "parameters": [
+        "zoom",
+        "feature"
+      ]
+    }
+  },
+  "expression": [
+    "interpolate-hcl",
+    [
+      "linear"
+    ],
+    [
+      "zoom"
+    ],
+    0,
+    "reddish",
+    2,
+    "greenish"
+  ],
+  "expected": {
+    "compiled": {
+      "result": "error",
+      "errors": [
+        {
+          "key": "[4]",
+          "error": "Could not parse color from value 'reddish'"
+        }
+      ]
+    }
+  }
+}

@@ -152,11 +152,103 @@
       "filter": ["all", [">=", "Constructi", 1930], [">=", ["zoom"], 10]]
     },
     {
+      "id": "mixing old filters and expressions with $type",
+      "type": "line",
+      "source": "source",
+      "source-layer": "source-layer",
+      "filter": ["all", ["==", "$type", "Point"], ["case", [">=", ["zoom"], 10], true, false]]
+    },
+    {
+      "id": "mixing old filters and expressions with none",
+      "type": "line",
+      "source": "source",
+      "source-layer": "source-layer",
+      "filter": ["none", ["==", "class", "primary"], ["case", [">=", ["zoom"], 10], true, false]]
+    },
+    {
+      "id": "mixing old filters and expressions with $type in",
+      "type": "line",
+      "source": "source",
+      "source-layer": "source-layer",
+      "filter": ["all", ["in", "$type", "Point", "LineString"], ["case", [">=", ["zoom"], 10], true, false]]
+    },
+    {
+      "id": "mixing old filters and expressions nested in case condition",
+      "type": "line",
+      "source": "source",
+      "source-layer": "source-layer",
+      "filter": ["case", ["all", [">=", ["zoom"], 10], ["==", "$type", "Point"]], true, false]
+    },
+    {
       "id": "filter expressions with feature-state",
       "type": "line",
       "source": "source",
       "source-layer": "source-layer",
       "filter": ["<=" , ["feature-state", "height"], 10]
+    },
+    {
+      "id": "filter expressions with $type and comparison operator",
+      "type": "line",
+      "source": "source",
+      "source-layer": "source-layer",
+      "filter": ["<=" , "$type", "Point"]
+    },
+    {
+      "id": "filter expressions with bas has operator and ",
+      "type": "line",
+      "source": "source",
+      "source-layer": "source-layer",
+      "filter": ["!", ["!has", "somthing"]]
+    },
+    {
+      "id": "filter expressions with !, !has and number value",
+      "type": "line",
+      "source": "source",
+      "source-layer": "source-layer",
+      "filter": ["!", ["!has", 2]]
+    },
+    {
+      "id": "pure legacy filter using has, is not mixed syntax",
+      "type": "line",
+      "source": "source",
+      "source-layer": "source-layer",
+      "filter": ["all", ["==", "class", "rail"], ["has", "service"]]
+    },
+    {
+      "id": "pure legacy filter using has, nested under $type",
+      "type": "line",
+      "source": "source",
+      "source-layer": "source-layer",
+      "filter": [
+        "all",
+        ["==", "$type", "LineString"],
+        ["all", ["==", "class", "rail"], ["has", "service"]]
+      ]
+    },
+    {
+      "id": "pure legacy any and none using has",
+      "type": "line",
+      "source": "source",
+      "source-layer": "source-layer",
+      "filter": [
+        "any",
+        ["none", ["==", "class", "rail"], ["has", "service"]],
+        ["has", "railway"]
+      ]
+    },
+    {
+      "id": "has alongside a real expression, is an expression tree",
+      "type": "line",
+      "source": "source",
+      "source-layer": "source-layer",
+      "filter": ["all", ["==", ["get", "class"], "rail"], ["has", "service"]]
+    },
+    {
+      "id": "legacy in nested in an expression tree",
+      "type": "line",
+      "source": "source",
+      "source-layer": "source-layer",
+      "filter": ["all", ["==", ["get", "type"], "stream"], ["!", ["in", "name", ""]]]
     }
   ]
 }

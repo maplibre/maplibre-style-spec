@@ -1,21 +1,26 @@
 [
   {
     "message": "layers[2].paint.circle-radius: -1 is less than the minimum value 0",
+    "severity": "error",
     "line": 42
   },
   {
-    "message": "layers[3].paint.circle-radius: number expected, null found"
+    "message": "layers[3].paint.circle-radius: number expected, null found",
+    "severity": "error"
   },
   {
     "message": "layers[4].paint.circle-radius: missing required property \"stops\"",
+    "severity": "error",
     "line": 58
   },
   {
     "message": "layers[5].paint.circle-radius: number expected, array found",
+    "severity": "error",
     "line": 66
   },
   {
     "message": "layers[6].paint.circle-radius: number expected, boolean found",
+    "severity": "error",
     "line": 74
   }
 ]

@@ -1,0 +1,31 @@
+{
+  "expression": [
+    "join",
+    [
+      "literal",
+      [
+        1,
+        2,
+        3
+      ]
+    ],
+    "+"
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "error",
+      "errors": [
+        {
+          "key": "[1]",
+          "error": "Expected array<string> but found array<number, 3> instead."
+        }
+      ]
+    }
+  }
+}

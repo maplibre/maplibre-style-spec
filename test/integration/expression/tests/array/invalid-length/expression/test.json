@@ -1,0 +1,31 @@
+{
+  "expression": [
+    "array",
+    "string",
+    [
+      "literal",
+      0
+    ],
+    [
+      "literal",
+      []
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "error",
+      "errors": [
+        {
+          "key": "[2]",
+          "error": "The length argument to \"array\" must be a positive integer literal"
+        }
+      ]
+    }
+  }
+}

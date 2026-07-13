@@ -1,14 +1,17 @@
 [
   {
     "message": "missing required property \"version\"",
+    "severity": "error",
     "line": 1
   },
   {
     "message": "missing required property \"sources\"",
+    "severity": "error",
     "line": 1
   },
   {
     "message": "missing required property \"layers\"",
+    "severity": "error",
     "line": 1
   }
 ]

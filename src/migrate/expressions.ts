@@ -15,14 +15,14 @@ import type {FilterSpecification, LayerSpecification, StyleSpecification} from '
 export function expressions(style: StyleSpecification) {
     const converted = [];
 
-    eachLayer(style, (layer: LayerSpecification & { filter?: FilterSpecification }) => {
+    eachLayer(style, (layer: LayerSpecification & {filter?: FilterSpecification}) => {
         if (layer.filter) {
             layer.filter = convertFilter(layer.filter);
         }
     });
 
-    eachProperty(style, {paint: true, layout: true}, ({path, value, reference, set}) => {
-        if (isExpression(value)) return;
+    eachProperty(style, {paint: true, layout: true}, ({path, key, value, reference, set}) => {
+        if (isExpression(value) || key.endsWith('-transition') || reference === null) return;
         if (typeof value === 'object' && !Array.isArray(value)) {
             set(convertFunction(value, reference));
             converted.push(path.join('.'));
@@ -33,4 +33,3 @@ export function expressions(style: StyleSpecification) {
 
     return style;
 }
-

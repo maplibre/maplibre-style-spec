@@ -1,0 +1,20 @@
+{
+  "expression": [
+    "get",
+    "prop",
+    {
+      "prop": 4
+    }
+  ],
+  "expected": {
+    "compiled": {
+      "result": "error",
+      "errors": [
+        {
+          "key": "[2]",
+          "error": "Bare objects invalid. Use [\"literal\", {...}] instead."
+        }
+      ]
+    }
+  }
+}

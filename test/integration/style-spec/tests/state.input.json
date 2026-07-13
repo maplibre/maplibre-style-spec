@@ -1,0 +1,33 @@
+{
+  "version": 8,
+  "state": {
+    "string": {
+      "default": "type1"
+    },
+    "boolean": {
+      "default": true
+    },
+    "number": {
+      "default": 1
+    },
+    "arrayOfStrings": {
+      "default": ["type1", "type2", "type3"]
+    },
+    "arrayOfBooleans": {
+      "default": [true, false, true]
+    },
+    "arrayOfNumbers": {
+      "default": [1, 2, 3]
+    },
+    "arrayOfArrays": {
+      "default": [["type1", "type2"], ["type3", "type4"]]
+    }
+  },
+  "sources": {
+    "vector": {
+      "type": "vector",
+      "url": "https://demotiles.maplibre.org/tiles/tiles.json"
+    }
+  },
+  "layers": []
+}

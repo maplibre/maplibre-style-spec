@@ -1,0 +1,7 @@
+[
+  {
+    "message": "color: color expected, \"__proto__\" found",
+    "severity": "error",
+    "line": 12
+  }
+]

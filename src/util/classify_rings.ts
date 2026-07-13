@@ -1,7 +1,7 @@
 import quickselect from 'quickselect';
 import {Point2D} from '../point2d';
 
-export type RingWithArea<T extends Point2D> = T[] & { area?: number };
+export type RingWithArea<T extends Point2D> = T[] & {area?: number};
 
 /**
  * Classifies an array of rings into polygons with outer rings and holes
@@ -9,7 +9,10 @@ export type RingWithArea<T extends Point2D> = T[] & { area?: number };
  * @param maxRings - the maximum number of rings to include in a polygon, use 0 to include all rings
  * @returns an array of polygons with internal rings as holes
  */
-export function classifyRings<T extends Point2D>(rings: RingWithArea<T>[], maxRings?: number): RingWithArea<T>[][] {
+export function classifyRings<T extends Point2D>(
+    rings: RingWithArea<T>[],
+    maxRings?: number
+): RingWithArea<T>[][] {
     const len = rings.length;
 
     if (len <= 1) return [rings];
@@ -68,28 +71,4 @@ function calculateSignedArea(ring: Point2D[]): number {
         sum += (p2.x - p1.x) * (p1.y + p2.y);
     }
     return sum;
-}
-
-/**
- * Returns if there are multiple outer rings.
- * The first ring is an outer ring. Its direction, cw or ccw, defines the direction of outer rings.
- *
- * @param rings - List of rings
- * @returns Are there multiple outer rings
- */
-export function hasMultipleOuterRings(rings: Point2D[][]): boolean {
-    // Following https://github.com/mapbox/vector-tile-js/blob/77851380b63b07fd0af3d5a3f144cc86fb39fdd1/lib/vectortilefeature.js#L197
-    const len = rings.length;
-    for (let i = 0, direction; i < len; i++) {
-        const area = calculateSignedArea(rings[i]);
-        if (area === 0) continue;
-        if (direction === undefined) {
-            // Keep the direction of the first ring
-            direction = area < 0;
-        } else if (direction === area < 0) {
-            // Same direction as the first ring -> a second outer ring
-            return true;
-        }
-    }
-    return false;
 }

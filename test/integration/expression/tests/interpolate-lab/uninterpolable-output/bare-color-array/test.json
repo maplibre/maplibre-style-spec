@@ -1,0 +1,34 @@
+{
+  "expression": [
+    "interpolate-lab",
+    [
+      "linear"
+    ],
+    [
+      "zoom"
+    ],
+    0,
+    [
+      "#f00",
+      "#0f0",
+      "#00f"
+    ],
+    1,
+    [
+      "#f99",
+      "#9f9",
+      "#99f"
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "error",
+      "errors": [
+        {
+          "key": "[4][0]",
+          "error": "Unknown expression \"#f00\". If you wanted a literal array, use [\"literal\", [...]]."
+        }
+      ]
+    }
+  }
+}

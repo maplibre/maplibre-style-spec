@@ -1,0 +1,16 @@
+{
+  "expression": [
+    "index-of"
+  ],
+  "expected": {
+    "compiled": {
+      "result": "error",
+      "errors": [
+        {
+          "key": "",
+          "error": "Expected 2 or 3 arguments, but found 0 instead."
+        }
+      ]
+    }
+  }
+}
