@@ -1,8 +1,4 @@
-import {
-    ObjectType,
-    ValueType,
-    array,
-} from '../types';
+import {ObjectType, ValueType, array} from '../types';
 
 import type {Expression} from '../expression';
 import type {ParsingContext} from '../parsing_context';
@@ -20,24 +16,28 @@ export abstract class Semiliteral implements Expression {
 
     static parse(args: ReadonlyArray<unknown>, context: ParsingContext): Expression {
         if (args.length !== 2)
-            return context.error(`'semiliteral' expression requires exactly one argument, but found ${args.length - 1} instead.`) as null;
+            return context.error(
+                `'semiliteral' expression requires exactly one argument, but found ${args.length - 1} instead.`
+            ) as null;
 
-        if (!isValue(args[1]))
-            return context.error('invalid value') as null;
+        if (!isValue(args[1])) return context.error('invalid value') as null;
 
         const value = args[1] as Value;
         const type = typeOf(value);
 
         if (type.kind === 'array') {
             const arr = value as Array<unknown>;
-            const parsed = arr.map(item => context.parse(item, null, ValueType));
+            const parsed = arr.map((item) => context.parse(item, null, ValueType));
             return new ArraySemiliteral(parsed);
         } else if (type.kind === 'object') {
             const obj = value as Record<string, unknown>;
-            const parsed = Object.keys(obj).reduce((acc, key) => {
-                acc[key] = context.parse(obj[key], null, ValueType);
-                return acc;
-            }, {} as Record<string, Expression>);
+            const parsed = Object.keys(obj).reduce(
+                (acc, key) => {
+                    acc[key] = context.parse(obj[key], null, ValueType);
+                    return acc;
+                },
+                {} as Record<string, Expression>
+            );
             return new ObjectSemiliteral(parsed);
         } else {
             return new Literal(type, value);
@@ -71,7 +71,7 @@ class ArraySemiliteral extends Semiliteral {
     }
 
     evaluate(ctx: EvaluationContext): Array<Value> {
-        return this.arr.map(arg => arg.evaluate(ctx));
+        return this.arr.map((arg) => arg.evaluate(ctx));
     }
 
     eachChild(fn: (_: Expression) => void) {
@@ -79,7 +79,7 @@ class ArraySemiliteral extends Semiliteral {
     }
 
     outputDefined() {
-        return this.arr.every(arg => arg.outputDefined());
+        return this.arr.every((arg) => arg.outputDefined());
     }
 }
 
@@ -92,10 +92,13 @@ class ObjectSemiliteral extends Semiliteral {
     }
 
     evaluate(ctx: EvaluationContext): Record<string, Value> {
-        return Object.keys(this.obj).reduce((acc, key) => {
-            acc[key] = this.obj[key].evaluate(ctx);
-            return acc;
-        }, {} as Record<string, Value>);
+        return Object.keys(this.obj).reduce(
+            (acc, key) => {
+                acc[key] = this.obj[key].evaluate(ctx);
+                return acc;
+            },
+            {} as Record<string, Value>
+        );
     }
 
     eachChild(fn: (_: Expression) => void) {
@@ -103,6 +106,6 @@ class ObjectSemiliteral extends Semiliteral {
     }
 
     outputDefined() {
-        return Object.values(this.obj).every(arg => arg.outputDefined());
+        return Object.values(this.obj).every((arg) => arg.outputDefined());
     }
 }
