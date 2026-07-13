@@ -3172,9 +3172,9 @@
         "group": "Types",
         "sdk-support": {
           "basic functionality": {
-            "js": "https://github.com/maplibre/maplibre-style-spec/issues/950",
-            "android": "https://github.com/maplibre/maplibre-style-spec/issues/950",
-            "ios": "https://github.com/maplibre/maplibre-style-spec/issues/950"
+            "js": "https://github.com/maplibre/maplibre-gl-js/issues/7933",
+            "android": "https://github.com/maplibre/maplibre-native/issues/4401",
+            "ios": "https://github.com/maplibre/maplibre-native/issues/4401"
           }
         }
       },
