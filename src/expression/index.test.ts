@@ -214,7 +214,13 @@ describe('StylePropertyFunction', () => {
 
     test('exposes interpolationType for a legacy camera function that is zoom-interpolatable', () => {
         const expression = normalizePropertyExpression(
-            {base: 1.4, stops: [[10, 8], [20, 14]]},
+            {
+                base: 1.4,
+                stops: [
+                    [10, 8],
+                    [20, 14]
+                ]
+            },
             'layers[0].layout.text-size',
             interpolatableSpec
         ) as StylePropertyFunction<number>;
@@ -229,7 +235,13 @@ describe('StylePropertyFunction', () => {
 
     test('preserves interpolationType across a serialize/deserialize round trip', () => {
         const original = new StylePropertyFunction(
-            {base: 1.4, stops: [[10, 8], [20, 14]]},
+            {
+                base: 1.4,
+                stops: [
+                    [10, 8],
+                    [20, 14]
+                ]
+            },
             'layers[0].layout.text-size',
             interpolatableSpec
         );
