@@ -6,6 +6,7 @@
 
 ### 🐞 Bug fixes
 - Fix index.d.ts file wrong json import ([#1767](https://github.com/maplibre/maplibre-style-spec/issues/1767)) (by [@HarelM](https://github.com/HarelM))
+- Restore missing `interpolationType`, `globalStateRefs` and `isStateDependent` fields on legacy stop functions ([#1768](https://github.com/maplibre/maplibre-style-spec/pull/1768)) (by [@HarelM](https://github.com/HarelM))
 - _...Add new stuff here..._
 
 ## 26.0.0
