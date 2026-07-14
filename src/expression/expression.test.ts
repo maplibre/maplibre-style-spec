@@ -423,6 +423,19 @@ describe('actionable warnings: fallback rendering', () => {
         ).toBe("rk: Could not parse numberArray from value 'notarray' Falling back to [1,2,3].");
     });
 
+    test('projectionDefinition default renders as a string', () => {
+        expect(
+            warnFor(
+                ['at', ['get', 'i'], ['literal', []]],
+                {
+                    type: 'projectionDefinition',
+                    default: 'mercator'
+                } as any as StylePropertySpecification,
+                {i: 5}
+            )
+        ).toBe('rk: Array index out of bounds: 5 > -1. Falling back to mercator.');
+    });
+
     test('null default omits the fallback suffix entirely', () => {
         expect(
             warnFor(
