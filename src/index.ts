@@ -1,6 +1,4 @@
-import v8Spec from './reference/v8.json' with {type: 'json'};
-const v8 = v8Spec as any;
-import latest from './reference/latest';
+import {latest, type StyleSpecificationReference} from './reference/latest';
 import {derefLayers} from './deref';
 import {diff, type DiffCommand, type DiffOperations} from './diff';
 import {ValidationError, type ValidationSeverity} from './error/validation_error';
@@ -235,7 +233,8 @@ export type {
     VerticalAlign,
     Point2D,
     Expression,
-    ValidationSeverity
+    ValidationSeverity,
+    StyleSpecificationReference
 };
 
 export {
@@ -262,6 +261,7 @@ export {
     VisibilityExpression,
     FormattedSection,
     latest,
+    latest as v8,
     validateStyleMin,
     groupByLayout,
     emptyStyle,
@@ -288,7 +288,6 @@ export {
     ProjectionDefinitionType,
     ColorType,
     interpolateFactory as interpolates,
-    v8,
     NullType,
     styleFunction as function,
     visit,
