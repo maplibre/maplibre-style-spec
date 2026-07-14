@@ -11,8 +11,8 @@ const dtsBundle: RolldownOptions = {
         dir: 'dist',
         format: 'es'
     },
-    external: [...Object.keys(packageJSON.dependencies), /\.json$/],
-    plugins: [dts({emitDtsOnly: true, tsgo: true})]
+    external: [...Object.keys(packageJSON.dependencies)],
+    plugins: [dts({emitDtsOnly: true, tsgo: false})]
 };
 
 const bundles: RolldownOptions[] = [
