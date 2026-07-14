@@ -1,8 +1,4 @@
-import {
-    normalizePropertyExpression,
-    StyleExpression,
-    StylePropertyFunction
-} from '.';
+import {normalizePropertyExpression, StyleExpression, StylePropertyFunction} from '.';
 import {StylePropertySpecification} from '..';
 import {Color} from './types/color';
 import {ColorArray} from './types/color_array';
