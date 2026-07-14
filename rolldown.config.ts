@@ -5,6 +5,28 @@ import packageJSON from './package.json' with {type: 'json'};
 
 const typesOnly = process.env.BUILD === 'types';
 
+/**
+ * Removes bare `.json` side-effect imports from the emitted `.d.ts`.
+ * rolldown-plugin-dts leaves them, e.g. `import "./reference/v8.json";`.
+ * tsgo rejects them with TS2882: the JSON isn't resolvable next to the `.d.ts`.
+ * @returns A rolldown plugin.
+ */
+function stripJsonSideEffectImports(): NonNullable<RolldownOptions['plugins']> {
+    return {
+        name: 'strip-json-side-effect-imports',
+        generateBundle(_options, bundle) {
+            for (const file of Object.values(bundle)) {
+                if (file.type === 'chunk' && file.fileName.endsWith('.d.ts')) {
+                    file.code = file.code.replace(
+                        /^import\s+["'][^"']+\.json["'];?[ \t]*\r?\n/gm,
+                        ''
+                    );
+                }
+            }
+        }
+    };
+}
+
 const dtsBundle: RolldownOptions = {
     input: {index: 'src/index.ts'},
     output: {
@@ -12,7 +34,7 @@ const dtsBundle: RolldownOptions = {
         format: 'es'
     },
     external: [...Object.keys(packageJSON.dependencies), /\.json$/],
-    plugins: [dts({emitDtsOnly: true, tsgo: true})]
+    plugins: [dts({emitDtsOnly: true, tsgo: true}), stripJsonSideEffectImports()]
 };
 
 const bundles: RolldownOptions[] = [
