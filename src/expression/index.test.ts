@@ -1,9 +1,7 @@
 import {
     normalizePropertyExpression,
     StyleExpression,
-    StylePropertyFunction,
-    type CameraExpression,
-    type StylePropertyExpression
+    StylePropertyFunction
 } from '.';
 import {StylePropertySpecification} from '..';
 import {Color} from './types/color';
