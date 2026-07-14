@@ -3,7 +3,7 @@
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
-- _...Add new stuff here..._
+- Restore missing `interpolationType`, `globalStateRefs` and `isStateDependent` fields on legacy stop functions ([#1768](https://github.com/maplibre/maplibre-style-spec/pull/1768)) (by [@HarelM](https://github.com/HarelM))
 
 ## 26.0.0
 
