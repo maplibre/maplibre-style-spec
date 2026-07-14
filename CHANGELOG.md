@@ -5,14 +5,14 @@
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
 
-- chore: improve `ProjectionDefinition` logging ([#1765](https://github.com/maplibre/maplibre-style-spec/pull/1765)) (by [@CommanderStorm](https://github.com/CommanderStorm))
-- Fix changelog ([#1754](https://github.com/maplibre/maplibre-style-spec/pull/1754)) (by [@HarelM](https://github.com/HarelM))
 ## 26.1.0
+
 ### ✨ Features and improvements
 
 - Add v8.json types called `StyleSpecificationReference` ([#1767](https://github.com/maplibre/maplibre-style-spec/issues/1767)) (by [@HarelM](https://github.com/HarelM))
 
 ### 🐞 Bug fixes
+
 - Fix index.d.ts file wrong json import ([#1767](https://github.com/maplibre/maplibre-style-spec/issues/1767)) (by [@HarelM](https://github.com/HarelM))
 - Restore missing `interpolationType`, `globalStateRefs` and `isStateDependent` fields on legacy stop functions ([#1768](https://github.com/maplibre/maplibre-style-spec/pull/1768)) (by [@HarelM](https://github.com/HarelM))
 
