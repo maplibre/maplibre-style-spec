@@ -1,7 +1,7 @@
 import {writeFileSync} from 'fs';
 import spec from '../src/reference/v8.json' with {type: 'json'};
-import {supportsPropertyExpression, supportsZoomExpression} from '../src/util/properties';
-import {formatJSON} from './util';
+import {supportsPropertyExpression, supportsZoomExpression} from '../src/util/properties.ts';
+import {formatJSON} from './util.ts';
 
 function jsDocComment(property) {
     const lines = [];

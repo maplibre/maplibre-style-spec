@@ -1,8 +1,11 @@
 ## main
 ### ✨ Features and improvements
+
+- Add v8.json types called `StyleSpecificationReference` ([#1767](https://github.com/maplibre/maplibre-style-spec/issues/1767)) (by [@HarelM](https://github.com/HarelM))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
+- Fix index.d.ts file wrong json import ([#1767](https://github.com/maplibre/maplibre-style-spec/issues/1767)) (by [@HarelM](https://github.com/HarelM))
 - _...Add new stuff here..._
 
 ## 26.0.0
