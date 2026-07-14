@@ -1,4 +1,10 @@
-import {normalizePropertyExpression, StyleExpression} from '.';
+import {
+    normalizePropertyExpression,
+    StyleExpression,
+    StylePropertyFunction,
+    type CameraExpression,
+    type StylePropertyExpression
+} from '.';
 import {StylePropertySpecification} from '..';
 import {Color} from './types/color';
 import {ColorArray} from './types/color_array';
@@ -194,5 +200,44 @@ describe('StyleExpressions', () => {
         expect(params).toHaveProperty('globalState', {x: 5});
         expect(params).not.toHaveProperty('a');
         expect(params).not.toHaveProperty('b');
+    });
+});
+
+describe('StylePropertyFunction', () => {
+    const interpolatableSpec: StylePropertySpecification = {
+        type: 'number',
+        default: 16,
+        'property-type': 'data-driven',
+        expression: {interpolated: true, parameters: ['zoom', 'feature']},
+        transition: false
+    } as StylePropertySpecification;
+
+    test('exposes interpolationType for a legacy camera function that is zoom-interpolatable', () => {
+        const expression = normalizePropertyExpression(
+            {base: 1.4, stops: [[10, 8], [20, 14]]},
+            'layers[0].layout.text-size',
+            interpolatableSpec
+        ) as StylePropertyFunction<number>;
+
+        expect(expression.kind).toBe('camera');
+        expect(expression.zoomStops).toEqual([10, 20]);
+        expect(expression.interpolationType).toEqual({name: 'exponential', base: 1.4});
+        expect(expression.globalStateRefs.has('foo')).toBe(false);
+        expect(expression.globalStateRefs.size).toBe(0);
+        expect(expression.isStateDependent).toBe(false);
+    });
+
+    test('preserves interpolationType across a serialize/deserialize round trip', () => {
+        const original = new StylePropertyFunction(
+            {base: 1.4, stops: [[10, 8], [20, 14]]},
+            'layers[0].layout.text-size',
+            interpolatableSpec
+        );
+        const roundTripped = StylePropertyFunction.deserialize(
+            StylePropertyFunction.serialize(original)
+        );
+
+        expect(roundTripped.interpolationType).toEqual({name: 'exponential', base: 1.4});
+        expect(roundTripped.zoomStops).toEqual([10, 20]);
     });
 });
