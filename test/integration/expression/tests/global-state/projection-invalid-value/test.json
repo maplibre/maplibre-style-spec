@@ -1,0 +1,38 @@
+{
+  "propertySpec": {
+    "type": "projectionDefinition",
+    "property-type": "data-constant",
+    "expression": {
+      "interpolated": true,
+      "parameters": [
+        "zoom"
+      ]
+    }
+  },
+  "expression": [
+    "global-state",
+    "projectionType"
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
+  "globalState": {
+    "projectionType": 42
+  },
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": true,
+      "isZoomConstant": true,
+      "type": "projectionDefinition"
+    },
+    "outputs": [
+      {
+        "error": "layers[0].paint.some-property: Could not parse projection expression, but found 42 instead."
+      }
+    ]
+  }
+}

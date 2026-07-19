@@ -1,5 +1,6 @@
 ## main
 ### ✨ Features and improvements
+- Support `global-state` (and other `value`-typed) expressions in `projectionDefinition` properties such as `projection.type` (by [@CommanderStorm](https://github.com/CommanderStorm))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
