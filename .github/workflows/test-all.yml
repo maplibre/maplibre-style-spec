@@ -21,6 +21,8 @@ jobs:
       - run: npm ci
       - run: npm run lint
         if: success() || failure()
+      - run: npm run build
+        if: success() || failure()
       - run: npm run typecheck
         if: success() || failure()
   unit-and-integration-tests:

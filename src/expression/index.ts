@@ -1,7 +1,6 @@
 import {ExpressionParsingError} from './parsing_error';
 import {ParsingContext} from './parsing_context';
 import {EvaluationContext} from './evaluation_context';
-
 import {
     CompoundExpression,
     isFeatureConstant,
@@ -9,13 +8,18 @@ import {
     isStateConstant,
     isExpressionConstant
 } from './compound_expression';
-
 import {Step} from './definitions/step';
 import {Interpolate} from './definitions/interpolate';
 import {Coalesce} from './definitions/coalesce';
 import {Let} from './definitions/let';
 import {expressions} from './definitions';
-
+import {Color} from './types/color';
+import {Padding} from './types/padding';
+import {NumberArray} from './types/number_array';
+import {ColorArray} from './types/color_array';
+import {VariableAnchorOffsetCollection} from './types/variable_anchor_offset_collection';
+import {ProjectionDefinition} from './types/projection_definition';
+import {GlobalState} from './definitions/global_state';
 import {RuntimeError} from './runtime_error';
 import {success, error} from '../util/result';
 import {
@@ -23,7 +27,6 @@ import {
     supportsZoomExpression,
     supportsInterpolation
 } from '../util/properties';
-
 import {
     ColorType,
     StringType,
@@ -41,11 +44,17 @@ import {
     NumberArrayType,
     ColorArrayType
 } from './types';
+import {ICanonicalTileID} from '../tiles_and_coordinates';
+import {isFunction, createFunction} from '../function';
+
 import type {Value} from './values';
 import type {Expression} from './expression';
-import {type StylePropertySpecification} from '..';
+import type {StylePropertySpecification} from '..';
 import type {Result} from '../util/result';
 import type {InterpolationType} from './definitions/interpolate';
+import type {FormattedSection} from './types/formatted';
+import type {Point2D} from '../point2d';
+import type {StyleFunction} from '../function';
 import type {
     PaddingSpecification,
     NumberArraySpecification,
@@ -53,18 +62,6 @@ import type {
     PropertyValueSpecification,
     VariableAnchorOffsetCollectionSpecification
 } from '../types.g';
-import type {FormattedSection} from './types/formatted';
-import type {Point2D} from '../point2d';
-
-import {ICanonicalTileID} from '../tiles_and_coordinates';
-import {isFunction, createFunction} from '../function';
-import {Color} from './types/color';
-import {Padding} from './types/padding';
-import {NumberArray} from './types/number_array';
-import {ColorArray} from './types/color_array';
-import {VariableAnchorOffsetCollection} from './types/variable_anchor_offset_collection';
-import {ProjectionDefinition} from './types/projection_definition';
-import {GlobalState} from './definitions/global_state';
 
 export type Feature = {
     readonly type:
@@ -589,9 +586,13 @@ export class StylePropertyFunction<T> {
     _warningHistory: {[key: string]: boolean};
     _innerEvaluate: (globals: GlobalProperties, feature?: Feature) => any;
 
-    kind: EvaluationKind;
+    kind: StyleFunction['kind'];
     interpolationFactor: (input: number, lower: number, upper: number) => number;
     zoomStops: Array<number>;
+    interpolationType: InterpolationType | null;
+    isStateDependent: boolean = false; // Legacy functions cannot reference feature state or global state, so these are constant.
+    globalStateRefs: Set<string> = new Set<string>();
+    readonly _globalState: Record<string, any> = null;
 
     constructor(
         parameters: PropertyValueSpecification<T>,
@@ -609,7 +610,7 @@ export class StylePropertyFunction<T> {
         this.kind = fn.kind;
         this.interpolationFactor = fn.interpolationFactor;
         this.zoomStops = fn.zoomStops;
-        // Kept off the instance so it doesn't shadow the error-handling `evaluate` method
+        this.interpolationType = fn.interpolationType;
         this._innerEvaluate = fn.evaluate;
     }
 
@@ -668,7 +669,7 @@ export function normalizePropertyExpression<T>(
     globalState?: Record<string, any>
 ): StylePropertyExpression {
     if (isFunction(value)) {
-        return new StylePropertyFunction(value, rootKey, specification) as any;
+        return new StylePropertyFunction(value, rootKey, specification);
     } else if (isExpression(value)) {
         const expression = createPropertyExpression(value, rootKey, specification, globalState);
         if (expression.result === 'error') {
