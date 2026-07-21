@@ -6432,8 +6432,8 @@
       "sdk-support": {
         "basic functionality": {
           "js": "https://github.com/maplibre/maplibre-gl-js/issues/7934",
-          "android": "13.2.0",
-          "ios": "6.27.0"
+          "android": "13.4.0",
+          "ios": "6.28.0"
         }
       },
       "property-type": "constant"
