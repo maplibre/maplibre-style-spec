@@ -33,7 +33,8 @@ export class Semiliteral implements Expression {
                 `'semiliteral' expression requires exactly one argument, but found ${args.length - 1} instead.`
             ) as null;
 
-        if (!isValue(args[1])) return context.error(`invalid value of type "${typeof args[1]}"`) as null;
+        if (!isValue(args[1]))
+            return context.error(`invalid value of type "${typeof args[1]}"`) as null;
 
         const value = args[1] as Value;
         const type = typeOf(value);
