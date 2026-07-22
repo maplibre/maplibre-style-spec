@@ -3161,23 +3161,15 @@
         }
       },
       "semiliteral": {
-        "doc": "Provides an array or object value, evaluating expressions in the elements of the array or values of the object.",
+        "doc": "Provides an array value, evaluating expressions in the elements of the array.",
         "syntax": {
           "overloads": [
-            {
-              "parameters": ["json_object"],
-              "output-type": "object"
-            },
             {
               "parameters": ["json_array"],
               "output-type": "array"
             }
           ],
           "parameters": [
-            {
-              "name": "json_object",
-              "type": "JSON object"
-            },
             {
               "name": "json_array",
               "type": "JSON array"
