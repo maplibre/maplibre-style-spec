@@ -8,6 +8,7 @@ import {Padding} from '../types/padding';
 import {NumberArray} from '../types/number_array';
 import {ColorArray} from '../types/color_array';
 import {VariableAnchorOffsetCollection} from '../types/variable_anchor_offset_collection';
+import {ProjectionDefinition} from '../types/projection_definition';
 
 import type {Expression} from '../expression';
 import type {ParsingContext} from '../parsing_context';
@@ -173,8 +174,15 @@ export class Coercion implements Expression {
                 return Formatted.fromString(valueToString(this.args[0].evaluate(ctx)));
             case 'resolvedImage':
                 return ResolvedImage.fromString(valueToString(this.args[0].evaluate(ctx)));
-            case 'projectionDefinition':
-                return this.args[0].evaluate(ctx);
+            case 'projectionDefinition': {
+                const input = this.args[0].evaluate(ctx);
+                const proj = ProjectionDefinition.parse(input);
+                if (proj) return input;
+                throw new RuntimeError(
+                    `Could not parse projectionDefinition from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`,
+                    this.key
+                );
+            }
             default:
                 return valueToString(this.args[0].evaluate(ctx));
         }

@@ -140,7 +140,7 @@ export class ParsingContext {
                         parsed = annotate(parsed, expected, options.typeAnnotation || 'assert');
                     } else if (
                         ('projectionDefinition' === expected.kind &&
-                            ['string', 'array'].includes(actual.kind)) ||
+                            ['string', 'array', 'value'].includes(actual.kind)) ||
                         (['color', 'formatted', 'resolvedImage'].includes(expected.kind) &&
                             ['value', 'string'].includes(actual.kind)) ||
                         (['padding', 'numberArray'].includes(expected.kind) &&
