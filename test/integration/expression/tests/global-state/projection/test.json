@@ -1,0 +1,36 @@
+{
+  "propertySpec": {
+    "type": "projectionDefinition",
+    "property-type": "data-constant",
+    "expression": {
+      "interpolated": true,
+      "parameters": [
+        "zoom"
+      ]
+    }
+  },
+  "expression": [
+    "global-state",
+    "projectionType"
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
+  "globalState": {
+    "projectionType": "vertical-perspective"
+  },
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": true,
+      "isZoomConstant": true,
+      "type": "projectionDefinition"
+    },
+    "outputs": [
+      "vertical-perspective"
+    ]
+  }
+}
