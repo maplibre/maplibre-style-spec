@@ -1,10 +1,19 @@
 ## main
 ### ✨ Features and improvements
-- Support `global-state` (and other `value`-typed) expressions in `projectionDefinition` properties such as `projection.type` (by [@CommanderStorm](https://github.com/CommanderStorm))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
+
+- docs: document sky.* and light.* global state and rendering support ([#1771](https://github.com/maplibre/maplibre-style-spec/pull/1771)) (by [@CommanderStorm](https://github.com/CommanderStorm))
+- fix: `global-state` in `projection.type` ([#1772](https://github.com/maplibre/maplibre-style-spec/pull/1772)) (by [@CommanderStorm](https://github.com/CommanderStorm))
+- Fix Android/iOS version `fill-extrusion-rounded-corner-distance` property ([#1782](https://github.com/maplibre/maplibre-style-spec/pull/1782)) (by [@louwers](https://github.com/louwers))
+- Add fill-extrusion-rounded-corner-distance ([#1781](https://github.com/maplibre/maplibre-style-spec/pull/1781)) (by [@louwers](https://github.com/louwers))
+## 26.2.0
+### ✨ Features and improvements
+- Support `global-state` (and other `value`-typed) expressions in `projectionDefinition` properties such as `projection.type` (by [@CommanderStorm](https://github.com/CommanderStorm))
+
+### 🐞 Bug fixes
 
 ## 26.1.0
 
