@@ -176,13 +176,12 @@ export class Coercion implements Expression {
                 return ResolvedImage.fromString(valueToString(this.args[0].evaluate(ctx)));
             case 'projectionDefinition': {
                 const input = this.args[0].evaluate(ctx);
-                if (input === null || ProjectionDefinition.parse(input) === undefined) {
-                    throw new RuntimeError(
-                        `Could not parse projection expression, but found ${JSON.stringify(input)} instead.`,
-                        this.key
-                    );
-                }
-                return input;
+                const proj = ProjectionDefinition.parse(input);
+                if (proj) return proj;
+                throw new RuntimeError(
+                    `Could not parse projectionDefinition from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`,
+                    this.key
+                );
             }
             default:
                 return valueToString(this.args[0].evaluate(ctx));
