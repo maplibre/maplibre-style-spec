@@ -21,7 +21,7 @@ export type ExpressionParser = (
     context: ParsingContext
 ) => Expression;
 export type ExpressionRegistration = {
-    prototype: Expression;
+    new (...args: any): Expression;
 } & {
     readonly parse: ExpressionParser;
 };
