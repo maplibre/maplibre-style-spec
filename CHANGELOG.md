@@ -7,10 +7,11 @@
 
 ## 26.2.0
 ### ✨ Features and improvements
-- Support `global-state` (and other `value`-typed) expressions in `projectionDefinition` properties such as `projection.type` ([#1772](https://github.com/maplibre/maplibre-style-spec/pull/1772)) (by [@CommanderStorm](https://github.com/CommanderStorm))
 - Add fill-extrusion-rounded-corner-distance ([#1781](https://github.com/maplibre/maplibre-style-spec/pull/1781), [#1782](https://github.com/maplibre/maplibre-style-spec/pull/1782)) (by [@louwers](https://github.com/louwers))
 
 ### 🐞 Bug fixes
+
+- Support `global-state` (and other `value`-typed) expressions in `projectionDefinition` properties such as `projection.type` ([#1772](https://github.com/maplibre/maplibre-style-spec/pull/1772)) (by [@CommanderStorm](https://github.com/CommanderStorm))
 
 ## 26.1.0
 
