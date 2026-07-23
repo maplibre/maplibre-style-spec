@@ -948,7 +948,7 @@
           "android": "2.0.1",
           "ios": "2.0.0"
         },
-        "`global state` expression": {
+        "[`global-state`](https://maplibre.org/maplibre-style-spec/expressions/#global-state) expression": {
           "js": "5.16.0",
           "android": "https://github.com/maplibre/maplibre-native/issues/3302",
           "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
@@ -1006,7 +1006,7 @@
           "android": "2.0.1",
           "ios": "2.0.0"
         },
-        "`global state` expression": {
+        "[`global-state`](https://maplibre.org/maplibre-style-spec/expressions/#global-state) expression": {
           "js": "5.16.0",
           "android": "https://github.com/maplibre/maplibre-native/issues/3302",
           "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
@@ -1064,7 +1064,7 @@
           "android": "2.0.1",
           "ios": "2.0.0"
         },
-        "`global state` expression": {
+        "[`global-state`](https://maplibre.org/maplibre-style-spec/expressions/#global-state) expression": {
           "js": "5.16.0",
           "android": "https://github.com/maplibre/maplibre-native/issues/3302",
           "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
@@ -1098,7 +1098,7 @@
           "android": "6.0.0",
           "ios": "4.0.0"
         },
-        "`global state` expression": {
+        "[`global-state`](https://maplibre.org/maplibre-style-spec/expressions/#global-state) expression": {
           "js": "5.16.0",
           "android": "https://github.com/maplibre/maplibre-native/issues/3302",
           "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
@@ -1132,7 +1132,7 @@
           "android": "5.1.0",
           "ios": "3.6.0"
         },
-        "`global state` expression": {
+        "[`global-state`](https://maplibre.org/maplibre-style-spec/expressions/#global-state) expression": {
           "js": "5.16.0",
           "android": "https://github.com/maplibre/maplibre-native/issues/3302",
           "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
@@ -1322,7 +1322,7 @@
           "android": "2.0.1",
           "ios": "2.0.0"
         },
-        "`global state` expression": {
+        "[`global-state`](https://maplibre.org/maplibre-style-spec/expressions/#global-state) expression": {
           "js": "5.16.0",
           "android": "https://github.com/maplibre/maplibre-native/issues/3302",
           "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
@@ -2790,7 +2790,7 @@
           "android": "2.0.1",
           "ios": "2.0.0"
         },
-        "`global state` expression": {
+        "[`global-state`](https://maplibre.org/maplibre-style-spec/expressions/#global-state) expression": {
           "js": "5.16.0",
           "android": "https://github.com/maplibre/maplibre-native/issues/3302",
           "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
@@ -2824,7 +2824,7 @@
           "android": "2.0.1",
           "ios": "2.0.0"
         },
-        "`global state` expression": {
+        "[`global-state`](https://maplibre.org/maplibre-style-spec/expressions/#global-state) expression": {
           "js": "5.16.0",
           "android": "https://github.com/maplibre/maplibre-native/issues/3302",
           "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
@@ -2858,7 +2858,7 @@
           "android": "6.0.0",
           "ios": "4.0.0"
         },
-        "`global state` expression": {
+        "[`global-state`](https://maplibre.org/maplibre-style-spec/expressions/#global-state) expression": {
           "js": "5.16.0",
           "android": "https://github.com/maplibre/maplibre-native/issues/3302",
           "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
@@ -2892,7 +2892,7 @@
           "android": "13.0.0",
           "ios": "6.24.0"
         },
-        "`global state` expression": {
+        "[`global-state`](https://maplibre.org/maplibre-style-spec/expressions/#global-state) expression": {
           "js": "5.16.0",
           "android": "https://github.com/maplibre/maplibre-native/issues/3302",
           "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
@@ -5774,6 +5774,11 @@
           "js": "0.27.0",
           "android": "5.1.0",
           "ios": "3.6.0"
+        },
+        "[`global-state`](https://maplibre.org/maplibre-style-spec/expressions/#global-state) expression": {
+          "js": "6.1.0",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3302",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
         }
       }
     },
@@ -5805,6 +5810,11 @@
           "js": "0.27.0",
           "android": "5.1.0",
           "ios": "3.6.0"
+        },
+        "[`global-state`](https://maplibre.org/maplibre-style-spec/expressions/#global-state) expression": {
+          "js": "6.1.0",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3302",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
         }
       }
     },
@@ -5825,6 +5835,11 @@
           "js": "0.27.0",
           "android": "5.1.0",
           "ios": "3.6.0"
+        },
+        "[`global-state`](https://maplibre.org/maplibre-style-spec/expressions/#global-state) expression": {
+          "js": "6.1.0",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3302",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
         }
       }
     },
@@ -5847,6 +5862,11 @@
           "js": "0.27.0",
           "android": "5.1.0",
           "ios": "3.6.0"
+        },
+        "[`global-state`](https://maplibre.org/maplibre-style-spec/expressions/#global-state) expression": {
+          "js": "6.1.0",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3302",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
         }
       }
     }
@@ -5863,7 +5883,19 @@
         ]
       },
       "transition": true,
-      "doc": "The base color for the sky."
+      "doc": "The base color for the sky.",
+      "sdk-support": {
+        "basic functionality": {
+          "js": "4.5.0",
+          "android": "https://github.com/maplibre/maplibre-native/issues/4414",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/4414"
+        },
+        "[`global-state`](https://maplibre.org/maplibre-style-spec/expressions/#global-state) expression": {
+          "js": "6.1.0",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3302",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
+        }
+      }
     },
     "horizon-color": {
       "type": "color",
@@ -5876,7 +5908,19 @@
         ]
       },
       "transition": true,
-      "doc": "The base color at the horizon."
+      "doc": "The base color at the horizon.",
+      "sdk-support": {
+        "basic functionality": {
+          "js": "4.5.0",
+          "android": "https://github.com/maplibre/maplibre-native/issues/4414",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/4414"
+        },
+        "[`global-state`](https://maplibre.org/maplibre-style-spec/expressions/#global-state) expression": {
+          "js": "6.1.0",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3302",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
+        }
+      }
     },
     "fog-color": {
       "type": "color",
@@ -5889,7 +5933,19 @@
         ]
       },
       "transition": true,
-      "doc": "The base color for the fog. Requires 3D terrain."
+      "doc": "The base color for the fog. Requires 3D terrain.",
+      "sdk-support": {
+        "basic functionality": {
+          "js": "4.5.0",
+          "android": "https://github.com/maplibre/maplibre-native/issues/4414",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/4414"
+        },
+        "[`global-state`](https://maplibre.org/maplibre-style-spec/expressions/#global-state) expression": {
+          "js": "6.1.0",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3302",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
+        }
+      }
     },
     "fog-ground-blend": {
       "type": "number",
@@ -5904,7 +5960,19 @@
         ]
       },
       "transition": true,
-      "doc": "How to blend the fog over the 3D terrain. Where 0 is the map center and 1 is the horizon."
+      "doc": "How to blend the fog over the 3D terrain. Where 0 is the map center and 1 is the horizon.",
+      "sdk-support": {
+        "basic functionality": {
+          "js": "4.5.0",
+          "android": "https://github.com/maplibre/maplibre-native/issues/4414",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/4414"
+        },
+        "[`global-state`](https://maplibre.org/maplibre-style-spec/expressions/#global-state) expression": {
+          "js": "6.1.0",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3302",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
+        }
+      }
     },
     "horizon-fog-blend": {
       "type": "number",
@@ -5919,7 +5987,19 @@
         ]
       },
       "transition": true,
-      "doc": "How to blend the fog color and the horizon color. Where 0 is using the horizon color only and 1 is using the fog color only."
+      "doc": "How to blend the fog color and the horizon color. Where 0 is using the horizon color only and 1 is using the fog color only.",
+      "sdk-support": {
+        "basic functionality": {
+          "js": "4.5.0",
+          "android": "https://github.com/maplibre/maplibre-native/issues/4414",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/4414"
+        },
+        "[`global-state`](https://maplibre.org/maplibre-style-spec/expressions/#global-state) expression": {
+          "js": "6.1.0",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3302",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
+        }
+      }
     },
     "sky-horizon-blend": {
       "type": "number",
@@ -5934,7 +6014,19 @@
         ]
       },
       "transition": true,
-      "doc": "How to blend the sky color and the horizon color. Where 1 is blending the color at the middle of the sky and 0 is not blending at all and using the sky color only."
+      "doc": "How to blend the sky color and the horizon color. Where 1 is blending the color at the middle of the sky and 0 is not blending at all and using the sky color only.",
+      "sdk-support": {
+        "basic functionality": {
+          "js": "4.5.0",
+          "android": "https://github.com/maplibre/maplibre-native/issues/4414",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/4414"
+        },
+        "[`global-state`](https://maplibre.org/maplibre-style-spec/expressions/#global-state) expression": {
+          "js": "6.1.0",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3302",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
+        }
+      }
     },
     "atmosphere-blend": {
       "type": "number",
@@ -5949,7 +6041,19 @@
         ]
       },
       "transition": true,
-      "doc": "How to blend the atmosphere. Where 1 is visible atmosphere and 0 is hidden. It is best to interpolate this expression when using globe projection."
+      "doc": "How to blend the atmosphere. Where 1 is visible atmosphere and 0 is hidden. It is best to interpolate this expression when using globe projection.",
+      "sdk-support": {
+        "basic functionality": {
+          "js": "4.5.0",
+          "android": "https://github.com/maplibre/maplibre-native/issues/4414",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/4414"
+        },
+        "[`global-state`](https://maplibre.org/maplibre-style-spec/expressions/#global-state) expression": {
+          "js": "6.1.0",
+          "android": "https://github.com/maplibre/maplibre-native/issues/3302",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
+        }
+      }
     }
   },
   "terrain": {
@@ -6068,7 +6172,7 @@
           "android": "https://github.com/maplibre/maplibre-native/issues/4298",
           "ios": "https://github.com/maplibre/maplibre-native/issues/4298"
         },
-        "`global state` expression": {
+        "[`global-state`](https://maplibre.org/maplibre-style-spec/expressions/#global-state) expression": {
           "js": "6.0.0",
           "android": "https://github.com/maplibre/maplibre-native/issues/3302",
           "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
@@ -6502,7 +6606,7 @@
           "android": "https://github.com/maplibre/maplibre-native/issues/4298",
           "ios": "https://github.com/maplibre/maplibre-native/issues/4298"
         },
-        "`global state` expression": {
+        "[`global-state`](https://maplibre.org/maplibre-style-spec/expressions/#global-state) expression": {
           "js": "6.0.0",
           "android": "https://github.com/maplibre/maplibre-native/issues/3302",
           "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
