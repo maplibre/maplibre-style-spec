@@ -177,7 +177,7 @@ export class Coercion implements Expression {
             case 'projectionDefinition': {
                 const input = this.args[0].evaluate(ctx);
                 const proj = ProjectionDefinition.parse(input);
-                if (proj) return proj;
+                if (proj) return input;
                 throw new RuntimeError(
                     `Could not parse projectionDefinition from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`,
                     this.key
