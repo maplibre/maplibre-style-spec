@@ -3,8 +3,14 @@
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
-- Fix `fill-extrusion-rounded-corner-distance` being documented as an `paint` instead of an `layout` property as implemnented ([#1784](https://github.com/maplibre/maplibre-style-spec/pull/1784)) (by [@CommanderStorm](https://github.com/CommanderStorm))
 - _...Add new stuff here..._
+
+- docs: document global state support for paint and layout ([#1770](https://github.com/maplibre/maplibre-style-spec/pull/1770)) (by [@CommanderStorm](https://github.com/CommanderStorm))
+## 26.2.1
+### ✨ Features and improvements
+
+### 🐞 Bug fixes
+- Fix `fill-extrusion-rounded-corner-distance` being documented as an `paint` instead of an `layout` property as implemnented ([#1784](https://github.com/maplibre/maplibre-style-spec/pull/1784)) (by [@CommanderStorm](https://github.com/CommanderStorm))
 
 ## 26.2.0
 ### ✨ Features and improvements
