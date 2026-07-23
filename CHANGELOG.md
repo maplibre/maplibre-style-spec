@@ -5,7 +5,6 @@
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
 
-- docs: document global state support for paint and layout ([#1770](https://github.com/maplibre/maplibre-style-spec/pull/1770)) (by [@CommanderStorm](https://github.com/CommanderStorm))
 ## 26.2.1
 ### ✨ Features and improvements
 
