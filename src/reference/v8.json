@@ -6423,6 +6423,21 @@
       },
       "property-type": "data-driven"
     },
+    "fill-extrusion-rounded-corner-distance": {
+      "type": "number",
+      "default": 0,
+      "minimum": 0,
+      "units": "meters",
+      "doc": "The distance from each fill extrusion corner, measured along the adjacent edges, that is replaced by a rounded corner. A value of `0` disables rounded corners.",
+      "sdk-support": {
+        "basic functionality": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/7934",
+          "android": "13.4.0",
+          "ios": "6.28.0"
+        }
+      },
+      "property-type": "constant"
+    },
     "fill-extrusion-vertical-gradient": {
       "type": "boolean",
       "default": true,
