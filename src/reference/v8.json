@@ -3397,7 +3397,7 @@
         }
       },
       "literal": {
-        "doc": "Provides a literal array or object value.\n\n - [Display and style rich text labels](https://maplibre.org/maplibre-gl-js/docs/examples/display-and-style-rich-text-labels/)",
+        "doc": "Provides a literal array or object value, treating nested values as literals themselves.\n\n - [Display and style rich text labels](https://maplibre.org/maplibre-gl-js/docs/examples/display-and-style-rich-text-labels/)",
         "syntax": {
           "overloads": [
             {
@@ -3427,6 +3427,32 @@
             "js": "0.41.0",
             "android": "6.0.0",
             "ios": "4.0.0"
+          }
+        }
+      },
+      "semiliteral": {
+        "doc": "Provides an array value, evaluating expressions in the elements of the array.",
+        "syntax": {
+          "overloads": [
+            {
+              "parameters": ["json_array"],
+              "output-type": "array"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "json_array",
+              "type": "JSON array"
+            }
+          ]
+        },
+        "example": ["semiliteral", [["get", "label_x"], ["get", "label_y"]]],
+        "group": "Types",
+        "sdk-support": {
+          "basic functionality": {
+            "js": "https://github.com/maplibre/maplibre-gl-js/issues/7933",
+            "android": "https://github.com/maplibre/maplibre-native/issues/4401",
+            "ios": "https://github.com/maplibre/maplibre-native/issues/4401"
           }
         }
       },

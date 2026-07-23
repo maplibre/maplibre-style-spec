@@ -526,3 +526,16 @@ describe('nonexistent operators', () => {
         );
     });
 });
+
+describe('semiliteral expression', () => {
+    test('gives informative error for non-JSON values', () => {
+        const result = createExpression(
+            ['semiliteral', () => {}] as any,
+            'layers[0].paint.line-width'
+        );
+        expect(result.result).toBe('error');
+        const errors = result.value as ExpressionParsingError[];
+        expect(errors).toHaveLength(1);
+        expect(errors[0].message).toBe('invalid value of type "function"');
+    });
+});
