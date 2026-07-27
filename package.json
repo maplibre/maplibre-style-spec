@@ -69,7 +69,7 @@
     "@typescript-eslint/parser": "^8.65.0",
     "@typescript/native-preview": "beta",
     "@vitest/coverage-v8": "4.1.10",
-    "@vitest/eslint-plugin": "^1.6.23",
+    "@vitest/eslint-plugin": "^1.6.24",
     "@vitest/ui": "4.1.10",
     "cross-env": "^10.1.0",
     "eslint": "^10.7.0",
