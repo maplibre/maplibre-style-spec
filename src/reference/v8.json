@@ -6825,9 +6825,8 @@
     "fill-extrusion-height": {
       "type": "number",
       "default": 0,
-      "minimum": 0,
       "units": "meters",
-      "doc": "The height with which to extrude this layer.",
+      "doc": "The height with which to extrude this layer. Negative values extrude below ground level, so a floor that is entirely underground can be expressed.",
       "transition": true,
       "sdk-support": {
         "basic functionality": {
@@ -6859,9 +6858,8 @@
     "fill-extrusion-base": {
       "type": "number",
       "default": 0,
-      "minimum": 0,
       "units": "meters",
-      "doc": "The height with which to extrude the base of this layer. Must be less than or equal to `fill-extrusion-height`.",
+      "doc": "The height with which to extrude the base of this layer. Must be less than or equal to `fill-extrusion-height`. Negative values extrude below ground level, e.g. underground floors.",
       "transition": true,
       "requires": [
         "fill-extrusion-height"
