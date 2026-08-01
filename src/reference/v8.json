@@ -6516,7 +6516,7 @@
         }
       },
       "default": "normal",
-      "doc": "Controls how the layer is composited with the content already rendered beneath it. Unlike per-feature opacity properties such as [`fill-opacity`](#fill-opacity), this property affects the final composited layer output and determines how it interacts with the existing map contents.\n\n![fill-layer-blend examples](assets/fill-layer-blend.svg)",
+      "doc": "Controls how the layer is composited with the content already rendered beneath it. Unlike per-feature opacity properties such as `fill-opacity`, this property affects the final composited layer output and determines how it interacts with the existing map contents.\n\n![fill-layer-blend examples](assets/fill-layer-blend.svg)",
       "sdk-support": {
         "basic functionality": {
           "js": "https://github.com/maplibre/maplibre-gl-js/issues/48",
