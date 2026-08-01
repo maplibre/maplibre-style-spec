@@ -6493,6 +6493,40 @@
       },
       "property-type": "data-constant"
     },
+    "fill-layer-blend": {
+      "type": "enum",
+      "values": {
+        "normal": {
+          "doc": "Normal blending. The layer is drawn on top of existing content using standard alpha compositing."
+        },
+        "multiply": {
+          "doc": "Multiply blending. The layer color is multiplied with the colors underneath, producing darker results. Useful for textures, hillshades, and combining raster and vector content."
+        },
+        "screen": {
+          "doc": "Screen blending. The inverse of the colors is multiplied, producing lighter results. Useful for glow, heatmap, and light-based effects."
+        },
+        "overlay": {
+          "doc": "Overlay blending. Multiplies or screens colors depending on the colors underneath, preserving highlights and shadows while adding contrast."
+        },
+        "plus": {
+          "doc": "Additive blending. The layer color is added to the colors underneath, producing brighter results. Useful for glow and heat accumulation effects."
+        },
+        "erase": {
+          "doc": "Erase blending. The layer removes content underneath based on its alpha value."
+        }
+      },
+      "default": "normal",
+      "doc": "Controls how the layer is composited with the content already rendered beneath it. Unlike per-feature opacity properties such as [`fill-opacity`](#fill-opacity), this property affects the final composited layer output and determines how it interacts with the existing map contents.\n\n![fill-layer-blend examples](assets/fill-layer-blend.svg)",
+      "sdk-support": {
+        "basic functionality": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/48",
+          "android": "https://github.com/maplibre/maplibre-native/issues/2963",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/2963"
+        }
+      },
+      "property-type": "constant",
+      "transition": false
+    },
     "fill-color": {
       "type": "color",
       "default": "#000000",
@@ -6981,6 +7015,40 @@
         ]
       },
       "property-type": "data-constant"
+    },
+    "line-layer-blend": {
+      "type": "enum",
+      "values": {
+        "normal": {
+          "doc": "Normal blending. The layer is drawn on top of existing content using standard alpha compositing."
+        },
+        "multiply": {
+          "doc": "Multiply blending. The layer color is multiplied with the colors underneath, producing darker results. Useful for textures, hillshades, and combining raster and vector content."
+        },
+        "screen": {
+          "doc": "Screen blending. The inverse of the colors is multiplied, producing lighter results. Useful for glow, heatmap, and light-based effects."
+        },
+        "overlay": {
+          "doc": "Overlay blending. Multiplies or screens colors depending on the colors underneath, preserving highlights and shadows while adding contrast."
+        },
+        "plus": {
+          "doc": "Additive blending. The layer color is added to the colors underneath, producing brighter results. Useful for glow and heat accumulation effects."
+        },
+        "erase": {
+          "doc": "Erase blending. The layer removes content underneath based on its alpha value."
+        }
+      },
+      "default": "normal",
+      "doc": "Controls how the layer is composited with the content already rendered beneath it. Unlike per-feature opacity properties such as [`line-opacity`](#line-opacity), this property affects the final composited layer output and determines how it interacts with the existing map contents.\n\n![line-layer-blend examples](assets/line-layer-blend.svg)",
+      "sdk-support": {
+        "basic functionality": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/48",
+          "android": "https://github.com/maplibre/maplibre-native/issues/2963",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/2963"
+        }
+      },
+      "property-type": "constant",
+      "transition": false
     },
     "line-color": {
       "type": "color",

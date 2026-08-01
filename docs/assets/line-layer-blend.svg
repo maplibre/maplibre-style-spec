@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 230" font-size="14" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif">
+  <defs>
+    <!-- Clip Paths for 6 columns -->
+    <clipPath id="clip-1"><rect x="12" y="45" width="176" height="180"/></clipPath>
+    <clipPath id="clip-2"><rect x="188" y="45" width="176" height="180"/></clipPath>
+    <clipPath id="clip-3"><rect x="364" y="45" width="176" height="180"/></clipPath>
+    <clipPath id="clip-4"><rect x="540" y="45" width="176" height="180"/></clipPath>
+    <clipPath id="clip-5"><rect x="716" y="45" width="176" height="180"/></clipPath>
+    <clipPath id="clip-6"><rect x="892" y="45" width="176" height="180"/></clipPath>
+
+    <!-- Clip Path for the entire Base Map to enforce rounded corners -->
+    <clipPath id="clip-basemap">
+      <rect x="12" y="45" width="1056" height="180" rx="8"/>
+    </clipPath>
+
+    <!-- Erase mask: Everything white stays, black line cuts a hole in the basemap -->
+    <mask id="erase-mask-line">
+      <rect x="892" y="45" width="176" height="180" fill="#ffffff"/>
+      <line x1="30" y1="160" x2="1050" y2="70" stroke="#000000" stroke-width="30" stroke-linecap="round"/>
+    </mask>
+
+    <!-- Unified Base Map definition (Highly Realistic Cartographic Layout) -->
+    <g id="basemap" clip-path="url(#clip-basemap)">
+      <!-- Land Background -->
+      <rect x="12" y="45" width="1056" height="180" fill="#f8f9fa"/>
+
+      <!-- Forests -->
+      <path d="M 12,45 L 200,45 L 150,110 L 12,90 Z" fill="#e2f0d9"/>
+      <path d="M 750,45 L 1068,45 L 1050,110 L 850,90 Z" fill="#e2f0d9"/>
+
+      <!-- River winding across the entire map -->
+      <path d="M 12,135 C 150,145 250,95 400,105 C 600,115 800,55 1068,75 L 1068,110 C 800,90 600,150 400,140 C 250,130 150,180 12,170 Z" fill="#a2d2ff"/>
+
+      <!-- Roads / Cased Street Grid (Casing first) -->
+      <!-- Horizontal Highways -->
+      <line x1="12" y1="90" x2="1068" y2="90" stroke="#cbd5e1" stroke-width="8"/>
+      <line x1="12" y1="180" x2="1068" y2="180" stroke="#cbd5e1" stroke-width="8"/>
+      <!-- Vertical Streets (Midpoints) -->
+      <line x1="100" y1="45" x2="100" y2="225" stroke="#cbd5e1" stroke-width="6"/>
+      <line x1="276" y1="45" x2="276" y2="225" stroke="#cbd5e1" stroke-width="6"/>
+      <line x1="452" y1="45" x2="452" y2="225" stroke="#cbd5e1" stroke-width="6"/>
+      <line x1="628" y1="45" x2="628" y2="225" stroke="#cbd5e1" stroke-width="6"/>
+      <line x1="804" y1="45" x2="804" y2="225" stroke="#cbd5e1" stroke-width="6"/>
+      <line x1="980" y1="45" x2="980" y2="225" stroke="#cbd5e1" stroke-width="6"/>
+
+      <!-- Roads / Cased Street Grid (Centers on top) -->
+      <!-- Horizontal Highways -->
+      <line x1="12" y1="90" x2="1068" y2="90" stroke="#ffffff" stroke-width="4"/>
+      <line x1="12" y1="180" x2="1068" y2="180" stroke="#ffffff" stroke-width="4"/>
+      <!-- Vertical Streets -->
+      <line x1="100" y1="45" x2="100" y2="225" stroke="#ffffff" stroke-width="3"/>
+      <line x1="276" y1="45" x2="276" y2="225" stroke="#ffffff" stroke-width="3"/>
+      <line x1="452" y1="45" x2="452" y2="225" stroke="#ffffff" stroke-width="3"/>
+      <line x1="628" y1="45" x2="628" y2="225" stroke="#ffffff" stroke-width="3"/>
+      <line x1="804" y1="45" x2="804" y2="225" stroke="#ffffff" stroke-width="3"/>
+      <line x1="980" y1="45" x2="980" y2="225" stroke="#ffffff" stroke-width="3"/>
+    </g>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect x="0" y="0" width="1080" height="260" fill="#ffffff"/>
+
+  <!-- Outer Map Border -->
+  <rect x="12" y="45" width="1056" height="180" fill="none" stroke="#e9ecef" stroke-width="2" rx="8"/>
+
+  <!-- 1. BASE MAPS & OVERLAYS GROUP -->
+  <g style="isolation: isolate;">
+    
+    <!-- Col 1: normal -->
+    <g clip-path="url(#clip-1)">
+      <use href="#basemap"/>
+      <line x1="30" y1="160" x2="1050" y2="70" stroke="#d62728" stroke-width="30" stroke-linecap="round" stroke-opacity="0.9" style="mix-blend-mode: normal;"/>
+    </g>
+
+    <!-- Col 2: multiply -->
+    <g clip-path="url(#clip-2)">
+      <use href="#basemap"/>
+      <line x1="30" y1="160" x2="1050" y2="70" stroke="#d62728" stroke-width="30" stroke-linecap="round" stroke-opacity="0.9" style="mix-blend-mode: multiply;"/>
+    </g>
+
+    <!-- Col 3: screen -->
+    <g clip-path="url(#clip-3)">
+      <use href="#basemap"/>
+      <line x1="30" y1="160" x2="1050" y2="70" stroke="#d62728" stroke-width="30" stroke-linecap="round" stroke-opacity="0.9" style="mix-blend-mode: screen;"/>
+    </g>
+
+    <!-- Col 4: overlay -->
+    <g clip-path="url(#clip-4)">
+      <use href="#basemap"/>
+      <line x1="30" y1="160" x2="1050" y2="70" stroke="#d62728" stroke-width="30" stroke-linecap="round" stroke-opacity="0.9" style="mix-blend-mode: overlay;"/>
+    </g>
+
+    <!-- Col 5: plus (additive) -->
+    <g clip-path="url(#clip-5)">
+      <use href="#basemap"/>
+      <line x1="30" y1="160" x2="1050" y2="70" stroke="#d62728" stroke-width="30" stroke-linecap="round" stroke-opacity="0.9" style="mix-blend-mode: plus-lighter;"/>
+    </g>
+
+    <!-- Col 6: erase (subtractive/destination-out) -->
+    <g clip-path="url(#clip-6)" mask="url(#erase-mask-line)">
+      <use href="#basemap"/>
+    </g>
+  </g>
+
+  <!-- Column Labels -->
+  <text x="100" y="20" text-anchor="middle" fill="#212529" font-size="14">normal</text>
+  <text x="276" y="20" text-anchor="middle" fill="#212529" font-size="14">multiply</text>
+  <text x="452" y="20" text-anchor="middle" fill="#212529" font-size="14">screen</text>
+  <text x="628" y="20" text-anchor="middle" fill="#212529" font-size="14">overlay</text>
+  <text x="804" y="20" text-anchor="middle" fill="#212529" font-size="14">plus</text>
+  <text x="980" y="20" text-anchor="middle" fill="#212529" font-size="14">erase</text>
+</svg>
