@@ -65,7 +65,7 @@
 
   <!-- 1. BASE MAPS & OVERLAYS GROUP -->
   <g style="isolation: isolate;">
-    
+
     <!-- Col 1: normal -->
     <g clip-path="url(#clip-1)">
       <use href="#basemap"/>

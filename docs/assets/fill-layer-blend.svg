@@ -65,7 +65,7 @@
 
   <!-- 1. BASE MAPS & OVERLAYS GROUP -->
   <g style="isolation: isolate;">
-    
+
     <!-- Col 1: normal -->
     <g clip-path="url(#clip-1)">
       <use href="#basemap"/>
@@ -102,7 +102,7 @@
     </g>
 
   </g>
-  
+
   <!-- Column Labels -->
   <text x="100" y="20" text-anchor="middle" fill="#212529" font-size="14">normal</text>
   <text x="276" y="20" text-anchor="middle" fill="#212529" font-size="14">multiply</text>
