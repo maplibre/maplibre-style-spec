@@ -334,9 +334,12 @@ describe('legacy filter tests', () => {
         });
 
         test('==, $type', () => {
-            const f = createFilterExpr(['==', '$type', 'LineString']).filter;
-            expect(f({zoom: 0}, {type: 1} as any as Feature)).toBe(false);
-            expect(f({zoom: 0}, {type: 2} as any as Feature)).toBe(true);
+            const f = createFilterExpr(['==', '$type', 'Polygon']).filter;
+            expect(f({zoom: 0}, {type: 2} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {type: 3} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {type: 'Polygon'} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {type: 'LineString'} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {type: 'MultiPolygon'} as any as Feature)).toBe(true);
         });
 
         test('==, $id', () => {

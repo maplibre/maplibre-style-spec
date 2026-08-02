@@ -3,6 +3,7 @@
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
+- Match multi-geometries with their simple type in geometry filters ([#1346](https://github.com/maplibre/maplibre-style-spec/issues/1346)) (by [@Guflly](https://github.com/Guflly))
 - _...Add new stuff here..._
 
 ## 26.2.1
