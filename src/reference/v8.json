@@ -6502,8 +6502,11 @@
         "multiply": {
           "doc": "Multiply blending. The layer color is multiplied with the colors underneath, producing darker results. Useful for textures, hillshades, and combining raster and vector content."
         },
-        "hsv-value": {
-          "doc": "HSV value blending. Uses the value (brightness) from the layer while preserving hue and saturation from the content underneath."
+        "color": {
+          "doc": "Color blending. Creates a color with the hue and saturation of the layer and the luminosity of the content underneath, preserving its gray levels. Useful for tinting monochrome content such as a hillshade."
+        },
+        "luminosity": {
+          "doc": "Luminosity blending. Creates a color with the luminosity of the layer and the hue and saturation of the content underneath. The inverse of `color`."
         },
         "plus": {
           "doc": "Additive blending. The layer color is added to the colors underneath, producing brighter results. Useful for glow and heat accumulation effects."
@@ -7028,8 +7031,11 @@
         "multiply": {
           "doc": "Multiply blending. The layer color is multiplied with the colors underneath, producing darker results. Useful for textures, hillshades, and combining raster and vector content."
         },
-        "hsv-value": {
-          "doc": "HSV value blending. Uses the value (brightness) from the layer while preserving hue and saturation from the content underneath."
+        "color": {
+          "doc": "Color blending. Creates a color with the hue and saturation of the layer and the luminosity of the content underneath, preserving its gray levels. Useful for tinting monochrome content such as a hillshade."
+        },
+        "luminosity": {
+          "doc": "Luminosity blending. Creates a color with the luminosity of the layer and the hue and saturation of the content underneath. The inverse of `color`."
         },
         "plus": {
           "doc": "Additive blending. The layer color is added to the colors underneath, producing brighter results. Useful for glow and heat accumulation effects."
