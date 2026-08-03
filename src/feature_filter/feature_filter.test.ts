@@ -116,6 +116,27 @@ describe('filter', () => {
         expect(match(undefined, {properties: {x: 'd'}} as any as Feature)).toBe(false);
     });
 
+    test.each([
+        {type: 'Point', multiType: 'MultiPoint'},
+        {type: 'LineString', multiType: 'MultiLineString'},
+        {type: 'Polygon', multiType: 'MultiPolygon'}
+    ])('expression, geometry type normalizes $multiType', ({type, multiType}) => {
+        const filter = featureFilter(
+            ['==', ['geometry-type'], type],
+            'layers[0].filter'
+        ).filter;
+        expect(filter({zoom: 0}, {type} as any as Feature)).toBe(true);
+        expect(filter({zoom: 0}, {type: multiType} as any as Feature)).toBe(true);
+    });
+
+    test('expression, geometry type rejects a missing feature', () => {
+        const filter = featureFilter(
+            ['==', ['geometry-type'], 'Point'],
+            'layers[0].filter'
+        ).filter;
+        expect(filter({zoom: 0}, undefined)).toBe(false);
+    });
+
     test('expression, type error', () => {
         expect(() => {
             featureFilter(
