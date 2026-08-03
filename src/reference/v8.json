@@ -6502,17 +6502,20 @@
         "multiply": {
           "doc": "Multiply blending. The layer color is multiplied with the colors underneath, producing darker results. Useful for textures, hillshades, and combining raster and vector content."
         },
+        "hsv-value": {
+          "doc": "HSV value blending. Uses the value (brightness) from the layer while preserving hue and saturation from the content underneath."
+        },
+        "plus": {
+          "doc": "Additive blending. The layer color is added to the colors underneath, producing brighter results. Useful for glow and heat accumulation effects."
+        },
         "screen": {
           "doc": "Screen blending. The inverse of the colors is multiplied, producing lighter results. Useful for glow, heatmap, and light-based effects."
         },
         "overlay": {
           "doc": "Overlay blending. Multiplies or screens colors depending on the colors underneath, preserving highlights and shadows while adding contrast."
         },
-        "plus": {
-          "doc": "Additive blending. The layer color is added to the colors underneath, producing brighter results. Useful for glow and heat accumulation effects."
-        },
         "erase": {
-          "doc": "Erase blending. The layer removes content underneath based on its alpha value."
+          "doc": "Erase blending. The layer removes all content underneath based on its alpha value."
         }
       },
       "default": "normal",
@@ -7025,17 +7028,20 @@
         "multiply": {
           "doc": "Multiply blending. The layer color is multiplied with the colors underneath, producing darker results. Useful for textures, hillshades, and combining raster and vector content."
         },
+        "hsv-value": {
+          "doc": "HSV value blending. Uses the value (brightness) from the layer while preserving hue and saturation from the content underneath."
+        },
+        "plus": {
+          "doc": "Additive blending. The layer color is added to the colors underneath, producing brighter results. Useful for glow and heat accumulation effects."
+        },
         "screen": {
           "doc": "Screen blending. The inverse of the colors is multiplied, producing lighter results. Useful for glow, heatmap, and light-based effects."
         },
         "overlay": {
           "doc": "Overlay blending. Multiplies or screens colors depending on the colors underneath, preserving highlights and shadows while adding contrast."
         },
-        "plus": {
-          "doc": "Additive blending. The layer color is added to the colors underneath, producing brighter results. Useful for glow and heat accumulation effects."
-        },
         "erase": {
-          "doc": "Erase blending. The layer removes content underneath based on its alpha value."
+          "doc": "Erase blending. The layer removes all content underneath based on its alpha value."
         }
       },
       "default": "normal",
