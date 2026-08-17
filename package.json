@@ -73,7 +73,7 @@
     "@vitest/ui": "4.1.10",
     "cross-env": "^10.1.0",
     "eslint": "^10.8.1",
-    "eslint-plugin-jsdoc": "^63.3.3",
+    "eslint-plugin-jsdoc": "^64.1.0",
     "glob": "^13.0.6",
     "globals": "^17.11.0",
     "oxfmt": "^0.63.0",
