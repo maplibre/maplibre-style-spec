@@ -116,6 +116,21 @@ describe('filter', () => {
         expect(match(undefined, {properties: {x: 'd'}} as any as Feature)).toBe(false);
     });
 
+    test.each([
+        {type: 'Point', multiType: 'MultiPoint'},
+        {type: 'LineString', multiType: 'MultiLineString'},
+        {type: 'Polygon', multiType: 'MultiPolygon'}
+    ])('expression, geometry type normalizes $multiType', ({type, multiType}) => {
+        const filter = featureFilter(['==', ['geometry-type'], type], 'layers[0].filter').filter;
+        expect(filter({zoom: 0}, {type} as any as Feature)).toBe(true);
+        expect(filter({zoom: 0}, {type: multiType} as any as Feature)).toBe(true);
+    });
+
+    test('expression, geometry type rejects a missing feature', () => {
+        const filter = featureFilter(['==', ['geometry-type'], 'Point'], 'layers[0].filter').filter;
+        expect(filter({zoom: 0}, undefined)).toBe(false);
+    });
+
     test('expression, type error', () => {
         expect(() => {
             featureFilter(
@@ -334,9 +349,12 @@ describe('legacy filter tests', () => {
         });
 
         test('==, $type', () => {
-            const f = createFilterExpr(['==', '$type', 'LineString']).filter;
-            expect(f({zoom: 0}, {type: 1} as any as Feature)).toBe(false);
-            expect(f({zoom: 0}, {type: 2} as any as Feature)).toBe(true);
+            const f = createFilterExpr(['==', '$type', 'Polygon']).filter;
+            expect(f({zoom: 0}, {type: 2} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {type: 3} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {type: 'Polygon'} as any as Feature)).toBe(true);
+            expect(f({zoom: 0}, {type: 'LineString'} as any as Feature)).toBe(false);
+            expect(f({zoom: 0}, {type: 'MultiPolygon'} as any as Feature)).toBe(true);
         });
 
         test('==, $id', () => {
