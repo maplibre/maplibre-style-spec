@@ -5,6 +5,7 @@ import {EvaluationContext} from '../evaluation_context';
 import {getOwn} from '../../util/get_own';
 
 export class GlobalState implements Expression {
+    readonly neverConstant = true;
     type: Type = ValueType;
 
     constructor(public readonly key: string) {}

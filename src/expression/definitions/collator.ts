@@ -7,6 +7,7 @@ import type {ParsingContext} from '../parsing_context';
 import type {Type} from '../types';
 
 export class CollatorExpression implements Expression {
+    readonly neverConstant = true;
     type: Type;
     caseSensitive: Expression;
     diacriticSensitive: Expression;

@@ -182,6 +182,8 @@ function linesWithinPolygons(ctx: EvaluationContext, polygonGeometry: GeoJSONPol
 }
 
 export class Within implements Expression {
+    readonly neverConstant = true;
+    readonly featureDependent = true;
     type: Type;
     geojson: GeoJSON.GeoJSON;
     geometries: GeoJSONPolygons;

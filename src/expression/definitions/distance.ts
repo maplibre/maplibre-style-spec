@@ -727,6 +727,8 @@ function toSimpleGeometry(
 }
 
 export class Distance implements Expression {
+    readonly neverConstant = true;
+    readonly featureDependent = true;
     type: Type;
     geojson: GeoJSON.GeoJSON;
     geometries: SimpleGeometry[];

@@ -15,14 +15,10 @@ import {ParsingContext} from './parsing_context';
 import {EvaluationContext} from './evaluation_context';
 
 import {expressions} from './definitions';
-import {CollatorExpression} from './definitions/collator';
-import {Within} from './definitions/within';
 import {Literal} from './definitions/literal';
 import {Assertion} from './definitions/assertion';
 import {Coercion} from './definitions/coercion';
 import {Var} from './definitions/var';
-import {Distance} from './definitions/distance';
-import {GlobalState} from './definitions/global_state';
 
 import type {Expression, ExpressionRegistry} from './expression';
 import type {Value} from './values';
@@ -560,16 +556,9 @@ function isExpressionConstant(expression: Expression) {
         return isExpressionConstant(expression.boundExpression);
     } else if (expression instanceof CompoundExpression && expression.name === 'error') {
         return false;
-    } else if (expression instanceof CollatorExpression) {
-        // Although the results of a Collator expression with fixed arguments
-        // generally shouldn't change between executions, we can't serialize them
-        // as constant expressions because results change based on environment.
-        return false;
-    } else if (expression instanceof Within) {
-        return false;
-    } else if (expression instanceof Distance) {
-        return false;
-    } else if (expression instanceof GlobalState) {
+    } else if (expression.neverConstant) {
+        // e.g. Collator, whose results change based on environment, and Within /
+        // Distance / GlobalState, whose results depend on evaluation-time input.
         return false;
     }
 
@@ -622,10 +611,7 @@ function isFeatureConstant(e: Expression) {
         }
     }
 
-    if (e instanceof Within) {
-        return false;
-    }
-    if (e instanceof Distance) {
+    if (e.featureDependent) {
         return false;
     }
 
