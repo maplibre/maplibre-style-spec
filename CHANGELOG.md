@@ -1,6 +1,7 @@
 ## main
 ### ✨ Features and improvements
 - _...Add new stuff here..._
+- Publish the ESM build (`dist/index.mjs`, referenced by `package.json#module`) as one module per source file instead of a single bundle, so that bundlers which eliminate dead code at module granularity can drop unused parts of the package ([#1829](https://github.com/maplibre/maplibre-style-spec/pull/1829)) (by [@ahocevar](https://github.com/ahocevar))
 
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
