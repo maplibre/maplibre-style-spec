@@ -14,6 +14,16 @@ export interface Expression {
      * false if the complete set of outputs is statically undecidable, otherwise true.
      */
     outputDefined(): boolean;
+    /**
+     * Set on expressions that may produce a different result on every evaluation, even
+     * with constant arguments, and so must never be folded into a constant.
+     */
+    readonly neverConstant?: boolean;
+    /**
+     * Set on expressions that read from the feature being evaluated, and so are never
+     * feature-constant regardless of their arguments.
+     */
+    readonly featureDependent?: boolean;
 }
 
 export type ExpressionParser = (
