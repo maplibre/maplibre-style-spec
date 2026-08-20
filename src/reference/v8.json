@@ -471,6 +471,11 @@
         }
       }
     },
+    "premultiply": {
+      "type": "boolean",
+      "default": true,
+      "doc": "Whether RGB values should be premultiplied by alpha when decoding raster tiles. Set to `false` when the alpha channel stores data instead of opacity."
+    },
     "*": {
       "type": "*",
       "doc": "Other keys to configure the data source."
