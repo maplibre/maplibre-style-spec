@@ -6006,8 +6006,8 @@
         "sdk-support": {
           "basic functionality": {
             "js": "5.20.0",
-            "android": "https://github.com/maplibre/maplibre-native/issues/4133",
-            "ios": "https://github.com/maplibre/maplibre-native/issues/4133"
+            "android": "13.5.0",
+            "ios": "6.29.0"
           }
         }
       },
@@ -6036,8 +6036,8 @@
         "sdk-support": {
           "basic functionality": {
             "js": "5.20.0",
-            "android": "https://github.com/maplibre/maplibre-native/issues/4133",
-            "ios": "https://github.com/maplibre/maplibre-native/issues/4133"
+            "android": "13.5.0",
+            "ios": "6.29.0"
           }
         }
       }
