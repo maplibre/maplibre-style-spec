@@ -8,7 +8,7 @@ export type Stops = Array<[number, Expression]>;
  * Returns the index of the last stop <= input, or 0 if it doesn't exist.
  * @private
  */
-export function findStopLessThanOrEqualTo(stops: Array<number>, input: number) {
+export function findStopLessThanOrEqualTo(stops: Array<number>, input: number, key: string) {
     const lastIndex = stops.length - 1;
     let lowerIndex = 0;
     let upperIndex = lastIndex;
@@ -30,7 +30,7 @@ export function findStopLessThanOrEqualTo(stops: Array<number>, input: number) {
         } else if (currentValue > input) {
             upperIndex = currentIndex - 1;
         } else {
-            throw new RuntimeError('Input is not a number.');
+            throw new RuntimeError('Input is not a number.', key);
         }
     }
 

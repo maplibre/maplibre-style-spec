@@ -1,6 +1,6 @@
 import v8 from '../src/reference/v8.json' with {type: 'json'};
 import fs from 'fs';
-import {formatJSON} from './util';
+import {formatJSON} from './util.ts';
 
 /**
  * This script generates markdown documentation from the JSON schema.

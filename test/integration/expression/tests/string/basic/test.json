@@ -50,13 +50,13 @@
     "outputs": [
       "1",
       {
-        "error": "Expected value to be of type string, but found number instead."
+        "error": "layers[0].paint.some-property: Expected value to be of type string, but found number instead."
       },
       {
-        "error": "Expected value to be of type string, but found boolean instead."
+        "error": "layers[0].paint.some-property: Expected value to be of type string, but found boolean instead."
       },
       {
-        "error": "Expected value to be of type string, but found null instead."
+        "error": "layers[0].paint.some-property: Expected value to be of type string, but found null instead."
       }
     ]
   }

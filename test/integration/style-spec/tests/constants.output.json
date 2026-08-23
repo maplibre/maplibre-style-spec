@@ -1,10 +1,12 @@
 [
   {
     "message": "constants: constants have been deprecated as of v8",
+    "severity": "error",
     "line": 9
   },
   {
     "message": "layers[1].paint.fill-color: color expected, array found",
+    "severity": "error",
     "line": 28
   }
 ]

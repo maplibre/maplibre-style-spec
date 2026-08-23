@@ -1,7 +1,7 @@
 import {writeFileSync} from 'fs';
 import spec from '../src/reference/v8.json' with {type: 'json'};
-import {supportsPropertyExpression, supportsZoomExpression} from '../src/util/properties';
-import {formatJSON} from './util';
+import {supportsPropertyExpression, supportsZoomExpression} from '../src/util/properties.ts';
+import {formatJSON} from './util.ts';
 
 function jsDocComment(property) {
     const lines = [];
@@ -221,6 +221,7 @@ export type ExpressionSpecification =
     | ['format', ...(string | ['image', ExpressionSpecification] | ExpressionSpecification | {'font-scale'?: number | ExpressionSpecification, 'text-font'?: ExpressionSpecification, 'text-color'?: ColorSpecification | ExpressionSpecification, 'vertical-align'?: 'bottom' | 'center' | 'top'})[]] // string
     | ['image', string | ExpressionSpecification] // image
     | ['literal', unknown]
+    | ['semiliteral', unknown]
     | ['number', unknown | ExpressionSpecification, ...(unknown | ExpressionSpecification)[]] // number
     | ['number-format', number | ExpressionSpecification, {'locale'?: string | ExpressionSpecification, 'currency'?: string | ExpressionSpecification, 'min-fraction-digits'?: number | ExpressionSpecification, 'max-fraction-digits'?: number | ExpressionSpecification}] // string
     | ['number-format', number | ExpressionSpecification, {'locale'?: string | ExpressionSpecification, 'unit'?: string | ExpressionSpecification, 'min-fraction-digits'?: number | ExpressionSpecification, 'max-fraction-digits'?: number | ExpressionSpecification}] // string

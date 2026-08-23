@@ -1,222 +1,277 @@
 [
   {
     "message": "layers[0].paint.line-width.base: number expected, string found",
+    "severity": "error",
     "line": 17
   },
   {
     "message": "layers[0].paint.line-width.stops: array must have at least one stop",
+    "severity": "error",
     "line": 18
   },
   {
     "message": "layers[1].paint.line-width: missing required property \"stops\"",
+    "severity": "error",
     "line": 28
   },
   {
     "message": "layers[2].paint.line-width.stops: array must have at least one stop",
+    "severity": "error",
     "line": 39
   },
   {
     "message": "layers[3].paint.line-width.stops: array expected, object found",
+    "severity": "error",
     "line": 50
   },
   {
     "message": "layers[4].paint.line-width.stops[0]: array expected, string found",
+    "severity": "error",
     "line": 62
   },
   {
     "message": "layers[5].paint.line-width.stops[0]: array length 2 expected, length 0 found",
+    "severity": "error",
     "line": 75
   },
   {
     "message": "layers[6].paint.line-dasharray.stops[0][0]: number expected, string found\nIf you intended to use a categorical function, specify `\"type\": \"categorical\"`.",
+    "severity": "error",
     "line": 89
   },
   {
     "message": "layers[7].paint.line-width.stops[0][1]: number expected, string found",
+    "severity": "error",
     "line": 106
   },
   {
     "message": "layers[8].paint.line-width.stops[1][0]: stop domain values must appear in ascending order",
+    "severity": "error",
     "line": 125
   },
   {
     "message": "layers[9].paint.fill-translate[0]: number expected, object found",
+    "severity": "error",
     "line": 139
   },
   {
     "message": "layers[9].paint.fill-translate[1]: number expected, object found",
+    "severity": "error",
     "line": 152
   },
   {
     "message": "layers[12].paint.fill-color.stops[1]: object expected, number found",
+    "severity": "error",
     "line": 227
   },
   {
     "message": "layers[13].paint.fill-color.stops[0]: object stop key must have zoom",
+    "severity": "error",
     "line": 244
   },
   {
     "message": "layers[14].paint.fill-color.stops[0]: object stop key must have value",
+    "severity": "error",
     "line": 263
   },
   {
     "message": "layers[15].paint.fill-color.stops[0][0].zoom: number expected, string found",
+    "severity": "error",
     "line": 284
   },
   {
     "message": "layers[16].paint.fill-color.stops[0][0].value: stop domain value must be a number, string, or boolean",
+    "severity": "error",
     "line": 305
   },
   {
     "message": "layers[17].paint.fill-color.stops[0][0]: number expected, string found\nIf you intended to use a categorical function, specify `\"type\": \"categorical\"`.",
+    "severity": "error",
     "line": 324
   },
   {
     "message": "layers[18].paint.fill-color.stops[0][0]: number expected, string found\nIf you intended to use a categorical function, specify `\"type\": \"categorical\"`.",
+    "severity": "error",
     "line": 341
   },
   {
     "message": "layers[19].paint.fill-color: \"property\" property is required",
+    "severity": "error",
     "line": 354
   },
   {
     "message": "layers[22].paint.fill-color: missing required property \"property\"",
+    "severity": "error",
     "line": 401
   },
   {
     "message": "layers[23].paint.fill-color.stops: identity function may not have a \"stops\" property",
+    "severity": "error",
     "line": 415
   },
   {
     "message": "layers[24].paint.fill-color.stops[1][0]: number stop domain type must match previous stop domain type string",
+    "severity": "error",
     "line": 434
   },
   {
     "message": "layers[25].paint.fill-color.stops[1][0].value: number stop domain type must match previous stop domain type string",
+    "severity": "error",
     "line": 456
   },
   {
     "message": "layers[26].paint.fill-color.stops[0][0]: number expected, string found",
+    "severity": "error",
     "line": 474
   },
   {
     "message": "layers[27].paint.fill-color.stops[0][0].value: number expected, string found",
+    "severity": "error",
     "line": 492
   },
   {
     "message": "layers[28].paint.fill-color.stops[0][0]: number expected, string found",
+    "severity": "error",
     "line": 510
   },
   {
     "message": "layers[29].paint.fill-color.stops[0][0].value: number expected, string found",
+    "severity": "error",
     "line": 528
   },
   {
     "message": "layers[31].paint.fill-color.stops[0][0]: stop domain value must be a number, string, or boolean",
+    "severity": "error",
     "line": 564
   },
   {
     "message": "layers[32].paint.fill-color.stops[0][0]: stop domain value must be a number, string, or boolean",
+    "severity": "error",
     "line": 581
   },
   {
     "message": "layers[33].paint.fill-antialias: exponential functions not supported",
+    "severity": "error",
     "line": 595
   },
   {
     "message": "layers[34].paint.fill-antialias: \"property\" property is required",
+    "severity": "error",
     "line": 616
   },
   {
     "message": "layers[34].paint.fill-antialias.stops[0][0].value: number expected, string found",
+    "severity": "error",
     "line": 621
   },
   {
     "message": "layers[35].paint.fill-opacity.stops[2][0]: stop domain values must be unique",
+    "severity": "error",
     "line": 648
   },
   {
     "message": "layers[36].paint.fill-opacity.stops[0][0]: integer expected, found 0.33",
+    "severity": "error",
     "line": 666
   },
   {
     "message": "layers[37].paint.fill-opacity.stops[1][0].value: stop domain values must appear in ascending order",
+    "severity": "error",
     "line": 692
   },
   {
     "message": "layers[38].paint.fill-opacity.stops[1]: stop zoom values must appear in ascending order",
+    "severity": "error",
     "line": 718
   },
   {
     "message": "layers[39].paint.fill-opacity.stops[2][0].value: stop domain values must be unique",
+    "severity": "error",
     "line": 754
   },
   {
     "message": "layers[42].paint.fill-opacity.default: number expected, string found",
+    "severity": "error",
     "line": 826
   },
   {
     "message": "layers[43].paint.fill-color.default: color expected, \"invalid\" found",
+    "severity": "error",
     "line": 839
   },
   {
     "message": "layers[44].paint.fill-opacity.stops[1][0]: stop domain values must appear in ascending order",
+    "severity": "error",
     "line": 857
   },
   {
     "message": "layers[47].paint.fill-color: Expected color but found number instead.",
+    "severity": "error",
     "line": 898
   },
   {
     "message": "layers[48].paint.fill-color[2]: Expected number but found string instead.",
+    "severity": "error",
     "line": 907
   },
   {
     "message": "layers[49].paint.fill-opacity: \"zoom\" expression may only be used as input to a top-level \"step\" or \"interpolate\" expression.",
+    "severity": "error",
     "line": 916
   },
   {
     "message": "layers[50].layout.visibility: Expected string but found boolean instead.",
+    "severity": "error",
     "line": 925
   },
   {
     "message": "layers[51].paint.fill-extrusion-opacity: data expressions not supported",
+    "severity": "error",
     "line": 934
   },
   {
     "message": "layers[52].paint.heatmap-color: zoom expressions not supported",
+    "severity": "error",
     "line": 943
   },
   {
     "message": "layers[53].paint.heatmap-color: zoom functions not supported",
+    "severity": "error",
     "line": 951
   },
   {
     "message": "layers[54].layout.line-join: \"feature-state\" data expressions are not supported with layout properties.",
+    "severity": "error",
     "line": 959
   },
   {
     "message": "layers[55].paint.line-width.stops[0][1]: expressions are not allowed in function stops.",
+    "severity": "error",
     "line": 972
   },
   {
     "message": "layers[56]: layer \"invalid expression - color-relief-color must be zoom constant\" requires a raster-dem source",
+    "severity": "error",
     "line": 983
   },
   {
     "message": "layers[56].paint.color-relief-color: zoom expressions not supported",
+    "severity": "error",
     "line": 986
   },
   {
     "message": "layers[57]: layer \"invalid expression - color-relief-color must not be a function\" requires a raster-dem source",
+    "severity": "error",
     "line": 991
   },
   {
     "message": "layers[57].paint.color-relief-color: zoom functions not supported",
+    "severity": "error",
     "line": 994
   },
   {
     "message": "layers[59].layout.visibility: data expressions not supported",
+    "severity": "error",
     "line": 1012
   }
 ]

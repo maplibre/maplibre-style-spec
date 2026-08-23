@@ -152,7 +152,7 @@
       0,
       -1,
       {
-        "error": "Expected second argument to be of type array or string, but found null instead."
+        "error": "layers[0].paint.some-property: Expected second argument to be of type array or string, but found null instead."
       },
       4,
       -1,

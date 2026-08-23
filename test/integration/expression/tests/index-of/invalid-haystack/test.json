@@ -48,13 +48,13 @@
     },
     "outputs": [
       {
-        "error": "Expected second argument to be of type array or string, but found number instead."
+        "error": "layers[0].paint.some-property: Expected second argument to be of type array or string, but found number instead."
       },
       {
-        "error": "Expected second argument to be of type array or string, but found object instead."
+        "error": "layers[0].paint.some-property: Expected second argument to be of type array or string, but found object instead."
       },
       {
-        "error": "Expected second argument to be of type array or string, but found null instead."
+        "error": "layers[0].paint.some-property: Expected second argument to be of type array or string, but found null instead."
       }
     ]
   }

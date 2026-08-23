@@ -30,12 +30,18 @@ export interface VisibilityExpression {
 }
 
 class VisibilityExpressionClass implements VisibilityExpression {
+    private _rootKey: string;
     private _globalState: Record<string, any>;
     private _globalStateRefs: Set<string>;
     private _literalValue: 'visible' | 'none' | undefined;
     private _compiledValue: StyleExpression;
 
-    constructor(visibility: VisibilitySpecification, globalState: Record<string, any>) {
+    constructor(
+        visibility: VisibilitySpecification,
+        rootKey: string,
+        globalState: Record<string, any>
+    ) {
+        this._rootKey = rootKey;
         this._globalState = globalState;
         this.setValue(visibility);
     }
@@ -56,7 +62,12 @@ class VisibilityExpressionClass implements VisibilityExpression {
             this._globalStateRefs = new Set<string>();
             return;
         }
-        const compiled = createExpression(visibility, visibilitySpec, this._globalState);
+        const compiled = createExpression(
+            visibility,
+            this._rootKey,
+            visibilitySpec,
+            this._globalState
+        );
         if (compiled.result === 'error') {
             this._literalValue = 'visible';
             this._compiledValue = undefined;
@@ -75,12 +86,15 @@ class VisibilityExpressionClass implements VisibilityExpression {
 /**
  * Creates a visibility expression from a visibility specification.
  * @param visibility - the visibility specification, literal or expression
+ * @param rootKey - location of the visibility value in the style JSON
+ * (e.g. `layers[3].layout.visibility`), used to prefix runtime warnings
  * @param globalState - the global state object
  * @returns visibility expression object
  */
 export default function createVisibility(
     visibility: VisibilitySpecification,
+    rootKey: string,
     globalState: Record<string, any>
 ): VisibilityExpression {
-    return new VisibilityExpressionClass(visibility, globalState);
+    return new VisibilityExpressionClass(visibility, rootKey, globalState);
 }

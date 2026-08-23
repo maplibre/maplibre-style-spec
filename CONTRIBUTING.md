@@ -15,6 +15,10 @@ It is a good idea to discuss proposed changes before proceeding to an issue tick
 
 MapLibre software relies heavily on automated testing, and the project includes a suite of unit and integration tests. For both new features and bug fixes, contributions should update or add test cases to prevent regressions.
 
+## Note on AI usage
+
+Please take a moment to review [MapLibre's AI Policy](https://github.com/maplibre/maplibre/blob/main/AI_POLICY.md). tl;dr: do not let AI speak for you, verify all generated content before requesting a review and disclose AI usage in pull requests.
+
 # Building the Style spec JS package
 
 This package is used by `maplibre-gl` in order to validate the spec and parse it.

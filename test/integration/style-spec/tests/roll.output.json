@@ -1,6 +1,7 @@
 [
   {
     "message": "roll: number expected, string found",
+    "severity": "error",
     "line": 3
   }
 ]

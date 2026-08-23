@@ -1,6 +1,7 @@
 [
   {
     "message": "centerAltitude: number expected, string found",
+    "severity": "error",
     "line": 3
   }
 ]

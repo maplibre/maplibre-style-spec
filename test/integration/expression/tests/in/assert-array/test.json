@@ -93,7 +93,7 @@
       true,
       true,
       {
-        "error": "Expected value to be of type array, but found null instead."
+        "error": "layers[0].paint.some-property[1][2]: Expected value to be of type array, but found null instead."
       }
     ]
   }

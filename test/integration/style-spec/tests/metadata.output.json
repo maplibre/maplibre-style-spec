@@ -1,6 +1,7 @@
 [
   {
     "message": "constants: constants have been deprecated as of v8",
+    "severity": "error",
     "line": 10
   }
 ]

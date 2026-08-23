@@ -1,0 +1,29 @@
+{
+  "expression": [
+    "semiliteral",
+    [
+      "x",
+      "y"
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": true,
+      "isZoomConstant": true,
+      "type": "array<string, 2>"
+    },
+    "outputs": [
+      [
+        "x",
+        "y"
+      ]
+    ]
+  }
+}

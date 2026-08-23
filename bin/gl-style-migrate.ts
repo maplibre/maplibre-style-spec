@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 import fs from 'fs';
 import minimist from 'minimist';
 import {format} from '../src/format';

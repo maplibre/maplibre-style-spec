@@ -1,6 +1,7 @@
 [
   {
     "message": "font-faces: object expected, array found",
+    "severity": "error",
     "line": 5
   }
 ]

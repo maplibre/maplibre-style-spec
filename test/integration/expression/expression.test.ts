@@ -16,11 +16,14 @@ import {
     ZoomDependentExpression
 } from '../../../src';
 import {ExpressionParsingError} from '../../../src/expression/parsing_error';
+import {RuntimeError} from '../../../src/expression/runtime_error';
 import {getGeometry} from '../../lib/geometry';
 import {deepEqual, stripPrecision} from '../../lib/json-diff';
 import {describe, expect, test} from 'vitest';
 
 const DECIMAL_SIGNIFICANT_FIGURES = 6;
+
+const ROOT_KEY = 'layers[0].paint.some-property';
 
 type Mutable<T> = {
     -readonly [K in keyof T]: T[K];
@@ -107,7 +110,7 @@ describe('expression', () => {
                     fixture.propertySpec = spec;
                 }
 
-                fs.writeFileSync(fixturePath, JSON.stringify(fixture, null, 2));
+                fs.writeFileSync(fixturePath, `${JSON.stringify(fixture, null, 2)}\n`);
                 return;
             }
 
@@ -162,10 +165,11 @@ function evaluateFixture(
     const expression = isFunction(fixture.expression)
         ? createPropertyExpression(
               convertFunction(fixture.expression, spec),
+              ROOT_KEY,
               spec,
               fixture.globalState
           )
-        : createPropertyExpression(fixture.expression, spec, fixture.globalState);
+        : createPropertyExpression(fixture.expression, ROOT_KEY, spec, fixture.globalState);
 
     if (expression.result === 'error') {
         return {
@@ -245,8 +249,10 @@ function evaluateExpression(
             }
             outputs.push(value);
         } catch (error) {
+            const path = error instanceof RuntimeError ? error.path : '';
+            const message = error instanceof RuntimeError ? error.toJSON() : error.message;
             outputs.push({
-                error: error.name === 'ExpressionEvaluationError' ? error.toJSON() : error.message
+                error: `${ROOT_KEY}${path}: ${message}`
             });
         }
     }

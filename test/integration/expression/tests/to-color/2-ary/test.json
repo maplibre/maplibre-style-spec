@@ -135,7 +135,7 @@
         1
       ],
       {
-        "error": "Could not parse color from value 'invalid'"
+        "error": "layers[0].paint.some-property: Could not parse color from value 'invalid'"
       }
     ]
   }

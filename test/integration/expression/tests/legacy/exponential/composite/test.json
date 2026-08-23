@@ -123,7 +123,7 @@
     },
     "outputs": [
       {
-        "error": "Expected value to be of type number, but found null instead."
+        "error": "layers[0].paint.some-property[4][2]: Expected value to be of type number, but found null instead."
       },
       1,
       1,
@@ -131,7 +131,7 @@
       2,
       2,
       {
-        "error": "Expected value to be of type number, but found string instead."
+        "error": "layers[0].paint.some-property[4][2]: Expected value to be of type number, but found string instead."
       }
     ]
   }

@@ -57,7 +57,7 @@ describe('validateColor function', () => {
 
         for (const value of invalidColorStrings) {
             expect(validateColor({key, value})).toEqual([
-                {message: `${key}: color expected, "${value}" found`}
+                {message: `${key}: color expected, "${value}" found`, severity: 'error'}
             ]);
         }
     });

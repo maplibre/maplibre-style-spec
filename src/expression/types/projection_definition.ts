@@ -9,6 +9,13 @@ export class ProjectionDefinition {
         this.transition = transition;
     }
 
+    toString(): string {
+        if (this.from === this.to && this.transition === 1) {
+            return this.from;
+        }
+        return JSON.stringify([this.from, this.to, this.transition]);
+    }
+
     static interpolate(from: string, to: string, t: number) {
         return new ProjectionDefinition(from, to, t);
     }

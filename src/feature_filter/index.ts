@@ -21,26 +21,62 @@ type MixedFilterDiagnostic = {
     legacyFilter: Array<any>;
 };
 
-export function isExpressionFilter(filter: any): filter is ExpressionFilterSpecification {
-    if (filter === true || filter === false) {
-        return true;
+/**
+ * Which of the two filter syntaxes a filter node belongs to.
+ *
+ * - `expression`: only valid as an expression, e.g. `["==", ["get", "x"], 1]`.
+ * - `legacy`: only valid as a deprecated filter, e.g. `["!in", "x", 1]`.
+ * - `neutral`: valid as both *and* means the same thing in each, e.g. `["has", "x"]` or a
+ *   bare boolean. Reading it either way gives the same result, so it is no evidence of which
+ *   syntax the author was writing, and it must never decide the syntax of the tree it sits in.
+ *
+ * Note that "parses as both" is not enough to be `neutral`: `["in", "name", ""]` parses as
+ * both, but legacy reads it as a property test and an expression reads it as a substring
+ * test, so the two disagree. A node whose readings disagree stays `legacy` -- see `in` below.
+ */
+type FilterClassification = 'expression' | 'legacy' | 'neutral';
+
+function classifyChildren(children: Array<any>): FilterClassification {
+    let sawLegacy = false;
+    for (const child of children) {
+        const classification = classifyFilter(child);
+        // A single expression-only child settles it for the whole tree.
+        if (classification === 'expression') return 'expression';
+        if (classification === 'legacy') sawLegacy = true;
+    }
+    return sawLegacy ? 'legacy' : 'neutral';
+}
+
+function classifyFilter(filter: any): FilterClassification {
+    if (typeof filter === 'boolean') {
+        return 'neutral';
     }
 
     if (!Array.isArray(filter) || filter.length === 0) {
-        return false;
+        return 'legacy';
     }
+
     switch (filter[0]) {
         case 'has':
-            return filter.length >= 2 && filter[1] !== '$id' && filter[1] !== '$type';
+            if (filter.length < 2 || filter[1] === '$id' || filter[1] === '$type') {
+                return 'legacy';
+            }
+            // Both syntaxes read the two-element form as "this property is present"; only the
+            // expression takes a third argument.
+            return filter.length === 2 ? 'neutral' : 'expression';
 
         case 'in':
-            return (
-                filter.length >= 3 && (typeof filter[1] !== 'string' || Array.isArray(filter[2]))
-            );
+            // Legacy `["in", key, ...values]` tests a property against a set, while the `in`
+            // expression tests for a substring, so the scalar form is a conflict rather than a
+            // neutral node. Keeping it legacy is what makes plain legacy `in` filters keep
+            // matching, and what lets findMixedLegacyFilter report one inside an expression.
+            return filter.length >= 3 && (typeof filter[1] !== 'string' || Array.isArray(filter[2]))
+                ? 'expression'
+                : 'legacy';
 
         case '!in':
         case '!has':
-            return false;
+            return 'legacy';
 
         case '==':
         case '!=':
@@ -48,39 +84,27 @@ export function isExpressionFilter(filter: any): filter is ExpressionFilterSpeci
         case '>=':
         case '<':
         case '<=':
-            return filter.length !== 3 || Array.isArray(filter[1]) || Array.isArray(filter[2]);
+            return filter.length !== 3 || Array.isArray(filter[1]) || Array.isArray(filter[2])
+                ? 'expression'
+                : 'legacy';
 
-        case 'none': {
-            for (const f of filter.slice(1)) {
-                if (typeof f === 'boolean') continue;
-                if (isExpressionFilter(f)) {
-                    return true;
-                }
-            }
-            return false;
-        }
-
+        case 'none':
+            return 'legacy';
         case 'any':
-        case 'all': {
-            let hasLegacy = false;
-            for (const f of filter.slice(1)) {
-                if (typeof f === 'boolean') continue;
-                if (isExpressionFilter(f)) {
-                    // If any child is definitely an expression, treat the whole filter as an expression
-                    // that will go through extensive validation to surface mixed syntax issues.
-                    return true;
-                }
-                hasLegacy = true;
-            }
-            return !hasLegacy;
-        }
+        case 'all':
+            return classifyChildren(filter.slice(1));
 
         default:
-            return true;
+            return 'expression';
     }
 }
 
+export function isExpressionFilter(filter: any): filter is ExpressionFilterSpecification {
+    return classifyFilter(filter) !== 'legacy';
+}
+
 function getFilterPropertyExpression(property: string): unknown {
+    if (property === '$type') return ['geometry-type'];
     if (property === '$id') return ['id'];
     return ['get', property];
 }
@@ -94,39 +118,16 @@ function getLegacyFilterExpressionSuggestion(filter: Array<any>): unknown {
         case '>':
         case '>=':
             if (filter.length !== 3 || typeof filter[1] !== 'string') return null;
-            if (filter[1] === '$type') {
-                if (filter[0] !== '==' && filter[0] !== '!=') return null;
-                const expression = [
-                    'in',
-                    ['geometry-type'],
-                    ['literal', [filter[2], `Multi${filter[2]}`]]
-                ];
-                return filter[0] === '!=' ? ['!', expression] : expression;
-            }
             return [filter[0], getFilterPropertyExpression(filter[1]), filter[2]];
 
         case 'in':
         case '!in': {
             if (filter.length < 2 || typeof filter[1] !== 'string') return null;
-            let expression = [
+            const expression = [
                 'in',
                 getFilterPropertyExpression(filter[1]),
                 ['literal', filter.slice(2)]
             ];
-            if (filter[1] === '$type') {
-                expression = [
-                    'in',
-                    ['geometry-type'],
-                    [
-                        'literal',
-                        filter
-                            .slice(2)
-                            .map((g) => [g, `Multi${g}`])
-                            .flat()
-                    ]
-                ];
-            }
-
             return filter[0] === '!in' ? ['!', expression] : expression;
         }
 
@@ -143,7 +144,7 @@ function getLegacyFilterExpressionSuggestion(filter: Array<any>): unknown {
     }
 }
 
-export function getMixedFilterErrorMessage(filter: Array<any>): string {
+export function getMixedFilterMessage(filter: Array<any>): string {
     if (
         (filter[0] === '<' || filter[0] === '<=' || filter[0] === '>' || filter[0] === '>=') &&
         filter[1] === '$type'
@@ -209,11 +210,13 @@ export function findMixedLegacyFilter(
     return null;
 }
 
-export function validateNoMixedExpressionFilter(filter: FilterSpecification) {
+export function warnAboutMixedLegacyFilter(filter: FilterSpecification, rootKey: string) {
     const diagnostic = findMixedLegacyFilter(filter);
-    if (diagnostic) {
-        throw new Error(getMixedFilterErrorMessage(diagnostic.legacyFilter));
+    if (!diagnostic || typeof console === 'undefined') {
+        return;
     }
+    const path = diagnostic.path.map((index) => `[${index}]`).join('');
+    console.warn(`${rootKey}${path}: ${getMixedFilterMessage(diagnostic.legacyFilter)}`);
 }
 
 const filterSpec = {
@@ -234,28 +237,29 @@ const filterSpec = {
  *
  * @private
  * @param filter MapLibre filter
+ * @param rootKey Location of the filter in the style JSON (e.g. `layers[3].filter`),
+ * used to prefix runtime warnings
  * @param [globalState] Global state object to be used for evaluating 'global-state' expressions
  * @returns filter-evaluating function
  */
 export function featureFilter(
     filter: FilterSpecification | void,
+    rootKey: string,
     globalState?: Record<string, any>
 ): FeatureFilter {
     if (filter === null || filter === undefined) {
         return {filter: () => true, needGeometry: false, getGlobalStateRefs: () => new Set()};
     }
 
-    if (Array.isArray(filter) && filter[0] === 'none' && isExpressionFilter(filter)) {
-        validateNoMixedExpressionFilter(filter);
-        filter = convertFilter(filter as Array<any>) as ExpressionFilterSpecification;
-    } else if (!isExpressionFilter(filter)) {
+    if (!isExpressionFilter(filter)) {
         filter = convertFilter(filter) as ExpressionFilterSpecification;
     } else {
-        validateNoMixedExpressionFilter(filter);
+        warnAboutMixedLegacyFilter(filter, rootKey);
     }
 
     const compiled = createExpression(
         filter,
+        rootKey,
         filterSpec as StylePropertySpecification,
         globalState
     );

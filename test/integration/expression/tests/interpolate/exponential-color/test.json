@@ -138,7 +138,7 @@
         1
       ],
       {
-        "error": "Could not parse color from value 'oops blue'"
+        "error": "layers[0].paint.some-property[6]: Could not parse color from value 'oops blue'"
       }
     ]
   }

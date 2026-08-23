@@ -4,9 +4,52 @@
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
-- `has` filter now returns `false` when a property exists but is set to `undefined` ([#1712](https://github.com/maplibre/maplibre-style-spec/pull/1712)) (by [@xavierjs](https://github.com/xavierjs))
-- Fix incorrect replacement suggestion in error messages for mixed legacy+expression `$type` filters ([#1727](https://github.com/maplibre/maplibre-style-spec/pull/1727)) (by [@ciscorn](https://github.com/ciscorn))
 - _...Add new stuff here..._
+
+## 26.2.1
+### ✨ Features and improvements
+
+### 🐞 Bug fixes
+- Fix `fill-extrusion-rounded-corner-distance` being documented as an `paint` instead of an `layout` property as implemnented ([#1784](https://github.com/maplibre/maplibre-style-spec/pull/1784)) (by [@CommanderStorm](https://github.com/CommanderStorm))
+
+## 26.2.0
+### ✨ Features and improvements
+- Add fill-extrusion-rounded-corner-distance ([#1781](https://github.com/maplibre/maplibre-style-spec/pull/1781), [#1782](https://github.com/maplibre/maplibre-style-spec/pull/1782)) (by [@louwers](https://github.com/louwers))
+
+### 🐞 Bug fixes
+
+- Support `global-state` (and other `value`-typed) expressions in `projectionDefinition` properties such as `projection.type` ([#1772](https://github.com/maplibre/maplibre-style-spec/pull/1772)) (by [@CommanderStorm](https://github.com/CommanderStorm))
+
+## 26.1.0
+
+### ✨ Features and improvements
+
+- Add v8.json types called `StyleSpecificationReference` ([#1767](https://github.com/maplibre/maplibre-style-spec/issues/1767)) (by [@HarelM](https://github.com/HarelM))
+
+### 🐞 Bug fixes
+
+- Fix index.d.ts file wrong json import ([#1767](https://github.com/maplibre/maplibre-style-spec/issues/1767)) (by [@HarelM](https://github.com/HarelM))
+- Restore missing `interpolationType`, `globalStateRefs` and `isStateDependent` fields on legacy stop functions ([#1768](https://github.com/maplibre/maplibre-style-spec/pull/1768)) (by [@HarelM](https://github.com/HarelM))
+
+## 26.0.0
+
+### ✨ Features and improvements
+
+- Add a `severity` field to `ValidationError` and imporve legacy filter recognition ([#1752](https://github.com/maplibre/maplibre-style-spec/issues/1752)) (by [@HarelM](https://github.com/HarelM))
+- ⚠️ Allow debugging runtime warnings by attaching location of an warning and what will happen ([#1740](https://github.com/maplibre/maplibre-style-spec/pull/1740)) (by [@CommanderStorm](https://github.com/CommanderStorm))
+
+## 25.0.2
+
+### ✨ Features and improvements
+
+- Remove rollup dependencies and a stale replace for jsonlint ([#1749](https://github.com/maplibre/maplibre-style-spec/pull/1749)) (by [@HarelM](https://github.com/HarelM))
+
+## 25.0.1
+
+### 🐞 Bug fixes
+
+- `has` filter now returns `false` when a property exists but is set to `undefined` ([#1712](https://github.com/maplibre/maplibre-style-spec/pull/1712)) (by [@xavierjs](https://github.com/xavierjs))
+- Fix incorrect replacement suggestion in error messages for mixed legacy+expression `$type` filters ([#1727](https://github.com/maplibre/maplibre-style-spec/pull/1727), [#1728](https://github.com/maplibre/maplibre-style-spec/pull/1728)) (by [@ciscorn](https://github.com/ciscorn))
 
 ## 25.0.0
 

@@ -59,4 +59,14 @@ describe('Projection class', () => {
             '{\"from\":\"mercator\",\"to\":\"vertical-perspective\",\"transition\":0.5}'
         );
     });
+
+    test('should stringify a transition to a [from, to, transition] array', () => {
+        const projection = ProjectionDefinition.parse(['mercator', 'vertical-perspective', 0.5]);
+        expect(projection.toString()).toBe('["mercator","vertical-perspective",0.5]');
+    });
+
+    test('should stringify a single projection to a string', () => {
+        const projection = ProjectionDefinition.parse('mercator');
+        expect(projection.toString()).toBe('mercator');
+    });
 });
