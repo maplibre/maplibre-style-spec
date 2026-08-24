@@ -2790,7 +2790,7 @@
 <p><em>Required <a href="../types/#array">array</a>.</em></p>
 <p>Corners of video specified in longitude, latitude pairs.</p>
 <h2 id="image">image<a class="headerlink" href="#image" title="Permanent link">&para;</a></h2>
-<p>An image source. The <code>url</code> value contains the image location. The <code>coordinates</code> array contains <code>[longitude, latitude]</code> pairs for the image corners listed in clockwise order: top left, top right, bottom right, bottom left.</p>
+<p>An image source. The <code>url</code> value contains the image location; it is optional, and a source created without one starts empty and renders nothing until an image is set at runtime. The <code>coordinates</code> array contains <code>[longitude, latitude]</code> pairs for the image corners listed in clockwise order: top left, top right, bottom right, bottom left.</p>
 <div class="language-json highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nt">"sources"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image"</span><span class="p">,</span>
@@ -2829,8 +2829,8 @@
 <li><code>image</code>: An image data source.</li>
 </ul>
 <h3 id="url_3">url<a class="headerlink" href="#url_3" title="Permanent link">&para;</a></h3>
-<p><em>Required <a href="../types/#string">string</a>.</em></p>
-<p>URL that points to an image.</p>
+<p><em>Optional <a href="../types/#string">string</a>.</em></p>
+<p>URL that points to an image. Optional: a source created without a url starts empty and renders nothing until an image is set at runtime.</p>
 <h3 id="coordinates_1">coordinates<a class="headerlink" href="#coordinates_1" title="Permanent link">&para;</a></h3>
 <p><em>Required <a href="../types/#array">array</a>.</em></p>
 <p>Corners of image specified in longitude, latitude pairs.</p>
