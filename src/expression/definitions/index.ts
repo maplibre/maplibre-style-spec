@@ -82,4 +82,13 @@ function createExpressionRegistry(): ExpressionRegistry {
     return registry;
 }
 
+/**
+ * The registry of every expression the parser knows how to build.
+ *
+ * The `@__PURE__` annotation lets a bundler delete this call, and everything
+ * only it reaches, when a consumer imports nothing that needs the registry.
+ * It is sound because `createExpressionRegistry` only fills in a registry it
+ * created itself: the one assignment it makes outside that object writes
+ * `CompoundExpression.definitions` with the value the class already holds.
+ */
 export const expressions: ExpressionRegistry = /* @__PURE__ */ createExpressionRegistry();

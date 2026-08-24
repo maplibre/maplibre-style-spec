@@ -44,195 +44,11 @@ export type Definition =
           overloads: Array<[Signature, Evaluate]>;
       };
 
-export class CompoundExpression implements Expression {
-    name: string;
-    type: Type;
-    _evaluate: Evaluate;
-    args: Array<Expression>;
-    readonly key: string;
-
-    static definitions: {[_: string]: Definition};
-
-    constructor(
-        name: string,
-        type: Type,
-        evaluate: Evaluate,
-        args: Array<Expression>,
-        key: string
-    ) {
-        this.name = name;
-        this.type = type;
-        this._evaluate = evaluate;
-        this.args = args;
-        this.key = key;
-    }
-
-    evaluate(ctx: EvaluationContext) {
-        return this._evaluate(ctx, this.args, this.key);
-    }
-
-    eachChild(fn: (_: Expression) => void) {
-        this.args.forEach(fn);
-    }
-
-    outputDefined() {
-        return false;
-    }
-
-    static parse(args: ReadonlyArray<unknown>, context: ParsingContext): Expression {
-        const op: string = args[0] as any;
-        const definition = CompoundExpression.definitions[op];
-        if (!definition) {
-            return context.error(
-                `Unknown expression "${op}". If you wanted a literal array, use ["literal", [...]].`,
-                0
-            ) as null;
-        }
-
-        // Now check argument types against each signature
-        const type = Array.isArray(definition) ? definition[0] : definition.type;
-
-        const availableOverloads = Array.isArray(definition)
-            ? [[definition[1], definition[2]]]
-            : definition.overloads;
-
-        const overloads = availableOverloads.filter(
-            ([signature]) =>
-                !Array.isArray(signature) || // varags
-                signature.length === args.length - 1 // correct param count
-        );
-
-        let signatureContext: ParsingContext = null;
-
-        for (const [params, evaluate] of overloads) {
-            // Use a fresh context for each attempted signature so that, if
-            // we eventually succeed, we haven't polluted `context.errors`.
-            signatureContext = new ParsingContext(
-                context.registry,
-                isExpressionConstant,
-                context.path,
-                null,
-                context.scope
-            );
-
-            // First parse all the args, potentially coercing to the
-            // types expected by this overload.
-            const parsedArgs: Array<Expression> = [];
-            let argParseFailed = false;
-            for (let i = 1; i < args.length; i++) {
-                const arg = args[i];
-                const expectedType = Array.isArray(params)
-                    ? params[i - 1]
-                    : (params as Varargs).type;
-
-                const parsed = signatureContext.parse(arg, 1 + parsedArgs.length, expectedType);
-                if (!parsed) {
-                    argParseFailed = true;
-                    break;
-                }
-                parsedArgs.push(parsed);
-            }
-            if (argParseFailed) {
-                // Couldn't coerce args of this overload to expected type, move
-                // on to next one.
-                continue;
-            }
-
-            if (Array.isArray(params)) {
-                if (params.length !== parsedArgs.length) {
-                    signatureContext.error(
-                        `Expected ${params.length} arguments, but found ${parsedArgs.length} instead.`
-                    );
-                    continue;
-                }
-            }
-
-            for (let i = 0; i < parsedArgs.length; i++) {
-                const expected = Array.isArray(params) ? params[i] : (params as Varargs).type;
-                const arg = parsedArgs[i];
-                signatureContext.concat(i + 1).checkSubtype(expected, arg.type);
-            }
-
-            if (signatureContext.errors.length === 0) {
-                return new CompoundExpression(
-                    op,
-                    type,
-                    evaluate as Evaluate,
-                    parsedArgs,
-                    context.key
-                );
-            }
-        }
-
-        if (overloads.length === 1) {
-            context.errors.push(...signatureContext.errors);
-        } else {
-            const expected = overloads.length ? overloads : availableOverloads;
-            const signatures = expected
-                .map(([params]) => stringifySignature(params as Signature))
-                .join(' | ');
-
-            const actualTypes = [];
-            // For error message, re-parse arguments without trying to
-            // apply any coercions
-            for (let i = 1; i < args.length; i++) {
-                const parsed = context.parse(args[i], 1 + actualTypes.length);
-                if (!parsed) return null;
-                actualTypes.push(typeToString(parsed.type));
-            }
-            context.error(
-                `Expected arguments of type ${signatures}, but found (${actualTypes.join(', ')}) instead.`
-            );
-        }
-
-        return null;
-    }
-
-    static register(registry: ExpressionRegistry, definitions: {[_: string]: Definition}) {
-        CompoundExpression.definitions = definitions;
-        for (const name in definitions) {
-            registry[name] = CompoundExpression;
-        }
-    }
-}
-
-function rgba(ctx, [r, g, b, a], key) {
-    r = r.evaluate(ctx);
-    g = g.evaluate(ctx);
-    b = b.evaluate(ctx);
-    const alpha = a ? a.evaluate(ctx) : 1;
-    const error = validateRGBA(r, g, b, alpha);
-    if (error) throw new RuntimeError(error, key);
-    return new Color(r / 255, g / 255, b / 255, alpha, false);
-}
-
-function has(key, obj) {
-    return key in obj && obj[key] !== undefined;
-}
-
-function get(key, obj) {
-    const v = obj[key];
-    return typeof v === 'undefined' ? null : v;
-}
-
-function binarySearch(v, a, i, j) {
-    while (i <= j) {
-        const m = (i + j) >> 1;
-        if (a[m] === v) return true;
-        if (a[m] > v) j = m - 1;
-        else i = m + 1;
-    }
-    return false;
-}
-
-function varargs(type: Type): Varargs {
-    return {type};
-}
-
 /**
  * Definitions of all compound expressions, keyed by expression name.
- * Exported as plain data so that building the expression registry stays a
- * side-effect-free operation that bundlers are able to tree-shake away.
+ * Kept as plain data declared ahead of the class so that `CompoundExpression`
+ * can pick it up as a static field, rather than having it installed by a
+ * top-level call that bundlers are obliged to keep.
  */
 export const compoundExpressionDefinitions: {[_: string]: Definition} = {
     error: [
@@ -550,6 +366,191 @@ export const compoundExpressionDefinitions: {[_: string]: Definition} = {
         (ctx, [collator]) => collator.evaluate(ctx).resolvedLocale()
     ]
 };
+
+export class CompoundExpression implements Expression {
+    name: string;
+    type: Type;
+    _evaluate: Evaluate;
+    args: Array<Expression>;
+    readonly key: string;
+
+    static definitions: {[_: string]: Definition} = compoundExpressionDefinitions;
+
+    constructor(
+        name: string,
+        type: Type,
+        evaluate: Evaluate,
+        args: Array<Expression>,
+        key: string
+    ) {
+        this.name = name;
+        this.type = type;
+        this._evaluate = evaluate;
+        this.args = args;
+        this.key = key;
+    }
+
+    evaluate(ctx: EvaluationContext) {
+        return this._evaluate(ctx, this.args, this.key);
+    }
+
+    eachChild(fn: (_: Expression) => void) {
+        this.args.forEach(fn);
+    }
+
+    outputDefined() {
+        return false;
+    }
+
+    static parse(args: ReadonlyArray<unknown>, context: ParsingContext): Expression {
+        const op: string = args[0] as any;
+        const definition = CompoundExpression.definitions[op];
+        if (!definition) {
+            return context.error(
+                `Unknown expression "${op}". If you wanted a literal array, use ["literal", [...]].`,
+                0
+            ) as null;
+        }
+
+        // Now check argument types against each signature
+        const type = Array.isArray(definition) ? definition[0] : definition.type;
+
+        const availableOverloads = Array.isArray(definition)
+            ? [[definition[1], definition[2]]]
+            : definition.overloads;
+
+        const overloads = availableOverloads.filter(
+            ([signature]) =>
+                !Array.isArray(signature) || // varags
+                signature.length === args.length - 1 // correct param count
+        );
+
+        let signatureContext: ParsingContext = null;
+
+        for (const [params, evaluate] of overloads) {
+            // Use a fresh context for each attempted signature so that, if
+            // we eventually succeed, we haven't polluted `context.errors`.
+            signatureContext = new ParsingContext(
+                context.registry,
+                isExpressionConstant,
+                context.path,
+                null,
+                context.scope
+            );
+
+            // First parse all the args, potentially coercing to the
+            // types expected by this overload.
+            const parsedArgs: Array<Expression> = [];
+            let argParseFailed = false;
+            for (let i = 1; i < args.length; i++) {
+                const arg = args[i];
+                const expectedType = Array.isArray(params)
+                    ? params[i - 1]
+                    : (params as Varargs).type;
+
+                const parsed = signatureContext.parse(arg, 1 + parsedArgs.length, expectedType);
+                if (!parsed) {
+                    argParseFailed = true;
+                    break;
+                }
+                parsedArgs.push(parsed);
+            }
+            if (argParseFailed) {
+                // Couldn't coerce args of this overload to expected type, move
+                // on to next one.
+                continue;
+            }
+
+            if (Array.isArray(params)) {
+                if (params.length !== parsedArgs.length) {
+                    signatureContext.error(
+                        `Expected ${params.length} arguments, but found ${parsedArgs.length} instead.`
+                    );
+                    continue;
+                }
+            }
+
+            for (let i = 0; i < parsedArgs.length; i++) {
+                const expected = Array.isArray(params) ? params[i] : (params as Varargs).type;
+                const arg = parsedArgs[i];
+                signatureContext.concat(i + 1).checkSubtype(expected, arg.type);
+            }
+
+            if (signatureContext.errors.length === 0) {
+                return new CompoundExpression(
+                    op,
+                    type,
+                    evaluate as Evaluate,
+                    parsedArgs,
+                    context.key
+                );
+            }
+        }
+
+        if (overloads.length === 1) {
+            context.errors.push(...signatureContext.errors);
+        } else {
+            const expected = overloads.length ? overloads : availableOverloads;
+            const signatures = expected
+                .map(([params]) => stringifySignature(params as Signature))
+                .join(' | ');
+
+            const actualTypes = [];
+            // For error message, re-parse arguments without trying to
+            // apply any coercions
+            for (let i = 1; i < args.length; i++) {
+                const parsed = context.parse(args[i], 1 + actualTypes.length);
+                if (!parsed) return null;
+                actualTypes.push(typeToString(parsed.type));
+            }
+            context.error(
+                `Expected arguments of type ${signatures}, but found (${actualTypes.join(', ')}) instead.`
+            );
+        }
+
+        return null;
+    }
+
+    static register(registry: ExpressionRegistry, definitions: {[_: string]: Definition}) {
+        CompoundExpression.definitions = definitions;
+        for (const name in definitions) {
+            registry[name] = CompoundExpression;
+        }
+    }
+}
+
+function rgba(ctx, [r, g, b, a], key) {
+    r = r.evaluate(ctx);
+    g = g.evaluate(ctx);
+    b = b.evaluate(ctx);
+    const alpha = a ? a.evaluate(ctx) : 1;
+    const error = validateRGBA(r, g, b, alpha);
+    if (error) throw new RuntimeError(error, key);
+    return new Color(r / 255, g / 255, b / 255, alpha, false);
+}
+
+function has(key, obj) {
+    return key in obj && obj[key] !== undefined;
+}
+
+function get(key, obj) {
+    const v = obj[key];
+    return typeof v === 'undefined' ? null : v;
+}
+
+function binarySearch(v, a, i, j) {
+    while (i <= j) {
+        const m = (i + j) >> 1;
+        if (a[m] === v) return true;
+        if (a[m] > v) j = m - 1;
+        else i = m + 1;
+    }
+    return false;
+}
+
+function varargs(type: Type): Varargs {
+    return {type};
+}
 
 function stringifySignature(signature: Signature): string {
     if (Array.isArray(signature)) {
