@@ -1,5 +1,6 @@
 ## main
 ### ✨ Features and improvements
+- Enable data-driven styling for `icon-rotation-alignment` (by [@Turbo87](https://github.com/Turbo87))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
