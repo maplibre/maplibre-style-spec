@@ -1,5 +1,5 @@
 import {diff} from './diff';
-import {StyleSpecification} from './types.g';
+import {FontFacesSpecification, StyleSpecification} from './types.g';
 import {describe, test, expect} from 'vitest';
 
 describe('diff', () => {
@@ -763,6 +763,64 @@ describe('diff', () => {
                 } as StyleSpecification
             )
         ).toEqual([{command: 'setGlyphs', args: ['b']}]);
+    });
+
+    test('no font-faces change', () => {
+        const fontFaces: FontFacesSpecification = {
+            'Noto Sans Regular': 'https://example.com/noto.ttf'
+        };
+        expect(
+            diff(
+                {'font-faces': fontFaces} as StyleSpecification,
+                {'font-faces': fontFaces} as StyleSpecification
+            )
+        ).toEqual([]);
+    });
+
+    test('set font-faces', () => {
+        const before: FontFacesSpecification = {
+            'Noto Sans Regular': 'https://example.com/a.ttf'
+        };
+        const after: FontFacesSpecification = {
+            'Noto Sans Regular': {
+                url: 'https://example.com/b.ttf',
+                'unicode-range': ['U+1780-17FF']
+            }
+        };
+        expect(
+            diff(
+                {'font-faces': before} as StyleSpecification,
+                {'font-faces': after} as StyleSpecification
+            )
+        ).toEqual([
+            {
+                command: 'setFontFaces',
+                args: [
+                    {
+                        'Noto Sans Regular': {
+                            url: 'https://example.com/b.ttf',
+                            'unicode-range': ['U+1780-17FF']
+                        }
+                    }
+                ]
+            }
+        ]);
+    });
+
+    test('add font-faces', () => {
+        const fontFaces: FontFacesSpecification = {Unifont: 'https://example.com/unifont.ttf'};
+        expect(
+            diff({} as StyleSpecification, {'font-faces': fontFaces} as StyleSpecification)
+        ).toEqual([
+            {command: 'setFontFaces', args: [{Unifont: 'https://example.com/unifont.ttf'}]}
+        ]);
+    });
+
+    test('remove font-faces', () => {
+        const fontFaces: FontFacesSpecification = {Unifont: 'https://example.com/unifont.ttf'};
+        expect(
+            diff({'font-faces': fontFaces} as StyleSpecification, {} as StyleSpecification)
+        ).toEqual([{command: 'setFontFaces', args: [undefined]}]);
     });
 
     test('remove terrain', () => {
