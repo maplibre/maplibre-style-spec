@@ -3,6 +3,7 @@
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
+- Fix missing `setFontFaces` operation when style changes ([#1837](https://github.com/maplibre/maplibre-style-spec/pull/1837)) (by [@HarelM](https://github.com/HarelM))
 - _...Add new stuff here..._
 
 ## 26.3.0
