@@ -5,10 +5,9 @@
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
 
-- Enable data-driven `icon-rotation-alignment` ([#1836](https://github.com/maplibre/maplibre-style-spec/pull/1836)) (by [@Turbo87](https://github.com/Turbo87))
 ## 26.4.0
 ### ✨ Features and improvements
-- Enable data-driven styling for `icon-rotation-alignment` (by [@Turbo87](https://github.com/Turbo87))
+- Enable data-driven `icon-rotation-alignment` ([#1836](https://github.com/maplibre/maplibre-style-spec/pull/1836)) (by [@Turbo87](https://github.com/Turbo87))
 - Make `url` optional for image sources. An image source can now be defined with only `type` and `coordinates`; it renders nothing until an image is set at runtime ([#1817](https://github.com/maplibre/maplibre-style-spec/pull/1817))
 
 ### 🐞 Bug fixes
