@@ -1,10 +1,18 @@
 ## main
 ### ✨ Features and improvements
-- Add `symbol-height-offset` and `symbol-height-anchor` properties to `symbol` layers to allow icons and text to be elevated above the ground ([#1508](https://github.com/maplibre/maplibre-style-spec/pull/1508)) (by [@HatulaPro](https://github.com/HatulaPro))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
+
+- chore: update sdk support for `fill-extrusion-rounded-corner-distance` ([#1801](https://github.com/maplibre/maplibre-style-spec/pull/1801)) (by [@CommanderStorm](https://github.com/CommanderStorm))
+- chore: fix typo in link ([#1799](https://github.com/maplibre/maplibre-style-spec/pull/1799)) (by [@CommanderStorm](https://github.com/CommanderStorm))
+- Add `semiliteral` operator for expressions inside arrays and objects ([#951](https://github.com/maplibre/maplibre-style-spec/pull/951)) (by [@sargunv](https://github.com/sargunv))
+## 26.3.0
+### ✨ Features and improvements
+- Add `symbol-height-offset` and `symbol-height-anchor` properties to `symbol` layers to allow icons and text to be elevated above the ground ([#1508](https://github.com/maplibre/maplibre-style-spec/pull/1508)) (by [@HatulaPro](https://github.com/HatulaPro))
+
+### 🐞 Bug fixes
 
 ## 26.2.1
 ### ✨ Features and improvements
