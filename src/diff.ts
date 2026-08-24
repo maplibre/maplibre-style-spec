@@ -1,4 +1,5 @@
 import {
+    FontFacesSpecification,
     GeoJSONSourceSpecification,
     LayerSpecification,
     LightSpecification,
@@ -37,6 +38,7 @@ export type DiffOperationsMap = {
     setRoll: [number];
     setSprite: [SpriteSpecification];
     setGlyphs: [string];
+    setFontFaces: [FontFacesSpecification];
     setTransition: [TransitionSpecification];
     setLight: [LightSpecification];
     setTerrain: [TerrainSpecification];
@@ -430,6 +432,9 @@ export function diff(
         }
         if (!deepEqual(before.glyphs, after.glyphs)) {
             commands.push({command: 'setGlyphs', args: [after.glyphs]});
+        }
+        if (!deepEqual(before['font-faces'], after['font-faces'])) {
+            commands.push({command: 'setFontFaces', args: [after['font-faces']]});
         }
         if (!deepEqual(before.transition, after.transition)) {
             commands.push({command: 'setTransition', args: [after.transition]});

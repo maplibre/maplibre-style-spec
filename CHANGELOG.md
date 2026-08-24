@@ -1,9 +1,11 @@
 ## main
 ### ✨ Features and improvements
 - Enable data-driven styling for `icon-rotation-alignment` (by [@Turbo87](https://github.com/Turbo87))
+- Make `url` optional for image sources. An image source can now be defined with only `type` and `coordinates`; it renders nothing until an image is set at runtime ([#1817](https://github.com/maplibre/maplibre-style-spec/pull/1817))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
+- Fix missing `setFontFaces` operation when style changes ([#1837](https://github.com/maplibre/maplibre-style-spec/pull/1837)) (by [@HarelM](https://github.com/HarelM))
 - _...Add new stuff here..._
 
 ## 26.3.0
