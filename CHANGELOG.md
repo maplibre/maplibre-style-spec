@@ -1,6 +1,6 @@
 ## main
 ### ✨ Features and improvements
-- Add `symbol-elevation` property to `symbol` layers to allow icons and text to be elevated ([#1508](https://github.com/maplibre/maplibre-style-spec/pull/1508)) (by [@HatulaPro](https://github.com/HatulaPro))
+- Add `symbol-height-offset` and `symbol-height-anchor` properties to `symbol` layers to allow icons and text to be elevated above the ground ([#1508](https://github.com/maplibre/maplibre-style-spec/pull/1508)) (by [@HatulaPro](https://github.com/HatulaPro))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
