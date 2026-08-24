@@ -3041,6 +3041,69 @@
       },
       "property-type": "data-constant"
     },
+    "symbol-height-offset": {
+      "type": "number",
+      "default": 0,
+      "units": "meters",
+      "doc": "The height above the anchor, in meters, at which the symbol is placed. Use `symbol-height-anchor` to control what this height is measured from.",
+      "requires": [
+        {
+          "symbol-placement": [
+            "point"
+          ]
+        }
+      ],
+      "sdk-support": {
+        "basic functionality": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/644",
+          "android": "https://github.com/maplibre/maplibre-native/issues/1929",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/1929"
+        },
+        "data-driven styling": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/644",
+          "android": "https://github.com/maplibre/maplibre-native/issues/1929",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/1929"
+        }
+      },
+      "expression": {
+        "interpolated": true,
+        "parameters": [
+          "zoom",
+          "feature"
+        ]
+      },
+      "property-type": "data-driven"
+    },
+    "symbol-height-anchor": {
+      "type": "enum",
+      "values": {
+        "ground": {
+          "doc": "`symbol-height-offset` is measured from the ground below the symbol, i.e. the terrain elevation at the symbol's location, or zero when terrain is not enabled."
+        },
+        "absolute": {
+          "doc": "`symbol-height-offset` is measured from sea level, ignoring the terrain elevation at the symbol's location."
+        }
+      },
+      "default": "ground",
+      "doc": "Defines what `symbol-height-offset` is measured from.",
+      "requires": [
+        "symbol-height-offset"
+      ],
+      "sdk-support": {
+        "basic functionality": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/644",
+          "android": "https://github.com/maplibre/maplibre-native/issues/1929",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/1929"
+        }
+      },
+      "expression": {
+        "interpolated": false,
+        "parameters": [
+          "zoom"
+        ]
+      },
+      "property-type": "data-constant"
+    },
     "visibility": {
       "type": "enum",
       "values": {
