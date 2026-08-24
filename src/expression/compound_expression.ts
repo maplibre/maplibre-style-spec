@@ -14,7 +14,6 @@ import {
 import {ParsingContext} from './parsing_context';
 import {EvaluationContext} from './evaluation_context';
 
-import {expressions} from './definitions';
 import {CollatorExpression} from './definitions/collator';
 import {Within} from './definitions/within';
 import {Literal} from './definitions/literal';
@@ -38,7 +37,7 @@ export type Varargs = {
 type Signature = Array<Type> | Varargs;
 type Evaluate = (b: EvaluationContext, a: Array<Expression>, key: string) => Value;
 
-type Definition =
+export type Definition =
     | [Type, Signature, Evaluate]
     | {
           type: Type;
@@ -230,7 +229,12 @@ function varargs(type: Type): Varargs {
     return {type};
 }
 
-CompoundExpression.register(expressions, {
+/**
+ * Definitions of all compound expressions, keyed by expression name.
+ * Exported as plain data so that building the expression registry stays a
+ * side-effect-free operation that bundlers are able to tree-shake away.
+ */
+export const compoundExpressionDefinitions: {[_: string]: Definition} = {
     error: [
         ErrorType,
         [StringType],
@@ -545,7 +549,7 @@ CompoundExpression.register(expressions, {
         [CollatorType],
         (ctx, [collator]) => collator.evaluate(ctx).resolvedLocale()
     ]
-});
+};
 
 function stringifySignature(signature: Signature): string {
     if (Array.isArray(signature)) {

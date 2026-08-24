@@ -57,10 +57,10 @@ export class Color {
         }
     }
 
-    static black = new Color(0, 0, 0, 1);
-    static white = new Color(1, 1, 1, 1);
-    static transparent = new Color(0, 0, 0, 0);
-    static red = new Color(1, 0, 0, 1);
+    static black = /* @__PURE__ */ new Color(0, 0, 0, 1);
+    static white = /* @__PURE__ */ new Color(1, 1, 1, 1);
+    static transparent = /* @__PURE__ */ new Color(0, 0, 0, 0);
+    static red = /* @__PURE__ */ new Color(1, 0, 0, 1);
 
     /**
      * Parses CSS color strings and converts colors to sRGB color space if needed.

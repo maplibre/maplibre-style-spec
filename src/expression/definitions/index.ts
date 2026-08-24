@@ -30,46 +30,56 @@ import {Distance} from './distance';
 import {Semiliteral} from './semiliteral';
 import {GlobalState} from './global_state';
 
+import {CompoundExpression, compoundExpressionDefinitions} from '../compound_expression';
+
 import type {ExpressionRegistry} from '../expression';
 
-export const expressions: ExpressionRegistry = {
-    // special forms
-    '==': Equals,
-    '!=': NotEquals,
-    '>': GreaterThan,
-    '<': LessThan,
-    '>=': GreaterThanOrEqual,
-    '<=': LessThanOrEqual,
-    array: Assertion,
-    at: At,
-    boolean: Assertion,
-    case: Case,
-    coalesce: Coalesce,
-    collator: CollatorExpression,
-    format: FormatExpression,
-    image: ImageExpression,
-    in: In,
-    'index-of': IndexOf,
-    interpolate: Interpolate,
-    'interpolate-hcl': Interpolate,
-    'interpolate-lab': Interpolate,
-    length: Length,
-    let: Let,
-    literal: Literal,
-    match: Match,
-    number: Assertion,
-    'number-format': NumberFormat,
-    object: Assertion,
-    semiliteral: Semiliteral,
-    slice: Slice,
-    step: Step,
-    string: Assertion,
-    'to-boolean': Coercion,
-    'to-color': Coercion,
-    'to-number': Coercion,
-    'to-string': Coercion,
-    var: Var,
-    within: Within,
-    distance: Distance,
-    'global-state': GlobalState
-};
+function createExpressionRegistry(): ExpressionRegistry {
+    const registry: ExpressionRegistry = {
+        // special forms
+        '==': Equals,
+        '!=': NotEquals,
+        '>': GreaterThan,
+        '<': LessThan,
+        '>=': GreaterThanOrEqual,
+        '<=': LessThanOrEqual,
+        array: Assertion,
+        at: At,
+        boolean: Assertion,
+        case: Case,
+        coalesce: Coalesce,
+        collator: CollatorExpression,
+        format: FormatExpression,
+        image: ImageExpression,
+        in: In,
+        'index-of': IndexOf,
+        interpolate: Interpolate,
+        'interpolate-hcl': Interpolate,
+        'interpolate-lab': Interpolate,
+        length: Length,
+        let: Let,
+        literal: Literal,
+        match: Match,
+        number: Assertion,
+        'number-format': NumberFormat,
+        object: Assertion,
+        semiliteral: Semiliteral,
+        slice: Slice,
+        step: Step,
+        string: Assertion,
+        'to-boolean': Coercion,
+        'to-color': Coercion,
+        'to-number': Coercion,
+        'to-string': Coercion,
+        var: Var,
+        within: Within,
+        distance: Distance,
+        'global-state': GlobalState
+    };
+
+    CompoundExpression.register(registry, compoundExpressionDefinitions);
+
+    return registry;
+}
+
+export const expressions: ExpressionRegistry = /* @__PURE__ */ createExpressionRegistry();
