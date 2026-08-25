@@ -13,7 +13,7 @@
 
 ### 🐞 Bug fixes
 
-- Fix all kind of issues related to font-faces ([#1840](https://github.com/maplibre/maplibre-style-spec/pull/1840))
+- Fix validation and typescript types for font-faces ([#1840](https://github.com/maplibre/maplibre-style-spec/pull/1840))
 
 ## 26.4.0
 
