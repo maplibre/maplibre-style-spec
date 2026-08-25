@@ -3,7 +3,7 @@
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
-- Fix all kind of issues related to font-faces ([#1838](https://github.com/maplibre/maplibre-style-spec/pull/1838))
+- Fix all kind of issues related to font-faces ([#1840](https://github.com/maplibre/maplibre-style-spec/pull/1840))
 - _...Add new stuff here..._
 
 ## 26.4.0
