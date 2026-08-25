@@ -4,16 +4,38 @@
 - Publish the ESM build (`dist/index.mjs`, referenced by `package.json#module`) as one module per source file instead of a single bundle, so that bundlers which eliminate dead code at module granularity can drop unused parts of the package ([#1829](https://github.com/maplibre/maplibre-style-spec/pull/1829)) (by [@ahocevar](https://github.com/ahocevar))
 
 ### 🐞 Bug fixes
+
+- Fix all kind of issues related to font-faces ([#1840](https://github.com/maplibre/maplibre-style-spec/pull/1840))
 - _...Add new stuff here..._
 
-## 26.2.1
+## 26.4.0
+
 ### ✨ Features and improvements
 
+- Enable data-driven `icon-rotation-alignment` ([#1836](https://github.com/maplibre/maplibre-style-spec/pull/1836)) (by [@Turbo87](https://github.com/Turbo87))
+- Make `url` optional for image sources. An image source can now be defined with only `type` and `coordinates`; it renders nothing until an image is set at runtime ([#1817](https://github.com/maplibre/maplibre-style-spec/pull/1817))
+
 ### 🐞 Bug fixes
+
+- Fix missing `setFontFaces` operation when style changes ([#1837](https://github.com/maplibre/maplibre-style-spec/pull/1837)) (by [@HarelM](https://github.com/HarelM))
+
+## 26.3.0
+
+### ✨ Features and improvements
+
+- Add `semiliteral` operator for expressions inside arrays and objects ([#951](https://github.com/maplibre/maplibre-style-spec/pull/951)) (by [@sargunv](https://github.com/sargunv))
+- Add `symbol-height-offset` and `symbol-height-anchor` properties to `symbol` layers to allow icons and text to be elevated above the ground ([#1508](https://github.com/maplibre/maplibre-style-spec/pull/1508)) (by [@HatulaPro](https://github.com/HatulaPro))
+
+## 26.2.1
+
+### 🐞 Bug fixes
+
 - Fix `fill-extrusion-rounded-corner-distance` being documented as an `paint` instead of an `layout` property as implemnented ([#1784](https://github.com/maplibre/maplibre-style-spec/pull/1784)) (by [@CommanderStorm](https://github.com/CommanderStorm))
 
 ## 26.2.0
+
 ### ✨ Features and improvements
+
 - Add fill-extrusion-rounded-corner-distance ([#1781](https://github.com/maplibre/maplibre-style-spec/pull/1781), [#1782](https://github.com/maplibre/maplibre-style-spec/pull/1782)) (by [@louwers](https://github.com/louwers))
 
 ### 🐞 Bug fixes

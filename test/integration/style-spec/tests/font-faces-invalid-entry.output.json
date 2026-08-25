@@ -1,0 +1,22 @@
+[
+  {
+    "message": "font-faces.Noto Sans[0]: missing required property \"url\"",
+    "severity": "error",
+    "line": 6
+  },
+  {
+    "message": "font-faces.Noto Sans[0].unicode-range[1]: invalid unicode range, expected a value such as \"U+26\", \"U+0-10FFFF\" or \"U+4??\"",
+    "severity": "error",
+    "line": 7
+  },
+  {
+    "message": "font-faces.Noto Sans[0]: unknown property \"size\"",
+    "severity": "error",
+    "line": 8
+  },
+  {
+    "message": "font-faces.Unifont: string or array expected, number found",
+    "severity": "error",
+    "line": 10
+  }
+]
