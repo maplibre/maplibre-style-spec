@@ -6,7 +6,7 @@ import {spawnSync} from 'node:child_process';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {describe, test, expect} from 'vitest';
-const minBundle = fs.readFileSync('dist/index.mjs', 'utf8');
+const refBundle = fs.readFileSync('dist/reference/v8.mjs', 'utf8');
 const validStyle = JSON.stringify({version: 8, sources: {}, layers: []});
 
 describe('@maplibre/maplibre-gl-style-spec npm package', () => {
@@ -30,7 +30,26 @@ describe('@maplibre/maplibre-gl-style-spec npm package', () => {
         expect(dirContents).toContain('index.mjs');
         expect(dirContents).toContain('index.mjs.map');
         expect(dirContents).toContain('latest.json');
-        expect(dirContents).toHaveLength(18);
+        expect(dirContents).toHaveLength(43);
+    });
+
+    test('index.mjs is a module-per-file build, not a single bundle', async () => {
+        // The point of building with `preserveModules` is that consumers can
+        // drop what they do not import, which only works if the modules that
+        // `dist/index.mjs` imports stay separate files alongside it.
+        const dirContents = await readdir('dist');
+        expect(dirContents).toContain('deref.mjs');
+        expect(dirContents).toContain('expression');
+        expect(fs.statSync('dist/index.mjs').size).toBeLessThan(5000);
+    });
+
+    test('cjs build exports the same names as the esm build', async () => {
+        const cjs = await import('../../dist/index.cjs');
+        const esm = await import('../../dist/index.mjs');
+        // The UMD build adds a synthetic `default` export pointing at itself,
+        // which the esm build has no equivalent for.
+        const cjsNames = Object.keys(cjs).filter((name) => name !== 'default');
+        expect(Object.keys(esm).sort()).toEqual(cjsNames.sort());
     });
 
     test('exports components directly, not behind `default` - https://github.com/mapbox/mapbox-gl-js/issues/6601', async () => {
@@ -39,7 +58,7 @@ describe('@maplibre/maplibre-gl-style-spec npm package', () => {
 
     test('trims reference.json fields', () => {
         expect(latest.$root.version.doc).toBeTruthy();
-        expect(minBundle.includes(latest.$root.version.doc)).toBeFalsy();
+        expect(refBundle.includes(latest.$root.version.doc)).toBeFalsy();
     });
 
     test('"latest" entry point should be defined', async () => {
