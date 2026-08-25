@@ -5,9 +5,10 @@
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
 
-- Update SDK support version for JavaScript ([#1839](https://github.com/maplibre/maplibre-style-spec/pull/1839)) (by [@HarelM](https://github.com/HarelM))
 ## 26.4.1
+
 ### ✨ Features and improvements
+
 - Publish the ESM build (`dist/index.mjs`, referenced by `package.json#module`) as one module per source file instead of a single bundle, so that bundlers which eliminate dead code at module granularity can drop unused parts of the package ([#1829](https://github.com/maplibre/maplibre-style-spec/pull/1829)) (by [@ahocevar](https://github.com/ahocevar))
 
 ### 🐞 Bug fixes
