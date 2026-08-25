@@ -3,14 +3,19 @@
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
+
+- Fix all kind of issues related to font-faces ([#1840](https://github.com/maplibre/maplibre-style-spec/pull/1840))
 - _...Add new stuff here..._
 
 ## 26.4.0
+
 ### ✨ Features and improvements
+
 - Enable data-driven `icon-rotation-alignment` ([#1836](https://github.com/maplibre/maplibre-style-spec/pull/1836)) (by [@Turbo87](https://github.com/Turbo87))
 - Make `url` optional for image sources. An image source can now be defined with only `type` and `coordinates`; it renders nothing until an image is set at runtime ([#1817](https://github.com/maplibre/maplibre-style-spec/pull/1817))
 
 ### 🐞 Bug fixes
+
 - Fix missing `setFontFaces` operation when style changes ([#1837](https://github.com/maplibre/maplibre-style-spec/pull/1837)) (by [@HarelM](https://github.com/HarelM))
 
 ## 26.3.0

@@ -782,10 +782,9 @@ describe('diff', () => {
             'Noto Sans Regular': 'https://example.com/a.ttf'
         };
         const after: FontFacesSpecification = {
-            'Noto Sans Regular': {
-                url: 'https://example.com/b.ttf',
-                'unicode-range': ['U+1780-17FF']
-            }
+            'Noto Sans Regular': [
+                {url: 'https://example.com/b.ttf', 'unicode-range': ['U+1780-17FF']}
+            ]
         };
         expect(
             diff(
@@ -797,10 +796,9 @@ describe('diff', () => {
                 command: 'setFontFaces',
                 args: [
                     {
-                        'Noto Sans Regular': {
-                            url: 'https://example.com/b.ttf',
-                            'unicode-range': ['U+1780-17FF']
-                        }
+                        'Noto Sans Regular': [
+                            {url: 'https://example.com/b.ttf', 'unicode-range': ['U+1780-17FF']}
+                        ]
                     }
                 ]
             }
