@@ -13,6 +13,7 @@ import {validatePaintProperty} from './validate/validate_paint_property';
 import {validateLayoutProperty} from './validate/validate_layout_property';
 import {validateSprite} from './validate/validate_sprite';
 import {validateGlyphsUrl} from './validate/validate_glyphs_url';
+import {validateFontFaces} from './validate/validate_font_faces';
 import {ValidationError} from './error/validation_error';
 import type {StyleSpecification} from './types.g';
 
@@ -69,6 +70,7 @@ export function validateStyleMin(
 validateStyleMin.source = wrapCleanErrors(injectValidateSpec(validateSource));
 validateStyleMin.sprite = wrapCleanErrors(injectValidateSpec(validateSprite));
 validateStyleMin.glyphs = wrapCleanErrors(injectValidateSpec(validateGlyphsUrl));
+validateStyleMin.fontFaces = wrapCleanErrors(injectValidateSpec(validateFontFaces));
 validateStyleMin.light = wrapCleanErrors(injectValidateSpec(validateLight));
 validateStyleMin.sky = wrapCleanErrors(injectValidateSpec(validateSky));
 validateStyleMin.terrain = wrapCleanErrors(injectValidateSpec(validateTerrain));

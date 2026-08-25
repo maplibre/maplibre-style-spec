@@ -1,0 +1,12 @@
+{
+  "version": 8,
+  "sources": {},
+  "layers": [],
+  "font-faces": {
+    "Noto Sans": [{
+      "unicode-range": ["U+1780-17FF", "17FF"],
+      "size": 12
+    }],
+    "Unifont": 42
+  }
+}

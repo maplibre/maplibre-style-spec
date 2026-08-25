@@ -1,0 +1,11 @@
+{
+  "version": 8,
+  "sources": {},
+  "layers": [],
+  "font-faces": {
+    "Noto Sans": [{
+      "url": "https://example.com/font.ttf",
+      "unicode-range": ["U+17FF-1780", "U+0-110000"]
+    }]
+  }
+}
