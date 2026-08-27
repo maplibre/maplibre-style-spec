@@ -5861,8 +5861,8 @@
 </tbody>
 </table>
 <h3 id="fill-extrusion-height">fill-extrusion-height<a class="headerlink" href="#fill-extrusion-height" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range <code>[0, ∞)</code>. Units in meters. Defaults to <code>0</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
-<p>The height with which to extrude this layer.</p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a>. Units in meters. Defaults to <code>0</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
+<p>The height with which to extrude this layer. Negative values extrude below ground level, so a floor that is entirely underground can be expressed.</p>
 <table>
 <thead>
 <tr>
@@ -5890,12 +5890,18 @@
 <td>5.6.0</td>
 <td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/3302">#3302</a>)</td>
 <td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/3302">#3302</a>)</td>
+</tr>
+<tr>
+<td>negative values</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-gl-js/issues/8051">#8051</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/4455">#4455</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/4455">#4455</a>)</td>
 </tr>
 </tbody>
 </table>
 <h3 id="fill-extrusion-base">fill-extrusion-base<a class="headerlink" href="#fill-extrusion-base" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range <code>[0, ∞)</code>. Units in meters. Defaults to <code>0</code>. Requires <a href="#fill-extrusion-height"><code>fill-extrusion-height</code></a>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
-<p>The height with which to extrude the base of this layer. Must be less than or equal to <code>fill-extrusion-height</code>.</p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a>. Units in meters. Defaults to <code>0</code>. Requires <a href="#fill-extrusion-height"><code>fill-extrusion-height</code></a>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
+<p>The height with which to extrude the base of this layer. Must be less than or equal to <code>fill-extrusion-height</code>. Negative values extrude below ground level, e.g. underground floors.</p>
 <table>
 <thead>
 <tr>
@@ -5923,6 +5929,12 @@
 <td>5.6.0</td>
 <td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/3302">#3302</a>)</td>
 <td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/3302">#3302</a>)</td>
+</tr>
+<tr>
+<td>negative values</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-gl-js/issues/8051">#8051</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/4455">#4455</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/4455">#4455</a>)</td>
 </tr>
 </tbody>
 </table>
