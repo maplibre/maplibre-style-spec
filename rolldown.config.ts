@@ -23,8 +23,12 @@ const bundles: RolldownOptions[] = [
         input: './src/index.ts',
         output: [
             {
-                file: 'dist/index.mjs',
+                dir: 'dist',
                 format: 'es',
+                preserveModules: true,
+                preserveModulesRoot: 'src',
+                entryFileNames: '[name].mjs',
+                chunkFileNames: '[name].mjs',
                 sourcemap: true
             },
             {
