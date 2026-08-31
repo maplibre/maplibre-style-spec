@@ -72,7 +72,7 @@
     "@vitest/eslint-plugin": "^1.6.27",
     "@vitest/ui": "4.1.11",
     "cross-env": "^10.1.0",
-    "eslint": "^10.8.1",
+    "eslint": "^10.9.1",
     "eslint-plugin-jsdoc": "^63.3.3",
     "glob": "^13.0.6",
     "globals": "^17.11.0",
