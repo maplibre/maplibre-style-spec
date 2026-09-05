@@ -125,4 +125,14 @@ describe('Validate source_raster_dem', () => {
         });
         expect(errors).toHaveLength(0);
     });
+
+    test('Should pass when emptyTileBehavior is fallback', () => {
+        const errors = validateRasterDEMSource({
+            validateSpec: validate,
+            value: {type: 'raster-dem', url: 'https://example.com/tiles.json', emptyTileBehavior: 'fallback'},
+            styleSpec: v8,
+            style: {version: 8, sources: {}, layers: []}
+        });
+        expect(errors).toHaveLength(0);
+    });
 });

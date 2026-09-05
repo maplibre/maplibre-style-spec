@@ -73,5 +73,10 @@
     "message": "sources.image-missing-coordinates: missing required property \"coordinates\"",
     "severity": "error",
     "line": 115
+  },
+  {
+    "message": "emptyTileBehavior: expected one of [render, fallback], \"hidden\" found",
+    "severity": "error",
+    "line": 121
   }
 ]

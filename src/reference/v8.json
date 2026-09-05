@@ -346,6 +346,26 @@
       "default": "xyz",
       "doc": "Influences the y direction of the tile coordinates. The global-mercator (aka Spherical Mercator) profile is assumed."
     },
+    "emptyTileBehavior": {
+      "type": "enum",
+      "values": {
+        "render": {
+          "doc": "Load the tile as an empty tile with nothing to draw."
+        },
+        "fallback": {
+          "doc": "Treat the tile as missing, like a 404 response: a loaded tile from another zoom level shows through in its place. A 404 response is treated the same way, instead of loading as an empty tile."
+        }
+      },
+      "default": "render",
+      "doc": "How a tile response with an empty body (HTTP 204, or 200 with no content) is handled. A tile server with partial coverage can answer 204 where it has no data and use `fallback` to let a tile from another zoom level show through, without the browser console noise that 404 responses cause. The [TileJSON](tilejson.md) the source loads may carry the same key; the value set on the source wins.",
+      "sdk-support": {
+        "basic functionality": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/3990",
+          "android": "https://github.com/maplibre/maplibre-native/issues/4767",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/4767"
+        }
+      }
+    },
     "minzoom": {
       "type": "number",
       "default": 0,
@@ -479,6 +499,26 @@
       "default": "xyz",
       "doc": "Influences the y direction of the tile coordinates. The global-mercator (aka Spherical Mercator) profile is assumed."
     },
+    "emptyTileBehavior": {
+      "type": "enum",
+      "values": {
+        "render": {
+          "doc": "Draw the tile as fully transparent."
+        },
+        "fallback": {
+          "doc": "Treat the tile as missing, like a 404 response: a loaded tile from another zoom level shows through in its place."
+        }
+      },
+      "default": "render",
+      "doc": "How a tile response with an empty body (HTTP 204, or 200 with no content) is handled. A tile server with partial coverage can answer 204 where it has no data and use `fallback` to let a tile from another zoom level show through, without the browser console noise that 404 responses cause. The [TileJSON](tilejson.md) the source loads may carry the same key; the value set on the source wins.",
+      "sdk-support": {
+        "basic functionality": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/3990",
+          "android": "https://github.com/maplibre/maplibre-native/issues/4767",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/4767"
+        }
+      }
+    },
     "attribution": {
       "type": "string",
       "doc": "Contains an attribution to be displayed when the map is shown to a user."
@@ -559,6 +599,26 @@
       "default": 512,
       "units": "pixels",
       "doc": "The minimum visual size to display tiles for this layer. Only configurable for raster layers."
+    },
+    "emptyTileBehavior": {
+      "type": "enum",
+      "values": {
+        "render": {
+          "doc": "Load the tile without elevation data."
+        },
+        "fallback": {
+          "doc": "Treat the tile as missing, like a 404 response: a loaded tile from another zoom level supplies the elevation in its place."
+        }
+      },
+      "default": "render",
+      "doc": "How a tile response with an empty body (HTTP 204, or 200 with no content) is handled. A tile server with partial coverage can answer 204 where it has no data and use `fallback` to let a tile from another zoom level supply the elevation, without the browser console noise that 404 responses cause. The [TileJSON](tilejson.md) the source loads may carry the same key; the value set on the source wins.",
+      "sdk-support": {
+        "basic functionality": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/3990",
+          "android": "https://github.com/maplibre/maplibre-native/issues/4767",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/4767"
+        }
+      }
     },
     "attribution": {
       "type": "string",
