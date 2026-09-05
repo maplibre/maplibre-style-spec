@@ -19,6 +19,7 @@ import {NumberArray} from './types/number_array';
 import {ColorArray} from './types/color_array';
 import {VariableAnchorOffsetCollection} from './types/variable_anchor_offset_collection';
 import {ProjectionDefinition} from './types/projection_definition';
+import {VerticalGradient} from './types/vertical_gradient';
 import {GlobalState} from './definitions/global_state';
 import {RuntimeError} from './runtime_error';
 import {success, error} from '../util/result';
@@ -42,7 +43,8 @@ import {
     type EvaluationKind,
     ProjectionDefinitionType,
     NumberArrayType,
-    ColorArrayType
+    ColorArrayType,
+    VerticalGradientType
 } from './types';
 import {ICanonicalTileID} from '../tiles_and_coordinates';
 import {isFunction, createFunction} from '../function';
@@ -60,7 +62,8 @@ import type {
     NumberArraySpecification,
     ColorArraySpecification,
     PropertyValueSpecification,
-    VariableAnchorOffsetCollectionSpecification
+    VariableAnchorOffsetCollectionSpecification,
+    VerticalGradientSpecification
 } from '../types.g';
 
 export type Feature = {
@@ -705,6 +708,11 @@ export function normalizePropertyExpression<T>(
             );
         } else if (specification.type === 'projectionDefinition' && typeof value === 'string') {
             constant = ProjectionDefinition.parse(value);
+        } else if (
+            specification.type === 'verticalGradient' &&
+            (typeof value === 'boolean' || Array.isArray(value))
+        ) {
+            constant = VerticalGradient.parse(value as VerticalGradientSpecification);
         }
         return {
             globalStateRefs: new Set<string>(),
@@ -788,7 +796,8 @@ function getExpectedType(spec: StylePropertySpecification): Type {
         colorArray: ColorArrayType,
         projectionDefinition: ProjectionDefinitionType,
         resolvedImage: ResolvedImageType,
-        variableAnchorOffsetCollection: VariableAnchorOffsetCollectionType
+        variableAnchorOffsetCollection: VariableAnchorOffsetCollectionType,
+        verticalGradient: VerticalGradientType
     };
 
     if (spec.type === 'array') {
@@ -818,6 +827,8 @@ function getDefaultValue(spec: StylePropertySpecification): Value {
             return VariableAnchorOffsetCollection.parse(spec.default) || null;
         case 'projectionDefinition':
             return ProjectionDefinition.parse(spec.default) || null;
+        case 'verticalGradient':
+            return VerticalGradient.parse(spec.default) || null;
         default:
             return spec.default === undefined ? null : spec.default;
     }

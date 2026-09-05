@@ -9,6 +9,7 @@ import {findStopLessThanOrEqualTo} from '../expression/stops';
 import {Padding} from '../expression/types/padding';
 import {ColorArray} from '../expression/types/color_array';
 import {NumberArray} from '../expression/types/number_array';
+import {VerticalGradient} from '../expression/types/vertical_gradient';
 import {typeOf} from '../expression/values';
 import {ObjectType} from '../expression/types';
 import {StylePropertySpecification} from '..';
@@ -46,6 +47,8 @@ function getParseFunction(propertySpec: StylePropertySpecification) {
             return NumberArray.parse;
         case 'colorArray':
             return ColorArray.parse;
+        case 'verticalGradient':
+            return VerticalGradient.parse;
         default:
             return null;
     }
@@ -272,6 +275,9 @@ function evaluateIdentityFunction(parameters, propertySpec, input) {
             break;
         case 'numberArray':
             input = NumberArray.parse(input);
+            break;
+        case 'verticalGradient':
+            input = VerticalGradient.parse(input);
             break;
         default:
             if (

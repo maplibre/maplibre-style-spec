@@ -184,6 +184,7 @@ export type ProjectionDefinitionSpecification = string | ProjectionDefinitionT |
 export type PaddingSpecification = number | number[];
 export type NumberArraySpecification = number | number[];
 export type ColorArraySpecification = string | string[];
+export type VerticalGradientSpecification = boolean | number[];
 
 export type VariableAnchorOffsetCollectionSpecification = Array<string | [number, number]>;
 
