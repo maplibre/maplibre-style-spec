@@ -1,5 +1,8 @@
 ## main
 ### ✨ Features and improvements
+- Allow negative `fill-extrusion-base` and `fill-extrusion-height` values, extruding below ground level (e.g. underground floors) ([maplibre-gl-js#8051](https://github.com/maplibre/maplibre-gl-js/issues/8051)) (by [@clement-igonet](https://github.com/clement-igonet))
+- Add SDK support tracking for SDF fill pattern colorization ([#1683](https://github.com/maplibre/maplibre-style-spec/pull/1683)) (by [@deniial00](https://github.com/deniial00))
+- Add the `emptyTileBehavior` property to vector, raster and raster-dem sources: `fallback` treats an empty (HTTP 204) tile like a 404, so a tile from another zoom level shows through, and define the same key for the TileJSON those sources load ([maplibre-gl-js#3990](https://github.com/maplibre/maplibre-gl-js/issues/3990)) (by [@johncarmack1984](https://github.com/johncarmack1984))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
