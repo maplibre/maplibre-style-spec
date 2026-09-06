@@ -1,6 +1,7 @@
 ## main
 ### ✨ Features and improvements
 - Allow negative `fill-extrusion-base` and `fill-extrusion-height` values, extruding below ground level (e.g. underground floors) ([maplibre-gl-js#8051](https://github.com/maplibre/maplibre-gl-js/issues/8051)) (by [@clement-igonet](https://github.com/clement-igonet))
+- Add SDK support tracking for SDF fill pattern colorization ([#1683](https://github.com/maplibre/maplibre-style-spec/pull/1683)) (by [@deniial00](https://github.com/deniial00))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
