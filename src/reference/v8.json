@@ -6578,7 +6578,7 @@
           "ios": "3.5.0"
         },
         "SDF fill pattern colorization": {
-          "js": "https://github.com/maplibre/maplibre-style-spec/issues/1642",
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/8342",
           "android": "https://github.com/maplibre/maplibre-native/issues/4526",
           "ios": "https://github.com/maplibre/maplibre-native/issues/4526"
         },
