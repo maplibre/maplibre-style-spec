@@ -26,7 +26,23 @@ export function validateSky(options: ValidateSkyOptions) {
 
     let errors = [];
     for (const key in sky) {
-        if (skySpec[key]) {
+        const transitionMatch = key.match(/^(.*)-transition$/);
+
+        if (
+            transitionMatch &&
+            skySpec[transitionMatch[1]] &&
+            skySpec[transitionMatch[1]].transition
+        ) {
+            errors = errors.concat(
+                options.validateSpec({
+                    key,
+                    value: sky[key],
+                    valueSpec: styleSpec.transition,
+                    style,
+                    styleSpec
+                })
+            );
+        } else if (skySpec[key]) {
             errors = errors.concat(
                 options.validateSpec({
                     key,
