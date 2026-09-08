@@ -76,14 +76,28 @@ describe('Validate sky', () => {
             validateSpec: validate,
             value: {
                 'sky-color': 'blue',
-                'sky-color-transitionx': {duration: 1000}
+                'not-a-sky-property-transition': {duration: 1000}
             } as any,
             styleSpec: v8,
             style: {} as any
         });
         expect(errors).toHaveLength(1);
-        expect(errors[0].message).toContain('sky-color-transitionx');
+        expect(errors[0].message).toContain('not-a-sky-property-transition');
         expect(errors[0].message).toContain('unknown');
+    });
+
+    test('Should return error when a transition value is not a transition', () => {
+        const errors = validateSky({
+            validateSpec: validate,
+            value: {
+                'sky-color': 'blue',
+                'sky-color-transition': {duration: 'slow'}
+            } as any,
+            styleSpec: v8,
+            style: {} as any
+        });
+        expect(errors).toHaveLength(1);
+        expect(errors[0].message).toContain('sky-color-transition.duration');
     });
 
     test('Should pass if everything is according to spec', () => {

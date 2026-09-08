@@ -1,5 +1,6 @@
 import {ValidationError} from '../error/validation_error';
 import {getType} from '../util/get_type';
+import {transitionPropertyRegExp} from '../util/properties';
 import v8 from '../reference/v8.json' with {type: 'json'};
 import {SkySpecification, StyleSpecification} from '../types.g';
 
@@ -26,7 +27,7 @@ export function validateSky(options: ValidateSkyOptions) {
 
     let errors = [];
     for (const key in sky) {
-        const transitionMatch = key.match(/^(.*)-transition$/);
+        const transitionMatch = key.match(transitionPropertyRegExp);
 
         if (
             transitionMatch &&
