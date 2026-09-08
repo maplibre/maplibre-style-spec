@@ -30,11 +30,12 @@ export class EvaluationContext {
     }
 
     geometryType() {
-        return this.feature
-            ? typeof this.feature.type === 'number'
+        if (!this.feature) return null;
+        const type =
+            typeof this.feature.type === 'number'
                 ? geometryTypes[this.feature.type]
-                : this.feature.type
-            : null;
+                : this.feature.type;
+        return type.startsWith('Multi') ? type.slice(5) : type;
     }
 
     geometry() {
