@@ -1,12 +1,20 @@
 ## main
 ### ✨ Features and improvements
-- Allow negative `fill-extrusion-base` and `fill-extrusion-height` values, extruding below ground level (e.g. underground floors) ([maplibre-gl-js#8051](https://github.com/maplibre/maplibre-gl-js/issues/8051)) (by [@clement-igonet](https://github.com/clement-igonet))
-- Add SDK support tracking for SDF fill pattern colorization ([#1683](https://github.com/maplibre/maplibre-style-spec/pull/1683)) (by [@deniial00](https://github.com/deniial00))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
-- Validate `-transition` properties on `sky` the same way `light` already does, so `sky-color-transition` and similar keys no longer report as unknown properties ([#1867](https://github.com/maplibre/maplibre-style-spec/pull/1867)) (by [@Yasser-Ameur](https://github.com/Yasser-Ameur))
 - _...Add new stuff here..._
+
+- Document SDK support for SDF fill pattern colorization ([#1854](https://github.com/maplibre/maplibre-style-spec/pull/1854)) (by [@deniial00](https://github.com/deniial00))
+- ci: cancel superseded pull request runs ([#1853](https://github.com/maplibre/maplibre-style-spec/pull/1853)) (by [@johncarmack1984](https://github.com/johncarmack1984))
+- Allow negative fill-extrusion-base and fill-extrusion-height ([#1794](https://github.com/maplibre/maplibre-style-spec/pull/1794)) (by [@clement-igonet](https://github.com/clement-igonet))
+## 26.4.2
+### ✨ Features and improvements
+- Allow negative `fill-extrusion-base` and `fill-extrusion-height` values, extruding below ground level (e.g. underground floors) ([maplibre-gl-js#8051](https://github.com/maplibre/maplibre-gl-js/issues/8051)) (by [@clement-igonet](https://github.com/clement-igonet))
+- Add SDK support tracking for SDF fill pattern colorization ([#1683](https://github.com/maplibre/maplibre-style-spec/pull/1683)) (by [@deniial00](https://github.com/deniial00))
+
+### 🐞 Bug fixes
+- Validate `-transition` properties on `sky` the same way `light` already does, so `sky-color-transition` and similar keys no longer report as unknown properties ([#1867](https://github.com/maplibre/maplibre-style-spec/pull/1867)) (by [@Yasser-Ameur](https://github.com/Yasser-Ameur))
 
 ## 26.4.1
 
