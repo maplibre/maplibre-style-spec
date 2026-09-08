@@ -58,6 +58,48 @@ describe('Validate sky', () => {
         expect(errors[3].message).toBe('fog-ground-blend: number expected, string found');
     });
 
+    test('Should pass when a transition property matches a transitionable sky property', () => {
+        const errors = validateSky({
+            validateSpec: validate,
+            value: {
+                'sky-color': 'blue',
+                'sky-color-transition': {duration: 1000}
+            } as any,
+            styleSpec: v8,
+            style: {} as any
+        });
+        expect(errors).toHaveLength(0);
+    });
+
+    test('Should return error when a transition property does not match a real property', () => {
+        const errors = validateSky({
+            validateSpec: validate,
+            value: {
+                'sky-color': 'blue',
+                'not-a-sky-property-transition': {duration: 1000}
+            } as any,
+            styleSpec: v8,
+            style: {} as any
+        });
+        expect(errors).toHaveLength(1);
+        expect(errors[0].message).toContain('not-a-sky-property-transition');
+        expect(errors[0].message).toContain('unknown');
+    });
+
+    test('Should return error when a transition value is not a transition', () => {
+        const errors = validateSky({
+            validateSpec: validate,
+            value: {
+                'sky-color': 'blue',
+                'sky-color-transition': {duration: 'slow'}
+            } as any,
+            styleSpec: v8,
+            style: {} as any
+        });
+        expect(errors).toHaveLength(1);
+        expect(errors[0].message).toContain('sky-color-transition.duration');
+    });
+
     test('Should pass if everything is according to spec', () => {
         const errors = validateSky({
             validateSpec: validate,
