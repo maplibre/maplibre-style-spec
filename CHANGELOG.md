@@ -3,7 +3,6 @@
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
-- Record `semiliteral` support in MapLibre Android 13.7.0 and MapLibre iOS 6.31.0.
 - _...Add new stuff here..._
 
 ## 26.4.2
