@@ -3518,7 +3518,7 @@
         "group": "Types",
         "sdk-support": {
           "basic functionality": {
-            "js": "https://github.com/maplibre/maplibre-gl-js/issues/7933",
+            "js": "6.6.0",
             "android": "https://github.com/maplibre/maplibre-native/issues/4401",
             "ios": "https://github.com/maplibre/maplibre-native/issues/4401"
           }
