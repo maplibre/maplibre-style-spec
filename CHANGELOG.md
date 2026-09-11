@@ -3,7 +3,6 @@
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
-- Record `semiliteral` support in MapLibre GL JS 6.6.0.
 - _...Add new stuff here..._
 
 ## 26.4.2
