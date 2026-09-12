@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 728 492" font-size="14" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif">
+  <defs>
+    <!-- Clip paths, 8 columns over two rows -->
+    <clipPath id="clip-1"><rect x="12" y="45" width="176" height="180"/></clipPath>
+    <clipPath id="clip-2"><rect x="188" y="45" width="176" height="180"/></clipPath>
+    <clipPath id="clip-3"><rect x="364" y="45" width="176" height="180"/></clipPath>
+    <clipPath id="clip-4"><rect x="540" y="45" width="176" height="180"/></clipPath>
+    <clipPath id="clip-5"><rect x="12" y="300" width="176" height="180"/></clipPath>
+    <clipPath id="clip-6"><rect x="188" y="300" width="176" height="180"/></clipPath>
+    <clipPath id="clip-7"><rect x="364" y="300" width="176" height="180"/></clipPath>
+    <clipPath id="clip-8"><rect x="540" y="300" width="176" height="180"/></clipPath>
+
+    <!-- Rounded clip so each strip keeps rounded outer corners -->
+    <clipPath id="clip-strip">
+      <rect x="12" y="45" width="704" height="180" rx="8"/>
+    </clipPath>
+
+    <!-- Erase mask: everything white stays, the black shape cuts a hole in the basemap -->
+    <mask id="erase-mask">
+      <rect x="540" y="300" width="176" height="180" fill="#ffffff"/>
+      <line x1="30" y1="415" x2="698" y2="325" stroke="#000000" stroke-width="30" stroke-linecap="round"/>
+    </mask>
+
+    <!-- Unified base map strip, reused by both rows -->
+    <g id="basemap" clip-path="url(#clip-strip)">
+      <rect x="12" y="45" width="704" height="180" fill="#f8f9fa"/>
+
+      <!-- Forests -->
+      <path d="M 12,45 L 160,45 L 125,110 L 12,90 Z" fill="#e2f0d9"/>
+      <path d="M 561,45 L 716,45 L 698,110 L 639,90 Z" fill="#e2f0d9"/>
+
+      <!-- River winding across the entire map -->
+      <path d="M 12,135 C 125,145 202,95 322,105 C 484,115 624,60 716,78 L 716,113 C 624,95 484,150 322,140 C 202,130 125,180 12,170 Z" fill="#a2d2ff"/>
+
+      <!-- Roads / cased street grid (casing first) -->
+      <line x1="12" y1="90" x2="716" y2="90" stroke="#cbd5e1" stroke-width="8"/>
+      <line x1="12" y1="180" x2="716" y2="180" stroke="#cbd5e1" stroke-width="8"/>
+      <line x1="100" y1="45" x2="100" y2="225" stroke="#cbd5e1" stroke-width="6"/>
+      <line x1="276" y1="45" x2="276" y2="225" stroke="#cbd5e1" stroke-width="6"/>
+      <line x1="452" y1="45" x2="452" y2="225" stroke="#cbd5e1" stroke-width="6"/>
+      <line x1="628" y1="45" x2="628" y2="225" stroke="#cbd5e1" stroke-width="6"/>
+
+      <!-- Roads / cased street grid (centers on top) -->
+      <line x1="12" y1="90" x2="716" y2="90" stroke="#ffffff" stroke-width="4"/>
+      <line x1="12" y1="180" x2="716" y2="180" stroke="#ffffff" stroke-width="4"/>
+      <line x1="100" y1="45" x2="100" y2="225" stroke="#ffffff" stroke-width="3"/>
+      <line x1="276" y1="45" x2="276" y2="225" stroke="#ffffff" stroke-width="3"/>
+      <line x1="452" y1="45" x2="452" y2="225" stroke="#ffffff" stroke-width="3"/>
+      <line x1="628" y1="45" x2="628" y2="225" stroke="#ffffff" stroke-width="3"/>
+    </g>
+  </defs>
+
+  <!-- Background canvas -->
+  <rect x="0" y="0" width="728" height="492" fill="#ffffff"/>
+
+  <!-- Outer map borders -->
+  <rect x="12" y="45" width="704" height="180" fill="none" stroke="#e9ecef" stroke-width="2" rx="8"/>
+  <rect x="12" y="300" width="704" height="180" fill="none" stroke="#e9ecef" stroke-width="2" rx="8"/>
+
+  <g style="isolation: isolate;">
+    <!-- normal -->
+    <g clip-path="url(#clip-1)">
+      <use href="#basemap"/>
+      <line x1="30" y1="160" x2="698" y2="70" stroke="#d62728" stroke-width="30" stroke-linecap="round" stroke-opacity="0.9" style="mix-blend-mode: normal;"/>
+    </g>
+
+    <!-- multiply -->
+    <g clip-path="url(#clip-2)">
+      <use href="#basemap"/>
+      <line x1="30" y1="160" x2="698" y2="70" stroke="#d62728" stroke-width="30" stroke-linecap="round" stroke-opacity="0.9" style="mix-blend-mode: multiply;"/>
+    </g>
+
+    <!-- color -->
+    <g clip-path="url(#clip-3)">
+      <use href="#basemap"/>
+      <line x1="30" y1="160" x2="698" y2="70" stroke="#d62728" stroke-width="30" stroke-linecap="round" stroke-opacity="0.9" style="mix-blend-mode: color;"/>
+    </g>
+
+    <!-- luminosity -->
+    <g clip-path="url(#clip-4)">
+      <use href="#basemap"/>
+      <line x1="30" y1="160" x2="698" y2="70" stroke="#d62728" stroke-width="30" stroke-linecap="round" stroke-opacity="0.9" style="mix-blend-mode: luminosity;"/>
+    </g>
+
+    <!-- plus -->
+    <g clip-path="url(#clip-5)">
+      <use href="#basemap" y="255"/>
+      <line x1="30" y1="415" x2="698" y2="325" stroke="#d62728" stroke-width="30" stroke-linecap="round" stroke-opacity="0.9" style="mix-blend-mode: plus-lighter;"/>
+    </g>
+
+    <!-- screen -->
+    <g clip-path="url(#clip-6)">
+      <use href="#basemap" y="255"/>
+      <line x1="30" y1="415" x2="698" y2="325" stroke="#d62728" stroke-width="30" stroke-linecap="round" stroke-opacity="0.9" style="mix-blend-mode: screen;"/>
+    </g>
+
+    <!-- overlay -->
+    <g clip-path="url(#clip-7)">
+      <use href="#basemap" y="255"/>
+      <line x1="30" y1="415" x2="698" y2="325" stroke="#d62728" stroke-width="30" stroke-linecap="round" stroke-opacity="0.9" style="mix-blend-mode: overlay;"/>
+    </g>
+
+    <!-- erase -->
+    <g clip-path="url(#clip-8)" mask="url(#erase-mask)">
+      <use href="#basemap" y="255"/>
+    </g>
+
+  </g>
+
+  <!-- Column labels -->
+  <text x="100" y="20" text-anchor="middle" fill="#212529" font-size="14">normal</text>
+  <text x="276" y="20" text-anchor="middle" fill="#212529" font-size="14">multiply</text>
+  <text x="452" y="20" text-anchor="middle" fill="#212529" font-size="14">color</text>
+  <text x="628" y="20" text-anchor="middle" fill="#212529" font-size="14">luminosity</text>
+  <text x="100" y="275" text-anchor="middle" fill="#212529" font-size="14">plus</text>
+  <text x="276" y="275" text-anchor="middle" fill="#212529" font-size="14">screen</text>
+  <text x="452" y="275" text-anchor="middle" fill="#212529" font-size="14">overlay</text>
+  <text x="628" y="275" text-anchor="middle" fill="#212529" font-size="14">erase</text>
+</svg>
