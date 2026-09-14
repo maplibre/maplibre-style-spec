@@ -25,8 +25,16 @@ export type DiffOperationsMap = {
     setStyle: [StyleSpecification];
     addLayer: [LayerSpecification, string | undefined];
     removeLayer: [string];
-    setPaintProperty: [string, keyof AllPaintProperties, AllPaintProperties[keyof AllPaintProperties]];
-    setLayoutProperty: [string, keyof AllLayoutProperties, AllLayoutProperties[keyof AllLayoutProperties]];
+    setPaintProperty: [
+        string,
+        keyof AllPaintProperties,
+        AllPaintProperties[keyof AllPaintProperties]
+    ];
+    setLayoutProperty: [
+        string,
+        keyof AllLayoutProperties,
+        AllLayoutProperties[keyof AllLayoutProperties]
+    ];
     setFilter: [string, FilterSpecification];
     addSource: [string, SourceSpecification];
     removeSource: [string];
@@ -58,10 +66,12 @@ export type DiffOperations = keyof DiffOperationsMap;
  * This is distributed over `T` so that `DiffCommand<DiffOperations>` is a discriminated union
  * of all the commands, which lets a `switch` on `command` narrow `args` to a single tuple.
  */
-export type DiffCommand<T extends DiffOperations = DiffOperations> = T extends DiffOperations ? {
-    command: T;
-    args: DiffOperationsMap[T];
-} : never;
+export type DiffCommand<T extends DiffOperations = DiffOperations> = T extends DiffOperations
+    ? {
+          command: T;
+          args: DiffOperationsMap[T];
+      }
+    : never;
 
 /**
  * The main reason for this method is to allow type check when adding a command to the array.
@@ -183,9 +193,15 @@ function addPropertyCommand(
     command: 'setPaintProperty' | 'setLayoutProperty'
 ) {
     if (command === 'setPaintProperty') {
-        addCommand(commands, {command, args: [layerId, prop as keyof AllPaintProperties, after[prop]]});
+        addCommand(commands, {
+            command,
+            args: [layerId, prop as keyof AllPaintProperties, after[prop]]
+        });
     } else {
-        addCommand(commands, {command, args: [layerId, prop as keyof AllLayoutProperties, after[prop]]});
+        addCommand(commands, {
+            command,
+            args: [layerId, prop as keyof AllLayoutProperties, after[prop]]
+        });
     }
 }
 
