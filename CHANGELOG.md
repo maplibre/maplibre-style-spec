@@ -1,5 +1,6 @@
 ## main
 ### ✨ Features and improvements
+- Tighten the diff command types: `DiffCommand` is now a discriminated union, so a `switch` on `command` narrows `args`, and the unused legacy class argument was dropped from `setPaintProperty` and `setLayoutProperty` ([#1876](https://github.com/maplibre/maplibre-style-spec/pull/1876)) (by [@HarelM](https://github.com/HarelM))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes

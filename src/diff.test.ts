@@ -96,7 +96,7 @@ describe('diff', () => {
                     layers: [{id: 'a', paint: {foo: 2}}]
                 } as any as StyleSpecification
             )
-        ).toEqual([{command: 'setPaintProperty', args: ['a', 'foo', 2, null]}]);
+        ).toEqual([{command: 'setPaintProperty', args: ['a', 'foo', 2]}]);
     });
 
     test('set paint property with light', () => {
@@ -109,7 +109,7 @@ describe('diff', () => {
                     layers: [{id: 'a', 'paint.light': {foo: 2}}]
                 } as any as StyleSpecification
             )
-        ).toEqual([{command: 'setPaintProperty', args: ['a', 'foo', 2, 'light']}]);
+        ).toEqual([{command: 'setPaintProperty', args: ['a', 'foo', 2]}]);
     });
 
     test('set paint property with ramp', () => {
@@ -122,7 +122,7 @@ describe('diff', () => {
                     layers: [{id: 'a', paint: {foo: {ramp: [1]}}}]
                 } as any as StyleSpecification
             )
-        ).toEqual([{command: 'setPaintProperty', args: ['a', 'foo', {ramp: [1]}, null]}]);
+        ).toEqual([{command: 'setPaintProperty', args: ['a', 'foo', {ramp: [1]}]}]);
     });
 
     test('set layout property', () => {
@@ -135,7 +135,7 @@ describe('diff', () => {
                     layers: [{id: 'a', layout: {foo: 2}}]
                 } as any as StyleSpecification
             )
-        ).toEqual([{command: 'setLayoutProperty', args: ['a', 'foo', 2, null]}]);
+        ).toEqual([{command: 'setLayoutProperty', args: ['a', 'foo', 2]}]);
     });
 
     test('set filter', () => {
