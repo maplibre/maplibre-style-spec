@@ -1,0 +1,26 @@
+{
+  "expression": [
+    "semiliteral",
+    [
+      0,
+      [
+        "semiliteral",
+        [
+          ["unknown"]
+        ]
+      ]
+    ]
+  ],
+  "inputs": [],
+  "expected": {
+    "compiled": {
+      "result": "error",
+      "errors": [
+        {
+          "key": "[1][1][1][0][0]",
+          "error": "Unknown expression \"unknown\". If you wanted a literal array, use [\"literal\", [...]]."
+        }
+      ]
+    }
+  }
+}
