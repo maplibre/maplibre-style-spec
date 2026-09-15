@@ -6,13 +6,7 @@
     "semiliteral",
     [
       "top",
-      [
-        "literal",
-        [
-          0,
-          1
-        ]
-      ]
+      ["literal", [0, 1]]
     ]
   ],
   "inputs": [

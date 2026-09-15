@@ -7,13 +7,7 @@
   "expression": [
     "semiliteral",
     [
-      [
-        "number",
-        [
-          "get",
-          "x"
-        ]
-      ],
+      ["number", ["get", "x"]],
       2
     ]
   ],
