@@ -1,0 +1,44 @@
+{
+  "propertySpec": {
+    "type": "array",
+    "value": "number",
+    "length": 2
+  },
+  "expression": [
+    "semiliteral",
+    [
+      [
+        "number",
+        [
+          "get",
+          "x"
+        ]
+      ],
+      2
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {
+        "properties": {
+          "x": 3
+        }
+      }
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": false,
+      "isZoomConstant": true,
+      "type": "array<number, 2>"
+    },
+    "outputs": [
+      [
+        3,
+        2
+      ]
+    ]
+  }
+}

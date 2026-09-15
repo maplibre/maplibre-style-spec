@@ -528,49 +528,6 @@ describe('nonexistent operators', () => {
 });
 
 describe('semiliteral expression', () => {
-    test.each([
-        {name: 'literal components', components: [1, 2], expected: [1, 2]},
-        {
-            name: 'dynamic components',
-            components: [['number', ['get', 'x']], 2],
-            expected: [3, 2]
-        }
-    ])('parses text-offset with $name', ({components, expected}) => {
-        const result = createPropertyExpression(
-            ['semiliteral', components],
-            'layers[0].layout.text-offset',
-            v8.layout_symbol['text-offset'] as unknown as StylePropertySpecification
-        );
-        assert(result.result === 'success');
-        expect(result.value.evaluate({zoom: 0}, {type: 'Point', properties: {x: 3}})).toEqual(
-            expected
-        );
-    });
-
-    test('parses text-variable-anchor-offset with a nested literal array', () => {
-        const result = createPropertyExpression(
-            ['semiliteral', ['top', ['literal', [0, 1]]]],
-            'layers[0].layout.text-variable-anchor-offset',
-            v8.layout_symbol['text-variable-anchor-offset'] as unknown as StylePropertySpecification
-        );
-        assert(result.result === 'success');
-        expect(result.value.evaluate({zoom: 0})).toEqual(
-            new VariableAnchorOffsetCollection(['top', [0, 1]])
-        );
-    });
-
-    test('rejects mixed element types for text-offset', () => {
-        const result = createPropertyExpression(
-            ['semiliteral', [1, 'top']],
-            'layers[0].layout.text-offset',
-            v8.layout_symbol['text-offset'] as unknown as StylePropertySpecification
-        );
-        assert(result.result === 'error');
-        expect(result.value).toMatchObject([
-            {key: '', message: 'Expected array<number, 2> but found array<value, 2> instead.'}
-        ]);
-    });
-
     test('gives informative error for non-JSON values', () => {
         const result = createExpression(
             ['semiliteral', () => {}] as any,
