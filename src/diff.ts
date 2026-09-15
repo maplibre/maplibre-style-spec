@@ -486,8 +486,9 @@ export function diff(
         if (!deepEqual(before.light, after.light)) {
             commands.push({command: 'setLight', args: [after.light]});
         }
-        if (!deepEqual(before.terrain, after.terrain)) {
-            commands.push({command: 'setTerrain', args: [after.terrain]});
+        const terrainChanged = !deepEqual(before.terrain, after.terrain);
+        if (terrainChanged && !after.terrain) {
+            commands.push({command: 'setTerrain', args: [undefined]});
         }
         if (!deepEqual(before.sky, after.sky)) {
             commands.push({command: 'setSky', args: [after.sky]});
@@ -524,6 +525,11 @@ export function diff(
 
         // Handle changes to `layers`
         diffLayers(beforeLayers, after.layers, commands);
+
+        // Terrain is enabled or changed only once its source is in place.
+        if (terrainChanged && after.terrain) {
+            commands.push({command: 'setTerrain', args: [after.terrain]});
+        }
     } catch (e) {
         // fall back to setStyle
         console.warn('Unable to compute style diff:', e);

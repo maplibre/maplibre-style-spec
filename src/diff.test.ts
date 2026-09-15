@@ -849,6 +849,76 @@ describe('diff', () => {
         ).toEqual([{command: 'setTerrain', args: [{source: 'maplibre-dem', exaggeration: 1.5}]}]);
     });
 
+    test('add terrain after the source it uses', () => {
+        expect(
+            diff(
+                {
+                    sources: {}
+                } as any as StyleSpecification,
+                {
+                    sources: {
+                        'maplibre-dem': {type: 'raster-dem', url: 'http://example.com/dem'}
+                    },
+                    terrain: {
+                        source: 'maplibre-dem',
+                        exaggeration: 1.5
+                    }
+                } as any as StyleSpecification
+            )
+        ).toEqual([
+            {
+                command: 'addSource',
+                args: ['maplibre-dem', {type: 'raster-dem', url: 'http://example.com/dem'}]
+            },
+            {command: 'setTerrain', args: [{source: 'maplibre-dem', exaggeration: 1.5}]}
+        ]);
+    });
+
+    test('remove terrain before the source it uses', () => {
+        expect(
+            diff(
+                {
+                    sources: {
+                        'maplibre-dem': {type: 'raster-dem', url: 'http://example.com/dem'}
+                    },
+                    terrain: {
+                        source: 'maplibre-dem',
+                        exaggeration: 1.5
+                    }
+                } as any as StyleSpecification,
+                {
+                    sources: {}
+                } as any as StyleSpecification
+            )
+        ).toEqual([
+            {command: 'setTerrain', args: [undefined]},
+            {command: 'removeSource', args: ['maplibre-dem']}
+        ]);
+    });
+
+    test('change the terrain source after the new source is added', () => {
+        expect(
+            diff(
+                {
+                    sources: {
+                        'dem-a': {type: 'raster-dem', url: 'http://example.com/a'}
+                    },
+                    terrain: {source: 'dem-a', exaggeration: 1.5}
+                } as any as StyleSpecification,
+                {
+                    sources: {
+                        'dem-b': {type: 'raster-dem', url: 'http://example.com/b'}
+                    },
+                    terrain: {source: 'dem-b', exaggeration: 1.5}
+                } as any as StyleSpecification
+            )
+        ).toEqual([
+            {command: 'removeSource', args: ['dem-a']},
+            {command: 'addSource', args: ['dem-b', {type: 'raster-dem', url: 'http://example.com/b'}]},
+            {command: 'setTerrain', args: [{source: 'dem-b', exaggeration: 1.5}]}
+        ]);
+    });
+
     test('set sky', () => {
         expect(
             diff(

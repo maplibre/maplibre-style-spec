@@ -4,6 +4,7 @@
 
 ### 🐞 Bug fixes
 - Fix `semiliteral` parsing in array-valued properties and `at` operands, and report invalid children at their nested expression locations instead of throwing.
+- Order the `setTerrain` diff command relative to the source commands, so enabling or changing terrain happens after its source is added and disabling terrain happens before its source is removed ([#8404](https://github.com/maplibre/maplibre-gl-js/issues/8404))
 
 ## 26.4.3
 
