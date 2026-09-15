@@ -5,12 +5,11 @@
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
 
-- Fix semiliteral parsing in array contexts ([#1878](https://github.com/maplibre/maplibre-style-spec/pull/1878)) (by [@sargunv](https://github.com/sargunv))
 ## 26.4.4
-### ✨ Features and improvements
 
 ### 🐞 Bug fixes
-- Fix `semiliteral` parsing in array-valued properties and `at` operands, and report invalid children at their nested expression locations instead of throwing.
+
+- Fix `semiliteral` parsing in array-valued properties and `at` operands, and report invalid children at their nested expression locations instead of throwing ([#1878](https://github.com/maplibre/maplibre-style-spec/pull/1878))
 - Order the `setTerrain` diff command around the source commands, so terrain is set after its source is added and unset before it is removed ([#1879](https://github.com/maplibre/maplibre-style-spec/pull/1879))
 
 ## 26.4.3
