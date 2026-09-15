@@ -3,7 +3,13 @@
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
-- Fix `semiliteral` parsing in array-valued properties and `at` operands, and report invalid children at their nested expression locations instead of throwing.
+- _...Add new stuff here..._
+
+## 26.4.4
+
+### 🐞 Bug fixes
+
+- Fix `semiliteral` parsing in array-valued properties and `at` operands, and report invalid children at their nested expression locations instead of throwing ([#1878](https://github.com/maplibre/maplibre-style-spec/pull/1878))
 - Order the `setTerrain` diff command around the source commands, so terrain is set after its source is added and unset before it is removed ([#1879](https://github.com/maplibre/maplibre-style-spec/pull/1879))
 
 ## 26.4.3
