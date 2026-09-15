@@ -914,7 +914,10 @@ describe('diff', () => {
             )
         ).toEqual([
             {command: 'removeSource', args: ['dem-a']},
-            {command: 'addSource', args: ['dem-b', {type: 'raster-dem', url: 'http://example.com/b'}]},
+            {
+                command: 'addSource',
+                args: ['dem-b', {type: 'raster-dem', url: 'http://example.com/b'}]
+            },
             {command: 'setTerrain', args: [{source: 'dem-b', exaggeration: 1.5}]}
         ]);
     });
