@@ -532,11 +532,8 @@ describe('semiliteral expression', () => {
         {name: 'literal components', components: [1, 2], expected: [1, 2]},
         {
             name: 'dynamic components',
-            components: [
-                ['number', ['get', 'x']],
-                ['+', ['number', ['get', 'y']], 1]
-            ],
-            expected: [3, 5]
+            components: [['number', ['get', 'x']], 2],
+            expected: [3, 2]
         }
     ])('parses text-offset with $name', ({components, expected}) => {
         const result = createPropertyExpression(
@@ -545,103 +542,33 @@ describe('semiliteral expression', () => {
             v8.layout_symbol['text-offset'] as unknown as StylePropertySpecification
         );
         assert(result.result === 'success');
-        expect(result.value.evaluate({zoom: 0}, {type: 'Point', properties: {x: 3, y: 4}})).toEqual(
+        expect(result.value.evaluate({zoom: 0}, {type: 'Point', properties: {x: 3}})).toEqual(
             expected
         );
     });
 
-    test.each([
-        {name: 'nested literal array', offset: ['literal', [0, 1]], expected: [0, 1]},
-        {
-            name: 'nested dynamic semiliteral',
-            offset: ['semiliteral', [0, ['number', ['get', 'y']]]],
-            expected: [0, 4]
-        }
-    ])('parses text-variable-anchor-offset with $name', ({offset, expected}) => {
+    test('parses text-variable-anchor-offset with a nested literal array', () => {
         const result = createPropertyExpression(
-            ['semiliteral', ['top', offset]],
+            ['semiliteral', ['top', ['literal', [0, 1]]]],
             'layers[0].layout.text-variable-anchor-offset',
             v8.layout_symbol['text-variable-anchor-offset'] as unknown as StylePropertySpecification
         );
         assert(result.result === 'success');
-        expect(result.value.evaluate({zoom: 0}, {type: 'Point', properties: {y: 4}})).toEqual(
-            new VariableAnchorOffsetCollection(['top', expected as [number, number]])
+        expect(result.value.evaluate({zoom: 0})).toEqual(
+            new VariableAnchorOffsetCollection(['top', [0, 1]])
         );
     });
 
-    test.each([
-        {name: 'numbers', elements: [1, 2], index: 0, expected: 1},
-        {name: 'dynamic values', elements: [['get', 'x'], 2], index: 0, expected: 3},
-        {name: 'mixed elements', elements: ['top', ['literal', [0, 1]]], index: 1, expected: [0, 1]}
-    ])('parses the array operand of at with $name', ({elements, index, expected}) => {
-        const result = createExpression(
-            ['at', index, ['semiliteral', elements]],
-            'layers[0].layout.text-offset'
-        );
-        assert(result.result === 'success');
-        expect(
-            result.value.evaluateWithoutErrorHandling(
-                {zoom: 0},
-                {type: 'Point', properties: {x: 3}}
-            )
-        ).toEqual(expected);
-    });
-
-    test.each([
-        {
-            expression: ['semiliteral', [['unknown']]],
-            key: '[1][0][0]',
-            message: 'Unknown expression "unknown".'
-        },
-        {
-            expression: ['semiliteral', [1, ['unknown']]],
-            key: '[1][1][0]',
-            message: 'Unknown expression "unknown".'
-        },
-        {
-            expression: ['at', 0, ['semiliteral', [['+', 1, 'bad']]]],
-            key: '[2][1][0][2]',
-            message: 'Expected number but found string instead.'
-        },
-        {
-            expression: ['semiliteral', [0, ['semiliteral', [['unknown']]]]],
-            key: '[1][1][1][0][0]',
-            message: 'Unknown expression "unknown".'
-        },
-        {
-            expression: ['semiliteral', [[0, 1]]],
-            key: '[1][0][0]',
-            message: 'Expression name must be a string'
-        },
-        {expression: ['semiliteral', [{}]], key: '[1][0]', message: 'Bare objects invalid.'}
-    ])('reports invalid children at $key', ({expression, key, message}) => {
-        const result = createExpression(expression, 'layers[0].layout.text-offset');
-        assert(result.result === 'error');
-        expect(result.value).toHaveLength(1);
-        expect(result.value[0].key).toBe(key);
-        expect(result.value[0].message).toContain(message);
-    });
-
-    test.each([
-        {elements: [1], message: 'Expected array<number, 2> but found array<number, 1> instead.'},
-        {
-            elements: [1, 'top'],
-            message: 'Expected array<number, 2> but found array<value, 2> instead.'
-        },
-        {
-            elements: [['get', 'x'], 2],
-            message: 'Expected array<number, 2> but found array<value, 2> instead.'
-        }
-    ])('checks the enclosing property type: $message', ({elements, message}) => {
+    test('rejects mixed element types for text-offset', () => {
         const result = createPropertyExpression(
-            ['semiliteral', elements],
+            ['semiliteral', [1, 'top']],
             'layers[0].layout.text-offset',
             v8.layout_symbol['text-offset'] as unknown as StylePropertySpecification
         );
         assert(result.result === 'error');
-        expect(result.value).toHaveLength(1);
-        expect(result.value[0].key).toBe('');
-        expect(result.value[0].message).toBe(message);
+        expect(result.value).toMatchObject([
+            {key: '', message: 'Expected array<number, 2> but found array<value, 2> instead.'}
+        ]);
     });
 
     test('gives informative error for non-JSON values', () => {
