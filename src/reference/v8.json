@@ -535,7 +535,14 @@
         }
       },
       "default": "xyz",
-      "doc": "Influences the y direction of the tile coordinates. The global-mercator (aka Spherical Mercator) profile is assumed."
+      "doc": "Influences the y direction of the tile coordinates. The global-mercator (aka Spherical Mercator) profile is assumed.",
+      "sdk-support": {
+        "basic functionality": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/8418",
+          "android": "supported",
+          "ios": "supported"
+        }
+      }
     },
     "attribution": {
       "type": "string",

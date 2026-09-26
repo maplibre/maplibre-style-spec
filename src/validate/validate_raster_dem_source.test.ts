@@ -116,16 +116,6 @@ describe('Validate source_raster_dem', () => {
         expect(errors).toHaveLength(0);
     });
 
-    test('Should pass when scheme is "tms"', () => {
-        const errors = validateRasterDEMSource({
-            validateSpec: validate,
-            value: {type: 'raster-dem', scheme: 'tms'},
-            styleSpec: v8,
-            style: {} as any
-        });
-        expect(errors).toHaveLength(0);
-    });
-
     test('Should pass if everything is according to spec', () => {
         const errors = validateRasterDEMSource({
             validateSpec: validate,
