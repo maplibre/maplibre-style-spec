@@ -61,6 +61,13 @@ plugins:
   - social:
       cards_layout_options:
         background_color: '#295DAA'
+        color: '#FFFFFF'
+  - llmstxt:
+      base_url: https://maplibre.org/maplibre-style-spec/
+      full_output: llms-full.txt
+      sections:
+        Docs:
+          - '*.md'
 validation:
   omitted_files: warn
   absolute_links: warn
