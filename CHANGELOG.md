@@ -1,5 +1,6 @@
 ## main
 ### ✨ Features and improvements
+- Allow `scheme: "tms"` for `raster-dem` sources ([#1890](https://github.com/maplibre/maplibre-style-spec/pull/1890)) (by [@erenbati](https://github.com/erenbati))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
