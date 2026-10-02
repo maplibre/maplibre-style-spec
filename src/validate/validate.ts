@@ -25,6 +25,7 @@ import {validatePadding} from './validate_padding';
 import {validateNumberArray} from './validate_number_array';
 import {validateColorArray} from './validate_color_array';
 import {validateVariableAnchorOffsetCollection} from './validate_variable_anchor_offset_collection';
+import {validateVerticalGradient} from './validate_vertical_gradient';
 import {validateSprite} from './validate_sprite';
 import {ValidationError} from '../error/validation_error';
 import {validateProjection} from './validate_projection';
@@ -59,6 +60,7 @@ const VALIDATORS = {
     numberArray: validateNumberArray,
     colorArray: validateColorArray,
     variableAnchorOffsetCollection: validateVariableAnchorOffsetCollection,
+    verticalGradient: validateVerticalGradient,
     sprite: validateSprite,
     state: validateState,
     fontFaces: validateFontFaces

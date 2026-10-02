@@ -82,6 +82,7 @@ function validSchema(k, v, obj, ref, version, kind) {
         'numberArray',
         'colorArray',
         'variableAnchorOffsetCollection',
+        'verticalGradient',
         'sprite',
         'projectionDefinition',
         'state',
