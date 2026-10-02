@@ -1,4 +1,7 @@
 import {
+    AllLayoutProperties,
+    AllPaintProperties,
+    FilterSpecification,
     FontFacesSpecification,
     GeoJSONSourceSpecification,
     LayerSpecification,
@@ -20,14 +23,22 @@ import {deepEqual} from './util/deep_equal';
  */
 export type DiffOperationsMap = {
     setStyle: [StyleSpecification];
-    addLayer: [LayerSpecification, string | null];
+    addLayer: [LayerSpecification, string | undefined];
     removeLayer: [string];
-    setPaintProperty: [string, string, unknown, string | null];
-    setLayoutProperty: [string, string, unknown, string | null];
-    setFilter: [string, unknown];
+    setPaintProperty: [
+        string,
+        keyof AllPaintProperties,
+        AllPaintProperties[keyof AllPaintProperties]
+    ];
+    setLayoutProperty: [
+        string,
+        keyof AllLayoutProperties,
+        AllLayoutProperties[keyof AllLayoutProperties]
+    ];
+    setFilter: [string, FilterSpecification];
     addSource: [string, SourceSpecification];
     removeSource: [string];
-    setGeoJSONSourceData: [string, unknown];
+    setGeoJSONSourceData: [string, GeoJSONSourceSpecification['data']];
     setLayerZoomRange: [string, number, number];
     setLayerProperty: [string, string, unknown];
     setCenter: [number[]];
@@ -49,10 +60,18 @@ export type DiffOperationsMap = {
 
 export type DiffOperations = keyof DiffOperationsMap;
 
-export type DiffCommand<T extends DiffOperations> = {
-    command: T;
-    args: DiffOperationsMap[T];
-};
+/**
+ * A single diff command, where the arguments are derived from the command name.
+ *
+ * This is distributed over `T` so that `DiffCommand<DiffOperations>` is a discriminated union
+ * of all the commands, which lets a `switch` on `command` narrow `args` to a single tuple.
+ */
+export type DiffCommand<T extends DiffOperations = DiffOperations> = T extends DiffOperations
+    ? {
+          command: T;
+          args: DiffOperationsMap[T];
+      }
+    : never;
 
 /**
  * The main reason for this method is to allow type check when adding a command to the array.
@@ -156,12 +175,41 @@ function diffSources(
     }
 }
 
+/**
+ * Adds a paint or layout property command for a single property of a layer.
+ * The property names are taken from a layer's paint/layout object, so they are known to be
+ * valid names for the given command, which a `for ... in` loop over that object can't express.
+ * @param after - The paint or layout object to take the property value from
+ * @param commands - The commands array to add to
+ * @param layerId - The id of the layer the property belongs to
+ * @param prop - The name of the property that changed
+ * @param command - The command to add
+ */
+function addPropertyCommand(
+    after: LayerSpecification['layout'] | LayerSpecification['paint'],
+    commands: DiffCommand<DiffOperations>[],
+    layerId: string,
+    prop: string,
+    command: 'setPaintProperty' | 'setLayoutProperty'
+) {
+    if (command === 'setPaintProperty') {
+        addCommand(commands, {
+            command,
+            args: [layerId, prop as keyof AllPaintProperties, after[prop]]
+        });
+    } else {
+        addCommand(commands, {
+            command,
+            args: [layerId, prop as keyof AllLayoutProperties, after[prop]]
+        });
+    }
+}
+
 function diffLayerPropertyChanges(
     before: LayerSpecification['layout'] | LayerSpecification['paint'],
     after: LayerSpecification['layout'] | LayerSpecification['paint'],
     commands: DiffCommand<DiffOperations>[],
     layerId: string,
-    klass: string | null,
     command: 'setPaintProperty' | 'setLayoutProperty'
 ) {
     before = before || ({} as LayerSpecification['layout'] | LayerSpecification['paint']);
@@ -170,7 +218,7 @@ function diffLayerPropertyChanges(
     for (const prop in before) {
         if (!Object.prototype.hasOwnProperty.call(before, prop)) continue;
         if (!deepEqual(before[prop], after[prop])) {
-            commands.push({command, args: [layerId, prop, after[prop], klass]});
+            addPropertyCommand(after, commands, layerId, prop, command);
         }
     }
     for (const prop in after) {
@@ -180,7 +228,7 @@ function diffLayerPropertyChanges(
         )
             continue;
         if (!deepEqual(before[prop], after[prop])) {
-            commands.push({command, args: [layerId, prop, after[prop], klass]});
+            addPropertyCommand(after, commands, layerId, prop, command);
         }
     }
 }
@@ -216,8 +264,8 @@ function diffLayers(
     const clean = Object.create(null);
 
     let layerId: string;
-    let beforeLayer: LayerSpecification & {source?: string; filter?: unknown};
-    let afterLayer: LayerSpecification & {source?: string; filter?: unknown};
+    let beforeLayer: LayerSpecification & {source?: string; filter?: FilterSpecification};
+    let afterLayer: LayerSpecification & {source?: string; filter?: FilterSpecification};
     let insertBeforeLayerId: string;
     let prop: string;
 
@@ -289,7 +337,6 @@ function diffLayers(
             afterLayer.layout,
             commands,
             layerId,
-            null,
             'setLayoutProperty'
         );
         diffLayerPropertyChanges(
@@ -297,7 +344,6 @@ function diffLayers(
             afterLayer.paint,
             commands,
             layerId,
-            null,
             'setPaintProperty'
         );
         if (!deepEqual(beforeLayer.filter, afterLayer.filter)) {
@@ -331,7 +377,6 @@ function diffLayers(
                     afterLayer[prop],
                     commands,
                     layerId,
-                    prop.slice(6),
                     'setPaintProperty'
                 );
             } else if (!deepEqual(beforeLayer[prop], afterLayer[prop])) {
@@ -362,7 +407,6 @@ function diffLayers(
                     afterLayer[prop],
                     commands,
                     layerId,
-                    prop.slice(6),
                     'setPaintProperty'
                 );
             } else if (!deepEqual(beforeLayer[prop], afterLayer[prop])) {
@@ -442,8 +486,9 @@ export function diff(
         if (!deepEqual(before.light, after.light)) {
             commands.push({command: 'setLight', args: [after.light]});
         }
-        if (!deepEqual(before.terrain, after.terrain)) {
-            commands.push({command: 'setTerrain', args: [after.terrain]});
+        const terrainChanged = !deepEqual(before.terrain, after.terrain);
+        if (terrainChanged && !after.terrain) {
+            commands.push({command: 'setTerrain', args: [undefined]});
         }
         if (!deepEqual(before.sky, after.sky)) {
             commands.push({command: 'setSky', args: [after.sky]});
@@ -480,6 +525,11 @@ export function diff(
 
         // Handle changes to `layers`
         diffLayers(beforeLayers, after.layers, commands);
+
+        // Terrain is enabled or changed only once its source is in place.
+        if (terrainChanged && after.terrain) {
+            commands.push({command: 'setTerrain', args: [after.terrain]});
+        }
     } catch (e) {
         // fall back to setStyle
         console.warn('Unable to compute style diff:', e);

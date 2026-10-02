@@ -64,7 +64,7 @@ export class ParsingContext {
             typeAnnotation?: 'assert' | 'coerce' | 'omit';
         } = {}
     ): Expression {
-        if (index) {
+        if (index != null) {
             return this.concat(index, expectedType, bindings)._parse(expr, options);
         }
         return this._parse(expr, options);

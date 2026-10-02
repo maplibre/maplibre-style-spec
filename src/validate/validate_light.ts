@@ -1,5 +1,6 @@
 import {ValidationError} from '../error/validation_error';
 import {getType} from '../util/get_type';
+import {transitionPropertyRegExp} from '../util/properties';
 
 export function validateLight(options) {
     const light = options.value;
@@ -20,7 +21,7 @@ export function validateLight(options) {
     }
 
     for (const key in light) {
-        const transitionMatch = key.match(/^(.*)-transition$/);
+        const transitionMatch = key.match(transitionPropertyRegExp);
 
         if (
             transitionMatch &&

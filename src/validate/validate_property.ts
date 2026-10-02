@@ -2,7 +2,7 @@ import {ValidationError} from '../error/validation_error';
 import {getType} from '../util/get_type';
 import {isFunction} from '../function';
 import {unbundle, deepUnbundle} from '../util/unbundle_jsonlint';
-import {supportsPropertyExpression} from '../util/properties';
+import {supportsPropertyExpression, transitionPropertyRegExp} from '../util/properties';
 
 export function validateProperty(options, propertyType) {
     const key = options.key;
@@ -15,7 +15,7 @@ export function validateProperty(options, propertyType) {
 
     if (!layerSpec) return [];
 
-    const transitionMatch = propertyKey.match(/^(.*)-transition$/);
+    const transitionMatch = propertyKey.match(transitionPropertyRegExp);
     if (
         propertyType === 'paint' &&
         transitionMatch &&

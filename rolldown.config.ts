@@ -12,7 +12,7 @@ const dtsBundle: RolldownOptions = {
         format: 'es'
     },
     external: [...Object.keys(packageJSON.dependencies)],
-    plugins: [dts({emitDtsOnly: true, tsgo: false})]
+    plugins: [dts({emitDtsOnly: true, generator: 'tsc'})]
 };
 
 const bundles: RolldownOptions[] = [

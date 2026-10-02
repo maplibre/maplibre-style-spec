@@ -14,3 +14,8 @@ export function supportsZoomExpression(spec: StylePropertySpecification): boolea
 export function supportsInterpolation(spec: StylePropertySpecification): boolean {
     return !!spec.expression && spec.expression.interpolated;
 }
+
+/**
+ * Matches a `<property>-transition` key and captures the property it belongs to.
+ */
+export const transitionPropertyRegExp = /^(.*)-transition$/;

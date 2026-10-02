@@ -1,11 +1,34 @@
 ## main
 ### ✨ Features and improvements
-- Allow negative `fill-extrusion-base` and `fill-extrusion-height` values, extruding below ground level (e.g. underground floors) ([maplibre-gl-js#8051](https://github.com/maplibre/maplibre-gl-js/issues/8051)) (by [@clement-igonet](https://github.com/clement-igonet))
-- Make `fill-extrusion-vertical-gradient` configurable: in addition to a boolean, it now also accepts a `[depth, referenceHeight]` array so the shading effect no longer has to be scaled by a hardcoded 150 meter reference height ([#1795](https://github.com/maplibre/maplibre-style-spec/issues/1795))
 - _...Add new stuff here..._
+- Make `fill-extrusion-vertical-gradient` configurable: in addition to a boolean, it now also accepts a `[depth, referenceHeight]` array so the shading effect no longer has to be scaled by a hardcoded 150 meter reference height ([#1795](https://github.com/maplibre/maplibre-style-spec/issues/1795))
 
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
+
+## 26.4.4
+
+### 🐞 Bug fixes
+
+- Fix `semiliteral` parsing in array-valued properties and `at` operands, and report invalid children at their nested expression locations instead of throwing ([#1878](https://github.com/maplibre/maplibre-style-spec/pull/1878))
+- Order the `setTerrain` diff command around the source commands, so terrain is set after its source is added and unset before it is removed ([#1879](https://github.com/maplibre/maplibre-style-spec/pull/1879))
+
+## 26.4.3
+
+### ✨ Features and improvements
+
+- Tighten the diff command types: `DiffCommand` is now a discriminated union, so a `switch` on `command` narrows `args`, and the unused legacy class argument was dropped from `setPaintProperty` and `setLayoutProperty` ([#1876](https://github.com/maplibre/maplibre-style-spec/pull/1876)) (by [@HarelM](https://github.com/HarelM))
+
+## 26.4.2
+
+### ✨ Features and improvements
+
+- Allow negative `fill-extrusion-base` and `fill-extrusion-height` values, extruding below ground level (e.g. underground floors) ([#1794](https://github.com/maplibre/maplibre-style-spec/pull/1794)) (by [@clement-igonet](https://github.com/clement-igonet))
+- Add SDK support tracking for SDF fill pattern colorization ([#1854](https://github.com/maplibre/maplibre-style-spec/pull/1854)) (by [@deniial00](https://github.com/deniial00))
+
+### 🐞 Bug fixes
+
+- Validate `-transition` properties on `sky` the same way `light` already does, so `sky-color-transition` and similar keys no longer report as unknown properties ([#1867](https://github.com/maplibre/maplibre-style-spec/pull/1867)) (by [@Yasser-Ameur](https://github.com/Yasser-Ameur))
 
 ## 26.4.1
 
