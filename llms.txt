@@ -1,0 +1,22 @@
+# MapLibre Style Spec
+
+> Documentation for the MapLibre Style Specification
+
+## Docs
+
+- [Introduction](<https://maplibre.org/maplibre-style-spec/index.md>)
+- [Deprecations](<https://maplibre.org/maplibre-style-spec/deprecations/index.md>)
+- [Expressions](<https://maplibre.org/maplibre-style-spec/expressions/index.md>)
+- [Font-faces](<https://maplibre.org/maplibre-style-spec/font-faces/index.md>)
+- [Glyphs](<https://maplibre.org/maplibre-style-spec/glyphs/index.md>)
+- [Layers](<https://maplibre.org/maplibre-style-spec/layers/index.md>)
+- [Light](<https://maplibre.org/maplibre-style-spec/light/index.md>)
+- [Projection](<https://maplibre.org/maplibre-style-spec/projection/index.md>)
+- [Root](<https://maplibre.org/maplibre-style-spec/root/index.md>)
+- [Sky](<https://maplibre.org/maplibre-style-spec/sky/index.md>)
+- [Sources](<https://maplibre.org/maplibre-style-spec/sources/index.md>)
+- [Sprite](<https://maplibre.org/maplibre-style-spec/sprite/index.md>)
+- [State](<https://maplibre.org/maplibre-style-spec/state/index.md>)
+- [Terrain](<https://maplibre.org/maplibre-style-spec/terrain/index.md>)
+- [Transition](<https://maplibre.org/maplibre-style-spec/transition/index.md>)
+- [Types](<https://maplibre.org/maplibre-style-spec/types/index.md>)
