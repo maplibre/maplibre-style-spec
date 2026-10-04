@@ -144,6 +144,8 @@ There are currently two projections implemented.
 
 And the following [presets](#use-a-projection-preset)
 
+A renderer may also accept the name of a projection registered at runtime, such as a planar coordinate reference system added with `addProjection` in MapLibre GL JS ([maplibre-gl-js#168](https://github.com/maplibre/maplibre-gl-js/issues/168)). The spec does not restrict `projection.type` to the names above.
+
 The `projection` output sent to the renderer is always of the shape:
 
 `[from, to, transition]: [string, string, number]`
