@@ -28,6 +28,7 @@ import {Padding} from './expression/types/padding';
 import {NumberArray} from './expression/types/number_array';
 import {ColorArray} from './expression/types/color_array';
 import {VariableAnchorOffsetCollection} from './expression/types/variable_anchor_offset_collection';
+import {VerticalGradient} from './expression/types/vertical_gradient';
 import {Formatted, FormattedSection, VerticalAlign} from './expression/types/formatted';
 import {createFunction, isFunction} from './function';
 import {convertFunction} from './function/convert';
@@ -69,7 +70,8 @@ import type {
     NumberArraySpecification,
     ColorArraySpecification,
     ProjectionDefinitionSpecification,
-    VariableAnchorOffsetCollectionSpecification
+    VariableAnchorOffsetCollectionSpecification,
+    VerticalGradientSpecification
 } from './types.g';
 import {format} from './format';
 import {validate} from './validate/validate';
@@ -191,6 +193,13 @@ export type StylePropertySpecification =
           expression?: ExpressionSpecificationDefinition;
           transition: boolean;
           default?: ProjectionDefinitionSpecification;
+      }
+    | {
+          type: 'verticalGradient';
+          'property-type': ExpressionType;
+          expression?: ExpressionSpecificationDefinition;
+          transition: boolean;
+          default?: VerticalGradientSpecification;
       };
 
 const expression = {
@@ -249,6 +258,7 @@ export {
     NumberArray,
     ColorArray,
     VariableAnchorOffsetCollection,
+    VerticalGradient,
     Formatted,
     ResolvedImage,
     EvaluationContext,

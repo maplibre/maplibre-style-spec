@@ -7,6 +7,7 @@ import {ColorArray} from './types/color_array';
 import {VariableAnchorOffsetCollection} from './types/variable_anchor_offset_collection';
 import {ResolvedImage} from './types/resolved_image';
 import {ProjectionDefinition} from './types/projection_definition';
+import {VerticalGradient} from './types/vertical_gradient';
 import {
     NullType,
     NumberType,
@@ -23,7 +24,8 @@ import {
     NumberArrayType,
     ColorArrayType,
     VariableAnchorOffsetCollectionType,
-    ProjectionDefinitionType
+    ProjectionDefinitionType,
+    VerticalGradientType
 } from './types';
 
 import type {Type} from './types';
@@ -67,6 +69,7 @@ export type Value =
     | ColorArray
     | ResolvedImage
     | VariableAnchorOffsetCollection
+    | VerticalGradient
     | ReadonlyArray<Value>
     | {
           readonly [x: string]: Value;
@@ -86,7 +89,8 @@ export function isValue(mixed: unknown): boolean {
         mixed instanceof NumberArray ||
         mixed instanceof ColorArray ||
         mixed instanceof VariableAnchorOffsetCollection ||
-        mixed instanceof ResolvedImage
+        mixed instanceof ResolvedImage ||
+        mixed instanceof VerticalGradient
     ) {
         return true;
     } else if (Array.isArray(mixed)) {
@@ -135,6 +139,8 @@ export function typeOf(value: Value): Type {
         return VariableAnchorOffsetCollectionType;
     } else if (value instanceof ResolvedImage) {
         return ResolvedImageType;
+    } else if (value instanceof VerticalGradient) {
+        return VerticalGradientType;
     } else if (Array.isArray(value)) {
         const length = value.length;
         let itemType: Type | typeof undefined;
@@ -171,7 +177,8 @@ export function valueToString(value: Value) {
         value instanceof NumberArray ||
         value instanceof ColorArray ||
         value instanceof VariableAnchorOffsetCollection ||
-        value instanceof ResolvedImage
+        value instanceof ResolvedImage ||
+        value instanceof VerticalGradient
     ) {
         return value.toString();
     } else {

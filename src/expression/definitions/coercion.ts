@@ -9,6 +9,7 @@ import {NumberArray} from '../types/number_array';
 import {ColorArray} from '../types/color_array';
 import {VariableAnchorOffsetCollection} from '../types/variable_anchor_offset_collection';
 import {ProjectionDefinition} from '../types/projection_definition';
+import {VerticalGradient} from '../types/vertical_gradient';
 
 import type {Expression} from '../expression';
 import type {ParsingContext} from '../parsing_context';
@@ -151,6 +152,21 @@ export class Coercion implements Expression {
                 }
                 throw new RuntimeError(
                     `Could not parse variableAnchorOffsetCollection from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`,
+                    this.key
+                );
+            }
+            case 'verticalGradient': {
+                let input;
+                for (const arg of this.args) {
+                    input = arg.evaluate(ctx);
+
+                    const gradient = VerticalGradient.parse(input);
+                    if (gradient) {
+                        return gradient;
+                    }
+                }
+                throw new RuntimeError(
+                    `Could not parse verticalGradient from value '${typeof input === 'string' ? input : JSON.stringify(input)}'`,
                     this.key
                 );
             }

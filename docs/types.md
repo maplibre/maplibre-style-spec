@@ -228,3 +228,20 @@ A single color value, or an array of color values.
     "hillshade-highlight-color": ["#ffff00", "rgb(255, 255, 0)", "yellow"]
 }
 ```
+
+## `verticalGradient`
+
+A boolean, or a `[depth, referenceHeight]` array of one or two numbers:
+
+- `depth` (in range `[0, 1]`) controls how dark the foot of a wall gets. `0` disables shading, `0.5` matches what `true` applies, and `1` doubles it.
+- `referenceHeight` (in meters, defaults to `0` when omitted) controls whether the shading is scaled by building height: `0` shades every building equally, and a positive value restores the height-scaled behavior that `true` applies above `150`.
+
+`true` is equivalent to `[0.5, 150]` and `false` is equivalent to `[0, 0]`.
+
+```json
+{
+    "fill-extrusion-vertical-gradient": true,
+    "fill-extrusion-vertical-gradient": [0.7],
+    "fill-extrusion-vertical-gradient": [0.7, 100]
+}
+```

@@ -148,7 +148,9 @@ export class ParsingContext {
                         ('colorArray' === expected.kind &&
                             ['value', 'string', 'array'].includes(actual.kind)) ||
                         ('variableAnchorOffsetCollection' === expected.kind &&
-                            ['value', 'array'].includes(actual.kind))
+                            ['value', 'array'].includes(actual.kind)) ||
+                        ('verticalGradient' === expected.kind &&
+                            ['value', 'boolean', 'array'].includes(actual.kind))
                     ) {
                         parsed = annotate(parsed, expected, options.typeAnnotation || 'coerce');
                     } else if (this.checkSubtype(expected, actual)) {

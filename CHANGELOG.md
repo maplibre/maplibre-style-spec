@@ -1,6 +1,7 @@
 ## main
 ### ✨ Features and improvements
 - _...Add new stuff here..._
+- Make `fill-extrusion-vertical-gradient` configurable: in addition to a boolean, it now also accepts a `[depth, referenceHeight]` array so the shading effect no longer has to be scaled by a hardcoded 150 meter reference height ([#1795](https://github.com/maplibre/maplibre-style-spec/issues/1795))
 
 ### 🐞 Bug fixes
 - _...Add new stuff here..._

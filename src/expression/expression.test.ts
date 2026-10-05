@@ -423,6 +423,18 @@ describe('actionable warnings: fallback rendering', () => {
         ).toBe("rk: Could not parse numberArray from value 'notarray' Falling back to [1,2,3].");
     });
 
+    test('verticalGradient default renders as a JSON array', () => {
+        expect(
+            warnFor(
+                ['get', 'g'],
+                {type: 'verticalGradient', default: true} as any as StylePropertySpecification,
+                {g: 'notagradient'}
+            )
+        ).toBe(
+            "rk: Could not parse verticalGradient from value 'notagradient' Falling back to [0.5,150]."
+        );
+    });
+
     test('projectionDefinition default renders as a string', () => {
         expect(
             warnFor(

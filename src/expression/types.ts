@@ -46,6 +46,9 @@ export type ResolvedImageTypeT = {
 export type VariableAnchorOffsetCollectionTypeT = {
     kind: 'variableAnchorOffsetCollection';
 };
+export type VerticalGradientTypeT = {
+    kind: 'verticalGradient';
+};
 
 export type EvaluationKind = 'constant' | 'source' | 'camera' | 'composite';
 
@@ -66,7 +69,8 @@ export type Type =
     | NumberArrayTypeT
     | ColorArrayTypeT
     | ResolvedImageTypeT
-    | VariableAnchorOffsetCollectionTypeT;
+    | VariableAnchorOffsetCollectionTypeT
+    | VerticalGradientTypeT;
 
 export interface ArrayType<T extends Type = Type> {
     kind: 'array';
@@ -96,6 +100,7 @@ export const ResolvedImageType = {kind: 'resolvedImage'} as ResolvedImageTypeT;
 export const VariableAnchorOffsetCollectionType = {
     kind: 'variableAnchorOffsetCollection'
 } as VariableAnchorOffsetCollectionTypeT;
+export const VerticalGradientType = {kind: 'verticalGradient'} as VerticalGradientTypeT;
 
 export function array<T extends Type>(itemType: T, N?: number | null): ArrayType<T> {
     return {
@@ -132,7 +137,8 @@ const valueMemberTypes = [
     NumberArrayType,
     ColorArrayType,
     ResolvedImageType,
-    VariableAnchorOffsetCollectionType
+    VariableAnchorOffsetCollectionType,
+    VerticalGradientType
 ];
 
 /**
