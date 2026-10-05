@@ -6998,6 +6998,93 @@
         ]
       },
       "property-type": "data-constant"
+    },
+    "fill-extrusion-shadow-opacity": {
+      "type": "number",
+      "default": 0,
+      "minimum": 0,
+      "maximum": 1,
+      "doc": "Opacity of the shadow cast onto the ground by this layer's extruded geometries. A value of `0` disables the shadow entirely. **Note:** this property is experimental and not yet implemented in any SDK; see [#1797](https://github.com/maplibre/maplibre-style-spec/issues/1797) for design discussion.",
+      "transition": true,
+      "sdk-support": {
+        "basic functionality": {
+          "js": "https://github.com/maplibre/maplibre-style-spec/issues/1797",
+          "android": "https://github.com/maplibre/maplibre-style-spec/issues/1797",
+          "ios": "https://github.com/maplibre/maplibre-style-spec/issues/1797"
+        }
+      },
+      "expression": {
+        "interpolated": true,
+        "parameters": [
+          "zoom"
+        ]
+      },
+      "property-type": "data-constant"
+    },
+    "fill-extrusion-shadow-color": {
+      "type": "color",
+      "default": "rgba(0, 0, 0, 0.35)",
+      "doc": "Color of the shadow cast onto the ground by this layer's extruded geometries. Has no visible effect when `fill-extrusion-shadow-opacity` is `0`. **Note:** this property is experimental and not yet implemented in any SDK; see [#1797](https://github.com/maplibre/maplibre-style-spec/issues/1797) for design discussion.",
+      "transition": true,
+      "sdk-support": {
+        "basic functionality": {
+          "js": "https://github.com/maplibre/maplibre-style-spec/issues/1797",
+          "android": "https://github.com/maplibre/maplibre-style-spec/issues/1797",
+          "ios": "https://github.com/maplibre/maplibre-style-spec/issues/1797"
+        }
+      },
+      "expression": {
+        "interpolated": true,
+        "parameters": [
+          "zoom"
+        ]
+      },
+      "property-type": "data-constant"
+    },
+    "fill-extrusion-shadow-length": {
+      "type": "number",
+      "default": 0.32,
+      "minimum": 0,
+      "units": "ratio of extrusion height",
+      "doc": "Length of the shadow cast onto the ground by this layer's extruded geometries, expressed as a multiple of each feature's height (equivalent to the `cot` of the light's elevation angle above the horizon). For example, `1.0` corresponds to a 45° elevation angle, and the default `0.32` corresponds to approximately 72°. Has no visible effect when `fill-extrusion-shadow-opacity` is `0`. **Note:** this property is experimental and not yet implemented in any SDK; see [#1797](https://github.com/maplibre/maplibre-style-spec/issues/1797) for design discussion.",
+      "transition": true,
+      "sdk-support": {
+        "basic functionality": {
+          "js": "https://github.com/maplibre/maplibre-style-spec/issues/1797",
+          "android": "https://github.com/maplibre/maplibre-style-spec/issues/1797",
+          "ios": "https://github.com/maplibre/maplibre-style-spec/issues/1797"
+        }
+      },
+      "expression": {
+        "interpolated": true,
+        "parameters": [
+          "zoom"
+        ]
+      },
+      "property-type": "data-constant"
+    },
+    "fill-extrusion-shadow-azimuth": {
+      "type": "number",
+      "default": 210,
+      "minimum": 0,
+      "maximum": 360,
+      "units": "degrees",
+      "doc": "Direction the shadow is cast, in degrees clockwise from true north. The value is anchored to the map, so the shadow's compass direction stays fixed as the map rotates. Defaults to the same azimuthal angle as `light.position`'s default, so the shadow aligns with the default light-shading direction. Has no visible effect when `fill-extrusion-shadow-opacity` is `0`. **Note:** this property is experimental and not yet implemented in any SDK; see [#1797](https://github.com/maplibre/maplibre-style-spec/issues/1797) for design discussion.",
+      "transition": true,
+      "sdk-support": {
+        "basic functionality": {
+          "js": "https://github.com/maplibre/maplibre-style-spec/issues/1797",
+          "android": "https://github.com/maplibre/maplibre-style-spec/issues/1797",
+          "ios": "https://github.com/maplibre/maplibre-style-spec/issues/1797"
+        }
+      },
+      "expression": {
+        "interpolated": true,
+        "parameters": [
+          "zoom"
+        ]
+      },
+      "property-type": "data-constant"
     }
   },
   "paint_line": {
