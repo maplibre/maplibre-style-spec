@@ -114,6 +114,12 @@
     },
     "image-missing-coordinates": {
       "type": "image"
+    },
+    "raster-dem-tms-valid": {
+      "type": "raster-dem",
+      "tiles": ["https://example.com/{z}/{x}/{y}.png"],
+      "scheme": "tms",
+      "encoding": "terrarium"
     }
   },
   "layers": []
