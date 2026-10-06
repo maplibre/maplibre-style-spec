@@ -1,5 +1,6 @@
 ## main
 ### ✨ Features and improvements
+- Add `mayMatch` to `featureFilter`'s result: whether a feature passes the filter whatever the zoom and global state are (`true`), under none of them (`false`), or depending on them (`null`), for deciding ahead of time which layers can draw some data
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes

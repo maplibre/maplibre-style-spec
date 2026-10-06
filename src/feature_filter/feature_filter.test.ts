@@ -217,6 +217,138 @@ describe('getGlobalStateRefs', () => {
     });
 });
 
+describe('mayMatch', () => {
+    const mayMatch = (filter: FilterSpecification, properties: Record<string, unknown>) =>
+        featureFilter(filter, 'layers[0].filter').mayMatch({
+            type: 1,
+            properties
+        } as any as Feature);
+
+    test('a filter without zoom or global state is decided by the feature', () => {
+        const filter: FilterSpecification = ['==', ['get', 'x'], 1];
+        expect(mayMatch(filter, {x: 1})).toBe(true);
+        expect(mayMatch(filter, {x: 2})).toBe(false);
+    });
+
+    test('no filter matches', () => {
+        expect(featureFilter(undefined, 'layers[0].filter').mayMatch({} as Feature)).toBe(true);
+    });
+
+    test('a comparison with global state or zoom is unknown', () => {
+        expect(mayMatch(['==', ['get', 'x'], ['global-state', 'x']], {x: 1})).toBeNull();
+        expect(mayMatch(['>=', ['get', 'x'], ['zoom']], {x: 1})).toBeNull();
+    });
+
+    test('global state given to the filter is not used', () => {
+        const filter = featureFilter(
+            ['==', ['get', 'x'], ['global-state', 'x']],
+            'layers[0].filter',
+            {x: 1}
+        );
+        expect(filter.mayMatch({properties: {x: 1}} as any as Feature)).toBeNull();
+    });
+
+    test('all is false when a known argument is false', () => {
+        const filter: FilterSpecification = [
+            'all',
+            ['boolean', ['global-state', 'shown']],
+            ['==', ['get', 'x'], 1]
+        ];
+        expect(mayMatch(filter, {x: 2})).toBe(false);
+        expect(mayMatch(filter, {x: 1})).toBeNull();
+    });
+
+    test('any is true when a known argument is true', () => {
+        const filter: FilterSpecification = [
+            'any',
+            ['boolean', ['global-state', 'shown']],
+            ['==', ['get', 'x'], 1]
+        ];
+        expect(mayMatch(filter, {x: 1})).toBe(true);
+        expect(mayMatch(filter, {x: 2})).toBeNull();
+    });
+
+    test('! of unknown is unknown', () => {
+        expect(mayMatch(['!', ['boolean', ['global-state', 'shown']]], {})).toBeNull();
+        expect(
+            mayMatch(['!', ['all', ['boolean', ['global-state', 'shown']], ['has', 'x']]], {})
+        ).toBe(true);
+    });
+
+    test('case follows known conditions and stops at unknown ones', () => {
+        const filter: FilterSpecification = [
+            'case',
+            ['==', ['get', 'kind'], 'a'],
+            ['boolean', ['global-state', 'showA']],
+            ['==', ['get', 'kind'], 'b'],
+            true,
+            false
+        ];
+        expect(mayMatch(filter, {kind: 'a'})).toBeNull();
+        expect(mayMatch(filter, {kind: 'b'})).toBe(true);
+        expect(mayMatch(filter, {kind: 'c'})).toBe(false);
+        expect(
+            mayMatch(['case', ['boolean', ['global-state', 'x']], true, ['has', 'y']], {y: 1})
+        ).toBeNull();
+    });
+
+    test('match picks the output of a known input', () => {
+        const filter: FilterSpecification = [
+            'match',
+            ['get', 'kind'],
+            'a',
+            ['boolean', ['global-state', 'showA']],
+            ['b', 'c'],
+            true,
+            false
+        ];
+        expect(mayMatch(filter, {kind: 'a'})).toBeNull();
+        expect(mayMatch(filter, {kind: 'c'})).toBe(true);
+        expect(mayMatch(filter, {kind: 'd'})).toBe(false);
+        expect(
+            mayMatch(['match', ['global-state', 'kind'], 'a', true, ['has', 'x']], {x: 1})
+        ).toBeNull();
+    });
+
+    test('coalesce stops at the first known non-null value', () => {
+        const filter: FilterSpecification = [
+            'coalesce',
+            ['get', 'flag'],
+            ['boolean', ['global-state', 'x']]
+        ];
+        expect(mayMatch(filter, {flag: false})).toBe(false);
+        expect(mayMatch(filter, {})).toBeNull();
+    });
+
+    test('a let binding global state is unknown', () => {
+        expect(
+            mayMatch(['let', 'v', ['global-state', 'x'], ['==', ['var', 'v'], ['get', 'x']]], {
+                x: 1
+            })
+        ).toBeNull();
+    });
+
+    test('geometry type and legacy filters are known', () => {
+        expect(mayMatch(['==', ['geometry-type'], 'Point'], {})).toBe(true);
+        expect(mayMatch(['==', ['geometry-type'], 'Polygon'], {})).toBe(false);
+        expect(mayMatch(['==', 'x', 1], {x: 1})).toBe(true);
+        expect(mayMatch(['in', 'x', 1, 2], {x: 3})).toBe(false);
+    });
+
+    test('a filter that fails to evaluate does not match, as with filter', () => {
+        expect(mayMatch(['==', ['number', ['get', 'x']], 1], {x: 'a'})).toBe(false);
+    });
+
+    test('a part that fails to evaluate next to global state is unknown', () => {
+        expect(
+            mayMatch(
+                ['any', ['boolean', ['global-state', 'x']], ['==', ['number', ['get', 'x']], 1]],
+                {x: 'a'}
+            )
+        ).toBeNull();
+    });
+});
+
 describe('legacy filter detection', () => {
     test('definitely legacy filters', () => {
         // Expressions with more than two arguments.
