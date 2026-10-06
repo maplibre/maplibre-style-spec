@@ -3,6 +3,7 @@ import type {GlobalProperties, Feature} from '../expression';
 import {ICanonicalTileID} from '../tiles_and_coordinates';
 import {StylePropertySpecification} from '..';
 import {ExpressionFilterSpecification, type FilterSpecification} from '../types.g';
+import {createMayMatch} from './may_match';
 
 type FilterExpression = (
     globalProperties: GlobalProperties,
@@ -12,6 +13,12 @@ type FilterExpression = (
 
 export type FeatureFilter = {
     filter: FilterExpression;
+    /**
+     * Whether a feature passes the filter whatever the zoom and global state are: true if it
+     * passes under all of them, false if it passes under none, null if that depends on them.
+     * Global state given to `featureFilter` is not used.
+     */
+    mayMatch: (feature: Feature, canonical?: ICanonicalTileID) => boolean | null;
     needGeometry: boolean;
     getGlobalStateRefs: () => Set<string>;
 };
@@ -248,7 +255,12 @@ export function featureFilter(
     globalState?: Record<string, any>
 ): FeatureFilter {
     if (filter === null || filter === undefined) {
-        return {filter: () => true, needGeometry: false, getGlobalStateRefs: () => new Set()};
+        return {
+            filter: () => true,
+            mayMatch: () => true,
+            needGeometry: false,
+            getGlobalStateRefs: () => new Set()
+        };
     }
 
     if (!isExpressionFilter(filter)) {
@@ -273,6 +285,7 @@ export function featureFilter(
                 feature: Feature,
                 canonical?: ICanonicalTileID
             ) => compiled.value.evaluate(globalProperties, feature, {}, canonical),
+            mayMatch: createMayMatch(compiled.value.expression),
             needGeometry,
             getGlobalStateRefs: () => findGlobalStateRefs(compiled.value.expression)
         };
