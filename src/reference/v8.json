@@ -307,7 +307,7 @@
     "tiles": {
       "type": "array",
       "value": "string",
-      "doc": "An array of one or more tile source URLs, as in the TileJSON spec."
+      "doc": "An array of one or more tile source URLs, as in the TileJSON spec. These tokens in a URL are replaced for each tile:\n\n - `{z}`, `{x}` and `{y}` - The tile's zoom level, column and row. With `scheme` set to `tms`, the row counts from the bottom.\n\n - `{quadkey}` - The tile's quadkey, as Bing Maps addresses tiles.\n\n - `{bbox-epsg-3857}` - The tile's bounding box in EPSG:3857 meters, as `minX,minY,maxX,maxY`, for WMS requests.\n\n - `{bbox}` - MapLibre GL JS only: the tile's bounding box as `minX,minY,maxX,maxY` in the units of the map's projection, which on a Mercator map is the same as `{bbox-epsg-3857}` and for a projection registered with `addProjection` the units of its CRS.\n\n - `{prefix}` - Two hexadecimal digits from the tile's column and row, to spread requests over host names.\n\n - `{ratio}` - `@2x` where the device pixel ratio is above 1, empty otherwise."
     },
     "bounds": {
       "type": "array",
@@ -412,7 +412,7 @@
     "tiles": {
       "type": "array",
       "value": "string",
-      "doc": "An array of one or more tile source URLs, as in the TileJSON spec."
+      "doc": "An array of one or more tile source URLs, as in the TileJSON spec. These tokens in a URL are replaced for each tile:\n\n - `{z}`, `{x}` and `{y}` - The tile's zoom level, column and row. With `scheme` set to `tms`, the row counts from the bottom.\n\n - `{quadkey}` - The tile's quadkey, as Bing Maps addresses tiles.\n\n - `{bbox-epsg-3857}` - The tile's bounding box in EPSG:3857 meters, as `minX,minY,maxX,maxY`, for WMS requests.\n\n - `{bbox}` - MapLibre GL JS only: the tile's bounding box as `minX,minY,maxX,maxY` in the units of the map's projection, which on a Mercator map is the same as `{bbox-epsg-3857}` and for a projection registered with `addProjection` the units of its CRS.\n\n - `{prefix}` - Two hexadecimal digits from the tile's column and row, to spread requests over host names.\n\n - `{ratio}` - `@2x` where the device pixel ratio is above 1, empty otherwise."
     },
     "bounds": {
       "type": "array",
@@ -494,7 +494,7 @@
     "tiles": {
       "type": "array",
       "value": "string",
-      "doc": "An array of one or more tile source URLs, as in the TileJSON spec."
+      "doc": "An array of one or more tile source URLs, as in the TileJSON spec. These tokens in a URL are replaced for each tile:\n\n - `{z}`, `{x}` and `{y}` - The tile's zoom level, column and row.\n\n - `{quadkey}` - The tile's quadkey, as Bing Maps addresses tiles.\n\n - `{bbox-epsg-3857}` - The tile's bounding box in EPSG:3857 meters, as `minX,minY,maxX,maxY`, for WMS requests.\n\n - `{bbox}` - MapLibre GL JS only: the tile's bounding box as `minX,minY,maxX,maxY` in the units of the map's projection, which on a Mercator map is the same as `{bbox-epsg-3857}` and for a projection registered with `addProjection` the units of its CRS.\n\n - `{prefix}` - Two hexadecimal digits from the tile's column and row, to spread requests over host names.\n\n - `{ratio}` - `@2x` where the device pixel ratio is above 1, empty otherwise."
     },
     "bounds": {
       "type": "array",
