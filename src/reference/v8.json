@@ -315,7 +315,7 @@
           "ios": "supported"
         },
         "`{bbox}` token": {
-          "js": "6.14.0",
+          "js": "6.15.0",
           "android": "https://github.com/maplibre/maplibre-native/issues/95",
           "ios": "https://github.com/maplibre/maplibre-native/issues/95"
         }
@@ -432,7 +432,7 @@
           "ios": "supported"
         },
         "`{bbox}` token": {
-          "js": "6.14.0",
+          "js": "6.15.0",
           "android": "https://github.com/maplibre/maplibre-native/issues/95",
           "ios": "https://github.com/maplibre/maplibre-native/issues/95"
         }
@@ -526,7 +526,7 @@
           "ios": "supported"
         },
         "`{bbox}` token": {
-          "js": "6.14.0",
+          "js": "6.15.0",
           "android": "https://github.com/maplibre/maplibre-native/issues/95",
           "ios": "https://github.com/maplibre/maplibre-native/issues/95"
         }
