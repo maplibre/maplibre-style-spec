@@ -69,7 +69,19 @@ A URL to a TileJSON resource. Supported protocols are `http:` and `https:`.
 
 *Optional [array](<https://maplibre.org/maplibre-style-spec/types/#array>).*
 
-An array of one or more tile source URLs, as in the TileJSON spec.
+An array of one or more tile source URLs, as in the TileJSON spec. These tokens in a URL are replaced for each tile:
+
+- `{z}`, `{x}` and `{y}` - The tile's zoom level, column and row. With `scheme` set to `tms`, the row counts from the bottom.
+- `{quadkey}` - The tile's quadkey, as Bing Maps addresses tiles.
+- `{bbox-epsg-3857}` - The tile's bounding box in EPSG:3857 meters, as `minX,minY,maxX,maxY`, for WMS requests.
+- `{bbox}` - Experimental. The tile's bounding box as `minX,minY,maxX,maxY` in the units of the map's coordinate system. With the `mercator`, `globe` and `vertical-perspective` projections this is the same as `{bbox-epsg-3857}`.
+- `{prefix}` - Two hexadecimal digits from the tile's column and row, to spread requests over host names.
+- `{ratio}` - `@2x` where the device pixel ratio is above 1, empty otherwise.
+
+| SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
+| --- | --- | --- | --- |
+| basic functionality | ✅ | ✅ | ✅ |
+| `{bbox}` token | 6.15.0 | ❌ ([\#95](<https://github.com/maplibre/maplibre-native/issues/95>)) | ❌ ([\#95](<https://github.com/maplibre/maplibre-native/issues/95>)) |
 
 ### bounds
 
@@ -172,7 +184,19 @@ A URL to a TileJSON resource. Supported protocols are `http:` and `https:`.
 
 *Optional [array](<https://maplibre.org/maplibre-style-spec/types/#array>).*
 
-An array of one or more tile source URLs, as in the TileJSON spec.
+An array of one or more tile source URLs, as in the TileJSON spec. These tokens in a URL are replaced for each tile:
+
+- `{z}`, `{x}` and `{y}` - The tile's zoom level, column and row. With `scheme` set to `tms`, the row counts from the bottom.
+- `{quadkey}` - The tile's quadkey, as Bing Maps addresses tiles.
+- `{bbox-epsg-3857}` - The tile's bounding box in EPSG:3857 meters, as `minX,minY,maxX,maxY`, for WMS requests.
+- `{bbox}` - Experimental. The tile's bounding box as `minX,minY,maxX,maxY` in the units of the map's coordinate system. With the `mercator`, `globe` and `vertical-perspective` projections this is the same as `{bbox-epsg-3857}`.
+- `{prefix}` - Two hexadecimal digits from the tile's column and row, to spread requests over host names.
+- `{ratio}` - `@2x` where the device pixel ratio is above 1, empty otherwise.
+
+| SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
+| --- | --- | --- | --- |
+| basic functionality | ✅ | ✅ | ✅ |
+| `{bbox}` token | 6.15.0 | ❌ ([\#95](<https://github.com/maplibre/maplibre-native/issues/95>)) | ❌ ([\#95](<https://github.com/maplibre/maplibre-native/issues/95>)) |
 
 ### bounds
 
@@ -261,7 +285,19 @@ A URL to a TileJSON resource. Supported protocols are `http:` and `https:`.
 
 *Optional [array](<https://maplibre.org/maplibre-style-spec/types/#array>).*
 
-An array of one or more tile source URLs, as in the TileJSON spec.
+An array of one or more tile source URLs, as in the TileJSON spec. These tokens in a URL are replaced for each tile:
+
+- `{z}`, `{x}` and `{y}` - The tile's zoom level, column and row.
+- `{quadkey}` - The tile's quadkey, as Bing Maps addresses tiles.
+- `{bbox-epsg-3857}` - The tile's bounding box in EPSG:3857 meters, as `minX,minY,maxX,maxY`, for WMS requests.
+- `{bbox}` - Experimental. The tile's bounding box as `minX,minY,maxX,maxY` in the units of the map's coordinate system. With the `mercator`, `globe` and `vertical-perspective` projections this is the same as `{bbox-epsg-3857}`.
+- `{prefix}` - Two hexadecimal digits from the tile's column and row, to spread requests over host names.
+- `{ratio}` - `@2x` where the device pixel ratio is above 1, empty otherwise.
+
+| SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
+| --- | --- | --- | --- |
+| basic functionality | ✅ | ✅ | ✅ |
+| `{bbox}` token | 6.15.0 | ❌ ([\#95](<https://github.com/maplibre/maplibre-native/issues/95>)) | ❌ ([\#95](<https://github.com/maplibre/maplibre-native/issues/95>)) |
 
 ### bounds
 
