@@ -73,5 +73,10 @@
     "message": "sources.image-missing-coordinates: missing required property \"coordinates\"",
     "severity": "error",
     "line": 115
+  },
+  {
+    "message": "sources.geojson-data-projection-number.dataProjection: string expected, number found",
+    "severity": "error",
+    "line": 126
   }
 ]

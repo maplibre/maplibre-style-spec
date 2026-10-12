@@ -114,6 +114,16 @@
     },
     "image-missing-coordinates": {
       "type": "image"
+    },
+    "geojson-data-projection": {
+      "type": "geojson",
+      "data": "/test/integration/data/places.geojson",
+      "dataProjection": "EPSG:28992"
+    },
+    "geojson-data-projection-number": {
+      "type": "geojson",
+      "data": "/test/integration/data/places.geojson",
+      "dataProjection": 28992
     }
   },
   "layers": []
