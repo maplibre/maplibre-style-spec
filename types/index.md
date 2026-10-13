@@ -133,12 +133,17 @@ The following example applies 2em padding on top and bottom and 3em padding left
 
 The `projection` is used to configure which projection to use for the map.
 
-There are currently two projections implemented.
+There are currently two projections defined in the style spec.
 
 - `mercator` - [Web Mercator projection](<https://en.wikipedia.org/wiki/Web_Mercator_projection>)
 - `vertical-perspective` - [Vertical Perspective projection](<https://en.wikipedia.org/wiki/General_Perspective_projection>)
 
 And the following [presets](<#use-a-projection-preset>)
+
+From version 6.15, MapLibre GL JS also takes these experimental names, as the plain value of `type` only, never inside an expression:
+
+- `identity` - lng/lat used unchanged as plane coordinates, on a square from -90 to 90 on both axes
+- the name of a projection registered with `addProjection`, which contains a colon, like `EPSG:2193`. Names without a colon are kept for built-in projections.
 
 The `projection` output sent to the renderer is always of the shape:
 
