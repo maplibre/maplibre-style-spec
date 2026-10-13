@@ -129,7 +129,11 @@ describe('Validate source_raster_dem', () => {
     test('Should pass when emptyTileBehavior is fallback', () => {
         const errors = validateRasterDEMSource({
             validateSpec: validate,
-            value: {type: 'raster-dem', url: 'https://example.com/tiles.json', emptyTileBehavior: 'fallback'},
+            value: {
+                type: 'raster-dem',
+                url: 'https://example.com/tiles.json',
+                emptyTileBehavior: 'fallback'
+            },
             styleSpec: v8,
             style: {version: 8, sources: {}, layers: []}
         });
