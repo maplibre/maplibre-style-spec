@@ -675,7 +675,7 @@
     },
     "dataProjection": {
       "type": "string",
-      "doc": "Experimental. The projection the coordinates in `data` are in, named as the [projection](projection.md) `type` names it. By default the coordinates are longitude and latitude, as GeoJSON specifies. Set to the map's projection, they are read as positions in that projection, so data already in that projection needs no conversion. No other projection is supported.",
+      "doc": "Experimental. The projection the coordinates in `data` are in: `mercator`, `globe`, `vertical-perspective`, `identity`, or the name of a registered projection. Only the map's own projection is supported. When not set, the coordinates are longitude and latitude, as GeoJSON specifies.",
       "sdk-support": {
         "basic functionality": {
           "js": "https://github.com/maplibre/maplibre-gl-js/issues/8736",
