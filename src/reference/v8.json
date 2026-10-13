@@ -674,8 +674,13 @@
       "doc": "A URL to a GeoJSON file, or inline GeoJSON."
     },
     "dataProjection": {
-      "type": "string",
-      "doc": "Experimental. The projection the coordinates in `data` are in: `mercator`, `globe`, `vertical-perspective`, `identity`, or the name of a registered projection. Only the map's own projection is supported. When not set, the coordinates are longitude and latitude, as GeoJSON specifies.",
+      "type": "enum",
+      "values": {
+        "map": {
+          "doc": "The map's projection: the coordinates are drawn as they are, without converting them from longitude and latitude."
+        }
+      },
+      "doc": "Experimental. The projection the coordinates in `data` are in. When not set, the coordinates are longitude and latitude, as GeoJSON specifies.",
       "sdk-support": {
         "basic functionality": {
           "js": "https://github.com/maplibre/maplibre-gl-js/issues/8736",

@@ -1,6 +1,6 @@
 ## main
 ### ✨ Features and improvements
-- Add the experimental `dataProjection` property to GeoJSON sources, naming the projection their coordinates are in, so data already in the map's projection is drawn without converting it from longitude and latitude ([#1921](https://github.com/maplibre/maplibre-style-spec/pull/1921)) (by [@johncarmack1984](https://github.com/johncarmack1984))
+- Add the experimental `dataProjection` property to GeoJSON sources: `map` marks data already in the map's projection, so it is drawn without converting it from longitude and latitude ([#1921](https://github.com/maplibre/maplibre-style-spec/pull/1921)) (by [@johncarmack1984](https://github.com/johncarmack1984))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes

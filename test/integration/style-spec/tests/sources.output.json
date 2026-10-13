@@ -75,7 +75,7 @@
     "line": 115
   },
   {
-    "message": "sources.geojson-data-projection-number.dataProjection: string expected, number found",
+    "message": "sources.geojson-data-projection-name.dataProjection: expected one of [map], \"EPSG:28992\" found",
     "severity": "error",
     "line": 126
   }

@@ -118,12 +118,12 @@
     "geojson-data-projection": {
       "type": "geojson",
       "data": "/test/integration/data/places.geojson",
-      "dataProjection": "EPSG:28992"
+      "dataProjection": "map"
     },
-    "geojson-data-projection-number": {
+    "geojson-data-projection-name": {
       "type": "geojson",
       "data": "/test/integration/data/places.geojson",
-      "dataProjection": 28992
+      "dataProjection": "EPSG:28992"
     }
   },
   "layers": []
