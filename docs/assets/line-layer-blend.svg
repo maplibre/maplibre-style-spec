@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 728 492" font-size="14" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif">
   <defs>
-    <!-- Clip paths, 8 columns over two rows -->
+    <!-- Clip paths, 7 columns over two rows -->
     <clipPath id="clip-1"><rect x="12" y="45" width="176" height="180"/></clipPath>
     <clipPath id="clip-2"><rect x="188" y="45" width="176" height="180"/></clipPath>
     <clipPath id="clip-3"><rect x="364" y="45" width="176" height="180"/></clipPath>
@@ -8,18 +8,11 @@
     <clipPath id="clip-5"><rect x="12" y="300" width="176" height="180"/></clipPath>
     <clipPath id="clip-6"><rect x="188" y="300" width="176" height="180"/></clipPath>
     <clipPath id="clip-7"><rect x="364" y="300" width="176" height="180"/></clipPath>
-    <clipPath id="clip-8"><rect x="540" y="300" width="176" height="180"/></clipPath>
 
     <!-- Rounded clip so each strip keeps rounded outer corners -->
     <clipPath id="clip-strip">
       <rect x="12" y="45" width="704" height="180" rx="8"/>
     </clipPath>
-
-    <!-- Erase mask: everything white stays, the black shape cuts a hole in the basemap -->
-    <mask id="erase-mask">
-      <rect x="540" y="300" width="176" height="180" fill="#ffffff"/>
-      <line x1="30" y1="415" x2="698" y2="325" stroke="#000000" stroke-width="30" stroke-linecap="round"/>
-    </mask>
 
     <!-- Unified base map strip, reused by both rows -->
     <g id="basemap" clip-path="url(#clip-strip)">
@@ -99,12 +92,6 @@
       <use href="#basemap" y="255"/>
       <line x1="30" y1="415" x2="698" y2="325" stroke="#d62728" stroke-width="30" stroke-linecap="round" stroke-opacity="0.9" style="mix-blend-mode: overlay;"/>
     </g>
-
-    <!-- erase -->
-    <g clip-path="url(#clip-8)" mask="url(#erase-mask)">
-      <use href="#basemap" y="255"/>
-    </g>
-
   </g>
 
   <!-- Column labels -->
@@ -115,5 +102,4 @@
   <text x="100" y="275" text-anchor="middle" fill="#212529" font-size="14">plus</text>
   <text x="276" y="275" text-anchor="middle" fill="#212529" font-size="14">screen</text>
   <text x="452" y="275" text-anchor="middle" fill="#212529" font-size="14">overlay</text>
-  <text x="628" y="275" text-anchor="middle" fill="#212529" font-size="14">erase</text>
 </svg>
