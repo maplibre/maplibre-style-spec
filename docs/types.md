@@ -144,7 +144,7 @@ There are currently two projections defined in the style spec.
 
 And the following [presets](#use-a-projection-preset)
 
-MapLibre GL JS also takes these experimental names, as the plain value of `type` only, never inside an expression:
+From version 6.15, MapLibre GL JS also takes these experimental names, as the plain value of `type` only, never inside an expression:
 
 - `identity` - lng/lat used unchanged as plane coordinates, on a square from -90 to 90 on both axes
 - the name of a projection registered with `addProjection`, which contains a colon, like `EPSG:2193`. Names without a colon are kept for built-in projections.
