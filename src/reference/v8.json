@@ -675,7 +675,7 @@
     },
     "dataProjection": {
       "type": "string",
-      "doc": "Experimental. The projection the coordinates in `data` are in, by the name the [projection](projection.md) `type` uses. Set to the map's projection, the coordinates are taken as positions in that projection instead of longitude and latitude, so data a service returns in the map's projection is drawn without a projection library. Only the map's own projection is supported, and in MapLibre GL JS only `identity` or a projection registered with `addProjection`. When not set, the coordinates are longitude and latitude, as GeoJSON specifies.",
+      "doc": "Experimental. The projection the coordinates in `data` are in, named as the [projection](projection.md) `type` names it. By default the coordinates are longitude and latitude, as GeoJSON specifies. Set to the map's projection, they are read as positions in that projection, so data already in that projection needs no conversion. No other projection is supported.",
       "sdk-support": {
         "basic functionality": {
           "js": "https://github.com/maplibre/maplibre-gl-js/issues/8736",
