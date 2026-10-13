@@ -75,7 +75,7 @@
       <circle cx="628" cy="135" r="40" fill="#7b2cbf" fill-opacity="0.8" style="mix-blend-mode: luminosity;"/>
     </g>
 
-    <!-- plus -->
+    <!-- lighter -->
     <g clip-path="url(#clip-5)">
       <use href="#basemap" y="255"/>
       <circle cx="100" cy="390" r="40" fill="#7b2cbf" fill-opacity="0.8" style="mix-blend-mode: plus-lighter;"/>
@@ -99,7 +99,7 @@
   <text x="276" y="20" text-anchor="middle" fill="#212529" font-size="14">multiply</text>
   <text x="452" y="20" text-anchor="middle" fill="#212529" font-size="14">color</text>
   <text x="628" y="20" text-anchor="middle" fill="#212529" font-size="14">luminosity</text>
-  <text x="100" y="275" text-anchor="middle" fill="#212529" font-size="14">plus</text>
+  <text x="100" y="275" text-anchor="middle" fill="#212529" font-size="14">lighter</text>
   <text x="276" y="275" text-anchor="middle" fill="#212529" font-size="14">screen</text>
   <text x="452" y="275" text-anchor="middle" fill="#212529" font-size="14">overlay</text>
 </svg>
