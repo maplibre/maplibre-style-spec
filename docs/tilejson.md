@@ -11,7 +11,7 @@ A `vector`, `raster` or `raster-dem` [source](sources.md) can point at a [TileJS
 | `scheme` | The tile coordinate scheme, `xyz` or `tms`. |
 | `vector_layers` | The ids of the layers in a vector source, which a layer's `source-layer` is checked against. |
 | `tileSize` | The tile size in pixels of a `raster` or `raster-dem` source. |
-| `encoding` | The encoding of the tiles: `terrarium`, `mapbox` or `custom` for `raster-dem`, `mvt` or `mlt` for `vector`. |
+| `encoding` | The encoding of the tiles<br><ul><li>`terrarium`, `mapbox` or `custom` for `raster-dem`,</li><li>`mvt` or `mlt` for `vector`</li></ul> |
 | `emptyTileBehavior` | How a tile response with an empty body is handled, see below. |
 
 The first six are part of TileJSON 3.0.0, which also defines `tilejson`, `name`, `description`, `version`, `center`, `data`, `fillzoom`, `grids`, `legend` and `template`; MapLibre does not read those. The last three are MapLibre's additions. TileJSON 3.0.0 asks implementations to treat keys they do not know as absent, so a TileJSON that carries them stays valid for other clients.
