@@ -18,7 +18,7 @@ The first six are part of TileJSON 3.0.0, which also defines `tilejson`, `name`,
 
 ## emptyTileBehavior
 
-A tile server with partial coverage has two ways to say that it has no tile at a place: a 404 response, which makes the tile missing so that a loaded tile from another zoom level shows through, or an empty response (HTTP 204, or 200 with no content), which loads as an empty tile that draws nothing. Whether an empty tile means "nothing here" or "not generated at this zoom" is a property of the tileset, so the TileJSON can say so once, for every style that uses it:
+A tile server with partial coverage has two ways to say that it has no tile at a place: a 404 response or an empty response (HTTP 204, or 200 with no content). For `raster` and `raster-dem` sources a 404 makes the tile missing, so a loaded tile from another zoom level shows through, and an empty response loads as an empty tile that draws nothing. `vector` sources load both as an empty tile. Whether an empty tile means "nothing here" or "not generated at this zoom" is a property of the tileset, so the TileJSON can say so once, for every style that uses it:
 
 ```json
 {
