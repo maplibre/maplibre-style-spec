@@ -7151,7 +7151,7 @@
         "luminosity": {
           "doc": "Luminosity blending. Creates a color with the luminosity of the layer and the hue and saturation of the content underneath. The inverse of `color`."
         },
-        "plus": {
+        "lighter": {
           "doc": "Additive blending. The layer color is added to the colors underneath, producing brighter results. Useful for glow and heat accumulation effects."
         },
         "screen": {
