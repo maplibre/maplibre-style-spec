@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 728 492" font-size="14" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif">
   <defs>
-    <!-- Clip paths, 8 columns over two rows -->
+    <!-- Clip paths, 7 active columns -->
     <clipPath id="clip-1"><rect x="12" y="45" width="176" height="180"/></clipPath>
     <clipPath id="clip-2"><rect x="188" y="45" width="176" height="180"/></clipPath>
     <clipPath id="clip-3"><rect x="364" y="45" width="176" height="180"/></clipPath>
@@ -8,18 +8,11 @@
     <clipPath id="clip-5"><rect x="12" y="300" width="176" height="180"/></clipPath>
     <clipPath id="clip-6"><rect x="188" y="300" width="176" height="180"/></clipPath>
     <clipPath id="clip-7"><rect x="364" y="300" width="176" height="180"/></clipPath>
-    <clipPath id="clip-8"><rect x="540" y="300" width="176" height="180"/></clipPath>
 
     <!-- Rounded clip so each strip keeps rounded outer corners -->
     <clipPath id="clip-strip">
       <rect x="12" y="45" width="704" height="180" rx="8"/>
     </clipPath>
-
-    <!-- Erase mask: everything white stays, the black shape cuts a hole in the basemap -->
-    <mask id="erase-mask">
-      <rect x="540" y="300" width="176" height="180" fill="#ffffff"/>
-      <circle cx="628" cy="390" r="40" fill="#000000"/>
-    </mask>
 
     <!-- Unified base map strip, reused by both rows -->
     <g id="basemap" clip-path="url(#clip-strip)">
@@ -55,7 +48,7 @@
 
   <!-- Outer map borders -->
   <rect x="12" y="45" width="704" height="180" fill="none" stroke="#e9ecef" stroke-width="2" rx="8"/>
-  <rect x="12" y="300" width="704" height="180" fill="none" stroke="#e9ecef" stroke-width="2" rx="8"/>
+  <rect x="12" y="300" width="528" height="180" fill="none" stroke="#e9ecef" stroke-width="2" rx="8"/>
 
   <g style="isolation: isolate;">
     <!-- normal -->
@@ -99,12 +92,6 @@
       <use href="#basemap" y="255"/>
       <circle cx="452" cy="390" r="40" fill="#7b2cbf" fill-opacity="0.8" style="mix-blend-mode: overlay;"/>
     </g>
-
-    <!-- erase -->
-    <g clip-path="url(#clip-8)" mask="url(#erase-mask)">
-      <use href="#basemap" y="255"/>
-    </g>
-
   </g>
 
   <!-- Column labels -->
@@ -115,5 +102,4 @@
   <text x="100" y="275" text-anchor="middle" fill="#212529" font-size="14">plus</text>
   <text x="276" y="275" text-anchor="middle" fill="#212529" font-size="14">screen</text>
   <text x="452" y="275" text-anchor="middle" fill="#212529" font-size="14">overlay</text>
-  <text x="628" y="275" text-anchor="middle" fill="#212529" font-size="14">erase</text>
 </svg>
