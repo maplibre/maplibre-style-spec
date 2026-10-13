@@ -68,5 +68,10 @@
     "message": "sources.source-vector-array.encoding: expected one of [mvt, mlt], [\"mvt\"] found",
     "severity": "error",
     "line": 105
+  },
+  {
+    "message": "sources.image-missing-coordinates: missing required property \"coordinates\"",
+    "severity": "error",
+    "line": 115
   }
 ]

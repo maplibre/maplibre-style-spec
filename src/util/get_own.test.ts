@@ -1,4 +1,7 @@
-import {describe, test, expect, afterEach, vi, beforeAll} from 'vitest';
+import {describe, test, expect, afterAll, afterEach, vi, beforeAll} from 'vitest';
+
+// captured before any test deletes it, so it can be put back afterwards
+const objectHasOwnDescriptor = Object.getOwnPropertyDescriptor(Object, 'hasOwn')!;
 
 describe('get_own', () => {
     describe.each([
@@ -31,6 +34,11 @@ describe('get_own', () => {
 
         afterEach(() => {
             vi.resetModules();
+        });
+
+        afterAll(() => {
+            // the test suite itself relies on Object.hasOwn, so it must not stay deleted
+            Object.defineProperty(Object, 'hasOwn', objectHasOwnDescriptor);
         });
 
         test('returns value for own properties', () => {

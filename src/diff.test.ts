@@ -1,5 +1,5 @@
 import {diff} from './diff';
-import {StyleSpecification} from './types.g';
+import {FontFacesSpecification, StyleSpecification} from './types.g';
 import {describe, test, expect} from 'vitest';
 
 describe('diff', () => {
@@ -96,7 +96,7 @@ describe('diff', () => {
                     layers: [{id: 'a', paint: {foo: 2}}]
                 } as any as StyleSpecification
             )
-        ).toEqual([{command: 'setPaintProperty', args: ['a', 'foo', 2, null]}]);
+        ).toEqual([{command: 'setPaintProperty', args: ['a', 'foo', 2]}]);
     });
 
     test('set paint property with light', () => {
@@ -109,7 +109,7 @@ describe('diff', () => {
                     layers: [{id: 'a', 'paint.light': {foo: 2}}]
                 } as any as StyleSpecification
             )
-        ).toEqual([{command: 'setPaintProperty', args: ['a', 'foo', 2, 'light']}]);
+        ).toEqual([{command: 'setPaintProperty', args: ['a', 'foo', 2]}]);
     });
 
     test('set paint property with ramp', () => {
@@ -122,7 +122,7 @@ describe('diff', () => {
                     layers: [{id: 'a', paint: {foo: {ramp: [1]}}}]
                 } as any as StyleSpecification
             )
-        ).toEqual([{command: 'setPaintProperty', args: ['a', 'foo', {ramp: [1]}, null]}]);
+        ).toEqual([{command: 'setPaintProperty', args: ['a', 'foo', {ramp: [1]}]}]);
     });
 
     test('set layout property', () => {
@@ -135,7 +135,7 @@ describe('diff', () => {
                     layers: [{id: 'a', layout: {foo: 2}}]
                 } as any as StyleSpecification
             )
-        ).toEqual([{command: 'setLayoutProperty', args: ['a', 'foo', 2, null]}]);
+        ).toEqual([{command: 'setLayoutProperty', args: ['a', 'foo', 2]}]);
     });
 
     test('set filter', () => {
@@ -765,6 +765,62 @@ describe('diff', () => {
         ).toEqual([{command: 'setGlyphs', args: ['b']}]);
     });
 
+    test('no font-faces change', () => {
+        const fontFaces: FontFacesSpecification = {
+            'Noto Sans Regular': 'https://example.com/noto.ttf'
+        };
+        expect(
+            diff(
+                {'font-faces': fontFaces} as StyleSpecification,
+                {'font-faces': fontFaces} as StyleSpecification
+            )
+        ).toEqual([]);
+    });
+
+    test('set font-faces', () => {
+        const before: FontFacesSpecification = {
+            'Noto Sans Regular': 'https://example.com/a.ttf'
+        };
+        const after: FontFacesSpecification = {
+            'Noto Sans Regular': [
+                {url: 'https://example.com/b.ttf', 'unicode-range': ['U+1780-17FF']}
+            ]
+        };
+        expect(
+            diff(
+                {'font-faces': before} as StyleSpecification,
+                {'font-faces': after} as StyleSpecification
+            )
+        ).toEqual([
+            {
+                command: 'setFontFaces',
+                args: [
+                    {
+                        'Noto Sans Regular': [
+                            {url: 'https://example.com/b.ttf', 'unicode-range': ['U+1780-17FF']}
+                        ]
+                    }
+                ]
+            }
+        ]);
+    });
+
+    test('add font-faces', () => {
+        const fontFaces: FontFacesSpecification = {Unifont: 'https://example.com/unifont.ttf'};
+        expect(
+            diff({} as StyleSpecification, {'font-faces': fontFaces} as StyleSpecification)
+        ).toEqual([
+            {command: 'setFontFaces', args: [{Unifont: 'https://example.com/unifont.ttf'}]}
+        ]);
+    });
+
+    test('remove font-faces', () => {
+        const fontFaces: FontFacesSpecification = {Unifont: 'https://example.com/unifont.ttf'};
+        expect(
+            diff({'font-faces': fontFaces} as StyleSpecification, {} as StyleSpecification)
+        ).toEqual([{command: 'setFontFaces', args: [undefined]}]);
+    });
+
     test('remove terrain', () => {
         expect(
             diff(
@@ -791,6 +847,79 @@ describe('diff', () => {
                 } as StyleSpecification
             )
         ).toEqual([{command: 'setTerrain', args: [{source: 'maplibre-dem', exaggeration: 1.5}]}]);
+    });
+
+    test('add terrain after the source it uses', () => {
+        expect(
+            diff(
+                {
+                    sources: {}
+                } as any as StyleSpecification,
+                {
+                    sources: {
+                        'maplibre-dem': {type: 'raster-dem', url: 'http://example.com/dem'}
+                    },
+                    terrain: {
+                        source: 'maplibre-dem',
+                        exaggeration: 1.5
+                    }
+                } as any as StyleSpecification
+            )
+        ).toEqual([
+            {
+                command: 'addSource',
+                args: ['maplibre-dem', {type: 'raster-dem', url: 'http://example.com/dem'}]
+            },
+            {command: 'setTerrain', args: [{source: 'maplibre-dem', exaggeration: 1.5}]}
+        ]);
+    });
+
+    test('remove terrain before the source it uses', () => {
+        expect(
+            diff(
+                {
+                    sources: {
+                        'maplibre-dem': {type: 'raster-dem', url: 'http://example.com/dem'}
+                    },
+                    terrain: {
+                        source: 'maplibre-dem',
+                        exaggeration: 1.5
+                    }
+                } as any as StyleSpecification,
+                {
+                    sources: {}
+                } as any as StyleSpecification
+            )
+        ).toEqual([
+            {command: 'setTerrain', args: [undefined]},
+            {command: 'removeSource', args: ['maplibre-dem']}
+        ]);
+    });
+
+    test('change the terrain source after the new source is added', () => {
+        expect(
+            diff(
+                {
+                    sources: {
+                        'dem-a': {type: 'raster-dem', url: 'http://example.com/a'}
+                    },
+                    terrain: {source: 'dem-a', exaggeration: 1.5}
+                } as any as StyleSpecification,
+                {
+                    sources: {
+                        'dem-b': {type: 'raster-dem', url: 'http://example.com/b'}
+                    },
+                    terrain: {source: 'dem-b', exaggeration: 1.5}
+                } as any as StyleSpecification
+            )
+        ).toEqual([
+            {command: 'removeSource', args: ['dem-a']},
+            {
+                command: 'addSource',
+                args: ['dem-b', {type: 'raster-dem', url: 'http://example.com/b'}]
+            },
+            {command: 'setTerrain', args: [{source: 'dem-b', exaggeration: 1.5}]}
+        ]);
     });
 
     test('set sky', () => {

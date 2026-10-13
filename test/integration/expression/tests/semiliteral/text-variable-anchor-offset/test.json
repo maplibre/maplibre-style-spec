@@ -1,0 +1,37 @@
+{
+  "propertySpec": {
+    "type": "variableAnchorOffsetCollection"
+  },
+  "expression": [
+    "semiliteral",
+    [
+      "top",
+      ["literal", [0, 1]]
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": true,
+      "isZoomConstant": true,
+      "type": "variableAnchorOffsetCollection"
+    },
+    "outputs": [
+      {
+        "values": [
+          "top",
+          [
+            0,
+            1
+          ]
+        ]
+      }
+    ]
+  }
+}

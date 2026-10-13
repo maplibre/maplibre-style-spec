@@ -307,7 +307,19 @@
     "tiles": {
       "type": "array",
       "value": "string",
-      "doc": "An array of one or more tile source URLs, as in the TileJSON spec."
+      "doc": "An array of one or more tile source URLs, as in the TileJSON spec. These tokens in a URL are replaced for each tile:\n\n - `{z}`, `{x}` and `{y}` - The tile's zoom level, column and row. With `scheme` set to `tms`, the row counts from the bottom.\n\n - `{quadkey}` - The tile's quadkey, as Bing Maps addresses tiles.\n\n - `{bbox-epsg-3857}` - The tile's bounding box in EPSG:3857 meters, as `minX,minY,maxX,maxY`, for WMS requests.\n\n - `{bbox}` - Experimental. The tile's bounding box as `minX,minY,maxX,maxY` in the units of the map's coordinate system. With the `mercator`, `globe` and `vertical-perspective` projections this is the same as `{bbox-epsg-3857}`.\n\n - `{prefix}` - Two hexadecimal digits from the tile's column and row, to spread requests over host names.\n\n - `{ratio}` - `@2x` where the device pixel ratio is above 1, empty otherwise.",
+      "sdk-support": {
+        "basic functionality": {
+          "js": "supported",
+          "android": "supported",
+          "ios": "supported"
+        },
+        "`{bbox}` token": {
+          "js": "6.15.0",
+          "android": "https://github.com/maplibre/maplibre-native/issues/95",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/95"
+        }
+      }
     },
     "bounds": {
       "type": "array",
@@ -412,7 +424,19 @@
     "tiles": {
       "type": "array",
       "value": "string",
-      "doc": "An array of one or more tile source URLs, as in the TileJSON spec."
+      "doc": "An array of one or more tile source URLs, as in the TileJSON spec. These tokens in a URL are replaced for each tile:\n\n - `{z}`, `{x}` and `{y}` - The tile's zoom level, column and row. With `scheme` set to `tms`, the row counts from the bottom.\n\n - `{quadkey}` - The tile's quadkey, as Bing Maps addresses tiles.\n\n - `{bbox-epsg-3857}` - The tile's bounding box in EPSG:3857 meters, as `minX,minY,maxX,maxY`, for WMS requests.\n\n - `{bbox}` - Experimental. The tile's bounding box as `minX,minY,maxX,maxY` in the units of the map's coordinate system. With the `mercator`, `globe` and `vertical-perspective` projections this is the same as `{bbox-epsg-3857}`.\n\n - `{prefix}` - Two hexadecimal digits from the tile's column and row, to spread requests over host names.\n\n - `{ratio}` - `@2x` where the device pixel ratio is above 1, empty otherwise.",
+      "sdk-support": {
+        "basic functionality": {
+          "js": "supported",
+          "android": "supported",
+          "ios": "supported"
+        },
+        "`{bbox}` token": {
+          "js": "6.15.0",
+          "android": "https://github.com/maplibre/maplibre-native/issues/95",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/95"
+        }
+      }
     },
     "bounds": {
       "type": "array",
@@ -494,7 +518,19 @@
     "tiles": {
       "type": "array",
       "value": "string",
-      "doc": "An array of one or more tile source URLs, as in the TileJSON spec."
+      "doc": "An array of one or more tile source URLs, as in the TileJSON spec. These tokens in a URL are replaced for each tile:\n\n - `{z}`, `{x}` and `{y}` - The tile's zoom level, column and row.\n\n - `{quadkey}` - The tile's quadkey, as Bing Maps addresses tiles.\n\n - `{bbox-epsg-3857}` - The tile's bounding box in EPSG:3857 meters, as `minX,minY,maxX,maxY`, for WMS requests.\n\n - `{bbox}` - Experimental. The tile's bounding box as `minX,minY,maxX,maxY` in the units of the map's coordinate system. With the `mercator`, `globe` and `vertical-perspective` projections this is the same as `{bbox-epsg-3857}`.\n\n - `{prefix}` - Two hexadecimal digits from the tile's column and row, to spread requests over host names.\n\n - `{ratio}` - `@2x` where the device pixel ratio is above 1, empty otherwise.",
+      "sdk-support": {
+        "basic functionality": {
+          "js": "supported",
+          "android": "supported",
+          "ios": "supported"
+        },
+        "`{bbox}` token": {
+          "js": "6.15.0",
+          "android": "https://github.com/maplibre/maplibre-native/issues/95",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/95"
+        }
+      }
     },
     "bounds": {
       "type": "array",
@@ -742,9 +778,8 @@
       "doc": "The data type of the image source."
     },
     "url": {
-      "required": true,
       "type": "string",
-      "doc": "URL that points to an image."
+      "doc": "URL that points to an image. Optional: a source created without a url starts empty and renders nothing until an image is set at runtime."
     },
     "coordinates": {
       "required": true,
@@ -1693,6 +1728,11 @@
           "android": "2.0.1",
           "ios": "2.0.0"
         },
+        "data-driven styling": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/3461",
+          "android": "https://github.com/maplibre/maplibre-native/issues/4517",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/4517"
+        },
         "`auto` value": {
           "js": "0.25.0",
           "android": "4.2.0",
@@ -1707,10 +1747,11 @@
       "expression": {
         "interpolated": false,
         "parameters": [
-          "zoom"
+          "zoom",
+          "feature"
         ]
       },
-      "property-type": "data-constant"
+      "property-type": "data-driven"
     },
     "icon-size": {
       "type": "number",
@@ -3042,6 +3083,69 @@
       },
       "property-type": "data-constant"
     },
+    "symbol-height-offset": {
+      "type": "number",
+      "default": 0,
+      "units": "meters",
+      "doc": "The height above the anchor, in meters, at which the symbol is placed. Use `symbol-height-anchor` to control what this height is measured from.",
+      "requires": [
+        {
+          "symbol-placement": [
+            "point"
+          ]
+        }
+      ],
+      "sdk-support": {
+        "basic functionality": {
+          "js": "6.6.0",
+          "android": "https://github.com/maplibre/maplibre-native/issues/1929",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/1929"
+        },
+        "data-driven styling": {
+          "js": "6.6.0",
+          "android": "https://github.com/maplibre/maplibre-native/issues/1929",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/1929"
+        }
+      },
+      "expression": {
+        "interpolated": true,
+        "parameters": [
+          "zoom",
+          "feature"
+        ]
+      },
+      "property-type": "data-driven"
+    },
+    "symbol-height-anchor": {
+      "type": "enum",
+      "values": {
+        "ground": {
+          "doc": "`symbol-height-offset` is measured from the ground below the symbol, i.e. the terrain elevation at the symbol's location, or zero when terrain is not enabled."
+        },
+        "absolute": {
+          "doc": "`symbol-height-offset` is measured from sea level, ignoring the terrain elevation at the symbol's location."
+        }
+      },
+      "default": "ground",
+      "doc": "Defines what `symbol-height-offset` is measured from.",
+      "requires": [
+        "symbol-height-offset"
+      ],
+      "sdk-support": {
+        "basic functionality": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/644",
+          "android": "https://github.com/maplibre/maplibre-native/issues/1929",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/1929"
+        }
+      },
+      "expression": {
+        "interpolated": false,
+        "parameters": [
+          "zoom"
+        ]
+      },
+      "property-type": "data-constant"
+    },
     "visibility": {
       "type": "enum",
       "values": {
@@ -3450,7 +3554,7 @@
         "group": "Types",
         "sdk-support": {
           "basic functionality": {
-            "js": "https://github.com/maplibre/maplibre-gl-js/issues/7933",
+            "js": "6.6.0",
             "android": "https://github.com/maplibre/maplibre-native/issues/4401",
             "ios": "https://github.com/maplibre/maplibre-native/issues/4401"
           }
@@ -6006,8 +6110,8 @@
         "sdk-support": {
           "basic functionality": {
             "js": "5.20.0",
-            "android": "https://github.com/maplibre/maplibre-native/issues/4133",
-            "ios": "https://github.com/maplibre/maplibre-native/issues/4133"
+            "android": "13.5.0",
+            "ios": "6.29.0"
           }
         }
       },
@@ -6036,8 +6140,8 @@
         "sdk-support": {
           "basic functionality": {
             "js": "5.20.0",
-            "android": "https://github.com/maplibre/maplibre-native/issues/4133",
-            "ios": "https://github.com/maplibre/maplibre-native/issues/4133"
+            "android": "13.5.0",
+            "ios": "6.29.0"
           }
         }
       }
@@ -6546,6 +6650,11 @@
           "android": "5.0.0",
           "ios": "3.5.0"
         },
+        "SDF fill pattern colorization": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/8342",
+          "android": "https://github.com/maplibre/maplibre-native/issues/4526",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/4526"
+        },
         "[`global-state`](https://maplibre.org/maplibre-style-spec/expressions/#global-state) expression": {
           "js": "5.6.0",
           "android": "https://github.com/maplibre/maplibre-native/issues/3302",
@@ -6862,9 +6971,8 @@
     "fill-extrusion-height": {
       "type": "number",
       "default": 0,
-      "minimum": 0,
       "units": "meters",
-      "doc": "The height with which to extrude this layer.",
+      "doc": "The height with which to extrude this layer. Negative values extrude below ground level, so a floor that is entirely underground can be expressed.",
       "transition": true,
       "sdk-support": {
         "basic functionality": {
@@ -6881,6 +6989,11 @@
           "js": "5.6.0",
           "android": "https://github.com/maplibre/maplibre-native/issues/3302",
           "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
+        },
+        "negative values": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/8051",
+          "android": "https://github.com/maplibre/maplibre-native/issues/4455",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/4455"
         }
       },
       "expression": {
@@ -6896,9 +7009,8 @@
     "fill-extrusion-base": {
       "type": "number",
       "default": 0,
-      "minimum": 0,
       "units": "meters",
-      "doc": "The height with which to extrude the base of this layer. Must be less than or equal to `fill-extrusion-height`.",
+      "doc": "The height with which to extrude the base of this layer. Must be less than or equal to `fill-extrusion-height`. Negative values extrude below ground level, e.g. underground floors.",
       "transition": true,
       "requires": [
         "fill-extrusion-height"
@@ -6918,6 +7030,11 @@
           "js": "5.6.0",
           "android": "https://github.com/maplibre/maplibre-native/issues/3302",
           "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
+        },
+        "negative values": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/8051",
+          "android": "https://github.com/maplibre/maplibre-native/issues/4455",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/4455"
         }
       },
       "expression": {

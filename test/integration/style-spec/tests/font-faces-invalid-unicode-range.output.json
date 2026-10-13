@@ -1,0 +1,12 @@
+[
+  {
+    "message": "font-faces.Noto Sans[0].unicode-range[0]: unicode range start must not be greater than its end, but U+17FF-1780 is",
+    "severity": "error",
+    "line": 8
+  },
+  {
+    "message": "font-faces.Noto Sans[0].unicode-range[1]: unicode range is out of bounds, the maximum code point is U+10FFFF",
+    "severity": "error",
+    "line": 8
+  }
+]

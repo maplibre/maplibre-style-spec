@@ -572,7 +572,7 @@ function createSourcesContent() {
             }
         },
         image: {
-            doc: 'An image source. The `url` value contains the image location. The `coordinates` array contains `[longitude, latitude]` pairs for the image corners listed in clockwise order: top left, top right, bottom right, bottom left.',
+            doc: 'An image source. The `url` value contains the image location; it is optional, and a source created without one starts empty and renders nothing until an image is set at runtime. The `coordinates` array contains `[longitude, latitude]` pairs for the image corners listed in clockwise order: top left, top right, bottom right, bottom left.',
             example: {
                 image: {
                     type: 'image',

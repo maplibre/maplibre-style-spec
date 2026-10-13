@@ -1,0 +1,30 @@
+{
+  "expression": [
+    "at",
+    0,
+    [
+      "semiliteral",
+      [
+        1,
+        2
+      ]
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": true,
+      "isZoomConstant": true,
+      "type": "number"
+    },
+    "outputs": [
+      1
+    ]
+  }
+}

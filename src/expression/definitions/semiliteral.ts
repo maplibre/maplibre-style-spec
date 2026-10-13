@@ -41,7 +41,13 @@ export class Semiliteral implements Expression {
 
         if (type.kind === 'array') {
             const arr = value as Array<unknown>;
-            const parsed = arr.map((item) => context.parse(item, null, ValueType));
+            const arrayContext = context.concat(1);
+            const parsed: Expression[] = [];
+            for (let i = 0; i < arr.length; i++) {
+                const item = arrayContext.parse(arr[i], i, ValueType);
+                if (!item) return null;
+                parsed.push(item);
+            }
             return new Semiliteral(parsed);
         } else {
             return new Literal(type, value);

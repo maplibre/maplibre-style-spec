@@ -5,14 +5,68 @@
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
 
-## 26.2.1
-### ✨ Features and improvements
+## 26.4.4
 
 ### 🐞 Bug fixes
+
+- Fix `semiliteral` parsing in array-valued properties and `at` operands, and report invalid children at their nested expression locations instead of throwing ([#1878](https://github.com/maplibre/maplibre-style-spec/pull/1878))
+- Order the `setTerrain` diff command around the source commands, so terrain is set after its source is added and unset before it is removed ([#1879](https://github.com/maplibre/maplibre-style-spec/pull/1879))
+
+## 26.4.3
+
+### ✨ Features and improvements
+
+- Tighten the diff command types: `DiffCommand` is now a discriminated union, so a `switch` on `command` narrows `args`, and the unused legacy class argument was dropped from `setPaintProperty` and `setLayoutProperty` ([#1876](https://github.com/maplibre/maplibre-style-spec/pull/1876)) (by [@HarelM](https://github.com/HarelM))
+
+## 26.4.2
+
+### ✨ Features and improvements
+
+- Allow negative `fill-extrusion-base` and `fill-extrusion-height` values, extruding below ground level (e.g. underground floors) ([#1794](https://github.com/maplibre/maplibre-style-spec/pull/1794)) (by [@clement-igonet](https://github.com/clement-igonet))
+- Add SDK support tracking for SDF fill pattern colorization ([#1854](https://github.com/maplibre/maplibre-style-spec/pull/1854)) (by [@deniial00](https://github.com/deniial00))
+
+### 🐞 Bug fixes
+
+- Validate `-transition` properties on `sky` the same way `light` already does, so `sky-color-transition` and similar keys no longer report as unknown properties ([#1867](https://github.com/maplibre/maplibre-style-spec/pull/1867)) (by [@Yasser-Ameur](https://github.com/Yasser-Ameur))
+
+## 26.4.1
+
+### ✨ Features and improvements
+
+- Publish the ESM build (`dist/index.mjs`, referenced by `package.json#module`) as one module per source file instead of a single bundle, so that bundlers which eliminate dead code at module granularity can drop unused parts of the package ([#1829](https://github.com/maplibre/maplibre-style-spec/pull/1829)) (by [@ahocevar](https://github.com/ahocevar))
+
+### 🐞 Bug fixes
+
+- Fix validation and typescript types for font-faces ([#1840](https://github.com/maplibre/maplibre-style-spec/pull/1840)) (by [@HarelM](https://github.com/HarelM))
+
+## 26.4.0
+
+### ✨ Features and improvements
+
+- Enable data-driven `icon-rotation-alignment` ([#1836](https://github.com/maplibre/maplibre-style-spec/pull/1836)) (by [@Turbo87](https://github.com/Turbo87))
+- Make `url` optional for image sources. An image source can now be defined with only `type` and `coordinates`; it renders nothing until an image is set at runtime ([#1817](https://github.com/maplibre/maplibre-style-spec/pull/1817))
+
+### 🐞 Bug fixes
+
+- Fix missing `setFontFaces` operation when style changes ([#1837](https://github.com/maplibre/maplibre-style-spec/pull/1837)) (by [@HarelM](https://github.com/HarelM))
+
+## 26.3.0
+
+### ✨ Features and improvements
+
+- Add `semiliteral` operator for expressions inside arrays and objects ([#951](https://github.com/maplibre/maplibre-style-spec/pull/951)) (by [@sargunv](https://github.com/sargunv))
+- Add `symbol-height-offset` and `symbol-height-anchor` properties to `symbol` layers to allow icons and text to be elevated above the ground ([#1508](https://github.com/maplibre/maplibre-style-spec/pull/1508)) (by [@HatulaPro](https://github.com/HatulaPro))
+
+## 26.2.1
+
+### 🐞 Bug fixes
+
 - Fix `fill-extrusion-rounded-corner-distance` being documented as an `paint` instead of an `layout` property as implemnented ([#1784](https://github.com/maplibre/maplibre-style-spec/pull/1784)) (by [@CommanderStorm](https://github.com/CommanderStorm))
 
 ## 26.2.0
+
 ### ✨ Features and improvements
+
 - Add fill-extrusion-rounded-corner-distance ([#1781](https://github.com/maplibre/maplibre-style-spec/pull/1781), [#1782](https://github.com/maplibre/maplibre-style-spec/pull/1782)) (by [@louwers](https://github.com/louwers))
 
 ### 🐞 Bug fixes

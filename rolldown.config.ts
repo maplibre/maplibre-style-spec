@@ -12,7 +12,7 @@ const dtsBundle: RolldownOptions = {
         format: 'es'
     },
     external: [...Object.keys(packageJSON.dependencies)],
-    plugins: [dts({emitDtsOnly: true, tsgo: false})]
+    plugins: [dts({emitDtsOnly: true, generator: 'tsc'})]
 };
 
 const bundles: RolldownOptions[] = [
@@ -23,8 +23,12 @@ const bundles: RolldownOptions[] = [
         input: './src/index.ts',
         output: [
             {
-                file: 'dist/index.mjs',
+                dir: 'dist',
                 format: 'es',
+                preserveModules: true,
+                preserveModulesRoot: 'src',
+                entryFileNames: '[name].mjs',
+                chunkFileNames: '[name].mjs',
                 sourcemap: true
             },
             {
