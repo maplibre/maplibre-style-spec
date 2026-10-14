@@ -353,11 +353,11 @@
           "doc": "Load the tile as an empty tile with nothing to draw."
         },
         "fallback": {
-          "doc": "Treat the tile as missing, like a 404 response: a loaded tile from another zoom level shows through in its place. A 404 response is treated the same way, instead of loading as an empty tile."
+          "doc": "Let a loaded tile from another zoom level show through in its place."
         }
       },
       "default": "render",
-      "doc": "How a tile response with an empty body (HTTP 204, or 200 with no content) is handled. A tile server with partial coverage can answer 204 where it has no data and use `fallback` to let a tile from another zoom level show through, without the browser console noise that 404 responses cause. The [TileJSON](tilejson.md) the source loads may carry the same key; the value set on the source wins.",
+      "doc": "How a tile response with an empty body (HTTP 204, or 200 with no content) is handled. A tile server with partial coverage can answer 204 where it has no data and use `fallback` to let a tile from another zoom level show through. The [TileJSON](tilejson.md) the source loads may carry the same key; the value set on the source wins.",
       "sdk-support": {
         "basic functionality": {
           "js": "https://github.com/maplibre/maplibre-gl-js/issues/3990",
@@ -506,11 +506,11 @@
           "doc": "Draw the tile as fully transparent."
         },
         "fallback": {
-          "doc": "Treat the tile as missing, like a 404 response: a loaded tile from another zoom level shows through in its place."
+          "doc": "Let a loaded tile from another zoom level show through in its place."
         }
       },
       "default": "render",
-      "doc": "How a tile response with an empty body (HTTP 204, or 200 with no content) is handled. A tile server with partial coverage can answer 204 where it has no data and use `fallback` to let a tile from another zoom level show through, without the browser console noise that 404 responses cause. The [TileJSON](tilejson.md) the source loads may carry the same key; the value set on the source wins.",
+      "doc": "How a tile response with an empty body (HTTP 204, or 200 with no content) is handled. A tile server with partial coverage can answer 204 where it has no data and use `fallback` to let a tile from another zoom level show through. The [TileJSON](tilejson.md) the source loads may carry the same key; the value set on the source wins.",
       "sdk-support": {
         "basic functionality": {
           "js": "https://github.com/maplibre/maplibre-gl-js/issues/3990",
@@ -607,11 +607,11 @@
           "doc": "Load the tile without elevation data."
         },
         "fallback": {
-          "doc": "Treat the tile as missing, like a 404 response: a loaded tile from another zoom level supplies the elevation in its place."
+          "doc": "Let a loaded tile from another zoom level supply the elevation in its place."
         }
       },
       "default": "render",
-      "doc": "How a tile response with an empty body (HTTP 204, or 200 with no content) is handled. A tile server with partial coverage can answer 204 where it has no data and use `fallback` to let a tile from another zoom level supply the elevation, without the browser console noise that 404 responses cause. The [TileJSON](tilejson.md) the source loads may carry the same key; the value set on the source wins.",
+      "doc": "How a tile response with an empty body (HTTP 204, or 200 with no content) is handled. A tile server with partial coverage can answer 204 where it has no data and use `fallback` to let a tile from another zoom level supply the elevation. The [TileJSON](tilejson.md) the source loads may carry the same key; the value set on the source wins.",
       "sdk-support": {
         "basic functionality": {
           "js": "https://github.com/maplibre/maplibre-gl-js/issues/3990",
