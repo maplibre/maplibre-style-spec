@@ -170,7 +170,7 @@
     "sources": {
       "required": true,
       "type": "sources",
-      "doc": "Sources state which data the map should display. Specify the type of source with the `type` property. Adding a source isn't enough to make data appear on the map because sources don't contain styling details like color or width. Layers refer to a source and give it a visual representation. This makes it possible to style the same source in different ways, like differentiating between types of roads in a highways layer.\n\nTiled sources (vector and raster) must specify their details according to the [TileJSON specification](https://github.com/mapbox/tilejson-spec).",
+      "doc": "Sources state which data the map should display. Specify the type of source with the `type` property. Adding a source isn't enough to make data appear on the map because sources don't contain styling details like color or width. Layers refer to a source and give it a visual representation. This makes it possible to style the same source in different ways, like differentiating between types of roads in a highways layer.\n\nTiled sources (vector and raster) must specify their details according to [TileJSON](tilejson.md).",
       "example": {
         "maplibre-demotiles": {
           "type": "vector",
