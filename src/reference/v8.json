@@ -346,18 +346,18 @@
       "default": "xyz",
       "doc": "Influences the y direction of the tile coordinates. The global-mercator (aka Spherical Mercator) profile is assumed."
     },
-    "emptyTileBehavior": {
+    "emptyResponse": {
       "type": "enum",
       "values": {
-        "render": {
-          "doc": "Load the tile as an empty tile with nothing to draw."
+        "blank": {
+          "doc": "The tile is in the tileset and has no features. It loads as an empty tile."
         },
-        "fallback": {
-          "doc": "Let a loaded tile from another zoom level show through in its place."
+        "missing": {
+          "doc": "The tileset has no tile there at that zoom level. A loaded tile from another zoom level shows through in its place."
         }
       },
-      "default": "render",
-      "doc": "How a tile response with an empty body (HTTP 204, or 200 with no content) is handled. A tile server with partial coverage can answer 204 where it has no data and use `fallback` to let a tile from another zoom level show through. The [TileJSON](tilejson.md) the source loads may carry the same key; the value set on the source wins.",
+      "default": "blank",
+      "doc": "What a tile response with an empty body (HTTP 204, or 200 with no content) means in this tileset. A tile server with partial coverage can answer 204 where it has no tile, and `missing` lets a tile from another zoom level show through. The [TileJSON](tilejson.md) the source loads may carry the same key; the value set on the source wins.",
       "sdk-support": {
         "basic functionality": {
           "js": "https://github.com/maplibre/maplibre-gl-js/issues/3990",
@@ -499,18 +499,18 @@
       "default": "xyz",
       "doc": "Influences the y direction of the tile coordinates. The global-mercator (aka Spherical Mercator) profile is assumed."
     },
-    "emptyTileBehavior": {
+    "emptyResponse": {
       "type": "enum",
       "values": {
-        "render": {
-          "doc": "Draw the tile as fully transparent."
+        "blank": {
+          "doc": "The tile is in the tileset and is blank. It draws as fully transparent."
         },
-        "fallback": {
-          "doc": "Let a loaded tile from another zoom level show through in its place."
+        "missing": {
+          "doc": "The tileset has no tile there at that zoom level. A loaded tile from another zoom level shows through in its place."
         }
       },
-      "default": "render",
-      "doc": "How a tile response with an empty body (HTTP 204, or 200 with no content) is handled. A tile server with partial coverage can answer 204 where it has no data and use `fallback` to let a tile from another zoom level show through. The [TileJSON](tilejson.md) the source loads may carry the same key; the value set on the source wins.",
+      "default": "blank",
+      "doc": "What a tile response with an empty body (HTTP 204, or 200 with no content) means in this tileset. A tile server with partial coverage can answer 204 where it has no tile, and `missing` lets a tile from another zoom level show through. The [TileJSON](tilejson.md) the source loads may carry the same key; the value set on the source wins.",
       "sdk-support": {
         "basic functionality": {
           "js": "https://github.com/maplibre/maplibre-gl-js/issues/3990",
@@ -600,18 +600,18 @@
       "units": "pixels",
       "doc": "The minimum visual size to display tiles for this layer. Only configurable for raster layers."
     },
-    "emptyTileBehavior": {
+    "emptyResponse": {
       "type": "enum",
       "values": {
-        "render": {
-          "doc": "Load the tile without elevation data."
+        "blank": {
+          "doc": "The tile is in the tileset and has no elevation data. It loads without any."
         },
-        "fallback": {
-          "doc": "Let a loaded tile from another zoom level supply the elevation in its place."
+        "missing": {
+          "doc": "The tileset has no tile there at that zoom level. A loaded tile from another zoom level supplies the elevation in its place."
         }
       },
-      "default": "render",
-      "doc": "How a tile response with an empty body (HTTP 204, or 200 with no content) is handled. A tile server with partial coverage can answer 204 where it has no data and use `fallback` to let a tile from another zoom level supply the elevation. The [TileJSON](tilejson.md) the source loads may carry the same key; the value set on the source wins.",
+      "default": "blank",
+      "doc": "What a tile response with an empty body (HTTP 204, or 200 with no content) means in this tileset. A tile server with partial coverage can answer 204 where it has no tile, and `missing` lets a tile from another zoom level supply the elevation. The [TileJSON](tilejson.md) the source loads may carry the same key; the value set on the source wins.",
       "sdk-support": {
         "basic functionality": {
           "js": "https://github.com/maplibre/maplibre-gl-js/issues/3990",

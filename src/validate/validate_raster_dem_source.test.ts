@@ -126,13 +126,13 @@ describe('Validate source_raster_dem', () => {
         expect(errors).toHaveLength(0);
     });
 
-    test('Should pass when emptyTileBehavior is fallback', () => {
+    test('Should pass when emptyResponse is missing', () => {
         const errors = validateRasterDEMSource({
             validateSpec: validate,
             value: {
                 type: 'raster-dem',
                 url: 'https://example.com/tiles.json',
-                emptyTileBehavior: 'fallback'
+                emptyResponse: 'missing'
             },
             styleSpec: v8,
             style: {version: 8, sources: {}, layers: []}

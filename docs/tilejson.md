@@ -2,15 +2,15 @@
 
 A `vector`, `raster` or `raster-dem` [source](sources.md) can point at a [TileJSON 3.0.0](https://github.com/mapbox/tilejson-spec/tree/master/3.0.0) document with its `url` property. MapLibre extends TileJSON with the keys below. A value set on the source in the style takes precedence over the same key in the TileJSON.
 
-## `emptyTileBehavior`
+## `emptyResponse`
 
-OPTIONAL. String. Default: "render".
+OPTIONAL. String. Default: "blank".
 
-Either "render" or "fallback". Describes what an empty tile response (HTTP 204, or 200 with no content) means in this tileset. With "render", the empty tile is the data: the tileset has nothing at that place. With "fallback", the tileset has no tile there at that zoom level, and a renderer MAY use a tile from another zoom level in its place.
+Either "blank" or "missing". Describes what an empty tile response (HTTP 204, or 200 with no content) means in this tileset. With "blank", the tile is in the tileset and has nothing at that place. With "missing", the tileset has no tile there at that zoom level, and a renderer MAY use a tile from another zoom level in its place.
 
 ```json
 {
-  "emptyTileBehavior": "fallback"
+  "emptyResponse": "missing"
 }
 ```
 
