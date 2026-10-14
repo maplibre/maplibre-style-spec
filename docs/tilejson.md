@@ -1,6 +1,6 @@
 # TileJSON
 
-A `vector`, `raster` or `raster-dem` [source](sources.md) can point at a [TileJSON](https://github.com/mapbox/tilejson-spec/tree/master/3.0.0) document with its `url` property instead of listing its tiles in the style. MapLibre loads the document and reads the keys below from it. A source property set in the style takes precedence over the same key in the TileJSON; `vector_layers` is read from the TileJSON only.
+A `vector`, `raster` or `raster-dem` [source](sources.md) can point at a [TileJSON](https://github.com/mapbox/tilejson-spec/tree/master/3.0.0) document with its `url` property instead of listing its tiles in the style. MapLibre GL JS loads the document and reads the keys below from it, and a source property set in the style takes precedence over the same key in the TileJSON; `vector_layers` is read from the TileJSON only. MapLibre Native reads `tiles`, `minzoom`, `maxzoom`, `bounds`, `attribution` and `scheme` from the TileJSON, and a value set in the style takes precedence only for `minzoom` and `maxzoom` on a `vector` source.
 
 | Key | Read from the TileJSON for |
 | --- | --- |
