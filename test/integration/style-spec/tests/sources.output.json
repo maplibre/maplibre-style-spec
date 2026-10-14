@@ -75,7 +75,7 @@
     "line": 115
   },
   {
-    "message": "emptyTileBehavior: expected one of [render, fallback], \"hidden\" found",
+    "message": "emptyResponse: expected one of [blank, missing], \"hidden\" found",
     "severity": "error",
     "line": 121
   }
