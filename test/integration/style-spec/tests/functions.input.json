@@ -1011,6 +1011,37 @@
       "layout": {
         "visibility": ["get", "vis-prop"]
       }
+    },
+    {
+      "id": "valid expression - fill-extrusion-color interpolate over elevation",
+      "type": "fill-extrusion",
+      "source": "source",
+      "source-layer": "layer",
+      "paint": {
+        "fill-extrusion-color": ["interpolate", ["linear"], ["elevation"], 0, "#5a5a5a", 10, "#a0a0a0"]
+      }
+    },
+    {
+      "id": "valid expression - fill-extrusion-color zoom interpolate with elevation interpolate",
+      "type": "fill-extrusion",
+      "source": "source",
+      "source-layer": "layer",
+      "paint": {
+        "fill-extrusion-color": [
+          "interpolate", ["linear"], ["zoom"],
+          10, ["interpolate", ["linear"], ["elevation"], 0, "#5a5a5a", 10, "#a0a0a0"],
+          15, ["interpolate", ["linear"], ["elevation"], 0, "#202020", 10, "#c0c0c0"]
+        ]
+      }
+    },
+    {
+      "id": "valid expression - fill-extrusion-color elevation with data-driven stop",
+      "type": "fill-extrusion",
+      "source": "source",
+      "source-layer": "layer",
+      "paint": {
+        "fill-extrusion-color": ["interpolate", ["linear"], ["elevation"], 0, ["to-color", ["get", "color"]], 10, "#a0a0a0"]
+      }
     }
   ]
 }
