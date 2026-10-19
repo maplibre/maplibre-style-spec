@@ -4901,7 +4901,7 @@
         }
       },
       "elevation": {
-        "doc": "In `color-relief-color`: gets the elevation of a pixel (in meters above the vertical datum reference of the `raster-dem` tiles) from a `raster-dem` source. In `fill-extrusion-color`: gets the height above the ground (in meters) of a point on the extrusion. Can only be used in these two properties.",
+        "doc": "Gets the elevation in meters at the current point. For a `raster-dem` source this is the elevation of a pixel above the vertical datum reference of the tiles; for a fill extrusion it is the height above the ground.",
         "syntax": {
           "overloads": [
             {
