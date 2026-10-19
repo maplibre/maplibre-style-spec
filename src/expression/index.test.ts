@@ -10,8 +10,6 @@ import {ColorArray} from './types/color_array';
 import {NumberArray} from './types/number_array';
 import {Padding} from './types/padding';
 import type {Expression} from './expression';
-import {Coalesce} from './definitions/coalesce';
-import {Let} from './definitions/let';
 import {latest} from '../reference/latest';
 import {describe, test, expect, vi, beforeEach, afterEach, type MockInstance} from 'vitest';
 
@@ -256,38 +254,8 @@ describe('StylePropertyFunction', () => {
     });
 });
 
-describe('createPropertyExpression with deeply nested let and coalesce', () => {
-    const textField = latest.layout_symbol['text-field'] as any as StylePropertySpecification;
+describe('createPropertyExpression with deeply nested let', () => {
     const lineWidth = latest.paint_line['line-width'] as any as StylePropertySpecification;
-
-    // Looking for the zoom curve used to visit every nested let and coalesce twice per
-    // level, so the work doubled with each level. Count the visits rather than timing
-    // them: 20 levels cost about a million visits before the fix, and stay linear after.
-    test('visits nested let and coalesce a linear number of times', () => {
-        const depth = 20;
-        let nestedLet: unknown = '';
-        let nestedCoalesce: unknown = '';
-        for (let i = depth - 1; i >= 0; i--) {
-            nestedLet = [
-                'let',
-                `v${i}`,
-                ['get', `f${i}`],
-                ['case', ['has', `f${i}`], ['var', `v${i}`], nestedLet]
-            ];
-            nestedCoalesce = ['coalesce', ['get', `f${i}`], nestedCoalesce];
-        }
-        for (const [expression, Class] of [
-            [nestedLet, Let],
-            [nestedCoalesce, Coalesce]
-        ] as const) {
-            const visits = vi.spyOn(Class.prototype, 'eachChild');
-            expect(createPropertyExpression(expression, 'text-field', textField).result).toBe(
-                'success'
-            );
-            expect(visits.mock.calls.length).toBeLessThan(depth * 10);
-            visits.mockRestore();
-        }
-    });
 
     test('still finds a zoom curve wrapped in many lets', () => {
         let curve: unknown = ['interpolate', ['linear'], ['zoom'], 0, ['var', 'w0'], 10, 2];

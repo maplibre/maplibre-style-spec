@@ -720,9 +720,9 @@ type ZoomCurveResult = Step | Interpolate | ExpressionParsingError | null;
 // Zoom-dependent expressions may only use ["zoom"] as the input to a top-level "step" or "interpolate"
 // expression (collectively referred to as a "curve"). The curve may be wrapped in one or more "let" or
 // "coalesce" expressions.
-// `seen` caches each subexpression's result within one call. `Let` and `Coalesce`
-// look into their children and then `eachChild` visits them again, so without
-// it each nested `let` or `coalesce` doubles the work.
+// A `Let`'s result and a `Coalesce`'s arguments are searched twice: directly, and again through
+// `eachChild`. `seen` lets the second search reuse the first result, which keeps nested `let` and
+// `coalesce` expressions linear.
 function findZoomCurve(
     expression: Expression,
     seen: Map<Expression, ZoomCurveResult> = new Map()
