@@ -1,5 +1,6 @@
 ## main
 ### ✨ Features and improvements
+- Allow the `elevation` expression in `fill-extrusion-color` to color extrusions by height above the ground ([#1851](https://github.com/maplibre/maplibre-style-spec/pull/1851))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
