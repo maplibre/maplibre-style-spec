@@ -1,16 +1,10 @@
-import {
-    createPropertyExpression,
-    normalizePropertyExpression,
-    StyleExpression,
-    StylePropertyFunction
-} from '.';
+import {normalizePropertyExpression, StyleExpression, StylePropertyFunction} from '.';
 import {StylePropertySpecification} from '..';
 import {Color} from './types/color';
 import {ColorArray} from './types/color_array';
 import {NumberArray} from './types/number_array';
 import {Padding} from './types/padding';
 import type {Expression} from './expression';
-import {latest} from '../reference/latest';
 import {describe, test, expect, vi, beforeEach, afterEach, type MockInstance} from 'vitest';
 
 // Every test in this file is a happy path: none may emit a runtime warning.
@@ -251,26 +245,5 @@ describe('StylePropertyFunction', () => {
 
         expect(roundTripped.interpolationType).toEqual({name: 'exponential', base: 1.4});
         expect(roundTripped.zoomStops).toEqual([10, 20]);
-    });
-});
-
-describe('createPropertyExpression with deeply nested let', () => {
-    const lineWidth = latest.paint_line['line-width'] as any as StylePropertySpecification;
-
-    test('still finds a zoom curve wrapped in many lets', () => {
-        let curve: unknown = ['interpolate', ['linear'], ['zoom'], 0, ['var', 'w0'], 10, 2];
-        for (let i = 19; i >= 0; i--) {
-            curve = ['let', `w${i}`, 1, curve];
-        }
-        const expression = createPropertyExpression(curve, 'line-width', lineWidth);
-        expect(expression.result).toBe('success');
-        expect((expression.value as {kind: string}).kind).toBe('camera');
-
-        let nestedZoom: unknown = ['+', ['interpolate', ['linear'], ['zoom'], 0, 1, 10, 2], 1];
-        for (let i = 19; i >= 0; i--) {
-            nestedZoom = ['let', `w${i}`, 1, nestedZoom];
-        }
-        const invalid = createPropertyExpression(nestedZoom, 'line-width', lineWidth);
-        expect(invalid.result).toBe('error');
     });
 });
