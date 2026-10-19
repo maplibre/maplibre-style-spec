@@ -1,4 +1,9 @@
-import {createPropertyExpression, normalizePropertyExpression, StyleExpression, StylePropertyFunction} from '.';
+import {
+    createPropertyExpression,
+    normalizePropertyExpression,
+    StyleExpression,
+    StylePropertyFunction
+} from '.';
 import {StylePropertySpecification} from '..';
 import {Color} from './types/color';
 import {ColorArray} from './types/color_array';
@@ -263,12 +268,22 @@ describe('createPropertyExpression with deeply nested let and coalesce', () => {
         let nestedLet: unknown = '';
         let nestedCoalesce: unknown = '';
         for (let i = depth - 1; i >= 0; i--) {
-            nestedLet = ['let', `v${i}`, ['get', `f${i}`], ['case', ['has', `f${i}`], ['var', `v${i}`], nestedLet]];
+            nestedLet = [
+                'let',
+                `v${i}`,
+                ['get', `f${i}`],
+                ['case', ['has', `f${i}`], ['var', `v${i}`], nestedLet]
+            ];
             nestedCoalesce = ['coalesce', ['get', `f${i}`], nestedCoalesce];
         }
-        for (const [expression, Class] of [[nestedLet, Let], [nestedCoalesce, Coalesce]] as const) {
+        for (const [expression, Class] of [
+            [nestedLet, Let],
+            [nestedCoalesce, Coalesce]
+        ] as const) {
             const visits = vi.spyOn(Class.prototype, 'eachChild');
-            expect(createPropertyExpression(expression, 'text-field', textField).result).toBe('success');
+            expect(createPropertyExpression(expression, 'text-field', textField).result).toBe(
+                'success'
+            );
             expect(visits.mock.calls.length).toBeLessThan(depth * 10);
             visits.mockRestore();
         }

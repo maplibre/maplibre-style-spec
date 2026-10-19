@@ -723,7 +723,10 @@ type ZoomCurveResult = Step | Interpolate | ExpressionParsingError | null;
 // `seen` caches each subexpression's result within one call. `Let` and `Coalesce`
 // look into their children and then `eachChild` visits them again, so without
 // it each nested `let` or `coalesce` doubles the work.
-function findZoomCurve(expression: Expression, seen: Map<Expression, ZoomCurveResult> = new Map()): ZoomCurveResult {
+function findZoomCurve(
+    expression: Expression,
+    seen: Map<Expression, ZoomCurveResult> = new Map()
+): ZoomCurveResult {
     if (seen.has(expression)) {
         return seen.get(expression);
     }
