@@ -7044,9 +7044,9 @@
       "transition": true,
       "sdk-support": {
         "basic functionality": {
-          "js": "https://github.com/maplibre/maplibre-style-spec/issues/1797",
-          "android": "https://github.com/maplibre/maplibre-style-spec/issues/1797",
-          "ios": "https://github.com/maplibre/maplibre-style-spec/issues/1797"
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/8830",
+          "android": "https://github.com/maplibre/maplibre-native/issues/4802",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/4802"
         }
       },
       "expression": {
@@ -7064,9 +7064,9 @@
       "transition": true,
       "sdk-support": {
         "basic functionality": {
-          "js": "https://github.com/maplibre/maplibre-style-spec/issues/1797",
-          "android": "https://github.com/maplibre/maplibre-style-spec/issues/1797",
-          "ios": "https://github.com/maplibre/maplibre-style-spec/issues/1797"
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/8830",
+          "android": "https://github.com/maplibre/maplibre-native/issues/4802",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/4802"
         }
       },
       "expression": {
