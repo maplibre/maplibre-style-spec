@@ -715,16 +715,26 @@ export function normalizePropertyExpression<T>(
     }
 }
 
+type ZoomCurveResult = Step | Interpolate | ExpressionParsingError | null;
+
 // Zoom-dependent expressions may only use ["zoom"] as the input to a top-level "step" or "interpolate"
 // expression (collectively referred to as a "curve"). The curve may be wrapped in one or more "let" or
 // "coalesce" expressions.
-function findZoomCurve(expression: Expression): Step | Interpolate | ExpressionParsingError | null {
+// A `Let`'s result and a `Coalesce`'s arguments are searched twice: directly, and again through `eachChild`.
+// `seen` lets the second search reuse the first result, which keeps nested `let` and `coalesce` expressions linear.
+function findZoomCurve(
+    expression: Expression,
+    seen: Map<Expression, ZoomCurveResult> = new Map()
+): ZoomCurveResult {
+    if (seen.has(expression)) {
+        return seen.get(expression);
+    }
     let result = null;
     if (expression instanceof Let) {
-        result = findZoomCurve(expression.result);
+        result = findZoomCurve(expression.result, seen);
     } else if (expression instanceof Coalesce) {
         for (const arg of expression.args) {
-            result = findZoomCurve(arg);
+            result = findZoomCurve(arg, seen);
             if (result) {
                 break;
             }
@@ -738,11 +748,12 @@ function findZoomCurve(expression: Expression): Step | Interpolate | ExpressionP
     }
 
     if (result instanceof ExpressionParsingError) {
+        seen.set(expression, result);
         return result;
     }
 
     expression.eachChild((child) => {
-        const childResult = findZoomCurve(child);
+        const childResult = findZoomCurve(child, seen);
         if (childResult instanceof ExpressionParsingError) {
             result = childResult;
         } else if (!result && childResult) {
@@ -758,6 +769,7 @@ function findZoomCurve(expression: Expression): Step | Interpolate | ExpressionP
         }
     });
 
+    seen.set(expression, result);
     return result;
 }
 
