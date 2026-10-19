@@ -1,6 +1,6 @@
 ## main
 ### ✨ Features and improvements
-- Add experimental `fill-extrusion-shadow-opacity`, `fill-extrusion-shadow-color`, `fill-extrusion-shadow-length`, and `fill-extrusion-shadow-azimuth` paint properties to support casting shadows from extruded geometries ([#1797](https://github.com/maplibre/maplibre-style-spec/issues/1797))
+- Add experimental `fill-extrusion-shadow-opacity` and `fill-extrusion-shadow-color` paint properties to support casting shadows from extruded geometries, with direction derived from `light` ([#1797](https://github.com/maplibre/maplibre-style-spec/issues/1797))
 
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
