@@ -4,6 +4,7 @@
 
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
+- Make `createPropertyExpression` take linear time on nested `let` and `coalesce`. Each level used to double the time: 20 levels took about 300 ms and 22 about a second ([#1933](https://github.com/maplibre/maplibre-style-spec/issues/1933))
 
 ## 26.4.4
 
