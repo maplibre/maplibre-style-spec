@@ -7040,7 +7040,7 @@
       "default": 0,
       "minimum": 0,
       "maximum": 1,
-      "doc": "Opacity of the shadow cast onto the ground by this layer's extruded geometries. A value of `0` disables the shadow entirely. The shadow direction and length are derived from the root `light` property. With `light.anchor` set to `map`, the shadow keeps its geographic direction when the map is rotated; with `viewport` (the default), it keeps its direction on screen. **Note:** this property is experimental and not yet implemented in any SDK; see [#1797](https://github.com/maplibre/maplibre-style-spec/issues/1797) for design discussion.",
+      "doc": "Opacity of the shadow cast onto the ground by this layer's extruded geometries. A value of `0` disables the shadow entirely. The shadow direction and length are derived from the root `light` property. With `light.anchor` set to `map`, the shadow keeps its geographic direction when the map is rotated; with `viewport` (the default), it keeps its direction on screen. **Note:** this property is experimental and not yet implemented in any SDK.",
       "transition": true,
       "sdk-support": {
         "basic functionality": {
@@ -7060,7 +7060,7 @@
     "fill-extrusion-shadow-color": {
       "type": "color",
       "default": "#000000",
-      "doc": "Color of the shadow cast onto the ground by this layer's extruded geometries. If this color is specified as `rgba` with an alpha component, the alpha component will be ignored; use `fill-extrusion-shadow-opacity` to set shadow opacity. Has no visible effect when `fill-extrusion-shadow-opacity` is `0`. **Note:** this property is experimental and not yet implemented in any SDK; see [#1797](https://github.com/maplibre/maplibre-style-spec/issues/1797) for design discussion.",
+      "doc": "Color of the shadow cast onto the ground by this layer's extruded geometries. If this color is specified as `rgba` with an alpha component, the alpha component will be ignored; use `fill-extrusion-shadow-opacity` to set shadow opacity. Has no visible effect when `fill-extrusion-shadow-opacity` is `0`. **Note:** this property is experimental and not yet implemented in any SDK.",
       "transition": true,
       "sdk-support": {
         "basic functionality": {
