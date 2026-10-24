@@ -170,7 +170,7 @@
     "sources": {
       "required": true,
       "type": "sources",
-      "doc": "Sources state which data the map should display. Specify the type of source with the `type` property. Adding a source isn't enough to make data appear on the map because sources don't contain styling details like color or width. Layers refer to a source and give it a visual representation. This makes it possible to style the same source in different ways, like differentiating between types of roads in a highways layer.\n\nTiled sources (vector and raster) must specify their details according to the [TileJSON specification](https://github.com/mapbox/tilejson-spec).",
+      "doc": "Sources state which data the map should display. Specify the type of source with the `type` property. Adding a source isn't enough to make data appear on the map because sources don't contain styling details like color or width. Layers refer to a source and give it a visual representation. This makes it possible to style the same source in different ways, like differentiating between types of roads in a highways layer.\n\nTiled sources (vector and raster) must specify their details according to [TileJSON](tilejson.md).",
       "example": {
         "maplibre-demotiles": {
           "type": "vector",
@@ -346,6 +346,26 @@
       "default": "xyz",
       "doc": "Influences the y direction of the tile coordinates. The global-mercator (aka Spherical Mercator) profile is assumed."
     },
+    "emptyResponse": {
+      "type": "enum",
+      "values": {
+        "blank": {
+          "doc": "The tile is in the tileset and has no features. It loads as an empty tile."
+        },
+        "missing": {
+          "doc": "The tileset has no tile there at that zoom level. A loaded tile from another zoom level shows through in its place."
+        }
+      },
+      "default": "blank",
+      "doc": "Experimental. What a tile response with an empty body (HTTP 204, or 200 with no content) means in this tileset. A tile server with partial coverage can answer 204 where it has no tile, and `missing` lets a tile from another zoom level show through. The [TileJSON](tilejson.md) the source loads may carry the same key; the value set on the source wins.",
+      "sdk-support": {
+        "basic functionality": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/3990",
+          "android": "https://github.com/maplibre/maplibre-native/issues/4767",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/4767"
+        }
+      }
+    },
     "minzoom": {
       "type": "number",
       "default": 0,
@@ -479,6 +499,26 @@
       "default": "xyz",
       "doc": "Influences the y direction of the tile coordinates. The global-mercator (aka Spherical Mercator) profile is assumed."
     },
+    "emptyResponse": {
+      "type": "enum",
+      "values": {
+        "blank": {
+          "doc": "The tile is in the tileset and is blank. It draws as fully transparent."
+        },
+        "missing": {
+          "doc": "The tileset has no tile there at that zoom level. A loaded tile from another zoom level shows through in its place."
+        }
+      },
+      "default": "blank",
+      "doc": "Experimental. What a tile response with an empty body (HTTP 204, or 200 with no content) means in this tileset. A tile server with partial coverage can answer 204 where it has no tile, and `missing` lets a tile from another zoom level show through. The [TileJSON](tilejson.md) the source loads may carry the same key; the value set on the source wins.",
+      "sdk-support": {
+        "basic functionality": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/3990",
+          "android": "https://github.com/maplibre/maplibre-native/issues/4767",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/4767"
+        }
+      }
+    },
     "attribution": {
       "type": "string",
       "doc": "Contains an attribution to be displayed when the map is shown to a user."
@@ -559,6 +599,26 @@
       "default": 512,
       "units": "pixels",
       "doc": "The minimum visual size to display tiles for this layer. Only configurable for raster layers."
+    },
+    "emptyResponse": {
+      "type": "enum",
+      "values": {
+        "blank": {
+          "doc": "The tile is in the tileset and has no elevation data. It loads without any."
+        },
+        "missing": {
+          "doc": "The tileset has no tile there at that zoom level. A loaded tile from another zoom level supplies the elevation in its place."
+        }
+      },
+      "default": "blank",
+      "doc": "Experimental. What a tile response with an empty body (HTTP 204, or 200 with no content) means in this tileset. A tile server with partial coverage can answer 204 where it has no tile, and `missing` lets a tile from another zoom level supply the elevation. The [TileJSON](tilejson.md) the source loads may carry the same key; the value set on the source wins.",
+      "sdk-support": {
+        "basic functionality": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/3990",
+          "android": "https://github.com/maplibre/maplibre-native/issues/4767",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/4767"
+        }
+      }
     },
     "attribution": {
       "type": "string",
