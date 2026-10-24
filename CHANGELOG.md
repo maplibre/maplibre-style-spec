@@ -1,6 +1,6 @@
 ## main
 ### ✨ Features and improvements
-- Add the `emptyResponse` property to vector, raster and raster-dem sources, and the same key for the TileJSON they load: with `missing`, a tile from another zoom level shows through in place of an empty (HTTP 204) tile ([#1922](https://github.com/maplibre/maplibre-style-spec/pull/1922)) (by [@johncarmack1984](https://github.com/johncarmack1984))
+- Add the experimental `emptyResponse` property to vector, raster and raster-dem sources, and the same key for the TileJSON they load: with `missing`, a tile from another zoom level shows through in place of an empty (HTTP 204) tile ([#1869](https://github.com/maplibre/maplibre-style-spec/issues/1869)) (by [@johncarmack1984](https://github.com/johncarmack1984))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes

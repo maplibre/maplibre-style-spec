@@ -357,7 +357,7 @@
         }
       },
       "default": "blank",
-      "doc": "What a tile response with an empty body (HTTP 204, or 200 with no content) means in this tileset. A tile server with partial coverage can answer 204 where it has no tile, and `missing` lets a tile from another zoom level show through. The [TileJSON](tilejson.md) the source loads may carry the same key; the value set on the source wins.",
+      "doc": "Experimental. What a tile response with an empty body (HTTP 204, or 200 with no content) means in this tileset. A tile server with partial coverage can answer 204 where it has no tile, and `missing` lets a tile from another zoom level show through. The [TileJSON](tilejson.md) the source loads may carry the same key; the value set on the source wins.",
       "sdk-support": {
         "basic functionality": {
           "js": "https://github.com/maplibre/maplibre-gl-js/issues/3990",
@@ -510,7 +510,7 @@
         }
       },
       "default": "blank",
-      "doc": "What a tile response with an empty body (HTTP 204, or 200 with no content) means in this tileset. A tile server with partial coverage can answer 204 where it has no tile, and `missing` lets a tile from another zoom level show through. The [TileJSON](tilejson.md) the source loads may carry the same key; the value set on the source wins.",
+      "doc": "Experimental. What a tile response with an empty body (HTTP 204, or 200 with no content) means in this tileset. A tile server with partial coverage can answer 204 where it has no tile, and `missing` lets a tile from another zoom level show through. The [TileJSON](tilejson.md) the source loads may carry the same key; the value set on the source wins.",
       "sdk-support": {
         "basic functionality": {
           "js": "https://github.com/maplibre/maplibre-gl-js/issues/3990",
@@ -611,7 +611,7 @@
         }
       },
       "default": "blank",
-      "doc": "What a tile response with an empty body (HTTP 204, or 200 with no content) means in this tileset. A tile server with partial coverage can answer 204 where it has no tile, and `missing` lets a tile from another zoom level supply the elevation. The [TileJSON](tilejson.md) the source loads may carry the same key; the value set on the source wins.",
+      "doc": "Experimental. What a tile response with an empty body (HTTP 204, or 200 with no content) means in this tileset. A tile server with partial coverage can answer 204 where it has no tile, and `missing` lets a tile from another zoom level supply the elevation. The [TileJSON](tilejson.md) the source loads may carry the same key; the value set on the source wins.",
       "sdk-support": {
         "basic functionality": {
           "js": "https://github.com/maplibre/maplibre-gl-js/issues/3990",
