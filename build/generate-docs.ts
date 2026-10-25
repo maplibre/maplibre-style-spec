@@ -669,6 +669,24 @@ function createExpressionsContent() {
 }
 
 /**
+ * Creates the TileJSON markdown file.
+ * This uses the tilejson_partial.md file as a base and adds the emptyResponse key from the v8.json file.
+ */
+function createTileJsonContent() {
+    const emptyResponse = v8.source_vector.emptyResponse;
+    let content = fs.readFileSync('build/tilejson_partial.md', 'utf-8');
+    content += '\n## `emptyResponse`\n\n';
+    content += `OPTIONAL. String. Default: "${emptyResponse.default}".\n\n`;
+    content +=
+        'Experimental. Describes what an empty tile response (HTTP 204, or 200 with no content) means in this tileset.\n\n';
+    for (const [key, value] of Object.entries(emptyResponse.values)) {
+        content += `- "${key}": ${value.doc}\n`;
+    }
+    content += `\n${codeBlockMarkdown(JSON.stringify({emptyResponse: 'missing'}, null, 2))}`;
+    fs.writeFileSync(`${BASE_PATH}/tilejson.md`, content);
+}
+
+/**
  * Creates the main topics markdown files.
  */
 function createMainTopics() {
@@ -698,5 +716,6 @@ function createMainTopics() {
 createRootContent();
 createLayersContent();
 createSourcesContent();
+createTileJsonContent();
 createExpressionsContent();
 createMainTopics();
