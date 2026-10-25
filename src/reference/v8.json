@@ -357,7 +357,7 @@
         }
       },
       "default": "blank",
-      "doc": "Experimental. What an empty tile response (HTTP 204, or 200 with no content) means in this tileset.",
+      "doc": "Experimental. What an empty tile response (HTTP 204, or no tile data from an archive such as PMTiles) means in this tileset.",
       "sdk-support": {
         "basic functionality": {
           "js": "https://github.com/maplibre/maplibre-gl-js/issues/3990",
@@ -510,7 +510,7 @@
         }
       },
       "default": "blank",
-      "doc": "Experimental. What an empty tile response (HTTP 204, or 200 with no content) means in this tileset.",
+      "doc": "Experimental. What an empty tile response (HTTP 204, or no tile data from an archive such as PMTiles) means in this tileset.",
       "sdk-support": {
         "basic functionality": {
           "js": "https://github.com/maplibre/maplibre-gl-js/issues/3990",
@@ -611,7 +611,7 @@
         }
       },
       "default": "blank",
-      "doc": "Experimental. What an empty tile response (HTTP 204, or 200 with no content) means in this tileset.",
+      "doc": "Experimental. What an empty tile response (HTTP 204, or no tile data from an archive such as PMTiles) means in this tileset.",
       "sdk-support": {
         "basic functionality": {
           "js": "https://github.com/maplibre/maplibre-gl-js/issues/3990",
