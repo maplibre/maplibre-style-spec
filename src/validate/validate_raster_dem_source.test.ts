@@ -126,7 +126,7 @@ describe('Validate source_raster_dem', () => {
         expect(errors).toHaveLength(0);
     });
 
-    test('Should pass when emptyResponse is missing', () => {
+    test('Should pass when emptyResponse is "missing"', () => {
         const errors = validateRasterDEMSource({
             validateSpec: validate,
             value: {
