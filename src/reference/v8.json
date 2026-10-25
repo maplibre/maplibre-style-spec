@@ -484,7 +484,7 @@
       "type": "number",
       "default": 512,
       "units": "pixels",
-      "doc": "The minimum visual size to display tiles for this layer. Only configurable for raster layers."
+      "doc": "The minimum visual size to display tiles for this source."
     },
     "scheme": {
       "type": "enum",
@@ -598,7 +598,7 @@
       "type": "number",
       "default": 512,
       "units": "pixels",
-      "doc": "The minimum visual size to display tiles for this layer. Only configurable for raster layers."
+      "doc": "The minimum visual size to display tiles for this source."
     },
     "emptyResponse": {
       "type": "enum",
