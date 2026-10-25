@@ -6,7 +6,10 @@ A `vector`, `raster` or `raster-dem` [source](sources.md) can point at a [TileJS
 
 OPTIONAL. String. Default: "blank".
 
-Experimental. Either "blank" or "missing". Describes what an empty tile response (HTTP 204, or 200 with no content) means in this tileset. With "blank", the tile is in the tileset and has nothing at that place. With "missing", the tileset has no tile there at that zoom level, and a renderer MAY use a tile from another zoom level in its place.
+Experimental. Either "blank" or "missing". Describes what an empty tile response (HTTP 204, or 200 with no content) means in this tileset.
+
+- "blank": The tile is in the tileset and has nothing at that place.
+- "missing": The tileset has no tile there at that zoom level, and a renderer may use a tile from another zoom level in its place.
 
 ```json
 {

@@ -350,14 +350,14 @@
       "type": "enum",
       "values": {
         "blank": {
-          "doc": "The tile is in the tileset and has no features. It loads as an empty tile."
+          "doc": "The tile is in the tileset and has nothing at that place."
         },
         "missing": {
-          "doc": "The tileset has no tile there at that zoom level. A loaded tile from another zoom level shows through in its place."
+          "doc": "The tileset has no tile there at that zoom level, and a renderer may use a tile from another zoom level in its place."
         }
       },
       "default": "blank",
-      "doc": "Experimental. What a tile response with an empty body (HTTP 204, or 200 with no content) means in this tileset. A tile server with partial coverage can answer 204 where it has no tile, and `missing` lets a tile from another zoom level show through. The [TileJSON](tilejson.md) the source loads may carry the same key; the value set on the source wins.",
+      "doc": "Experimental. What an empty tile response (HTTP 204, or 200 with no content) means in this tileset. The [TileJSON](tilejson.md) the source loads may carry the same key; the value set on the source wins.",
       "sdk-support": {
         "basic functionality": {
           "js": "https://github.com/maplibre/maplibre-gl-js/issues/3990",
@@ -503,14 +503,14 @@
       "type": "enum",
       "values": {
         "blank": {
-          "doc": "The tile is in the tileset and is blank. It draws as fully transparent."
+          "doc": "The tile is in the tileset and has nothing at that place."
         },
         "missing": {
-          "doc": "The tileset has no tile there at that zoom level. A loaded tile from another zoom level shows through in its place."
+          "doc": "The tileset has no tile there at that zoom level, and a renderer may use a tile from another zoom level in its place."
         }
       },
       "default": "blank",
-      "doc": "Experimental. What a tile response with an empty body (HTTP 204, or 200 with no content) means in this tileset. A tile server with partial coverage can answer 204 where it has no tile, and `missing` lets a tile from another zoom level show through. The [TileJSON](tilejson.md) the source loads may carry the same key; the value set on the source wins.",
+      "doc": "Experimental. What an empty tile response (HTTP 204, or 200 with no content) means in this tileset. The [TileJSON](tilejson.md) the source loads may carry the same key; the value set on the source wins.",
       "sdk-support": {
         "basic functionality": {
           "js": "https://github.com/maplibre/maplibre-gl-js/issues/3990",
@@ -604,14 +604,14 @@
       "type": "enum",
       "values": {
         "blank": {
-          "doc": "The tile is in the tileset and has no elevation data. It loads without any."
+          "doc": "The tile is in the tileset and has nothing at that place."
         },
         "missing": {
-          "doc": "The tileset has no tile there at that zoom level. A loaded tile from another zoom level supplies the elevation in its place."
+          "doc": "The tileset has no tile there at that zoom level, and a renderer may use a tile from another zoom level in its place."
         }
       },
       "default": "blank",
-      "doc": "Experimental. What a tile response with an empty body (HTTP 204, or 200 with no content) means in this tileset. A tile server with partial coverage can answer 204 where it has no tile, and `missing` lets a tile from another zoom level supply the elevation. The [TileJSON](tilejson.md) the source loads may carry the same key; the value set on the source wins.",
+      "doc": "Experimental. What an empty tile response (HTTP 204, or 200 with no content) means in this tileset. The [TileJSON](tilejson.md) the source loads may carry the same key; the value set on the source wins.",
       "sdk-support": {
         "basic functionality": {
           "js": "https://github.com/maplibre/maplibre-gl-js/issues/3990",

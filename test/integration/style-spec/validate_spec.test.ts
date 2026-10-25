@@ -101,3 +101,18 @@ describe('Validate sdk-support in spec', () => {
 
     checkRoot(latest, []);
 });
+
+describe('TileJSON doc', () => {
+    test('has the same emptyResponse value docs as the sources', () => {
+        const tileJsonDoc = fs.readFileSync('docs/tilejson.md', 'utf8');
+        for (const source of [
+            latest.source_vector,
+            latest.source_raster,
+            latest.source_raster_dem
+        ]) {
+            for (const value of Object.values(source.emptyResponse.values)) {
+                expect(tileJsonDoc).toContain(value.doc);
+            }
+        }
+    });
+});
