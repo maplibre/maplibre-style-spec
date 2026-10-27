@@ -4,7 +4,27 @@ The extrusion's surfaces will be shaded differently based on this color in combi
 
 #### Using the `elevation` expression
 
-The color can vary along the height of the extrusion by using `elevation`, the height above the ground in meters, as input. For example, this darkens the bottom 10 meters of every wall:
+The color can vary along the height of the extrusion by using `elevation`, the height above the ground in meters, as input. For example, this draws a dark band on every fourth meter of the walls, suggesting floors:
+
+<div class="example-row" markdown>
+
+```json
+"fill-extrusion-color": [
+    "step",
+    ["%", ["elevation"], 4],
+    "#d8d8d8",
+    3,
+    "#505050"
+]
+```
+
+![Extrusions with a dark band every 4 meters of elevation](assets/fill-extrusion-elevation-step.png)
+
+</div>
+
+`elevation` can also be combined with feature properties. Here every extrusion fades from a dark base to its own `color` property at 40 meters:
+
+<div class="example-row" markdown>
 
 ```json
 "fill-extrusion-color": [
@@ -12,11 +32,15 @@ The color can vary along the height of the extrusion by using `elevation`, the h
     ["linear"],
     ["elevation"],
     0,
-    "#5a5a5a",
-    10,
-    "#a0a0a0"
+    "#101010",
+    40,
+    ["to-color", ["get", "color"]]
 ]
 ```
+
+![Extrusions fading from dark at the ground to each feature's own color](assets/fill-extrusion-elevation-property-function.png)
+
+</div>
 
 Roofs take the color at their height. `elevation` is measured from the ground, not from sea level, even when terrain is enabled.
 
