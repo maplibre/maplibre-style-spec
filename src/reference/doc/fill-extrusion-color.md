@@ -6,7 +6,7 @@ The extrusion's surfaces will be shaded differently based on this color in combi
 
 The color can vary along the height of the extrusion by using `elevation`, the height above the ground in meters, as input. For example, this draws a dark band on every fourth meter of the walls, suggesting floors:
 
-<div class="example-row" markdown>
+<div class="grid" markdown>
 
 ```json
 "fill-extrusion-color": [
@@ -24,7 +24,7 @@ The color can vary along the height of the extrusion by using `elevation`, the h
 
 `elevation` can also be combined with feature properties. Here every extrusion fades from a dark base to its own `color` property at 40 meters:
 
-<div class="example-row" markdown>
+<div class="grid" markdown>
 
 ```json
 "fill-extrusion-color": [
