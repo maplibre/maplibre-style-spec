@@ -8,6 +8,7 @@ import {formatJSON} from './util.ts';
  */
 
 const BASE_PATH = 'docs';
+const EXTENDED_DOC_PATH = 'src/reference/doc';
 
 type JsonExpressionSyntax = {
     overloads: {
@@ -335,6 +336,20 @@ function typeToMarkdownLink(type: string): string {
     }
 }
 
+/**
+ * Returns the extended documentation for a property, stored as a markdown file
+ * named after the property in the reference doc folder, if one exists.
+ * @param key - the name of the json property
+ * @returns the markdown string, or an empty string if there is no extended documentation
+ */
+function extendedDocToMarkdown(key: string): string {
+    const docFile = `${EXTENDED_DOC_PATH}/${key}.md`;
+    if (!fs.existsSync(docFile)) {
+        return '';
+    }
+    return `${fs.readFileSync(docFile, 'utf-8').trim()}\n\n`;
+}
+
 function formatRange(minimum?: number, maximum?: number) {
     const from = minimum === undefined ? '(-∞' : `[${minimum}`;
     const to = maximum === undefined ? '∞)' : `${maximum}]`;
@@ -402,6 +417,7 @@ function convertPropertyToMarkdown(
     }
 
     markdown = `${markdown.trim()}*\n\n${value.doc}\n\n`;
+    markdown += extendedDocToMarkdown(key);
 
     if (isEnum) {
         for (const [enumKey, enumValue] of Object.entries(value.values)) {

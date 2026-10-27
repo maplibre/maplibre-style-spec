@@ -6806,7 +6806,7 @@
     "fill-extrusion-color": {
       "type": "color",
       "default": "#000000",
-      "doc": "The base color of the extruded fill. The extrusion's surfaces will be shaded differently based on this color in combination with the root `light` settings. If this color is specified as `rgba` with an alpha component, the alpha component will be ignored; use `fill-extrusion-opacity` to set layer opacity.\n\n#### Using the `elevation` expression\n\nThe color can vary along the height of the extrusion by using `elevation`, the height above the ground in meters, as input. For example, this darkens the bottom 10 meters of every wall:\n\n```json\n\"fill-extrusion-color\": [\n    \"interpolate\",\n    [\"linear\"],\n    [\"elevation\"],\n    0,\n    \"#5a5a5a\",\n    10,\n    \"#a0a0a0\"\n]\n```\n\nRoofs take the color at their height. `elevation` is measured from the ground, not from sea level, even when terrain is enabled.\n\n!!! tip\n    When the `elevation` expression is used, consider disabling `fill-extrusion-vertical-gradient`, which darkens the walls on top of this color.",
+      "doc": "The base color of the extruded fill.",
       "transition": true,
       "requires": [
         {
