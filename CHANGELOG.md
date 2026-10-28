@@ -1,10 +1,21 @@
 ## main
 ### ✨ Features and improvements
-- Allow the `elevation` expression in `fill-extrusion-color` to color extrusions by height above the ground ([#1851](https://github.com/maplibre/maplibre-style-spec/pull/1851))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
+
+- test(layer-blend): add testcases requested in code review  ([#1950](https://github.com/maplibre/maplibre-style-spec/pull/1950)) (by [@CommanderStorm](https://github.com/CommanderStorm))
+- feat: intial `{fill,line}-layer-blend` support ([#1798](https://github.com/maplibre/maplibre-style-spec/pull/1798)) (by [@CommanderStorm](https://github.com/CommanderStorm))
+- Make `findZoomCurve` linear on nested `let` and `coalesce` ([#1934](https://github.com/maplibre/maplibre-style-spec/pull/1934)) (by [@essejmclean](https://github.com/essejmclean))
+- docs: list identity and registered projections in ProjectionDefinition ([#1912](https://github.com/maplibre/maplibre-style-spec/pull/1912)) (by [@johncarmack1984](https://github.com/johncarmack1984))
+- docs: list the tile URL tokens on `tiles`, `{bbox}` included ([#1911](https://github.com/maplibre/maplibre-style-spec/pull/1911)) (by [@johncarmack1984](https://github.com/johncarmack1984))
+- docs: fix the build and add llms.txt ([#1900](https://github.com/maplibre/maplibre-style-spec/pull/1900)) (by [@birkskyum](https://github.com/birkskyum))
+## 26.5.0
+### ✨ Features and improvements
+- Allow the `elevation` expression in `fill-extrusion-color` to color extrusions by height above the ground ([#1851](https://github.com/maplibre/maplibre-style-spec/pull/1851))
+
+### 🐞 Bug fixes
 - Make `createPropertyExpression` take linear time on nested `let` and `coalesce`. Each level used to double the time: 20 levels took about 300 ms and 22 about a second ([#1933](https://github.com/maplibre/maplibre-style-spec/issues/1933))
 
 ## 26.4.4
