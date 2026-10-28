@@ -43,11 +43,11 @@
       }
     },
     {
-      "id": "fill-lighter",
+      "id": "fill-plus-lighter",
       "type": "fill",
       "source": "geojson",
       "paint": {
-        "fill-layer-blend": "lighter"
+        "fill-layer-blend": "plus-lighter"
       }
     },
     {
@@ -99,11 +99,11 @@
       }
     },
     {
-      "id": "line-lighter",
+      "id": "line-plus-lighter",
       "type": "line",
       "source": "geojson",
       "paint": {
-        "line-layer-blend": "lighter"
+        "line-layer-blend": "plus-lighter"
       }
     },
     {
