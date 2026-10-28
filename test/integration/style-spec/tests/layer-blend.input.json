@@ -1,0 +1,126 @@
+{
+  "version": 8,
+  "sources": {
+    "geojson": {
+      "type": "geojson",
+      "data": {
+        "type": "FeatureCollection",
+        "features": []
+      }
+    }
+  },
+  "layers": [
+    {
+      "id": "fill-normal",
+      "type": "fill",
+      "source": "geojson",
+      "paint": {
+        "fill-layer-blend": "normal"
+      }
+    },
+    {
+      "id": "fill-multiply",
+      "type": "fill",
+      "source": "geojson",
+      "paint": {
+        "fill-layer-blend": "multiply"
+      }
+    },
+    {
+      "id": "fill-color",
+      "type": "fill",
+      "source": "geojson",
+      "paint": {
+        "fill-layer-blend": "color"
+      }
+    },
+    {
+      "id": "fill-luminosity",
+      "type": "fill",
+      "source": "geojson",
+      "paint": {
+        "fill-layer-blend": "luminosity"
+      }
+    },
+    {
+      "id": "fill-plus-lighter",
+      "type": "fill",
+      "source": "geojson",
+      "paint": {
+        "fill-layer-blend": "plus-lighter"
+      }
+    },
+    {
+      "id": "fill-screen",
+      "type": "fill",
+      "source": "geojson",
+      "paint": {
+        "fill-layer-blend": "screen"
+      }
+    },
+    {
+      "id": "fill-overlay",
+      "type": "fill",
+      "source": "geojson",
+      "paint": {
+        "fill-layer-blend": "overlay"
+      }
+    },
+    {
+      "id": "line-normal",
+      "type": "line",
+      "source": "geojson",
+      "paint": {
+        "line-layer-blend": "normal"
+      }
+    },
+    {
+      "id": "line-multiply",
+      "type": "line",
+      "source": "geojson",
+      "paint": {
+        "line-layer-blend": "multiply"
+      }
+    },
+    {
+      "id": "line-color",
+      "type": "line",
+      "source": "geojson",
+      "paint": {
+        "line-layer-blend": "color"
+      }
+    },
+    {
+      "id": "line-luminosity",
+      "type": "line",
+      "source": "geojson",
+      "paint": {
+        "line-layer-blend": "luminosity"
+      }
+    },
+    {
+      "id": "line-plus-lighter",
+      "type": "line",
+      "source": "geojson",
+      "paint": {
+        "line-layer-blend": "plus-lighter"
+      }
+    },
+    {
+      "id": "line-screen",
+      "type": "line",
+      "source": "geojson",
+      "paint": {
+        "line-layer-blend": "screen"
+      }
+    },
+    {
+      "id": "line-overlay",
+      "type": "line",
+      "source": "geojson",
+      "paint": {
+        "line-layer-blend": "overlay"
+      }
+    }
+  ]
+}
