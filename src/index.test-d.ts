@@ -157,6 +157,12 @@ describe('style-spec', () => {
         expectTypeOf<{'fill-extrusion-base-transition': {duration: 100}}>().toExtend<
             FillExtrusionLayerSpecification['paint']
         >();
+        expectTypeOf<{'fill-extrusion-shadow-opacity-transition': {duration: 100}}>().toExtend<
+            FillExtrusionLayerSpecification['paint']
+        >();
+        expectTypeOf<{'fill-extrusion-shadow-color-transition': {duration: 100}}>().toExtend<
+            FillExtrusionLayerSpecification['paint']
+        >();
     });
     test('FillExtrusionLayerSpecification does not contain *-transition keys for untransitionable paint properties', () => {
         expectTypeOf<{

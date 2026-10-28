@@ -1,6 +1,6 @@
 ## main
 ### ✨ Features and improvements
-- _...Add new stuff here..._
+- Add experimental `fill-extrusion-shadow-opacity` and `fill-extrusion-shadow-color` paint properties to support casting shadows from extruded geometries, with direction derived from `light` ([#1797](https://github.com/maplibre/maplibre-style-spec/issues/1797))
 
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
