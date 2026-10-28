@@ -79,7 +79,7 @@ The maximum zoom level for the layer. At zoom levels equal to or greater than th
 
 *Optional [filter](<https://maplibre.org/maplibre-style-spec/expressions/index.md>).*
 
-A expression specifying conditions on source features. Only features that match the filter are displayed. Zoom expressions in filters are only evaluated at integer zoom levels. The `feature-state` expression is not supported in filter expressions.
+A expression specifying conditions on source features. Only features that match the filter are displayed. Zoom expressions in filters are only evaluated at integer zoom levels. The [`feature-state`](<https://maplibre.org/maplibre-style-spec/expressions/#feature-state>) expression is not supported in filter expressions.
 
 ### layout
 
@@ -107,7 +107,7 @@ Whether this layer is displayed.
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.16.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.16.0 | 13.7.1 | 7.0.0 |
 
 ### background-color
 
@@ -118,7 +118,7 @@ The color with which the background will be drawn.
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### background-pattern
 
@@ -130,7 +130,7 @@ Name of image in sprite to use for drawing an image background. For seamless pat
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | Not supported yet | Not supported yet | Not supported yet |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### background-opacity
 
@@ -141,7 +141,7 @@ The opacity at which the background will be drawn.
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ## Fill
 
@@ -155,7 +155,7 @@ Sorts features in ascending order based on this value. Features with a higher so
 | --- | --- | --- | --- |
 | basic functionality | 1.2.0 | 9.1.0 | 5.8.0 |
 | data-driven styling | 1.2.0 | 9.1.0 | 5.8.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### visibility
 
@@ -169,7 +169,7 @@ Whether this layer is displayed.
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.16.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.16.0 | 13.7.1 | 7.0.0 |
 
 ### fill-antialias
 
@@ -180,30 +180,30 @@ Whether or not the fill should be antialiased.
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### fill-opacity
 
 *[Paint](<#paint>) property. Optional [number](<https://maplibre.org/maplibre-style-spec/types/#number>) in range `[0, 1]`. Defaults to `1`. Supports [feature-state](<https://maplibre.org/maplibre-style-spec/expressions/#feature-state>) and [interpolate](<https://maplibre.org/maplibre-style-spec/expressions/#interpolate>) expressions. [Transitionable](<https://maplibre.org/maplibre-style-spec/transition/index.md>).*
 
-The opacity of the entire fill layer. In contrast to the `fill-color`, this value will also affect the 1px stroke around the fill, if the stroke is used.
+The opacity of the entire fill layer. In contrast to the [`fill-color`](<https://maplibre.org/maplibre-style-spec/layers/#fill-color>), this value will also affect the 1px stroke around the fill, if the stroke is used.
 
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 0.21.0 | 5.0.0 | 3.5.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### fill-layer-opacity
 
 *[Paint](<#paint>) property. Optional [number](<https://maplibre.org/maplibre-style-spec/types/#number>) in range `[0, 1]`. Defaults to `1`. Supports [interpolate](<https://maplibre.org/maplibre-style-spec/expressions/#interpolate>) expressions. [Transitionable](<https://maplibre.org/maplibre-style-spec/transition/index.md>).*
 
-Opacity applied to the layer as a whole. Unlike `fill-opacity` and alpha values in `fill-color`, which are applied per feature and accumulate where fills overlap, `fill-layer-opacity` is applied once so overlapping fills appear as a single surface at the given opacity. When both `fill-opacity` and `fill-layer-opacity` are set, the per-feature, overlap accumulation is preserved, then `fill-layer-opacity` composites the result. This property affects only the layer it is set on and cannot be used to composite multiple layers together or control how this layer blends with layers above or below it.
+Opacity applied to the layer as a whole. Unlike [`fill-opacity`](<https://maplibre.org/maplibre-style-spec/layers/#fill-opacity>) and alpha values in [`fill-color`](<https://maplibre.org/maplibre-style-spec/layers/#fill-color>), which are applied per feature and accumulate where fills overlap, `fill-layer-opacity` is applied once so overlapping fills appear as a single surface at the given opacity. When both `fill-opacity` and `fill-layer-opacity` are set, the per-feature, overlap accumulation is preserved, then `fill-layer-opacity` composites the result. This property affects only the layer it is set on and cannot be used to composite multiple layers together or control how this layer blends with layers above or below it.
 
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 6.0.0 | ❌ ([\#4298](<https://github.com/maplibre/maplibre-native/issues/4298>)) | ❌ ([\#4298](<https://github.com/maplibre/maplibre-native/issues/4298>)) |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 6.0.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 6.0.0 | ❌ ([\#4298](<https://github.com/maplibre/maplibre-native/issues/4298>)) | ❌ ([\#4298](<https://github.com/maplibre/maplibre-native/issues/4298>)) |
 
 ### fill-layer-blend
 
@@ -234,19 +234,19 @@ The color of the filled part of this layer. This color can be specified as `rgba
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 0.19.0 | 5.0.0 | 3.5.0 |
 | SDF fill pattern colorization | ❌ ([\#8342](<https://github.com/maplibre/maplibre-gl-js/issues/8342>)) | ❌ ([\#4526](<https://github.com/maplibre/maplibre-native/issues/4526>)) | ❌ ([\#4526](<https://github.com/maplibre/maplibre-native/issues/4526>)) |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### fill-outline-color
 
 *[Paint](<#paint>) property. Optional [color](<https://maplibre.org/maplibre-style-spec/types/#color>). Disabled by [`fill-pattern`](<#fill-pattern>). Requires `fill-antialias` to be `true`. Supports [feature-state](<https://maplibre.org/maplibre-style-spec/expressions/#feature-state>) and [interpolate](<https://maplibre.org/maplibre-style-spec/expressions/#interpolate>) expressions. [Transitionable](<https://maplibre.org/maplibre-style-spec/transition/index.md>).*
 
-The outline color of the fill. Matches the value of `fill-color` if unspecified.
+The outline color of the fill. Matches the value of [`fill-color`](<https://maplibre.org/maplibre-style-spec/layers/#fill-color>) if unspecified.
 
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 0.19.0 | 5.0.0 | 3.5.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### fill-translate
 
@@ -257,13 +257,13 @@ The geometry's offset. Values are `[x, y]` where negatives indicate left and up,
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### fill-translate-anchor
 
 *[Paint](<#paint>) property. Optional [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `map`, `viewport`. Defaults to `"map"`. Requires [`fill-translate`](<#fill-translate>).*
 
-Controls the frame of reference for `fill-translate`.
+Controls the frame of reference for [`fill-translate`](<https://maplibre.org/maplibre-style-spec/layers/#fill-translate>).
 
 - `map`: The fill is translated relative to the map.
 - `viewport`: The fill is translated relative to the viewport.
@@ -271,7 +271,7 @@ Controls the frame of reference for `fill-translate`.
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### fill-pattern
 
@@ -283,7 +283,7 @@ Name of image in sprite to use for drawing image fills. For seamless patterns, i
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 0.49.0 | 6.5.0 | 4.4.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ## Circle
 
@@ -297,7 +297,7 @@ Sorts features in ascending order based on this value. Features with a higher so
 | --- | --- | --- | --- |
 | basic functionality | 1.2.0 | 9.2.0 | 5.9.0 |
 | data-driven styling | 1.2.0 | 9.2.0 | 5.9.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### visibility
 
@@ -311,7 +311,7 @@ Whether this layer is displayed.
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.16.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.16.0 | 13.7.1 | 7.0.0 |
 
 ### circle-radius
 
@@ -323,7 +323,7 @@ Circle radius.
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 0.18.0 | 5.0.0 | 3.5.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### circle-color
 
@@ -335,7 +335,7 @@ The fill color of the circle.
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 0.18.0 | 5.0.0 | 3.5.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### circle-blur
 
@@ -347,7 +347,7 @@ Amount to blur the circle. 1 blurs the circle such that only the centerpoint is 
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 0.20.0 | 5.0.0 | 3.5.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### circle-opacity
 
@@ -359,7 +359,7 @@ The opacity at which the circle will be drawn.
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 0.20.0 | 5.0.0 | 3.5.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### circle-translate
 
@@ -370,13 +370,13 @@ The geometry's offset. Values are `[x, y]` where negatives indicate left and up,
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### circle-translate-anchor
 
 *[Paint](<#paint>) property. Optional [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `map`, `viewport`. Defaults to `"map"`. Requires [`circle-translate`](<#circle-translate>).*
 
-Controls the frame of reference for `circle-translate`.
+Controls the frame of reference for [`circle-translate`](<https://maplibre.org/maplibre-style-spec/layers/#circle-translate>).
 
 - `map`: The circle is translated relative to the map.
 - `viewport`: The circle is translated relative to the viewport.
@@ -384,7 +384,7 @@ Controls the frame of reference for `circle-translate`.
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### circle-pitch-scale
 
@@ -398,7 +398,7 @@ Controls the scaling behavior of the circle when the map is pitched.
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.21.0 | 4.2.0 | 3.4.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### circle-pitch-alignment
 
@@ -412,19 +412,19 @@ Orientation of circle when map is pitched.
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.39.0 | 5.2.0 | 3.7.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### circle-stroke-width
 
 *[Paint](<#paint>) property. Optional [number](<https://maplibre.org/maplibre-style-spec/types/#number>) in range `[0, ∞)`. Units in pixels. Defaults to `0`. Supports [feature-state](<https://maplibre.org/maplibre-style-spec/expressions/#feature-state>) and [interpolate](<https://maplibre.org/maplibre-style-spec/expressions/#interpolate>) expressions. [Transitionable](<https://maplibre.org/maplibre-style-spec/transition/index.md>).*
 
-The width of the circle's stroke. Strokes are placed outside of the `circle-radius`.
+The width of the circle's stroke. Strokes are placed outside of the [`circle-radius`](<https://maplibre.org/maplibre-style-spec/layers/#circle-radius>).
 
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.29.0 | 5.0.0 | 3.5.0 |
 | data-driven styling | 0.29.0 | 5.0.0 | 3.5.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### circle-stroke-color
 
@@ -436,7 +436,7 @@ The stroke color of the circle.
 | --- | --- | --- | --- |
 | basic functionality | 0.29.0 | 5.0.0 | 3.5.0 |
 | data-driven styling | 0.29.0 | 5.0.0 | 3.5.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### circle-stroke-opacity
 
@@ -448,7 +448,7 @@ The opacity of the circle's stroke.
 | --- | --- | --- | --- |
 | basic functionality | 0.29.0 | 5.0.0 | 3.5.0 |
 | data-driven styling | 0.29.0 | 5.0.0 | 3.5.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ## Heatmap
 
@@ -464,7 +464,7 @@ Whether this layer is displayed.
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.41.0 | 6.0.0 | 4.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.16.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.16.0 | 13.7.1 | 7.0.0 |
 
 ### heatmap-radius
 
@@ -476,7 +476,7 @@ Radius of influence of one heatmap point in pixels. Increasing the value makes t
 | --- | --- | --- | --- |
 | basic functionality | 0.41.0 | 6.0.0 | 4.0.0 |
 | data-driven styling | 0.43.0 | 6.0.0 | 4.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### heatmap-weight
 
@@ -488,18 +488,18 @@ A measure of how much an individual point contributes to the heatmap. A value of
 | --- | --- | --- | --- |
 | basic functionality | 0.41.0 | 6.0.0 | 4.0.0 |
 | data-driven styling | 0.41.0 | 6.0.0 | 4.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### heatmap-intensity
 
 *[Paint](<#paint>) property. Optional [number](<https://maplibre.org/maplibre-style-spec/types/#number>) in range `[0, ∞)`. Defaults to `1`. Supports [interpolate](<https://maplibre.org/maplibre-style-spec/expressions/#interpolate>) expressions. [Transitionable](<https://maplibre.org/maplibre-style-spec/transition/index.md>).*
 
-Similar to `heatmap-weight` but controls the intensity of the heatmap globally. Primarily used for adjusting the heatmap based on zoom level.
+Similar to [`heatmap-weight`](<https://maplibre.org/maplibre-style-spec/layers/#heatmap-weight>) but controls the intensity of the heatmap globally. Primarily used for adjusting the heatmap based on zoom level.
 
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.41.0 | 6.0.0 | 4.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### heatmap-color
 
@@ -511,7 +511,7 @@ Defines the color of each pixel based on its density value in a heatmap. Should 
 | --- | --- | --- | --- |
 | basic functionality | 0.41.0 | 6.0.0 | 4.0.0 |
 | data-driven styling | Not supported yet | Not supported yet | Not supported yet |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### heatmap-opacity
 
@@ -522,7 +522,7 @@ The global opacity at which the heatmap layer will be drawn.
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.41.0 | 6.0.0 | 4.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ## Fill-extrusion
 
@@ -538,7 +538,7 @@ Whether this layer is displayed.
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.27.0 | 5.1.0 | 3.6.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.16.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.16.0 | 13.7.1 | 7.0.0 |
 
 ### fill-extrusion-rounded-corner-distance
 
@@ -559,20 +559,20 @@ The opacity of the entire fill extrusion layer. This is rendered on a per-layer,
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.27.0 | 5.1.0 | 3.6.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### fill-extrusion-color
 
 *[Paint](<#paint>) property. Optional [color](<https://maplibre.org/maplibre-style-spec/types/#color>). Defaults to `"#000000"`. Disabled by [`fill-extrusion-pattern`](<#fill-extrusion-pattern>). Supports [feature-state](<https://maplibre.org/maplibre-style-spec/expressions/#feature-state>) and [interpolate](<https://maplibre.org/maplibre-style-spec/expressions/#interpolate>) expressions. [Transitionable](<https://maplibre.org/maplibre-style-spec/transition/index.md>).*
 
-The base color of the extruded fill. The extrusion's surfaces will be shaded differently based on this color in combination with the root `light` settings. If this color is specified as `rgba` with an alpha component, the alpha component will be ignored; use `fill-extrusion-opacity` to set layer opacity.
+The base color of the extruded fill. The extrusion's surfaces will be shaded differently based on this color in combination with the root `light` settings. If this color is specified as `rgba` with an alpha component, the alpha component will be ignored; use [`fill-extrusion-opacity`](<https://maplibre.org/maplibre-style-spec/layers/#fill-extrusion-opacity>) to set layer opacity.
 
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.27.0 | 5.1.0 | 3.6.0 |
 | data-driven styling | 0.27.0 | 5.1.0 | 3.6.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
-| `elevation` expression | ❌ ([\#8799](<https://github.com/maplibre/maplibre-gl-js/issues/8799>)) | ❌ ([\#4787](<https://github.com/maplibre/maplibre-native/issues/4787>)) | ❌ ([\#4787](<https://github.com/maplibre/maplibre-native/issues/4787>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
+| [`elevation`](<https://maplibre.org/maplibre-style-spec/expressions/#elevation>) expression | ❌ ([\#8799](<https://github.com/maplibre/maplibre-gl-js/issues/8799>)) | ❌ ([\#4787](<https://github.com/maplibre/maplibre-native/issues/4787>)) | ❌ ([\#4787](<https://github.com/maplibre/maplibre-native/issues/4787>)) |
 
 ### fill-extrusion-translate
 
@@ -583,13 +583,13 @@ The geometry's offset. Values are `[x, y]` where negatives indicate left and up 
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.27.0 | 5.1.0 | 3.6.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### fill-extrusion-translate-anchor
 
 *[Paint](<#paint>) property. Optional [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `map`, `viewport`. Defaults to `"map"`. Requires [`fill-extrusion-translate`](<#fill-extrusion-translate>).*
 
-Controls the frame of reference for `fill-extrusion-translate`.
+Controls the frame of reference for [`fill-extrusion-translate`](<https://maplibre.org/maplibre-style-spec/layers/#fill-extrusion-translate>).
 
 - `map`: The fill extrusion is translated relative to the map.
 - `viewport`: The fill extrusion is translated relative to the viewport.
@@ -597,7 +597,7 @@ Controls the frame of reference for `fill-extrusion-translate`.
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.27.0 | 5.1.0 | 3.6.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### fill-extrusion-pattern
 
@@ -609,7 +609,7 @@ Name of image in sprite to use for drawing images on extruded fills. For seamles
 | --- | --- | --- | --- |
 | basic functionality | 0.27.0 | 5.1.0 | 3.6.0 |
 | data-driven styling | 0.49.0 | 6.5.0 | 4.4.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### fill-extrusion-height
 
@@ -621,20 +621,20 @@ The height with which to extrude this layer. Negative values extrude below groun
 | --- | --- | --- | --- |
 | basic functionality | 0.27.0 | 5.1.0 | 3.6.0 |
 | data-driven styling | 0.27.0 | 5.1.0 | 3.6.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 | negative values | ❌ ([\#8051](<https://github.com/maplibre/maplibre-gl-js/issues/8051>)) | ❌ ([\#4455](<https://github.com/maplibre/maplibre-native/issues/4455>)) | ❌ ([\#4455](<https://github.com/maplibre/maplibre-native/issues/4455>)) |
 
 ### fill-extrusion-base
 
 *[Paint](<#paint>) property. Optional [number](<https://maplibre.org/maplibre-style-spec/types/#number>). Units in meters. Defaults to `0`. Requires [`fill-extrusion-height`](<#fill-extrusion-height>). Supports [feature-state](<https://maplibre.org/maplibre-style-spec/expressions/#feature-state>) and [interpolate](<https://maplibre.org/maplibre-style-spec/expressions/#interpolate>) expressions. [Transitionable](<https://maplibre.org/maplibre-style-spec/transition/index.md>).*
 
-The height with which to extrude the base of this layer. Must be less than or equal to `fill-extrusion-height`. Negative values extrude below ground level, e.g. underground floors.
+The height with which to extrude the base of this layer. Must be less than or equal to [`fill-extrusion-height`](<https://maplibre.org/maplibre-style-spec/layers/#fill-extrusion-height>). Negative values extrude below ground level, e.g. underground floors.
 
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.27.0 | 5.1.0 | 3.6.0 |
 | data-driven styling | 0.27.0 | 5.1.0 | 3.6.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 | negative values | ❌ ([\#8051](<https://github.com/maplibre/maplibre-gl-js/issues/8051>)) | ❌ ([\#4455](<https://github.com/maplibre/maplibre-native/issues/4455>)) | ❌ ([\#4455](<https://github.com/maplibre/maplibre-native/issues/4455>)) |
 
 ### fill-extrusion-vertical-gradient
@@ -646,7 +646,7 @@ Whether to apply a vertical gradient to the sides of a fill-extrusion layer. If 
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.50.0 | 7.0.0 | 4.7.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ## Line
 
@@ -664,7 +664,7 @@ The display of line endings.
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 5.22.0 | ❌ ([\#4194](<https://github.com/maplibre/maplibre-native/issues/4194>)) | ❌ ([\#4194](<https://github.com/maplibre/maplibre-native/issues/4194>)) |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### line-join
 
@@ -680,7 +680,7 @@ The display of lines when joining.
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 0.40.0 | 5.2.0 | 3.7.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### line-miter-limit
 
@@ -692,7 +692,7 @@ Used to automatically convert miter joins to bevel joins for sharp angles.
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 5.22.0 | ❌ ([\#4194](<https://github.com/maplibre/maplibre-native/issues/4194>)) | ❌ ([\#4194](<https://github.com/maplibre/maplibre-native/issues/4194>)) |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### line-round-limit
 
@@ -704,7 +704,7 @@ Used to automatically convert round joins to miter joins for shallow angles.
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 5.22.0 | ❌ ([\#4194](<https://github.com/maplibre/maplibre-native/issues/4194>)) | ❌ ([\#4194](<https://github.com/maplibre/maplibre-native/issues/4194>)) |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### line-sort-key
 
@@ -716,7 +716,7 @@ Sorts features in ascending order based on this value. Features with a higher so
 | --- | --- | --- | --- |
 | basic functionality | 1.2.0 | 9.1.0 | 5.8.0 |
 | data-driven styling | 1.2.0 | 9.1.0 | 5.8.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### visibility
 
@@ -730,7 +730,7 @@ Whether this layer is displayed.
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.16.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.16.0 | 13.7.1 | 7.0.0 |
 
 ### line-opacity
 
@@ -742,18 +742,18 @@ The opacity at which the line will be drawn.
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 0.29.0 | 5.0.0 | 3.5.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### line-layer-opacity
 
 *[Paint](<#paint>) property. Optional [number](<https://maplibre.org/maplibre-style-spec/types/#number>) in range `[0, 1]`. Defaults to `1`. Supports [interpolate](<https://maplibre.org/maplibre-style-spec/expressions/#interpolate>) expressions. [Transitionable](<https://maplibre.org/maplibre-style-spec/transition/index.md>).*
 
-Opacity applied to the layer as a whole. Unlike `line-opacity` and alpha values in `line-color`, which are applied per feature and accumulate where lines overlap, `line-layer-opacity` is applied once so overlapping lines appear as a single surface at the given opacity. When both `line-opacity` and `line-layer-opacity` are set, the per-feature, overlap accumulation is preserved, then layer-opacity composites the result. This property affects only the layer it is set on and cannot be used to composite multiple layers together or control how this layer blends with layers above or below it.
+Opacity applied to the layer as a whole. Unlike [`line-opacity`](<https://maplibre.org/maplibre-style-spec/layers/#line-opacity>) and alpha values in [`line-color`](<https://maplibre.org/maplibre-style-spec/layers/#line-color>), which are applied per feature and accumulate where lines overlap, `line-layer-opacity` is applied once so overlapping lines appear as a single surface at the given opacity. When both `line-opacity` and `line-layer-opacity` are set, the per-feature, overlap accumulation is preserved, then layer-opacity composites the result. This property affects only the layer it is set on and cannot be used to composite multiple layers together or control how this layer blends with layers above or below it.
 
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 6.0.0 | ❌ ([\#4298](<https://github.com/maplibre/maplibre-native/issues/4298>)) | ❌ ([\#4298](<https://github.com/maplibre/maplibre-native/issues/4298>)) |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 6.0.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 6.0.0 | ❌ ([\#4298](<https://github.com/maplibre/maplibre-native/issues/4298>)) | ❌ ([\#4298](<https://github.com/maplibre/maplibre-native/issues/4298>)) |
 
 ### line-layer-blend
 
@@ -783,7 +783,7 @@ The color with which the line will be drawn.
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 0.23.0 | 5.0.0 | 3.5.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### line-translate
 
@@ -794,13 +794,13 @@ The geometry's offset. Values are `[x, y]` where negatives indicate left and up,
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### line-translate-anchor
 
 *[Paint](<#paint>) property. Optional [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `map`, `viewport`. Defaults to `"map"`. Requires [`line-translate`](<#line-translate>).*
 
-Controls the frame of reference for `line-translate`.
+Controls the frame of reference for [`line-translate`](<https://maplibre.org/maplibre-style-spec/layers/#line-translate>).
 
 - `map`: The line is translated relative to the map.
 - `viewport`: The line is translated relative to the viewport.
@@ -808,7 +808,7 @@ Controls the frame of reference for `line-translate`.
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### line-width
 
@@ -820,7 +820,7 @@ Stroke thickness.
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 0.39.0 | 5.2.0 | 3.7.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### line-gap-width
 
@@ -832,7 +832,7 @@ Draws a line casing outside of a line's actual path. Value indicates the width o
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 0.29.0 | 5.0.0 | 3.5.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### line-offset
 
@@ -844,7 +844,7 @@ The line's offset. For linear features, a positive value offsets the line to the
 | --- | --- | --- | --- |
 | basic functionality | 0.12.1 | 3.0.0 | 3.1.0 |
 | data-driven styling | 0.29.0 | 5.0.0 | 3.5.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### line-blur
 
@@ -856,7 +856,7 @@ Blur applied to the line, in pixels.
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 0.29.0 | 5.0.0 | 3.5.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### line-dasharray
 
@@ -868,7 +868,7 @@ Specifies the lengths of the alternating dashes and gaps that form the dash patt
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 5.8.0 | ❌ ([\#744](<https://github.com/maplibre/maplibre-native/issues/744>)) | ❌ ([\#744](<https://github.com/maplibre/maplibre-native/issues/744>)) |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### line-pattern
 
@@ -880,7 +880,7 @@ Name of image in sprite to use for drawing image lines. For seamless patterns, i
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 0.49.0 | 6.5.0 | 4.4.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### line-gradient
 
@@ -892,7 +892,7 @@ Defines a gradient with which to color a line feature. Can only be used with Geo
 | --- | --- | --- | --- |
 | basic functionality | 0.45.0 | 6.5.0 | 4.4.0 |
 | data-driven styling | Not supported yet | Not supported yet | Not supported yet |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ## Symbol
 
@@ -910,7 +910,7 @@ Label placement relative to its geometry.
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | `line-center` value | 0.47.0 | 6.4.0 | 4.3.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### symbol-spacing
 
@@ -921,7 +921,7 @@ Distance between two symbol anchors.
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### symbol-avoid-edges
 
@@ -932,34 +932,34 @@ If true, the symbols will not cross tile edges to avoid mutual collisions. Recom
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### symbol-sort-key
 
 *[Layout](<#layout>) property. Optional [number](<https://maplibre.org/maplibre-style-spec/types/#number>).*
 
-Sorts features in ascending order based on this value. Features with lower sort keys are drawn and placed first. When `icon-allow-overlap` or `text-allow-overlap` is `false`, features with a lower sort key will have priority during placement. When `icon-allow-overlap` or `text-allow-overlap` is set to `true`, features with a higher sort key will overlap over features with a lower sort key.
+Sorts features in ascending order based on this value. Features with lower sort keys are drawn and placed first. When [`icon-allow-overlap`](<https://maplibre.org/maplibre-style-spec/layers/#icon-allow-overlap>) or [`text-allow-overlap`](<https://maplibre.org/maplibre-style-spec/layers/#text-allow-overlap>) is `false`, features with a lower sort key will have priority during placement. When `icon-allow-overlap` or `text-allow-overlap` is set to `true`, features with a higher sort key will overlap over features with a lower sort key.
 
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.53.0 | 7.4.0 | 4.11.0 |
 | data-driven styling | 0.53.0 | 7.4.0 | 4.11.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### symbol-z-order
 
 *[Layout](<#layout>) property. Optional [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `auto`, `viewport-y`, `source`. Defaults to `"auto"`.*
 
-Determines whether overlapping symbols in the same layer are rendered in the order that they appear in the data source or by their y-position relative to the viewport. To control the order and prioritization of symbols otherwise, use `symbol-sort-key`.
+Determines whether overlapping symbols in the same layer are rendered in the order that they appear in the data source or by their y-position relative to the viewport. To control the order and prioritization of symbols otherwise, use [`symbol-sort-key`](<https://maplibre.org/maplibre-style-spec/layers/#symbol-sort-key>).
 
-- `auto`: Sorts symbols by `symbol-sort-key` if set. Otherwise, sorts symbols by their y-position relative to the viewport if `icon-allow-overlap` or `text-allow-overlap` is set to `true` or `icon-ignore-placement` or `text-ignore-placement` is `false`.
-- `viewport-y`: Sorts symbols by their y-position relative to the viewport if `icon-allow-overlap` or `text-allow-overlap` is set to `true` or `icon-ignore-placement` or `text-ignore-placement` is `false`.
-- `source`: Sorts symbols by `symbol-sort-key` if set. Otherwise, no sorting is applied; symbols are rendered in the same order as the source data.
+- `auto`: Sorts symbols by [`symbol-sort-key`](<https://maplibre.org/maplibre-style-spec/layers/#symbol-sort-key>) if set. Otherwise, sorts symbols by their y-position relative to the viewport if [`icon-allow-overlap`](<https://maplibre.org/maplibre-style-spec/layers/#icon-allow-overlap>) or [`text-allow-overlap`](<https://maplibre.org/maplibre-style-spec/layers/#text-allow-overlap>) is set to `true` or [`icon-ignore-placement`](<https://maplibre.org/maplibre-style-spec/layers/#icon-ignore-placement>) or [`text-ignore-placement`](<https://maplibre.org/maplibre-style-spec/layers/#text-ignore-placement>) is `false`.
+- `viewport-y`: Sorts symbols by their y-position relative to the viewport if [`icon-allow-overlap`](<https://maplibre.org/maplibre-style-spec/layers/#icon-allow-overlap>) or [`text-allow-overlap`](<https://maplibre.org/maplibre-style-spec/layers/#text-allow-overlap>) is set to `true` or [`icon-ignore-placement`](<https://maplibre.org/maplibre-style-spec/layers/#icon-ignore-placement>) or [`text-ignore-placement`](<https://maplibre.org/maplibre-style-spec/layers/#text-ignore-placement>) is `false`.
+- `source`: Sorts symbols by [`symbol-sort-key`](<https://maplibre.org/maplibre-style-spec/layers/#symbol-sort-key>) if set. Otherwise, no sorting is applied; symbols are rendered in the same order as the source data.
 
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.49.0 | 6.6.0 | 4.5.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### icon-allow-overlap
 
@@ -970,13 +970,13 @@ If true, the icon will be visible even if it collides with other previously draw
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### icon-overlap
 
 *[Layout](<#layout>) property. Optional [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `never`, `always`, `cooperative`. Requires [`icon-image`](<#icon-image>).*
 
-Allows for control over whether to show an icon when it overlaps other symbols on the map. If `icon-overlap` is not set, `icon-allow-overlap` is used instead.
+Allows for control over whether to show an icon when it overlaps other symbols on the map. If `icon-overlap` is not set, [`icon-allow-overlap`](<https://maplibre.org/maplibre-style-spec/layers/#icon-allow-overlap>) is used instead.
 
 - `never`: The icon will be hidden if it collides with any other previously drawn symbol.
 - `always`: The icon will be visible even if it collides with any other previously drawn symbol.
@@ -985,7 +985,7 @@ Allows for control over whether to show an icon when it overlaps other symbols o
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 2.1.0 | ❌ ([\#251](<https://github.com/maplibre/maplibre-native/issues/251>)) | ❌ ([\#251](<https://github.com/maplibre/maplibre-native/issues/251>)) |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#251](<https://github.com/maplibre/maplibre-native/issues/251>)) | ❌ ([\#251](<https://github.com/maplibre/maplibre-native/issues/251>)) |
 
 ### icon-ignore-placement
 
@@ -996,7 +996,7 @@ If true, other symbols can be visible even if they collide with the icon.
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### icon-optional
 
@@ -1007,24 +1007,24 @@ If true, text will display without their corresponding icons when the icon colli
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### icon-rotation-alignment
 
 *[Layout](<#layout>) property. Optional [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `map`, `viewport`, `auto`. Defaults to `"auto"`. Requires [`icon-image`](<#icon-image>).*
 
-In combination with `symbol-placement`, determines the rotation behavior of icons.
+In combination with [`symbol-placement`](<https://maplibre.org/maplibre-style-spec/layers/#symbol-placement>), determines the rotation behavior of icons.
 
-- `map`: When `symbol-placement` is set to `point`, aligns icons east-west. When `symbol-placement` is set to `line` or `line-center`, aligns icon x-axes with the line.
-- `viewport`: Produces icons whose x-axes are aligned with the x-axis of the viewport, regardless of the value of `symbol-placement`.
-- `auto`: When `symbol-placement` is set to `point`, this is equivalent to `viewport`. When `symbol-placement` is set to `line` or `line-center`, this is equivalent to `map`.
+- `map`: When [`symbol-placement`](<https://maplibre.org/maplibre-style-spec/layers/#symbol-placement>) is set to `point`, aligns icons east-west. When `symbol-placement` is set to `line` or `line-center`, aligns icon x-axes with the line.
+- `viewport`: Produces icons whose x-axes are aligned with the x-axis of the viewport, regardless of the value of [`symbol-placement`](<https://maplibre.org/maplibre-style-spec/layers/#symbol-placement>).
+- `auto`: When [`symbol-placement`](<https://maplibre.org/maplibre-style-spec/layers/#symbol-placement>) is set to `point`, this is equivalent to `viewport`. When `symbol-placement` is set to `line` or `line-center`, this is equivalent to `map`.
 
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | ❌ ([\#3461](<https://github.com/maplibre/maplibre-gl-js/issues/3461>)) | ❌ ([\#4517](<https://github.com/maplibre/maplibre-native/issues/4517>)) | ❌ ([\#4517](<https://github.com/maplibre/maplibre-native/issues/4517>)) |
 | `auto` value | 0.25.0 | 4.2.0 | 3.4.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### icon-size
 
@@ -1036,7 +1036,7 @@ Scales the original size of the icon by the provided factor. The new pixel size 
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 0.35.0 | 5.1.0 | 3.6.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### icon-text-fit
 
@@ -1053,18 +1053,18 @@ Scales the icon to fit around the associated text.
 | --- | --- | --- | --- |
 | basic functionality | 0.21.0 | 4.2.0 | 3.4.0 |
 | stretchable icons | 1.6.0 | 9.2.0 | 5.8.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### icon-text-fit-padding
 
 *[Layout](<#layout>) property. Optional [array](<https://maplibre.org/maplibre-style-spec/types/#array>). Units in pixels. Defaults to `[0,0,0,0]`. Requires [`icon-image`](<#icon-image>). Requires [`text-field`](<#text-field>). Requires `icon-text-fit` to be one of `both`, `width`, `height`. Supports [interpolate](<https://maplibre.org/maplibre-style-spec/expressions/#interpolate>) expressions.*
 
-Size of the additional area added to dimensions determined by `icon-text-fit`, in clockwise order: top, right, bottom, left.
+Size of the additional area added to dimensions determined by [`icon-text-fit`](<https://maplibre.org/maplibre-style-spec/layers/#icon-text-fit>), in clockwise order: top, right, bottom, left.
 
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.21.0 | 4.2.0 | 3.4.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### icon-image
 
@@ -1076,7 +1076,7 @@ Name of image in sprite to use for drawing an image background.
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 0.35.0 | 5.1.0 | 3.6.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### icon-rotate
 
@@ -1088,7 +1088,7 @@ Rotates the icon clockwise.
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 0.21.0 | 5.0.0 | 3.5.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### icon-padding
 
@@ -1100,7 +1100,7 @@ Size of additional area round the icon bounding box used for detecting symbol co
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 2.2.0 | ❌ ([\#2754](<https://github.com/maplibre/maplibre-native/issues/2754>)) | ❌ ([\#2754](<https://github.com/maplibre/maplibre-native/issues/2754>)) |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### icon-keep-upright
 
@@ -1111,19 +1111,19 @@ If true, the icon may be flipped to prevent it from being rendered upside-down.
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### icon-offset
 
 *[Layout](<#layout>) property. Optional [array](<https://maplibre.org/maplibre-style-spec/types/#array>). Defaults to `[0,0]`. Requires [`icon-image`](<#icon-image>). Supports [interpolate](<https://maplibre.org/maplibre-style-spec/expressions/#interpolate>) expressions.*
 
-Offset distance of icon from its anchor. Positive values indicate right and down, while negative values indicate left and up. Each component is multiplied by the value of `icon-size` to obtain the final offset in pixels. When combined with `icon-rotate` the offset will be as if the rotated direction was up.
+Offset distance of icon from its anchor. Positive values indicate right and down, while negative values indicate left and up. Each component is multiplied by the value of [`icon-size`](<https://maplibre.org/maplibre-style-spec/layers/#icon-size>) to obtain the final offset in pixels. When combined with [`icon-rotate`](<https://maplibre.org/maplibre-style-spec/layers/#icon-rotate>) the offset will be as if the rotated direction was up.
 
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 0.29.0 | 5.0.0 | 3.5.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### icon-anchor
 
@@ -1145,7 +1145,7 @@ Part of the icon placed closest to the anchor.
 | --- | --- | --- | --- |
 | basic functionality | 0.40.0 | 5.2.0 | 3.7.0 |
 | data-driven styling | 0.40.0 | 5.2.0 | 3.7.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### icon-pitch-alignment
 
@@ -1155,12 +1155,12 @@ Orientation of icon when map is pitched.
 
 - `map`: The icon is aligned to the plane of the map.
 - `viewport`: The icon is aligned to the plane of the viewport.
-- `auto`: Automatically matches the value of `icon-rotation-alignment`.
+- `auto`: Automatically matches the value of [`icon-rotation-alignment`](<https://maplibre.org/maplibre-style-spec/layers/#icon-rotation-alignment>).
 
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.39.0 | 5.2.0 | 3.7.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### text-pitch-alignment
 
@@ -1170,31 +1170,31 @@ Orientation of text when map is pitched.
 
 - `map`: The text is aligned to the plane of the map.
 - `viewport`: The text is aligned to the plane of the viewport.
-- `auto`: Automatically matches the value of `text-rotation-alignment`.
+- `auto`: Automatically matches the value of [`text-rotation-alignment`](<https://maplibre.org/maplibre-style-spec/layers/#text-rotation-alignment>).
 
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.21.0 | 4.2.0 | 3.4.0 |
 | `auto` value | 0.25.0 | 4.2.0 | 3.4.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### text-rotation-alignment
 
 *[Layout](<#layout>) property. Optional [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `map`, `viewport`, `viewport-glyph`, `auto`. Defaults to `"auto"`. Requires [`text-field`](<#text-field>).*
 
-In combination with `symbol-placement`, determines the rotation behavior of the individual glyphs forming the text.
+In combination with [`symbol-placement`](<https://maplibre.org/maplibre-style-spec/layers/#symbol-placement>), determines the rotation behavior of the individual glyphs forming the text.
 
-- `map`: When `symbol-placement` is set to `point`, aligns text east-west. When `symbol-placement` is set to `line` or `line-center`, aligns text x-axes with the line.
-- `viewport`: Produces glyphs whose x-axes are aligned with the x-axis of the viewport, regardless of the value of `symbol-placement`.
-- `viewport-glyph`: When `symbol-placement` is set to `point`, aligns text to the x-axis of the viewport. When `symbol-placement` is set to `line` or `line-center`, aligns glyphs to the x-axis of the viewport and places them along the line.
-- `auto`: When `symbol-placement` is set to `point`, this is equivalent to `viewport`. When `symbol-placement` is set to `line` or `line-center`, this is equivalent to `map`.
+- `map`: When [`symbol-placement`](<https://maplibre.org/maplibre-style-spec/layers/#symbol-placement>) is set to `point`, aligns text east-west. When `symbol-placement` is set to `line` or `line-center`, aligns text x-axes with the line.
+- `viewport`: Produces glyphs whose x-axes are aligned with the x-axis of the viewport, regardless of the value of [`symbol-placement`](<https://maplibre.org/maplibre-style-spec/layers/#symbol-placement>).
+- `viewport-glyph`: When [`symbol-placement`](<https://maplibre.org/maplibre-style-spec/layers/#symbol-placement>) is set to `point`, aligns text to the x-axis of the viewport. When `symbol-placement` is set to `line` or `line-center`, aligns glyphs to the x-axis of the viewport and places them along the line.
+- `auto`: When [`symbol-placement`](<https://maplibre.org/maplibre-style-spec/layers/#symbol-placement>) is set to `point`, this is equivalent to `viewport`. When `symbol-placement` is set to `line` or `line-center`, this is equivalent to `map`.
 
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | `auto` value | 0.25.0 | 4.2.0 | 3.4.0 |
 | `viewport-glyph` value | 2.1.8 | ❌ ([\#250](<https://github.com/maplibre/maplibre-native/issues/250>)) | ❌ ([\#250](<https://github.com/maplibre/maplibre-native/issues/250>)) |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### text-field
 
@@ -1206,7 +1206,7 @@ Value to use for a text label. If a plain `string` is provided, it will be treat
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 0.33.0 | 5.0.0 | 3.5.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### text-font
 
@@ -1219,7 +1219,7 @@ Fonts to use for displaying text. If the `glyphs` root property is specified, th
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 0.43.0 | 6.0.0 | 4.0.0 |
 | local fonts | ❌ ([\#3302](<https://github.com/maplibre/maplibre-gl-js/issues/3302>)) | ❌ ([\#165](<https://github.com/maplibre/maplibre-native/issues/165>)) | ❌ ([\#165](<https://github.com/maplibre/maplibre-native/issues/165>)) |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### text-size
 
@@ -1231,7 +1231,7 @@ Font size.
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 0.35.0 | 5.1.0 | 3.6.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### text-max-width
 
@@ -1243,7 +1243,7 @@ The maximum line width for text wrapping.
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 0.40.0 | 5.2.0 | 3.7.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### text-line-height
 
@@ -1254,7 +1254,7 @@ Text leading value for multi-line text.
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### text-letter-spacing
 
@@ -1266,7 +1266,7 @@ Text tracking amount.
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 0.40.0 | 5.2.0 | 3.7.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### text-justify
 
@@ -1284,25 +1284,25 @@ Text justification options.
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 0.39.0 | 5.2.0 | 3.7.0 |
 | auto | 0.54.0 | 7.4.0 | 4.10.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### text-radial-offset
 
 *[Layout](<#layout>) property. Optional [number](<https://maplibre.org/maplibre-style-spec/types/#number>). Units in ems. Defaults to `0`. Requires [`text-field`](<#text-field>). Supports [interpolate](<https://maplibre.org/maplibre-style-spec/expressions/#interpolate>) expressions.*
 
-Radial offset of text, in the direction of the symbol's anchor. Useful in combination with `text-variable-anchor`, which defaults to using the two-dimensional `text-offset` if present.
+Radial offset of text, in the direction of the symbol's anchor. Useful in combination with [`text-variable-anchor`](<https://maplibre.org/maplibre-style-spec/layers/#text-variable-anchor>), which defaults to using the two-dimensional [`text-offset`](<https://maplibre.org/maplibre-style-spec/layers/#text-offset>) if present.
 
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.54.0 | 7.4.0 | 4.10.0 |
 | data-driven styling | 0.54.0 | 7.4.0 | 4.10.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### text-variable-anchor
 
 *[Layout](<#layout>) property. Optional [array](<https://maplibre.org/maplibre-style-spec/types/#array>). Requires [`text-field`](<#text-field>). Requires `symbol-placement` to be `point`.*
 
-To increase the chance of placing high-priority labels on the map, you can provide an array of `text-anchor` locations: the renderer will attempt to place the label at each location, in order, before moving onto the next label. Use `text-justify: auto` to choose justification based on anchor position. To apply an offset, use the `text-radial-offset` or the two-dimensional `text-offset`.
+To increase the chance of placing high-priority labels on the map, you can provide an array of [`text-anchor`](<https://maplibre.org/maplibre-style-spec/layers/#text-anchor>) locations: the renderer will attempt to place the label at each location, in order, before moving onto the next label. Use `text-justify: auto` to choose justification based on anchor position. To apply an offset, use the [`text-radial-offset`](<https://maplibre.org/maplibre-style-spec/layers/#text-radial-offset>) or the two-dimensional [`text-offset`](<https://maplibre.org/maplibre-style-spec/layers/#text-offset>).
 
 ```json
 "text-variable-anchor": ["center", "left", "right"]
@@ -1311,17 +1311,17 @@ To increase the chance of placing high-priority labels on the map, you can provi
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.54.0 | 7.4.0 | 4.10.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### text-variable-anchor-offset
 
 *[Layout](<#layout>) property. Optional. Requires [`text-field`](<#text-field>). Requires `symbol-placement` to be `point`. Supports [interpolate](<https://maplibre.org/maplibre-style-spec/expressions/#interpolate>) expressions.*
 
-To increase the chance of placing high-priority labels on the map, you can provide an array of `text-anchor` locations, each paired with an offset value. The renderer will attempt to place the label at each location, in order, before moving on to the next location+offset. Use `text-justify: auto` to choose justification based on anchor position.
+To increase the chance of placing high-priority labels on the map, you can provide an array of [`text-anchor`](<https://maplibre.org/maplibre-style-spec/layers/#text-anchor>) locations, each paired with an offset value. The renderer will attempt to place the label at each location, in order, before moving on to the next location+offset. Use `text-justify: auto` to choose justification based on anchor position.
 
 The length of the array must be even, and must alternate between enum and point entries. i.e., each anchor location must be accompanied by a point, and that point defines the offset when the corresponding anchor location is used. Positive offset values indicate right and down, while negative values indicate left and up. Anchor locations may repeat, allowing the renderer to try multiple offsets to try and place a label using the same anchor.
 
-When present, this property takes precedence over `text-anchor`, `text-variable-anchor`, `text-offset`, and `text-radial-offset`.
+When present, this property takes precedence over `text-anchor`, [`text-variable-anchor`](<https://maplibre.org/maplibre-style-spec/layers/#text-variable-anchor>), [`text-offset`](<https://maplibre.org/maplibre-style-spec/layers/#text-offset>), and [`text-radial-offset`](<https://maplibre.org/maplibre-style-spec/layers/#text-radial-offset>).
 
 ```json
 { "text-variable-anchor-offset": ["top", [0, 4], "left", [3,0], "bottom", [1, 1]] } 
@@ -1339,7 +1339,7 @@ When the renderer chooses the `left` anchor, `[3, 0]` will be used for `text-off
 | --- | --- | --- | --- |
 | basic functionality | 3.3.0 | 11.6.0 | 6.8.0 |
 | data-driven styling | 3.3.0 | ❌ ([\#2358](<https://github.com/maplibre/maplibre-native/issues/2358>)) | ❌ ([\#2358](<https://github.com/maplibre/maplibre-native/issues/2358>)) |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### text-anchor
 
@@ -1361,7 +1361,7 @@ Part of the text placed closest to the anchor.
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 0.39.0 | 5.2.0 | 3.7.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### text-max-angle
 
@@ -1372,7 +1372,7 @@ Maximum angle change between adjacent characters.
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### text-writing-mode
 
@@ -1383,7 +1383,7 @@ The property allows control over a symbol's orientation. Note that the property 
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 1.3.0 | 8.3.0 | 5.3.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### text-rotate
 
@@ -1395,7 +1395,7 @@ Rotates the text clockwise.
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 0.35.0 | 5.1.0 | 3.6.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### text-padding
 
@@ -1406,7 +1406,7 @@ Size of the additional area around the text bounding box used for detecting symb
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### text-keep-upright
 
@@ -1417,7 +1417,7 @@ If true, the text may be flipped vertically to prevent it from being rendered up
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### text-transform
 
@@ -1433,7 +1433,7 @@ Specifies how to capitalize text, similar to the CSS `text-transform` property.
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 0.33.0 | 5.0.0 | 3.5.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### text-offset
 
@@ -1445,7 +1445,7 @@ Offset distance of text from its anchor. Positive values indicate right and down
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 0.35.0 | 5.1.0 | 3.6.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### text-allow-overlap
 
@@ -1456,13 +1456,13 @@ If true, the text will be visible even if it collides with other previously draw
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### text-overlap
 
 *[Layout](<#layout>) property. Optional [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `never`, `always`, `cooperative`. Requires [`text-field`](<#text-field>).*
 
-Allows for control over whether to show symbol text when it overlaps other symbols on the map. If `text-overlap` is not set, `text-allow-overlap` is used instead
+Allows for control over whether to show symbol text when it overlaps other symbols on the map. If `text-overlap` is not set, [`text-allow-overlap`](<https://maplibre.org/maplibre-style-spec/layers/#text-allow-overlap>) is used instead
 
 - `never`: The text will be hidden if it collides with any other previously drawn symbol.
 - `always`: The text will be visible even if it collides with any other previously drawn symbol.
@@ -1471,7 +1471,7 @@ Allows for control over whether to show symbol text when it overlaps other symbo
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 2.1.0 | ❌ ([\#251](<https://github.com/maplibre/maplibre-native/issues/251>)) | ❌ ([\#251](<https://github.com/maplibre/maplibre-native/issues/251>)) |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#251](<https://github.com/maplibre/maplibre-native/issues/251>)) | ❌ ([\#251](<https://github.com/maplibre/maplibre-native/issues/251>)) |
 
 ### text-ignore-placement
 
@@ -1482,7 +1482,7 @@ If true, other symbols can be visible even if they collide with the text.
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### text-optional
 
@@ -1493,13 +1493,13 @@ If true, icons will display without their corresponding text when the text colli
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.7.0 | 13.7.1 | 7.0.0 |
 
 ### symbol-height-offset
 
 *[Layout](<#layout>) property. Optional [number](<https://maplibre.org/maplibre-style-spec/types/#number>). Units in meters. Defaults to `0`. Requires `symbol-placement` to be `point`. Supports [interpolate](<https://maplibre.org/maplibre-style-spec/expressions/#interpolate>) expressions.*
 
-The height above the anchor, in meters, at which the symbol is placed. Use `symbol-height-anchor` to control what this height is measured from.
+The height above the anchor, in meters, at which the symbol is placed. Use [`symbol-height-anchor`](<https://maplibre.org/maplibre-style-spec/layers/#symbol-height-anchor>) to control what this height is measured from.
 
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
@@ -1510,10 +1510,10 @@ The height above the anchor, in meters, at which the symbol is placed. Use `symb
 
 *[Layout](<#layout>) property. Optional [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `ground`, `absolute`. Defaults to `"ground"`. Requires [`symbol-height-offset`](<#symbol-height-offset>).*
 
-Defines what `symbol-height-offset` is measured from.
+Defines what [`symbol-height-offset`](<https://maplibre.org/maplibre-style-spec/layers/#symbol-height-offset>) is measured from.
 
-- `ground`: `symbol-height-offset` is measured from the ground below the symbol, i.e. the terrain elevation at the symbol's location, or zero when terrain is not enabled.
-- `absolute`: `symbol-height-offset` is measured from sea level, ignoring the terrain elevation at the symbol's location.
+- `ground`: [`symbol-height-offset`](<https://maplibre.org/maplibre-style-spec/layers/#symbol-height-offset>) is measured from the ground below the symbol, i.e. the terrain elevation at the symbol's location, or zero when terrain is not enabled.
+- `absolute`: [`symbol-height-offset`](<https://maplibre.org/maplibre-style-spec/layers/#symbol-height-offset>) is measured from sea level, ignoring the terrain elevation at the symbol's location.
 
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
@@ -1531,7 +1531,7 @@ Whether this layer is displayed.
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.16.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.16.0 | 13.7.1 | 7.0.0 |
 
 ### icon-opacity
 
@@ -1543,7 +1543,7 @@ The opacity at which the icon will be drawn.
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 0.33.0 | 5.0.0 | 3.5.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### icon-color
 
@@ -1555,7 +1555,7 @@ The color of the icon. This can only be used with SDF icons.
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 0.33.0 | 5.0.0 | 3.5.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### icon-halo-color
 
@@ -1567,7 +1567,7 @@ The color of the icon's halo. Icon halos can only be used with SDF icons.
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 0.33.0 | 5.0.0 | 3.5.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### icon-halo-width
 
@@ -1581,7 +1581,7 @@ The unit is in pixels only for SDF sprites that were created with a blur radius 
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 0.33.0 | 5.0.0 | 3.5.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### icon-halo-blur
 
@@ -1593,7 +1593,7 @@ Fade out the halo towards the outside.
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 0.33.0 | 5.0.0 | 3.5.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### icon-translate
 
@@ -1604,13 +1604,13 @@ Distance that the icon's anchor is moved from its original placement. Positive v
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### icon-translate-anchor
 
 *[Paint](<#paint>) property. Optional [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `map`, `viewport`. Defaults to `"map"`. Requires [`icon-image`](<#icon-image>). Requires [`icon-translate`](<#icon-translate>).*
 
-Controls the frame of reference for `icon-translate`.
+Controls the frame of reference for [`icon-translate`](<https://maplibre.org/maplibre-style-spec/layers/#icon-translate>).
 
 - `map`: Icons are translated relative to the map.
 - `viewport`: Icons are translated relative to the viewport.
@@ -1618,7 +1618,7 @@ Controls the frame of reference for `icon-translate`.
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### text-opacity
 
@@ -1630,7 +1630,7 @@ The opacity at which the text will be drawn.
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 0.33.0 | 5.0.0 | 3.5.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### text-color
 
@@ -1642,7 +1642,7 @@ The color with which the text will be drawn.
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 0.33.0 | 5.0.0 | 3.5.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### text-halo-color
 
@@ -1654,7 +1654,7 @@ The color of the text's halo, which helps it stand out from backgrounds.
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 0.33.0 | 5.0.0 | 3.5.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### text-halo-width
 
@@ -1666,7 +1666,7 @@ Distance of halo to the font outline. Max text halo width is 1/4 of the font-siz
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 0.33.0 | 5.0.0 | 3.5.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### text-halo-blur
 
@@ -1678,7 +1678,7 @@ The halo's fadeout distance towards the outside.
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
 | data-driven styling | 0.33.0 | 5.0.0 | 3.5.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### text-translate
 
@@ -1689,13 +1689,13 @@ Distance that the text's anchor is moved from its original placement. Positive v
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### text-translate-anchor
 
 *[Paint](<#paint>) property. Optional [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `map`, `viewport`. Defaults to `"map"`. Requires [`text-field`](<#text-field>). Requires [`text-translate`](<#text-translate>).*
 
-Controls the frame of reference for `text-translate`.
+Controls the frame of reference for [`text-translate`](<https://maplibre.org/maplibre-style-spec/layers/#text-translate>).
 
 - `map`: The text is translated relative to the map.
 - `viewport`: The text is translated relative to the viewport.
@@ -1703,7 +1703,7 @@ Controls the frame of reference for `text-translate`.
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ## Raster
 
@@ -1719,7 +1719,7 @@ Whether this layer is displayed.
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.16.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.16.0 | 13.7.1 | 7.0.0 |
 
 ### raster-opacity
 
@@ -1730,7 +1730,7 @@ The opacity at which the image will be drawn.
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### raster-hue-rotate
 
@@ -1741,7 +1741,7 @@ Rotates hues around the color wheel.
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### raster-brightness-min
 
@@ -1752,7 +1752,7 @@ Increase or reduce the brightness of the image. The value is the minimum brightn
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### raster-brightness-max
 
@@ -1763,7 +1763,7 @@ Increase or reduce the brightness of the image. The value is the maximum brightn
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### raster-saturation
 
@@ -1774,7 +1774,7 @@ Increase or reduce the saturation of the image.
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### raster-contrast
 
@@ -1785,7 +1785,7 @@ Increase or reduce the contrast of the image.
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### resampling
 
@@ -1799,7 +1799,7 @@ The resampling/interpolation method to use for overscaling, also known as textur
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 5.20.0 | ❌ ([\#4117](<https://github.com/maplibre/maplibre-native/issues/4117>)) | ❌ ([\#4117](<https://github.com/maplibre/maplibre-native/issues/4117>)) |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#4117](<https://github.com/maplibre/maplibre-native/issues/4117>)) | ❌ ([\#4117](<https://github.com/maplibre/maplibre-native/issues/4117>)) |
 
 ### raster-resampling
 
@@ -1813,7 +1813,7 @@ The resampling/interpolation method to use for overscaling, also known as textur
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.47.0 | 6.3.0 | 4.2.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### raster-fade-duration
 
@@ -1824,7 +1824,7 @@ Fade duration when a new tile is added, or when a video is started or its coordi
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.10.0 | 2.0.1 | 2.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ## Hillshade
 
@@ -1840,31 +1840,31 @@ Whether this layer is displayed.
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.43.0 | 6.0.0 | 4.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.16.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.16.0 | 13.7.1 | 7.0.0 |
 
 ### hillshade-illumination-direction
 
 *[Paint](<#paint>) property. Optional [numberArray](<https://maplibre.org/maplibre-style-spec/types/#numberarray>) with value(s) in range `[0, 359]`. Defaults to `335`. Supports [interpolate](<https://maplibre.org/maplibre-style-spec/expressions/#interpolate>) expressions.*
 
-The direction of the light source(s) used to generate the hillshading with 0 as the top of the viewport if `hillshade-illumination-anchor` is set to `viewport` and due north if `hillshade-illumination-anchor` is set to `map`. Only when `hillshade-method` is set to `multidirectional` can you specify multiple light sources.
+The direction of the light source(s) used to generate the hillshading with 0 as the top of the viewport if [`hillshade-illumination-anchor`](<https://maplibre.org/maplibre-style-spec/layers/#hillshade-illumination-anchor>) is set to `viewport` and due north if `hillshade-illumination-anchor` is set to `map`. Only when [`hillshade-method`](<https://maplibre.org/maplibre-style-spec/layers/#hillshade-method>) is set to `multidirectional` can you specify multiple light sources.
 
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.43.0 | 6.0.0 | 4.0.0 |
 | multidirectional | 5.5.0 | 13.0.0 | 6.24.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### hillshade-illumination-altitude
 
 *[Paint](<#paint>) property. Optional [numberArray](<https://maplibre.org/maplibre-style-spec/types/#numberarray>) with value(s) in range `[0, 90]`. Defaults to `45`. Supports [interpolate](<https://maplibre.org/maplibre-style-spec/expressions/#interpolate>) expressions.*
 
-The altitude of the light source(s) used to generate the hillshading with 0 as sunset and 90 as noon. Only when `hillshade-method` is set to `multidirectional` can you specify multiple light sources.
+The altitude of the light source(s) used to generate the hillshading with 0 as sunset and 90 as noon. Only when [`hillshade-method`](<https://maplibre.org/maplibre-style-spec/layers/#hillshade-method>) is set to `multidirectional` can you specify multiple light sources.
 
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 5.5.0 | 13.0.0 | 6.24.0 |
 | multidirectional | 5.5.0 | 13.0.0 | 6.24.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### hillshade-illumination-anchor
 
@@ -1878,7 +1878,7 @@ Direction of light source when map is rotated.
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.43.0 | 6.0.0 | 4.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### hillshade-exaggeration
 
@@ -1889,31 +1889,31 @@ Intensity of the hillshade
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.43.0 | 6.0.0 | 4.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### hillshade-shadow-color
 
 *[Paint](<#paint>) property. Optional [colorArray](<https://maplibre.org/maplibre-style-spec/types/#colorarray>). Defaults to `"#000000"`. Supports [interpolate](<https://maplibre.org/maplibre-style-spec/expressions/#interpolate>) expressions. [Transitionable](<https://maplibre.org/maplibre-style-spec/transition/index.md>).*
 
-The shading color of areas that face away from the light source(s). Only when `hillshade-method` is set to `multidirectional` can you specify multiple light sources.
+The shading color of areas that face away from the light source(s). Only when [`hillshade-method`](<https://maplibre.org/maplibre-style-spec/layers/#hillshade-method>) is set to `multidirectional` can you specify multiple light sources.
 
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.43.0 | 6.0.0 | 4.0.0 |
 | multidirectional | 5.5.0 | 13.0.0 | 6.24.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### hillshade-highlight-color
 
 *[Paint](<#paint>) property. Optional [colorArray](<https://maplibre.org/maplibre-style-spec/types/#colorarray>). Defaults to `"#FFFFFF"`. Supports [interpolate](<https://maplibre.org/maplibre-style-spec/expressions/#interpolate>) expressions. [Transitionable](<https://maplibre.org/maplibre-style-spec/transition/index.md>).*
 
-The shading color of areas that faces towards the light source(s). Only when `hillshade-method` is set to `multidirectional` can you specify multiple light sources.
+The shading color of areas that faces towards the light source(s). Only when [`hillshade-method`](<https://maplibre.org/maplibre-style-spec/layers/#hillshade-method>) is set to `multidirectional` can you specify multiple light sources.
 
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.43.0 | 6.0.0 | 4.0.0 |
 | multidirectional | 5.5.0 | 13.0.0 | 6.24.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### hillshade-accent-color
 
@@ -1924,7 +1924,7 @@ The shading color used to accentuate rugged terrain like sharp cliffs and gorges
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.43.0 | 6.0.0 | 4.0.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### hillshade-method
 
@@ -1941,7 +1941,7 @@ The hillshade algorithm to use, one of `standard`, `basic`, `combined`, `igor`, 
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 5.5.0 | 13.0.0 | 6.24.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### resampling
 
@@ -1955,7 +1955,7 @@ The resampling/interpolation method to use for overscaling, also known as textur
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 5.20.0 | ❌ ([\#4117](<https://github.com/maplibre/maplibre-native/issues/4117>)) | ❌ ([\#4117](<https://github.com/maplibre/maplibre-native/issues/4117>)) |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#4117](<https://github.com/maplibre/maplibre-native/issues/4117>)) | ❌ ([\#4117](<https://github.com/maplibre/maplibre-native/issues/4117>)) |
 
 ## Color-relief
 
@@ -1971,7 +1971,7 @@ Whether this layer is displayed.
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 5.6.0 | 13.0.0 | 6.24.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.16.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.16.0 | 13.7.1 | 7.0.0 |
 
 ### color-relief-opacity
 
@@ -1982,13 +1982,13 @@ The opacity at which the color-relief will be drawn.
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 5.6.0 | 13.0.0 | 6.24.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### color-relief-color
 
 *[Paint](<#paint>) property. Optional [color](<https://maplibre.org/maplibre-style-spec/types/#color>). Supports [interpolate](<https://maplibre.org/maplibre-style-spec/expressions/#interpolate>) expressions.*
 
-Defines the color of each pixel based on its elevation. Should be an expression that uses `["elevation"]` as input.
+Defines the color of each pixel based on its elevation. Should be an expression that uses the [`elevation`](<https://maplibre.org/maplibre-style-spec/expressions/#elevation>) expression as input.
 
 ```json
 "color-relief-color": [
@@ -2006,7 +2006,7 @@ Defines the color of each pixel based on its elevation. Should be an expression 
 | --- | --- | --- | --- |
 | basic functionality | 5.6.0 | 13.0.0 | 6.24.0 |
 | data-driven styling | Not supported yet | Not supported yet | Not supported yet |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### resampling
 
@@ -2020,4 +2020,4 @@ The resampling/interpolation method to use for overscaling, also known as textur
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 5.20.0 | ❌ ([\#4117](<https://github.com/maplibre/maplibre-native/issues/4117>)) | ❌ ([\#4117](<https://github.com/maplibre/maplibre-native/issues/4117>)) |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#4117](<https://github.com/maplibre/maplibre-native/issues/4117>)) | ❌ ([\#4117](<https://github.com/maplibre/maplibre-native/issues/4117>)) |

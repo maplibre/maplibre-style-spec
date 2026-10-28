@@ -2,7 +2,7 @@
 
 A URL template for loading signed-distance-field glyph sets in PBF format.
 
-If this property is set, any text in the `text-field` layout property is displayed in the font stack named by the `text-font` layout property based on glyphs located at the URL specified by this property. Otherwise, font faces will be determined by the `text-font` property based on the local environment.
+If this property is set, any text in the [`text-field`](<https://maplibre.org/maplibre-style-spec/layers/#text-field>) layout property is displayed in the font stack named by the [`text-font`](<https://maplibre.org/maplibre-style-spec/layers/#text-font>) layout property based on glyphs located at the URL specified by this property. Otherwise, font faces will be determined by the `text-font` property based on the local environment.
 
 The URL must include:
 

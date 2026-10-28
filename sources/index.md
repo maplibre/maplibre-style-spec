@@ -516,7 +516,7 @@ For more advanced use cases, in place of `operator`, you can use a custom reduce
 
 *Optional [boolean](<https://maplibre.org/maplibre-style-spec/types/#boolean>). Defaults to `false`.*
 
-Whether to calculate line distance metrics. This is required for line layers that specify `line-gradient` values.
+Whether to calculate line distance metrics. This is required for line layers that specify [`line-gradient`](<https://maplibre.org/maplibre-style-spec/layers/#line-gradient>) values.
 
 ### generateId
 

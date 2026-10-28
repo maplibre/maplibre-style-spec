@@ -33,7 +33,7 @@ The base color for the sky.
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 4.5.0 | ❌ ([\#4414](<https://github.com/maplibre/maplibre-native/issues/4414>)) | ❌ ([\#4414](<https://github.com/maplibre/maplibre-native/issues/4414>)) |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 6.1.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 6.1.0 | ❌ ([\#4414](<https://github.com/maplibre/maplibre-native/issues/4414>)) | ❌ ([\#4414](<https://github.com/maplibre/maplibre-native/issues/4414>)) |
 
 ## horizon-color
 
@@ -44,7 +44,7 @@ The base color at the horizon.
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 4.5.0 | ❌ ([\#4414](<https://github.com/maplibre/maplibre-native/issues/4414>)) | ❌ ([\#4414](<https://github.com/maplibre/maplibre-native/issues/4414>)) |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 6.1.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 6.1.0 | ❌ ([\#4414](<https://github.com/maplibre/maplibre-native/issues/4414>)) | ❌ ([\#4414](<https://github.com/maplibre/maplibre-native/issues/4414>)) |
 
 ## fog-color
 
@@ -55,7 +55,7 @@ The base color for the fog. Requires 3D terrain.
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 4.5.0 | ❌ ([\#4414](<https://github.com/maplibre/maplibre-native/issues/4414>)) | ❌ ([\#4414](<https://github.com/maplibre/maplibre-native/issues/4414>)) |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 6.1.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 6.1.0 | ❌ ([\#4414](<https://github.com/maplibre/maplibre-native/issues/4414>)) | ❌ ([\#4414](<https://github.com/maplibre/maplibre-native/issues/4414>)) |
 
 ## fog-ground-blend
 
@@ -66,7 +66,7 @@ How to blend the fog over the 3D terrain. Where 0 is the map center and 1 is the
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 4.5.0 | ❌ ([\#4414](<https://github.com/maplibre/maplibre-native/issues/4414>)) | ❌ ([\#4414](<https://github.com/maplibre/maplibre-native/issues/4414>)) |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 6.1.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 6.1.0 | ❌ ([\#4414](<https://github.com/maplibre/maplibre-native/issues/4414>)) | ❌ ([\#4414](<https://github.com/maplibre/maplibre-native/issues/4414>)) |
 
 ## horizon-fog-blend
 
@@ -77,7 +77,7 @@ How to blend the fog color and the horizon color. Where 0 is using the horizon c
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 4.5.0 | ❌ ([\#4414](<https://github.com/maplibre/maplibre-native/issues/4414>)) | ❌ ([\#4414](<https://github.com/maplibre/maplibre-native/issues/4414>)) |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 6.1.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 6.1.0 | ❌ ([\#4414](<https://github.com/maplibre/maplibre-native/issues/4414>)) | ❌ ([\#4414](<https://github.com/maplibre/maplibre-native/issues/4414>)) |
 
 ## sky-horizon-blend
 
@@ -88,7 +88,7 @@ How to blend the sky color and the horizon color. Where 1 is blending the color 
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 4.5.0 | ❌ ([\#4414](<https://github.com/maplibre/maplibre-native/issues/4414>)) | ❌ ([\#4414](<https://github.com/maplibre/maplibre-native/issues/4414>)) |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 6.1.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 6.1.0 | ❌ ([\#4414](<https://github.com/maplibre/maplibre-native/issues/4414>)) | ❌ ([\#4414](<https://github.com/maplibre/maplibre-native/issues/4414>)) |
 
 ## atmosphere-blend
 
@@ -99,4 +99,4 @@ How to blend the atmosphere. Where 1 is visible atmosphere and 0 is hidden. It i
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 4.5.0 | ❌ ([\#4414](<https://github.com/maplibre/maplibre-native/issues/4414>)) | ❌ ([\#4414](<https://github.com/maplibre/maplibre-native/issues/4414>)) |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 6.1.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 6.1.0 | ❌ ([\#4414](<https://github.com/maplibre/maplibre-native/issues/4414>)) | ❌ ([\#4414](<https://github.com/maplibre/maplibre-native/issues/4414>)) |

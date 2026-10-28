@@ -3354,7 +3354,7 @@
 </tbody>
 </table>
 <h3 id="var">var<a class="headerlink" href="#var" title="Permanent link">&para;</a></h3>
-<p>References variable bound using <code>let</code>.</p>
+<p>References variable bound using <a href="../expressions/#let"><code>let</code></a>.</p>
 <ul>
 <li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/visualize-population-density/">Visualize population density</a></li>
 </ul>
@@ -3362,7 +3362,7 @@
 <div class="language-js highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="p">[</span><span class="s2">"var"</span><span class="p">,</span><span class="w"> </span><span class="nx">var_name</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">any</span>
 </span></code></pre></div></p>
 <ul>
-<li><code>var_name</code>: <code>string literal</code>- The name of the variable bound using <code>let</code>.</li>
+<li><code>var_name</code>: <code>string literal</code>- The name of the variable bound using <a href="../expressions/#let"><code>let</code></a>.</li>
 </ul>
 <p>Example:
 <div class="language-json highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nt">"some-property"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"var"</span><span class="p">,</span><span class="w"> </span><span class="s2">"density"</span><span class="p">]</span>
@@ -3634,7 +3634,7 @@
 </tbody>
 </table>
 <h3 id="collator">collator<a class="headerlink" href="#collator" title="Permanent link">&para;</a></h3>
-<p>Returns a <code>collator</code> for use in locale-dependent comparison operations. Use <code>resolved-locale</code> to test the results of locale fallback behavior.</p>
+<p>Returns a <code>collator</code> for use in locale-dependent comparison operations. Use <a href="../expressions/#resolved-locale"><code>resolved-locale</code></a> to test the results of locale fallback behavior.</p>
 <p>Syntax:
 <div class="language-js highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="p">[</span><span class="s2">"collator"</span><span class="p">,</span><span class="w"> </span><span class="nx">options</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">collator</span>
 </span></code></pre></div></p>
@@ -3678,10 +3678,10 @@ Parameters:</p>
 </tbody>
 </table>
 <h3 id="format">format<a class="headerlink" href="#format" title="Permanent link">&para;</a></h3>
-<p>Returns a <code>formatted</code> string for displaying mixed-format text in the <code>text-field</code> property. The input may contain a string literal or expression, including an <a href="#image"><code>'image'</code></a> expression. Strings may be followed by a style override object.</p>
+<p>Returns a <code>formatted</code> string for displaying mixed-format text in the <a href="../layers/#text-field"><code>text-field</code></a> property. The input may contain a string literal or expression, including an <a href="#image"><code>'image'</code></a> expression. Strings may be followed by a style override object.</p>
 <ul>
 <li>
-<p><a href="https://maplibre.org/maplibre-gl-js/docs/examples/change-case-of-labels/">Change the case of labels</a></p>
+<p><a href="https://maplibre.org/maplibre-gl-js/docs/examples/change-the-case-of-labels/">Change the case of labels</a></p>
 </li>
 <li>
 <p><a href="https://maplibre.org/maplibre-gl-js/docs/examples/display-and-style-rich-text-labels/">Display and style rich text labels</a></p>
@@ -3698,7 +3698,7 @@ Parameters:</p>
 <ul>
 <li><code>text-font</code>: <code>string</code> - Overrides the font stack specified by the root layout property.</li>
 <li><code>text-color</code>: <code>color</code> - Overrides the color specified by the root paint property.</li>
-<li><code>font-scale</code>: <code>number</code> - Applies a scaling factor on <code>text-size</code> as specified by the root layout property.</li>
+<li><code>font-scale</code>: <code>number</code> - Applies a scaling factor on <a href="../layers/#text-size"><code>text-size</code></a> as specified by the root layout property.</li>
 <li><code>vertical-align</code>: <code>"bottom" | "center" | "top"</code> - Aligns a vertical text section or image in relation to the row it belongs to. Refer to <a href="https://github.com/maplibre/maplibre-style-spec/issues/832">the design proposal</a> for more details.<br />
     Possible values are:<ul>
 <li><code>"bottom"</code> <em>default</em> - align the bottom of this section with the bottom of other sections.
@@ -3772,7 +3772,7 @@ Parameters:</p>
 </tbody>
 </table>
 <h3 id="image">image<a class="headerlink" href="#image" title="Permanent link">&para;</a></h3>
-<p>Returns an <code>image</code> type for use in <code>icon-image</code>, <code>*-pattern</code> entries and as a section in the <code>format</code> expression. If set, the <code>image</code> argument will check that the requested image exists in the style and will return either the resolved image name or <code>null</code>, depending on whether or not the image is currently in the style. This validation process is synchronous and requires the image to have been added to the style before requesting it in the <code>image</code> argument.</p>
+<p>Returns an <code>image</code> type for use in <a href="../layers/#icon-image"><code>icon-image</code></a>, <code>*-pattern</code> entries and as a section in the <a href="../expressions/#format"><code>format</code></a> expression. If set, the <code>image</code> argument will check that the requested image exists in the style and will return either the resolved image name or <code>null</code>, depending on whether or not the image is currently in the style. This validation process is synchronous and requires the image to have been added to the style before requesting it in the <code>image</code> argument.</p>
 <ul>
 <li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/use-a-fallback-image/">Use a fallback image</a></li>
 </ul>
@@ -4113,7 +4113,7 @@ Parameters:</p>
 </tbody>
 </table>
 <h3 id="global-state">global-state<a class="headerlink" href="#global-state" title="Permanent link">&para;</a></h3>
-<p>Retrieves a property value from global state that can be set with platform-specific APIs. Defaults can be provided using the <a href="https://maplibre.org/maplibre-style-spec/root/#state"><code>state</code></a> root property. Returns <code>null</code> if no value nor default value is set for the retrieved property.</p>
+<p>Retrieves a property value from global state that can be set with platform-specific APIs. Defaults can be provided using the <a href="../root/#state"><code>state</code></a> root property. Returns <code>null</code> if no value nor default value is set for the retrieved property.</p>
 <p>Syntax:
 <div class="language-js highlight"><pre><span></span><code><span id="__span-53-1"><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a><span class="p">[</span><span class="s2">"global-state"</span><span class="p">,</span><span class="w"> </span><span class="nx">property_name</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">any</span>
 </span></code></pre></div></p>
@@ -4136,8 +4136,8 @@ Parameters:</p>
 <tr>
 <td>basic functionality</td>
 <td>5.6.0</td>
-<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/3302">#3302</a>)</td>
-<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/3302">#3302</a>)</td>
+<td>13.7.1</td>
+<td>7.0.0</td>
 </tr>
 </tbody>
 </table>
@@ -4145,7 +4145,7 @@ Parameters:</p>
 <p>Retrieves a property value from the current feature's properties, or from another object if a second argument is provided. Returns null if the requested property is missing.</p>
 <ul>
 <li>
-<p><a href="https://maplibre.org/maplibre-gl-js/docs/examples/change-case-of-labels/">Change the case of labels</a></p>
+<p><a href="https://maplibre.org/maplibre-gl-js/docs/examples/change-the-case-of-labels/">Change the case of labels</a></p>
 </li>
 <li>
 <p><a href="https://maplibre.org/maplibre-gl-js/docs/examples/display-html-clusters-with-custom-properties/">Display HTML clusters with custom properties</a></p>
@@ -4375,13 +4375,13 @@ Parameters:</p>
 </tbody>
 </table>
 <h3 id="_1">==<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
-<p>Returns <code>true</code> if the input values are equal, <code>false</code> otherwise. The comparison is strictly typed: values of different runtime types are always considered unequal. Cases where the types are known to be different at parse time are considered invalid and will produce a parse error. Accepts an optional <code>collator</code> argument to control locale-dependent string comparisons.</p>
+<p>Returns <code>true</code> if the input values are equal, <code>false</code> otherwise. The comparison is strictly typed: values of different runtime types are always considered unequal. Cases where the types are known to be different at parse time are considered invalid and will produce a parse error. Accepts an optional <a href="../expressions/#collator"><code>collator</code></a> argument to control locale-dependent string comparisons.</p>
 <ul>
 <li>
-<p><a href="https://maplibre.org/maplibre-gl-js/docs/examples/multiple-geometries/">Add multiple geometries from one GeoJSON source</a></p>
+<p><a href="https://maplibre.org/maplibre-gl-js/docs/examples/add-multiple-geometries-from-one-geojson-source/">Add multiple geometries from one GeoJSON source</a></p>
 </li>
 <li>
-<p><a href="https://maplibre.org/maplibre-gl-js/docs/examples/timeline-animation/">Create a time slider</a></p>
+<p><a href="https://maplibre.org/maplibre-gl-js/docs/examples/create-a-time-slider/">Create a time slider</a></p>
 </li>
 <li>
 <p><a href="https://maplibre.org/maplibre-gl-js/docs/examples/display-buildings-in-3d/">Display buildings in 3D</a></p>
@@ -4426,7 +4426,7 @@ Parameters:</p>
 </tbody>
 </table>
 <h3 id="_2">!=<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>Returns <code>true</code> if the input values are not equal, <code>false</code> otherwise. The comparison is strictly typed: values of different runtime types are always considered unequal. Cases where the types are known to be different at parse time are considered invalid and will produce a parse error. Accepts an optional <code>collator</code> argument to control locale-dependent string comparisons.</p>
+<p>Returns <code>true</code> if the input values are not equal, <code>false</code> otherwise. The comparison is strictly typed: values of different runtime types are always considered unequal. Cases where the types are known to be different at parse time are considered invalid and will produce a parse error. Accepts an optional <a href="../expressions/#collator"><code>collator</code></a> argument to control locale-dependent string comparisons.</p>
 <ul>
 <li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/display-html-clusters-with-custom-properties/">Display HTML clusters with custom properties</a></li>
 </ul>
@@ -4466,7 +4466,7 @@ Parameters:</p>
 </tbody>
 </table>
 <h3 id="_3">&gt;<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>Returns <code>true</code> if the first input is strictly greater than the second, <code>false</code> otherwise. The arguments are required to be either both strings or both numbers; if during evaluation they are not, expression evaluation produces an error. Cases where this constraint is known not to hold at parse time are considered in valid and will produce a parse error. Accepts an optional <code>collator</code> argument to control locale-dependent string comparisons.</p>
+<p>Returns <code>true</code> if the first input is strictly greater than the second, <code>false</code> otherwise. The arguments are required to be either both strings or both numbers; if during evaluation they are not, expression evaluation produces an error. Cases where this constraint is known not to hold at parse time are considered in valid and will produce a parse error. Accepts an optional <a href="../expressions/#collator"><code>collator</code></a> argument to control locale-dependent string comparisons.</p>
 <p>Syntax:
 <div class="language-js highlight"><pre><span></span><code><span id="__span-71-1"><a id="__codelineno-71-1" name="__codelineno-71-1" href="#__codelineno-71-1"></a><span class="p">[</span><span class="s2">"&gt;"</span><span class="p">,</span><span class="w"> </span><span class="nx">string_1</span><span class="p">,</span><span class="w"> </span><span class="nx">string_2</span><span class="p">,</span><span class="w"> </span><span class="nx">collator</span><span class="o">?</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="kr">boolean</span>
 </span><span id="__span-71-2"><a id="__codelineno-71-2" name="__codelineno-71-2" href="#__codelineno-71-2"></a><span class="p">[</span><span class="s2">"&gt;"</span><span class="p">,</span><span class="w"> </span><span class="nx">number_1</span><span class="p">,</span><span class="w"> </span><span class="nx">number_2</span><span class="p">,</span><span class="w"> </span><span class="nx">collator</span><span class="o">?</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="kr">boolean</span>
@@ -4504,7 +4504,7 @@ Parameters:</p>
 </tbody>
 </table>
 <h3 id="_4">&lt;<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>Returns <code>true</code> if the first input is strictly less than the second, <code>false</code> otherwise. The arguments are required to be either both strings or both numbers; if during evaluation they are not, expression evaluation produces an error. Cases where this constraint is known not to hold at parse time are considered in valid and will produce a parse error. Accepts an optional <code>collator</code> argument to control locale-dependent string comparisons.</p>
+<p>Returns <code>true</code> if the first input is strictly less than the second, <code>false</code> otherwise. The arguments are required to be either both strings or both numbers; if during evaluation they are not, expression evaluation produces an error. Cases where this constraint is known not to hold at parse time are considered in valid and will produce a parse error. Accepts an optional <a href="../expressions/#collator"><code>collator</code></a> argument to control locale-dependent string comparisons.</p>
 <ul>
 <li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/display-html-clusters-with-custom-properties/">Display HTML clusters with custom properties</a></li>
 </ul>
@@ -4545,7 +4545,7 @@ Parameters:</p>
 </tbody>
 </table>
 <h3 id="_5">&gt;=<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>Returns <code>true</code> if the first input is greater than or equal to the second, <code>false</code> otherwise. The arguments are required to be either both strings or both numbers; if during evaluation they are not, expression evaluation produces an error. Cases where this constraint is known not to hold at parse time are considered in valid and will produce a parse error. Accepts an optional <code>collator</code> argument to control locale-dependent string comparisons.</p>
+<p>Returns <code>true</code> if the first input is greater than or equal to the second, <code>false</code> otherwise. The arguments are required to be either both strings or both numbers; if during evaluation they are not, expression evaluation produces an error. Cases where this constraint is known not to hold at parse time are considered in valid and will produce a parse error. Accepts an optional <a href="../expressions/#collator"><code>collator</code></a> argument to control locale-dependent string comparisons.</p>
 <ul>
 <li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/display-html-clusters-with-custom-properties/">Display HTML clusters with custom properties</a></li>
 </ul>
@@ -4586,7 +4586,7 @@ Parameters:</p>
 </tbody>
 </table>
 <h3 id="_6">&lt;=<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<p>Returns <code>true</code> if the first input is less than or equal to the second, <code>false</code> otherwise. The arguments are required to be either both strings or both numbers; if during evaluation they are not, expression evaluation produces an error. Cases where this constraint is known not to hold at parse time are considered in valid and will produce a parse error. Accepts an optional <code>collator</code> argument to control locale-dependent string comparisons.</p>
+<p>Returns <code>true</code> if the first input is less than or equal to the second, <code>false</code> otherwise. The arguments are required to be either both strings or both numbers; if during evaluation they are not, expression evaluation produces an error. Cases where this constraint is known not to hold at parse time are considered in valid and will produce a parse error. Accepts an optional <a href="../expressions/#collator"><code>collator</code></a> argument to control locale-dependent string comparisons.</p>
 <p>Syntax:
 <div class="language-js highlight"><pre><span></span><code><span id="__span-77-1"><a id="__codelineno-77-1" name="__codelineno-77-1" href="#__codelineno-77-1"></a><span class="p">[</span><span class="s2">"&lt;="</span><span class="p">,</span><span class="w"> </span><span class="nx">string_1</span><span class="p">,</span><span class="w"> </span><span class="nx">string_2</span><span class="p">,</span><span class="w"> </span><span class="nx">collator</span><span class="o">?</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="kr">boolean</span>
 </span><span id="__span-77-2"><a id="__codelineno-77-2" name="__codelineno-77-2" href="#__codelineno-77-2"></a><span class="p">[</span><span class="s2">"&lt;="</span><span class="p">,</span><span class="w"> </span><span class="nx">number_1</span><span class="p">,</span><span class="w"> </span><span class="nx">number_2</span><span class="p">,</span><span class="w"> </span><span class="nx">collator</span><span class="o">?</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="kr">boolean</span>
@@ -4802,13 +4802,13 @@ Parameters:</p>
 <p>Produces continuous, smooth results by interpolating between pairs of input and output values ("stops"). The <code>input</code> may be any numeric expression (e.g., <code>["get", "population"]</code>). Stop inputs must be numeric literals in strictly ascending order. The output type must be <code>number</code>, <code>array&lt;number&gt;</code>, <code>color</code>, <code>array&lt;color&gt;</code>, or <code>projection</code>.</p>
 <ul>
 <li>
-<p><a href="https://maplibre.org/maplibre-gl-js/docs/examples/animate-camera-around-point/">Animate map camera around a point</a></p>
+<p><a href="https://maplibre.org/maplibre-gl-js/docs/examples/animate-map-camera-around-a-point/">Animate map camera around a point</a></p>
 </li>
 <li>
 <p><a href="https://maplibre.org/maplibre-gl-js/docs/examples/change-building-color-based-on-zoom-level/">Change building color based on zoom level</a></p>
 </li>
 <li>
-<p><a href="https://maplibre.org/maplibre-gl-js/docs/examples/heatmap-layer/">Create a heatmap layer</a></p>
+<p><a href="https://maplibre.org/maplibre-gl-js/docs/examples/create-a-heatmap-layer/">Create a heatmap layer</a></p>
 </li>
 <li>
 <p><a href="https://maplibre.org/maplibre-gl-js/docs/examples/visualize-population-density/">Visualize population density</a></p>
@@ -4865,7 +4865,7 @@ Parameters:</p>
 </tbody>
 </table>
 <h3 id="interpolate-hcl">interpolate-hcl<a class="headerlink" href="#interpolate-hcl" title="Permanent link">&para;</a></h3>
-<p>Produces continuous, smooth results by interpolating between pairs of input and output values ("stops"). Works like <code>interpolate</code>, but the output type must be <code>color</code> or <code>array&lt;color&gt;</code>, and the interpolation is performed in the Hue-Chroma-Luminance color space.</p>
+<p>Produces continuous, smooth results by interpolating between pairs of input and output values ("stops"). Works like <a href="../expressions/#interpolate"><code>interpolate</code></a>, but the output type must be <code>color</code> or <code>array&lt;color&gt;</code>, and the interpolation is performed in the Hue-Chroma-Luminance color space.</p>
 <p>Syntax:
 <div class="language-js highlight"><pre><span></span><code><span id="__span-91-1"><a id="__codelineno-91-1" name="__codelineno-91-1" href="#__codelineno-91-1"></a><span class="p">[</span><span class="s2">"interpolate-hcl"</span><span class="p">,</span><span class="w"> </span><span class="nx">interpolation_type</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">,</span><span class="w"> </span><span class="nx">stop_input_1</span><span class="p">,</span><span class="w"> </span><span class="nx">stop_output_1</span><span class="p">,</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="nx">stop_input_n</span><span class="p">,</span><span class="w"> </span><span class="nx">stop_output_n</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">color</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">array</span><span class="o">&lt;</span><span class="nx">color</span><span class="o">&gt;</span>
 </span></code></pre></div></p>
@@ -4917,7 +4917,7 @@ Parameters:</p>
 </tbody>
 </table>
 <h3 id="interpolate-lab">interpolate-lab<a class="headerlink" href="#interpolate-lab" title="Permanent link">&para;</a></h3>
-<p>Produces continuous, smooth results by interpolating between pairs of input and output values ("stops"). Works like <code>interpolate</code>, but the output type must be <code>color</code> or <code>array&lt;color&gt;</code>, and the interpolation is performed in the CIELAB color space.</p>
+<p>Produces continuous, smooth results by interpolating between pairs of input and output values ("stops"). Works like <a href="../expressions/#interpolate"><code>interpolate</code></a>, but the output type must be <code>color</code> or <code>array&lt;color&gt;</code>, and the interpolation is performed in the CIELAB color space.</p>
 <p>Syntax:
 <div class="language-js highlight"><pre><span></span><code><span id="__span-93-1"><a id="__codelineno-93-1" name="__codelineno-93-1" href="#__codelineno-93-1"></a><span class="p">[</span><span class="s2">"interpolate-lab"</span><span class="p">,</span><span class="w"> </span><span class="nx">interpolation_type</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">,</span><span class="w"> </span><span class="nx">stop_input_1</span><span class="p">,</span><span class="w"> </span><span class="nx">stop_output_1</span><span class="p">,</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="nx">stop_input_n</span><span class="p">,</span><span class="w"> </span><span class="nx">stop_output_n</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">color</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">array</span><span class="o">&lt;</span><span class="nx">color</span><span class="o">&gt;</span>
 </span></code></pre></div></p>
@@ -5928,7 +5928,7 @@ Parameters:</p>
 </tbody>
 </table>
 <h3 id="line-progress">line-progress<a class="headerlink" href="#line-progress" title="Permanent link">&para;</a></h3>
-<p>Gets the progress along a gradient line. Can only be used in the <code>line-gradient</code> property.</p>
+<p>Gets the progress along a gradient line. Can only be used in the <a href="../layers/#line-gradient"><code>line-gradient</code></a> property.</p>
 <p>Syntax:
 <div class="language-js highlight"><pre><span></span><code><span id="__span-161-1"><a id="__codelineno-161-1" name="__codelineno-161-1" href="#__codelineno-161-1"></a><span class="p">[</span><span class="s2">"line-progress"</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
 </span></code></pre></div></p>
@@ -6016,7 +6016,7 @@ Parameters:</p>
 </table>
 <h2 id="heatmap">Heatmap<a class="headerlink" href="#heatmap" title="Permanent link">&para;</a></h2>
 <h3 id="heatmap-density">heatmap-density<a class="headerlink" href="#heatmap-density" title="Permanent link">&para;</a></h3>
-<p>Gets the kernel density estimation of a pixel in a heatmap layer, which is a relative measure of how many data points are crowded around a particular pixel. Can only be used in the <code>heatmap-color</code> property.</p>
+<p>Gets the kernel density estimation of a pixel in a heatmap layer, which is a relative measure of how many data points are crowded around a particular pixel. Can only be used in the <a href="../layers/#heatmap-color"><code>heatmap-color</code></a> property.</p>
 <p>Syntax:
 <div class="language-js highlight"><pre><span></span><code><span id="__span-167-1"><a id="__codelineno-167-1" name="__codelineno-167-1" href="#__codelineno-167-1"></a><span class="p">[</span><span class="s2">"heatmap-density"</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
 </span></code></pre></div></p>
@@ -6067,7 +6067,7 @@ Parameters:</p>
 <td>6.24.0</td>
 </tr>
 <tr>
-<td><code>fill-extrusion-color</code></td>
+<td><a href="../layers/#fill-extrusion-color"><code>fill-extrusion-color</code></a></td>
 <td>❌ (<a href="https://github.com/maplibre/maplibre-gl-js/issues/8799">#8799</a>)</td>
 <td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/4787">#4787</a>)</td>
 <td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/4787">#4787</a>)</td>
@@ -6107,7 +6107,7 @@ Parameters:</p>
 <h3 id="upcase">upcase<a class="headerlink" href="#upcase" title="Permanent link">&para;</a></h3>
 <p>Returns the input string converted to uppercase. Follows the Unicode Default Case Conversion algorithm and the locale-insensitive case mappings in the Unicode Character Database.</p>
 <ul>
-<li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/change-case-of-labels/">Change the case of labels</a></li>
+<li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/change-the-case-of-labels/">Change the case of labels</a></li>
 </ul>
 <p>Syntax:
 <div class="language-js highlight"><pre><span></span><code><span id="__span-173-1"><a id="__codelineno-173-1" name="__codelineno-173-1" href="#__codelineno-173-1"></a><span class="p">[</span><span class="s2">"upcase"</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span>
@@ -6139,7 +6139,7 @@ Parameters:</p>
 <h3 id="downcase">downcase<a class="headerlink" href="#downcase" title="Permanent link">&para;</a></h3>
 <p>Returns the input string converted to lowercase. Follows the Unicode Default Case Conversion algorithm and the locale-insensitive case mappings in the Unicode Character Database.</p>
 <ul>
-<li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/change-case-of-labels/">Change the case of labels</a></li>
+<li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/change-the-case-of-labels/">Change the case of labels</a></li>
 </ul>
 <p>Syntax:
 <div class="language-js highlight"><pre><span></span><code><span id="__span-175-1"><a id="__codelineno-175-1" name="__codelineno-175-1" href="#__codelineno-175-1"></a><span class="p">[</span><span class="s2">"downcase"</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span>
@@ -6169,7 +6169,7 @@ Parameters:</p>
 </tbody>
 </table>
 <h3 id="concat">concat<a class="headerlink" href="#concat" title="Permanent link">&para;</a></h3>
-<p>Returns a <code>string</code> consisting of the concatenation of the inputs. Each input is converted to a string as if by <code>to-string</code>.</p>
+<p>Returns a <code>string</code> consisting of the concatenation of the inputs. Each input is converted to a string as if by <a href="../expressions/#to-string"><code>to-string</code></a>.</p>
 <ul>
 <li>
 <p><a href="https://maplibre.org/maplibre-gl-js/docs/examples/add-a-generated-icon-to-the-map/">Add a generated icon to the map</a></p>
@@ -6178,7 +6178,7 @@ Parameters:</p>
 <p><a href="https://maplibre.org/maplibre-gl-js/docs/examples/create-a-time-slider/">Create a time slider</a></p>
 </li>
 <li>
-<p><a href="https://maplibre.org/maplibre-gl-js/docs/examples/fallback-image/">Use a fallback image</a></p>
+<p><a href="https://maplibre.org/maplibre-gl-js/docs/examples/use-a-fallback-image/">Use a fallback image</a></p>
 </li>
 <li>
 <p><a href="https://maplibre.org/maplibre-gl-js/docs/examples/variable-label-placement/">Variable label placement</a></p>
@@ -6212,7 +6212,7 @@ Parameters:</p>
 </tbody>
 </table>
 <h3 id="resolved-locale">resolved-locale<a class="headerlink" href="#resolved-locale" title="Permanent link">&para;</a></h3>
-<p>Returns the IETF language tag of the locale being used by the provided <code>collator</code>. This can be used to determine the default system locale, or to determine if a requested locale was successfully loaded.</p>
+<p>Returns the IETF language tag of the locale being used by the provided <a href="../expressions/#collator"><code>collator</code></a>. This can be used to determine the default system locale, or to determine if a requested locale was successfully loaded.</p>
 <p>Syntax:
 <div class="language-js highlight"><pre><span></span><code><span id="__span-179-1"><a id="__codelineno-179-1" name="__codelineno-179-1" href="#__codelineno-179-1"></a><span class="p">[</span><span class="s2">"resolved-locale"</span><span class="p">,</span><span class="w"> </span><span class="nx">collator</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span>
 </span></code></pre></div></p>

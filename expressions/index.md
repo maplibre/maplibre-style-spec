@@ -175,7 +175,7 @@ Example:
 
 ### var
 
-References variable bound using `let`.
+References variable bound using [`let`](<https://maplibre.org/maplibre-style-spec/expressions/#let>).
 
 - [Visualize population density](<https://maplibre.org/maplibre-gl-js/docs/examples/visualize-population-density/>)
 
@@ -185,7 +185,7 @@ Syntax:
 ["var", var_name]: any
 ```
 
-- `var_name`: `string literal`- The name of the variable bound using `let`.
+- `var_name`: `string literal`- The name of the variable bound using [`let`](<https://maplibre.org/maplibre-style-spec/expressions/#let>).
 
 Example:
 
@@ -390,7 +390,7 @@ Example:
 
 ### collator
 
-Returns a `collator` for use in locale-dependent comparison operations. Use `resolved-locale` to test the results of locale fallback behavior.
+Returns a `collator` for use in locale-dependent comparison operations. Use [`resolved-locale`](<https://maplibre.org/maplibre-style-spec/expressions/#resolved-locale>) to test the results of locale fallback behavior.
 
 Syntax:
 
@@ -424,9 +424,9 @@ Example:
 
 ### format
 
-Returns a `formatted` string for displaying mixed-format text in the `text-field` property. The input may contain a string literal or expression, including an [`'image'`](<#image>) expression. Strings may be followed by a style override object.
+Returns a `formatted` string for displaying mixed-format text in the [`text-field`](<https://maplibre.org/maplibre-style-spec/layers/#text-field>) property. The input may contain a string literal or expression, including an [`'image'`](<#image>) expression. Strings may be followed by a style override object.
 
-- [Change the case of labels](<https://maplibre.org/maplibre-gl-js/docs/examples/change-case-of-labels/>)
+- [Change the case of labels](<https://maplibre.org/maplibre-gl-js/docs/examples/change-the-case-of-labels/>)
 - [Display and style rich text labels](<https://maplibre.org/maplibre-gl-js/docs/examples/display-and-style-rich-text-labels/>)
 
 Syntax:
@@ -441,7 +441,7 @@ Syntax:
 
   - `text-font`: `string` - Overrides the font stack specified by the root layout property.
   - `text-color`: `color` - Overrides the color specified by the root paint property.
-  - `font-scale`: `number` - Applies a scaling factor on `text-size` as specified by the root layout property.
+  - `font-scale`: `number` - Applies a scaling factor on [`text-size`](<https://maplibre.org/maplibre-style-spec/layers/#text-size>) as specified by the root layout property.
   - `vertical-align`: `"bottom" | "center" | "top"` - Aligns a vertical text section or image in relation to the row it belongs to. Refer to [the design proposal](<https://github.com/maplibre/maplibre-style-spec/issues/832>) for more details.  
     Possible values are:
 
@@ -474,7 +474,7 @@ Example:
 
 ### image
 
-Returns an `image` type for use in `icon-image`, `*-pattern` entries and as a section in the `format` expression. If set, the `image` argument will check that the requested image exists in the style and will return either the resolved image name or `null`, depending on whether or not the image is currently in the style. This validation process is synchronous and requires the image to have been added to the style before requesting it in the `image` argument.
+Returns an `image` type for use in [`icon-image`](<https://maplibre.org/maplibre-style-spec/layers/#icon-image>), `*-pattern` entries and as a section in the [`format`](<https://maplibre.org/maplibre-style-spec/expressions/#format>) expression. If set, the `image` argument will check that the requested image exists in the style and will return either the resolved image name or `null`, depending on whether or not the image is currently in the style. This validation process is synchronous and requires the image to have been added to the style before requesting it in the `image` argument.
 
 - [Use a fallback image](<https://maplibre.org/maplibre-gl-js/docs/examples/use-a-fallback-image/>)
 
@@ -751,13 +751,13 @@ Example:
 
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
-| basic functionality | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| basic functionality | 5.6.0 | 13.7.1 | 7.0.0 |
 
 ### get
 
 Retrieves a property value from the current feature's properties, or from another object if a second argument is provided. Returns null if the requested property is missing.
 
-- [Change the case of labels](<https://maplibre.org/maplibre-gl-js/docs/examples/change-case-of-labels/>)
+- [Change the case of labels](<https://maplibre.org/maplibre-gl-js/docs/examples/change-the-case-of-labels/>)
 - [Display HTML clusters with custom properties](<https://maplibre.org/maplibre-gl-js/docs/examples/display-html-clusters-with-custom-properties/>)
 - [Extrude polygons for 3D indoor mapping](<https://maplibre.org/maplibre-gl-js/docs/examples/extrude-polygons-for-3d-indoor-mapping/>)
 
@@ -929,10 +929,10 @@ Example:
 
 ### \==
 
-Returns `true` if the input values are equal, `false` otherwise. The comparison is strictly typed: values of different runtime types are always considered unequal. Cases where the types are known to be different at parse time are considered invalid and will produce a parse error. Accepts an optional `collator` argument to control locale-dependent string comparisons.
+Returns `true` if the input values are equal, `false` otherwise. The comparison is strictly typed: values of different runtime types are always considered unequal. Cases where the types are known to be different at parse time are considered invalid and will produce a parse error. Accepts an optional [`collator`](<https://maplibre.org/maplibre-style-spec/expressions/#collator>) argument to control locale-dependent string comparisons.
 
-- [Add multiple geometries from one GeoJSON source](<https://maplibre.org/maplibre-gl-js/docs/examples/multiple-geometries/>)
-- [Create a time slider](<https://maplibre.org/maplibre-gl-js/docs/examples/timeline-animation/>)
+- [Add multiple geometries from one GeoJSON source](<https://maplibre.org/maplibre-gl-js/docs/examples/add-multiple-geometries-from-one-geojson-source/>)
+- [Create a time slider](<https://maplibre.org/maplibre-gl-js/docs/examples/create-a-time-slider/>)
 - [Display buildings in 3D](<https://maplibre.org/maplibre-gl-js/docs/examples/display-buildings-in-3d/>)
 - [Filter symbols by toggling a list](<https://maplibre.org/maplibre-gl-js/docs/examples/filter-symbols-by-toggling-a-list/>)
 
@@ -959,7 +959,7 @@ Example:
 
 ### !=
 
-Returns `true` if the input values are not equal, `false` otherwise. The comparison is strictly typed: values of different runtime types are always considered unequal. Cases where the types are known to be different at parse time are considered invalid and will produce a parse error. Accepts an optional `collator` argument to control locale-dependent string comparisons.
+Returns `true` if the input values are not equal, `false` otherwise. The comparison is strictly typed: values of different runtime types are always considered unequal. Cases where the types are known to be different at parse time are considered invalid and will produce a parse error. Accepts an optional [`collator`](<https://maplibre.org/maplibre-style-spec/expressions/#collator>) argument to control locale-dependent string comparisons.
 
 - [Display HTML clusters with custom properties](<https://maplibre.org/maplibre-gl-js/docs/examples/display-html-clusters-with-custom-properties/>)
 
@@ -986,7 +986,7 @@ Example:
 
 ### \>
 
-Returns `true` if the first input is strictly greater than the second, `false` otherwise. The arguments are required to be either both strings or both numbers; if during evaluation they are not, expression evaluation produces an error. Cases where this constraint is known not to hold at parse time are considered in valid and will produce a parse error. Accepts an optional `collator` argument to control locale-dependent string comparisons.
+Returns `true` if the first input is strictly greater than the second, `false` otherwise. The arguments are required to be either both strings or both numbers; if during evaluation they are not, expression evaluation produces an error. Cases where this constraint is known not to hold at parse time are considered in valid and will produce a parse error. Accepts an optional [`collator`](<https://maplibre.org/maplibre-style-spec/expressions/#collator>) argument to control locale-dependent string comparisons.
 
 Syntax:
 
@@ -1012,7 +1012,7 @@ Example:
 
 ### \<
 
-Returns `true` if the first input is strictly less than the second, `false` otherwise. The arguments are required to be either both strings or both numbers; if during evaluation they are not, expression evaluation produces an error. Cases where this constraint is known not to hold at parse time are considered in valid and will produce a parse error. Accepts an optional `collator` argument to control locale-dependent string comparisons.
+Returns `true` if the first input is strictly less than the second, `false` otherwise. The arguments are required to be either both strings or both numbers; if during evaluation they are not, expression evaluation produces an error. Cases where this constraint is known not to hold at parse time are considered in valid and will produce a parse error. Accepts an optional [`collator`](<https://maplibre.org/maplibre-style-spec/expressions/#collator>) argument to control locale-dependent string comparisons.
 
 - [Display HTML clusters with custom properties](<https://maplibre.org/maplibre-gl-js/docs/examples/display-html-clusters-with-custom-properties/>)
 
@@ -1040,7 +1040,7 @@ Example:
 
 ### \>=
 
-Returns `true` if the first input is greater than or equal to the second, `false` otherwise. The arguments are required to be either both strings or both numbers; if during evaluation they are not, expression evaluation produces an error. Cases where this constraint is known not to hold at parse time are considered in valid and will produce a parse error. Accepts an optional `collator` argument to control locale-dependent string comparisons.
+Returns `true` if the first input is greater than or equal to the second, `false` otherwise. The arguments are required to be either both strings or both numbers; if during evaluation they are not, expression evaluation produces an error. Cases where this constraint is known not to hold at parse time are considered in valid and will produce a parse error. Accepts an optional [`collator`](<https://maplibre.org/maplibre-style-spec/expressions/#collator>) argument to control locale-dependent string comparisons.
 
 - [Display HTML clusters with custom properties](<https://maplibre.org/maplibre-gl-js/docs/examples/display-html-clusters-with-custom-properties/>)
 
@@ -1068,7 +1068,7 @@ Example:
 
 ### \<=
 
-Returns `true` if the first input is less than or equal to the second, `false` otherwise. The arguments are required to be either both strings or both numbers; if during evaluation they are not, expression evaluation produces an error. Cases where this constraint is known not to hold at parse time are considered in valid and will produce a parse error. Accepts an optional `collator` argument to control locale-dependent string comparisons.
+Returns `true` if the first input is less than or equal to the second, `false` otherwise. The arguments are required to be either both strings or both numbers; if during evaluation they are not, expression evaluation produces an error. Cases where this constraint is known not to hold at parse time are considered in valid and will produce a parse error. Accepts an optional [`collator`](<https://maplibre.org/maplibre-style-spec/expressions/#collator>) argument to control locale-dependent string comparisons.
 
 Syntax:
 
@@ -1230,9 +1230,9 @@ Example:
 
 Produces continuous, smooth results by interpolating between pairs of input and output values ("stops"). The `input` may be any numeric expression (e.g., `["get", "population"]`). Stop inputs must be numeric literals in strictly ascending order. The output type must be `number`, `array<number>`, `color`, `array<color>`, or `projection`.
 
-- [Animate map camera around a point](<https://maplibre.org/maplibre-gl-js/docs/examples/animate-camera-around-point/>)
+- [Animate map camera around a point](<https://maplibre.org/maplibre-gl-js/docs/examples/animate-map-camera-around-a-point/>)
 - [Change building color based on zoom level](<https://maplibre.org/maplibre-gl-js/docs/examples/change-building-color-based-on-zoom-level/>)
-- [Create a heatmap layer](<https://maplibre.org/maplibre-gl-js/docs/examples/heatmap-layer/>)
+- [Create a heatmap layer](<https://maplibre.org/maplibre-gl-js/docs/examples/create-a-heatmap-layer/>)
 - [Visualize population density](<https://maplibre.org/maplibre-gl-js/docs/examples/visualize-population-density/>)
 
 Syntax:
@@ -1278,7 +1278,7 @@ Example:
 
 ### interpolate-hcl
 
-Produces continuous, smooth results by interpolating between pairs of input and output values ("stops"). Works like `interpolate`, but the output type must be `color` or `array<color>`, and the interpolation is performed in the Hue-Chroma-Luminance color space.
+Produces continuous, smooth results by interpolating between pairs of input and output values ("stops"). Works like [`interpolate`](<https://maplibre.org/maplibre-style-spec/expressions/#interpolate>), but the output type must be `color` or `array<color>`, and the interpolation is performed in the Hue-Chroma-Luminance color space.
 
 Syntax:
 
@@ -1323,7 +1323,7 @@ Example:
 
 ### interpolate-lab
 
-Produces continuous, smooth results by interpolating between pairs of input and output values ("stops"). Works like `interpolate`, but the output type must be `color` or `array<color>`, and the interpolation is performed in the CIELAB color space.
+Produces continuous, smooth results by interpolating between pairs of input and output values ("stops"). Works like [`interpolate`](<https://maplibre.org/maplibre-style-spec/expressions/#interpolate>), but the output type must be `color` or `array<color>`, and the interpolation is performed in the CIELAB color space.
 
 Syntax:
 
@@ -2103,7 +2103,7 @@ Example:
 
 ### line-progress
 
-Gets the progress along a gradient line. Can only be used in the `line-gradient` property.
+Gets the progress along a gradient line. Can only be used in the [`line-gradient`](<https://maplibre.org/maplibre-style-spec/layers/#line-gradient>) property.
 
 Syntax:
 
@@ -2175,7 +2175,7 @@ Example:
 
 ### heatmap-density
 
-Gets the kernel density estimation of a pixel in a heatmap layer, which is a relative measure of how many data points are crowded around a particular pixel. Can only be used in the `heatmap-color` property.
+Gets the kernel density estimation of a pixel in a heatmap layer, which is a relative measure of how many data points are crowded around a particular pixel. Can only be used in the [`heatmap-color`](<https://maplibre.org/maplibre-style-spec/layers/#heatmap-color>) property.
 
 Syntax:
 
@@ -2214,7 +2214,7 @@ Example:
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 5.6.0 | 13.0.0 | 6.24.0 |
-| `fill-extrusion-color` | ❌ ([\#8799](<https://github.com/maplibre/maplibre-gl-js/issues/8799>)) | ❌ ([\#4787](<https://github.com/maplibre/maplibre-native/issues/4787>)) | ❌ ([\#4787](<https://github.com/maplibre/maplibre-native/issues/4787>)) |
+| [`fill-extrusion-color`](<https://maplibre.org/maplibre-style-spec/layers/#fill-extrusion-color>) | ❌ ([\#8799](<https://github.com/maplibre/maplibre-gl-js/issues/8799>)) | ❌ ([\#4787](<https://github.com/maplibre/maplibre-native/issues/4787>)) | ❌ ([\#4787](<https://github.com/maplibre/maplibre-native/issues/4787>)) |
 
 ## String
 
@@ -2244,7 +2244,7 @@ Example:
 
 Returns the input string converted to uppercase. Follows the Unicode Default Case Conversion algorithm and the locale-insensitive case mappings in the Unicode Character Database.
 
-- [Change the case of labels](<https://maplibre.org/maplibre-gl-js/docs/examples/change-case-of-labels/>)
+- [Change the case of labels](<https://maplibre.org/maplibre-gl-js/docs/examples/change-the-case-of-labels/>)
 
 Syntax:
 
@@ -2268,7 +2268,7 @@ Example:
 
 Returns the input string converted to lowercase. Follows the Unicode Default Case Conversion algorithm and the locale-insensitive case mappings in the Unicode Character Database.
 
-- [Change the case of labels](<https://maplibre.org/maplibre-gl-js/docs/examples/change-case-of-labels/>)
+- [Change the case of labels](<https://maplibre.org/maplibre-gl-js/docs/examples/change-the-case-of-labels/>)
 
 Syntax:
 
@@ -2290,11 +2290,11 @@ Example:
 
 ### concat
 
-Returns a `string` consisting of the concatenation of the inputs. Each input is converted to a string as if by `to-string`.
+Returns a `string` consisting of the concatenation of the inputs. Each input is converted to a string as if by [`to-string`](<https://maplibre.org/maplibre-style-spec/expressions/#to-string>).
 
 - [Add a generated icon to the map](<https://maplibre.org/maplibre-gl-js/docs/examples/add-a-generated-icon-to-the-map/>)
 - [Create a time slider](<https://maplibre.org/maplibre-gl-js/docs/examples/create-a-time-slider/>)
-- [Use a fallback image](<https://maplibre.org/maplibre-gl-js/docs/examples/fallback-image/>)
+- [Use a fallback image](<https://maplibre.org/maplibre-gl-js/docs/examples/use-a-fallback-image/>)
 - [Variable label placement](<https://maplibre.org/maplibre-gl-js/docs/examples/variable-label-placement/>)
 
 Syntax:
@@ -2317,7 +2317,7 @@ Example:
 
 ### resolved-locale
 
-Returns the IETF language tag of the locale being used by the provided `collator`. This can be used to determine the default system locale, or to determine if a requested locale was successfully loaded.
+Returns the IETF language tag of the locale being used by the provided [`collator`](<https://maplibre.org/maplibre-style-spec/expressions/#collator>). This can be used to determine the default system locale, or to determine if a requested locale was successfully loaded.
 
 Syntax:
 

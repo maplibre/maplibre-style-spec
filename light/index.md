@@ -22,7 +22,7 @@ Whether extruded geometries are lit relative to the map or viewport.
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.27.0 | 5.1.0 | 3.6.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 6.1.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 6.1.0 | 13.7.1 | 7.0.0 |
 
 ## position
 
@@ -37,7 +37,7 @@ Position of the light source relative to lit (extruded) geometries, in `[r radia
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.27.0 | 5.1.0 | 3.6.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 6.1.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 6.1.0 | 13.7.1 | 7.0.0 |
 
 ## color
 
@@ -48,7 +48,7 @@ Color tint for lighting extruded geometries.
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.27.0 | 5.1.0 | 3.6.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 6.1.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 6.1.0 | 13.7.1 | 7.0.0 |
 
 ## intensity
 
@@ -59,4 +59,4 @@ Intensity of lighting (on a scale from 0 to 1). Higher numbers will present as m
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.27.0 | 5.1.0 | 3.6.0 |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 6.1.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 6.1.0 | 13.7.1 | 7.0.0 |

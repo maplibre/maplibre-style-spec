@@ -13,4 +13,4 @@ An object used to define default values when using the [`global-state`](<https:/
 
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
-| basic functionality | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| basic functionality | 5.6.0 | 13.7.1 | 7.0.0 |
