@@ -6579,7 +6579,7 @@
       "default": 1,
       "minimum": 0,
       "maximum": 1,
-      "doc": "Opacity applied to the layer as a whole. Unlike `fill-opacity` and alpha values in `fill-color`, which are applied per feature and accumulate where fills overlap, `fill-layer-opacity` is applied once so overlapping fills appear as a single surface at the given opacity. When both `fill-opacity` and `fill-layer-opacity` are set, the per-feature, overlap accumulation is preserved, then `fill-layer-opacity` composites the result. This property affects only the layer it is set on and cannot be used to composite multiple layers together or control how this layer blends with layers above or below it.\n\n![fill-opacity vs. fill-layer-opacity](assets/fill-layer-opacity.svg)",
+      "doc": "Opacity applied to the layer as a whole. Unlike `fill-opacity` and alpha values in `fill-color`, which are applied per feature and accumulate where fills overlap, `fill-layer-opacity` is applied once so overlapping fills appear as a single surface at the given opacity. When both `fill-opacity` and `fill-layer-opacity` are set, the per-feature, overlap accumulation is preserved, then `fill-layer-opacity` composites the result. This property affects only the layer it is set on and cannot be used to composite multiple layers together. Use `fill-layer-blend` to control how this layer blends with the layers below it.\n\n![fill-opacity vs. fill-layer-opacity](assets/fill-layer-opacity.svg)",
       "transition": true,
       "sdk-support": {
         "basic functionality": {
@@ -6617,11 +6617,11 @@
         "luminosity": {
           "doc": "Luminosity blending. Creates a color with the luminosity of the layer and the hue and saturation of the content underneath. The inverse of `color`."
         },
-        "lighten": {
-          "doc": "Additive blending. The layer color is added to the colors underneath, producing brighter results. Useful for glow and heat accumulation effects."
+        "plus-lighter": {
+          "doc": "Additive blending. The layer color is added to the colors underneath, producing brighter results. Useful for glow effects."
         },
         "screen": {
-          "doc": "Screen blending. The inverse of the colors is multiplied, producing lighten results. Useful for glow, heatmap, and light-based effects."
+          "doc": "Screen blending. The inverse of the colors is multiplied, producing lighter results. Useful for glow, heatmap, and light-based effects."
         },
         "overlay": {
           "doc": "Overlay blending. Multiplies or screens colors depending on the colors underneath, preserving highlights and shadows while adding contrast."
@@ -7124,7 +7124,7 @@
       "default": 1,
       "minimum": 0,
       "maximum": 1,
-      "doc": "Opacity applied to the layer as a whole. Unlike `line-opacity` and alpha values in `line-color`, which are applied per feature and accumulate where lines overlap, `line-layer-opacity` is applied once so overlapping lines appear as a single surface at the given opacity. When both `line-opacity` and `line-layer-opacity` are set, the per-feature, overlap accumulation is preserved, then layer-opacity composites the result. This property affects only the layer it is set on and cannot be used to composite multiple layers together or control how this layer blends with layers above or below it.\n\n![line-opacity vs. line-layer-opacity](assets/line-layer-opacity.svg)",
+      "doc": "Opacity applied to the layer as a whole. Unlike `line-opacity` and alpha values in `line-color`, which are applied per feature and accumulate where lines overlap, `line-layer-opacity` is applied once so overlapping lines appear as a single surface at the given opacity. When both `line-opacity` and `line-layer-opacity` are set, the per-feature, overlap accumulation is preserved, then layer-opacity composites the result. This property affects only the layer it is set on and cannot be used to composite multiple layers together. Use `line-layer-blend` to control how this layer blends with the layers below it.\n\n![line-opacity vs. line-layer-opacity](assets/line-layer-opacity.svg)",
       "transition": true,
       "sdk-support": {
         "basic functionality": {
@@ -7162,17 +7162,14 @@
         "luminosity": {
           "doc": "Luminosity blending. Creates a color with the luminosity of the layer and the hue and saturation of the content underneath. The inverse of `color`."
         },
-        "lighten": {
-          "doc": "Additive blending. The layer color is added to the colors underneath, producing brighter results. Useful for glow and heat accumulation effects."
+        "plus-lighter": {
+          "doc": "Additive blending. The layer color is added to the colors underneath, producing brighter results. Useful for glow effects."
         },
         "screen": {
-          "doc": "Screen blending. The inverse of the colors is multiplied, producing lighten results. Useful for glow, heatmap, and light-based effects."
+          "doc": "Screen blending. The inverse of the colors is multiplied, producing lighter results. Useful for glow, heatmap, and light-based effects."
         },
         "overlay": {
           "doc": "Overlay blending. Multiplies or screens colors depending on the colors underneath, preserving highlights and shadows while adding contrast."
-        },
-        "erase": {
-          "doc": "Erase blending. The layer removes all content underneath based on its alpha value."
         }
       },
       "default": "normal",

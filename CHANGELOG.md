@@ -1,6 +1,7 @@
 ## main
 ### ✨ Features and improvements
 - Allow the `elevation` expression in `fill-extrusion-color` to color extrusions by height above the ground ([#1851](https://github.com/maplibre/maplibre-style-spec/pull/1851))
+- Add `fill-layer-blend` and `line-layer-blend` to blend a layer with the layers below it, with `multiply`, `screen`, `overlay`, `color`, `luminosity` and `plus-lighter` ([#1798](https://github.com/maplibre/maplibre-style-spec/pull/1798))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes

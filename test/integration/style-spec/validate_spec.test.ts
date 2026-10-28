@@ -101,3 +101,11 @@ describe('Validate sdk-support in spec', () => {
 
     checkRoot(latest, []);
 });
+
+describe('Validate layer-blend in spec', () => {
+    test('every layer type has the same blend modes', () => {
+        expect(latest.paint_line['line-layer-blend'].values).toEqual(
+            latest.paint_fill['fill-layer-blend'].values
+        );
+    });
+});
