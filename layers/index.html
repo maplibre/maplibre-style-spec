@@ -4962,17 +4962,17 @@
 </tbody>
 </table>
 <h3 id="fill-layer-blend">fill-layer-blend<a class="headerlink" href="#fill-layer-blend" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>normal</code>, <code>multiply</code>, <code>color</code>, <code>luminosity</code>, <code>lighten</code>, <code>screen</code>, <code>overlay</code>. Defaults to <code>"normal"</code>.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>normal</code>, <code>multiply</code>, <code>color</code>, <code>luminosity</code>, <code>plus-lighter</code>, <code>screen</code>, <code>overlay</code>. Defaults to <code>"normal"</code>.</em></p>
 <p>Controls how the layer is composited with the content already rendered beneath it. Unlike per-feature opacity properties such as <code>fill-opacity</code>, this property affects the final composited layer output and determines how it interacts with the existing map contents.</p>
 <p><img alt="fill-layer-blend examples" src="../assets/fill-layer-blend.svg" /></p>
 <ul>
-<li><code>normal</code>: Normal blending. The layer is drawn on top of existing content using standard alpha compositing.</li>
-<li><code>multiply</code>: Multiply blending. The layer color is multiplied with the colors underneath, producing darker results. Useful for textures, hillshades, and combining raster and vector content.</li>
-<li><code>color</code>: Color blending. Creates a color with the hue and saturation of the layer and the luminosity of the content underneath, preserving its gray levels. Useful for tinting monochrome content such as a hillshade.</li>
-<li><code>luminosity</code>: Luminosity blending. Creates a color with the luminosity of the layer and the hue and saturation of the content underneath. The inverse of <code>color</code>.</li>
-<li><code>lighten</code>: Additive blending. The layer color is added to the colors underneath, producing brighter results. Useful for glow and heat accumulation effects.</li>
-<li><code>screen</code>: Screen blending. The inverse of the colors is multiplied, producing lighten results. Useful for glow, heatmap, and light-based effects.</li>
-<li><code>overlay</code>: Overlay blending. Multiplies or screens colors depending on the colors underneath, preserving highlights and shadows while adding contrast.</li>
+<li><code>normal</code>: <a href="https://www.w3.org/TR/compositing-1/#blendingnormal">Normal</a> blending. The layer is drawn on top of existing content using standard alpha compositing.</li>
+<li><code>multiply</code>: <a href="https://www.w3.org/TR/compositing-1/#blendingmultiply">Multiply</a> blending. The layer color is multiplied with the colors underneath, producing darker results. Useful for textures, hillshades, and combining raster and vector content.</li>
+<li><code>color</code>: <a href="https://www.w3.org/TR/compositing-1/#blendingcolor">Color</a> blending. Creates a color with the hue and saturation of the layer and the luminosity of the content underneath, preserving its gray levels. Useful for tinting monochrome content such as a hillshade.</li>
+<li><code>luminosity</code>: <a href="https://www.w3.org/TR/compositing-1/#blendingluminosity">Luminosity</a> blending. Creates a color with the luminosity of the layer and the hue and saturation of the content underneath. The inverse of <code>color</code>.</li>
+<li><code>plus-lighter</code>: <a href="https://www.w3.org/TR/compositing-1/#porterduffcompositingoperators_plus">Plus-lighter</a> blending. Additive blending. The layer color is added to the colors underneath, producing brighter results. Useful for glow and heat accumulation effects.</li>
+<li><code>screen</code>: <a href="https://www.w3.org/TR/compositing-1/#blendingscreen">Screen</a> blending. The inverse of the colors is multiplied, producing lighter results. Useful for glow, heatmap, and light-based effects.</li>
+<li><code>overlay</code>: <a href="https://www.w3.org/TR/compositing-1/#blendingoverlay">Overlay</a> blending. Multiplies or screens colors depending on the colors underneath, preserving highlights and shadows while adding contrast.</li>
 </ul>
 <table>
 <thead>
@@ -6340,18 +6340,17 @@
 </tbody>
 </table>
 <h3 id="line-layer-blend">line-layer-blend<a class="headerlink" href="#line-layer-blend" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>normal</code>, <code>multiply</code>, <code>color</code>, <code>luminosity</code>, <code>lighten</code>, <code>screen</code>, <code>overlay</code>, <code>erase</code>. Defaults to <code>"normal"</code>.</em></p>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>normal</code>, <code>multiply</code>, <code>color</code>, <code>luminosity</code>, <code>plus-lighter</code>, <code>screen</code>, <code>overlay</code>. Defaults to <code>"normal"</code>.</em></p>
 <p>Controls how the layer is composited with the content already rendered beneath it. Unlike per-feature opacity properties such as <a href="#line-opacity"><code>line-opacity</code></a>, this property affects the final composited layer output and determines how it interacts with the existing map contents.</p>
 <p><img alt="line-layer-blend examples" src="../assets/line-layer-blend.svg" /></p>
 <ul>
-<li><code>normal</code>: Normal blending. The layer is drawn on top of existing content using standard alpha compositing.</li>
-<li><code>multiply</code>: Multiply blending. The layer color is multiplied with the colors underneath, producing darker results. Useful for textures, hillshades, and combining raster and vector content.</li>
-<li><code>color</code>: Color blending. Creates a color with the hue and saturation of the layer and the luminosity of the content underneath, preserving its gray levels. Useful for tinting monochrome content such as a hillshade.</li>
-<li><code>luminosity</code>: Luminosity blending. Creates a color with the luminosity of the layer and the hue and saturation of the content underneath. The inverse of <code>color</code>.</li>
-<li><code>lighten</code>: Additive blending. The layer color is added to the colors underneath, producing brighter results. Useful for glow and heat accumulation effects.</li>
-<li><code>screen</code>: Screen blending. The inverse of the colors is multiplied, producing lighten results. Useful for glow, heatmap, and light-based effects.</li>
-<li><code>overlay</code>: Overlay blending. Multiplies or screens colors depending on the colors underneath, preserving highlights and shadows while adding contrast.</li>
-<li><code>erase</code>: Erase blending. The layer removes all content underneath based on its alpha value.</li>
+<li><code>normal</code>: <a href="https://www.w3.org/TR/compositing-1/#blendingnormal">Normal</a> blending. The layer is drawn on top of existing content using standard alpha compositing.</li>
+<li><code>multiply</code>: <a href="https://www.w3.org/TR/compositing-1/#blendingmultiply">Multiply</a> blending. The layer color is multiplied with the colors underneath, producing darker results. Useful for textures, hillshades, and combining raster and vector content.</li>
+<li><code>color</code>: <a href="https://www.w3.org/TR/compositing-1/#blendingcolor">Color</a> blending. Creates a color with the hue and saturation of the layer and the luminosity of the content underneath, preserving its gray levels. Useful for tinting monochrome content such as a hillshade.</li>
+<li><code>luminosity</code>: <a href="https://www.w3.org/TR/compositing-1/#blendingluminosity">Luminosity</a> blending. Creates a color with the luminosity of the layer and the hue and saturation of the content underneath. The inverse of <code>color</code>.</li>
+<li><code>plus-lighter</code>: <a href="https://www.w3.org/TR/compositing-1/#porterduffcompositingoperators_plus">Plus-lighter</a> blending. Additive blending. The layer color is added to the colors underneath, producing brighter results. Useful for glow and heat accumulation effects.</li>
+<li><code>screen</code>: <a href="https://www.w3.org/TR/compositing-1/#blendingscreen">Screen</a> blending. The inverse of the colors is multiplied, producing lighter results. Useful for glow, heatmap, and light-based effects.</li>
+<li><code>overlay</code>: <a href="https://www.w3.org/TR/compositing-1/#blendingoverlay">Overlay</a> blending. Multiplies or screens colors depending on the colors underneath, preserving highlights and shadows while adding contrast.</li>
 </ul>
 <table>
 <thead>
