@@ -1,7 +1,6 @@
 ## main
 ### ✨ Features and improvements
 - Allow the `elevation` expression in `fill-extrusion-color` to color extrusions by height above the ground ([#1851](https://github.com/maplibre/maplibre-style-spec/pull/1851))
-- Document `global-state` support in MapLibre Android 13.7.1 and MapLibre iOS 7.0.0 ([#1945](https://github.com/maplibre/maplibre-style-spec/pull/1945))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
