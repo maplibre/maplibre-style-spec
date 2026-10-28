@@ -6829,7 +6829,7 @@
           "android": "https://github.com/maplibre/maplibre-native/issues/3302",
           "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
         },
-        "[`elevation`](https://maplibre.org/maplibre-style-spec/expressions/#elevation) expression": {
+        "`elevation` expression": {
           "js": "https://github.com/maplibre/maplibre-gl-js/issues/8799",
           "android": "https://github.com/maplibre/maplibre-native/issues/4787",
           "ios": "https://github.com/maplibre/maplibre-native/issues/4787"
