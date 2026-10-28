@@ -6806,7 +6806,7 @@
     "fill-extrusion-color": {
       "type": "color",
       "default": "#000000",
-      "doc": "The base color of the extruded fill.",
+      "doc": "The base color of the extruded fill. The extrusion's surfaces will be shaded differently based on this color in combination with the root `light` settings. If this color is specified as `rgba` with an alpha component, the alpha component will be ignored; use `fill-extrusion-opacity` to set layer opacity.",
       "transition": true,
       "requires": [
         {
