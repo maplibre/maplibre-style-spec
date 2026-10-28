@@ -3925,7 +3925,7 @@
         }
       },
       "interpolate": {
-        "doc": "Produces continuous, smooth results by interpolating between pairs of input and output values (\"stops\"). The `input` may be any numeric expression (e.g., `[\"get\", \"population\"]`). Stop inputs must be numeric literals in strictly ascending order. The output type must be `number`, `array<number>`, `color`, `array<color>`, or `projection`.\n\n - [Animate map camera around a point](https://maplibre.org/maplibre-gl-js/docs/examples/animate-camera-around-point/)\n\n - [Change building color based on zoom level](https://maplibre.org/maplibre-gl-js/docs/examples/change-building-color-based-on-zoom-level/)\n\n - [Create a heatmap layer](https://maplibre.org/maplibre-gl-js/docs/examples/heatmap-layer/)\n\n - [Visualize population density](https://maplibre.org/maplibre-gl-js/docs/examples/visualize-population-density/)",
+        "doc": "Produces continuous, smooth results by interpolating between pairs of input and output values (\"stops\"). The `input` may be any numeric expression (e.g., `[\"get\", \"population\"]`). Stop inputs must be numeric literals in strictly ascending order. The output type must be `number`, `array<number>`, `color`, `array<color>`, or `projection`.\n\n - [Animate map camera around a point](https://maplibre.org/maplibre-gl-js/docs/examples/animate-map-camera-around-a-point/)\n\n - [Change building color based on zoom level](https://maplibre.org/maplibre-gl-js/docs/examples/change-building-color-based-on-zoom-level/)\n\n - [Create a heatmap layer](https://maplibre.org/maplibre-gl-js/docs/examples/create-a-heatmap-layer/)\n\n - [Visualize population density](https://maplibre.org/maplibre-gl-js/docs/examples/visualize-population-density/)",
         "syntax": {
           "overloads": [
             {
@@ -4279,7 +4279,7 @@
         }
       },
       "format": {
-        "doc": "Returns a `formatted` string for displaying mixed-format text in the [`text-field`](layers/#text-field) property. The input may contain a string literal or expression, including an [`'image'`](#image) expression. Strings may be followed by a style override object.\n\n - [Change the case of labels](https://maplibre.org/maplibre-gl-js/docs/examples/change-case-of-labels/)\n\n - [Display and style rich text labels](https://maplibre.org/maplibre-gl-js/docs/examples/display-and-style-rich-text-labels/)",
+        "doc": "Returns a `formatted` string for displaying mixed-format text in the [`text-field`](layers/#text-field) property. The input may contain a string literal or expression, including an [`'image'`](#image) expression. Strings may be followed by a style override object.\n\n - [Change the case of labels](https://maplibre.org/maplibre-gl-js/docs/examples/change-the-case-of-labels/)\n\n - [Display and style rich text labels](https://maplibre.org/maplibre-gl-js/docs/examples/display-and-style-rich-text-labels/)",
         "syntax": {
           "overloads": [
             {
@@ -4685,7 +4685,7 @@
         }
       },
       "get": {
-        "doc": "Retrieves a property value from the current feature's properties, or from another object if a second argument is provided. Returns null if the requested property is missing.\n\n - [Change the case of labels](https://maplibre.org/maplibre-gl-js/docs/examples/change-case-of-labels/)\n\n - [Display HTML clusters with custom properties](https://maplibre.org/maplibre-gl-js/docs/examples/display-html-clusters-with-custom-properties/)\n\n - [Extrude polygons for 3D indoor mapping](https://maplibre.org/maplibre-gl-js/docs/examples/extrude-polygons-for-3d-indoor-mapping/)",
+        "doc": "Retrieves a property value from the current feature's properties, or from another object if a second argument is provided. Returns null if the requested property is missing.\n\n - [Change the case of labels](https://maplibre.org/maplibre-gl-js/docs/examples/change-the-case-of-labels/)\n\n - [Display HTML clusters with custom properties](https://maplibre.org/maplibre-gl-js/docs/examples/display-html-clusters-with-custom-properties/)\n\n - [Extrude polygons for 3D indoor mapping](https://maplibre.org/maplibre-gl-js/docs/examples/extrude-polygons-for-3d-indoor-mapping/)",
         "syntax": {
           "overloads": [
             {
@@ -5598,7 +5598,7 @@
         }
       },
       "==": {
-        "doc": "Returns `true` if the input values are equal, `false` otherwise. The comparison is strictly typed: values of different runtime types are always considered unequal. Cases where the types are known to be different at parse time are considered invalid and will produce a parse error. Accepts an optional [`collator`](expressions/#collator) argument to control locale-dependent string comparisons.\n\n - [Add multiple geometries from one GeoJSON source](https://maplibre.org/maplibre-gl-js/docs/examples/multiple-geometries/)\n\n - [Create a time slider](https://maplibre.org/maplibre-gl-js/docs/examples/timeline-animation/)\n\n - [Display buildings in 3D](https://maplibre.org/maplibre-gl-js/docs/examples/display-buildings-in-3d/)\n\n - [Filter symbols by toggling a list](https://maplibre.org/maplibre-gl-js/docs/examples/filter-symbols-by-toggling-a-list/)",
+        "doc": "Returns `true` if the input values are equal, `false` otherwise. The comparison is strictly typed: values of different runtime types are always considered unequal. Cases where the types are known to be different at parse time are considered invalid and will produce a parse error. Accepts an optional [`collator`](expressions/#collator) argument to control locale-dependent string comparisons.\n\n - [Add multiple geometries from one GeoJSON source](https://maplibre.org/maplibre-gl-js/docs/examples/add-multiple-geometries-from-one-geojson-source/)\n\n - [Create a time slider](https://maplibre.org/maplibre-gl-js/docs/examples/create-a-time-slider/)\n\n - [Display buildings in 3D](https://maplibre.org/maplibre-gl-js/docs/examples/display-buildings-in-3d/)\n\n - [Filter symbols by toggling a list](https://maplibre.org/maplibre-gl-js/docs/examples/filter-symbols-by-toggling-a-list/)",
         "syntax": {
           "overloads": [
             {
@@ -5984,7 +5984,7 @@
         }
       },
       "upcase": {
-        "doc": "Returns the input string converted to uppercase. Follows the Unicode Default Case Conversion algorithm and the locale-insensitive case mappings in the Unicode Character Database.\n\n - [Change the case of labels](https://maplibre.org/maplibre-gl-js/docs/examples/change-case-of-labels/)",
+        "doc": "Returns the input string converted to uppercase. Follows the Unicode Default Case Conversion algorithm and the locale-insensitive case mappings in the Unicode Character Database.\n\n - [Change the case of labels](https://maplibre.org/maplibre-gl-js/docs/examples/change-the-case-of-labels/)",
         "syntax": {
           "overloads": [
             {
@@ -6010,7 +6010,7 @@
         }
       },
       "downcase": {
-        "doc": "Returns the input string converted to lowercase. Follows the Unicode Default Case Conversion algorithm and the locale-insensitive case mappings in the Unicode Character Database.\n\n - [Change the case of labels](https://maplibre.org/maplibre-gl-js/docs/examples/change-case-of-labels/)",
+        "doc": "Returns the input string converted to lowercase. Follows the Unicode Default Case Conversion algorithm and the locale-insensitive case mappings in the Unicode Character Database.\n\n - [Change the case of labels](https://maplibre.org/maplibre-gl-js/docs/examples/change-the-case-of-labels/)",
         "syntax": {
           "overloads": [
             {
@@ -6036,7 +6036,7 @@
         }
       },
       "concat": {
-        "doc": "Returns a `string` consisting of the concatenation of the inputs. Each input is converted to a string as if by [`to-string`](expressions/#to-string).\n\n - [Add a generated icon to the map](https://maplibre.org/maplibre-gl-js/docs/examples/add-a-generated-icon-to-the-map/)\n\n - [Create a time slider](https://maplibre.org/maplibre-gl-js/docs/examples/create-a-time-slider/)\n\n - [Use a fallback image](https://maplibre.org/maplibre-gl-js/docs/examples/fallback-image/)\n\n - [Variable label placement](https://maplibre.org/maplibre-gl-js/docs/examples/variable-label-placement/)",
+        "doc": "Returns a `string` consisting of the concatenation of the inputs. Each input is converted to a string as if by [`to-string`](expressions/#to-string).\n\n - [Add a generated icon to the map](https://maplibre.org/maplibre-gl-js/docs/examples/add-a-generated-icon-to-the-map/)\n\n - [Create a time slider](https://maplibre.org/maplibre-gl-js/docs/examples/create-a-time-slider/)\n\n - [Use a fallback image](https://maplibre.org/maplibre-gl-js/docs/examples/use-a-fallback-image/)\n\n - [Variable label placement](https://maplibre.org/maplibre-gl-js/docs/examples/variable-label-placement/)",
         "syntax": {
           "overloads": [
             {
