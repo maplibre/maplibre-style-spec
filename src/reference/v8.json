@@ -9061,7 +9061,7 @@
     },
     "color-relief-color": {
       "type": "color",
-      "doc": "Defines the color of each pixel based on its elevation. Should be an expression that uses [`elevation`](expressions/#elevation) as input.",
+      "doc": "Defines the color of each pixel based on its elevation. Should be an expression that uses the [`elevation`](expressions/#elevation) expression as input.",
       "example": [
         "interpolate",
         ["linear"],
