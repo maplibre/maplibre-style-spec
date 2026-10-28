@@ -12,6 +12,7 @@
 
 ### 🐞 Bug fixes
 - Make `createPropertyExpression` take linear time on nested `let` and `coalesce`. Each level used to double the time: 20 levels took about 300 ms and 22 about a second ([#1933](https://github.com/maplibre/maplibre-style-spec/issues/1933)) (by [@essejmclean](https://github.com/essejmclean))
+- Fix dead links to renamed maplibre-gl-js examples in the expression docs ([#1948](https://github.com/maplibre/maplibre-style-spec/pull/1948))
 
 ## 26.4.4
 
