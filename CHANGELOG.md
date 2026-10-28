@@ -1,12 +1,18 @@
 ## main
 ### ✨ Features and improvements
-- Allow the `elevation` expression in `fill-extrusion-color` to color extrusions by height above the ground ([#1851](https://github.com/maplibre/maplibre-style-spec/pull/1851))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
+
+## 26.5.0
+### ✨ Features and improvements
+- Allow the `elevation` expression in `fill-extrusion-color` to color extrusions by height above the ground ([#1851](https://github.com/maplibre/maplibre-style-spec/pull/1851))
+- feat: intial `{fill,line}-layer-blend` support ([#1798](https://github.com/maplibre/maplibre-style-spec/pull/1798), [#1950](https://github.com/maplibre/maplibre-style-spec/pull/1950)) (by [@CommanderStorm](https://github.com/CommanderStorm))
+
+### 🐞 Bug fixes
+- Make `createPropertyExpression` take linear time on nested `let` and `coalesce`. Each level used to double the time: 20 levels took about 300 ms and 22 about a second ([#1933](https://github.com/maplibre/maplibre-style-spec/issues/1933)) (by [@essejmclean](https://github.com/essejmclean))
 - Fix dead links to renamed maplibre-gl-js examples in the expression docs ([#1948](https://github.com/maplibre/maplibre-style-spec/pull/1948))
-- Make `createPropertyExpression` take linear time on nested `let` and `coalesce`. Each level used to double the time: 20 levels took about 300 ms and 22 about a second ([#1933](https://github.com/maplibre/maplibre-style-spec/issues/1933))
 
 ## 26.4.4
 
