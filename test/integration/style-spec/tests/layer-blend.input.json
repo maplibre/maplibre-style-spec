@@ -1,0 +1,142 @@
+{
+  "version": 8,
+  "sources": {
+    "geojson": {
+      "type": "geojson",
+      "data": {
+        "type": "FeatureCollection",
+        "features": []
+      }
+    }
+  },
+  "layers": [
+    {
+      "id": "fill-normal",
+      "type": "fill",
+      "source": "geojson",
+      "paint": {
+        "fill-layer-blend": "normal"
+      }
+    },
+    {
+      "id": "fill-multiply",
+      "type": "fill",
+      "source": "geojson",
+      "paint": {
+        "fill-layer-blend": "multiply"
+      }
+    },
+    {
+      "id": "fill-color",
+      "type": "fill",
+      "source": "geojson",
+      "paint": {
+        "fill-layer-blend": "color"
+      }
+    },
+    {
+      "id": "fill-luminosity",
+      "type": "fill",
+      "source": "geojson",
+      "paint": {
+        "fill-layer-blend": "luminosity"
+      }
+    },
+    {
+      "id": "fill-lighten",
+      "type": "fill",
+      "source": "geojson",
+      "paint": {
+        "fill-layer-blend": "lighten"
+      }
+    },
+    {
+      "id": "fill-screen",
+      "type": "fill",
+      "source": "geojson",
+      "paint": {
+        "fill-layer-blend": "screen"
+      }
+    },
+    {
+      "id": "fill-overlay",
+      "type": "fill",
+      "source": "geojson",
+      "paint": {
+        "fill-layer-blend": "overlay"
+      }
+    },
+    {
+      "id": "line-normal",
+      "type": "line",
+      "source": "geojson",
+      "paint": {
+        "line-layer-blend": "normal"
+      }
+    },
+    {
+      "id": "line-multiply",
+      "type": "line",
+      "source": "geojson",
+      "paint": {
+        "line-layer-blend": "multiply"
+      }
+    },
+    {
+      "id": "line-color",
+      "type": "line",
+      "source": "geojson",
+      "paint": {
+        "line-layer-blend": "color"
+      }
+    },
+    {
+      "id": "line-luminosity",
+      "type": "line",
+      "source": "geojson",
+      "paint": {
+        "line-layer-blend": "luminosity"
+      }
+    },
+    {
+      "id": "line-lighten",
+      "type": "line",
+      "source": "geojson",
+      "paint": {
+        "line-layer-blend": "lighten"
+      }
+    },
+    {
+      "id": "line-screen",
+      "type": "line",
+      "source": "geojson",
+      "paint": {
+        "line-layer-blend": "screen"
+      }
+    },
+    {
+      "id": "line-overlay",
+      "type": "line",
+      "source": "geojson",
+      "paint": {
+        "line-layer-blend": "overlay"
+      }
+    },
+    {
+      "id": "line-erase",
+      "type": "line",
+      "source": "geojson",
+      "paint": {
+        "line-layer-blend": "erase"
+      }
+    },
+    {
+      "id": "fill-erase-unsupported",
+      "type": "fill",
+      "source": "geojson",
+      "paint": {
+        "fill-layer-blend": "erase"
+      }
+    }
+  ]
+}

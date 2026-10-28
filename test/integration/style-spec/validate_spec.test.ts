@@ -101,3 +101,24 @@ describe('Validate sdk-support in spec', () => {
 
     checkRoot(latest, []);
 });
+
+describe('Validate layer-blend values in spec', () => {
+    const blendValues = Object.entries(latest)
+        .filter(([section]) => section.startsWith('paint_') || section.startsWith('layout_'))
+        .flatMap(([, props]) => Object.entries(props as Record<string, any>))
+        .filter(([name]) => name.endsWith('-layer-blend'))
+        .map(([name, spec]) => [name, Object.keys(spec.values)] as const);
+
+    test('finds the layer-blend properties', () => {
+        expect(blendValues.map(([name]) => name)).toEqual(['fill-layer-blend', 'line-layer-blend']);
+    });
+
+    test('every layer-blend property only has values that the most complete one has too', () => {
+        const [, superset] = blendValues.reduce((a, b) => (b[1].length > a[1].length ? b : a));
+        for (const [name, values] of blendValues) {
+            expect(superset, `${name} has values missing from the other layer-blend properties`).toEqual(
+                expect.arrayContaining(values)
+            );
+        }
+    });
+});
