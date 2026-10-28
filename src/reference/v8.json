@@ -7082,6 +7082,94 @@
         ]
       },
       "property-type": "data-constant"
+    },
+    "fill-extrusion-ambient-occlusion-wall-intensity": {
+      "type": "number",
+      "default": 0,
+      "minimum": 0,
+      "maximum": 1,
+      "doc": "Intensity of the ambient occlusion darkening applied to the walls of extruded geometries, where `0` disables the effect and `1` is the strongest darkening. **Note:** this property is experimental and not yet implemented in any SDK.",
+      "transition": true,
+      "sdk-support": {
+        "basic functionality": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/6482",
+          "android": "https://github.com/maplibre/maplibre-native/issues/4856",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/4856"
+        }
+      },
+      "expression": {
+        "interpolated": true,
+        "parameters": [
+          "zoom"
+        ]
+      },
+      "property-type": "data-constant"
+    },
+    "fill-extrusion-ambient-occlusion-wall-radius": {
+      "type": "number",
+      "default": 3,
+      "minimum": 0,
+      "units": "meters",
+      "doc": "Radius of the ambient occlusion effect applied to the walls of extruded geometries, i.e. the distance over which the darkening fades out. Has no visible effect when `fill-extrusion-ambient-occlusion-wall-intensity` is `0`. **Note:** this property is experimental and not yet implemented in any SDK.",
+      "transition": true,
+      "sdk-support": {
+        "basic functionality": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/6482",
+          "android": "https://github.com/maplibre/maplibre-native/issues/4856",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/4856"
+        }
+      },
+      "expression": {
+        "interpolated": true,
+        "parameters": [
+          "zoom"
+        ]
+      },
+      "property-type": "data-constant"
+    },
+    "fill-extrusion-ambient-occlusion-ground-intensity": {
+      "type": "number",
+      "default": 0,
+      "minimum": 0,
+      "maximum": 1,
+      "doc": "Intensity of the ambient occlusion darkening applied to the ground around the base of extruded geometries, where `0` disables the effect and `1` is the strongest darkening. **Note:** this property is experimental and not yet implemented in any SDK.",
+      "transition": true,
+      "sdk-support": {
+        "basic functionality": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/6482",
+          "android": "https://github.com/maplibre/maplibre-native/issues/4856",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/4856"
+        }
+      },
+      "expression": {
+        "interpolated": true,
+        "parameters": [
+          "zoom"
+        ]
+      },
+      "property-type": "data-constant"
+    },
+    "fill-extrusion-ambient-occlusion-ground-radius": {
+      "type": "number",
+      "default": 3,
+      "minimum": 0,
+      "units": "meters",
+      "doc": "Radius of the ambient occlusion effect applied to the ground around the base of extruded geometries, i.e. the distance over which the darkening fades out. Has no visible effect when `fill-extrusion-ambient-occlusion-ground-intensity` is `0`. **Note:** this property is experimental and not yet implemented in any SDK.",
+      "transition": true,
+      "sdk-support": {
+        "basic functionality": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/6482",
+          "android": "https://github.com/maplibre/maplibre-native/issues/4856",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/4856"
+        }
+      },
+      "expression": {
+        "interpolated": true,
+        "parameters": [
+          "zoom"
+        ]
+      },
+      "property-type": "data-constant"
     }
   },
   "paint_line": {
