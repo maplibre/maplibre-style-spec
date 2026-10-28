@@ -4901,7 +4901,7 @@
         }
       },
       "elevation": {
-        "doc": "Gets the elevation of a pixel (in meters above the vertical datum reference of the `raster-dem` tiles) from a `raster-dem` source. Can only be used in the `color-relief-color` property of a `color-relief` layer.",
+        "doc": "Gets the elevation in meters at the current point. For a `raster-dem` source this is the elevation of a pixel above the vertical datum reference of the tiles; for a fill extrusion it is the height above the ground.",
         "syntax": {
           "overloads": [
             {
@@ -4917,6 +4917,11 @@
             "js": "5.6.0",
             "android": "13.0.0",
             "ios": "6.24.0"
+          },
+          "`fill-extrusion-color`": {
+            "js": "https://github.com/maplibre/maplibre-gl-js/issues/8799",
+            "android": "https://github.com/maplibre/maplibre-native/issues/4787",
+            "ios": "https://github.com/maplibre/maplibre-native/issues/4787"
           }
         }
       },
@@ -6823,6 +6828,11 @@
           "js": "5.6.0",
           "android": "https://github.com/maplibre/maplibre-native/issues/3302",
           "ios": "https://github.com/maplibre/maplibre-native/issues/3302"
+        },
+        "`elevation` expression": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/8799",
+          "android": "https://github.com/maplibre/maplibre-native/issues/4787",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/4787"
         }
       },
       "expression": {
@@ -6830,7 +6840,8 @@
         "parameters": [
           "zoom",
           "feature",
-          "feature-state"
+          "feature-state",
+          "elevation"
         ]
       },
       "property-type": "data-driven"
