@@ -709,6 +709,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#fill-layer-blend" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        fill-layer-blend
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#fill-color" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -1232,6 +1243,17 @@
     <span class="md-ellipsis">
       <span class="md-typeset">
         line-layer-opacity
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#line-layer-blend" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        line-layer-blend
       </span>
     </span>
   </a>
@@ -2920,6 +2942,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#fill-layer-blend" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        fill-layer-blend
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#fill-color" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -3443,6 +3476,17 @@
     <span class="md-ellipsis">
       <span class="md-typeset">
         line-layer-opacity
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#line-layer-blend" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        line-layer-blend
       </span>
     </span>
   </a>
@@ -4917,6 +4961,37 @@
 </tr>
 </tbody>
 </table>
+<h3 id="fill-layer-blend">fill-layer-blend<a class="headerlink" href="#fill-layer-blend" title="Permanent link">&para;</a></h3>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>normal</code>, <code>multiply</code>, <code>color</code>, <code>luminosity</code>, <code>lighten</code>, <code>screen</code>, <code>overlay</code>. Defaults to <code>"normal"</code>.</em></p>
+<p>Controls how the layer is composited with the content already rendered beneath it. Unlike per-feature opacity properties such as <code>fill-opacity</code>, this property affects the final composited layer output and determines how it interacts with the existing map contents.</p>
+<p><img alt="fill-layer-blend examples" src="../assets/fill-layer-blend.svg" /></p>
+<ul>
+<li><code>normal</code>: Normal blending. The layer is drawn on top of existing content using standard alpha compositing.</li>
+<li><code>multiply</code>: Multiply blending. The layer color is multiplied with the colors underneath, producing darker results. Useful for textures, hillshades, and combining raster and vector content.</li>
+<li><code>color</code>: Color blending. Creates a color with the hue and saturation of the layer and the luminosity of the content underneath, preserving its gray levels. Useful for tinting monochrome content such as a hillshade.</li>
+<li><code>luminosity</code>: Luminosity blending. Creates a color with the luminosity of the layer and the hue and saturation of the content underneath. The inverse of <code>color</code>.</li>
+<li><code>lighten</code>: Additive blending. The layer color is added to the colors underneath, producing brighter results. Useful for glow and heat accumulation effects.</li>
+<li><code>screen</code>: Screen blending. The inverse of the colors is multiplied, producing lighten results. Useful for glow, heatmap, and light-based effects.</li>
+<li><code>overlay</code>: Overlay blending. Multiplies or screens colors depending on the colors underneath, preserving highlights and shadows while adding contrast.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>SDK Support</th>
+<th>MapLibre GL JS</th>
+<th>MapLibre Native<br>Android</th>
+<th>MapLibre Native<br>iOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>basic functionality</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-gl-js/issues/48">#48</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/2963">#2963</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/2963">#2963</a>)</td>
+</tr>
+</tbody>
+</table>
 <h3 id="fill-color">fill-color<a class="headerlink" href="#fill-color" title="Permanent link">&para;</a></h3>
 <p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#color">color</a>. Defaults to <code>"#000000"</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
 <p>The color of the filled part of this layer. This color can be specified as <code>rgba</code> with an alpha component and the color's opacity will not affect the opacity of the 1px stroke, if it is used. When used with an SDF fill pattern, this serves as the foreground color of the pattern.</p>
@@ -6261,6 +6336,38 @@
 <td>6.0.0</td>
 <td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/3302">#3302</a>)</td>
 <td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/3302">#3302</a>)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="line-layer-blend">line-layer-blend<a class="headerlink" href="#line-layer-blend" title="Permanent link">&para;</a></h3>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>normal</code>, <code>multiply</code>, <code>color</code>, <code>luminosity</code>, <code>lighten</code>, <code>screen</code>, <code>overlay</code>, <code>erase</code>. Defaults to <code>"normal"</code>.</em></p>
+<p>Controls how the layer is composited with the content already rendered beneath it. Unlike per-feature opacity properties such as <a href="#line-opacity"><code>line-opacity</code></a>, this property affects the final composited layer output and determines how it interacts with the existing map contents.</p>
+<p><img alt="line-layer-blend examples" src="../assets/line-layer-blend.svg" /></p>
+<ul>
+<li><code>normal</code>: Normal blending. The layer is drawn on top of existing content using standard alpha compositing.</li>
+<li><code>multiply</code>: Multiply blending. The layer color is multiplied with the colors underneath, producing darker results. Useful for textures, hillshades, and combining raster and vector content.</li>
+<li><code>color</code>: Color blending. Creates a color with the hue and saturation of the layer and the luminosity of the content underneath, preserving its gray levels. Useful for tinting monochrome content such as a hillshade.</li>
+<li><code>luminosity</code>: Luminosity blending. Creates a color with the luminosity of the layer and the hue and saturation of the content underneath. The inverse of <code>color</code>.</li>
+<li><code>lighten</code>: Additive blending. The layer color is added to the colors underneath, producing brighter results. Useful for glow and heat accumulation effects.</li>
+<li><code>screen</code>: Screen blending. The inverse of the colors is multiplied, producing lighten results. Useful for glow, heatmap, and light-based effects.</li>
+<li><code>overlay</code>: Overlay blending. Multiplies or screens colors depending on the colors underneath, preserving highlights and shadows while adding contrast.</li>
+<li><code>erase</code>: Erase blending. The layer removes all content underneath based on its alpha value.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>SDK Support</th>
+<th>MapLibre GL JS</th>
+<th>MapLibre Native<br>Android</th>
+<th>MapLibre Native<br>iOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>basic functionality</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-gl-js/issues/48">#48</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/2963">#2963</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/2963">#2963</a>)</td>
 </tr>
 </tbody>
 </table>

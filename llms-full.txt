@@ -2906,6 +2906,24 @@ Opacity applied to the layer as a whole. Unlike `fill-opacity` and alpha values 
 | basic functionality | 6.0.0 | ❌ ([\#4298](<https://github.com/maplibre/maplibre-native/issues/4298>)) | ❌ ([\#4298](<https://github.com/maplibre/maplibre-native/issues/4298>)) |
 | [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 6.0.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
 
+### fill-layer-blend
+
+*[Paint](<#paint>) property. Optional [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `normal`, `multiply`, `color`, `luminosity`, `lighten`, `screen`, `overlay`. Defaults to `"normal"`.*
+
+Controls how the layer is composited with the content already rendered beneath it. Unlike per-feature opacity properties such as `fill-opacity`, this property affects the final composited layer output and determines how it interacts with the existing map contents.
+
+- `normal`: Normal blending. The layer is drawn on top of existing content using standard alpha compositing.
+- `multiply`: Multiply blending. The layer color is multiplied with the colors underneath, producing darker results. Useful for textures, hillshades, and combining raster and vector content.
+- `color`: Color blending. Creates a color with the hue and saturation of the layer and the luminosity of the content underneath, preserving its gray levels. Useful for tinting monochrome content such as a hillshade.
+- `luminosity`: Luminosity blending. Creates a color with the luminosity of the layer and the hue and saturation of the content underneath. The inverse of `color`.
+- `lighten`: Additive blending. The layer color is added to the colors underneath, producing brighter results. Useful for glow and heat accumulation effects.
+- `screen`: Screen blending. The inverse of the colors is multiplied, producing lighten results. Useful for glow, heatmap, and light-based effects.
+- `overlay`: Overlay blending. Multiplies or screens colors depending on the colors underneath, preserving highlights and shadows while adding contrast.
+
+| SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
+| --- | --- | --- | --- |
+| basic functionality | ❌ ([\#48](<https://github.com/maplibre/maplibre-gl-js/issues/48>)) | ❌ ([\#2963](<https://github.com/maplibre/maplibre-native/issues/2963>)) | ❌ ([\#2963](<https://github.com/maplibre/maplibre-native/issues/2963>)) |
+
 ### fill-color
 
 *[Paint](<#paint>) property. Optional [color](<https://maplibre.org/maplibre-style-spec/types/#color>). Defaults to `"#000000"`. Supports [feature-state](<https://maplibre.org/maplibre-style-spec/expressions/#feature-state>) and [interpolate](<https://maplibre.org/maplibre-style-spec/expressions/#interpolate>) expressions. [Transitionable](<https://maplibre.org/maplibre-style-spec/transition/index.md>).*
@@ -3437,6 +3455,25 @@ Opacity applied to the layer as a whole. Unlike `line-opacity` and alpha values 
 | --- | --- | --- | --- |
 | basic functionality | 6.0.0 | ❌ ([\#4298](<https://github.com/maplibre/maplibre-native/issues/4298>)) | ❌ ([\#4298](<https://github.com/maplibre/maplibre-native/issues/4298>)) |
 | [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 6.0.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+
+### line-layer-blend
+
+*[Paint](<#paint>) property. Optional [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `normal`, `multiply`, `color`, `luminosity`, `lighten`, `screen`, `overlay`, `erase`. Defaults to `"normal"`.*
+
+Controls how the layer is composited with the content already rendered beneath it. Unlike per-feature opacity properties such as [`line-opacity`](<#line-opacity>), this property affects the final composited layer output and determines how it interacts with the existing map contents.
+
+- `normal`: Normal blending. The layer is drawn on top of existing content using standard alpha compositing.
+- `multiply`: Multiply blending. The layer color is multiplied with the colors underneath, producing darker results. Useful for textures, hillshades, and combining raster and vector content.
+- `color`: Color blending. Creates a color with the hue and saturation of the layer and the luminosity of the content underneath, preserving its gray levels. Useful for tinting monochrome content such as a hillshade.
+- `luminosity`: Luminosity blending. Creates a color with the luminosity of the layer and the hue and saturation of the content underneath. The inverse of `color`.
+- `lighten`: Additive blending. The layer color is added to the colors underneath, producing brighter results. Useful for glow and heat accumulation effects.
+- `screen`: Screen blending. The inverse of the colors is multiplied, producing lighten results. Useful for glow, heatmap, and light-based effects.
+- `overlay`: Overlay blending. Multiplies or screens colors depending on the colors underneath, preserving highlights and shadows while adding contrast.
+- `erase`: Erase blending. The layer removes all content underneath based on its alpha value.
+
+| SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
+| --- | --- | --- | --- |
+| basic functionality | ❌ ([\#48](<https://github.com/maplibre/maplibre-gl-js/issues/48>)) | ❌ ([\#2963](<https://github.com/maplibre/maplibre-native/issues/2963>)) | ❌ ([\#2963](<https://github.com/maplibre/maplibre-native/issues/2963>)) |
 
 ### line-color
 
