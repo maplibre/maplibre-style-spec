@@ -2197,7 +2197,7 @@ Example:
 
 ### elevation
 
-Gets the elevation of a pixel (in meters above the vertical datum reference of the `raster-dem` tiles) from a `raster-dem` source. Can only be used in the `color-relief-color` property of a `color-relief` layer.
+Gets the elevation in meters at the current point. For a `raster-dem` source this is the elevation of a pixel above the vertical datum reference of the tiles; for a fill extrusion it is the height above the ground.
 
 Syntax:
 
@@ -2214,6 +2214,7 @@ Example:
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 5.6.0 | 13.0.0 | 6.24.0 |
+| `fill-extrusion-color` | ❌ ([\#8799](<https://github.com/maplibre/maplibre-gl-js/issues/8799>)) | ❌ ([\#4787](<https://github.com/maplibre/maplibre-native/issues/4787>)) | ❌ ([\#4787](<https://github.com/maplibre/maplibre-native/issues/4787>)) |
 
 ## String
 

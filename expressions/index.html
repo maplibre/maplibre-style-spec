@@ -29,7 +29,7 @@
       
       
       <link rel="icon" href="https://maplibre.org/favicon.ico">
-      <meta name="generator" content="zensical-0.0.71">
+      <meta name="generator" content="zensical-0.0.73">
     
     
       
@@ -40,7 +40,7 @@
       
         
       
-      <link rel="stylesheet" href="../assets/stylesheets/modern/main.e442bf79.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/modern/main.4ab2de0c.min.css">
       
         
           
@@ -121,9 +121,10 @@
   <img src="../assets/logo.svg" alt="MapLibre Style Spec">
 
     </a>
-    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+    <label class="md-header__button md-icon" for="__drawer">
       
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+      <span class="md-visually-hidden">Navigation</span>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -185,9 +186,10 @@
     
       
       
-        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+        <label class="md-header__button md-icon" for="__search">
           
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+          <span class="md-visually-hidden">Search</span>
         </label>
         <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
   <button type="button" class="md-search__button">
@@ -6041,7 +6043,7 @@ Parameters:</p>
 </table>
 <h2 id="color-relief">Color Relief<a class="headerlink" href="#color-relief" title="Permanent link">&para;</a></h2>
 <h3 id="elevation">elevation<a class="headerlink" href="#elevation" title="Permanent link">&para;</a></h3>
-<p>Gets the elevation of a pixel (in meters above the vertical datum reference of the <code>raster-dem</code> tiles) from a <code>raster-dem</code> source. Can only be used in the <code>color-relief-color</code> property of a <code>color-relief</code> layer.</p>
+<p>Gets the elevation in meters at the current point. For a <code>raster-dem</code> source this is the elevation of a pixel above the vertical datum reference of the tiles; for a fill extrusion it is the height above the ground.</p>
 <p>Syntax:
 <div class="language-js highlight"><pre><span></span><code><span id="__span-169-1"><a id="__codelineno-169-1" name="__codelineno-169-1" href="#__codelineno-169-1"></a><span class="p">[</span><span class="s2">"elevation"</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
 </span></code></pre></div></p>
@@ -6063,6 +6065,12 @@ Parameters:</p>
 <td>5.6.0</td>
 <td>13.0.0</td>
 <td>6.24.0</td>
+</tr>
+<tr>
+<td><code>fill-extrusion-color</code></td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-gl-js/issues/8799">#8799</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/4787">#4787</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/4787">#4787</a>)</td>
 </tr>
 </tbody>
 </table>
@@ -6428,7 +6436,7 @@ Parameters:</p>
       <script id="__config" type="application/json">{"annotate":null,"base":"..","features":["content.code.copy","toc.follow","search.suggest","navigation.instant","navigation.sections","navigation.top"],"redirect":null,"search":"../assets/javascripts/workers/search.c47bb847.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
     
     
-      <script src="../assets/javascripts/bundle.a2388154.min.js"></script>
+      <script src="../assets/javascripts/bundle.77dd0ce9.min.js"></script>
       
     
   </body>

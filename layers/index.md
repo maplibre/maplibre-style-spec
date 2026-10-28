@@ -554,6 +554,7 @@ The base color of the extruded fill. The extrusion's surfaces will be shaded dif
 | basic functionality | 0.27.0 | 5.1.0 | 3.6.0 |
 | data-driven styling | 0.27.0 | 5.1.0 | 3.6.0 |
 | [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression | 5.6.0 | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) | ❌ ([\#3302](<https://github.com/maplibre/maplibre-native/issues/3302>)) |
+| `elevation` expression | ❌ ([\#8799](<https://github.com/maplibre/maplibre-gl-js/issues/8799>)) | ❌ ([\#4787](<https://github.com/maplibre/maplibre-native/issues/4787>)) | ❌ ([\#4787](<https://github.com/maplibre/maplibre-native/issues/4787>)) |
 
 ### fill-extrusion-translate
 
