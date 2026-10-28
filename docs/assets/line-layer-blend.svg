@@ -75,10 +75,10 @@
       <line x1="30" y1="160" x2="698" y2="70" stroke="#d62728" stroke-width="30" stroke-linecap="round" stroke-opacity="0.9" style="mix-blend-mode: luminosity;"/>
     </g>
 
-    <!-- lighten -->
+    <!-- lighter -->
     <g clip-path="url(#clip-5)">
       <use href="#basemap" y="255"/>
-      <line x1="30" y1="415" x2="698" y2="325" stroke="#d62728" stroke-width="30" stroke-linecap="round" stroke-opacity="0.9" style="mix-blend-mode: plus-lighten;"/>
+      <line x1="30" y1="415" x2="698" y2="325" stroke="#d62728" stroke-width="30" stroke-linecap="round" stroke-opacity="0.9" style="mix-blend-mode: plus-lighter;"/>
     </g>
 
     <!-- screen -->
@@ -99,7 +99,7 @@
   <text x="276" y="20" text-anchor="middle" fill="#212529" font-size="14">multiply</text>
   <text x="452" y="20" text-anchor="middle" fill="#212529" font-size="14">color</text>
   <text x="628" y="20" text-anchor="middle" fill="#212529" font-size="14">luminosity</text>
-  <text x="100" y="275" text-anchor="middle" fill="#212529" font-size="14">lighten</text>
+  <text x="100" y="275" text-anchor="middle" fill="#212529" font-size="14">lighter</text>
   <text x="276" y="275" text-anchor="middle" fill="#212529" font-size="14">screen</text>
   <text x="452" y="275" text-anchor="middle" fill="#212529" font-size="14">overlay</text>
 </svg>

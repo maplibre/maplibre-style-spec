@@ -1,6 +1,6 @@
 [
   {
-    "message": "layers[15].paint.fill-layer-blend: expected one of [normal, multiply, color, luminosity, lighten, screen, overlay], \"erase\" found",
+    "message": "layers[15].paint.fill-layer-blend: expected one of [normal, multiply, color, luminosity, lighter, screen, overlay], \"erase\" found",
     "severity": "error",
     "line": 138
   }
