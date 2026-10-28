@@ -113,12 +113,10 @@ describe('Validate layer-blend values in spec', () => {
         expect(blendValues.map(([name]) => name)).toEqual(['fill-layer-blend', 'line-layer-blend']);
     });
 
-    test('every layer-blend property only has values that the most complete one has too', () => {
-        const [, superset] = blendValues.reduce((a, b) => (b[1].length > a[1].length ? b : a));
+    test('all layer-blend properties have the same values', () => {
+        const [firstName, firstValues] = blendValues[0];
         for (const [name, values] of blendValues) {
-            expect(superset, `${name} has values missing from the other layer-blend properties`).toEqual(
-                expect.arrayContaining(values)
-            );
+            expect(values, `${name} differs from ${firstName}`).toEqual(firstValues);
         }
     });
 });

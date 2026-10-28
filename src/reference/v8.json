@@ -7170,9 +7170,6 @@
         },
         "overlay": {
           "doc": "[Overlay](https://www.w3.org/TR/compositing-1/#blendingoverlay) blending. Multiplies or screens colors depending on the colors underneath, preserving highlights and shadows while adding contrast."
-        },
-        "erase": {
-          "doc": "Erase blending. The layer removes all content underneath based on its alpha value."
         }
       },
       "default": "normal",

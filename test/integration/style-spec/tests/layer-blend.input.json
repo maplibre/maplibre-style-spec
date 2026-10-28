@@ -121,22 +121,6 @@
       "paint": {
         "line-layer-blend": "overlay"
       }
-    },
-    {
-      "id": "line-erase",
-      "type": "line",
-      "source": "geojson",
-      "paint": {
-        "line-layer-blend": "erase"
-      }
-    },
-    {
-      "id": "fill-erase-unsupported",
-      "type": "fill",
-      "source": "geojson",
-      "paint": {
-        "fill-layer-blend": "erase"
-      }
     }
   ]
 }
