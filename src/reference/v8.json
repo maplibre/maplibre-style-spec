@@ -170,7 +170,7 @@
     "sources": {
       "required": true,
       "type": "sources",
-      "doc": "Sources state which data the map should display. Specify the type of source with the `type` property. Adding a source isn't enough to make data appear on the map because sources don't contain styling details like color or width. Layers refer to a source and give it a visual representation. This makes it possible to style the same source in different ways, like differentiating between types of roads in a highways layer.\n\nTiled sources (vector and raster) must specify their details according to the [TileJSON specification](https://github.com/mapbox/tilejson-spec).",
+      "doc": "Sources state which data the map should display. Specify the type of source with the `type` property. Adding a source isn't enough to make data appear on the map because sources don't contain styling details like color or width. Layers refer to a source and give it a visual representation. This makes it possible to style the same source in different ways, like differentiating between types of roads in a highways layer.\n\nTiled sources (vector and raster) must specify their details according to [TileJSON](tilejson.md).",
       "example": {
         "maplibre-demotiles": {
           "type": "vector",
@@ -346,6 +346,26 @@
       "default": "xyz",
       "doc": "Influences the y direction of the tile coordinates. The global-mercator (aka Spherical Mercator) profile is assumed."
     },
+    "emptyResponse": {
+      "type": "enum",
+      "values": {
+        "blank": {
+          "doc": "The tile is in the tileset and has nothing at that place."
+        },
+        "missing": {
+          "doc": "The tileset has no tile there at that zoom level, and a renderer may use a tile from another zoom level in its place."
+        }
+      },
+      "default": "blank",
+      "doc": "Experimental. What an empty tile response (HTTP 204, or no tile data from an archive such as PMTiles) means in this tileset.",
+      "sdk-support": {
+        "basic functionality": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/3990",
+          "android": "https://github.com/maplibre/maplibre-native/issues/4767",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/4767"
+        }
+      }
+    },
     "minzoom": {
       "type": "number",
       "default": 0,
@@ -464,7 +484,7 @@
       "type": "number",
       "default": 512,
       "units": "pixels",
-      "doc": "The minimum visual size to display tiles for this layer. Only configurable for raster layers."
+      "doc": "The minimum visual size to display tiles for this source."
     },
     "scheme": {
       "type": "enum",
@@ -478,6 +498,26 @@
       },
       "default": "xyz",
       "doc": "Influences the y direction of the tile coordinates. The global-mercator (aka Spherical Mercator) profile is assumed."
+    },
+    "emptyResponse": {
+      "type": "enum",
+      "values": {
+        "blank": {
+          "doc": "The tile is in the tileset and has nothing at that place."
+        },
+        "missing": {
+          "doc": "The tileset has no tile there at that zoom level, and a renderer may use a tile from another zoom level in its place."
+        }
+      },
+      "default": "blank",
+      "doc": "Experimental. What an empty tile response (HTTP 204, or no tile data from an archive such as PMTiles) means in this tileset.",
+      "sdk-support": {
+        "basic functionality": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/3990",
+          "android": "https://github.com/maplibre/maplibre-native/issues/4767",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/4767"
+        }
+      }
     },
     "attribution": {
       "type": "string",
@@ -558,7 +598,27 @@
       "type": "number",
       "default": 512,
       "units": "pixels",
-      "doc": "The minimum visual size to display tiles for this layer. Only configurable for raster layers."
+      "doc": "The minimum visual size to display tiles for this source."
+    },
+    "emptyResponse": {
+      "type": "enum",
+      "values": {
+        "blank": {
+          "doc": "The tile is in the tileset and has nothing at that place."
+        },
+        "missing": {
+          "doc": "The tileset has no tile there at that zoom level, and a renderer may use a tile from another zoom level in its place."
+        }
+      },
+      "default": "blank",
+      "doc": "Experimental. What an empty tile response (HTTP 204, or no tile data from an archive such as PMTiles) means in this tileset.",
+      "sdk-support": {
+        "basic functionality": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/3990",
+          "android": "https://github.com/maplibre/maplibre-native/issues/4767",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/4767"
+        }
+      }
     },
     "attribution": {
       "type": "string",
