@@ -133,5 +133,15 @@
     "message": "layers[27].filter[2][1]: Mixing deprecated filter syntax with expression syntax is not supported. Replace [\"in\",\"name\",\"\"] with [\"in\",[\"get\",\"name\"],[\"literal\",[\"\"]]].",
     "severity": "warning",
     "line": 251
+  },
+  {
+    "message": "layers[28].filter: Expected boolean but found number instead.",
+    "severity": "error",
+    "line": 258
+  },
+  {
+    "message": "layers[29].filter: Expected boolean but found string instead.",
+    "severity": "error",
+    "line": 265
   }
 ]

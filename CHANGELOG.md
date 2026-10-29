@@ -4,6 +4,7 @@
 
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
+- Report expression filters that don't return a boolean, like `["+", 1, 2]`, as validation errors. maplibre-gl rejects them when it creates the layer ([#1931](https://github.com/maplibre/maplibre-style-spec/issues/1931))
 
 ## 26.5.0
 ### ✨ Features and improvements
