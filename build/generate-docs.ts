@@ -669,6 +669,35 @@ function createExpressionsContent() {
 }
 
 /**
+ * Creates the TileJSON markdown file from the keys MapLibre reads from a TileJSON, as the sources in the v8.json file define them.
+ * Sources that define a key the same way share one entry.
+ */
+function createTileJsonContent() {
+    let content = '# TileJSON\n\n';
+    content +=
+        'A `vector`, `raster` or `raster-dem` [source](sources.md) can point at a [TileJSON 3.0.0](https://github.com/mapbox/tilejson-spec/tree/master/3.0.0) document with its `url` property. MapLibre extends TileJSON with the keys below. A value set on the source in the style takes precedence over the same key in the TileJSON.\n\n';
+    for (const key of ['emptyResponse', 'encoding', 'tileSize']) {
+        content += `## ${key}\n\n`;
+        const groups = new Map<string, {sourceNames: string[]; value: JsonObject}>();
+        for (const sourceKey of v8.source) {
+            const value = v8[sourceKey][key] as JsonObject;
+            if (!value) continue;
+            const sourceName = sourceKey.replace('source_', '').replace('_', '-');
+            const definition = JSON.stringify(value);
+            if (groups.has(definition)) {
+                groups.get(definition).sourceNames.push(sourceName);
+            } else {
+                groups.set(definition, {sourceNames: [sourceName], value});
+            }
+        }
+        for (const {sourceNames, value} of groups.values()) {
+            content += convertPropertyToMarkdown(sourceNames.join(', '), value, '###');
+        }
+    }
+    fs.writeFileSync(`${BASE_PATH}/tilejson.md`, content);
+}
+
+/**
  * Creates the main topics markdown files.
  */
 function createMainTopics() {
@@ -698,5 +727,6 @@ function createMainTopics() {
 createRootContent();
 createLayersContent();
 createSourcesContent();
+createTileJsonContent();
 createExpressionsContent();
 createMainTopics();
