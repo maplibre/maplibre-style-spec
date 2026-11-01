@@ -445,9 +445,9 @@ Syntax:
   - `vertical-align`: `"bottom" | "center" | "top"` - Aligns a vertical text section or image in relation to the row it belongs to. Refer to [the design proposal](<https://github.com/maplibre/maplibre-style-spec/issues/832>) for more details.  
     Possible values are:
 
-    - `"bottom"` *default* - align the bottom of this section with the bottom of other sections.
-    - `"center"` - align the center of this section with the center of other sections.
-    - `"top"` - align the top of this section with the top of other sections.
+    - `"bottom"` *default* - align the bottom of this section with the bottom of other sections. ![Visual representation of bottom alignment](<https://github.com/user-attachments/assets/0474a2fd-a4b2-417c-9187-7a13a28695bc>)
+    - `"center"` - align the center of this section with the center of other sections. ![Visual representation of center alignment](<https://github.com/user-attachments/assets/92237455-be6d-4c5d-b8f6-8127effc1950>)
+    - `"top"` - align the top of this section with the top of other sections. ![Visual representation of top alignment](<https://github.com/user-attachments/assets/45dccb28-d977-4abb-a006-4ea9792b7c53>)
 
 Example:
 

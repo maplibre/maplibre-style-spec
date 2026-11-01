@@ -200,6 +200,8 @@ The opacity of the entire fill layer. In contrast to the [`fill-color`](<https:/
 
 Opacity applied to the layer as a whole. Unlike [`fill-opacity`](<https://maplibre.org/maplibre-style-spec/layers/#fill-opacity>) and alpha values in [`fill-color`](<https://maplibre.org/maplibre-style-spec/layers/#fill-color>), which are applied per feature and accumulate where fills overlap, `fill-layer-opacity` is applied once so overlapping fills appear as a single surface at the given opacity. When both `fill-opacity` and `fill-layer-opacity` are set, the per-feature, overlap accumulation is preserved, then `fill-layer-opacity` composites the result. This property affects only the layer it is set on and cannot be used to composite multiple layers together or control how this layer blends with layers above or below it.
 
+![fill-opacity vs. fill-layer-opacity](<https://maplibre.org/maplibre-style-spec/assets/fill-layer-opacity.svg>)
+
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 6.0.0 | ❌ ([\#4298](<https://github.com/maplibre/maplibre-native/issues/4298>)) | ❌ ([\#4298](<https://github.com/maplibre/maplibre-native/issues/4298>)) |
@@ -210,6 +212,8 @@ Opacity applied to the layer as a whole. Unlike [`fill-opacity`](<https://maplib
 *[Paint](<#paint>) property. Optional [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `normal`, `multiply`, `color`, `luminosity`, `plus-lighter`, `screen`, `overlay`. Defaults to `"normal"`.*
 
 Controls how the layer is composited with the content already rendered beneath it. Unlike per-feature opacity properties such as `fill-opacity`, this property affects the final composited layer output and determines how it interacts with the existing map contents.
+
+![fill-layer-blend examples](<https://maplibre.org/maplibre-style-spec/assets/fill-layer-blend.svg>)
 
 - `normal`: [Normal](<https://www.w3.org/TR/compositing-1/#blendingnormal>) blending. The layer is drawn on top of existing content using standard alpha compositing.
 - `multiply`: [Multiply](<https://www.w3.org/TR/compositing-1/#blendingmultiply>) blending. The layer color is multiplied with the colors underneath, producing darker results. Useful for textures, hillshades, and combining raster and vector content.
@@ -750,6 +754,8 @@ The opacity at which the line will be drawn.
 
 Opacity applied to the layer as a whole. Unlike [`line-opacity`](<https://maplibre.org/maplibre-style-spec/layers/#line-opacity>) and alpha values in [`line-color`](<https://maplibre.org/maplibre-style-spec/layers/#line-color>), which are applied per feature and accumulate where lines overlap, `line-layer-opacity` is applied once so overlapping lines appear as a single surface at the given opacity. When both `line-opacity` and `line-layer-opacity` are set, the per-feature, overlap accumulation is preserved, then layer-opacity composites the result. This property affects only the layer it is set on and cannot be used to composite multiple layers together or control how this layer blends with layers above or below it.
 
+![line-opacity vs. line-layer-opacity](<https://maplibre.org/maplibre-style-spec/assets/line-layer-opacity.svg>)
+
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 6.0.0 | ❌ ([\#4298](<https://github.com/maplibre/maplibre-native/issues/4298>)) | ❌ ([\#4298](<https://github.com/maplibre/maplibre-native/issues/4298>)) |
@@ -760,6 +766,8 @@ Opacity applied to the layer as a whole. Unlike [`line-opacity`](<https://maplib
 *[Paint](<#paint>) property. Optional [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `normal`, `multiply`, `color`, `luminosity`, `plus-lighter`, `screen`, `overlay`. Defaults to `"normal"`.*
 
 Controls how the layer is composited with the content already rendered beneath it. Unlike per-feature opacity properties such as [`line-opacity`](<#line-opacity>), this property affects the final composited layer output and determines how it interacts with the existing map contents.
+
+![line-layer-blend examples](<https://maplibre.org/maplibre-style-spec/assets/line-layer-blend.svg>)
 
 - `normal`: [Normal](<https://www.w3.org/TR/compositing-1/#blendingnormal>) blending. The layer is drawn on top of existing content using standard alpha compositing.
 - `multiply`: [Multiply](<https://www.w3.org/TR/compositing-1/#blendingmultiply>) blending. The layer color is multiplied with the colors underneath, producing darker results. Useful for textures, hillshades, and combining raster and vector content.
@@ -1791,7 +1799,7 @@ Increase or reduce the contrast of the image.
 
 *[Paint](<#paint>) property. Optional [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `linear`, `nearest`. Defaults to `"linear"`.*
 
-The resampling/interpolation method to use for overscaling, also known as texture magnification filter.
+The resampling/interpolation method to use for overscaling, also known as texture magnification filter. ![Visual comparison of linear resampling versus nearest resampling](<https://maplibre.org/maplibre-style-spec/assets/resampling.png>)
 
 - `linear`: (Bi)linear filtering interpolates pixel values using the weighted average of the four closest original source pixels creating a smooth but blurry look when overscaled
 - `nearest`: Nearest neighbor filtering interpolates pixel values using the nearest original source pixel creating a sharp but pixelated look when overscaled
@@ -1930,7 +1938,7 @@ The shading color used to accentuate rugged terrain like sharp cliffs and gorges
 
 *[Paint](<#paint>) property. Optional [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `standard`, `basic`, `combined`, `igor`, `multidirectional`. Defaults to `"standard"`.*
 
-The hillshade algorithm to use, one of `standard`, `basic`, `combined`, `igor`, or `multidirectional`.
+The hillshade algorithm to use, one of `standard`, `basic`, `combined`, `igor`, or `multidirectional`. ![Visual comparison of standard, basic, igor, combined, and multidirectional hillshade-method](<https://maplibre.org/maplibre-style-spec/assets/hillshade_methods.png>)
 
 - `standard`: The legacy hillshade method.
 - `basic`: Basic hillshade. Uses a simple physics model where the reflected light intensity is proportional to the cosine of the angle between the incident light and the surface normal. Similar to GDAL's `gdaldem` default algorithm.
@@ -1947,7 +1955,7 @@ The hillshade algorithm to use, one of `standard`, `basic`, `combined`, `igor`, 
 
 *[Paint](<#paint>) property. Optional [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `linear`, `nearest`. Defaults to `"linear"`.*
 
-The resampling/interpolation method to use for overscaling, also known as texture magnification filter.
+The resampling/interpolation method to use for overscaling, also known as texture magnification filter. ![Visual comparison of linear resampling versus nearest resampling](<https://maplibre.org/maplibre-style-spec/assets/resampling.png>)
 
 - `linear`: (Bi)linear filtering interpolates pixel values using the weighted average of the four closest original source pixels creating a smooth but blurry look when overscaled
 - `nearest`: Nearest neighbor filtering interpolates pixel values using the nearest original source pixel creating a sharp but pixelated look when overscaled
@@ -2012,7 +2020,7 @@ Defines the color of each pixel based on its elevation. Should be an expression 
 
 *[Paint](<#paint>) property. Optional [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `linear`, `nearest`. Defaults to `"linear"`.*
 
-The resampling/interpolation method to use for overscaling, also known as texture magnification filter.
+The resampling/interpolation method to use for overscaling, also known as texture magnification filter. ![Visual comparison of linear resampling versus nearest resampling](<https://maplibre.org/maplibre-style-spec/assets/resampling.png>)
 
 - `linear`: (Bi)linear filtering interpolates pixel values using the weighted average of the four closest original source pixels creating a smooth but blurry look when overscaled
 - `nearest`: Nearest neighbor filtering interpolates pixel values using the nearest original source pixel creating a sharp but pixelated look when overscaled

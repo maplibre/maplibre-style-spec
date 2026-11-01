@@ -679,9 +679,9 @@ Syntax:
   - `vertical-align`: `"bottom" | "center" | "top"` - Aligns a vertical text section or image in relation to the row it belongs to. Refer to [the design proposal](<https://github.com/maplibre/maplibre-style-spec/issues/832>) for more details.  
     Possible values are:
 
-    - `"bottom"` *default* - align the bottom of this section with the bottom of other sections.
-    - `"center"` - align the center of this section with the center of other sections.
-    - `"top"` - align the top of this section with the top of other sections.
+    - `"bottom"` *default* - align the bottom of this section with the bottom of other sections. ![Visual representation of bottom alignment](<https://github.com/user-attachments/assets/0474a2fd-a4b2-417c-9187-7a13a28695bc>)
+    - `"center"` - align the center of this section with the center of other sections. ![Visual representation of center alignment](<https://github.com/user-attachments/assets/92237455-be6d-4c5d-b8f6-8127effc1950>)
+    - `"top"` - align the top of this section with the top of other sections. ![Visual representation of top alignment](<https://github.com/user-attachments/assets/45dccb28-d977-4abb-a006-4ea9792b7c53>)
 
 Example:
 
@@ -2901,6 +2901,8 @@ The opacity of the entire fill layer. In contrast to the [`fill-color`](<https:/
 
 Opacity applied to the layer as a whole. Unlike [`fill-opacity`](<https://maplibre.org/maplibre-style-spec/layers/#fill-opacity>) and alpha values in [`fill-color`](<https://maplibre.org/maplibre-style-spec/layers/#fill-color>), which are applied per feature and accumulate where fills overlap, `fill-layer-opacity` is applied once so overlapping fills appear as a single surface at the given opacity. When both `fill-opacity` and `fill-layer-opacity` are set, the per-feature, overlap accumulation is preserved, then `fill-layer-opacity` composites the result. This property affects only the layer it is set on and cannot be used to composite multiple layers together or control how this layer blends with layers above or below it.
 
+![fill-opacity vs. fill-layer-opacity](<https://maplibre.org/maplibre-style-spec/assets/fill-layer-opacity.svg>)
+
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 6.0.0 | ❌ ([\#4298](<https://github.com/maplibre/maplibre-native/issues/4298>)) | ❌ ([\#4298](<https://github.com/maplibre/maplibre-native/issues/4298>)) |
@@ -2911,6 +2913,8 @@ Opacity applied to the layer as a whole. Unlike [`fill-opacity`](<https://maplib
 *[Paint](<#paint>) property. Optional [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `normal`, `multiply`, `color`, `luminosity`, `plus-lighter`, `screen`, `overlay`. Defaults to `"normal"`.*
 
 Controls how the layer is composited with the content already rendered beneath it. Unlike per-feature opacity properties such as `fill-opacity`, this property affects the final composited layer output and determines how it interacts with the existing map contents.
+
+![fill-layer-blend examples](<https://maplibre.org/maplibre-style-spec/assets/fill-layer-blend.svg>)
 
 - `normal`: [Normal](<https://www.w3.org/TR/compositing-1/#blendingnormal>) blending. The layer is drawn on top of existing content using standard alpha compositing.
 - `multiply`: [Multiply](<https://www.w3.org/TR/compositing-1/#blendingmultiply>) blending. The layer color is multiplied with the colors underneath, producing darker results. Useful for textures, hillshades, and combining raster and vector content.
@@ -3451,6 +3455,8 @@ The opacity at which the line will be drawn.
 
 Opacity applied to the layer as a whole. Unlike [`line-opacity`](<https://maplibre.org/maplibre-style-spec/layers/#line-opacity>) and alpha values in [`line-color`](<https://maplibre.org/maplibre-style-spec/layers/#line-color>), which are applied per feature and accumulate where lines overlap, `line-layer-opacity` is applied once so overlapping lines appear as a single surface at the given opacity. When both `line-opacity` and `line-layer-opacity` are set, the per-feature, overlap accumulation is preserved, then layer-opacity composites the result. This property affects only the layer it is set on and cannot be used to composite multiple layers together or control how this layer blends with layers above or below it.
 
+![line-opacity vs. line-layer-opacity](<https://maplibre.org/maplibre-style-spec/assets/line-layer-opacity.svg>)
+
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 6.0.0 | ❌ ([\#4298](<https://github.com/maplibre/maplibre-native/issues/4298>)) | ❌ ([\#4298](<https://github.com/maplibre/maplibre-native/issues/4298>)) |
@@ -3461,6 +3467,8 @@ Opacity applied to the layer as a whole. Unlike [`line-opacity`](<https://maplib
 *[Paint](<#paint>) property. Optional [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `normal`, `multiply`, `color`, `luminosity`, `plus-lighter`, `screen`, `overlay`. Defaults to `"normal"`.*
 
 Controls how the layer is composited with the content already rendered beneath it. Unlike per-feature opacity properties such as [`line-opacity`](<#line-opacity>), this property affects the final composited layer output and determines how it interacts with the existing map contents.
+
+![line-layer-blend examples](<https://maplibre.org/maplibre-style-spec/assets/line-layer-blend.svg>)
 
 - `normal`: [Normal](<https://www.w3.org/TR/compositing-1/#blendingnormal>) blending. The layer is drawn on top of existing content using standard alpha compositing.
 - `multiply`: [Multiply](<https://www.w3.org/TR/compositing-1/#blendingmultiply>) blending. The layer color is multiplied with the colors underneath, producing darker results. Useful for textures, hillshades, and combining raster and vector content.
@@ -4492,7 +4500,7 @@ Increase or reduce the contrast of the image.
 
 *[Paint](<#paint>) property. Optional [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `linear`, `nearest`. Defaults to `"linear"`.*
 
-The resampling/interpolation method to use for overscaling, also known as texture magnification filter.
+The resampling/interpolation method to use for overscaling, also known as texture magnification filter. ![Visual comparison of linear resampling versus nearest resampling](<https://maplibre.org/maplibre-style-spec/assets/resampling.png>)
 
 - `linear`: (Bi)linear filtering interpolates pixel values using the weighted average of the four closest original source pixels creating a smooth but blurry look when overscaled
 - `nearest`: Nearest neighbor filtering interpolates pixel values using the nearest original source pixel creating a sharp but pixelated look when overscaled
@@ -4631,7 +4639,7 @@ The shading color used to accentuate rugged terrain like sharp cliffs and gorges
 
 *[Paint](<#paint>) property. Optional [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `standard`, `basic`, `combined`, `igor`, `multidirectional`. Defaults to `"standard"`.*
 
-The hillshade algorithm to use, one of `standard`, `basic`, `combined`, `igor`, or `multidirectional`.
+The hillshade algorithm to use, one of `standard`, `basic`, `combined`, `igor`, or `multidirectional`. ![Visual comparison of standard, basic, igor, combined, and multidirectional hillshade-method](<https://maplibre.org/maplibre-style-spec/assets/hillshade_methods.png>)
 
 - `standard`: The legacy hillshade method.
 - `basic`: Basic hillshade. Uses a simple physics model where the reflected light intensity is proportional to the cosine of the angle between the incident light and the surface normal. Similar to GDAL's `gdaldem` default algorithm.
@@ -4648,7 +4656,7 @@ The hillshade algorithm to use, one of `standard`, `basic`, `combined`, `igor`, 
 
 *[Paint](<#paint>) property. Optional [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `linear`, `nearest`. Defaults to `"linear"`.*
 
-The resampling/interpolation method to use for overscaling, also known as texture magnification filter.
+The resampling/interpolation method to use for overscaling, also known as texture magnification filter. ![Visual comparison of linear resampling versus nearest resampling](<https://maplibre.org/maplibre-style-spec/assets/resampling.png>)
 
 - `linear`: (Bi)linear filtering interpolates pixel values using the weighted average of the four closest original source pixels creating a smooth but blurry look when overscaled
 - `nearest`: Nearest neighbor filtering interpolates pixel values using the nearest original source pixel creating a sharp but pixelated look when overscaled
@@ -4713,7 +4721,7 @@ Defines the color of each pixel based on its elevation. Should be an expression 
 
 *[Paint](<#paint>) property. Optional [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `linear`, `nearest`. Defaults to `"linear"`.*
 
-The resampling/interpolation method to use for overscaling, also known as texture magnification filter.
+The resampling/interpolation method to use for overscaling, also known as texture magnification filter. ![Visual comparison of linear resampling versus nearest resampling](<https://maplibre.org/maplibre-style-spec/assets/resampling.png>)
 
 - `linear`: (Bi)linear filtering interpolates pixel values using the weighted average of the four closest original source pixels creating a smooth but blurry look when overscaled
 - `nearest`: Nearest neighbor filtering interpolates pixel values using the nearest original source pixel creating a sharp but pixelated look when overscaled
@@ -5029,7 +5037,7 @@ The terrain configuration.
 
 Sources state which data the map should display. Specify the type of source with the `type` property. Adding a source isn't enough to make data appear on the map because sources don't contain styling details like color or width. Layers refer to a source and give it a visual representation. This makes it possible to style the same source in different ways, like differentiating between types of roads in a highways layer.
 
-Tiled sources (vector and raster) must specify their details according to the [TileJSON specification](<https://github.com/mapbox/tilejson-spec>).
+Tiled sources (vector and raster) must specify their details according to [TileJSON](<https://maplibre.org/maplibre-style-spec/tilejson/index.md>).
 
 ```json
 "sources": {
@@ -5282,7 +5290,7 @@ How to blend the atmosphere. Where 1 is visible atmosphere and 0 is hidden. It i
 
 Sources state which data the map should display. Specify the type of source with the `type` property. Adding a source isn't enough to make data appear on the map because sources don't contain styling details like color or width. Layers refer to a source and give it a visual representation. This makes it possible to style the same source in different ways, like differentiating between types of roads in a highways layer.
 
-Tiled sources (vector and raster) must specify their details according to the [TileJSON specification](<https://github.com/mapbox/tilejson-spec>).
+Tiled sources (vector and raster) must specify their details according to [TileJSON](<https://maplibre.org/maplibre-style-spec/tilejson/index.md>).
 
 ```json
 "sources": {
@@ -5377,6 +5385,19 @@ Influences the y direction of the tile coordinates. The global-mercator (aka Sph
 
 - `xyz`: Slippy map tilenames scheme.
 - `tms`: OSGeo spec scheme.
+
+### emptyResponse
+
+*Optional [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `blank`, `missing`. Defaults to `"blank"`.*
+
+Experimental. What an empty tile response (HTTP 204, or no tile data from an archive such as PMTiles) means in this tileset.
+
+- `blank`: The tile is in the tileset and has nothing at that place.
+- `missing`: The tileset has no tile there at that zoom level, and a renderer may use a tile from another zoom level in its place.
+
+| SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
+| --- | --- | --- | --- |
+| basic functionality | ❌ ([\#3990](<https://github.com/maplibre/maplibre-gl-js/issues/3990>)) | ❌ ([\#4767](<https://github.com/maplibre/maplibre-native/issues/4767>)) | ❌ ([\#4767](<https://github.com/maplibre/maplibre-native/issues/4767>)) |
 
 ### minzoom
 
@@ -5500,7 +5521,7 @@ Maximum zoom level for which tiles are available, as in the TileJSON spec. Data 
 
 *Optional [number](<https://maplibre.org/maplibre-style-spec/types/#number>). Units in pixels. Defaults to `512`.*
 
-The minimum visual size to display tiles for this layer. Only configurable for raster layers.
+The minimum visual size to display tiles for this source.
 
 ### scheme
 
@@ -5510,6 +5531,19 @@ Influences the y direction of the tile coordinates. The global-mercator (aka Sph
 
 - `xyz`: Slippy map tilenames scheme.
 - `tms`: OSGeo spec scheme.
+
+### emptyResponse
+
+*Optional [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `blank`, `missing`. Defaults to `"blank"`.*
+
+Experimental. What an empty tile response (HTTP 204, or no tile data from an archive such as PMTiles) means in this tileset.
+
+- `blank`: The tile is in the tileset and has nothing at that place.
+- `missing`: The tileset has no tile there at that zoom level, and a renderer may use a tile from another zoom level in its place.
+
+| SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
+| --- | --- | --- | --- |
+| basic functionality | ❌ ([\#3990](<https://github.com/maplibre/maplibre-gl-js/issues/3990>)) | ❌ ([\#4767](<https://github.com/maplibre/maplibre-native/issues/4767>)) | ❌ ([\#4767](<https://github.com/maplibre/maplibre-native/issues/4767>)) |
 
 ### attribution
 
@@ -5601,7 +5635,20 @@ Maximum zoom level for which tiles are available, as in the TileJSON spec. Data 
 
 *Optional [number](<https://maplibre.org/maplibre-style-spec/types/#number>). Units in pixels. Defaults to `512`.*
 
-The minimum visual size to display tiles for this layer. Only configurable for raster layers.
+The minimum visual size to display tiles for this source.
+
+### emptyResponse
+
+*Optional [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `blank`, `missing`. Defaults to `"blank"`.*
+
+Experimental. What an empty tile response (HTTP 204, or no tile data from an archive such as PMTiles) means in this tileset.
+
+- `blank`: The tile is in the tileset and has nothing at that place.
+- `missing`: The tileset has no tile there at that zoom level, and a renderer may use a tile from another zoom level in its place.
+
+| SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
+| --- | --- | --- | --- |
+| basic functionality | ❌ ([\#3990](<https://github.com/maplibre/maplibre-gl-js/issues/3990>)) | ❌ ([\#4767](<https://github.com/maplibre/maplibre-native/issues/4767>)) | ❌ ([\#4767](<https://github.com/maplibre/maplibre-native/issues/4767>)) |
 
 ### attribution
 
@@ -6004,7 +6051,7 @@ The following image gives a bit more infomation regarding the stretch properties
 }
 ```
 
-The red highlighted part is where the stretch will occur over the Y axis and the blue highlight is for the X axis.
+The red highlighted part is where the stretch will occur over the Y axis and the blue highlight is for the X axis. ![popup-stretch](<https://maplibre.org/maplibre-gl-js/docs/assets/popup_debug.png>)
 
 #### Text Fit Properties
 
@@ -6025,6 +6072,8 @@ The primary use cases of interest are:
 3. textFitWidth = proportional and textFitHeight = stretchOnly
 
    The content rectangle scales to precisely contain the width of its contents but the height will not shrink smaller than the aspect ratio of the original content rectangle. This may be useful scenarios like no. 2 except with vertically written scripts (using `"text-writing-mode": ["vertical"]`).
+
+![image](<https://github.com/DavidBuerer/maplibre-style-spec/assets/29717748/5fc7134e-28dc-4c3c-b89e-d89b50b8dbfa>)
 
 ## High-DPI Devices
 
@@ -6078,6 +6127,64 @@ The exaggeration of the terrain - how high it will look.
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 2.2.0 | ❌ ([\#252](<https://github.com/maplibre/maplibre-native/issues/252>)) | ❌ ([\#252](<https://github.com/maplibre/maplibre-native/issues/252>)) |
+
+# TileJSON
+
+A `vector`, `raster` or `raster-dem` [source](<https://maplibre.org/maplibre-style-spec/sources/index.md>) can point at a [TileJSON 3.0.0](<https://github.com/mapbox/tilejson-spec/tree/master/3.0.0>) document with its `url` property. MapLibre extends TileJSON with the keys below. A value set on the source in the style takes precedence over the same key in the TileJSON.
+
+## emptyResponse
+
+### vector, raster, raster-dem
+
+*Optional [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `blank`, `missing`. Defaults to `"blank"`.*
+
+Experimental. What an empty tile response (HTTP 204, or no tile data from an archive such as PMTiles) means in this tileset.
+
+- `blank`: The tile is in the tileset and has nothing at that place.
+- `missing`: The tileset has no tile there at that zoom level, and a renderer may use a tile from another zoom level in its place.
+
+| SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
+| --- | --- | --- | --- |
+| basic functionality | ❌ ([\#3990](<https://github.com/maplibre/maplibre-gl-js/issues/3990>)) | ❌ ([\#4767](<https://github.com/maplibre/maplibre-native/issues/4767>)) | ❌ ([\#4767](<https://github.com/maplibre/maplibre-native/issues/4767>)) |
+
+## encoding
+
+### vector
+
+*Optional [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `mvt`, `mlt`. Defaults to `"mvt"`.*
+
+The encoding used by this source. Mapbox Vector Tiles encoding is used by default.
+
+- `mvt`: Mapbox Vector Tiles. See http://github.com/mapbox/vector-tile-spec for more info.
+- `mlt`: MapLibre Vector Tiles. See https://github.com/maplibre/maplibre-tile-spec for more info.
+
+| SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
+| --- | --- | --- | --- |
+| mvt | ✅ | ✅ | ✅ |
+| mlt | 5.12.0 | 12.1.0 | 6.20.0 |
+
+### raster-dem
+
+*Optional [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `terrarium`, `mapbox`, `custom`. Defaults to `"mapbox"`.*
+
+The encoding used by this source. Mapbox Terrain RGB is used by default.
+
+- `terrarium`: Terrarium format PNG tiles. See https://aws.amazon.com/es/public-datasets/terrain/ for more info.
+- `mapbox`: Mapbox Terrain RGB tiles. See https://www.mapbox.com/help/access-elevation-data/\#mapbox-terrain-rgb for more info.
+- `custom`: Decodes tiles using the redFactor, blueFactor, greenFactor, baseShift parameters.
+
+| SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
+| --- | --- | --- | --- |
+| mapbox, terrarium | 0.43.0 | 6.0.0 | 6.0.0 |
+| custom | 3.4.0 | ❌ ([\#2783](<https://github.com/maplibre/maplibre-native/issues/2783>)) | ❌ ([\#2783](<https://github.com/maplibre/maplibre-native/issues/2783>)) |
+
+## tileSize
+
+### raster, raster-dem
+
+*Optional [number](<https://maplibre.org/maplibre-style-spec/types/#number>). Units in pixels. Defaults to `512`.*
+
+The minimum visual size to display tiles for this source.
 
 # Transition
 

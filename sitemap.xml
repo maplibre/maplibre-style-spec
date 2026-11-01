@@ -43,6 +43,9 @@
         <loc>https://www.maplibre.org/maplibre-style-spec/terrain/</loc>
       </url>
       <url>
+        <loc>https://www.maplibre.org/maplibre-style-spec/tilejson/</loc>
+      </url>
+      <url>
         <loc>https://www.maplibre.org/maplibre-style-spec/transition/</loc>
       </url>
       <url>

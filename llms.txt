@@ -18,5 +18,6 @@
 - [Sprite](<https://maplibre.org/maplibre-style-spec/sprite/index.md>)
 - [State](<https://maplibre.org/maplibre-style-spec/state/index.md>)
 - [Terrain](<https://maplibre.org/maplibre-style-spec/terrain/index.md>)
+- [TileJSON](<https://maplibre.org/maplibre-style-spec/tilejson/index.md>)
 - [Transition](<https://maplibre.org/maplibre-style-spec/transition/index.md>)
 - [Types](<https://maplibre.org/maplibre-style-spec/types/index.md>)

@@ -2,7 +2,7 @@
 
 Sources state which data the map should display. Specify the type of source with the `type` property. Adding a source isn't enough to make data appear on the map because sources don't contain styling details like color or width. Layers refer to a source and give it a visual representation. This makes it possible to style the same source in different ways, like differentiating between types of roads in a highways layer.
 
-Tiled sources (vector and raster) must specify their details according to the [TileJSON specification](<https://github.com/mapbox/tilejson-spec>).
+Tiled sources (vector and raster) must specify their details according to [TileJSON](<https://maplibre.org/maplibre-style-spec/tilejson/index.md>).
 
 ```json
 "sources": {
@@ -97,6 +97,19 @@ Influences the y direction of the tile coordinates. The global-mercator (aka Sph
 
 - `xyz`: Slippy map tilenames scheme.
 - `tms`: OSGeo spec scheme.
+
+### emptyResponse
+
+*Optional [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `blank`, `missing`. Defaults to `"blank"`.*
+
+Experimental. What an empty tile response (HTTP 204, or no tile data from an archive such as PMTiles) means in this tileset.
+
+- `blank`: The tile is in the tileset and has nothing at that place.
+- `missing`: The tileset has no tile there at that zoom level, and a renderer may use a tile from another zoom level in its place.
+
+| SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
+| --- | --- | --- | --- |
+| basic functionality | ❌ ([\#3990](<https://github.com/maplibre/maplibre-gl-js/issues/3990>)) | ❌ ([\#4767](<https://github.com/maplibre/maplibre-native/issues/4767>)) | ❌ ([\#4767](<https://github.com/maplibre/maplibre-native/issues/4767>)) |
 
 ### minzoom
 
@@ -220,7 +233,7 @@ Maximum zoom level for which tiles are available, as in the TileJSON spec. Data 
 
 *Optional [number](<https://maplibre.org/maplibre-style-spec/types/#number>). Units in pixels. Defaults to `512`.*
 
-The minimum visual size to display tiles for this layer. Only configurable for raster layers.
+The minimum visual size to display tiles for this source.
 
 ### scheme
 
@@ -230,6 +243,19 @@ Influences the y direction of the tile coordinates. The global-mercator (aka Sph
 
 - `xyz`: Slippy map tilenames scheme.
 - `tms`: OSGeo spec scheme.
+
+### emptyResponse
+
+*Optional [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `blank`, `missing`. Defaults to `"blank"`.*
+
+Experimental. What an empty tile response (HTTP 204, or no tile data from an archive such as PMTiles) means in this tileset.
+
+- `blank`: The tile is in the tileset and has nothing at that place.
+- `missing`: The tileset has no tile there at that zoom level, and a renderer may use a tile from another zoom level in its place.
+
+| SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
+| --- | --- | --- | --- |
+| basic functionality | ❌ ([\#3990](<https://github.com/maplibre/maplibre-gl-js/issues/3990>)) | ❌ ([\#4767](<https://github.com/maplibre/maplibre-native/issues/4767>)) | ❌ ([\#4767](<https://github.com/maplibre/maplibre-native/issues/4767>)) |
 
 ### attribution
 
@@ -321,7 +347,20 @@ Maximum zoom level for which tiles are available, as in the TileJSON spec. Data 
 
 *Optional [number](<https://maplibre.org/maplibre-style-spec/types/#number>). Units in pixels. Defaults to `512`.*
 
-The minimum visual size to display tiles for this layer. Only configurable for raster layers.
+The minimum visual size to display tiles for this source.
+
+### emptyResponse
+
+*Optional [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `blank`, `missing`. Defaults to `"blank"`.*
+
+Experimental. What an empty tile response (HTTP 204, or no tile data from an archive such as PMTiles) means in this tileset.
+
+- `blank`: The tile is in the tileset and has nothing at that place.
+- `missing`: The tileset has no tile there at that zoom level, and a renderer may use a tile from another zoom level in its place.
+
+| SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
+| --- | --- | --- | --- |
+| basic functionality | ❌ ([\#3990](<https://github.com/maplibre/maplibre-gl-js/issues/3990>)) | ❌ ([\#4767](<https://github.com/maplibre/maplibre-native/issues/4767>)) | ❌ ([\#4767](<https://github.com/maplibre/maplibre-native/issues/4767>)) |
 
 ### attribution
 
