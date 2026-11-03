@@ -1,5 +1,6 @@
 ## main
 ### ✨ Features and improvements
+- Rename "deprecated" function and filter syntax to "legacy" in docs and validation messages ([#1961](https://github.com/maplibre/maplibre-style-spec/pull/1961))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
