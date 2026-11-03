@@ -877,7 +877,7 @@ describe('global-state in filter', () => {
 
         expect(() => featureFilter(filter, 'layers[0].filter', {active: true})).not.toThrow();
         expect(console.warn).toHaveBeenCalledWith(
-            'layers[0].filter[1]: Mixing deprecated filter syntax with expression syntax is not supported. Replace ["!=","$type","LineString"] with ["!=",["geometry-type"],"LineString"].'
+            'layers[0].filter[1]: Mixing legacy filter syntax with expression syntax is not supported. Replace ["!=","$type","LineString"] with ["!=",["geometry-type"],"LineString"].'
         );
     });
 });

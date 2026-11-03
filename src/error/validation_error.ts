@@ -5,7 +5,7 @@
  *
  * - `error`: the style is invalid and cannot be rendered as written.
  * - `warning`: the style renders, but almost certainly not as its author intended -- for
- *   example a filter that mixes deprecated syntax into an expression tree. Consumers should
+ *   example a filter that mixes legacy syntax into an expression tree. Consumers should
  *   surface these (a style editor lists them; a map logs them) but must keep rendering.
  */
 export type ValidationSeverity = 'error' | 'warning';

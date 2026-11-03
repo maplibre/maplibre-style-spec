@@ -25,7 +25,7 @@ type MixedFilterDiagnostic = {
  * Which of the two filter syntaxes a filter node belongs to.
  *
  * - `expression`: only valid as an expression, e.g. `["==", ["get", "x"], 1]`.
- * - `legacy`: only valid as a deprecated filter, e.g. `["!in", "x", 1]`.
+ * - `legacy`: only valid as a legacy filter, e.g. `["!in", "x", 1]`.
  * - `neutral`: valid as both *and* means the same thing in each, e.g. `["has", "x"]` or a
  *   bare boolean. Reading it either way gives the same result, so it is no evidence of which
  *   syntax the author was writing, and it must never decide the syntax of the tree it sits in.
@@ -154,10 +154,10 @@ export function getMixedFilterMessage(filter: Array<any>): string {
 
     const suggestion = getLegacyFilterExpressionSuggestion(filter);
     if (suggestion) {
-        return `Mixing deprecated filter syntax with expression syntax is not supported. Replace ${JSON.stringify(filter)} with ${JSON.stringify(suggestion)}.`;
+        return `Mixing legacy filter syntax with expression syntax is not supported. Replace ${JSON.stringify(filter)} with ${JSON.stringify(suggestion)}.`;
     }
 
-    return `Mixing deprecated filter syntax with expression syntax is not supported. Convert ${JSON.stringify(filter)} to expression syntax.`;
+    return `Mixing legacy filter syntax with expression syntax is not supported. Convert ${JSON.stringify(filter)} to expression syntax.`;
 }
 
 function checkChild(
