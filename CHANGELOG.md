@@ -4,6 +4,7 @@
 
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
+- Fix `migrate()` converting single-stop `interval` functions to a `step` expression whose stop output is `0` instead of the function's output ([#1962](https://github.com/maplibre/maplibre-style-spec/issues/1962))
 
 ## 26.5.1
 

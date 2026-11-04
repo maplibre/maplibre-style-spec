@@ -125,6 +125,37 @@ describe('migrate', () => {
         expect(validateStyle(migrated, v8)).toEqual([]);
     });
 
+    test('converts single-stop interval function to step expression with matching stop output', () => {
+        const migrated = migrate({
+            version: 8,
+            sources: {
+                a: {type: 'geojson', data: {type: 'FeatureCollection', features: []}}
+            },
+            layers: [
+                {
+                    id: 'a',
+                    type: 'circle',
+                    source: 'a',
+                    paint: {
+                        'circle-color': {
+                            type: 'interval',
+                            property: 'p',
+                            stops: [[0, 'blue']]
+                        }
+                    }
+                }
+            ]
+        } as any);
+        expect(migrated.layers[0].paint['circle-color']).toEqual([
+            'step',
+            ['number', ['get', 'p']],
+            'blue',
+            0,
+            'blue'
+        ]);
+        expect(validateStyle(migrated, v8)).toEqual([]);
+    });
+
     test('converts colors to supported format', () => {
         const migrated = migrate({
             version: 8,
