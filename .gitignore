@@ -16,4 +16,4 @@ docs/assets/*
 !docs/README.md
 !docs/types.md
 !docs/sprite.md
-!docs/deprecations.md
+!docs/legacy-syntax.md

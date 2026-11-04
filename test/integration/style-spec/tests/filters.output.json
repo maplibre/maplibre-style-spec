@@ -65,7 +65,7 @@
     "line": 142
   },
   {
-    "message": "layers[14].filter[1]: Mixing deprecated filter syntax with expression syntax is not supported. Replace [\">=\",\"Constructi\",1930] with [\">=\",[\"get\",\"Constructi\"],1930].",
+    "message": "layers[14].filter[1]: Mixing legacy filter syntax with expression syntax is not supported. Replace [\">=\",\"Constructi\",1930] with [\">=\",[\"get\",\"Constructi\"],1930].",
     "severity": "warning",
     "line": 152
   },
@@ -75,7 +75,7 @@
     "line": 152
   },
   {
-    "message": "layers[15].filter[1]: Mixing deprecated filter syntax with expression syntax is not supported. Replace [\"==\",\"$type\",\"Point\"] with [\"==\",[\"geometry-type\"],\"Point\"].",
+    "message": "layers[15].filter[1]: Mixing legacy filter syntax with expression syntax is not supported. Replace [\"==\",\"$type\",\"Point\"] with [\"==\",[\"geometry-type\"],\"Point\"].",
     "severity": "warning",
     "line": 159
   },
@@ -85,7 +85,7 @@
     "line": 166
   },
   {
-    "message": "layers[17].filter[1]: Mixing deprecated filter syntax with expression syntax is not supported. Replace [\"in\",\"$type\",\"Point\",\"LineString\"] with [\"in\",[\"geometry-type\"],[\"literal\",[\"Point\",\"LineString\"]]].",
+    "message": "layers[17].filter[1]: Mixing legacy filter syntax with expression syntax is not supported. Replace [\"in\",\"$type\",\"Point\",\"LineString\"] with [\"in\",[\"geometry-type\"],[\"literal\",[\"Point\",\"LineString\"]]].",
     "severity": "warning",
     "line": 173
   },
@@ -95,7 +95,7 @@
     "line": 173
   },
   {
-    "message": "layers[18].filter[1][2]: Mixing deprecated filter syntax with expression syntax is not supported. Replace [\"==\",\"$type\",\"Point\"] with [\"==\",[\"geometry-type\"],\"Point\"].",
+    "message": "layers[18].filter[1][2]: Mixing legacy filter syntax with expression syntax is not supported. Replace [\"==\",\"$type\",\"Point\"] with [\"==\",[\"geometry-type\"],\"Point\"].",
     "severity": "warning",
     "line": 180
   },
@@ -110,7 +110,7 @@
     "line": 194
   },
   {
-    "message": "layers[21].filter[1]: Mixing deprecated filter syntax with expression syntax is not supported. Replace [\"!has\",\"somthing\"] with [\"!\",[\"has\",\"somthing\"]].",
+    "message": "layers[21].filter[1]: Mixing legacy filter syntax with expression syntax is not supported. Replace [\"!has\",\"somthing\"] with [\"!\",[\"has\",\"somthing\"]].",
     "severity": "warning",
     "line": 201
   },
@@ -120,7 +120,7 @@
     "line": 201
   },
   {
-    "message": "layers[22].filter[1]: Mixing deprecated filter syntax with expression syntax is not supported. Convert [\"!has\",2] to expression syntax.",
+    "message": "layers[22].filter[1]: Mixing legacy filter syntax with expression syntax is not supported. Convert [\"!has\",2] to expression syntax.",
     "severity": "warning",
     "line": 208
   },
@@ -130,7 +130,7 @@
     "line": 208
   },
   {
-    "message": "layers[27].filter[2][1]: Mixing deprecated filter syntax with expression syntax is not supported. Replace [\"in\",\"name\",\"\"] with [\"in\",[\"get\",\"name\"],[\"literal\",[\"\"]]].",
+    "message": "layers[27].filter[2][1]: Mixing legacy filter syntax with expression syntax is not supported. Replace [\"in\",\"name\",\"\"] with [\"in\",[\"get\",\"name\"],[\"literal\",[\"\"]]].",
     "severity": "warning",
     "line": 251
   }

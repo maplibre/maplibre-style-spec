@@ -15,7 +15,7 @@ function getValueAtPath(value: any, path: number[]) {
 }
 
 /**
- * Reports a filter that mixes deprecated syntax into an expression tree as a *warning*.
+ * Reports a filter that mixes legacy syntax into an expression tree as a *warning*.
  * @param options The validation options, used for the key and the un-unbundled value
  * @param value The unbundled filter to inspect
  * @returns A single warning, or an empty array when nothing is mixed
