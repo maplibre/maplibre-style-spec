@@ -227,7 +227,7 @@ function fixupDegenerateStepCurve(expression) {
     // degenerate step curve (i.e. a constant function): add a noop stop
     if (expression[0] === 'step' && expression.length === 3) {
         expression.push(0);
-        expression.push(expression[3]);
+        expression.push(expression[2]);
     }
 }
 
