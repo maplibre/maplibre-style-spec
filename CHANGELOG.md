@@ -1,6 +1,7 @@
 ## main
 ### ✨ Features and improvements
 - _...Add new stuff here..._
+- Add `raster-layer-blend`, so a raster layer can blend with the map below it like `fill-layer-blend` ([#1661](https://github.com/maplibre/maplibre-style-spec/issues/1661))
 
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
