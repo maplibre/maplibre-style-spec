@@ -29,7 +29,7 @@
       
       
       <link rel="icon" href="https://maplibre.org/favicon.ico">
-      <meta name="generator" content="zensical-0.0.74">
+      <meta name="generator" content="zensical-0.1.0">
     
     
       
@@ -2091,6 +2091,17 @@
     <span class="md-ellipsis">
       <span class="md-typeset">
         raster-opacity
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#raster-layer-blend" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        raster-layer-blend
       </span>
     </span>
   </a>
@@ -4350,6 +4361,17 @@
     <span class="md-ellipsis">
       <span class="md-typeset">
         raster-opacity
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#raster-layer-blend" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        raster-layer-blend
       </span>
     </span>
   </a>
@@ -8751,6 +8773,36 @@
 <td>5.6.0</td>
 <td>13.7.1</td>
 <td>7.0.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="raster-layer-blend">raster-layer-blend<a class="headerlink" href="#raster-layer-blend" title="Permanent link">&para;</a></h3>
+<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#enum">enum</a>. Possible values: <code>normal</code>, <code>multiply</code>, <code>color</code>, <code>luminosity</code>, <code>plus-lighter</code>, <code>screen</code>, <code>overlay</code>. Defaults to <code>"normal"</code>.</em></p>
+<p>Controls how the layer is composited with the content already rendered beneath it. Unlike <a href="#raster-opacity"><code>raster-opacity</code></a>, which only fades the layer, this property determines how its colors interact with the existing map contents.</p>
+<ul>
+<li><code>normal</code>: <a href="https://www.w3.org/TR/compositing-1/#blendingnormal">Normal</a> blending. The layer is drawn on top of existing content using standard alpha compositing.</li>
+<li><code>multiply</code>: <a href="https://www.w3.org/TR/compositing-1/#blendingmultiply">Multiply</a> blending. The layer color is multiplied with the colors underneath, producing darker results. Useful for textures, hillshades, and combining raster and vector content.</li>
+<li><code>color</code>: <a href="https://www.w3.org/TR/compositing-1/#blendingcolor">Color</a> blending. Creates a color with the hue and saturation of the layer and the luminosity of the content underneath, preserving its gray levels. Useful for tinting monochrome content such as a hillshade.</li>
+<li><code>luminosity</code>: <a href="https://www.w3.org/TR/compositing-1/#blendingluminosity">Luminosity</a> blending. Creates a color with the luminosity of the layer and the hue and saturation of the content underneath. The inverse of <code>color</code>.</li>
+<li><code>plus-lighter</code>: <a href="https://www.w3.org/TR/compositing-1/#porterduffcompositingoperators_plus">Plus-lighter</a> blending. Additive blending. The layer color is added to the colors underneath, producing brighter results. Useful for glow and heat accumulation effects.</li>
+<li><code>screen</code>: <a href="https://www.w3.org/TR/compositing-1/#blendingscreen">Screen</a> blending. The inverse of the colors is multiplied, producing lighter results. Useful for glow, heatmap, and light-based effects.</li>
+<li><code>overlay</code>: <a href="https://www.w3.org/TR/compositing-1/#blendingoverlay">Overlay</a> blending. Multiplies or screens colors depending on the colors underneath, preserving highlights and shadows while adding contrast.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>SDK Support</th>
+<th>MapLibre GL JS</th>
+<th>MapLibre Native<br>Android</th>
+<th>MapLibre Native<br>iOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>basic functionality</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-gl-js/issues/48">#48</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/2963">#2963</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/2963">#2963</a>)</td>
 </tr>
 </tbody>
 </table>
