@@ -110,7 +110,11 @@ describe('Validate layer-blend values in spec', () => {
         .map(([name, spec]) => [name, Object.keys(spec.values)] as const);
 
     test('finds the layer-blend properties', () => {
-        expect(blendValues.map(([name]) => name)).toEqual(['fill-layer-blend', 'line-layer-blend']);
+        expect(blendValues.map(([name]) => name)).toEqual([
+            'fill-layer-blend',
+            'line-layer-blend',
+            'raster-layer-blend'
+        ]);
     });
 
     test('all layer-blend properties have the same values', () => {
