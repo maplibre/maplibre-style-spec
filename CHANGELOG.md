@@ -5,8 +5,6 @@
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
 
-- chore: changelog for raster-layer-blend ([#1965](https://github.com/maplibre/maplibre-style-spec/pull/1965)) (by [@birkskyum](https://github.com/birkskyum))
-- Fix migrate() single-stop step curve using wrong output value ([#1963](https://github.com/maplibre/maplibre-style-spec/pull/1963)) (by [@stoneshell](https://github.com/stoneshell))
 ## 26.6.0
 ### ✨ Features and improvements
 - Add `raster-layer-blend`, so a raster layer can blend with the map below it like `fill-layer-blend` ([#1964](https://github.com/maplibre/maplibre-style-spec/pull/1964)) (by [@birkskyum](https://github.com/birkskyum))
