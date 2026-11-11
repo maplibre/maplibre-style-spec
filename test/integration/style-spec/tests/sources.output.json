@@ -75,7 +75,7 @@
     "line": 115
   },
   {
-    "message": "emptyResponse: expected one of [blank, missing], \"hidden\" found",
+    "message": "sources.vector-sparse-invalid.sparse: boolean expected, string found",
     "severity": "error",
     "line": 121
   }

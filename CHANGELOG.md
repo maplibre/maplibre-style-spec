@@ -1,5 +1,6 @@
 ## main
 ### ✨ Features and improvements
+- Replace the experimental `emptyResponse` property of vector, raster and raster-dem sources with an experimental `sparse` boolean on vector sources only
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
