@@ -27,7 +27,7 @@ const bundles: RolldownOptions[] = [
                 format: 'es',
                 preserveModules: true,
                 preserveModulesRoot: 'src',
-                entryFileNames: ({name}) => `${name.replace(/\.json$/, '')}.mjs`,
+                entryFileNames: '[name].mjs',
                 chunkFileNames: '[name].mjs',
                 sourcemap: true
             },

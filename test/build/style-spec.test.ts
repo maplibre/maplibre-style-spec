@@ -6,7 +6,6 @@ import {spawnSync} from 'node:child_process';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {describe, test, expect} from 'vitest';
-const refBundle = fs.readFileSync('dist/reference/v8.mjs', 'utf8');
 const validStyle = JSON.stringify({version: 8, sources: {}, layers: []});
 
 describe('@maplibre/maplibre-gl-style-spec npm package', () => {
@@ -56,9 +55,12 @@ describe('@maplibre/maplibre-gl-style-spec npm package', () => {
         expect(await import('../../dist/index.cjs')).toHaveProperty('validateStyleMin');
     });
 
-    test('trims reference.json fields', () => {
+    test('trims reference.json fields', async () => {
         expect(latest.$root.version.doc).toBeTruthy();
-        expect(refBundle.includes(latest.$root.version.doc)).toBeFalsy();
+        const cjs = await import('../../dist/index.cjs');
+        const esm = await import('../../dist/index.mjs');
+        expect(cjs.latest.$root.version).not.toHaveProperty('doc');
+        expect(esm.latest.$root.version).not.toHaveProperty('doc');
     });
 
     test('"latest" entry point should be defined', async () => {
