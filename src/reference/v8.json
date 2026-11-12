@@ -4137,7 +4137,7 @@
         "group": "Ramps, scales, curves",
         "sdk-support": {
           "basic functionality": {
-            "js": "https://github.com/maplibre/maplibre-style-spec/issues/852",
+            "js": "https://github.com/maplibre/maplibre-gl-js/issues/9011",
             "android": "https://github.com/maplibre/maplibre-style-spec/issues/852",
             "ios": "https://github.com/maplibre/maplibre-style-spec/issues/852"
           }
