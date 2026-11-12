@@ -210,66 +210,15 @@ export function rgbToOklch([r, g, b, alpha]: RGBColor): OKLCHColor {
     return [l, c, constrainAngle(Math.atan2(okB, okA) * rad2deg), alpha];
 }
 
-function isInSrgbGamut(rgb: Vector3): boolean {
-    return rgb.every((x) => x >= 0 && x <= 1);
-}
+// Keeps the conversion finite: past this chroma, the clipped color stops changing
+const maxChroma = 1e6;
 
-function clipToSrgbGamut(rgb: Vector3): Vector3 {
-    const [r, g, b] = rgb.map((x) => Math.min(Math.max(x, 0), 1));
-    return [r, g, b];
-}
-
-// Maps a color outside sRGB to a lower chroma at the same lightness and hue,
-// https://drafts.csswg.org/css-color-4/#binary-search-gamut-map-with-local-minde
+// Clips a color outside sRGB channel by channel, as browsers draw one
 export function oklchToRgb([l, c, h, alpha]: OKLCHColor): RGBColor {
-    if (l >= 1) {
-        return [1, 1, 1, alpha];
-    }
-    if (l <= 0) {
-        return [0, 0, 0, alpha];
-    }
     const hue = isNaN(h) ? 0 : h * deg2rad;
-    const cos = Math.cos(hue);
-    const sin = Math.sin(hue);
-    const toSrgb = (chroma: number) => oklabToSrgb([l, chroma * cos, chroma * sin]);
-    const deltaEOK = (rgb: Vector3, chroma: number) => {
-        const [l2, a2, b2] = srgbToOklab(rgb);
-        const dl = l - l2;
-        const da = chroma * cos - a2;
-        const db = chroma * sin - b2;
-        return Math.sqrt(dl * dl + da * da + db * db);
-    };
-    const jnd = 0.02;
-    const epsilon = 0.0001;
-
-    const rgb = toSrgb(c);
-    if (isInSrgbGamut(rgb)) {
-        return [...rgb, alpha];
-    }
-    let clipped = clipToSrgbGamut(rgb);
-    if (deltaEOK(clipped, c) >= jnd) {
-        let min = 0;
-        let max = c;
-        let minInGamut = true;
-        while (max - min > epsilon) {
-            const chroma = (min + max) / 2;
-            const current = toSrgb(chroma);
-            if (minInGamut && isInSrgbGamut(current)) {
-                min = chroma;
-                continue;
-            }
-            clipped = clipToSrgbGamut(current);
-            const e = deltaEOK(clipped, chroma);
-            if (e < jnd) {
-                if (jnd - e < epsilon) {
-                    break;
-                }
-                minInGamut = false;
-                min = chroma;
-            } else {
-                max = chroma;
-            }
-        }
-    }
-    return [...clipped, alpha];
+    const chroma = Math.min(c, maxChroma);
+    const [r, g, b] = oklabToSrgb([l, chroma * Math.cos(hue), chroma * Math.sin(hue)]).map((x) =>
+        Math.min(Math.max(x, 0), 1)
+    );
+    return [r, g, b, alpha];
 }

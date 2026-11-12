@@ -120,9 +120,9 @@ describe('Color class', () => {
 
             const i11nFn = (t: number) => Color.interpolate(color, targetColor, t, 'oklch');
             expectToMatchColor(i11nFn(0.0), 'rgb(0% 0% 100% / 1)');
-            expectToMatchColor(i11nFn(0.25), 'rgb(0% 45.22% 66.26% / 0.9)', 4);
-            expectToMatchColor(i11nFn(0.5), 'rgb(0% 59.11% 63.97% / 0.8)', 4);
-            expectToMatchColor(i11nFn(0.75), 'rgb(0% 76.52% 60.49% / 0.7)', 4);
+            expectToMatchColor(i11nFn(0.25), 'rgb(0% 42.96% 98.46% / 0.9)', 4);
+            expectToMatchColor(i11nFn(0.5), 'rgb(0% 66.57% 82.63% / 0.8)', 4);
+            expectToMatchColor(i11nFn(0.75), 'rgb(0% 84.88% 56.87% / 0.7)', 4);
             expectToMatchColor(i11nFn(1.0), 'rgb(0% 100% 0% / 0.6)');
         });
 

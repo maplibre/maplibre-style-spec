@@ -82,15 +82,15 @@ describe('color spaces', () => {
             expectCloseToArray(oklchToRgb([0.6, 0, NaN, 1]), [0.502111, 0.502111, 0.502111, 1]);
         });
 
-        test('should map colors outside sRGB to a lower chroma', () => {
-            expectCloseToArray(oklchToRgb([0.7, 0.3, 140, 1]), [0.080549, 0.754001, 0, 1]);
-            expectCloseToArray(oklchToRgb([0.9, 0.3, 300, 1]), [0.901752, 0.825016, 1, 1]);
-            expectCloseToArray(oklchToRgb([0.3, 0.25, 30, 1]), [0.388266, 0, 0, 1]);
+        test('should clip colors outside sRGB', () => {
+            expectCloseToArray(oklchToRgb([0.7, 0.3, 140, 1]), [0, 0.771585, 0, 1]);
+            expectCloseToArray(oklchToRgb([0.9, 0.3, 300, 1]), [1, 0.625509, 1, 1]);
+            expectCloseToArray(oklchToRgb([0.3, 0.25, 30, 1]), [0.50917, 0, 0, 1]);
         });
 
-        test('should return white and black for lightness out of range', () => {
-            expect(oklchToRgb([1, 0.2, 30, 0.5])).toEqual([1, 1, 1, 0.5]);
-            expect(oklchToRgb([0, 0.2, 30, 0.5])).toEqual([0, 0, 0, 0.5]);
+        test('should give a huge chroma the color of chroma 1e6', () => {
+            expect(oklchToRgb([0.6, 1e110, 90, 1])).toEqual([0, 1, 0, 1]);
+            expect(oklchToRgb([0.6, 1e110, 90, 1])).toEqual(oklchToRgb([0.6, 1e6, 90, 1]));
         });
     });
 

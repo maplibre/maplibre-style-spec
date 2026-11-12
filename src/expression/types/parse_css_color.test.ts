@@ -395,9 +395,9 @@ describe('parseCssColor', () => {
         });
 
         test('should clamp lightness, chroma and alpha', () => {
-            expect(parse('oklch(1.2 0.1 30)')).toEqual([1, 1, 1, 1]);
-            expect(parse('oklch(120% 0.1 30)')).toEqual([1, 1, 1, 1]);
-            expect(parse('oklch(-0.1 0.1 30)')).toEqual([0, 0, 0, 1]);
+            expect(parse('oklch(1.2 0.1 30)')).toEqual(parse('oklch(1 0.1 30)'));
+            expect(parse('oklch(120% 0.1 30)')).toEqual(parse('oklch(1 0.1 30)'));
+            expect(parse('oklch(-0.1 0.1 30)')).toEqual(parse('oklch(0 0.1 30)'));
             expect(parse('oklch(0.6 -0.1 30)')).toEqual(parse('oklch(0.6 0 30)'));
             expect(parse('oklch(0.6 0.1 30 / 1.5)')).toEqual(parse('oklch(0.6 0.1 30)'));
             expect(parse('oklch(0.6 0.1 30 / -1)')[3]).toBe(0);
@@ -405,15 +405,16 @@ describe('parseCssColor', () => {
         });
 
         test('should read none as zero', () => {
-            expect(parse('oklch(none 0.1 90)')).toEqual([0, 0, 0, 1]);
+            expect(parse('oklch(none 0.1 90)')).toEqual(parse('oklch(0 0.1 90)'));
             expectCloseToArray(parse('oklch(0.6 none 90)'), [0.502111, 0.502111, 0.502111, 1]);
             expectCloseToArray(parse('oklch(0.6 0.1 none)'), [0.692324, 0.39884, 0.492791, 1]);
             expect(parse('oklch(0.6 0.1 90 / none)')[3]).toBe(0);
         });
 
-        test('should gamut map colors outside sRGB', () => {
-            expectCloseToArray(parse('oklch(0.7 0.3 140)'), [0.080549, 0.754001, 0, 1]);
-            expectCloseToArray(parse('oklch(0.9 0.3 300)'), [0.901752, 0.825016, 1, 1]);
+        test('should clip colors outside sRGB', () => {
+            expectCloseToArray(parse('oklch(0.7 0.3 140)'), [0, 0.771585, 0, 1]);
+            expectCloseToArray(parse('oklch(0.9 0.3 300)'), [1, 0.625509, 1, 1]);
+            expect(parse('oklch(0.6 1e110 90)')).toEqual([0, 1, 0, 1]);
         });
 
         test('should return undefined when provided with invalid oklch value', () => {

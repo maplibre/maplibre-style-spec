@@ -23,7 +23,7 @@ import {HSLColor, hslToRgb, oklchToRgb, RGBColor} from './color_spaces';
  * Caveats:
  *   - in rgb() and hsl(), <angle> - <number> with optional `deg` suffix; `grad`, `rad`, `turn` are not supported
  *   - in rgb() and hsl(), `none` keyword is not supported
- *   - oklch() colors outside sRGB are gamut mapped into it
+ *   - oklch() colors outside sRGB are clipped to it
  *   - comments inside rgb()/hsl()/oklch() are not supported
  *   - legacy color syntax rgba() is supported with an identical grammar and behavior to rgb()
  *   - legacy color syntax hsla() is supported with an identical grammar and behavior to hsl()
