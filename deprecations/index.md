@@ -12,25 +12,25 @@ The value for any layout or paint property may be specified as a *function*. Fun
 
 ### stops
 
-*Required (except for `identity` functions) [array](<https://maplibre.org/maplibre-style-spec/types/#array>).*
+*Required (except for `identity` functions) [array](<https://maplibre.org/maplibre-style-spec/types/index.md#array>).*
 
-A set of one input value and one output value is a "stop." Stop output values must be literal values (i.e. not functions or expressions), and appropriate for the property. For example, stop output values for a `fill-color` function property must be [colors](<https://maplibre.org/maplibre-style-spec/types/#color>).
+A set of one input value and one output value is a "stop." Stop output values must be literal values (i.e. not functions or expressions), and appropriate for the property. For example, stop output values for a `fill-color` function property must be [colors](<https://maplibre.org/maplibre-style-spec/types/index.md#color>).
 
 ### property
 
-*Optional [string](<https://maplibre.org/maplibre-style-spec/types/#string>).*
+*Optional [string](<https://maplibre.org/maplibre-style-spec/types/index.md#string>).*
 
 If specified, the function will take the specified feature property as an input. See [Zoom Functions and Property Functions](<#zoom-and-property-functions>) for more information.
 
 ### base
 
-*Optional [number](<https://maplibre.org/maplibre-style-spec/types/#number>). Default is `1`.*
+*Optional [number](<https://maplibre.org/maplibre-style-spec/types/index.md#number>). Default is `1`.*
 
 The exponential base of the interpolation curve. It controls the rate at which the function output increases. Higher values make the output increase more towards the high end of the range. With values close to 1 the output increases linearly.
 
 ### type
 
-*Optional [string](<https://maplibre.org/maplibre-style-spec/types/#string>). One of `identity`, `exponential`, `interval`, or `categorical`.*
+*Optional [string](<https://maplibre.org/maplibre-style-spec/types/index.md#string>). One of `identity`, `exponential`, `interval`, or `categorical`.*
 
 `identity`: A function that returns its input as the output.
 
@@ -53,7 +53,7 @@ If no default is provided, the style property's default is used in these circums
 
 ### colorSpace
 
-*Optional [string](<https://maplibre.org/maplibre-style-spec/types/#string>). One of `rgb`, `lab`, `hcl`.*
+*Optional [string](<https://maplibre.org/maplibre-style-spec/types/index.md#string>). One of `rgb`, `lab`, `hcl`.*
 
 The color space in which colors interpolated. Interpolating colors in perceptual color spaces like LAB and HCL tend to produce color ramps that look more consistent and produce colors that can be differentiated more easily than those interpolated in RGB space.
 
@@ -92,7 +92,7 @@ The color space in which colors interpolated. Interpolating colors in perceptual
 }
 ```
 
-The rendered values of [color](<https://maplibre.org/maplibre-style-spec/types/#color>), [number](<https://maplibre.org/maplibre-style-spec/types/#number>), and [array](<https://maplibre.org/maplibre-style-spec/types/#array>) properties are interpolated between stops. [Boolean](<https://maplibre.org/maplibre-style-spec/types/#boolean>) and [string](<https://maplibre.org/maplibre-style-spec/types/#string>) property values cannot be interpolated, so their rendered values only change at the specified stops.
+The rendered values of [color](<https://maplibre.org/maplibre-style-spec/types/index.md#color>), [number](<https://maplibre.org/maplibre-style-spec/types/index.md#number>), and [array](<https://maplibre.org/maplibre-style-spec/types/index.md#array>) properties are interpolated between stops. [Boolean](<https://maplibre.org/maplibre-style-spec/types/index.md#boolean>) and [string](<https://maplibre.org/maplibre-style-spec/types/index.md#string>) property values cannot be interpolated, so their rendered values only change at the specified stops.
 
 There is an important difference between the way that zoom functions render for *layout* and *paint* properties. Paint properties are continuously re-evaluated whenever the zoom level changes, even fractionally. The rendered value of a paint property will change, for example, as the map moves between zoom levels `4.1` and `4.6`. Layout properties, however, are evaluated only once for each integer zoom level. To continue the prior example: the rendering of a layout property will *not* change between zoom levels `4.1` and `4.6`, no matter what stops are specified; but at zoom level `5`, the function will be re-evaluated according to the function, and the property's rendered value will change. (You can include fractional zoom levels in a layout property zoom function, and it will affect the generated values; but, still, the rendering will only change at integer zoom levels.)
 
@@ -137,7 +137,7 @@ There is an important difference between the way that zoom functions render for 
 
 ## Other filter
 
-In previous versions of the style specification, [`filters`](<https://maplibre.org/maplibre-style-spec/layers/#filter>) were defined using the deprecated syntax documented below. Though filters defined with this syntax will continue to work, we recommend using the more flexible [`expressions`](<https://maplibre.org/maplibre-style-spec/expressions/index.md>) syntax instead. Expression syntax and the deprecated syntax below cannot be mixed in a single filter definition.
+In previous versions of the style specification, [`filters`](<https://maplibre.org/maplibre-style-spec/layers/index.md#filter>) were defined using the deprecated syntax documented below. Though filters defined with this syntax will continue to work, we recommend using the more flexible [`expressions`](<https://maplibre.org/maplibre-style-spec/expressions/index.md>) syntax instead. Expression syntax and the deprecated syntax below cannot be mixed in a single filter definition.
 
 ### Existential filters
 
@@ -178,7 +178,7 @@ A `key` must be a string that identifies a feature property, or one of the follo
 - `$type`: the feature type. This key may be used with the `"=="`,`"!="`, `"in"`, and `"!in"` operators. Possible values are `"Point"`, `"LineString"`, and `"Polygon"`.
 - `$id`: the feature identifier. This key may be used with the `"=="`,`"!="`, `"has"`, `"!has"`, `"in"`, and `"!in"` operators.
 
-A `value` (and `v0`, ..., `vn` for set operators) must be a [string](<https://maplibre.org/maplibre-style-spec/types/#string>), [number](<https://maplibre.org/maplibre-style-spec/types/#number>), or [boolean](<https://maplibre.org/maplibre-style-spec/types/#boolean>) to compare the property value against.
+A `value` (and `v0`, ..., `vn` for set operators) must be a [string](<https://maplibre.org/maplibre-style-spec/types/index.md#string>), [number](<https://maplibre.org/maplibre-style-spec/types/index.md#number>), or [boolean](<https://maplibre.org/maplibre-style-spec/types/index.md#boolean>) to compare the property value against.
 
 Set membership filters are a compact and efficient way to test whether a field matches any of multiple values.
 

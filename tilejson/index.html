@@ -29,7 +29,7 @@
       
       
       <link rel="icon" href="https://maplibre.org/favicon.ico">
-      <meta name="generator" content="zensical-0.1.0">
+      <meta name="generator" content="zensical-0.1.1">
     
     
       
@@ -40,7 +40,7 @@
       
         
       
-      <link rel="stylesheet" href="../assets/stylesheets/modern/main.4ab2de0c.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/modern/main.ebb7f775.min.css">
       
         
           
@@ -688,34 +688,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#emptyresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        emptyResponse
-      </span>
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="emptyResponse">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vector-raster-raster-dem" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        vector, raster, raster-dem
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#encoding" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -743,6 +715,34 @@
     <span class="md-ellipsis">
       <span class="md-typeset">
         raster-dem
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sparse" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        sparse
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="sparse">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vector_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        vector
       </span>
     </span>
   </a>
@@ -883,34 +883,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#emptyresponse" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        emptyResponse
-      </span>
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="emptyResponse">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vector-raster-raster-dem" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        vector, raster, raster-dem
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#encoding" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -938,6 +910,34 @@
     <span class="md-ellipsis">
       <span class="md-typeset">
         raster-dem
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sparse" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        sparse
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="sparse">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vector_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        vector
       </span>
     </span>
   </a>
@@ -999,32 +999,6 @@
 
 <h1 id="tilejson">TileJSON<a class="headerlink" href="#tilejson" title="Permanent link">&para;</a></h1>
 <p>A <code>vector</code>, <code>raster</code> or <code>raster-dem</code> <a href="../sources/">source</a> can point at a <a href="https://github.com/mapbox/tilejson-spec/tree/master/3.0.0">TileJSON 3.0.0</a> document with its <code>url</code> property. MapLibre extends TileJSON with the keys below. A value set on the source in the style takes precedence over the same key in the TileJSON.</p>
-<h2 id="emptyresponse">emptyResponse<a class="headerlink" href="#emptyresponse" title="Permanent link">&para;</a></h2>
-<h3 id="vector-raster-raster-dem">vector, raster, raster-dem<a class="headerlink" href="#vector-raster-raster-dem" title="Permanent link">&para;</a></h3>
-<p><em>Optional <a href="../types/#enum">enum</a>. Possible values: <code>blank</code>, <code>missing</code>. Defaults to <code>"blank"</code>.</em></p>
-<p>Experimental. What an empty tile response (HTTP 204, or no tile data from an archive such as PMTiles) means in this tileset.</p>
-<ul>
-<li><code>blank</code>: The tile is in the tileset and has nothing at that place.</li>
-<li><code>missing</code>: The tileset has no tile there at that zoom level, and a renderer may use a tile from another zoom level in its place.</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>SDK Support</th>
-<th>MapLibre GL JS</th>
-<th>MapLibre Native<br>Android</th>
-<th>MapLibre Native<br>iOS</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>basic functionality</td>
-<td>❌ (<a href="https://github.com/maplibre/maplibre-gl-js/issues/3990">#3990</a>)</td>
-<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/4767">#4767</a>)</td>
-<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/4767">#4767</a>)</td>
-</tr>
-</tbody>
-</table>
 <h2 id="encoding">encoding<a class="headerlink" href="#encoding" title="Permanent link">&para;</a></h2>
 <h3 id="vector">vector<a class="headerlink" href="#vector" title="Permanent link">&para;</a></h3>
 <p><em>Optional <a href="../types/#enum">enum</a>. Possible values: <code>mvt</code>, <code>mlt</code>. Defaults to <code>"mvt"</code>.</em></p>
@@ -1086,6 +1060,28 @@
 <td>3.4.0</td>
 <td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/2783">#2783</a>)</td>
 <td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/2783">#2783</a>)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sparse">sparse<a class="headerlink" href="#sparse" title="Permanent link">&para;</a></h2>
+<h3 id="vector_1">vector<a class="headerlink" href="#vector_1" title="Permanent link">&para;</a></h3>
+<p><em>Optional <a href="../types/#boolean">boolean</a>. Defaults to <code>false</code>.</em></p>
+<p>Experimental. Whether the tileset is sparse. When <code>true</code>, an empty tile response (HTTP 204, or no tile data from an archive such as PMTiles) means the tileset has no tile there at that zoom level, and a renderer may use a tile from a lower zoom level in its place. When <code>false</code>, an empty tile response means the tile is in the tileset and has nothing at that place.</p>
+<table>
+<thead>
+<tr>
+<th>SDK Support</th>
+<th>MapLibre GL JS</th>
+<th>MapLibre Native<br>Android</th>
+<th>MapLibre Native<br>iOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>basic functionality</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-gl-js/issues/3990">#3990</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/4767">#4767</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/4767">#4767</a>)</td>
 </tr>
 </tbody>
 </table>
@@ -1219,7 +1215,7 @@
       <script id="__config" type="application/json">{"annotate":null,"base":"..","features":["content.code.copy","toc.follow","search.suggest","navigation.instant","navigation.sections","navigation.top"],"redirect":null,"search":"../assets/javascripts/workers/search.719e0d91.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
     
     
-      <script src="../assets/javascripts/bundle.d31f0ffa.min.js"></script>
+      <script src="../assets/javascripts/bundle.3cb411a8.min.js"></script>
       
     
   </body>

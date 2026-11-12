@@ -18,6 +18,6 @@ The projection configuration
 
 ## type
 
-*Optional [projectionDefinition](<https://maplibre.org/maplibre-style-spec/types/#projectiondefinition>). Defaults to `"mercator"`. Supports [interpolate](<https://maplibre.org/maplibre-style-spec/expressions/#interpolate>) expressions.*
+*Optional [projectionDefinition](<https://maplibre.org/maplibre-style-spec/types/index.md#projectiondefinition>). Defaults to `"mercator"`. Supports [interpolate](<https://maplibre.org/maplibre-style-spec/expressions/index.md#interpolate>) expressions.*
 
 The projection definition type. Can be specified as a string, a transition state, or an expression.

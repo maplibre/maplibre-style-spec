@@ -159,7 +159,7 @@ In case `from` and `to` are equal, the `transition` will have no effect.
 
 #### Step between projection at discrete zoom levels
 
-Use a [`camera expression`](<https://maplibre.org/maplibre-style-spec/expressions/#camera-expressions>), to discretely [`step`](<https://maplibre.org/maplibre-style-spec/expressions/#step>) between projections at certain zoom levels.
+Use a [`camera expression`](<https://maplibre.org/maplibre-style-spec/expressions/index.md#camera-expressions>), to discretely [`step`](<https://maplibre.org/maplibre-style-spec/expressions/index.md#step>) between projections at certain zoom levels.
 
 ```ts
 type: ["step", ["zoom"],
@@ -175,7 +175,7 @@ output at zoom 11.1: "mercator"
 
 #### Animate between different projections based on zoom level\*\*
 
-Use a [`camera expression`](<https://maplibre.org/maplibre-style-spec/expressions/#camera-expressions>), to animate between projections based on zoom, using [`interpolate`](<https://maplibre.org/maplibre-style-spec/expressions/#interpolate>) function. The example below will yield an adaptive globe that interpolates from `vertical-perspective` to `mercator` between zoom 10 and 12.
+Use a [`camera expression`](<https://maplibre.org/maplibre-style-spec/expressions/index.md#camera-expressions>), to animate between projections based on zoom, using [`interpolate`](<https://maplibre.org/maplibre-style-spec/expressions/index.md#interpolate>) function. The example below will yield an adaptive globe that interpolates from `vertical-perspective` to `mercator` between zoom 10 and 12.
 
 ```ts
 type: ["interpolate", ["linear"], ["zoom"],

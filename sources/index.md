@@ -34,7 +34,7 @@ Tiled sources (vector and raster) must specify their details according to [TileJ
 
 ## vector
 
-A vector tile source. Tiles must be in [MapLibre Tile format](<https://maplibre.org/maplibre-tile-spec/>) or [Mapbox Vector Tile format](<https://docs.mapbox.com/data/tilesets/guides/vector-tiles-standards/>). All geometric coordinates in vector tiles must be between `-1 * extent` and `(extent * 2) - 1` inclusive. All layers that use a vector source must specify a [`source-layer`](<https://maplibre.org/maplibre-style-spec/layers/#source-layer>) value. Note that features are only rendered within their originating tile, which may lead to visual artifacts when large values for width, radius, size or offset are specified. To mitigate rendering issues, either reduce the value of the property causing the artifact or, if you have control over the tile generation process, increase the buffer size to ensure that features are fully rendered within the tile.
+A vector tile source. Tiles must be in [MapLibre Tile format](<https://maplibre.org/maplibre-tile-spec/>) or [Mapbox Vector Tile format](<https://docs.mapbox.com/data/tilesets/guides/vector-tiles-standards/>). All geometric coordinates in vector tiles must be between `-1 * extent` and `(extent * 2) - 1` inclusive. All layers that use a vector source must specify a [`source-layer`](<https://maplibre.org/maplibre-style-spec/layers/index.md#source-layer>) value. Note that features are only rendered within their originating tile, which may lead to visual artifacts when large values for width, radius, size or offset are specified. To mitigate rendering issues, either reduce the value of the property causing the artifact or, if you have control over the tile generation process, increase the buffer size to ensure that features are fully rendered within the tile.
 
 ```json
 "sources": {
@@ -53,7 +53,7 @@ A vector tile source. Tiles must be in [MapLibre Tile format](<https://maplibre.
 
 ### type
 
-*Required [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `vector`.*
+*Required [enum](<https://maplibre.org/maplibre-style-spec/types/index.md#enum>). Possible values: `vector`.*
 
 The type of the source.
 
@@ -61,13 +61,13 @@ The type of the source.
 
 ### url
 
-*Optional [string](<https://maplibre.org/maplibre-style-spec/types/#string>).*
+*Optional [string](<https://maplibre.org/maplibre-style-spec/types/index.md#string>).*
 
 A URL to a TileJSON resource. Supported protocols are `http:` and `https:`.
 
 ### tiles
 
-*Optional [array](<https://maplibre.org/maplibre-style-spec/types/#array>).*
+*Optional [array](<https://maplibre.org/maplibre-style-spec/types/index.md#array>).*
 
 An array of one or more tile source URLs, as in the TileJSON spec. These tokens in a URL are replaced for each tile:
 
@@ -85,27 +85,24 @@ An array of one or more tile source URLs, as in the TileJSON spec. These tokens 
 
 ### bounds
 
-*Optional [array](<https://maplibre.org/maplibre-style-spec/types/#array>). Defaults to `[-180,-85.051129,180,85.051129]`.*
+*Optional [array](<https://maplibre.org/maplibre-style-spec/types/index.md#array>). Defaults to `[-180,-85.051129,180,85.051129]`.*
 
 An array containing the longitude and latitude of the southwest and northeast corners of the source's bounding box in the following order: `[sw.lng, sw.lat, ne.lng, ne.lat]`. When this property is included in a source, no tiles outside of the given bounds are requested by MapLibre.
 
 ### scheme
 
-*Optional [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `xyz`, `tms`. Defaults to `"xyz"`.*
+*Optional [enum](<https://maplibre.org/maplibre-style-spec/types/index.md#enum>). Possible values: `xyz`, `tms`. Defaults to `"xyz"`.*
 
 Influences the y direction of the tile coordinates. The global-mercator (aka Spherical Mercator) profile is assumed.
 
 - `xyz`: Slippy map tilenames scheme.
 - `tms`: OSGeo spec scheme.
 
-### emptyResponse
+### sparse
 
-*Optional [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `blank`, `missing`. Defaults to `"blank"`.*
+*Optional [boolean](<https://maplibre.org/maplibre-style-spec/types/index.md#boolean>). Defaults to `false`.*
 
-Experimental. What an empty tile response (HTTP 204, or no tile data from an archive such as PMTiles) means in this tileset.
-
-- `blank`: The tile is in the tileset and has nothing at that place.
-- `missing`: The tileset has no tile there at that zoom level, and a renderer may use a tile from another zoom level in its place.
+Experimental. Whether the tileset is sparse. When `true`, an empty tile response (HTTP 204, or no tile data from an archive such as PMTiles) means the tileset has no tile there at that zoom level, and a renderer may use a tile from a lower zoom level in its place. When `false`, an empty tile response means the tile is in the tileset and has nothing at that place.
 
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
@@ -113,19 +110,19 @@ Experimental. What an empty tile response (HTTP 204, or no tile data from an arc
 
 ### minzoom
 
-*Optional [number](<https://maplibre.org/maplibre-style-spec/types/#number>). Defaults to `0`.*
+*Optional [number](<https://maplibre.org/maplibre-style-spec/types/index.md#number>). Defaults to `0`.*
 
 Minimum zoom level for which tiles are available, as in the TileJSON spec.
 
 ### maxzoom
 
-*Optional [number](<https://maplibre.org/maplibre-style-spec/types/#number>). Defaults to `22`.*
+*Optional [number](<https://maplibre.org/maplibre-style-spec/types/index.md#number>). Defaults to `22`.*
 
 Maximum zoom level for which tiles are available, as in the TileJSON spec. Data from tiles at the maxzoom are used when displaying the map at higher zoom levels.
 
 ### attribution
 
-*Optional [string](<https://maplibre.org/maplibre-style-spec/types/#string>).*
+*Optional [string](<https://maplibre.org/maplibre-style-spec/types/index.md#string>).*
 
 Contains an attribution to be displayed when the map is shown to a user.
 
@@ -137,7 +134,7 @@ A property to use as a feature id (for feature state). Either a property name, o
 
 ### volatile
 
-*Optional [boolean](<https://maplibre.org/maplibre-style-spec/types/#boolean>). Defaults to `false`.*
+*Optional [boolean](<https://maplibre.org/maplibre-style-spec/types/index.md#boolean>). Defaults to `false`.*
 
 A setting to determine whether a source's tiles are cached locally.
 
@@ -147,7 +144,7 @@ A setting to determine whether a source's tiles are cached locally.
 
 ### encoding
 
-*Optional [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `mvt`, `mlt`. Defaults to `"mvt"`.*
+*Optional [enum](<https://maplibre.org/maplibre-style-spec/types/index.md#enum>). Possible values: `mvt`, `mlt`. Defaults to `"mvt"`.*
 
 The encoding used by this source. Mapbox Vector Tiles encoding is used by default.
 
@@ -181,7 +178,7 @@ A raster tile source.
 
 ### type
 
-*Required [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `raster`.*
+*Required [enum](<https://maplibre.org/maplibre-style-spec/types/index.md#enum>). Possible values: `raster`.*
 
 The type of the source.
 
@@ -189,13 +186,13 @@ The type of the source.
 
 ### url
 
-*Optional [string](<https://maplibre.org/maplibre-style-spec/types/#string>).*
+*Optional [string](<https://maplibre.org/maplibre-style-spec/types/index.md#string>).*
 
 A URL to a TileJSON resource. Supported protocols are `http:` and `https:`.
 
 ### tiles
 
-*Optional [array](<https://maplibre.org/maplibre-style-spec/types/#array>).*
+*Optional [array](<https://maplibre.org/maplibre-style-spec/types/index.md#array>).*
 
 An array of one or more tile source URLs, as in the TileJSON spec. These tokens in a URL are replaced for each tile:
 
@@ -213,59 +210,46 @@ An array of one or more tile source URLs, as in the TileJSON spec. These tokens 
 
 ### bounds
 
-*Optional [array](<https://maplibre.org/maplibre-style-spec/types/#array>). Defaults to `[-180,-85.051129,180,85.051129]`.*
+*Optional [array](<https://maplibre.org/maplibre-style-spec/types/index.md#array>). Defaults to `[-180,-85.051129,180,85.051129]`.*
 
 An array containing the longitude and latitude of the southwest and northeast corners of the source's bounding box in the following order: `[sw.lng, sw.lat, ne.lng, ne.lat]`. When this property is included in a source, no tiles outside of the given bounds are requested by MapLibre.
 
 ### minzoom
 
-*Optional [number](<https://maplibre.org/maplibre-style-spec/types/#number>). Defaults to `0`.*
+*Optional [number](<https://maplibre.org/maplibre-style-spec/types/index.md#number>). Defaults to `0`.*
 
 Minimum zoom level for which tiles are available, as in the TileJSON spec.
 
 ### maxzoom
 
-*Optional [number](<https://maplibre.org/maplibre-style-spec/types/#number>). Defaults to `22`.*
+*Optional [number](<https://maplibre.org/maplibre-style-spec/types/index.md#number>). Defaults to `22`.*
 
 Maximum zoom level for which tiles are available, as in the TileJSON spec. Data from tiles at the maxzoom are used when displaying the map at higher zoom levels.
 
 ### tileSize
 
-*Optional [number](<https://maplibre.org/maplibre-style-spec/types/#number>). Units in pixels. Defaults to `512`.*
+*Optional [number](<https://maplibre.org/maplibre-style-spec/types/index.md#number>). Units in pixels. Defaults to `512`.*
 
 The minimum visual size to display tiles for this source.
 
 ### scheme
 
-*Optional [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `xyz`, `tms`. Defaults to `"xyz"`.*
+*Optional [enum](<https://maplibre.org/maplibre-style-spec/types/index.md#enum>). Possible values: `xyz`, `tms`. Defaults to `"xyz"`.*
 
 Influences the y direction of the tile coordinates. The global-mercator (aka Spherical Mercator) profile is assumed.
 
 - `xyz`: Slippy map tilenames scheme.
 - `tms`: OSGeo spec scheme.
 
-### emptyResponse
-
-*Optional [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `blank`, `missing`. Defaults to `"blank"`.*
-
-Experimental. What an empty tile response (HTTP 204, or no tile data from an archive such as PMTiles) means in this tileset.
-
-- `blank`: The tile is in the tileset and has nothing at that place.
-- `missing`: The tileset has no tile there at that zoom level, and a renderer may use a tile from another zoom level in its place.
-
-| SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
-| --- | --- | --- | --- |
-| basic functionality | ❌ ([\#3990](<https://github.com/maplibre/maplibre-gl-js/issues/3990>)) | ❌ ([\#4767](<https://github.com/maplibre/maplibre-native/issues/4767>)) | ❌ ([\#4767](<https://github.com/maplibre/maplibre-native/issues/4767>)) |
-
 ### attribution
 
-*Optional [string](<https://maplibre.org/maplibre-style-spec/types/#string>).*
+*Optional [string](<https://maplibre.org/maplibre-style-spec/types/index.md#string>).*
 
 Contains an attribution to be displayed when the map is shown to a user.
 
 ### volatile
 
-*Optional [boolean](<https://maplibre.org/maplibre-style-spec/types/#boolean>). Defaults to `false`.*
+*Optional [boolean](<https://maplibre.org/maplibre-style-spec/types/index.md#boolean>). Defaults to `false`.*
 
 A setting to determine whether a source's tiles are cached locally.
 
@@ -295,7 +279,7 @@ A raster DEM source. Only supports [Mapbox Terrain RGB](<https://blog.mapbox.com
 
 ### type
 
-*Required [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `raster-dem`.*
+*Required [enum](<https://maplibre.org/maplibre-style-spec/types/index.md#enum>). Possible values: `raster-dem`.*
 
 The type of the source.
 
@@ -303,13 +287,13 @@ The type of the source.
 
 ### url
 
-*Optional [string](<https://maplibre.org/maplibre-style-spec/types/#string>).*
+*Optional [string](<https://maplibre.org/maplibre-style-spec/types/index.md#string>).*
 
 A URL to a TileJSON resource. Supported protocols are `http:` and `https:`.
 
 ### tiles
 
-*Optional [array](<https://maplibre.org/maplibre-style-spec/types/#array>).*
+*Optional [array](<https://maplibre.org/maplibre-style-spec/types/index.md#array>).*
 
 An array of one or more tile source URLs, as in the TileJSON spec. These tokens in a URL are replaced for each tile:
 
@@ -327,50 +311,37 @@ An array of one or more tile source URLs, as in the TileJSON spec. These tokens 
 
 ### bounds
 
-*Optional [array](<https://maplibre.org/maplibre-style-spec/types/#array>). Defaults to `[-180,-85.051129,180,85.051129]`.*
+*Optional [array](<https://maplibre.org/maplibre-style-spec/types/index.md#array>). Defaults to `[-180,-85.051129,180,85.051129]`.*
 
 An array containing the longitude and latitude of the southwest and northeast corners of the source's bounding box in the following order: `[sw.lng, sw.lat, ne.lng, ne.lat]`. When this property is included in a source, no tiles outside of the given bounds are requested by MapLibre.
 
 ### minzoom
 
-*Optional [number](<https://maplibre.org/maplibre-style-spec/types/#number>). Defaults to `0`.*
+*Optional [number](<https://maplibre.org/maplibre-style-spec/types/index.md#number>). Defaults to `0`.*
 
 Minimum zoom level for which tiles are available, as in the TileJSON spec.
 
 ### maxzoom
 
-*Optional [number](<https://maplibre.org/maplibre-style-spec/types/#number>). Defaults to `22`.*
+*Optional [number](<https://maplibre.org/maplibre-style-spec/types/index.md#number>). Defaults to `22`.*
 
 Maximum zoom level for which tiles are available, as in the TileJSON spec. Data from tiles at the maxzoom are used when displaying the map at higher zoom levels.
 
 ### tileSize
 
-*Optional [number](<https://maplibre.org/maplibre-style-spec/types/#number>). Units in pixels. Defaults to `512`.*
+*Optional [number](<https://maplibre.org/maplibre-style-spec/types/index.md#number>). Units in pixels. Defaults to `512`.*
 
 The minimum visual size to display tiles for this source.
 
-### emptyResponse
-
-*Optional [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `blank`, `missing`. Defaults to `"blank"`.*
-
-Experimental. What an empty tile response (HTTP 204, or no tile data from an archive such as PMTiles) means in this tileset.
-
-- `blank`: The tile is in the tileset and has nothing at that place.
-- `missing`: The tileset has no tile there at that zoom level, and a renderer may use a tile from another zoom level in its place.
-
-| SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
-| --- | --- | --- | --- |
-| basic functionality | ❌ ([\#3990](<https://github.com/maplibre/maplibre-gl-js/issues/3990>)) | ❌ ([\#4767](<https://github.com/maplibre/maplibre-native/issues/4767>)) | ❌ ([\#4767](<https://github.com/maplibre/maplibre-native/issues/4767>)) |
-
 ### attribution
 
-*Optional [string](<https://maplibre.org/maplibre-style-spec/types/#string>).*
+*Optional [string](<https://maplibre.org/maplibre-style-spec/types/index.md#string>).*
 
 Contains an attribution to be displayed when the map is shown to a user.
 
 ### encoding
 
-*Optional [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `terrarium`, `mapbox`, `custom`. Defaults to `"mapbox"`.*
+*Optional [enum](<https://maplibre.org/maplibre-style-spec/types/index.md#enum>). Possible values: `terrarium`, `mapbox`, `custom`. Defaults to `"mapbox"`.*
 
 The encoding used by this source. Mapbox Terrain RGB is used by default.
 
@@ -385,7 +356,7 @@ The encoding used by this source. Mapbox Terrain RGB is used by default.
 
 ### redFactor
 
-*Optional [number](<https://maplibre.org/maplibre-style-spec/types/#number>). Defaults to `1`.*
+*Optional [number](<https://maplibre.org/maplibre-style-spec/types/index.md#number>). Defaults to `1`.*
 
 Value that will be multiplied by the red channel value when decoding. Only used on custom encodings.
 
@@ -395,7 +366,7 @@ Value that will be multiplied by the red channel value when decoding. Only used 
 
 ### blueFactor
 
-*Optional [number](<https://maplibre.org/maplibre-style-spec/types/#number>). Defaults to `1`.*
+*Optional [number](<https://maplibre.org/maplibre-style-spec/types/index.md#number>). Defaults to `1`.*
 
 Value that will be multiplied by the blue channel value when decoding. Only used on custom encodings.
 
@@ -405,7 +376,7 @@ Value that will be multiplied by the blue channel value when decoding. Only used
 
 ### greenFactor
 
-*Optional [number](<https://maplibre.org/maplibre-style-spec/types/#number>). Defaults to `1`.*
+*Optional [number](<https://maplibre.org/maplibre-style-spec/types/index.md#number>). Defaults to `1`.*
 
 Value that will be multiplied by the green channel value when decoding. Only used on custom encodings.
 
@@ -415,7 +386,7 @@ Value that will be multiplied by the green channel value when decoding. Only use
 
 ### baseShift
 
-*Optional [number](<https://maplibre.org/maplibre-style-spec/types/#number>). Defaults to `0`.*
+*Optional [number](<https://maplibre.org/maplibre-style-spec/types/index.md#number>). Defaults to `0`.*
 
 Value that will be added to the encoding mix when decoding. Only used on custom encodings.
 
@@ -425,7 +396,7 @@ Value that will be added to the encoding mix when decoding. Only used on custom 
 
 ### volatile
 
-*Optional [boolean](<https://maplibre.org/maplibre-style-spec/types/#boolean>). Defaults to `false`.*
+*Optional [boolean](<https://maplibre.org/maplibre-style-spec/types/index.md#boolean>). Defaults to `false`.*
 
 A setting to determine whether a source's tiles are cached locally.
 
@@ -468,7 +439,7 @@ A [GeoJSON](<http://geojson.org/>) source. Data must be provided via a `"data"` 
 
 ### type
 
-*Required [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `geojson`.*
+*Required [enum](<https://maplibre.org/maplibre-style-spec/types/index.md#enum>). Possible values: `geojson`.*
 
 The data type of the GeoJSON source.
 
@@ -482,19 +453,19 @@ A URL to a GeoJSON file, or inline GeoJSON.
 
 ### maxzoom
 
-*Optional [number](<https://maplibre.org/maplibre-style-spec/types/#number>). Defaults to `18`.*
+*Optional [number](<https://maplibre.org/maplibre-style-spec/types/index.md#number>). Defaults to `18`.*
 
 Maximum zoom level at which to create vector tiles (higher means greater detail at high zoom levels).
 
 ### attribution
 
-*Optional [string](<https://maplibre.org/maplibre-style-spec/types/#string>).*
+*Optional [string](<https://maplibre.org/maplibre-style-spec/types/index.md#string>).*
 
 Contains an attribution to be displayed when the map is shown to a user.
 
 ### buffer
 
-*Optional [number](<https://maplibre.org/maplibre-style-spec/types/#number>) in range `[0, 512]`. Defaults to `128`.*
+*Optional [number](<https://maplibre.org/maplibre-style-spec/types/index.md#number>) in range `[0, 512]`. Defaults to `128`.*
 
 Size of the tile buffer on each side. A value of 0 produces no buffer. A value of 512 produces a buffer as wide as the tile itself. Larger values produce fewer rendering artifacts near tile edges and slower performance.
 
@@ -506,13 +477,13 @@ An expression for filtering features prior to processing them for rendering.
 
 ### tolerance
 
-*Optional [number](<https://maplibre.org/maplibre-style-spec/types/#number>). Defaults to `0.375`.*
+*Optional [number](<https://maplibre.org/maplibre-style-spec/types/index.md#number>). Defaults to `0.375`.*
 
 Douglas-Peucker simplification tolerance (higher means simpler geometries and faster performance).
 
 ### cluster
 
-*Optional [boolean](<https://maplibre.org/maplibre-style-spec/types/#boolean>). Defaults to `false`.*
+*Optional [boolean](<https://maplibre.org/maplibre-style-spec/types/index.md#boolean>). Defaults to `false`.*
 
 If the data is a collection of point features, setting this to true clusters the points by radius into groups. Cluster groups become new `Point` features in the source with additional properties:
 
@@ -523,19 +494,19 @@ If the data is a collection of point features, setting this to true clusters the
 
 ### clusterRadius
 
-*Optional [number](<https://maplibre.org/maplibre-style-spec/types/#number>) in range `[0, ∞)`. Defaults to `50`.*
+*Optional [number](<https://maplibre.org/maplibre-style-spec/types/index.md#number>) in range `[0, ∞)`. Defaults to `50`.*
 
 Radius of each cluster if clustering is enabled. A value of 512 indicates a radius equal to the width of a tile.
 
 ### clusterMaxZoom
 
-*Optional [number](<https://maplibre.org/maplibre-style-spec/types/#number>).*
+*Optional [number](<https://maplibre.org/maplibre-style-spec/types/index.md#number>).*
 
 Max zoom on which to cluster points if clustering is enabled. Defaults to one zoom less than maxzoom (so that last zoom features are not clustered). Clusters are re-evaluated at integer zoom levels so setting clusterMaxZoom to 14 means the clusters will be displayed until z15.
 
 ### clusterMinPoints
 
-*Optional [number](<https://maplibre.org/maplibre-style-spec/types/#number>).*
+*Optional [number](<https://maplibre.org/maplibre-style-spec/types/index.md#number>).*
 
 Minimum number of points necessary to form a cluster if clustering is enabled. Defaults to `2`.
 
@@ -553,13 +524,13 @@ For more advanced use cases, in place of `operator`, you can use a custom reduce
 
 ### lineMetrics
 
-*Optional [boolean](<https://maplibre.org/maplibre-style-spec/types/#boolean>). Defaults to `false`.*
+*Optional [boolean](<https://maplibre.org/maplibre-style-spec/types/index.md#boolean>). Defaults to `false`.*
 
-Whether to calculate line distance metrics. This is required for line layers that specify [`line-gradient`](<https://maplibre.org/maplibre-style-spec/layers/#line-gradient>) values.
+Whether to calculate line distance metrics. This is required for line layers that specify [`line-gradient`](<https://maplibre.org/maplibre-style-spec/layers/index.md#line-gradient>) values.
 
 ### generateId
 
-*Optional [boolean](<https://maplibre.org/maplibre-style-spec/types/#boolean>). Defaults to `false`.*
+*Optional [boolean](<https://maplibre.org/maplibre-style-spec/types/index.md#boolean>). Defaults to `false`.*
 
 Whether to generate ids for the geojson features. When enabled, the `feature.id` property will be auto assigned based on its index in the `features` array, over-writing any previous values.
 
@@ -575,7 +546,7 @@ A video source. The `urls` value is an array. For each URL in the array, a video
 
 The `coordinates` array contains `[longitude, latitude]` pairs for the video corners listed in clockwise order: top left, top right, bottom right, bottom left.
 
-When rendered as a [raster layer](<https://maplibre.org/maplibre-style-spec/layers/#raster>), the layer's [`raster-fade-duration`](<https://maplibre.org/maplibre-style-spec/layers/#raster-fade-duration>) property will cause the video to fade in. This happens when playback is started, paused and resumed, or when the video's coordinates are updated. To avoid this behavior, set the layer's [`raster-fade-duration`](<https://maplibre.org/maplibre-style-spec/layers/#raster-fade-duration>) property to `0`.
+When rendered as a [raster layer](<https://maplibre.org/maplibre-style-spec/layers/index.md#raster>), the layer's [`raster-fade-duration`](<https://maplibre.org/maplibre-style-spec/layers/index.md#raster-fade-duration>) property will cause the video to fade in. This happens when playback is started, paused and resumed, or when the video's coordinates are updated. To avoid this behavior, set the layer's [`raster-fade-duration`](<https://maplibre.org/maplibre-style-spec/layers/index.md#raster-fade-duration>) property to `0`.
 
 ```json
 "sources": {
@@ -601,7 +572,7 @@ When rendered as a [raster layer](<https://maplibre.org/maplibre-style-spec/laye
 
 ### type
 
-*Required [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `video`.*
+*Required [enum](<https://maplibre.org/maplibre-style-spec/types/index.md#enum>). Possible values: `video`.*
 
 The data type of the video source.
 
@@ -609,13 +580,13 @@ The data type of the video source.
 
 ### urls
 
-*Required [array](<https://maplibre.org/maplibre-style-spec/types/#array>).*
+*Required [array](<https://maplibre.org/maplibre-style-spec/types/index.md#array>).*
 
 URLs to video content in order of preferred format.
 
 ### coordinates
 
-*Required [array](<https://maplibre.org/maplibre-style-spec/types/#array>).*
+*Required [array](<https://maplibre.org/maplibre-style-spec/types/index.md#array>).*
 
 Corners of video specified in longitude, latitude pairs.
 
@@ -644,7 +615,7 @@ An image source. The `url` value contains the image location; it is optional, an
 
 ### type
 
-*Required [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>). Possible values: `image`.*
+*Required [enum](<https://maplibre.org/maplibre-style-spec/types/index.md#enum>). Possible values: `image`.*
 
 The data type of the image source.
 
@@ -652,12 +623,12 @@ The data type of the image source.
 
 ### url
 
-*Optional [string](<https://maplibre.org/maplibre-style-spec/types/#string>).*
+*Optional [string](<https://maplibre.org/maplibre-style-spec/types/index.md#string>).*
 
 URL that points to an image. Optional: a source created without a url starts empty and renders nothing until an image is set at runtime.
 
 ### coordinates
 
-*Required [array](<https://maplibre.org/maplibre-style-spec/types/#array>).*
+*Required [array](<https://maplibre.org/maplibre-style-spec/types/index.md#array>).*
 
 Corners of image specified in longitude, latitude pairs.

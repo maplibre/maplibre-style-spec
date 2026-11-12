@@ -10,7 +10,7 @@ Refer to the [Unicode Character Code Charts](<https://www.unicode.org/charts/>) 
 
 ## Font Resolution
 
-For every name in a symbol layer’s [`text-font`](<https://maplibre.org/maplibre-style-spec/layers/#text-font>) array, characters are matched if they are covered one of the by the font files in the corresponding entry of the `font-faces` map. Any still-unmatched characters then fall back to the [`glyphs`](<https://maplibre.org/maplibre-style-spec/glyphs/index.md>) URL if provided.
+For every name in a symbol layer’s [`text-font`](<https://maplibre.org/maplibre-style-spec/layers/index.md#text-font>) array, characters are matched if they are covered one of the by the font files in the corresponding entry of the `font-faces` map. Any still-unmatched characters then fall back to the [`glyphs`](<https://maplibre.org/maplibre-style-spec/glyphs/index.md>) URL if provided.
 
 ## Supported Fonts
 

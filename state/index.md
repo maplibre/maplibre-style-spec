@@ -1,6 +1,6 @@
 # State
 
-An object used to define default values when using the [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression.
+An object used to define default values when using the [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/index.md#global-state>) expression.
 
 ```json
 "state": {

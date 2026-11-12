@@ -15,7 +15,7 @@ Root level properties of a MapLibre style specify the map's layers, tile sources
 
 ## version
 
-*Required [enum](<https://maplibre.org/maplibre-style-spec/types/#enum>).*
+*Required [enum](<https://maplibre.org/maplibre-style-spec/types/index.md#enum>).*
 
 Style specification version number. Must be 8.
 
@@ -25,7 +25,7 @@ Style specification version number. Must be 8.
 
 ## name
 
-*Optional [string](<https://maplibre.org/maplibre-style-spec/types/#string>).*
+*Optional [string](<https://maplibre.org/maplibre-style-spec/types/index.md#string>).*
 
 A human-readable name for the style.
 
@@ -54,7 +54,7 @@ Arbitrary properties useful to track with the stylesheet, but do not influence r
 
 ## center
 
-*Optional [array](<https://maplibre.org/maplibre-style-spec/types/#array>).*
+*Optional [array](<https://maplibre.org/maplibre-style-spec/types/index.md#array>).*
 
 Default map center in longitude and latitude. The style center will be used only if the map has not been positioned by other means (e.g. map options or user interaction).
 
@@ -64,7 +64,7 @@ Default map center in longitude and latitude. The style center will be used only
 
 ## centerAltitude
 
-*Optional [number](<https://maplibre.org/maplibre-style-spec/types/#number>).*
+*Optional [number](<https://maplibre.org/maplibre-style-spec/types/index.md#number>).*
 
 Default map center altitude in meters above sea level. The style center altitude defines the altitude where the camera is looking at and will be used only if the map has not been positioned by other means (e.g. map options or user interaction).
 
@@ -78,7 +78,7 @@ Default map center altitude in meters above sea level. The style center altitude
 
 ## zoom
 
-*Optional [number](<https://maplibre.org/maplibre-style-spec/types/#number>).*
+*Optional [number](<https://maplibre.org/maplibre-style-spec/types/index.md#number>).*
 
 Default zoom level. The style zoom will be used only if the map has not been positioned by other means (e.g. map options or user interaction).
 
@@ -88,7 +88,7 @@ Default zoom level. The style zoom will be used only if the map has not been pos
 
 ## bearing
 
-*Optional [number](<https://maplibre.org/maplibre-style-spec/types/#number>). Units in degrees. Defaults to `0`.*
+*Optional [number](<https://maplibre.org/maplibre-style-spec/types/index.md#number>). Units in degrees. Defaults to `0`.*
 
 Default bearing, in degrees. The bearing is the compass direction that is "up"; for example, a bearing of 90° orients the map so that east is up. This value will be used only if the map has not been positioned by other means (e.g. map options or user interaction).
 
@@ -98,7 +98,7 @@ Default bearing, in degrees. The bearing is the compass direction that is "up"; 
 
 ## pitch
 
-*Optional [number](<https://maplibre.org/maplibre-style-spec/types/#number>). Units in degrees. Defaults to `0`.*
+*Optional [number](<https://maplibre.org/maplibre-style-spec/types/index.md#number>). Units in degrees. Defaults to `0`.*
 
 Default pitch, in degrees. Zero is perpendicular to the surface, for a look straight down at the map, while a greater value like 60 looks ahead towards the horizon. The style pitch will be used only if the map has not been positioned by other means (e.g. map options or user interaction).
 
@@ -114,7 +114,7 @@ Default pitch, in degrees. Zero is perpendicular to the surface, for a look stra
 
 ## roll
 
-*Optional [number](<https://maplibre.org/maplibre-style-spec/types/#number>). Units in degrees. Defaults to `0`.*
+*Optional [number](<https://maplibre.org/maplibre-style-spec/types/index.md#number>). Units in degrees. Defaults to `0`.*
 
 Default roll, in degrees. The roll angle is measured counterclockwise about the camera boresight. The style roll will be used only if the map has not been positioned by other means (e.g. map options or user interaction).
 
@@ -130,7 +130,7 @@ Default roll, in degrees. The roll angle is measured counterclockwise about the 
 
 *Optional [state](<https://maplibre.org/maplibre-style-spec/state/index.md>). Defaults to `{}`.*
 
-An object used to define default values when using the [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/#global-state>) expression.
+An object used to define default values when using the [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/index.md#global-state>) expression.
 
 ```json
 "state": {
@@ -259,11 +259,11 @@ An array of `{id: 'my-sprite', url: 'https://example.com/sprite'}` objects. Each
 
 ## glyphs
 
-*Optional [string](<https://maplibre.org/maplibre-style-spec/types/#string>).*
+*Optional [string](<https://maplibre.org/maplibre-style-spec/types/index.md#string>).*
 
 A URL template for loading signed-distance-field glyph sets in PBF format.
 
-If this property is set, any text in the [`text-field`](<https://maplibre.org/maplibre-style-spec/layers/#text-field>) layout property is displayed in the font stack named by the [`text-font`](<https://maplibre.org/maplibre-style-spec/layers/#text-font>) layout property based on glyphs located at the URL specified by this property. Otherwise, font faces will be determined by the `text-font` property based on the local environment.
+If this property is set, any text in the [`text-field`](<https://maplibre.org/maplibre-style-spec/layers/index.md#text-field>) layout property is displayed in the font stack named by the [`text-font`](<https://maplibre.org/maplibre-style-spec/layers/index.md#text-font>) layout property based on glyphs located at the URL specified by this property. Otherwise, font faces will be determined by the `text-font` property based on the local environment.
 
 The URL must include:
 
@@ -295,7 +295,7 @@ Refer to the [Unicode Character Code Charts](<https://www.unicode.org/charts/>) 
 
 ## Font Resolution
 
-For every name in a symbol layer’s [`text-font`](<https://maplibre.org/maplibre-style-spec/layers/#text-font>) array, characters are matched if they are covered one of the by the font files in the corresponding entry of the `font-faces` map. Any still-unmatched characters then fall back to the [`glyphs`](<https://maplibre.org/maplibre-style-spec/glyphs/index.md>) URL if provided.
+For every name in a symbol layer’s [`text-font`](<https://maplibre.org/maplibre-style-spec/layers/index.md#text-font>) array, characters are matched if they are covered one of the by the font files in the corresponding entry of the `font-faces` map. Any still-unmatched characters then fall back to the [`glyphs`](<https://maplibre.org/maplibre-style-spec/glyphs/index.md>) URL if provided.
 
 ## Supported Fonts
 
@@ -337,7 +337,7 @@ A global transition definition to use as a default across properties, to be used
 
 In addition to this global definition via `transition`, if any individual paint or layout property are marked as `Transitionable`, a corresponding `*-transition` property is avaliable to fine-tune the property’s animation between old and new values based on similar `duration` and `delay` values.
 
-For example, [`fill-color`](<https://maplibre.org/maplibre-style-spec/layers/#fill-color>) is marked as `Transitionable`, so it can transition either independently via `fill-color-transition` or globally via the style's `transition` property:
+For example, [`fill-color`](<https://maplibre.org/maplibre-style-spec/layers/index.md#fill-color>) is marked as `Transitionable`, so it can transition either independently via `fill-color-transition` or globally via the style's `transition` property:
 
 ```json
 "transition": {"duration": 300, "delay": 0}
@@ -345,7 +345,7 @@ For example, [`fill-color`](<https://maplibre.org/maplibre-style-spec/layers/#fi
 
 ## layers
 
-*Required [array](<https://maplibre.org/maplibre-style-spec/types/#array>).*
+*Required [array](<https://maplibre.org/maplibre-style-spec/types/index.md#array>).*
 
 A style's `layers` property lists all the layers available in that style. The type of layer is specified by the `type` property, and must be one of `background`, `fill`, `line`, `symbol`, `raster`, `circle`, `fill-extrusion`, `heatmap`, `hillshade`, `color-relief`.
 

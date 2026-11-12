@@ -8,7 +8,7 @@ The terrain configuration.
 
 ## source
 
-*Required [string](<https://maplibre.org/maplibre-style-spec/types/#string>).*
+*Required [string](<https://maplibre.org/maplibre-style-spec/types/index.md#string>).*
 
 The source for the terrain data.
 
@@ -18,7 +18,7 @@ The source for the terrain data.
 
 ## exaggeration
 
-*Optional [number](<https://maplibre.org/maplibre-style-spec/types/#number>) in range `[0, ∞)`. Defaults to `1`.*
+*Optional [number](<https://maplibre.org/maplibre-style-spec/types/index.md#number>) in range `[0, ∞)`. Defaults to `1`.*
 
 The exaggeration of the terrain - how high it will look.
 

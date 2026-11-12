@@ -74,10 +74,10 @@ A valid sprite source must supply two types of files:
 
 Apart from these required properties, the following optional properties are supported:
 
-- `content`: An array of four numbers, with the first two specifying the left, top corner, and the last two specifying the right, bottom corner. If present, and if the icon uses [`icon-text-fit`](<https://maplibre.org/maplibre-style-spec/layers/#icon-text-fit>), the symbol's text will be fit inside the content box.
+- `content`: An array of four numbers, with the first two specifying the left, top corner, and the last two specifying the right, bottom corner. If present, and if the icon uses [`icon-text-fit`](<https://maplibre.org/maplibre-style-spec/layers/index.md#icon-text-fit>), the symbol's text will be fit inside the content box.
 - `stretchX`: An array of two-element arrays, consisting of two numbers that represent the *from* position and the *to* position of areas that can be stretched.
 - `stretchY`: Same as `stretchX`, but for the vertical dimension.
-- `sdf`: Boolean. If `true` then the image is handled as a signed-distance field (SDF) and its color can be set at runtime using the [`icon-color`](<https://maplibre.org/maplibre-style-spec/layers/#icon-color>) and [`icon-halo-color`](<https://maplibre.org/maplibre-style-spec/layers/#icon-halo-color>) properties. Defaults to `false`.
+- `sdf`: Boolean. If `true` then the image is handled as a signed-distance field (SDF) and its color can be set at runtime using the [`icon-color`](<https://maplibre.org/maplibre-style-spec/layers/index.md#icon-color>) and [`icon-halo-color`](<https://maplibre.org/maplibre-style-spec/layers/index.md#icon-halo-color>) properties. Defaults to `false`.
 - `textFitWidth`: TextFit enum of the value stretchOrShrink (or undefined), stretchOnly, proportional describing the behavior, horizontally, when scaling a sprite due to 'icon-text-fit': 'both'.
 - `textFitHeight`: Same as `textFitWidth` except vertically.
 
