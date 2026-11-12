@@ -13,18 +13,19 @@ import {
 import {parseCssColor} from './parse_css_color';
 import {interpolateArray, interpolateNumber} from '../../util/interpolate-primitives';
 
-export type InterpolationColorSpace = 'rgb' | 'hcl' | 'lab' | 'oklch';
+export type LegacyInterpolationColorSpace = 'rgb' | 'hcl' | 'lab';
+export type InterpolationColorSpace = LegacyInterpolationColorSpace | 'oklch';
 
 /**
- * Checks whether the specified color space is one of the supported interpolation color spaces.
+ * Checks whether the specified color space is one a legacy function's `colorSpace` accepts.
+ * Legacy functions don't take `oklch`; only the `interpolate-oklch` expression does.
  *
  * @param colorSpace Color space key to verify.
- * @returns `true` if the specified color space is one of the supported
- * interpolation color spaces, `false` otherwise
+ * @returns `true` if legacy functions support the specified color space, `false` otherwise
  */
 export function isSupportedInterpolationColorSpace(
     colorSpace: string
-): colorSpace is InterpolationColorSpace {
+): colorSpace is LegacyInterpolationColorSpace {
     return colorSpace === 'rgb' || colorSpace === 'hcl' || colorSpace === 'lab';
 }
 

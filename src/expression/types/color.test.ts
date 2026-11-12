@@ -75,6 +75,10 @@ describe('Color class', () => {
             expect(isSupportedInterpolationColorSpace('interpolate-hcl')).toBe(false);
             expect(isSupportedInterpolationColorSpace('interpolate-lab')).toBe(false);
         });
+
+        test('should leave oklch to the interpolate-oklch expression', () => {
+            expect(isSupportedInterpolationColorSpace('oklch')).toBe(false);
+        });
     });
 
     describe('interpolate color', () => {
