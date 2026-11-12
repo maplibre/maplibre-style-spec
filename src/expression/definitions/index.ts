@@ -53,7 +53,6 @@ export const expressions: ExpressionRegistry = {
     interpolate: Interpolate,
     'interpolate-hcl': Interpolate,
     'interpolate-lab': Interpolate,
-    'interpolate-oklch': Interpolate,
     length: Length,
     let: Let,
     literal: Literal,

@@ -61,11 +61,7 @@ export class Interpolate implements Expression {
 
     constructor(
         public type: InterpolatedValueType,
-        public operator:
-            | 'interpolate'
-            | 'interpolate-hcl'
-            | 'interpolate-lab'
-            | 'interpolate-oklch',
+        public operator: 'interpolate' | 'interpolate-hcl' | 'interpolate-lab',
         public interpolation: InterpolationType,
         public input: Expression,
         stops: Stops,
@@ -158,9 +154,7 @@ export class Interpolate implements Expression {
 
         let outputType: Type = null;
         if (
-            (operator === 'interpolate-hcl' ||
-                operator === 'interpolate-lab' ||
-                operator === 'interpolate-oklch') &&
+            (operator === 'interpolate-hcl' || operator === 'interpolate-lab') &&
             context.expectedType != ColorArrayType
         ) {
             outputType = ColorType;
@@ -281,13 +275,6 @@ export class Interpolate implements Expression {
                         return Color.interpolate(outputLower, outputUpper, t, 'lab');
                     case 'colorArray':
                         return ColorArray.interpolate(outputLower, outputUpper, t, 'lab');
-                }
-            case 'interpolate-oklch':
-                switch (this.type.kind) {
-                    case 'color':
-                        return Color.interpolate(outputLower, outputUpper, t, 'oklch');
-                    case 'colorArray':
-                        return ColorArray.interpolate(outputLower, outputUpper, t, 'oklch');
                 }
         }
     }
