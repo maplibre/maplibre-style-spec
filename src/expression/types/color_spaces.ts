@@ -178,11 +178,6 @@ function multiply(m: Matrix3, [x, y, z]: Vector3): Vector3 {
     ];
 }
 
-function srgbToLinear(x: number): number {
-    const abs = Math.abs(x);
-    return abs <= 0.04045 ? x / 12.92 : Math.sign(x) * Math.pow((abs + 0.055) / 1.055, 2.4);
-}
-
 function linearToSrgb(x: number): number {
     const abs = Math.abs(x);
     return abs > 0.0031308 ? Math.sign(x) * (1.055 * Math.pow(abs, 1 / 2.4) - 0.055) : 12.92 * x;
@@ -191,7 +186,7 @@ function linearToSrgb(x: number): number {
 function srgbToOklab([r, g, b]: Vector3): Vector3 {
     const [l, m, s] = multiply(
         xyzToLms,
-        multiply(linearSrgbToXyz, [srgbToLinear(r), srgbToLinear(g), srgbToLinear(b)])
+        multiply(linearSrgbToXyz, [rgb2xyz(r), rgb2xyz(g), rgb2xyz(b)])
     );
     return multiply(lmsToOklab, [Math.cbrt(l), Math.cbrt(m), Math.cbrt(s)]);
 }
