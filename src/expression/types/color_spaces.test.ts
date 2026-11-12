@@ -1,6 +1,14 @@
 import {expectCloseToArray} from '../../../test/lib/util';
-import {hclToRgb, hslToRgb, labToRgb, rgbToHcl, rgbToLab} from './color_spaces';
-import {describe, test} from 'vitest';
+import {
+    hclToRgb,
+    hslToRgb,
+    labToRgb,
+    oklchToRgb,
+    rgbToHcl,
+    rgbToLab,
+    rgbToOklch
+} from './color_spaces';
+import {describe, expect, test} from 'vitest';
 
 describe('color spaces', () => {
     describe('LAB color space', () => {
@@ -44,6 +52,45 @@ describe('color spaces', () => {
             expectCloseToArray(hclToRgb([90, 70, 70, 1]), [0.7663, 0.6636, 0.0558, 1], 4);
             expectCloseToArray(hclToRgb([270, 60, 55, 1]), [0.1281, 0.531, 0.9276, 1], 4);
             expectCloseToArray(hclToRgb([301.37, 131.21, 29.57, 1]), [0, 0, 1, 1], 3);
+        });
+    });
+
+    describe('OKLCH color space', () => {
+        test('should convert colors from sRGB to OKLCH color space', () => {
+            expectCloseToArray(rgbToOklch([1, 0, 0, 1]), [0.627955, 0.257683, 29.23388, 1]);
+            expectCloseToArray(rgbToOklch([0, 0, 1, 1]), [0.452014, 0.313214, 264.052, 1], 3);
+            expectCloseToArray(rgbToOklch([0, 1, 0, 1]), [0.86644, 0.294827, 142.4953, 1], 4);
+            expectCloseToArray(
+                rgbToOklch([0.2, 0.4, 0.6, 0.5]),
+                [0.499315, 0.098664, 250.4331, 0.5],
+                4
+            );
+        });
+
+        test('should leave the hue of a gray missing', () => {
+            expectCloseToArray(rgbToOklch([1, 1, 1, 1]), [1, 0, NaN, 1]);
+            expectCloseToArray(rgbToOklch([0, 0, 0, 1]), [0, 0, NaN, 1]);
+            expectCloseToArray(rgbToOklch([0.5, 0.5, 0.5, 0.3]), [0.598181, 0, NaN, 0.3]);
+        });
+
+        test('should convert colors from OKLCH to sRGB color space', () => {
+            expectCloseToArray(oklchToRgb([0.7, 0.1, 30, 1]), [0.836736, 0.526627, 0.475198, 1]);
+            expectCloseToArray(
+                oklchToRgb([0.6, 0.1, 90, 0.5]),
+                [0.593719, 0.490828, 0.190116, 0.5]
+            );
+            expectCloseToArray(oklchToRgb([0.6, 0, NaN, 1]), [0.502111, 0.502111, 0.502111, 1]);
+        });
+
+        test('should map colors outside sRGB to a lower chroma', () => {
+            expectCloseToArray(oklchToRgb([0.7, 0.3, 140, 1]), [0.080549, 0.754001, 0, 1]);
+            expectCloseToArray(oklchToRgb([0.9, 0.3, 300, 1]), [0.901752, 0.825016, 1, 1]);
+            expectCloseToArray(oklchToRgb([0.3, 0.25, 30, 1]), [0.388266, 0, 0, 1]);
+        });
+
+        test('should return white and black for lightness out of range', () => {
+            expect(oklchToRgb([1, 0.2, 30, 0.5])).toEqual([1, 1, 1, 0.5]);
+            expect(oklchToRgb([0, 0.2, 30, 0.5])).toEqual([0, 0, 0, 0.5]);
         });
     });
 

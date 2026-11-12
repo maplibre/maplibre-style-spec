@@ -4104,6 +4104,45 @@
           }
         }
       },
+      "interpolate-oklch": {
+        "doc": "Produces continuous, smooth results by interpolating between pairs of input and output values (\"stops\"). Works like [`interpolate`](expressions/#interpolate), but the output type must be `color` or `array<color>`, and the interpolation is performed in the OKLCH color space as [CSS Color 4](https://www.w3.org/TR/css-color-4/#interpolation) does it: hue takes the shorter way around, a gray stop takes the other stop's hue, and lightness and chroma are premultiplied by alpha. A result outside sRGB is gamut mapped like an `oklch()` color.",
+        "syntax": {
+          "overloads": [
+            {
+              "parameters": ["interpolation_type", "input", "stop_input_1", "stop_output_1", "...", "stop_input_n", "stop_output_n"],
+              "output-type": ["color", "array<color>"]
+            }
+          ],
+          "parameters": [
+            {
+              "name": "interpolation_type",
+              "type": "interpolation",
+              "doc": "The interpolation type."
+            },
+            {
+              "name": "input",
+              "type": "number"
+            },
+            {
+              "name": "stop_input_i",
+              "type": "number literal"
+            },
+            {
+              "name": "stop_output_i",
+              "type": ["color", "array<color>"]
+            }
+          ]
+        },
+        "example": ["interpolate-oklch", ["linear"], ["zoom"], 15, "#f00", 15.05, "#00f"],
+        "group": "Ramps, scales, curves",
+        "sdk-support": {
+          "basic functionality": {
+            "js": "https://github.com/maplibre/maplibre-style-spec/issues/852",
+            "android": "https://github.com/maplibre/maplibre-style-spec/issues/852",
+            "ios": "https://github.com/maplibre/maplibre-style-spec/issues/852"
+          }
+        }
+      },
       "ln2": {
         "doc": "Returns the mathematical constant ln(2).",
         "syntax": {

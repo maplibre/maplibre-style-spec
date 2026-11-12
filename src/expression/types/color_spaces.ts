@@ -30,6 +30,14 @@ export type HCLColor = [h: number, c: number, l: number, alpha: number];
  */
 export type LABColor = [l: number, a: number, b: number, alpha: number];
 
+/**
+ * @param l Lightness 0..1
+ * @param c Chroma 0..~0.4
+ * @param h Hue as degrees 0..360, `NaN` when missing
+ * @param alpha Alpha component 0..1
+ */
+export type OKLCHColor = [l: number, c: number, h: number, alpha: number];
+
 // See https://observablehq.com/@mbostock/lab-and-rgb
 const Xn = 0.96422,
     Yn = 1,
@@ -125,4 +133,148 @@ export function hslToRgb([h, s, l, alpha]: HSLColor): RGBColor {
     }
 
     return [f(0), f(8), f(4), alpha];
+}
+
+type Vector3 = [number, number, number];
+type Matrix3 = [Vector3, Vector3, Vector3];
+
+// The matrices of https://drafts.csswg.org/css-color-4/#color-conversion-code
+const linearSrgbToXyz: Matrix3 = [
+    [506752 / 1228815, 87881 / 245763, 12673 / 70218],
+    [87098 / 409605, 175762 / 245763, 12673 / 175545],
+    [7918 / 409605, 87881 / 737289, 1001167 / 1053270]
+];
+const xyzToLinearSrgb: Matrix3 = [
+    [12831 / 3959, -329 / 214, -1974 / 3959],
+    [-851781 / 878810, 1648619 / 878810, 36519 / 878810],
+    [705 / 12673, -2585 / 12673, 705 / 667]
+];
+const xyzToLms: Matrix3 = [
+    [0.819022437996703, 0.3619062600528904, -0.1288737815209879],
+    [0.0329836539323885, 0.9292868615863434, 0.0361446663506424],
+    [0.0481771893596242, 0.2642395317527308, 0.6335478284694309]
+];
+const lmsToOklab: Matrix3 = [
+    [0.210454268309314, 0.7936177747023054, -0.0040720430116193],
+    [1.9779985324311684, -2.4285922420485799, 0.450593709617411],
+    [0.0259040424655478, 0.7827717124575296, -0.8086757549230774]
+];
+const oklabToLms: Matrix3 = [
+    [1, 0.3963377773761749, 0.2158037573099136],
+    [1, -0.1055613458156586, -0.0638541728258133],
+    [1, -0.0894841775298119, -1.2914855480194092]
+];
+const lmsToXyz: Matrix3 = [
+    [1.2268798758459243, -0.5578149944602171, 0.2813910456659647],
+    [-0.0405757452148008, 1.112286803280317, -0.0717110580655164],
+    [-0.0763729366746601, -0.4214933324022432, 1.5869240198367816]
+];
+
+function multiply(m: Matrix3, [x, y, z]: Vector3): Vector3 {
+    return [
+        m[0][0] * x + m[0][1] * y + m[0][2] * z,
+        m[1][0] * x + m[1][1] * y + m[1][2] * z,
+        m[2][0] * x + m[2][1] * y + m[2][2] * z
+    ];
+}
+
+function srgbToLinear(x: number): number {
+    const abs = Math.abs(x);
+    return abs <= 0.04045 ? x / 12.92 : Math.sign(x) * Math.pow((abs + 0.055) / 1.055, 2.4);
+}
+
+function linearToSrgb(x: number): number {
+    const abs = Math.abs(x);
+    return abs > 0.0031308 ? Math.sign(x) * (1.055 * Math.pow(abs, 1 / 2.4) - 0.055) : 12.92 * x;
+}
+
+function srgbToOklab([r, g, b]: Vector3): Vector3 {
+    const [l, m, s] = multiply(
+        xyzToLms,
+        multiply(linearSrgbToXyz, [srgbToLinear(r), srgbToLinear(g), srgbToLinear(b)])
+    );
+    return multiply(lmsToOklab, [Math.cbrt(l), Math.cbrt(m), Math.cbrt(s)]);
+}
+
+function oklabToSrgb(lab: Vector3): Vector3 {
+    const [l, m, s] = multiply(oklabToLms, lab);
+    const [r, g, b] = multiply(
+        xyzToLinearSrgb,
+        multiply(lmsToXyz, [l * l * l, m * m * m, s * s * s])
+    );
+    return [linearToSrgb(r), linearToSrgb(g), linearToSrgb(b)];
+}
+
+export function rgbToOklch([r, g, b, alpha]: RGBColor): OKLCHColor {
+    const [l, okA, okB] = srgbToOklab([r, g, b]);
+    const c = Math.sqrt(okA * okA + okB * okB);
+    // https://drafts.csswg.org/css-color-4/#powerless
+    if (c <= 0.000004) {
+        return [l, 0, NaN, alpha];
+    }
+    return [l, c, constrainAngle(Math.atan2(okB, okA) * rad2deg), alpha];
+}
+
+function isInSrgbGamut(rgb: Vector3): boolean {
+    return rgb.every((x) => x >= 0 && x <= 1);
+}
+
+function clipToSrgbGamut(rgb: Vector3): Vector3 {
+    const [r, g, b] = rgb.map((x) => Math.min(Math.max(x, 0), 1));
+    return [r, g, b];
+}
+
+// Maps a color outside sRGB to a lower chroma at the same lightness and hue,
+// https://drafts.csswg.org/css-color-4/#binary-search-gamut-map-with-local-minde
+export function oklchToRgb([l, c, h, alpha]: OKLCHColor): RGBColor {
+    if (l >= 1) {
+        return [1, 1, 1, alpha];
+    }
+    if (l <= 0) {
+        return [0, 0, 0, alpha];
+    }
+    const hue = isNaN(h) ? 0 : h * deg2rad;
+    const cos = Math.cos(hue);
+    const sin = Math.sin(hue);
+    const toSrgb = (chroma: number) => oklabToSrgb([l, chroma * cos, chroma * sin]);
+    const deltaEOK = (rgb: Vector3, chroma: number) => {
+        const [l2, a2, b2] = srgbToOklab(rgb);
+        const dl = l - l2;
+        const da = chroma * cos - a2;
+        const db = chroma * sin - b2;
+        return Math.sqrt(dl * dl + da * da + db * db);
+    };
+    const jnd = 0.02;
+    const epsilon = 0.0001;
+
+    const rgb = toSrgb(c);
+    if (isInSrgbGamut(rgb)) {
+        return [...rgb, alpha];
+    }
+    let clipped = clipToSrgbGamut(rgb);
+    if (deltaEOK(clipped, c) >= jnd) {
+        let min = 0;
+        let max = c;
+        let minInGamut = true;
+        while (max - min > epsilon) {
+            const chroma = (min + max) / 2;
+            const current = toSrgb(chroma);
+            if (minInGamut && isInSrgbGamut(current)) {
+                min = chroma;
+                continue;
+            }
+            clipped = clipToSrgbGamut(current);
+            const e = deltaEOK(clipped, chroma);
+            if (e < jnd) {
+                if (jnd - e < epsilon) {
+                    break;
+                }
+                minInGamut = false;
+                min = chroma;
+            } else {
+                max = chroma;
+            }
+        }
+    }
+    return [...clipped, alpha];
 }
