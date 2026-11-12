@@ -346,18 +346,10 @@
       "default": "xyz",
       "doc": "Influences the y direction of the tile coordinates. The global-mercator (aka Spherical Mercator) profile is assumed."
     },
-    "emptyResponse": {
-      "type": "enum",
-      "values": {
-        "blank": {
-          "doc": "The tile is in the tileset and has nothing at that place."
-        },
-        "missing": {
-          "doc": "The tileset has no tile there at that zoom level, and a renderer may use a tile from another zoom level in its place."
-        }
-      },
-      "default": "blank",
-      "doc": "Experimental. What an empty tile response (HTTP 204, or no tile data from an archive such as PMTiles) means in this tileset.",
+    "sparse": {
+      "type": "boolean",
+      "default": false,
+      "doc": "Experimental. Whether the tileset is sparse. When `true`, an empty tile response (HTTP 204, or no tile data from an archive such as PMTiles) means the tileset has no tile there at that zoom level, and a renderer may use a tile from a lower zoom level in its place. When `false`, an empty tile response means the tile is in the tileset and has nothing at that place.",
       "sdk-support": {
         "basic functionality": {
           "js": "https://github.com/maplibre/maplibre-gl-js/issues/3990",
@@ -499,26 +491,6 @@
       "default": "xyz",
       "doc": "Influences the y direction of the tile coordinates. The global-mercator (aka Spherical Mercator) profile is assumed."
     },
-    "emptyResponse": {
-      "type": "enum",
-      "values": {
-        "blank": {
-          "doc": "The tile is in the tileset and has nothing at that place."
-        },
-        "missing": {
-          "doc": "The tileset has no tile there at that zoom level, and a renderer may use a tile from another zoom level in its place."
-        }
-      },
-      "default": "blank",
-      "doc": "Experimental. What an empty tile response (HTTP 204, or no tile data from an archive such as PMTiles) means in this tileset.",
-      "sdk-support": {
-        "basic functionality": {
-          "js": "https://github.com/maplibre/maplibre-gl-js/issues/3990",
-          "android": "https://github.com/maplibre/maplibre-native/issues/4767",
-          "ios": "https://github.com/maplibre/maplibre-native/issues/4767"
-        }
-      }
-    },
     "attribution": {
       "type": "string",
       "doc": "Contains an attribution to be displayed when the map is shown to a user."
@@ -599,26 +571,6 @@
       "default": 512,
       "units": "pixels",
       "doc": "The minimum visual size to display tiles for this source."
-    },
-    "emptyResponse": {
-      "type": "enum",
-      "values": {
-        "blank": {
-          "doc": "The tile is in the tileset and has nothing at that place."
-        },
-        "missing": {
-          "doc": "The tileset has no tile there at that zoom level, and a renderer may use a tile from another zoom level in its place."
-        }
-      },
-      "default": "blank",
-      "doc": "Experimental. What an empty tile response (HTTP 204, or no tile data from an archive such as PMTiles) means in this tileset.",
-      "sdk-support": {
-        "basic functionality": {
-          "js": "https://github.com/maplibre/maplibre-gl-js/issues/3990",
-          "android": "https://github.com/maplibre/maplibre-native/issues/4767",
-          "ios": "https://github.com/maplibre/maplibre-native/issues/4767"
-        }
-      }
     },
     "attribution": {
       "type": "string",
