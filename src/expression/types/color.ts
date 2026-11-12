@@ -1,19 +1,31 @@
-import {HCLColor, hclToRgb, LABColor, labToRgb, RGBColor, rgbToHcl, rgbToLab} from './color_spaces';
+import {
+    HCLColor,
+    hclToRgb,
+    LABColor,
+    labToRgb,
+    OKLCHColor,
+    oklchToRgb,
+    RGBColor,
+    rgbToHcl,
+    rgbToLab,
+    rgbToOklch
+} from './color_spaces';
 import {parseCssColor} from './parse_css_color';
 import {interpolateArray, interpolateNumber} from '../../util/interpolate-primitives';
 
-export type InterpolationColorSpace = 'rgb' | 'hcl' | 'lab';
+export type LegacyInterpolationColorSpace = 'rgb' | 'hcl' | 'lab';
+export type InterpolationColorSpace = LegacyInterpolationColorSpace | 'oklch';
 
 /**
- * Checks whether the specified color space is one of the supported interpolation color spaces.
+ * Checks whether the specified color space is one a legacy function's `colorSpace` accepts.
+ * Legacy functions don't take `oklch`; only the `interpolate-oklch` expression does.
  *
  * @param colorSpace Color space key to verify.
- * @returns `true` if the specified color space is one of the supported
- * interpolation color spaces, `false` otherwise
+ * @returns `true` if legacy functions support the specified color space, `false` otherwise
  */
 export function isSupportedInterpolationColorSpace(
     colorSpace: string
-): colorSpace is InterpolationColorSpace {
+): colorSpace is LegacyInterpolationColorSpace {
     return colorSpace === 'rgb' || colorSpace === 'hcl' || colorSpace === 'lab';
 }
 
@@ -120,6 +132,15 @@ export class Color {
     }
 
     /**
+     * Used in color interpolation.
+     *
+     * @returns Given color, with reversed alpha blending, in OKLCH color space.
+     */
+    get oklch(): OKLCHColor {
+        return this.overwriteGetter('oklch', rgbToOklch(this.rgb));
+    }
+
+    /**
      * Lazy getter pattern. When getter is called for the first time lazy value
      * is calculated and then overwrites getter function in given object instance.
      *
@@ -206,6 +227,27 @@ export class Color {
             }
             case 'lab': {
                 const [r, g, b, alpha] = labToRgb(interpolateArray(from.lab, to.lab, t));
+                return new Color(r, g, b, alpha, false);
+            }
+            case 'oklch': {
+                // https://drafts.csswg.org/css-color-4/#interpolation
+                const [light0, chroma0, h0, alpha0] = from.oklch;
+                const [light1, chroma1, h1, alpha1] = to.oklch;
+                let hue0 = isNaN(h0) ? h1 : h0;
+                let hue1 = isNaN(h1) ? h0 : h1;
+                if (hue1 - hue0 > 180) {
+                    hue0 += 360;
+                } else if (hue1 - hue0 < -180) {
+                    hue1 += 360;
+                }
+                const alpha = interpolateNumber(alpha0, alpha1, t);
+                const divisor = alpha === 0 ? 1 : alpha;
+                const [r, g, b] = oklchToRgb([
+                    interpolateNumber(light0 * alpha0, light1 * alpha1, t) / divisor,
+                    interpolateNumber(chroma0 * alpha0, chroma1 * alpha1, t) / divisor,
+                    interpolateNumber(hue0, hue1, t),
+                    alpha
+                ]);
                 return new Color(r, g, b, alpha, false);
             }
         }

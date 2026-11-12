@@ -75,6 +75,10 @@ describe('Color class', () => {
             expect(isSupportedInterpolationColorSpace('interpolate-hcl')).toBe(false);
             expect(isSupportedInterpolationColorSpace('interpolate-lab')).toBe(false);
         });
+
+        test('should leave oklch to the interpolate-oklch expression', () => {
+            expect(isSupportedInterpolationColorSpace('oklch')).toBe(false);
+        });
     });
 
     describe('interpolate color', () => {
@@ -114,6 +118,74 @@ describe('Color class', () => {
             expectToMatchColor(i11nFn(1.0), 'rgb(0% 100% 0% / 0.6)');
         });
 
+        test('should interpolate colors in "oklch" color space', () => {
+            const color = Color.parse('rgba(0,0,255,1)');
+            const targetColor = Color.parse('rgba(0,255,0,.6)');
+
+            const i11nFn = (t: number) => Color.interpolate(color, targetColor, t, 'oklch');
+            expectToMatchColor(i11nFn(0.0), 'rgb(0% 0% 100% / 1)');
+            expectToMatchColor(i11nFn(0.25), 'rgb(0% 42.96% 98.46% / 0.9)', 4);
+            expectToMatchColor(i11nFn(0.5), 'rgb(0% 66.57% 82.63% / 0.8)', 4);
+            expectToMatchColor(i11nFn(0.75), 'rgb(0% 84.88% 56.87% / 0.7)', 4);
+            expectToMatchColor(i11nFn(1.0), 'rgb(0% 100% 0% / 0.6)');
+        });
+
+        test('should interpolate hue the shorter way around in "oklch" color space', () => {
+            const color = Color.parse('oklch(0.6 0.15 350)');
+            const targetColor = Color.parse('oklch(0.7 0.12 20)');
+
+            expectToMatchColor(
+                Color.interpolate(color, targetColor, 0.5, 'oklch'),
+                'rgb(82.23% 40.99% 51.77% / 1)',
+                4
+            );
+        });
+
+        test('should take the hue of the other color for a gray in "oklch" color space', () => {
+            const gray = Color.parse('#808080');
+            const blue = Color.parse('oklch(0.6 0.12 250)');
+
+            expectToMatchColor(
+                Color.interpolate(gray, blue, 0.5, 'oklch'),
+                'rgb(39.56% 51.49% 63.99% / 1)',
+                4
+            );
+            expectToMatchColor(
+                Color.interpolate(blue, gray, 0.5, 'oklch'),
+                'rgb(39.56% 51.49% 63.99% / 1)',
+                4
+            );
+            expectToMatchColor(
+                Color.interpolate(
+                    Color.transparent,
+                    Color.parse('oklch(0.7 0.1 150)'),
+                    0.5,
+                    'oklch'
+                ),
+                'rgb(43.63% 69.06% 49.07% / 0.5)',
+                4
+            );
+        });
+
+        test('should premultiply lightness and chroma by alpha in "oklch" color space', () => {
+            const color = Color.parse('oklch(0.7 0.1 30 / 0.2)');
+            const targetColor = Color.parse('oklch(0.5 0.1 250)');
+
+            expectToMatchColor(
+                Color.interpolate(color, targetColor, 0.5, 'oklch'),
+                'rgb(52.64% 34.75% 56.72% / 0.6)',
+                4
+            );
+            expect(
+                Color.interpolate(
+                    Color.transparent,
+                    Color.parse('oklch(0.7 0.1 30 / 0)'),
+                    0.5,
+                    'oklch'
+                )
+            ).toMatchObject({r: 0, g: 0, b: 0, a: 0});
+        });
+
         test('should correctly interpolate colors with alpha=0', () => {
             const color = Color.parse('rgba(0,0,255,0)');
             const targetColor = Color.parse('rgba(0,255,0,1)');
@@ -130,7 +202,7 @@ describe('Color class', () => {
             const color = Color.parse('royalblue');
             const targetColor = Color.parse('cyan');
 
-            for (const space of ['rgb', 'hcl', 'lab'] as const) {
+            for (const space of ['rgb', 'hcl', 'lab', 'oklch'] as const) {
                 const i11nFn = (t: number) => Color.interpolate(color, targetColor, t, space);
                 const colorInBetween = i11nFn(0.5);
                 for (const key of ['r', 'g', 'b', 'a'] as const) {

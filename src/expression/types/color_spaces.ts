@@ -33,7 +33,7 @@ export type LABColor = [l: number, a: number, b: number, alpha: number];
 /**
  * @param l Lightness 0..1
  * @param c Chroma 0..~0.4
- * @param h Hue as degrees 0..360
+ * @param h Hue as degrees 0..360, `NaN` when missing
  * @param alpha Alpha component 0..1
  */
 export type OKLCHColor = [l: number, c: number, h: number, alpha: number];
@@ -139,10 +139,25 @@ type Vector3 = [number, number, number];
 type Matrix3 = [Vector3, Vector3, Vector3];
 
 // The matrices of https://drafts.csswg.org/css-color-4/#color-conversion-code
+const linearSrgbToXyz: Matrix3 = [
+    [506752 / 1228815, 87881 / 245763, 12673 / 70218],
+    [87098 / 409605, 175762 / 245763, 12673 / 175545],
+    [7918 / 409605, 87881 / 737289, 1001167 / 1053270]
+];
 const xyzToLinearSrgb: Matrix3 = [
     [12831 / 3959, -329 / 214, -1974 / 3959],
     [-851781 / 878810, 1648619 / 878810, 36519 / 878810],
     [705 / 12673, -2585 / 12673, 705 / 667]
+];
+const xyzToLms: Matrix3 = [
+    [0.819022437996703, 0.3619062600528904, -0.1288737815209879],
+    [0.0329836539323885, 0.9292868615863434, 0.0361446663506424],
+    [0.0481771893596242, 0.2642395317527308, 0.6335478284694309]
+];
+const lmsToOklab: Matrix3 = [
+    [0.210454268309314, 0.7936177747023054, -0.0040720430116193],
+    [1.9779985324311684, -2.4285922420485799, 0.450593709617411],
+    [0.0259040424655478, 0.7827717124575296, -0.8086757549230774]
 ];
 const oklabToLms: Matrix3 = [
     [1, 0.3963377773761749, 0.2158037573099136],
@@ -168,6 +183,14 @@ function linearToSrgb(x: number): number {
     return abs > 0.0031308 ? Math.sign(x) * (1.055 * Math.pow(abs, 1 / 2.4) - 0.055) : 12.92 * x;
 }
 
+function srgbToOklab([r, g, b]: Vector3): Vector3 {
+    const [l, m, s] = multiply(
+        xyzToLms,
+        multiply(linearSrgbToXyz, [rgb2xyz(r), rgb2xyz(g), rgb2xyz(b)])
+    );
+    return multiply(lmsToOklab, [Math.cbrt(l), Math.cbrt(m), Math.cbrt(s)]);
+}
+
 function oklabToSrgb(lab: Vector3): Vector3 {
     const [l, m, s] = multiply(oklabToLms, lab);
     const [r, g, b] = multiply(
@@ -177,12 +200,22 @@ function oklabToSrgb(lab: Vector3): Vector3 {
     return [linearToSrgb(r), linearToSrgb(g), linearToSrgb(b)];
 }
 
+// A hue is powerless, and missing, at a chroma of at most 0.000004: https://drafts.csswg.org/css-color-4/#powerless
+export function rgbToOklch([r, g, b, alpha]: RGBColor): OKLCHColor {
+    const [l, okA, okB] = srgbToOklab([r, g, b]);
+    const c = Math.sqrt(okA * okA + okB * okB);
+    if (c <= 0.000004) {
+        return [l, 0, NaN, alpha];
+    }
+    return [l, c, constrainAngle(Math.atan2(okB, okA) * rad2deg), alpha];
+}
+
 // Keeps the conversion finite: past this chroma, the clipped color stops changing
 const maxChroma = 1e6;
 
 // Clips a color outside sRGB channel by channel, as browsers draw one
 export function oklchToRgb([l, c, h, alpha]: OKLCHColor): RGBColor {
-    const hue = h * deg2rad;
+    const hue = isNaN(h) ? 0 : h * deg2rad;
     const chroma = Math.min(c, maxChroma);
     const [r, g, b] = oklabToSrgb([l, chroma * Math.cos(hue), chroma * Math.sin(hue)]).map((x) =>
         Math.min(Math.max(x, 0), 1)
