@@ -9503,6 +9503,11 @@
             "js": "0.49.0",
             "ios": "https://github.com/maplibre/maplibre-native/issues/2784",
             "android": "https://github.com/maplibre/maplibre-native/issues/2784"
+          },
+          "interpolate-oklch": {
+            "js": "https://github.com/maplibre/maplibre-gl-js/issues/9011",
+            "android": "https://github.com/maplibre/maplibre-style-spec/issues/852",
+            "ios": "https://github.com/maplibre/maplibre-style-spec/issues/852"
           }
         }
       },
@@ -9544,6 +9549,11 @@
             "js": "0.49.0",
             "ios": "https://github.com/maplibre/maplibre-native/issues/2784",
             "android": "https://github.com/maplibre/maplibre-native/issues/2784"
+          },
+          "interpolate-oklch": {
+            "js": "https://github.com/maplibre/maplibre-gl-js/issues/9011",
+            "android": "https://github.com/maplibre/maplibre-style-spec/issues/852",
+            "ios": "https://github.com/maplibre/maplibre-style-spec/issues/852"
           }
         }
       },
@@ -9606,6 +9616,11 @@
             "js": "0.49.0",
             "ios": "https://github.com/maplibre/maplibre-native/issues/2784",
             "android": "https://github.com/maplibre/maplibre-native/issues/2784"
+          },
+          "interpolate-oklch": {
+            "js": "https://github.com/maplibre/maplibre-gl-js/issues/9011",
+            "android": "https://github.com/maplibre/maplibre-style-spec/issues/852",
+            "ios": "https://github.com/maplibre/maplibre-style-spec/issues/852"
           }
         }
       }
