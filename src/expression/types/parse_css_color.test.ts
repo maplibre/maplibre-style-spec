@@ -394,6 +394,11 @@ describe('parseCssColor', () => {
             }
         });
 
+        test('should wrap a huge angle before converting it to degrees', () => {
+            expect(parse('oklch(0.6 0.1 1e306turn)')).toEqual(parse('oklch(0.6 0.1 0)'));
+            expect(parse('oklch(0.6 0.1 1e307rad)')).toBeDefined();
+        });
+
         test('should clamp lightness, chroma and alpha', () => {
             expect(parse('oklch(1.2 0.1 30)')).toEqual(parse('oklch(1 0.1 30)'));
             expect(parse('oklch(120% 0.1 30)')).toEqual(parse('oklch(1 0.1 30)'));

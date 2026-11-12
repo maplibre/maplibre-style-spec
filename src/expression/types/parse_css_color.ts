@@ -179,7 +179,7 @@ const degreesPerUnit: Record<string, number> = {deg: 1, grad: 0.9, rad: 180 / Ma
 /**
  * @param argument `none`, a number, or a number with a `%` or angle unit.
  * @param percentReference The value of `100%`.
- * @returns The value, in degrees for an angle, or `0` for `none`.
+ * @returns The value, in degrees within one turn for an angle with a unit, or `0` for `none`.
  */
 function parseOklchArgument(argument: string, percentReference: number): number {
     if (argument === 'none') {
@@ -189,7 +189,7 @@ function parseOklchArgument(argument: string, percentReference: number): number 
     if (unit === '%') {
         return (+value / 100) * percentReference;
     }
-    return unit ? +value * degreesPerUnit[unit] : +value;
+    return unit ? (+value % (360 / degreesPerUnit[unit])) * degreesPerUnit[unit] : +value;
 }
 
 function parseHex(hex: string): number {
