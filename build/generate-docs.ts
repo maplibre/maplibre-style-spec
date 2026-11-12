@@ -676,7 +676,7 @@ function createTileJsonContent() {
     let content = '# TileJSON\n\n';
     content +=
         'A `vector`, `raster` or `raster-dem` [source](sources.md) can point at a [TileJSON 3.0.0](https://github.com/mapbox/tilejson-spec/tree/master/3.0.0) document with its `url` property. MapLibre extends TileJSON with the keys below. A value set on the source in the style takes precedence over the same key in the TileJSON.\n\n';
-    for (const key of ['emptyResponse', 'encoding', 'tileSize']) {
+    for (const key of ['encoding', 'sparse', 'tileSize']) {
         content += `## ${key}\n\n`;
         const groups = new Map<string, {sourceNames: string[]; value: JsonObject}>();
         for (const sourceKey of v8.source) {
