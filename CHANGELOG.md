@@ -1,6 +1,6 @@
 ## main
 ### ✨ Features and improvements
-- Add `oklch()` colors and the `interpolate-oklch` expression, which interpolates colors in OKLCH ([#852](https://github.com/maplibre/maplibre-style-spec/issues/852)) (by [@johncarmack1984](https://github.com/johncarmack1984))
+- Add `oklch()` colors and the `interpolate-oklch` expression ([#852](https://github.com/maplibre/maplibre-style-spec/issues/852)) (by [@johncarmack1984](https://github.com/johncarmack1984))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes

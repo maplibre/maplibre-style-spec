@@ -205,10 +205,10 @@ function oklabToSrgb(lab: Vector3): Vector3 {
     return [linearToSrgb(r), linearToSrgb(g), linearToSrgb(b)];
 }
 
+// A hue is powerless, and missing, at a chroma of at most 0.000004: https://drafts.csswg.org/css-color-4/#powerless
 export function rgbToOklch([r, g, b, alpha]: RGBColor): OKLCHColor {
     const [l, okA, okB] = srgbToOklab([r, g, b]);
     const c = Math.sqrt(okA * okA + okB * okB);
-    // https://drafts.csswg.org/css-color-4/#powerless
     if (c <= 0.000004) {
         return [l, 0, NaN, alpha];
     }
