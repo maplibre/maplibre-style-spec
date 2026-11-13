@@ -1,19 +1,30 @@
 ## main
 ### ✨ Features and improvements
-- Replace the experimental `emptyResponse` property of vector, raster and raster-dem sources with an experimental `sparse` boolean on vector sources only
-- Add `oklch()` colors ([#852](https://github.com/maplibre/maplibre-style-spec/issues/852)) (by [@johncarmack1984](https://github.com/johncarmack1984))
-- Add the `interpolate-oklch` expression and an `oklch` `colorSpace` for functions ([#852](https://github.com/maplibre/maplibre-style-spec/issues/852)) (by [@johncarmack1984](https://github.com/johncarmack1984))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
-- Fix zoom-and-property functions ignoring their `colorSpace` ([#1978](https://github.com/maplibre/maplibre-style-spec/pull/1978)) (by [@johncarmack1984](https://github.com/johncarmack1984))
 - _...Add new stuff here..._
 
-## 26.6.0
+## 26.7.0
+
 ### ✨ Features and improvements
+
+- Replace the experimental `emptyResponse` property of vector, raster and raster-dem sources with an experimental `sparse` boolean on vector sources only ([#1976](https://github.com/maplibre/maplibre-style-spec/pull/1976)) (by [@HarelM](https://github.com/HarelM))
+- Add `oklch()` colors ([#852](https://github.com/maplibre/maplibre-style-spec/issues/852)) (by [@johncarmack1984](https://github.com/johncarmack1984))
+- Add the `interpolate-oklch` expression and an `oklch` `colorSpace` for functions ([#852](https://github.com/maplibre/maplibre-style-spec/issues/852)) (by [@johncarmack1984](https://github.com/johncarmack1984))
+
+### 🐞 Bug fixes
+
+- Fix zoom-and-property functions ignoring their `colorSpace` ([#1978](https://github.com/maplibre/maplibre-style-spec/pull/1978)) (by [@johncarmack1984](https://github.com/johncarmack1984))
+
+## 26.6.0
+
+### ✨ Features and improvements
+
 - Add `raster-layer-blend`, so a raster layer can blend with the map below it like `fill-layer-blend` ([#1964](https://github.com/maplibre/maplibre-style-spec/pull/1964)) (by [@birkskyum](https://github.com/birkskyum))
 
 ### 🐞 Bug fixes
+
 - Fix `migrate()` converting single-stop `interval` functions to a `step` expression whose stop output is `0` instead of the function's output ([#1962](https://github.com/maplibre/maplibre-style-spec/issues/1962)) (by [@stoneshell](https://github.com/stoneshell))
 
 ## 26.5.1
@@ -25,11 +36,14 @@
 ### 🐞 Bug fixes
 
 ## 26.5.0
+
 ### ✨ Features and improvements
+
 - Allow the `elevation` expression in `fill-extrusion-color` to color extrusions by height above the ground ([#1851](https://github.com/maplibre/maplibre-style-spec/pull/1851))
 - feat: intial `{fill,line}-layer-blend` support ([#1798](https://github.com/maplibre/maplibre-style-spec/pull/1798), [#1950](https://github.com/maplibre/maplibre-style-spec/pull/1950)) (by [@CommanderStorm](https://github.com/CommanderStorm))
 
 ### 🐞 Bug fixes
+
 - Make `createPropertyExpression` take linear time on nested `let` and `coalesce`. Each level used to double the time: 20 levels took about 300 ms and 22 about a second ([#1933](https://github.com/maplibre/maplibre-style-spec/issues/1933)) (by [@essejmclean](https://github.com/essejmclean))
 - Fix dead links to renamed maplibre-gl-js examples in the expression docs ([#1948](https://github.com/maplibre/maplibre-style-spec/pull/1948))
 
