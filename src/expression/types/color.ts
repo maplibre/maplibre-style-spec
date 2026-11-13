@@ -13,8 +13,7 @@ import {
 import {parseCssColor} from './parse_css_color';
 import {interpolateArray, interpolateNumber} from '../../util/interpolate-primitives';
 
-export type LegacyInterpolationColorSpace = 'rgb' | 'hcl' | 'lab';
-export type InterpolationColorSpace = LegacyInterpolationColorSpace | 'oklch';
+export type InterpolationColorSpace = 'rgb' | 'hcl' | 'lab' | 'oklch';
 
 /**
  * Checks whether the specified color space is one a legacy function's `colorSpace` accepts.
@@ -25,7 +24,7 @@ export type InterpolationColorSpace = LegacyInterpolationColorSpace | 'oklch';
  */
 export function isSupportedInterpolationColorSpace(
     colorSpace: string
-): colorSpace is LegacyInterpolationColorSpace {
+): colorSpace is Exclude<InterpolationColorSpace, 'oklch'> {
     return colorSpace === 'rgb' || colorSpace === 'hcl' || colorSpace === 'lab';
 }
 
