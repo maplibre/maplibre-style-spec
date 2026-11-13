@@ -6,6 +6,7 @@
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
+- Fix zoom-and-property functions ignoring their `colorSpace` ([#1978](https://github.com/maplibre/maplibre-style-spec/pull/1978)) (by [@johncarmack1984](https://github.com/johncarmack1984))
 - _...Add new stuff here..._
 
 ## 26.6.0

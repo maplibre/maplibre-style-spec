@@ -120,6 +120,7 @@ export function createFunction(parameters, propertySpec): StyleFunction {
                     type: parameters.type,
                     property: parameters.property,
                     default: parameters.default,
+                    colorSpace: parameters.colorSpace,
                     stops: []
                 };
                 zoomStops.push(zoom);
@@ -145,7 +146,8 @@ export function createFunction(parameters, propertySpec): StyleFunction {
                 return evaluateExponentialFunction(
                     {
                         stops: featureFunctionStops,
-                        base: parameters.base
+                        base: parameters.base,
+                        colorSpace: parameters.colorSpace
                     },
                     propertySpec,
                     zoom
