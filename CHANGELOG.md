@@ -2,9 +2,11 @@
 ### ✨ Features and improvements
 - Replace the experimental `emptyResponse` property of vector, raster and raster-dem sources with an experimental `sparse` boolean on vector sources only
 - Add `oklch()` colors ([#852](https://github.com/maplibre/maplibre-style-spec/issues/852)) (by [@johncarmack1984](https://github.com/johncarmack1984))
+- Add the `interpolate-oklch` expression and an `oklch` `colorSpace` for functions ([#852](https://github.com/maplibre/maplibre-style-spec/issues/852)) (by [@johncarmack1984](https://github.com/johncarmack1984))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
+- Fix zoom-and-property functions ignoring their `colorSpace` ([#1978](https://github.com/maplibre/maplibre-style-spec/pull/1978)) (by [@johncarmack1984](https://github.com/johncarmack1984))
 - _...Add new stuff here..._
 
 ## 26.6.0

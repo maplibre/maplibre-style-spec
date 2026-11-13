@@ -273,6 +273,8 @@ export type ExpressionSpecification =
         ...(number | ColorSpecification | ExpressionSpecification)[]] // alternating number and ColorSpecificaton | ExpressionSpecification
     | ['interpolate-lab', InterpolationSpecification, number | ExpressionSpecification,
         ...(number | ColorSpecification | ExpressionSpecification)[]] // alternating number and ColorSpecification | ExpressionSpecification
+    | ['interpolate-oklch', InterpolationSpecification, number | ExpressionSpecification,
+        ...(number | ColorSpecification | ExpressionSpecification)[]] // alternating number and ColorSpecification | ExpressionSpecification
     | ['step', number | ExpressionSpecification, ExpressionInputType | ExpressionSpecification,
         ...(number | ExpressionInputType | ExpressionSpecification)[]] // alternating number and ExpressionInputType | ExpressionSpecification
     // Variable binding

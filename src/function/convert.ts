@@ -59,6 +59,8 @@ function getInterpolateOperator(parameters) {
             return 'interpolate-hcl';
         case 'lab':
             return 'interpolate-lab';
+        case 'oklch':
+            return 'interpolate-oklch';
         default:
             return 'interpolate';
     }
@@ -76,7 +78,8 @@ function convertZoomAndPropertyFunction(parameters, propertySpec, stops) {
                 zoom,
                 type: parameters.type,
                 property: parameters.property,
-                default: parameters.default
+                default: parameters.default,
+                colorSpace: parameters.colorSpace
             };
             featureFunctionStops[zoom] = [];
             zoomStops.push(zoom);

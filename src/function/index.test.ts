@@ -269,6 +269,48 @@ describe('exponential function', () => {
         expectToMatchColor(f({zoom: 10}, undefined), 'rgb(0% 100% 100% / 1)');
     });
 
+    test('color oklch colorspace', () => {
+        const f = createFunction(
+            {
+                type: 'exponential',
+                colorSpace: 'oklch',
+                stops: [
+                    [0, 'black'],
+                    [10, 'white']
+                ]
+            },
+            {
+                type: 'color'
+            }
+        ).evaluate;
+
+        expectToMatchColor(f({zoom: 0}, undefined), 'rgb(0% 0% 0% / 1)');
+        expectToMatchColor(f({zoom: 5}, undefined), 'rgb(38.86% 38.86% 38.86% / 1)', 4);
+        expectToMatchColor(f({zoom: 10}, undefined), 'rgb(100% 100% 100% / 1)');
+    });
+
+    test('zoom-and-property function in oklch colorspace', () => {
+        const f = createFunction(
+            {
+                type: 'exponential',
+                property: 'p',
+                colorSpace: 'oklch',
+                stops: [
+                    [{zoom: 0, value: 0}, 'black'],
+                    [{zoom: 0, value: 10}, 'white'],
+                    [{zoom: 10, value: 0}, 'white'],
+                    [{zoom: 10, value: 10}, 'white']
+                ]
+            },
+            {
+                type: 'color'
+            }
+        ).evaluate;
+
+        expectToMatchColor(f({zoom: 0}, {properties: {p: 5}}), 'rgb(38.86% 38.86% 38.86% / 1)', 4);
+        expectToMatchColor(f({zoom: 5}, {properties: {p: 0}}), 'rgb(38.86% 38.86% 38.86% / 1)', 4);
+    });
+
     test('color invalid colorspace', () => {
         expect(() => {
             createFunction(
