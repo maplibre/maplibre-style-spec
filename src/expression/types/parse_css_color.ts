@@ -1,10 +1,10 @@
 import {getOwn} from '../../util/get_own';
-import {HSLColor, hslToRgb, oklabToRgb, oklchToRgb, RGBColor} from './color_spaces';
+import {displayP3ToRgb, HSLColor, hslToRgb, oklabToRgb, oklchToRgb, RGBColor} from './color_spaces';
 
 /**
  * CSS color parser compliant with CSS Color 4 Specification.
  * Supports: named colors, `transparent` keyword, all rgb hex notations,
- * rgb(), rgba(), hsl(), hsla(), oklch() and oklab() functions.
+ * rgb(), rgba(), hsl(), hsla(), oklch() and oklab() functions, and color() in Display P3.
  * Does not round the parsed values to integers from the range 0..255.
  *
  * Syntax:
@@ -22,17 +22,20 @@ import {HSLColor, hslToRgb, oklabToRgb, oklchToRgb, RGBColor} from './color_spac
  *
  *       oklab() = oklab( [ <percentage> | <number> | none ]{3} [ / [ <alpha-value> | none ] ]? )
  *
+ *       color() = color( display-p3 [ <percentage> | <number> | none ]{3} [ / [ <alpha-value> | none ] ]? )
+ *
  * Caveats:
  *   - in rgb() and hsl(), <angle> - <number> with optional `deg` suffix; `grad`, `rad`, `turn` are not supported
  *   - in rgb() and hsl(), `none` keyword is not supported
- *   - oklch() and oklab() colors outside sRGB are clipped to it
- *   - comments inside rgb()/hsl()/oklch()/oklab() are not supported
+ *   - a color outside sRGB keeps its red, green and blue outside 0..1
+ *   - color() supports only the display-p3 color space
+ *   - comments inside rgb()/hsl()/oklch()/oklab()/color() are not supported
  *   - legacy color syntax rgba() is supported with an identical grammar and behavior to rgb()
  *   - legacy color syntax hsla() is supported with an identical grammar and behavior to hsl()
  *
  * @param input CSS color string to parse.
  * @returns Color in sRGB color space, with `red`, `green`, `blue`
- * and `alpha` channels normalized to the range 0..1,
+ * and `alpha` channels normalized to the range 0..1 (outside it for a color outside sRGB),
  * or `undefined` if the input is not a valid color string.
  */
 export function parseCssColor(input: string): RGBColor | undefined {
@@ -155,10 +158,10 @@ export function parseCssColor(input: string): RGBColor | undefined {
     if (oklchMatch) {
         const [, l, c, h, a] = oklchMatch;
         const oklch = [
-            parseOkArgument(l, 1),
-            parseOkArgument(c, 0.4),
-            parseOkArgument(h, 1),
-            a === undefined ? 1 : parseOkArgument(a, 1)
+            parseColorArgument(l, 1),
+            parseColorArgument(c, 0.4),
+            parseColorArgument(h, 1),
+            a === undefined ? 1 : parseColorArgument(a, 1)
         ];
         if (oklch.every(Number.isFinite)) {
             return oklchToRgb([
@@ -175,13 +178,28 @@ export function parseCssColor(input: string): RGBColor | undefined {
     if (oklabMatch) {
         const [, l, a, b, alpha] = oklabMatch;
         const oklab = [
-            parseOkArgument(l, 1),
-            parseOkArgument(a, 0.4),
-            parseOkArgument(b, 0.4),
-            alpha === undefined ? 1 : parseOkArgument(alpha, 1)
+            parseColorArgument(l, 1),
+            parseColorArgument(a, 0.4),
+            parseColorArgument(b, 0.4),
+            alpha === undefined ? 1 : parseColorArgument(alpha, 1)
         ];
         if (oklab.every(Number.isFinite)) {
             return oklabToRgb([clamp(oklab[0], 0, 1), oklab[1], oklab[2], clamp(oklab[3], 0, 1)]);
+        }
+    }
+
+    // color(display-p3 1 0.5 0), color(display-p3 100% 50% 0% / 50%), color(display-p3 1 none 0)
+    const displayP3Match = input.match(displayP3RegExp);
+    if (displayP3Match) {
+        const [, r, g, b, alpha] = displayP3Match;
+        const p3 = [
+            parseColorArgument(r, 1),
+            parseColorArgument(g, 1),
+            parseColorArgument(b, 1),
+            alpha === undefined ? 1 : parseColorArgument(alpha, 1)
+        ];
+        if (p3.every(Number.isFinite)) {
+            return displayP3ToRgb([p3[0], p3[1], p3[2], clamp(p3[3], 0, 1)]);
         }
     }
 }
@@ -193,6 +211,9 @@ const oklchRegExp = new RegExp(
 const oklabRegExp = new RegExp(
     `^oklab\\(\\s*(none|${cssNumber}%?)\\s+(none|${cssNumber}%?)\\s+(none|${cssNumber}%?)\\s*(?:\\/\\s*(none|${cssNumber}%?)\\s*)?\\)$`
 );
+const displayP3RegExp = new RegExp(
+    `^color\\(\\s*display-p3\\s+(none|${cssNumber}%?)\\s+(none|${cssNumber}%?)\\s+(none|${cssNumber}%?)\\s*(?:\\/\\s*(none|${cssNumber}%?)\\s*)?\\)$`
+);
 
 const degreesPerUnit: Record<string, number> = {deg: 1, grad: 0.9, rad: 180 / Math.PI, turn: 360};
 
@@ -201,7 +222,7 @@ const degreesPerUnit: Record<string, number> = {deg: 1, grad: 0.9, rad: 180 / Ma
  * @param percentReference The value of `100%`.
  * @returns The value, in degrees within one turn for an angle with a unit, or `0` for `none`.
  */
-function parseOkArgument(argument: string, percentReference: number): number {
+function parseColorArgument(argument: string, percentReference: number): number {
     if (argument === 'none') {
         return 0;
     }

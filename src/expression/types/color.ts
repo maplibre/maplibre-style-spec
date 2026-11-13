@@ -1,4 +1,5 @@
 import {
+    DisplayP3Color,
     HCLColor,
     hclToRgb,
     LABColor,
@@ -8,6 +9,7 @@ import {
     OKLCHColor,
     oklchToRgb,
     RGBColor,
+    rgbToDisplayP3,
     rgbToHcl,
     rgbToLab,
     rgbToOklab,
@@ -40,6 +42,8 @@ export function isSupportedInterpolationColorSpace(
 /**
  * Color representation used by WebGL.
  * Defined in sRGB color space and pre-blended with alpha.
+ * A color outside sRGB is clipped to it channel by channel, and keeps its
+ * unclipped value for `displayP3` and color interpolation.
  * @private
  */
 export class Color {
@@ -58,6 +62,12 @@ export class Color {
      * be multiplied automatically.
      */
     constructor(r: number, g: number, b: number, alpha = 1, premultiplied = true) {
+        if (!premultiplied && (Math.min(r, g, b) < 0 || Math.max(r, g, b) > 1)) {
+            this.overwriteGetter('unclippedRgb', [r, g, b, alpha]);
+            r = Math.min(Math.max(r, 0), 1);
+            g = Math.min(Math.max(g, 0), 1);
+            b = Math.min(Math.max(b, 0), 1);
+        }
         this.r = r;
         this.g = g;
         this.b = b;
@@ -91,6 +101,7 @@ export class Color {
      * - hsl and hsla, e.g. 'hsl(0,0%,83%)' or 'hsla(0,0%,83%,.5)' or 'hsl(0 0% 83% / 20%)'
      * - oklch, e.g. 'oklch(62.8% 0.258 29.23)' or 'oklch(0.7 40% 0.5turn / 50%)'
      * - oklab, e.g. 'oklab(62.8% 0.225 0.126)' or 'oklab(0.7 -40% 20% / 50%)'
+     * - display-p3, e.g. 'color(display-p3 1 0.5 0)' or 'color(display-p3 100% 50% 0% / 50%)'
      *
      * @param input CSS color string to parse.
      * @returns A `Color` instance, or `undefined` if the input is not a valid color string.
@@ -112,7 +123,7 @@ export class Color {
     }
 
     /**
-     * Used in color interpolation and by 'to-rgba' expression.
+     * Used by 'to-rgba' expression.
      *
      * @returns Gien color, with reversed alpha blending, in sRGB color space.
      */
@@ -128,7 +139,7 @@ export class Color {
      * @returns Gien color, with reversed alpha blending, in HCL color space.
      */
     get hcl(): HCLColor {
-        return this.overwriteGetter('hcl', rgbToHcl(this.rgb));
+        return this.overwriteGetter('hcl', rgbToHcl(this.unclippedRgb));
     }
 
     /**
@@ -137,7 +148,7 @@ export class Color {
      * @returns Gien color, with reversed alpha blending, in LAB color space.
      */
     get lab(): LABColor {
-        return this.overwriteGetter('lab', rgbToLab(this.rgb));
+        return this.overwriteGetter('lab', rgbToLab(this.unclippedRgb));
     }
 
     /**
@@ -146,7 +157,7 @@ export class Color {
      * @returns Given color, with reversed alpha blending, in OKLCH color space.
      */
     get oklch(): OKLCHColor {
-        return this.overwriteGetter('oklch', rgbToOklch(this.rgb));
+        return this.overwriteGetter('oklch', rgbToOklch(this.unclippedRgb));
     }
 
     /**
@@ -155,7 +166,24 @@ export class Color {
      * @returns Given color, with reversed alpha blending, in OKLAB color space.
      */
     get oklab(): OKLABColor {
-        return this.overwriteGetter('oklab', rgbToOklab(this.rgb));
+        return this.overwriteGetter('oklab', rgbToOklab(this.unclippedRgb));
+    }
+
+    /**
+     * Used by a renderer that draws in Display P3.
+     *
+     * @returns Given color, with reversed alpha blending, in Display P3, clipped to it channel by channel.
+     */
+    get displayP3(): DisplayP3Color {
+        return this.overwriteGetter('displayP3', rgbToDisplayP3(this.unclippedRgb));
+    }
+
+    /**
+     * @returns Given color, with reversed alpha blending, in sRGB color space,
+     * with channels outside 0..1 for a color outside sRGB.
+     */
+    private get unclippedRgb(): RGBColor {
+        return this.rgb;
     }
 
     /**
@@ -207,7 +235,7 @@ export class Color {
     ): Color {
         switch (spaceKey) {
             case 'rgb': {
-                const [r, g, b, alpha] = interpolateArray(from.rgb, to.rgb, t);
+                const [r, g, b, alpha] = interpolateArray(from.unclippedRgb, to.unclippedRgb, t);
                 return new Color(r, g, b, alpha, false);
             }
             case 'hcl': {
