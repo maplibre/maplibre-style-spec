@@ -590,6 +590,21 @@ describe('parseCssColor', () => {
             );
         });
 
+        test('should give a huge component the color of component 1e6', () => {
+            expect(parse('color(display-p3 1e200 0 0)')).toEqual(
+                parse('color(display-p3 1e6 0 0)')
+            );
+            expect(parse('color(display-p3 -1e200 0 0)')).toEqual(
+                parse('color(display-p3 -1e6 0 0)')
+            );
+            expect(
+                [
+                    ...parse('color(display-p3 1e200 0 0)'),
+                    ...parse('color(display-p3 -1e200 0 0)')
+                ].every(Number.isFinite)
+            ).toBe(true);
+        });
+
         test('should return undefined when provided with invalid display-p3 value', () => {
             expect(parse('color (display-p3 0.8 0.6 0.4)')).toBeUndefined();
             expect(parse('color(display-p3 0.8 0.6 0.4')).toBeUndefined();

@@ -87,7 +87,7 @@ export function rgbToLab([r, g, b, alpha]: RGBColor): LABColor {
     }
 
     const l = 116 * y - 16;
-    return [l < 0 ? 0 : l, 500 * (x - y), 200 * (y - z), alpha];
+    return [l, 500 * (x - y), 200 * (y - z), alpha];
 }
 
 function rgb2xyz(x: number): number {
@@ -258,12 +258,15 @@ const xyzToLinearDisplayP3: Matrix3 = [
     [11844 / 330415, -50337 / 660830, 316169 / 330415]
 ];
 
+// Keeps the conversion finite: past this component, the clipped color stops changing
+const maxDisplayP3Component = 1e6;
+
 // Display P3 shares sRGB's transfer function: https://drafts.csswg.org/css-color-4/#predefined-display-p3
 export function displayP3ToRgb([r, g, b, alpha]: DisplayP3Color): RGBColor {
-    const linear = multiply(
-        xyzToLinearSrgb,
-        multiply(linearDisplayP3ToXyz, [rgb2xyz(r), rgb2xyz(g), rgb2xyz(b)])
+    const [lr, lg, lb] = [r, g, b].map((x) =>
+        rgb2xyz(Math.min(Math.max(x, -maxDisplayP3Component), maxDisplayP3Component))
     );
+    const linear = multiply(xyzToLinearSrgb, multiply(linearDisplayP3ToXyz, [lr, lg, lb]));
     const [sr, sg, sb] = linear.map(linearToSrgb);
     return [sr, sg, sb, alpha];
 }

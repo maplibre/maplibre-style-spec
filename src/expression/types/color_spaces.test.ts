@@ -163,6 +163,11 @@ describe('color spaces', () => {
             expectCloseToArray(rgbToDisplayP3([-0.511605, 1.018266, -0.310675, 1]), [0, 1, 0, 1]);
         });
 
+        test('should give a huge component the color of component 1e6', () => {
+            expect(displayP3ToRgb([1e200, 0, 0, 1])).toEqual(displayP3ToRgb([1e6, 0, 0, 1]));
+            expect(displayP3ToRgb([-1e200, 0, 0, 1])).toEqual(displayP3ToRgb([-1e6, 0, 0, 1]));
+        });
+
         test('should clip colors outside Display P3', () => {
             expectCloseToArray(
                 rgbToDisplayP3([-0.437105, 0.805533, -0.428417, 1]),

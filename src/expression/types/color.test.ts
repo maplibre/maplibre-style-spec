@@ -32,6 +32,12 @@ describe('Color class', () => {
 
         test('should clip a color outside sRGB channel by channel', () => {
             expect(Color.parse('color(display-p3 0 1 0)')).toMatchObject({r: 0, g: 1, b: 0, a: 1});
+            expect(Color.parse('color(display-p3 1e200 0 0)')).toMatchObject({
+                r: 1,
+                g: 0,
+                b: 0,
+                a: 1
+            });
             expect(Color.parse('oklch(0.6 1e110 90)')).toMatchObject({r: 0, g: 1, b: 0, a: 1});
             expect(Color.parse('oklab(0.6 0 1e110)')).toMatchObject({r: 0, g: 1, b: 0, a: 1});
         });
@@ -285,6 +291,26 @@ describe('Color class', () => {
             expectCloseToArray(
                 Color.interpolate(green, gray, 0.5, 'oklab').displayP3,
                 [0.420769, 0.75342, 0.392469, 1]
+            );
+        });
+
+        test('should keep a lightness below zero when interpolating in LAB', () => {
+            const darkerThanBlack = Color.parse('color(display-p3 -0.1 -0.1 -0.1)');
+            const darkGray = Color.parse('color(display-p3 0.1 0.1 0.1)');
+
+            expectCloseToArray(
+                Color.interpolate(darkerThanBlack, darkGray, 0.5, 'lab').displayP3,
+                [0, 0, 0, 1]
+            );
+        });
+
+        test('should keep a lightness below zero when interpolating in HCL', () => {
+            const darkerThanBlack = Color.parse('color(display-p3 -0.1 -0.1 -0.1)');
+            const darkGray = Color.parse('color(display-p3 0.1 0.1 0.1)');
+
+            expectCloseToArray(
+                Color.interpolate(darkerThanBlack, darkGray, 0.5, 'hcl').displayP3,
+                [0, 0, 0, 1]
             );
         });
 
