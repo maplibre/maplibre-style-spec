@@ -269,6 +269,26 @@ describe('exponential function', () => {
         expectToMatchColor(f({zoom: 10}, undefined), 'rgb(0% 100% 100% / 1)');
     });
 
+    test('color oklch colorspace', () => {
+        const f = createFunction(
+            {
+                type: 'exponential',
+                colorSpace: 'oklch',
+                stops: [
+                    [0, 'black'],
+                    [10, 'white']
+                ]
+            },
+            {
+                type: 'color'
+            }
+        ).evaluate;
+
+        expectToMatchColor(f({zoom: 0}, undefined), 'rgb(0% 0% 0% / 1)');
+        expectToMatchColor(f({zoom: 5}, undefined), 'rgb(38.86% 38.86% 38.86% / 1)', 4);
+        expectToMatchColor(f({zoom: 10}, undefined), 'rgb(100% 100% 100% / 1)');
+    });
+
     test('color invalid colorspace', () => {
         expect(() => {
             createFunction(

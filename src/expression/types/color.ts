@@ -16,16 +16,21 @@ import {interpolateArray, interpolateNumber} from '../../util/interpolate-primit
 export type InterpolationColorSpace = 'rgb' | 'hcl' | 'lab' | 'oklch';
 
 /**
- * Checks whether the specified color space is one a legacy function's `colorSpace` accepts.
- * Legacy functions don't take `oklch`; only the `interpolate-oklch` expression does.
+ * Checks whether the specified color space is one of the supported interpolation color spaces.
  *
  * @param colorSpace Color space key to verify.
- * @returns `true` if legacy functions support the specified color space, `false` otherwise
+ * @returns `true` if the specified color space is one of the supported
+ * interpolation color spaces, `false` otherwise
  */
 export function isSupportedInterpolationColorSpace(
     colorSpace: string
-): colorSpace is Exclude<InterpolationColorSpace, 'oklch'> {
-    return colorSpace === 'rgb' || colorSpace === 'hcl' || colorSpace === 'lab';
+): colorSpace is InterpolationColorSpace {
+    return (
+        colorSpace === 'rgb' ||
+        colorSpace === 'hcl' ||
+        colorSpace === 'lab' ||
+        colorSpace === 'oklch'
+    );
 }
 
 /**
