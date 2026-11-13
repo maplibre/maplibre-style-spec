@@ -73,7 +73,7 @@ If no default is provided, the style property's default is used in these circums
 
 ### colorSpace
 
-*Optional [string](<https://maplibre.org/maplibre-style-spec/types/index.md#string>). One of `rgb`, `lab`, `hcl`.*
+*Optional [string](<https://maplibre.org/maplibre-style-spec/types/index.md#string>). One of `rgb`, `lab`, `hcl`, `oklch`.*
 
 The color space in which colors interpolated. Interpolating colors in perceptual color spaces like LAB and HCL tend to produce color ramps that look more consistent and produce colors that can be differentiated more easily than those interpolated in RGB space.
 
@@ -1599,6 +1599,51 @@ Example:
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.49.0 | ❌ ([\#2784](<https://github.com/maplibre/maplibre-native/issues/2784>)) | ❌ ([\#2784](<https://github.com/maplibre/maplibre-native/issues/2784>)) |
+
+### interpolate-oklch
+
+Produces continuous, smooth results by interpolating between pairs of input and output values ("stops"). Works like [`interpolate`](<https://maplibre.org/maplibre-style-spec/expressions/index.md#interpolate>), but the output type must be `color` or `array<color>`, and the interpolation is performed in the OKLCH color space as [CSS Color 4](<https://www.w3.org/TR/css-color-4/#interpolation>) does it: hue takes the shorter way around, a gray stop takes the other stop's hue, and lightness and chroma are premultiplied by alpha. A result outside sRGB is clipped like an `oklch()` color.
+
+Syntax:
+
+```js
+["interpolate-oklch", interpolation_type, input, stop_input_1, stop_output_1, ..., stop_input_n, stop_output_n]: color | array<color>
+```
+
+- `interpolation_type`: `interpolation`- The interpolation type.  
+  An interpolation defines how to transition between items. The first element of an interpolation array is a string naming the interpolation operator, e.g. `"linear"` or `"exponential"`. Elements that follow (if any) are the *arguments* to the interpolation.  
+  Possible values are:  
+  \- `["linear"]`: Interpolates linearly between the pair of stops just less than and just greater than the input  
+  \- `["exponential", base]`: Interpolates exponentially between the stops just less than and just greater than the input.  
+  Parameters are:  
+  `base`: rate at which the output increases in `f(x) = x^r`. Values higher than 1 increase, close to one behaves linearly, and below one decrease.  
+  \- `["cubic-bezier", x1, y1, x2, y2]`: Interpolates using the cubic bézier curve defined by the given control points.  
+  Parameters are:  
+  `x1`: X-coordinate of the first control point. Must be between zero and one for a valid monotonic easing curve. Controls how quickly the curve speeds up at the beginning.  
+  `y1`: Y-coordinate of the first control point. Typically between zero and one, but may exceed this range for overshoot effects. Influences the starting slope of the curve.  
+  `x2`: X-coordinate of the second control point. Must be between zero and one for a valid monotonic easing curve. Controls when the curve begins to decelerate toward the end.  
+  `y2`: Y-coordinate of the second control point. Typically between zero and one, but may exceed this range for overshoot effects. Influences the ending slope of the curve.
+- `input`: `number`
+- `stop_input_i`: `number literal`
+- `stop_output_i`: `color | array<color>`
+
+Example:
+
+```json
+"some-property": [
+    "interpolate-oklch",
+    ["linear"],
+    ["zoom"],
+    15,
+    "#f00",
+    15.05,
+    "#00f"
+]
+```
+
+| SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
+| --- | --- | --- | --- |
+| basic functionality | ❌ ([\#9011](<https://github.com/maplibre/maplibre-gl-js/issues/9011>)) | ❌ ([\#4970](<https://github.com/maplibre/maplibre-native/issues/4970>)) | ❌ ([\#4970](<https://github.com/maplibre/maplibre-native/issues/4970>)) |
 
 ## Math
 
