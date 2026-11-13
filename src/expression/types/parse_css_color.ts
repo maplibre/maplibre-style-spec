@@ -1,10 +1,10 @@
 import {getOwn} from '../../util/get_own';
-import {HSLColor, hslToRgb, RGBColor} from './color_spaces';
+import {HSLColor, hslToRgb, oklchToRgb, RGBColor} from './color_spaces';
 
 /**
  * CSS color parser compliant with CSS Color 4 Specification.
  * Supports: named colors, `transparent` keyword, all rgb hex notations,
- * rgb(), rgba(), hsl() and hsla() functions.
+ * rgb(), rgba(), hsl(), hsla() and oklch() functions.
  * Does not round the parsed values to integers from the range 0..255.
  *
  * Syntax:
@@ -18,10 +18,13 @@ import {HSLColor, hslToRgb, RGBColor} from './color_spaces';
  *         hsl() = hsl( <hue> <percentage> <percentage> [ / <alpha-value> ]? )
  *         hsl() = hsl( <hue>, <percentage>, <percentage>, <alpha-value>? )
  *
+ *       oklch() = oklch( [ <percentage> | <number> | none ]{2} [ <hue> | none ] [ / [ <alpha-value> | none ] ]? )
+ *
  * Caveats:
- *   - <angle> - <number> with optional `deg` suffix; `grad`, `rad`, `turn` are not supported
- *   - `none` keyword is not supported
- *   - comments inside rgb()/hsl() are not supported
+ *   - in rgb() and hsl(), <angle> - <number> with optional `deg` suffix; `grad`, `rad`, `turn` are not supported
+ *   - in rgb() and hsl(), `none` keyword is not supported
+ *   - oklch() colors outside sRGB are clipped to it
+ *   - comments inside rgb()/hsl()/oklch() are not supported
  *   - legacy color syntax rgba() is supported with an identical grammar and behavior to rgb()
  *   - legacy color syntax hsla() is supported with an identical grammar and behavior to hsl()
  *
@@ -144,6 +147,49 @@ export function parseCssColor(input: string): RGBColor | undefined {
         }
         // comma optional syntax requires no commas at all
     }
+
+    // oklch(62.8% 0.258 29.23), oklch(0.7 40% 0.5turn / 50%), oklch(70% 0 none)
+    const oklchMatch = input.match(oklchRegExp);
+    if (oklchMatch) {
+        const [, l, c, h, a] = oklchMatch;
+        const oklch = [
+            parseOklchArgument(l, 1),
+            parseOklchArgument(c, 0.4),
+            parseOklchArgument(h, 1),
+            a === undefined ? 1 : parseOklchArgument(a, 1)
+        ];
+        if (oklch.every(Number.isFinite)) {
+            return oklchToRgb([
+                clamp(oklch[0], 0, 1),
+                Math.max(oklch[1], 0),
+                oklch[2] % 360,
+                clamp(oklch[3], 0, 1)
+            ]);
+        }
+    }
+}
+
+const cssNumber = '[+-]?(?:\\d+(?:\\.\\d+)?|\\.\\d+)(?:e[+-]?\\d+)?';
+const oklchRegExp = new RegExp(
+    `^oklch\\(\\s*(none|${cssNumber}%?)\\s+(none|${cssNumber}%?)\\s+(none|${cssNumber}(?:deg|grad|rad|turn)?)\\s*(?:\\/\\s*(none|${cssNumber}%?)\\s*)?\\)$`
+);
+
+const degreesPerUnit: Record<string, number> = {deg: 1, grad: 0.9, rad: 180 / Math.PI, turn: 360};
+
+/**
+ * @param argument `none`, a number, or a number with a `%` or angle unit.
+ * @param percentReference The value of `100%`.
+ * @returns The value, in degrees within one turn for an angle with a unit, or `0` for `none`.
+ */
+function parseOklchArgument(argument: string, percentReference: number): number {
+    if (argument === 'none') {
+        return 0;
+    }
+    const [, value, unit] = argument.match(/^(.+?)(%|[a-z]+)?$/);
+    if (unit === '%') {
+        return (+value / 100) * percentReference;
+    }
+    return unit ? (+value % (360 / degreesPerUnit[unit])) * degreesPerUnit[unit] : +value;
 }
 
 function parseHex(hex: string): number {

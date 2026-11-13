@@ -1,6 +1,6 @@
 import {expectCloseToArray} from '../../../test/lib/util';
-import {hclToRgb, hslToRgb, labToRgb, rgbToHcl, rgbToLab} from './color_spaces';
-import {describe, test} from 'vitest';
+import {hclToRgb, hslToRgb, labToRgb, oklchToRgb, rgbToHcl, rgbToLab} from './color_spaces';
+import {describe, expect, test} from 'vitest';
 
 describe('color spaces', () => {
     describe('LAB color space', () => {
@@ -44,6 +44,27 @@ describe('color spaces', () => {
             expectCloseToArray(hclToRgb([90, 70, 70, 1]), [0.7663, 0.6636, 0.0558, 1], 4);
             expectCloseToArray(hclToRgb([270, 60, 55, 1]), [0.1281, 0.531, 0.9276, 1], 4);
             expectCloseToArray(hclToRgb([301.37, 131.21, 29.57, 1]), [0, 0, 1, 1], 3);
+        });
+    });
+
+    describe('OKLCH color space', () => {
+        test('should convert colors from OKLCH to sRGB color space', () => {
+            expectCloseToArray(oklchToRgb([0.7, 0.1, 30, 1]), [0.836736, 0.526627, 0.475198, 1]);
+            expectCloseToArray(
+                oklchToRgb([0.6, 0.1, 90, 0.5]),
+                [0.593719, 0.490828, 0.190116, 0.5]
+            );
+        });
+
+        test('should clip colors outside sRGB', () => {
+            expectCloseToArray(oklchToRgb([0.7, 0.3, 140, 1]), [0, 0.771585, 0, 1]);
+            expectCloseToArray(oklchToRgb([0.9, 0.3, 300, 1]), [1, 0.625509, 1, 1]);
+            expectCloseToArray(oklchToRgb([0.3, 0.25, 30, 1]), [0.50917, 0, 0, 1]);
+        });
+
+        test('should give a huge chroma the color of chroma 1e6', () => {
+            expect(oklchToRgb([0.6, 1e110, 90, 1])).toEqual([0, 1, 0, 1]);
+            expect(oklchToRgb([0.6, 1e110, 90, 1])).toEqual(oklchToRgb([0.6, 1e6, 90, 1]));
         });
     });
 

@@ -1,6 +1,7 @@
 import {parseCssColor} from './parse_css_color';
 import * as colorSpacesModule from './color_spaces';
 import {RGBColor} from './color_spaces';
+import {expectCloseToArray} from '../../../test/lib/util';
 import {describe, test, expect, afterEach, vi} from 'vitest';
 describe('parseCssColor', () => {
     // by changing the parse function, we can verify external css color parsers against our requirements
@@ -362,6 +363,97 @@ describe('parseCssColor', () => {
                         error.message = `\nInput: ${input}\n${error.message}`;
                         throw error;
                     }
+                }
+            }
+        });
+    });
+
+    describe('OKLCH function "oklch()"', () => {
+        test('should parse valid oklch values and convert to rgb', () => {
+            expectCloseToArray(parse('oklch(70% 0.1 30)'), [0.836736, 0.526627, 0.475198, 1]);
+            expectCloseToArray(
+                parse('oklch(0.8 0.05 160 / 0.75)'),
+                [0.638114, 0.784944, 0.701091, 0.75]
+            );
+
+            const yellowish = [0.593719, 0.490828, 0.190116, 1];
+            for (const input of [
+                'oklch(0.6 0.1 90)',
+                'oklch(60% 25% 90deg)',
+                'oklch(0.6 0.1 100grad)',
+                'oklch(0.6 0.1 1.5707963267948966rad)',
+                'oklch(0.6 0.1 0.25turn)',
+                'oklch(0.6 0.1 450)',
+                'oklch(0.6 0.1 -270deg)',
+                'OKLCH(60% 0.1 90DEG)',
+                'oklch(6e-1 1E-1 +9e1)',
+                'oklch(+.6 .1 90 / 1)',
+                ' oklch(  0.6\t0.1\n90  /  100% ) '
+            ]) {
+                expectCloseToArray(parse(input), yellowish);
+            }
+        });
+
+        test('should wrap a huge angle before converting it to degrees', () => {
+            expect(parse('oklch(0.6 0.1 1e306turn)')).toEqual(parse('oklch(0.6 0.1 0)'));
+            expect(parse('oklch(0.6 0.1 1e307rad)')).toBeDefined();
+        });
+
+        test('should clamp lightness, chroma and alpha', () => {
+            expect(parse('oklch(1.2 0.1 30)')).toEqual(parse('oklch(1 0.1 30)'));
+            expect(parse('oklch(120% 0.1 30)')).toEqual(parse('oklch(1 0.1 30)'));
+            expect(parse('oklch(-0.1 0.1 30)')).toEqual(parse('oklch(0 0.1 30)'));
+            expect(parse('oklch(0.6 -0.1 30)')).toEqual(parse('oklch(0.6 0 30)'));
+            expect(parse('oklch(0.6 0.1 30 / 1.5)')).toEqual(parse('oklch(0.6 0.1 30)'));
+            expect(parse('oklch(0.6 0.1 30 / -1)')[3]).toBe(0);
+            expect(parse('oklch(0.6 0.1 30 / 50%)')[3]).toBe(0.5);
+        });
+
+        test('should read none as zero', () => {
+            expect(parse('oklch(none 0.1 90)')).toEqual(parse('oklch(0 0.1 90)'));
+            expectCloseToArray(parse('oklch(0.6 none 90)'), [0.502111, 0.502111, 0.502111, 1]);
+            expectCloseToArray(parse('oklch(0.6 0.1 none)'), [0.692324, 0.39884, 0.492791, 1]);
+            expect(parse('oklch(0.6 0.1 90 / none)')[3]).toBe(0);
+        });
+
+        test('should clip colors outside sRGB', () => {
+            expectCloseToArray(parse('oklch(0.7 0.3 140)'), [0, 0.771585, 0, 1]);
+            expectCloseToArray(parse('oklch(0.9 0.3 300)'), [1, 0.625509, 1, 1]);
+            expect(parse('oklch(0.6 1e110 90)')).toEqual([0, 1, 0, 1]);
+        });
+
+        test('should return undefined when provided with invalid oklch value', () => {
+            expect(parse('oklch (0.6 0.1 90)')).toBeUndefined();
+            expect(parse('oklch(0.6 0.1 90')).toBeUndefined();
+            expect(parse('oklch(0.6 0.1 90))')).toBeUndefined();
+
+            const invalidArgs = [
+                '0.6, 0.1, 90', // commas are not allowed
+                '0.6 0.1 90, 0.5',
+                '', // oklch requires 3 arguments and an optional alpha after a slash
+                '0.6 0.1',
+                '0.6 0.1 90 0.5',
+                '0.6 0.1 90 /',
+                '0.6 0.1 90 / 0.5 / 0.5',
+                '0.6 0.1 90%', // the hue is a number or an angle
+                '0.6 0.1 90 deg',
+                '0.6 0.1 90grads',
+                '0.6 0.1 nonedeg',
+                '0.6deg 0.1 90', // lightness and chroma are numbers or percentages
+                '0.6 0.1deg 90',
+                '1. 0.1 90', // invalid numbers
+                '0.6 0.1 --90',
+                '0.6 0.1 9e',
+                '0.6 0.1 1e999'
+            ];
+
+            for (const args of invalidArgs) {
+                const input = `oklch(${args})`;
+                try {
+                    expect(parse(input)).toBeUndefined();
+                } catch (error) {
+                    error.message = `\nInput: ${input}\n${error.message}`;
+                    throw error;
                 }
             }
         });

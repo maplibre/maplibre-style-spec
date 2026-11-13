@@ -69,6 +69,7 @@ export class Color {
      * - hex (with 3, 4, 6 or 8 digits), e.g. '#f0f' or '#e9bebea9'
      * - rgb and rgba, e.g. 'rgb(0,240,120)' or 'rgba(0%,94%,47%,0.1)' or 'rgb(0 240 120 / .3)'
      * - hsl and hsla, e.g. 'hsl(0,0%,83%)' or 'hsla(0,0%,83%,.5)' or 'hsl(0 0% 83% / 20%)'
+     * - oklch, e.g. 'oklch(62.8% 0.258 29.23)' or 'oklch(0.7 40% 0.5turn / 50%)'
      *
      * @param input CSS color string to parse.
      * @returns A `Color` instance, or `undefined` if the input is not a valid color string.
