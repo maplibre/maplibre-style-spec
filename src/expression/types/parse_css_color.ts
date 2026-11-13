@@ -1,10 +1,10 @@
 import {getOwn} from '../../util/get_own';
-import {HSLColor, hslToRgb, oklchToRgb, RGBColor} from './color_spaces';
+import {HSLColor, hslToRgb, oklabToRgb, oklchToRgb, RGBColor} from './color_spaces';
 
 /**
  * CSS color parser compliant with CSS Color 4 Specification.
  * Supports: named colors, `transparent` keyword, all rgb hex notations,
- * rgb(), rgba(), hsl(), hsla() and oklch() functions.
+ * rgb(), rgba(), hsl(), hsla(), oklch() and oklab() functions.
  * Does not round the parsed values to integers from the range 0..255.
  *
  * Syntax:
@@ -20,11 +20,13 @@ import {HSLColor, hslToRgb, oklchToRgb, RGBColor} from './color_spaces';
  *
  *       oklch() = oklch( [ <percentage> | <number> | none ]{2} [ <hue> | none ] [ / [ <alpha-value> | none ] ]? )
  *
+ *       oklab() = oklab( [ <percentage> | <number> | none ]{3} [ / [ <alpha-value> | none ] ]? )
+ *
  * Caveats:
  *   - in rgb() and hsl(), <angle> - <number> with optional `deg` suffix; `grad`, `rad`, `turn` are not supported
  *   - in rgb() and hsl(), `none` keyword is not supported
- *   - oklch() colors outside sRGB are clipped to it
- *   - comments inside rgb()/hsl()/oklch() are not supported
+ *   - oklch() and oklab() colors outside sRGB are clipped to it
+ *   - comments inside rgb()/hsl()/oklch()/oklab() are not supported
  *   - legacy color syntax rgba() is supported with an identical grammar and behavior to rgb()
  *   - legacy color syntax hsla() is supported with an identical grammar and behavior to hsl()
  *
@@ -153,10 +155,10 @@ export function parseCssColor(input: string): RGBColor | undefined {
     if (oklchMatch) {
         const [, l, c, h, a] = oklchMatch;
         const oklch = [
-            parseOklchArgument(l, 1),
-            parseOklchArgument(c, 0.4),
-            parseOklchArgument(h, 1),
-            a === undefined ? 1 : parseOklchArgument(a, 1)
+            parseOkArgument(l, 1),
+            parseOkArgument(c, 0.4),
+            parseOkArgument(h, 1),
+            a === undefined ? 1 : parseOkArgument(a, 1)
         ];
         if (oklch.every(Number.isFinite)) {
             return oklchToRgb([
@@ -167,11 +169,29 @@ export function parseCssColor(input: string): RGBColor | undefined {
             ]);
         }
     }
+
+    // oklab(62.8% 0.225 0.126), oklab(0.7 -40% 20% / 50%), oklab(70% none none)
+    const oklabMatch = input.match(oklabRegExp);
+    if (oklabMatch) {
+        const [, l, a, b, alpha] = oklabMatch;
+        const oklab = [
+            parseOkArgument(l, 1),
+            parseOkArgument(a, 0.4),
+            parseOkArgument(b, 0.4),
+            alpha === undefined ? 1 : parseOkArgument(alpha, 1)
+        ];
+        if (oklab.every(Number.isFinite)) {
+            return oklabToRgb([clamp(oklab[0], 0, 1), oklab[1], oklab[2], clamp(oklab[3], 0, 1)]);
+        }
+    }
 }
 
 const cssNumber = '[+-]?(?:\\d+(?:\\.\\d+)?|\\.\\d+)(?:e[+-]?\\d+)?';
 const oklchRegExp = new RegExp(
     `^oklch\\(\\s*(none|${cssNumber}%?)\\s+(none|${cssNumber}%?)\\s+(none|${cssNumber}(?:deg|grad|rad|turn)?)\\s*(?:\\/\\s*(none|${cssNumber}%?)\\s*)?\\)$`
+);
+const oklabRegExp = new RegExp(
+    `^oklab\\(\\s*(none|${cssNumber}%?)\\s+(none|${cssNumber}%?)\\s+(none|${cssNumber}%?)\\s*(?:\\/\\s*(none|${cssNumber}%?)\\s*)?\\)$`
 );
 
 const degreesPerUnit: Record<string, number> = {deg: 1, grad: 0.9, rad: 180 / Math.PI, turn: 360};
@@ -181,7 +201,7 @@ const degreesPerUnit: Record<string, number> = {deg: 1, grad: 0.9, rad: 180 / Ma
  * @param percentReference The value of `100%`.
  * @returns The value, in degrees within one turn for an angle with a unit, or `0` for `none`.
  */
-function parseOklchArgument(argument: string, percentReference: number): number {
+function parseOkArgument(argument: string, percentReference: number): number {
     if (argument === 'none') {
         return 0;
     }

@@ -3,17 +3,20 @@ import {
     hclToRgb,
     LABColor,
     labToRgb,
+    OKLABColor,
+    oklabToRgb,
     OKLCHColor,
     oklchToRgb,
     RGBColor,
     rgbToHcl,
     rgbToLab,
+    rgbToOklab,
     rgbToOklch
 } from './color_spaces';
 import {parseCssColor} from './parse_css_color';
 import {interpolateArray, interpolateNumber} from '../../util/interpolate-primitives';
 
-export type InterpolationColorSpace = 'rgb' | 'hcl' | 'lab' | 'oklch';
+export type InterpolationColorSpace = 'rgb' | 'hcl' | 'lab' | 'oklch' | 'oklab';
 
 /**
  * Checks whether the specified color space is one of the supported interpolation color spaces.
@@ -29,7 +32,8 @@ export function isSupportedInterpolationColorSpace(
         colorSpace === 'rgb' ||
         colorSpace === 'hcl' ||
         colorSpace === 'lab' ||
-        colorSpace === 'oklch'
+        colorSpace === 'oklch' ||
+        colorSpace === 'oklab'
     );
 }
 
@@ -86,6 +90,7 @@ export class Color {
      * - rgb and rgba, e.g. 'rgb(0,240,120)' or 'rgba(0%,94%,47%,0.1)' or 'rgb(0 240 120 / .3)'
      * - hsl and hsla, e.g. 'hsl(0,0%,83%)' or 'hsla(0,0%,83%,.5)' or 'hsl(0 0% 83% / 20%)'
      * - oklch, e.g. 'oklch(62.8% 0.258 29.23)' or 'oklch(0.7 40% 0.5turn / 50%)'
+     * - oklab, e.g. 'oklab(62.8% 0.225 0.126)' or 'oklab(0.7 -40% 20% / 50%)'
      *
      * @param input CSS color string to parse.
      * @returns A `Color` instance, or `undefined` if the input is not a valid color string.
@@ -142,6 +147,15 @@ export class Color {
      */
     get oklch(): OKLCHColor {
         return this.overwriteGetter('oklch', rgbToOklch(this.rgb));
+    }
+
+    /**
+     * Used in color interpolation.
+     *
+     * @returns Given color, with reversed alpha blending, in OKLAB color space.
+     */
+    get oklab(): OKLABColor {
+        return this.overwriteGetter('oklab', rgbToOklab(this.rgb));
     }
 
     /**
@@ -250,6 +264,20 @@ export class Color {
                     interpolateNumber(light0 * alpha0, light1 * alpha1, t) / divisor,
                     interpolateNumber(chroma0 * alpha0, chroma1 * alpha1, t) / divisor,
                     interpolateNumber(hue0, hue1, t),
+                    alpha
+                ]);
+                return new Color(r, g, b, alpha, false);
+            }
+            case 'oklab': {
+                // https://drafts.csswg.org/css-color-4/#interpolation
+                const [light0, a0, b0, alpha0] = from.oklab;
+                const [light1, a1, b1, alpha1] = to.oklab;
+                const alpha = interpolateNumber(alpha0, alpha1, t);
+                const divisor = alpha === 0 ? 1 : alpha;
+                const [r, g, b] = oklabToRgb([
+                    interpolateNumber(light0 * alpha0, light1 * alpha1, t) / divisor,
+                    interpolateNumber(a0 * alpha0, a1 * alpha1, t) / divisor,
+                    interpolateNumber(b0 * alpha0, b1 * alpha1, t) / divisor,
                     alpha
                 ]);
                 return new Color(r, g, b, alpha, false);

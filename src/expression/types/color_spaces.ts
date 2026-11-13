@@ -38,6 +38,14 @@ export type LABColor = [l: number, a: number, b: number, alpha: number];
  */
 export type OKLCHColor = [l: number, c: number, h: number, alpha: number];
 
+/**
+ * @param l Lightness 0..1
+ * @param a A axis value -0.4..0.4
+ * @param b B axis value -0.4..0.4
+ * @param alpha Alpha component 0..1
+ */
+export type OKLABColor = [l: number, a: number, b: number, alpha: number];
+
 // See https://observablehq.com/@mbostock/lab-and-rgb
 const Xn = 0.96422,
     Yn = 1,
@@ -200,6 +208,11 @@ function oklabToSrgb(lab: Vector3): Vector3 {
     return [linearToSrgb(r), linearToSrgb(g), linearToSrgb(b)];
 }
 
+export function rgbToOklab([r, g, b, alpha]: RGBColor): OKLABColor {
+    const [l, okA, okB] = srgbToOklab([r, g, b]);
+    return [l, okA, okB, alpha];
+}
+
 // A hue is powerless, and missing, at a chroma of at most 0.000004: https://drafts.csswg.org/css-color-4/#powerless
 export function rgbToOklch([r, g, b, alpha]: RGBColor): OKLCHColor {
     const [l, okA, okB] = srgbToOklab([r, g, b]);
@@ -221,4 +234,8 @@ export function oklchToRgb([l, c, h, alpha]: OKLCHColor): RGBColor {
         Math.min(Math.max(x, 0), 1)
     );
     return [r, g, b, alpha];
+}
+
+export function oklabToRgb([l, a, b, alpha]: OKLABColor): RGBColor {
+    return oklchToRgb([l, Math.hypot(a, b), Math.atan2(b, a) * rad2deg, alpha]);
 }

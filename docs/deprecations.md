@@ -54,7 +54,7 @@ If no default is provided, the style property's default is used in these circums
 
 ### colorSpace
 
-*Optional [string](types.md#string). One of `rgb`, `lab`, `hcl`, `oklch`.*
+*Optional [string](types.md#string). One of `rgb`, `lab`, `hcl`, `oklch`, `oklab`.*
 
 The color space in which colors interpolated. Interpolating colors in perceptual color spaces like LAB and HCL tend to produce color ramps that look more consistent and produce colors that can be differentiated more easily than those interpolated in RGB space.
 

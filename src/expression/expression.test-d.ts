@@ -885,6 +885,62 @@ describe('interpolation expressions', () => {
             >().toExtend<ExpressionSpecification>();
         });
     });
+
+    describe('"interpolate-oklab" expression', () => {
+        test('type requires stop outputs to be a color', () => {
+            expectTypeOf<
+                ['interpolate-oklab', ['linear'], ['zoom'], 0, false, 2, 1024]
+            >().not.toExtend<ExpressionSpecification>();
+            expectTypeOf<
+                [
+                    'interpolate-oklab',
+                    ['linear'],
+                    ['zoom'],
+                    0,
+                    [10, 20, 30],
+                    0.5,
+                    [20, 30, 40],
+                    1,
+                    [30, 40, 50]
+                ]
+            >().not.toExtend<ExpressionSpecification>();
+            expectTypeOf<
+                ['interpolate-oklab', ['linear'], ['zoom'], 0, {prop: 'foo'}, 2, {prop: 'bar'}]
+            >().not.toExtend<ExpressionSpecification>();
+        });
+        test('type accepts expression which interpolates between color outputs', () => {
+            expectTypeOf<
+                ['interpolate-oklab', ['linear'], ['zoom'], 2, 'white', 4, 'black']
+            >().toExtend<ExpressionSpecification>();
+        });
+        test('type accepts expression which interpolates between color array outputs', () => {
+            expectTypeOf<
+                [
+                    'interpolate-oklab',
+                    ['linear'],
+                    ['zoom'],
+                    8,
+                    ['literal', ['white', 'black']],
+                    10,
+                    ['literal', ['black', 'white']]
+                ]
+            >().toExtend<ExpressionSpecification>();
+        });
+        test('type accepts expression which interpolates between non-literal color array outputs', () => {
+            type Colors = {'colors-8': string[]; 'colors-10': string[]};
+            expectTypeOf<
+                [
+                    'interpolate-oklab',
+                    ['linear'],
+                    ['zoom'],
+                    8,
+                    ['get', 'colors-8', ['literal', Colors]],
+                    10,
+                    ['get', 'colors-10', ['literal', Colors]]
+                ]
+            >().toExtend<ExpressionSpecification>();
+        });
+    });
 });
 
 describe('"step" expression', () => {

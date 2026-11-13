@@ -65,6 +65,7 @@ describe('Color class', () => {
             expect(isSupportedInterpolationColorSpace('hcl')).toBe(true);
             expect(isSupportedInterpolationColorSpace('lab')).toBe(true);
             expect(isSupportedInterpolationColorSpace('oklch')).toBe(true);
+            expect(isSupportedInterpolationColorSpace('oklab')).toBe(true);
         });
 
         test('should ignore invalid interpolation color spaces', () => {
@@ -179,6 +180,37 @@ describe('Color class', () => {
                     Color.parse('oklch(0.7 0.1 30 / 0)'),
                     0.5,
                     'oklch'
+                )
+            ).toMatchObject({r: 0, g: 0, b: 0, a: 0});
+        });
+
+        test('should interpolate colors in "oklab" color space', () => {
+            const color = Color.parse('rgba(0,0,255,1)');
+            const targetColor = Color.parse('rgba(0,255,0,.6)');
+
+            const i11nFn = (t: number) => Color.interpolate(color, targetColor, t, 'oklab');
+            expectToMatchColor(i11nFn(0.0), 'rgb(0% 0% 100% / 1)');
+            expectToMatchColor(i11nFn(0.25), 'rgb(0% 37.26% 92.67% / 0.9)', 4);
+            expectToMatchColor(i11nFn(0.5), 'rgb(0% 56.90% 82.18% / 0.8)', 4);
+            expectToMatchColor(i11nFn(0.75), 'rgb(0% 76.69% 64.76% / 0.7)', 4);
+            expectToMatchColor(i11nFn(1.0), 'rgb(0% 100% 0% / 0.6)');
+        });
+
+        test('should premultiply lightness, a and b by alpha in "oklab" color space', () => {
+            const color = Color.parse('oklab(0.7 0.1 0.05 / 0.2)');
+            const targetColor = Color.parse('oklab(0.5 -0.05 -0.1)');
+
+            expectToMatchColor(
+                Color.interpolate(color, targetColor, 0.5, 'oklab'),
+                'rgb(28.80% 43.77% 60.14% / 0.6)',
+                4
+            );
+            expect(
+                Color.interpolate(
+                    Color.transparent,
+                    Color.parse('oklab(0.7 0.1 0.05 / 0)'),
+                    0.5,
+                    'oklab'
                 )
             ).toMatchObject({r: 0, g: 0, b: 0, a: 0});
         });

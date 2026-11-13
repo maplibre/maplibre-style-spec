@@ -5,9 +5,9 @@ MapLibre style contains values of various types, most commonly as values for the
 ## Color
 
 The `color` type is a color in the [sRGB color space](https://en.wikipedia.org/wiki/SRGB).
-Colors are JSON strings in a variety of permitted formats: HTML-style hex values, RGB, RGBA, HSL, HSLA, and [OKLCH](https://www.w3.org/TR/css-color-4/#specifying-oklab-oklch).
+Colors are JSON strings in a variety of permitted formats: HTML-style hex values, RGB, RGBA, HSL, HSLA, [OKLCH and OKLAB](https://www.w3.org/TR/css-color-4/#specifying-oklab-oklch).
 Predefined HTML color names, such as `yellow`, `blue`, and `transparent`, are also permitted.
-OKLCH colors outside sRGB are clipped to sRGB for each channel.
+OKLCH and OKLAB colors outside sRGB are clipped to sRGB for each channel.
 ```json
 {
     "line-color": "#ff0",
@@ -17,6 +17,7 @@ OKLCH colors outside sRGB are clipped to sRGB for each channel.
     "line-color": "hsl(100, 50%, 50%)",
     "line-color": "hsla(100, 50%, 50%, 1)",
     "line-color": "oklch(96.8% 0.211 109.77)",
+    "line-color": "oklab(96.8% -0.071 0.199)",
     "line-color": "yellow"
 }
 ```
