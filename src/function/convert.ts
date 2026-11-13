@@ -61,6 +61,8 @@ function getInterpolateOperator(parameters) {
             return 'interpolate-lab';
         case 'oklch':
             return 'interpolate-oklch';
+        case 'oklab':
+            return 'interpolate-oklab';
         default:
             return 'interpolate';
     }

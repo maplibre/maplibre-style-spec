@@ -3,9 +3,11 @@ import {
     hclToRgb,
     hslToRgb,
     labToRgb,
+    oklabToRgb,
     oklchToRgb,
     rgbToHcl,
     rgbToLab,
+    rgbToOklab,
     rgbToOklch
 } from './color_spaces';
 import {describe, expect, test} from 'vitest';
@@ -91,6 +93,43 @@ describe('color spaces', () => {
         test('should give a huge chroma the color of chroma 1e6', () => {
             expect(oklchToRgb([0.6, 1e110, 90, 1])).toEqual([0, 1, 0, 1]);
             expect(oklchToRgb([0.6, 1e110, 90, 1])).toEqual(oklchToRgb([0.6, 1e6, 90, 1]));
+        });
+    });
+
+    describe('OKLAB color space', () => {
+        test('should convert colors from sRGB to OKLAB color space', () => {
+            expectCloseToArray(rgbToOklab([1, 0, 0, 1]), [0.627955, 0.224863, 0.125846, 1]);
+            expectCloseToArray(rgbToOklab([0, 0, 1, 1]), [0.452014, -0.032457, -0.311528, 1], 4);
+            expectCloseToArray(rgbToOklab([0, 1, 0, 1]), [0.86644, -0.233888, 0.179498, 1], 4);
+            expectCloseToArray(rgbToOklab([1, 1, 1, 1]), [1, 0, 0, 1]);
+            expectCloseToArray(
+                rgbToOklab([0.2, 0.4, 0.6, 0.5]),
+                [0.499314, -0.033043, -0.092967, 0.5],
+                4
+            );
+        });
+
+        test('should convert colors from OKLAB to sRGB color space', () => {
+            expectCloseToArray(
+                oklabToRgb([0.7, 0.086603, 0.05, 1]),
+                [0.836736, 0.526627, 0.475198, 1]
+            );
+            expectCloseToArray(oklabToRgb([0.6, 0, 0, 0.5]), [0.502111, 0.502111, 0.502111, 0.5]);
+        });
+
+        test('should clip colors outside sRGB', () => {
+            expectCloseToArray(oklabToRgb([0.7, -0.229813, 0.192836, 1]), [0, 0.771585, 0, 1]);
+            expectCloseToArray(oklabToRgb([0.3, 0.216506, 0.125, 1]), [0.50917, 0, 0, 1]);
+        });
+
+        test('should give a huge a and b the color of chroma 1e6 in their direction', () => {
+            expect(oklabToRgb([0.6, 0, 1e110, 1])).toEqual([0, 1, 0, 1]);
+            expect(oklabToRgb([0.6, -1e300, -1e300, 1])).toEqual(
+                oklabToRgb([0.6, -1e6 / Math.SQRT2, -1e6 / Math.SQRT2, 1])
+            );
+            expect(oklabToRgb([0.6, 1.7e308, 1.7e308, 1])).toEqual(
+                oklabToRgb([0.6, 1e6 / Math.SQRT2, 1e6 / Math.SQRT2, 1])
+            );
         });
     });
 

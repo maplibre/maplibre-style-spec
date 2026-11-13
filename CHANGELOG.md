@@ -1,5 +1,6 @@
 ## main
 ### ✨ Features and improvements
+- Add `oklab()` colors, the `interpolate-oklab` expression and an `oklab` `colorSpace` for functions ([#852](https://github.com/maplibre/maplibre-style-spec/issues/852)) (by [@johncarmack1984](https://github.com/johncarmack1984))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes

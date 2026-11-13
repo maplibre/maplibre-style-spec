@@ -1,0 +1,88 @@
+{
+  "expression": [
+    "interpolate-oklab",
+    [
+      "linear"
+    ],
+    [
+      "get",
+      "x"
+    ],
+    1,
+    "red",
+    11,
+    [
+      "get",
+      "color"
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {
+        "properties": {
+          "x": 0,
+          "color": "blue"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 5,
+          "color": "blue"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 11,
+          "color": "blue"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": 11,
+          "color": "oops blue"
+        }
+      }
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": false,
+      "isZoomConstant": true,
+      "type": "color"
+    },
+    "outputs": [
+      [
+        1,
+        0,
+        0,
+        1
+      ],
+      [
+        0.641115,
+        0.320862,
+        0.557534,
+        1
+      ],
+      [
+        0,
+        0,
+        1,
+        1
+      ],
+      {
+        "error": "layers[0].paint.some-property[6]: Could not parse color from value 'oops blue'"
+      }
+    ]
+  }
+}

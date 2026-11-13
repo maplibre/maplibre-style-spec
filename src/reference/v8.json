@@ -3419,6 +3419,9 @@
         },
         "oklch": {
           "doc": "Use the OKLCH color space to interpolate color values, interpolating the Lightness, Chroma, and Hue channels individually."
+        },
+        "oklab": {
+          "doc": "Use the OKLAB color space to interpolate color values, interpolating the Lightness, a, and b channels individually."
         }
       },
       "doc": "The color space in which colors interpolated. Interpolating colors in perceptual color spaces like LAB and HCL tend to produce color ramps that look more consistent and produce colors that can be differentiated more easily than those interpolated in RGB space.",
@@ -4095,6 +4098,45 @@
             "js": "https://github.com/maplibre/maplibre-gl-js/issues/9011",
             "android": "https://github.com/maplibre/maplibre-native/issues/4970",
             "ios": "https://github.com/maplibre/maplibre-native/issues/4970"
+          }
+        }
+      },
+      "interpolate-oklab": {
+        "doc": "Produces continuous, smooth results by interpolating between pairs of input and output values (\"stops\"). Works like [`interpolate`](expressions/#interpolate), but the output type must be `color` or `array<color>`, and the interpolation is performed in the OKLAB color space as [CSS Color 4](https://www.w3.org/TR/css-color-4/#interpolation) does it: lightness, a and b are premultiplied by alpha. A result outside sRGB is clipped like an `oklab()` color.",
+        "syntax": {
+          "overloads": [
+            {
+              "parameters": ["interpolation_type", "input", "stop_input_1", "stop_output_1", "...", "stop_input_n", "stop_output_n"],
+              "output-type": ["color", "array<color>"]
+            }
+          ],
+          "parameters": [
+            {
+              "name": "interpolation_type",
+              "type": "interpolation",
+              "doc": "The interpolation type."
+            },
+            {
+              "name": "input",
+              "type": "number"
+            },
+            {
+              "name": "stop_input_i",
+              "type": "number literal"
+            },
+            {
+              "name": "stop_output_i",
+              "type": ["color", "array<color>"]
+            }
+          ]
+        },
+        "example": ["interpolate-oklab", ["linear"], ["zoom"], 15, "#f00", 15.05, "#00f"],
+        "group": "Ramps, scales, curves",
+        "sdk-support": {
+          "basic functionality": {
+            "js": "https://github.com/maplibre/maplibre-style-spec/issues/852",
+            "android": "https://github.com/maplibre/maplibre-style-spec/issues/852",
+            "ios": "https://github.com/maplibre/maplibre-style-spec/issues/852"
           }
         }
       },
@@ -9463,6 +9505,11 @@
             "js": "https://github.com/maplibre/maplibre-gl-js/issues/9011",
             "android": "https://github.com/maplibre/maplibre-native/issues/4970",
             "ios": "https://github.com/maplibre/maplibre-native/issues/4970"
+          },
+          "interpolate-oklab": {
+            "js": "https://github.com/maplibre/maplibre-style-spec/issues/852",
+            "android": "https://github.com/maplibre/maplibre-style-spec/issues/852",
+            "ios": "https://github.com/maplibre/maplibre-style-spec/issues/852"
           }
         }
       },
@@ -9509,6 +9556,11 @@
             "js": "https://github.com/maplibre/maplibre-gl-js/issues/9011",
             "android": "https://github.com/maplibre/maplibre-native/issues/4970",
             "ios": "https://github.com/maplibre/maplibre-native/issues/4970"
+          },
+          "interpolate-oklab": {
+            "js": "https://github.com/maplibre/maplibre-style-spec/issues/852",
+            "android": "https://github.com/maplibre/maplibre-style-spec/issues/852",
+            "ios": "https://github.com/maplibre/maplibre-style-spec/issues/852"
           }
         }
       },
@@ -9576,6 +9628,11 @@
             "js": "https://github.com/maplibre/maplibre-gl-js/issues/9011",
             "android": "https://github.com/maplibre/maplibre-native/issues/4970",
             "ios": "https://github.com/maplibre/maplibre-native/issues/4970"
+          },
+          "interpolate-oklab": {
+            "js": "https://github.com/maplibre/maplibre-style-spec/issues/852",
+            "android": "https://github.com/maplibre/maplibre-style-spec/issues/852",
+            "ios": "https://github.com/maplibre/maplibre-style-spec/issues/852"
           }
         }
       }

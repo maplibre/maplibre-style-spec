@@ -458,4 +458,88 @@ describe('parseCssColor', () => {
             }
         });
     });
+
+    describe('OKLAB function "oklab()"', () => {
+        test('should parse valid oklab values and convert to rgb', () => {
+            expectCloseToArray(
+                parse('oklab(70% 0.086603 0.05)'),
+                [0.836736, 0.526627, 0.475198, 1]
+            );
+            expectCloseToArray(
+                parse('oklab(0.6 0 0 / 0.75)'),
+                [0.502111, 0.502111, 0.502111, 0.75]
+            );
+
+            const yellowish = [0.593719, 0.490828, 0.190116, 1];
+            for (const input of [
+                'oklab(0.6 0 0.1)',
+                'oklab(60% 0% 25%)',
+                'oklab(0.6 none 0.1)',
+                'OKLAB(60% 0 0.1)',
+                'oklab(6e-1 0 1E-1)',
+                'oklab(+.6 -0 .1 / 1)',
+                ' oklab(  0.6\t0\n0.1  /  100% ) '
+            ]) {
+                expectCloseToArray(parse(input), yellowish);
+            }
+        });
+
+        test('should read a and b as signed, with 100% as 0.4', () => {
+            expectCloseToArray(parse('oklab(0.6 -25% 10%)'), parse('oklab(0.6 -0.1 0.04)'));
+            expect(parse('oklab(0.6 0.1 -0.1)')).not.toEqual(parse('oklab(0.6 0.1 0.1)'));
+        });
+
+        test('should clamp lightness and alpha', () => {
+            expect(parse('oklab(1.2 0.1 0.1)')).toEqual(parse('oklab(1 0.1 0.1)'));
+            expect(parse('oklab(120% 0.1 0.1)')).toEqual(parse('oklab(1 0.1 0.1)'));
+            expect(parse('oklab(-0.1 0.1 0.1)')).toEqual(parse('oklab(0 0.1 0.1)'));
+            expect(parse('oklab(0.6 0.1 0.1 / 1.5)')).toEqual(parse('oklab(0.6 0.1 0.1)'));
+            expect(parse('oklab(0.6 0.1 0.1 / -1)')[3]).toBe(0);
+            expect(parse('oklab(0.6 0.1 0.1 / 50%)')[3]).toBe(0.5);
+        });
+
+        test('should read none as zero', () => {
+            expect(parse('oklab(none 0.1 0.1)')).toEqual(parse('oklab(0 0.1 0.1)'));
+            expectCloseToArray(parse('oklab(0.6 none none)'), [0.502111, 0.502111, 0.502111, 1]);
+            expect(parse('oklab(0.6 0.1 0.1 / none)')[3]).toBe(0);
+        });
+
+        test('should clip colors outside sRGB', () => {
+            expectCloseToArray(parse('oklab(0.7 -0.229813 0.192836)'), [0, 0.771585, 0, 1]);
+            expect(parse('oklab(0.6 0 1e110)')).toEqual([0, 1, 0, 1]);
+        });
+
+        test('should return undefined when provided with invalid oklab value', () => {
+            expect(parse('oklab (0.6 0 0.1)')).toBeUndefined();
+            expect(parse('oklab(0.6 0 0.1')).toBeUndefined();
+            expect(parse('oklab(0.6 0 0.1))')).toBeUndefined();
+
+            const invalidArgs = [
+                '0.6, 0, 0.1', // commas are not allowed
+                '0.6 0 0.1, 0.5',
+                '', // oklab requires 3 arguments and an optional alpha after a slash
+                '0.6 0',
+                '0.6 0 0.1 0.5',
+                '0.6 0 0.1 /',
+                '0.6 0 0.1 / 0.5 / 0.5',
+                '0.6deg 0 0.1', // every component is a number or a percentage
+                '0.6 0deg 0.1',
+                '0.6 0 0.1turn',
+                '1. 0 0.1', // invalid numbers
+                '0.6 0 --0.1',
+                '0.6 0 9e',
+                '0.6 0 1e999'
+            ];
+
+            for (const args of invalidArgs) {
+                const input = `oklab(${args})`;
+                try {
+                    expect(parse(input)).toBeUndefined();
+                } catch (error) {
+                    error.message = `\nInput: ${input}\n${error.message}`;
+                    throw error;
+                }
+            }
+        });
+    });
 });
