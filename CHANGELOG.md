@@ -2,6 +2,7 @@
 ### ✨ Features and improvements
 - Add `oklab()` colors, the `interpolate-oklab` expression and an `oklab` `colorSpace` for functions ([#852](https://github.com/maplibre/maplibre-style-spec/issues/852)) (by [@johncarmack1984](https://github.com/johncarmack1984))
 - _...Add new stuff here..._
+- Add a `premultiply` raster source option for preserving raw RGBA tile values when alpha carries data.
 
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
