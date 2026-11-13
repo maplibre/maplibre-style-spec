@@ -927,17 +927,16 @@ describe('interpolation expressions', () => {
             >().toExtend<ExpressionSpecification>();
         });
         test('type accepts expression which interpolates between non-literal color array outputs', () => {
-            // eslint-disable-next-line
-            const obj = {'colors-8': ['white', 'black'], 'colors-10': ['black', 'white']};
+            type Colors = {'colors-8': string[]; 'colors-10': string[]};
             expectTypeOf<
                 [
                     'interpolate-oklab',
                     ['linear'],
                     ['zoom'],
                     8,
-                    ['get', 'colors-8', ['literal', typeof obj]],
+                    ['get', 'colors-8', ['literal', Colors]],
                     10,
-                    ['get', 'colors-10', ['literal', typeof obj]]
+                    ['get', 'colors-10', ['literal', Colors]]
                 ]
             >().toExtend<ExpressionSpecification>();
         });
