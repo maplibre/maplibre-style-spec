@@ -249,6 +249,27 @@
       "source": "source",
       "source-layer": "source-layer",
       "filter": ["all", ["==", ["get", "type"], "stream"], ["!", ["in", "name", ""]]]
+    },
+    {
+      "id": "expression filter that returns a number",
+      "type": "line",
+      "source": "source",
+      "source-layer": "source-layer",
+      "filter": ["+", 1, 2]
+    },
+    {
+      "id": "expression filter that returns a string",
+      "type": "line",
+      "source": "source",
+      "source-layer": "source-layer",
+      "filter": ["upcase", "x"]
+    },
+    {
+      "id": "expression filter whose type is only known at runtime",
+      "type": "line",
+      "source": "source",
+      "source-layer": "source-layer",
+      "filter": ["get", "visible"]
     }
   ]
 }
