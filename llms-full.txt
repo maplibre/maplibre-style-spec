@@ -6292,7 +6292,7 @@ MapLibre style contains values of various types, most commonly as values for the
 
 ## Color
 
-The `color` type is a color in the [sRGB color space](<https://en.wikipedia.org/wiki/SRGB>). Colors are JSON strings in a variety of permitted formats: HTML-style hex values, RGB, RGBA, HSL, HSLA, [OKLCH and OKLAB](<https://www.w3.org/TR/css-color-4/#specifying-oklab-oklch>). Predefined HTML color names, such as `yellow`, `blue`, and `transparent`, are also permitted. OKLCH and OKLAB colors outside sRGB are clipped to sRGB for each channel.
+The `color` type is a color in the [sRGB color space](<https://en.wikipedia.org/wiki/SRGB>), or in the wider Display P3 color space. Colors are JSON strings in a variety of permitted formats: HTML-style hex values, RGB, RGBA, HSL, HSLA, [OKLCH and OKLAB](<https://www.w3.org/TR/css-color-4/#specifying-oklab-oklch>), and Display P3 as [`color(display-p3 r g b)`](<https://www.w3.org/TR/css-color-4/#predefined-display-p3>). Predefined HTML color names, such as `yellow`, `blue`, and `transparent`, are also permitted. An OKLCH, OKLAB or Display P3 color can lie outside sRGB. A renderer that draws in sRGB clips it to sRGB for each channel. One that draws in Display P3 shows it as specified, and clips a color outside Display P3 to it for each channel. Interpolation works on the unclipped colors, and its result is clipped the same way.
 
 ```json
 {
@@ -6304,6 +6304,7 @@ The `color` type is a color in the [sRGB color space](<https://en.wikipedia.org/
     "line-color": "hsla(100, 50%, 50%, 1)",
     "line-color": "oklch(96.8% 0.211 109.77)",
     "line-color": "oklab(96.8% -0.071 0.199)",
+    "line-color": "color(display-p3 1 0.85 0)",
     "line-color": "yellow"
 }
 ```

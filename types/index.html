@@ -1128,10 +1128,10 @@
 <h1 id="types">Types<a class="headerlink" href="#types" title="Permanent link">&para;</a></h1>
 <p>MapLibre style contains values of various types, most commonly as values for the style properties of a layer.</p>
 <h2 id="color">Color<a class="headerlink" href="#color" title="Permanent link">&para;</a></h2>
-<p>The <code>color</code> type is a color in the <a href="https://en.wikipedia.org/wiki/SRGB">sRGB color space</a>.
-Colors are JSON strings in a variety of permitted formats: HTML-style hex values, RGB, RGBA, HSL, HSLA, <a href="https://www.w3.org/TR/css-color-4/#specifying-oklab-oklch">OKLCH and OKLAB</a>.
+<p>The <code>color</code> type is a color in the <a href="https://en.wikipedia.org/wiki/SRGB">sRGB color space</a>, or in the wider Display P3 color space.
+Colors are JSON strings in a variety of permitted formats: HTML-style hex values, RGB, RGBA, HSL, HSLA, <a href="https://www.w3.org/TR/css-color-4/#specifying-oklab-oklch">OKLCH and OKLAB</a>, and Display P3 as <a href="https://www.w3.org/TR/css-color-4/#predefined-display-p3"><code>color(display-p3 r g b)</code></a>.
 Predefined HTML color names, such as <code>yellow</code>, <code>blue</code>, and <code>transparent</code>, are also permitted.
-OKLCH and OKLAB colors outside sRGB are clipped to sRGB for each channel.
+An OKLCH, OKLAB or Display P3 color can lie outside sRGB. A renderer that draws in sRGB clips it to sRGB for each channel. One that draws in Display P3 shows it as specified, and clips a color outside Display P3 to it for each channel. Interpolation works on the unclipped colors, and its result is clipped the same way.
 <div class="language-json highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="nt">"line-color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#ff0"</span><span class="p">,</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nt">"line-color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#ffff00"</span><span class="p">,</span>
@@ -1141,8 +1141,9 @@ OKLCH and OKLAB colors outside sRGB are clipped to sRGB for each channel.
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="nt">"line-color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hsla(100, 50%, 50%, 1)"</span><span class="p">,</span>
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="nt">"line-color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oklch(96.8% 0.211 109.77)"</span><span class="p">,</span>
 </span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="nt">"line-color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oklab(96.8% -0.071 0.199)"</span><span class="p">,</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="nt">"line-color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"yellow"</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="p">}</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="nt">"line-color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"color(display-p3 1 0.85 0)"</span><span class="p">,</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="nt">"line-color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"yellow"</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="p">}</span>
 </span></code></pre></div></p>
 <h2 id="formatted">Formatted<a class="headerlink" href="#formatted" title="Permanent link">&para;</a></h2>
 <p>The <code>formatted</code> type is a string broken into sections annotated with separate formatting options.</p>
