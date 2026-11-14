@@ -416,10 +416,9 @@ describe('parseCssColor', () => {
             expect(parse('oklch(0.6 0.1 90 / none)')[3]).toBe(0);
         });
 
-        test('should clip colors outside sRGB', () => {
-            expectCloseToArray(parse('oklch(0.7 0.3 140)'), [0, 0.771585, 0, 1]);
-            expectCloseToArray(parse('oklch(0.9 0.3 300)'), [1, 0.625509, 1, 1]);
-            expect(parse('oklch(0.6 1e110 90)')).toEqual([0, 1, 0, 1]);
+        test('should keep a color outside sRGB outside 0..1', () => {
+            expectCloseToArray(parse('oklch(0.7 0.3 140)'), [-0.240335, 0.771585, -0.305472, 1]);
+            expectCloseToArray(parse('oklch(0.9 0.3 300)'), [1.004286, 0.625509, 1.51587, 1]);
         });
 
         test('should return undefined when provided with invalid oklch value', () => {
@@ -504,9 +503,11 @@ describe('parseCssColor', () => {
             expect(parse('oklab(0.6 0.1 0.1 / none)')[3]).toBe(0);
         });
 
-        test('should clip colors outside sRGB', () => {
-            expectCloseToArray(parse('oklab(0.7 -0.229813 0.192836)'), [0, 0.771585, 0, 1]);
-            expect(parse('oklab(0.6 0 1e110)')).toEqual([0, 1, 0, 1]);
+        test('should keep a color outside sRGB outside 0..1', () => {
+            expectCloseToArray(
+                parse('oklab(0.7 -0.229813 0.192836)'),
+                [-0.240334, 0.771585, -0.305471, 1]
+            );
         });
 
         test('should return undefined when provided with invalid oklab value', () => {
@@ -533,6 +534,101 @@ describe('parseCssColor', () => {
 
             for (const args of invalidArgs) {
                 const input = `oklab(${args})`;
+                try {
+                    expect(parse(input)).toBeUndefined();
+                } catch (error) {
+                    error.message = `\nInput: ${input}\n${error.message}`;
+                    throw error;
+                }
+            }
+        });
+    });
+    describe('Display P3 function "color()"', () => {
+        test('should parse valid display-p3 values and convert to rgb', () => {
+            expectCloseToArray(parse('color(display-p3 0.917488 0.200287 0.138561)'), [1, 0, 0, 1]);
+            expectCloseToArray(
+                parse('color(display-p3 0.5 0.5 0.5 / 0.75)'),
+                [0.5, 0.5, 0.5, 0.75]
+            );
+
+            const tan = [0.836748, 0.589605, 0.363997, 1];
+            for (const input of [
+                'color(display-p3 0.8 0.6 0.4)',
+                'color(display-p3 80% 60% 40%)',
+                'COLOR(DISPLAY-P3 0.8 0.6 0.4)',
+                'color(display-p3 8e-1 6E-1 +.4)',
+                'color(display-p3 0.8 0.6 0.4 / 1)',
+                ' color(  display-p3\t0.8\n0.6 0.4  /  100% ) '
+            ]) {
+                expectCloseToArray(parse(input), tan);
+            }
+        });
+
+        test('should clamp alpha', () => {
+            expect(parse('color(display-p3 0.8 0.6 0.4 / 1.5)')).toEqual(
+                parse('color(display-p3 0.8 0.6 0.4)')
+            );
+            expect(parse('color(display-p3 0.8 0.6 0.4 / -1)')[3]).toBe(0);
+            expect(parse('color(display-p3 0.8 0.6 0.4 / 50%)')[3]).toBe(0.5);
+        });
+
+        test('should read none as zero', () => {
+            expect(parse('color(display-p3 none 0.6 0.4)')).toEqual(
+                parse('color(display-p3 0 0.6 0.4)')
+            );
+            expect(parse('color(display-p3 0.8 0.6 0.4 / none)')[3]).toBe(0);
+        });
+
+        test('should keep a color outside sRGB outside 0..1', () => {
+            expectCloseToArray(
+                parse('color(display-p3 0 1 0)'),
+                [-0.511605, 1.018266, -0.310675, 1]
+            );
+            expectCloseToArray(
+                parse('color(display-p3 1.2 -0.1 0.3)'),
+                [1.3114, -0.30201, 0.251398, 1]
+            );
+        });
+
+        test('should give a huge component the color of component 1e6', () => {
+            expect(parse('color(display-p3 1e200 0 0)')).toEqual(
+                parse('color(display-p3 1e6 0 0)')
+            );
+            expect(parse('color(display-p3 -1e200 0 0)')).toEqual(
+                parse('color(display-p3 -1e6 0 0)')
+            );
+            expect(
+                [
+                    ...parse('color(display-p3 1e200 0 0)'),
+                    ...parse('color(display-p3 -1e200 0 0)')
+                ].every(Number.isFinite)
+            ).toBe(true);
+        });
+
+        test('should return undefined when provided with invalid display-p3 value', () => {
+            expect(parse('color (display-p3 0.8 0.6 0.4)')).toBeUndefined();
+            expect(parse('color(display-p3 0.8 0.6 0.4')).toBeUndefined();
+            expect(parse('color(display-p3 0.8 0.6 0.4))')).toBeUndefined();
+
+            const invalidArgs = [
+                'display-p3 0.8, 0.6, 0.4', // commas are not allowed
+                'display-p3', // display-p3 requires 3 arguments and an optional alpha after a slash
+                'display-p3 0.8 0.6',
+                'display-p3 0.8 0.6 0.4 0.5',
+                'display-p3 0.8 0.6 0.4 /',
+                'display-p3 0.8 0.6 0.4 / 0.5 / 0.5',
+                '0.8 0.6 0.4', // display-p3 is the only supported color space
+                'srgb 0.8 0.6 0.4',
+                'rec2020 0.8 0.6 0.4',
+                'displayp3 0.8 0.6 0.4',
+                'display-p3 0.8deg 0.6 0.4', // every component is a number or a percentage
+                'display-p3 1. 0.6 0.4', // invalid numbers
+                'display-p3 0.8 --0.6 0.4',
+                'display-p3 0.8 0.6 1e999'
+            ];
+
+            for (const args of invalidArgs) {
+                const input = `color(${args})`;
                 try {
                     expect(parse(input)).toBeUndefined();
                 } catch (error) {

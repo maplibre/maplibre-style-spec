@@ -1,0 +1,283 @@
+{
+  "expression": [
+    "to-color",
+    [
+      "get",
+      "x"
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {
+        "properties": {
+          "x": "color(display-p3 0.8 0.6 0.4)"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "color(display-p3 80% 60% 40%)"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "color(display-p3 0.25 0.45 0.65)"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "color(display-p3 0.6 0.3 0.8 / 0.5)"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "color(display-p3 0.6 0.3 0.8 / 50%)"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "color(display-p3 none 0.6 0.4)"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "color(display-p3 0.8 0.6 0.4 / none)"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "COLOR(Display-P3 0.8 0.6 0.4)"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "color(  display-p3   0.8 0.6 0.4  /  1  )"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "color(display-p3 8e-1 6E-1 +.4)"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "color(display-p3 0 1 0)"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "color(display-p3 1 0 0)"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "color(display-p3 1.1 -0.1 0.4)"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "color(display-p3 0 1 0 / 0.5)"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "color(display-p3 0.8, 0.6, 0.4)"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "color(display-p3 0.8 0.6)"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "color(display-p3 0.8 0.6 0.4 0.5)"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "color(srgb 0.8 0.6 0.4)"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "color(0.8 0.6 0.4)"
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "x": "color(display-p3 0.8deg 0.6 0.4)"
+        }
+      }
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": false,
+      "isZoomConstant": true,
+      "type": "color"
+    },
+    "outputs": [
+      [
+        0.836748,
+        0.589605,
+        0.363997,
+        1
+      ],
+      [
+        0.836748,
+        0.589605,
+        0.363997,
+        1
+      ],
+      [
+        0.167767,
+        0.456158,
+        0.667421,
+        1
+      ],
+      [
+        0.322541,
+        0.139118,
+        0.413654,
+        0.5
+      ],
+      [
+        0.322541,
+        0.139118,
+        0.413654,
+        0.5
+      ],
+      [
+        0,
+        0.61134,
+        0.382416,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0.836748,
+        0.589605,
+        0.363997,
+        1
+      ],
+      [
+        0.836748,
+        0.589605,
+        0.363997,
+        1
+      ],
+      [
+        0.836748,
+        0.589605,
+        0.363997,
+        1
+      ],
+      [
+        0,
+        1,
+        0,
+        1
+      ],
+      [
+        1,
+        0,
+        0,
+        1
+      ],
+      [
+        1,
+        0,
+        0.384568,
+        1
+      ],
+      [
+        0,
+        0.5,
+        0,
+        0.5
+      ],
+      {
+        "error": "layers[0].paint.some-property: Could not parse color from value 'color(display-p3 0.8, 0.6, 0.4)'"
+      },
+      {
+        "error": "layers[0].paint.some-property: Could not parse color from value 'color(display-p3 0.8 0.6)'"
+      },
+      {
+        "error": "layers[0].paint.some-property: Could not parse color from value 'color(display-p3 0.8 0.6 0.4 0.5)'"
+      },
+      {
+        "error": "layers[0].paint.some-property: Could not parse color from value 'color(srgb 0.8 0.6 0.4)'"
+      },
+      {
+        "error": "layers[0].paint.some-property: Could not parse color from value 'color(0.8 0.6 0.4)'"
+      },
+      {
+        "error": "layers[0].paint.some-property: Could not parse color from value 'color(display-p3 0.8deg 0.6 0.4)'"
+      }
+    ]
+  }
+}

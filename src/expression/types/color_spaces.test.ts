@@ -1,10 +1,12 @@
 import {expectCloseToArray} from '../../../test/lib/util';
 import {
+    displayP3ToRgb,
     hclToRgb,
     hslToRgb,
     labToRgb,
     oklabToRgb,
     oklchToRgb,
+    rgbToDisplayP3,
     rgbToHcl,
     rgbToLab,
     rgbToOklab,
@@ -84,14 +86,13 @@ describe('color spaces', () => {
             expectCloseToArray(oklchToRgb([0.6, 0, NaN, 1]), [0.502111, 0.502111, 0.502111, 1]);
         });
 
-        test('should clip colors outside sRGB', () => {
-            expectCloseToArray(oklchToRgb([0.7, 0.3, 140, 1]), [0, 0.771585, 0, 1]);
-            expectCloseToArray(oklchToRgb([0.9, 0.3, 300, 1]), [1, 0.625509, 1, 1]);
-            expectCloseToArray(oklchToRgb([0.3, 0.25, 30, 1]), [0.50917, 0, 0, 1]);
+        test('should keep a color outside sRGB outside 0..1', () => {
+            expectCloseToArray(oklchToRgb([0.7, 0.3, 140, 1]), [-0.240335, 0.771585, -0.305472, 1]);
+            expectCloseToArray(oklchToRgb([0.9, 0.3, 300, 1]), [1.004286, 0.625509, 1.51587, 1]);
+            expectCloseToArray(oklchToRgb([0.3, 0.25, 30, 1]), [0.50917, -0.217734, -0.106861, 1]);
         });
 
         test('should give a huge chroma the color of chroma 1e6', () => {
-            expect(oklchToRgb([0.6, 1e110, 90, 1])).toEqual([0, 1, 0, 1]);
             expect(oklchToRgb([0.6, 1e110, 90, 1])).toEqual(oklchToRgb([0.6, 1e6, 90, 1]));
         });
     });
@@ -117,19 +118,62 @@ describe('color spaces', () => {
             expectCloseToArray(oklabToRgb([0.6, 0, 0, 0.5]), [0.502111, 0.502111, 0.502111, 0.5]);
         });
 
-        test('should clip colors outside sRGB', () => {
-            expectCloseToArray(oklabToRgb([0.7, -0.229813, 0.192836, 1]), [0, 0.771585, 0, 1]);
-            expectCloseToArray(oklabToRgb([0.3, 0.216506, 0.125, 1]), [0.50917, 0, 0, 1]);
+        test('should keep a color outside sRGB outside 0..1', () => {
+            expectCloseToArray(
+                oklabToRgb([0.7, -0.229813, 0.192836, 1]),
+                [-0.240334, 0.771585, -0.305471, 1]
+            );
+            expectCloseToArray(
+                oklabToRgb([0.3, 0.216506, 0.125, 1]),
+                [0.509169, -0.217734, -0.106861, 1]
+            );
         });
 
         test('should give a huge a and b the color of chroma 1e6 in their direction', () => {
-            expect(oklabToRgb([0.6, 0, 1e110, 1])).toEqual([0, 1, 0, 1]);
             expect(oklabToRgb([0.6, -1e300, -1e300, 1])).toEqual(
                 oklabToRgb([0.6, -1e6 / Math.SQRT2, -1e6 / Math.SQRT2, 1])
             );
             expect(oklabToRgb([0.6, 1.7e308, 1.7e308, 1])).toEqual(
                 oklabToRgb([0.6, 1e6 / Math.SQRT2, 1e6 / Math.SQRT2, 1])
             );
+        });
+    });
+
+    describe('Display P3 color space', () => {
+        test('should convert colors from Display P3 to sRGB color space', () => {
+            expectCloseToArray(displayP3ToRgb([0.917488, 0.200287, 0.138561, 1]), [1, 0, 0, 1]);
+            expectCloseToArray(
+                displayP3ToRgb([0.8, 0.6, 0.4, 0.5]),
+                [0.836748, 0.589605, 0.363997, 0.5]
+            );
+            expectCloseToArray(displayP3ToRgb([1, 1, 1, 1]), [1, 1, 1, 1]);
+        });
+
+        test('should keep a color outside sRGB outside 0..1', () => {
+            expectCloseToArray(displayP3ToRgb([0, 1, 0, 1]), [-0.511605, 1.018266, -0.310675, 1]);
+            expectCloseToArray(displayP3ToRgb([1, 0, 0, 1]), [1.093066, -0.226742, -0.150135, 1]);
+        });
+
+        test('should convert colors from sRGB to Display P3 color space', () => {
+            expectCloseToArray(rgbToDisplayP3([1, 0, 0, 1]), [0.917488, 0.200287, 0.138561, 1]);
+            expectCloseToArray(
+                rgbToDisplayP3([0.836748, 0.589605, 0.363997, 0.5]),
+                [0.8, 0.6, 0.4, 0.5]
+            );
+            expectCloseToArray(rgbToDisplayP3([-0.511605, 1.018266, -0.310675, 1]), [0, 1, 0, 1]);
+        });
+
+        test('should give a huge component the color of component 1e6', () => {
+            expect(displayP3ToRgb([1e200, 0, 0, 1])).toEqual(displayP3ToRgb([1e6, 0, 0, 1]));
+            expect(displayP3ToRgb([-1e200, 0, 0, 1])).toEqual(displayP3ToRgb([-1e6, 0, 0, 1]));
+        });
+
+        test('should clip colors outside Display P3', () => {
+            expectCloseToArray(
+                rgbToDisplayP3([-0.437105, 0.805533, -0.428417, 1]),
+                [0, 0.790331, 0, 1]
+            );
+            expectCloseToArray(rgbToDisplayP3([1.3114, -0.30201, 0.251398, 1]), [1, 0, 0.3, 1]);
         });
     });
 

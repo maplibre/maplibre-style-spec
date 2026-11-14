@@ -19,7 +19,9 @@ describe('validateColor function', () => {
             'oklch(70% 0.1 30)',
             'oklch(0.7 0.3 140 / 50%)',
             'oklab(70% 0.086603 0.05)',
-            'oklab(0.7 -0.229813 0.192836 / 50%)'
+            'oklab(0.7 -0.229813 0.192836 / 50%)',
+            'color(display-p3 0.8 0.6 0.4)',
+            'color(display-p3 0 1 0 / 50%)'
         ];
 
         for (const value of validColorStrings) {

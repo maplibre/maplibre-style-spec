@@ -46,6 +46,14 @@ export type OKLCHColor = [l: number, c: number, h: number, alpha: number];
  */
 export type OKLABColor = [l: number, a: number, b: number, alpha: number];
 
+/**
+ * @param r Red component 0..1
+ * @param g Green component 0..1
+ * @param b Blue component 0..1
+ * @param alpha Alpha component 0..1
+ */
+export type DisplayP3Color = [r: number, g: number, b: number, alpha: number];
+
 // See https://observablehq.com/@mbostock/lab-and-rgb
 const Xn = 0.96422,
     Yn = 1,
@@ -79,11 +87,12 @@ export function rgbToLab([r, g, b, alpha]: RGBColor): LABColor {
     }
 
     const l = 116 * y - 16;
-    return [l < 0 ? 0 : l, 500 * (x - y), 200 * (y - z), alpha];
+    return [l, 500 * (x - y), 200 * (y - z), alpha];
 }
 
 function rgb2xyz(x: number): number {
-    return x <= 0.04045 ? x / 12.92 : Math.pow((x + 0.055) / 1.055, 2.4);
+    const abs = Math.abs(x);
+    return abs <= 0.04045 ? x / 12.92 : Math.sign(x) * Math.pow((abs + 0.055) / 1.055, 2.4);
 }
 
 function xyz2lab(t: number): number {
@@ -108,8 +117,8 @@ export function labToRgb([l, a, b, alpha]: LABColor): RGBColor {
 }
 
 function xyz2rgb(x: number): number {
-    x = x <= 0.00304 ? 12.92 * x : 1.055 * Math.pow(x, 1 / 2.4) - 0.055;
-    return x < 0 ? 0 : x > 1 ? 1 : x; // clip to 0..1 range
+    const abs = Math.abs(x);
+    return abs <= 0.00304 ? 12.92 * x : Math.sign(x) * (1.055 * Math.pow(abs, 1 / 2.4) - 0.055);
 }
 
 function lab2xyz(t: number): number {
@@ -226,16 +235,48 @@ export function rgbToOklch([r, g, b, alpha]: RGBColor): OKLCHColor {
 // Keeps the conversion finite: past this chroma, the clipped color stops changing
 const maxChroma = 1e6;
 
-// Clips a color outside sRGB channel by channel, as browsers draw one
+// A color outside sRGB keeps its channels outside 0..1
 export function oklchToRgb([l, c, h, alpha]: OKLCHColor): RGBColor {
     const hue = isNaN(h) ? 0 : h * deg2rad;
     const chroma = Math.min(c, maxChroma);
-    const [r, g, b] = oklabToSrgb([l, chroma * Math.cos(hue), chroma * Math.sin(hue)]).map((x) =>
-        Math.min(Math.max(x, 0), 1)
-    );
+    const [r, g, b] = oklabToSrgb([l, chroma * Math.cos(hue), chroma * Math.sin(hue)]);
     return [r, g, b, alpha];
 }
 
 export function oklabToRgb([l, a, b, alpha]: OKLABColor): RGBColor {
     return oklchToRgb([l, Math.hypot(a, b), Math.atan2(b, a) * rad2deg, alpha]);
+}
+
+const linearDisplayP3ToXyz: Matrix3 = [
+    [608311 / 1250200, 189793 / 714400, 198249 / 1000160],
+    [35783 / 156275, 247089 / 357200, 198249 / 2500400],
+    [0, 32229 / 714400, 5220557 / 5000800]
+];
+const xyzToLinearDisplayP3: Matrix3 = [
+    [446124 / 178915, -333277 / 357830, -72051 / 178915],
+    [-14852 / 17905, 63121 / 35810, 423 / 17905],
+    [11844 / 330415, -50337 / 660830, 316169 / 330415]
+];
+
+// Keeps the conversion finite: past this component, the clipped color stops changing
+const maxDisplayP3Component = 1e6;
+
+// Display P3 shares sRGB's transfer function: https://drafts.csswg.org/css-color-4/#predefined-display-p3
+export function displayP3ToRgb([r, g, b, alpha]: DisplayP3Color): RGBColor {
+    const [lr, lg, lb] = [r, g, b].map((x) =>
+        rgb2xyz(Math.min(Math.max(x, -maxDisplayP3Component), maxDisplayP3Component))
+    );
+    const linear = multiply(xyzToLinearSrgb, multiply(linearDisplayP3ToXyz, [lr, lg, lb]));
+    const [sr, sg, sb] = linear.map(linearToSrgb);
+    return [sr, sg, sb, alpha];
+}
+
+// Clips a color outside Display P3 channel by channel, as browsers draw one
+export function rgbToDisplayP3([r, g, b, alpha]: RGBColor): DisplayP3Color {
+    const linear = multiply(
+        xyzToLinearDisplayP3,
+        multiply(linearSrgbToXyz, [rgb2xyz(r), rgb2xyz(g), rgb2xyz(b)])
+    );
+    const [pr, pg, pb] = linear.map((x) => Math.min(Math.max(linearToSrgb(x), 0), 1));
+    return [pr, pg, pb, alpha];
 }
