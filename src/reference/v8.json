@@ -6721,6 +6721,18 @@
         },
         "overlay": {
           "doc": "[Overlay](https://www.w3.org/TR/compositing-1/#blendingoverlay) blending. Multiplies or screens colors depending on the colors underneath, preserving highlights and shadows while adding contrast."
+        },
+        "difference": {
+          "doc": "[Difference](https://www.w3.org/TR/compositing-1/#blendingdifference) blending. Subtracts the darker of the layer color and the color underneath from the lighter one. Identical colors give black. Useful for spotting changes between two images of the same place."
+        },
+        "exclusion": {
+          "doc": "[Exclusion](https://www.w3.org/TR/compositing-1/#blendingexclusion) blending. Similar to `difference`, with lower contrast in the mid-tones."
+        },
+        "soft-light": {
+          "doc": "[Soft-light](https://www.w3.org/TR/compositing-1/#blendingsoftlight) blending. Darkens or lightens the colors underneath depending on the layer color, like a diffused spotlight. A gentler `hard-light`. Useful for shading imagery with a hillshade."
+        },
+        "hard-light": {
+          "doc": "[Hard-light](https://www.w3.org/TR/compositing-1/#blendinghardlight) blending. Multiplies or screens colors depending on the layer color, like a harsh spotlight. The same as `overlay` with the layer and the content underneath swapped."
         }
       },
       "default": "normal",
@@ -7322,6 +7334,18 @@
         },
         "overlay": {
           "doc": "[Overlay](https://www.w3.org/TR/compositing-1/#blendingoverlay) blending. Multiplies or screens colors depending on the colors underneath, preserving highlights and shadows while adding contrast."
+        },
+        "difference": {
+          "doc": "[Difference](https://www.w3.org/TR/compositing-1/#blendingdifference) blending. Subtracts the darker of the layer color and the color underneath from the lighter one. Identical colors give black. Useful for spotting changes between two images of the same place."
+        },
+        "exclusion": {
+          "doc": "[Exclusion](https://www.w3.org/TR/compositing-1/#blendingexclusion) blending. Similar to `difference`, with lower contrast in the mid-tones."
+        },
+        "soft-light": {
+          "doc": "[Soft-light](https://www.w3.org/TR/compositing-1/#blendingsoftlight) blending. Darkens or lightens the colors underneath depending on the layer color, like a diffused spotlight. A gentler `hard-light`. Useful for shading imagery with a hillshade."
+        },
+        "hard-light": {
+          "doc": "[Hard-light](https://www.w3.org/TR/compositing-1/#blendinghardlight) blending. Multiplies or screens colors depending on the layer color, like a harsh spotlight. The same as `overlay` with the layer and the content underneath swapped."
         }
       },
       "default": "normal",
@@ -8770,6 +8794,18 @@
         },
         "overlay": {
           "doc": "[Overlay](https://www.w3.org/TR/compositing-1/#blendingoverlay) blending. Multiplies or screens colors depending on the colors underneath, preserving highlights and shadows while adding contrast."
+        },
+        "difference": {
+          "doc": "[Difference](https://www.w3.org/TR/compositing-1/#blendingdifference) blending. Subtracts the darker of the layer color and the color underneath from the lighter one. Identical colors give black. Useful for spotting changes between two images of the same place."
+        },
+        "exclusion": {
+          "doc": "[Exclusion](https://www.w3.org/TR/compositing-1/#blendingexclusion) blending. Similar to `difference`, with lower contrast in the mid-tones."
+        },
+        "soft-light": {
+          "doc": "[Soft-light](https://www.w3.org/TR/compositing-1/#blendingsoftlight) blending. Darkens or lightens the colors underneath depending on the layer color, like a diffused spotlight. A gentler `hard-light`. Useful for shading imagery with a hillshade."
+        },
+        "hard-light": {
+          "doc": "[Hard-light](https://www.w3.org/TR/compositing-1/#blendinghardlight) blending. Multiplies or screens colors depending on the layer color, like a harsh spotlight. The same as `overlay` with the layer and the content underneath swapped."
         }
       },
       "default": "normal",
