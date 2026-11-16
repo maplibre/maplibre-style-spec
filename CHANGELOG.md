@@ -4,6 +4,7 @@
 - Add `--max-line-length` to `gl-style-format` and a `maxLength` argument to `format()` for an adjustable maximum line length ([#2011](https://github.com/maplibre/maplibre-style-spec/pull/2011)) (by [@zstadler](https://github.com/zstadler))
 - Read standard input in `gl-style-format` and `gl-style-validate` when no path is given ([#2015](https://github.com/maplibre/maplibre-style-spec/pull/2015)) (by [@zstadler](https://github.com/zstadler))
 - Add the `difference`, `exclusion`, `soft-light` and `hard-light` blend modes to `fill-layer-blend`, `line-layer-blend` and `raster-layer-blend` ([#48](https://github.com/maplibre/maplibre-gl-js/issues/48)) (by [@jo-chemla](https://github.com/jo-chemla))
+- Add the `darken`, `lighten`, `color-dodge`, `color-burn`, `hue` and `saturation` blend modes to `fill-layer-blend`, `line-layer-blend` and `raster-layer-blend` ([#48](https://github.com/maplibre/maplibre-gl-js/issues/48)) (by [@jo-chemla](https://github.com/jo-chemla))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes

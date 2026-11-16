@@ -6733,6 +6733,24 @@
         },
         "hard-light": {
           "doc": "[Hard-light](https://www.w3.org/TR/compositing-1/#blendinghardlight) blending. Multiplies or screens colors depending on the layer color, like a harsh spotlight. The same as `overlay` with the layer and the content underneath swapped."
+        },
+        "darken": {
+          "doc": "[Darken](https://www.w3.org/TR/compositing-1/#blendingdarken) blending. Keeps the darker of the layer color and the color underneath, per channel. Useful for combining two images so that bright areas such as clouds drop out."
+        },
+        "lighten": {
+          "doc": "[Lighten](https://www.w3.org/TR/compositing-1/#blendinglighten) blending. Keeps the lighter of the layer color and the color underneath, per channel. Useful for combining two images so that dark areas such as shadows drop out."
+        },
+        "color-dodge": {
+          "doc": "[Color-dodge](https://www.w3.org/TR/compositing-1/#blendingcolordodge) blending. Brightens the colors underneath to reflect the layer color. Black in the layer leaves them unchanged."
+        },
+        "color-burn": {
+          "doc": "[Color-burn](https://www.w3.org/TR/compositing-1/#blendingcolorburn) blending. Darkens the colors underneath to reflect the layer color. White in the layer leaves them unchanged."
+        },
+        "hue": {
+          "doc": "[Hue](https://www.w3.org/TR/compositing-1/#blendinghue) blending. Creates a color with the hue of the layer and the saturation and luminosity of the content underneath. Gray content underneath stays gray."
+        },
+        "saturation": {
+          "doc": "[Saturation](https://www.w3.org/TR/compositing-1/#blendingsaturation) blending. Creates a color with the saturation of the layer and the hue and luminosity of the content underneath. A gray layer turns the content underneath gray."
         }
       },
       "default": "normal",
@@ -7346,6 +7364,24 @@
         },
         "hard-light": {
           "doc": "[Hard-light](https://www.w3.org/TR/compositing-1/#blendinghardlight) blending. Multiplies or screens colors depending on the layer color, like a harsh spotlight. The same as `overlay` with the layer and the content underneath swapped."
+        },
+        "darken": {
+          "doc": "[Darken](https://www.w3.org/TR/compositing-1/#blendingdarken) blending. Keeps the darker of the layer color and the color underneath, per channel. Useful for combining two images so that bright areas such as clouds drop out."
+        },
+        "lighten": {
+          "doc": "[Lighten](https://www.w3.org/TR/compositing-1/#blendinglighten) blending. Keeps the lighter of the layer color and the color underneath, per channel. Useful for combining two images so that dark areas such as shadows drop out."
+        },
+        "color-dodge": {
+          "doc": "[Color-dodge](https://www.w3.org/TR/compositing-1/#blendingcolordodge) blending. Brightens the colors underneath to reflect the layer color. Black in the layer leaves them unchanged."
+        },
+        "color-burn": {
+          "doc": "[Color-burn](https://www.w3.org/TR/compositing-1/#blendingcolorburn) blending. Darkens the colors underneath to reflect the layer color. White in the layer leaves them unchanged."
+        },
+        "hue": {
+          "doc": "[Hue](https://www.w3.org/TR/compositing-1/#blendinghue) blending. Creates a color with the hue of the layer and the saturation and luminosity of the content underneath. Gray content underneath stays gray."
+        },
+        "saturation": {
+          "doc": "[Saturation](https://www.w3.org/TR/compositing-1/#blendingsaturation) blending. Creates a color with the saturation of the layer and the hue and luminosity of the content underneath. A gray layer turns the content underneath gray."
         }
       },
       "default": "normal",
@@ -8806,6 +8842,24 @@
         },
         "hard-light": {
           "doc": "[Hard-light](https://www.w3.org/TR/compositing-1/#blendinghardlight) blending. Multiplies or screens colors depending on the layer color, like a harsh spotlight. The same as `overlay` with the layer and the content underneath swapped."
+        },
+        "darken": {
+          "doc": "[Darken](https://www.w3.org/TR/compositing-1/#blendingdarken) blending. Keeps the darker of the layer color and the color underneath, per channel. Useful for combining two images so that bright areas such as clouds drop out."
+        },
+        "lighten": {
+          "doc": "[Lighten](https://www.w3.org/TR/compositing-1/#blendinglighten) blending. Keeps the lighter of the layer color and the color underneath, per channel. Useful for combining two images so that dark areas such as shadows drop out."
+        },
+        "color-dodge": {
+          "doc": "[Color-dodge](https://www.w3.org/TR/compositing-1/#blendingcolordodge) blending. Brightens the colors underneath to reflect the layer color. Black in the layer leaves them unchanged."
+        },
+        "color-burn": {
+          "doc": "[Color-burn](https://www.w3.org/TR/compositing-1/#blendingcolorburn) blending. Darkens the colors underneath to reflect the layer color. White in the layer leaves them unchanged."
+        },
+        "hue": {
+          "doc": "[Hue](https://www.w3.org/TR/compositing-1/#blendinghue) blending. Creates a color with the hue of the layer and the saturation and luminosity of the content underneath. Gray content underneath stays gray."
+        },
+        "saturation": {
+          "doc": "[Saturation](https://www.w3.org/TR/compositing-1/#blendingsaturation) blending. Creates a color with the saturation of the layer and the hue and luminosity of the content underneath. A gray layer turns the content underneath gray."
         }
       },
       "default": "normal",
