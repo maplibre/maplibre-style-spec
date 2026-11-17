@@ -19,8 +19,8 @@
             "type": "symbol",
             "source": "Contour",
             "source-layer": "contours",
-            "filter": 
-              ["==", 
+            "filter":
+              ["==",
                ["%",
                 ["to-number", ["get", "ele"]],
                 50],

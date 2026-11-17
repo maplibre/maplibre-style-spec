@@ -365,7 +365,7 @@
       "layout": {
         "text-field": [
           "format",
-          ["image", "government_icon"], 
+          ["image", "government_icon"],
           { "vertical-align": "top" },
           " ",
           {},
@@ -395,7 +395,7 @@
       "layout": {
         "text-field": [
           "format",
-          ["image", "government_icon"], 
+          ["image", "government_icon"],
           { "vertical-align": "center" },
           " ",
           {},
@@ -425,7 +425,7 @@
       "layout": {
         "text-field": [
           "format",
-          ["image", "government_icon"], 
+          ["image", "government_icon"],
           { "vertical-align": "bottom" },
           " ",
           {},

@@ -6,7 +6,7 @@
             "cell": "top-left"
         },
         "geometry": {
-            "type": "Point", 
+            "type": "Point",
             "coordinates": [ -70, 60 ]
         }
     }, {
@@ -15,7 +15,7 @@
             "cell": "top-middle"
         },
         "geometry": {
-            "type": "Point", 
+            "type": "Point",
             "coordinates": [ 0, 60 ]
         }
     }, {
@@ -24,7 +24,7 @@
             "cell": "top-right"
         },
         "geometry": {
-            "type": "Point", 
+            "type": "Point",
             "coordinates": [ 70, 60 ]
         }
     }, {
@@ -33,7 +33,7 @@
             "cell": "middle-left"
         },
         "geometry": {
-            "type": "Point", 
+            "type": "Point",
             "coordinates": [ -70, 0 ]
         }
     }, {
@@ -42,7 +42,7 @@
             "cell": "middle-middle"
         },
         "geometry": {
-            "type": "Point", 
+            "type": "Point",
             "coordinates": [ 0, 0 ]
         }
     }, {
@@ -51,7 +51,7 @@
             "cell": "middle-right"
         },
         "geometry": {
-            "type": "Point", 
+            "type": "Point",
             "coordinates": [ 70, 0 ]
         }
     }, {
@@ -60,7 +60,7 @@
             "cell": "bottom-left"
         },
         "geometry": {
-            "type": "Point", 
+            "type": "Point",
             "coordinates": [ -70, -60 ]
         }
     }, {
@@ -69,7 +69,7 @@
             "cell": "bottom-middle"
         },
         "geometry": {
-            "type": "Point", 
+            "type": "Point",
             "coordinates": [ 0, -60 ]
         }
     }, {
@@ -78,7 +78,7 @@
             "cell": "bottom-right"
         },
         "geometry": {
-            "type": "Point", 
+            "type": "Point",
             "coordinates": [ 70, -60 ]
         }
     }]
