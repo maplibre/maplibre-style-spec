@@ -2,7 +2,7 @@
 
 These tests define how a style should **look**, not only how it is described in words.
 Each test is a `style.json` and the image a renderer is expected to produce from it.
-Every MapLibre renderer (GL JS, Native, …) should run these tests.
+Map renderers can use these test to check for comformance with the MapLibre Style Specification.
 
 ## Layout
 
