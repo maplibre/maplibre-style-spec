@@ -1,0 +1,48 @@
+{
+  "version": 8,
+  "metadata": {
+    "test": {
+      "width": 512,
+      "height": 512,
+      "operations": [
+        ["setStyle", 
+        {
+          "version": 8,
+          "name": "Satellite",
+          "sources": {
+            "satellite": {
+              "type": "raster",
+              "url": "local://tilesets/satellite.json",
+              "tileSize": 256
+            }
+          },
+          "sprite": "local://sprites/satellite-v9",
+          "glyphs": "local://glyphs/{fontstack}/{range}.pbf",
+          "layers": [
+            {
+              "id": "background",
+              "type": "background",
+              "paint": {
+                "background-color": "rgb(4,7,14)"
+              }
+            },
+            {
+              "id": "satellite",
+              "type": "raster",
+              "source": "satellite"
+            }
+          ]
+        }],
+        ["wait"],
+        ["setPaintProperty",
+         "satellite",
+         "raster-fade-duration",
+         0
+        ],
+        ["wait"]
+      ]
+    }
+  },
+  "sources": {},
+  "layers": []
+}
