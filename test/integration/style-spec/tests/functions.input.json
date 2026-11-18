@@ -931,7 +931,7 @@
       "source": "source",
       "source-layer": "layer",
       "paint": {
-        "fill-extrusion-opacity": ["get", "opacity"]
+        "fill-extrusion-layer-opacity": ["get", "opacity"]
       }
     },
     {
@@ -1041,6 +1041,15 @@
       "source-layer": "layer",
       "paint": {
         "fill-extrusion-color": ["interpolate", ["linear"], ["elevation"], 0, ["to-color", ["get", "color"]], 10, "#a0a0a0"]
+      }
+    },
+    {
+      "id": "valid expression - fill-extrusion-opacity from feature data and feature state",
+      "type": "fill-extrusion",
+      "source": "source",
+      "source-layer": "layer",
+      "paint": {
+        "fill-extrusion-opacity": ["case", ["boolean", ["feature-state", "hover"], false], 1, ["get", "opacity"]]
       }
     }
   ]

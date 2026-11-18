@@ -6914,7 +6914,7 @@
       "default": 1,
       "minimum": 0,
       "maximum": 1,
-      "doc": "The opacity of the entire fill extrusion layer. This is rendered on a per-layer, not per-feature, basis, and data-driven styling is not available.",
+      "doc": "The opacity of each extrusion. Extrusions at `1` show through the others. Where several extrusions below `1` overlap on screen, only the surface closest to the camera is drawn, so they don't show through each other. Use [`fill-extrusion-layer-opacity`](layers/#fill-extrusion-layer-opacity) to fade the layer as a whole.\n\n![fill-extrusion-opacity vs. fill-extrusion-layer-opacity](assets/fill-extrusion-opacity.svg)",
       "transition": true,
       "sdk-support": {
         "basic functionality": {
@@ -6926,12 +6926,41 @@
           "js": "5.6.0",
           "android": "13.7.1",
           "ios": "7.0.0"
+        },
+        "data-driven styling": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/4492"
         }
       },
       "expression": {
         "interpolated": true,
         "parameters": [
-          "zoom"
+          "zoom",
+          "feature",
+          "feature-state"
+        ]
+      },
+      "property-type": "data-driven"
+    },
+    "fill-extrusion-layer-opacity": {
+      "type": "number",
+      "default": 1,
+      "minimum": 0,
+      "maximum": 1,
+      "doc": "Opacity applied to the layer as a whole, multiplied with [`fill-extrusion-opacity`](layers/#fill-extrusion-opacity). The extrusions at a `fill-extrusion-opacity` of `1` appear as a single surface at the given opacity and still show through the others. This property affects only the layer it is set on.\n\n![fill-extrusion-opacity vs. fill-extrusion-layer-opacity](assets/fill-extrusion-opacity.svg)",
+      "transition": true,
+      "sdk-support": {
+        "basic functionality": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/4492"
+        },
+        "[`global-state`](expressions/#global-state) expression": {
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/4492"
+        }
+      },
+      "expression": {
+        "interpolated": true,
+        "parameters": [
+          "zoom",
+          "global-state"
         ]
       },
       "property-type": "data-constant"
@@ -6939,7 +6968,7 @@
     "fill-extrusion-color": {
       "type": "color",
       "default": "#000000",
-      "doc": "The base color of the extruded fill. The extrusion's surfaces will be shaded differently based on this color in combination with the root `light` settings. If this color is specified as `rgba` with an alpha component, the alpha component will be ignored; use [`fill-extrusion-opacity`](layers/#fill-extrusion-opacity) to set layer opacity.",
+      "doc": "The base color of the extruded fill. The extrusion's surfaces will be shaded differently based on this color in combination with the root `light` settings. If this color is specified as `rgba` with an alpha component, the alpha component will be ignored; use [`fill-extrusion-opacity`](layers/#fill-extrusion-opacity) to set the opacity.",
       "transition": true,
       "requires": [
         {
