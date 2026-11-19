@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 268" font-size="16" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="1080" height="268" fill="#fff"/>
+  <defs>
+    <g id="ground">
+      <polygon points="0,0 118,68 0,136 -118,68" fill="#eee"/>
+      <path d="M15,8 L-103,76 M29,17 L-88,85 M44,26 L-74,94 M59,34 L-59,102 M74,42 L-44,110 M88,51 L-29,119 M103,60 L-15,128 M-15,8 L103,76 M-29,17 L88,85 M-44,26 L74,94 M-59,34 L59,102 M-74,42 L44,110 M-88,51 L29,119 M-103,60 L15,128" stroke="#bbb" fill="none"/>
+    </g>
+    <g id="red">
+      <polygon points="-59,42 -15,68 -15,-17 -59,-42" fill="#b01f20"/>
+      <polygon points="29,42 -15,68 -15,-17 29,-42" fill="#8c191a"/>
+      <polygon points="-15,-68 29,-42 -15,-17 -59,-42" fill="#d62728"/>
+    </g>
+    <g id="blue">
+      <polygon points="-44,94 7,123 7,72 -44,42" fill="#196293"/>
+      <polygon points="59,94 7,123 7,72 59,42" fill="#144e75"/>
+      <polygon points="7,13 59,42 7,72 -44,42" fill="#1f77b4"/>
+    </g>
+  </defs>
+
+  <g transform="translate(0, 0)">
+    <text x="135" y="30" text-anchor="middle">
+      fill-extrusion-opacity: 1
+    </text>
+    <g transform="translate(135, 122)">
+      <use href="#ground"/>
+      <use href="#red"/>
+      <use href="#blue"/>
+    </g>
+  </g>
+
+  <g transform="translate(270, 0)">
+    <text x="135" y="30" text-anchor="middle">
+      fill-extrusion-opacity: 0.5
+    </text>
+    <g transform="translate(135, 122)">
+      <use href="#ground"/>
+      <g opacity="0.5">
+        <use href="#red"/>
+        <use href="#blue"/>
+      </g>
+    </g>
+  </g>
+
+  <g transform="translate(540, 0)">
+    <text x="135" y="20" text-anchor="middle">
+      fill-extrusion-opacity:
+    </text>
+    <text x="135" y="40" text-anchor="middle">
+      red 1, blue 0.5
+    </text>
+    <g transform="translate(135, 122)">
+      <use href="#ground"/>
+      <use href="#red"/>
+      <use href="#blue" opacity="0.5"/>
+    </g>
+  </g>
+
+  <g transform="translate(810, 0)">
+    <text x="135" y="20" text-anchor="middle">
+      red 1, blue 0.5 and
+    </text>
+    <text x="135" y="40" text-anchor="middle">
+      fill-extrusion-layer-opacity: 0.7
+    </text>
+    <g transform="translate(135, 122)">
+      <use href="#ground"/>
+      <use href="#red" opacity="0.7"/>
+      <use href="#blue" opacity="0.35"/>
+    </g>
+  </g>
+</svg>
