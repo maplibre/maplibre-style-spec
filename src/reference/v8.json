@@ -6928,7 +6928,9 @@
           "ios": "7.0.0"
         },
         "data-driven styling": {
-          "js": "https://github.com/maplibre/maplibre-gl-js/issues/4492"
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/4492",
+          "android": "https://github.com/maplibre/maplibre-native/issues/5047",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/5047"
         }
       },
       "expression": {
@@ -6950,10 +6952,14 @@
       "transition": true,
       "sdk-support": {
         "basic functionality": {
-          "js": "https://github.com/maplibre/maplibre-gl-js/issues/4492"
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/4492",
+          "android": "https://github.com/maplibre/maplibre-native/issues/5047",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/5047"
         },
         "[`global-state`](expressions/#global-state) expression": {
-          "js": "https://github.com/maplibre/maplibre-gl-js/issues/4492"
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/4492",
+          "android": "https://github.com/maplibre/maplibre-native/issues/5047",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/5047"
         }
       },
       "expression": {
