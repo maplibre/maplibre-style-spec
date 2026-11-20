@@ -157,6 +157,18 @@ describe('style-spec', () => {
         expectTypeOf<{'fill-extrusion-base-transition': {duration: 100}}>().toExtend<
             FillExtrusionLayerSpecification['paint']
         >();
+        expectTypeOf<{
+            'fill-extrusion-ambient-occlusion-wall-intensity-transition': {duration: 100};
+        }>().toExtend<FillExtrusionLayerSpecification['paint']>();
+        expectTypeOf<{
+            'fill-extrusion-ambient-occlusion-wall-radius-transition': {duration: 100};
+        }>().toExtend<FillExtrusionLayerSpecification['paint']>();
+        expectTypeOf<{
+            'fill-extrusion-ambient-occlusion-ground-intensity-transition': {duration: 100};
+        }>().toExtend<FillExtrusionLayerSpecification['paint']>();
+        expectTypeOf<{
+            'fill-extrusion-ambient-occlusion-ground-radius-transition': {duration: 100};
+        }>().toExtend<FillExtrusionLayerSpecification['paint']>();
     });
     test('FillExtrusionLayerSpecification does not contain *-transition keys for untransitionable paint properties', () => {
         expectTypeOf<{
