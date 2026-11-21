@@ -3,6 +3,7 @@
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
+- Fix `any`/`all` expressions aborting evaluation when one branch raises a runtime error (e.g. `["any", [">", ["get", "level"], 0], ["!", ["has", "level"]]]` now evaluates the remaining branches instead of failing the whole expression) ([#500](https://github.com/maplibre/maplibre-style-spec/issues/500))
 - _...Add new stuff here..._
 
 ## 26.9.0

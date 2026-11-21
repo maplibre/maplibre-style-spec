@@ -230,6 +230,70 @@ function varargs(type: Type): Varargs {
     return {type};
 }
 
+/**
+ * Evaluates the arguments of an `any` expression in order, short-circuiting
+ * as soon as one of them evaluates to `true`.
+ *
+ * A runtime error raised by one argument does not abort the evaluation of
+ * the remaining arguments: an argument that fails to evaluate simply cannot
+ * be `true`, so the other arguments still get a chance to decide the result.
+ * If no argument evaluates to `true` and at least one of them raised a
+ * runtime error, the first error is rethrown so that it is still reported.
+ * @param ctx The evaluation context.
+ * @param args The boolean arguments of the `any` expression.
+ * @returns `true` if any argument evaluates to `true`, `false` otherwise.
+ */
+function evaluateDisjunction(ctx: EvaluationContext, args: Array<Expression>): boolean {
+    let firstError: RuntimeError = null;
+    for (const arg of args) {
+        let value: Value;
+        try {
+            value = arg.evaluate(ctx);
+        } catch (e) {
+            if (e instanceof RuntimeError) {
+                firstError = firstError ?? e;
+                continue;
+            }
+            throw e;
+        }
+        if (value) return true;
+    }
+    if (firstError) throw firstError;
+    return false;
+}
+
+/**
+ * Evaluates the arguments of an `all` expression in order, short-circuiting
+ * as soon as one of them evaluates to `false`.
+ *
+ * Symmetric to `evaluateDisjunction`: a runtime error raised by one argument
+ * does not abort the evaluation of the remaining arguments, since an argument
+ * that fails to evaluate simply cannot be `false`. If no argument evaluates to
+ * `false` and at least one of them raised a runtime error, the first error is
+ * rethrown so that it is still reported.
+ * @param ctx The evaluation context.
+ * @param args The boolean arguments of the `all` expression.
+ * @returns `true` if all arguments evaluate to `true`, `false` otherwise.
+ */
+function evaluateConjunction(ctx: EvaluationContext, args: Array<Expression>): boolean {
+    let firstError: RuntimeError = null;
+    for (const arg of args) {
+        let value: Value;
+        try {
+            value = arg.evaluate(ctx);
+        } catch (e) {
+            if (e instanceof RuntimeError) {
+                firstError = firstError ?? e;
+                continue;
+            }
+            throw e;
+        }
+        if (!value) return false;
+    }
+    if (firstError) throw firstError;
+    return true;
+}
+
 CompoundExpression.register(expressions, {
     error: [
         ErrorType,
@@ -483,31 +547,15 @@ CompoundExpression.register(expressions, {
     all: {
         type: BooleanType,
         overloads: [
-            [[BooleanType, BooleanType], (ctx, [a, b]) => a.evaluate(ctx) && b.evaluate(ctx)],
-            [
-                varargs(BooleanType),
-                (ctx, args) => {
-                    for (const arg of args) {
-                        if (!arg.evaluate(ctx)) return false;
-                    }
-                    return true;
-                }
-            ]
+            [[BooleanType, BooleanType], (ctx, args) => evaluateConjunction(ctx, args)],
+            [varargs(BooleanType), (ctx, args) => evaluateConjunction(ctx, args)]
         ]
     },
     any: {
         type: BooleanType,
         overloads: [
-            [[BooleanType, BooleanType], (ctx, [a, b]) => a.evaluate(ctx) || b.evaluate(ctx)],
-            [
-                varargs(BooleanType),
-                (ctx, args) => {
-                    for (const arg of args) {
-                        if (arg.evaluate(ctx)) return true;
-                    }
-                    return false;
-                }
-            ]
+            [[BooleanType, BooleanType], (ctx, args) => evaluateDisjunction(ctx, args)],
+            [varargs(BooleanType), (ctx, args) => evaluateDisjunction(ctx, args)]
         ]
     },
     '!': [BooleanType, [BooleanType], (ctx, [b]) => !b.evaluate(ctx)],
