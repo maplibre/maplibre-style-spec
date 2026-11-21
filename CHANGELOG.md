@@ -1,6 +1,6 @@
 ## main
 ### ✨ Features and improvements
-- ⚠️ Keep `fill-extrusion-opacity` as the opacity of the layer and add `fill-extrusion-feature-opacity` for the opacity of each extrusion. This replaces the data-driven `fill-extrusion-opacity` and `fill-extrusion-layer-opacity` of 26.9.0, which no renderer has shipped ([#1996](https://github.com/maplibre/maplibre-style-spec/pull/1996)) (by [@birkskyum](https://github.com/birkskyum))
+- Keep `fill-extrusion-opacity` as the opacity of the layer and add `fill-extrusion-feature-opacity` for the opacity of each extrusion. This replaces the data-driven `fill-extrusion-opacity` and `fill-extrusion-layer-opacity` of 26.9.0, which no renderer has shipped ([#1996](https://github.com/maplibre/maplibre-style-spec/pull/1996)) (by [@birkskyum](https://github.com/birkskyum))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
