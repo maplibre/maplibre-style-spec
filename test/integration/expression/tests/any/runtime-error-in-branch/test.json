@@ -1,0 +1,75 @@
+{
+  "expression": [
+    "any",
+    [
+      ">",
+      [
+        "get",
+        "level"
+      ],
+      0
+    ],
+    [
+      "!",
+      [
+        "has",
+        "level"
+      ]
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "level": 5
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "level": 0
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "level": -5
+        }
+      }
+    ],
+    [
+      {},
+      {
+        "properties": {
+          "level": null
+        }
+      }
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": false,
+      "isZoomConstant": true,
+      "type": "boolean"
+    },
+    "outputs": [
+      true,
+      true,
+      false,
+      false,
+      {
+        "error": "layers[0].paint.some-property[1]: Expected value to be of type number, but found null instead."
+      }
+    ]
+  }
+}

@@ -97,6 +97,26 @@ describe('filter', () => {
         ).toBe(false);
     });
 
+    test('expression, any evaluates remaining branches after a runtime error', () => {
+        vi.spyOn(console, 'warn').mockImplementation(() => {});
+        const f = featureFilter(
+            ['any', ['>', ['get', 'level'], 0], ['!', ['has', 'level']]],
+            'layers[0].filter'
+        ).filter;
+        // The ">" branch raises a runtime error for features without a numeric
+        // "level", but the remaining branches must still be evaluated.
+        expect(f({zoom: 0}, {properties: {}} as any as Feature)).toBe(true);
+        expect(f({zoom: 0}, {properties: {level: 5}} as any as Feature)).toBe(true);
+        expect(f({zoom: 0}, {properties: {level: 0}} as any as Feature)).toBe(false);
+        expect(f({zoom: 0}, {properties: {level: -5}} as any as Feature)).toBe(false);
+        // When no branch decides the result, the runtime error is still reported
+        // and the filter falls back to false.
+        expect(f({zoom: 0}, {properties: {level: null}} as any as Feature)).toBe(false);
+        expect(console.warn).toHaveBeenCalledWith(
+            expect.stringContaining('Expected value to be of type number, but found null instead.')
+        );
+    });
+
     test('expression, literal', () => {
         expect(
             featureFilter(['literal', true], 'layers[0].filter').filter(undefined, undefined)
