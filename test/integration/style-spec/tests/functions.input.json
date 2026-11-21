@@ -931,7 +931,7 @@
       "source": "source",
       "source-layer": "layer",
       "paint": {
-        "fill-extrusion-layer-opacity": ["get", "opacity"]
+        "fill-extrusion-opacity": ["get", "opacity"]
       }
     },
     {
@@ -1044,12 +1044,12 @@
       }
     },
     {
-      "id": "valid expression - fill-extrusion-opacity from feature data and feature state",
+      "id": "valid expression - fill-extrusion-feature-opacity from feature data and feature state",
       "type": "fill-extrusion",
       "source": "source",
       "source-layer": "layer",
       "paint": {
-        "fill-extrusion-opacity": ["case", ["boolean", ["feature-state", "hover"], false], 1, ["get", "opacity"]]
+        "fill-extrusion-feature-opacity": ["case", ["boolean", ["feature-state", "hover"], false], 1, ["get", "opacity"]]
       }
     }
   ]

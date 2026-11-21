@@ -43,7 +43,7 @@
 
   <g transform="translate(540, 0)">
     <text x="135" y="20" text-anchor="middle">
-      fill-extrusion-opacity:
+      fill-extrusion-feature-opacity:
     </text>
     <text x="135" y="40" text-anchor="middle">
       red 1, blue 0.5
@@ -60,7 +60,7 @@
       red 1, blue 0.5 and
     </text>
     <text x="135" y="40" text-anchor="middle">
-      fill-extrusion-layer-opacity: 0.7
+      fill-extrusion-opacity: 0.7
     </text>
     <g transform="translate(135, 122)">
       <use href="#ground"/>
