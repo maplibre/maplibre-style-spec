@@ -50,7 +50,8 @@ export function validateSky(options: ValidateSkyOptions) {
                     value: sky[key],
                     valueSpec: skySpec[key],
                     style,
-                    styleSpec
+                    styleSpec,
+                    expressionContext: 'property'
                 })
             );
         } else {

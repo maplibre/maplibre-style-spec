@@ -114,4 +114,43 @@ describe('Validate sky', () => {
         });
         expect(errors).toHaveLength(0);
     });
+
+    test('Should return error when a data expression is used', () => {
+        const errors = validateSky({
+            validateSpec: validate,
+            value: {'fog-ground-blend': ['get', 'b'], 'sky-color': ['feature-state', 'c']} as any,
+            styleSpec: v8,
+            style: {} as any
+        });
+        expect(errors.map((e) => e.message)).toEqual([
+            'fog-ground-blend: data expressions not supported',
+            'sky-color: data expressions not supported'
+        ]);
+    });
+
+    test('Should return error when zoom is not the input of a top-level step or interpolate', () => {
+        const errors = validateSky({
+            validateSpec: validate,
+            value: {'fog-ground-blend': ['*', ['zoom'], 0.1]} as any,
+            styleSpec: v8,
+            style: {} as any
+        });
+        expect(errors).toHaveLength(1);
+        expect(errors[0].message).toBe(
+            'fog-ground-blend: "zoom" expression may only be used as input to a top-level "step" or "interpolate" expression.'
+        );
+    });
+
+    test('Should pass a top-level zoom interpolation and step', () => {
+        const errors = validateSky({
+            validateSpec: validate,
+            value: {
+                'fog-ground-blend': ['interpolate', ['linear'], ['zoom'], 0, 0.1, 10, 0.9],
+                'sky-color': ['step', ['zoom'], 'red', 5, 'blue']
+            } as any,
+            styleSpec: v8,
+            style: {} as any
+        });
+        expect(errors).toHaveLength(0);
+    });
 });

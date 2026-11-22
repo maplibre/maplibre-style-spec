@@ -109,4 +109,27 @@ describe('Validate projection', () => {
         });
         expect(errors).toHaveLength(0);
     });
+
+    test('Should return error when a data expression is used', () => {
+        const errors = validateProjection({
+            validateSpec: validate,
+            value: {type: ['get', 'p']} as any,
+            styleSpec: v8,
+            style: {} as any
+        });
+        expect(errors.map((e) => e.message)).toEqual(['type: data expressions not supported']);
+    });
+
+    test('Should return error when zoom is not the input of a top-level step or interpolate', () => {
+        const errors = validateProjection({
+            validateSpec: validate,
+            value: {type: ['case', ['>', ['zoom'], 5], 'mercator', 'vertical-perspective']} as any,
+            styleSpec: v8,
+            style: {} as any
+        });
+        expect(errors).toHaveLength(1);
+        expect(errors[0].message).toBe(
+            'type: "zoom" expression may only be used as input to a top-level "step" or "interpolate" expression.'
+        );
+    });
 });
