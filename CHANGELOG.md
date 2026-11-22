@@ -5,6 +5,12 @@
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
 
+## 26.9.0
+### ✨ Features and improvements
+- Make `fill-extrusion-opacity` data-driven and add `fill-extrusion-layer-opacity` for the opacity of the layer as a whole ([#1994](https://github.com/maplibre/maplibre-style-spec/pull/1994)) (by [@birkskyum](https://github.com/birkskyum))
+
+### 🐞 Bug fixes
+
 ## 26.8.0
 
 ### ✨ Features and improvements
