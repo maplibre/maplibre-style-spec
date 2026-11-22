@@ -1,5 +1,6 @@
 ## main
 ### ✨ Features and improvements
+- Remove the unused `fill-extrusion-layer-opacity` ([#NNNN](https://github.com/maplibre/maplibre-style-spec/pull/NNNN)) (by [@birkskyum](https://github.com/birkskyum))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes

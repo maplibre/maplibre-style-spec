@@ -931,7 +931,7 @@
       "source": "source",
       "source-layer": "layer",
       "paint": {
-        "fill-extrusion-layer-opacity": ["get", "opacity"]
+        "fill-extrusion-vertical-gradient": ["get", "gradient"]
       }
     },
     {
