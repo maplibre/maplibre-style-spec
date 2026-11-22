@@ -30,9 +30,9 @@ describe('Validate light', () => {
     });
 
     test('Should pass if everything is according to spec', () => {
-        expect(run({anchor: 'map', color: 'red', intensity: 0.5, position: [1, 90, 80]})).toHaveLength(
-            0
-        );
+        expect(
+            run({anchor: 'map', color: 'red', intensity: 0.5, position: [1, 90, 80]})
+        ).toHaveLength(0);
     });
 
     test('Should pass when a transition property matches a transitionable light property', () => {
