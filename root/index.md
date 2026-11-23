@@ -261,7 +261,7 @@ An array of `{id: 'my-sprite', url: 'https://example.com/sprite'}` objects. Each
 
 *Optional [string](<https://maplibre.org/maplibre-style-spec/types/index.md#string>).*
 
-A URL template for loading signed-distance-field glyph sets in PBF format.
+A URL template for loading signed-distance-field glyph sets in [PBF format](<https://github.com/maplibre/maplibre-native/blob/b1232a79ddb6ce73eb022034cd69ed6ea1989397/misc/proto/glyphs.proto>).
 
 If this property is set, any text in the [`text-field`](<https://maplibre.org/maplibre-style-spec/layers/index.md#text-field>) layout property is displayed in the font stack named by the [`text-font`](<https://maplibre.org/maplibre-style-spec/layers/index.md#text-font>) layout property based on glyphs located at the URL specified by this property. Otherwise, font faces will be determined by the `text-font` property based on the local environment.
 
