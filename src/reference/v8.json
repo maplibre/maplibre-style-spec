@@ -6915,7 +6915,7 @@
       "doc": "The distance from each fill corner, measured along the adjacent edges, that is replaced by a rounded corner. A value of `0` disables rounded corners.",
       "sdk-support": {
         "basic functionality": {
-          "js": "https://github.com/maplibre/maplibre-style-spec/issues/1047",
+          "js": "https://github.com/maplibre/maplibre-gl-js/issues/9122",
           "android": "https://github.com/maplibre/maplibre-native/issues/4670",
           "ios": "https://github.com/maplibre/maplibre-native/issues/4670"
         }
