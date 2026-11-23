@@ -1,5 +1,6 @@
 ## main
 ### ✨ Features and improvements
+- Add `fill-rounded-corner-distance` for rounded polygon corners in fill layers ([#2007](https://github.com/maplibre/maplibre-style-spec/pull/2007)) (by [@louwers](https://github.com/louwers))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
