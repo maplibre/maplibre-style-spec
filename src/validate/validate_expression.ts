@@ -63,11 +63,8 @@ export function validateExpression(options: any): Array<ValidationError> {
         ];
     }
 
-    if (
-        options.expressionContext === 'filter' &&
-        options.layerType !== 'symbol' &&
-        !isGlobalPropertyConstant(expressionObj, ['pitch', 'bearing'])
-    ) {
+    const isSymbolFilter = options.expressionContext === 'filter' && options.layerType === 'symbol';
+    if (!isSymbolFilter && !isGlobalPropertyConstant(expressionObj, ['pitch', 'bearing'])) {
         return [
             new ValidationError(
                 options.key,
