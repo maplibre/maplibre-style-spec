@@ -87,6 +87,8 @@ type ExpressionType =
     | 'constant';
 type ExpressionParameters = Array<
     | 'zoom'
+    | 'pitch'
+    | 'bearing'
     | 'feature'
     | 'feature-state'
     | 'heatmap-density'

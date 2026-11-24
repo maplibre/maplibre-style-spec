@@ -99,6 +99,10 @@ export type FeatureState = {[_: string]: any};
 
 export type GlobalProperties = Readonly<{
     zoom: number;
+    /** The pitch of the camera in degrees, supplied while symbols are placed. */
+    pitch?: number;
+    /** The bearing of the camera in degrees, supplied while symbols are placed. */
+    bearing?: number;
     heatmapDensity?: number;
     elevation?: number;
     lineProgress?: number;
@@ -519,6 +523,15 @@ export function createPropertyExpression(
         return error([new ExpressionParsingError('', 'zoom expressions not supported')]);
     }
 
+    if (!isGlobalPropertyConstant(parsed, ['pitch', 'bearing'])) {
+        return error([
+            new ExpressionParsingError(
+                '',
+                '"pitch" and "bearing" expressions are only supported in symbol layer filters.'
+            )
+        ]);
+    }
+
     const zoomCurve = findZoomCurve(parsed);
     if (!zoomCurve && !isZoomConstant) {
         return error([
@@ -839,10 +852,20 @@ function addGlobalState(
     globals: GlobalProperties,
     globalState: Record<string, any>
 ): GlobalProperties {
-    const {zoom, heatmapDensity, elevation, lineProgress, isSupportedScript, accumulated} =
-        globals ?? {};
+    const {
+        zoom,
+        pitch,
+        bearing,
+        heatmapDensity,
+        elevation,
+        lineProgress,
+        isSupportedScript,
+        accumulated
+    } = globals ?? {};
     return {
         zoom,
+        pitch,
+        bearing,
         heatmapDensity,
         elevation,
         lineProgress,

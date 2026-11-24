@@ -249,6 +249,20 @@
       "source": "source",
       "source-layer": "source-layer",
       "filter": ["all", ["==", ["get", "type"], "stream"], ["!", ["in", "name", ""]]]
+    },
+    {
+      "id": "pitch and bearing in a symbol layer filter",
+      "type": "symbol",
+      "source": "source",
+      "source-layer": "source-layer",
+      "filter": [">", ["pitch"], ["abs", ["bearing"]]]
+    },
+    {
+      "id": "pitch in a filter of a layer that is not a symbol layer",
+      "type": "line",
+      "source": "source",
+      "source-layer": "source-layer",
+      "filter": [">", ["pitch"], 30]
     }
   ]
 }

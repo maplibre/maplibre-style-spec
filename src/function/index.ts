@@ -1,5 +1,4 @@
 import {Color, isSupportedInterpolationColorSpace} from '../expression/types/color';
-import {extendBy} from '../util/extend';
 import {getType} from '../util/get_type';
 import {Interpolate, interpolateFactory} from '../expression/definitions/interpolate';
 import {Formatted} from '../expression/types/formatted';
@@ -75,7 +74,7 @@ export function createFunction(parameters, propertySpec): StyleFunction {
 
     const parseFn = getParseFunction(propertySpec);
     if (parseFn) {
-        parameters = extendBy({}, parameters);
+        parameters = {...parameters};
 
         if (parameters.stops) {
             parameters.stops = parameters.stops.map((stop) => {

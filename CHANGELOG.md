@@ -1,6 +1,7 @@
 ## main
 ### ✨ Features and improvements
 - Add `fill-rounded-corner-distance` for rounded polygon corners in fill layers ([#2007](https://github.com/maplibre/maplibre-style-spec/pull/2007)) (by [@louwers](https://github.com/louwers))
+- Add the `pitch` and `bearing` expressions for symbol layer filters ([#346](https://github.com/maplibre/maplibre-style-spec/issues/346))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
