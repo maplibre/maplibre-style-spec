@@ -7,7 +7,11 @@ if (argv.help || argv.h || (!argv._.length && process.stdin.isTTY)) {
     help();
 } else {
     console.log(
-        format(JSON.parse(fs.readFileSync(argv._[0]).toString()), argv.space, argv['max-length'])
+        format(
+            JSON.parse(fs.readFileSync(argv._[0]).toString()),
+            argv.space,
+            argv['max-line-length']
+        )
     );
 }
 
@@ -19,6 +23,6 @@ function help() {
     console.log('  --space <num>');
     console.log('     Number of spaces in output (default "2")');
     console.log('     Pass "0" for minified output.');
-    console.log('  --max-length <num>');
+    console.log('  --max-line-length <num>');
     console.log('     Maximum line length in output (default "80")');
 }
