@@ -1,0 +1,20 @@
+[
+  {
+    "message": "sources.null.clusterProperties: object expected, null found",
+    "severity": "error"
+  },
+  {
+    "message": "sources.invalid.null: array expected, null found",
+    "severity": "error"
+  },
+  {
+    "message": "sources.invalid.object: array expected, object found",
+    "severity": "error",
+    "line": 16
+  },
+  {
+    "message": "sources.invalid.number: array expected, number found",
+    "severity": "error",
+    "line": 17
+  }
+]

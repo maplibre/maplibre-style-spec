@@ -3,6 +3,7 @@ import {getType} from '../util/get_type';
 import {isFunction} from '../function';
 import {unbundle, deepUnbundle} from '../util/unbundle_jsonlint';
 import {supportsPropertyExpression, transitionPropertyRegExp} from '../util/properties';
+import {getOwn} from '../util/get_own';
 
 export function validateProperty(options, propertyType) {
     const key = options.key;
@@ -11,7 +12,10 @@ export function validateProperty(options, propertyType) {
     const styleSpec = options.styleSpec;
     const value = options.value;
     const propertyKey = options.objectKey;
-    const layerSpec = styleSpec[`${propertyType}_${options.layerType}`];
+    const layerSpec =
+        typeof options.layerType === 'string'
+            ? getOwn<Record<string, any>>(styleSpec, `${propertyType}_${options.layerType}`)
+            : undefined;
 
     if (!layerSpec) return [];
 
@@ -19,8 +23,7 @@ export function validateProperty(options, propertyType) {
     if (
         propertyType === 'paint' &&
         transitionMatch &&
-        layerSpec[transitionMatch[1]] &&
-        layerSpec[transitionMatch[1]].transition
+        getOwn<Record<string, any>>(layerSpec, transitionMatch[1])?.transition
     ) {
         return validateSpec({
             key,
@@ -31,7 +34,7 @@ export function validateProperty(options, propertyType) {
         });
     }
 
-    const valueSpec = options.valueSpec || layerSpec[propertyKey];
+    const valueSpec = options.valueSpec || getOwn(layerSpec, propertyKey);
     if (!valueSpec) {
         return [new ValidationError(key, value, `unknown property "${propertyKey}"`)];
     }

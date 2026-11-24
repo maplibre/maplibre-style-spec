@@ -1,6 +1,7 @@
 import {validateObject} from './validate_object';
 import {validateString} from './validate_string';
 import {ValidationError} from '../error/validation_error';
+import {getType} from '../util/get_type';
 
 interface ValidateSpriteOptions {
     key: 'sprite';
@@ -24,6 +25,17 @@ export function validateSprite(options: ValidateSpriteOptions) {
         const allSpriteURLs = [];
 
         for (const i in sprite) {
+            if (getType(sprite[i]) !== 'object') {
+                errors.push(
+                    new ValidationError(
+                        `${key}[${i}]`,
+                        sprite[i],
+                        `object expected, ${getType(sprite[i])} found`
+                    )
+                );
+                continue;
+            }
+
             if (sprite[i].id && allSpriteIds.includes(sprite[i].id))
                 errors.push(
                     new ValidationError(

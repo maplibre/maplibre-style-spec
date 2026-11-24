@@ -3,6 +3,7 @@ import {Expression} from '../expression';
 import {ParsingContext} from '../parsing_context';
 import {NumberType, Type} from '../types';
 import {isValue} from '../values';
+import {getSimpleGeometries, type SimpleGeoJSONGeometry} from '../../util/geojson';
 import {EvaluationContext} from '../evaluation_context';
 import {
     BBox,
@@ -696,9 +697,7 @@ function polygonToGeometryDistance(ctx: EvaluationContext, geometries: SimpleGeo
     return dist;
 }
 
-function toSimpleGeometry(
-    geometry: Exclude<GeoJSON.Geometry, GeoJSON.GeometryCollection>
-): SimpleGeometry[] {
+function toSimpleGeometry(geometry: SimpleGeoJSONGeometry): SimpleGeometry[] {
     if (geometry.type === 'MultiPolygon') {
         return geometry.coordinates.map((polygon) => {
             return {
@@ -742,18 +741,12 @@ export class Distance implements Expression {
             return context.error(
                 `'distance' expression requires exactly one argument, but found ${args.length - 1} instead.`
             ) as null;
-        if (isValue(args[1])) {
-            const geojson = args[1] as any;
-            if (geojson.type === 'FeatureCollection') {
-                return new Distance(
-                    geojson,
-                    geojson.features.map((feature) => toSimpleGeometry(feature.geometry)).flat()
-                );
-            } else if (geojson.type === 'Feature') {
-                return new Distance(geojson, toSimpleGeometry(geojson.geometry));
-            } else if ('type' in geojson && 'coordinates' in geojson) {
-                return new Distance(geojson, toSimpleGeometry(geojson));
-            }
+        const geometries = isValue(args[1]) ? getSimpleGeometries(args[1]) : null;
+        if (geometries) {
+            return new Distance(
+                args[1] as GeoJSON.GeoJSON,
+                geometries.flatMap((geometry) => toSimpleGeometry(geometry))
+            );
         }
         return context.error(
             "'distance' expression requires valid geojson object that contains polygon geometry type."

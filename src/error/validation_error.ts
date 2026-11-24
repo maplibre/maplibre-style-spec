@@ -29,7 +29,8 @@ export class ValidationError {
         if (identifier) this.identifier = identifier;
         this.severity = severity;
 
-        if (value !== null && value !== undefined && value.__line__) {
+        // a style may contain its own "__line__" property, of any type
+        if (typeof value?.__line__ === 'number' && value.__line__) {
             this.line = value.__line__;
         }
     }

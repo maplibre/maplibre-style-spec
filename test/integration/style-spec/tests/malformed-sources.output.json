@@ -1,0 +1,46 @@
+[
+  {
+    "message": "sources.null: object expected, null found",
+    "severity": "error"
+  },
+  {
+    "message": "sources.number: object expected, number found",
+    "severity": "error",
+    "line": 5
+  },
+  {
+    "message": "sources.array: object expected, array found",
+    "severity": "error",
+    "line": 6
+  },
+  {
+    "message": "sources.prototype-key: missing required property \"coordinates\"",
+    "severity": "error",
+    "line": 7
+  },
+  {
+    "message": "sources.prototype-key: unknown property \"constructor.\"",
+    "severity": "error",
+    "line": 9
+  },
+  {
+    "message": "sources.line: \"type\" is required",
+    "severity": "error",
+    "line": 11
+  },
+  {
+    "message": "encoding: expected one of [terrarium, mapbox, custom], {\"toString\":null} found",
+    "severity": "error",
+    "line": 18
+  },
+  {
+    "message": "redFactor: In \"sources.encoding\": \"redFactor\" is only valid when \"encoding\" is set to \"custom\". \"{\"toString\":null}\" encoding found",
+    "severity": "error",
+    "line": 21
+  },
+  {
+    "message": "constructor: unknown property \"constructor\"",
+    "severity": "error",
+    "line": 25
+  }
+]

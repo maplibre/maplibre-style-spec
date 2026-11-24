@@ -1,0 +1,114 @@
+{
+  "version": 8,
+  "sources": {
+    "v": {
+      "type": "vector",
+      "url": "https://example.com"
+    }
+  },
+  "light": {
+    "constructor": 1,
+    "constructor-transition": {}
+  },
+  "sky": {
+    "constructor": 1
+  },
+  "terrain": {
+    "constructor": 1
+  },
+  "projection": {
+    "constructor": 1
+  },
+  "layers": [
+    {
+      "id": "prototype-key",
+      "type": "line",
+      "source": "v",
+      "source-layer": "x",
+      "paint": {
+        "constructor": 1,
+        "toString-transition": {}
+      },
+      "layout": {
+        "toString": 1
+      }
+    },
+    {
+      "id": "boxed-prototype",
+      "type": "line",
+      "source": "v",
+      "source-layer": "x",
+      "paint": {
+        "line-width": {
+          "__proto__": 1
+        }
+      }
+    },
+    {
+      "id": "null-prototype",
+      "type": "line",
+      "source": "v",
+      "source-layer": "x",
+      "paint": {
+        "line-width": [
+          "interpolate",
+          [
+            {
+              "__proto__": null
+            },
+            1.2
+          ],
+          [
+            "zoom"
+          ],
+          13,
+          0,
+          14,
+          2
+        ]
+      }
+    },
+    {
+      "id": "stop-zoom",
+      "type": "line",
+      "source": "v",
+      "source-layer": "x",
+      "paint": {
+        "line-width": {
+          "property": "x",
+          "stops": [
+            [
+              {
+                "zoom": 1,
+                "value": 1
+              },
+              1
+            ],
+            [
+              {
+                "zoom": {
+                  "toString": null
+                },
+                "value": 1
+              },
+              1
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "filter",
+      "type": "line",
+      "source": "v",
+      "source-layer": "x",
+      "filter": [
+        "all",
+        [
+          "__proto__",
+          1
+        ]
+      ]
+    }
+  ]
+}

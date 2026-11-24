@@ -1,0 +1,29 @@
+{
+  "expression": [
+    "interpolate",
+    [
+      {
+        "toString": null
+      },
+      1.2
+    ],
+    [
+      "zoom"
+    ],
+    13,
+    0,
+    14,
+    2
+  ],
+  "expected": {
+    "compiled": {
+      "result": "error",
+      "errors": [
+        {
+          "key": "[1][0]",
+          "error": "Unknown interpolation type {\"toString\":null}"
+        }
+      ]
+    }
+  }
+}

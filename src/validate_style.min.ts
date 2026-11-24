@@ -52,7 +52,7 @@ export function validateStyleMin(
         })
     );
 
-    if (style['constants']) {
+    if (style?.['constants']) {
         errors = errors.concat(
             validateConstants({
                 key: 'constants',
