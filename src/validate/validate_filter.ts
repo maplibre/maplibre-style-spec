@@ -47,7 +47,7 @@ export function validateFilter(options: any): ValidationError[] {
         ...validateExpression(
             extend({}, options, {
                 expressionContext: 'filter',
-                valueSpec: {value: 'boolean'}
+                valueSpec: {type: 'boolean'}
             })
         )
     ];
