@@ -4998,9 +4998,9 @@
         "group": "Camera",
         "sdk-support": {
           "basic functionality": {
-            "js": "https://github.com/maplibre/maplibre-gl-js/issues/TODO",
-            "android": "https://github.com/maplibre/maplibre-native/issues/TODO",
-            "ios": "https://github.com/maplibre/maplibre-native/issues/TODO"
+            "js": "https://github.com/maplibre/maplibre-gl-js/issues/8671",
+            "android": "https://github.com/maplibre/maplibre-native/issues/4077",
+            "ios": "https://github.com/maplibre/maplibre-native/issues/4077"
           }
         }
       },
@@ -5027,9 +5027,9 @@
         "group": "Camera",
         "sdk-support": {
           "basic functionality": {
-            "js": "https://github.com/maplibre/maplibre-gl-js/issues/TODO",
-            "android": "https://github.com/maplibre/maplibre-native/issues/TODO",
-            "ios": "https://github.com/maplibre/maplibre-native/issues/TODO"
+            "js": "https://github.com/maplibre/maplibre-gl-js/issues/8671",
+            "android": "https://github.com/maplibre/maplibre-native/issues/4077",
+            "ios": "https://github.com/maplibre/maplibre-native/issues/4077"
           }
         }
       },
