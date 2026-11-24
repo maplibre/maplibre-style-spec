@@ -85,11 +85,10 @@ gl-style-migrate bright.json | sponge bright.json
 ### `gl-style-format`
 
 ```bash
-gl-style-format style.json
+gl-style-format [--space <num>] [--max-length <num>] style.json
 ```
 
 Will format the given style JSON to use standard indentation and sorted object keys.
-Provide a `--max-length` flag to set the maximum line length (default `80`).
 
 ### `gl-style-validate`
 
