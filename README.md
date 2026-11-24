@@ -89,6 +89,7 @@ gl-style-format style.json
 ```
 
 Will format the given style JSON to use standard indentation and sorted object keys.
+Provide a `--max-length` flag to set the maximum line length (default `80`).
 
 ### `gl-style-validate`
 
