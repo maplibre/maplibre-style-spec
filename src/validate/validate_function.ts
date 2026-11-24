@@ -150,6 +150,15 @@ export function validateFunction(options): Array<ValidationError> {
             if (value[0].value === undefined) {
                 return [new ValidationError(key, value, 'object stop key must have value')];
             }
+            if (getType(value[0].zoom) !== 'number') {
+                return [
+                    new ValidationError(
+                        `${key}[0].zoom`,
+                        value[0].zoom,
+                        `number expected, ${getType(value[0].zoom)} found`
+                    )
+                ];
+            }
             if (previousStopDomainZoom && previousStopDomainZoom > unbundle(value[0].zoom)) {
                 return [
                     new ValidationError(

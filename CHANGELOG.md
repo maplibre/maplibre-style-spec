@@ -4,6 +4,7 @@
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
+- Report validation errors instead of throwing when validating malformed styles ([#1025](https://github.com/maplibre/maplibre-style-spec/issues/1025)) (by [@HarelM](https://github.com/HarelM))
 - _...Add new stuff here..._
 
 ## 26.9.0

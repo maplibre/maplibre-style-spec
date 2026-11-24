@@ -1,4 +1,5 @@
 import {isValue} from '../values';
+import {getSimpleGeometries} from '../../util/geojson';
 import type {Type} from '../types';
 import {BooleanType} from '../types';
 import type {Expression} from '../expression';
@@ -197,12 +198,12 @@ export class Within implements Expression {
             return context.error(
                 `'within' expression requires exactly one argument, but found ${args.length - 1} instead.`
             ) as null;
-        if (isValue(args[1])) {
+        const geometries = isValue(args[1]) ? getSimpleGeometries(args[1]) : null;
+        if (geometries) {
             const geojson = args[1] as any;
             if (geojson.type === 'FeatureCollection') {
                 const polygonsCoords: GeoJSON.Position[][][] = [];
-                for (const polygon of geojson.features) {
-                    const {type, coordinates} = polygon.geometry;
+                for (const {type, coordinates} of geometries) {
                     if (type === 'Polygon') {
                         polygonsCoords.push(coordinates);
                     }
@@ -217,13 +218,11 @@ export class Within implements Expression {
                     };
                     return new Within(geojson, multipolygonWrapper);
                 }
-            } else if (geojson.type === 'Feature') {
-                const type = geojson.geometry.type;
-                if (type === 'Polygon' || type === 'MultiPolygon') {
-                    return new Within(geojson, geojson.geometry);
+            } else {
+                const geometry = geometries[0];
+                if (geometry?.type === 'Polygon' || geometry?.type === 'MultiPolygon') {
+                    return new Within(geojson, geometry);
                 }
-            } else if (geojson.type === 'Polygon' || geojson.type === 'MultiPolygon') {
-                return new Within(geojson, geojson);
             }
         }
         return context.error(

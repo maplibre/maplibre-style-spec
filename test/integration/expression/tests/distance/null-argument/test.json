@@ -1,0 +1,17 @@
+{
+  "expression": [
+    "distance",
+    null
+  ],
+  "expected": {
+    "compiled": {
+      "result": "error",
+      "errors": [
+        {
+          "key": "",
+          "error": "'distance' expression requires valid geojson object that contains polygon geometry type."
+        }
+      ]
+    }
+  }
+}

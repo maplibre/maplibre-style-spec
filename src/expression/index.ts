@@ -22,6 +22,7 @@ import {ProjectionDefinition} from './types/projection_definition';
 import {GlobalState} from './definitions/global_state';
 import {RuntimeError} from './runtime_error';
 import {success, error} from '../util/result';
+import {getOwn} from '../util/get_own';
 import {
     supportsPropertyExpression,
     supportsZoomExpression,
@@ -243,7 +244,7 @@ export function isExpression(expression: unknown) {
         Array.isArray(expression) &&
         expression.length > 0 &&
         typeof expression[0] === 'string' &&
-        expression[0] in expressions
+        getOwn(expressions, expression[0]) !== undefined
     );
 }
 

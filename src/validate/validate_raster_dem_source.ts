@@ -3,6 +3,8 @@ import {getType} from '../util/get_type';
 import type {RasterDEMSourceSpecification, StyleSpecification} from '../types.g';
 import v8 from '../reference/v8.json' with {type: 'json'};
 import {unbundle} from '../util/unbundle_jsonlint';
+import {getOwn} from '../util/get_own';
+import {toDisplayString} from '../util/to_display_string';
 
 interface ValidateRasterDENSourceOptions {
     sourceName?: string;
@@ -40,7 +42,9 @@ export function validateRasterDEMSource(
     const encoding = unbundle(rasterDEM.encoding);
     const isCustomEncoding = encoding === 'custom';
     const customEncodingKeys = ['redFactor', 'greenFactor', 'blueFactor', 'baseShift'];
-    const encodingName = options.value.encoding ? `"${options.value.encoding}"` : 'Default';
+    const encodingName = options.value.encoding
+        ? `"${toDisplayString(options.value.encoding)}"`
+        : 'Default';
 
     for (const key in rasterDEM) {
         if (!isCustomEncoding && customEncodingKeys.includes(key)) {
@@ -51,7 +55,7 @@ export function validateRasterDEMSource(
                     `In "${sourceName}": "${key}" is only valid when "encoding" is set to "custom". ${encodingName} encoding found`
                 )
             );
-        } else if (rasterDEMSpec[key]) {
+        } else if (getOwn(rasterDEMSpec, key)) {
             errors = errors.concat(
                 options.validateSpec({
                     key,

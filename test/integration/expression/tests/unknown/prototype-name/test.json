@@ -1,0 +1,20 @@
+{
+  "expression": [
+    "all",
+    [
+      "__proto__",
+      1
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "error",
+      "errors": [
+        {
+          "key": "[1][0]",
+          "error": "Unknown expression \"__proto__\". If you wanted a literal array, use [\"literal\", [...]]."
+        }
+      ]
+    }
+  }
+}

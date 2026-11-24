@@ -1,0 +1,20 @@
+{
+  "expression": [
+    "all",
+    [
+      "var",
+      "__proto__"
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "error",
+      "errors": [
+        {
+          "key": "[1][1]",
+          "error": "Unknown variable \"__proto__\". Make sure \"__proto__\" has been bound in an enclosing \"let\" expression before using it."
+        }
+      ]
+    }
+  }
+}
