@@ -1,0 +1,14 @@
+{
+  "version": 8,
+  "sources": {},
+  "sprite": [
+    null,
+    false,
+    "a",
+    {
+      "id": "a",
+      "url": "https://example.com"
+    }
+  ],
+  "layers": []
+}

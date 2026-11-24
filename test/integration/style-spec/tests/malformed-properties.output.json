@@ -1,0 +1,62 @@
+[
+  {
+    "message": "constructor: unknown property \"constructor\"",
+    "severity": "error",
+    "line": 10
+  },
+  {
+    "message": "constructor-transition: unknown property \"constructor-transition\"",
+    "severity": "error",
+    "line": 11
+  },
+  {
+    "message": "constructor: unknown property \"constructor\"",
+    "severity": "error",
+    "line": 14
+  },
+  {
+    "message": "constructor: unknown property \"constructor\"",
+    "severity": "error",
+    "line": 17
+  },
+  {
+    "message": "constructor: unknown property \"constructor\"",
+    "severity": "error",
+    "line": 20
+  },
+  {
+    "message": "layers[0].paint.constructor: unknown property \"constructor\"",
+    "severity": "error",
+    "line": 29
+  },
+  {
+    "message": "layers[0].paint.toString-transition: unknown property \"toString-transition\"",
+    "severity": "error",
+    "line": 30
+  },
+  {
+    "message": "layers[0].layout.toString: unknown property \"toString\"",
+    "severity": "error",
+    "line": 33
+  },
+  {
+    "message": "layers[1].paint.line-width: missing required property \"stops\"",
+    "severity": "error",
+    "line": 42
+  },
+  {
+    "message": "layers[2].paint.line-width[1][0]: Unknown interpolation type {}",
+    "severity": "error",
+    "line": 53
+  },
+  {
+    "message": "layers[3].paint.line-width.stops[1][0].zoom: number expected, object found",
+    "severity": "error",
+    "line": 89
+  },
+  {
+    "message": "layers[4].filter[1][0]: Unknown expression \"__proto__\". If you wanted a literal array, use [\"literal\", [...]].",
+    "severity": "error",
+    "line": 105
+  }
+]

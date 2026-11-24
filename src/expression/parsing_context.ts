@@ -8,6 +8,7 @@ import {EvaluationContext} from './evaluation_context';
 
 import type {Expression, ExpressionRegistry} from './expression';
 import type {Type} from './types';
+import {getOwn} from '../util/get_own';
 
 /**
  * State associated parsing at a given point in an expression tree.
@@ -112,7 +113,7 @@ export class ParsingContext {
                 return null;
             }
 
-            const Expr = this.registry[op];
+            const Expr = getOwn(this.registry, op);
             if (Expr) {
                 let parsed = Expr.parse(expr, this);
                 if (!parsed) return null;

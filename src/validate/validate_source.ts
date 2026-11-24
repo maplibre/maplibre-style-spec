@@ -18,6 +18,10 @@ export function validateSource(options) {
     const style = options.style;
     const validateSpec = options.validateSpec;
 
+    if (getType(value) !== 'object') {
+        return [new ValidationError(key, value, `object expected, ${getType(value)} found`)];
+    }
+
     if (!value.type) {
         return [new ValidationError(key, value, '"type" is required')];
     }
@@ -58,9 +62,30 @@ export function validateSource(options) {
                 validateSpec,
                 objectElementValidators
             });
-            if (value.cluster) {
+            if (value.cluster && value.clusterProperties !== undefined) {
+                if (getType(value.clusterProperties) !== 'object') {
+                    errors.push(
+                        new ValidationError(
+                            `${key}.clusterProperties`,
+                            value.clusterProperties,
+                            `object expected, ${getType(value.clusterProperties)} found`
+                        )
+                    );
+                    return errors;
+                }
                 for (const prop in value.clusterProperties) {
-                    const [operator, mapExpr] = value.clusterProperties[prop];
+                    const clusterProperty = value.clusterProperties[prop];
+                    if (getType(clusterProperty) !== 'array') {
+                        errors.push(
+                            new ValidationError(
+                                `${key}.${prop}`,
+                                clusterProperty,
+                                `array expected, ${getType(clusterProperty)} found`
+                            )
+                        );
+                        continue;
+                    }
+                    const [operator, mapExpr] = clusterProperty;
                     const reduceExpr =
                         typeof operator === 'string'
                             ? [operator, ['accumulated'], ['get', prop]]

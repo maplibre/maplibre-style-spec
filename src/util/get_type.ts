@@ -1,9 +1,11 @@
+import {isBoxed} from './unbundle_jsonlint';
+
 export function getType(val: unknown): string {
-    if (val instanceof Number) {
+    if (isBoxed(val, Number)) {
         return 'number';
-    } else if (val instanceof String) {
+    } else if (isBoxed(val, String)) {
         return 'string';
-    } else if (val instanceof Boolean) {
+    } else if (isBoxed(val, Boolean)) {
         return 'boolean';
     } else if (Array.isArray(val)) {
         return 'array';

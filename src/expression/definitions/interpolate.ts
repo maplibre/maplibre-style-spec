@@ -27,6 +27,7 @@ import {ColorArray} from '../types/color_array';
 import {NumberArray} from '../types/number_array';
 import {VariableAnchorOffsetCollection} from '../types/variable_anchor_offset_collection';
 import {ProjectionDefinition} from '../types/projection_definition';
+import {toDisplayString} from '../../util/to_display_string';
 
 import type {Stops} from '../stops';
 import type {Expression} from '../expression';
@@ -136,7 +137,7 @@ export class Interpolate implements Expression {
             };
         } else {
             return context.error(
-                `Unknown interpolation type ${String(interpolation[0])}`,
+                `Unknown interpolation type ${toDisplayString(interpolation[0])}`,
                 1,
                 0
             ) as null;

@@ -1,0 +1,26 @@
+{
+  "expression": [
+    "within",
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": {
+          "a": false
+        }
+      }
+    }
+  ],
+  "expected": {
+    "compiled": {
+      "result": "error",
+      "errors": [
+        {
+          "key": "",
+          "error": "'within' expression requires valid geojson object that contains polygon geometry type."
+        }
+      ]
+    }
+  }
+}

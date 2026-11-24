@@ -1,0 +1,20 @@
+{
+  "expression": [
+    "within",
+    {
+      "type": "FeatureCollection",
+      "features": null
+    }
+  ],
+  "expected": {
+    "compiled": {
+      "result": "error",
+      "errors": [
+        {
+          "key": "",
+          "error": "'within' expression requires valid geojson object that contains polygon geometry type."
+        }
+      ]
+    }
+  }
+}

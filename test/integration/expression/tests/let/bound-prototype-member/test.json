@@ -1,0 +1,28 @@
+{
+  "expression": [
+    "let",
+    "toString",
+    1,
+    [
+      "var",
+      "toString"
+    ]
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": true,
+      "isZoomConstant": true,
+      "type": "number"
+    },
+    "outputs": [
+      1
+    ]
+  }
+}

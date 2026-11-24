@@ -1,0 +1,16 @@
+[
+  {
+    "message": "sprite[0]: object expected, null found",
+    "severity": "error"
+  },
+  {
+    "message": "sprite[1]: object expected, boolean found",
+    "severity": "error",
+    "line": 6
+  },
+  {
+    "message": "sprite[2]: object expected, string found",
+    "severity": "error",
+    "line": 7
+  }
+]

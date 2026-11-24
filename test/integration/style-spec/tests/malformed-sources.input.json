@@ -1,0 +1,29 @@
+{
+  "version": 8,
+  "sources": {
+    "null": null,
+    "number": 1,
+    "array": [],
+    "prototype-key": {
+      "type": "image",
+      "constructor.": 1
+    },
+    "line": {
+      "__line__": {
+        "toString": null
+      }
+    },
+    "encoding": {
+      "type": "raster-dem",
+      "encoding": {
+        "toString": null
+      },
+      "redFactor": 1
+    },
+    "dem": {
+      "type": "raster-dem",
+      "constructor": 1
+    }
+  },
+  "layers": []
+}

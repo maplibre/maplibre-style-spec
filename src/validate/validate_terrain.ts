@@ -2,6 +2,7 @@ import {ValidationError} from '../error/validation_error';
 import {getType} from '../util/get_type';
 import type {StyleSpecification, TerrainSpecification} from '../types.g';
 import v8 from '../reference/v8.json' with {type: 'json'};
+import {getOwn} from '../util/get_own';
 
 export function validateTerrain(options: {
     value: TerrainSpecification;
@@ -27,7 +28,7 @@ export function validateTerrain(options: {
     }
 
     for (const key in terrain) {
-        if (terrainSpec[key]) {
+        if (getOwn(terrainSpec, key)) {
             errors = errors.concat(
                 options.validateSpec({
                     key,

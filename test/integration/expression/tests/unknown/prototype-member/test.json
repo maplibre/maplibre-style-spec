@@ -1,0 +1,17 @@
+{
+  "expression": [
+    "toString",
+    1
+  ],
+  "expected": {
+    "compiled": {
+      "result": "error",
+      "errors": [
+        {
+          "key": "[0]",
+          "error": "Unknown expression \"toString\". If you wanted a literal array, use [\"literal\", [...]]."
+        }
+      ]
+    }
+  }
+}

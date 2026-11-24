@@ -1,0 +1,51 @@
+[
+  {
+    "message": "layers[0]: object expected, null found",
+    "severity": "error"
+  },
+  {
+    "message": "layers[1]: object expected, boolean found",
+    "severity": "error",
+    "line": 11
+  },
+  {
+    "message": "layers[2]: ref layer \"missing\" not found",
+    "severity": "error",
+    "line": 14
+  },
+  {
+    "message": "layers[3]: ref layer \"{\"toString\":null}\" not found",
+    "severity": "error",
+    "line": 18
+  },
+  {
+    "message": "layers[4]: source \"{\"toString\":null}\" not found",
+    "severity": "error",
+    "line": 25
+  },
+  {
+    "message": "layers[4].source: string expected, object found",
+    "severity": "error",
+    "line": 25
+  },
+  {
+    "message": "layers[5]: source \"constructor\" not found",
+    "severity": "error",
+    "line": 32
+  },
+  {
+    "message": "layers[6]: layer \"{\"toString\":null}\" must specify a \"source-layer\"",
+    "severity": "error",
+    "line": 34
+  },
+  {
+    "message": "layers[6].id: string expected, object found",
+    "severity": "error",
+    "line": 35
+  },
+  {
+    "message": "layers[7].type: expected one of [fill, line, symbol, circle, heatmap, fill-extrusion, raster, hillshade, color-relief, background], {\"toString\":null} found",
+    "severity": "error",
+    "line": 43
+  }
+]
