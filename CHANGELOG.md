@@ -2,6 +2,7 @@
 ### ✨ Features and improvements
 - Add `fill-rounded-corner-distance` for rounded polygon corners in fill layers ([#2007](https://github.com/maplibre/maplibre-style-spec/pull/2007)) (by [@louwers](https://github.com/louwers))
 - Add `--max-line-length` to `gl-style-format` and a `maxLength` argument to `format()` for an adjustable maximum line length ([#2011](https://github.com/maplibre/maplibre-style-spec/pull/2011)) (by [@zstadler](https://github.com/zstadler))
+- Read standard input in `gl-style-format` and `gl-style-validate` when no path is given ([#2015](https://github.com/maplibre/maplibre-style-spec/pull/2015)) (by [@zstadler](https://github.com/zstadler))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes

@@ -2,11 +2,24 @@ import {readdir} from 'fs/promises';
 import {latest} from '../../src/reference/latest';
 import {latest as latestInBundle} from '../../dist';
 import fs from 'fs';
-import {spawnSync} from 'node:child_process';
+import {spawn, spawnSync} from 'node:child_process';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {describe, test, expect} from 'vitest';
 const validStyle = JSON.stringify({version: 8, sources: {}, layers: []});
+
+function spawnWithDelayedInput(args: string[], input: string) {
+    return new Promise<{status: number; stdout: string; stderr: string}>((resolve) => {
+        const child = spawn('node', args);
+        let stdout = '';
+        let stderr = '';
+        child.stdout.on('data', (data) => (stdout += data));
+        child.stderr.on('data', (data) => (stderr += data));
+        child.stdin.on('error', () => {});
+        child.on('close', (status) => resolve({status, stdout, stderr}));
+        setTimeout(() => child.stdin.end(input), 200);
+    });
+}
 
 describe('@maplibre/maplibre-gl-style-spec npm package', () => {
     test('files build', async () => {
@@ -97,6 +110,38 @@ describe('CLI binaries', () => {
         });
         expect(result.status).toBe(0);
         expect(result.stderr).toBe('');
+    });
+
+    test('gl-style-validate accepts delayed stdin', async () => {
+        const result = await spawnWithDelayedInput(['dist/gl-style-validate.mjs'], validStyle);
+        expect(result.status).toBe(0);
+        expect(result.stderr).toBe('');
+    });
+
+    test('gl-style-format accepts a file path', () => {
+        const path = join(tmpdir(), 'maplibre-style-spec-valid.json');
+        fs.writeFileSync(path, validStyle);
+        const result = spawnSync('node', ['dist/gl-style-format.mjs', path], {encoding: 'utf8'});
+        expect(result.status).toBe(0);
+        expect(result.stderr).toBe('');
+        expect(JSON.parse(result.stdout)).toEqual(JSON.parse(validStyle));
+    });
+
+    test('gl-style-format accepts stdin', () => {
+        const result = spawnSync('node', ['dist/gl-style-format.mjs'], {
+            encoding: 'utf8',
+            input: validStyle
+        });
+        expect(result.status).toBe(0);
+        expect(result.stderr).toBe('');
+        expect(JSON.parse(result.stdout)).toEqual(JSON.parse(validStyle));
+    });
+
+    test('gl-style-format accepts delayed stdin', async () => {
+        const result = await spawnWithDelayedInput(['dist/gl-style-format.mjs'], validStyle);
+        expect(result.status).toBe(0);
+        expect(result.stderr).toBe('');
+        expect(JSON.parse(result.stdout)).toEqual(JSON.parse(validStyle));
     });
 
     test('gl-style-validate exits 1 and reports errors for an invalid style', () => {
