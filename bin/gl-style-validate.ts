@@ -1,6 +1,7 @@
 import minimist from 'minimist';
 import {readFileSync} from 'node:fs';
 import {validateStyle as validate} from '../src/validate_style';
+import {readStdin} from './read_stdin';
 
 const argv = minimist(process.argv.slice(2), {
     boolean: 'json'
@@ -15,21 +16,24 @@ if (argv.help || argv.h || (!argv._.length && process.stdin.isTTY)) {
         argv._.push('/dev/stdin');
     }
 
-    argv._.forEach((file) => {
-        const errors = validate(readFileSync(file === '/dev/stdin' ? 0 : file, 'utf8'));
-        if (errors.length) {
-            if (argv.json) {
-                process.stdout.write(JSON.stringify(errors, null, 2));
-            } else {
-                errors.forEach((e) => {
-                    console.log('%s:%d: %s', file, e.line, e.message);
-                });
+    const input = argv._.includes('/dev/stdin') ? readStdin() : Promise.resolve('');
+    input.then((stdin) => {
+        argv._.forEach((file) => {
+            const errors = validate(file === '/dev/stdin' ? stdin : readFileSync(file, 'utf8'));
+            if (errors.length) {
+                if (argv.json) {
+                    process.stdout.write(JSON.stringify(errors, null, 2));
+                } else {
+                    errors.forEach((e) => {
+                        console.log('%s:%d: %s', file, e.line, e.message);
+                    });
+                }
+                status = 1;
             }
-            status = 1;
-        }
-    });
+        });
 
-    process.exit(status);
+        process.exit(status);
+    });
 }
 
 function help() {
