@@ -3,6 +3,7 @@ import {getType} from '../util/get_type';
 import {transitionPropertyRegExp} from '../util/properties';
 import v8 from '../reference/v8.json' with {type: 'json'};
 import {SkySpecification, StyleSpecification} from '../types.g';
+import {getOwn} from '../util/get_own';
 
 interface ValidateSkyOptions {
     sourceName?: string;
@@ -31,8 +32,7 @@ export function validateSky(options: ValidateSkyOptions) {
 
         if (
             transitionMatch &&
-            skySpec[transitionMatch[1]] &&
-            skySpec[transitionMatch[1]].transition
+            getOwn<Record<string, any>>(skySpec, transitionMatch[1])?.transition
         ) {
             errors = errors.concat(
                 options.validateSpec({
@@ -43,7 +43,7 @@ export function validateSky(options: ValidateSkyOptions) {
                     styleSpec
                 })
             );
-        } else if (skySpec[key]) {
+        } else if (getOwn(skySpec, key)) {
             errors = errors.concat(
                 options.validateSpec({
                     key,

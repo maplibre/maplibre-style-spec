@@ -1,0 +1,25 @@
+{
+  "expression": [
+    "==",
+    [
+      "get",
+      "a"
+    ],
+    "b",
+    [
+      "collator",
+      null
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "error",
+      "errors": [
+        {
+          "key": "[3]",
+          "error": "Collator options argument must be an object."
+        }
+      ]
+    }
+  }
+}

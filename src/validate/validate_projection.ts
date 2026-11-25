@@ -2,6 +2,7 @@ import {ValidationError} from '../error/validation_error';
 import {getType} from '../util/get_type';
 import v8 from '../reference/v8.json' with {type: 'json'};
 import {ProjectionSpecification, StyleSpecification} from '../types.g';
+import {getOwn} from '../util/get_own';
 
 interface ValidateProjectionOptions {
     sourceName?: string;
@@ -28,7 +29,7 @@ export function validateProjection(options: ValidateProjectionOptions) {
 
     let errors = [];
     for (const key in projection) {
-        if (projectionSpec[key]) {
+        if (getOwn(projectionSpec, key)) {
             errors = errors.concat(
                 options.validateSpec({
                     key,

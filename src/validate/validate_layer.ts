@@ -6,6 +6,8 @@ import {validatePaintProperty} from './validate_paint_property';
 import {validateLayoutProperty} from './validate_layout_property';
 import {extendBy as extend} from '../util/extend';
 import {getType} from '../util/get_type';
+import {getOwn} from '../util/get_own';
+import {toDisplayString} from '../util/to_display_string';
 
 export function validateLayer(options) {
     let errors = [];
@@ -29,12 +31,13 @@ export function validateLayer(options) {
         const layerId = unbundle(layer.id);
         for (let i = 0; i < options.arrayIndex; i++) {
             const otherLayer = style.layers[i];
-            if (unbundle(otherLayer.id) === layerId) {
+            // other layers are not necessarily valid, they may not even be objects
+            if (getType(otherLayer) === 'object' && unbundle(otherLayer.id) === layerId) {
                 errors.push(
                     new ValidationError(
                         key,
                         layer.id,
-                        `duplicate layer id "${layer.id}", previously used at line ${otherLayer.id.__line__}`
+                        `duplicate layer id "${toDisplayString(layer.id)}", previously used at line ${otherLayer.id.__line__}`
                     )
                 );
             }
@@ -53,11 +56,13 @@ export function validateLayer(options) {
         let parent;
 
         style.layers.forEach((layer) => {
-            if (unbundle(layer.id) === ref) parent = layer;
+            if (getType(layer) === 'object' && unbundle(layer.id) === ref) parent = layer;
         });
 
         if (!parent) {
-            errors.push(new ValidationError(key, layer.ref, `ref layer "${ref}" not found`));
+            errors.push(
+                new ValidationError(key, layer.ref, `ref layer "${toDisplayString(ref)}" not found`)
+            );
         } else if (parent.ref) {
             errors.push(
                 new ValidationError(key, layer.ref, 'ref cannot reference another ref layer')
@@ -69,18 +74,19 @@ export function validateLayer(options) {
         if (!layer.source) {
             errors.push(new ValidationError(key, layer, 'missing required property "source"'));
         } else {
-            const source = style.sources && style.sources[layer.source];
+            const sourceId = toDisplayString(layer.source);
+            const source = style.sources && getOwn<Record<string, any>>(style.sources, sourceId);
             const sourceType = source && unbundle(source.type);
             if (!source) {
                 errors.push(
-                    new ValidationError(key, layer.source, `source "${layer.source}" not found`)
+                    new ValidationError(key, layer.source, `source "${sourceId}" not found`)
                 );
             } else if (sourceType === 'vector' && type === 'raster') {
                 errors.push(
                     new ValidationError(
                         key,
                         layer.source,
-                        `layer "${layer.id}" requires a raster source`
+                        `layer "${toDisplayString(layer.id)}" requires a raster source`
                     )
                 );
             } else if (sourceType !== 'raster-dem' && type === 'hillshade') {
@@ -88,7 +94,7 @@ export function validateLayer(options) {
                     new ValidationError(
                         key,
                         layer.source,
-                        `layer "${layer.id}" requires a raster-dem source`
+                        `layer "${toDisplayString(layer.id)}" requires a raster-dem source`
                     )
                 );
             } else if (sourceType !== 'raster-dem' && type === 'color-relief') {
@@ -96,7 +102,7 @@ export function validateLayer(options) {
                     new ValidationError(
                         key,
                         layer.source,
-                        `layer "${layer.id}" requires a raster-dem source`
+                        `layer "${toDisplayString(layer.id)}" requires a raster-dem source`
                     )
                 );
             } else if (sourceType === 'raster' && type !== 'raster') {
@@ -104,7 +110,7 @@ export function validateLayer(options) {
                     new ValidationError(
                         key,
                         layer.source,
-                        `layer "${layer.id}" requires a vector source`
+                        `layer "${toDisplayString(layer.id)}" requires a vector source`
                     )
                 );
             } else if (sourceType === 'vector' && !layer['source-layer']) {
@@ -112,7 +118,7 @@ export function validateLayer(options) {
                     new ValidationError(
                         key,
                         layer,
-                        `layer "${layer.id}" must specify a "source-layer"`
+                        `layer "${toDisplayString(layer.id)}" must specify a "source-layer"`
                     )
                 );
             } else if (
@@ -137,7 +143,7 @@ export function validateLayer(options) {
                     new ValidationError(
                         key,
                         layer,
-                        `layer "${layer.id}" specifies a line-gradient, which requires a GeoJSON source with \`lineMetrics\` enabled.`
+                        `layer "${toDisplayString(layer.id)}" specifies a line-gradient, which requires a GeoJSON source with \`lineMetrics\` enabled.`
                     )
                 );
             }
@@ -149,7 +155,7 @@ export function validateLayer(options) {
             new ValidationError(
                 key,
                 layer.paint,
-                `layer "${layer.id}" redundantly specifies "resampling" and "raster-resampling" paint properties, but only one is allowed. It is advised to use "resampling".`
+                `layer "${toDisplayString(layer.id)}" redundantly specifies "resampling" and "raster-resampling" paint properties, but only one is allowed. It is advised to use "resampling".`
             )
         );
     }

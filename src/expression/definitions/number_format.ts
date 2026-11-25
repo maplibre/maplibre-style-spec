@@ -53,7 +53,7 @@ export class NumberFormat implements Expression {
         if (!number) return null;
 
         const options = args[2] as any;
-        if (typeof options !== 'object' || Array.isArray(options))
+        if (typeof options !== 'object' || options === null || Array.isArray(options))
             return context.error('NumberFormat options argument must be an object.') as null;
 
         let locale = null;

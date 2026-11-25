@@ -1,6 +1,7 @@
 import {ValidationError} from '../error/validation_error';
 import {getType} from '../util/get_type';
 import {transitionPropertyRegExp} from '../util/properties';
+import {getOwn} from '../util/get_own';
 
 export function validateLight(options) {
     const light = options.value;
@@ -25,8 +26,7 @@ export function validateLight(options) {
 
         if (
             transitionMatch &&
-            lightSpec[transitionMatch[1]] &&
-            lightSpec[transitionMatch[1]].transition
+            getOwn<Record<string, any>>(lightSpec, transitionMatch[1])?.transition
         ) {
             errors = errors.concat(
                 options.validateSpec({
@@ -38,7 +38,7 @@ export function validateLight(options) {
                     styleSpec
                 })
             );
-        } else if (lightSpec[key]) {
+        } else if (getOwn(lightSpec, key)) {
             errors = errors.concat(
                 options.validateSpec({
                     key,

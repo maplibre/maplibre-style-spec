@@ -1,0 +1,21 @@
+{
+  "expression": [
+    "==",
+    [
+      "var",
+      "toString"
+    ],
+    "a"
+  ],
+  "expected": {
+    "compiled": {
+      "result": "error",
+      "errors": [
+        {
+          "key": "[1][1]",
+          "error": "Unknown variable \"toString\". Make sure \"toString\" has been bound in an enclosing \"let\" expression before using it."
+        }
+      ]
+    }
+  }
+}

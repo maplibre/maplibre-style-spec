@@ -1,0 +1,18 @@
+{
+  "expression": [
+    "number-format",
+    1,
+    null
+  ],
+  "expected": {
+    "compiled": {
+      "result": "error",
+      "errors": [
+        {
+          "key": "",
+          "error": "NumberFormat options argument must be an object."
+        }
+      ]
+    }
+  }
+}

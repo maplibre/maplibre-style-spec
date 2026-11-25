@@ -1,0 +1,53 @@
+{
+  "version": 8,
+  "sources": {
+    "v": {
+      "type": "vector",
+      "url": "https://example.com"
+    }
+  },
+  "layers": [
+    null,
+    false,
+    {
+      "id": "ref",
+      "ref": "missing"
+    },
+    {
+      "id": "ref-object",
+      "ref": {
+        "toString": null
+      }
+    },
+    {
+      "id": "source-object",
+      "type": "line",
+      "source": {
+        "toString": null
+      }
+    },
+    {
+      "id": "source-prototype",
+      "type": "line",
+      "source": "constructor"
+    },
+    {
+      "id": {
+        "toString": null
+      },
+      "type": "line",
+      "source": "v"
+    },
+    {
+      "id": "type-object",
+      "type": {
+        "toString": null
+      },
+      "source": "v",
+      "source-layer": "x",
+      "paint": {
+        "line-width": 1
+      }
+    }
+  ]
+}

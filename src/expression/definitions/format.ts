@@ -54,7 +54,12 @@ export class FormatExpression implements Expression {
         for (let i = 1; i <= args.length - 1; ++i) {
             const arg = args[i] as any;
 
-            if (nextTokenMayBeObject && typeof arg === 'object' && !Array.isArray(arg)) {
+            if (
+                nextTokenMayBeObject &&
+                typeof arg === 'object' &&
+                arg !== null &&
+                !Array.isArray(arg)
+            ) {
                 nextTokenMayBeObject = false;
 
                 let scale = null;

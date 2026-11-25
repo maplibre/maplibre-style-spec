@@ -1,0 +1,36 @@
+{
+  "version": 8,
+  "sources": {
+    "null": {
+      "type": "geojson",
+      "data": {},
+      "cluster": true,
+      "clusterProperties": null
+    },
+    "invalid": {
+      "type": "geojson",
+      "data": {},
+      "cluster": true,
+      "clusterProperties": {
+        "null": null,
+        "object": {},
+        "number": 1
+      }
+    },
+    "valid": {
+      "type": "geojson",
+      "data": {},
+      "cluster": true,
+      "clusterProperties": {
+        "sum": [
+          "+",
+          [
+            "get",
+            "x"
+          ]
+        ]
+      }
+    }
+  },
+  "layers": []
+}

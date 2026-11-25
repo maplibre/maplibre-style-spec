@@ -6,13 +6,11 @@ import type {Expression} from './expression';
  */
 export class Scope {
     parent: Scope;
-    bindings: {[_: string]: Expression};
+    // A Map, so that names like "__proto__" or "toString" can't resolve to members of Object.prototype
+    bindings: Map<string, Expression>;
     constructor(parent?: Scope, bindings: Array<[string, Expression]> = []) {
         this.parent = parent;
-        this.bindings = {};
-        for (const [name, expression] of bindings) {
-            this.bindings[name] = expression;
-        }
+        this.bindings = new Map(bindings);
     }
 
     concat(bindings: Array<[string, Expression]>) {
@@ -20,8 +18,8 @@ export class Scope {
     }
 
     get(name: string): Expression {
-        if (this.bindings[name]) {
-            return this.bindings[name];
+        if (this.bindings.has(name)) {
+            return this.bindings.get(name);
         }
         if (this.parent) {
             return this.parent.get(name);
@@ -30,7 +28,7 @@ export class Scope {
     }
 
     has(name: string): boolean {
-        if (this.bindings[name]) return true;
+        if (this.bindings.has(name)) return true;
         return this.parent ? this.parent.has(name) : false;
     }
 }

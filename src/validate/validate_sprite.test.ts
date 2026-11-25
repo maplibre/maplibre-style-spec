@@ -96,6 +96,12 @@ describe('Validate Sprite', () => {
         );
     });
 
+    test('Should return error if array contains null', () => {
+        const errors = validateSprite({validateSpec: validate, key: 'sprite', value: [null]});
+        expect(errors).toHaveLength(1);
+        expect(errors[0].message).toBe('sprite[0]: object expected, null found');
+    });
+
     test('Should pass if correct array of objects', () => {
         const errors = validateSprite({
             validateSpec: validate,

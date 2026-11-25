@@ -1,8 +1,12 @@
 ## main
 ### ✨ Features and improvements
+- Add `fill-rounded-corner-distance` for rounded polygon corners in fill layers ([#2007](https://github.com/maplibre/maplibre-style-spec/pull/2007)) (by [@louwers](https://github.com/louwers))
+- Add `--max-line-length` to `gl-style-format` and a `maxLength` argument to `format()` for an adjustable maximum line length ([#2011](https://github.com/maplibre/maplibre-style-spec/pull/2011)) (by [@zstadler](https://github.com/zstadler))
+- Read standard input in `gl-style-format` and `gl-style-validate` when no path is given ([#2015](https://github.com/maplibre/maplibre-style-spec/pull/2015)) (by [@zstadler](https://github.com/zstadler))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
+- Report validation errors instead of throwing when validating malformed styles ([#1025](https://github.com/maplibre/maplibre-style-spec/issues/1025)) (by [@HarelM](https://github.com/HarelM))
 - Reject data expressions and zoom expressions that are not a top-level `step` or `interpolate` in the root `light`, `sky` and `projection` properties, as is already done for layer paint and layout properties, instead of accepting values that maplibre-gl-js then throws on ([#1998](https://github.com/maplibre/maplibre-style-spec/pull/1998)) (by [@Yasser-Ameur](https://github.com/Yasser-Ameur))
 - _...Add new stuff here..._
 

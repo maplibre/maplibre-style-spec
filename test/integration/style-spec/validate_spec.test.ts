@@ -2,6 +2,7 @@ import {globSync} from 'glob';
 import fs from 'fs';
 import path from 'path';
 import {validateStyle as validate} from '../../../src/validate_style';
+import {validateStyleMin} from '../../../src/validate_style.min';
 import {latest} from '../../../src/reference/latest';
 import {describe, expect, test} from 'vitest';
 const UPDATE = !!process.env.UPDATE;
@@ -23,6 +24,9 @@ describe('validate_spec', () => {
             if (UPDATE) fs.writeFileSync(outputfile, JSON.stringify(result, null, 2));
             const expectedOutput = JSON.parse(fs.readFileSync(outputfile).toString());
             expect(result).toEqual(expectedOutput);
+
+            // jsonlint, used above, parses primitives and "__proto__" differently than JSON.parse
+            expect(() => validateStyleMin(JSON.parse(style.toString()))).not.toThrow();
         });
     });
 

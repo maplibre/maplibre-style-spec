@@ -1,0 +1,44 @@
+{
+  "expression": [
+    "format",
+    "a",
+    null,
+    {}
+  ],
+  "inputs": [
+    [
+      {},
+      {}
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": true,
+      "isZoomConstant": true,
+      "type": "formatted"
+    },
+    "outputs": [
+      {
+        "sections": [
+          {
+            "text": "a",
+            "image": null,
+            "scale": null,
+            "fontStack": null,
+            "textColor": null,
+            "verticalAlign": null
+          },
+          {
+            "text": "",
+            "image": null,
+            "scale": null,
+            "fontStack": null,
+            "textColor": null,
+            "verticalAlign": null
+          }
+        ]
+      }
+    ]
+  }
+}

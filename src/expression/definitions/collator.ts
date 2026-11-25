@@ -27,7 +27,7 @@ export class CollatorExpression implements Expression {
         if (args.length !== 2) return context.error('Expected one argument.') as null;
 
         const options = args[1] as any;
-        if (typeof options !== 'object' || Array.isArray(options))
+        if (typeof options !== 'object' || options === null || Array.isArray(options))
             return context.error('Collator options argument must be an object.') as null;
 
         const caseSensitive = context.parse(
