@@ -3,6 +3,7 @@
 - Add `fill-rounded-corner-distance` for rounded polygon corners in fill layers ([#2007](https://github.com/maplibre/maplibre-style-spec/pull/2007)) (by [@louwers](https://github.com/louwers))
 - Add `--max-line-length` to `gl-style-format` and a `maxLength` argument to `format()` for an adjustable maximum line length ([#2011](https://github.com/maplibre/maplibre-style-spec/pull/2011)) (by [@zstadler](https://github.com/zstadler))
 - Read standard input in `gl-style-format` and `gl-style-validate` when no path is given ([#2015](https://github.com/maplibre/maplibre-style-spec/pull/2015)) (by [@zstadler](https://github.com/zstadler))
+- Update the MapLibre Native SDK support of `fill-rounded-corner-distance` (Android 13.8.0, iOS 7.1.0), `semiliteral`, `interpolate-hcl`, `interpolate-lab`, SDF `fill-pattern` colorization and data-driven `text-variable-anchor-offset`, and fix the iOS tracking issue of `greenFactor` ([#2016](https://github.com/maplibre/maplibre-style-spec/pull/2016)) (by [@louwers](https://github.com/louwers))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes

@@ -635,7 +635,7 @@
       "sdk-support": {
         "basic functionality": {
           "js": "3.4.0",
-          "ios": "https://github.com/maplibre/maplibre-native/issues/2358",
+          "ios": "https://github.com/maplibre/maplibre-native/issues/2783",
           "android": "https://github.com/maplibre/maplibre-native/issues/2783"
         }
       }
@@ -2629,8 +2629,8 @@
         },
         "data-driven styling": {
           "js": "3.3.0",
-          "ios": "https://github.com/maplibre/maplibre-native/issues/2358",
-          "android": "https://github.com/maplibre/maplibre-native/issues/2358"
+          "ios": "6.8.0",
+          "android": "11.6.0"
         },
         "[`global-state`](expressions/#global-state) expression": {
           "js": "5.7.0",
@@ -3573,8 +3573,8 @@
         "sdk-support": {
           "basic functionality": {
             "js": "6.6.0",
-            "android": "https://github.com/maplibre/maplibre-native/issues/4401",
-            "ios": "https://github.com/maplibre/maplibre-native/issues/4401"
+            "android": "13.7.1",
+            "ios": "6.31.0"
           }
         }
       },
@@ -4018,8 +4018,8 @@
         "sdk-support": {
           "basic functionality": {
             "js": "0.49.0",
-            "ios": "https://github.com/maplibre/maplibre-native/issues/2784",
-            "android": "https://github.com/maplibre/maplibre-native/issues/2784"
+            "ios": "7.0.0",
+            "android": "13.7.1"
           }
         }
       },
@@ -4057,8 +4057,8 @@
         "sdk-support": {
           "basic functionality": {
             "js": "0.49.0",
-            "ios": "https://github.com/maplibre/maplibre-native/issues/2784",
-            "android": "https://github.com/maplibre/maplibre-native/issues/2784"
+            "ios": "7.0.0",
+            "android": "13.7.1"
           }
         }
       },
@@ -6753,8 +6753,8 @@
         },
         "SDF fill pattern colorization": {
           "js": "https://github.com/maplibre/maplibre-gl-js/issues/8342",
-          "android": "https://github.com/maplibre/maplibre-native/issues/4526",
-          "ios": "https://github.com/maplibre/maplibre-native/issues/4526"
+          "android": "13.7.1",
+          "ios": "7.0.0"
         },
         "[`global-state`](expressions/#global-state) expression": {
           "js": "5.6.0",
@@ -6916,8 +6916,8 @@
       "sdk-support": {
         "basic functionality": {
           "js": "https://github.com/maplibre/maplibre-gl-js/issues/9122",
-          "android": "https://github.com/maplibre/maplibre-native/issues/4670",
-          "ios": "https://github.com/maplibre/maplibre-native/issues/4670"
+          "android": "13.8.0",
+          "ios": "7.1.0"
         }
       },
       "expression": {
@@ -9549,13 +9549,13 @@
           },
           "interpolate-hcl": {
             "js": "0.49.0",
-            "ios": "https://github.com/maplibre/maplibre-native/issues/2784",
-            "android": "https://github.com/maplibre/maplibre-native/issues/2784"
+            "ios": "7.0.0",
+            "android": "13.7.1"
           },
           "interpolate-lab":{
             "js": "0.49.0",
-            "ios": "https://github.com/maplibre/maplibre-native/issues/2784",
-            "android": "https://github.com/maplibre/maplibre-native/issues/2784"
+            "ios": "7.0.0",
+            "android": "13.7.1"
           },
           "interpolate-oklch": {
             "js": "https://github.com/maplibre/maplibre-gl-js/issues/9011",
@@ -9600,13 +9600,13 @@
           },
           "interpolate-hcl": {
             "js": "0.49.0",
-            "ios": "https://github.com/maplibre/maplibre-native/issues/2784",
-            "android": "https://github.com/maplibre/maplibre-native/issues/2784"
+            "ios": "7.0.0",
+            "android": "13.7.1"
           },
           "interpolate-lab":{
             "js": "0.49.0",
-            "ios": "https://github.com/maplibre/maplibre-native/issues/2784",
-            "android": "https://github.com/maplibre/maplibre-native/issues/2784"
+            "ios": "7.0.0",
+            "android": "13.7.1"
           },
           "interpolate-oklch": {
             "js": "https://github.com/maplibre/maplibre-gl-js/issues/9011",
@@ -9672,13 +9672,13 @@
           },
           "interpolate-hcl": {
             "js": "0.49.0",
-            "ios": "https://github.com/maplibre/maplibre-native/issues/2784",
-            "android": "https://github.com/maplibre/maplibre-native/issues/2784"
+            "ios": "7.0.0",
+            "android": "13.7.1"
           },
           "interpolate-lab":{
             "js": "0.49.0",
-            "ios": "https://github.com/maplibre/maplibre-native/issues/2784",
-            "android": "https://github.com/maplibre/maplibre-native/issues/2784"
+            "ios": "7.0.0",
+            "android": "13.7.1"
           },
           "interpolate-oklch": {
             "js": "https://github.com/maplibre/maplibre-gl-js/issues/9011",
