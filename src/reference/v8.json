@@ -1208,7 +1208,7 @@
       "default": 0,
       "minimum": 0,
       "units": "meters",
-      "doc": "The distance from each fill extrusion corner, measured along the adjacent edges, that is replaced by a rounded corner. A value of `0` disables rounded corners.",
+      "doc": "The distance from each fill extrusion corner, measured along the adjacent edges, that is replaced by a rounded corner. A value of `0` disables rounded corners. Applies only when [`fill-extrusion-roof-shape`](layers/#fill-extrusion-roof-shape) is `flat`.",
       "sdk-support": {
         "basic functionality": {
           "js": "6.2.0",
@@ -1217,6 +1217,77 @@
         }
       },
       "property-type": "constant"
+    },
+    "fill-extrusion-roof-shape": {
+      "type": "enum",
+      "values": {
+        "flat": {
+          "doc": "A flat roof matching the top of a simple extrusion."
+        },
+        "skillion": {
+          "doc": "A single-pitch shed roof."
+        },
+        "gabled": {
+          "doc": "A two-sided gabled roof with vertical gable walls."
+        },
+        "hipped": {
+          "doc": "A roof that slopes down to the eaves on all sides."
+        },
+        "half_hipped": {
+          "doc": "A gabled roof with hips on the short ends."
+        },
+        "pyramidal": {
+          "doc": "A roof that rises to a single apex."
+        },
+        "mansard": {
+          "doc": "A roof with a shallow upper slope and a steep lower slope on each side."
+        },
+        "gambrel": {
+          "doc": "A two-sided roof with a shallow upper slope and a steep lower slope."
+        },
+        "saltbox": {
+          "doc": "An asymmetrical two-sided roof with one long and one short slope."
+        },
+        "round": {
+          "doc": "A vaulted roof approximated by a sequence of planes."
+        },
+        "dome": {
+          "doc": "A dome profile extruded radially over the footprint."
+        }
+      },
+      "default": "flat",
+      "doc": "The LOD2 roof shape used when extruding the fill. Values are a subset of Overture Maps `roof_shape`. Unknown values fall back to `flat`.",
+      "sdk-support": {
+        "basic functionality": {},
+        "data-driven styling": {}
+      },
+      "expression": {
+        "interpolated": false,
+        "parameters": [
+          "zoom",
+          "feature"
+        ]
+      },
+      "property-type": "data-driven"
+    },
+    "fill-extrusion-roof-direction": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 360,
+      "units": "degrees",
+      "doc": "Bearing of the main roof slope face in degrees clockwise from north, matching OSM `roof:direction`. When unset, the direction is derived from the roof frame.",
+      "sdk-support": {
+        "basic functionality": {},
+        "data-driven styling": {}
+      },
+      "expression": {
+        "interpolated": false,
+        "parameters": [
+          "zoom",
+          "feature"
+        ]
+      },
+      "property-type": "data-driven"
     }
   },
   "layout_line": {
@@ -7035,6 +7106,49 @@
       },
       "property-type": "data-driven"
     },
+    "fill-extrusion-roof-color": {
+      "type": "color",
+      "doc": "The color of roof surfaces. Matches [`fill-extrusion-color`](layers/#fill-extrusion-color) if unspecified. Wall surfaces keep using `fill-extrusion-color`.",
+      "transition": true,
+      "requires": [
+        {
+          "!": "fill-extrusion-pattern"
+        }
+      ],
+      "sdk-support": {
+        "basic functionality": {},
+        "data-driven styling": {}
+      },
+      "expression": {
+        "interpolated": true,
+        "parameters": [
+          "zoom",
+          "feature",
+          "feature-state"
+        ]
+      },
+      "property-type": "data-driven"
+    },
+    "fill-extrusion-roof-height": {
+      "type": "number",
+      "minimum": 0,
+      "units": "meters",
+      "doc": "Height of the roof in meters, from the eave line to the highest point of the roof. When unset, a default height is derived from the roof frame and a per-shape pitch. A value of `0` means a zero-height roof.",
+      "transition": true,
+      "sdk-support": {
+        "basic functionality": {},
+        "data-driven styling": {}
+      },
+      "expression": {
+        "interpolated": true,
+        "parameters": [
+          "zoom",
+          "feature",
+          "feature-state"
+        ]
+      },
+      "property-type": "data-driven"
+    },
     "fill-extrusion-translate": {
       "type": "array",
       "value": "number",
@@ -7104,7 +7218,7 @@
     "fill-extrusion-pattern": {
       "type": "resolvedImage",
       "transition": true,
-      "doc": "Name of image in sprite to use for drawing images on extruded fills. For seamless patterns, image width and height must be a factor of two (2, 4, 8, ..., 512). Note that zoom-dependent expressions will be evaluated only at integer zoom levels.",
+      "doc": "Name of image in sprite to use for drawing images on extruded fills. Projected from above onto roof surfaces. For seamless patterns, image width and height must be a factor of two (2, 4, 8, ..., 512). Note that zoom-dependent expressions will be evaluated only at integer zoom levels.",
       "sdk-support": {
         "basic functionality": {
           "js": "0.27.0",
@@ -7135,7 +7249,7 @@
       "type": "number",
       "default": 0,
       "units": "meters",
-      "doc": "The height with which to extrude this layer. Negative values extrude below ground level, so a floor that is entirely underground can be expressed.",
+      "doc": "The height with which to extrude this layer. When [`fill-extrusion-roof-shape`](layers/#fill-extrusion-roof-shape) is not `flat`, this is the height of the top of the roof. Negative values extrude below ground level, so a floor that is entirely underground can be expressed.",
       "transition": true,
       "sdk-support": {
         "basic functionality": {
@@ -7213,7 +7327,7 @@
     "fill-extrusion-vertical-gradient": {
       "type": "boolean",
       "default": true,
-      "doc": "Whether to apply a vertical gradient to the sides of a fill-extrusion layer. If true, sides will be shaded slightly darker farther down.",
+      "doc": "Whether to apply a vertical gradient to the sides of a fill-extrusion layer. If true, wall sides will be shaded slightly darker farther down; roof surfaces are not affected.",
       "transition": false,
       "sdk-support": {
         "basic functionality": {

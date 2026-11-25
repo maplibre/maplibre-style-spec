@@ -1,0 +1,100 @@
+{
+  "version": 8,
+  "sources": {
+    "vector": {
+      "type": "vector",
+      "url": "https://demotiles.maplibre.org/tiles/tiles.json"
+    }
+  },
+  "layers": [
+    {
+      "id": "valid-roof",
+      "type": "fill-extrusion",
+      "source": "vector",
+      "source-layer": "building",
+      "layout": {
+        "fill-extrusion-roof-shape": "gabled",
+        "fill-extrusion-roof-direction": 90
+      },
+      "paint": {
+        "fill-extrusion-height": 20,
+        "fill-extrusion-roof-height": 5,
+        "fill-extrusion-roof-color": "#b5523b"
+      }
+    },
+    {
+      "id": "valid-data-driven-roof",
+      "type": "fill-extrusion",
+      "source": "vector",
+      "source-layer": "building",
+      "layout": {
+        "fill-extrusion-roof-shape": ["get", "roof_shape"],
+        "fill-extrusion-roof-direction": ["to-number", ["get", "roof_direction"]]
+      },
+      "paint": {
+        "fill-extrusion-height": ["get", "height"],
+        "fill-extrusion-roof-height": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          14,
+          0,
+          16,
+          ["to-number", ["get", "roof_height"]]
+        ],
+        "fill-extrusion-roof-color": [
+          "case",
+          ["boolean", ["feature-state", "selected"], false],
+          "#ff8800",
+          ["to-color", ["get", "roof_color"], "#b5523b"]
+        ]
+      }
+    },
+    {
+      "id": "unknown-roof-shape",
+      "type": "fill-extrusion",
+      "source": "vector",
+      "source-layer": "building",
+      "layout": {
+        "fill-extrusion-roof-shape": "half-hipped"
+      }
+    },
+    {
+      "id": "negative-roof-height",
+      "type": "fill-extrusion",
+      "source": "vector",
+      "source-layer": "building",
+      "paint": {
+        "fill-extrusion-roof-height": -1
+      }
+    },
+    {
+      "id": "direction-above-360",
+      "type": "fill-extrusion",
+      "source": "vector",
+      "source-layer": "building",
+      "layout": {
+        "fill-extrusion-roof-direction": 361
+      }
+    },
+    {
+      "id": "valid-roof-color-with-pattern",
+      "type": "fill-extrusion",
+      "source": "vector",
+      "source-layer": "building",
+      "paint": {
+        "fill-extrusion-pattern": "roof-tile",
+        "fill-extrusion-roof-color": "#b5523b"
+      }
+    },
+    {
+      "id": "feature-state-in-layout-roof-shape",
+      "type": "fill-extrusion",
+      "source": "vector",
+      "source-layer": "building",
+      "layout": {
+        "fill-extrusion-roof-shape": ["feature-state", "roof_shape"]
+      }
+    }
+  ]
+}

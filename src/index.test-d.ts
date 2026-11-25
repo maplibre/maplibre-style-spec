@@ -145,6 +145,12 @@ describe('style-spec', () => {
         expectTypeOf<{'fill-extrusion-color-transition': {duration: 100}}>().toExtend<
             FillExtrusionLayerSpecification['paint']
         >();
+        expectTypeOf<{'fill-extrusion-roof-color-transition': {duration: 100}}>().toExtend<
+            FillExtrusionLayerSpecification['paint']
+        >();
+        expectTypeOf<{'fill-extrusion-roof-height-transition': {duration: 100}}>().toExtend<
+            FillExtrusionLayerSpecification['paint']
+        >();
         expectTypeOf<{'fill-extrusion-translate-transition': {duration: 100}}>().toExtend<
             FillExtrusionLayerSpecification['paint']
         >();

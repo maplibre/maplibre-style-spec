@@ -2,6 +2,7 @@
 ### ✨ Features and improvements
 - Add `fill-rounded-corner-distance` for rounded polygon corners in fill layers ([#2007](https://github.com/maplibre/maplibre-style-spec/pull/2007)) (by [@louwers](https://github.com/louwers))
 - Add `--max-line-length` to `gl-style-format` and a `maxLength` argument to `format()` for an adjustable maximum line length ([#2011](https://github.com/maplibre/maplibre-style-spec/pull/2011)) (by [@zstadler](https://github.com/zstadler))
+- Add `fill-extrusion-roof-shape`, `fill-extrusion-roof-direction`, `fill-extrusion-roof-height`, and `fill-extrusion-roof-color` for LOD2 building roofs
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes

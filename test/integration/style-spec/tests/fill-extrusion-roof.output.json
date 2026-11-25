@@ -1,0 +1,22 @@
+[
+  {
+    "message": "layers[2].layout.fill-extrusion-roof-shape: expected one of [flat, skillion, gabled, hipped, half_hipped, pyramidal, mansard, gambrel, saltbox, round, dome], \"half-hipped\" found",
+    "severity": "error",
+    "line": 59
+  },
+  {
+    "message": "layers[3].paint.fill-extrusion-roof-height: -1 is less than the minimum value 0",
+    "severity": "error",
+    "line": 68
+  },
+  {
+    "message": "layers[4].layout.fill-extrusion-roof-direction: 361 is greater than the maximum value 360",
+    "severity": "error",
+    "line": 77
+  },
+  {
+    "message": "layers[6].layout.fill-extrusion-roof-shape: \"feature-state\" data expressions are not supported with layout properties.",
+    "severity": "error",
+    "line": 96
+  }
+]
