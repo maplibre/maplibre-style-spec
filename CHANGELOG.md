@@ -1,11 +1,16 @@
 ## main
 ### ✨ Features and improvements
-- Add the `difference`, `exclusion`, `soft-light`, `hard-light`, `darken`, `lighten`, `color-dodge`, `color-burn`, `hue` and `saturation` blend modes to `fill-layer-blend`, `line-layer-blend` and `raster-layer-blend` ([#2017](https://github.com/maplibre/maplibre-style-spec/pull/2017)) (by [@jo-chemla](https://github.com/jo-chemla))
-
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
+
+## 26.11.0
+### ✨ Features and improvements
+- Add the `difference`, `exclusion`, `soft-light`, `hard-light`, `darken`, `lighten`, `color-dodge`, `color-burn`, `hue` and `saturation` blend modes to `fill-layer-blend`, `line-layer-blend` and `raster-layer-blend` ([#2017](https://github.com/maplibre/maplibre-style-spec/pull/2017)) (by [@jo-chemla](https://github.com/jo-chemla))
+
+
+### 🐞 Bug fixes
 
 
 ## 26.10.0
