@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 728 492" font-size="14" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 728 1257" font-size="14" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif">
   <defs>
-    <!-- Clip paths, 7 columns over two rows -->
+    <!-- Clip paths, 17 columns over 5 rows -->
     <clipPath id="clip-1"><rect x="12" y="45" width="176" height="180"/></clipPath>
     <clipPath id="clip-2"><rect x="188" y="45" width="176" height="180"/></clipPath>
     <clipPath id="clip-3"><rect x="364" y="45" width="176" height="180"/></clipPath>
@@ -8,6 +8,16 @@
     <clipPath id="clip-5"><rect x="12" y="300" width="176" height="180"/></clipPath>
     <clipPath id="clip-6"><rect x="188" y="300" width="176" height="180"/></clipPath>
     <clipPath id="clip-7"><rect x="364" y="300" width="176" height="180"/></clipPath>
+    <clipPath id="clip-8"><rect x="540" y="300" width="176" height="180"/></clipPath>
+    <clipPath id="clip-9"><rect x="12" y="555" width="176" height="180"/></clipPath>
+    <clipPath id="clip-10"><rect x="188" y="555" width="176" height="180"/></clipPath>
+    <clipPath id="clip-11"><rect x="364" y="555" width="176" height="180"/></clipPath>
+    <clipPath id="clip-12"><rect x="540" y="555" width="176" height="180"/></clipPath>
+    <clipPath id="clip-13"><rect x="12" y="810" width="176" height="180"/></clipPath>
+    <clipPath id="clip-14"><rect x="188" y="810" width="176" height="180"/></clipPath>
+    <clipPath id="clip-15"><rect x="364" y="810" width="176" height="180"/></clipPath>
+    <clipPath id="clip-16"><rect x="540" y="810" width="176" height="180"/></clipPath>
+    <clipPath id="clip-17"><rect x="12" y="1065" width="176" height="180"/></clipPath>
 
     <!-- Rounded clip so each strip keeps rounded outer corners -->
     <clipPath id="clip-strip">
@@ -44,11 +54,14 @@
   </defs>
 
   <!-- Background canvas -->
-  <rect x="0" y="0" width="728" height="492" fill="#ffffff"/>
+  <rect x="0" y="0" width="728" height="1257" fill="#ffffff"/>
 
   <!-- Outer map borders -->
   <rect x="12" y="45" width="704" height="180" fill="none" stroke="#e9ecef" stroke-width="2" rx="8"/>
   <rect x="12" y="300" width="704" height="180" fill="none" stroke="#e9ecef" stroke-width="2" rx="8"/>
+  <rect x="12" y="555" width="704" height="180" fill="none" stroke="#e9ecef" stroke-width="2" rx="8"/>
+  <rect x="12" y="810" width="704" height="180" fill="none" stroke="#e9ecef" stroke-width="2" rx="8"/>
+  <rect x="12" y="1065" width="176" height="180" fill="none" stroke="#e9ecef" stroke-width="2" rx="8"/>
 
   <g style="isolation: isolate;">
     <!-- normal -->
@@ -92,6 +105,66 @@
       <use href="#basemap" y="255"/>
       <line x1="30" y1="415" x2="698" y2="325" stroke="#d62728" stroke-width="30" stroke-linecap="round" stroke-opacity="0.9" style="mix-blend-mode: overlay;"/>
     </g>
+
+    <!-- difference -->
+    <g clip-path="url(#clip-8)">
+      <use href="#basemap" y="255"/>
+      <line x1="30" y1="415" x2="698" y2="325" stroke="#d62728" stroke-width="30" stroke-linecap="round" stroke-opacity="0.9" style="mix-blend-mode: difference;"/>
+    </g>
+
+    <!-- exclusion -->
+    <g clip-path="url(#clip-9)">
+      <use href="#basemap" y="510"/>
+      <line x1="30" y1="670" x2="698" y2="580" stroke="#d62728" stroke-width="30" stroke-linecap="round" stroke-opacity="0.9" style="mix-blend-mode: exclusion;"/>
+    </g>
+
+    <!-- soft-light -->
+    <g clip-path="url(#clip-10)">
+      <use href="#basemap" y="510"/>
+      <line x1="30" y1="670" x2="698" y2="580" stroke="#d62728" stroke-width="30" stroke-linecap="round" stroke-opacity="0.9" style="mix-blend-mode: soft-light;"/>
+    </g>
+
+    <!-- hard-light -->
+    <g clip-path="url(#clip-11)">
+      <use href="#basemap" y="510"/>
+      <line x1="30" y1="670" x2="698" y2="580" stroke="#d62728" stroke-width="30" stroke-linecap="round" stroke-opacity="0.9" style="mix-blend-mode: hard-light;"/>
+    </g>
+
+    <!-- darken -->
+    <g clip-path="url(#clip-12)">
+      <use href="#basemap" y="510"/>
+      <line x1="30" y1="670" x2="698" y2="580" stroke="#d62728" stroke-width="30" stroke-linecap="round" stroke-opacity="0.9" style="mix-blend-mode: darken;"/>
+    </g>
+
+    <!-- lighten -->
+    <g clip-path="url(#clip-13)">
+      <use href="#basemap" y="765"/>
+      <line x1="30" y1="925" x2="698" y2="835" stroke="#d62728" stroke-width="30" stroke-linecap="round" stroke-opacity="0.9" style="mix-blend-mode: lighten;"/>
+    </g>
+
+    <!-- color-dodge -->
+    <g clip-path="url(#clip-14)">
+      <use href="#basemap" y="765"/>
+      <line x1="30" y1="925" x2="698" y2="835" stroke="#d62728" stroke-width="30" stroke-linecap="round" stroke-opacity="0.9" style="mix-blend-mode: color-dodge;"/>
+    </g>
+
+    <!-- color-burn -->
+    <g clip-path="url(#clip-15)">
+      <use href="#basemap" y="765"/>
+      <line x1="30" y1="925" x2="698" y2="835" stroke="#d62728" stroke-width="30" stroke-linecap="round" stroke-opacity="0.9" style="mix-blend-mode: color-burn;"/>
+    </g>
+
+    <!-- hue -->
+    <g clip-path="url(#clip-16)">
+      <use href="#basemap" y="765"/>
+      <line x1="30" y1="925" x2="698" y2="835" stroke="#d62728" stroke-width="30" stroke-linecap="round" stroke-opacity="0.9" style="mix-blend-mode: hue;"/>
+    </g>
+
+    <!-- saturation -->
+    <g clip-path="url(#clip-17)">
+      <use href="#basemap" y="1020"/>
+      <line x1="30" y1="1180" x2="698" y2="1090" stroke="#d62728" stroke-width="30" stroke-linecap="round" stroke-opacity="0.9" style="mix-blend-mode: saturation;"/>
+    </g>
   </g>
 
   <!-- Column labels -->
@@ -102,4 +175,14 @@
   <text x="100" y="275" text-anchor="middle" fill="#212529" font-size="14">plus-lighter</text>
   <text x="276" y="275" text-anchor="middle" fill="#212529" font-size="14">screen</text>
   <text x="452" y="275" text-anchor="middle" fill="#212529" font-size="14">overlay</text>
+  <text x="628" y="275" text-anchor="middle" fill="#212529" font-size="14">difference</text>
+  <text x="100" y="530" text-anchor="middle" fill="#212529" font-size="14">exclusion</text>
+  <text x="276" y="530" text-anchor="middle" fill="#212529" font-size="14">soft-light</text>
+  <text x="452" y="530" text-anchor="middle" fill="#212529" font-size="14">hard-light</text>
+  <text x="628" y="530" text-anchor="middle" fill="#212529" font-size="14">darken</text>
+  <text x="100" y="785" text-anchor="middle" fill="#212529" font-size="14">lighten</text>
+  <text x="276" y="785" text-anchor="middle" fill="#212529" font-size="14">color-dodge</text>
+  <text x="452" y="785" text-anchor="middle" fill="#212529" font-size="14">color-burn</text>
+  <text x="628" y="785" text-anchor="middle" fill="#212529" font-size="14">hue</text>
+  <text x="100" y="1040" text-anchor="middle" fill="#212529" font-size="14">saturation</text>
 </svg>
