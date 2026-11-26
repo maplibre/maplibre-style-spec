@@ -1,0 +1,27 @@
+{
+  "expression": [
+    "interpolate",
+    [
+      "linear"
+    ],
+    [
+      "pitch"
+    ],
+    0,
+    1,
+    60,
+    0
+  ],
+  "inputs": [],
+  "expected": {
+    "compiled": {
+      "result": "error",
+      "errors": [
+        {
+          "key": "",
+          "error": "\"pitch\" and \"bearing\" expressions are only supported in symbol layer filters."
+        }
+      ]
+    }
+  }
+}

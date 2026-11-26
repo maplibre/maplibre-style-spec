@@ -953,7 +953,7 @@
     },
     "filter": {
       "type": "filter",
-      "doc": "A expression specifying conditions on source features. Only features that match the filter are displayed. Zoom expressions in filters are only evaluated at integer zoom levels. The [`feature-state`](expressions/#feature-state) expression is not supported in filter expressions."
+      "doc": "A expression specifying conditions on source features. Only features that match the filter are displayed. Zoom expressions in filters are only evaluated at integer zoom levels. The [`feature-state`](expressions/#feature-state) expression is not supported in filter expressions. The [`pitch`](expressions/#pitch) and [`bearing`](expressions/#bearing) expressions are supported only in the filters of `symbol` layers."
     },
     "layout": {
       "type": "layout",
@@ -3300,7 +3300,9 @@
       "interpolated": false,
       "parameters": [
         "zoom",
-        "feature"
+        "feature",
+        "pitch",
+        "bearing"
       ]
     },
     "property-type": "data-driven"
@@ -4973,6 +4975,61 @@
             "js": "0.41.0",
             "android": "6.0.0",
             "ios": "4.0.0"
+          }
+        }
+      },
+      "pitch": {
+        "doc": "Returns the current pitch of the map in degrees. It can be used only in the filter of a symbol layer, where it is evaluated each time symbols are placed.",
+        "syntax": {
+          "overloads": [
+            {
+              "parameters": [],
+              "output-type": "number"
+            }
+          ]
+        },
+        "example": [
+          ">",
+          [
+            "pitch"
+          ],
+          45
+        ],
+        "group": "Camera",
+        "sdk-support": {
+          "basic functionality": {
+            "js": "https://github.com/maplibre/maplibre-gl-js/issues/8671",
+            "android": "https://github.com/maplibre/maplibre-native/issues/4077",
+            "ios": "https://github.com/maplibre/maplibre-native/issues/4077"
+          }
+        }
+      },
+      "bearing": {
+        "doc": "Returns the current bearing of the map in degrees. It can be used only in the filter of a symbol layer, where it is evaluated each time symbols are placed.",
+        "syntax": {
+          "overloads": [
+            {
+              "parameters": [],
+              "output-type": "number"
+            }
+          ]
+        },
+        "example": [
+          "<",
+          [
+            "abs",
+            [
+              "bearing"
+            ]
+          ],
+          90
+        ],
+        "group": "Camera",
+        "sdk-support": {
+          "basic functionality": {
+            "js": "https://github.com/maplibre/maplibre-gl-js/issues/8671",
+            "android": "https://github.com/maplibre/maplibre-native/issues/4077",
+            "ios": "https://github.com/maplibre/maplibre-native/issues/4077"
           }
         }
       },

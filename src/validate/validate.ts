@@ -1,4 +1,3 @@
-import {extendBy} from '../util/extend';
 import {unbundle, deepUnbundle} from '../util/unbundle_jsonlint';
 import {isExpression} from '../expression';
 import {isFunction} from '../function';
@@ -101,11 +100,10 @@ export function validate(options: {
     } else if (valueSpec.type && VALIDATORS[valueSpec.type]) {
         return VALIDATORS[valueSpec.type](options);
     } else {
-        const valid = validateObject(
-            extendBy({}, options, {
-                valueSpec: valueSpec.type ? styleSpec[valueSpec.type] : valueSpec
-            })
-        );
+        const valid = validateObject({
+            ...options,
+            valueSpec: valueSpec.type ? styleSpec[valueSpec.type] : valueSpec
+        });
         return valid;
     }
 }

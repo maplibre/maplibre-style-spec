@@ -198,7 +198,9 @@ function validSchema(k, v, obj, ref, version, kind) {
                             k === 'feature' ||
                             k === 'feature-state' ||
                             k === 'global-state' ||
-                            k === 'elevation'
+                            k === 'elevation' ||
+                            k === 'pitch' ||
+                            k === 'bearing'
                     )
                 );
         }

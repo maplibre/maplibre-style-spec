@@ -1,0 +1,50 @@
+{
+  "propertySpec": {
+    "type": "filter"
+  },
+  "expression": [
+    "<",
+    [
+      "abs",
+      [
+        "bearing"
+      ]
+    ],
+    90
+  ],
+  "inputs": [
+    [
+      {
+        "zoom": 10,
+        "bearing": -45
+      },
+      {}
+    ],
+    [
+      {
+        "zoom": 10,
+        "bearing": 135
+      },
+      {}
+    ],
+    [
+      {
+        "zoom": 10
+      },
+      {}
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": true,
+      "isZoomConstant": true,
+      "type": "boolean"
+    },
+    "outputs": [
+      true,
+      false,
+      true
+    ]
+  }
+}

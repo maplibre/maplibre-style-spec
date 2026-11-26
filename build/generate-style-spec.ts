@@ -323,6 +323,9 @@ export type ExpressionSpecification =
     | ['tan', number | ExpressionSpecification] // number
     // Zoom
     | ['zoom'] // number
+    // Camera
+    | ['pitch'] // number
+    | ['bearing'] // number
     // Heatmap
     | ['heatmap-density'] // number
     // Elevation

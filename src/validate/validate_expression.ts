@@ -63,6 +63,17 @@ export function validateExpression(options: any): Array<ValidationError> {
         ];
     }
 
+    const isSymbolFilter = options.expressionContext === 'filter' && options.layerType === 'symbol';
+    if (!isSymbolFilter && !isGlobalPropertyConstant(expressionObj, ['pitch', 'bearing'])) {
+        return [
+            new ValidationError(
+                options.key,
+                options.value,
+                '"pitch" and "bearing" expressions are only supported in symbol layer filters.'
+            )
+        ];
+    }
+
     if (options.expressionContext && options.expressionContext.indexOf('cluster') === 0) {
         if (!isGlobalPropertyConstant(expressionObj, ['zoom', 'feature-state'])) {
             return [

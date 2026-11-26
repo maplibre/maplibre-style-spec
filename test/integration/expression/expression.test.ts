@@ -2,6 +2,7 @@ import path from 'path';
 import fs from 'fs';
 import {globSync} from 'glob';
 import {
+    createExpression,
     createPropertyExpression,
     isFunction,
     convertFunction,
@@ -9,14 +10,19 @@ import {
     ICanonicalTileID,
     StylePropertyExpression,
     StylePropertySpecification,
-    ZoomConstantExpression,
     StyleExpression,
     GlobalProperties,
-    Feature,
-    ZoomDependentExpression
+    Feature
 } from '../../../src';
 import {ExpressionParsingError} from '../../../src/expression/parsing_error';
+import {
+    isFeatureConstant,
+    isGlobalPropertyConstant
+} from '../../../src/expression/compound_expression';
+import v8 from '../../../src/reference/v8.json' with {type: 'json'};
 import {RuntimeError} from '../../../src/expression/runtime_error';
+import type {Type} from '../../../src/expression/types';
+import type {Expression} from '../../../src/expression/expression';
 import {getGeometry} from '../../lib/geometry';
 import {deepEqual, stripPrecision} from '../../lib/json-diff';
 import {describe, expect, test} from 'vitest';
@@ -25,12 +31,18 @@ const DECIMAL_SIGNIFICANT_FIGURES = 6;
 
 const ROOT_KEY = 'layers[0].paint.some-property';
 
+const FILTER_ROOT_KEY = 'layers[0].filter';
+
 type Mutable<T> = {
     -readonly [K in keyof T]: T[K];
 };
 
+/** The spec of a layer's `filter` in `v8.json`, which makes a fixture's expression a layer filter. */
+type FilterSpec = {type: 'filter'};
+
 type ExpressionFixture = {
-    propertySpec?: Partial<StylePropertySpecification>;
+    /** The property the expression is the value of, or a {@link FilterSpec} to make it a layer filter instead. */
+    propertySpec?: Partial<StylePropertySpecification> | FilterSpec;
     expression: any[];
     inputs?: FixtureInput[];
     globalState?: Record<string, any>;
@@ -144,7 +156,12 @@ describe('expression', () => {
     }
 });
 
-function getCompletePropertySpec(propertySpec: ExpressionFixture['propertySpec']) {
+function getCompletePropertySpec(
+    propertySpec: ExpressionFixture['propertySpec']
+): StylePropertySpecification | FilterSpec {
+    if (isFilterSpec(propertySpec)) {
+        return propertySpec;
+    }
     const spec = propertySpec === undefined ? {} : {...propertySpec};
     if (!spec['property-type']) {
         spec['property-type'] = 'data-driven';
@@ -158,29 +175,69 @@ function getCompletePropertySpec(propertySpec: ExpressionFixture['propertySpec']
     return spec as StylePropertySpecification;
 }
 
+/** Whether the fixture's spec makes its expression a layer filter rather than a property value. */
+function isFilterSpec(
+    propertySpec: ExpressionFixture['propertySpec'] | StylePropertySpecification
+): propertySpec is FilterSpec {
+    return propertySpec?.type === 'filter';
+}
+
+/**
+ * Compiles the fixture's expression and evaluates it against each input. A filter spec compiles it the way
+ * `featureFilter` compiles a layer filter, which allows what a property value does not: `zoom` outside a curve, and
+ * `pitch` and `bearing`. Any other spec compiles it as the value of the property the spec describes.
+ */
 function evaluateFixture(
     fixture: ExpressionFixture,
-    spec: StylePropertySpecification
+    spec: StylePropertySpecification | FilterSpec
 ): FixtureResult {
-    const expression = isFunction(fixture.expression)
-        ? createPropertyExpression(
-              convertFunction(fixture.expression, spec),
+    const isFilter = isFilterSpec(spec);
+    const expression = isFilter
+        ? createExpression(
+              fixture.expression,
+              FILTER_ROOT_KEY,
+              v8.filter as StylePropertySpecification,
+              fixture.globalState
+          )
+        : createPropertyExpression(
+              isFunction(fixture.expression)
+                  ? convertFunction(fixture.expression, spec)
+                  : fixture.expression,
               ROOT_KEY,
               spec,
               fixture.globalState
-          )
-        : createPropertyExpression(fixture.expression, ROOT_KEY, spec, fixture.globalState);
+          );
 
     if (expression.result === 'error') {
         return {
             compiled: getCompilationErrorResult(expression.value)
         };
     }
+    const parsed = getParsedExpression(expression.value);
     return {
-        compiled: getCompilationSuccessResult(expression.value),
+        compiled: {
+            result: 'success',
+            isFeatureConstant: isFeatureConstant(parsed),
+            isZoomConstant: isGlobalPropertyConstant(parsed, ['zoom']),
+            type: toString(parsed.type)
+        },
         outputs:
-            fixture.inputs === undefined ? [] : evaluateExpression(fixture.inputs, expression.value)
+            fixture.inputs === undefined
+                ? []
+                : evaluateExpression(
+                      fixture.inputs,
+                      expression.value as Pick<StyleExpression, 'evaluateWithoutErrorHandling'>,
+                      parsed.type,
+                      isFilter ? FILTER_ROOT_KEY : ROOT_KEY
+                  )
     };
+}
+
+/** The parsed expression that a compiled filter or property value evaluates. */
+function getParsedExpression(compiled: StyleExpression | StylePropertyExpression): Expression {
+    return compiled instanceof StyleExpression
+        ? compiled.expression
+        : ((compiled as any)._styleExpression as StyleExpression).expression;
 }
 
 function getCompilationErrorResult(
@@ -195,24 +252,12 @@ function getCompilationErrorResult(
     };
 }
 
-function getCompilationSuccessResult(
-    expression: StylePropertyExpression
-): CompilationSuccessResult {
-    const kind = expression.kind;
-    const type = getStylePropertyExpressionType(expression);
-    return {
-        result: 'success',
-        isFeatureConstant: kind === 'constant' || kind === 'camera',
-        isZoomConstant: kind === 'constant' || kind === 'source',
-        type: toString(type)
-    };
-}
-
 function evaluateExpression(
     inputs: FixtureInput[],
-    expression: StylePropertyExpression
+    expression: Pick<StyleExpression, 'evaluateWithoutErrorHandling'>,
+    type: Type,
+    rootKey: string
 ): EvaluationOutput[] {
-    const type = getStylePropertyExpressionType(expression);
     const outputs: EvaluationOutput[] = [];
 
     for (const input of inputs) {
@@ -235,9 +280,7 @@ function evaluateExpression(
         }
 
         try {
-            let value = (
-                expression as ZoomConstantExpression<any> | ZoomDependentExpression<any>
-            ).evaluateWithoutErrorHandling(
+            let value = expression.evaluateWithoutErrorHandling(
                 input[0] as GlobalProperties,
                 feature as Feature,
                 featureState ?? {},
@@ -252,15 +295,11 @@ function evaluateExpression(
             const path = error instanceof RuntimeError ? error.path : '';
             const message = error instanceof RuntimeError ? error.toJSON() : error.message;
             outputs.push({
-                error: `${ROOT_KEY}${path}: ${message}`
+                error: `${rootKey}${path}: ${message}`
             });
         }
     }
     return outputs;
-}
-
-function getStylePropertyExpressionType(expression: StylePropertyExpression) {
-    return ((expression as any)._styleExpression as StyleExpression).expression.type;
 }
 
 function isFixtureErrorResult(fixtureResult: FixtureResult): fixtureResult is FixtureErrorResult {
