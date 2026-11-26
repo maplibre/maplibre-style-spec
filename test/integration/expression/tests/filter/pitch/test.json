@@ -1,0 +1,47 @@
+{
+  "propertySpec": {
+    "type": "filter"
+  },
+  "expression": [
+    ">",
+    [
+      "pitch"
+    ],
+    30
+  ],
+  "inputs": [
+    [
+      {
+        "zoom": 10,
+        "pitch": 45
+      },
+      {}
+    ],
+    [
+      {
+        "zoom": 10,
+        "pitch": 15
+      },
+      {}
+    ],
+    [
+      {
+        "zoom": 10
+      },
+      {}
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": true,
+      "isZoomConstant": true,
+      "type": "boolean"
+    },
+    "outputs": [
+      true,
+      false,
+      false
+    ]
+  }
+}

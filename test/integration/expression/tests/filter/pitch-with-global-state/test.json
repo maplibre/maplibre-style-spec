@@ -1,0 +1,50 @@
+{
+  "propertySpec": {
+    "type": "filter"
+  },
+  "expression": [
+    "all",
+    [
+      ">",
+      [
+        "pitch"
+      ],
+      30
+    ],
+    [
+      "global-state",
+      "enabled"
+    ]
+  ],
+  "globalState": {
+    "enabled": true
+  },
+  "inputs": [
+    [
+      {
+        "zoom": 10,
+        "pitch": 45
+      },
+      {}
+    ],
+    [
+      {
+        "zoom": 10,
+        "pitch": 15
+      },
+      {}
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "success",
+      "isFeatureConstant": true,
+      "isZoomConstant": true,
+      "type": "boolean"
+    },
+    "outputs": [
+      true,
+      false
+    ]
+  }
+}

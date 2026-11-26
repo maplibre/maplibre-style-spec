@@ -1,0 +1,23 @@
+{
+  "propertySpec": {
+    "type": "filter"
+  },
+  "expression": [
+    "number",
+    [
+      "get",
+      "x"
+    ]
+  ],
+  "expected": {
+    "compiled": {
+      "result": "error",
+      "errors": [
+        {
+          "key": "",
+          "error": "Expected boolean but found number instead."
+        }
+      ]
+    }
+  }
+}

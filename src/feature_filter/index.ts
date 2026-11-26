@@ -1,4 +1,5 @@
 import {createExpression, findGlobalStateRefs} from '../expression';
+import {isGlobalPropertyConstant} from '../expression/compound_expression';
 import type {GlobalProperties, Feature} from '../expression';
 import {ICanonicalTileID} from '../tiles_and_coordinates';
 import {StylePropertySpecification} from '..';
@@ -13,6 +14,11 @@ type FilterExpression = (
 export type FeatureFilter = {
     filter: FilterExpression;
     needGeometry: boolean;
+    /**
+     * Whether the filter reads `pitch` or `bearing`, which only symbol placement can supply, so the
+     * filter has to be evaluated again whenever symbols are placed.
+     */
+    needCamera: boolean;
     getGlobalStateRefs: () => Set<string>;
 };
 
@@ -226,7 +232,7 @@ const filterSpec = {
     'property-type': 'data-driven',
     expression: {
         interpolated: false,
-        parameters: ['zoom', 'feature']
+        parameters: ['zoom', 'feature', 'pitch', 'bearing']
     }
 };
 
@@ -248,7 +254,12 @@ export function featureFilter(
     globalState?: Record<string, any>
 ): FeatureFilter {
     if (filter === null || filter === undefined) {
-        return {filter: () => true, needGeometry: false, getGlobalStateRefs: () => new Set()};
+        return {
+            filter: () => true,
+            needGeometry: false,
+            needCamera: false,
+            getGlobalStateRefs: () => new Set()
+        };
     }
 
     if (!isExpressionFilter(filter)) {
@@ -274,6 +285,7 @@ export function featureFilter(
                 canonical?: ICanonicalTileID
             ) => compiled.value.evaluate(globalProperties, feature, {}, canonical),
             needGeometry,
+            needCamera: !isGlobalPropertyConstant(compiled.value.expression, ['pitch', 'bearing']),
             getGlobalStateRefs: () => findGlobalStateRefs(compiled.value.expression)
         };
     }

@@ -1,0 +1,42 @@
+[
+  {
+    "message": "intensity: \"pitch\" and \"bearing\" expressions are only supported in symbol layer filters.",
+    "severity": "error",
+    "line": 4
+  },
+  {
+    "message": "atmosphere-blend: \"pitch\" and \"bearing\" expressions are only supported in symbol layer filters.",
+    "severity": "error",
+    "line": 7
+  },
+  {
+    "message": "type: \"pitch\" and \"bearing\" expressions are only supported in symbol layer filters.",
+    "severity": "error",
+    "line": 10
+  },
+  {
+    "message": "sources.cluster-properties.map.map: \"pitch\" and \"bearing\" expressions are only supported in symbol layer filters.",
+    "severity": "error",
+    "line": 18
+  },
+  {
+    "message": "sources.cluster-properties.reduce.reduce: \"pitch\" and \"bearing\" expressions are only supported in symbol layer filters.",
+    "severity": "error",
+    "line": 19
+  },
+  {
+    "message": "sources.source-filter.filter: \"pitch\" and \"bearing\" expressions are only supported in symbol layer filters.",
+    "severity": "error",
+    "line": 25
+  },
+  {
+    "message": "layers[0].paint.circle-radius: \"pitch\" and \"bearing\" expressions are only supported in symbol layer filters.",
+    "severity": "error",
+    "line": 34
+  },
+  {
+    "message": "layers[1].layout.visibility: \"pitch\" and \"bearing\" expressions are only supported in symbol layer filters.",
+    "severity": "error",
+    "line": 42
+  }
+]

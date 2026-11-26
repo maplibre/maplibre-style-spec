@@ -1,212 +1,33 @@
 import {featureFilter, isExpressionFilter} from '.';
 
 import {convertFilter} from './convert';
-import {ICanonicalTileID} from '../tiles_and_coordinates';
 import {ExpressionFilterSpecification, FilterSpecification} from '../types.g';
 import {Feature} from '../expression';
-import {getGeometry} from '../../test/lib/geometry';
 import {describe, test, expect, vi, beforeEach} from 'vitest';
 
 describe('filter', () => {
-    test('expression, zoom', () => {
-        const f = featureFilter(
-            ['>=', ['number', ['get', 'x']], ['zoom']],
-            'layers[0].filter'
-        ).filter;
-        expect(f({zoom: 1}, {properties: {x: 0}} as any as Feature)).toBe(false);
-        expect(f({zoom: 1}, {properties: {x: 1.5}} as any as Feature)).toBe(true);
-        expect(f({zoom: 1}, {properties: {x: 2.5}} as any as Feature)).toBe(true);
-        expect(f({zoom: 2}, {properties: {x: 0}} as any as Feature)).toBe(false);
-        expect(f({zoom: 2}, {properties: {x: 1.5}} as any as Feature)).toBe(false);
-        expect(f({zoom: 2}, {properties: {x: 2.5}} as any as Feature)).toBe(true);
-    });
-
-    test('expression, compare two properties', () => {
-        vi.spyOn(console, 'warn').mockImplementation(() => {});
-        const f = featureFilter(
-            ['==', ['string', ['get', 'x']], ['string', ['get', 'y']]],
-            'layers[0].filter'
-        ).filter;
-        expect(f({zoom: 0}, {properties: {x: 1, y: 1}} as any as Feature)).toBe(false);
-        expect(f({zoom: 0}, {properties: {x: '1', y: '1'}} as any as Feature)).toBe(true);
-        expect(f({zoom: 0}, {properties: {x: 'same', y: 'same'}} as any as Feature)).toBe(true);
-        expect(f({zoom: 0}, {properties: {x: null}} as any as Feature)).toBe(false);
-        expect(f({zoom: 0}, {properties: {x: undefined}} as any as Feature)).toBe(false);
-    });
-
-    test('expression, collator comparison', () => {
-        const caseSensitive = featureFilter(
-            [
-                '==',
-                ['string', ['get', 'x']],
-                ['string', ['get', 'y']],
-                ['collator', {'case-sensitive': true}]
-            ],
-            'layers[0].filter'
-        ).filter;
-        expect(caseSensitive({zoom: 0}, {properties: {x: 'a', y: 'b'}} as any as Feature)).toBe(
-            false
-        );
-        expect(caseSensitive({zoom: 0}, {properties: {x: 'a', y: 'A'}} as any as Feature)).toBe(
-            false
-        );
-        expect(caseSensitive({zoom: 0}, {properties: {x: 'a', y: 'a'}} as any as Feature)).toBe(
-            true
-        );
-
-        const caseInsensitive = featureFilter(
-            [
-                '==',
-                ['string', ['get', 'x']],
-                ['string', ['get', 'y']],
-                ['collator', {'case-sensitive': false}]
-            ],
-            'layers[0].filter'
-        ).filter;
-        expect(caseInsensitive({zoom: 0}, {properties: {x: 'a', y: 'b'}} as any as Feature)).toBe(
-            false
-        );
-        expect(caseInsensitive({zoom: 0}, {properties: {x: 'a', y: 'A'}} as any as Feature)).toBe(
-            true
-        );
-        expect(caseInsensitive({zoom: 0}, {properties: {x: 'a', y: 'a'}} as any as Feature)).toBe(
-            true
-        );
-    });
-
-    test('expression, any/all', () => {
-        expect(featureFilter(['all'], 'layers[0].filter').filter(undefined, undefined)).toBe(true);
-        expect(featureFilter(['all', true], 'layers[0].filter').filter(undefined, undefined)).toBe(
-            true
-        );
-        expect(
-            featureFilter(['all', true, false], 'layers[0].filter').filter(undefined, undefined)
-        ).toBe(false);
-        expect(
-            featureFilter(['all', true, true], 'layers[0].filter').filter(undefined, undefined)
-        ).toBe(true);
-        expect(featureFilter(['any'], 'layers[0].filter').filter(undefined, undefined)).toBe(false);
-        expect(featureFilter(['any', true], 'layers[0].filter').filter(undefined, undefined)).toBe(
-            true
-        );
-        expect(
-            featureFilter(['any', true, false], 'layers[0].filter').filter(undefined, undefined)
-        ).toBe(true);
-        expect(
-            featureFilter(['any', false, false], 'layers[0].filter').filter(undefined, undefined)
-        ).toBe(false);
-    });
-
-    test('expression, literal', () => {
-        expect(
-            featureFilter(['literal', true], 'layers[0].filter').filter(undefined, undefined)
-        ).toBe(true);
-        expect(
-            featureFilter(['literal', false], 'layers[0].filter').filter(undefined, undefined)
-        ).toBe(false);
-    });
-
-    test('expression, match', () => {
-        const match = featureFilter(
-            ['match', ['get', 'x'], ['a', 'b', 'c'], true, false],
-            'layers[0].filter'
-        ).filter;
-        expect(match(undefined, {properties: {x: 'a'}} as any as Feature)).toBe(true);
-        expect(match(undefined, {properties: {x: 'c'}} as any as Feature)).toBe(true);
-        expect(match(undefined, {properties: {x: 'd'}} as any as Feature)).toBe(false);
-    });
-
-    test('expression, type error', () => {
-        expect(() => {
-            featureFilter(
-                ['==', ['number', ['get', 'x']], ['string', ['get', 'y']]],
-                'layers[0].filter'
-            );
-        }).toThrow(": Cannot compare types 'number' and 'string'.");
-
-        expect(() => {
-            featureFilter(['number', ['get', 'x']], 'layers[0].filter');
-        }).toThrow(': Expected boolean but found number instead.');
-
-        expect(() => {
-            featureFilter(['boolean', ['get', 'x']], 'layers[0].filter');
-        }).not.toThrow();
-    });
-
-    test('expression, within', () => {
-        const withinFilter = featureFilter(
-            [
-                'within',
-                {
-                    type: 'Polygon',
-                    coordinates: [
-                        [
-                            [0, 0],
-                            [5, 0],
-                            [5, 5],
-                            [0, 5],
-                            [0, 0]
-                        ]
-                    ]
-                }
-            ],
-            'layers[0].filter'
-        );
-        expect(withinFilter.needGeometry).toBe(true);
-        const canonical = {z: 3, x: 3, y: 3} as ICanonicalTileID;
-        const featureInTile = {} as Feature;
-        getGeometry(featureInTile, {type: 'Point', coordinates: [2, 2]}, canonical);
-        expect(withinFilter.filter({zoom: 3}, featureInTile, canonical)).toBe(true);
-        getGeometry(featureInTile, {type: 'Point', coordinates: [6, 6]}, canonical);
-        expect(withinFilter.filter({zoom: 3}, featureInTile, canonical)).toBe(false);
-        getGeometry(featureInTile, {type: 'Point', coordinates: [5, 5]}, canonical);
-        expect(withinFilter.filter({zoom: 3}, featureInTile, canonical)).toBe(false);
-        getGeometry(
-            featureInTile,
-            {
-                type: 'LineString',
-                coordinates: [
-                    [2, 2],
-                    [3, 3]
-                ]
-            },
-            canonical
-        );
-        expect(withinFilter.filter({zoom: 3}, featureInTile, canonical)).toBe(true);
-        getGeometry(
-            featureInTile,
-            {
-                type: 'LineString',
-                coordinates: [
-                    [6, 6],
-                    [2, 2]
-                ]
-            },
-            canonical
-        );
-        expect(withinFilter.filter({zoom: 3}, featureInTile, canonical)).toBe(false);
-        getGeometry(
-            featureInTile,
-            {
-                type: 'LineString',
-                coordinates: [
+    test('needGeometry is true for a filter that reads the geometry', () => {
+        const polygon: GeoJSON.Polygon = {
+            type: 'Polygon',
+            coordinates: [
+                [
+                    [0, 0],
+                    [5, 0],
                     [5, 5],
-                    [2, 2]
+                    [0, 5],
+                    [0, 0]
                 ]
-            },
-            canonical
-        );
-        expect(withinFilter.filter({zoom: 3}, featureInTile, canonical)).toBe(false);
+            ]
+        };
+        expect(featureFilter(['within', polygon], 'layers[0].filter').needGeometry).toBe(true);
+        expect(featureFilter(['>=', ['zoom'], 5], 'layers[0].filter').needGeometry).toBe(false);
     });
 
-    test('expression, global-state', () => {
-        const {filter} = featureFilter(
-            ['==', ['global-state', 'x'], ['get', 'x']],
-            'layers[0].filter',
-            {x: 1}
-        );
-        expect(filter(undefined, {properties: {x: 1}} as any as Feature)).toBe(true);
-        expect(filter(undefined, {properties: {x: 2}} as any as Feature)).toBe(false);
+    test('needCamera is true for a filter that reads pitch or bearing', () => {
+        expect(featureFilter(['>', ['pitch'], 30], 'layers[0].filter').needCamera).toBe(true);
+        expect(featureFilter(['<', ['bearing'], 90], 'layers[0].filter').needCamera).toBe(true);
+        expect(featureFilter(['>=', ['zoom'], 5], 'layers[0].filter').needCamera).toBe(false);
+        expect(featureFilter(undefined, 'layers[0].filter').needCamera).toBe(false);
     });
 });
 

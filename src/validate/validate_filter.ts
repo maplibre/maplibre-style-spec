@@ -3,7 +3,6 @@ import {validateExpression} from './validate_expression';
 import {validateEnum} from './validate_enum';
 import {getType} from '../util/get_type';
 import {unbundle, deepUnbundle} from '../util/unbundle_jsonlint';
-import {extendBy as extend} from '../util/extend';
 import {findMixedLegacyFilter, getMixedFilterMessage, isExpressionFilter} from '../feature_filter';
 
 function getValueAtPath(value: any, path: number[]) {
@@ -44,12 +43,11 @@ export function validateFilter(options: any): ValidationError[] {
     }
     return [
         ...validateNoMixedLegacyFilter(options, value),
-        ...validateExpression(
-            extend({}, options, {
-                expressionContext: 'filter',
-                valueSpec: {value: 'boolean'}
-            })
-        )
+        ...validateExpression({
+            ...options,
+            expressionContext: 'filter',
+            valueSpec: {value: 'boolean'}
+        })
     ];
 }
 

@@ -1,0 +1,46 @@
+{
+  "version": 8,
+  "light": {
+    "intensity": ["/", ["pitch"], 90]
+  },
+  "sky": {
+    "atmosphere-blend": ["/", ["pitch"], 90]
+  },
+  "projection": {
+    "type": ["case", [">", ["bearing"], 90], "globe", "mercator"]
+  },
+  "sources": {
+    "cluster-properties": {
+      "type": "geojson",
+      "data": "/test/integration/data/places.geojson",
+      "cluster": true,
+      "clusterProperties": {
+        "map": ["+", ["pitch"]],
+        "reduce": [["+", ["accumulated"], ["bearing"]], ["get", "scalerank"]]
+      }
+    },
+    "source-filter": {
+      "type": "geojson",
+      "data": "/test/integration/data/places.geojson",
+      "filter": [">", ["pitch"], 30]
+    }
+  },
+  "layers": [
+    {
+      "id": "paint",
+      "type": "circle",
+      "source": "source-filter",
+      "paint": {
+        "circle-radius": ["+", 1, ["pitch"]]
+      }
+    },
+    {
+      "id": "visibility",
+      "type": "symbol",
+      "source": "source-filter",
+      "layout": {
+        "visibility": ["case", [">", ["bearing"], 90], "visible", "none"]
+      }
+    }
+  ]
+}

@@ -278,6 +278,8 @@ CompoundExpression.register(expressions, {
     'geometry-type': [StringType, [], (ctx) => ctx.geometryType()],
     id: [ValueType, [], (ctx) => ctx.id()],
     zoom: [NumberType, [], (ctx) => ctx.globals.zoom],
+    pitch: [NumberType, [], (ctx) => ctx.globals.pitch || 0],
+    bearing: [NumberType, [], (ctx) => ctx.globals.bearing || 0],
     'heatmap-density': [NumberType, [], (ctx) => ctx.globals.heatmapDensity || 0],
     elevation: [NumberType, [], (ctx) => ctx.globals.elevation || 0],
     'line-progress': [NumberType, [], (ctx) => ctx.globals.lineProgress || 0],
@@ -598,6 +600,8 @@ function isExpressionConstant(expression: Expression) {
         isFeatureConstant(expression) &&
         isGlobalPropertyConstant(expression, [
             'zoom',
+            'pitch',
+            'bearing',
             'heatmap-density',
             'elevation',
             'line-progress',

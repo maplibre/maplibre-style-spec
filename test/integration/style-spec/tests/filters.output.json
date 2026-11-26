@@ -133,5 +133,10 @@
     "message": "layers[27].filter[2][1]: Mixing deprecated filter syntax with expression syntax is not supported. Replace [\"in\",\"name\",\"\"] with [\"in\",[\"get\",\"name\"],[\"literal\",[\"\"]]].",
     "severity": "warning",
     "line": 251
+  },
+  {
+    "message": "layers[29].filter: \"pitch\" and \"bearing\" expressions are only supported in symbol layer filters.",
+    "severity": "error",
+    "line": 265
   }
 ]

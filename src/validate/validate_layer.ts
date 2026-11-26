@@ -4,12 +4,28 @@ import {validateObject} from './validate_object';
 import {validateFilter} from './validate_filter';
 import {validatePaintProperty} from './validate_paint_property';
 import {validateLayoutProperty} from './validate_layout_property';
-import {extendBy as extend} from '../util/extend';
 import {getType} from '../util/get_type';
+import v8 from '../reference/v8.json' with {type: 'json'};
+import type {GeoJSONSourceSpecification, StyleSpecification} from '../types.g';
 import {getOwn} from '../util/get_own';
 import {toDisplayString} from '../util/to_display_string';
 
-export function validateLayer(options) {
+/** What {@link validateLayer} is given, and what it passes on to the validators of the layer's members. */
+type ValidateLayerOptions = {
+    key: string;
+    /**
+     * The value as the style has it, before it is validated: it may not be an object at all, and its strings may
+     * carry the line numbers of the JSON parser.
+     */
+    value: any;
+    style: StyleSpecification;
+    styleSpec: typeof v8;
+    validateSpec: Function;
+    /** The layer's position in `layers`; the layers before it are checked for a duplicate id. */
+    arrayIndex?: number;
+};
+
+export function validateLayer(options: ValidateLayerOptions) {
     let errors = [];
 
     const layer = options.value;
@@ -37,7 +53,7 @@ export function validateLayer(options) {
                     new ValidationError(
                         key,
                         layer.id,
-                        `duplicate layer id "${toDisplayString(layer.id)}", previously used at line ${otherLayer.id.__line__}`
+                        `duplicate layer id "${toDisplayString(layer.id)}", previously used at line ${(otherLayer.id as unknown as {__line__: number}).__line__}`
                     )
                 );
             }
@@ -137,7 +153,7 @@ export function validateLayer(options) {
                 type === 'line' &&
                 layer.paint &&
                 layer.paint['line-gradient'] &&
-                (sourceType !== 'geojson' || !source.lineMetrics)
+                (sourceType !== 'geojson' || !(source as GeoJSONSourceSpecification).lineMetrics)
             ) {
                 errors.push(
                     new ValidationError(
@@ -186,8 +202,10 @@ export function validateLayer(options) {
                         objectKey: 'type'
                     });
                 },
-                filter: validateFilter,
-                layout(options) {
+                filter(options: ValidateLayerOptions) {
+                    return validateFilter({layerType: type, ...options});
+                },
+                layout(options: ValidateLayerOptions) {
                     return validateObject({
                         layer,
                         key: options.key,
@@ -196,13 +214,13 @@ export function validateLayer(options) {
                         styleSpec: options.styleSpec,
                         validateSpec: options.validateSpec,
                         objectElementValidators: {
-                            '*'(options) {
-                                return validateLayoutProperty(extend({layerType: type}, options));
+                            '*'(options: ValidateLayerOptions) {
+                                return validateLayoutProperty({layerType: type, ...options});
                             }
                         }
                     });
                 },
-                paint(options) {
+                paint(options: ValidateLayerOptions) {
                     return validateObject({
                         layer,
                         key: options.key,
@@ -211,8 +229,8 @@ export function validateLayer(options) {
                         styleSpec: options.styleSpec,
                         validateSpec: options.validateSpec,
                         objectElementValidators: {
-                            '*'(options) {
-                                return validatePaintProperty(extend({layerType: type}, options));
+                            '*'(options: ValidateLayerOptions) {
+                                return validatePaintProperty({layerType: type, ...options});
                             }
                         }
                     });
