@@ -209,7 +209,7 @@ Opacity applied to the layer as a whole. Unlike [`fill-opacity`](<https://maplib
 
 ### fill-layer-blend
 
-*[Paint](<#paint>) property. Optional [enum](<https://maplibre.org/maplibre-style-spec/types/index.md#enum>). Possible values: `normal`, `multiply`, `color`, `luminosity`, `plus-lighter`, `screen`, `overlay`. Defaults to `"normal"`.*
+*[Paint](<#paint>) property. Optional [enum](<https://maplibre.org/maplibre-style-spec/types/index.md#enum>). Possible values: `normal`, `multiply`, `color`, `luminosity`, `plus-lighter`, `screen`, `overlay`, `difference`, `exclusion`, `soft-light`, `hard-light`, `darken`, `lighten`, `color-dodge`, `color-burn`, `hue`, `saturation`. Defaults to `"normal"`.*
 
 Controls how the layer is composited with the content already rendered beneath it. Unlike per-feature opacity properties such as `fill-opacity`, this property affects the final composited layer output and determines how it interacts with the existing map contents.
 
@@ -222,6 +222,16 @@ Controls how the layer is composited with the content already rendered beneath i
 - `plus-lighter`: [Plus-lighter](<https://www.w3.org/TR/compositing-1/#porterduffcompositingoperators_plus>) blending. Additive blending. The layer color is added to the colors underneath, producing brighter results. Useful for glow and heat accumulation effects.
 - `screen`: [Screen](<https://www.w3.org/TR/compositing-1/#blendingscreen>) blending. The inverse of the colors is multiplied, producing lighter results. Useful for glow, heatmap, and light-based effects.
 - `overlay`: [Overlay](<https://www.w3.org/TR/compositing-1/#blendingoverlay>) blending. Multiplies or screens colors depending on the colors underneath, preserving highlights and shadows while adding contrast.
+- `difference`: [Difference](<https://www.w3.org/TR/compositing-1/#blendingdifference>) blending. Subtracts the darker of the layer color and the color underneath from the lighter one. Identical colors give black. Useful for spotting changes between two images of the same place.
+- `exclusion`: [Exclusion](<https://www.w3.org/TR/compositing-1/#blendingexclusion>) blending. Similar to `difference`, with lower contrast in the mid-tones.
+- `soft-light`: [Soft-light](<https://www.w3.org/TR/compositing-1/#blendingsoftlight>) blending. Darkens or lightens the colors underneath depending on the layer color, like a diffused spotlight. A gentler `hard-light`. Useful for shading imagery with a hillshade.
+- `hard-light`: [Hard-light](<https://www.w3.org/TR/compositing-1/#blendinghardlight>) blending. Multiplies or screens colors depending on the layer color, like a harsh spotlight. The same as `overlay` with the layer and the content underneath swapped.
+- `darken`: [Darken](<https://www.w3.org/TR/compositing-1/#blendingdarken>) blending. Keeps the darker of the layer color and the color underneath, per channel. Useful for combining two images so that bright areas such as clouds drop out.
+- `lighten`: [Lighten](<https://www.w3.org/TR/compositing-1/#blendinglighten>) blending. Keeps the lighter of the layer color and the color underneath, per channel. Useful for combining two images so that dark areas such as shadows drop out.
+- `color-dodge`: [Color-dodge](<https://www.w3.org/TR/compositing-1/#blendingcolordodge>) blending. Brightens the colors underneath to reflect the layer color. Black in the layer leaves them unchanged.
+- `color-burn`: [Color-burn](<https://www.w3.org/TR/compositing-1/#blendingcolorburn>) blending. Darkens the colors underneath to reflect the layer color. White in the layer leaves them unchanged.
+- `hue`: [Hue](<https://www.w3.org/TR/compositing-1/#blendinghue>) blending. Creates a color with the hue of the layer and the saturation and luminosity of the content underneath. Gray content underneath stays gray.
+- `saturation`: [Saturation](<https://www.w3.org/TR/compositing-1/#blendingsaturation>) blending. Creates a color with the saturation of the layer and the hue and luminosity of the content underneath. A gray layer turns the content underneath gray.
 
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
@@ -789,7 +799,7 @@ Opacity applied to the layer as a whole. Unlike [`line-opacity`](<https://maplib
 
 ### line-layer-blend
 
-*[Paint](<#paint>) property. Optional [enum](<https://maplibre.org/maplibre-style-spec/types/index.md#enum>). Possible values: `normal`, `multiply`, `color`, `luminosity`, `plus-lighter`, `screen`, `overlay`. Defaults to `"normal"`.*
+*[Paint](<#paint>) property. Optional [enum](<https://maplibre.org/maplibre-style-spec/types/index.md#enum>). Possible values: `normal`, `multiply`, `color`, `luminosity`, `plus-lighter`, `screen`, `overlay`, `difference`, `exclusion`, `soft-light`, `hard-light`, `darken`, `lighten`, `color-dodge`, `color-burn`, `hue`, `saturation`. Defaults to `"normal"`.*
 
 Controls how the layer is composited with the content already rendered beneath it. Unlike per-feature opacity properties such as [`line-opacity`](<#line-opacity>), this property affects the final composited layer output and determines how it interacts with the existing map contents.
 
@@ -802,6 +812,16 @@ Controls how the layer is composited with the content already rendered beneath i
 - `plus-lighter`: [Plus-lighter](<https://www.w3.org/TR/compositing-1/#porterduffcompositingoperators_plus>) blending. Additive blending. The layer color is added to the colors underneath, producing brighter results. Useful for glow and heat accumulation effects.
 - `screen`: [Screen](<https://www.w3.org/TR/compositing-1/#blendingscreen>) blending. The inverse of the colors is multiplied, producing lighter results. Useful for glow, heatmap, and light-based effects.
 - `overlay`: [Overlay](<https://www.w3.org/TR/compositing-1/#blendingoverlay>) blending. Multiplies or screens colors depending on the colors underneath, preserving highlights and shadows while adding contrast.
+- `difference`: [Difference](<https://www.w3.org/TR/compositing-1/#blendingdifference>) blending. Subtracts the darker of the layer color and the color underneath from the lighter one. Identical colors give black. Useful for spotting changes between two images of the same place.
+- `exclusion`: [Exclusion](<https://www.w3.org/TR/compositing-1/#blendingexclusion>) blending. Similar to `difference`, with lower contrast in the mid-tones.
+- `soft-light`: [Soft-light](<https://www.w3.org/TR/compositing-1/#blendingsoftlight>) blending. Darkens or lightens the colors underneath depending on the layer color, like a diffused spotlight. A gentler `hard-light`. Useful for shading imagery with a hillshade.
+- `hard-light`: [Hard-light](<https://www.w3.org/TR/compositing-1/#blendinghardlight>) blending. Multiplies or screens colors depending on the layer color, like a harsh spotlight. The same as `overlay` with the layer and the content underneath swapped.
+- `darken`: [Darken](<https://www.w3.org/TR/compositing-1/#blendingdarken>) blending. Keeps the darker of the layer color and the color underneath, per channel. Useful for combining two images so that bright areas such as clouds drop out.
+- `lighten`: [Lighten](<https://www.w3.org/TR/compositing-1/#blendinglighten>) blending. Keeps the lighter of the layer color and the color underneath, per channel. Useful for combining two images so that dark areas such as shadows drop out.
+- `color-dodge`: [Color-dodge](<https://www.w3.org/TR/compositing-1/#blendingcolordodge>) blending. Brightens the colors underneath to reflect the layer color. Black in the layer leaves them unchanged.
+- `color-burn`: [Color-burn](<https://www.w3.org/TR/compositing-1/#blendingcolorburn>) blending. Darkens the colors underneath to reflect the layer color. White in the layer leaves them unchanged.
+- `hue`: [Hue](<https://www.w3.org/TR/compositing-1/#blendinghue>) blending. Creates a color with the hue of the layer and the saturation and luminosity of the content underneath. Gray content underneath stays gray.
+- `saturation`: [Saturation](<https://www.w3.org/TR/compositing-1/#blendingsaturation>) blending. Creates a color with the saturation of the layer and the hue and luminosity of the content underneath. A gray layer turns the content underneath gray.
 
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
@@ -1768,7 +1788,7 @@ The opacity at which the image will be drawn.
 
 ### raster-layer-blend
 
-*[Paint](<#paint>) property. Optional [enum](<https://maplibre.org/maplibre-style-spec/types/index.md#enum>). Possible values: `normal`, `multiply`, `color`, `luminosity`, `plus-lighter`, `screen`, `overlay`. Defaults to `"normal"`.*
+*[Paint](<#paint>) property. Optional [enum](<https://maplibre.org/maplibre-style-spec/types/index.md#enum>). Possible values: `normal`, `multiply`, `color`, `luminosity`, `plus-lighter`, `screen`, `overlay`, `difference`, `exclusion`, `soft-light`, `hard-light`, `darken`, `lighten`, `color-dodge`, `color-burn`, `hue`, `saturation`. Defaults to `"normal"`.*
 
 Controls how the layer is composited with the content already rendered beneath it. Unlike [`raster-opacity`](<#raster-opacity>), which only fades the layer, this property determines how its colors interact with the existing map contents.
 
@@ -1779,6 +1799,16 @@ Controls how the layer is composited with the content already rendered beneath i
 - `plus-lighter`: [Plus-lighter](<https://www.w3.org/TR/compositing-1/#porterduffcompositingoperators_plus>) blending. Additive blending. The layer color is added to the colors underneath, producing brighter results. Useful for glow and heat accumulation effects.
 - `screen`: [Screen](<https://www.w3.org/TR/compositing-1/#blendingscreen>) blending. The inverse of the colors is multiplied, producing lighter results. Useful for glow, heatmap, and light-based effects.
 - `overlay`: [Overlay](<https://www.w3.org/TR/compositing-1/#blendingoverlay>) blending. Multiplies or screens colors depending on the colors underneath, preserving highlights and shadows while adding contrast.
+- `difference`: [Difference](<https://www.w3.org/TR/compositing-1/#blendingdifference>) blending. Subtracts the darker of the layer color and the color underneath from the lighter one. Identical colors give black. Useful for spotting changes between two images of the same place.
+- `exclusion`: [Exclusion](<https://www.w3.org/TR/compositing-1/#blendingexclusion>) blending. Similar to `difference`, with lower contrast in the mid-tones.
+- `soft-light`: [Soft-light](<https://www.w3.org/TR/compositing-1/#blendingsoftlight>) blending. Darkens or lightens the colors underneath depending on the layer color, like a diffused spotlight. A gentler `hard-light`. Useful for shading imagery with a hillshade.
+- `hard-light`: [Hard-light](<https://www.w3.org/TR/compositing-1/#blendinghardlight>) blending. Multiplies or screens colors depending on the layer color, like a harsh spotlight. The same as `overlay` with the layer and the content underneath swapped.
+- `darken`: [Darken](<https://www.w3.org/TR/compositing-1/#blendingdarken>) blending. Keeps the darker of the layer color and the color underneath, per channel. Useful for combining two images so that bright areas such as clouds drop out.
+- `lighten`: [Lighten](<https://www.w3.org/TR/compositing-1/#blendinglighten>) blending. Keeps the lighter of the layer color and the color underneath, per channel. Useful for combining two images so that dark areas such as shadows drop out.
+- `color-dodge`: [Color-dodge](<https://www.w3.org/TR/compositing-1/#blendingcolordodge>) blending. Brightens the colors underneath to reflect the layer color. Black in the layer leaves them unchanged.
+- `color-burn`: [Color-burn](<https://www.w3.org/TR/compositing-1/#blendingcolorburn>) blending. Darkens the colors underneath to reflect the layer color. White in the layer leaves them unchanged.
+- `hue`: [Hue](<https://www.w3.org/TR/compositing-1/#blendinghue>) blending. Creates a color with the hue of the layer and the saturation and luminosity of the content underneath. Gray content underneath stays gray.
+- `saturation`: [Saturation](<https://www.w3.org/TR/compositing-1/#blendingsaturation>) blending. Creates a color with the saturation of the layer and the hue and luminosity of the content underneath. A gray layer turns the content underneath gray.
 
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
