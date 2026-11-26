@@ -1,17 +1,29 @@
 ## main
 ### ✨ Features and improvements
-- Add `fill-rounded-corner-distance` for rounded polygon corners in fill layers ([#2007](https://github.com/maplibre/maplibre-style-spec/pull/2007)) (by [@louwers](https://github.com/louwers))
-- Add the `pitch` and `bearing` expressions for symbol layer filters ([#346](https://github.com/maplibre/maplibre-style-spec/issues/346))
-- Add `--max-line-length` to `gl-style-format` and a `maxLength` argument to `format()` for an adjustable maximum line length ([#2011](https://github.com/maplibre/maplibre-style-spec/pull/2011)) (by [@zstadler](https://github.com/zstadler))
-- Read standard input in `gl-style-format` and `gl-style-validate` when no path is given ([#2015](https://github.com/maplibre/maplibre-style-spec/pull/2015)) (by [@zstadler](https://github.com/zstadler))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
-- Report validation errors instead of throwing when validating malformed styles ([#1025](https://github.com/maplibre/maplibre-style-spec/issues/1025)) (by [@HarelM](https://github.com/HarelM))
 - _...Add new stuff here..._
 
-## 26.9.0
+
+## 26.10.0
+
 ### ✨ Features and improvements
+
+- Add `fill-rounded-corner-distance` for rounded polygon corners in fill layers ([#2007](https://github.com/maplibre/maplibre-style-spec/pull/2007)) (by [@louwers](https://github.com/louwers))
+- Add the `pitch` and `bearing` expressions for symbol layer filters ([#346](https://github.com/maplibre/maplibre-style-spec/issues/346)) (by [@HarelM](https://github.com/HarelM))
+- Add `--max-line-length` to `gl-style-format` and a `maxLength` argument to `format()` for an adjustable maximum line length ([#2011](https://github.com/maplibre/maplibre-style-spec/pull/2011)) (by [@zstadler](https://github.com/zstadler))
+- Read standard input in `gl-style-format` and `gl-style-validate` when no path is given ([#2015](https://github.com/maplibre/maplibre-style-spec/pull/2015)) (by [@zstadler](https://github.com/zstadler))
+
+### 🐞 Bug fixes
+
+- Report validation errors instead of throwing when validating malformed styles ([#1025](https://github.com/maplibre/maplibre-style-spec/issues/1025)) (by [@HarelM](https://github.com/HarelM))
+- Improve error handling ([#2008](https://github.com/maplibre/maplibre-style-spec/pull/2008)) (by [@HarelM](https://github.com/HarelM))
+
+## 26.9.0
+
+### ✨ Features and improvements
+
 - Make `fill-extrusion-opacity` data-driven and add `fill-extrusion-layer-opacity` for the opacity of the layer as a whole ([#1994](https://github.com/maplibre/maplibre-style-spec/pull/1994)) (by [@birkskyum](https://github.com/birkskyum))
 
 ### 🐞 Bug fixes
