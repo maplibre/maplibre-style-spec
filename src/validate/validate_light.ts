@@ -46,7 +46,8 @@ export function validateLight(options) {
                     valueSpec: lightSpec[key],
                     validateSpec: options.validateSpec,
                     style,
-                    styleSpec
+                    styleSpec,
+                    expressionContext: 'property'
                 })
             );
         } else {

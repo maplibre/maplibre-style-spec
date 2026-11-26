@@ -8,6 +8,7 @@
 
 ### 🐞 Bug fixes
 - Report validation errors instead of throwing when validating malformed styles ([#1025](https://github.com/maplibre/maplibre-style-spec/issues/1025)) (by [@HarelM](https://github.com/HarelM))
+- Reject data expressions and zoom expressions that are not a top-level `step` or `interpolate` in the root `light`, `sky` and `projection` properties, as is already done for layer paint and layout properties, instead of accepting values that maplibre-gl-js then throws on ([#1998](https://github.com/maplibre/maplibre-style-spec/pull/1998)) (by [@Yasser-Ameur](https://github.com/Yasser-Ameur))
 - _...Add new stuff here..._
 
 ## 26.9.0

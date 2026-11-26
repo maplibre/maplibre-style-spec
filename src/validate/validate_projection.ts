@@ -36,7 +36,8 @@ export function validateProjection(options: ValidateProjectionOptions) {
                     value: projection[key],
                     valueSpec: projectionSpec[key],
                     style,
-                    styleSpec
+                    styleSpec,
+                    expressionContext: 'property'
                 })
             );
         } else {
