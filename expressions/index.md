@@ -2261,6 +2261,48 @@ Example:
 | --- | --- | --- | --- |
 | basic functionality | 0.41.0 | 6.0.0 | 4.0.0 |
 
+## Camera
+
+### pitch
+
+Returns the current pitch of the map in degrees. It can be used only in the filter of a symbol layer, where it is evaluated each time symbols are placed.
+
+Syntax:
+
+```js
+["pitch"]: number
+```
+
+Example:
+
+```json
+"some-property": [">", ["pitch"], 45]
+```
+
+| SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
+| --- | --- | --- | --- |
+| basic functionality | ❌ ([\#8671](<https://github.com/maplibre/maplibre-gl-js/issues/8671>)) | ❌ ([\#4077](<https://github.com/maplibre/maplibre-native/issues/4077>)) | ❌ ([\#4077](<https://github.com/maplibre/maplibre-native/issues/4077>)) |
+
+### bearing
+
+Returns the current bearing of the map in degrees. It can be used only in the filter of a symbol layer, where it is evaluated each time symbols are placed.
+
+Syntax:
+
+```js
+["bearing"]: number
+```
+
+Example:
+
+```json
+"some-property": ["<", ["abs", ["bearing"]], 90]
+```
+
+| SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
+| --- | --- | --- | --- |
+| basic functionality | ❌ ([\#8671](<https://github.com/maplibre/maplibre-gl-js/issues/8671>)) | ❌ ([\#4077](<https://github.com/maplibre/maplibre-native/issues/4077>)) | ❌ ([\#4077](<https://github.com/maplibre/maplibre-native/issues/4077>)) |
+
 ## Heatmap
 
 ### heatmap-density

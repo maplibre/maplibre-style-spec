@@ -2495,6 +2495,48 @@ Example:
 | --- | --- | --- | --- |
 | basic functionality | 0.41.0 | 6.0.0 | 4.0.0 |
 
+## Camera
+
+### pitch
+
+Returns the current pitch of the map in degrees. It can be used only in the filter of a symbol layer, where it is evaluated each time symbols are placed.
+
+Syntax:
+
+```js
+["pitch"]: number
+```
+
+Example:
+
+```json
+"some-property": [">", ["pitch"], 45]
+```
+
+| SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
+| --- | --- | --- | --- |
+| basic functionality | ❌ ([\#8671](<https://github.com/maplibre/maplibre-gl-js/issues/8671>)) | ❌ ([\#4077](<https://github.com/maplibre/maplibre-native/issues/4077>)) | ❌ ([\#4077](<https://github.com/maplibre/maplibre-native/issues/4077>)) |
+
+### bearing
+
+Returns the current bearing of the map in degrees. It can be used only in the filter of a symbol layer, where it is evaluated each time symbols are placed.
+
+Syntax:
+
+```js
+["bearing"]: number
+```
+
+Example:
+
+```json
+"some-property": ["<", ["abs", ["bearing"]], 90]
+```
+
+| SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
+| --- | --- | --- | --- |
+| basic functionality | ❌ ([\#8671](<https://github.com/maplibre/maplibre-gl-js/issues/8671>)) | ❌ ([\#4077](<https://github.com/maplibre/maplibre-native/issues/4077>)) | ❌ ([\#4077](<https://github.com/maplibre/maplibre-native/issues/4077>)) |
+
 ## Heatmap
 
 ### heatmap-density
@@ -2870,7 +2912,7 @@ The maximum zoom level for the layer. At zoom levels equal to or greater than th
 
 *Optional [filter](<https://maplibre.org/maplibre-style-spec/expressions/index.md>).*
 
-A expression specifying conditions on source features. Only features that match the filter are displayed. Zoom expressions in filters are only evaluated at integer zoom levels. The [`feature-state`](<https://maplibre.org/maplibre-style-spec/expressions/index.md#feature-state>) expression is not supported in filter expressions.
+A expression specifying conditions on source features. Only features that match the filter are displayed. Zoom expressions in filters are only evaluated at integer zoom levels. The [`feature-state`](<https://maplibre.org/maplibre-style-spec/expressions/index.md#feature-state>) expression is not supported in filter expressions. The [`pitch`](<https://maplibre.org/maplibre-style-spec/expressions/index.md#pitch>) and [`bearing`](<https://maplibre.org/maplibre-style-spec/expressions/index.md#bearing>) expressions are supported only in the filters of `symbol` layers.
 
 ### layout
 

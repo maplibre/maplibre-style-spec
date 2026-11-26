@@ -1468,6 +1468,45 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#camera" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Camera
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Camera">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pitch" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        pitch
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bearing" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        bearing
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#heatmap" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -3106,6 +3145,45 @@
     <span class="md-ellipsis">
       <span class="md-typeset">
         zoom
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#camera" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Camera
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Camera">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pitch" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        pitch
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bearing" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        bearing
       </span>
     </span>
   </a>
@@ -6192,14 +6270,67 @@ Parameters:</p>
 </tr>
 </tbody>
 </table>
+<h2 id="camera">Camera<a class="headerlink" href="#camera" title="Permanent link">&para;</a></h2>
+<h3 id="pitch">pitch<a class="headerlink" href="#pitch" title="Permanent link">&para;</a></h3>
+<p>Returns the current pitch of the map in degrees. It can be used only in the filter of a symbol layer, where it is evaluated each time symbols are placed.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-171-1"><a id="__codelineno-171-1" name="__codelineno-171-1" href="#__codelineno-171-1"></a><span class="p">[</span><span class="s2">"pitch"</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-172-1"><a id="__codelineno-172-1" name="__codelineno-172-1" href="#__codelineno-172-1"></a><span class="nt">"some-property"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"&gt;"</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">"pitch"</span><span class="p">],</span><span class="w"> </span><span class="mi">45</span><span class="p">]</span>
+</span></code></pre></div></p>
+<table>
+<thead>
+<tr>
+<th>SDK Support</th>
+<th>MapLibre GL JS</th>
+<th>MapLibre Native<br>Android</th>
+<th>MapLibre Native<br>iOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>basic functionality</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-gl-js/issues/8671">#8671</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/4077">#4077</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/4077">#4077</a>)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="bearing">bearing<a class="headerlink" href="#bearing" title="Permanent link">&para;</a></h3>
+<p>Returns the current bearing of the map in degrees. It can be used only in the filter of a symbol layer, where it is evaluated each time symbols are placed.</p>
+<p>Syntax:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-173-1"><a id="__codelineno-173-1" name="__codelineno-173-1" href="#__codelineno-173-1"></a><span class="p">[</span><span class="s2">"bearing"</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
+</span></code></pre></div></p>
+<p>Example:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-174-1"><a id="__codelineno-174-1" name="__codelineno-174-1" href="#__codelineno-174-1"></a><span class="nt">"some-property"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"&lt;"</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">"abs"</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">"bearing"</span><span class="p">]],</span><span class="w"> </span><span class="mi">90</span><span class="p">]</span>
+</span></code></pre></div></p>
+<table>
+<thead>
+<tr>
+<th>SDK Support</th>
+<th>MapLibre GL JS</th>
+<th>MapLibre Native<br>Android</th>
+<th>MapLibre Native<br>iOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>basic functionality</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-gl-js/issues/8671">#8671</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/4077">#4077</a>)</td>
+<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/4077">#4077</a>)</td>
+</tr>
+</tbody>
+</table>
 <h2 id="heatmap">Heatmap<a class="headerlink" href="#heatmap" title="Permanent link">&para;</a></h2>
 <h3 id="heatmap-density">heatmap-density<a class="headerlink" href="#heatmap-density" title="Permanent link">&para;</a></h3>
 <p>Gets the kernel density estimation of a pixel in a heatmap layer, which is a relative measure of how many data points are crowded around a particular pixel. Can only be used in the <a href="../layers/#heatmap-color"><code>heatmap-color</code></a> property.</p>
 <p>Syntax:
-<div class="language-js highlight"><pre><span></span><code><span id="__span-171-1"><a id="__codelineno-171-1" name="__codelineno-171-1" href="#__codelineno-171-1"></a><span class="p">[</span><span class="s2">"heatmap-density"</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-175-1"><a id="__codelineno-175-1" name="__codelineno-175-1" href="#__codelineno-175-1"></a><span class="p">[</span><span class="s2">"heatmap-density"</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
 </span></code></pre></div></p>
 <p>Example:
-<div class="language-json highlight"><pre><span></span><code><span id="__span-172-1"><a id="__codelineno-172-1" name="__codelineno-172-1" href="#__codelineno-172-1"></a><span class="nt">"some-property"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"heatmap-density"</span><span class="p">]</span>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-176-1"><a id="__codelineno-176-1" name="__codelineno-176-1" href="#__codelineno-176-1"></a><span class="nt">"some-property"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"heatmap-density"</span><span class="p">]</span>
 </span></code></pre></div></p>
 <table>
 <thead>
@@ -6223,10 +6354,10 @@ Parameters:</p>
 <h3 id="elevation">elevation<a class="headerlink" href="#elevation" title="Permanent link">&para;</a></h3>
 <p>Gets the elevation in meters at the current point. For a <code>raster-dem</code> source this is the elevation of a pixel above the vertical datum reference of the tiles; for a fill extrusion it is the height above the ground.</p>
 <p>Syntax:
-<div class="language-js highlight"><pre><span></span><code><span id="__span-173-1"><a id="__codelineno-173-1" name="__codelineno-173-1" href="#__codelineno-173-1"></a><span class="p">[</span><span class="s2">"elevation"</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-177-1"><a id="__codelineno-177-1" name="__codelineno-177-1" href="#__codelineno-177-1"></a><span class="p">[</span><span class="s2">"elevation"</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
 </span></code></pre></div></p>
 <p>Example:
-<div class="language-json highlight"><pre><span></span><code><span id="__span-174-1"><a id="__codelineno-174-1" name="__codelineno-174-1" href="#__codelineno-174-1"></a><span class="nt">"some-property"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"elevation"</span><span class="p">]</span>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-178-1"><a id="__codelineno-178-1" name="__codelineno-178-1" href="#__codelineno-178-1"></a><span class="nt">"some-property"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"elevation"</span><span class="p">]</span>
 </span></code></pre></div></p>
 <table>
 <thead>
@@ -6256,13 +6387,13 @@ Parameters:</p>
 <h3 id="is-supported-script">is-supported-script<a class="headerlink" href="#is-supported-script" title="Permanent link">&para;</a></h3>
 <p>Returns <code>true</code> if the input string is expected to render legibly. Returns <code>false</code> if the input string contains sections that cannot be rendered without potential loss of meaning (e.g. Indic scripts that require complex text shaping, or right-to-left scripts if the <code>mapbox-gl-rtl-text</code> plugin is not in use in MapLibre GL JS).</p>
 <p>Syntax:
-<div class="language-js highlight"><pre><span></span><code><span id="__span-175-1"><a id="__codelineno-175-1" name="__codelineno-175-1" href="#__codelineno-175-1"></a><span class="p">[</span><span class="s2">"is-supported-script"</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="kr">boolean</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-179-1"><a id="__codelineno-179-1" name="__codelineno-179-1" href="#__codelineno-179-1"></a><span class="p">[</span><span class="s2">"is-supported-script"</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="kr">boolean</span>
 </span></code></pre></div></p>
 <ul>
 <li><code>input</code>: <code>string</code></li>
 </ul>
 <p>Example:
-<div class="language-json highlight"><pre><span></span><code><span id="__span-176-1"><a id="__codelineno-176-1" name="__codelineno-176-1" href="#__codelineno-176-1"></a><span class="nt">"some-property"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"is-supported-script"</span><span class="p">,</span><span class="w"> </span><span class="s2">"दिल्ली"</span><span class="p">]</span>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-180-1"><a id="__codelineno-180-1" name="__codelineno-180-1" href="#__codelineno-180-1"></a><span class="nt">"some-property"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"is-supported-script"</span><span class="p">,</span><span class="w"> </span><span class="s2">"दिल्ली"</span><span class="p">]</span>
 </span></code></pre></div></p>
 <table>
 <thead>
@@ -6288,13 +6419,13 @@ Parameters:</p>
 <li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/change-the-case-of-labels/">Change the case of labels</a></li>
 </ul>
 <p>Syntax:
-<div class="language-js highlight"><pre><span></span><code><span id="__span-177-1"><a id="__codelineno-177-1" name="__codelineno-177-1" href="#__codelineno-177-1"></a><span class="p">[</span><span class="s2">"upcase"</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-181-1"><a id="__codelineno-181-1" name="__codelineno-181-1" href="#__codelineno-181-1"></a><span class="p">[</span><span class="s2">"upcase"</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span>
 </span></code></pre></div></p>
 <ul>
 <li><code>input</code>: <code>string</code></li>
 </ul>
 <p>Example:
-<div class="language-json highlight"><pre><span></span><code><span id="__span-178-1"><a id="__codelineno-178-1" name="__codelineno-178-1" href="#__codelineno-178-1"></a><span class="nt">"some-property"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"upcase"</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">"get"</span><span class="p">,</span><span class="w"> </span><span class="s2">"name"</span><span class="p">]]</span>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-182-1"><a id="__codelineno-182-1" name="__codelineno-182-1" href="#__codelineno-182-1"></a><span class="nt">"some-property"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"upcase"</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">"get"</span><span class="p">,</span><span class="w"> </span><span class="s2">"name"</span><span class="p">]]</span>
 </span></code></pre></div></p>
 <table>
 <thead>
@@ -6320,13 +6451,13 @@ Parameters:</p>
 <li><a href="https://maplibre.org/maplibre-gl-js/docs/examples/change-the-case-of-labels/">Change the case of labels</a></li>
 </ul>
 <p>Syntax:
-<div class="language-js highlight"><pre><span></span><code><span id="__span-179-1"><a id="__codelineno-179-1" name="__codelineno-179-1" href="#__codelineno-179-1"></a><span class="p">[</span><span class="s2">"downcase"</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-183-1"><a id="__codelineno-183-1" name="__codelineno-183-1" href="#__codelineno-183-1"></a><span class="p">[</span><span class="s2">"downcase"</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span>
 </span></code></pre></div></p>
 <ul>
 <li><code>input</code>: <code>string</code></li>
 </ul>
 <p>Example:
-<div class="language-json highlight"><pre><span></span><code><span id="__span-180-1"><a id="__codelineno-180-1" name="__codelineno-180-1" href="#__codelineno-180-1"></a><span class="nt">"some-property"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"downcase"</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">"get"</span><span class="p">,</span><span class="w"> </span><span class="s2">"name"</span><span class="p">]]</span>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-184-1"><a id="__codelineno-184-1" name="__codelineno-184-1" href="#__codelineno-184-1"></a><span class="nt">"some-property"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"downcase"</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">"get"</span><span class="p">,</span><span class="w"> </span><span class="s2">"name"</span><span class="p">]]</span>
 </span></code></pre></div></p>
 <table>
 <thead>
@@ -6363,13 +6494,13 @@ Parameters:</p>
 </li>
 </ul>
 <p>Syntax:
-<div class="language-js highlight"><pre><span></span><code><span id="__span-181-1"><a id="__codelineno-181-1" name="__codelineno-181-1" href="#__codelineno-181-1"></a><span class="p">[</span><span class="s2">"concat"</span><span class="p">,</span><span class="w"> </span><span class="nx">input_1</span><span class="p">,</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="nx">input_n</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-185-1"><a id="__codelineno-185-1" name="__codelineno-185-1" href="#__codelineno-185-1"></a><span class="p">[</span><span class="s2">"concat"</span><span class="p">,</span><span class="w"> </span><span class="nx">input_1</span><span class="p">,</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="nx">input_n</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span>
 </span></code></pre></div></p>
 <ul>
 <li><code>input_i</code>: <code>any</code></li>
 </ul>
 <p>Example:
-<div class="language-json highlight"><pre><span></span><code><span id="__span-182-1"><a id="__codelineno-182-1" name="__codelineno-182-1" href="#__codelineno-182-1"></a><span class="nt">"some-property"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"concat"</span><span class="p">,</span><span class="w"> </span><span class="s2">"square-rgb-"</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">"get"</span><span class="p">,</span><span class="w"> </span><span class="s2">"color"</span><span class="p">]]</span>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-186-1"><a id="__codelineno-186-1" name="__codelineno-186-1" href="#__codelineno-186-1"></a><span class="nt">"some-property"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"concat"</span><span class="p">,</span><span class="w"> </span><span class="s2">"square-rgb-"</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">"get"</span><span class="p">,</span><span class="w"> </span><span class="s2">"color"</span><span class="p">]]</span>
 </span></code></pre></div></p>
 <table>
 <thead>
@@ -6392,23 +6523,23 @@ Parameters:</p>
 <h3 id="resolved-locale">resolved-locale<a class="headerlink" href="#resolved-locale" title="Permanent link">&para;</a></h3>
 <p>Returns the IETF language tag of the locale being used by the provided <a href="../expressions/#collator"><code>collator</code></a>. This can be used to determine the default system locale, or to determine if a requested locale was successfully loaded.</p>
 <p>Syntax:
-<div class="language-js highlight"><pre><span></span><code><span id="__span-183-1"><a id="__codelineno-183-1" name="__codelineno-183-1" href="#__codelineno-183-1"></a><span class="p">[</span><span class="s2">"resolved-locale"</span><span class="p">,</span><span class="w"> </span><span class="nx">collator</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-187-1"><a id="__codelineno-187-1" name="__codelineno-187-1" href="#__codelineno-187-1"></a><span class="p">[</span><span class="s2">"resolved-locale"</span><span class="p">,</span><span class="w"> </span><span class="nx">collator</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span>
 </span></code></pre></div></p>
 <ul>
 <li><code>collator</code>: <code>collator</code></li>
 </ul>
 <p>Example:
-<div class="language-json highlight"><pre><span></span><code><span id="__span-184-1"><a id="__codelineno-184-1" name="__codelineno-184-1" href="#__codelineno-184-1"></a><span class="nt">"some-property"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-184-2"><a id="__codelineno-184-2" name="__codelineno-184-2" href="#__codelineno-184-2"></a><span class="w">    </span><span class="s2">"resolved-locale"</span><span class="p">,</span>
-</span><span id="__span-184-3"><a id="__codelineno-184-3" name="__codelineno-184-3" href="#__codelineno-184-3"></a><span class="w">    </span><span class="p">[</span>
-</span><span id="__span-184-4"><a id="__codelineno-184-4" name="__codelineno-184-4" href="#__codelineno-184-4"></a><span class="w">        </span><span class="s2">"collator"</span><span class="p">,</span>
-</span><span id="__span-184-5"><a id="__codelineno-184-5" name="__codelineno-184-5" href="#__codelineno-184-5"></a><span class="w">        </span><span class="p">{</span>
-</span><span id="__span-184-6"><a id="__codelineno-184-6" name="__codelineno-184-6" href="#__codelineno-184-6"></a><span class="w">            </span><span class="nt">"case-sensitive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-</span><span id="__span-184-7"><a id="__codelineno-184-7" name="__codelineno-184-7" href="#__codelineno-184-7"></a><span class="w">            </span><span class="nt">"diacritic-sensitive"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-</span><span id="__span-184-8"><a id="__codelineno-184-8" name="__codelineno-184-8" href="#__codelineno-184-8"></a><span class="w">            </span><span class="nt">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"de"</span>
-</span><span id="__span-184-9"><a id="__codelineno-184-9" name="__codelineno-184-9" href="#__codelineno-184-9"></a><span class="w">        </span><span class="p">}</span>
-</span><span id="__span-184-10"><a id="__codelineno-184-10" name="__codelineno-184-10" href="#__codelineno-184-10"></a><span class="w">    </span><span class="p">]</span>
-</span><span id="__span-184-11"><a id="__codelineno-184-11" name="__codelineno-184-11" href="#__codelineno-184-11"></a><span class="p">]</span>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-188-1"><a id="__codelineno-188-1" name="__codelineno-188-1" href="#__codelineno-188-1"></a><span class="nt">"some-property"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-188-2"><a id="__codelineno-188-2" name="__codelineno-188-2" href="#__codelineno-188-2"></a><span class="w">    </span><span class="s2">"resolved-locale"</span><span class="p">,</span>
+</span><span id="__span-188-3"><a id="__codelineno-188-3" name="__codelineno-188-3" href="#__codelineno-188-3"></a><span class="w">    </span><span class="p">[</span>
+</span><span id="__span-188-4"><a id="__codelineno-188-4" name="__codelineno-188-4" href="#__codelineno-188-4"></a><span class="w">        </span><span class="s2">"collator"</span><span class="p">,</span>
+</span><span id="__span-188-5"><a id="__codelineno-188-5" name="__codelineno-188-5" href="#__codelineno-188-5"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-188-6"><a id="__codelineno-188-6" name="__codelineno-188-6" href="#__codelineno-188-6"></a><span class="w">            </span><span class="nt">"case-sensitive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-188-7"><a id="__codelineno-188-7" name="__codelineno-188-7" href="#__codelineno-188-7"></a><span class="w">            </span><span class="nt">"diacritic-sensitive"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+</span><span id="__span-188-8"><a id="__codelineno-188-8" name="__codelineno-188-8" href="#__codelineno-188-8"></a><span class="w">            </span><span class="nt">"locale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"de"</span>
+</span><span id="__span-188-9"><a id="__codelineno-188-9" name="__codelineno-188-9" href="#__codelineno-188-9"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-188-10"><a id="__codelineno-188-10" name="__codelineno-188-10" href="#__codelineno-188-10"></a><span class="w">    </span><span class="p">]</span>
+</span><span id="__span-188-11"><a id="__codelineno-188-11" name="__codelineno-188-11" href="#__codelineno-188-11"></a><span class="p">]</span>
 </span></code></pre></div></p>
 <table>
 <thead>
@@ -6431,14 +6562,14 @@ Parameters:</p>
 <h3 id="split">split<a class="headerlink" href="#split" title="Permanent link">&para;</a></h3>
 <p>Returns an array of substrings formed by splitting an input string by a separator string.</p>
 <p>Syntax:
-<div class="language-js highlight"><pre><span></span><code><span id="__span-185-1"><a id="__codelineno-185-1" name="__codelineno-185-1" href="#__codelineno-185-1"></a><span class="p">[</span><span class="s2">"split"</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">,</span><span class="w"> </span><span class="nx">separator</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">array</span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-189-1"><a id="__codelineno-189-1" name="__codelineno-189-1" href="#__codelineno-189-1"></a><span class="p">[</span><span class="s2">"split"</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">,</span><span class="w"> </span><span class="nx">separator</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">array</span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span>
 </span></code></pre></div></p>
 <ul>
 <li><code>input</code>: <code>string</code></li>
 <li><code>separator</code>: <code>string</code></li>
 </ul>
 <p>Example:
-<div class="language-json highlight"><pre><span></span><code><span id="__span-186-1"><a id="__codelineno-186-1" name="__codelineno-186-1" href="#__codelineno-186-1"></a><span class="nt">"some-property"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"split"</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">"get"</span><span class="p">,</span><span class="w"> </span><span class="s2">"name"</span><span class="p">],</span><span class="w"> </span><span class="s2">";"</span><span class="p">]</span>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-190-1"><a id="__codelineno-190-1" name="__codelineno-190-1" href="#__codelineno-190-1"></a><span class="nt">"some-property"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"split"</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">"get"</span><span class="p">,</span><span class="w"> </span><span class="s2">"name"</span><span class="p">],</span><span class="w"> </span><span class="s2">";"</span><span class="p">]</span>
 </span></code></pre></div></p>
 <table>
 <thead>
@@ -6461,14 +6592,14 @@ Parameters:</p>
 <h3 id="join">join<a class="headerlink" href="#join" title="Permanent link">&para;</a></h3>
 <p>Returns a string formed by concatenating the elements of the input array, inserting a separator between each element.</p>
 <p>Syntax:
-<div class="language-js highlight"><pre><span></span><code><span id="__span-187-1"><a id="__codelineno-187-1" name="__codelineno-187-1" href="#__codelineno-187-1"></a><span class="p">[</span><span class="s2">"join"</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">,</span><span class="w"> </span><span class="nx">separator</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-191-1"><a id="__codelineno-191-1" name="__codelineno-191-1" href="#__codelineno-191-1"></a><span class="p">[</span><span class="s2">"join"</span><span class="p">,</span><span class="w"> </span><span class="nx">input</span><span class="p">,</span><span class="w"> </span><span class="nx">separator</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span>
 </span></code></pre></div></p>
 <ul>
 <li><code>input</code>: <code>array</code></li>
 <li><code>separator</code>: <code>string</code></li>
 </ul>
 <p>Example:
-<div class="language-json highlight"><pre><span></span><code><span id="__span-188-1"><a id="__codelineno-188-1" name="__codelineno-188-1" href="#__codelineno-188-1"></a><span class="nt">"some-property"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"join"</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">"split"</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">"get"</span><span class="p">,</span><span class="w"> </span><span class="s2">"name"</span><span class="p">],</span><span class="w"> </span><span class="s2">";"</span><span class="p">],</span><span class="w"> </span><span class="s2">"\n"</span><span class="p">]</span>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-192-1"><a id="__codelineno-192-1" name="__codelineno-192-1" href="#__codelineno-192-1"></a><span class="nt">"some-property"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"join"</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">"split"</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">"get"</span><span class="p">,</span><span class="w"> </span><span class="s2">"name"</span><span class="p">],</span><span class="w"> </span><span class="s2">";"</span><span class="p">],</span><span class="w"> </span><span class="s2">"\n"</span><span class="p">]</span>
 </span></code></pre></div></p>
 <table>
 <thead>

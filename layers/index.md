@@ -79,7 +79,7 @@ The maximum zoom level for the layer. At zoom levels equal to or greater than th
 
 *Optional [filter](<https://maplibre.org/maplibre-style-spec/expressions/index.md>).*
 
-A expression specifying conditions on source features. Only features that match the filter are displayed. Zoom expressions in filters are only evaluated at integer zoom levels. The [`feature-state`](<https://maplibre.org/maplibre-style-spec/expressions/index.md#feature-state>) expression is not supported in filter expressions.
+A expression specifying conditions on source features. Only features that match the filter are displayed. Zoom expressions in filters are only evaluated at integer zoom levels. The [`feature-state`](<https://maplibre.org/maplibre-style-spec/expressions/index.md#feature-state>) expression is not supported in filter expressions. The [`pitch`](<https://maplibre.org/maplibre-style-spec/expressions/index.md#pitch>) and [`bearing`](<https://maplibre.org/maplibre-style-spec/expressions/index.md#bearing>) expressions are supported only in the filters of `symbol` layers.
 
 ### layout
 
