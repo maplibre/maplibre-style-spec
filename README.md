@@ -85,7 +85,7 @@ gl-style-migrate bright.json | sponge bright.json
 ### `gl-style-format`
 
 ```bash
-gl-style-format style.json
+gl-style-format [--space <num>] [--max-line-length <num>] [style.json]
 ```
 
 Will format the given style JSON to use standard indentation and sorted object keys.
@@ -93,7 +93,7 @@ Will format the given style JSON to use standard indentation and sorted object k
 ### `gl-style-validate`
 
 ```bash
-gl-style-validate style.json
+gl-style-validate [style.json]
 ```
 
 Will validate the given style JSON and print errors to stdout.
