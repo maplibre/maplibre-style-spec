@@ -1,10 +1,15 @@
 ## main
 ### ✨ Features and improvements
-- Remove the unused `fill-extrusion-layer-opacity` ([#2022](https://github.com/maplibre/maplibre-style-spec/pull/2022)) (by [@birkskyum](https://github.com/birkskyum))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
 - _...Add new stuff here..._
+
+## 27.0.0
+### ✨ Features and improvements
+- Remove the unused `fill-extrusion-layer-opacity` ([#2022](https://github.com/maplibre/maplibre-style-spec/pull/2022)) (by [@birkskyum](https://github.com/birkskyum))
+
+### 🐞 Bug fixes
 
 ## 26.11.0
 ### ✨ Features and improvements
