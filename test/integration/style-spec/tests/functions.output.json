@@ -225,7 +225,7 @@
     "line": 925
   },
   {
-    "message": "layers[51].paint.fill-extrusion-layer-opacity: data expressions not supported",
+    "message": "layers[51].paint.fill-extrusion-vertical-gradient: data expressions not supported",
     "severity": "error",
     "line": 934
   },
