@@ -3411,28 +3411,15 @@ The distance from each fill extrusion corner, measured along the adjacent edges,
 
 *[Paint](<#paint>) property. Optional [number](<https://maplibre.org/maplibre-style-spec/types/index.md#number>) in range `[0, 1]`. Defaults to `1`. Supports [feature-state](<https://maplibre.org/maplibre-style-spec/expressions/index.md#feature-state>) and [interpolate](<https://maplibre.org/maplibre-style-spec/expressions/index.md#interpolate>) expressions. [Transitionable](<https://maplibre.org/maplibre-style-spec/transition/index.md>).*
 
-The opacity of each extrusion. Extrusions at `1` show through the others. Where several extrusions below `1` overlap on screen, only the surface closest to the camera is drawn, so they don't show through each other. Use [`fill-extrusion-layer-opacity`](<https://maplibre.org/maplibre-style-spec/layers/index.md#fill-extrusion-layer-opacity>) to fade the layer as a whole.
+The opacity of each extrusion. Where several extrusions overlap on screen, only the surface closest to the camera is drawn, so they don't show through each other.
 
-![fill-extrusion-opacity vs. fill-extrusion-layer-opacity](<https://maplibre.org/maplibre-style-spec/assets/fill-extrusion-opacity.svg>)
+![fill-extrusion-opacity](<https://maplibre.org/maplibre-style-spec/assets/fill-extrusion-opacity.svg>)
 
 | SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
 | --- | --- | --- | --- |
 | basic functionality | 0.27.0 | 5.1.0 | 3.6.0 |
 | [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/index.md#global-state>) expression | 5.6.0 | 13.7.1 | 7.0.0 |
 | data-driven styling | ❌ ([\#4492](<https://github.com/maplibre/maplibre-gl-js/issues/4492>)) | ❌ ([\#5047](<https://github.com/maplibre/maplibre-native/issues/5047>)) | ❌ ([\#5047](<https://github.com/maplibre/maplibre-native/issues/5047>)) |
-
-### fill-extrusion-layer-opacity
-
-*[Paint](<#paint>) property. Optional [number](<https://maplibre.org/maplibre-style-spec/types/index.md#number>) in range `[0, 1]`. Defaults to `1`. Supports [interpolate](<https://maplibre.org/maplibre-style-spec/expressions/index.md#interpolate>) expressions. [Transitionable](<https://maplibre.org/maplibre-style-spec/transition/index.md>).*
-
-Opacity applied to the layer as a whole, multiplied with [`fill-extrusion-opacity`](<https://maplibre.org/maplibre-style-spec/layers/index.md#fill-extrusion-opacity>). The extrusions at a `fill-extrusion-opacity` of `1` appear as a single surface at the given opacity and still show through the others. This property affects only the layer it is set on.
-
-![fill-extrusion-opacity vs. fill-extrusion-layer-opacity](<https://maplibre.org/maplibre-style-spec/assets/fill-extrusion-opacity.svg>)
-
-| SDK Support | MapLibre GL JS | MapLibre Native<br>Android | MapLibre Native<br>iOS |
-| --- | --- | --- | --- |
-| basic functionality | ❌ ([\#4492](<https://github.com/maplibre/maplibre-gl-js/issues/4492>)) | ❌ ([\#5047](<https://github.com/maplibre/maplibre-native/issues/5047>)) | ❌ ([\#5047](<https://github.com/maplibre/maplibre-native/issues/5047>)) |
-| [`global-state`](<https://maplibre.org/maplibre-style-spec/expressions/index.md#global-state>) expression | ❌ ([\#4492](<https://github.com/maplibre/maplibre-gl-js/issues/4492>)) | ❌ ([\#5047](<https://github.com/maplibre/maplibre-native/issues/5047>)) | ❌ ([\#5047](<https://github.com/maplibre/maplibre-native/issues/5047>)) |
 
 ### fill-extrusion-color
 

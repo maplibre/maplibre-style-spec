@@ -1083,17 +1083,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#fill-extrusion-layer-opacity" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        fill-extrusion-layer-opacity
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#fill-extrusion-color" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -3368,17 +3357,6 @@
     <span class="md-ellipsis">
       <span class="md-typeset">
         fill-extrusion-opacity
-      </span>
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fill-extrusion-layer-opacity" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        fill-extrusion-layer-opacity
       </span>
     </span>
   </a>
@@ -5938,8 +5916,8 @@
 </table>
 <h3 id="fill-extrusion-opacity">fill-extrusion-opacity<a class="headerlink" href="#fill-extrusion-opacity" title="Permanent link">&para;</a></h3>
 <p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range <code>[0, 1]</code>. Defaults to <code>1</code>. Supports <a href="../expressions/#feature-state">feature-state</a> and <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
-<p>The opacity of each extrusion. Extrusions at <code>1</code> show through the others. Where several extrusions below <code>1</code> overlap on screen, only the surface closest to the camera is drawn, so they don't show through each other. Use <a href="../layers/#fill-extrusion-layer-opacity"><code>fill-extrusion-layer-opacity</code></a> to fade the layer as a whole.</p>
-<p><img alt="fill-extrusion-opacity vs. fill-extrusion-layer-opacity" src="../assets/fill-extrusion-opacity.svg" /></p>
+<p>The opacity of each extrusion. Where several extrusions overlap on screen, only the surface closest to the camera is drawn, so they don't show through each other.</p>
+<p><img alt="fill-extrusion-opacity" src="../assets/fill-extrusion-opacity.svg" /></p>
 <table>
 <thead>
 <tr>
@@ -5964,34 +5942,6 @@
 </tr>
 <tr>
 <td>data-driven styling</td>
-<td>❌ (<a href="https://github.com/maplibre/maplibre-gl-js/issues/4492">#4492</a>)</td>
-<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/5047">#5047</a>)</td>
-<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/5047">#5047</a>)</td>
-</tr>
-</tbody>
-</table>
-<h3 id="fill-extrusion-layer-opacity">fill-extrusion-layer-opacity<a class="headerlink" href="#fill-extrusion-layer-opacity" title="Permanent link">&para;</a></h3>
-<p><em><a href="#paint">Paint</a> property. Optional <a href="../types/#number">number</a> in range <code>[0, 1]</code>. Defaults to <code>1</code>. Supports <a href="../expressions/#interpolate">interpolate</a> expressions. <a href="../transition/">Transitionable</a>.</em></p>
-<p>Opacity applied to the layer as a whole, multiplied with <a href="../layers/#fill-extrusion-opacity"><code>fill-extrusion-opacity</code></a>. The extrusions at a <code>fill-extrusion-opacity</code> of <code>1</code> appear as a single surface at the given opacity and still show through the others. This property affects only the layer it is set on.</p>
-<p><img alt="fill-extrusion-opacity vs. fill-extrusion-layer-opacity" src="../assets/fill-extrusion-opacity.svg" /></p>
-<table>
-<thead>
-<tr>
-<th>SDK Support</th>
-<th>MapLibre GL JS</th>
-<th>MapLibre Native<br>Android</th>
-<th>MapLibre Native<br>iOS</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>basic functionality</td>
-<td>❌ (<a href="https://github.com/maplibre/maplibre-gl-js/issues/4492">#4492</a>)</td>
-<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/5047">#5047</a>)</td>
-<td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/5047">#5047</a>)</td>
-</tr>
-<tr>
-<td><a href="../expressions/#global-state"><code>global-state</code></a> expression</td>
 <td>❌ (<a href="https://github.com/maplibre/maplibre-gl-js/issues/4492">#4492</a>)</td>
 <td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/5047">#5047</a>)</td>
 <td>❌ (<a href="https://github.com/maplibre/maplibre-native/issues/5047">#5047</a>)</td>

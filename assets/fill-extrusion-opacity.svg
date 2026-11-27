@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 268" font-size="16" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif">
-  <rect x="0" y="0" width="1080" height="268" fill="#fff"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 810 268" font-size="16" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="810" height="268" fill="#fff"/>
   <defs>
     <g id="ground">
       <polygon points="0,0 118,68 0,136 -118,68" fill="#eee"/>
@@ -15,6 +15,10 @@
       <polygon points="59,94 7,123 7,72 59,42" fill="#144e75"/>
       <polygon points="7,13 59,42 7,72 -44,42" fill="#1f77b4"/>
     </g>
+    <mask id="behind-blue" maskUnits="userSpaceOnUse" x="-135" y="-122" width="270" height="268">
+      <rect x="-135" y="-122" width="270" height="268" fill="#fff"/>
+      <polygon points="-44,42 7,13 59,42 59,94 7,123 -44,94" fill="#000"/>
+    </mask>
   </defs>
 
   <g transform="translate(0, 0)">
@@ -50,22 +54,8 @@
     </text>
     <g transform="translate(135, 122)">
       <use href="#ground"/>
-      <use href="#red"/>
+      <use href="#red" mask="url(#behind-blue)"/>
       <use href="#blue" opacity="0.5"/>
-    </g>
-  </g>
-
-  <g transform="translate(810, 0)">
-    <text x="135" y="20" text-anchor="middle">
-      red 1, blue 0.5 and
-    </text>
-    <text x="135" y="40" text-anchor="middle">
-      fill-extrusion-layer-opacity: 0.7
-    </text>
-    <g transform="translate(135, 122)">
-      <use href="#ground"/>
-      <use href="#red" opacity="0.7"/>
-      <use href="#blue" opacity="0.35"/>
     </g>
   </g>
 </svg>
