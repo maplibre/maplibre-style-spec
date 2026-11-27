@@ -1,5 +1,6 @@
 ## main
 ### ✨ Features and improvements
+- Add experimental `fill-extrusion-ambient-occlusion-wall-intensity`, `fill-extrusion-ambient-occlusion-wall-radius`, `fill-extrusion-ambient-occlusion-ground-intensity` and `fill-extrusion-ambient-occlusion-ground-radius` paint properties to support ambient occlusion on extruded geometries ([#1796](https://github.com/maplibre/maplibre-style-spec/issues/1796))
 - _...Add new stuff here..._
 
 ### 🐞 Bug fixes
